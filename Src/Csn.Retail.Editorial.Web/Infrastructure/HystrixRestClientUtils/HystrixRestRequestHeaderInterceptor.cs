@@ -7,7 +7,7 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.HystrixRestClientUtils
 {
     public class HystrixRestRequestHeaderInterceptor : IHystrixRestRequestInterceptor
     {
-        private const string AppId = "<NotSet>";
+        private const string AppId = "RetailEditorialWeb";
         private const string AppIdHeader = "x-appid";
         private const string CidHeader = "x-cid";
         private const string OriginKey = "x-origin";

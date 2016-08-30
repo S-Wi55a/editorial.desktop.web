@@ -32,7 +32,7 @@ namespace Csn.Retail.Editorial.Web
 
             routes.MapRoute(
                 name: "Default",
-                url: "<NotSet>/{controller}/{action}/{id}",
+                url: "editorial/{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
                 );
         }
