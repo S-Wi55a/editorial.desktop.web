@@ -1,0 +1,9 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<SolutionName>Csn.Retail.StaticPages</SolutionName>
+		<TargetProjectName>Csn.Retail.StaticPages.Web</TargetProjectName>
+		<DeployDir Condition="$(Configuration) == 'Release'">C:\Temp\web\$(Configuration)</DeployDir>
+		<DeployDir Condition="$(Configuration) == 'Staging'">C:\Temp\web\$(Configuration)</DeployDir>
+		<DeployDir Condition="$(Configuration) == 'Test'">C:\Temp\web\$(Configuration)</DeployDir>
+	</PropertyGroup>
+</Project>

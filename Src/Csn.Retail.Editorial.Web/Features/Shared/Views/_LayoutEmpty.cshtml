@@ -1,0 +1,22 @@
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@{
+    var tenantName = Html.CurrentTenant().Name.ToLower();
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    @RenderSection("Head", false)
+    @RenderSection("Styles", false)
+    @RenderSection("TopScripts", false)
+</head>
+<body class="tenant-@tenantName">
+<div>
+    @RenderBody()
+</div>
+    @Html.AssetJs("common")
+    @RenderSection("BottomScripts", false)
+</body>
+</html>

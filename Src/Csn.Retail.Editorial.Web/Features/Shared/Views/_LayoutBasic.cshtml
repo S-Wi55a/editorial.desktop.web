@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "_LayoutEmpty.cshtml";
+    var globalSiteData = Html.GlobalSiteData();
+}
+
+@using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
+@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@section Head{
+    @RenderSection("Head", false)
+}
+
+@section Styles{
+    <link rel="stylesheet" href="https://resource.csnstatic.com/carsales/globals/css/fonts-V1.base64.min.css">
+    @Html.AssetCss("common")
+    @globalSiteData.Style.ToMvcHtmlString()
+    @RenderSection("Styles", false)
+}
+@section TopScripts{
+    @RenderSection("TopScripts", false)
+}
+
+
+@globalSiteData.TopNav.ToMvcHtmlString()
+<div class="page-container">
+    @{ Html.RenderPartial("_Header"); }
+    @RenderBody()
+</div>
+<footer id="page-footer">
+    @globalSiteData.Footer.ToMvcHtmlString()
+</footer>
+
+@section BottomScripts{
+    @Html.AssetJs("common")
+    @RenderSection("BottomScripts", false)
+    @globalSiteData.Script.ToMvcHtmlString()
+}
+

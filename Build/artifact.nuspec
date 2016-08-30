@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Csn.Retails.StaticPages.Web</id>
+    <version>1.0.0</version>
+    <authors>Car Squad</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Carsales Static page Website</description>
+  </metadata>
+  <files>
+    <file src="Output\**" />
+  </files>
+</package>
