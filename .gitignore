@@ -4,3 +4,4 @@ bin
 obj
 dist
 node_modules
+webpack.assets.json

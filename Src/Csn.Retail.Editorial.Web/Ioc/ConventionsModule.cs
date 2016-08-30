@@ -7,7 +7,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
 {
     public class ConventionsModule : Module
     {
-        private const string AssemblyStartsWithMatch = "Csn.Retail.StaticPages.";
+        private const string AssemblyStartsWithMatch = "Csn.Retail.Editorial.";
 
         protected override void Load(ContainerBuilder builder)
         {
