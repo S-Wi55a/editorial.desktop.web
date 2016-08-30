@@ -1,0 +1,1 @@
+"c:\Program Files\IIS Express\iisexpress.exe" /path:%cd%\Csn.Retail.Editorial.Web /port:5050
