@@ -1,6 +1,6 @@
-## Retail Editorial Website
+# Retail Editorial Website
 
-# How to setup
+## How to setup
 
 - Download the repo
 - Restore nuget packages
