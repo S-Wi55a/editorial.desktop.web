@@ -39,6 +39,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
 
             builder.RegisterType<HystrixRestRequestHeaderInterceptor>().As<IHystrixRestRequestInterceptor>();
             builder.Register(x => new HystrixRestReporter(GetLogger.For<HystrixRestReporter>())).As<IHystrixRestReporter>().SingleInstance();
+            builder.Register(x => new ApiMonitorReporter(GetLogger.For<ApiMonitorReporter>())).As<IHystrixRestReporter>().SingleInstance();
             builder.Register(x => FluentHystrixRestClientFactoryBuilder
                 .New()
                 .WithInterceptors(x.Resolve<IEnumerable<IHystrixRestRequestInterceptor>>()?.ToArray() ?? new IHystrixRestRequestInterceptor[] { })
