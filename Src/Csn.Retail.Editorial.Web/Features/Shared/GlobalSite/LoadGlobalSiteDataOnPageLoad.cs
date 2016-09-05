@@ -57,6 +57,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
         {
             var response = await _restClient.HostName(HostName)
                 .Path(_tenantProvider.Current().SiteNavPath)
+                .QueryParams("memberId", _userContext.CurrentUserId)
                 .GetAsync<GlobalSiteResponseDto>();
 
             return response?.Result?.Data;
