@@ -258,6 +258,7 @@
     <Compile Include="App_Start\SetupGlobalFilterTask.cs" />
     <Compile Include="App_Start\SetupDefaultRouteTask.cs" />
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
+    <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteExtensions.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteResponseDto.cs" />
@@ -322,6 +323,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Details\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
@@ -354,6 +356,7 @@
     <Content Include="Features\Shared\Views\_Header.cshtml" />
     <Content Include="Features\Home\Views\Index.cshtml" />
     <Content Include="Features\Shared\Assets\Css\header.scss" />
+    <Content Include="Features\Details\Views\Index.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

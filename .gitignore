@@ -1,7 +1,7 @@
 .vs
-packages
 bin
 obj
 dist
 node_modules
 webpack.assets.json
+Src/Csn.Retail.Editorial.Web/logs*
