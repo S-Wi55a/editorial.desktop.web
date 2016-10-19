@@ -1,17 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
+using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Details
 {
     public class DetailsController : Controller
     {
-        // GET: Details
-        public ActionResult Index()
+        private readonly IQueryDispatcher _queryDispatcher;
+
+        public DetailsController(IQueryDispatcher queryDispatcher)
         {
-            return View();
+            _queryDispatcher = queryDispatcher;
+        }
+
+        [Route("editorial/details/{pageName:regex(^.*-\\d+/?$)}")]
+        // GET: Details
+        public async Task<ActionResult> Index(ArticleIdentifier articleIdentifier)
+        {
+            var viewModel =
+                await _queryDispatcher.DispatchAsync<GetArticleQuery, ArticleViewModel>(new GetArticleQuery()
+                {
+                    Id = articleIdentifier.Id
+                });
+
+            // TODO: add error handling
+            //if (viewModel == null)
+            //{
+            //    return Redirect("~/error");
+            //}
+
+            return View("Index", viewModel);
         }
     }
 }

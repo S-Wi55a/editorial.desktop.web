@@ -1,6 +1,9 @@
+using System.Web.Routing;
 using Autofac;
+using Autofac.Integration.Mvc;
 using Csn.Cars.Cache.Builder;
 using Csn.Logging;
+using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.SimpleCqrs;
@@ -14,6 +17,8 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterGeneric(typeof(ContextStore<>)).As(typeof(IContextStore<>)).InstancePerRequest();
             builder.Register(x => GetLogger.For<MvcApplication>()).As<ILogger>().SingleInstance();
             builder.Register(x => CacheStoreBuilder.New().Build()).As<Csn.Cars.Cache.ICacheStore>().SingleInstance();
+
+            //builder.RegisterType<ArticleIdentifierModelBinder>().AsModelBinderForTypes(typeof(ArticleIdentifier));
         }
     }
 

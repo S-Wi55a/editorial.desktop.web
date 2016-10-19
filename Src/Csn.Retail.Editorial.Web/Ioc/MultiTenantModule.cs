@@ -6,7 +6,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
 namespace Csn.Retail.Editorial.Web.Ioc
 {
-    public class MultiTanentModule : Module
+    public class MultiTenantModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
