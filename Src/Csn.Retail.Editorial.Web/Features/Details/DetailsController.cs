@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
+using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Details
@@ -29,7 +30,13 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             //    return Redirect("~/error");
             //}
 
-            return View("Index", viewModel);
+            // load up the appropriate view depending on the template type
+            if (viewModel.ArticleTemplateType == ArticleTemplateType.NarrowHero)
+            {
+                return View("NarrowHeroTemplate", viewModel);
+            }
+
+            return View("DefaultTemplate", viewModel);
         }
     }
 }

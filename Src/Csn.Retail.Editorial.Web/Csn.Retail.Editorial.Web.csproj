@@ -269,6 +269,7 @@
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteResponseDto.cs" />
     <Compile Include="Features\Shared\GlobalSite\LoadGlobalSiteDataOnPageLoad.cs" />
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
+    <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
@@ -363,7 +364,13 @@
     <Content Include="Features\Shared\Views\_Header.cshtml" />
     <Content Include="Features\Home\Views\Index.cshtml" />
     <Content Include="Features\Shared\Assets\Css\header.scss" />
-    <Content Include="Features\Details\Views\Index.cshtml" />
+    <Content Include="Features\Details\Views\NarrowHeroTemplate.cshtml" />
+    <Content Include="Features\Details\Views\DefaultTemplate.cshtml" />
+    <Content Include="Features\Details\Views\Heroes\_SingleImage.cshtml" />
+    <Content Include="Features\Details\Views\Heroes\_SingleVideo.cshtml" />
+    <Content Include="Features\Details\Views\Heroes\_Hero.cshtml" />
+    <Content Include="Features\Details\Views\Heroes\_MultipleImages.cshtml" />
+    <Content Include="Features\Details\Views\Heroes\_ImagesAndVideo.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

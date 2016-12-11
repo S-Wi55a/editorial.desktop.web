@@ -21,7 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 
         public async Task<IHealthCheckResult> CheckAsync()
         {
-            var result = await _proxy.GetAsync<dynamic>(new EditorialApiInput
+            var result = await _proxy.GetArticleAsync(new EditorialApiInput
             {
                 ServiceName = "carsales",
                 ViewType = "desktop",

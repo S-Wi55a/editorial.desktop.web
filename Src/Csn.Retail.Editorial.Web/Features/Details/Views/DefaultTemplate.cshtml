@@ -1,0 +1,21 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.ArticleViewModel
+
+@section Head {
+}
+
+@section Styles {
+}
+
+
+@section TopScripts {
+}
+
+<div class="top-panel">
+    <p>This is the default template</p>
+    
+    @{ Html.RenderPartial("Heroes/_Hero", Model.HeroSection); }
+</div>
+<div class="main-panel">
+    <h1>@Model.Headline</h1>
+</div>
+<div class="side-panel"></div>

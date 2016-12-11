@@ -1,0 +1,21 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
+@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.HeroSection
+
+<div class="hero">
+    @if (Model.Type == HeroType.MultipleImages)
+    {
+        Html.RenderPartial("Heroes/_MultipleImages", @Model);
+    }
+    else if (Model.Type == HeroType.ImagesAndVideo)
+    {
+        Html.RenderPartial("Heroes/_ImagesAndVideo", @Model);
+    }
+    else if (Model.Type == HeroType.Video)
+    {
+        Html.RenderPartial("Heroes/_SingleVideo", @Model);
+    }
+    else if (Model.Type == HeroType.SingleImage)
+    {
+        Html.RenderPartial("Heroes/_SingleImage", @Model);
+    }
+</div>

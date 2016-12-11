@@ -7,7 +7,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 {
     public interface IEditorialApiProxy
     {
-        Task<HystrixRestResponse<T>> GetAsync<T>(EditorialApiInput input);
+        Task<HystrixRestResponse<ArticleDetailsDto>> GetArticleAsync(EditorialApiInput input);
     }
 
     [AutoBind]
@@ -21,11 +21,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
             _restClient = restClient;
         }
 
-        public Task<HystrixRestResponse<T>> GetAsync<T>(EditorialApiInput input)
+        public Task<HystrixRestResponse<ArticleDetailsDto>> GetArticleAsync(EditorialApiInput input)
         {
             return _restClient.HostName(HostName)
                                     .Path("v1/details/{0}/{1}/{2}/", input.ServiceName, input.ViewType, input.Id)
-                                    .GetAsync<T>();
+                                    .GetAsync<ArticleDetailsDto>();
         }
     }
 

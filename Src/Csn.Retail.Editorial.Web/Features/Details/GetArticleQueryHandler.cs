@@ -17,11 +17,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
         public async Task<ArticleViewModel> HandleAsync(GetArticleQuery query)
         {
-            var result = await _editorialApiProxy.GetAsync<ArticleDto>(new EditorialApiInput()
+            var result = await _editorialApiProxy.GetArticleAsync(new EditorialApiInput()
             {
                 ServiceName = "carsales",
                 ViewType = "desktop",
-                Id = "ed-itm-51707"
+                Id = query.Id
             });
 
             if (!result.Succeed)
@@ -29,18 +29,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                 return null;
             }
 
+            var detailsDto = result.Result;
+
             return new ArticleViewModel()
             {
-                Headline = result.Result.Headline
+                ArticleTemplateType = detailsDto.ArticleTemplateType,
+                Headline = detailsDto.Headline,
+                HeroSection = detailsDto.HeroSection
             };
-        }
-
-        public class ArticleDto
-        {
-            public string ArticleType { get; set; }
-            public string Headline { get; set; }
-            public string Subheading { get; set; }
-            public string Summary { get; set; }
         }
     }
 }
