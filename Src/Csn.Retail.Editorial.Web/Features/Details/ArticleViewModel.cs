@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Web;
+﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 
 namespace Csn.Retail.Editorial.Web.Features.Details
@@ -12,5 +8,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string Headline { get; set; }
         public HeroSection HeroSection { get; set; }
+    }
+
+    public class HeroSection
+    {
+        public HeroType Type { get; set; }
+        public List<Image> Images { get; set; }
+        public string BrightcoveVideoIFrameUrl { get; set; }
     }
 }

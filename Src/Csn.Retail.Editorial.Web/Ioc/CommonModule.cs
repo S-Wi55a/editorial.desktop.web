@@ -6,6 +6,7 @@ using Csn.Logging;
 using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
+using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Ioc
@@ -15,6 +16,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterGeneric(typeof(ContextStore<>)).As(typeof(IContextStore<>)).InstancePerRequest();
+            builder.RegisterType<AutoMappedMapper>().As<IMapper>().SingleInstance();
             builder.Register(x => GetLogger.For<MvcApplication>()).As<ILogger>().SingleInstance();
             builder.Register(x => CacheStoreBuilder.New().Build()).As<Csn.Cars.Cache.ICacheStore>().SingleInstance();
 
