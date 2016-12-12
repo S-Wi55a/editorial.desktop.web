@@ -4,18 +4,18 @@
 <div class="hero">
     @if (Model.Type == HeroType.MultipleImages)
     {
-        Html.RenderPartial("Heroes/_MultipleImages", @Model);
+        Html.RenderPartial("Hero/_MultipleImages", @Model);
     }
     else if (Model.Type == HeroType.ImagesAndVideo)
     {
-        Html.RenderPartial("Heroes/_ImagesAndVideo", @Model);
+        Html.RenderPartial("Hero/_ImagesAndVideo", @Model);
     }
     else if (Model.Type == HeroType.Video)
     {
-        Html.RenderPartial("Heroes/_SingleVideo", @Model);
+        Html.RenderPartial("Hero/_SingleVideo", @Model);
     }
     else if (Model.Type == HeroType.SingleImage)
     {
-        Html.RenderPartial("Heroes/_SingleImage", @Model);
+        Html.RenderPartial("Hero/_SingleImage", @Model);
     }
 </div>

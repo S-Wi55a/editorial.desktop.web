@@ -1,0 +1,7 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.HeroSection
+
+@{
+    var firstImage = Model.Images.First();
+}
+
+<img src="@firstImage.Url" alt="@firstImage.AlternateText" />

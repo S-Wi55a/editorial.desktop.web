@@ -369,11 +369,12 @@
     <Content Include="Features\Shared\Assets\Css\header.scss" />
     <Content Include="Features\Details\Views\NarrowHeroTemplate.cshtml" />
     <Content Include="Features\Details\Views\DefaultTemplate.cshtml" />
-    <Content Include="Features\Details\Views\Heroes\_SingleImage.cshtml" />
-    <Content Include="Features\Details\Views\Heroes\_SingleVideo.cshtml" />
-    <Content Include="Features\Details\Views\Heroes\_Hero.cshtml" />
-    <Content Include="Features\Details\Views\Heroes\_MultipleImages.cshtml" />
-    <Content Include="Features\Details\Views\Heroes\_ImagesAndVideo.cshtml" />
+    <Content Include="Features\Details\Views\Hero\_SingleImage.cshtml" />
+    <Content Include="Features\Details\Views\Hero\_SingleVideo.cshtml" />
+    <Content Include="Features\Details\Views\Hero\_Hero.cshtml" />
+    <Content Include="Features\Details\Views\Hero\_MultipleImages.cshtml" />
+    <Content Include="Features\Details\Views\Hero\_ImagesAndVideo.cshtml" />
+    <Content Include="Features\Details\Views\Hero\_Image.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
