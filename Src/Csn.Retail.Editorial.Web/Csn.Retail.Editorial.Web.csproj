@@ -264,16 +264,12 @@
     <Compile Include="Features\Details\ArticleViewModel.cs" />
     <Compile Include="Features\Details\GetArticleQuery.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandler.cs" />
-    <Compile Include="Features\Details\Mappings\HeroSectionMapper.cs" />
-    <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteExtensions.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteResponseDto.cs" />
     <Compile Include="Features\Shared\GlobalSite\LoadGlobalSiteDataOnPageLoad.cs" />
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
@@ -367,14 +363,8 @@
     <Content Include="Features\Shared\Views\_Header.cshtml" />
     <Content Include="Features\Home\Views\Index.cshtml" />
     <Content Include="Features\Shared\Assets\Css\header.scss" />
-    <Content Include="Features\Details\Views\NarrowHeroTemplate.cshtml" />
-    <Content Include="Features\Details\Views\DefaultTemplate.cshtml" />
-    <Content Include="Features\Details\Views\Hero\_SingleImage.cshtml" />
-    <Content Include="Features\Details\Views\Hero\_SingleVideo.cshtml" />
-    <Content Include="Features\Details\Views\Hero\_Hero.cshtml" />
-    <Content Include="Features\Details\Views\Hero\_MultipleImages.cshtml" />
-    <Content Include="Features\Details\Views\Hero\_ImagesAndVideo.cshtml" />
-    <Content Include="Features\Details\Views\Hero\_Image.cshtml" />
+    <Content Include="Features\Details\Views\Index.cshtml" />
+    <Content Include="eslint.json" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

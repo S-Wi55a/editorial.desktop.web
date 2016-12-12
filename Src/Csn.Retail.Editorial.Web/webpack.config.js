@@ -8,7 +8,10 @@ var glob = require('glob'),
     AssetsPlugin = require('assets-webpack-plugin'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
-    assetsPluginInstance = new AssetsPlugin();
+    assetsPluginInstance = new AssetsPlugin(),
+    LiveReloadPlugin = require('webpack-livereload-plugin');
+
+
 
 var isProd = (process.env.NODE_ENV === 'prod');
 
@@ -124,7 +127,8 @@ module.exports = {
             name: "common",
             filename: isProd ? "common-[chunkhash].js" : "common.js",
             minChunks: Infinity
-        })
+        }),
+        new LiveReloadPlugin()
     ],
-    devtool:"source-map"
+    devtool: "source-map"
 };
