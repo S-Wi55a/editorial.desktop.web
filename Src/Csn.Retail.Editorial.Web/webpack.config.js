@@ -72,12 +72,12 @@ module.exports = {
             {
                 test: [/\.css$/],
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!clean-css!autoprefixer-loader')
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!autoprefixer-loader!sass-loader?sourceMap')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!clean-css!autoprefixer-loader!sass-loader?sourceMap')
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
