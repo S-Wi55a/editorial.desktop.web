@@ -1,0 +1,22 @@
+﻿// Brightcove Video Player
+
+.brightcove{
+    display:block;
+    position:relative;
+    background-color: $cs-darkest-grey;
+
+    .brightcove__iframe-wrapper{
+        padding-top: percentage(9/16); // 16:9
+
+        iframe{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            border: none;
+        }
+    }
+}

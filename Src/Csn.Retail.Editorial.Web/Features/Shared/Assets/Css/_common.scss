@@ -1,0 +1,57 @@
+﻿// Common Styles
+
+// ---------------------------------------------------------------------------
+// Settings
+@import "./variables/_variables.scss";
+
+// ---------------------------------------------------------------------------
+// Extends
+@import "./tyopgraphy/extends/_typogrpahy-extends.scss";
+
+// ---------------------------------------------------------------------------
+// Mixins
+@import "./mixins/_mixins.scss";
+
+// ---------------------------------------------------------------------------
+//Resets
+@import "./base/_reset.scss";
+
+// ---------------------------------------------------------------------------
+// Vendors
+// Vendor - Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/_mixins";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/_scaffolding";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/_grid";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/_responsive-utilities";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/_utilities";
+
+
+// ---------------------------------------------------------------------------
+// Mixins
+
+
+// ---------------------------------------------------------------------------
+// Typography
+@import './tyopgraphy/_typography.scss';
+
+// Typography - Fonts
+@import "./tyopgraphy/fonts/csnicons/_csnicons.scss";
+
+
+// ---------------------------------------------------------------------------
+//Base
+
+@import "./base/_base.scss";
+
+
+// ---------------------------------------------------------------------------
+//Layout
+@import "./layout/_page-container.scss";
+@import "./layout/_header.scss";
+@import "./layout/_footer.scss";
+
+// ---------------------------------------------------------------------------
+// Modules
+// Module - Brightcove Player
+@import "./modules/_brightcove-video-player.scss";

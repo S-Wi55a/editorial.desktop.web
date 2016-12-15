@@ -1,0 +1,14 @@
+﻿// Typography
+
+h1 {
+    @extend %h1;
+}
+
+h2 {
+    @extend %h2;
+}
+
+p {
+    @extend %p;
+}
+

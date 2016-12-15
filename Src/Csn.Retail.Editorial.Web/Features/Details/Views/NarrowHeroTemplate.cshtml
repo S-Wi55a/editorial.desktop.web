@@ -1,18 +1,25 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.ArticleViewModel
-    
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+
+@model Csn.Retail.Editorial.Web.Features.Details.ArticleViewModel
+
 @section Head {
 }
 
 @section Styles {
+    @Html.AssetCss("details-page")
 }
 
 
 @section TopScripts {
 }
 
-<div class="main-panel">
-    @{ Html.RenderPartial("Hero/_Hero", @Model.HeroSection); }
-    <h1>@Model.Headline</h1>
-    <p>This is the single image template</p>
-</div>
-<div class="side-panel"></div>
+<article>
+@{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
+@{ Html.RenderPartial("Partials/_Main"); }
+@{ Html.RenderPartial("Partials/_Aside"); }
+</article>
+
+@section BottomScripts
+{
+
+}

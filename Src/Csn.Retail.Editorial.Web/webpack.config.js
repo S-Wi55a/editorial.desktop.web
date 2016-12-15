@@ -4,12 +4,11 @@ var glob = require('glob'),
     path = require('path'),
     webpack = require('webpack'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
-    ExtractTextPlugin  = require('extract-text-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
-    assetsPluginInstance = new AssetsPlugin(),
-    LiveReloadPlugin = require('webpack-livereload-plugin');
+    assetsPluginInstance = new AssetsPlugin();
 
 
 
@@ -64,20 +63,21 @@ module.exports = {
                 test: /\.ts$/,
                 loaders: ['ts-loader']
             },
-            { 
+            {
                 test: [/\.js$/,/\.es6$/],
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             },
-            { 
+
+            {
                 test: [/\.css$/],
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader')
             },
-            { 
+            {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader!sass-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!autoprefixer-loader!sass-loader?sourceMap')
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
@@ -86,7 +86,12 @@ module.exports = {
                     'file?hash=sha512&digest=hex&name=img-[hash].[ext]',
                     'image-webpack'
                 ]
+            },
+            {
+                test: require.resolve('jquery'),
+                loader: 'expose?jQuery!expose?$'
             }
+
         ]
     },
     imageWebpackLoader: {
@@ -107,8 +112,8 @@ module.exports = {
     plugins: [
         // new CopyWebpackPlugin(
         //     [
-        //         {from:'./features/**/*.+(png|jpeg|jpg|svg)', 
-        //             to:'./', 
+        //         {from:'./features/**/*.+(png|jpeg|jpg|svg)',
+        //             to:'./',
         //             flatten: true}
         //     ]
         // ),
@@ -119,7 +124,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(['dist', 'build'], {
             root: __dirname,
-            verbose: true, 
+            verbose: true,
             dry: false
         }),
         new ExtractTextPlugin(isProd ? '[name]-[chunkhash].css' : '[name].css'),
@@ -127,8 +132,7 @@ module.exports = {
             name: "common",
             filename: isProd ? "common-[chunkhash].js" : "common.js",
             minChunks: Infinity
-        }),
-        new LiveReloadPlugin()
+        })
     ],
     devtool: "source-map"
 };

@@ -1,0 +1,19 @@
+﻿// Page - Details
+
+// ---------------------------------------------------------------------------
+// Settings
+@import "../../../shared/assets/css/variables/_variables.scss";
+
+// ---------------------------------------------------------------------------
+// Extends
+@import "../../../shared/assets/css/tyopgraphy/extends/_typogrpahy-extends.scss";
+
+// ---------------------------------------------------------------------------
+// Mixins
+@import "../../../shared/assets/css/mixins/_mixins.scss";
+
+// ---------------------------------------------------------------------------
+// Modules
+@import "./modules/_hero.scss";
+@import "./modules/_main-article.scss";
+@import "./modules/_aside.scss";

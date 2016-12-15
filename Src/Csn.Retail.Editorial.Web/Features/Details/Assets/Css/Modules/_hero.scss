@@ -1,0 +1,15 @@
+﻿// Module - Hero
+
+.hero {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.hero__imageContainer {
+    background-color: $cs-darkest-grey;
+
+    img {
+        @include img-responsive();
+    }
+}

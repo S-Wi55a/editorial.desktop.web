@@ -1,11 +1,14 @@
-﻿@{
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
+@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+
+
+@{
     Layout = "_LayoutEmpty.cshtml";
     var globalSiteData = Html.GlobalSiteData();
 }
 
-@using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
-@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
-@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+
 @section Head{
     @RenderSection("Head", false)
 }
@@ -22,7 +25,7 @@
 
 
 @globalSiteData.TopNav.ToMvcHtmlString()
-<div class="page-container">
+<div class="page-container container">
     @{ Html.RenderPartial("_Header"); }
     @RenderBody()
 </div>
