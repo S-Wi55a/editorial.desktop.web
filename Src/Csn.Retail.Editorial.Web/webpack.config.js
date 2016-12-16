@@ -34,7 +34,10 @@ function getEntryFiles(){
         entries[filename] = filePath;
     }
 
-    entries['common'] = ['jquery','./Features/Shared/Assets/common.js'];
+    entries['common'] = ['jquery', './Features/Shared/Assets/common.js'];
+
+    // Custom Modules
+    entries['slideshow'] = ['./Features/Shared/Assets/Js/Modules/Slideshow/slideshow.js'];
 
     return entries;
 }
