@@ -34,7 +34,10 @@ function getEntryFiles(){
         entries[filename] = filePath;
     }
 
-    entries['common'] = ['jquery','./Features/Shared/Assets/common.js'];
+    entries['common'] = ['jquery', './Features/Shared/Assets/common.js'];
+
+    // Custom Modules
+    entries['slideshow'] = ['./Features/Shared/Assets/Js/Modules/Slideshow/slideshow.js'];
 
     return entries;
 }
@@ -66,18 +69,18 @@ module.exports = {
             {
                 test: [/\.js$/,/\.es6$/],
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader?presets[]=es2015'
             },
 
             {
                 test: [/\.css$/],
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!clean-css!autoprefixer-loader')
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!autoprefixer-loader!sass-loader?sourceMap')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!clean-css!autoprefixer-loader!sass-loader?sourceMap')
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,

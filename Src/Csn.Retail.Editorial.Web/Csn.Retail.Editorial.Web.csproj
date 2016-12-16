@@ -320,6 +320,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Shared\Assets\common.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -338,7 +339,6 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Details\Assets\Js\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
-    <Folder Include="Features\Shared\Assets\Css\Mixins\" />
     <Folder Include="Features\Shared\Assets\Fonts\" />
     <Folder Include="Views\Details\" />
     <Folder Include="Views\Home\" />
@@ -386,7 +386,7 @@
     <Content Include="Features\Shared\Assets\Css\Tyopgraphy\_typography.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_variables-typography.scss" />
     <Content Include="Features\Shared\Assets\Css\Tyopgraphy\Fonts\csnicons\_csnicons.scss" />
-    <Content Include="Features\Shared\Assets\Css\_common.scss" />
+    <Content Include="Features\Shared\Assets\Css\Common.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_page-container.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_footer.scss" />
     <Content Include="Features\Details\Views\Partials\_Main.cshtml" />
@@ -394,9 +394,12 @@
     <Content Include="Features\Shared\Assets\Css\Modules\_brightcove-video-player.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_main-article.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_hero.scss" />
-    <Content Include="Features\Details\Assets\Css\_details-page.scss" />
+    <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
     <Content Include="Features\Shared\Assets\Css\Tyopgraphy\Extends\_typogrpahy-extends.scss" />
+    <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.scss" />
+    <Content Include="Features\Shared\Assets\Css\Variables\Screen\_variables-screen.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

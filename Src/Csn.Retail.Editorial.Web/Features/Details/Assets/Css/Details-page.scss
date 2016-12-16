@@ -5,6 +5,11 @@
 @import "../../../shared/assets/css/variables/_variables.scss";
 
 // ---------------------------------------------------------------------------
+// Vendors
+// Vendor - Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+
+// ---------------------------------------------------------------------------
 // Extends
 @import "../../../shared/assets/css/tyopgraphy/extends/_typogrpahy-extends.scss";
 
@@ -17,3 +22,5 @@
 @import "./modules/_hero.scss";
 @import "./modules/_main-article.scss";
 @import "./modules/_aside.scss";
+
+@import "../../../shared/assets/js/modules/slideshow/slideshow.scss";

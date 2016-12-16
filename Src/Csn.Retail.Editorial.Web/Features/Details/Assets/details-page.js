@@ -1,3 +1,3 @@
 ﻿// Details Page css files
 
-require('./css/_details-page.scss');
+require('./css/Details-page.scss');
