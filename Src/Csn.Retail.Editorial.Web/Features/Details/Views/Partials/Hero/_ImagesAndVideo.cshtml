@@ -1,4 +1,168 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.HeroSection
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@model Csn.Retail.Editorial.Web.Features.Details.HeroSection
 
-<div>@{ Html.RenderPartial("Hero/_Image", @Model); }</div>
-<div><iframe src="@Model.BrightcoveVideoIFrameUrl"></iframe></div>
+<section class="_l-hero-unit">
+    <div class="_c-hero-unit">
+        @*@if (!string.IsNullOrEmpty(Model.StockCountUrl))
+            {
+                <div class="_c-hero-unit__content _c-hero-unit__content--top-left">
+
+                    <div data-stock-count="@Model.StockCountUrl"></div>
+                </div>
+
+                <div class="_c-hero-unit__content _c-hero-unit__content--top-right">
+                    <div class="_c-location">
+                        Your location <a href="@Url.RouteUrl(Routes.Location.Edit)" data-modal-trigger>@Model.Location.Suburb, @Model.Location.StateAbbreviated</a>
+                    </div>
+                </div>
+            }*@
+
+
+
+        <div class="_c-slideshow" data-hero-slideshow>
+            <div class="_c-slideshow__slider">
+                <ul class="_c-slideshow__slides">
+                    @{
+                        int tileNumber = 20;
+                        int index = 1;
+                    }
+                    @foreach (var image in Model.Images.OrderBy(o => o.Order))
+                    {
+
+                        //string externalLinkTag = string.Empty;
+                        //string exploreLinkTag = string.Empty;
+                        //string modalVideoTag = string.Empty;
+                        //if (image.IsPromotionalHeroImage)
+                        //{
+                        //    externalLinkTag = string.Format(" data-ga-event=\"{0}\" data-ga-event-value=\"Enternal link {1}\"", image.PromotionName, index);
+                        //    exploreLinkTag = string.Format(" data-ga-event=\"{0}\" data-ga-event-value=\"Explore link {1}\"", image.PromotionName, index);
+                        //    modalVideoTag = string.Format(" data-ga-event=\"{0}\" data-ga-event-value=\"Modal video {1}\"", image.PromotionName, index);
+                        //}
+
+                    <li class="_c-slideshow__slide">
+
+                        <div class="_c-slideshow__slide-content _c-slideshow__slide-content--center">
+
+                            @*@if (!string.IsNullOrEmpty(Model.MakeLogoImageSource))
+                                {
+                                    <div class="oem-logo">
+                                        <img class="oem-logo__artwork" src="@Model.MakeLogoImageSource.Size(WebsiteImageType.MakeLogoLarge)" alt="" />
+                                    </div>
+                                }*@
+
+                            <h1 class="h1">A Title @*@image.Title*@</h1>
+
+
+                            @*@if (!string.IsNullOrEmpty(image.CtaLinkText) && image.CtaLinkText != " " && !string.IsNullOrEmpty(image.CtaLinkUrl) && image.CtaLinkUrl != " ")
+                                {
+                                    <a class="_c-slideshow__slide-cta-link" data-driver="ExploreLink" @Html.Raw(exploreLinkTag) href="@image.CtaLinkUrl">@image.CtaLinkText <i class="icon-chevron-right-lg"></i></a>
+                                }
+                                else if (!string.IsNullOrEmpty(image.SubTitle))
+                                {
+                                    <h2 class="h3">@image.SubTitle</h2>
+                                }*@
+
+                            @* Blue Button *@
+                            @*@if (image.HasCtaButton)
+                                {
+                                    <a class="button--s-lg" href="@image.CtaButtonUrl" @(image.CtaButtonIsModal ? "data-modal-trigger data-modal-type=video" : "")>
+                                        @if (image.CtaButtonIsVideo)
+                                        {
+                                            <i class="icon-circle-play-lg"></i>
+                                        }
+                                        @image.CtaButtonText
+                                    </a>
+                                }*@
+
+                        </div>
+
+                        @*Bottom Right*@
+                        @*@if (image.HasModalVideo)
+                            {
+                                if (image.IsPromotionalHeroImage)
+                                {
+                                    <a class="_c-slideshow__slide-watch-video-link" data-driver="PopupVideo" @Html.Raw(modalVideoTag) data-modal-trigger data-modal-type="video" href="@image.ModalVideoUrl">
+                                        <i class="icon-circle-play-lg"></i>
+                                        @image.ModalVideo.Make @image.ModalVideo.Model video
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="_c-slideshow__slide-watch-video-link" data-modal-trigger data-modal-type="video" href="@image.ModalVideoUrl">
+                                        <i class="icon-circle-play-lg"></i>
+                                        @image.ModalVideo.Make @image.ModalVideo.Model video
+                                    </a>
+                                }
+                            }*@
+
+                        @*Bottom Left*@
+                        @*@if (!string.IsNullOrEmpty(image.ExternalLinkText) && !string.IsNullOrEmpty(image.ExternalLinkUrl))
+                            {
+                                <a target="_blank" @Html.Raw(externalLinkTag) data-driver="ExternalLink" href="@image.ExternalLinkUrl" class="_c-slideshow__slide-oem-cta">
+                                    @image.ExternalLinkText
+                                </a>
+                            }
+
+
+                                @if (Model.ImpressionTracker != null)
+                                {
+                                    Html.RenderAction("Index", "Advert", new { request = AdvertRequestViewModel.New(tileNumber, Model.ImpressionTracker, AdSize.Ad1x1) });
+                                }
+
+                                @foreach (var clickTracking in image.DesktopClickTracking)
+                                {
+                                    <img data-src="@clickTracking.Url" data-driver-tracker="@clickTracking.Driver" class="mm-ct hidden" />
+                                }
+
+                                @if (image.HasBackgroundVideo)
+                                {
+                                    <div class="_c-bg-video">
+                                        <div style="padding-top: 56.25%; @(image.Model == "Koleos" ? "margin-top: -7%" : "")">
+                                            <video data-video-id="@image.BackgroundVideo.DataVideoId"
+                                                   data-account="674523943001"
+                                                   data-player="1f043fd1-69ac-43e0-8639-a94724839c7d"
+                                                   data-embed="default"
+                                                   class="video-js"
+                                                   preload="metadata"
+                                                   muted
+                                                   style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"
+                                                   id="BCVideo"></video>
+                                            <script src="//players.brightcove.net/674523943001/1f043fd1-69ac-43e0-8639-a94724839c7d_default/index.min.js"></script>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <img class="_c-slideshow__image" src="@(image.DesktopImageSource.Size(WebsiteImageType.HeroImage))" alt="" @(image.Opacity.HasValue ? "style=opacity:" + Math.Round(image.Opacity.Value, 2) : "") />
+                                }*@
+                    </li>
+                    tileNumber++;
+                    index++;
+                    }
+                </ul>
+            </div>
+            @if (Model.Images.Count > 1)
+                {
+                    <button class="_c-slideshow__nav _c-slideshow__nav--prev" type="button" data-direction="prev">prev</button>
+                    <button class="_c-slideshow__nav _c-slideshow__nav--next" type="button" data-direction="next">next</button>
+                    <ul class="_c-slideshow__pages">
+                        @{ int i = 0;}
+                        @foreach (var heroImage in Model.Images)
+                        {
+                            <li class="_c-slideshow__page"><button @(i == 0 ? "data-is-active" : "") class="_c-slideshow__page-button" data-slide-id="@i" type="button">@i</button></li>
+                            i++;
+                        }
+                    </ul>
+                }
+        </div>
+
+
+    </div>
+
+
+</section>
+@Html.AssetJs("slideshow", AssetMapExtensions.LoadType.Async)
+
+
+
+
