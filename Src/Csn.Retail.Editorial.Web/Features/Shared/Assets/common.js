@@ -1,8 +1,8 @@
 ﻿// Common css files
 
-require('./css/_common.scss');
+require('./css/Common.scss');
 
-WebFontConfig = {
+let WebFontConfig = {
     google: {
         families: ['Open Sans:300,400']
     }

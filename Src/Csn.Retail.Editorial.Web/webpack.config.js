@@ -66,7 +66,7 @@ module.exports = {
             {
                 test: [/\.js$/,/\.es6$/],
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader?presets[]=es2015'
             },
 
             {

@@ -1,1 +1,11 @@
-{}
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+        }
+    },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}
