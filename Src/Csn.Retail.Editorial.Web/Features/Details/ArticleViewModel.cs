@@ -8,6 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string Headline { get; set; }
         public HeroSection HeroSection { get; set; }
+        public List<ContentSection> ContentSections { get; set; }
     }
 
     public class HeroSection
