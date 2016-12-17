@@ -338,6 +338,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Details\Assets\Js\" />
+    <Folder Include="Features\Details\Views\Partials\ContentSections\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Fonts\" />
     <Folder Include="Views\Details\" />
