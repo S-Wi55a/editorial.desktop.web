@@ -260,6 +260,7 @@
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
+    <Compile Include="Features\ContentSections\ContentSectionsController.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\ArticleViewModel.cs" />
     <Compile Include="Features\Details\GetArticleQuery.cs" />
@@ -338,7 +339,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Details\Assets\Js\" />
-    <Folder Include="Features\Details\Views\Partials\ContentSections\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Fonts\" />
     <Folder Include="Views\Details\" />
@@ -401,6 +401,11 @@
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Screen\_variables-screen.scss" />
+    <Content Include="Features\Details\Views\Partials\_ArticleBody.cshtml" />
+    <Content Include="Features\ContentSections\Views\_Html.cshtml" />
+    <Content Include="Features\ContentSections\Views\_SingleImage.cshtml" />
+    <Content Include="Features\ContentSections\Views\_BrightcoveVideo.cshtml" />
+    <Content Include="Features\ContentSections\Views\_Quote.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

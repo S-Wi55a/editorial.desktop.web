@@ -1,0 +1,8 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.ArticleViewModel
+
+<div class="article__copy">
+    @foreach (var contentSection in Model.ContentSections)
+    {
+        Html.RenderAction("ContentSection", "ContentSections", contentSection);
+    }
+</div>

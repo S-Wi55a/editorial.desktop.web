@@ -1,4 +1,6 @@
-﻿<div class="article col-md-7 col-md-offset-1">
+﻿@model Csn.Retail.Editorial.Web.Features.Details.ArticleViewModel
+
+<div class="article col-md-7 col-md-offset-1">
 
     <!-- Main Section -->
 
@@ -12,9 +14,6 @@
         <h2 class="article__subheading">Benz’ latest drop top is a smooth operator, blending elegance and ease of use.</h2>
     </header>
 
-    <div class="article__copy">
-        <p>Available now in Australia from $85,900, the Mercedes-Benz C-Class Cabriolet is the first time the ‘C’ has dropped its top. At the push of a button, the car’s folding cloth roof takes 20 seconds to let the world in, and it’s a got a few neat tricks that’ll see owners opting for the open-air experience more often than not. All models feature a classy interior and a curvaceous exterior, and blend driving dynamics with comfort to impressive effect.</p>
-        <p> On an obscenely cold spring morning in Melbourne, rain clouds loom and the car’s thermometer reckons it’s a chilly eight degrees Celsius. But when evaluating a convertible it’s important to understand just how these things perform with the top down… After all, customers are paying a significant premium for the privilege. So after a bit of jiggery-pokery with the boot divider (the roof won’t open unless it’s secured), the roof slides quietly away and we cruise off towards the Yarra Valley.</p>
-    </div>
+    @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
 
 </div>
