@@ -26,7 +26,7 @@
                         int tileNumber = 20;
                         int index = 1;
                     }
-                    @foreach (var image in Model.Images.OrderBy(o => o.Order))
+                    @foreach (var image in Model.Images)
                     {
 
                         //string externalLinkTag = string.Empty;
@@ -96,25 +96,25 @@
                             }*@
 
                         @*Bottom Left*@
-                        @*@if (!string.IsNullOrEmpty(image.ExternalLinkText) && !string.IsNullOrEmpty(image.ExternalLinkUrl))
+                        @if (!string.IsNullOrEmpty(image.AlternateText) && !string.IsNullOrEmpty(image.Url))
                             {
-                                <a target="_blank" @Html.Raw(externalLinkTag) data-driver="ExternalLink" href="@image.ExternalLinkUrl" class="_c-slideshow__slide-oem-cta">
-                                    @image.ExternalLinkText
+                                <a target="_blank" @*@Html.Raw(externalLinkTag)*@ data-driver="ExternalLink" href="@image.Url" class="_c-slideshow__slide-oem-cta">
+                                    @image.AlternateText
                                 </a>
                             }
 
 
-                                @if (Model.ImpressionTracker != null)
+                                @*@if (Model.ImpressionTracker != null)
                                 {
                                     Html.RenderAction("Index", "Advert", new { request = AdvertRequestViewModel.New(tileNumber, Model.ImpressionTracker, AdSize.Ad1x1) });
-                                }
+                                }*@
 
-                                @foreach (var clickTracking in image.DesktopClickTracking)
+                                @*@foreach (var clickTracking in image.DesktopClickTracking)
                                 {
                                     <img data-src="@clickTracking.Url" data-driver-tracker="@clickTracking.Driver" class="mm-ct hidden" />
-                                }
+                                }*@
 
-                                @if (image.HasBackgroundVideo)
+                                @*@if (image.HasBackgroundVideo)
                                 {
                                     <div class="_c-bg-video">
                                         <div style="padding-top: 56.25%; @(image.Model == "Koleos" ? "margin-top: -7%" : "")">
@@ -132,9 +132,9 @@
                                     </div>
                                 }
                                 else
-                                {
-                                    <img class="_c-slideshow__image" src="@(image.DesktopImageSource.Size(WebsiteImageType.HeroImage))" alt="" @(image.Opacity.HasValue ? "style=opacity:" + Math.Round(image.Opacity.Value, 2) : "") />
-                                }*@
+                                {*@
+                                    <img class="_c-slideshow__image" src="@image.Url" alt="@image.AlternateText" />
+                                @*}*@
                     </li>
                     tileNumber++;
                     index++;
@@ -149,6 +149,7 @@
                         @{ int i = 0;}
                         @foreach (var heroImage in Model.Images)
                         {
+                            //Change to for loop
                             <li class="_c-slideshow__page"><button @(i == 0 ? "data-is-active" : "") class="_c-slideshow__page-button" data-slide-id="@i" type="button">@i</button></li>
                             i++;
                         }

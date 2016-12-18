@@ -12,8 +12,23 @@ var stripLoader = {
     loader: wpStrip.loader('console.log')
 }
 
+
+//TODO: Setup prod loaders
+
+var prodLoaders = [
+{
+    test: [/\.css$/],
+    exclude: /node_modules/,
+    loaders: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap', 'clean-css', 'autoprefixer-loader')
+},
+{
+test: /\.scss$/,
+exclude: /node_modules/,
+loaders: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap', 'clean-css', 'autoprefixer-loader', 'sass-loader?sourceMap')
+}]
+
 var s3 = new S3Plugin({
-    // s3Options are required 
+    // s3Options are required
     s3Options: {
         accessKeyId: awsAccessKey,
         secretAccessKey: awsSecret,

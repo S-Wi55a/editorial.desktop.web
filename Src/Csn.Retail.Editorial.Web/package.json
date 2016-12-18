@@ -6,9 +6,11 @@
   "scripts": {
     "build": "SET NODE_ENV=dev&& webpack -d --color",
     "build-release": "SET NODE_ENV=prod&& webpack -p --color --config webpack-production.config.js",
-    "dev-watch": "SET NODE_ENV=dev&& webpack -d --progress --colors --watch ",
+    "dev-watch": "SET NODE_ENV=dev && webpack-dev-server --colors --inline --hot ",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm rebuild node-sass"
+    "postinstall": "npm rebuild node-sass",
+    "webpack" : "node node_modules/webpack/bin/webpack.js ",
+    "webpack-dev-server" : "node node_modules/webpack-dev-server/bin/webpack-dev-server.js "
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +38,7 @@
     "glob": "^7.0.5",
     "image-webpack-loader": "^2.0.0",
     "jshint": "^2.9.2",
+    "lodash": "^4.17.2",
     "node-sass": "^3.8.0",
     "path": "^0.12.7",
     "rimraf": "^2.5.4",

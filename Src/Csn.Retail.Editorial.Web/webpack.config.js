@@ -47,8 +47,8 @@ module.exports = {
     entry: getEntryFiles(),
     output: {
         path: config.outputPath,
-        filename: isProd ? '[name]-[chunkhash].js' : '[name].js',
-        publicPath: config.publicPath
+        publicPath: config.publicPath,
+        filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
     },
     //externals: {
     //    "jquery": "jQuery"
@@ -64,6 +64,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
+                exclude: /node_modules/,
                 loaders: ['ts-loader']
             },
             {
@@ -71,16 +72,15 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader?presets[]=es2015'
             },
-
             {
                 test: [/\.css$/],
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!clean-css!autoprefixer-loader')
+                loaders: ['style-loader', 'css-loader?sourceMap', 'clean-css', 'autoprefixer-loader']
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!clean-css!autoprefixer-loader!sass-loader?sourceMap')
+                loaders: ['style-loader', 'css-loader?sourceMap', 'clean-css', 'autoprefixer-loader', 'sass-loader?sourceMap']
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
@@ -137,5 +137,14 @@ module.exports = {
             minChunks: Infinity
         })
     ],
-    devtool: "source-map"
+    devtool: "cheap-source-map",
+    devServer: {
+        proxy: {
+            '/': {
+                target: 'http://redesign.editorial.csdev.com.au/editorial/',
+                changeOrigin: true,
+                secure: false
+            }
+        }
+    }
 };
