@@ -260,9 +260,8 @@
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
-    <Compile Include="Features\ContentSections\ContentSectionsController.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
-    <Compile Include="Features\Details\ArticleViewModel.cs" />
+    <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
     <Compile Include="Features\Details\GetArticleQuery.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandler.cs" />
     <Compile Include="Features\Details\Mappings\HeroSectionMapper.cs" />
@@ -402,10 +401,10 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Screen\_variables-screen.scss" />
     <Content Include="Features\Details\Views\Partials\_ArticleBody.cshtml" />
-    <Content Include="Features\ContentSections\Views\_Html.cshtml" />
-    <Content Include="Features\ContentSections\Views\_SingleImage.cshtml" />
-    <Content Include="Features\ContentSections\Views\_BrightcoveVideo.cshtml" />
-    <Content Include="Features\ContentSections\Views\_Quote.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\_SingleImage.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\_BrightcoveVideo.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\_Quote.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\_Html.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

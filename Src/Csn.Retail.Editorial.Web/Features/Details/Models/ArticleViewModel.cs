@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 
-namespace Csn.Retail.Editorial.Web.Features.Details
+namespace Csn.Retail.Editorial.Web.Features.Details.Models
 {
     public class ArticleViewModel
     {
