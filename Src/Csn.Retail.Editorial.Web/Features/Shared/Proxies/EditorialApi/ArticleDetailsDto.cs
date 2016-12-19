@@ -10,6 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Headline { get; set; }
         public string Subheading { get; set; }
         public string Summary { get; set; }
+        public List<Contributor> Contributors { get; set; }
     }
 
     public class HeroSection
@@ -17,6 +18,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public HeroType Type { get; set; }
         public List<Image> Images { get; set; }
         public BrightcoveVideo BrightcoveVideo { get; set; }
+    }
+
+    public class Contributor
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+        public string LinkUrl { get; set; }
     }
 
     public enum ArticleTemplateType

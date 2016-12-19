@@ -10,6 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         public string SubHeading { get; set; }
         public string Summary { get; set; }
         public HeroSection HeroSection { get; set; }
+        public List<Contributor> Contributors { get; set; }
     }
 
     public class HeroSection
@@ -18,4 +19,5 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         public List<Image> Images { get; set; }
         public string BrightcoveVideoIFrameUrl { get; set; }
     }
+
 }
