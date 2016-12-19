@@ -1,4 +1,4 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.ArticleViewModel
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 @section Head {
 }
@@ -17,7 +17,7 @@
 </div>
 <div class="main-panel">
     <h1>@Model.Headline</h1>
-
+    @{ Html.RenderPartial("Partials/_Main", Model); }
     <h2 class="article__subheading">@Model.SubHeading</h2>
 
     <div class="article__summary">@Model.Summary</div>

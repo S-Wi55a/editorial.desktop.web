@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 
-namespace Csn.Retail.Editorial.Web.Features.Details
+namespace Csn.Retail.Editorial.Web.Features.Details.Models
 {
     public class ArticleViewModel
     {
@@ -11,6 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         public string Summary { get; set; }
         public HeroSection HeroSection { get; set; }
         public List<Contributor> Contributors { get; set; }
+        public List<ContentSection> ContentSections { get; set; }
     }
 
     public class HeroSection
