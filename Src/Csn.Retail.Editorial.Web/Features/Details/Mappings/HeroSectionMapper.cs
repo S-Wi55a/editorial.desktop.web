@@ -1,5 +1,6 @@
 ﻿using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using HeroSection = Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection;
 
 namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 {

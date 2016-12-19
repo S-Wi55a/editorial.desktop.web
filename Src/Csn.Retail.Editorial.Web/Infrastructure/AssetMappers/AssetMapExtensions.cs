@@ -5,13 +5,6 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 {
     public static class AssetMapExtensions
     {
-
-        public enum LoadType
-        {
-            Async,
-            Defer
-        }
-
         public static MvcHtmlString AssetCss(this HtmlHelper html, string name)
         {
             var url = DependencyResolver.Current.GetService<IAssetMapProvider>().Css(name);
@@ -19,6 +12,7 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
                 ? MvcHtmlString.Create($"<link rel=\"stylesheet\" type=\"text/css\" href=\"{url}\"/>")
                 : MvcHtmlString.Empty;
         }
+
         public static MvcHtmlString AssetJs(this HtmlHelper html, string name)
         {
             var url = DependencyResolver.Current.GetService<IAssetMapProvider>().Js(name);
@@ -34,5 +28,11 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
                 ? MvcHtmlString.Create($"<script src=\"{url}\" {attr.ToString().ToLower()}></script>")
                 : MvcHtmlString.Empty;
         }
+    }
+
+    public enum LoadType
+    {
+        Async,
+        Defer
     }
 }
