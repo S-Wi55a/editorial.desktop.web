@@ -2,17 +2,17 @@
     
 @if (Model?.Contributors != null && Model.Contributors.Any())
 {
-    <div class="article_authors">
+    <div class="article__authors">
         @foreach (var contributor in Model.Contributors)
         {
-            <div class="author">
+            <div class="author-image">
                 <img src="@contributor.ImageUrl" />
             </div>
-                <div class="details">
+                <div class="author-details">
                     <div class="description">@contributor.Description</div>
                     <div class="name">@contributor.Name</div>
                 </div>
-                <div class="links">
+                <div class="author-links">
                     <a href="@contributor.LinkUrl">See all articles</a>
                 </div>
         }
