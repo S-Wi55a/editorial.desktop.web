@@ -21,5 +21,25 @@
     <h2 class="article__subheading">@Model.SubHeading</h2>
 
     <div class="article__summary">@Model.Summary</div>
+
+    @if (Model?.Contributors != null && Model.Contributors.Any())
+    {
+        <div class="article_authors">
+            @foreach (var contributor in Model.Contributors)
+            {
+                <div class="author">
+                    <img src="@contributor.ImageUrl"/>
+                </div>
+                <div class="details">
+                    <div class="description">@contributor.Description</div>
+                    <div class="name">@contributor.Name</div>
+                </div>
+                <div class="links">
+                    <a href="@contributor.LinkUrl">See all articles</a>
+                </div>
+            }
+        </div>
+    }
+
 </div>
 <div class="side-panel"></div>
