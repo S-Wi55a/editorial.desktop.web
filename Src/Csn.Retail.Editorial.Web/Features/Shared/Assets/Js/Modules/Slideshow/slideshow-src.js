@@ -4,13 +4,15 @@
 * @param {object} config - the initialisation config
 */
 
-import _ from 'lodash'
-
 module.exports = function (config) {
+
+    //TODO: merge option with obj assign
+
     let scope = document.querySelector(config.element)
     let sliderEl = scope.querySelector('._c-slideshow__slider')
     let sliderNav = scope.querySelectorAll('._c-slideshow__nav')
-    let sliderPageButtons = null
+    let sliderPageContainer = scope.querySelectorAll('._c-slideshow__pages')
+    let sliderPageButtons = scope.querySelectorAll('._c-slideshow__page-button')
     let slides = scope.querySelectorAll('._c-slideshow__slide')
     let slidesTotal = slides.length
     let currentSlide = 0
@@ -19,13 +21,15 @@ module.exports = function (config) {
     let pageBy = null
     let showPages = true
     let showNav = true
+    const MAXWIDTH = 100
 
     if (scope.getAttribute('data-current-slide')) {
         currentSlide = parseInt(scope.getAttribute('data-current-slide'))
     }
 
-    if (config.showPages !== null) {
+    if (config.showPages !== null && sliderPageContainer.length ) {
         showPages = config.showPages
+        showPages ? "" : sliderPageContainer[0].style.display = "none"
     }
 
     if (config.showNav !== null) {
@@ -47,7 +51,7 @@ module.exports = function (config) {
 
         playVideo()
 
-        _.each(sliderNav, (item) => {
+        sliderNav.forEach(item => {
             item.addEventListener('click', (event) => {
                 changeSlide(event.currentTarget.getAttribute('data-direction'))
                 doAutoSlide = false;
@@ -55,10 +59,8 @@ module.exports = function (config) {
             })
         })
 
-        sliderPageButtons = scope.querySelectorAll('._c-slideshow__page-button')
-
         if (sliderPageButtons != null) {
-            _.each(sliderPageButtons, (item) => {
+            sliderPageButtons.forEach(item => {
                 item.addEventListener('click', function (event) {
                     doAutoSlide = false;
                     clearAutoSlide();
@@ -71,12 +73,13 @@ module.exports = function (config) {
         scope.addEventListener('mouseenter', clearAutoSlide)
         scope.addEventListener('mouseleave', autoSlide)
 
-        _.each(slides, (item) => {
-            item.style.height = item.offsetHeight + "px"
+        slides.forEach(item => {
+            item.style.width = (MAXWIDTH/pageBy) + "%" // Must be first or height will be incorrect
+            //item.style.height = item.offsetHeight + "px"
         })
 
         window.addEventListener('resize', (e) => {
-            _.each(slides, (item) => {
+            slides.forEach(item => {
                 item.style.height = "auto"
             })
         })
@@ -101,6 +104,8 @@ module.exports = function (config) {
                 currentSlide == slidesTotal - 1;
                 index = currentSlide;
             }
+            var event = new Event('previousSlide');
+            elem.dispatchEvent(event);
         } else {
             if (currentSlide < (slidesTotal - 1) / pageBy) {
                 index = currentSlide + 1;
@@ -109,7 +114,7 @@ module.exports = function (config) {
                 index = currentSlide;
             }
 
-            _.each(slides, (slide) => {
+            slides.forEach(slide => {
                 if (imageCount < 3) {
                     if (!slide.querySelector('img').getAttribute('src')) {
                         slide.querySelector('img').setAttribute('src', slide.querySelector('img').getAttribute('data-src'))
@@ -217,7 +222,7 @@ module.exports = function (config) {
 
     let setActivePage = function (index) {
         if (sliderPageButtons.length) {
-            _.each(sliderPageButtons, (item) => {
+            sliderPageButtons.forEach(item => {
                 item.removeAttribute('data-is-active')
             })
             sliderPageButtons[index].setAttribute('data-is-active', 'true')
