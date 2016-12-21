@@ -12,6 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Summary { get; set; }
         public List<Contributor> Contributors { get; set; }
         public List<ContentSection> ContentSections { get; set; }
+        public SocialMetaData SocialMetaData { get; set; }
     }
 
     public class HeroSection
@@ -27,6 +28,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public string LinkUrl { get; set; }
+    }
+
+    public class SocialMetaData
+    {
+        public string Type { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
+        public string Url { get; set; }
+        public string SiteName { get; set; }
     }
 
     public enum ArticleTemplateType
