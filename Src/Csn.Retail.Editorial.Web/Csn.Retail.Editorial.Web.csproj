@@ -342,6 +342,7 @@
     <Folder Include="Features\Shared\Assets\Fonts\" />
     <Folder Include="Views\Details\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\_Page_Features_Details_Views_DefaultTemplate_cshtml\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -406,6 +407,7 @@
     <Content Include="Features\Details\Views\Partials\ContentSections\_Quote.cshtml" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_Html.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Contributors.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Head\_SocialMetaData.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
