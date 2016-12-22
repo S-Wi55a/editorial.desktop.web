@@ -7,8 +7,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
     {
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string Headline { get; set; }
+        public string SubHeading { get; set; }
+        public string Summary { get; set; }
         public HeroSection HeroSection { get; set; }
+        public List<Contributor> Contributors { get; set; }
         public List<ContentSection> ContentSections { get; set; }
+        public SocialMetaData SocialMetaData { get; set; }
     }
 
     public class HeroSection
@@ -17,4 +21,5 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<Image> Images { get; set; }
         public string BrightcoveVideoIFrameUrl { get; set; }
     }
+
 }

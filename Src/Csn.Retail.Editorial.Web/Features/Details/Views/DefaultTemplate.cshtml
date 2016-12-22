@@ -2,6 +2,7 @@
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 @section Head {
+    @{Html.RenderPartial("Partials/Head/_SocialMetaData", Model); }
 }
 
 @section Styles {
@@ -14,6 +15,7 @@
 
 <article>
     @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
+<<<<<<< HEAD
     <div class="container">
         @{ Html.RenderPartial("Partials/_Main"); }
         @{ Html.RenderPartial("Partials/_Aside"); }
@@ -24,3 +26,17 @@
 {
     @Html.AssetJs("details-page")
 }
+=======
+</div>
+<div class="main-panel">
+    <h1>@Model.Headline</h1>
+    @{ Html.RenderPartial("Partials/_Main", Model); }
+    <h2 class="article__subheading">@Model.SubHeading</h2>
+
+    <div class="article__summary">@Model.Summary</div>
+
+    @{Html.RenderPartial("Partials/_Contributors", Model);}
+
+</div>
+<div class="side-panel"></div>
+>>>>>>> origin/master
