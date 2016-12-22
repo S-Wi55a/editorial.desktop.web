@@ -320,8 +320,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Shared\Assets\common.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow-src.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\src\slideshow.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\src\utils\dispatch-event.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

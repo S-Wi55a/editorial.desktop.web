@@ -52,6 +52,7 @@ module.exports = function (config = {}) {
         })
     }
 
+    //Lazy Load
     if (settings.lazyLoad) {
 
         window.onload = function() {
@@ -141,7 +142,7 @@ module.exports = function (config = {}) {
             dispatchSliderEvent('before', 'previousSlide')
         } else {
         // Next
-            if (currentSlide < slidesTotal) {
+            if ((currentSlide + settings.pageBy) < slidesTotal) {
                 index = currentSlide + settings.pageBy;
             } else {
                 currentSlide = FIRSTSLIDE;

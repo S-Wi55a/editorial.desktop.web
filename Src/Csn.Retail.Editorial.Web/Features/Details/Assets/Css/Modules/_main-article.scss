@@ -33,11 +33,23 @@
         float: left;
         padding: 0 25px;
         line-height: 31px;
+        color: $cs-white;
+        text-transform: uppercase;
 
         &--reviews {
-            background-color: $cs-light-blue;
-            color: $cs-white;
-            text-transform: uppercase;
+            background-color: $cs-blue;
+        }
+        &--car-advice {
+            background-color: $cs-accent-green;
+        }
+        &--video {
+            background-color: $cs-orange;
+        }
+        &--news {
+            background-color: $cs-red;
+        }
+        &--comparison {
+            background-color: $cs-purple;
         }
     }
 

@@ -5,17 +5,17 @@
     <!-- Main Section -->
 
     <div class="cf">
-        <div class="article__type article__type--reviews">Reviews</div>
+        <div class="article__type article__type--@Model.ArticleType.ToLower()">@Model.ArticleType</div>
         <div class="article__date">April 24th, 2016</div>
     </div>
 
     <header>
-        <h1 class="article__heading">Passat GT reignites 'R' moniker hopes</h1>
+        <h1 class="article__heading">@Model.Headline</h1>
         <h2 class="article__subheading">@Model.SubHeading</h2>
     </header>
     <div class="article__summary">@Model.Summary</div>
     @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
-    @{Html.RenderPartial("Partials/_Contributors", Model);}
+    @{ Html.RenderPartial("Partials/_Contributors", Model); }
 
 </div>
 
