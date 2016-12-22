@@ -6,7 +6,7 @@ var glob = require('glob'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
-    CopyWebpackPlugin = require('copy-webpack-plugin'),
+    //CopyWebpackPlugin = require('copy-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
     assetsPluginInstance = new AssetsPlugin();
 
