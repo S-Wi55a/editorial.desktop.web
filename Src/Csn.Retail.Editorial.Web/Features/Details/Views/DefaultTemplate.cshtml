@@ -1,5 +1,5 @@
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
-@model Csn.Retail.Editorial.Web.Features.Details.ArticleViewModel
+@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 @section Head {
 }
@@ -14,8 +14,10 @@
 
 <article>
     @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
-    @{ Html.RenderPartial("Partials/_Main"); }
-    @{ Html.RenderPartial("Partials/_Aside"); }
+    <div class="container">
+        @{ Html.RenderPartial("Partials/_Main"); }
+        @{ Html.RenderPartial("Partials/_Aside"); }
+    </div>
 </article>
 
 @section BottomScripts

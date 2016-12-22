@@ -37,6 +37,7 @@ function getEntryFiles(){
     entries['common'] = ['jquery', './Features/Shared/Assets/common.js'];
 
     // Custom Modules
+    // TODO: Think of a globbing pattern
     entries['slideshow'] = ['./Features/Shared/Assets/Js/Modules/Slideshow/slideshow.js'];
 
     return entries;
@@ -75,12 +76,12 @@ module.exports = {
             {
                 test: [/\.css$/],
                 exclude: /node_modules/,
-                loaders: ['style-loader', 'css-loader?sourceMap', 'clean-css', 'autoprefixer-loader']
+                loaders: ['style-loader', 'css-loader?sourceMap', 'autoprefixer-loader']
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loaders: ['style-loader', 'css-loader?sourceMap', 'clean-css', 'autoprefixer-loader', 'sass-loader?sourceMap']
+                loaders: ['style-loader', 'css-loader?sourceMap', 'autoprefixer-loader', 'sass-loader?sourceMap']
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
@@ -137,12 +138,17 @@ module.exports = {
             minChunks: Infinity
         })
     ],
-    devtool: "cheap-source-map",
+    devtool: "cheap-module-source-map",
     devServer: {
         proxy: {
             '/': {
-                target: 'http://redesign.editorial.csdev.com.au/editorial/',
+                target: 'http://redesign.editorial.csdev.com.au/',
                 changeOrigin: true,
+                secure: false
+            },
+            '/assets': {
+                target: 'http://redesign.editorial.csdev.com.au/',
+                changeOrigin: false,
                 secure: false
             }
         }

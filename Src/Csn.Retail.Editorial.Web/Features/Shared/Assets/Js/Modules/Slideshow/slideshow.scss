@@ -1,5 +1,16 @@
 ﻿@import "~breakpoint-sass/stylesheets/breakpoint";
 
+%button-before--slideshow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-indent: 0;
+}
+
 ._c-slideshow {
 
 // ---------------------------------------------------------------------------
@@ -8,24 +19,6 @@
     // Local Vars
     $white : $cs-white;
 
-    /* Button :before */
-
-    %button-before {
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      text-indent: 0;
-    }
-
-    %clearfix {
-        content:"";
-        display:block;
-        clear:both;
-    }
 // ---------------------------------------------------------------------------
 
 	position: relative;
@@ -242,7 +235,7 @@
         opacity: 1;
 
 		&:before {
-			@extend %button-before;
+			@extend %button-before--slideshow;
 			font-family: 'csnicons';
 			color: $white;
             text-shadow: 0 1px 0 rgba(0,0,0,0.8);
@@ -345,7 +338,7 @@
         -webkit-transition: opacity 0.3s ease;
 
 		&:before {
-			@extend %button-before;
+			@extend %button-before--slideshow;
 			content: '';
 			color: white;
 		}

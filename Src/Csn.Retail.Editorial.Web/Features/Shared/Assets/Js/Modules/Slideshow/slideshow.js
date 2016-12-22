@@ -1,16 +1,32 @@
 ﻿// Slideshow
 
-import Slideshow from './slideshow-src.js'
+import Slideshow from './src/slideshow.js'
 
+
+// TODO: turn into if/else or switch
 if (document.querySelector('[data-hero-slideshow]') !== null) {
     Slideshow({
-        element: '[data-hero-slideshow]',
+        scope: '[data-hero-slideshow]',
         autoSlide: false,
         pageBy: 2,
         showPages: false,
-        showNav: true
+        showNav: false,
+        lazyLoad: true
     });
 }
+
+if (document.querySelector('[data-details-slideshow]') !== null) {
+    Slideshow({
+        scope: '[data-details-slideshow]',
+        autoSlide: false,
+        pageBy: 2,
+        showPages: false,
+        showNav: false,
+        lazyLoad: true
+    });
+}
+
+
 
 
 if (module.hot) {
