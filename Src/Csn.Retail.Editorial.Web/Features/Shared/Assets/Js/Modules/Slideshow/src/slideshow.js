@@ -12,7 +12,8 @@ module.exports = function (config = {}) {
     // Default Values
     let settings = Object.assign({
         scope: '._c-slideshow',
-        sliderEl: '._c-slideshow__slider',
+        sliderFrame: '._c-slideshow__slider',
+        slidesContainer: '._c-slideshow__slides',
         sliderNav: '._c-slideshow__nav',
         sliderPageContainer: '._c-slideshow__pages',
         sliderPageButtons: '._c-slideshow__page-button',
@@ -26,7 +27,8 @@ module.exports = function (config = {}) {
     }, config);
 
     let scope = document.querySelector(settings.scope)
-    let sliderEl = scope.querySelector(settings.sliderEl)
+    let sliderFrame = scope.querySelector(settings.sliderFrame)
+    let slidesContainer = scope.querySelector(settings.slidesContainer)
     let sliderNav = scope.querySelectorAll(settings.sliderNav)
     let sliderPageContainer = scope.querySelectorAll(settings.sliderPageContainer)
     let sliderPageButtons = scope.querySelectorAll(settings.sliderPageButtons)
@@ -36,6 +38,8 @@ module.exports = function (config = {}) {
     let isAutoSlide = settings.autoSlide
     let currentSlide = 0
     let canPlay = false
+    let pageBy = scope.getAttribute('data-slideshow-page-by') || settings.pageBy
+
 
     const MAXFRAMEWIDTH = 100 // Represented as a percentage
     const FIRSTSLIDE = 0 // Index based
@@ -55,20 +59,23 @@ module.exports = function (config = {}) {
     //Lazy Load
     if (settings.lazyLoad) {
 
-        window.onload = function() {
-            let theshold = window.innerWidth
+        window.addEventListener('load', function() {
+            let theshold = sliderFrame.offsetWidth
+            console.log(theshold)
 
             let lazyLaod = new LazyLoad({
                 elements_selector: settings.slidesImage,
                 data_src: "src",
                 data_srcset: "srcset",
                 threshold: theshold
-
             })
+
+            lazyLaod.handleScroll();
+
             scope.addEventListener('before.csn-slider.nextSlide', function() {
                 lazyLaod.handleScroll();
             });
-        }
+        })
 
     }
 
@@ -85,6 +92,10 @@ module.exports = function (config = {}) {
     let _init = function() {
 
         _playVideo() //TODO: check on this
+
+        window.addEventListener('load', function() {
+            slidesContainer.style.width = sliderFrame.offsetWidth + "px"// To ensure slides are translating with whole numbers
+        });
 
         sliderNav.forEach(item => {
             item.addEventListener('click', (event) => {
@@ -109,11 +120,13 @@ module.exports = function (config = {}) {
         scope.addEventListener('mouseleave', _autoSlide)
 
         slides.forEach(item => {
-            item.style.width = (MAXFRAMEWIDTH/settings.pageBy) + "%" // Must be first or height will be incorrect
+            item.style.width = (MAXFRAMEWIDTH/pageBy) + "%" // Must be first or height will be incorrect
             //item.style.height = item.offsetHeight + "px"
         })
 
+        // Resize
         window.addEventListener('resize', () => {
+            slidesContainer.style.width = sliderFrame.offsetWidth + "px"
             slides.forEach(item => {
                 item.style.height = "auto"
             })
@@ -134,7 +147,7 @@ module.exports = function (config = {}) {
         //Prev
         if (direction === 'prev') {
             if (currentSlide > 0) {
-                index = currentSlide - settings.pageBy;
+                index = currentSlide - pageBy;
             } else {
                 currentSlide = slidesTotal;
                 index = currentSlide;
@@ -142,8 +155,8 @@ module.exports = function (config = {}) {
             dispatchSliderEvent('before', 'previousSlide')
         } else {
         // Next
-            if ((currentSlide + settings.pageBy) < slidesTotal) {
-                index = currentSlide + settings.pageBy;
+            if ((currentSlide + pageBy) < slidesTotal) {
+                index = currentSlide + pageBy;
             } else {
                 currentSlide = FIRSTSLIDE;
                 index = currentSlide;
@@ -164,8 +177,8 @@ module.exports = function (config = {}) {
 
         currentSlide = index;
 
-        sliderEl.style.transform = 'translate3d(-' + 100 * (currentSlide / settings.pageBy) + '%,0%,0)'
-        sliderEl.style.webkitTransform = 'translate3d(-' + 100 * (currentSlide / settings.pageBy) + '%,0%,0)'
+        slidesContainer.style.transform = 'translate3d(-' + 100 * (currentSlide / pageBy) + '%,0%,0)'
+        slidesContainer.style.webkitTransform = 'translate3d(-' + 100 * (currentSlide / pageBy) + '%,0%,0)'
 
         _setActivePage(currentSlide)
 

@@ -13,3 +13,17 @@
         @include img-responsive();
     }
 }
+.hero--imageAndVideo {
+
+    overflow: hidden;
+
+    // Move to there own blocks
+    ._c-slideshow {
+        float: left;
+        width: percentage(27/59) //The intersection where 3:2 and 16:9 have the same height
+    }
+    .brightcove {
+        float: left;
+        width: percentage(1-(27/59)) //The intersection where 3:2 and 16:9 have the same height
+    }
+}
