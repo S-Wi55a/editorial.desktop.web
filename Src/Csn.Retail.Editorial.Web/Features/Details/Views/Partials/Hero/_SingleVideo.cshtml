@@ -1,13 +1,14 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.HeroSection
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
-<div class="hero col-md-7 col-md-offset-1">
+<div class="container">
+    <div class="hero col-md-7 col-md-offset-1">
 
-<!-- Single Video -->
+        <!-- Single Video -->
 
-<div class="brightcove">
-    <div class="brightcove__iframe-wrapper">
-        <iframe src="@Model.BrightcoveVideoIFrameUrl" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+        <div class="brightcove">
+            <div class="brightcove__iframe-wrapper">
+                <iframe src="@Model.BrightcoveVideoIFrameUrl" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+            </div>
+        </div>
     </div>
 </div>
-</div>
-

@@ -5,7 +5,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
 {
     public class ArticleViewModel
     {
-        public ArticleTemplateType ArticleTemplateType { get; set; }
         public string Headline { get; set; }
         public string SubHeading { get; set; }
         public string Summary { get; set; }

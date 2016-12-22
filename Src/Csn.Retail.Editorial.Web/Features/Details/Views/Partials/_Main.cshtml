@@ -11,9 +11,14 @@
 
     <header>
         <h1 class="article__heading">Passat GT reignites 'R' moniker hopes</h1>
-        <h2 class="article__subheading">Benz’ latest drop top is a smooth operator, blending elegance and ease of use.</h2>
+        <h2 class="article__subheading">@Model.SubHeading</h2>
     </header>
-
+    <div class="article__summary">@Model.Summary</div>
     @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
+    @{Html.RenderPartial("Partials/_Contributors", Model);}
 
 </div>
+
+
+
+

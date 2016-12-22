@@ -31,12 +31,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             //    return Redirect("~/error");
             //}
 
-            // load up the appropriate view depending on the template type
-            if (viewModel.ArticleTemplateType == ArticleTemplateType.NarrowHero)
-            {
-                return View("NarrowHeroTemplate", viewModel);
-            }
-
             return View("DefaultTemplate", viewModel);
         }
     }

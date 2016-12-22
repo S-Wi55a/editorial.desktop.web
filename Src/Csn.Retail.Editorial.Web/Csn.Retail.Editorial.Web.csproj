@@ -377,7 +377,6 @@
     <Content Include="Features\Shared\Assets\Css\Layout\_header.scss" />
     <Content Include="eslint.json" />
     <Content Include="Features\Details\Views\DefaultTemplate.cshtml" />
-    <Content Include="Features\Details\Views\NarrowHeroTemplate.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_SingleImage.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_SingleVideo.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_Hero.cshtml" />
