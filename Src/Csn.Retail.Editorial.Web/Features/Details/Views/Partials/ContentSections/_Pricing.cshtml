@@ -1,0 +1,8 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+    
+@if (Model?.Price != null)
+{
+    <div class="article__pricing">
+        $@Model.Price.MinPrice - $@Model.Price.MaxPrice
+    </div>
+}

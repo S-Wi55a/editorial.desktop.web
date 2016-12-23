@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 {
@@ -13,6 +14,44 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public List<Contributor> Contributors { get; set; }
         public List<ContentSection> ContentSections { get; set; }
         public SocialMetaData SocialMetaData { get; set; }
+        public List<EditorialItem> Items { get; set; }
+        public PriceModel Price { get; set; }
+        public List<EditorialExpertRating> ExpertRatings { get; set; }
+        public List<string> Pros { get; set; }
+        public List<string> Cons { get; set; }
+    }
+
+    public class EditorialExpertRating
+    {
+        public string Category { get; set; }
+        public int? Id { get; set; }
+        public int Rating { get; set; }
+    }
+
+    public class PriceModel
+    {
+        public string MinPrice { get; set; }
+        public string MaxPrice { get; set; }
+        public string PriceType { get; set; }
+    }
+
+    public class EditorialItem
+    {
+        public string Badge { get; set; }
+        public string BodyStyleCategory { get; set; }
+        public string BodyStyleSubCategory { get; set; }
+        public string Category { get; set; }
+        public string EngineCapacity { get; set; }
+        public int? Id { get; set; }
+        [XmlAttribute("index")]
+        public int Index { get; set; }
+        public string Make { get; set; }
+        public string MarketingGroup { get; set; }
+        public string Model { get; set; }
+        public string Series { get; set; }
+        public string SubCategory { get; set; }
+        public string Type { get; set; }
+        public int Year { get; set; }
     }
 
     public class HeroSection

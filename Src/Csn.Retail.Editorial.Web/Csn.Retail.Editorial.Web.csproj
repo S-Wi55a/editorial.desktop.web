@@ -408,6 +408,7 @@
     <Content Include="Features\Details\Views\Partials\ContentSections\_Html.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Contributors.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_SocialMetaData.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
