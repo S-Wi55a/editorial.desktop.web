@@ -1,3 +1,34 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
-<div>Multiple Images</div>
+
+<div class="_c-slideshow _c-slideshow--gallery" data-slideshow data-slideshow-page-by="2">
+    <div class="_c-slideshow__slider">
+        <ul class="_c-slideshow__slides">
+            @{ var index = 0; }
+            @foreach (var image in Model.Images.Take(4))
+            {
+                <li class="_c-slideshow__slide">
+                    <a href="@*@Url.RouteUrl(Routes.Details.SlideshowModal, new { imageIndex = index })*@" data-modal-trigger data-modal-type="slideshow">
+                        <img class="_c-slideshow__image" src="@image.Url" alt="@image.AlternateText" />
+                    </a>
+                </li>
+                index++;
+            }
+            @foreach (var image in Model.Images.Skip(4))
+            {
+                <li class="_c-slideshow__slide">
+                    <a href="@*@Url.RouteUrl(Routes.Details.SlideshowModal, new { imageIndex = index })*@" data-modal-trigger data-modal-type="slideshow">
+                        <img class="_c-slideshow__image" data-src="@image.Url" alt="@image.AlternateText" />
+                    </a>
+                </li>
+                index++;
+            }
+        </ul>
+    </div>
+    <button class="_c-slideshow__nav _c-slideshow__nav--prev" type="button" data-direction="prev">prev</button>
+    <button class="_c-slideshow__nav _c-slideshow__nav--next" type="button" data-direction="next">next</button>
+    <a class="_c-slideshow__view-photos" href="@*@Url.RouteUrl(Routes.Details.SlideshowModal, new { imageIndex = 0 })*@" data-modal-trigger data-modal-type="slideshow">View Photos</a>
+</div>
+@Html.AssetJs("slideshow", LoadType.Defer)
+
