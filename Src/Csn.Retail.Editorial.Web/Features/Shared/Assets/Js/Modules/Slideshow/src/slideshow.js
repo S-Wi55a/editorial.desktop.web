@@ -23,6 +23,7 @@ module.exports = function (config = {}) {
         pageBy: 1,
         showPages: true,
         showNav: true,
+        autoSlide: false,
         lazyLoad: false
     }, config);
 
@@ -50,7 +51,7 @@ module.exports = function (config = {}) {
     }
 
     // Show Nav (Prev/Next)
-    if (!settings.Nav && sliderPageButtons.length ) {
+    if (!settings.showNav && sliderPageButtons.length ) {
         sliderPageButtons.forEach((button) => {
             button.style.display = "none"
         })
