@@ -11,6 +11,8 @@
 
 // ---------------------------------------------------------------------------
 // Extends
+@import "../../../shared/assets/css/extends/_utilities.scss";
+
 @import "../../../shared/assets/css/tyopgraphy/extends/_typogrpahy-extends.scss";
 
 // ---------------------------------------------------------------------------
@@ -23,4 +25,10 @@
 @import "./modules/_main-article.scss";
 @import "./modules/_aside.scss";
 
+@import "../../../shared/assets/css/modules/_c-spinner.scss";
+
+// Modules - Slideshow
 @import "../../../shared/assets/js/modules/slideshow/slideshow.scss";
+
+// Module - Modal
+@import "../../../shared/assets/js/modules/modal/modal.scss";

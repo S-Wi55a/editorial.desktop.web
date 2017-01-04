@@ -33,5 +33,24 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             return View("DefaultTemplate", viewModel);
         }
+
+        [Route("editorial/details/images/{pageName:regex(^.*-\\d+/?$)}")]
+        // GET: Details
+        public async Task<ActionResult> Images(ArticleIdentifier articleIdentifier)
+        {
+            var viewModel =
+                await _queryDispatcher.DispatchAsync<GetArticleQuery, ArticleViewModel>(new GetArticleQuery()
+                {
+                    Id = articleIdentifier.Id
+                });
+
+            // TODO: add error handling
+            //if (viewModel == null)
+            //{
+            //    return Redirect("~/error");
+            //}
+
+            return PartialView("Partials/Modal/_slideshowModal", viewModel.HeroSection);
+        }
     }
 }

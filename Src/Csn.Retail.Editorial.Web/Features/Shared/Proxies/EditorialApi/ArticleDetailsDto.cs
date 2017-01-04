@@ -4,6 +4,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 {
     public class ArticleDetailsDto
     {
+        public string NetworkId { get; set; }
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string ArticleType { get; set; }
         public HeroSection HeroSection { get; set; }
@@ -20,6 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public HeroType Type { get; set; }
         public List<Image> Images { get; set; }
         public BrightcoveVideo BrightcoveVideo { get; set; }
+
     }
 
     public class Contributor
