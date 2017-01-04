@@ -320,9 +320,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Shared\Assets\common.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\src\slideshow.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\src\utils\dispatch-event.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\utils\dispatch-event.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -409,6 +409,9 @@
     <Content Include="Features\Details\Views\Partials\ContentSections\_Html.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Contributors.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_SocialMetaData.cshtml" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.scss" />
+    <Content Include="Features\Shared\Views\Partials\_Modal.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Modal\_SlideshowModal.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

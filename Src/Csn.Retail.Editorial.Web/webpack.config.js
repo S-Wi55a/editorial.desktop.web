@@ -36,10 +36,6 @@ function getEntryFiles(){
 
     entries['common'] = ['jquery', './Features/Shared/Assets/common.js'];
 
-    // Custom Modules
-    // TODO: Think of a globbing pattern
-    entries['slideshow'] = ['./Features/Shared/Assets/Js/Modules/Slideshow/slideshow.js'];
-
     return entries;
 }
 
@@ -71,7 +67,10 @@ module.exports = {
             {
                 test: [/\.js$/,/\.es6$/],
                 exclude: /node_modules/,
-                loader: 'babel-loader?presets[]=es2015'
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
             },
             {
                 test: [/\.css$/],
