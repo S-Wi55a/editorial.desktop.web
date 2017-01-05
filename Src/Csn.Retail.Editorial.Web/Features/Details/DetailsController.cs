@@ -34,8 +34,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             return View("DefaultTemplate", viewModel);
         }
 
-        [Route("editorial/details/images/{pageName:regex(^.*-\\d+/?$)}")]
-        // GET: Details
+        [Route("editorial/details/images/{pageName:regex(^.*-\\d+/?$)}")] //TODO: Need to get ImageIndex from URL
+        // GET: Images
         public async Task<ActionResult> Images(ArticleIdentifier articleIdentifier)
         {
             var viewModel =
