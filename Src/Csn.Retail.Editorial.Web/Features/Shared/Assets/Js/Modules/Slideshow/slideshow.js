@@ -51,8 +51,8 @@ module.exports = function (config = {}) {
     }
 
     // Show Nav (Prev/Next)
-    if (!settings.showNav && sliderPageButtons.length ) {
-        sliderPageButtons.forEach((button) => {
+    if (!settings.showNav && sliderNav.length || slidesTotal <= pageBy ) {
+        sliderNav.forEach((button) => {
             button.style.display = "none"
         })
     }

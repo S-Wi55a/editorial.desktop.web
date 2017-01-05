@@ -4,10 +4,9 @@ require('./css/Details-page.scss');
 
 // APP
 
-
-// Check for Slideshow
-if (document.querySelector('[data-slideshow]')) {
-    require.ensure(['../../Shared/Assets/Js/Modules/Slideshow/slideshow.js'], function() {
+// If Slideshow then must have Modal
+ if (document.querySelector('[data-slideshow]')) {
+    require.ensure(['../../Shared/Assets/Js/Modules/Slideshow/slideshow.js', '../../Shared/Assets/Js/Modules/Modal/modal.js'], function () {
 
         var Slideshow = require('../../Shared/Assets/Js/Modules/Slideshow/slideshow.js');
             Slideshow({
@@ -15,28 +14,21 @@ if (document.querySelector('[data-slideshow]')) {
                 showPages: false,
                 lazyLoad: true
             });
-    })
-}
+        if(document.querySelector('[data-ajax-modal]'))
+            {
+            var Modal = require('../../Shared/Assets/Js/Modules/Modal/modal.js');
 
-// Check for Modal
-if (document.querySelector('._c-modal')) {
-    require.ensure(['../../Shared/Assets/Js/Modules/Slideshow/slideshow.js',
-                    '../../Shared/Assets/Js/Modules/Modal/modal.js'],
-                    function () {
+            window.addEventListener('ajax-completed', function (e) {
+                Slideshow({
+                    scope: '[data-slideshow-modal]',
+                    pageBy: 1,
+                    showPages: false,
+                })
 
-        var Modal = require('../../Shared/Assets/Js/Modules/Modal/modal.js');
+            });
+            }
 
 
-
-        var Slideshow = require('../../Shared/Assets/Js/Modules/Slideshow/slideshow.js');
-        window.addEventListener('ajax-completed', function (e) {
-            Slideshow({
-                scope: '[data-slideshow-modal]',
-                pageBy: 1,
-                showPages: false,
-            })
-
-        });
     })
 
 }

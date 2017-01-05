@@ -9,7 +9,7 @@
             @foreach (var image in Model.Images.Take(4))
             {
                 <li class="_c-slideshow__slide">
-                    <a href="@*@Url.RouteUrl(Routes.Details.SlideshowModal, new { imageIndex = index })*@" data-modal-trigger data-modal-type="slideshow">
+                    <a href="@Url.Action("Images", "Details", new { imageIndex = index })" data-modal-trigger data-modal-type="slideshow">
                         <img class="_c-slideshow__image" src="@image.Url" alt="@image.AlternateText" />
                     </a>
                 </li>
@@ -18,7 +18,7 @@
             @foreach (var image in Model.Images.Skip(4))
             {
                 <li class="_c-slideshow__slide">
-                    <a href="@*@Url.RouteUrl(Routes.Details.SlideshowModal, new { imageIndex = index })*@" data-modal-trigger data-modal-type="slideshow">
+                    <a href="@Url.Action("Images", "Details", new { imageIndex = index })" data-modal-trigger data-modal-type="slideshow">
                         <img class="_c-slideshow__image" data-src="@image.Url" alt="@image.AlternateText" />
                     </a>
                 </li>

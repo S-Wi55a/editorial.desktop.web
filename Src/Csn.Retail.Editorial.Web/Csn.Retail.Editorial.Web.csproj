@@ -412,6 +412,8 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.scss" />
     <Content Include="Features\Shared\Views\Partials\_Modal.cshtml" />
     <Content Include="Features\Details\Views\Partials\Modal\_SlideshowModal.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\_c-spinner.scss" />
+    <Content Include="Features\Shared\Assets\Css\Extends\_utilities.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

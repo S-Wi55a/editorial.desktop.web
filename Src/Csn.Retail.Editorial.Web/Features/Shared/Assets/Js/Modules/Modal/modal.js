@@ -6,15 +6,6 @@
 
 class Modal {
 
-    //_body = Object;
-    //_scope = Object;
-    //_modalBg = Object;
-    //_modalContent = Object;
-    //_closeModal = Object;
-    //_loading = Object;
-
-    //_isActive = false;
-
     constructor() {
 
         var $this = this;
@@ -98,13 +89,20 @@ class Modal {
 
         var $this = this;
 
-        $.ajax({
-            url: url,
-            type: 'GET',
-            success: function (response) {
-                $this.updateView(response);
+        var request = new XMLHttpRequest();
+        request.open('GET', url , true);
+
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+                var resp = request.responseText;
+                $this.updateView(resp);
+            } else {
+                // We reached our target server, but it returned an error
             }
-        });
+        };
+
+        request.send();
+
     }
 
     addModalTriggerEvents(container)

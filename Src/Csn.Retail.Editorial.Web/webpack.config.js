@@ -6,7 +6,7 @@ var glob = require('glob'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
-    //CopyWebpackPlugin = require('copy-webpack-plugin'),
+    CopyWebpackPlugin = require('copy-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
     assetsPluginInstance = new AssetsPlugin();
 
@@ -113,13 +113,15 @@ module.exports = {
         extensions: ['','.js','.ts','.es6','.scss']
     },
     plugins: [
-        // new CopyWebpackPlugin(
-        //     [
-        //         {from:'./features/**/*.+(png|jpeg|jpg|svg)',
-        //             to:'./',
-        //             flatten: true}
-        //     ]
-        // ),
+         //new CopyWebpackPlugin(
+         //    [
+         //        {
+         //            from: './features/**/*.+(png|jpeg|jpg|svg)',
+         //            to:'/dist/',
+         //            flatten: true
+         //        }
+         //    ]
+         //),
         new AssetsPlugin({
             filename: 'webpack.assets.json',
             path: __dirname,
@@ -143,11 +145,6 @@ module.exports = {
             '/': {
                 target: 'http://redesign.editorial.csdev.com.au/',
                 changeOrigin: true,
-                secure: false
-            },
-            '/assets': {
-                target: 'http://redesign.editorial.csdev.com.au/',
-                changeOrigin: false,
                 secure: false
             }
         }
