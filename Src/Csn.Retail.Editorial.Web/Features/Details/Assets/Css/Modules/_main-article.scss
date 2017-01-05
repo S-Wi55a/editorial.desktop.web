@@ -61,4 +61,13 @@
         line-height: 31px;
         color: $cs-light-grey;
     }
+
+    .article__pricing {
+        font-size: $font-size-h2;
+        font-weight: normal;
+        line-height: 40px;
+        color: $cs-darkest-grey;
+        margin-top: 3px;
+        margin-bottom: 15px
+    }
 }
