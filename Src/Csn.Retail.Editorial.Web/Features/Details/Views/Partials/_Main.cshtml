@@ -6,12 +6,12 @@
 
     <div class="cf">
         <div class="article__type article__type--@Model.ArticleType.ToLower()">@Model.ArticleType</div>
-        <div class="article__date">April 24th, 2016</div>
+        <div class="article__date">@(String.Format("{0:MMMM d, yyyy}", Model.DateAvailable.AsDateTime()))</div>
     </div>
 
     <header>
         <h1 class="article__heading">@Model.Headline</h1>
-        @{Html.RenderPartial("Partials/_Pricing", Model);}
+        @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
         <h2 class="article__subheading">@Model.SubHeading</h2>
     </header>
     <div class="article__summary">@Model.Summary</div>

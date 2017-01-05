@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Configuration;
+using System.Security.Cryptography;
 using System.Xml.Serialization;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
@@ -20,6 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public List<EditorialExpertRating> ExpertRatings { get; set; }
         public List<string> Pros { get; set; }
         public List<string> Cons { get; set; }
+        public string DateAvailable { get; set; }
     }
 
     public class EditorialExpertRating

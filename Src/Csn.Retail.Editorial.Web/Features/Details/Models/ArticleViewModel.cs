@@ -19,6 +19,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<EditorialExpertRating> ExpertRatings { get; set; }
         public List<string> Pros { get; set; }
         public List<string> Cons { get; set; }
+        public string DateAvailable { get; set; }
+
     }
 
     public class HeroSection
