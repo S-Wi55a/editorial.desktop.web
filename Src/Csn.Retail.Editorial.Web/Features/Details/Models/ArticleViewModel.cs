@@ -13,6 +13,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<Contributor> Contributors { get; set; }
         public List<ContentSection> ContentSections { get; set; }
         public SocialMetaData SocialMetaData { get; set; }
+
+        public List<EditorialItem> Items { get; set; }
+        public PriceModel Price { get; set; }
+        public List<EditorialExpertRating> ExpertRatings { get; set; }
+        public List<string> Pros { get; set; }
+        public List<string> Cons { get; set; }
     }
 
     public class HeroSection
