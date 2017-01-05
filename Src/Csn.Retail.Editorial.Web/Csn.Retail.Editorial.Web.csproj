@@ -414,6 +414,7 @@
     <Content Include="Features\Details\Views\Partials\Modal\_SlideshowModal.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\_c-spinner.scss" />
     <Content Include="Features\Shared\Assets\Css\Extends\_utilities.scss" />
+    <Content Include="Features\Shared\Assets\Css\Variables\Settings\_variables-settings.scss" />
     <Content Include="Features\Details\Views\Partials\_Pricing.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -153,10 +153,7 @@
 
 
 
-/* handling phones and small screens */
 @media only screen and (min-width: 1024px) {
-
-
 
 	._c-modal {
 
@@ -241,7 +238,7 @@
 
         width: auto;
         height: auto;
-        max-width: 1400px;
+        max-width: 1024px;
         max-height: 100%;
         border-radius: 6px;
 
@@ -256,7 +253,7 @@
 
     ._c-modal--slideshow
     {
-        ._c-modal__content { padding: 0px; max-width: 800px; }
+        ._c-modal__content { padding: 0px;  }
     }
 	/* contains the content */
 	._c-modal ._c-modal-inner {
@@ -267,4 +264,10 @@
 
 
 
+}
+
+@media only screen and (min-width: 1440px) {
+    ._c-modal__content {
+        max-width: 1440px;
+    }
 }
