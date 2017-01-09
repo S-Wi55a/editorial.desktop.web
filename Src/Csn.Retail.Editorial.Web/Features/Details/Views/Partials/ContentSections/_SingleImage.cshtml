@@ -1,6 +1,10 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.ContentSection
 
 <div>
-    <img src="@Model.Image.Url" alt="@Model.Image.AlternateText"/>
-    <div>@Model.Image.Caption</div>
+    <img class="article__img"
+         srcset="@Model.Image.Url?width=668 1200w, @Model.Image.Url?width=477 992w"
+         sizes="100vw"
+         src="@Model.Image.Url?width=668"
+         alt="@Model.Image.AlternateText" />
+    <div class="article__img-caption">@Model.Image.Caption</div>
 </div>

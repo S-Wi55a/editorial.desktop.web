@@ -126,6 +126,7 @@ module.exports = function (config = {}) {
 
         // Resize
         window.addEventListener('resize', () => {
+            slidesContainer.style.width = "auto" // Hack to get correct image size
             slidesContainer.style.width = sliderFrame.offsetWidth + "px"
             slides.forEach(item => {
                 item.style.height = "auto"

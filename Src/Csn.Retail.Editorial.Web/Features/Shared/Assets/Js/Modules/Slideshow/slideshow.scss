@@ -350,8 +350,7 @@
 
     &--modal {
         overflow: hidden;
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
+        border-radius: 6px;
 
         ._c-slideshow__image {
             opacity: 1;

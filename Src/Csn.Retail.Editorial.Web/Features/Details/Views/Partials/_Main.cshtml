@@ -1,24 +1,22 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
-<div class="article col-md-7 col-md-offset-1">
+<div class="article col-sm-8">
 
-    <!-- Main Section -->
+        <div class="cf">
+            <div class="article__type article__type--@Model.ArticleType.ToLower()">@Model.ArticleType</div>
+            <div class="article__date">@(String.Format("{0:MMMM d, yyyy}", Model.DateAvailable.AsDateTime()))</div>
+        </div>
 
-    <div class="cf">
-        <div class="article__type article__type--@Model.ArticleType.ToLower()">@Model.ArticleType</div>
-        <div class="article__date">@(String.Format("{0:MMMM d, yyyy}", Model.DateAvailable.AsDateTime()))</div>
+        <header>
+            <h1 class="article__heading">@Model.Headline</h1>
+            @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
+            <h2 class="article__subheading">@Model.SubHeading</h2>
+        </header>
+        <div class="article__summary">@Model.Summary</div>
+        @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
+        @{ Html.RenderPartial("Partials/_Contributors", Model); }
+
     </div>
-
-    <header>
-        <h1 class="article__heading">@Model.Headline</h1>
-        @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
-        <h2 class="article__subheading">@Model.SubHeading</h2>
-    </header>
-    <div class="article__summary">@Model.Summary</div>
-    @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
-    @{ Html.RenderPartial("Partials/_Contributors", Model); }
-
-</div>
 
 
 
