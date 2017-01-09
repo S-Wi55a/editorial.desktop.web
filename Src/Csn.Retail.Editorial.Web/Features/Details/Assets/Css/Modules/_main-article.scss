@@ -100,6 +100,13 @@
         margin: 36px auto -18px;
         padding: 0 7.5%;
     }
+
+    &__authors {
+        border-radius: 6px;
+        border: solid 1px $cs-lighter-grey;
+        padding: 31px 40px;
+        margin-top: 79px;
+    }
 }
 
 @media only screen and (min-width: $screen-lg) {

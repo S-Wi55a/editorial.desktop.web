@@ -5,9 +5,12 @@
 @import "./variables/_variables.scss";
 
 // ---------------------------------------------------------------------------
-// Extends
-@import "./extends/_utilities.scss";
-@import "./tyopgraphy/extends/_typogrpahy-extends.scss";
+// Utilities
+@import "./utilities/_utilities.scss";
+
+// ---------------------------------------------------------------------------
+// Buttons
+@import "./buttons/_buttons.scss";
 
 // ---------------------------------------------------------------------------
 // Mixins
@@ -34,6 +37,7 @@
 
 // ---------------------------------------------------------------------------
 // Typography
+@import "./tyopgraphy/extends/_typogrpahy-extends.scss";
 @import './tyopgraphy/_typography.scss';
 
 // Typography - Fonts

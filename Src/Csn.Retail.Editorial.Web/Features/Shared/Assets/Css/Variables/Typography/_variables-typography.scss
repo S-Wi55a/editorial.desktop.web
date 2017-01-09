@@ -7,11 +7,13 @@ $font-family-default: 'Open Sans', Arial;
 $font-size-h1: 38px;
 $font-size-h2: 25px;
 $font-size-h3: 38px;
-$font-size-h4: 38px;
-$font-size-h5: 38px;
+$font-size-h4: 16px;
+$font-size-h5: 12px;
 $font-size-h6: 38px;
 
-$font-size-p: 16px;
+
+$font-size-body: 16px;
+$font-size-p: $font-size-body;
 $font-size-small: 12px;
 $font-size-quote: 28px;
 

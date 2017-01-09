@@ -10,9 +10,15 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables";
 
 // ---------------------------------------------------------------------------
-// Extends
-@import "../../../shared/assets/css/extends/_utilities.scss";
+// Utilities
+@import "../../../shared/assets/css/utilities/_utilities.scss";
 
+// ---------------------------------------------------------------------------
+// Buttons
+@import "../../../shared/assets/css/buttons/_buttons.scss";
+
+// ---------------------------------------------------------------------------
+// Typography
 @import "../../../shared/assets/css/tyopgraphy/extends/_typogrpahy-extends.scss";
 
 // ---------------------------------------------------------------------------
@@ -24,7 +30,9 @@
 @import "./modules/_hero.scss";
 @import "./modules/_main-article.scss";
 @import "./modules/_aside.scss";
+@import "./modules/_author.scss";
 
+// Module - Spinner
 @import "../../../shared/assets/css/modules/_c-spinner.scss";
 
 // Modules - Slideshow

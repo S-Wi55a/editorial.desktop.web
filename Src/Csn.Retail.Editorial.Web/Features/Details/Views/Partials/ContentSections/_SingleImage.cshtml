@@ -6,5 +6,8 @@
          sizes="100vw"
          src="@Model.Image.Url?width=668"
          alt="@Model.Image.AlternateText" />
+@if (Model.Image.Caption != null)
+{
     <div class="article__img-caption">@Model.Image.Caption</div>
+}
 </div>

@@ -1,0 +1,59 @@
+﻿.author {
+
+    font-size: 0;
+
+    &__image {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+
+        img {
+            border-radius: 9999px;
+        }
+    }
+
+    &__details {
+        display: inline-block;
+        margin-left: 22px;
+        min-width: 165px;
+        vertical-align: middle;
+    }
+
+    &__description {
+        font-size: $font-size-small;
+        color: $cs-black;
+    }
+
+    &__name {
+        font-size: $font-size-body;
+        line-height: 24px;
+        color: $cs-black;
+    }
+
+    &__title {
+        font-size: $font-size-small;
+        line-height: 24px;
+        margin-top: -3px;
+        color: $cs-light-grey;
+    }
+
+    &__links {
+        display: inline-block;
+        margin-left: 8px;
+        vertical-align: middle;
+        @extend %button;
+        @extend %button--thin;
+        @extend %button--blue-inverse;
+        @extend %button--round;
+    }
+
+    &+.author{
+        margin-top: 30px;
+        border-top: 1px solid $cs-lighter-grey;
+        padding-top: 30px;
+
+    }
+}
+
+
+
