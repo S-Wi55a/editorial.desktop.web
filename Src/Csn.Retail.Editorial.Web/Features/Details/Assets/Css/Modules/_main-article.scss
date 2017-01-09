@@ -14,7 +14,7 @@
     &__subheading {
         @extend %h2;
         margin-top: 5px;
-        color: $cs-grey;
+        color: $cs-dark-grey;
     }
 
     &__copy {
@@ -37,7 +37,7 @@
         line-height: 28px;
         margin: 7px auto;
         text-align: center;
-        color: $cs-grey;
+        color: $cs-dark-grey;
     }
 
     &__type {
@@ -52,7 +52,7 @@
         text-transform: uppercase;
 
         &--review {
-            background-color: $cs-blue;
+            background-color: $cs-light-blue;
         }
         &--car-advice {
             background-color: $cs-accent-green;
