@@ -9,6 +9,8 @@ import dispatchEvent from './utils/dispatch-event.js';
 
 module.exports = function (config = {}) {
 
+    const slice = Array.prototype.slice;
+
     // Default Values
     let settings = Object.assign({
         scope: '._c-slideshow',
@@ -24,7 +26,8 @@ module.exports = function (config = {}) {
         showPages: true,
         showNav: true,
         autoSlide: false,
-        lazyLoad: false
+        lazyLoad: false,
+        infinity: false
     }, config);
 
     let scope = document.querySelector(settings.scope)
@@ -38,12 +41,16 @@ module.exports = function (config = {}) {
     let autoSlideTimer = null
     let isAutoSlide = settings.autoSlide
     let currentSlide = 0
-    let canPlay = false
     let pageBy = scope.getAttribute('data-slideshow-page-by') || settings.pageBy
+    let doOnce = true;
+    let toggle = 0
+    let reverseToggle = 0
+    let isOdd =  false
+    let firstSlide = 0 // Index based
 
+    pageBy = parseInt(pageBy)
 
     const MAXFRAMEWIDTH = 100 // Represented as a percentage
-    const FIRSTSLIDE = 0 // Index based
 
     // Show pagination
     if (!settings.showPages && sliderPageContainer.length ) {
@@ -72,8 +79,10 @@ module.exports = function (config = {}) {
 
             lazyLaod.handleScroll();
 
-            scope.addEventListener('before.csn-slider.nextSlide', function() {
-                lazyLaod.handleScroll();
+            ['after.csn-slider.previousSlide','after.csn-slider.nextSlide'].forEach(function(e) {
+                scope.addEventListener(e, function() {
+                    lazyLaod.handleScroll();
+                });
             });
         })
 
@@ -88,10 +97,51 @@ module.exports = function (config = {}) {
     }
 
 
-    // Init
-    let _init = function() {
+    /**
+     * private
+     * setupInfinite: function to setup if infinite is set
+     *
+     * @param  {array} slideArray
+     */
+    function setupInfinite (slideArray, howManyToClone) {
 
-        //_playVideo() //TODO: check on this
+        let front = null;
+        let back = slideArray.slice(slideArray.length - howManyToClone, slideArray.length);
+
+        if ((slideArray.length - 1) % 2) {
+            front = slideArray.slice(0, howManyToClone);
+        } else {
+            front = slideArray.slice(0, howManyToClone + 1);
+            isOdd = true
+        }
+
+        front.forEach(function (element) {
+            const cloned = element.cloneNode(true);
+
+            slidesContainer.appendChild(cloned);
+        });
+
+        back.reverse()
+            .forEach(function (element) {
+                const cloned = element.cloneNode(true);
+
+                slidesContainer.insertBefore(cloned, slidesContainer.firstChild);
+            });
+
+    }
+
+
+    // Init
+    function _init() {
+
+        //Setup infinity
+        if (settings.infinity) {
+            setupInfinite(slice.call(slidesContainer.children), pageBy)
+            slides = scope.querySelectorAll(settings.slides)
+            slidesTotal = slides.length
+            firstSlide = pageBy
+            currentSlide = firstSlide;
+        }
 
         window.addEventListener('load', function() {
             slidesContainer.style.width = sliderFrame.offsetWidth + "px"// To ensure slides are translating with whole numbers
@@ -121,7 +171,6 @@ module.exports = function (config = {}) {
 
         slides.forEach(item => {
             item.style.width = (MAXFRAMEWIDTH/pageBy) + "%" // Must be first or height will be incorrect
-            //item.style.height = item.offsetHeight + "px"
         })
 
         // Resize
@@ -133,12 +182,37 @@ module.exports = function (config = {}) {
             })
         })
 
-        _autoSlide()
-        _switchSlides(currentSlide)
+        //_autoSlide()
+
+        //NOTE: Does rewind by default
+        //let prev = scope.querySelector('._c-slideshow__nav--prev');
+        //if (prev != null) {
+        //    // If its the first slide then disabled the previous arrow
+        //    if (index === 0) {
+        //        prev.setAttribute('data-is-disabled', 'true')
+        //    }
+        //        // else if we are moving to any other slide then enable the previous arrow
+        //    else {
+        //        prev.setAttribute('data-is-disabled', 'false')
+        //    }
+        //}
+
+        if (settings.infinity) {
+            _animateSliding((currentSlide / pageBy), 0)
+        } else {
+            _switchSlides(currentSlide)
+        }
+
     }
 
-    let _videoEnded = function () {
-        // What you want to do after the event
+
+    let _animateSliding = function (target, duration) {
+        // Transition slider to the target page
+        duration = (duration != undefined ? duration : timing) + 's'
+        slidesContainer.style.transitionDuration = duration
+        slidesContainer.style.webkitTransitionDuration = duration
+        slidesContainer.style.transform = 'translate3d(-' + 100 * target + '%,0%,0)'
+        slidesContainer.style.webkitTransform = 'translate3d(-' + 100 * target + '%,0%,0)'
     }
 
     let _changeSlide = function (direction) {
@@ -159,7 +233,7 @@ module.exports = function (config = {}) {
             if ((currentSlide + pageBy) < slidesTotal) {
                 index = currentSlide + pageBy;
             } else {
-                currentSlide = FIRSTSLIDE;
+                currentSlide = firstSlide;
                 index = currentSlide;
             }
             dispatchSliderEvent('before', 'nextSlide')
@@ -170,53 +244,73 @@ module.exports = function (config = {}) {
 
     let _switchSlides = function (index, direction) {
 
-        if (slides[currentSlide].querySelectorAll('._c-bg-video video').length > 0) {
-
-            //TODO: look into dispatch event
-            slides[currentSlide].querySelectorAll('._c-bg-video video').trigger('pause');
-        }
-
         currentSlide = index;
 
-        slidesContainer.style.transform = 'translate3d(-' + 100 * (currentSlide / pageBy) + '%,0%,0)'
-        slidesContainer.style.webkitTransform = 'translate3d(-' + 100 * (currentSlide / pageBy) + '%,0%,0)'
+        let evtArr = ['webkitTransitionEnd', 'transitionEnd'];
+
+        if (settings.infinity) {
+            let clonedSlides = pageBy
+
+            let needsSwapping = currentSlide === reverseToggle || currentSlide === slidesTotal - pageBy - toggle
+
+            if (needsSwapping) {
+
+                // Odd logic only works for pageBy <= 2
+                if (isOdd) { toggle = toggle ? 0 : 1 }
+
+                let slideAniHandler = function() {
+
+                    let nextPage = currentSlide === reverseToggle ? slidesTotal - (pageBy+clonedSlides+toggle) : pageBy + toggle
+
+                    if (isOdd) { reverseToggle = reverseToggle ? 0 : 1 }
+
+                    _animateSliding((nextPage / pageBy), 0)
+                    currentSlide = nextPage
+
+                    // Remove listener on self
+                    evtArr.forEach(function(e) {
+                        slidesContainer.removeEventListener(e, slideAniHandler);
+                    });
+                };
+
+                evtArr.forEach(function(e) {
+                    slidesContainer.addEventListener(e, slideAniHandler);
+                });
+            }
+        }
+
+        _animateSliding((currentSlide / pageBy), 0.5)
 
         _setActivePage(currentSlide)
 
-        if (direction === 'prev') {
-            dispatchSliderEvent('after', 'previousSlide')
-        } else {
-            dispatchSliderEvent('after', 'nextSlide')
-        }
 
-        //TODO: this should be in init
-        let prev = scope.querySelector('._c-slideshow__nav--prev');
-        if (prev != null) {
-            // If its the first slide then disabled the previous arrow
-            if (index === 0) {
-                prev.setAttribute('data-is-disabled', 'true')
-            }
-                // else if we are moving to any other slide then enable the previous arrow
-            else {
-                prev.setAttribute('data-is-disabled', 'false')
-            }
+        // TODO: should be init
+        if (doOnce) {
+            evtArr.forEach(function(e) {
+                slidesContainer.addEventListener(e, function() {
+                    if (direction === 'prev') {
+                        dispatchSliderEvent('after', 'previousSlide')
+                    } else {
+                        dispatchSliderEvent('after', 'nextSlide')
+                    }
+                });
+            });
+            doOnce = false;
         }
-
-        //_playVideo();
     }
 
-    let _autoSlide = function () {
+    function _autoSlide() {
         if (isAutoSlide === true && autoSlideTimer === null) {
             autoSlideTimer = setInterval(() => { _changeSlide('next') }, settings.autoSlideTime)
         }
     }
 
-    let _clearAutoSlide = function () {
+    function _clearAutoSlide() {
         clearInterval(autoSlideTimer);
         autoSlideTimer === null
     }
 
-    let _setActivePage = function (index) {
+    function _setActivePage(index) {
         if (sliderPageButtons.length) {
             sliderPageButtons.forEach(item => {
                 item.removeAttribute('data-is-active')
@@ -224,56 +318,6 @@ module.exports = function (config = {}) {
             sliderPageButtons[index].setAttribute('data-is-active', 'true')
         }
     }
-
-    //let _playVideo = function () {
-
-    //    var video = slides[currentSlide].querySelectorAll('._c-bg-video video');
-
-    //    if (video.length > 0) {
-
-    //        let shouldKeepAutoSliding = isAutoSlide;
-    //        isAutoSlide = false;
-
-
-    //        video.bind('ended', function () {
-    //        });
-
-    //        if (!video.oncanplay) {
-    //            video.trigger('play');
-    //        }
-
-    //        video.on('canplay', function () {
-    //            if (!canPlay) {
-    //                slides[currentSlide].querySelectorAll('._c-bg-video').setAttribute('data-is-active', 'true');
-    //                canPlay = true;
-    //                _play(shouldKeepAutoSliding);
-    //            }
-    //        });
-
-    //        if (canPlay || video.get(0).readyState > 3) {
-    //            slides[currentSlide].querySelectorAll('._c-bg-video').setAttribute('data-is-active', 'true');
-    //            _play(shouldKeepAutoSliding);
-    //        }
-    //    }
-    //}
-
-    //let _play = function (shouldKeepAutoSliding) {
-    //    var video = slides[currentSlide].querySelectorAll('._c-bg-video video');
-    //    video.get(0).currentTime = 0;
-    //    //TODO: remove Jquery ref
-    //    video.trigger('play');
-    //    video.off('ended');
-    //    video.on('ended', function () {
-    //        if (shouldKeepAutoSliding) {
-    //            isAutoSlide = true;
-    //            _autoSlide();
-
-    //            setTimeout(function () {
-    //                _changeSlide('next');
-    //            }, 500);
-    //        }
-    //    });
-    //}
 
     if (document.readyState === "interactive" || document.readyState === 'complete') {
         _init()

@@ -12,7 +12,8 @@ require('./css/Details-page.scss');
             Slideshow({
                 scope: '[data-slideshow]',
                 showPages: false,
-                lazyLoad: true
+                lazyLoad: true,
+                infinity: true
             });
         if(document.querySelector('[data-ajax-modal]'))
             {
