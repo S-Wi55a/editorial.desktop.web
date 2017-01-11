@@ -52,40 +52,17 @@ module.exports = function (config = {}) {
 
     const MAXFRAMEWIDTH = 100 // Represented as a percentage
 
-    // Show pagination
-    if (!settings.showPages && sliderPageContainer.length ) {
-        sliderPageContainer[0].style.display = "none"
-    }
+    function once(fn, context) {
+        var result;
 
-    // Show Nav (Prev/Next)
-    if (!settings.showNav && sliderNav.length || slidesTotal <= pageBy ) {
-        sliderNav.forEach((button) => {
-            button.style.display = "none"
-        })
-    }
+        return function() {
+            if(fn) {
+                result = fn.apply(context || this, arguments);
+                fn = null;
+            }
 
-    //Lazy Load
-    if (settings.lazyLoad) {
-
-        window.addEventListener('load', function() {
-            let theshold = sliderFrame.offsetWidth
-
-            let lazyLaod = new LazyLoad({
-                elements_selector: settings.slidesImage,
-                data_src: "src",
-                data_srcset: "srcset",
-                threshold: theshold
-            })
-
-            lazyLaod.handleScroll();
-
-            ['after.csn-slider.previousSlide','after.csn-slider.nextSlide'].forEach(function(e) {
-                scope.addEventListener(e, function() {
-                    lazyLaod.handleScroll();
-                });
-            });
-        })
-
+            return result;
+        };
     }
 
     /**
@@ -134,6 +111,49 @@ module.exports = function (config = {}) {
     // Init
     function _init() {
 
+        // Show pagination
+        if (!settings.showPages && sliderPageContainer.length ) {
+            sliderPageContainer[0].style.display = "none"
+        }
+
+        // Show Nav (Prev/Next)
+        if (!settings.showNav && sliderNav.length || slidesTotal <= pageBy ) {
+            sliderNav.forEach((button) => {
+                button.style.display = "none"
+            })
+        }
+
+        //Lazy Load
+        if (settings.lazyLoad) {
+
+            let theshold = window.innerWidth
+
+            let toBeCalledOnce = once(function() {
+                console.log('ran once')
+                slidesContainer.style.width = sliderFrame
+                    .offsetWidth +
+                    "px" // To ensure slides are translating with whole numbers
+
+            });
+
+            let lazyLaod = new LazyLoad({
+                elements_selector: settings.slidesImage,
+                data_src: "src",
+                data_srcset: "srcset",
+                threshold: theshold,
+                callback_load: toBeCalledOnce
+            })
+
+            lazyLaod.handleScroll();
+
+            ['after.csn-slider.previousSlide', 'after.csn-slider.nextSlide'].forEach(function(e) {
+                scope.addEventListener(e, function() {
+                    lazyLaod.handleScroll();
+                });
+            });
+
+        }
+
         //Setup infinity
         if (settings.infinity) {
             setupInfinite(slice.call(slidesContainer.children), pageBy)
@@ -142,10 +162,6 @@ module.exports = function (config = {}) {
             firstSlide = pageBy
             currentSlide = firstSlide;
         }
-
-        window.addEventListener('load', function() {
-            slidesContainer.style.width = sliderFrame.offsetWidth + "px"// To ensure slides are translating with whole numbers
-        });
 
         sliderNav.forEach(item => {
             item.addEventListener('click', (event) => {
@@ -170,7 +186,7 @@ module.exports = function (config = {}) {
         scope.addEventListener('mouseleave', _autoSlide)
 
         slides.forEach(item => {
-            item.style.width = (MAXFRAMEWIDTH/pageBy) + "%" // Must be first or height will be incorrect
+            item.style.width = (MAXFRAMEWIDTH/pageBy) + "%"
         })
 
         // Resize

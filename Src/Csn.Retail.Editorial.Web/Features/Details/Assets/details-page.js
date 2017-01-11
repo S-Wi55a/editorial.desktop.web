@@ -24,6 +24,8 @@ require('./css/Details-page.scss');
                     scope: '[data-slideshow-modal]',
                     pageBy: 1,
                     showPages: false,
+                    lazyLoad: true,
+                    infinity: true
                 })
 
             });

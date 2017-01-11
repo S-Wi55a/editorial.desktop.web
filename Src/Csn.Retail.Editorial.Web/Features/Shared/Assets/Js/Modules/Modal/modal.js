@@ -65,8 +65,6 @@ class Modal {
 
         $(this._modalContent).html(html);
 
-        this._modalContent.width
-
         let ajaxEvt = document.createEvent('Event')
         ajaxEvt.initEvent('ajax-completed', true, true)
         ajaxEvt.Response = this._scope;
