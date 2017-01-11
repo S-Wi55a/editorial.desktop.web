@@ -1,6 +1,6 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
-<div class="_c-slideshow _c-slideshow--modal" data-slideshow-modal>
+<div class="_c-slideshow _c-slideshow--modal" data-slideshow-modal data-slideshow-start="@Model.ImageIndex">
     <div class="_c-slideshow__slider">
         <ul class="_c-slideshow__slides">
             @foreach (var image in Model.Images)

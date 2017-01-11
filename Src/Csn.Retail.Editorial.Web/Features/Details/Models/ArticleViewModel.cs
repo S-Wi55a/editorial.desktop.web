@@ -29,6 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<Image> Images { get; set; }
         public string BrightcoveVideoIFrameUrl { get; set; }
         public string NetworkId { get; set; }
+        public int ImageIndex { get; set; }
     }
 
 }

@@ -27,7 +27,8 @@ module.exports = function (config = {}) {
         showNav: true,
         autoSlide: false,
         lazyLoad: false,
-        infinity: false
+        infinity: false,
+        startAt: 0
     }, config);
 
     let scope = document.querySelector(settings.scope)
@@ -40,14 +41,14 @@ module.exports = function (config = {}) {
     let slidesTotal = slides.length
     let autoSlideTimer = null
     let isAutoSlide = settings.autoSlide
-    let currentSlide = 0
+    let currentSlide = scope.getAttribute('data-slideshow-start') || settings.startAt
     let pageBy = scope.getAttribute('data-slideshow-page-by') || settings.pageBy
-    let doOnce = true;
     let toggle = 0
     let reverseToggle = 0
     let isOdd =  false
     let firstSlide = 0 // Index based
 
+    currentSlide = parseInt(currentSlide)
     pageBy = parseInt(pageBy)
 
     const MAXFRAMEWIDTH = 100 // Represented as a percentage
@@ -129,11 +130,7 @@ module.exports = function (config = {}) {
             let theshold = window.innerWidth
 
             let toBeCalledOnce = once(function() {
-                console.log('ran once')
-                slidesContainer.style.width = sliderFrame
-                    .offsetWidth +
-                    "px" // To ensure slides are translating with whole numbers
-
+                slidesContainer.style.width = sliderFrame.offsetWidth + "px" // To ensure slides are translating with whole numbers
             });
 
             let lazyLaod = new LazyLoad({
@@ -146,7 +143,7 @@ module.exports = function (config = {}) {
 
             lazyLaod.handleScroll();
 
-            ['after.csn-slider.previousSlide', 'after.csn-slider.nextSlide'].forEach(function(e) {
+            ['after.csn-slider.previousSlide', 'after.csn-slider.nextSlide','before.csn-slider.sliderAnimation'].forEach(function(e) {
                 scope.addEventListener(e, function() {
                     lazyLaod.handleScroll();
                 });
@@ -160,7 +157,8 @@ module.exports = function (config = {}) {
             slides = scope.querySelectorAll(settings.slides)
             slidesTotal = slides.length
             firstSlide = pageBy
-            currentSlide = firstSlide;
+
+            currentSlide = scope.getAttribute('data-slideshow-start') ? parseInt(scope.getAttribute('data-slideshow-start')) + 1 : firstSlide;
         }
 
         sliderNav.forEach(item => {
@@ -223,15 +221,20 @@ module.exports = function (config = {}) {
 
 
     let _animateSliding = function (target, duration) {
+
+        dispatchSliderEvent('before', 'sliderAnimation')
+
         // Transition slider to the target page
         duration = (duration != undefined ? duration : timing) + 's'
         slidesContainer.style.transitionDuration = duration
         slidesContainer.style.webkitTransitionDuration = duration
         slidesContainer.style.transform = 'translate3d(-' + 100 * target + '%,0%,0)'
         slidesContainer.style.webkitTransform = 'translate3d(-' + 100 * target + '%,0%,0)'
+
     }
 
-    let _changeSlide = function (direction) {
+
+    function _changeSlide(direction) {
 
         let index = currentSlide;
 
@@ -255,10 +258,12 @@ module.exports = function (config = {}) {
             dispatchSliderEvent('before', 'nextSlide')
         }
 
+        dispatchSliderEvent('before', 'switchSlides')
+
         _switchSlides(index, direction);
     }
 
-    let _switchSlides = function (index, direction) {
+    function _switchSlides(index, direction) {
 
         currentSlide = index;
 
@@ -301,7 +306,7 @@ module.exports = function (config = {}) {
 
 
         // TODO: should be init
-        if (doOnce) {
+        once(function() {
             evtArr.forEach(function(e) {
                 slidesContainer.addEventListener(e, function() {
                     if (direction === 'prev') {
@@ -311,8 +316,10 @@ module.exports = function (config = {}) {
                     }
                 });
             });
-            doOnce = false;
-        }
+        })
+
+        dispatchSliderEvent('after', 'switchSlides')
+
     }
 
     function _autoSlide() {

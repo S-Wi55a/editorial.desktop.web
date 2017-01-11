@@ -34,15 +34,18 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             return View("DefaultTemplate", viewModel);
         }
 
-        [Route("editorial/details/images/{pageName:regex(^.*-\\d+/?$)}")] //TODO: Need to get ImageIndex from URL
+        [Route("editorial/details/images/{pageName:regex(^.*-\\d+/?$)}")]
         // GET: Images
-        public async Task<ActionResult> Images(ArticleIdentifier articleIdentifier)
+        public async Task<ActionResult> Images(ArticleIdentifier articleIdentifier, int imageIndex)
         {
             var viewModel =
                 await _queryDispatcher.DispatchAsync<GetArticleQuery, ArticleViewModel>(new GetArticleQuery()
                 {
                     Id = articleIdentifier.Id
                 });
+
+            // Get the Image Index to pass to view so slider knows where to start from
+            viewModel.HeroSection.ImageIndex = imageIndex;
 
             // TODO: add error handling
             //if (viewModel == null)
