@@ -6,11 +6,10 @@
             @foreach (var image in Model.Images)
             {
                 <li class="_c-slideshow__slide">
-                    @* TODO: What sizes are we targeting? *@
                     <img class="_c-slideshow__image"
-                         srcset="@image.Url?width=1440 1440w, @image.Url?width=1280 1280w, @image.Url?width=960 960w"
+                         srcset="@image.Url?width=1024 1024w, @image.Url?width=768 768w"
                          sizes="100vw"
-                         src="@image.Url?width=1280"
+                         src="@image.Url?width=1024"
                          alt="@image.AlternateText"/>
                 </li>
             }

@@ -4,4 +4,7 @@
     var firstImage = Model.Images.First();
 }
 
-<img src="@firstImage.Url" alt="@firstImage.AlternateText" />
+<img sizes="100vw"
+     src="@firstImage.Url?width=1024"
+     srcset="@firstImage.Url?width=780 1200w, @firstImage.Url?width=642 1024w, @firstImage.Url?width=492 768w"
+     alt="@firstImage.AlternateText" />
