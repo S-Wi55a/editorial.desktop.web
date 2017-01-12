@@ -36,7 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
         [Route("editorial/details/images/{pageName:regex(^.*-\\d+/?$)}")]
         // GET: Images
-        public async Task<ActionResult> Images(ArticleIdentifier articleIdentifier, int imageIndex)
+        public async Task<ActionResult> Images(ArticleIdentifier articleIdentifier, int imageIndex = 0)
         {
             var viewModel =
                 await _queryDispatcher.DispatchAsync<GetArticleQuery, ArticleViewModel>(new GetArticleQuery()

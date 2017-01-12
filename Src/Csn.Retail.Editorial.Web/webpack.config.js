@@ -35,6 +35,8 @@ function getEntryFiles(){
     }
 
     entries['common'] = ['jquery', './Features/Shared/Assets/common.js'];
+    entries['fonts'] = ['./Features/Shared/Assets/Fonts/fonts.js'];
+
 
     return entries;
 }
@@ -47,9 +49,6 @@ module.exports = {
         publicPath: config.publicPath,
         filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
     },
-    //externals: {
-    //    "jquery": "jQuery"
-    //},
     module: {
         preLoaders:[
             {
@@ -79,8 +78,13 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
+                exclude: [/(node_modules|bower_components|unitTest)/, /fonts\.scss/],
                 loaders: ['style-loader', 'css-loader?sourceMap', 'autoprefixer-loader', 'sass-loader?sourceMap']
+            },
+            {
+                test: /fonts\.scss$/,
+                exclude: /node_modules/,
+                loader: ExtractTextPlugin.extract('css-loader?sourceMap!autoprefixer-loader!sass-loader?sourceMap')
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,

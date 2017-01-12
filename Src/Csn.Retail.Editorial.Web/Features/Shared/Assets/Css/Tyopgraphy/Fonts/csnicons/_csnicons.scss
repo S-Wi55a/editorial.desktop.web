@@ -1,4 +1,6 @@
-﻿@font-face {
+﻿$root-path: "http://localhost:8080" !default;
+
+@font-face {
   font-family: 'csnicons';
   src:  url('#{$root-path}/fonts/csnicons.eot?exqob2');
   src:  url('#{$root-path}/fonts/csnicons.eot?exqob2#iefix') format('embedded-opentype'),
