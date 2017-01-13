@@ -130,7 +130,7 @@ module.exports = function (config = {}) {
             let theshold = window.innerWidth
 
             let toBeCalledOnce = once(function() {
-                slidesContainer.style.width = sliderFrame.offsetWidth + "px" // To ensure slides are translating with whole numbers
+                slidesContainer.style.width = sliderFrame.getBoundingClientRect().width + "px" // To ensure slides are translating with whole numbers
             });
 
             let lazyLaod = new LazyLoad({
@@ -190,7 +190,7 @@ module.exports = function (config = {}) {
         // Resize
         window.addEventListener('resize', () => {
             slidesContainer.style.width = "auto" // Hack to get correct image size
-            slidesContainer.style.width = sliderFrame.offsetWidth + "px"
+            slidesContainer.style.width = sliderFrame.getBoundingClientRect().width + "px"
             slides.forEach(item => {
                 item.style.height = "auto"
             })
