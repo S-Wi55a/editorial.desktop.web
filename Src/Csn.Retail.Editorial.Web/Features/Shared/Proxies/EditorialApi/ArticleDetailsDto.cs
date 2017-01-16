@@ -32,7 +32,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     {
         public string MinPrice { get; set; }
         public string MaxPrice { get; set; }
-        public string PriceType { get; set; }
+        public string Currency { get; set; }
     }
 
     public class EditorialItem
@@ -42,9 +42,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string BodyStyleSubCategory { get; set; }
         public string Category { get; set; }
         public string EngineCapacity { get; set; }
-        public int? Id { get; set; }
-        [XmlAttribute("index")]
-        public int Index { get; set; }
         public string Make { get; set; }
         public string MarketingGroup { get; set; }
         public string Model { get; set; }
