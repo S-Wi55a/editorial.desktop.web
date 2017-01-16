@@ -2,10 +2,16 @@
 
 <div class="article col-sm-8">
 
-        <div class="cf">
+    <div class="cf pos-r">
+        <div class="article__dateAndTypeContainer">
             <div class="article__type article__type--@Model.ArticleType.ToLower()">@Model.ArticleType</div>
             <div class="article__date">@(String.Format("{0:MMMM d, yyyy}", Model.DateAvailable.AsDateTime()))</div>
         </div>
+
+        <div class="article__share">
+            @{Html.RenderPartial("Partials/_SocialMediaLinks", Model.SocialMetaData);}
+        </div>
+    </div>
 
         <header>
             <h1 class="article__heading">@Model.Headline</h1>

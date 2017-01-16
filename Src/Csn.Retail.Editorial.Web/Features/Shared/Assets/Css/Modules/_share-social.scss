@@ -1,0 +1,109 @@
+﻿// Module - Social Media icons
+
+.share-social {
+    float: left;
+    font-size: 0;
+    margin-bottom: 20px;
+    min-width: calc(100% - 293px); // Inclusive of 3 social icons
+
+}
+
+.share-social__link {
+
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 9999px;
+    position: relative;
+    margin-right: 15px;
+    float: right;
+
+
+    &:first-child {
+        margin-right: auto;
+    }
+
+    // When there is only 3
+    &:first-child:nth-last-child(1),
+    &:first-child:nth-last-child(1) ~ &,
+    &:first-child:nth-last-child(2),
+    &:first-child:nth-last-child(2) ~ &,
+    &:first-child:nth-last-child(3),
+    &:first-child:nth-last-child(3) ~ & {
+	    margin-top: -10px;
+    }
+
+
+    &--facebook {
+        background-color: $color-fb;
+        color: $cs-white;
+        font-size: 23px;
+    }
+    &--twitter {
+        background-color: $color-twitter ;
+        color: $cs-white;
+        font-size: 23px;
+    }
+    &--google-plus {
+        background-color: $color-google-plus;
+        color: $cs-white;
+        font-size: 23px;
+    }
+    &--tumblr {
+        background-color: $color-tumblr;
+        color: $cs-white;
+        font-size: 23px;
+    }
+    &--pinterest {
+        background-color: $color-pinterest;
+        color: $cs-white;
+        font-size: 23px;
+    }
+    &--reddit {
+        background-color: $cs-white;
+        color: $cs-black;
+        border: 1px solid $cs-black;
+        font-size: 23px;
+    }
+    &--email {
+        background-color: $cs-white;
+        color: $cs-black;
+        border: 1px solid $cs-black;
+        font-size: 23px;
+    }
+     &--sms {
+        background-color: $cs-white;
+        color: $cs-black;
+        border: 1px solid $cs-black;
+        font-size: 23px;
+    }
+}
+
+.share-social__link-icon {
+
+    &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+.share-social__link-text {
+    display: none;
+}
+
+
+@media only screen and (min-width: 992px) {
+
+    .share-social__link {
+        &:first-child:nth-last-child(4),
+        &:first-child:nth-last-child(4) ~ &,
+        &:first-child:nth-last-child(5),
+        &:first-child:nth-last-child(5) ~ & {
+	        margin-top: -10px;
+        }
+    }
+
+
+}
+

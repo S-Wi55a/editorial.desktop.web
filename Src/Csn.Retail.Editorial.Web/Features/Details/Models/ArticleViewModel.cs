@@ -13,7 +13,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<Contributor> Contributors { get; set; }
         public List<ContentSection> ContentSections { get; set; }
         public SocialMetaData SocialMetaData { get; set; }
-
         public List<EditorialItem> Items { get; set; }
         public PriceModel Price { get; set; }
         public List<EditorialExpertRating> ExpertRatings { get; set; }
@@ -31,5 +30,16 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string NetworkId { get; set; }
         public int ImageIndex { get; set; }
     }
+
+    public class SocialMetaData
+    {
+        public string Type { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
+        public string Url { get; set; }
+        public string SiteName { get; set; }
+    }
+
 
 }

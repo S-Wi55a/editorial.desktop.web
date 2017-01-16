@@ -4,17 +4,17 @@
 
 @if (Model.Type == HeroType.MultipleImages)
 {
-    Html.RenderPartial("Partials/Hero/_MultipleImages", @Model);
+    Html.RenderPartial("Partials/Hero/_MultipleImages", Model);
 }
 else if (Model.Type == HeroType.ImagesAndVideo)
 {
-    Html.RenderPartial("Partials/Hero/_ImagesAndVideo", @Model);
+    Html.RenderPartial("Partials/Hero/_ImagesAndVideo", Model);
 }
 else if (Model.Type == HeroType.Video)
 {
-    Html.RenderPartial("Partials/Hero/_SingleVideo", @Model);
+    Html.RenderPartial("Partials/Hero/_SingleVideo", Model);
 }
 else if (Model.Type == HeroType.SingleImage)
 {
-    Html.RenderPartial("Partials/Hero/_SingleImage", @Model);
+    Html.RenderPartial("Partials/Hero/_SingleImage", Model);
 }

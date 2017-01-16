@@ -394,7 +394,7 @@
     <Content Include="Features\Details\Views\Partials\Layout\_Main.cshtml" />
     <Content Include="Features\Details\Views\Partials\Layout\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\_brightcove-video-player.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\_main-article.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\_article.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_hero.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
@@ -418,7 +418,9 @@
     <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\_author.scss" />
     <Content Include="Features\Shared\Assets\Css\Buttons\_buttons.scss" />
-    <Content Include="Features\Shared\Views\Partials\_socialMediaLinks.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\_SocialMediaLinks.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\_share-social.scss" />
+    <Content Include="Features\Shared\Assets\Css\Utilities\_helpers.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

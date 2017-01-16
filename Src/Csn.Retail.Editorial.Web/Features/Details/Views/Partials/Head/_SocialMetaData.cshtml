@@ -1,11 +1,11 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
-    
-<meta name="twitter:title" content="@Model.SocialMetaData.Title" />
-<meta name="twitter:description" content="@Model.SocialMetaData.Description" />
-<meta name="twitter:image:src" content="@Model.SocialMetaData.Image?size=thumb" />
-<meta name="og:type" content="@Model.SocialMetaData.Type" />
-<meta name="og:title" content="@Model.SocialMetaData.Title" />
-<meta name="og:url" content="@Model.SocialMetaData.Url" />
-<meta name="og:description" content="@Model.SocialMetaData.Description" />
-<meta name="og:image" content="@Model.SocialMetaData.Image?height=700&amp;width=1050" />
-<meta name="og:site_name" content="@Model.SocialMetaData.SiteName" />
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.SocialMetaData
+
+<meta name="twitter:title" content="@Model.Title" />
+<meta name="twitter:description" content="@Model.Description" />
+<meta name="twitter:image:src" content="@Model.Image?size=thumb" />
+<meta name="og:type" content="@Model.Type" />
+<meta name="og:title" content="@Model.Title" />
+<meta name="og:url" content="@Model.Url" />
+<meta name="og:description" content="@Model.Description" />
+<meta name="og:image" content="@Model.Image?height=700&amp;width=1050" />
+<meta name="og:site_name" content="@Model.SiteName" />
