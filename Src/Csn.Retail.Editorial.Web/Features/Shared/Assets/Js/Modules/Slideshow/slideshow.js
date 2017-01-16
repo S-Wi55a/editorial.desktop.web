@@ -124,13 +124,24 @@ module.exports = function (config = {}) {
             })
         }
 
+        //Setup infinity
+        if (settings.infinity) {
+            setupInfinite(slice.call(slidesContainer.children), pageBy)
+            slides = scope.querySelectorAll(settings.slides)
+            slidesTotal = slides.length
+            firstSlide = pageBy
+
+            currentSlide = scope.getAttribute('data-slideshow-start') ? parseInt(scope.getAttribute('data-slideshow-start')) + 1 : firstSlide;
+        }
+
         //Lazy Load
         if (settings.lazyLoad) {
 
             let theshold = window.innerWidth
 
             let toBeCalledOnce = once(function() {
-                slidesContainer.style.width = sliderFrame.getBoundingClientRect().width + "px" // To ensure slides are translating with whole numbers
+                slidesContainer.style.width = sliderFrame.offsetWidth + "px" // To ensure slides are translating with whole numbers
+                dispatchSliderEvent('after', 'lazyload')
             });
 
             let lazyLaod = new LazyLoad({
@@ -143,23 +154,17 @@ module.exports = function (config = {}) {
 
             lazyLaod.handleScroll();
 
-            ['after.csn-slider.previousSlide', 'after.csn-slider.nextSlide','before.csn-slider.sliderAnimation'].forEach(function(e) {
+            ['after.csn-slider.previousSlide', 'after.csn-slider.nextSlide','before.csn-slider.sliderAnimation', 'after.csn-slider.sliderAnimation'].forEach(function(e) {
                 scope.addEventListener(e, function() {
                     lazyLaod.handleScroll();
                 });
             });
 
+        } else {
+            slidesContainer.style.width = sliderFrame.offsetWidth + "px" // To ensure slides are translating with whole numbers
         }
 
-        //Setup infinity
-        if (settings.infinity) {
-            setupInfinite(slice.call(slidesContainer.children), pageBy)
-            slides = scope.querySelectorAll(settings.slides)
-            slidesTotal = slides.length
-            firstSlide = pageBy
 
-            currentSlide = scope.getAttribute('data-slideshow-start') ? parseInt(scope.getAttribute('data-slideshow-start')) + 1 : firstSlide;
-        }
 
         sliderNav.forEach(item => {
             item.addEventListener('click', (event) => {
@@ -190,7 +195,7 @@ module.exports = function (config = {}) {
         // Resize
         window.addEventListener('resize', () => {
             slidesContainer.style.width = "auto" // Hack to get correct image size
-            slidesContainer.style.width = sliderFrame.getBoundingClientRect().width + "px"
+            slidesContainer.style.width = sliderFrame.offsetWidth + "px"
             slides.forEach(item => {
                 item.style.height = "auto"
             })
@@ -217,19 +222,30 @@ module.exports = function (config = {}) {
             _switchSlides(currentSlide)
         }
 
+        dispatchSliderEvent('after', 'init');
+
+        ['webkitTransitionEnd', 'transitionEnd'].forEach(function(e) {
+            slidesContainer.addEventListener(e, function() {
+                dispatchSliderEvent('after', 'sliderAnimation')
+            });
+        });
+
+
+
     }
 
 
     let _animateSliding = function (target, duration) {
 
-        dispatchSliderEvent('before', 'sliderAnimation')
+        dispatchSliderEvent('before', 'sliderAnimation');
 
         // Transition slider to the target page
-        duration = (duration != undefined ? duration : timing) + 's'
-        slidesContainer.style.transitionDuration = duration
-        slidesContainer.style.webkitTransitionDuration = duration
-        slidesContainer.style.transform = 'translate3d(-' + 100 * target + '%,0%,0)'
-        slidesContainer.style.webkitTransform = 'translate3d(-' + 100 * target + '%,0%,0)'
+        duration = (duration != undefined ? duration : timing) + 's';
+        slidesContainer.style.transitionDuration = duration;
+        slidesContainer.style.webkitTransitionDuration = duration;
+        slidesContainer.style.transform = 'translate3d(-' + 100 * target + '%,0%,0)';
+        slidesContainer.style.webkitTransform = 'translate3d(-' + 100 * target + '%,0%,0)';
+
 
     }
 
