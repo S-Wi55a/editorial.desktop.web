@@ -141,6 +141,7 @@ module.exports = function (config = {}) {
 
             let toBeCalledOnce = once(function() {
                 slidesContainer.style.width = sliderFrame.offsetWidth + "px" // To ensure slides are translating with whole numbers
+
                 dispatchSliderEvent('after', 'lazyload')
             });
 
@@ -199,6 +200,13 @@ module.exports = function (config = {}) {
             slides.forEach(item => {
                 item.style.height = "auto"
             })
+
+
+            if (settings.infinity) {
+                _animateSliding((currentSlide / pageBy), 0)
+            } else {
+                _switchSlides(currentSlide)
+            }
         })
 
         //_autoSlide()
@@ -239,12 +247,16 @@ module.exports = function (config = {}) {
 
         dispatchSliderEvent('before', 'sliderAnimation');
 
+        var width = sliderFrame.offsetWidth;
+
         // Transition slider to the target page
         duration = (duration != undefined ? duration : timing) + 's';
         slidesContainer.style.transitionDuration = duration;
         slidesContainer.style.webkitTransitionDuration = duration;
-        slidesContainer.style.transform = 'translate3d(-' + 100 * target + '%,0%,0)';
-        slidesContainer.style.webkitTransform = 'translate3d(-' + 100 * target + '%,0%,0)';
+        slidesContainer.style.transform = 'translate3d(-' + width * target + 'px,0,0)';
+        slidesContainer.style.webkitTransform = 'translate3d(-' + width * target + 'px,0,0)';
+        //slidesContainer.style.left = '-' + width * target + 'px';
+
 
 
     }

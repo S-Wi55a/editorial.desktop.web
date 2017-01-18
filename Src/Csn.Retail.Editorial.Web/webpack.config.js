@@ -17,7 +17,7 @@ var isProd = (process.env.NODE_ENV === 'prod');
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
     outputPath: path.join(__dirname, 'dist'),
-    publicPath: isProd ? './' :  '/dist/'
+    publicPath: isProd ? './' : 'http://localhost:8080/dist/'
 }
 
 function getEntryFiles(){
@@ -79,20 +79,25 @@ module.exports = {
             {
                 test: /\.scss$/,
                 exclude: [/(node_modules|bower_components|unitTest)/, /fonts\.scss/],
-                loaders: ['style-loader', 'css-loader?sourceMap', 'autoprefixer-loader', 'sass-loader?sourceMap']
+                loaders: ['style-loader', 'css-loader?sourceMap', 'autoprefixer-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
             },
             {
                 test: /fonts\.scss$/,
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('css-loader?sourceMap!autoprefixer-loader!sass-loader?sourceMap')
+                loader: ExtractTextPlugin.extract('css-loader?sourceMap!autoprefixer-loader!resolve-url-loader!sass-loader?sourceMap')
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
                 exclude: /node_modules/,
                 loaders: [
-                    'file?hash=sha512&digest=hex&name=img-[hash].[ext]',
+                    'file?hash=sha512&digest=hex&name=images/[name]-[hash].[ext]',
                     'image-webpack'
                 ]
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                exclude: /(images|img)/,
+                loader: 'file?name=fonts/[name]-[hash].[ext]'
             },
             {
                 test: require.resolve('jquery'),
