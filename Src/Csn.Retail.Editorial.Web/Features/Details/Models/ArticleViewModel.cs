@@ -16,9 +16,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
 
         public List<EditorialItem> Items { get; set; }
         public PriceModel Price { get; set; }
-        public List<EditorialExpertRating> ExpertRatings { get; set; }
-        public List<string> Pros { get; set; }
-        public List<string> Cons { get; set; }
+        public EditorialExpertRating ExpertRatings { get; set; }
+        public ProCon ProsCons { get; set; }
         public string DateAvailable { get; set; }
 
     }
