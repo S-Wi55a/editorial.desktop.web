@@ -91,9 +91,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 
     public class Contributor
     {
+        public string ButtonHeading { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+        public string Bio { get; set; }
         public string LinkUrl { get; set; }
     }
 
@@ -105,6 +107,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Image { get; set; }
         public string Url { get; set; }
         public string SiteName { get; set; }
+        public string SocialSharingNetworks { get; set; }
+
     }
 
     public enum ArticleTemplateType
