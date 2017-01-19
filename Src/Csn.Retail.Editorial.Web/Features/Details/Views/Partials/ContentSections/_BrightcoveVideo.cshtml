@@ -1,5 +1,7 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.ContentSection
 
-<div>
-    <iframe src="@Model.IFrameUrl"></iframe>
+<div class="brightcove">
+    <div class="brightcove__iframe-wrapper">
+        <iframe src="@Model.IFrameUrl" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+    </div>
 </div>

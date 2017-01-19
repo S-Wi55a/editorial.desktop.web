@@ -39,8 +39,8 @@
 
     &__links {
         display: inline-block;
-        margin-left: 8px;
         vertical-align: middle;
+        margin-top: 10px;
         @extend %button;
         @extend %button--thin;
         @extend %button--blue-inverse;

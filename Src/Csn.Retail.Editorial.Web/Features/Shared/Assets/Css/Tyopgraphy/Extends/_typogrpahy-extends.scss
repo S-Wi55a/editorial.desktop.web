@@ -40,4 +40,9 @@
     font-stretch: normal;
     line-height: 46px;
     color: #000000;
+
+    &:before { content: '“' }
+    &:after { content: '”' }
 }
+
+
