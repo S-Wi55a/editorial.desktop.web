@@ -250,10 +250,10 @@
             border-radius : 0px;
             text-indent: -9999px;
 
-            &:hover:not([data-is-disabled="true"]) {
+            /*&:hover:not([data-is-disabled="true"]) {
                 background: rgba(70,70,70,0.8);
 
-            }
+            }*/
 
 			&:before {
 				//content: '\e92a';

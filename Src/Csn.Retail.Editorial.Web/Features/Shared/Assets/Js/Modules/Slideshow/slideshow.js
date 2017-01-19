@@ -386,8 +386,6 @@ module.exports = function (config = {}) {
         return currentSlide
     }
 
-    return ({
-        currentSlide: getCurrentSlide
-})
+    return ({currentSlide: getCurrentSlide})
 
 }

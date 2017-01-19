@@ -61,9 +61,13 @@ class Modal {
         this.open(url, modalType);
     }
 
-    updateView(html) {
+    updateView(html, index) {
 
         $(this._modalContent).html(html); //can be changed to appendchild
+
+        // HACK: needs to be here for index, should find better solution
+        document.querySelector('._c-slideshow--modal').setAttribute('data-slideshow-start', index);
+
 
         let ajaxEvt = document.createEvent('Event')
         ajaxEvt.initEvent('ajax-completed', true, true)
@@ -89,19 +93,38 @@ class Modal {
 
         var $this = this;
 
-        var request = new XMLHttpRequest();
-        request.open('GET', url , true);
+        //var request = new XMLHttpRequest();
+        //request.open('GET', url , true);
 
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
-                var resp = request.responseText;
-                $this.updateView(resp);
-            } else {
-                // We reached our target server, but it returned an error
-            }
-        };
+        //request.onload = function() {
+        //    if (request.status >= 200 && request.status < 400) {
+        //        var resp = request.responseText;
+        //        $this.updateView(resp);
+        //    } else {
+        //        // We reached our target server, but it returned an error
+        //    }
+        //};
 
-        request.send();
+        //request.send();
+
+
+        //var load_types = document.querySelector('[data-modal-data]')[0];
+        //var div = document.createElement("div");
+        //div.innerHTML = load_types;
+
+        let index = this.getQueryVariable(url, "imageIndex")
+        let modalData = document.querySelector('[data-modal-data]')
+        let dataString = "";
+
+        //filter the comment data and return a string
+        Array.prototype.filter.call(modalData.childNodes,function(el){
+            return el.nodeType == 8;
+        }).forEach(function(elem){
+            dataString += elem.data
+        });
+
+        $this.updateView(dataString, index);
+
 
     }
 
@@ -115,6 +138,17 @@ class Modal {
                 $this.showModal(this);
             });
         })
+    }
+
+    getQueryVariable(url, variable)
+    {
+        var query = url ? url.split('?')[1] : window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
     }
 }
 
