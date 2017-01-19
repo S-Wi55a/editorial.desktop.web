@@ -107,7 +107,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Image { get; set; }
         public string Url { get; set; }
         public string SiteName { get; set; }
-        public string SocialSharingNetworks { get; set; }
+        public List<string> SocialSharingNetworks { get; set; }
 
     }
 
