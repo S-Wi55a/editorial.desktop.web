@@ -207,6 +207,10 @@ module.exports = function (config = {}) {
             } else {
                 _switchSlides(currentSlide)
             }
+
+            dispatchSliderEvent('after', 'resize')
+
+
         })
 
         //_autoSlide()
@@ -377,5 +381,13 @@ module.exports = function (config = {}) {
             _init()
         });
     }
+
+    function getCurrentSlide() {
+        return currentSlide
+    }
+
+    return ({
+        currentSlide: getCurrentSlide
+})
 
 }

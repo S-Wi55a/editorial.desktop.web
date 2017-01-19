@@ -320,6 +320,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Shared\Assets\common.js" />
+    <Content Include="Features\Shared\Assets\Fonts\fonts.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-dark.svg" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\utils\dispatch-event.js" />
@@ -341,7 +344,7 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Details\Assets\Js\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
-    <Folder Include="Features\Shared\Assets\Fonts\" />
+    <Folder Include="Features\Shared\Assets\Images\" />
     <Folder Include="Views\Details\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\_Page_Features_Details_Views_DefaultTemplate_cshtml\" />
@@ -421,6 +424,7 @@
     <Content Include="Features\Shared\Views\Partials\_SocialMediaLinks.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\_share-social.scss" />
     <Content Include="Features\Shared\Assets\Css\Utilities\_helpers.scss" />
+    <Content Include="Features\Shared\Assets\Fonts\fonts.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

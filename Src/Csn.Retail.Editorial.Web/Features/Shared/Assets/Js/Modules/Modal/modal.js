@@ -63,15 +63,17 @@ class Modal {
 
     updateView(html) {
 
-        $(this._modalContent).html(html);
+        $(this._modalContent).html(html); //can be changed to appendchild
 
         let ajaxEvt = document.createEvent('Event')
         ajaxEvt.initEvent('ajax-completed', true, true)
         ajaxEvt.Response = this._scope;
         window.dispatchEvent(ajaxEvt);
 
-        this._loading.removeAttribute('data-is-active')
+        this._loading.removeAttribute('data-is-active');
+
     }
+
 
     open(url, modalType)
     {
