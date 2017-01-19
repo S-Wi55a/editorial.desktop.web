@@ -320,9 +320,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Shared\Assets\common.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\src\slideshow.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\src\utils\dispatch-event.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\utils\dispatch-event.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -391,8 +391,8 @@
     <Content Include="Features\Shared\Assets\Css\Common.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_page-container.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_footer.scss" />
-    <Content Include="Features\Details\Views\Partials\_Main.cshtml" />
-    <Content Include="Features\Details\Views\Partials\_Aside.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Layout\_Main.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Layout\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\_brightcove-video-player.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_main-article.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_hero.scss" />
@@ -409,7 +409,15 @@
     <Content Include="Features\Details\Views\Partials\ContentSections\_Html.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Contributors.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_SocialMetaData.cshtml" />
-    <Content Include="Features\Details\Views\Partials\_Pricing.cshtml" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.scss" />
+    <Content Include="Features\Shared\Views\Partials\_Modal.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Modal\_SlideshowModal.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\_c-spinner.scss" />
+    <Content Include="Features\Shared\Assets\Css\Utilities\_utilities.scss" />
+    <Content Include="Features\Shared\Assets\Css\Variables\Settings\_variables-settings.scss" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\_author.scss" />
+    <Content Include="Features\Shared\Assets\Css\Buttons\_buttons.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

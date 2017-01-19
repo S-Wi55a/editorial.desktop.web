@@ -1,0 +1,19 @@
+﻿%button {
+    line-height: 30px;
+    font-size: $font-size-small;
+    padding: 0 15px;
+}
+
+%button--thin {
+    border-width: 1px;
+    border-style: solid;
+}
+
+%button--round {
+    border-radius: 100px;
+}
+
+%button--blue-inverse {
+    border-color: $cs-blue;
+    color: $cs-blue;
+}

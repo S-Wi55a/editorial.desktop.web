@@ -1,0 +1,20 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
+
+<div class="_c-slideshow _c-slideshow--modal" data-slideshow-modal data-slideshow-start="@Model.ImageIndex">
+    <div class="_c-slideshow__slider">
+        <ul class="_c-slideshow__slides">
+            @foreach (var image in Model.Images)
+            {
+                <li class="_c-slideshow__slide">
+                    <img class="_c-slideshow__image"
+                         data-srcset="@image.Url?width=1024 1024w, @image.Url?width=768 768w"
+                         data-src="@image.Url?width=1024"
+                         sizes="100vw"
+                         alt="@image.AlternateText"/>
+                </li>
+            }
+        </ul>
+    </div>
+    <button class="_c-slideshow__nav _c-slideshow__nav--prev" type="button" data-direction="prev">prev</button>
+    <button class="_c-slideshow__nav _c-slideshow__nav--next" type="button" data-direction="next">next</button>
+</div>

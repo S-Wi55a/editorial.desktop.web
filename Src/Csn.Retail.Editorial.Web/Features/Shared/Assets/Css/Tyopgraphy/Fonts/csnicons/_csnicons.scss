@@ -1,12 +1,12 @@
-﻿$csnicon-path: "http://localhost:8080";
+﻿$root-path: "http://localhost:8080" !default;
 
 @font-face {
   font-family: 'csnicons';
-  src:  url('#{$csnicon-path}/fonts/csnicons.eot?exqob2');
-  src:  url('#{$csnicon-path}/fonts/csnicons.eot?exqob2#iefix') format('embedded-opentype'),
-    url('#{$csnicon-path}/fonts/csnicons.ttf?exqob2') format('truetype'),
-    url('#{$csnicon-path}/fonts/csnicons.woff?exqob2') format('woff'),
-    url('#{$csnicon-path}/fonts/csnicons.svg?exqob2#icomoon') format('svg');
+  src:  url('#{$root-path}/fonts/csnicons.eot?exqob2');
+  src:  url('#{$root-path}/fonts/csnicons.eot?exqob2#iefix') format('embedded-opentype'),
+    url('#{$root-path}/fonts/csnicons.ttf?exqob2') format('truetype'),
+    url('#{$root-path}/fonts/csnicons.woff?exqob2') format('woff'),
+    url('#{$root-path}/fonts/csnicons.svg?exqob2#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }

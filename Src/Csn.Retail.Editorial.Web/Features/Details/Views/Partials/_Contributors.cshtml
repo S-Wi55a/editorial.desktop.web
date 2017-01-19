@@ -1,20 +1,24 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
-    
+
 @if (Model?.Contributors != null && Model.Contributors.Any())
 {
-    <div class="article__authors">
+    <div class="article__authors cf">
         @foreach (var contributor in Model.Contributors)
         {
-            <div class="author-image">
-                <img src="@contributor.ImageUrl" />
-            </div>
-                <div class="author-details">
-                    <div class="description">@contributor.Description</div>
-                    <div class="name">@contributor.Name</div>
+            <div class="author">
+                <div class="author__image">
+                    <img src="@contributor.ImageUrl" />
                 </div>
-                <div class="author-links">
+                <div class="author__details">
+                    <div class="author__description">@contributor.Description</div>
+                    <div class="author__name">@contributor.Name</div>
+                    <div class="author__title">Author Title</div>
+                </div>
+                <div class="author__links">
                     <a href="@contributor.LinkUrl">See all articles</a>
                 </div>
+            </div>
+
         }
     </div>
 }

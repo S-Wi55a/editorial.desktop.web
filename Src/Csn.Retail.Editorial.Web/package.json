@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "SET NODE_ENV=dev&& webpack -d --color",
-    "build-release": "SET NODE_ENV=prod&& webpack -p --color --config webpack-production.config.js",
-    "dev-watch": "SET NODE_ENV=dev && webpack -d --progress --colors --watch",
-    "dev-watch-with-dev-server": "SET NODE_ENV=dev && webpack-dev-server --colors --inline --hot ",
+    "build-release": "SET NODE_ENV=prod && webpack -p --color --config webpack-production.config.js",
+    "dev-watch": "SET NODE_ENV=dev && npm run webpack -- -d --progress --colors --watch",
+    "dev-watch-with-dev-server": "SET NODE_ENV=dev && npm run webpack-dev-server -- --colors --inline --hot ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm rebuild node-sass",
     "webpack": "node node_modules/webpack/bin/webpack.js ",
@@ -58,6 +58,8 @@
   "dependencies": {
     "custom-event": "^1.0.1",
     "jquery": "^3.1.0",
-    "vanilla-lazyload": "^3.0.0"
+    "picturefill": "^3.0.2",
+    "vanilla-lazyload": "^3.0.0",
+    "webfontloader": "^1.6.27"
   }
 }

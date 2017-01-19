@@ -1,0 +1,270 @@
+﻿/**
+ * _c-modal – ultra slim jQuery lightbox
+ * Version 1.5.0 - http://noelboss.github.io/_c-modal/
+ *
+ * Copyright 2016, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+
+._c-modal {
+
+	/* dimensions: spanning the background from edge to edge */
+	position:fixed;
+	top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	z-index: 2147483647; /* z-index needs to be >= elements on the site. */
+
+	/* position: centering content */
+	text-align: center;
+
+	/* styling */
+	cursor: pointer;
+	background-color: #333;
+	/* IE8 "hack" for nested _c-modals */
+	background-color: rgba(0, 0, 0, 0.8);
+
+    background-image: url('#{$root-path}/images/spinner-light.svg'); //TODO
+	background-size: 200px 200px;
+	background-position: center;
+	background-repeat: no-repeat;
+
+    // TODO rethink the partial view rather than this
+    ._l-container {
+        width: 100%;
+        padding: 0;
+    }
+
+	&[data-is-active="false"] {
+		display: none;
+	}
+}
+
+._c-modal:before {
+	/* position: trick to center content vertically */
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -0.25em;
+}
+
+._c-modal__content {
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+._c-modal--video
+{
+    ._c-modal__content { padding: 0px; overflow: hidden; }
+}
+
+._c-modal--light {
+    ._c-modal__content {
+        background-color: #fff;
+        padding: 20px;
+    }
+}
+
+/* contains the content */
+._c-modal ._c-modal-inner {
+	/* make sure its visible */
+	display: block;
+}
+
+
+
+
+._c-modal ._c-modal__close {
+	/* position: centering vertical and horizontal */
+	@extend %clearfix;
+	position:fixed;
+	right: 5px;
+	top: 5px;
+    z-index: 10;
+	width: 30px;
+	height: 30px;
+    border-radius: 50%;
+	border: 0;
+	background-color: rgba(255, 255, 255, 0.7);
+	outline: 0;
+	cursor: pointer;
+    font-size: 0;
+
+	&:before {
+		@extend %button-before;
+		font-family:'csnicons';
+		content: '\e94d';
+		font-size: 24px;
+		line-height: 30px;
+		text-indent: 0;
+		color: $cs-darker-grey;
+	}
+}
+
+
+._c-modal ._c-modal-image {
+	/* styling */
+	width: 100%;
+}
+
+
+._c-modal-iframe ._c-modal__content {
+	/* removed the border for image croping since iframe is edge to edge */
+	border-bottom: 0;
+	padding: 0;
+}
+
+._c-modal iframe {
+	/* styling */
+	border: none;
+}
+
+._c-modal * { /* See https://github.com/noelboss/_c-modal/issues/42 */
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+// TODO - refactor namespaces so this doesn't live here
+[data-full-specs] {
+    ._c-form {
+        width: 440px;
+        margin: 0 auto;
+    }
+    [data-tab-vehicle] {
+        display: none;
+        &[data-is-active="true"] {
+            display: block;
+        }
+    }
+}
+
+
+
+
+
+@media only screen and (min-width: 1024px) {
+
+	._c-modal {
+
+		/* dimensions: spanning the background from edge to edge */
+		position:fixed;
+		top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+		z-index: 2147483647; /* z-index needs to be >= elements on the site. */
+
+		/* position: centering content */
+		text-align: center;
+
+		/* insures that the ::before pseudo element doesn't force wrap with fixed width content; */
+		white-space: nowrap;
+
+		/* styling */
+		cursor: pointer;
+		background-color: #333;
+		/* IE8 "hack" for nested _c-modals */
+		background-color: rgba(0, 0, 0, 0.8);
+
+
+	    &[data-is-active="false"] {
+		    display: none;
+	    }
+
+	}
+
+
+
+	._c-modal ._c-modal__close {
+		/* position: centering vertical and horizontal */
+
+		position:fixed;
+        right: 20px;
+        top: 20px;
+        width: 72px;
+        height: 72px;
+        border-radius: 36px;
+		background-color: transparent;
+
+		&:before {
+			color: #fff;
+            line-height: 66px;
+            font-size: 44px;
+		}
+    }
+
+	/* support for nested _c-modals. Does not work in IE8 (use JS to fix) */
+	/*._c-modal:last-of-type {
+		background-color: rgba(0, 0, 0, 0.8);
+	}*/
+
+	._c-modal:before {
+		/* position: trick to center content vertically */
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		margin-right: -0.25em;
+	}
+
+	._c-modal__content {
+		/* make content container for positioned elements (close button) */
+		position: relative;
+
+		/* position: centering vertical and horizontal */
+		text-align: left;
+		vertical-align: middle;
+		display: inline-block;
+
+		/* dimensions: cut off images */
+		overflow: hidden;
+		padding: 60px 120px;
+
+		/* dimensions: handling large content */
+		margin-left: 5%;
+		margin-right: 5%;
+
+		/* styling */
+		background-color: #fff;
+		cursor: auto;
+
+        width: auto;
+        height: auto;
+        max-width: calc(1024px + 10%);
+        max-height: 100%;
+        border-radius: 6px;
+
+		/* reset white-space wrapping */
+		white-space: normal;
+	}
+
+    ._c-modal--video
+    {
+        ._c-modal__content { padding: 0px; }
+    }
+
+    ._c-modal--slideshow
+    {
+        ._c-modal__content { padding: 0px;  }
+    }
+	/* contains the content */
+	._c-modal ._c-modal-inner {
+		/* make sure its visible */
+		display: block;
+	}
+
+
+
+
+}

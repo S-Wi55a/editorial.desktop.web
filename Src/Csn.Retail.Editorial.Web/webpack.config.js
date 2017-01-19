@@ -35,10 +35,8 @@ function getEntryFiles(){
     }
 
     entries['common'] = ['jquery', './Features/Shared/Assets/common.js'];
+    entries['fonts'] = ['./Features/Shared/Assets/Fonts/fonts.js'];
 
-    // Custom Modules
-    // TODO: Think of a globbing pattern
-    entries['slideshow'] = ['./Features/Shared/Assets/Js/Modules/Slideshow/slideshow.js'];
 
     return entries;
 }
@@ -51,9 +49,6 @@ module.exports = {
         publicPath: config.publicPath,
         filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
     },
-    //externals: {
-    //    "jquery": "jQuery"
-    //},
     module: {
         preLoaders:[
             {
@@ -71,7 +66,10 @@ module.exports = {
             {
                 test: [/\.js$/,/\.es6$/],
                 exclude: /node_modules/,
-                loader: 'babel-loader?presets[]=es2015'
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
             },
             {
                 test: [/\.css$/],
@@ -80,8 +78,13 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
+                exclude: [/(node_modules|bower_components|unitTest)/, /fonts\.scss/],
                 loaders: ['style-loader', 'css-loader?sourceMap', 'autoprefixer-loader', 'sass-loader?sourceMap']
+            },
+            {
+                test: /fonts\.scss$/,
+                exclude: /node_modules/,
+                loader: ExtractTextPlugin.extract('css-loader?sourceMap!autoprefixer-loader!sass-loader?sourceMap')
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
@@ -114,13 +117,15 @@ module.exports = {
         extensions: ['','.js','.ts','.es6','.scss']
     },
     plugins: [
-        // new CopyWebpackPlugin(
-        //     [
-        //         {from:'./features/**/*.+(png|jpeg|jpg|svg)',
-        //             to:'./',
-        //             flatten: true}
-        //     ]
-        // ),
+         //new CopyWebpackPlugin(
+         //    [
+         //        {
+         //            from: './features/**/*.+(png|jpeg|jpg|svg)',
+         //            to:'/dist/',
+         //            flatten: true
+         //        }
+         //    ]
+         //),
         new AssetsPlugin({
             filename: 'webpack.assets.json',
             path: __dirname,
@@ -144,11 +149,6 @@ module.exports = {
             '/': {
                 target: 'http://redesign.editorial.csdev.com.au/',
                 changeOrigin: true,
-                secure: false
-            },
-            '/assets': {
-                target: 'http://redesign.editorial.csdev.com.au/',
-                changeOrigin: false,
                 secure: false
             }
         }

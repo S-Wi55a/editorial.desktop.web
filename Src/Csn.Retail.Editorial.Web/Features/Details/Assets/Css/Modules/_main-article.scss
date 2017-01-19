@@ -1,6 +1,5 @@
 ﻿.article {
     padding-left: 0;
-    padding-right: 0;
     padding-top: 60px;
 
     .cf:after {
@@ -15,17 +14,33 @@
     &__subheading {
         @extend %h2;
         margin-top: 5px;
-        color: $cs-grey;
+        color: $cs-dark-grey;
     }
 
     &__copy {
         color: $cs-light-grey;
         p {
-            margin-top: 38px;
+            margin-top: 43px;
+        }
+        &>p:first-child {
+            margin-top: 21px;
         }
     }
 
-    .article__type {
+    &__img {
+      width: 100%;
+      margin-top: 42px;
+    }
+
+    &__img-caption {
+        @extend %font-size-small;
+        line-height: 28px;
+        margin: 7px auto;
+        text-align: center;
+        color: $cs-dark-grey;
+    }
+
+    &__type {
         @extend %font-size-small;
         font-weight: 600;
         border-radius: 9999px;
@@ -37,7 +52,7 @@
         text-transform: uppercase;
 
         &--review {
-            background-color: $cs-blue;
+            background-color: $cs-light-blue;
         }
         &--car-advice {
             background-color: $cs-accent-green;
@@ -53,7 +68,7 @@
         }
     }
 
-    .article__date {
+    &__date {
         @extend %font-size-small;
         display: inline-block;
         float: left;
@@ -62,7 +77,41 @@
         color: $cs-light-grey;
     }
 
-    //Temp
-    background-color: blue;
+    &__pricing {
+        font-size: $font-size-h2;
+        font-weight: normal;
+        line-height: 40px;
+        color: $cs-darkest-grey;
+        margin-top: 3px;
+        margin-bottom: 15px
+    }
 
+    &__caption {
+        font-size: $font-size-quote;
+        font-weight: 300;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 46px;
+        color: $cs-black;
+    }
+
+    &__quote {
+        @extend %quote;
+        margin: 36px auto -18px;
+        padding: 0 7.5%;
+    }
+
+    &__authors {
+        border-radius: 6px;
+        border: solid 1px $cs-lighter-grey;
+        padding: 31px 40px;
+        margin-top: 79px;
+    }
+}
+
+@media only screen and (min-width: $screen-lg) {
+    .article {
+        padding-left: 75px;
+        padding-right: 45px;
+    }
 }

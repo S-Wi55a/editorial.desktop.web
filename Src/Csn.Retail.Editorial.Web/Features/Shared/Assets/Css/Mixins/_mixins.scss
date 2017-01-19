@@ -1,10 +1,4 @@
-﻿%clearfix {
-    content:"";
-    display:block;
-    clear:both;
-}
-
-@mixin cf {
+﻿@mixin cf {
     @extend %clearfix;
 }
 

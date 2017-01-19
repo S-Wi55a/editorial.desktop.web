@@ -11,3 +11,10 @@ Src/**/Fonts/csnicons.ttf
 Src/**/Fonts/csnicons.eot
 Src/**/Fonts/csnicons.svg
 Src/Csn.Retail.Editorial.Web/Csn.Retail.Editorial.Web.csproj.user
+
+
+# Images
+**/*.svg
+**/*.gif
+**/*.png
+**/*.jpg

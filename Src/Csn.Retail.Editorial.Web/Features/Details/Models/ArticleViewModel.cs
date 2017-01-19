@@ -19,6 +19,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<EditorialExpertRating> ExpertRatings { get; set; }
         public List<string> Pros { get; set; }
         public List<string> Cons { get; set; }
+        public string DateAvailable { get; set; }
+
     }
 
     public class HeroSection
@@ -26,6 +28,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public HeroType Type { get; set; }
         public List<Image> Images { get; set; }
         public string BrightcoveVideoIFrameUrl { get; set; }
+        public string NetworkId { get; set; }
+        public int ImageIndex { get; set; }
     }
 
 }

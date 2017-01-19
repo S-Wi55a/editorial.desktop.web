@@ -7,9 +7,24 @@ $font-family-default: 'Open Sans', Arial;
 $font-size-h1: 38px;
 $font-size-h2: 25px;
 $font-size-h3: 38px;
-$font-size-h4: 38px;
-$font-size-h5: 38px;
+$font-size-h4: 16px;
+$font-size-h5: 12px;
 $font-size-h6: 38px;
 
-$font-size-p: 16px;
+
+$font-size-body: 16px;
+$font-size-p: $font-size-body;
 $font-size-small: 12px;
+$font-size-quote: 28px;
+
+// Font Weights
+
+$font-weight-100: 100;
+$font-weight-200: 200;
+$font-weight-300: 300;
+$font-weight-400: 400;
+$font-weight-500: 500;
+$font-weight-600: 600;
+$font-weight-700: 700;
+$font-weight-800: 800;
+$font-weight-900: 900;

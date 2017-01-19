@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Configuration;
+using System.Security.Cryptography;
 using System.Xml.Serialization;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 {
     public class ArticleDetailsDto
     {
+        public string NetworkId { get; set; }
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string ArticleType { get; set; }
         public HeroSection HeroSection { get; set; }
@@ -19,6 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public List<EditorialExpertRating> ExpertRatings { get; set; }
         public List<string> Pros { get; set; }
         public List<string> Cons { get; set; }
+        public string DateAvailable { get; set; }
     }
 
     public class EditorialExpertRating
@@ -56,6 +61,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public HeroType Type { get; set; }
         public List<Image> Images { get; set; }
         public BrightcoveVideo BrightcoveVideo { get; set; }
+
     }
 
     public class Contributor
