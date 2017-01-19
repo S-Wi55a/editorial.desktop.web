@@ -3,8 +3,8 @@
 .hero {
     padding-left: 0;
     padding-right: 0;
-}
 
+}
 
 .hero__imageContainer {
     background-color: $cs-darkest-grey;
@@ -13,6 +13,23 @@
         @include img-responsive();
     }
 }
+
+.hero--singleImage {
+
+    @include breakpoint($screen-lg) {
+        padding-left: 75px;
+        padding-right: 45px;
+    }
+}
+
+.hero--singleVideo {
+
+    @include breakpoint($screen-lg) {
+        padding-left: 75px;
+        padding-right: 45px;
+    }
+}
+
 .hero--imageAndVideo {
 
     overflow: hidden;

@@ -121,7 +121,7 @@
     }
 }
 
-@media only screen and (min-width: $screen-lg) {
+@include breakpoint($screen-lg) {
     .article {
         padding-left: 75px;
         padding-right: 45px;
