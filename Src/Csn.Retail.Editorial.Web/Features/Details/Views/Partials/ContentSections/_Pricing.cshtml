@@ -3,6 +3,6 @@
 @if (Model?.Price != null)
 {
     <div class="article__pricing">
-        $@Model.Price.MinPrice - $@Model.Price.MaxPrice
+        @Model.Price.Currency@Model.Price.MinPrice - @Model.Price.Currency@Model.Price.MaxPrice
     </div>
 }

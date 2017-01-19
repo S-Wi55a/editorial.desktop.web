@@ -20,24 +20,49 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public SocialMetaData SocialMetaData { get; set; }
         public List<EditorialItem> Items { get; set; }
         public PriceModel Price { get; set; }
-        public List<EditorialExpertRating> ExpertRatings { get; set; }
-        public List<string> Pros { get; set; }
-        public List<string> Cons { get; set; }
+        public EditorialExpertRating ExpertRatings { get; set; }
+        public ProCon ProsCons { get; set; }
         public string DateAvailable { get; set; }
+    }
+
+    public class ProCon
+    {
+        public Pro Pros { get; set; }
+        public Con Cons { get; set; }
+
+        public class Pro
+        {
+            public string Heading { get; set; }
+            public List<string> Items { get; set; }
+        }
+
+        public class Con
+        {
+            public string Heading { get; set; }
+            public List<string> Items { get; set; }
+        }
     }
 
     public class EditorialExpertRating
     {
-        public string Category { get; set; }
-        public int? Id { get; set; }
-        public int Rating { get; set; }
+        public string Heading { get; set; }
+        public string SubHeading { get; set; }
+        public int OverallRating { get; set; }
+
+        public List<ExpertItem> Items { get; set; }
+
+        public class ExpertItem
+        {
+            public string Category { get; set; }
+            public int Rating { get; set; }
+        }
     }
 
     public class PriceModel
     {
         public string MinPrice { get; set; }
         public string MaxPrice { get; set; }
-        public string PriceType { get; set; }
+        public string Currency { get; set; }
     }
 
     public class EditorialItem
@@ -47,9 +72,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string BodyStyleSubCategory { get; set; }
         public string Category { get; set; }
         public string EngineCapacity { get; set; }
-        public int? Id { get; set; }
-        [XmlAttribute("index")]
-        public int Index { get; set; }
         public string Make { get; set; }
         public string MarketingGroup { get; set; }
         public string Model { get; set; }
