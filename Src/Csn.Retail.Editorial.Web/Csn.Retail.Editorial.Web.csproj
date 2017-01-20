@@ -425,6 +425,12 @@
     <Content Include="Features\Shared\Assets\Css\Modules\_share-social.scss" />
     <Content Include="Features\Shared\Assets\Css\Utilities\_helpers.scss" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.scss" />
+    <Content Include="Features\Details\Views\Partials\SocialNetworks\_Facebook.cshtml" />
+    <Content Include="Features\Details\Views\Partials\SocialNetworks\_Twitter.cshtml" />
+    <Content Include="Features\Details\Views\Partials\SocialNetworks\_Email.cshtml" />
+    <Content Include="Features\Details\Views\Partials\SocialNetworks\_Reddit.cshtml" />
+    <Content Include="Features\Details\Views\Partials\SocialNetworks\_Pinterest.cshtml" />
+    <Content Include="Features\Details\Views\Partials\SocialNetworks\_Googleplus.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

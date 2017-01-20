@@ -38,6 +38,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Image { get; set; }
         public string Url { get; set; }
         public string SiteName { get; set; }
+        public List<string> SocialSharingNetworks { get; set; }
+
     }
 
 

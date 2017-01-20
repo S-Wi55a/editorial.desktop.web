@@ -1,0 +1,15 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.SocialMetaData
+
+
+<div class="share-social">
+
+    @* Order reversed to achieve visual layout *@
+    @foreach (var socialNetwork in Enumerable.Reverse(Model.SocialSharingNetworks))
+    {
+
+        // use convention based mapping for determining the view (based on socialNetwork)
+        Html.RenderPartial($"Partials/SocialNetworks/_{socialNetwork}", Model);
+
+    }
+
+</div>
