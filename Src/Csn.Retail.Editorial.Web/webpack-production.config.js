@@ -69,7 +69,7 @@ var s3 = new S3Plugin({
     s3UploadOptions: {
         Bucket: 'carsales-test-editorial'
     },
-    basePath: (argv.basePath || 'dist') //match with directory in bucket
+    basePath: (argv.awsBucketBasePath || 'dist') //match with directory in bucket
 });
 
 if (awsAccessKey !== '') {

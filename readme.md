@@ -40,5 +40,5 @@ ___
 
 ## Production
 
-- `npm run build-release -- basePath=DIRECTORY --awsAccessKey=AWS_ACCESS_KEY --awsSecret=AWS_SECRET`
+- `npm run build-release -- awsBucketBasePath=DIRECTORY --awsAccessKey=AWS_ACCESS_KEY --awsSecret=AWS_SECRET`
 ___
