@@ -5,8 +5,6 @@ var glob = require('glob'),
     webpack = require('webpack'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    AssetsPlugin = require('assets-webpack-plugin'),
-    //CopyWebpackPlugin = require('copy-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin');
 
 var argv = require('yargs').argv;
@@ -121,15 +119,6 @@ module.exports = {
         extensions: ['','.js','.ts','.es6','.scss']
     },
     plugins: [
-         //new CopyWebpackPlugin(
-         //    [
-         //        {
-         //            from: './features/**/*.+(png|jpeg|jpg|svg)',
-         //            to:'/dist/',
-         //            flatten: true
-         //        }
-         //    ]
-         //),
         new AssetsPlugin({
             filename: 'webpack.assets.json',
             path: __dirname,

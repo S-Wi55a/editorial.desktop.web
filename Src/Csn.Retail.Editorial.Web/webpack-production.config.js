@@ -1,12 +1,5 @@
 var devConfig = require('./webpack.config.js'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    S3Plugin = require('webpack-s3-sync-plugin');
-
-var argv = require('yargs').argv;
-
-
-var awsAccessKey = (argv.awsAccessKey || ''),
-    awsSecret = (argv.awsSecret || '');
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var prodLoaders = [
            {
@@ -56,25 +49,6 @@ var prodLoaders = [
            }
 
 ]
-
-
-
-var s3 = new S3Plugin({
-    // s3Options are required
-    s3Options: {
-        accessKeyId: awsAccessKey,
-        secretAccessKey: awsSecret,
-        region: 'us-east-1'
-    },
-    s3UploadOptions: {
-        Bucket: 'carsales-test-editorial'
-    },
-    basePath: (argv.awsBucketBasePath || 'dist') //match with directory in bucket
-});
-
-if (awsAccessKey !== '') {
-    devConfig.plugins.push(s3);
-}
 
 // Replace dev laoders with pro loaders
 devConfig.module.loaders = prodLoaders

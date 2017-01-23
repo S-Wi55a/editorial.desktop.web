@@ -337,6 +337,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="gulpfile.js" />
     <Content Include="webpack-production.config.js" />
     <Content Include="webpack.config.js" />
   </ItemGroup>
@@ -424,7 +425,6 @@
     <Content Include="Features\Shared\Assets\Css\Buttons\_buttons.scss" />
     <Content Include="Features\Shared\Views\Partials\_SocialMediaLinks.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\_share-social.scss" />
-    <Content Include="Features\Shared\Assets\Css\Utilities\_helpers.scss" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.scss" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Facebook.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Twitter.cshtml" />
