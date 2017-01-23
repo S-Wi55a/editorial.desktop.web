@@ -82,7 +82,7 @@ if (document.querySelector('[data-slideshow]')) {
             });
         }
 
-    })
+    }, 'details-page--slideshow-and-modal')
 }
 
 

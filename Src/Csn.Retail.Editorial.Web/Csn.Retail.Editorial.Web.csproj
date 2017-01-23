@@ -321,6 +321,7 @@
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Shared\Assets\common.js" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.js" />
+    <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-dark.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
@@ -431,6 +432,10 @@
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Reddit.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Pinterest.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Googleplus.cshtml" />
+    <Content Include="Features\Details\Views\Partials\_SocialMediaLinks.cshtml" />
+    <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.eot" />
+    <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.ttf" />
+    <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.woff" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

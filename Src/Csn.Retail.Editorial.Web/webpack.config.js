@@ -7,17 +7,16 @@ var glob = require('glob'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
     //CopyWebpackPlugin = require('copy-webpack-plugin'),
-    AssetsPlugin = require('assets-webpack-plugin'),
-    assetsPluginInstance = new AssetsPlugin();
+    AssetsPlugin = require('assets-webpack-plugin');
 
+var argv = require('yargs').argv;
 
-
-var isProd = (process.env.NODE_ENV === 'prod');
+var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
-    outputPath: path.join(__dirname, 'dist'),
-    publicPath: isProd ? './' : 'http://localhost:8080/dist/'
+    outputPath: path.join(__dirname, (argv.basePath || './dist/')),
+    publicPath: isProd ? (argv.basePath || './dist/') : 'http://localhost:8080/dist/'
 }
 
 function getEntryFiles(){
@@ -136,7 +135,7 @@ module.exports = {
             path: __dirname,
             prettyPrint: true
         }),
-        new CleanWebpackPlugin(['dist', 'build'], {
+        new CleanWebpackPlugin(['dist'], {
             root: __dirname,
             verbose: true,
             dry: false
