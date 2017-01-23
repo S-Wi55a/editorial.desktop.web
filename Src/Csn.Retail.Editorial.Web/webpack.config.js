@@ -151,7 +151,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/': {
-                target: 'http://redesign.editorial.csdev.com.au/',
+                target: 'http://' + (argv.tenet || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
                 changeOrigin: true,
                 secure: false
             }
