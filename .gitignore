@@ -7,8 +7,7 @@ webpack.assets.json
 Src/Csn.Retail.Editorial.Web/logs*
 Src/WebEssentials2015-Settings.json
 Src/Csn.Retail.Editorial.Web/Csn.Retail.Editorial.Web.csproj.user
-
-
+.awspublish-resource.csnstatic.csstg.com.au
 # Images
 **/*.svg
 **/*.gif

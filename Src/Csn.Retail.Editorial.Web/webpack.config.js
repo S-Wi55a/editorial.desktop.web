@@ -13,7 +13,7 @@ var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
-    outputPath: path.join(__dirname, './dist/'),
+    outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
     publicPath: isProd ? (argv.publicPath || './') : 'http://localhost:8080/dist/'
 }
 
