@@ -14,7 +14,7 @@ var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
     outputPath: path.join(__dirname, './dist/'),
-    publicPath: isProd ? (argv.publicPath || './dist/') : 'http://localhost:8080/dist/'
+    publicPath: isProd ? (argv.publicPath || './') : 'http://localhost:8080/dist/'
 }
 
 function getEntryFiles(){

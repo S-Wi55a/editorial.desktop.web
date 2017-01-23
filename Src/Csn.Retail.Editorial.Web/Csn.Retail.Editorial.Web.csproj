@@ -436,6 +436,8 @@
     <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.eot" />
     <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.ttf" />
     <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.woff" />
+    <Content Include="Features\Details\Views\Partials\Widgets\_ExpertRatings.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\_ProCon.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
