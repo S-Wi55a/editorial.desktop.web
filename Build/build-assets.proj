@@ -1,0 +1,339 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0" VisualStudioVersion="12.0">
+	<Import Project="Build.Config.proj"/>
+
+	<PropertyGroup>
+    <Version Condition="$(BUILD_NUMBER) == ''">1.0.0</Version>
+		<Version Condition="$(BUILD_NUMBER) != ''">1.0.$(BUILD_NUMBER)</Version>
+		<Version Condition="$(bamboo_buildNumber) != ''" >$(bamboo_buildNumber).0.0-$(bamboo_planRepository_branchName)</Version>
+
+		<RootDir>$(MSBuildProjectDirectory)\..</RootDir>
+		<ToolsDir>$(RootDir)\Tools</ToolsDir>
+		<SrcDir>$(RootDir)\Src</SrcDir>
+		<BuildDir>$(RootDir)\Build</BuildDir>
+		<TargetProjectDir>$(SrcDir)\$(TargetProjectName)</TargetProjectDir>
+		<OutputDir>$(MSBuildProjectDirectory)\Output</OutputDir>
+		<PublicAssetsFolderRelativePath>\Research\Public</PublicAssetsFolderRelativePath>
+		<PackageDir>C:\Temp\$(TargetProjectName)\Packages</PackageDir>
+		<PackageDir Condition="$(bamboo_buildNumber) != ''">E:\Temp\Packages</PackageDir>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TransformConfigSrc Condition="$(Configuration) == 'QA'">$(TargetProjectDir)\Web.AwsRelease.config</TransformConfigSrc>
+		<TransformConfigSrc Condition="$(Configuration) != 'QA'">$(TargetProjectDir)\Web.$(Configuration).config</TransformConfigSrc>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<MSBuildCommunityTasksPath>$(ToolsDir)\MSBuild.Community.Tasks</MSBuildCommunityTasksPath>
+	</PropertyGroup>
+
+	<Import Project="$(ToolsDir)\MSBuild.Community.Tasks\MSBuild.Community.Tasks.Targets"/>
+
+  <UsingTask AssemblyFile="$(ToolsDir)\xunit\xunit.runner.msbuild.dll"
+	           TaskName="Xunit.Runner.MSBuild.xunit" />
+
+  <UsingTask AssemblyFile="$(ToolsDir)\MSBuild.Community.Tasks\MSBuild.Community.Tasks.dll"
+	           TaskName="MSBuild.Community.Tasks.NUnit" />
+
+	<Target Name="TaskImportNugetPackages">
+		<MakeDir Directories="$(PackageDir)\Nuget"/>
+		<RoboCopy
+				SourceFolder="$(PackageDir)\Nuget"
+				DestinationFolder="$(RootDir)\Lib"
+				Subdirectories="true"
+				ExcludeFolders="_None"
+				ExcludeFiles="*.log"
+				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
+				/>
+	</Target>
+
+	<Target Name="TaskNugetRestore">
+		<Message Text="Restoring nuget packages..." Importance="high"/>
+		<Exec Command="$(ToolsDir)/Nuget/nuget restore $(SolutionName).sln" WorkingDirectory="$(SrcDir)"/>
+	</Target>
+	
+
+	<Target Name="TaskBackupNugetPackages">
+		<RoboCopy
+				SourceFolder="$(RootDir)\Lib"
+				DestinationFolder="$(PackageDir)\Nuget"
+				Subdirectories="true"
+				ExcludeFolders="__none"
+				ExcludeFiles=".log"
+				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
+				/>
+	</Target>
+
+	<Target Name="NugetRestore" DependsOnTargets="TaskImportNugetPackages;TaskNugetRestore;TaskBackupNugetPackages">
+	</Target>
+
+	<Target Name="CleanBuild">
+	    	<Message Text="Clean Build Solution..." Importance="high"/>
+	    	<MsBuild Projects="$(SrcDir)\$(SolutionName).sln" Targets="Clean"/>
+	</Target>
+
+	<PropertyGroup Condition="$(BUILD_NUMBER) == ''">
+		<BUILD_NUMBER>1</BUILD_NUMBER>
+	</PropertyGroup>
+	<Target Name="AssemblyVersion">
+		<AssemblyInfo
+			CodeLanguage="CS"
+			AssemblyTitle="$(TargetProjectName)"
+			AssemblyDescription=""
+			AssemblyCompany=""
+			AssemblyProduct="$(TargetProjectName)"
+			AssemblyCopyright="Copyright Carsales.com ltd 2016"
+			ComVisible="false"
+			CLSCompliant="false"
+			OutputFile="$(TargetProjectDir)\Properties\AssemblyInfo.cs"
+			AssemblyVersion="$(Version)"
+			AssemblyFileVersion="$(Version)" />
+	</Target>
+
+	<Target Name="CompileBuild" DependsOnTargets="CleanBuild">
+	    	<Message Text="Compiling Solution..." Importance="high"/>
+	    	<MsBuild Projects="$(SrcDir)\$(SolutionName).sln" Properties="Configuration=$(Configuration)"/>
+	</Target>
+
+	<!-- START: Tests -->
+		<!--
+	  <Target Name="UnitTests">
+	  	<Message Text="Running Unit Tests"/>
+	  	<xunit Assemblies="@(TestAssemblies)" />
+	  </Target>
+	  -->
+
+		<Target Name="UnitTests">
+		  <ItemGroup>
+			  <UnitTestsAssemblies Include="$(SrcDir)\**\bin\$(Configuration)\*.UnitTests.dll" />
+		  </ItemGroup>
+		  <Exec Command="$(ToolsDir)/NUnit/nunit-console.exe @(UnitTestsAssemblies) /framework:net-4.6" WorkingDirectory="$(SrcDir)" ContinueOnError="WarnAndContinue"/>
+		</Target>
+
+	  <!-- END: Tests -->
+
+
+			<Target Name="TaskImportNpmPackages">
+				<MakeDir Directories="$(PackageDir)\node_modules"/>
+				<RoboCopy
+						SourceFolder="$(PackageDir)\node_modules"
+						DestinationFolder="$(TargetProjectDir)\node_modules"
+						Subdirectories="true"
+						ExcludeFolders="__none"
+						ExcludeFiles=".log"
+						Options="/s /MT:10 /LOG:robocopy-result.log"
+						/>
+			</Target>
+
+	<Target Name="TaskNpmRestore">
+			<Message Text="Restoring front end build..." Importance="high"/>
+			<Exec Command="npm install" WorkingDirectory="$(TargetProjectDir)"/>
+	</Target>
+
+	<Target Name="TaskBackupNpmPackages">
+		<RoboCopy
+				SourceFolder="$(TargetProjectDir)\node_modules"
+				DestinationFolder="$(PackageDir)\node_modules"
+				Subdirectories="true"
+				ExcludeFolders="__none"
+				ExcludeFiles=".log"
+				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
+				/>
+	</Target>
+
+	<Target Name="FrontEndBuild" DependsOnTargets="TaskNpmRestore">
+		<Message Text="Running gulp task..." Importance="high"/>
+		<Exec Command="npm run build-release" WorkingDirectory="$(TargetProjectDir)"/>
+	</Target>
+
+	<Target Name="TaskGenerateVersionInfo" Condition="$(BUILD_NUMBER) != ''">
+			<GitVersion Short="false" LocalPath="$(MSBuildProjectDirectory)">
+				<Output TaskParameter="CommitHash" PropertyName="Revision" />
+			</GitVersion>
+			<WriteLinesToFile
+	            File="$(TargetProjectDir)\version.txt"
+	            Lines="$(Configuration)Version: $(Version).$(BUILD_NUMBER).$(Revision)"
+	            Overwrite="true"/>
+	</Target>
+
+	<Target Name="TaskCopySourceToOutput">
+		<RemoveDir Directories="$(OutputDir)"/>
+		<MakeDir Directories="$(OutputDir)"/>
+		<RoboCopy
+				SourceFolder="$(TargetProjectDir)"
+				DestinationFolder="$(OutputDir)"
+				Subdirectories="true"
+				ExcludeFolders="obj;logs;Properties;node_modules;"
+				ExcludeFiles="*.cs;*.csproj*;*.less;packages.config;package.json;Project_Readme.html;gulpfile.js;*.less"
+				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
+				/>
+	</Target>
+
+	<Target Name="TaskCopyPublicFolderToOutput">
+		<RoboCopy
+				SourceFolder="$(TargetProjectDir)$(PublicAssetsFolderRelativePath)"
+				DestinationFolder="$(OutputDir)$(PublicAssetsFolderRelativePath)"
+				Subdirectories="true"
+				ExcludeFolders="_none"
+				ExcludeFiles=".log"
+				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
+				/>
+	</Target>
+
+	<UsingTask TaskName="TransformXml" AssemblyFile="$(ToolsDir)\Microsoft.Web.Publishing\Microsoft.Web.Publishing.Tasks.dll"/>
+	<Target Name="TaskTransformConfig" Condition="$(Configuration) == 'Test' OR $(Configuration) == 'QA'">
+		<TransformXml Source="$(TargetProjectDir)\Web.config"
+								Transform="$(TransformConfigSrc)"
+								Destination="$(OutputDir)\Web.config"
+								StackTrace="true" />
+	</Target>
+
+	<Target Name="CopySourceToOutput"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput;TaskTransformConfig;ConfigUpdate">
+		<Message Text="Copying source to output..." Importance="high"/>
+	</Target>
+
+	<Target Name="CopySourceToOutputNoTransform"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput">
+		<Message Text="Copying source to output..." Importance="high"/>
+	</Target>
+
+	<Target Name="CreateNugetPackage">
+			<Message Text="Creating nuget package from output..." Importance="high"/>
+			<XmlPoke Namespaces="&lt;Namespace Prefix='csn' Uri='http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd' /&gt;"  XmlInputPath="$(BuildDir)\artifact.nuspec"
+             Query="/csn:package/csn:metadata/csn:version"
+             Value="$(version)"/>
+			<Exec Command="$(ToolsDir)/Nuget/nuget pack artifact.nuspec" WorkingDirectory="$(BuildDir)"/>
+	</Target>
+
+	<Target Name="TaskDeploy">
+		<RoboCopy
+				SourceFolder="$(OutputDir)"
+				DestinationFolder="$(DeployDir)"
+				Subdirectories="true"
+				ExcludeFolders="_none"
+				ExcludeFiles="*.log"
+				Mirror="true"
+				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
+				/>
+	</Target>
+
+	<Target Name="DevReady" DependsOnTargets="NugetRestore;CompileBuild;">
+				<Message Text="Make the repo dev ready..." Importance="high"/>
+	</Target>
+
+	<Target Name="Artifact" DependsOnTargets="NugetRestore;CompileBuild;UnitTests;FrontEndBuild;CopySourceToOutput"/>
+
+	<!-- LOAD CUSTOM TASKS -->
+	<Target Name="Compile" Condition="$(Configuration) != 'Feature'">
+    	<Message Text="Clean Build Solution..."/>
+    	<MsBuild Projects="$(SrcDir)\$(SolutionName).sln" Targets="Clean"/>
+    	<Message Text="Running Build..."/>
+    	<MsBuild Projects="$(SrcDir)\$(SolutionName).sln" Properties="Configuration=$(Configuration)"/>
+  </Target>
+
+
+
+
+	<Target Name="CleanDestination">
+		<ItemGroup>
+            <!-- Item to get all files recursively in the DeleteRoot folder -->
+            <FilesToDelete Include="$(DeployDir)\**\*.*" />
+            <!-- Item to get all folders from the files to be deleted -->
+            <FoldersToDelete Include="%(FilesToDelete.RootDir)%(FilesToDelete.Directory)" Exclude="$(DeleteRoot)"/>
+        </ItemGroup>
+        <!-- Display what will be deleted -->
+        <Message Text=" # @(FilesToDelete)" Importance="normal" />
+        <Message Text=" # @(FoldersToDelete)" Importance="normal" />
+        <!-- Delete the files -->
+        <Delete Files="@(FilesToDelete)" Condition=" $(DeleteRoot)!=''" />
+        <!-- Remove the folders -->
+        <RemoveDir Directories="@(FoldersToDelete)" Condition="$(DeleteRoot)!=''" />
+	</Target>
+
+
+
+	<Target Name="CopyAssetsToCdn" Condition="$(Configuration) == 'Test'">
+	    <RoboCopy
+	        SourceFolder="$(OutputDir)\Content"
+	        DestinationFolder="$(CdnDir)"
+	        Subdirectories="true"
+            ExcludeFolders="obj;logs"
+	        ExcludeFiles="*.cs;*.csproj*"
+					Options="/s /MT:10 /LOG:robocopy-deploy-result.log"
+	        Mirror="true"
+	        />
+    </Target>
+
+    <Target Name="CopyOutputToDeploy">
+	    <RoboCopy
+	        SourceFolder="$(OutputDir)"
+	        DestinationFolder="$(DeployDir)"
+	        Subdirectories="true"
+            ExcludeFolders="obj;logs;"
+	        ExcludeFiles="*.cs;*.csproj*;packages.config;bower.json;.bowerrc;_app_offline.htm;app_offline.htm"
+			Options="/s /purge /MT:10 /LOG:robocopy-deploy-result.log"
+	        Mirror="false"
+	        />
+    </Target>
+
+
+    <Target Name="ConfigUpdate" Condition="$(Configuration) == 'QA'">
+    	<Message Text="Updating XML file at $(OutputDir)\Web.config" />
+
+    	<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
+             Query="//Hosts/Host[@Name='LeadApiProxy']/@BaseUrl"
+             Value="http://lead.service.csuat.com.au"/>
+
+		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
+             Query="//LeadSettings/@EndpointUrl"
+             Value="http://lead.service.csuat.com.au"/>
+			 
+		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
+             Query="//Hosts/Host[@Name='LeadApiProxy']/Alternatives/add/@BaseUrl"
+             Value="http://lead.service.csuat.com.au"/>
+			 
+		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
+             Query="//connectionStrings/add[@name='RedisServer']/@connectionString"             Value="redis.csstg.com.au:6379,KeepAlive=180,name=MemberCentre.Web,Password=8HqNR43OFj3gnVPz1ECKEZayefBiJjjoKXA6aKiZ,abortConnect=false"/> 
+
+
+		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
+             Query="//appSettings/add[@key='MongoConnectionString']/@value"
+             Value="mongodb://csdevdb01.carsales.csint,csdevdb02.carsales.csint/?replicaSet=csmongo"/>
+
+		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
+             Query="//appSettings/add[@key='MongoSeoConnectionString']/@value"
+             Value="mongodb://csdevdb01.carsales.csint,csdevdb02.carsales.csint/?replicaSet=csmongo"/>
+
+		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
+             Query="//CdnSettings/@CdnDomain"
+             Value="http://csnstatic.stg.au/CsnCarsalesWebContent/"/>
+
+		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
+             Query="//ConfigProviderSettings/@BaseUrl"
+             Value="http://configs.carsales.svc.csuat.com.au"/>
+    </Target>
+
+    <Target Name="GenerateVersionFile">
+    	<WriteLinesToFile File="$(OutputDir)\version.txt" Overwrite="true" Lines="Version: $(Version)"/>
+        <WriteLinesToFile File="$(OutputDir)\version.txt" Overwrite="false" Lines="Configuration: $(Configuration)"/>
+        <Message Text="$(OutputDir)"/>
+    </Target>
+
+    <Target Name="AppendGitDetailsInVersionFile" Condition="$(GIT_COMMIT) != ''">
+        <WriteLinesToFile File="$(OutputDir)\version.txt" Overwrite="false" Lines="GIT_COMMIT: $(GIT_COMMIT)"/>
+        <WriteLinesToFile File="$(OutputDir)\version.txt" Overwrite="false" Lines="GIT_BRANCH: $(GIT_BRANCH)"/>
+    </Target>
+
+	<Target Name="GoOffline">
+		<Copy SourceFiles="$(OutputDir)//_app_offline.htm"
+			DestinationFiles="$(DeployDir)//app_offline.htm"/>
+	</Target>
+
+	<Target Name="GoOnline">
+		<Delete Files="$(DeployDir)//app_offline.htm" />
+	</Target>
+
+    <Target Name="Build" DependsOnTargets="Compile"/>
+    <Target Name="Test" DependsOnTargets="UnitTests"/>
+
+    <Target Name="Deploy" DependsOnTargets="Artifact;CopyOutputToDeploy;CreateNugetPackage;"/>
+	<Target Name="DeployFromArtifacts" DependsOnTargets="TransformConfig;GenerateVersionFile;AppendGitDetailsInVersionFile;CopyOutputToDeploy"/>
+</Project>
