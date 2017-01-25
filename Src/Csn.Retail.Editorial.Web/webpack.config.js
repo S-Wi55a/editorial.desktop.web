@@ -85,7 +85,7 @@ module.exports = {
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
-                exclude: /node_modules/,
+                exclude: [/(node_modules|bower_components|unitTest)/, /fonts/],
                 loaders: [
                     'file?hash=sha512&digest=hex&name=images/[name].[ext]',
                     'image-webpack'
