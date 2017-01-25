@@ -18,6 +18,9 @@
     @Html.AssetCss("common")
     @globalSiteData.Style.ToMvcHtmlString()
     @RenderSection("Styles", false)
+    @Html.AssetCss("fonts")
+
+
 }
 @section TopScripts{
     @RenderSection("TopScripts", false)
