@@ -13,3 +13,4 @@ Src/Csn.Retail.Editorial.Web/Csn.Retail.Editorial.Web.csproj.user
 **/*.gif
 **/*.png
 **/*.jpg
+!fonts/**/*.svg

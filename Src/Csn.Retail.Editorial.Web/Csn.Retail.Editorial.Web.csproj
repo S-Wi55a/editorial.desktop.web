@@ -326,7 +326,7 @@
     <Content Include="Features\Details\Assets\Js\editorsRating.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.js" />
-    <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.svg" />
+    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-dark.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
@@ -396,7 +396,7 @@
     <Content Include="Features\Shared\Assets\Css\Variables\Colors\_variables-colors.scss" />
     <Content Include="Features\Shared\Assets\Css\Tyopgraphy\_typography.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_variables-typography.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tyopgraphy\Fonts\csnicons\_csnicons.scss" />
+    <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons.scss" />
     <Content Include="Features\Shared\Assets\Css\common.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_page-container.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_footer.scss" />
@@ -437,9 +437,9 @@
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Pinterest.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Googleplus.cshtml" />
     <Content Include="Features\Details\Views\Partials\_SocialMediaLinks.cshtml" />
-    <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.eot" />
-    <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.ttf" />
-    <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.woff" />
+    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.eot" />
+    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.ttf" />
+    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.woff" />
     <Content Include="Features\Details\Views\Partials\Widgets\_ExpertRatings.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\_ProCon.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\_EditorsRating.cshtml" />

@@ -134,6 +134,12 @@ module.exports = {
     devtool: "cheap-module-source-map",
     devServer: {
         proxy: {
+            '/dist/dist': {
+                target: 'http://localhost:8080',
+                changeOrigin: true,
+                secure: false,
+                pathRewrite: { '^/dist/dist': 'dist' }
+            },
             '/': {
                 target: 'http://' + (argv.tenet || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
                 changeOrigin: true,

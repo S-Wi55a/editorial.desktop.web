@@ -7,7 +7,7 @@
     "build": "SET NODE_ENV=development && npm run webpack -- -d --color",
     "build-release": "SET NODE_ENV=production && npm run webpack -- -p --color --config webpack-production.config.js",
     "dev-watch": "SET NODE_ENV=development && npm run webpack -- -d --progress --colors --watch",
-    "dev-watch-with-dev-server": "SET NODE_ENV=development && npm run webpack-dev-server -- --colors --inline --hot --display-reasons -display-error-details --publicPath=http://localhost:8080/",
+    "dev-watch-with-dev-server": "SET NODE_ENV=development && npm run webpack-dev-server -- --colors --inline --hot ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm rebuild node-sass",
     "webpack": "node node_modules/webpack/bin/webpack.js ",
@@ -40,6 +40,7 @@
     "gulp": "^3.9.1",
     "gulp-awspublish": "^3.3.0",
     "image-webpack-loader": "^3.1.0",
+    "imports-loader": "^0.7.0",
     "jshint": "^2.9.2",
     "lodash": "^4.17.2",
     "node-sass": "^3.8.0",
@@ -62,6 +63,7 @@
   "dependencies": {
     "custom-event": "^1.0.1",
     "jquery": "^3.1.0",
+    "meter-polyfill": "^1.7.1",
     "picturefill": "^3.0.2",
     "vanilla-lazyload": "^3.0.0",
     "webfontloader": "^1.6.27"
