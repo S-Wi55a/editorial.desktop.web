@@ -42,12 +42,7 @@ var prodLoaders = [
                test: /\.(eot|svg|ttf|woff|woff2)$/,
                exclude: /(images|img)/,
                loader: 'file?name=fonts/[name]-[hash].[ext]'
-           },
-           {
-               test: require.resolve('jquery'),
-               loader: 'expose?jQuery!expose?$'
            }
-
 ]
 
 // Replace dev laoders with pro loaders

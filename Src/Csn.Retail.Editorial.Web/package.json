@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "SET NODE_ENV=development && npm run webpack -- -d --color",
-    "build-release": "SET NODE_ENV=production && webpack -p --color --config webpack-production.config.js",
+    "build-release": "SET NODE_ENV=production && npm run webpack -- -p --color --config webpack-production.config.js",
     "dev-watch": "SET NODE_ENV=development && npm run webpack -- -d --progress --colors --watch",
-    "dev-watch-with-dev-server": "SET NODE_ENV=development && npm run webpack-dev-server -- --colors --inline --hot ",
+    "dev-watch-with-dev-server": "SET NODE_ENV=development && npm run webpack-dev-server -- --colors --inline --hot --display-reasons -display-error-details ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm rebuild node-sass",
     "webpack": "node node_modules/webpack/bin/webpack.js ",

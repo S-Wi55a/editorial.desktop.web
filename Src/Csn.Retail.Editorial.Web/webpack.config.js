@@ -14,7 +14,7 @@ var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
     outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
-    publicPath: isProd ? (argv.publicPath || './') : 'http://localhost:8080/dist/'
+    publicPath: (argv.publicPath || './')
 }
 
 function getEntryFiles(){
@@ -31,7 +31,7 @@ function getEntryFiles(){
         entries[filename] = filePath;
     }
 
-    entries['common'] = ['jquery', './Features/Shared/Assets/common.js'];
+    entries['common'] = ['jquery', './Features/Shared/Assets/csn.common.js'];
     entries['fonts'] = ['./Features/Shared/Assets/Fonts/fonts.js'];
 
 
@@ -87,20 +87,15 @@ module.exports = {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
                 exclude: /node_modules/,
                 loaders: [
-                    'file?hash=sha512&digest=hex&name=images/[name]-[hash].[ext]',
+                    'file?hash=sha512&digest=hex&name=images/[name].[ext]',
                     'image-webpack'
                 ]
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
                 exclude: /(images|img)/,
-                loader: 'file?name=fonts/[name]-[hash].[ext]'
-            },
-            {
-                test: require.resolve('jquery'),
-                loader: 'expose?jQuery!expose?$'
+                loader: 'file?name=fonts/[name].[ext]'
             }
-
         ]
     },
     imageWebpackLoader: {
@@ -132,7 +127,7 @@ module.exports = {
         new ExtractTextPlugin(isProd ? '[name]-[chunkhash].css' : '[name].css'),
         new webpack.optimize.CommonsChunkPlugin({
             name: "common",
-            filename: isProd ? "common-[chunkhash].js" : "common.js",
+            filename: isProd ? "csn.common-[chunkhash].js" : "csn.common.js",
             minChunks: Infinity
         })
     ],

@@ -1,7 +1,20 @@
-﻿// Details Page css files
+﻿// Dynamically set the public path for ajax/code-split requests
+let scripts = document.getElementsByTagName("script");
+let scriptsLength = scripts.length;
+for (var i = 0; i < scriptsLength; i++) {
+    var str = scripts[i].getAttribute('src');
+    if (/csn\.common/.test(str)) {
+        __webpack_public_path__ = str.substring(0, str.lastIndexOf("/")) + '/';
+        break;
+    }
+}
 
+//------------------------------------------------------------------------------------------------------------------
+
+// Details Page css files
 require('./css/Details-page.scss');
 
+//------------------------------------------------------------------------------------------------------------------
 // APP
 
 // If Slideshow then must have Modal
@@ -86,6 +99,13 @@ if (document.querySelector('[data-slideshow]')) {
 }
 
 
-if (module.hot) {
-    module.hot.accept()
-}
+// Lazy load Editors Rating
+
+//if (document.querySelector('.editors-ratings')) {
+//    require.ensure(['./Js/editorsRating.js' ],
+//        function() {
+//            require('./Js/editorsRating.js');
+//        },
+//        "Editors-Ratings")
+
+//}

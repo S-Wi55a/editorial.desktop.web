@@ -323,7 +323,8 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
-    <Content Include="Features\Shared\Assets\common.js" />
+    <Content Include="Features\Details\Assets\Js\editorsRating.js" />
+    <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.js" />
     <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-dark.svg" />
@@ -348,7 +349,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
-    <Folder Include="Features\Details\Assets\Js\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Images\" />
     <Folder Include="Views\Details\" />
@@ -397,7 +397,7 @@
     <Content Include="Features\Shared\Assets\Css\Tyopgraphy\_typography.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_variables-typography.scss" />
     <Content Include="Features\Shared\Assets\Css\Tyopgraphy\Fonts\csnicons\_csnicons.scss" />
-    <Content Include="Features\Shared\Assets\Css\Common.scss" />
+    <Content Include="Features\Shared\Assets\Css\common.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_page-container.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_footer.scss" />
     <Content Include="Features\Details\Views\Partials\Layout\_Main.cshtml" />
@@ -442,6 +442,8 @@
     <Content Include="Features\Shared\Assets\Fonts\fonts\csnicons.woff" />
     <Content Include="Features\Details\Views\Partials\Widgets\_ExpertRatings.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\_ProCon.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\_EditorsRating.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\_editorsRatings.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
