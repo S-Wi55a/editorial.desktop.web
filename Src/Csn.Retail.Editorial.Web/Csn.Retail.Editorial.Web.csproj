@@ -323,10 +323,11 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
-    <Content Include="Features\Details\Assets\Js\editorsRating.js" />
+    <Content Include="Features\Details\Assets\Js\editorsRating-component.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-dark.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
@@ -351,6 +352,7 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Images\" />
+    <Folder Include="Features\Shared\Assets\Js\Polyfills\" />
     <Folder Include="Views\Details\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\_Page_Features_Details_Views_DefaultTemplate_cshtml\" />
@@ -444,6 +446,8 @@
     <Content Include="Features\Details\Views\Partials\Widgets\_ProCon.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\_EditorsRating.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\_editorsRatings.scss" />
+    <Content Include=".modernizrrc.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

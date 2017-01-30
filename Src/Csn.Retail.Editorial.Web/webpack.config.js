@@ -12,10 +12,11 @@ var argv = require('yargs').argv;
 var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
 var config = {
-    entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
+    entryPointMatch: './features/**/{*-page,*-component}.{js,ts}', // anything ends with -page.js
     outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
     publicPath: (argv.publicPath || './')
 }
+
 
 function getEntryFiles(){
     let entries = {};
@@ -69,6 +70,10 @@ module.exports = {
                 }
             },
             {
+                test: /\.modernizrrc.js$/,
+                loader: "modernizr"
+            },
+            {
                 test: [/\.css$/],
                 exclude: /node_modules/,
                 loaders: ['style-loader', 'css-loader?sourceMap', 'autoprefixer-loader']
@@ -111,7 +116,10 @@ module.exports = {
         }
     },
     resolve: {
-        extensions: ['','.js','.ts','.es6','.scss']
+        extensions: ['', '.js', '.ts', '.es6', '.scss'],
+        alias: {
+            modernizr$: path.resolve(__dirname, "./.modernizrrc.js")
+        }
     },
     plugins: [
         new AssetsPlugin({
