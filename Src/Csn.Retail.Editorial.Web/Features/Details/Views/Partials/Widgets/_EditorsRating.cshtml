@@ -1,0 +1,10 @@
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+
+
+<div class="editors-ratings">
+    @{ Html.RenderPartial("Partials/Widgets/_ExpertRatings", Model.ExpertRatings); }
+    @{ Html.RenderPartial("Partials/Widgets/_ProCon", Model.ProsCons); }
+</div>
+
+@*@Html.AssetJs("editorsRating-component", LoadType.Defer)*@

@@ -3,6 +3,7 @@
 
 @section Head {
     @{Html.RenderPartial("Partials/Head/_SocialMetaData", Model.SocialMetaData); }
+    <meta name="csn:networkid" content="@Model.NetworkId">
 }
 
 @section Styles {

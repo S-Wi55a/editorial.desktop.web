@@ -21,7 +21,22 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
             cfg.CreateMap<ArticleDetailsDto, ArticleViewModel>()
                 .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)));
 
-            cfg.CreateMap<Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();
+            // Social Meta Data
+            cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();
+
+            // ProCon
+            cfg.CreateMap<Shared.Proxies.EditorialApi.ProCon, Models.ProCon>();
+            cfg.CreateMap<Shared.Proxies.EditorialApi.ProCon.Con, Models.ProCon.Con>();
+            cfg.CreateMap<Shared.Proxies.EditorialApi.ProCon.Pro, Models.ProCon.Pro>();
+
+            // Expert Ratings
+            cfg.CreateMap<Shared.Proxies.EditorialApi.EditorialExpertRating, Models.EditorialExpertRating>();
+            cfg.CreateMap<Shared.Proxies.EditorialApi.EditorialExpertRating.ExpertItem, Models.EditorialExpertRating.ExpertItem>();
+
+
+
+
+
         }
     }
 }
