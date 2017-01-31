@@ -132,12 +132,13 @@ class Modal {
     {
         var $this = this;
         // go through each modal trigger element and show the modal on click
-        container.querySelectorAll('[data-modal-trigger]').forEach((item) => {
+        var modalTrigger = container.querySelectorAll('[data-modal-trigger]');
+        for (var item of modalTrigger) {
             item.addEventListener('click', function (e) {
                 e.preventDefault();
                 $this.showModal(this);
             });
-        })
+        }
     }
 
     getQueryVariable(url, variable)

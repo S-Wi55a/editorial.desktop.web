@@ -12,7 +12,7 @@ var argv = require('yargs').argv;
 var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
 var config = {
-    entryPointMatch: './features/**/{*-page,*-component}.{js,ts}', // anything ends with -page.js
+    entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
     outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
     publicPath: (argv.publicPath || './')
 }
@@ -136,7 +136,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: "common",
             filename: isProd ? "csn.common-[chunkhash].js" : "csn.common.js",
-            minChunks: Infinity
+            minChunks: 2
         })
     ],
     devtool: "cheap-module-source-map",

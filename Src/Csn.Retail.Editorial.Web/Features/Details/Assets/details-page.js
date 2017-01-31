@@ -1,4 +1,7 @@
-﻿// Dynamically set the public path for ajax/code-split requests
+﻿import "core-js/shim";
+
+
+// Dynamically set the public path for ajax/code-split requests
 let scripts = document.getElementsByTagName("script");
 let scriptsLength = scripts.length;
 let patt = /csn\.common/;
@@ -47,7 +50,7 @@ if (document.querySelector('[data-slideshow]')) {
         if (document.querySelector('[data-ajax-modal]')) {
 
             //init Modal JS
-            var Modal = require('../../Shared/Assets/Js/Modules/Modal/modal.js');
+            require('../../Shared/Assets/Js/Modules/Modal/modal.js');
 
             var modalSlideshow = null;
 
@@ -102,11 +105,30 @@ if (document.querySelector('[data-slideshow]')) {
 
 // Lazy load Editors Rating
 
-//if (document.querySelector('.editors-ratings')) {
-//    require.ensure(['./Js/editorsRating.js' ],
-//        function() {
-//            require('./Js/editorsRating.js');
-//        },
-//        "Editors-Ratings")
+function lazyLoadEditorRatings() {
+    //TODO: Change the URL to proper ajax request
+    let editorRatingsURL = "procon/" + document.querySelector('[name="csn:networkid"]').getAttribute('content')
+    let request = new XMLHttpRequest();
+    request.open('GET', editorRatingsURL, true);
 
-//}
+    request.onreadystatechange = function() {
+        if (this.readyState === 4) {
+            if (this.status >= 200 && this.status < 400) {
+                // Success!
+                let resp = this.responseText;
+                document.querySelector(".aside").insertAdjacentHTML('beforeend', resp);
+                require.ensure(['./Js/editorsRating-component.js'], function() {
+                    require('./Js/editorsRating-component.js');
+                }, 'editors-ratings')
+            } else {
+                // Error :(
+            }
+        }
+    };
+
+    request.send();
+    request = null;
+}
+lazyLoadEditorRatings();
+
+

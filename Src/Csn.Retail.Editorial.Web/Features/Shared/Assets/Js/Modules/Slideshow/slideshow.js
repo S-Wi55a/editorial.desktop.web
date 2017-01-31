@@ -4,7 +4,7 @@
 * @param {object} config - the initialisation config
 */
 
-import LazyLoad from 'vanilla-lazyload'
+import LazyLoad from 'vanilla-lazyload';
 import dispatchEvent from './utils/dispatch-event.js';
 
 module.exports = function (config = {}) {
@@ -93,18 +93,20 @@ module.exports = function (config = {}) {
             isOdd = true
         }
 
-        front.forEach(function (element) {
+        for ( var element of front ) {
             const cloned = element.cloneNode(true);
 
             slidesContainer.appendChild(cloned);
-        });
+        };
 
-        back.reverse()
-            .forEach(function (element) {
-                const cloned = element.cloneNode(true);
+        let backReversed = back.reverse()
+
+
+        for ( var element of backReversed ) {
+            const cloned = element.cloneNode(true);
 
                 slidesContainer.insertBefore(cloned, slidesContainer.firstChild);
-            });
+            }
 
     }
 
@@ -119,9 +121,9 @@ module.exports = function (config = {}) {
 
         // Show Nav (Prev/Next)
         if (!settings.showNav && sliderNav.length || slidesTotal <= pageBy ) {
-            sliderNav.forEach((button) => {
+            for (var button of sliderNav) {
                 button.style.display = "none"
-            })
+            }
         }
 
         //Setup infinity
@@ -165,41 +167,40 @@ module.exports = function (config = {}) {
             slidesContainer.style.width = sliderFrame.offsetWidth + "px" // To ensure slides are translating with whole numbers
         }
 
-
-
-        sliderNav.forEach(item => {
+        for (var item of sliderNav) {
             item.addEventListener('click', (event) => {
                 _changeSlide(event.currentTarget.getAttribute('data-direction'))
                 isAutoSlide = false;
                 _clearAutoSlide();
             })
-        })
+        }
+
 
         if (sliderPageButtons.length) {
-            sliderPageButtons.forEach(item => {
+            for (var item of sliderPageButtons) {
                 item.addEventListener('click', function (event) {
                     isAutoSlide = false;
                     _clearAutoSlide();
                     let index = parseInt(event.target.getAttribute('data-slide-id'));
                     _switchSlides(index);
                 });
-            })
+            }
         }
 
         scope.addEventListener('mouseenter', _clearAutoSlide)
         scope.addEventListener('mouseleave', _autoSlide)
 
-        slides.forEach(item => {
+        for (var item of slides) {
             item.style.width = (MAXFRAMEWIDTH/pageBy) + "%"
-        })
+        }
 
         // Resize
         window.addEventListener('resize', () => {
             slidesContainer.style.width = "auto" // Hack to get correct image size
-            slidesContainer.style.width = sliderFrame.offsetWidth + "px"
-            slides.forEach(item => {
+            slidesContainer.style.width = sliderFrame.offsetWidth + "px";
+            for (var item of slides) {
                 item.style.height = "auto"
-            })
+            }
 
 
             if (settings.infinity) {
@@ -367,9 +368,10 @@ module.exports = function (config = {}) {
 
     function _setActivePage(index) {
         if (sliderPageButtons.length) {
-            sliderPageButtons.forEach(item => {
+            slides
+            for( var item of sliderPageButtons) {
                 item.removeAttribute('data-is-active')
-            })
+            }
             sliderPageButtons[index].setAttribute('data-is-active', 'true')
         }
     }
