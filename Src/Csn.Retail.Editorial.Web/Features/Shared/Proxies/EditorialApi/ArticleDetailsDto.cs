@@ -23,6 +23,30 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public EditorialExpertRating ExpertRatings { get; set; }
         public ProCon ProsCons { get; set; }
         public string DateAvailable { get; set; }
+        public List<MediaMotiveData> MediaMotiveData { get; set; }
+        public Disqus DisqusData { get; set; }
+    }
+
+    public class Disqus
+    {
+        public string DisqusForumId { get; set; }
+        public string DisqusIdentifier { get; set; }
+        public string DisqusTitle { get; set; }
+    }
+
+    public class MediaMotiveData
+    {
+        public string TileId { get; set; }
+        public string TileDescription { get; set; }
+        public string DataKruxRequired { get; set; }
+        public TileUrl TileUrls { get; set; }
+
+        public class TileUrl
+        {
+            public string JServerUrl { get; set; }
+            public string AdClickUrl { get; set; }
+            public string IServerUrl { get; set; }
+        }
     }
 
     public class ProCon
