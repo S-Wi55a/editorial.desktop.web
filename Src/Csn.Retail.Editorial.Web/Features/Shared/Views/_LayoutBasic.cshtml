@@ -38,6 +38,7 @@
 
 @section BottomScripts{
     @Html.AssetJs("common")
+    @Html.AssetJs("vendor")
     @RenderSection("BottomScripts", false)
     @globalSiteData.Script.ToMvcHtmlString()
 }

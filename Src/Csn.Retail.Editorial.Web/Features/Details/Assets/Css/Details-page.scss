@@ -40,8 +40,8 @@
 // Module - Social Share
 @import "../../../shared/assets/css/modules/_share-social.scss";
 
-// Modules - Slideshow
+// // Modules - Slideshow
 @import "../../../shared/assets/js/modules/slideshow/slideshow.scss";
 
 // Module - Modal
-@import "../../../shared/assets/js/modules/modal/modal.scss";
+@import "../../../shared/assets/js/modules/modal/modal.scss"; //TODO: why do both have spinners should use one option

@@ -1,4 +1,9 @@
-﻿import "core-js/shim";
+﻿// Details Page css files
+require('./css/details-page.scss');
+
+//------------------------------------------------------------------------------------------------------------------
+
+import "core-js/shim";
 
 
 // Dynamically set the public path for ajax/code-split requests
@@ -15,10 +20,7 @@ for (var i = 0; i < scriptsLength; i++) {
 
 //------------------------------------------------------------------------------------------------------------------
 
-// Details Page css files
-require('./css/Details-page.scss');
 
-//------------------------------------------------------------------------------------------------------------------
 // APP
 
 // If Slideshow then must have Modal
@@ -37,7 +39,8 @@ if (document.querySelector('[data-slideshow]')) {
     //Lazy laod the slideshow JS and modal JS
     require.ensure(['../../Shared/Assets/Js/Modules/Slideshow/slideshow.js', '../../Shared/Assets/Js/Modules/Modal/modal.js' ], function() {
 
-        var Slideshow = require('../../Shared/Assets/Js/Modules/Slideshow/slideshow.js');
+
+        var Slideshow = require('../../Shared/Assets/Js/Modules/Slideshow/slideshow.js').default;
 
         //Setup slideshow
         Slideshow({

@@ -35,6 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         }
 
         // Temp to mimic ajax request for Expert Ratings
+        // In Prod need to null check if there is Expert ratings
         [Route("editorial/details/procon/{pageName:regex(^.*-\\d+/?$)}")]
         // GET: Details
         public async Task<ActionResult> ProCon(ArticleIdentifier articleIdentifier)

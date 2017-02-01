@@ -7,7 +7,7 @@
 import LazyLoad from 'vanilla-lazyload';
 import dispatchEvent from './utils/dispatch-event.js';
 
-module.exports = function (config = {}) {
+export default function (config = {}) {
 
     const slice = Array.prototype.slice;
 

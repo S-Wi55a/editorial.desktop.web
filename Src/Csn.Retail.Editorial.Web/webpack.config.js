@@ -32,13 +32,18 @@ function getEntryFiles(){
         entries[filename] = filePath;
     }
 
-    entries['common'] = ['jquery', './Features/Shared/Assets/csn.common.js'];
+    entries['vendor'] = ['./Features/Shared/Assets/Js/vendor.js'];
+    entries['common'] = ['./Features/Shared/Assets/csn.common.js'];
     entries['fonts'] = ['./Features/Shared/Assets/Fonts/fonts.js'];
-
 
     return entries;
 }
 
+const prodLoaderCSSExtract = ExtractTextPlugin.extract({
+                                fallbackLoader: 'style-loader',
+                                loader: 'css-loader!clean-css-loader!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
+                            })
+const devLoaderCSSExtract =  ['style-loader', 'css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', 'sass-loader?sourceMap'];
 
 module.exports = {
     entry: getEntryFiles(),
@@ -48,77 +53,73 @@ module.exports = {
         filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
     },
     module: {
-        preLoaders:[
+        rules: [
             {
                 test: [/\.js$/,/\.es6$/],
-                exclude: /node_modules/,
+                exclude: /(node_modules|bower_components|unitTest)/,
+                enforce: 'pre',
                 loader: 'eslint-loader'
-            }
-        ],
-        loaders: [
-            {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                loaders: ['ts-loader']
             },
             {
                 test: [/\.js$/,/\.es6$/],
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
-                }
+                exclude: /(node_modules|bower_components|unitTest)/,
+                loader: 'babel-loader'
             },
             {
-                test: /\.modernizrrc.js$/,
-                loader: "modernizr"
+               test: /\.modernizrrc.js$/,
+               exclude: /(node_modules|bower_components|unitTest)/,
+               loader: "modernizr-loader"
             },
             {
-                test: [/\.css$/],
+                test: /\.css$/,
                 exclude: /node_modules/,
-                loaders: ['style-loader', 'css-loader?sourceMap', 'autoprefixer-loader']
+                use: isProd ? prodLoaderCSSExtract : devLoaderCSSExtract
+
             },
             {
                 test: /\.scss$/,
                 exclude: [/(node_modules|bower_components|unitTest)/, /fonts\.scss/],
-                loaders: ['style-loader', 'css-loader?sourceMap', 'autoprefixer-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
+                use: isProd ? prodLoaderCSSExtract : devLoaderCSSExtract
             },
             {
                 test: /fonts\.scss$/,
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('css-loader?sourceMap!autoprefixer-loader!resolve-url-loader!sass-loader?sourceMap')
+                use: prodLoaderCSSExtract
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
                 exclude: [/(node_modules|bower_components|unitTest)/, /fonts/],
-                loaders: [
-                    'file?hash=sha512&digest=hex&name=images/[name].[ext]',
-                    'image-webpack'
+                use: [
+                    'file-loader?name=images/[name].[ext]',
+                    {
+                        loader: 'image-webpack-loader',
+                        query: {
+                            progressive: true,
+                            optipng: {
+                                optimizationLevel: 7,
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            pngquant: {
+                                quality: '65-90',
+                                speed: 4
+                            }
+                        }
+                    }
                 ]
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
                 exclude: /(images|img)/,
-                loader: 'file?name=fonts/[name].[ext]'
+                use: 'file-loader?name=fonts/[name].[ext]'
             }
         ]
     },
-    imageWebpackLoader: {
-        pngquant:{
-            quality: "65-90",
-            speed: 4
-        },
-        svgo:{
-            plugins: [
-                { removeViewBox: false },
-                { removeEmptyAttrs: false }
-            ]
-        }
-    },
     resolve: {
-        extensions: ['', '.js', '.ts', '.es6', '.scss'],
+        extensions: ['.js', '.scss'],
         alias: {
-            modernizr$: path.resolve(__dirname, "./.modernizrrc.js")
+           modernizr$: path.resolve(__dirname, "./.modernizrrc.js")
         }
     },
     plugins: [
@@ -132,12 +133,19 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        new ExtractTextPlugin(isProd ? '[name]-[chunkhash].css' : '[name].css'),
+        new ExtractTextPlugin({
+            filename: isProd ? '[name]-[contenthash].css' : '[name].css',
+            disable: false
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: "common",
             filename: isProd ? "csn.common-[chunkhash].js" : "csn.common.js",
             minChunks: 2
-        })
+        }),
+        // new webpack.LoaderOptionsPlugin({
+        //     minimize: true,
+        //     debug: false
+        // })
     ],
     devtool: "cheap-module-source-map",
     devServer: {
