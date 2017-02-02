@@ -146,6 +146,8 @@ module.exports = {
         //     minimize: true,
         //     debug: false
         // })
+        new webpack.NamedModulesPlugin(),
+
     ],
     devtool: "cheap-module-source-map",
     devServer: {
