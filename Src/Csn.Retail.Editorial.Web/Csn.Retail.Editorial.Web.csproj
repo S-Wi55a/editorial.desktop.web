@@ -378,9 +378,6 @@
     <Content Include="Features\_ViewStart.cshtml" />
     <Content Include="Features\Web.config" />
     <Content Include="package.json" />
-    <Content Include="tsconfig.json" />
-    <Content Include="tslint.json" />
-    <Content Include="typings.json" />
     <Content Include="Features\Shared\Assets\Css\Base\_reset.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\_variables.scss" />
     <Content Include="Features\Shared\Assets\Css\Base\_base.scss" />

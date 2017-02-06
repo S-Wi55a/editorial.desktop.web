@@ -38,12 +38,25 @@ function getEntryFiles(){
 
     return entries;
 }
-
 const prodLoaderCSSExtract = ExtractTextPlugin.extract({
                                 fallback: 'style-loader',
-                                use: ['css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
+                                use: ['css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', {
+                                        loader: 'sass-loader',
+                                        options: {
+                                            includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
+                                            sourceMap: true
+                                        }
+                                    }
+                                ]
                             })
-const devLoaderCSSExtract =  ['style-loader', 'css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', 'sass-loader?sourceMap'];
+const devLoaderCSSExtract = ['style-loader', 'css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', {
+    loader: 'sass-loader',
+    options: {
+        includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
+        sourceMap: true
+    }
+}];
+
 
 module.exports = {
     entry: getEntryFiles(),
