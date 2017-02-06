@@ -327,6 +327,7 @@
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
+    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-dark.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-light.svg" />
@@ -450,6 +451,7 @@
     <Content Include=".modernizrrc.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\_expertRatings.scss" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="bower.json" />
     <Content Include=".babelrc" />
     <Content Include=".eslintrc.json" />
