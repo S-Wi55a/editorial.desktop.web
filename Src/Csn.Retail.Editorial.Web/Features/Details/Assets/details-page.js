@@ -36,11 +36,12 @@ if (document.querySelector('[data-slideshow]')) {
     }
 
     //Lazy laod the slideshow JS and modal JS
-    require.ensure(['../../Shared/Assets/Js/Modules/Slideshow/slideshow.js', '../../Shared/Assets/Js/Modules/Modal/modal.js', '../../Shared/Assets/Js/Modules/MediaMotive/mediamotive.js'], function() {
+    require.ensure(["../../Shared/Assets/Js/Modules/Slideshow/slideshow.js", "../../Shared/Assets/Js/Modules/Modal/modal.js",
+        "../../Shared/Assets/Js/Modules/MediaMotive/krux-sas-integrator.js", "../../Shared/Assets/Js/Modules/MediaMotive/mediamotive.js"], function() {
 
-        require('../../Shared/Assets/Js/Modules/MediaMotive/mediamotive.js');
+        require("../../Shared/Assets/Js/Modules/MediaMotive/mediamotive.js");
 
-        var Slideshow = require('../../Shared/Assets/Js/Modules/Slideshow/slideshow.js').default;
+        var Slideshow = require("../../Shared/Assets/Js/Modules/Slideshow/slideshow.js").default;
 
         //Setup slideshow
         Slideshow({
@@ -50,10 +51,10 @@ if (document.querySelector('[data-slideshow]')) {
             infinity: true
         });
 
-        if (document.querySelector('[data-ajax-modal]')) {
+        if (document.querySelector("[data-ajax-modal]")) {
 
             //init Modal JS
-            require('../../Shared/Assets/Js/Modules/Modal/modal.js');
+            require("../../Shared/Assets/Js/Modules/Modal/modal.js");
 
             var modalSlideshow = null;
 
@@ -102,7 +103,7 @@ if (document.querySelector('[data-slideshow]')) {
             });
         }
 
-    }, 'details-page--slideshow-and-modal')
+    }, "details-page--slideshow-and-modal")
 }
 
 
