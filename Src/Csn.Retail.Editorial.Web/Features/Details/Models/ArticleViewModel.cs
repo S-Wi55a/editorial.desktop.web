@@ -78,5 +78,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         }
     }
 
-
+    public class Disqus
+    {
+        public string DisqusForumId { get; set; }
+        public string DisqusIdentifier { get; set; }
+        public string DisqusArticleUrl { get; set; }
+        public string DisqusTitle { get; set; }
+    }
 }

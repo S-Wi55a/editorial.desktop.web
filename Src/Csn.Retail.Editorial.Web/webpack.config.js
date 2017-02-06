@@ -40,8 +40,8 @@ function getEntryFiles(){
 }
 
 const prodLoaderCSSExtract = ExtractTextPlugin.extract({
-                                fallbackLoader: 'style-loader',
-                                loader: 'css-loader!clean-css-loader!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
+                                fallback: 'style-loader',
+                                use: ['css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
                             })
 const devLoaderCSSExtract =  ['style-loader', 'css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', 'sass-loader?sourceMap'];
 
@@ -72,7 +72,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                exclude: /node_modules/,
+                exclude: /(node_modules|bower_components|unitTest)/,
                 use: isProd ? prodLoaderCSSExtract : devLoaderCSSExtract
 
             },
@@ -83,7 +83,7 @@ module.exports = {
             },
             {
                 test: /fonts\.scss$/,
-                exclude: /node_modules/,
+                exclude: /(node_modules|bower_components|unitTest)/,
                 use: prodLoaderCSSExtract
             },
             {
@@ -137,7 +137,6 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: isProd ? '[name]-[contenthash].css' : '[name].css',
-            disable: false
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: "common",

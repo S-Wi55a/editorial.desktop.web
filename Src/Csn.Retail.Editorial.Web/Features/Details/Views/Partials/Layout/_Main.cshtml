@@ -13,16 +13,17 @@
         </div>
     </div>
 
-        <header>
-            <h1 class="article__heading">@Model.Headline</h1>
-            @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
-            <h2 class="article__subheading">@Model.SubHeading</h2>
-        </header>
-        <div class="article__summary">@Model.Summary</div>
-        @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
-        @{ Html.RenderPartial("Partials/_Contributors", Model); }
+    <header>
+        <h1 class="article__heading">@Model.Headline</h1>
+        @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
+        <h2 class="article__subheading">@Model.SubHeading</h2>
+    </header>
+    <div class="article__summary">@Model.Summary</div>
+    @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
+    @{ Html.RenderPartial("Partials/_Contributors", Model); }
+    @{ Html.RenderPartial("Partials/_Disqus", Model.DisqusData); }
 
-    </div>
+</div>
 
 
 

@@ -42,7 +42,7 @@
     "eslint-loader": "^1.5.0",
     "eslint-plugin-react": "^6.1.2",
     "expose-loader": "^0.7.1",
-    "extract-text-webpack-plugin": "^2.0.0-rc.1",
+    "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "file-loader": "^0.10.0",
     "glob": "^7.0.5",
     "gulp": "^3.9.1",

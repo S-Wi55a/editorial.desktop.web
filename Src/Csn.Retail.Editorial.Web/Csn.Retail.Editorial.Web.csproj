@@ -454,6 +454,8 @@
     <Content Include=".babelrc" />
     <Content Include=".eslintrc.json" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\_procon.scss" />
+    <Content Include="Features\Details\Views\Partials\_RelatedArticles.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
