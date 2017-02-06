@@ -1,0 +1,15 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.MediaMotiveData
+
+<script class="kxct" data-id="@Model.KruxId" data-timing="async" data-version="1.9" type="text/javascript">
+    window.Krux || ((Krux = function() { Krux.q.push(arguments) }).q = []);
+    (function() {
+        var k = document.createElement('script');
+        k.type = 'text/javascript';
+        k.async = true;
+        var m, src = (m = location.href.match(/\bkxsrc=([^&]+)/)) && decodeURIComponent(m[1]);
+        k.src = /^https?:\/\/([^\/]+\.)?krxd\.net(:\d{1,5})?\//i.test(src) ? src : src === "disable" ? "" :
+        (location.protocol === "https:" ? "https:" : "http:") + "//cdn.krxd.net/controltag?confid=@Model.KruxId";
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(k, s);
+    }());
+</script>

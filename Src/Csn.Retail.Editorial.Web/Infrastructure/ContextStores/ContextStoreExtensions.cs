@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
+﻿namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
 {
     public static class ContextStoreExtensions
     {
@@ -10,5 +8,6 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
 
             return result == null ? default(T) : (T)result;
         }
+
     }
 }
