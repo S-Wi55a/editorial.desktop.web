@@ -451,7 +451,7 @@
     <Content Include=".modernizrrc.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\_expertRatings.scss" />
-    <Content Include="Features\Shared\Views\Partials\_Krux.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="bower.json" />
     <Content Include=".babelrc" />
     <Content Include=".eslintrc.json" />
