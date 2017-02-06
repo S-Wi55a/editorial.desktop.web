@@ -78,5 +78,4 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         }
     }
 
-
 }

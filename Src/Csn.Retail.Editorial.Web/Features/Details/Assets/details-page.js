@@ -37,8 +37,9 @@ if (document.querySelector('[data-slideshow]')) {
     }
 
     //Lazy laod the slideshow JS and modal JS
-    require.ensure(['../../Shared/Assets/Js/Modules/Slideshow/slideshow.js', '../../Shared/Assets/Js/Modules/Modal/modal.js' ], function() {
+    require.ensure(['../../Shared/Assets/Js/Modules/Slideshow/slideshow.js', '../../Shared/Assets/Js/Modules/Modal/modal.js', '../../Shared/Assets/Js/Modules/MediaMotive/mediamotive.js'], function() {
 
+        require('../../Shared/Assets/Js/Modules/MediaMotive/mediamotive.js');
 
         var Slideshow = require('../../Shared/Assets/Js/Modules/Slideshow/slideshow.js').default;
 
