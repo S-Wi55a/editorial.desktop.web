@@ -5,9 +5,7 @@ var glob = require('glob'),
     webpack = require('webpack'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    AssetsPlugin = require('assets-webpack-plugin'),
-    DashboardPlugin = require('webpack-dashboard/plugin');
-
+    AssetsPlugin = require('assets-webpack-plugin');
 
 var argv = require('yargs').argv;
 
@@ -150,9 +148,7 @@ module.exports = {
         //     minimize: true,
         //     debug: false
         // })
-        new webpack.NamedModulesPlugin(),
-        new DashboardPlugin()
-
+        new webpack.NamedModulesPlugin()
     ],
     devtool: "cheap-module-source-map",
     devServer: {
