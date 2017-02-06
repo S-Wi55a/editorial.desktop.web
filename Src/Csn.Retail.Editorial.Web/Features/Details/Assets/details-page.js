@@ -5,7 +5,6 @@ require('./css/details-page.scss');
 
 import "core-js/shim";
 
-
 // Dynamically set the public path for ajax/code-split requests
 let scripts = document.getElementsByTagName("script");
 let scriptsLength = scripts.length;
@@ -107,6 +106,7 @@ if (document.querySelector('[data-slideshow]')) {
 }
 
 
+
 // Lazy load Editors Rating
 
 function lazyLoadEditorRatings() {
@@ -121,6 +121,7 @@ function lazyLoadEditorRatings() {
                 // Success!
                 let resp = this.responseText;
                 document.querySelector(".aside").insertAdjacentHTML('beforeend', resp);
+
                 require.ensure(['./Js/editorsRating-component.js'], function() {
                     require('./Js/editorsRating-component.js');
                 }, 'editors-ratings')
@@ -133,6 +134,9 @@ function lazyLoadEditorRatings() {
     request.send();
     request = null;
 }
+
 lazyLoadEditorRatings();
+
+
 
 

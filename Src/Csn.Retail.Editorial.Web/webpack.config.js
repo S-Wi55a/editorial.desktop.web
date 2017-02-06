@@ -5,7 +5,9 @@ var glob = require('glob'),
     webpack = require('webpack'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    AssetsPlugin = require('assets-webpack-plugin');
+    AssetsPlugin = require('assets-webpack-plugin'),
+    DashboardPlugin = require('webpack-dashboard/plugin');
+
 
 var argv = require('yargs').argv;
 
@@ -120,7 +122,9 @@ module.exports = {
         extensions: ['.js', '.scss'],
         alias: {
            modernizr$: path.resolve(__dirname, "./.modernizrrc.js")
-        }
+        },
+        descriptionFiles: ["package.json", "bower.json"],
+        modules: [path.resolve(__dirname, "./"), "node_modules", "bower_components"]
     },
     plugins: [
         new AssetsPlugin({
@@ -147,6 +151,7 @@ module.exports = {
         //     debug: false
         // })
         new webpack.NamedModulesPlugin(),
+        new DashboardPlugin()
 
     ],
     devtool: "cheap-module-source-map",

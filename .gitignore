@@ -3,6 +3,7 @@ bin
 obj
 dist
 node_modules
+bower_components
 webpack.assets.json
 Src/Csn.Retail.Editorial.Web/logs*
 Src/WebEssentials2015-Settings.json
