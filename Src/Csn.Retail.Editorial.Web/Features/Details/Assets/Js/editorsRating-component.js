@@ -6,15 +6,6 @@ import Modernizr from 'modernizr';
 import Circles from 'circles';
 import TinyAnimate from 'TinyAnimate'
 
-if (!Modernizr.meter) {
-    // Meter polyfill
-    require.ensure(['../../../shared/assets/js/modules/meter/meter.js'],
-        function() {
-            require('../../../shared/assets/js/modules/meter/meter.js');
-        }, 'meter-polyfill');
-}
-
-
 
 var myCircle = Circles.create({
     id:                  'overall-rating-graph',
@@ -34,28 +25,46 @@ var myCircle = Circles.create({
 });
 
 
-let AnimateMeters = function(listOfMeter, timeBetween = 400) {
+let AnimateMeters = function(listOfMeter, timeBetween = 400, duration) {
 
     const LIST = listOfMeter;
     const LENGTH = LIST.length;
     const DELAY = timeBetween;
+    const DURRATION = duration;
+
     const w = window;
 
     for (let i = 0; i < LENGTH; i++) {
-        w.setTimeout(AnimateMeter.bind(undefined,i,LIST), DELAY*i)
+        w.setTimeout(AnimateMeter.bind(undefined, i, LIST, DURRATION), DELAY * i)
     }
 
-}
+
+};
 
 let AnimateMeter = function(index, list, duration = 1000) {
 
     const VALUE = parseInt(list[index].getAttribute('data-value'));
 
-    TinyAnimate.animate(0, VALUE, duration, function(x) {
-        list[index].setAttribute('value', x);
-    }, 'easeOutCubic');
+    TinyAnimate.animate(0,
+        VALUE,
+        duration,
+        function(x) {
+            list[index].setAttribute('value', x);
+        },
+        'easeOutCubic');
+};
+
+
+if (!Modernizr.meter) {
+    // Meter polyfill
+    require.ensure(['../../../shared/assets/js/modules/meter/meter.js'],
+        function() {
+            for (var meter of document.querySelectorAll('.expert-ratings__meter')) {
+                meter.setAttribute('value', meter.getAttribute('data-value'));
+            }
+            require('../../../shared/assets/js/modules/meter/meter.js');
+        },
+        'meter-polyfill');
+} else {
+    AnimateMeters(document.querySelectorAll('.expert-ratings__meter'), 200);
 }
-
-AnimateMeters(document.querySelectorAll('.expert-ratings__meter'), 200);
-
-

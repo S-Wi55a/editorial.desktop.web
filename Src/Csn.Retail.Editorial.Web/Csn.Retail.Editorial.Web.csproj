@@ -333,7 +333,9 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\utils\dispatch-event.js" />
+    <Content Include="Features\Shared\Assets\Js\vendor.js" />
     <Content Include="Global.asax" />
+    <Content Include="postcss.config.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -344,7 +346,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="gulpfile.js" />
-    <Content Include="webpack-production.config.js" />
     <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
@@ -448,6 +449,11 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\_editorsRatings.scss" />
     <Content Include=".modernizrrc.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\_expertRatings.scss" />
+    <Content Include="bower.json" />
+    <Content Include=".babelrc" />
+    <Content Include=".eslintrc.json" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\_procon.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

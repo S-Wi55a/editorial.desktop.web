@@ -1,4 +1,5 @@
-﻿// hack for backwards compatibility
+﻿require("./meter.scss")
+// hack for backwards compatibility
 document.createElement('meter');
 // create polyfill
 function makeMeter(meterElement) {
@@ -62,6 +63,8 @@ function makeMeter(meterElement) {
         }
         return null;
     }
+
+    console.log(this)
 
     this.min = parseFloat(attr('min', 0)); // default as per HTML5 spec
     this.max = parseFloat(attr('max', 1)); // default as per HTML5 spec
@@ -141,11 +144,12 @@ function makeMeter(meterElement) {
         meterElement.appendChild(indicator);
     }
 
+
 }
-window.onload = function () {
+(function () {
     var meters = document.getElementsByTagName('meter');
     var i = meters.length;
     while (i--) {
         makeMeter(meters[i]);
     }
-}
+})()
