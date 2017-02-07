@@ -4,7 +4,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using SocialMetaData = Csn.Retail.Editorial.Web.Features.Details.Models.SocialMetaData;
-//using MediaMotiveData = Csn.Retail.Editorial.Web.Features.Details.Models.MediaMotiveData;
+using MediaMotiveData = Csn.Retail.Editorial.Web.Features.Details.Models.MediaMotiveData;
 
 namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 {
@@ -26,7 +26,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();
 
             // MediaMotive Data
-            //cfg.CreateMap<Shared.Proxies.EditorialApi.MediaMotiveData, MediaMotiveData>();
+            cfg.CreateMap<Shared.Proxies.EditorialApi.MediaMotiveData, MediaMotiveData>();
+            cfg.CreateMap<Shared.Proxies.EditorialApi.MediaMotiveData.MMItem, MediaMotiveData.MMItem>();
+            cfg.CreateMap<Shared.Proxies.EditorialApi.MediaMotiveData.MMItem.TileUrl, MediaMotiveData.MMItem.TileUrl>();
 
             // ProCon
             cfg.CreateMap<Shared.Proxies.EditorialApi.ProCon, Models.ProCon>();
