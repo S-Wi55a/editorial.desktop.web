@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public ProCon ProsCons { get; set; }
         public string DateAvailable { get; set; }
         public MediaMotiveData MediaMotiveData { get; set; }
-        public Disqus DisqusData { get; set; }
+        public DisqusData DisqusData { get; set; }
         public RelatedArticleData RelatedArticleData { get; set; }
     }
 
@@ -34,12 +34,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Query { get; set; }
     }
 
-    public class Disqus
+    public class DisqusData
     {
-        public string DisqusForumId { get; set; }
-        public string DisqusIdentifier { get; set; }
-        public string DisqusArticleUrl { get; set; }
-        public string DisqusTitle { get; set; }
+        public string Identifier { get; set; }
+        public string ArticleUrl { get; set; }
+        public string Title { get; set; }
     }
 
     public class MediaMotiveData

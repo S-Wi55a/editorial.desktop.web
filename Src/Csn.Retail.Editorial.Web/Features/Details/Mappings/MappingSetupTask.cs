@@ -40,7 +40,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
             cfg.CreateMap<Shared.Proxies.EditorialApi.EditorialExpertRating.ExpertItem, Models.EditorialExpertRating.ExpertItem>();
 
             // Disqus
-            cfg.CreateMap<Shared.Proxies.EditorialApi.Disqus, Models.Disqus>();
+            cfg.CreateMap<Shared.Proxies.EditorialApi.DisqusData, Models.DisqusData>();
 
         }
     }

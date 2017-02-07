@@ -1,4 +1,4 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.Disqus
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.DisqusData
 
 <div id="disqus_thread"></div>
 <script>
@@ -8,9 +8,9 @@
      */
 
     var disqus_config = function () {
-        this.page.url = '@Model.DisqusArticleUrl';
-        this.page.identifier = '@Model.DisqusIdentifier';
-        this.page.title = '@Model.DisqusTitle';
+        this.page.url = '@Model.ArticleUrl';
+        this.page.identifier = '@Model.Identifier';
+        this.page.title = '@Model.Title';
         //this.discovery.disable_all = true;
     };
 

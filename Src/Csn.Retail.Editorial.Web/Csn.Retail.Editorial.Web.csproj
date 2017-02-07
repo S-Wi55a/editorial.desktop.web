@@ -328,8 +328,10 @@
     <Content Include="Features\Shared\Assets\Fonts\fonts.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\htmlparser.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mm.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\postscribe.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-dark.svg" />
