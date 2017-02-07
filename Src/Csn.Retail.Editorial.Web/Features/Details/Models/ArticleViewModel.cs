@@ -27,6 +27,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
     public class MediaMotiveData
     {
         public string KruxId { get; set; }
+        public string MediaMotiveDomain { get; set; }
         public List<MMItem> MediaMotiveItem { get; set; }
 
         public class MMItem
@@ -34,6 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
             public string TileId { get; set; }
             public string TileDescription { get; set; }
             public string DataKruxRequired { get; set; }
+            public string TileUri { get; set; }
             public TileUrl TileUrls { get; set; }
 
             public class TileUrl

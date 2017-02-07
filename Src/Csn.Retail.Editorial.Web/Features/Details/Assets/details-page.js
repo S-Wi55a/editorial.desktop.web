@@ -37,9 +37,14 @@ if (document.querySelector('[data-slideshow]')) {
 
     //Lazy laod the slideshow JS and modal JS
     require.ensure(["../../Shared/Assets/Js/Modules/Slideshow/slideshow.js", "../../Shared/Assets/Js/Modules/Modal/modal.js",
-        "../../Shared/Assets/Js/Modules/MediaMotive/krux-sas-integrator.js", "../../Shared/Assets/Js/Modules/MediaMotive/mediamotive.js"], function() {
+        "../../Shared/Assets/Js/Modules/MediaMotive/krux-sas-integrator.js", "../../Shared/Assets/Js/Modules/MediaMotive/mediamotive.js",
+        "../../Shared/Assets/Js/Modules/MediaMotive/mediamotive-loader.js", "../../Shared/Assets/Js/Modules/MediaMotive/postscribe.js",
+        "../../Shared/Assets/Js/Modules/MediaMotive/htmlparser.js"], function() {
 
+        require("../../Shared/Assets/Js/Modules/MediaMotive/htmlparser.js");
+        require("../../Shared/Assets/Js/Modules/MediaMotive/postscribe.js");
         require("../../Shared/Assets/Js/Modules/MediaMotive/mediamotive.js");
+        require("../../Shared/Assets/Js/Modules/MediaMotive/mediamotive-loader.js");
 
         var Slideshow = require("../../Shared/Assets/Js/Modules/Slideshow/slideshow.js").default;
 
