@@ -1,5 +1,10 @@
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+
+@{
+    var tenantName = Html.CurrentTenant().Name.ToLower();
+}
 
 @section Head {
     @{Html.RenderPartial("Partials/Head/_SocialMetaData", Model.SocialMetaData); }
@@ -24,5 +29,5 @@
 
 @section BottomScripts
 {
-    @Html.AssetJs("details-page", LoadType.Defer)
+    @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
 }
