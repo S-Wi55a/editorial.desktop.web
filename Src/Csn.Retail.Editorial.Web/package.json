@@ -12,15 +12,14 @@
     "postinstall": "npm rebuild node-sass && npm run bower install",
     "webpack": "node node_modules/webpack/bin/webpack.js ",
     "webpack-dev-server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "bower": "bower",
-    "webpack-dashboard": "webpack-dashboard"
+    "bower": "bower"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "TinyAnimate": "^0.4.0",
     "ajv": "^4.11.2",
-    "assets-webpack-plugin": "^3.4.0",
+    "assets-webpack-plugin": "^3.5.1",
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
@@ -34,7 +33,6 @@
     "breakpoint-sass": "^2.7.1",
     "browserslist": "^1.7.1",
     "clean-css-loader": "0.0.4",
-    "clean-webpack-plugin": "^0.1.10",
     "core-js": "^2.4.1",
     "css-loader": "^0.26.1",
     "eslint": "^3.2.2",

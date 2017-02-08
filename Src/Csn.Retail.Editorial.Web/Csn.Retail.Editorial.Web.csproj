@@ -384,9 +384,6 @@
     <Content Include="Features\_ViewStart.cshtml" />
     <Content Include="Features\Web.config" />
     <Content Include="package.json" />
-    <Content Include="tsconfig.json" />
-    <Content Include="tslint.json" />
-    <Content Include="typings.json" />
     <Content Include="Features\Shared\Assets\Css\Base\_reset.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\_variables.scss" />
     <Content Include="Features\Shared\Assets\Css\Base\_base.scss" />
@@ -456,13 +453,14 @@
     <Content Include=".modernizrrc.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\_expertRatings.scss" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="bower.json" />
     <Content Include=".babelrc" />
     <Content Include=".eslintrc.json" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\_procon.scss" />
     <Content Include="Features\Details\Views\Partials\_RelatedArticles.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\_globals.scss" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\_mrec.scss" />
     <None Include="Web.Staging.config">

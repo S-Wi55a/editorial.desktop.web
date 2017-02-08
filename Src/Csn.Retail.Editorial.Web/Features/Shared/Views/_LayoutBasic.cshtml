@@ -6,8 +6,9 @@
 @{
     Layout = "_LayoutEmpty.cshtml";
     var globalSiteData = Html.GlobalSiteData();
-}
+    var tenantName = Html.CurrentTenant().Name.ToLower();
 
+}
 
 @section Head{
     @RenderSection("Head", false)
@@ -37,7 +38,7 @@
 </footer>
 
 @section BottomScripts{
-    @Html.AssetJs("common")
+    @Html.AssetJs("common--" + tenantName)
     @Html.AssetJs("vendor")
     @RenderSection("BottomScripts", false)
     @globalSiteData.Script.ToMvcHtmlString()

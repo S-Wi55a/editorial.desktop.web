@@ -1,32 +1,16 @@
 ﻿// Common Styles
 
 // ---------------------------------------------------------------------------
-// Settings
-@import "./variables/_variables.scss";
-
-// ---------------------------------------------------------------------------
-// Utilities
-@import "./utilities/_utilities.scss";
-@import "~breakpoint-sass/stylesheets/breakpoint";
-
-
-// ---------------------------------------------------------------------------
-// Buttons
-@import "./buttons/_buttons.scss";
-
-// ---------------------------------------------------------------------------
-// Mixins
-@import "./mixins/_mixins.scss";
-
-// ---------------------------------------------------------------------------
 //Resets
 @import "./base/_reset.scss";
 
 // ---------------------------------------------------------------------------
+// Globals
+@import "_globals.scss";
+
+// ---------------------------------------------------------------------------
 // Vendors
 // Vendor - Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/_mixins";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_scaffolding";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_grid";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_responsive-utilities";
@@ -34,15 +18,11 @@
 
 // ---------------------------------------------------------------------------
 // Typography
-@import "./tyopgraphy/extends/_typogrpahy-extends.scss";
 @import './tyopgraphy/_typography.scss';
-
 
 // ---------------------------------------------------------------------------
 //Base
-
 @import "./base/_base.scss";
-
 
 // ---------------------------------------------------------------------------
 //Layout

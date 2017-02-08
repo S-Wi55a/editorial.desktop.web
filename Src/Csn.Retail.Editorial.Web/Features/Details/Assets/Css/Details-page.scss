@@ -1,31 +1,8 @@
 ﻿// Page - Details
 
 // ---------------------------------------------------------------------------
-// Settings
-@import "../../../shared/assets/css/variables/_variables.scss";
-
-// ---------------------------------------------------------------------------
-// Vendors
-// Vendor - Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables";
-
-// ---------------------------------------------------------------------------
-// Utilities
-@import "../../../shared/assets/css/utilities/_utilities.scss";
-@import "~breakpoint-sass/stylesheets/breakpoint";
-
-
-// ---------------------------------------------------------------------------
-// Buttons
-@import "../../../shared/assets/css/buttons/_buttons.scss";
-
-// ---------------------------------------------------------------------------
-// Typography
-@import "../../../shared/assets/css/tyopgraphy/extends/_typogrpahy-extends.scss";
-
-// ---------------------------------------------------------------------------
-// Mixins
-@import "../../../shared/assets/css/mixins/_mixins.scss";
+// Globals
+@import "_globals.scss";
 
 // ---------------------------------------------------------------------------
 // Modules
