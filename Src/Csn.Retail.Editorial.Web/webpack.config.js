@@ -3,7 +3,6 @@
 var glob = require('glob'),
     path = require('path'),
     webpack = require('webpack'),
-    CleanWebpackPlugin = require('clean-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
     rimraf = require('rimraf');
@@ -16,12 +15,12 @@ var assetsPluginInstance = new AssetsPlugin({
 
 var argv = require('yargs').argv;
 
-console.log(process.env.TENANT)
 
 var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
-const listOfTenets = process.env.TENANT ? ['--' + process.env.TENANT.trim()] : ['--carsales', '--constructionsales'];
-console.log(listOfTenets)
+const listofTenants = ['--carsales', '--constructionsales'];
+
+const TENANTS = process.env.TENANT ? ['--' + process.env.TENANT.trim()] : listofTenants;
 
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
@@ -68,7 +67,7 @@ module.exports = function () {
     let moduleExportArr = [];
 
     //run through list of tenets
-    listOfTenets.forEach((tenet) => {
+    TENANTS.forEach((tenet) => {
 
         const prodLoaderCSSExtract = ExtractTextPlugin.extract({
             fallback: 'style-loader',
@@ -183,10 +182,6 @@ module.exports = function () {
                     filename: isProd ? 'csn.common-[chunkhash].js' : 'csn.common.js',
                     minChunks: 2
                 }),
-                // new webpack.LoaderOptionsPlugin({
-                //     minimize: true,
-                //     debug: false
-                // })
                 new webpack.NamedModulesPlugin()
             ],
             devtool: "cheap-module-source-map",
@@ -199,7 +194,7 @@ module.exports = function () {
                         pathRewrite: { '^/dist/dist': 'dist' }
                     },
                     '/': {
-                        target: 'http://' + (argv.tenet || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
+                        target: 'http://' + (tenet || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
                         changeOrigin: true,
                         secure: false
                     }

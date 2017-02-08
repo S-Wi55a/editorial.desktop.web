@@ -12,8 +12,7 @@
     "postinstall": "npm rebuild node-sass && npm run bower install",
     "webpack": "node node_modules/webpack/bin/webpack.js ",
     "webpack-dev-server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "bower": "bower",
-    "pre-dev": "npm run"
+    "bower": "bower"
   },
   "author": "",
   "license": "ISC",
@@ -34,7 +33,6 @@
     "breakpoint-sass": "^2.7.1",
     "browserslist": "^1.7.1",
     "clean-css-loader": "0.0.4",
-    "clean-webpack-plugin": "^0.1.10",
     "core-js": "^2.4.1",
     "css-loader": "^0.26.1",
     "eslint": "^3.2.2",
