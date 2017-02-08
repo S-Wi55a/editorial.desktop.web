@@ -29,9 +29,9 @@ var config = {
 }
 
 
-function getEntryFiles(tenet) {
-    if (!tenet) {
-        tenet = '';
+function getEntryFiles(tenant) {
+    if (!tenant) {
+        tenant = '';
     }
     let entries = {};
 
@@ -43,11 +43,11 @@ function getEntryFiles(tenet) {
         let filePath = matchedFiles[i];
         let ext = path.extname(filePath);
         let filename = path.basename(filePath, ext);
-        entries[filename + tenet] = filePath;
+        entries[filename + tenant] = filePath;
     }
 
     entries['vendor'] = ['./Features/Shared/Assets/Js/vendor.js'];
-    entries['common' + tenet] = ['./Features/Shared/Assets/csn.common.js'];
+    entries['common' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
     entries['fonts'] = ['./Features/Shared/Assets/Fonts/fonts.js'];
 
     return entries;
@@ -66,8 +66,8 @@ module.exports = function () {
 
     let moduleExportArr = [];
 
-    //run through list of tenets
-    TENANTS.forEach((tenet) => {
+    //run through list of tenants
+    TENANTS.forEach((tenant) => {
 
         const prodLoaderCSSExtract = ExtractTextPlugin.extract({
             fallback: 'style-loader',
@@ -77,7 +77,7 @@ module.exports = function () {
                     options: {
                         includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
                         sourceMap: true,
-                        data: '@import "variables/colors/_variables-colors' + tenet + '.scss";'
+                        data: '@import "variables/colors/_variables-colors' + tenant + '.scss";'
                     }
                 }
             ]
@@ -87,14 +87,14 @@ module.exports = function () {
             options: {
                 includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
                 sourceMap: true,
-                data: '@import "variables/colors/_variables-colors' + tenet + '.scss";'
+                data: '@import "variables/colors/_variables-colors' + tenant + '.scss";'
             }
         }];
 
         moduleExportArr.push(
         {
-            name: tenet,
-            entry: getEntryFiles(tenet),
+            name: tenant,
+            entry: getEntryFiles(tenant),
             output: {
                 path: config.outputPath,
                 publicPath: config.publicPath,
@@ -178,7 +178,7 @@ module.exports = function () {
                     filename: isProd ? '[name]-[contenthash].css' : '[name].css',
                 }),
                 new webpack.optimize.CommonsChunkPlugin({
-                    name: 'common' + tenet,
+                    name: 'common' + tenant,
                     filename: isProd ? 'csn.common-[chunkhash].js' : 'csn.common.js',
                     minChunks: 2
                 }),
@@ -194,7 +194,7 @@ module.exports = function () {
                         pathRewrite: { '^/dist/dist': 'dist' }
                     },
                     '/': {
-                        target: 'http://' + (tenet || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
+                        target: 'http://' + (tenant || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
                         changeOrigin: true,
                         secure: false
                     }
