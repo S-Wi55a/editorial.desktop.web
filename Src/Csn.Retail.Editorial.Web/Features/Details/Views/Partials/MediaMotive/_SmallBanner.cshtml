@@ -2,12 +2,12 @@
 
 @foreach (var mediamotivedata in Model.MediaMotiveItem)
 {
-    if (mediamotivedata.TileId == "Tile3")
+    if (mediamotivedata.TileId == "Tile5")
     {
         var mediaMotiveDomain = Model.MediaMotiveDomain;
         var tileUri = mediamotivedata.TileUri;
 
-        <div id="@mediamotivedata.TileId" class="mediamotive-block mrec-block" data-krux-required="True" data-media-motive-url="@mediaMotiveDomain@mediamotivedata.TileUrls.JServerUrl@tileUri">
+        <div id="@mediamotivedata.TileId" class="mediamotive-block smallbanner-block" data-krux-required="True" data-media-motive-url="@mediaMotiveDomain@mediamotivedata.TileUrls.JServerUrl@tileUri">
             <noscript>
                 <a target="_blank" href="@mediaMotiveDomain@mediamotivedata.TileUrls.AdClickUrl@tileUri">
                     <img src="@mediaMotiveDomain@mediamotivedata.TileUrls.IServerUrl@tileUri" width="300" height="250" border="0" alt="Advertisement" />

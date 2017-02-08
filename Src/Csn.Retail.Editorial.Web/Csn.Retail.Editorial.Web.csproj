@@ -463,8 +463,7 @@
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\_mediamotive.scss" />
-    <Content Include="Features\Shared\Assets\Css\Variables\Colors\_variables-colors--constructionsales.scss" />
-    <Content Include="Features\Shared\Assets\Css\Variables\Colors\_variables-colors--carsales.scss" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
