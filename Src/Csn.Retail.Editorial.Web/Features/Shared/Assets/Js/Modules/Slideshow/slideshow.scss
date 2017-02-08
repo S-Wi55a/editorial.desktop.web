@@ -480,7 +480,7 @@
 @include breakpoint($screen-sm) {
 	._c-slideshow
     {
-        .media-motive-block { display: none; }
+        .mrec-block { display: none; }
 
         &__slide-cta
         {
@@ -506,7 +506,7 @@
 @include breakpoint($screen-md) {
     ._c-slideshow
     {
-        .media-motive-block { display: none; }
+        .mrec-block { display: none; }
 
 		&__slide-content {
 			&--center {

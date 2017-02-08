@@ -464,6 +464,7 @@
     <Content Include="Features\Details\Views\Partials\_RelatedArticles.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\_mrec.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

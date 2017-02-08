@@ -14,8 +14,8 @@
             }
 
 
-            if ($(".media-motive-block").length > 0) {
-                $(".media-motive-block").each(function () {
+            if ($(".mrec-block").length > 0) {
+                $(".mrec-block").each(function () {
                     var item = $(this);
                     var tile = item.attr('id');
                     var isKruxRequired = (item.data('kruxRequired') == 'True');
