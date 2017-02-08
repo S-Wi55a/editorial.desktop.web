@@ -18,9 +18,9 @@ var argv = require('yargs').argv;
 
 var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
-const listofTenants = ['--carsales', '--constructionsales'];
+const listofTenants = ['carsales', 'constructionsales'];
 
-const TENANTS = process.env.TENANT ? ['--' + process.env.TENANT.trim()] : listofTenants;
+const TENANTS = process.env.TENANT ?  [process.env.TENANT.trim()] : listofTenants;
 
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
@@ -43,11 +43,11 @@ function getEntryFiles(tenant) {
         let filePath = matchedFiles[i];
         let ext = path.extname(filePath);
         let filename = path.basename(filePath, ext);
-        entries[filename + tenant] = filePath;
+        entries[filename + '--' + tenant] = filePath;
     }
 
     entries['vendor'] = ['./Features/Shared/Assets/Js/vendor.js'];
-    entries['common' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
+    entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
     entries['fonts'] = ['./Features/Shared/Assets/Fonts/fonts.js'];
 
     return entries;
@@ -77,7 +77,7 @@ module.exports = function () {
                     options: {
                         includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
                         sourceMap: true,
-                        data: '@import "variables/colors/_variables-colors' + tenant + '.scss";'
+                        data: '@import "variables/colors/_variables-colors--' + tenant + '.scss";'
                     }
                 }
             ]
@@ -87,7 +87,7 @@ module.exports = function () {
             options: {
                 includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
                 sourceMap: true,
-                data: '@import "variables/colors/_variables-colors' + tenant + '.scss";'
+                data: '@import "variables/colors/_variables-colors--' + tenant + '.scss";'
             }
         }];
 
@@ -167,10 +167,10 @@ module.exports = function () {
             resolve: {
                 extensions: ['.js', '.scss'],
                 alias: {
-                    modernizr$: path.resolve(__dirname, "./.modernizrrc.js")
+                    modernizr$: path.resolve(__dirname, './.modernizrrc.js')
                 },
-                descriptionFiles: ["package.json", "bower.json"],
-                modules: [path.resolve(__dirname, "./"), "node_modules", "bower_components"]
+                descriptionFiles: ['package.json', 'bower.json'],
+                modules: [path.resolve(__dirname, './'), 'node_modules', 'bower_components', 'Features/Shared/Assets/Js']
             },
             plugins: [
                 assetsPluginInstance,
@@ -178,8 +178,7 @@ module.exports = function () {
                     filename: isProd ? '[name]-[contenthash].css' : '[name].css',
                 }),
                 new webpack.optimize.CommonsChunkPlugin({
-                    name: 'common' + tenant,
-                    filename: isProd ? 'csn.common-[chunkhash].js' : 'csn.common.js',
+                    names: isProd ? ['csn.common' + '--' + tenant + '-[chunkhash]', 'vendor-[chunkhash]'] : ['csn.common' + '--' + tenant, 'vendor'],
                     minChunks: 2
                 }),
                 new webpack.NamedModulesPlugin()

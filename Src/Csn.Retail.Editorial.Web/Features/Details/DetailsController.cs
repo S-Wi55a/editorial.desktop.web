@@ -34,27 +34,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             return View("DefaultTemplate", viewModel);
         }
 
-        // Temp to mimic ajax request for Expert Ratings
-        // In Prod need to null check if there is Expert ratings
-        [Route("editorial/details/procon/{pageName:regex(^.*-\\d+/?$)}")]
-        // GET: Details
-        public async Task<ActionResult> ProCon(ArticleIdentifier articleIdentifier)
-        {
-            var viewModel =
-                await _queryDispatcher.DispatchAsync<GetArticleQuery, ArticleViewModel>(new GetArticleQuery()
-                {
-                    Id = articleIdentifier.Id
-                });
-
-            // TODO: add error handling
-            //if (viewModel == null)
-            //{
-            //    return Redirect("~/error");
-            //}
-
-            return PartialView("Partials/Widgets/_EditorsRating", viewModel);
-        }
-
     }
 }
 
