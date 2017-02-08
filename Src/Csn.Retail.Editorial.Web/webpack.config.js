@@ -194,7 +194,7 @@ module.exports = function () {
                         pathRewrite: { '^/dist/dist': 'dist' }
                     },
                     '/': {
-                        target: 'http://' + (tenant || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
+                        target: 'http://' + (process.env.TENANT.trim() || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
                         changeOrigin: true,
                         secure: false
                     }

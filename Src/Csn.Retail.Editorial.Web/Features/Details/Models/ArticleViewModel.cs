@@ -21,7 +21,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string DateAvailable { get; set; }
         public MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
-        public RelatedArticleData RelatedArticleData { get; set; }
     }
 
     public class MediaMotiveData
