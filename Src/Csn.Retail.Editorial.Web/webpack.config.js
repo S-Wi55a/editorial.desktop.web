@@ -178,7 +178,7 @@ module.exports = function () {
                     filename: isProd ? '[name]-[contenthash].css' : '[name].css',
                 }),
                 new webpack.optimize.CommonsChunkPlugin({
-                    names: isProd ? ['csn.common' + '--' + tenant + '-[chunkhash]', 'vendor-[chunkhash]'] : ['csn.common' + '--' + tenant, 'vendor'],
+                    names: ['csn.common' + '--' + tenant, 'vendor'],
                     minChunks: 2
                 }),
                 new webpack.NamedModulesPlugin()
