@@ -4,10 +4,12 @@ require('../css/Modules/Widgets/_editorsRatings.scss');
 
 import Modernizr from 'modernizr';
 import Circles from 'circles';
-import TinyAnimate from 'TinyAnimate'
+import TinyAnimate from 'TinyAnimate';
 
+const expertRatingSelector = '.expert-ratings';
+const expertRatingMeters = document.querySelectorAll('.expert-ratings__meter');
 
-var myCircle = Circles.create({
+const overallRatingGraph = {
     id:                  'overall-rating-graph',
     radius:              60,
     value:               document.getElementById('overall-rating-graph').getAttribute('data-overall-rating'),
@@ -22,7 +24,7 @@ var myCircle = Circles.create({
     maxValueStrokeClass: 'overall-rating-graph__maxValueStroke',
     styleWrapper:        true,
     styleText:           true
-});
+};
 
 
 let AnimateMeters = function(listOfMeter, timeBetween = 400, duration) {
@@ -54,17 +56,43 @@ let AnimateMeter = function(index, list, duration = 1000) {
         'easeOutCubic');
 };
 
+function isInViewport(selector, threshold = 1, cb) {
+    const sections = document.querySelectorAll(selector);
+
+    window.addEventListener('scroll', inView)
+    inView();
+
+    function inView() {
+        // Don't run the rest of the code if every section is already visible
+        if (document.querySelectorAll(selector + ':not(.visible)').length === 0) return;
+
+        // Run this code for every section in sections
+        for (const section of sections) {
+            if (section.getBoundingClientRect().top <= window.innerHeight * threshold && section.getBoundingClientRect().top > 0) {
+                section.classList.add('visible');
+                cb()
+                window.removeEventListener('scroll', inView)
+            }
+        }
+    }
+}
 
 if (!Modernizr.meter) {
     // Meter polyfill
-    require.ensure(['../../../shared/assets/js/modules/meter/meter.js'],
+    require.ensure(['modules/meter/meter.js'],
         function() {
-            for (var meter of document.querySelectorAll('.expert-ratings__meter')) {
+            for (var meter of expertRatingMeters) {
                 meter.setAttribute('value', meter.getAttribute('data-value'));
             }
-            require('../../../shared/assets/js/modules/meter/meter.js');
+            require('modules/meter/meter.js');
+            isInViewport(expertRatingSelector, 0.75, () => {
+                Circles.create(overallRatingGraph);
+            });
         },
         'meter-polyfill');
 } else {
-    AnimateMeters(document.querySelectorAll('.expert-ratings__meter'), 200);
+    isInViewport(expertRatingSelector, 0.75, () => {
+        Circles.create(overallRatingGraph);
+        AnimateMeters(expertRatingMeters, 200);
+    });
 }
