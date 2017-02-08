@@ -167,10 +167,10 @@ module.exports = function () {
             resolve: {
                 extensions: ['.js', '.scss'],
                 alias: {
-                    modernizr$: path.resolve(__dirname, "./.modernizrrc.js")
+                    modernizr$: path.resolve(__dirname, './.modernizrrc.js')
                 },
-                descriptionFiles: ["package.json", "bower.json"],
-                modules: [path.resolve(__dirname, "./"), "node_modules", "bower_components"]
+                descriptionFiles: ['package.json', 'bower.json'],
+                modules: [path.resolve(__dirname, './'), 'node_modules', 'bower_components', 'Features/Shared/Assets/Js']
             },
             plugins: [
                 assetsPluginInstance,
