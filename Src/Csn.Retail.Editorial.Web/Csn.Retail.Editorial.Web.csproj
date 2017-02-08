@@ -462,7 +462,8 @@
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
-    <Content Include="Features\Details\Assets\Css\Modules\_mrec.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\_mediamotive.scss" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tile15.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
