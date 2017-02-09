@@ -279,6 +279,12 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
+    <Compile Include="Features\Shared\Proxies\SiteNavApi\SiteNavApiProxy.cs" />
+    <Compile Include="Features\SiteNav\SiteNavController.cs" />
+    <Compile Include="Features\SiteNav\SiteNavQuery.cs" />
+    <Compile Include="Features\SiteNav\SiteNavQueryHandler.cs" />
+    <Compile Include="Features\SiteNav\SiteNavResponse.cs" />
+    <Compile Include="Features\SiteNav\SiteNavViewModel.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
