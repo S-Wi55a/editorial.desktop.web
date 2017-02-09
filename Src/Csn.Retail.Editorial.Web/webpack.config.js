@@ -1,5 +1,20 @@
 'use strict';
 
+
+// List of Tenants
+// Make sure associated '_settings--tenant.scss' file is added to Features\Shared\Assets\Css\Settings\
+
+const listofTenants = [
+    'carsales',
+    'constructionsales',
+    'bikesales'
+];
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
+// Webpack build
 var glob = require('glob'),
     path = require('path'),
     webpack = require('webpack'),
@@ -18,7 +33,6 @@ var argv = require('yargs').argv;
 
 var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
-const listofTenants = ['carsales', 'constructionsales'];
 
 const TENANTS = process.env.TENANT ?  [process.env.TENANT.trim()] : listofTenants;
 
@@ -75,9 +89,9 @@ module.exports = function () {
                 'css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', {
                     loader: 'sass-loader',
                     options: {
-                        includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
+                        includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'node_modules'],
                         sourceMap: true,
-                        data: '@import "variables/colors/_variables-colors--' + tenant + '.scss";'
+                        data: '@import "Settings/_settings--' + tenant + '.scss";'
                     }
                 }
             ]
@@ -85,9 +99,9 @@ module.exports = function () {
         const devLoaderCSSExtract = ['style-loader', 'css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', {
             loader: 'sass-loader',
             options: {
-                includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
+                includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'node_modules'],
                 sourceMap: true,
-                data: '@import "variables/colors/_variables-colors--' + tenant + '.scss";'
+                data: '@import "Settings/_settings--' + tenant + '.scss";'
             }
         }];
 

@@ -1,6 +1,7 @@
 ﻿.article {
-    padding-left: 0;
     padding-top: 60px;
+    padding-left: 75px;
+    padding-right: 44px;
 
     .cf:after {
         @include cf;
@@ -118,12 +119,5 @@
         border: solid 1px $cs-lighter-grey;
         padding: 31px 40px;
         margin-top: 79px;
-    }
-}
-
-@include breakpoint($screen-lg) {
-    .article {
-        padding-left: 75px;
-        padding-right: 44px;
     }
 }

@@ -9,6 +9,15 @@ $screen-hd:                             1920px;     // full hd
 $screen-xxl:                            2560px;     // imac screen
 
 
+$screen-xs:                             1200px;      // mobile landscape
+$screen-sm:                             1200px;      // tablet
+$screen-md:                             1200px;      // small desktop / labtop
+$screen-lg:                             1200px;     // normal desktop
+$screen-xl:                             1600px;     //
+$screen-hd:                             1920px;     // full hd
+$screen-xxl:                            2560px;     // imac screen
+
+
 //== Container sizes
 //
 //## Define the maximum width of `.container` for different screen sizes.
@@ -21,3 +30,9 @@ $container-md:                 $screen-md;
 
 //** For `$screen-lg-min` and up.
 $container-lg:                 $screen-lg;
+
+
+
+$screen-sm-min:0;
+$screen-md-min:0;
+$screen-lg-min:0;
