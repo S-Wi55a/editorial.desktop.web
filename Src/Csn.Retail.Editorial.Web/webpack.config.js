@@ -178,7 +178,7 @@ module.exports = function () {
                     filename: isProd ? '[name]-[contenthash].css' : '[name].css',
                 }),
                 new webpack.optimize.CommonsChunkPlugin({
-                    names: isProd ? ['csn.common' + '--' + tenant + '-[chunkhash]', 'vendor-[chunkhash]'] : ['csn.common' + '--' + tenant, 'vendor'],
+                    names: ['csn.common' + '--' + tenant, 'vendor'],
                     minChunks: 2
                 }),
                 new webpack.NamedModulesPlugin()
@@ -193,7 +193,7 @@ module.exports = function () {
                         pathRewrite: { '^/dist/dist': 'dist' }
                     },
                     '/': {
-                        target: 'http://' + (process.env.TENANT.trim() || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
+                        target: 'http://' + (tenant || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
                         changeOrigin: true,
                         secure: false
                     }

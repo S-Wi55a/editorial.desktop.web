@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------------
 // Settings
-@import "../../../../../shared/assets/css/variables/_variables.scss";
+@import "variables/_variables.scss";
 
 
 .expert-ratings {
@@ -19,7 +19,7 @@
     &__subheading {
         font-size: $font-size-h4;
         line-height: 1em;
-        color: $cs-blue;
+        color: $cs-primary;
         margin-bottom: 17px;
     }
 
@@ -54,20 +54,20 @@
 
         &:-moz-meter-optimum {
             &::-moz-meter-bar {
-            background: rgba($cs-blue, 0.59);
+            background: rgba($cs-primary, 0.59);
             border-radius: 100px;
             }
         }
         &::-webkit-meter-optimum-value {
             border-radius: 100px;
-            background: rgba($cs-blue, 0.59);
+            background: rgba($cs-primary, 0.59);
         }
 
         // IE 11 polyfill
         &>div {
             opacity: 0.5;
             border-radius: 100px;
-            background: $cs-blue;
+            background: $cs-primary;
             border: none;
             height: inherit;
         }
@@ -82,7 +82,7 @@
             stroke: $cs-lighter-grey;
         }
         .overall-rating-graph__valueStroke {
-            stroke: $cs-blue;
+            stroke: $cs-primary;
         }
         .overall-rating-graph__text {
             font-size: 58px !important;
