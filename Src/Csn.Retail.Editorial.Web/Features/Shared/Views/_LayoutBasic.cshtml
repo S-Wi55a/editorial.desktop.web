@@ -16,7 +16,7 @@
 
 @section Styles{
     <link rel="stylesheet" href="https://resource.csnstatic.com/carsales/globals/css/fonts-V1.base64.min.css">
-    @Html.AssetCss("common--" + tenantName)
+    @Html.AssetCss("csn.common--" + tenantName)
     @globalSiteData.Style.ToMvcHtmlString()
     @RenderSection("Styles", false)
     @Html.AssetCss("fonts")
