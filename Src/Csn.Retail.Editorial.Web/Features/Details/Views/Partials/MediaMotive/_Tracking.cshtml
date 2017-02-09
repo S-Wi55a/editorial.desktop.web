@@ -1,0 +1,18 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.MediaMotiveData
+
+@foreach (var mediamotivedata in Model.MediaMotiveItem)
+{
+    if (mediamotivedata.TileId == "Tile16" || mediamotivedata.TileId == "Tile20" || mediamotivedata.TileId == "Tile21")
+    {
+        var mediaMotiveDomain = Model.MediaMotiveDomain;
+        var tileUri = mediamotivedata.TileUri;
+
+        <div id="@mediamotivedata.TileId" class="mediamotive-block mm-tracking-block" data-krux-required="True" data-media-motive-url="@mediaMotiveDomain@mediamotivedata.TileUrls.JServerUrl@tileUri">
+            <noscript>
+                <a target="_blank" href="@mediaMotiveDomain@mediamotivedata.TileUrls.AdClickUrl@tileUri">
+                    <img src="@mediaMotiveDomain@mediamotivedata.TileUrls.IServerUrl@tileUri" width="1" height="1" border="0" alt="Advertisement" />
+                </a>
+            </noscript>
+        </div>
+    }
+}
