@@ -11,8 +11,8 @@
         text-shadow: none;
         background-image: url($logo-header);
         display: block;
-        height: 70px;
-        width: 160px;
+        width: $logo-header-width;
+        height: $logo-header-height;
         background-size: contain;
         background-repeat: no-repeat;
         float: left;
