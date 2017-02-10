@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Web;
 using Csn.Hystrix.RestClient;
 using Csn.Hystrix.RestClient.Dtos;
-using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Features.SiteNav;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -15,7 +14,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.SiteNavApi
 {
     public interface ISiteNavApiProxy
     {
-        HystrixRestResponse<SiteNavResponse> GetSiteNav(string site);
+        Task<HystrixRestResponse<SiteNavResponse>> GetSiteNavAsync(string site);
     }
 
     [AutoBind]
@@ -33,21 +32,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.SiteNavApi
             _userContext = userContext;
         }
 
-        public HystrixRestResponse<SiteNavResponse> GetSiteNav(string site)
+        public async Task<HystrixRestResponse<SiteNavResponse>> GetSiteNavAsync(string site)
         {
-            try
-            {
-                var client = _restClient.HostName(HostName).Path($"navigation/{site}")
-                    .QueryParams("memberId", _userContext.CurrentUserId);
+            var response = await _restClient.HostName(HostName)
+                        .Path("navigation/{0}/", site)
+                        .QueryParams("memberId", _userContext.CurrentUserId)
+                        .GetAsync<SiteNavResponse>();
 
-                var response = client.Get<SiteNavResponse>();
-                return response;
-
-            }
-            catch (Exception exc)
-            {
-                return null;
-            }
+            return response;
         }
     }
 }

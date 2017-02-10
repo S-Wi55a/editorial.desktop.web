@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Csn.Retail.Editorial.Web.Features.SiteNav
+﻿namespace Csn.Retail.Editorial.Web.Features.SiteNav.Models
 {
     public class SiteNavViewModel
     {

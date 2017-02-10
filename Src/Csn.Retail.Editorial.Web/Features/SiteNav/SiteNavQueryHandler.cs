@@ -5,6 +5,7 @@ using Csn.Cars.Cache.Extensions;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.SiteNavApi;
+using Csn.Retail.Editorial.Web.Features.SiteNav.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
@@ -14,7 +15,7 @@ using Csn.SimpleCqrs;
 namespace Csn.Retail.Editorial.Web.Features.SiteNav
 {
     [AutoBind]
-    public class SiteNavQueryHandler : IQueryHandler<SiteNavQuery, SiteNavViewModel>
+    public class SiteNavQueryHandler : IAsyncQueryHandler<SiteNavQuery, SiteNavViewModel>
     {
         private readonly ICacheStore _cacheStore;
         private readonly IMapper _mapper;
@@ -37,7 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.SiteNav
         }
 
 
-        public SiteNavViewModel Handle(SiteNavQuery query)
+        public async Task<SiteNavViewModel> HandleAsync(SiteNavQuery query)
         {
             var currentUserId = _userContext.CurrentUserId;
             var site = _tenantProvider.Current().Name;
@@ -47,21 +48,22 @@ namespace Csn.Retail.Editorial.Web.Features.SiteNav
                 _cacheStore.Remove(CacheKey.FormatWith(site, currentUserId));
             }
 
-            return _cacheStore.Profile(currentUserId.HasValue() ? CacheProfileNameMember : CacheProfileNameAnonymous).Fetch(() => FetchFromApi(site)).CacheIf(x => x != null).Get(CacheKey.FormatWith(_tenantProvider.Current().Name, currentUserId));
+            return await FetchFromApi(site);
+
+            return await _cacheStore.Profile(currentUserId.HasValue() ? CacheProfileNameMember : CacheProfileNameAnonymous).Fetch(() => FetchFromApi(site)).CacheIf(x => x != null).Get(CacheKey.FormatWith(_tenantProvider.Current().Name, currentUserId));
         }
 
 
-        private SiteNavViewModel FetchFromApi(string site)
+        private async Task<SiteNavViewModel> FetchFromApi(string site)
         {
-            var result = _siteNavApiProxy.GetSiteNav(site);
+            var result = await _siteNavApiProxy.GetSiteNavAsync(site);
 
-            if (result == null)
+            if (!result.Succeed)
             {
                 return null;
             }
 
-            return null;
-            //return _mapper.Map<SiteNavViewModel>(result);
+            return _mapper.Map<SiteNavViewModel>(result.Result.Data);
         }
     }
 }

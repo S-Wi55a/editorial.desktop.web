@@ -280,11 +280,12 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
     <Compile Include="Features\Shared\Proxies\SiteNavApi\SiteNavApiProxy.cs" />
+    <Compile Include="Features\SiteNav\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\SiteNav\SiteNavController.cs" />
     <Compile Include="Features\SiteNav\SiteNavQuery.cs" />
     <Compile Include="Features\SiteNav\SiteNavQueryHandler.cs" />
     <Compile Include="Features\SiteNav\SiteNavResponse.cs" />
-    <Compile Include="Features\SiteNav\SiteNavViewModel.cs" />
+    <Compile Include="Features\SiteNav\Models\SiteNavViewModel.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
@@ -471,6 +472,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\_mediamotive.scss" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
+    <Content Include="Features\SiteNav\Views\TopNav.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

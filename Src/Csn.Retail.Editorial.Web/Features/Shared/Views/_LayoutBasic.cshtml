@@ -30,6 +30,9 @@
 
 
 @globalSiteData.TopNav.ToMvcHtmlString()
+
+@Html.Action("TopNav", "SiteNav")
+
 <div class="page-container">
     @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
     @RenderBody()

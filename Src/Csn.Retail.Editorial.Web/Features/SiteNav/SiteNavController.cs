@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Csn.Retail.Editorial.Web.Features.SiteNav.Models;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.SiteNav
@@ -17,10 +18,10 @@ namespace Csn.Retail.Editorial.Web.Features.SiteNav
             _queryDispatcher = queryDispatcher;
         }
 
-        public ActionResult TopNav(SiteNavQuery query)
+        public async Task<ActionResult> TopNav(SiteNavQuery query)
         {
-            var topNav = _queryDispatcher.Dispatch<SiteNavQuery, SiteNavViewModel>(query);
-            return null;
+            var topNav = await _queryDispatcher.DispatchAsync<SiteNavQuery, SiteNavViewModel>(query);
+            return View(topNav);
         }
 
     }
