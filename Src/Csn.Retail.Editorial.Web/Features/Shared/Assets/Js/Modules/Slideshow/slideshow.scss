@@ -26,10 +26,16 @@
     width: 100%;
     z-index: 0;
     background-color: #000;
+    padding-top: 33.333333%;
+    min-height: 400px;
+    overflow: hidden;
 
 	&__slider {
 		position: relative;
         overflow: hidden;
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
 	}
 
 	&__slides {
