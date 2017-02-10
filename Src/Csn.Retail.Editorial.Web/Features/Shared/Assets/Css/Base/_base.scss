@@ -4,7 +4,20 @@
     min-width: 1200px;
 }
 
-.container {
 
+a {
+    color: $cs-primary;
+
+    &:hover {
+        color: $cs-primary;
+    }
+    &:visited {
+        color: $cs-primary;
+    }
+    &:active {
+        color: $cs-primary;
+    }
+    &:focus {
+        color: $cs-primary;
+    }
 }
-

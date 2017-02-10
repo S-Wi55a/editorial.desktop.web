@@ -1,6 +1,16 @@
 ﻿.mrec-block {
-    margin-bottom: 35px;
     max-width: 300px;
+    line-height: 0;
+
+    iframe {
+        margin-bottom: 35px !important;
+    }
+
+    a {
+        img {
+            display: none;
+        }
+    }
 }
 
 .smallbanner-block {

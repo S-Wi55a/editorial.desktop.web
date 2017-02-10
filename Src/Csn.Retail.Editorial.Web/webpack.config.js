@@ -28,9 +28,6 @@ var assetsPluginInstance = new AssetsPlugin({
         prettyPrint: true
     });
 
-var argv = require('yargs').argv;
-
-
 var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
 
@@ -39,7 +36,7 @@ const TENANTS = process.env.TENANT ?  [process.env.TENANT.trim()] : listofTenant
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
     outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
-    publicPath: (argv.publicPath || './')
+    publicPath: './'
 }
 
 
@@ -96,7 +93,7 @@ module.exports = function () {
                 }
             ]
         });
-        const devLoaderCSSExtract = ['style-loader', 'css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', {
+        const devLoaderCSSExtract = ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'resolve-url-loader', {
             loader: 'sass-loader',
             options: {
                 includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'node_modules'],

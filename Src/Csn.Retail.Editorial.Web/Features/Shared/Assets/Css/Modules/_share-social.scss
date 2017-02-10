@@ -38,45 +38,102 @@
         background-color: $color-fb;
         color: $cs-white;
         font-size: 23px;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $cs-white;
+            opacity: 0.66;
+        }
     }
     &--twitter {
         background-color: $color-twitter ;
         color: $cs-white;
         font-size: 23px;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $cs-white;
+            opacity: 0.66;
+        }
     }
     &--google-plus {
         background-color: $color-google-plus;
         color: $cs-white;
         font-size: 23px;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $cs-white;
+            opacity: 0.66;
+        }
     }
     &--tumblr {
         background-color: $color-tumblr;
         color: $cs-white;
         font-size: 23px;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $cs-white;
+            opacity: 0.66;
+        }
     }
     &--pinterest {
         background-color: $color-pinterest;
         color: $cs-white;
         font-size: 23px;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $cs-white;
+            opacity: 0.66;
+        }
     }
     &--reddit {
         background-color: $cs-white;
         color: $cs-black;
         border: 1px solid $cs-black;
         font-size: 23px;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $cs-black;
+            opacity: 0.66;
+        }
     }
     &--email {
         background-color: $cs-white;
         color: $cs-black;
         border: 1px solid $cs-black;
         font-size: 23px;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $cs-black;
+            opacity: 0.66;
+        }
     }
      &--sms {
         background-color: $cs-white;
         color: $cs-black;
         border: 1px solid $cs-black;
         font-size: 23px;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $cs-black;
+            opacity: 0.66;
+        }
     }
+
 }
 
 .share-social__link-icon {
