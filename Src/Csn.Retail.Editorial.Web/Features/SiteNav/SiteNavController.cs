@@ -17,9 +17,9 @@ namespace Csn.Retail.Editorial.Web.Features.SiteNav
             _queryDispatcher = queryDispatcher;
         }
 
-        public async Task<ActionResult> TopNav(SiteNavQuery query)
+        public ActionResult TopNav(SiteNavQuery query)
         {
-            var topNav = await _queryDispatcher.DispatchAsync<SiteNavQuery, SiteNavViewModel>(query);
+            var topNav = _queryDispatcher.Dispatch<SiteNavQuery, SiteNavViewModel>(query);
             return null;
         }
 

@@ -14,7 +14,7 @@ using Csn.SimpleCqrs;
 namespace Csn.Retail.Editorial.Web.Features.SiteNav
 {
     [AutoBind]
-    public class SiteNavQueryHandler : IAsyncQueryHandler<SiteNavQuery, SiteNavViewModel>
+    public class SiteNavQueryHandler : IQueryHandler<SiteNavQuery, SiteNavViewModel>
     {
         private readonly ICacheStore _cacheStore;
         private readonly IMapper _mapper;
@@ -37,7 +37,7 @@ namespace Csn.Retail.Editorial.Web.Features.SiteNav
         }
 
 
-        public async Task<SiteNavViewModel> HandleAsync(SiteNavQuery query)
+        public SiteNavViewModel Handle(SiteNavQuery query)
         {
             var currentUserId = _userContext.CurrentUserId;
             var site = _tenantProvider.Current().Name;
@@ -47,20 +47,21 @@ namespace Csn.Retail.Editorial.Web.Features.SiteNav
                 _cacheStore.Remove(CacheKey.FormatWith(site, currentUserId));
             }
 
-            return await _cacheStore.Profile(currentUserId.HasValue() ? CacheProfileNameMember : CacheProfileNameAnonymous).Fetch(() => FetchFromApi(site)).CacheIf(x => x != null).Get(CacheKey.FormatWith(_tenantProvider.Current().Name, currentUserId));
+            return _cacheStore.Profile(currentUserId.HasValue() ? CacheProfileNameMember : CacheProfileNameAnonymous).Fetch(() => FetchFromApi(site)).CacheIf(x => x != null).Get(CacheKey.FormatWith(_tenantProvider.Current().Name, currentUserId));
         }
 
 
-        private async Task<SiteNavViewModel> FetchFromApi(string site)
+        private SiteNavViewModel FetchFromApi(string site)
         {
-            var result = await _siteNavApiProxy.GetSiteNavAsync(site);
+            var result = _siteNavApiProxy.GetSiteNav(site);
 
-            if (!result.Succeed)
+            if (result == null)
             {
                 return null;
             }
 
-            return _mapper.Map<SiteNavViewModel>(result);
+            return null;
+            //return _mapper.Map<SiteNavViewModel>(result);
         }
     }
 }
