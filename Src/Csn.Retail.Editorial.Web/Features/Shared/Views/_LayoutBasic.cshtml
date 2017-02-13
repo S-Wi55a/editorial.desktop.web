@@ -34,6 +34,9 @@
 <div class="page-container">
     @RenderBody()
 </div>
+
+@Html.Action("FooterNav", "SiteNav")
+
 <footer id="page-footer">
     @globalSiteData.Footer.ToMvcHtmlString()
 </footer>

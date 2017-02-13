@@ -48,9 +48,7 @@ namespace Csn.Retail.Editorial.Web.Features.SiteNav
                 _cacheStore.Remove(CacheKey.FormatWith(site, currentUserId));
             }
 
-            return FetchFromApi(site);
-
-            //return await _cacheStore.Profile(currentUserId.HasValue() ? CacheProfileNameMember : CacheProfileNameAnonymous).Fetch(() => FetchFromApi(site)).CacheIf(x => x != null).Get(CacheKey.FormatWith(_tenantProvider.Current().Name, currentUserId));
+            return _cacheStore.Profile(currentUserId.HasValue() ? CacheProfileNameMember : CacheProfileNameAnonymous).Fetch(() => FetchFromApi(site)).CacheIf(x => x != null).Get(CacheKey.FormatWith(_tenantProvider.Current().Name, currentUserId));
         }
 
 

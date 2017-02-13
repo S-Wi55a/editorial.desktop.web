@@ -5,7 +5,6 @@ using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.SiteNav
 {
-    //[Route("editorial/sitenav")]
     public class SiteNavController : Controller
     {
         private readonly IQueryDispatcher _queryDispatcher;
@@ -21,6 +20,14 @@ namespace Csn.Retail.Editorial.Web.Features.SiteNav
             var topNav = _queryDispatcher.Dispatch<SiteNavQuery, SiteNavViewModel>(query);
 
             return PartialView("TopNav", topNav);
+        }
+
+
+        public ActionResult FooterNav(SiteNavQuery query)
+        {
+            var footerNav = _queryDispatcher.Dispatch<SiteNavQuery, SiteNavViewModel>(query);
+
+            return PartialView("FooterNav", footerNav);
         }
     }
 }
