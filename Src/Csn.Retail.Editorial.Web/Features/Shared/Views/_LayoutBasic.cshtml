@@ -2,8 +2,6 @@
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 
-@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
-
 @{
     Layout = "_LayoutEmpty.cshtml";
     var globalSiteData = Html.GlobalSiteData();
@@ -34,7 +32,6 @@
 @Html.Action("TopNav", "SiteNav")
 
 <div class="page-container">
-    @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
     @RenderBody()
 </div>
 <footer id="page-footer">

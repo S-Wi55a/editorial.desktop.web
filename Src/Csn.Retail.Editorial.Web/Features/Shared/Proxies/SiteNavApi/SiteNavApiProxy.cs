@@ -15,6 +15,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.SiteNavApi
     public interface ISiteNavApiProxy
     {
         Task<HystrixRestResponse<SiteNavResponse>> GetSiteNavAsync(string site);
+        HystrixRestResponse<SiteNavResponse> GetSiteNav(string site);
     }
 
     [AutoBind]
@@ -30,6 +31,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.SiteNavApi
         {
             _restClient = restClient;
             _userContext = userContext;
+        }
+
+        public HystrixRestResponse<SiteNavResponse> GetSiteNav(string site)
+        {
+            var response = _restClient.HostName(HostName)
+                        .Path("navigation/{0}/", site)
+                        .QueryParams("memberId", _userContext.CurrentUserId)
+                        .Get<SiteNavResponse>();
+
+            return response;
         }
 
         public async Task<HystrixRestResponse<SiteNavResponse>> GetSiteNavAsync(string site)

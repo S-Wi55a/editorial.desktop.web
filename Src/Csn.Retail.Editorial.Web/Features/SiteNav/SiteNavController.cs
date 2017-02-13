@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.SiteNav.Models;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.SiteNav
 {
+    //[Route("editorial/sitenav")]
     public class SiteNavController : Controller
     {
         private readonly IQueryDispatcher _queryDispatcher;
@@ -18,11 +15,12 @@ namespace Csn.Retail.Editorial.Web.Features.SiteNav
             _queryDispatcher = queryDispatcher;
         }
 
-        public async Task<ActionResult> TopNav(SiteNavQuery query)
+        [ChildActionOnly]
+        public ActionResult TopNav(SiteNavQuery query)
         {
-            var topNav = await _queryDispatcher.DispatchAsync<SiteNavQuery, SiteNavViewModel>(query);
-            return View(topNav);
-        }
+            var topNav = _queryDispatcher.Dispatch<SiteNavQuery, SiteNavViewModel>(query);
 
+            return PartialView("TopNav", topNav);
+        }
     }
 }
