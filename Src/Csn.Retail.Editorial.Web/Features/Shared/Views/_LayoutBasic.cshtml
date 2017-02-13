@@ -29,13 +29,9 @@
 
 @globalSiteData.TopNav.ToMvcHtmlString()
 
-@Html.Action("TopNav", "SiteNav")
-
 <div class="page-container">
     @RenderBody()
 </div>
-
-@Html.Action("FooterNav", "SiteNav")
 
 <footer id="page-footer">
     @globalSiteData.Footer.ToMvcHtmlString()
@@ -46,5 +42,7 @@
     @Html.AssetJs("csn.common--" + tenantName)
     @RenderSection("BottomScripts", false)
     @globalSiteData.Script.ToMvcHtmlString()
-}
 
+    @Html.Action("TopNav", "SiteNav")
+    @Html.Action("FooterNav", "SiteNav")
+}
