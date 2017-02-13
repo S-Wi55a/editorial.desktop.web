@@ -469,17 +469,19 @@
     <Content Include="Features\Details\Views\Partials\_RelatedArticles.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Krux.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\_mediamotive.scss" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\SiteNav\Views\TopNav.cshtml" />
     <Content Include="Features\SiteNav\Views\FooterNav.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\_disqus.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--bikesales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--constructionsales.scss" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

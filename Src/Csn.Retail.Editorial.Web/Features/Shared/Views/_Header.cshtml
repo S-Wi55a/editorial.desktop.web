@@ -3,23 +3,6 @@
 <header id="page-header" class="page-header container">
     <a href="~/" class="page-header__logo">Carsales.com.au - Australia's No.1 Auto Website">Carsales.com.au - Australia's No.1 Auto Website</a>
     <div class="mediamotive-leaderboard">
-        @foreach (var mediamotivedata in Model.MediaMotiveItem)
-        {
-            if (mediamotivedata.TileId == "Tile1")
-            {
-                var mediaMotiveDomain = Model.MediaMotiveDomain;
-                var tileUri = mediamotivedata.TileUri;
-
-                <div id="@mediamotivedata.TileId" class="mediamotive-block leaderboard-block" data-krux-required="True" data-media-motive-url="@mediaMotiveDomain@mediamotivedata.TileUrls.JServerUrl@tileUri">
-                    <noscript>
-                        <a target="_blank" href="@mediaMotiveDomain@mediamotivedata.TileUrls.AdClickUrl@tileUri">
-                            <img src="@mediaMotiveDomain@mediamotivedata.TileUrls.IServerUrl@tileUri" width="728" height="250" border="90" alt="Advertisement" />
-                        </a>
-                    </noscript>
-                </div>
-
-                break;
-            }
-        }
+        @{ Html.RenderPartial("Partials/MediaMotive/_Leaderboard", Model); }
     </div>
 </header>

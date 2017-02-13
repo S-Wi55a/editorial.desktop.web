@@ -1,0 +1,31 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Shared.Models.MediaMotiveData
+
+@foreach (var mediamotivedata in Model.MediaMotiveItem)
+{
+    if (mediamotivedata.TileId == "Tile7")
+    {
+        var mediaMotiveDomain = Model.MediaMotiveDomain;
+        var tileUri = mediamotivedata.TileUri;
+
+        <div id="teads-video-container" style="clear: both">
+            <div id="@mediamotivedata.TileId" class="mediamotive-block mrec-block" data-krux-required="True" data-media-motive-url="@mediaMotiveDomain@mediamotivedata.TileUrls.JServerUrl@tileUri">
+                <noscript>
+                    <a target="_blank" href="@mediaMotiveDomain@mediamotivedata.TileUrls.AdClickUrl@tileUri">
+                        <img src="@mediaMotiveDomain@mediamotivedata.TileUrls.IServerUrl@tileUri" width="550" height="309" border="0" alt="Advertisement"/>
+                    </a>
+                </noscript>
+            </div>
+        </div>
+
+        <script type='text/javascript'>
+            document.addEventListener("DOMContentLoaded", function (event) {
+                jQuery.noConflict();
+                jQuery(function ($) {
+                    $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
+                });
+            });
+        </script>
+
+        break;
+    }
+}
