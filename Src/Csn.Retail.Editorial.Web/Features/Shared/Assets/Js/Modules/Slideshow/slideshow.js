@@ -198,10 +198,10 @@ export default function (config = {}) {
         window.addEventListener('resize', () => {
             slidesContainer.style.width = "auto" // Hack to get correct image size
             slidesContainer.style.width = sliderFrame.offsetWidth + "px";
+
             for (var item of slides) {
                 item.style.height = "auto"
             }
-
 
             if (settings.infinity) {
                 _animateSliding((currentSlide / pageBy), 0)
