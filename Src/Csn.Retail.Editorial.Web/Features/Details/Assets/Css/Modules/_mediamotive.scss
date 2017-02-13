@@ -1,10 +1,23 @@
 ﻿.mrec-block {
-    padding-bottom: 20px;
-    width: 300px;
+    max-width: 300px;
+    line-height: 0;
+
+    iframe {
+        margin-bottom: 35px !important;
+    }
+
+    a {
+        img {
+            display: none;
+        }
+    }
 }
 
 .smallbanner-block {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 300px;
+    margin-bottom: 35px;
+    max-width: 300px;
+}
+
+.mediamotive-leaderboard {
+    float: right;
 }

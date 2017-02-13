@@ -1,7 +1,23 @@
 ﻿body {
     font-family: $font-family-default;
     text-align: center;
+    min-width: 1200px;
 }
 
 
+a {
+    color: $cs-primary;
 
+    &:hover {
+        color: $cs-primary;
+    }
+    &:visited {
+        color: $cs-primary;
+    }
+    &:active {
+        color: $cs-primary;
+    }
+    &:focus {
+        color: $cs-primary;
+    }
+}

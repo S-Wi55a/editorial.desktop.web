@@ -1,4 +1,4 @@
-﻿@import "~breakpoint-sass/stylesheets/breakpoint";
+﻿@import "breakpoint-sass/stylesheets/breakpoint";
 
 %button-before--slideshow {
     position: absolute;
@@ -26,10 +26,16 @@
     width: 100%;
     z-index: 0;
     background-color: #000;
+    padding-top: 33.333333%;
+    min-height: 400px;
+    overflow: hidden;
 
 	&__slider {
 		position: relative;
         overflow: hidden;
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
 	}
 
 	&__slides {
@@ -212,6 +218,7 @@
         position: relative;
         z-index: 0;
         opacity: 0.5;
+        width: 100%;
 	}
 
 	&__nav {

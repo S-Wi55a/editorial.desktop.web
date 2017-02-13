@@ -13,16 +13,16 @@
 @import "./modules/_mediamotive.scss";
 
 // Module - Spinner
-@import "../../../shared/assets/css/modules/_c-spinner.scss";
+@import "modules/_c-spinner.scss";
 
 // Module - Social Share
-@import "../../../shared/assets/css/modules/_share-social.scss";
+@import "modules/_share-social.scss";
 
 // Module - Disqus
-@import "../../../shared/assets/css/modules/_disqus.scss";
+@import "modules/_disqus.scss";
 
 // // Modules - Slideshow
-@import "../../../shared/assets/js/modules/slideshow/slideshow.scss";
+@import "modules/slideshow/slideshow.scss";
 
 // Module - Modal
-@import "../../../shared/assets/js/modules/modal/modal.scss"; //TODO: why do both have spinners should use one option
+@import "modules/modal/modal.scss"; //TODO: why do both have spinners should use one option

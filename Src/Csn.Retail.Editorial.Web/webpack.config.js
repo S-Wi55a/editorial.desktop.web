@@ -1,5 +1,20 @@
 'use strict';
 
+
+// List of Tenants
+// Make sure associated '_settings--tenant.scss' file is added to Features\Shared\Assets\Css\Settings\
+
+const listofTenants = [
+    'carsales',
+    'constructionsales',
+    'bikesales'
+];
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
+// Webpack build
 var glob = require('glob'),
     path = require('path'),
     webpack = require('webpack'),
@@ -13,19 +28,16 @@ var assetsPluginInstance = new AssetsPlugin({
         prettyPrint: true
     });
 
-var argv = require('yargs').argv;
-
-
 var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
-const listofTenants = ['carsales', 'constructionsales'];
-
-const TENANTS = process.env.TENANT ?  [process.env.TENANT.trim()] : listofTenants;
+const TENANTS = process.env.TENANT ? (process.env.TENANT.length > 2 ? [process.env.TENANT.trim()] : listofTenants) : listofTenants;
+// Error is sourcemaps with css-loader so inline URL to resolve issue (for development only)
+const URL_LIMIT = process.env.URL_LIMIT ? (process.env.URL_LIMIT.length > 2 ? (process.env.URL_LIMIT.trim() === 'noLimit' ? null : process.env.URL_LIMIT.trim()) : 1): 1;
 
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
     outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
-    publicPath: (argv.publicPath || './')
+    publicPath: './'
 }
 
 
@@ -72,22 +84,33 @@ module.exports = function () {
         const prodLoaderCSSExtract = ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [
-                'css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', {
+                'css-loader', 'clean-css-loader', 'postcss-loader', {
+                    loader: 'resolve-url-loader',
+                    options: {
+                        keepQuery: true
+                    }
+                }, {
                     loader: 'sass-loader',
                     options: {
-                        includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
+                        includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'node_modules'],
                         sourceMap: true,
-                        data: '@import "variables/colors/_variables-colors--' + tenant + '.scss";'
+                        data: '@import "Settings/_settings--' + tenant + '.scss";'
                     }
                 }
             ]
         });
-        const devLoaderCSSExtract = ['style-loader', 'css-loader', 'clean-css-loader', 'postcss-loader', 'resolve-url-loader', {
+        const devLoaderCSSExtract = ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', {
+            loader: 'resolve-url-loader',
+            options: {
+                sourceMap: true,
+                keepQuery: true
+            }
+        }, {
             loader: 'sass-loader',
             options: {
-                includePaths: ['Features/Shared/Assets/Css', 'node_modules'],
+                includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'node_modules'],
                 sourceMap: true,
-                data: '@import "variables/colors/_variables-colors--' + tenant + '.scss";'
+                data: '@import "Settings/_settings--' + tenant + '.scss";'
             }
         }];
 
@@ -138,10 +161,16 @@ module.exports = function () {
                         test: /.*\.(gif|png|jpe?g|svg)$/i,
                         exclude: [/(node_modules|bower_components|unitTest)/, /fonts/],
                         use: [
-                            'file-loader?name=images/[name].[ext]',
+                            {
+                                loader: 'url-loader',
+                                options: {
+                                    limit: URL_LIMIT,
+                                    name: 'images/[name].[ext]'
+                                }
+                            },
                             {
                                 loader: 'image-webpack-loader',
-                                query: {
+                                options: {
                                     progressive: true,
                                     optipng: {
                                         optimizationLevel: 7,

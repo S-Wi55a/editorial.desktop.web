@@ -1,9 +1,7 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Shared.Models.MediaMotiveData
 
-<div class="page-header">
-    <header id="page-header">
-        <a href="~/" class="logo">Carsales.com.au - Australia's No.1 Auto Website">Carsales.com.au - Australia's No.1 Auto Website</a>
-    </header>
+<header id="page-header" class="page-header container">
+    <a href="~/" class="page-header__logo">Carsales.com.au - Australia's No.1 Auto Website">Carsales.com.au - Australia's No.1 Auto Website</a>
     <div class="mediamotive-leaderboard">
         @foreach (var mediamotivedata in Model.MediaMotiveItem)
         {
@@ -24,4 +22,4 @@
             }
         }
     </div>
-</div>
+</header>

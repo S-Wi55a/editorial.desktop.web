@@ -1,17 +1,21 @@
-﻿.tenant-carsales {
-    #page-header {
-        min-height: 115px;
-        a.logo {
-            margin-top:25px;
-            background-color: transparent;
-            color: transparent;
-            border: 0;
-            font: 0/0 a;
-            text-shadow: none;
-            background-image: url(http://resource.csnstatic.com/carsales/globals/img/cs_logo-143x53.png);
-            display: block;
-            height: 53px;
-            width: 142px;
-        }
+﻿.page-header {
+    min-height: 130px;
+    padding: 20px 30px 15px;
+    margin-top: 40px;
+
+    &__logo {
+        background-color: transparent;
+        color: transparent;
+        border: 0;
+        font: 0/0 a;
+        text-shadow: none;
+        background-image: url($logo-header);
+        display: block;
+        width: $logo-header-width;
+        height: $logo-header-height;
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+
     }
 }

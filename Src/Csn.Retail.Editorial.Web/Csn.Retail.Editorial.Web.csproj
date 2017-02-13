@@ -335,6 +335,9 @@
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
+    <Content Include="Features\Shared\Assets\Images\logo-bikesales.svg" />
+    <Content Include="Features\Shared\Assets\Images\logo-carsales.svg" />
+    <Content Include="Features\Shared\Assets\Images\logo-constructionsales.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\htmlparser.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
@@ -366,8 +369,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
-    <Folder Include="Features\Shared\Assets\Images\" />
-    <Folder Include="Features\Shared\Assets\Js\Polyfills\" />
     <Folder Include="Views\Details\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\_Page_Features_Details_Views_DefaultTemplate_cshtml\" />
@@ -475,6 +476,10 @@
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\SiteNav\Views\TopNav.cshtml" />
     <Content Include="Features\SiteNav\Views\FooterNav.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\_disqus.scss" />
+    <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Settings\_settings--bikesales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Settings\_settings--constructionsales.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
