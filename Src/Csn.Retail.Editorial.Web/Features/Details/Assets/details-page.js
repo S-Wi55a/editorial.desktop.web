@@ -71,17 +71,20 @@ let aboveTheFold = function() {
                             })
                         });
 
-                    // Resize Handler for modal window to shrink when window hight is less than image
+                    // Resize Handler for modal window to shrink when window height is less than image
                     let addSizeHandlers = function() {
 
                         let modalContent = document.querySelector('._c-modal__content');
                         let el = modalContent.querySelector('._c-slideshow__slides');
-                        var newHeight = window.innerHeight - 80; // TODO: find way to dynamically set spacing
+                        let threshold = 80; // TODO: find way to dynamically set spacing
+                        let windowWidth = window.innerWidth - threshold;
+                        let windowHeight = window.innerHeight - threshold;
 
-                        if (newHeight < el.offsetHeight) {
+                        // Compare image dimensions with window
+                        if (windowHeight < el.offsetHeight) {
 
-                            let imageRatio = 3 / 2
-                            var width = Math.round((imageRatio * newHeight));
+                            let imageRatio = 3 / 2;
+                            let width = Math.round((imageRatio * windowHeight));
 
                             el.style.width = (Math.round(width)) + 'px';
 
@@ -97,12 +100,6 @@ let aboveTheFold = function() {
                         modalInner.addEventListener(e, addSizeHandlers);
                     });
 
-                    document.querySelector('._c-modal__close').addEventListener('click',
-                        function() {
-                            ['after.csn-slider.lazyload', 'after.csn-slider.resize'].forEach(function(e) {
-                                modalInner.removeEventListener(e, addSizeHandlers);
-                            });
-                        });
                 }
 
             },

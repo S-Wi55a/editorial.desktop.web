@@ -64,8 +64,6 @@ function makeMeter(meterElement) {
         return null;
     }
 
-    console.log(this)
-
     this.min = parseFloat(attr('min', 0)); // default as per HTML5 spec
     this.max = parseFloat(attr('max', 1)); // default as per HTML5 spec
     this.high = parseFloat(attr('high'));
