@@ -126,7 +126,7 @@
 // Single Image
 
 .article-type--singleImage,
-.article-type--sideo {
+.article-type--video {
     position: relative;
 
     div.container:first-child {
@@ -148,7 +148,7 @@
 }
 
 
-.article-type--sideo {
+.article-type--video {
     .article > div:first-child{
         padding-top: (9/16)*100%;
     }
