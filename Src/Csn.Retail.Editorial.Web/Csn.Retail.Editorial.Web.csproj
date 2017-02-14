@@ -481,6 +481,9 @@
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--constructionsales.scss" />
     <Content Include="Features\SiteNav\Views\FooterNav.cshtml" />
     <Content Include="Features\SiteNav\Views\TopNav.cshtml" />
+    <Content Include="Features\SiteNav\Assets\Css\Modules\_topnav.scss" />
+    <Content Include="Features\SiteNav\Assets\Css\Modules\_footernav.scss" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\__Tile15.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

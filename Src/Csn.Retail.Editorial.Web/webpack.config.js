@@ -91,7 +91,7 @@ module.exports = function () {
                 }, {
                     loader: 'sass-loader',
                     options: {
-                        includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'Features/Shared/Assets/Fonts', 'node_modules'],
+                        includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'Features/Shared/Assets/Fonts', 'node_modules', 'Features'],
                         sourceMap: true,
                         data: '@import "Settings/_settings--' + tenant + '.scss";'
                     }
@@ -107,7 +107,7 @@ module.exports = function () {
         }, {
             loader: 'sass-loader',
             options: {
-                includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'Features/Shared/Assets/Fonts', 'node_modules'],
+                includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'Features/Shared/Assets/Fonts', 'node_modules', 'Features'],
                 sourceMap: true,
                 data: '@import "Settings/_settings--' + tenant + '.scss";'
             }
