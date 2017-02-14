@@ -121,3 +121,35 @@
         margin-top: 79px;
     }
 }
+
+
+// Single Image
+
+.article-type--singleImage,
+.article-type--sideo {
+    position: relative;
+
+    div.container:first-child {
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .aside {
+        padding-top: 0;
+    }
+}
+
+.article-type--singleImage {
+    .article > div:first-child{
+        padding-top: (2/3)*100%;
+    }
+}
+
+
+.article-type--sideo {
+    .article > div:first-child{
+        padding-top: (9/16)*100%;
+    }
+}

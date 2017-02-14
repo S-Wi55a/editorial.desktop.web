@@ -8,8 +8,6 @@
 
 @section Head {
     @{Html.RenderPartial("Partials/Head/_SocialMetaData", Model.SocialMetaData); }
-    @{Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
-    <meta name="csn:networkid" content="@Model.NetworkId">
 }
 
 @section Styles {
@@ -22,7 +20,7 @@
 
 @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
 
-<article>
+<article class="article-type--@Model.HeroSection.Type.ToLower()">
     @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
     <div class="container">
         @{ Html.RenderPartial("Partials/Layout/_Main"); }
@@ -33,4 +31,5 @@
 @section BottomScripts
 {
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
+    @{Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
 }

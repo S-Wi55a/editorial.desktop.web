@@ -333,7 +333,6 @@
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\editorsRating-component.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
-    <Content Include="Features\Shared\Assets\Fonts\fonts.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\logo-bikesales.svg" />
     <Content Include="Features\Shared\Assets\Images\logo-carsales.svg" />
@@ -470,11 +469,6 @@
     <Content Include="Features\Details\Views\Partials\_RelatedArticles.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Krux.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
-    <Content Include="Features\Details\Assets\Css\Modules\_mediamotive.scss" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\_disqus.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--bikesales.scss" />
@@ -483,7 +477,6 @@
     <Content Include="Features\SiteNav\Views\TopNav.cshtml" />
     <Content Include="Features\SiteNav\Assets\Css\Modules\_topnav.scss" />
     <Content Include="Features\SiteNav\Assets\Css\Modules\_footernav.scss" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\__Tile15.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
