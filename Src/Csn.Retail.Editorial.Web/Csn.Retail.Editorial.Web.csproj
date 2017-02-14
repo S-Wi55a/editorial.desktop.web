@@ -270,12 +270,12 @@
     <Compile Include="Features\Details\GetArticleQueryHandler.cs" />
     <Compile Include="Features\Details\Mappings\HeroSectionMapper.cs" />
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
-    <Compile Include="Features\Shared\Models\MediaMotiveData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteExtensions.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteResponseDto.cs" />
     <Compile Include="Features\Shared\GlobalSite\LoadGlobalSiteDataOnPageLoad.cs" />
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
+    <Compile Include="Features\Shared\Models\MediaMotiveData.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
@@ -338,6 +338,7 @@
     <Content Include="Features\Shared\Assets\Images\logo-bikesales.svg" />
     <Content Include="Features\Shared\Assets\Images\logo-carsales.svg" />
     <Content Include="Features\Shared\Assets\Images\logo-constructionsales.svg" />
+    <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\htmlparser.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
@@ -469,19 +470,17 @@
     <Content Include="Features\Details\Views\Partials\_RelatedArticles.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Krux.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\_mediamotive.scss" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
-    <Content Include="Features\SiteNav\Views\TopNav.cshtml" />
-    <Content Include="Features\SiteNav\Views\FooterNav.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\_disqus.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--bikesales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--constructionsales.scss" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
+    <Content Include="Features\SiteNav\Views\FooterNav.cshtml" />
+    <Content Include="Features\SiteNav\Views\TopNav.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
