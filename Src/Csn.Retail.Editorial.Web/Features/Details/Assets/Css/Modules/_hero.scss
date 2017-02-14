@@ -3,11 +3,12 @@
 .hero {
     padding-left: 0;
     padding-right: 0;
-
+    min-height: 0;
 }
 
 .hero__imageContainer {
     background-color: $cs-darkest-grey;
+    position: relative;
 
     img {
         @include img-responsive();

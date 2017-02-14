@@ -1,5 +1,6 @@
 window.jQuery = require("jquery");
 window.$ = window.jQuery;
+
 import'es6-promise/auto';
 import detectIE from 'Modules/DetectIE/detect-ie.js'
 
