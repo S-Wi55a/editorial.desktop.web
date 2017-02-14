@@ -127,7 +127,13 @@ let mediaMotive = function () {
 }
 mediaMotive();
 
+// TEADS
+$(function () {
+    if ($('#teads-video-container').length) {
+        $('#teads-video-container').insertAfter($('.article__copy p:eq(1)')).wrap('<p></p>');
 
+    }
+});
 
 
 
