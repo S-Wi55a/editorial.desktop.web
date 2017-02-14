@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "SET NODE_ENV=development && SET URL_LIMIT= && SET TENANT= && npm run webpack -- -d --color",
-    "build-custom": "SET NODE_ENV=development && npm run webpack -- -d --color",
+    "build-custom": "SET NODE_ENV=development && SET URL_LIMIT=noLimit && npm run webpack -- -d --color",
     "build-release": "SET NODE_ENV=production && npm run webpack -- -p --color",
     "dev-watch": "SET NODE_ENV=development && npm run webpack -- -d --progress --colors --watch",
     "dev": "SET NODE_ENV=development && SET URL_LIMIT=noLimit && npm run webpack-dev-server -- -d --colors --hot --output-public-path=/dist/",
