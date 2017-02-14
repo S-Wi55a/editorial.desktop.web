@@ -484,6 +484,13 @@
     <Content Include="Features\SiteNav\Assets\Css\Modules\_topnav.scss" />
     <Content Include="Features\SiteNav\Assets\Css\Modules\_footernav.scss" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\__Tile15.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tile15.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
