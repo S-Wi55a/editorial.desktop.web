@@ -60,7 +60,6 @@ function getEntryFiles(tenant) {
 
     entries['vendor'] = ['./Features/Shared/Assets/Js/vendor.js'];
     entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
-    entries['fonts'] = ['./Features/Shared/Assets/Fonts/fonts.js'];
 
     return entries;
 }
@@ -92,7 +91,7 @@ module.exports = function () {
                 }, {
                     loader: 'sass-loader',
                     options: {
-                        includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'node_modules'],
+                        includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'Features/Shared/Assets/Fonts', 'node_modules'],
                         sourceMap: true,
                         data: '@import "Settings/_settings--' + tenant + '.scss";'
                     }
@@ -108,7 +107,7 @@ module.exports = function () {
         }, {
             loader: 'sass-loader',
             options: {
-                includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'node_modules'],
+                includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'Features/Shared/Assets/Fonts', 'node_modules'],
                 sourceMap: true,
                 data: '@import "Settings/_settings--' + tenant + '.scss";'
             }
@@ -149,13 +148,8 @@ module.exports = function () {
                     },
                     {
                         test: /\.scss$/,
-                        exclude: [/(node_modules|bower_components|unitTest)/, /fonts\.scss/],
+                        exclude: [/(node_modules|bower_components|unitTest)/],
                         use: isProd ? prodLoaderCSSExtract : devLoaderCSSExtract
-                    },
-                    {
-                        test: /fonts\.scss$/,
-                        exclude: /(node_modules|bower_components|unitTest)/,
-                        use: prodLoaderCSSExtract
                     },
                     {
                         test: /.*\.(gif|png|jpe?g|svg)$/i,
@@ -189,7 +183,15 @@ module.exports = function () {
                     {
                         test: /\.(eot|svg|ttf|woff|woff2)$/,
                         exclude: /(images|img)/,
-                        use: 'file-loader?name=fonts/[name].[ext]'
+                        use: [
+                            {
+                                loader: 'url-loader',
+                                options: {
+                                    limit: URL_LIMIT,
+                                    name: 'images/[name].[ext]'
+                                }
+                            }
+                        ]
                     }
                 ]
             },
