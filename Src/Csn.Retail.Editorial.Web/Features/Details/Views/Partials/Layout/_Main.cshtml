@@ -24,26 +24,14 @@
         @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
         @{ Html.RenderPartial("Partials/_Disqus", Model.DisqusData); }
         @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
-        @{ Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData); }
-    </div>
+        @{
+            if (Model.MediaMotiveData.MediaMotiveItem.FindIndex(item => item.TileId == "Tile7") >= 0)
+            {
+                Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData);
+            }
+        }
 
-    <header>
-        <h1 class="article__heading">@Model.Headline</h1>
-        @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
-        <h2 class="article__subheading">@Model.SubHeading</h2>
-    </header>
-    <div class="article__summary">@Model.Summary</div>
-    @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
-    @{ Html.RenderPartial("Partials/_Contributors", Model); }
-    @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
-    @{ Html.RenderPartial("Partials/_Disqus", Model.DisqusData); }
-    @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
-    
-    var foundTeads = @Model.MediaMotiveData.MediaMotiveItem.FindIndex(item => item.TileId == "Tile7")
-    if (foundTeads >= 0)
-    {
-        @{ Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData); }
-    }
+    </div>
 
 </div>
 
