@@ -28,6 +28,9 @@
     </div>
 </article>
 
+@{ Html.RenderPartial("Partials/Widgets/_MoreArticles"); }
+
+
 @section BottomScripts
 {
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)

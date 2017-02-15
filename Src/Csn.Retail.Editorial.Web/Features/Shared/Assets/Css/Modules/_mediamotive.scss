@@ -1,4 +1,14 @@
-﻿.mrec-block {
+﻿.mediamotive-block {
+    line-height: 0;
+
+    a {
+        img {
+            display: none;
+        }
+    }
+}
+
+.mrec-block {
     max-width: 300px;
     line-height: 0;
 
@@ -28,5 +38,13 @@
         img {
             display: none;
         }
+    }
+}
+
+.teads-inread {
+    margin: auto !important;
+
+    &+iframe {
+        display: none;
     }
 }

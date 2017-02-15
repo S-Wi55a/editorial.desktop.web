@@ -35,7 +35,7 @@ let aboveTheFold = function() {
             })
         }
 
-        //Lazy load - Above the fold
+        //Lazy load - Above the fold because some detail layouts don't need it
         require.ensure([
                 "Js/Modules/Slideshow/slideshow.js", "Js/Modules/Modal/modal.js"
         ],
@@ -77,7 +77,6 @@ let aboveTheFold = function() {
                         let modalContent = document.querySelector('._c-modal__content');
                         let el = modalContent.querySelector('._c-slideshow__slides');
                         let threshold = 80; // TODO: find way to dynamically set spacing
-                        let windowWidth = window.innerWidth - threshold;
                         let windowHeight = window.innerHeight - threshold;
 
                         // Compare image dimensions with window
@@ -125,7 +124,10 @@ let mediaMotive = function () {
         },
         'Media-Motive');
 }
-mediaMotive();
+window.addEventListener("load", function load(event){
+    window.removeEventListener("load", load, false); //remove listener, no longer needed
+    mediaMotive();
+},false);
 
 // TEADS
 $(function () {
