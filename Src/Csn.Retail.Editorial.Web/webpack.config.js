@@ -1,6 +1,14 @@
 'use strict';
 
+// Webpack build
+var glob = require('glob'),
+    path = require('path'),
+    webpack = require('webpack'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    AssetsPlugin = require('assets-webpack-plugin'),
+    rimraf = require('rimraf');
 
+//---------------------------------------------------------------------------------------------------------
 // List of Tenants
 // Make sure associated '_settings--tenant.scss' file is added to Features\Shared\Assets\Css\Settings\
 
@@ -10,17 +18,19 @@ const listofTenants = [
     'bikesales'
 ];
 
-
+//---------------------------------------------------------------------------------------------------------
+// list of path to search for files
+const listOfPaths = [
+    path.resolve(__dirname, './'),
+    'node_modules',
+    'bower_components',
+    'Features/Shared/Assets',
+    'Features/Details/Assets',
+    'Features/SiteNav/Assets',
+    'Features'
+];
 //---------------------------------------------------------------------------------------------------------
 
-
-// Webpack build
-var glob = require('glob'),
-    path = require('path'),
-    webpack = require('webpack'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    AssetsPlugin = require('assets-webpack-plugin'),
-    rimraf = require('rimraf');
 
 var assetsPluginInstance = new AssetsPlugin({
         filename: 'webpack.assets.json',
@@ -33,6 +43,7 @@ var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 const TENANTS = process.env.TENANT ? (process.env.TENANT.length > 2 ? [process.env.TENANT.trim()] : listofTenants) : listofTenants;
 // Error is sourcemaps with css-loader so inline URL to resolve issue (for development only)
 const URL_LIMIT = process.env.URL_LIMIT ? (process.env.URL_LIMIT.length > 2 ? (process.env.URL_LIMIT.trim() === 'noLimit' ? null : process.env.URL_LIMIT.trim()) : 1): 1;
+
 
 var config = {
     entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
@@ -91,7 +102,7 @@ module.exports = function () {
                 }, {
                     loader: 'sass-loader',
                     options: {
-                        includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'Features/Shared/Assets/Fonts', 'node_modules', 'Features'],
+                        includePaths: listOfPaths,
                         sourceMap: true,
                         data: '@import "Settings/_settings--' + tenant + '.scss";'
                     }
@@ -107,9 +118,9 @@ module.exports = function () {
         }, {
             loader: 'sass-loader',
             options: {
-                includePaths: ['Features/Shared/Assets/Css', 'Features/Shared/Assets/Js', 'Features/Shared/Assets/Fonts', 'node_modules', 'Features'],
+                includePaths: listOfPaths,
                 sourceMap: true,
-                data: '@import "Settings/_settings--' + tenant + '.scss";'
+                data: '@import "Css/Settings/_settings--' + tenant + '.scss";'
             }
         }];
 
@@ -201,7 +212,7 @@ module.exports = function () {
                     modernizr$: path.resolve(__dirname, './.modernizrrc.js')
                 },
                 descriptionFiles: ['package.json', 'bower.json'],
-                modules: [path.resolve(__dirname, './'), 'node_modules', 'bower_components', 'Features/Shared/Assets/Js']
+                modules: listOfPaths
             },
             plugins: [
                 assetsPluginInstance,

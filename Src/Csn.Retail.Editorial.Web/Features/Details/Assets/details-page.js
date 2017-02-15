@@ -37,11 +37,11 @@ let aboveTheFold = function() {
 
         //Lazy load - Above the fold
         require.ensure([
-                "Modules/Slideshow/slideshow.js", "Modules/Modal/modal.js"
+                "Js/Modules/Slideshow/slideshow.js", "Js/Modules/Modal/modal.js"
         ],
             function() {
 
-                var Slideshow = require("Modules/Slideshow/slideshow.js").default;
+                var Slideshow = require("Js/Modules/Slideshow/slideshow.js").default;
 
                 //Setup slideshow
                 Slideshow({
@@ -54,7 +54,7 @@ let aboveTheFold = function() {
                 if (document.querySelector("[data-ajax-modal]")) {
 
                     //init Modal JS
-                    require("Modules/Modal/modal.js");
+                    require("Js/Modules/Modal/modal.js");
 
                     var modalSlideshow = null;
 
@@ -110,7 +110,7 @@ aboveTheFold();
 
 //Editors Rating
 let editorRatings = function() {
-    if (document.querySelector(".editors-ratings")) {
+    if (document.querySelector('.editors-ratings')) {
         require('./Js/editorsRating-component.js');
     }
 }
@@ -119,9 +119,9 @@ editorRatings();
 // Lazy load Media Motive
 let mediaMotive = function () {
 
-    require.ensure(["Modules/MediaMotive/mm.js"],
+    require.ensure(['Js/Modules/MediaMotive/mm.js'],
         function() {
-            require("Modules/MediaMotive/mm.js");
+            require('Js/Modules/MediaMotive/mm.js');
         },
         'Media-Motive');
 }
@@ -135,6 +135,15 @@ $(function () {
     }
 });
 
+//Lazy load More articles JS
+
+let moreArticles = function() {
+    require.ensure(['./Js/moreArticles-component.js'],
+    function() {
+        require('./Js/moreArticles-component.js');
+    },
+    'More-Articles-Component');
+}
 
 
 

@@ -1,6 +1,6 @@
 ﻿// ---------------------------------------------------------------------------
 // Settings
-@import "variables/_variables.scss";
+@import "./variables/_variables.scss";
 
 // ---------------------------------------------------------------------------
 // Vendors
@@ -13,16 +13,16 @@
 
 // ---------------------------------------------------------------------------
 // Utilities
-@import "utilities/_utilities.scss";
+@import "./utilities/_utilities.scss";
 
 // ---------------------------------------------------------------------------
 // Buttons
-@import "buttons/_buttons.scss";
+@import "./buttons/_buttons.scss";
 
 // ---------------------------------------------------------------------------
 // Typography
-@import "tyopgraphy/extends/_typogrpahy-extends.scss";
+@import "./tyopgraphy/extends/_typogrpahy-extends.scss";
 
 // ---------------------------------------------------------------------------
 // Mixins
-@import "mixins/_mixins.scss";
+@import "./mixins/_mixins.scss";

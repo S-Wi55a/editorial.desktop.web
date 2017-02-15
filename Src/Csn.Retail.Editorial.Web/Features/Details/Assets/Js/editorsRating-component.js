@@ -1,6 +1,6 @@
 ﻿// Details Page css files
 
-require('../css/Modules/Widgets/_editorsRatings.scss');
+require('css/Modules/Widgets/_editorsRatings.scss');
 
 import Modernizr from 'modernizr';
 import Circles from 'circles';
@@ -79,12 +79,12 @@ function isInViewport(selector, threshold = 1, cb) {
 
 if (!Modernizr.meter) {
     // Meter polyfill
-    require.ensure(['modules/meter/meter.js'],
+    require.ensure(['Js/Modules/meter/meter.js'],
         function() {
             for (var meter of expertRatingMeters) {
                 meter.setAttribute('value', meter.getAttribute('data-value'));
             }
-            require('modules/meter/meter.js');
+            require('Js/Modules/meter/meter.js');
             isInViewport(expertRatingSelector, 0.75, () => {
                 Circles.create(overallRatingGraph);
             });

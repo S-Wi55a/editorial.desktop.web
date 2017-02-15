@@ -6,7 +6,7 @@
 
 // ---------------------------------------------------------------------------
 // Globals
-@import "_globals.scss";
+@import "css/_globals.scss";
 
 // ---------------------------------------------------------------------------
 // Vendors
@@ -32,7 +32,7 @@
 
 // ---------------------------------------------------------------------------
 //Fonts
-@import "./fonts.scss";
+@import "Fonts/fonts.scss";
 
 // ---------------------------------------------------------------------------
 // Modules
@@ -43,5 +43,5 @@
 // ---------------------------------------------------------------------------
 // Modules
 // Module - SiteNav
-@import "SiteNav/Assets/Css/Modules/_topnav.scss";
-@import "SiteNav/Assets/Css/Modules/_footernav.scss";
+@import "Css/Modules/_topnav.scss";
+@import "Css/Modules/_footernav.scss";
