@@ -104,7 +104,7 @@ module.exports = function () {
                     options: {
                         includePaths: listOfPaths,
                         sourceMap: true,
-                        data: '@import "Settings/_settings--' + tenant + '.scss";'
+                        data: '@import "Css/Settings/_settings--' + tenant + '.scss";'
                     }
                 }
             ]
