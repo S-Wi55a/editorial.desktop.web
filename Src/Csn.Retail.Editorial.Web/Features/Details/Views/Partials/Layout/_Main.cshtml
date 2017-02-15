@@ -39,7 +39,8 @@
     @{ Html.RenderPartial("Partials/_Disqus", Model.DisqusData); }
     @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
     
-    if (@Model.ArticleType.ToLower() == "news" || @Model.ArticleType.ToLower() == "review")
+    var foundTeads = @Model.MediaMotiveData.MediaMotiveItem.FindIndex(item => item.TileId == "Tile7")
+    if (foundTeads >= 0)
     {
         @{ Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData); }
     }
