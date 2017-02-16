@@ -470,7 +470,6 @@
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tile15.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
