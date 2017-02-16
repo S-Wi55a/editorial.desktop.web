@@ -68,7 +68,6 @@
     "yargs": "^6.6.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.22.0",
     "custom-event": "^1.0.1",
     "document-promises": "^3.1.2",
     "es6-promise": "^4.0.5",
@@ -76,7 +75,6 @@
     "lory.js": "^2.2.1",
     "meter-polyfill": "^1.7.1",
     "picturefill": "^3.0.2",
-    "vanilla-lazyload": "^4.0.3",
-    "webfontloader": "^1.6.27"
+    "vanilla-lazyload": "^4.0.3"
   }
 }

@@ -1,5 +1,12 @@
 {
-    "presets": [["es2015", { "modules": false }]],
-    "plugins": ["dynamic-import-webpack"]
+  "presets": [
+    [
+      "es2015",
+      { "modules": false }
+    ]
+  ],
+  "plugins": [
+    "dynamic-import-webpack"
+  ]
 
 }

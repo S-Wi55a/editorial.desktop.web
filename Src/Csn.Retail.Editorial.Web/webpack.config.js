@@ -207,7 +207,7 @@ module.exports = function () {
                 ]
             },
             resolve: {
-                extensions: ['.js', '.scss'],
+                extensions: ['.js','.scss'],
                 alias: {
                     modernizr$: path.resolve(__dirname, './.modernizrrc.js')
                 },

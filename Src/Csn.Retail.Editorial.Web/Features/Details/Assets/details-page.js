@@ -4,7 +4,7 @@ require('./css/details-page.scss');
 //------------------------------------------------------------------------------------------------------------------
 
 import "core-js/shim";
-import { loaded } from 'document-promises';
+import { loaded } from 'document-promises/document-promises.js';
 
 
 //------------------------------------------------------------------------------------------------------------------
@@ -130,8 +130,8 @@ let mediaMotive = function () {
         'Media-Motive');
 }
 
-contentLoaded.then(function () {
-    /* window is ready */
+/* window is ready */
+loaded.then(function () {
     mediaMotive();
 });
 
