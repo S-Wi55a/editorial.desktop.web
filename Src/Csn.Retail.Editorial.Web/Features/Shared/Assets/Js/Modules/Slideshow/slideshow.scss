@@ -39,6 +39,12 @@ body:not(.ie) ._c-slideshow {
     min-height: 400px;
     overflow: hidden;*/
 
+    &[data-slideshow-page-by="2"]{
+        ._c-slideshow__slide {
+            width: 50%;
+        }
+    }
+
 	&__slider {
 		position: relative;
         overflow: hidden;
@@ -558,3 +564,5 @@ body:not(.ie) ._c-slideshow {
 
 @include breakpoint($screen-xl) {
 }
+
+

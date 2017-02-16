@@ -38,7 +38,7 @@
 
 @section BottomScripts{
     @Html.AssetJs("vendor")
-    @Html.AssetJs("csn.common--" + tenantName)
+    @Html.AssetJs("csn.common--" + tenantName, LoadType.Defer)
     @RenderSection("BottomScripts", false)
     @globalSiteData.Script.ToMvcHtmlString()
 }
