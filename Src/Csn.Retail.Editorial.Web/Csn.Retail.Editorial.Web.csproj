@@ -280,13 +280,6 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
-    <Compile Include="Features\Shared\Proxies\SiteNavApi\SiteNavApiProxy.cs" />
-    <Compile Include="Features\SiteNav\Mappings\MappingSetupTask.cs" />
-    <Compile Include="Features\SiteNav\SiteNavController.cs" />
-    <Compile Include="Features\SiteNav\SiteNavQuery.cs" />
-    <Compile Include="Features\SiteNav\SiteNavQueryHandler.cs" />
-    <Compile Include="Features\SiteNav\SiteNavResponse.cs" />
-    <Compile Include="Features\SiteNav\Models\SiteNavViewModel.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
@@ -474,10 +467,6 @@
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--bikesales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--constructionsales.scss" />
-    <Content Include="Features\SiteNav\Views\FooterNav.cshtml" />
-    <Content Include="Features\SiteNav\Views\TopNav.cshtml" />
-    <Content Include="Features\SiteNav\Assets\Css\Modules\_topnav.scss" />
-    <Content Include="Features\SiteNav\Assets\Css\Modules\_footernav.scss" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />

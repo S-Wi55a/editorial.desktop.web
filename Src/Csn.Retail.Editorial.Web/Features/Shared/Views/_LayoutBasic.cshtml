@@ -41,7 +41,4 @@
     @Html.AssetJs("csn.common--" + tenantName)
     @RenderSection("BottomScripts", false)
     @globalSiteData.Script.ToMvcHtmlString()
-
-    @Html.Action("TopNav", "SiteNav")
-    @Html.Action("FooterNav", "SiteNav")
 }
