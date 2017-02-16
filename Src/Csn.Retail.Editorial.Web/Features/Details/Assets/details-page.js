@@ -4,6 +4,11 @@ require('./css/details-page.scss');
 //------------------------------------------------------------------------------------------------------------------
 
 import "core-js/shim";
+import { loaded } from 'document-promises';
+
+
+//------------------------------------------------------------------------------------------------------------------
+
 
 // Dynamically set the public path for ajax/code-split requests
 let scripts = document.getElementsByTagName("script");
@@ -124,10 +129,11 @@ let mediaMotive = function () {
         },
         'Media-Motive');
 }
-window.addEventListener("load", function load(event){
-    window.removeEventListener("load", load, false); //remove listener, no longer needed
+
+contentLoaded.then(function () {
+    /* window is ready */
     mediaMotive();
-},false);
+});
 
 // TEADS
 $(function () {
@@ -139,13 +145,16 @@ $(function () {
 
 //Lazy load More articles JS
 
-let moreArticles = function() {
-    require.ensure(['./Js/moreArticles-component.js'],
-    function() {
-        require('./Js/moreArticles-component.js');
-    },
-    'More-Articles-Component');
-}
+//let moreArticles = function() {
+//    if (document.querySelector('.more-articles')) {
+//        require.ensure(['./Js/moreArticles-component.js'],
+//        function() {
+//            require('./Js/moreArticles-component.js');
+//        },
+//        'More-Articles-Component');
+//    }
+//}
+//moreArticles();
 
 
 
