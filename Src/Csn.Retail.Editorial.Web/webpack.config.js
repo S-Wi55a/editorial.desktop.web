@@ -199,7 +199,7 @@ module.exports = function () {
                                 loader: 'url-loader',
                                 options: {
                                     limit: URL_LIMIT,
-                                    name: 'images/[name].[ext]'
+                                    name: 'fonts/[name].[ext]'
                                 }
                             }
                         ]
