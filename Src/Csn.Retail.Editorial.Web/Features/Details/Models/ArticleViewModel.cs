@@ -22,6 +22,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string DateAvailable { get; set; }
         public Shared.Models.MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
+        public List<MoreArticleItem> MoreArticleData { get; set; }
     }
 
     public class HeroSection

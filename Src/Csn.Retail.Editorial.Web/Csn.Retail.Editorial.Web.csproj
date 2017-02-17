@@ -276,6 +276,7 @@
     <Compile Include="Features\Shared\GlobalSite\LoadGlobalSiteDataOnPageLoad.cs" />
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
     <Compile Include="Features\Shared\Models\MediaMotiveData.cs" />
+    <Compile Include="Features\Shared\Models\MoreArticleItem.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
@@ -470,7 +471,6 @@
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_SmallBanner.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tile15.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />

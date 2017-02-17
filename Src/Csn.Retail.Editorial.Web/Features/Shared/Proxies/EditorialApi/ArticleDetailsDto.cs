@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 {
@@ -25,6 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string DateAvailable { get; set; }
         public MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
+        public List<MoreArticleItem> MoreArticleData { get; set; }
     }
 
     public class DisqusData
