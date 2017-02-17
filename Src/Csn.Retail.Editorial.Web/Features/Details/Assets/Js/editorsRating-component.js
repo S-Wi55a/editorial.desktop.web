@@ -5,6 +5,8 @@ require('css/Modules/Widgets/_editorsRatings.scss');
 import Modernizr from 'modernizr';
 import Circles from 'circles';
 import TinyAnimate from 'TinyAnimate';
+import { inViewport } from 'Js/Modules/InViewport/inViewport.js';
+
 
 const expertRatingSelector = '.expert-ratings';
 const expertRatingMeters = document.querySelectorAll('.expert-ratings__meter');
@@ -85,7 +87,7 @@ if (!Modernizr.meter) {
                 meter.setAttribute('value', meter.getAttribute('data-value'));
             }
             require('Js/Modules/meter/meter.js');
-            isInViewport(expertRatingSelector, 0.75, () => {
+            inViewport(document, window, expertRatingSelector, 0.75, () => {
                 Circles.create(overallRatingGraph);
             });
         },

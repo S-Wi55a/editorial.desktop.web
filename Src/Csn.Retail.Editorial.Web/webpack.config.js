@@ -31,7 +31,6 @@ const listOfPaths = [
 ];
 //---------------------------------------------------------------------------------------------------------
 
-
 var assetsPluginInstance = new AssetsPlugin({
         filename: 'webpack.assets.json',
         path: __dirname,
@@ -40,9 +39,10 @@ var assetsPluginInstance = new AssetsPlugin({
 
 var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
 
-const TENANTS = process.env.TENANT ? (process.env.TENANT.length > 2 ? [process.env.TENANT.trim()] : listofTenants) : listofTenants;
-// Error is sourcemaps with css-loader so inline URL to resolve issue (for development only)
-const URL_LIMIT = process.env.URL_LIMIT ? (process.env.URL_LIMIT.length > 2 ? (process.env.URL_LIMIT.trim() === 'noLimit' ? null : process.env.URL_LIMIT.trim()) : 1): 1;
+const TENANTS = process.env.TENANT ? [process.env.TENANT.trim()] : listofTenants;
+
+// Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
+const URL_LIMIT = isProd ? 1 : null;
 
 
 var config = {

@@ -5,7 +5,7 @@ require('./css/details-page.scss');
 
 import "core-js/shim";
 import { loaded } from 'document-promises/document-promises.js';
-
+import { inViewport } from 'Js/Modules/InViewport/inViewport.js';
 
 //------------------------------------------------------------------------------------------------------------------
 
@@ -145,16 +145,28 @@ $(function () {
 
 //Lazy load More articles JS
 
-//let moreArticles = function() {
-//    if (document.querySelector('.more-articles')) {
-//        require.ensure(['./Js/moreArticles-component.js'],
-//        function() {
-//            require('./Js/moreArticles-component.js');
-//        },
-//        'More-Articles-Component');
-//    }
-//}
-//moreArticles();
+let moreArticles = function(d) {
 
+    if (d.querySelector('.more-articles')) {
+        require.ensure(['./Js/moreArticles-component.js'],
+        function() {
+            require('./Js/moreArticles-component.js');
+        },
+        'More-Articles-Component');
+    }
+}
+loaded.then(function () {
+    moreArticles(document);
+});
 
+//Lazy load More articles JS
 
+let disqus = function(d, w, selector) {
+    const disqusSelector = d.querySelector(selector);
+    if (disqusSelector) {
+        inViewport(d, w, selector, 2, () => {
+            require('Js/Modules/Disqus/disqus.js').default()
+        });
+    }
+}
+disqus(document, window, '#disqus_thread');
