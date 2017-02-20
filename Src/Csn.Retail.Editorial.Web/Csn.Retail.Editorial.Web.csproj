@@ -271,9 +271,9 @@
     <Compile Include="Features\Details\Mappings\HeroSectionMapper.cs" />
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
-    <Compile Include="Features\LatestArticles\LatestArticlesController.cs" />
-    <Compile Include="Features\LatestArticles\LatestArticlesQuery.cs" />
-    <Compile Include="Features\LatestArticles\LatestArticlesQueryHandler.cs" />
+    <Compile Include="Features\MoreArticles\MoreArticlesController.cs" />
+    <Compile Include="Features\MoreArticles\MoreArticlesQuery.cs" />
+    <Compile Include="Features\MoreArticles\MoreArticlesQueryHandler.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteExtensions.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteResponseDto.cs" />
     <Compile Include="Features\Shared\GlobalSite\LoadGlobalSiteDataOnPageLoad.cs" />
@@ -284,7 +284,7 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\LatestArticlesDto.cs" />
+    <Compile Include="Features\Shared\Proxies\EditorialApi\MoreArticlesDto.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />

@@ -5,9 +5,10 @@ using System.Web;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 {
-    public class LatestArticlesDto
+    public class MoreArticlesDto
     {
         public string Name { get; set; }
+        public string ReadMore { get; set; }
         public List<LatestArticleItem> Items { get; set; }
         public string NextQuery { get; set; }
     }
@@ -25,6 +26,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     {
         public string Url { get; set; }
         public string AlternateText { get; set; }
-        public string Caption { get; set; }
     }
 }

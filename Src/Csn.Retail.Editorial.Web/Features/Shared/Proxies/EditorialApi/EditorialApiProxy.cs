@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Csn.Hystrix.RestClient;
 using Csn.Hystrix.RestClient.Dtos;
-using Csn.Retail.Editorial.Web.Features.LatestArticles;
+using Csn.Retail.Editorial.Web.Features.MoreArticles;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
@@ -9,7 +9,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public interface IEditorialApiProxy
     {
         Task<HystrixRestResponse<ArticleDetailsDto>> GetArticleAsync(EditorialApiInput input);
-        Task<HystrixRestResponse<LatestArticlesDto>> GetLatestArticlesAsync(LatestArticlesQuery query);
+        Task<HystrixRestResponse<MoreArticlesDto>> GetLatestArticlesAsync(MoreArticlesQuery query);
     }
 
     [AutoBind]
@@ -31,13 +31,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
             return response;
         }
 
-        public async Task<HystrixRestResponse<LatestArticlesDto>> GetLatestArticlesAsync(LatestArticlesQuery query)
+        public async Task<HystrixRestResponse<MoreArticlesDto>> GetLatestArticlesAsync(MoreArticlesQuery query)
         {
             var response = await _restClient.HostName(HostName)
-                .Path("v1/latest-articles/{0}/{1}", query.ServiceName, query.Id)
-                .QueryParams("Offset", query.Offset)
-                .QueryParams("Limit", query.Limit)
-                .GetAsync<LatestArticlesDto>();
+                .Path(query.Uri)
+                .GetAsync<MoreArticlesDto>();
 
             return response;
         }
