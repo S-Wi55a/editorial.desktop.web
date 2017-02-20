@@ -342,6 +342,9 @@
     <Compile Include="Features\Details\Mappings\HeroSectionMapper.cs" />
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\MoreArticles\MoreArticlesController.cs" />
+    <Compile Include="Features\MoreArticles\MoreArticlesQuery.cs" />
+    <Compile Include="Features\MoreArticles\MoreArticlesQueryHandler.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteExtensions.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteResponseDto.cs" />
     <Compile Include="Features\Shared\GlobalSite\LoadGlobalSiteDataOnPageLoad.cs" />
@@ -352,6 +355,7 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
+    <Compile Include="Features\Shared\Proxies\EditorialApi\MoreArticlesDto.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
@@ -464,7 +468,6 @@
     <Content Include="Features\Shared\Assets\Css\Base\_base.scss" />
     <Content Include="Features\Shared\Views\_LayoutBasic.cshtml" />
     <Content Include="Features\Shared\Views\_Header.cshtml" />
-    <Content Include="Features\Home\Views\Index.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Layout\_header.scss" />
     <Content Include="eslint.json" />
     <Content Include="Features\Details\Views\DefaultTemplate.cshtml" />
@@ -551,6 +554,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\Lory\_lory.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
+    <Content Include="Features\Home\Views\Index.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
