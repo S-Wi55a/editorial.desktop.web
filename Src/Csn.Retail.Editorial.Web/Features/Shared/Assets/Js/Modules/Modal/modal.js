@@ -63,7 +63,7 @@ class Modal {
 
     updateView(html, index) {
 
-        $(this._modalContent).html(html); //can be changed to appendchild
+        this._modalContent.innerHTML = html; //can be changed to appendchild
 
         // HACK: needs to be here for index, should find better solution
         document.querySelector('._c-slideshow--modal').setAttribute('data-slideshow-start', index);

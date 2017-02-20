@@ -4,16 +4,33 @@
     <!--<div class="_c-slideshow _c-slideshow--modal" data-slideshow-modal data-slideshow-start="@Model.ImageIndex">
         <div class="_c-slideshow__slider">
             <ul class="_c-slideshow__slides">
-                @foreach (var image in Model.Images)
-                {
-                    <li class="_c-slideshow__slide">
+            @{ var index = 0; }
+            @foreach (var image in Model.Images.Take(4))
+                        {
+                <li class="_c-slideshow__slide">
+                    <a href="@Url.Action("Images", "Details", new { imageIndex = index })" data-modal-trigger data-modal-type="slideshow">
                         <img class="_c-slideshow__image"
-                             data-srcset="@image.Url?width=1024 1024w, @image.Url?width=768 768w"
-                             data-src="@image.Url?width=1024"
-                             sizes="100vw"
-                             alt="@image.AlternateText"/>
-                    </li>
-                }
+                                sizes="100vw"
+                                src="@image.Url?width=1024"
+                                srcset="@image.Url?width=1024 2048w, @image.Url?width=768 1536w, @image.Url?width=512 1024w, @image.Url?width=384 768w"
+                                alt="@image.AlternateText" />
+                    </a>
+                </li>
+                index++;
+            }
+            @foreach (var image in Model.Images.Skip(4))
+                        {
+                <li class="_c-slideshow__slide">
+                    <a href="@Url.Action("Images", "Details", new { imageIndex = index })" data-modal-trigger data-modal-type="slideshow">
+                        <img class="_c-slideshow__image"
+                                data-src="@image.Url?width=1024"
+                                data-srcset="@image.Url?width=1024 2048w, @image.Url?width=768 1536w, @image.Url?width=512 1024w, @image.Url?width=384 768w"
+                                sizes="100vw"
+                                alt="@image.AlternateText" />
+                    </a>
+                </li>
+                index++;
+            }
             </ul>
         </div>
         <button class="_c-slideshow__nav _c-slideshow__nav--prev icon-chevron-left-sm" type="button" data-direction="prev">prev</button>

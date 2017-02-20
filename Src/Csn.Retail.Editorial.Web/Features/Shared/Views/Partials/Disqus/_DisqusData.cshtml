@@ -1,6 +1,5 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.DisqusData
 
-<div id="disqus_thread"></div>
 <script>
     /**
      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -13,16 +12,5 @@
         this.page.title = '@Model.Title';
         //this.discovery.disable_all = true;
     };
-
-    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
-        var d = document, s = d.createElement('script');
-        var disqus_shortname = 'carsales';
-
-        s.src = '//'+ disqus_shortname +'.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
-        s.defer = true;
-
-        s.setAttribute('data-timestamp', + new Date());
-        (d.head || d.body).appendChild(s);
-    })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>

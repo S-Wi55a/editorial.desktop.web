@@ -1,17 +1,19 @@
 ﻿require('Css/Modules/Lory/_lory.scss');
+require('Css/Modules/Widgets/_moreArticles.scss');
 
 import {lory} from 'lory.js';
-import { contentLoaded } from 'document-promises';
 
 
 
 // Init More Articles Slider
-let initMoreArticlesSlider = (selector) => {
+let initMoreArticlesSlider = (selector, options) => {
     const slider = document.querySelector(selector);
-
-    lory(slider, {
-        // options going here
-    });
+    options = Object.assign({
+            classNameSlideContainer: 'lory-slider__slides',
+            classNameFrame: 'lory-slider__frame'
+        },
+        options);
+    return lory(slider, options);
 }
 
 // Toggle hide/show more Articles
@@ -22,6 +24,7 @@ let initMoreArticlesSlider = (selector) => {
 // Next button - w/ logic for lazy loading and if reached end
 
 
-contentLoaded.then(() => {
-    /* document is ready */
+initMoreArticlesSlider('.more-articles', {
+    classNamePrevCtrl: 'more-articles_nav-button--prev',
+    classNameNextCtrl: 'more-articles_nav-button--next'
 });

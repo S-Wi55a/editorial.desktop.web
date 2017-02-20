@@ -22,7 +22,7 @@
         @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
         @{ Html.RenderPartial("Partials/_Contributors", Model); }
         @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
-        @{ Html.RenderPartial("Partials/_Disqus", Model.DisqusData); }
+        @{ Html.RenderPartial("Partials/Disqus/_DisqusView", Model.DisqusData); } @*Disqus configs are set in default template*@
         @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
         @{
             if (Model.MediaMotiveData.MediaMotiveItem.FindIndex(item => item.TileId == "Tile7") >= 0)

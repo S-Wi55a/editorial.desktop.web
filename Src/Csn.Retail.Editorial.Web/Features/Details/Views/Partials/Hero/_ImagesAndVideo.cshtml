@@ -11,8 +11,6 @@
                     <li class="_c-slideshow__slide">
                         <a href="@Url.Action("Images", "Details", new { imageIndex = index })" data-modal-trigger data-modal-type="slideshow">
                             <img class="_c-slideshow__image"
-                                 data-src="@image.Url"
-                                 data-srcset="@image.Url?width=1024 2048w, @image.Url?width=768 1536w, @image.Url?width=512 1024w, @image.Url?width=384 768w"
                                  sizes="100vw"
                                  src="@image.Url?width=1024"
                                  srcset="@image.Url?width=1024 2048w, @image.Url?width=768 1536w, @image.Url?width=512 1024w, @image.Url?width=384 768w"
@@ -40,7 +38,7 @@
         </div>
         <button class="_c-slideshow__nav _c-slideshow__nav--prev icon-chevron-left-sm" type="button" data-direction="prev">prev</button>
         <button class="_c-slideshow__nav _c-slideshow__nav--next icon-chevron-right-sm" type="button" data-direction="next">next</button>
-        <a class="_c-slideshow__view-photos" href="@Url.Action("Images", "Details")" data-modal-trigger data-modal-type="slideshow">View Photos</a>
+        <a class="_c-slideshow__view-photos" href="@Url.Action("Images", "Details", new { imageIndex = 0 })" data-modal-trigger data-modal-type="slideshow">View Photos</a>
     </div>
     <div class="brightcove">
         <div class="brightcove__iframe-wrapper">
