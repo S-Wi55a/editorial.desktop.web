@@ -1,8 +1,8 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Shared.Models.SearchEngineData
+﻿@model Csn.Retail.Editorial.Web.Features.Shared.Models.SeoData
 
 <title>@Model.Title</title>
 <meta name="description" content="@Model.Description" />
 <meta name="keywords" content="@Model.Keywords"/>
 
-<link rel="canonical" href="@Model.Canonical"/>
-<link rel="alternate" media="@Model.Alternate.Media" href="@Model.Alternate.Href" />
+<link rel="canonical" href="@Model.CanonicalUrl"/>
+<link rel="alternate" media="only screen and (max-width: 640px)" href="@Model.AlternateUrl"/>

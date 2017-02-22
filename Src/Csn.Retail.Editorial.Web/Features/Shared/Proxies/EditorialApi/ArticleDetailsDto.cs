@@ -27,7 +27,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
         public List<MoreArticleItem> MoreArticleData { get; set; }
-        public SearchEngineData SearchEngineData { get; set; }
+        public SeoData SeoData { get; set; }
     }
 
     public class DisqusData

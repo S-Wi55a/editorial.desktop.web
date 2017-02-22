@@ -23,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public Shared.Models.MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
         public List<MoreArticleItem> MoreArticleData { get; set; }
-        public SearchEngineData SearchEngineData { get; set; }
+        public SeoData SeoData { get; set; }
     }
 
     public class HeroSection
