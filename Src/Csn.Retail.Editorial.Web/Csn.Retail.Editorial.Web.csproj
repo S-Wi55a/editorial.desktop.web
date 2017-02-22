@@ -351,6 +351,7 @@
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
     <Compile Include="Features\Shared\Models\MediaMotiveData.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleItem.cs" />
+    <Compile Include="Features\Shared\Models\SearchEngineData.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
@@ -555,6 +556,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
     <Content Include="Features\Home\Views\Index.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Head\_BasicSeoData.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
