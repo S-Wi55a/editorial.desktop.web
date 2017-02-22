@@ -32,7 +32,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.HealthCheck
         [Route("ping")]
         public ActionResult Ping()
         {
-            return Content("pong");
+            return Content("pong - retail editorial web");
         }
     }
 }
