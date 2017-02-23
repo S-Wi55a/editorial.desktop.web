@@ -46,7 +46,6 @@ let removeClass = (scope, selector, className, text) => {
 
 // Toggle class
 let toggleClass = (scope, selector, className, ...text) => {
-    console.log(scope.querySelector(selector).classList.contains(className))
     if (scope.querySelector(selector).classList.contains(className)) {
         removeClass(scope, selector, className, text[0][0])
     } else {
