@@ -18,8 +18,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<TransformConfigSrc Condition="$(Configuration) == 'QA'">$(TargetProjectDir)\Web.AwsRelease.config</TransformConfigSrc>
-		<TransformConfigSrc Condition="$(Configuration) != 'QA'">$(TargetProjectDir)\Web.$(Configuration).config</TransformConfigSrc>
+		<TransformConfigSrc>$(TargetProjectDir)\Web.$(Configuration).config</TransformConfigSrc>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -180,7 +179,7 @@
 	</Target>
 
 	<UsingTask TaskName="TransformXml" AssemblyFile="$(ToolsDir)\Microsoft.Web.Publishing\Microsoft.Web.Publishing.Tasks.dll"/>
-	<Target Name="TaskTransformConfig" Condition="$(Configuration) == 'Test' OR $(Configuration) == 'QA'">
+	<Target Name="TaskTransformConfig">
 		<TransformXml Source="$(TargetProjectDir)\Web.config"
 								Transform="$(TransformConfigSrc)"
 								Destination="$(OutputDir)\Web.config"
