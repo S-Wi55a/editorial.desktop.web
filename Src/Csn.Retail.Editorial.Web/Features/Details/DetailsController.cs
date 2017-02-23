@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Home;
@@ -34,11 +35,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             var viewModel = dispatchedQuery.Result;
 
-            // TODO: add error handling
-            //if (viewModel == null)
-            //{
-            //    return Redirect("~/error");
-            //}
+            // TODO: what happens if this is the result of bad api call? Maybe need more info in the query response?
+            if (viewModel == null)
+            {
+                throw new HttpException(404, "Article not found");
+            }
 
             return View("DefaultTemplate", viewModel);
         }
