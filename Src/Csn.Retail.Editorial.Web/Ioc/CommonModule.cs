@@ -8,6 +8,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
+using Ingress.Autofac;
 
 namespace Csn.Retail.Editorial.Web.Ioc
 {
@@ -21,6 +22,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.Register(x => CacheStoreBuilder.New().Build()).As<Csn.Cars.Cache.ICacheStore>().SingleInstance();
 
             //builder.RegisterType<ArticleIdentifierModelBinder>().AsModelBinderForTypes(typeof(ArticleIdentifier));
+            builder.AddIngress();
         }
     }
 

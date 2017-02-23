@@ -18,8 +18,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<TransformConfigSrc Condition="$(Configuration) == 'QA'">$(TargetProjectDir)\Web.AwsRelease.config</TransformConfigSrc>
-		<TransformConfigSrc Condition="$(Configuration) != 'QA'">$(TargetProjectDir)\Web.$(Configuration).config</TransformConfigSrc>
+		<TransformConfigSrc>$(TargetProjectDir)\Web.$(Configuration).config</TransformConfigSrc>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -180,14 +179,14 @@
 	</Target>
 
 	<UsingTask TaskName="TransformXml" AssemblyFile="$(ToolsDir)\Microsoft.Web.Publishing\Microsoft.Web.Publishing.Tasks.dll"/>
-	<Target Name="TaskTransformConfig" Condition="$(Configuration) == 'Test' OR $(Configuration) == 'QA'">
+	<Target Name="TaskTransformConfig">
 		<TransformXml Source="$(TargetProjectDir)\Web.config"
 								Transform="$(TransformConfigSrc)"
 								Destination="$(OutputDir)\Web.config"
 								StackTrace="true" />
 	</Target>
 
-	<Target Name="CopySourceToOutput"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput;TaskTransformConfig;ConfigUpdate">
+	<Target Name="CopySourceToOutput"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput;TaskTransformConfig">
 		<Message Text="Copying source to output..." Importance="high"/>
 	</Target>
 
@@ -272,43 +271,6 @@
 			Options="/s /purge /MT:10 /LOG:robocopy-deploy-result.log"
 	        Mirror="false"
 	        />
-    </Target>
-
-
-    <Target Name="ConfigUpdate" Condition="$(Configuration) == 'QA'">
-    	<Message Text="Updating XML file at $(OutputDir)\Web.config" />
-
-    	<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
-             Query="//Hosts/Host[@Name='LeadApiProxy']/@BaseUrl"
-             Value="http://lead.service.csuat.com.au"/>
-
-		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
-             Query="//LeadSettings/@EndpointUrl"
-             Value="http://lead.service.csuat.com.au"/>
-			 
-		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
-             Query="//Hosts/Host[@Name='LeadApiProxy']/Alternatives/add/@BaseUrl"
-             Value="http://lead.service.csuat.com.au"/>
-			 
-		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
-             Query="//connectionStrings/add[@name='RedisServer']/@connectionString"             Value="redis.csstg.com.au:6379,KeepAlive=180,name=MemberCentre.Web,Password=8HqNR43OFj3gnVPz1ECKEZayefBiJjjoKXA6aKiZ,abortConnect=false"/> 
-
-
-		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
-             Query="//appSettings/add[@key='MongoConnectionString']/@value"
-             Value="mongodb://csdevdb01.carsales.csint,csdevdb02.carsales.csint/?replicaSet=csmongo"/>
-
-		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
-             Query="//appSettings/add[@key='MongoSeoConnectionString']/@value"
-             Value="mongodb://csdevdb01.carsales.csint,csdevdb02.carsales.csint/?replicaSet=csmongo"/>
-
-		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
-             Query="//CdnSettings/@CdnDomain"
-             Value="http://csnstatic.stg.au/CsnCarsalesWebContent/"/>
-
-		<XmlPoke XmlInputPath="$(OutputDir)\Web.config"
-             Query="//ConfigProviderSettings/@BaseUrl"
-             Value="http://configs.carsales.svc.csuat.com.au"/>
     </Target>
 
     <Target Name="GenerateVersionFile">
