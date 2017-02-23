@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
@@ -26,24 +27,22 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsPageRequestEvent());
             
-            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, ArticleViewModel>(new GetArticleQuery()
+            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
                 {
                     Id = articleIdentifier.Id
                 });
 
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);
 
-            var viewModel = dispatchedQuery.Result;
+            var response = dispatchedQuery.Result;
 
-            // TODO: what happens if this is the result of bad api call? Maybe need more info in the query response?
-            if (viewModel == null)
+            if (response.ArticleViewModel != null)
             {
-                throw new HttpException(404, "Article not found");
+                return View("DefaultTemplate", response.ArticleViewModel);
             }
 
-            return View("DefaultTemplate", viewModel);
+            throw new HttpException(response.HttpStatusCode == HttpStatusCode.NotFound ? 404 : 500, string.Empty);
         }
-
     }
 
     public class DetailsPageRequestEvent : IEvent, IRequireGlobalSiteNav
