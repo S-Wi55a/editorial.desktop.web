@@ -1,4 +1,10 @@
 ﻿%button {
+    line-height: 35px;
+    font-size: $font-size-h5;
+    padding: 0 15px;
+}
+
+%button--small {
     line-height: 30px;
     font-size: $font-size-small;
     padding: 0 15px;
@@ -13,7 +19,22 @@
     border-radius: 100px;
 }
 
-%button--blue-inverse {
+%button--primary-inverse {
     border-color: $cs-primary;
     color: $cs-primary;
+}
+
+%button--primary {
+    border-color: $cs-primary;
+    background-color: $cs-primary;
+    color: $cs-white;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+        background-color: rgba($cs-primary, 0.7);
+        color: $cs-white;
+        text-decoration: none;
+    }
 }

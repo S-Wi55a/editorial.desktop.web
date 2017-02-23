@@ -6,6 +6,7 @@ var glob = require('glob'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
+    HappyPack = require('happypack'),
     rimraf = require('rimraf');
 
 //---------------------------------------------------------------------------------------------------------
@@ -37,7 +38,7 @@ var assetsPluginInstance = new AssetsPlugin({
         prettyPrint: true
     });
 
-var isProd = process.env.NODE_ENV.trim() === 'production' ? true : false;
+var isProd = process.env.NODE_ENV === 'production' ? true : false;
 
 const TENANTS = process.env.TENANT ? [process.env.TENANT.trim()] : listofTenants;
 
@@ -46,7 +47,7 @@ const URL_LIMIT = isProd ? 1 : null;
 
 
 var config = {
-    entryPointMatch: './features/**/*-page.{js,ts}', // anything ends with -page.js
+    entryPointMatch: './Features/**/*-page.{js,ts}', // anything ends with -page.js
     outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
     publicPath: './'
 }
@@ -134,6 +135,7 @@ module.exports = function () {
                 filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: {
+                noParse: /jquery/,
                 rules: [
                     {
                         test: [/\.js$/, /\.es6$/],
@@ -144,7 +146,7 @@ module.exports = function () {
                     {
                         test: [/\.js$/, /\.es6$/],
                         exclude: /(node_modules|bower_components|unitTest)/,
-                        loader: 'babel-loader'
+                        loaders: ['happypack/loader']
                     },
                     {
                         test: /\.modernizrrc.js$/,
@@ -223,10 +225,58 @@ module.exports = function () {
                     names: ['csn.common' + '--' + tenant, 'vendor'],
                     minChunks: 2
                 }),
-                new webpack.NamedModulesPlugin()
+                new webpack.NamedModulesPlugin(),
+                new HappyPack({
+                    // loaders is the only required parameter:
+                    loaders: ['babel-loader?cacheDirectory=true']
+                })
             ],
             devtool: "cheap-module-source-map",
             devServer: {
+                stats: {
+                    // Add asset Information
+                    assets: true,
+                    // Sort assets by a field
+                    assetsSort: "field",
+                    // Add information about cached (not built) modules
+                    cached: true,
+                    // Add children information
+                    children: true,
+                    // Add chunk information (setting this to `false` allows for a less verbose output)
+                    chunks: false,
+                    // Add built modules information to chunk information
+                    chunkModules: true,
+                    // Add the origins of chunks and chunk merging info
+                    chunkOrigins: false,
+                    // Sort the chunks by a field
+                    chunksSort: "field",
+                    // Context directory for request shortening
+                    //context: "../src/",
+                    // `webpack --colors` equivalent
+                    colors: true,
+                    // Add errors
+                    errors: true,
+                    // Add details to errors (like resolving log)
+                    errorDetails: true,
+                    // Add the hash of the compilation
+                    hash: false,
+                    // Add built modules information
+                    modules: false,
+                    // Sort the modules by a field
+                    modulesSort: "field",
+                    // Add public path information
+                    publicPath: false,
+                    // Add information about the reasons why modules are included
+                    reasons: false,
+                    // Add the source code of modules
+                    source: false,
+                    // Add timing information
+                    timings: true,
+                    // Add webpack version information
+                    version: false,
+                    // Add warnings
+                    warnings: true
+                },
                 proxy: {
                     '/dist/dist': {
                         target: 'http://localhost:8080',
