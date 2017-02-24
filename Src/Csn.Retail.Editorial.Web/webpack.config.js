@@ -92,38 +92,38 @@ module.exports = function () {
     //run through list of tenants
     TENANTS.forEach((tenant) => {
 
+        const loaders = [
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: isProd ? false : true,
+                            minimize: isProd ? true : false
+                        }
+                    },
+                    'postcss-loader?sourceMap',
+                    {
+                        loader: 'resolve-url-loader',
+                        options: {
+                            sourceMap: isProd ? false : true,
+                            keepQuery: true
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            includePaths: listOfPaths,
+                            sourceMap: true,
+                            data: '@import "Css/Settings/_settings--' + tenant + '.scss";'
+                        }
+                    }
+        ]
+
         const prodLoaderCSSExtract = ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: [
-                'css-loader', 'clean-css-loader', 'postcss-loader', {
-                    loader: 'resolve-url-loader',
-                    options: {
-                        keepQuery: true
-                    }
-                }, {
-                    loader: 'sass-loader',
-                    options: {
-                        includePaths: listOfPaths,
-                        sourceMap: true,
-                        data: '@import "Css/Settings/_settings--' + tenant + '.scss";'
-                    }
-                }
-            ]
+            use: loaders
         });
-        const devLoaderCSSExtract = ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', {
-            loader: 'resolve-url-loader',
-            options: {
-                sourceMap: true,
-                keepQuery: true
-            }
-        }, {
-            loader: 'sass-loader',
-            options: {
-                includePaths: listOfPaths,
-                sourceMap: true,
-                data: '@import "Css/Settings/_settings--' + tenant + '.scss";'
-            }
-        }];
+
+        const devLoaderCSSExtract = ['style-loader'].concat(loaders);
 
         moduleExportArr.push(
         {
@@ -140,13 +140,7 @@ module.exports = function () {
                     {
                         test: [/\.js$/, /\.es6$/],
                         exclude: /(node_modules|bower_components|unitTest)/,
-                        enforce: 'pre',
-                        loader: 'eslint-loader'
-                    },
-                    {
-                        test: [/\.js$/, /\.es6$/],
-                        exclude: /(node_modules|bower_components|unitTest)/,
-                        loaders: ['happypack/loader']
+                        loaders: ['happypack/loader?id=babel']
                     },
                     {
                         test: /\.modernizrrc.js$/,
@@ -172,7 +166,7 @@ module.exports = function () {
                                 loader: 'url-loader',
                                 options: {
                                     limit: URL_LIMIT,
-                                    name: 'images/[name].[ext]'
+                                    name: isProd ? 'images/[name]-[hash].[ext]' : 'images/[name].[ext]'
                                 }
                             },
                             {
@@ -201,7 +195,7 @@ module.exports = function () {
                                 loader: 'url-loader',
                                 options: {
                                     limit: URL_LIMIT,
-                                    name: 'fonts/[name].[ext]'
+                                    name: isProd ? 'fonts/[name]-[hash].[ext]' : 'fonts/[name].[ext]'
                                 }
                             }
                         ]
@@ -228,10 +222,16 @@ module.exports = function () {
                 new webpack.NamedModulesPlugin(),
                 new HappyPack({
                     // loaders is the only required parameter:
+                    id: 'babel',
                     loaders: ['babel-loader?cacheDirectory=true']
+                }),
+                new HappyPack({
+                    // loaders is the only required parameter:
+                    id: 'sass',
+                    loaders: devLoaderCSSExtract
                 })
             ],
-            devtool: "cheap-module-source-map",
+            devtool: isProd ? "cheap-source-map" : "eval",
             devServer: {
                 stats: {
                     // Add asset Information

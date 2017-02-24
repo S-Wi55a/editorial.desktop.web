@@ -402,7 +402,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\editorsRating-component.js" />
-    <Content Include="Features\Details\Assets\Js\moreArticles-component.js" />
+    <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticlesContentView.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
@@ -420,8 +420,8 @@
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mm.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\postscribe.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-dark.svg" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-light.svg" />
+    <Content Include="Features\Shared\Assets\Images\spinner-dark.svg" />
+    <Content Include="Features\Shared\Assets\Images\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\utils\dispatch-event.js" />
@@ -444,6 +444,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Modal\Images\" />
     <Folder Include="Views\Details\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\_Page_Features_Details_Views_DefaultTemplate_cshtml\" />

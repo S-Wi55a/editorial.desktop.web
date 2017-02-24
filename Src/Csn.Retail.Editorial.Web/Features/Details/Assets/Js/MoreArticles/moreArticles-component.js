@@ -1,7 +1,4 @@
-﻿require('Css/Modules/Lory/_lory.scss');
-require('Css/Modules/MoreArticles/_moreArticles.scss');
-
-import {lory} from 'lory.js';
+﻿import {lory} from 'lory.js';
 import {get} from 'Js/Modules/Ajax/ajax.js'
 import moreArticlesContentView from 'Js/MoreArticles/moreArticlesContentView.js'
 

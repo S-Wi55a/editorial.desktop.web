@@ -3,7 +3,6 @@ require('./css/details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
-import "core-js/shim";
 import { loaded } from 'document-promises/document-promises.js';
 import { inViewport } from 'Js/Modules/InViewport/inViewport.js';
 
@@ -148,9 +147,9 @@ $(function () {
 let moreArticles = function(d) {
 
     if (d.querySelector('.more-articles')) {
-        require.ensure(['./Js/moreArticles-component.js'],
+        require.ensure(['./Js/MoreArticles/moreArticles-component.js'],
         function() {
-            require('./Js/moreArticles-component.js');
+            require('./Js/MoreArticles/moreArticles-component.js');
         },
         'More-Articles-Component');
     }
