@@ -30,7 +30,10 @@
     </div>
 </article>
 
-@{ Html.RenderPartial("Partials/Widgets/_MoreArticles"); }
+@if (Model.MoreArticleData != null && Model.MoreArticleData.Any())
+{
+    Html.RenderPartial("Partials/MoreArticles/_MoreArticlesContainer", Model.MoreArticleData);
+}
 
 
 @section BottomScripts
@@ -42,3 +45,4 @@
 
 
 }
+

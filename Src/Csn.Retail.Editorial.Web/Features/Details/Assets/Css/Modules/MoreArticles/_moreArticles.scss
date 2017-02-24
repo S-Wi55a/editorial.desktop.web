@@ -1,0 +1,126 @@
+﻿// Globals
+@import "css/_globals.scss";
+
+.more-articles {
+
+    // Local Vars
+    $nav-width: 70px;
+    $img-height: 93px;
+
+    background: $cs-white;
+    border: solid 1px $cs-lighter-grey;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 55px;
+    padding-right: 30px;
+    position: fixed;
+    bottom: -120px;
+    width: 100%;
+    z-index: 9999;
+    transition: bottom .333s, padding-top .3s;
+
+    .container {
+        position: relative;
+        padding: 0;
+    }
+
+    &__frame {
+        width: 1065px; //@1200 width
+        min-height: $img-height;
+
+        &.loading {
+            background-image: url('images/spinner-dark.svg'); //TODO make img var
+	        background-size: 200px 200px;
+	        background-position: center;
+	        background-repeat: no-repeat;
+        }
+    }
+
+    &__filters {
+        margin-bottom: 20px;
+        width: calc(100% - #{$nav-width});
+        display: inline-block;
+    }
+
+    &__filter {
+        display: inline-block;
+        min-width: 145px;
+        text-align: center;
+
+        @extend %button;
+        @extend %button--primary;
+        @extend %button--round;
+    }
+
+    &__nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: $nav-width;
+        font-size: 0;
+    }
+
+    &__nav-button {
+
+        padding: 0;
+
+        &::before {
+            content: '';
+            font-family: $font-family-icons;
+            font-size: 14px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: solid 1px $cs-lighter-grey;
+            color: $cs-light-grey;
+        }
+
+
+        &--prev {
+            margin-right: 5px;
+            &::before {
+                content: "\e925";
+            }
+            &[disabled] {
+                &::before {
+                    opacity: 0.5
+                }
+            }
+        }
+        &--next {
+            margin-left: 5px;
+            &::before {
+                content: "\e928";
+            }
+            &[disabled] {
+                &::before {
+                    opacity: 0.5
+                }
+            }
+        }
+    }
+
+    &__button{
+
+        @extend %button;
+
+        &--show-hide {
+            color: $cs-primary;
+            padding: 0 !important;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+    }
+
+    &.show {
+        padding-top: 25px;
+        bottom: 0;
+    }
+
+
+}
+
+@import "_moreArticle.scss";

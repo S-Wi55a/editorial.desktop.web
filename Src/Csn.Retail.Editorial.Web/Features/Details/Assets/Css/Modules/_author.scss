@@ -41,9 +41,9 @@
         display: inline-block;
         vertical-align: middle;
         margin-top: 10px;
-        @extend %button;
+        @extend %button--small;
         @extend %button--thin;
-        @extend %button--blue-inverse;
+        @extend %button--primary-inverse;
         @extend %button--round;
     }
 

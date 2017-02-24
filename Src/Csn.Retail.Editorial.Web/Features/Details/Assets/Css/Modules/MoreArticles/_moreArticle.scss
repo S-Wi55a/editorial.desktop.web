@@ -1,0 +1,103 @@
+﻿// Globals
+@import "css/_globals.scss";
+
+.more-article {
+
+    // Local Vars
+    $width: 355px;
+    $img-width: 140px;
+
+    width: $width; //Since it will never be smaller than 1200
+    white-space: normal;
+    background-color: $cs-white;
+
+    &:hover {
+        .more-article__content {
+            opacity: 0.7;
+            transition: .3s;
+        }
+    }
+
+    &__content {
+        width: percentage(($width - $img-width)/$width);
+        padding: 0 20px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__image {
+        display: inline-block;
+        vertical-align: middle;
+        width: percentage($img-width/$width);
+    }
+
+    &__title {
+
+        $line-height: 20px;
+        $title-height: $line-height * 2; // Line height * # of lines
+
+        font-size: $font-size-h3;
+        line-height: 20px;
+        max-height: $title-height; // Line height * # of lines
+        margin-bottom: 4px;
+      	overflow: hidden;
+		position: relative;
+	    top:0;
+	    bottom:0;
+
+        & > *:first-child {
+            float: right;
+            width: 100%;
+            margin-left: -5px;
+
+            font-size: $font-size-h3;
+            font-weight: 600;
+            line-height: 20px;
+            color: $cs-black;
+        }
+
+        &::before {
+			content:"";
+			float: left;
+			width: 5px;
+            height: $title-height;
+        }
+
+      &::after {
+			content: "\02026";
+            color: $cs-black;
+			box-sizing: content-box;
+			float: right;
+            position: relative;
+			top: -1*$line-height;
+            left: 100%;
+			width: 50%;
+            margin-left: -50%;
+			padding-right: 5px;
+			text-align: center;
+			background: linear-gradient(to right, rgba(255, 255, 255, 0), white 33%, white);
+      }
+    }
+
+    &__link {
+        font-size: $font-size-h5;
+        line-height: 22px;
+    }
+
+    &__banner {
+        font-size: $font-size-h6;
+        height: 21px;
+        line-height: 21px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        padding: 0 12px;
+
+        &--sponsored {
+            background-color: $cs-green;
+            color: $cs-white;
+        }
+    }
+}
+

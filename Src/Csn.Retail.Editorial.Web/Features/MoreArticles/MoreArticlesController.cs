@@ -21,7 +21,9 @@ namespace Csn.Retail.Editorial.Web.Features.MoreArticles
         {
             var result = await _queryDispatcher.DispatchAsync<MoreArticlesQuery, MoreArticlesDto>(query);
 
-            return PartialView("LatestArticlesView", result);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }
+
+

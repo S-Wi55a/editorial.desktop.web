@@ -18,12 +18,14 @@
 // Module - Social Share
 @import "css/modules/_share-social.scss";
 
-// Module - Disqus
-@import "css/modules/Disqus/_disqus.scss";
-
 // // Modules - Slideshow
 @import "Js/modules/slideshow/slideshow.scss";
 
 // Module - Modal
 @import "Js/modules/modal/modal.scss"; //TODO: why do both have spinners should use one option
 
+//Module - Slider
+@import 'Css/Modules/Lory/_lory.scss';
+
+// Module - More Articles
+@import 'Css/Modules/MoreArticles/_moreArticles.scss';
