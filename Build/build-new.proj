@@ -179,7 +179,8 @@
 	</Target>
 
 	<UsingTask TaskName="TransformXml" AssemblyFile="$(ToolsDir)\Microsoft.Web.Publishing\Microsoft.Web.Publishing.Tasks.dll"/>
-	<Target Name="TaskTransformConfig">
+  <!-- Only perform this step for Test...otherwise Octopus does the transform for us -->
+	<Target Name="TaskTransformConfig" Condition="$(Configuration) == 'Test'">
 		<TransformXml Source="$(TargetProjectDir)\Web.config"
 								Transform="$(TransformConfigSrc)"
 								Destination="$(OutputDir)\Web.config"
