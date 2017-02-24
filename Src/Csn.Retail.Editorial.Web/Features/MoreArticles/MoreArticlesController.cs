@@ -16,7 +16,7 @@ namespace Csn.Retail.Editorial.Web.Features.MoreArticles
 
 
         [HttpGet]
-        [Route("editorial/api/more-articles")]
+        [Route("editorial/api/v1/more-articles")]
         public async Task<ActionResult> GetLatest(MoreArticlesQuery query)
         {
             var result = await _queryDispatcher.DispatchAsync<MoreArticlesQuery, MoreArticlesDto>(query);
