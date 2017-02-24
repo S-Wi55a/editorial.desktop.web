@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Home;
@@ -25,24 +27,22 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsPageRequestEvent());
             
-            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, ArticleViewModel>(new GetArticleQuery()
+            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
                 {
                     Id = articleIdentifier.Id
                 });
 
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);
 
-            var viewModel = dispatchedQuery.Result;
+            var response = dispatchedQuery.Result;
 
-            // TODO: add error handling
-            //if (viewModel == null)
-            //{
-            //    return Redirect("~/error");
-            //}
+            if (response.ArticleViewModel != null)
+            {
+                return View("DefaultTemplate", response.ArticleViewModel);
+            }
 
-            return View("DefaultTemplate", viewModel);
+            throw new HttpException(response.HttpStatusCode == HttpStatusCode.NotFound ? 404 : 500, string.Empty);
         }
-
     }
 
     public class DetailsPageRequestEvent : IEvent, IRequireGlobalSiteNav

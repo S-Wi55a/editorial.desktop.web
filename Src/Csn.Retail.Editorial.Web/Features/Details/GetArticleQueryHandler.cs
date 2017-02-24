@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -10,7 +11,7 @@ using Csn.SimpleCqrs;
 namespace Csn.Retail.Editorial.Web.Features.Details
 {
     [AutoBind]
-    public class GetArticleQueryHandler : IAsyncQueryHandler<GetArticleQuery, ArticleViewModel>
+    public class GetArticleQueryHandler : IAsyncQueryHandler<GetArticleQuery, GetArticleResponse>
     {
         private readonly IEditorialApiProxy _editorialApiProxy;
         private readonly IMapper _mapper;
@@ -23,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             _tenantProvider = tenantProvider;
         }
 
-        public async Task<ArticleViewModel> HandleAsync(GetArticleQuery query)
+        public async Task<GetArticleResponse> HandleAsync(GetArticleQuery query)
         {
             var result = await _editorialApiProxy.GetArticleAsync(new EditorialApiInput()
             {
@@ -34,10 +35,16 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (!result.Succeed)
             {
-                return null;
+                return new GetArticleResponse()
+                {
+                    HttpStatusCode = result.StatusCode
+                };
             }
 
-            return _mapper.Map<ArticleViewModel>(result.Result);
+            return new GetArticleResponse()
+            {
+                ArticleViewModel = _mapper.Map<ArticleViewModel>(result.Result)
+            };
         }
     }
 }
