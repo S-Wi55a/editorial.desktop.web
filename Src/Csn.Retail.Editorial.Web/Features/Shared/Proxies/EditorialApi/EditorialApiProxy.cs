@@ -26,7 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public async Task<HystrixRestResponse<ArticleDetailsDto>> GetArticleAsync(EditorialApiInput input)
         {
             var response = await _restClient.HostName(HostName)
-                                    .Path("v1/details/{0}/{1}/{2}/", input.ServiceName, input.ViewType, input.Id).RetryOnFailure(5)
+                                    .Path("v1/details/{0}/{1}/{2}/", input.ServiceName, input.ViewType, input.Id)
                                     .GetAsync<ArticleDetailsDto>();
             return response;
         }
