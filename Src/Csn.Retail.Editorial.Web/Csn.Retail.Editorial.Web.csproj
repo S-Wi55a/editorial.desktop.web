@@ -81,8 +81,8 @@
       <HintPath>..\packages\Csn.Hystrix.2.4.0.0\lib\net451\Csn.Hystrix.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Csn.Hystrix.RestClient, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.Hystrix.RestClient.2.2.0.0\lib\net45\Csn.Hystrix.RestClient.dll</HintPath>
+    <Reference Include="Csn.Hystrix.RestClient, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Hystrix.RestClient.3.2.0.0\lib\net45\Csn.Hystrix.RestClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Csn.Logging, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -109,8 +109,16 @@
       <HintPath>..\packages\Csn.Puddle.1.1.1.2\lib\net451\Csn.Puddle.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Csn.RestClient, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.RestClient.5.4.0.0\lib\net45\Csn.RestClient.dll</HintPath>
+    <Reference Include="Csn.RestClient, Version=6.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.RestClient.6.1.0.0\lib\net45\Csn.RestClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Csn.Serializers, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Serializers.2.0.0.0\lib\net45\Csn.Serializers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Csn.Serializers.Json, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Serializers.Json.2.0.0.0\lib\net45\Csn.Serializers.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Csn.SimpleCqrs, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">

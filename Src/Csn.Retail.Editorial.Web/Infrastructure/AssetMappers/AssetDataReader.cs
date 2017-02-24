@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Csn.Logging;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Serializers;
+using Csn.Serializers;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 {
