@@ -79,7 +79,8 @@ let updateList = (scope, selector, data) => {
 // Update Content
 let updateContent = function(scope, selector, ajax, container, cb) {
 
-    const url = scope.querySelector(selector) ? scope.querySelector(selector).getAttribute('data-more-articles-url') : null;
+    const el = scope.querySelector(selector)
+    const url = el ? el.getAttribute('data-more-articles-path') + el.getAttribute('data-more-articles-query'): null;
 
     if (url) {
         updateButton(scope, nextCtrl, 'disabled', 'true')//Prevent multiple requests
@@ -87,10 +88,10 @@ let updateContent = function(scope, selector, ajax, container, cb) {
         ajax(url, (json) => {
             json = JSON.parse(json)
             if (json.NextQuery) {
-                updateButton(scope, nextCtrl, 'data-more-articles-url', '/editorial/api/more-articles/?uri='+json.NextQuery)
+                updateButton(scope, nextCtrl, 'data-more-articles-query', json.NextQuery)
             } else {
                 //disabled next
-                updateButton(scope, nextCtrl, 'data-more-articles-url', '')
+                updateButton(scope, nextCtrl, 'data-more-articles-query', '')
             }
             updateButton(scope, nextCtrl, 'disabled')
             scope.querySelector(frame).classList.remove('loading')
@@ -118,7 +119,7 @@ let filterHandler = (e, ...args) => {
 
     if(!el.classList.contains('active')) {
         //get url and set it to next
-        updateButton(scope, nextCtrl, 'data-more-articles-url', '/editorial/api/more-articles/?uri='+el.pathname)
+        updateButton(scope, nextCtrl, 'data-more-articles-query', el.pathname)
         //destory old slider
         scope.querySelector('.lory-slider__slides').innerHTML = '';
         //Init new slider
