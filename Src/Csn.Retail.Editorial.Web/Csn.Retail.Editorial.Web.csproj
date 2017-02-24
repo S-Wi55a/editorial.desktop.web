@@ -352,6 +352,7 @@
     <Compile Include="Features\Shared\Models\MediaMotiveData.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleItem.cs" />
     <Compile Include="Features\Shared\Models\SeoData.cs" />
+    <Compile Include="Features\Shared\Models\WebTrendData.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />

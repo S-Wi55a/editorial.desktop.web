@@ -24,6 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public DisqusData DisqusData { get; set; }
         public List<MoreArticleItem> MoreArticleData { get; set; }
         public SeoData SeoData { get; set; }
+        public WebTrendData WebTrendData { get; set; }
     }
 
     public class HeroSection
