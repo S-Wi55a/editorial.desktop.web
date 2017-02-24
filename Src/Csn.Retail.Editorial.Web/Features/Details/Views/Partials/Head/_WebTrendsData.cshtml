@@ -1,0 +1,6 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Shared.Models.WebTrendData
+
+@foreach (var item in Model.Items)
+{
+    <meta name="@item.Name" content="@item.Content" />
+}
