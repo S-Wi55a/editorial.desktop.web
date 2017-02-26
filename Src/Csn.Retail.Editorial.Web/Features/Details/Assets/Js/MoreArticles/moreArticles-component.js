@@ -71,6 +71,14 @@ let addEventListenerToButton = (scope, selector, event, cb, cbArgs) => {
     }
 }
 
+// Add event listener to Button
+let removeEventListenerToButton = (scope, selector, event, fn) => {
+    let list = scope.querySelectorAll(selector);
+    for (var i of list) {
+        i.removeEventListener(event, fn, false)
+    }
+}
+
 // Update List
 let updateList = (scope, selector, data) => {
     scope.querySelector(selector).insertAdjacentHTML('beforeend', moreArticlesContentView(data))
@@ -80,10 +88,13 @@ let updateList = (scope, selector, data) => {
 let updateContent = function(scope, selector, ajax, container, cb) {
 
     const el = scope.querySelector(selector)
-    const url = el ? el.getAttribute('data-more-articles-path') + el.getAttribute('data-more-articles-query'): null;
+    const query = el ? el.getAttribute('data-more-articles-query'): null;
+    const url = el ? el.getAttribute('data-more-articles-path') + query: null;
+    let lock = !!scope.querySelector(nextCtrl).getAttribute('data-disabled')
+    console.log('lock', lock)
 
-    if (url) {
-        updateButton(scope, nextCtrl, 'disabled', 'true')//Prevent multiple requests
+    if (!lock && query) {
+        updateButton(scope, nextCtrl, 'data-disabled', 1)//Prevent multiple requests
         scope.querySelector(frame).classList.add('loading')
         ajax(url, (json) => {
             json = JSON.parse(json)
@@ -93,7 +104,7 @@ let updateContent = function(scope, selector, ajax, container, cb) {
                 //disabled next
                 updateButton(scope, nextCtrl, 'data-more-articles-query', '')
             }
-            updateButton(scope, nextCtrl, 'disabled')
+            updateButton(scope, nextCtrl, 'data-disabled')
             scope.querySelector(frame).classList.remove('loading')
             updateList(scope, container, json)
             cb()
@@ -130,9 +141,45 @@ let filterHandler = (e, ...args) => {
             '.lory-slider__slides',
             () => {
                 slider.slideTo(0)
+                updateButton(scope, prevCtrl, 'disabled', 'true')
                 slider.setup();
             }
         )
+    }
+}
+
+
+// handlers
+function buttonHandler(scope, slider, firstSlide, visibleSlides) {
+    // Prev logic
+    if (slider.returnIndex() <= firstSlide) {
+        updateButton(scope, prevCtrl, 'disabled', 'true')
+    } else {
+        updateButton(scope, prevCtrl, 'disabled')
+    }
+
+    //Next logic
+    if (slider.returnIndex() + visibleSlides >= slidesLength(scope, slide)) {
+        updateButton(scope, nextCtrl, 'disabled', 'true')
+    } else {
+        updateButton(scope, nextCtrl, 'disabled')
+    }
+}
+
+function nextButtonHandler(scope, slider, offset, cb) {
+    // Get slider index and check if offset from end
+    if (slider.returnIndex() >= slidesLength(scope, slide) - offset) {
+        cb()
+    }
+}
+
+function buttonShowHideHandler() {
+    toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+}
+
+function filterShowHideHandler(scope) {
+    if (!scope.classList.contains('show')) {
+        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
     }
 }
 
@@ -170,44 +217,19 @@ let main = (scope) => {
     updateButton(scope, prevCtrl, 'disabled', 'true')
 
     // Init Button Handlers
-    addEventListenerToButton(scope, navButtons, 'click', (e) => {
-        // Prev logic
-        if (slider.returnIndex() <= firstSlide) {
-            updateButton(scope, prevCtrl, 'disabled', 'true')
-        } else {
-            updateButton(scope, prevCtrl, 'disabled')
-        }
-
-        //Next logic
-        if (slider.returnIndex() + visibleSlides >= slidesLength(scope, slide)) {
-            updateButton(scope, nextCtrl, 'disabled', 'true')
-        } else {
-            updateButton(scope, nextCtrl, 'disabled')
-        }
-    })
+    addEventListenerToButton(scope, navButtons, 'click', buttonHandler.bind(null, scope, slider, firstSlide, visibleSlides))
 
     // Init next Button
-    addEventListenerToButton(scope, nextCtrl, 'click', () => {
-        // Get slider index and check if offset from end
-        if (slider.returnIndex() >= slidesLength(scope, slide) - offset) {
-            content()
-        }
-    })
+    addEventListenerToButton(scope, nextCtrl, 'click', nextButtonHandler.bind(null, scope, slider, offset, content))
 
     //Init Filters
     filters(scope, '.more-articles__filter', filterHandler, [slider, scope])
 
     // Init show/hide Button
-    addEventListenerToButton(scope, showHideButton, 'click', () => {
-        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
-    })
+    addEventListenerToButton(scope, showHideButton, 'click', buttonShowHideHandler)
 
     // Init show hide for filter Button
-    addEventListenerToButton(scope, '.more-articles__filter', 'click', () => {
-        if (!scope.classList.contains('show')) {
-            toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
-        }
-    })
+    addEventListenerToButton(scope, '.more-articles__filter', 'click', filterShowHideHandler.bind(null, scope))
 
     //Once content is loaded
     if (!scope.classList.contains('show')) {
