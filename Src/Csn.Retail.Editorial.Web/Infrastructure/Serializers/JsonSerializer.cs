@@ -7,14 +7,14 @@ using Newtonsoft.Json.Serialization;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Serializers
 {
-    public interface ISerializer
+    /*public interface ISerializer
     {
         string Serialize<T>(T value);
         T Deserialize<T>(string serializedContent);
     }
 
     [AutoBindAsSingleton]
-    public class JsonSerializer : ISerializer, Csn.RestClient.ISerializer
+    public class JsonSerializer : ISerializer
     {
         private readonly JsonSerializerSettings _settings;
 
@@ -73,5 +73,5 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Serializers
         }
 
         public string SupportedMediaType => RestClient.Constants.ContentTypes.Json;
-    }
+    }*/
 }
