@@ -379,6 +379,10 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\MoreArticlesDto.cs" />
+    <Compile Include="Features\Tracking\TrackingController.cs" />
+    <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsQuery.cs" />
+    <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsQueryHandler.cs" />
+    <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsViewModel.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
@@ -608,7 +612,6 @@
     <Content Include="Features\Home\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_BasicSeoData.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_WebTrendsData.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\_WebTrendsScript.cshtml" />
     <Content Include="editorial\content\scripts\webtrends_custom.min.js.map" />
     <Content Include="editorial\content\scripts\webtrends.min.js.map" />
     <Content Include="editorial\content\scripts\webm.wt.plugins.min.js.map" />
@@ -622,6 +625,8 @@
     <Content Include="editorial\content\scripts\webm.crossdomain.angular-preload.min.js.map" />
     <Content Include="editorial\content\scripts\webm.clicktrack.min.js.map" />
     <Content Include="editorial\content\scripts\trafficSourceReferrer.min.js.map" />
+    <Content Include="Features\Tracking\Views\WebMetricsScripts.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MoreArticles\_MoreArticlesContainer.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

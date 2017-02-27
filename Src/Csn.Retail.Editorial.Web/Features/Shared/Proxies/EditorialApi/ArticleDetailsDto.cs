@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public DisqusData DisqusData { get; set; }
         public List<MoreArticleItem> MoreArticleData { get; set; }
         public SeoData SeoData { get; set; }
-        public WebTrendData WebTrendData { get; set; }
+        public List<WebTrendData> WebTrendData { get; set; }
     }
 
     public class DisqusData

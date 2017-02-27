@@ -1,3 +1,4 @@
+using System.Web;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
@@ -10,6 +11,8 @@ using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.Serializers;
 using Csn.Serializers.Json;
 using Csn.SimpleCqrs;
+using Csn.WebMetrics.Editorial.Ioc;
+using Csn.WebMetrics.Ext.Interfaces;
 using Ingress.Autofac;
 
 namespace Csn.Retail.Editorial.Web.Ioc
@@ -25,8 +28,13 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterType<Serializer>().As<ISerializer>().SingleInstance();
             builder.RegisterType<SettingsProvider>().As<ISettingsProvider>().SingleInstance();
 
+            // Tracking
+            builder.Register(x => ObjectFactory.Instance.Resolve<IWebMetricsTrackingScriptBuilder>()).As<IWebMetricsTrackingScriptBuilder>();
+
             //builder.RegisterType<ArticleIdentifierModelBinder>().AsModelBinderForTypes(typeof(ArticleIdentifier));
             builder.AddIngress();
+
+            builder.Register(x => new HttpContextWrapper(HttpContext.Current)).As<HttpContextBase>();
         }
     }
 

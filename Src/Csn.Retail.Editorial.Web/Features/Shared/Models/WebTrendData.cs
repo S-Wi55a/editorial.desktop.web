@@ -7,15 +7,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 {
     public class WebTrendData
     {
-        public string WebTrendId { get; set; }
-        public string DomainName { get; set; }
-        public List<WebTrendItem> Items { get; set; }
-
-        public class WebTrendItem
-        {
-            public string Name { get; set; }
-            public string Content { get; set; }
-        }
+        public string Name { get; set; }
+        public string Content { get; set; }
     }
 
 }
