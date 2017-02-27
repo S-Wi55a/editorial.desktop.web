@@ -12,16 +12,11 @@ namespace Csn.Retail.Editorial.Web.Features.MoreArticles
     public class MoreArticlesQueryHandler : IAsyncQueryHandler<MoreArticlesQuery, MoreArticlesDto>
     {
         private readonly IEditorialApiProxy _editorialApiProxy;
-        private readonly IMapper _mapper;
-        private readonly ITenantProvider<TenantInfo> _tenantProvider;
 
 
-        public MoreArticlesQueryHandler(IEditorialApiProxy editorialApiProxy, IMapper mapper,
-            ITenantProvider<TenantInfo> tenantProvider)
+        public MoreArticlesQueryHandler(IEditorialApiProxy editorialApiProxy)
         {
             _editorialApiProxy = editorialApiProxy;
-            _mapper = mapper;
-            _tenantProvider = tenantProvider;
         }
 
 

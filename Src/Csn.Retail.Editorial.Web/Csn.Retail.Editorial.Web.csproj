@@ -125,6 +125,18 @@
       <HintPath>..\packages\Csn.SimpleCqrs.Extended.4.1.0.0\lib\net451\Csn.SimpleCqrs.Extended.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Csn.WebMetrics.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.WebMetrics.Editorial.1.0.471.0\lib\net40\Csn.WebMetrics.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Csn.WebMetrics.Editorial, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.WebMetrics.Editorial.1.0.471.0\lib\net40\Csn.WebMetrics.Editorial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Csn.WebMetrics.Ext, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.WebMetrics.Editorial.1.0.471.0\lib\net40\Csn.WebMetrics.Ext.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ingress.Autofac-Net45, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Autofac-Net45.1.3.1\lib\net452\Ingress.Autofac-Net45.dll</HintPath>
       <Private>True</Private>
@@ -401,6 +413,34 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="editorial\content\scripts\ads.js" />
+    <Content Include="editorial\content\scripts\trafficSourceReferrer.js" />
+    <Content Include="editorial\content\scripts\trafficSourceReferrer.min.js" />
+    <Content Include="editorial\content\scripts\webm.clicktrack.js" />
+    <Content Include="editorial\content\scripts\webm.clicktrack.min.js" />
+    <Content Include="editorial\content\scripts\webm.crossdomain.angular-preload.js" />
+    <Content Include="editorial\content\scripts\webm.crossdomain.angular-preload.min.js" />
+    <Content Include="editorial\content\scripts\webm.crossdomain.js" />
+    <Content Include="editorial\content\scripts\webm.crossdomain.min.js" />
+    <Content Include="editorial\content\scripts\webm.EventTracking.js" />
+    <Content Include="editorial\content\scripts\webm.EventTracking.min.js" />
+    <Content Include="editorial\content\scripts\webm.EventTrackingPlugins.hs.js" />
+    <Content Include="editorial\content\scripts\webm.EventTrackingPlugins.hs.min.js" />
+    <Content Include="editorial\content\scripts\webm.EventTrackingPlugins.js" />
+    <Content Include="editorial\content\scripts\webm.EventTrackingPlugins.min.js" />
+    <Content Include="editorial\content\scripts\webm.helpMeChooseTrack.js" />
+    <Content Include="editorial\content\scripts\webm.helpMeChooseTrack.min.js" />
+    <Content Include="editorial\content\scripts\webm.singlePageApplication.js" />
+    <Content Include="editorial\content\scripts\webm.singlePageApplication.min.js" />
+    <Content Include="editorial\content\scripts\webm.wt.nontsrc.plugins.js" />
+    <Content Include="editorial\content\scripts\webm.wt.nontsrc.plugins.min.js" />
+    <Content Include="editorial\content\scripts\webm.wt.plugins.js" />
+    <Content Include="editorial\content\scripts\webm.wt.plugins.min.js" />
+    <Content Include="editorial\content\scripts\webtrends.js" />
+    <Content Include="editorial\content\scripts\webtrends.min.js" />
+    <Content Include="editorial\content\scripts\webtrends.replicate.js" />
+    <Content Include="editorial\content\scripts\webtrends_custom.js" />
+    <Content Include="editorial\content\scripts\webtrends_custom.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\editorsRating-component.js" />
@@ -561,6 +601,19 @@
     <Content Include="Features\Details\Views\Partials\Head\_BasicSeoData.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_WebTrendsData.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_WebTrendsScript.cshtml" />
+    <Content Include="editorial\content\scripts\webtrends_custom.min.js.map" />
+    <Content Include="editorial\content\scripts\webtrends.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.wt.plugins.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.wt.nontsrc.plugins.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.singlePageApplication.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.helpMeChooseTrack.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.EventTrackingPlugins.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.EventTrackingPlugins.hs.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.EventTracking.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.crossdomain.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.crossdomain.angular-preload.min.js.map" />
+    <Content Include="editorial\content\scripts\webm.clicktrack.min.js.map" />
+    <Content Include="editorial\content\scripts\trafficSourceReferrer.min.js.map" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
