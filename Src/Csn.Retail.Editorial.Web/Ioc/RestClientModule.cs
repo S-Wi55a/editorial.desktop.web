@@ -30,12 +30,12 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 .As<IHostSettingsProvider>()
                 .SingleInstance();
 
-            builder.Register(x => RequestExecutorBuilder.New.WithSerializer(x.Resolve<RestClient.ISerializer>()).Build()).As<IRequestExecutor>();
             builder.Register(x => Csn.RestClient.FluentRestClientBuilder.New
-                    .WithSerializer(x.Resolve<RestClient.ISerializer>())
-                    .WithRequestExecutor(x.Resolve<IRequestExecutor>())
-                    .Build())
-                .As<IRestClient>().SingleInstance();
+                .WithSerializer(x.Resolve<Csn.Serializers.ISerializer>())
+                .WithFilters(x.Resolve<IEnumerable<IRequestFilter>>())
+                .WithLogger(x.Resolve<ILogger>()).Build())
+                .As<IRestClient>()
+                .SingleInstance();
 
             builder.RegisterType<HystrixRestRequestHeaderInterceptor>().As<IHystrixRestRequestInterceptor>();
             builder.Register(x => new HystrixRestReporter(GetLogger.For<HystrixRestReporter>())).As<IHystrixRestReporter>().SingleInstance();
@@ -44,7 +44,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 .New()
                 .WithInterceptors(x.Resolve<IEnumerable<IHystrixRestRequestInterceptor>>()?.ToArray() ?? new IHystrixRestRequestInterceptor[] { })
                 .WithRestClient(x.Resolve<IRestClient>())
-                .WithSerializer(x.Resolve<RestClient.ISerializer>())
+                .WithSerializer(x.Resolve<Csn.Serializers.ISerializer>())
                 .WithSettingsProvider(x.Resolve<IHostSettingsProvider>())
                 .WithCircuitBreaker(x.Resolve<ICircuitBreakerFactory>())
                 .WithLoggerFactory(x.Resolve<ILoggerFactory>())

@@ -22,7 +22,7 @@
 
 @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
 
-<article class="article-type--@Model.HeroSection.Type.ToString().ToLower()">
+<article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
     @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
     <div class="container">
         @{ Html.RenderPartial("Partials/Layout/_Main"); }

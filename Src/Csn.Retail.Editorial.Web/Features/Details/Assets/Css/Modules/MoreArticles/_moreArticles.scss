@@ -14,10 +14,14 @@
     padding-left: 55px;
     padding-right: 30px;
     position: fixed;
-    bottom: -120px;
+    bottom: -200px;
     width: 100%;
     z-index: 9999;
     transition: bottom .333s, padding-top .3s;
+
+    &.active {
+        bottom: -120px;
+    }
 
     .container {
         position: relative;
@@ -46,10 +50,26 @@
         display: inline-block;
         min-width: 145px;
         text-align: center;
+        margin-right: 25px;
 
         @extend %button;
-        @extend %button--primary;
         @extend %button--round;
+        @extend %button--thin;
+        @extend %button--primary-inverse;
+
+        &.active {
+            @extend %button--primary;
+            cursor: default;
+            &:hover,
+            &:active,
+            &:focus,
+            &:visited {
+                background-color: rgba($cs-primary, 1);
+                border-color: rgba($cs-primary, 0);
+                color: $cs-white;
+                text-decoration: none;
+            }
+        }
     }
 
     &__nav {

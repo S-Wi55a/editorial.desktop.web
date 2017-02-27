@@ -4,9 +4,16 @@
     <div class="container">
         <div class="more-articles__filters">
             @* Loop through filters *@
-            @foreach (var tag in Model)
+            @{ var index = 0; }
+            @foreach (var tag in Model.Take(1))
+            {
+                <a href="@tag.Uri" class="more-articles__filter active">@tag.Title</a>
+                index++;
+            }
+            @foreach (var tag in Model.Skip(1))
             {
                 <a href="@tag.Uri" class="more-articles__filter">@tag.Title</a>
+                index++;
             }
         </div>
         <div class="more-articles__frame lory-slider__frame">
@@ -17,7 +24,7 @@
         <div class="more-articles__nav">
             <button class="more-articles__button more-articles__button--show-hide">Show</button>
             <button class="more-articles__nav-button more-articles__nav-button--prev">Prev</button>
-            <button class="more-articles__nav-button more-articles__nav-button--next" data-more-articles-url="/editorial/api/more-articles/?uri=@Html.Encode(Model.First().Uri)">Next</button>
+            <button class="more-articles__nav-button more-articles__nav-button--next" data-more-articles-path="/editorial/api/more-articles/?uri=" data-more-articles-query="@Html.Encode(Model.First().Uri)">Next</button>
         </div>
     </div>
 </div>

@@ -2,6 +2,8 @@
 import {get} from 'Js/Modules/Ajax/ajax.js'
 import moreArticlesContentView from 'Js/MoreArticles/moreArticlesContentView.js'
 
+import ScrollMagic from 'ScrollMagic'
+
 const classNameSlideContainer = 'lory-slider__slides'
 const classNameFrame = 'lory-slider__frame'
 const classNamePrevCtrl = 'more-articles__nav-button--prev'
@@ -16,6 +18,35 @@ const nextCtrl = '.' + classNameNextCtrl
 const slide = '.' + classNameSlide
 const navButtons = '.more-articles__nav-button'
 const showHideButton = '.more-articles__button--show-hide'
+
+
+// Scroll Magic
+const contentOffset = 0.5; // range 0 - 1
+const triggerElement = '.article-type'
+const triggerHook = 1
+const offset = (document.querySelector(triggerElement).offsetHeight * contentOffset);
+
+let scrollHandler = (scope, selector, className) => {
+    const el = scope.querySelector(selector)
+    //if more acticles is already active then don't
+    if (!el.classList.contains(className)) {
+        el.classList.add(className)
+    }
+}
+
+window.scrollMogicController = window.scrollMogicController || new ScrollMagic.Controller();
+
+// Set scene
+new ScrollMagic.Scene({
+        triggerElement: triggerElement,
+        triggerHook: triggerHook,
+        offset: offset
+    })
+    .on("update", function (e) {
+        e.target.controller().info("scrollDirection") === 'REVERSE' ? this.trigger("enter") : null;
+    })
+    .on("enter", scrollHandler.bind(null, document, scopeSelector, 'show'))
+    .addTo(window.scrollMogicController);
 
 // Init More Articles Slider
 let initMoreArticlesSlider = (selector, options) => {
@@ -71,6 +102,14 @@ let addEventListenerToButton = (scope, selector, event, cb, cbArgs) => {
     }
 }
 
+// Add event listener to Button
+let removeEventListenerToButton = (scope, selector, event, fn) => {
+    let list = scope.querySelectorAll(selector);
+    for (var i of list) {
+        i.removeEventListener(event, fn, false)
+    }
+}
+
 // Update List
 let updateList = (scope, selector, data) => {
     scope.querySelector(selector).insertAdjacentHTML('beforeend', moreArticlesContentView(data))
@@ -79,20 +118,23 @@ let updateList = (scope, selector, data) => {
 // Update Content
 let updateContent = function(scope, selector, ajax, container, cb) {
 
-    const url = scope.querySelector(selector) ? scope.querySelector(selector).getAttribute('data-more-articles-url') : null;
+    const el = scope.querySelector(selector)
+    const query = el ? el.getAttribute('data-more-articles-query'): null;
+    const url = el ? el.getAttribute('data-more-articles-path') + query: null;
+    let lock = !!scope.querySelector(nextCtrl).getAttribute('data-disabled')
 
-    if (url) {
-        updateButton(scope, nextCtrl, 'disabled', 'true')//Prevent multiple requests
+    if (!lock && query) {
+        updateButton(scope, nextCtrl, 'data-disabled', 1)//Prevent multiple requests
         scope.querySelector(frame).classList.add('loading')
         ajax(url, (json) => {
             json = JSON.parse(json)
             if (json.NextQuery) {
-                updateButton(scope, nextCtrl, 'data-more-articles-url', '/editorial/api/more-articles/?uri='+json.NextQuery)
+                updateButton(scope, nextCtrl, 'data-more-articles-query', json.NextQuery)
             } else {
                 //disabled next
-                updateButton(scope, nextCtrl, 'data-more-articles-url', '')
+                updateButton(scope, nextCtrl, 'data-more-articles-query', '')
             }
-            updateButton(scope, nextCtrl, 'disabled')
+            updateButton(scope, nextCtrl, 'data-disabled')
             scope.querySelector(frame).classList.remove('loading')
             updateList(scope, container, json)
             cb()
@@ -115,10 +157,19 @@ let filterHandler = (e, ...args) => {
     const el = e.target
     const slider = args[0][0]
     const scope = args[0][1]
+    const className = args[0][2]
 
-    if(!el.classList.contains('active')) {
+    if(!el.classList.contains(className)) {
+
+        // Clear all active classes and add to clicked el
+        const filters = scope.querySelectorAll(el.className)
+        for (var filter of filters) {
+            filter.classList.remove(className)
+        }
+        el.classList.add(className)
+
         //get url and set it to next
-        updateButton(scope, nextCtrl, 'data-more-articles-url', '/editorial/api/more-articles/?uri='+el.pathname)
+        updateButton(scope, nextCtrl, 'data-more-articles-query', el.pathname)
         //destory old slider
         scope.querySelector('.lory-slider__slides').innerHTML = '';
         //Init new slider
@@ -129,10 +180,44 @@ let filterHandler = (e, ...args) => {
             '.lory-slider__slides',
             () => {
                 slider.slideTo(0)
+                updateButton(scope, prevCtrl, 'disabled', 'true')
                 slider.setup();
             }
         )
     }
+
+    if (!scope.classList.contains('show')) {
+        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+    }
+}
+
+
+// handlers
+function buttonHandler(scope, slider, firstSlide, visibleSlides) {
+    // Prev logic
+    if (slider.returnIndex() <= firstSlide) {
+        updateButton(scope, prevCtrl, 'disabled', 'true')
+    } else {
+        updateButton(scope, prevCtrl, 'disabled')
+    }
+
+    //Next logic
+    if (slider.returnIndex() + visibleSlides >= slidesLength(scope, slide)) {
+        updateButton(scope, nextCtrl, 'disabled', 'true')
+    } else {
+        updateButton(scope, nextCtrl, 'disabled')
+    }
+}
+
+function nextButtonHandler(scope, slider, offset, cb) {
+    // Get slider index and check if offset from end
+    if (slider.returnIndex() >= slidesLength(scope, slide) - offset) {
+        cb()
+    }
+}
+
+function buttonShowHideHandler() {
+    toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
 }
 
 // Filters
@@ -169,49 +254,16 @@ let main = (scope) => {
     updateButton(scope, prevCtrl, 'disabled', 'true')
 
     // Init Button Handlers
-    addEventListenerToButton(scope, navButtons, 'click', (e) => {
-        // Prev logic
-        if (slider.returnIndex() <= firstSlide) {
-            updateButton(scope, prevCtrl, 'disabled', 'true')
-        } else {
-            updateButton(scope, prevCtrl, 'disabled')
-        }
-
-        //Next logic
-        if (slider.returnIndex() + visibleSlides >= slidesLength(scope, slide)) {
-            updateButton(scope, nextCtrl, 'disabled', 'true')
-        } else {
-            updateButton(scope, nextCtrl, 'disabled')
-        }
-    })
+    addEventListenerToButton(scope, navButtons, 'click', buttonHandler.bind(null, scope, slider, firstSlide, visibleSlides))
 
     // Init next Button
-    addEventListenerToButton(scope, nextCtrl, 'click', () => {
-        // Get slider index and check if offset from end
-        if (slider.returnIndex() >= slidesLength(scope, slide) - offset) {
-            content()
-        }
-    })
+    addEventListenerToButton(scope, nextCtrl, 'click', nextButtonHandler.bind(null, scope, slider, offset, content))
 
     //Init Filters
-    filters(scope, '.more-articles__filter', filterHandler, [slider, scope])
+    filters(scope, '.more-articles__filter', filterHandler, [slider, scope, 'active'])
 
     // Init show/hide Button
-    addEventListenerToButton(scope, showHideButton, 'click', () => {
-        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
-    })
-
-    // Init show hide for filter Button
-    addEventListenerToButton(scope, '.more-articles__filter', 'click', () => {
-        if (!scope.classList.contains('show')) {
-            toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
-        }
-    })
-
-    //Once content is loaded
-    if (!scope.classList.contains('show')) {
-        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
-    }
+    addEventListenerToButton(scope, showHideButton, 'click', buttonShowHideHandler)
 
 }
 
@@ -221,7 +273,11 @@ updateContent(
     nextCtrl,
     get,
     '.lory-slider__slides',
-    main.bind(null, document.querySelector(scopeSelector))
+    () => {
+        main(document.querySelector(scopeSelector))
+        // This is called in cb() if AJAX is sucessful on first time
+        document.querySelector(scopeSelector).classList.add('active');
+        }
     )
 
 
