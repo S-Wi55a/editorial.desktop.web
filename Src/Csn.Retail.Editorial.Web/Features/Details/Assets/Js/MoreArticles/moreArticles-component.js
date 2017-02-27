@@ -25,28 +25,8 @@ const contentOffset = 0.5; // range 0 - 1
 const triggerElement = '.article-type'
 const triggerHook = 1
 const offset = (document.querySelector(triggerElement).offsetHeight * contentOffset);
-
-let scrollHandler = (scope, selector, className) => {
-    const el = scope.querySelector(selector)
-    //if more acticles is already active then don't
-    if (!el.classList.contains(className)) {
-        el.classList.add(className)
-    }
-}
-
 window.scrollMogicController = window.scrollMogicController || new ScrollMagic.Controller();
 
-// Set scene
-new ScrollMagic.Scene({
-        triggerElement: triggerElement,
-        triggerHook: triggerHook,
-        offset: offset
-    })
-    .on("update", function (e) {
-        e.target.controller().info("scrollDirection") === 'REVERSE' ? this.trigger("enter") : null;
-    })
-    .on("enter", scrollHandler.bind(null, document, scopeSelector, 'show'))
-    .addTo(window.scrollMogicController);
 
 // Init More Articles Slider
 let initMoreArticlesSlider = (selector, options) => {
@@ -224,6 +204,31 @@ function buttonShowHideHandler() {
 let filters = (scope, selector, cb, cbArgs) => {
     addEventListenerToButton(scope, selector, 'click', cb, cbArgs)
 }
+
+
+//Scroll Magic
+
+let scrollHandler = (scope, selector, className) => {
+    const el = scope.querySelector(selector)
+    //if more acticles is already active then don't
+    if (!el.classList.contains(className)) {
+        toggleClass(document, scopeSelector, className, ['Show', 'Hide'])
+    }
+}
+
+// Set scene
+new ScrollMagic.Scene({
+    triggerElement: triggerElement,
+    triggerHook: triggerHook,
+    offset: offset
+})
+    .on("update", function (e) {
+        e.target.controller().info("scrollDirection") === 'REVERSE' ? this.trigger("enter") : null;
+    })
+    .on("enter", scrollHandler.bind(null, document, scopeSelector, 'show'))
+    .addTo(window.scrollMogicController);
+
+
 
 
 // Main

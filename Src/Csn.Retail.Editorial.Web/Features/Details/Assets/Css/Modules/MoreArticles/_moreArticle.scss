@@ -5,7 +5,7 @@
 
     // Local Vars
     $width: 355px;
-    $img-width: 140px;
+    $img-width: 100px;
 
     width: $width; //Since it will never be smaller than 1200
     white-space: normal;
@@ -36,7 +36,7 @@
         $line-height: 20px;
         $title-height: $line-height * 2; // Line height * # of lines
 
-        font-size: $font-size-h3;
+        font-size: $font-size-h5;
         line-height: 20px;
         max-height: $title-height; // Line height * # of lines
         margin-bottom: 4px;
@@ -50,7 +50,7 @@
             width: 100%;
             margin-left: -5px;
 
-            font-size: $font-size-h3;
+            font-size: $font-size-h5;
             font-weight: 600;
             line-height: 20px;
             color: $cs-black;
@@ -82,6 +82,7 @@
     &__link {
         font-size: $font-size-h5;
         line-height: 22px;
+        display: inline-block;
     }
 
     &__banner {
@@ -97,6 +98,7 @@
         &--sponsored {
             background-color: $cs-green;
             color: $cs-white;
+            float: right;
         }
     }
 }
