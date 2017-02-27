@@ -456,13 +456,19 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\editorsRating-component.js" />
-    <Content Include="Features\Details\Assets\Js\moreArticles-component.js" />
+    <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-component.js" />
+    <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticlesContentView.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\logo-bikesales.svg" />
     <Content Include="Features\Shared\Assets\Images\logo-carsales.svg" />
     <Content Include="Features\Shared\Assets\Images\logo-constructionsales.svg" />
+    <Content Include="Features\Shared\Assets\Images\spinner-dark.svg" />
+    <Content Include="Features\Shared\Assets\Images\spinner-light.svg" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Ajax\ajax.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\InViewport\inViewport.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\htmlparser.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
@@ -494,9 +500,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
-    <Folder Include="Views\Details\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\_Page_Features_Details_Views_DefaultTemplate_cshtml\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -593,7 +596,6 @@
     <Content Include="Features\Details\Views\Partials\_RelatedArticles.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
-    <Content Include="Features\Shared\Assets\Css\Modules\Disqus\_disqus.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--bikesales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--constructionsales.scss" />
@@ -604,7 +606,6 @@
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tile15.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\_MoreArticles.cshtml" />
-    <Content Include="Features\Details\Assets\Css\Modules\Widgets\_moreArticles.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mediamotive.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\Lory\_lory.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
@@ -627,6 +628,11 @@
     <Content Include="editorial\content\scripts\trafficSourceReferrer.min.js.map" />
     <Content Include="Features\Tracking\Views\WebMetricsScripts.cshtml" />
     <Content Include="Features\Details\Views\Partials\MoreArticles\_MoreArticlesContainer.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\MoreArticles\_moreArticle.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\MoreArticles\_moreArticles.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />
+    <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusData.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusView.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

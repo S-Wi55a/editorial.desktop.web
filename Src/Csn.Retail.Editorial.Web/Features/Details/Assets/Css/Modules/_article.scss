@@ -22,14 +22,30 @@
         color: $cs-dark-grey;
     }
 
-    &__copy {
-        color: $cs-light-grey;
+    &__summary {
+        @extend %p;
+        font-weight: bold;
+        color: $cs-dark-grey;
+        margin-top: 35px;
+
         p {
-            margin-top: 43px;
+            margin-top: 35px;
         }
         &>p:first-child {
-            margin-top: 21px;
+                margin-top: 0;
+            }
+    }
+
+    &__copy{
+        color: $cs-light-grey;
+        margin-top: 35px;
+
+        p {
+            margin-top: 35px;
         }
+        &>p:first-child {
+                margin-top: 0;
+            }
     }
 
     &__img {
