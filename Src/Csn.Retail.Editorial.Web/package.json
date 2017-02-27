@@ -74,6 +74,7 @@
     "lory.js": "^2.2.1",
     "meter-polyfill": "^1.7.1",
     "picturefill": "^3.0.2",
+    "scrollmagic": "^2.0.5",
     "vanilla-lazyload": "^4.0.3"
   }
 }
