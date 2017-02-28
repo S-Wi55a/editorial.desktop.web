@@ -379,12 +379,15 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\MoreArticlesDto.cs" />
+    <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
+    <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
     <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsQuery.cs" />
     <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsQueryHandler.cs" />
     <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsViewModel.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
+    <Compile Include="Infrastructure\Constants\TenantNames.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckSummary.cs" />
     <Compile Include="Infrastructure\HealthChecks\IHealthChecker.cs" />
@@ -633,6 +636,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusData.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusView.cshtml" />
+    <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -11,6 +11,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string SubHeading { get; set; }
         public string Summary { get; set; }
         public string ArticleType { get; set; }
+        public string Categories { get; set; }
+        public string Lifestyles { get; set; }
         public HeroSection HeroSection { get; set; }
         public List<Contributor> Contributors { get; set; }
         public List<ContentSection> ContentSections { get; set; }
