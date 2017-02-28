@@ -1,16 +1,14 @@
 using System.Web;
-using System.Web.Routing;
 using Autofac;
-using Autofac.Integration.Mvc;
 using Csn.Cars.Cache.Builder;
 using Csn.Logging;
-using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.Serializers;
 using Csn.Serializers.Json;
 using Csn.SimpleCqrs;
+using Csn.WebMetrics.Editorial.Interfaces;
 using Csn.WebMetrics.Editorial.Ioc;
 using Csn.WebMetrics.Ext.Interfaces;
 using Ingress.Autofac;
@@ -29,6 +27,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterType<SettingsProvider>().As<ISettingsProvider>().SingleInstance();
 
             // Tracking
+            builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialDetailsTrackingContainerProvider>()).As<IEditorialDetailsTrackingContainerProvider>();
             builder.Register(x => ObjectFactory.Instance.Resolve<IWebMetricsTrackingScriptBuilder>()).As<IWebMetricsTrackingScriptBuilder>();
 
             //builder.RegisterType<ArticleIdentifierModelBinder>().AsModelBinderForTypes(typeof(ArticleIdentifier));

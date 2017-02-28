@@ -1,5 +1,7 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Web;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
@@ -7,7 +9,12 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
     public interface IContextStore
     {
         object Get(string name);
+
         void Set(string name, object value);
+
+        bool Exists(string key);
+
+        T GetOrFetch<T>(string key, Func<T> fetch);
     }
 
     [AutoBindAsPerRequest]
@@ -31,6 +38,29 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
         public void Set(string name, object value)
         {
             store.TryAdd(name, value);
+        }
+
+        public bool Exists(string key)
+        {
+            return HttpContext.Current != null && HttpContext.Current.Items.Contains(key);
+        }
+
+        public T GetOrFetch<T>(string key, Func<T> fetch)
+        {
+            T result;
+
+            if (Exists(key))
+            {
+                result = (T)Get(key);
+            }
+            else
+            {
+                result = fetch.Invoke();
+
+                Set(key, result);
+            }
+
+            return result;
         }
     }
 

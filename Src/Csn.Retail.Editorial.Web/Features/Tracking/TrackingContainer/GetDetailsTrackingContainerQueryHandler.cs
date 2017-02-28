@@ -6,14 +6,16 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.SimpleCqrs;
 using Csn.WebMetrics.Core.Model;
 using Csn.WebMetrics.Editorial.Interfaces;
+using IContextStore = Csn.Retail.Editorial.Web.Infrastructure.ContextStores.IContextStore;
 
 namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
 {
+    [AutoBind]
     public class GetDetailsTrackingContainerQueryHandler : IQueryHandler<GetDetailsTrackingContainerQuery, IAnalyticsTrackingContainer>
     {
         private const string Key = "Tracking.Editorial";
@@ -40,19 +42,9 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
 
         private IAnalyticsTrackingContainer GetTrackingContainer(GetDetailsTrackingContainerQuery containerQuery)
         {
-            var queryResult = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
-            {
-                Id = containerQuery.Id
-            });
+            var article = containerQuery.Article;
 
-            if (queryResult == null)
-            {
-                return null;
-            }
-
-            var article = queryResult.Result.ArticleViewModel;
-
-            AnalyticsEditorialTrackingItem trackingItem = new AnalyticsEditorialTrackingItem
+            var trackingItem = new AnalyticsEditorialTrackingItem
             {
                 ArticleType = GetArticleType(article),
                 Category = article.Categories.Any() ? string.Join(";", article.Categories.Distinct()) : string.Empty,
