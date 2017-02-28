@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Csn.MultiTenant;
-using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -13,10 +12,10 @@ using Csn.WebMetrics.Core.Model;
 using Csn.WebMetrics.Editorial.Interfaces;
 using IContextStore = Csn.Retail.Editorial.Web.Infrastructure.ContextStores.IContextStore;
 
-namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
+namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingQuery
 {
     [AutoBind]
-    public class GetDetailsTrackingContainerQueryHandler : IQueryHandler<GetDetailsTrackingContainerQuery, IAnalyticsTrackingContainer>
+    public class GetDetailsTrackingQueryHandler : IQueryHandler<GetDetailsTrackingQuery, IAnalyticsTrackingContainer>
     {
         private const string Key = "Tracking.Editorial";
 
@@ -26,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly IQueryDispatcher _queryDispatcher;
 
-        public GetDetailsTrackingContainerQueryHandler(IQueryDispatcher queryDispatcher, IEditorialDetailsTrackingContainerProvider provider, IContextStore contextStore, HttpContextBase httpContextBase, ITenantProvider<TenantInfo> tenantProvider)
+        public GetDetailsTrackingQueryHandler(IQueryDispatcher queryDispatcher, IEditorialDetailsTrackingContainerProvider provider, IContextStore contextStore, HttpContextBase httpContextBase, ITenantProvider<TenantInfo> tenantProvider)
         {
             _provider = provider;
             _contextStore = contextStore;
@@ -35,12 +34,12 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
             _queryDispatcher = queryDispatcher;
         }
 
-        public IAnalyticsTrackingContainer Handle(GetDetailsTrackingContainerQuery containerQuery)
+        public IAnalyticsTrackingContainer Handle(GetDetailsTrackingQuery containerQuery)
         {
             return _contextStore.GetOrFetch(Key, () => GetTrackingContainer(containerQuery));
         }
 
-        private IAnalyticsTrackingContainer GetTrackingContainer(GetDetailsTrackingContainerQuery containerQuery)
+        private IAnalyticsTrackingContainer GetTrackingContainer(GetDetailsTrackingQuery containerQuery)
         {
             var article = containerQuery.Article;
 

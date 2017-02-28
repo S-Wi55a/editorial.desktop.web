@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer;
+using Csn.Retail.Editorial.Web.Features.Tracking.TrackingQuery;
 using Csn.Retail.Editorial.Web.Features.Tracking.WebMetricsScripts;
 using Csn.SimpleCqrs;
 using Csn.WebMetrics.Core.Model;
@@ -28,9 +28,16 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking
         }
 
         [ChildActionOnly]
-        public ActionResult HtmlTrackingDetails(GetDetailsTrackingContainerQuery containerQuery)
+        public ActionResult HtmlTrackingDetails(GetDetailsTrackingQuery query)
         {
-            var container = _queryDispatcher.Dispatch<GetDetailsTrackingContainerQuery, IAnalyticsTrackingContainer>(containerQuery);
+            var container = _queryDispatcher.Dispatch<GetDetailsTrackingQuery, IAnalyticsTrackingContainer>(query);
+            if (container == null) return null;
+            return PartialView("HtmlTracking", model: container.GenericHtmlTracking);
+        }
+
+        public ActionResult GoogleAnalyticsTrackingDetails(GetGoogleAnalyticsDetailsTrackingQuery query)
+        {
+            var container = _queryDispatcher.Dispatch<GetGoogleAnalyticsDetailsTrackingQuery, IAnalyticsTrackingContainer>(query);
             if (container == null) return null;
             return PartialView("HtmlTracking", model: container.GenericHtmlTracking);
         }
