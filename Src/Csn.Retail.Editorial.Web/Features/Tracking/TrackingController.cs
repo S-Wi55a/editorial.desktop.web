@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Tracking.TrackingQuery;
+﻿using System.Web.Mvc;
+using Csn.Retail.Editorial.Web.Features.Tracking.GoogleAnalytics;
+using Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer;
 using Csn.Retail.Editorial.Web.Features.Tracking.WebMetricsScripts;
 using Csn.SimpleCqrs;
 using Csn.WebMetrics.Core.Model;
@@ -28,18 +25,18 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking
         }
 
         [ChildActionOnly]
-        public ActionResult HtmlTrackingDetails(GetDetailsTrackingQuery query)
+        public ActionResult HtmlTrackingDetails(GetDetailsTrackingContainerQuery query)
         {
-            var container = _queryDispatcher.Dispatch<GetDetailsTrackingQuery, IAnalyticsTrackingContainer>(query);
+            var container = _queryDispatcher.Dispatch<GetDetailsTrackingContainerQuery, IAnalyticsTrackingContainer>(query);
             if (container == null) return null;
             return PartialView("HtmlTracking", model: container.GenericHtmlTracking);
         }
 
-        public ActionResult GoogleAnalyticsTrackingDetails(GetGoogleAnalyticsDetailsTrackingQuery query)
+        [ChildActionOnly]
+        public ActionResult GoogleAnalyticsDetails(GoogleAnalyticsDetailsQuery query)
         {
-            var container = _queryDispatcher.Dispatch<GetGoogleAnalyticsDetailsTrackingQuery, IAnalyticsTrackingContainer>(query);
-            if (container == null) return null;
-            return PartialView("HtmlTracking", model: container.GenericHtmlTracking);
+            var model = _queryDispatcher.Dispatch<GoogleAnalyticsDetailsQuery, GoogleAnalyticsDetailsModel>(query);
+            return PartialView(model);
         }
     }
 }

@@ -243,6 +243,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -379,6 +381,12 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\MoreArticlesDto.cs" />
+    <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiDto.cs" />
+    <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiInput.cs" />
+    <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiProxy.cs" />
+    <Compile Include="Features\Tracking\GoogleAnalytics\GoogleAnalyticsDetailsModel.cs" />
+    <Compile Include="Features\Tracking\GoogleAnalytics\GoogleAnalyticsDetailsQuery.cs" />
+    <Compile Include="Features\Tracking\GoogleAnalytics\GoogleAnalyticsDetailsQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
@@ -637,6 +645,7 @@
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusData.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusView.cshtml" />
     <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
+    <Content Include="Features\Tracking\Views\GoogleAnalyticsDetails.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

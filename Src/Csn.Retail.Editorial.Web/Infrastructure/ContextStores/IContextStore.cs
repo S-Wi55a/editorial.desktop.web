@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Web;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
@@ -15,6 +16,8 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
         bool Exists(string key);
 
         T GetOrFetch<T>(string key, Func<T> fetch);
+
+        Task<T> GetOrFetchAsync<T>(string key, Func<Task<T>> fetch);
     }
 
     [AutoBindAsPerRequest]
@@ -56,6 +59,24 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
             else
             {
                 result = fetch.Invoke();
+
+                Set(key, result);
+            }
+
+            return result;
+        }
+
+        public async Task<T> GetOrFetchAsync<T>(string key, Func<Task<T>> fetch)
+        {
+            T result;
+
+            if (Exists(key))
+            {
+                result = (T)Get(key);
+            }
+            else
+            {
+                result = await fetch.Invoke();
 
                 Set(key, result);
             }
