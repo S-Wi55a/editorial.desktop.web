@@ -4,44 +4,34 @@
     float: left;
     font-size: 0;
     margin-bottom: 20px;
-    min-width: calc(100% - 293px); // Inclusive of 3 social icons
-
 }
 
 .share-social__link {
 
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     display: inline-block;
     border-radius: 9999px;
     position: relative;
     margin-right: 15px;
     float: right;
+    margin-top: -7.5px;
+
 
 
     &:first-child {
         margin-right: auto;
     }
 
-    // When there is only 3
-    &:first-child:nth-last-child(1),
-    &:first-child:nth-last-child(1) ~ &,
-    &:first-child:nth-last-child(2),
-    &:first-child:nth-last-child(2) ~ &,
-    &:first-child:nth-last-child(3),
-    &:first-child:nth-last-child(3) ~ & {
-	    margin-top: -10px;
-    }
-
-
     &--facebook {
         background-color: $color-fb;
         color: $cs-white;
-        font-size: 23px;
+        font-size: 21px;
 
         &:hover,
         &:visited,
-        &:active {
+        &:active,
+        &:focus {
             color: $cs-white;
             opacity: 0.66;
         }
@@ -49,11 +39,12 @@
     &--twitter {
         background-color: $color-twitter ;
         color: $cs-white;
-        font-size: 23px;
+        font-size: 21px;
 
         &:hover,
         &:visited,
-        &:active {
+        &:active,
+        &:focus {
             color: $cs-white;
             opacity: 0.66;
         }
@@ -61,11 +52,12 @@
     &--google-plus {
         background-color: $color-google-plus;
         color: $cs-white;
-        font-size: 23px;
+        font-size: 21px;
 
         &:hover,
         &:visited,
-        &:active {
+        &:active,
+        &:focus {
             color: $cs-white;
             opacity: 0.66;
         }
@@ -73,11 +65,12 @@
     &--tumblr {
         background-color: $color-tumblr;
         color: $cs-white;
-        font-size: 23px;
+        font-size: 21px;
 
         &:hover,
         &:visited,
-        &:active {
+        &:active,
+        &:focus {
             color: $cs-white;
             opacity: 0.66;
         }
@@ -85,7 +78,7 @@
     &--pinterest {
         background-color: $color-pinterest;
         color: $cs-white;
-        font-size: 23px;
+        font-size: 21px;
 
         &:hover,
         &:visited,
@@ -98,11 +91,12 @@
         background-color: $cs-white;
         color: $cs-black;
         border: 1px solid $cs-black;
-        font-size: 23px;
+        font-size: 21px;
 
         &:hover,
         &:visited,
-        &:active {
+        &:active,
+        &:focus {
             color: $cs-black;
             opacity: 0.66;
         }
@@ -111,11 +105,12 @@
         background-color: $cs-white;
         color: $cs-black;
         border: 1px solid $cs-black;
-        font-size: 23px;
+        font-size: 21px;
 
         &:hover,
         &:visited,
-        &:active {
+        &:active,
+        &:focus {
             color: $cs-black;
             opacity: 0.66;
         }
@@ -124,11 +119,12 @@
         background-color: $cs-white;
         color: $cs-black;
         border: 1px solid $cs-black;
-        font-size: 23px;
+        font-size: 21px;
 
         &:hover,
         &:visited,
-        &:active {
+        &:active,
+        &:focus {
             color: $cs-black;
             opacity: 0.66;
         }
@@ -148,19 +144,3 @@
 .share-social__link-text {
     display: none;
 }
-
-
-@media only screen and (min-width: 992px) {
-
-    .share-social__link {
-        &:first-child:nth-last-child(4),
-        &:first-child:nth-last-child(4) ~ &,
-        &:first-child:nth-last-child(5),
-        &:first-child:nth-last-child(5) ~ & {
-	        margin-top: -10px;
-        }
-    }
-
-
-}
-

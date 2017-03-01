@@ -1,12 +1,4 @@
-﻿/**
- * _c-modal – ultra slim jQuery lightbox
- * Version 1.5.0 - http://noelboss.github.io/_c-modal/
- *
- * Copyright 2016, Noël Raoul Bossart (http://www.noelboss.com)
- * MIT Licensed.
-**/
-
-._c-modal {
+﻿._c-modal {
 
 	/* dimensions: spanning the background from edge to edge */
 	position:fixed;
@@ -39,10 +31,6 @@
 	&[data-is-active="false"] {
 		display: none;
 	}
-
-    ._c-slideshow {
-        background-color: transparent;
-    }
 }
 
 ._c-modal:before {
@@ -222,8 +210,8 @@
 		padding: 60px 120px;
 
 		/* dimensions: handling large content */
-		margin-left: 5%;
-		margin-right: 5%;
+		/*margin-left: 5%;
+		margin-right: 5%;*/
 
 		/* styling */
 		background-color: transparent;
@@ -237,6 +225,7 @@
 
 		/* reset white-space wrapping */
 		white-space: normal;
+
 	}
 
     ._c-modal--video
@@ -246,7 +235,10 @@
 
     ._c-modal--slideshow
     {
-        ._c-modal__content { padding: 0px;  }
+        ._c-modal__content {
+            width: 100%;
+            padding: 0 5%;
+        }
     }
 	/* contains the content */
 	._c-modal ._c-modal-inner {

@@ -6,7 +6,8 @@
     ]
   ],
   "plugins": [
-    "dynamic-import-webpack"
+    "dynamic-import-webpack",
+    "syntax-dynamic-import"
   ]
 
 }
