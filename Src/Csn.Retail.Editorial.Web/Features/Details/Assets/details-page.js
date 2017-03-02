@@ -204,7 +204,7 @@ aboveTheFold();
 //Editors Rating
 let editorRatings = function() {
     if (document.querySelector('.editors-ratings')) {
-        require('./Js/editorsRating-component.js');
+        require('./Js/EditorsRatings/editorsRating-component.js');
     }
 }
 editorRatings();
