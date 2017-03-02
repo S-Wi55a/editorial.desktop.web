@@ -11,3 +11,34 @@
     max-width: 100%;
     height: auto;
 }
+
+@mixin buttonColor($color, $textColor){
+
+    border-color: $color;
+    background-color: $color;
+    color: $textColor;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+        background-color: rgba($color, 0.7);
+        border-color: rgba($color, 0);
+        color: $textColor;
+        text-decoration: none;
+    }
+
+}
+
+//find matching height across different aspect ratios
+//w' + w" + w'" = t @ t =1
+@function  matchingAspectRatioHeight($aspectRatio, $aspectRatioList) {
+
+        $ratio : 0;
+
+        @each $i in $aspectRatioList {
+            $ratio : $ratio  + $i;
+        }
+
+        @return  ($aspectRatio)* (1/$ratio)
+}

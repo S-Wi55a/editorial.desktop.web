@@ -456,6 +456,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\editorsRating-component.js" />
+    <Content Include="Features\Details\Assets\Js\HeroSlider\heroSlider.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticlesContentView.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
@@ -546,7 +547,6 @@
     <Content Include="Features\Details\Views\Partials\Layout\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\Brightcove\_brightcove-video-player.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_article.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\_hero.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
     <Content Include="Features\Shared\Assets\Css\Tyopgraphy\Extends\_typogrpahy-extends.scss" />
@@ -563,7 +563,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.scss" />
     <Content Include="Features\Shared\Views\Partials\_Modal.cshtml" />
     <Content Include="Features\Details\Views\Partials\Modal\_SlideshowModal.cshtml" />
-    <Content Include="Features\Shared\Assets\Css\Modules\_c-spinner.scss" />
     <Content Include="Features\Shared\Assets\Css\Utilities\_utilities.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Settings\_variables-settings.scss" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
@@ -633,6 +632,10 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusData.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusView.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\Swiper\_swiper.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Modal\_modalSlider.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Hero\_hero.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroSlider.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

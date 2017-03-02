@@ -31,18 +31,41 @@
     }
 }
 
-.hero--imageAndVideo {
+.hero.hero--imageAndVideo {
 
+    padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
+    position: relative;
     overflow: hidden;
 
+    .slideshow,
+    .brightcove {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     // Move to there own blocks
-    ._c-slideshow {
-        float: left;
-        width: percentage(27/59) //The intersection where 3:2 and 16:9 have the same height
+    .slideshow {
+        right: 0;
+        width: percentage(matchingAspectRatioHeight(3/2, (3/2, 16/9))); //The intersection where 3:2 and 16:9 have the same height
     }
     .brightcove {
-        float: left;
-        width: percentage(1-(27/59)) //The intersection where 3:2 and 16:9 have the same height
+        left: 0;
+        width: percentage(matchingAspectRatioHeight(16/9, (3/2, 16/9))); //The intersection where 3:2 and 16:9 have the same height
+    }
+}
+
+@include breakpoint($screen-lg) {
+    .hero.hero--imageAndVideo {
+        padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 3/2, 16/9))); //Aspect ratio / number of images
+
+        // Move to there own blocks
+        .slideshow {
+            width: 2*percentage(matchingAspectRatioHeight(3/2, (3/2, 3/2, 16/9))); //The intersection where 3:2 and 16:9 have the same height
+        }
+        .brightcove {
+            width: percentage(matchingAspectRatioHeight(16/9, (3/2, 3/2, 16/9))); //The intersection where 3:2 and 16:9 have the same height
+        }
     }
 }
 
