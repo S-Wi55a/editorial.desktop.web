@@ -26,6 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public EditorialExpertRating ExpertRatings { get; set; }
         public ProCon ProsCons { get; set; }
         public string DateAvailable { get; set; }
+        public string PublishDateTime { get; set; }
         public MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
         public List<MoreArticleItem> MoreArticleData { get; set; }

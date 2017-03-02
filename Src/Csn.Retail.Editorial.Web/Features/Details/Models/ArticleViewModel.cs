@@ -22,11 +22,13 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public EditorialExpertRating ExpertRatings { get; set; }
         public ProCon ProsCons { get; set; }
         public string DateAvailable { get; set; }
+        public string PublishDateTime { get; set; }
         public Shared.Models.MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
         public List<MoreArticleItem> MoreArticleData { get; set; }
         public SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
+        public GoogleAnalyticsDetailsData GoogleAnalyticsDetailsData { get; set; }
     }
 
     public class HeroSection

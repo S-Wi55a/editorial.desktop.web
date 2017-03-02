@@ -40,10 +40,10 @@
 @section BottomScripts
 {
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
+    @{ Html.RenderPartial("Partials/Trackings/_GoogleAnalyticsDetails", Model.GoogleAnalyticsDetailsData); }
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderPartial("Partials/Disqus/_DisqusData", Model.DisqusData); } @*Disqus View in Main*@
 
-    @{ Html.RenderAction("GoogleAnalyticsDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
 }
 

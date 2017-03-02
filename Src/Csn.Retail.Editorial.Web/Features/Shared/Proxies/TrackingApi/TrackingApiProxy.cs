@@ -13,7 +13,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.TrackingApi
 {
     public interface ITrackingApiProxy
     {
-        string GetTracking(TrackingApiInput input);
+        TrackingApiDto GetTracking(TrackingApiInput input);
     }
 
     [AutoBind]
@@ -27,18 +27,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.TrackingApi
             _restClient = restClient;
         }
 
-        public string GetTracking(TrackingApiInput input)
+        public TrackingApiDto GetTracking(TrackingApiInput input)
         {
-            //var response = _restClient.HostName(HostName)
-            //    .Path("/api/tracking/script")
-            //    .QueryParams("Application", input.ApplicationName)
-            //    .Header("Accept","application/text")
-            //    .Get<string>();
-
-            var httpClient = new HttpClient();
-            var response = httpClient.GetStringAsync(
-                            "http://trackingscript.service.csstg.com.au/v1/api/tracking/script?Application=carsales-desktop");
-
+            var response = _restClient.HostName(HostName)
+                .Path("v1/api/tracking/script")
+                .QueryParams("Application", input.ApplicationName)
+                .Get<TrackingApiDto>();
 
             return response.Result;
         }

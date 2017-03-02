@@ -1,0 +1,13 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.GoogleAnalyticsDetailsData
+
+<script>
+    window.CsnInsights = window.CsnInsights || {};
+    CsnInsights.metaData = { "networkid": "@Model.NetworkId", "Make": "@Model.Make", "Model": "@Model.Model", "contentGroup1": "@Model.ContentGroup1", "contentGroup2": "@Model.ContentGroup2" };
+    CsnInsights.memberTrackingId = '@Model.MemberTrackingId';
+</script>
+
+@if (!string.IsNullOrEmpty(Model.ScriptBlock))
+{
+    @Html.Raw(Model.ScriptBlock)
+}
+

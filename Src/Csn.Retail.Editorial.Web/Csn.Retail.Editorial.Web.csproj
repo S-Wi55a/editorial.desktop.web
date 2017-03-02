@@ -359,11 +359,13 @@
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
+    <Compile Include="Features\Details\Mappings\GoogleAnalyticsDetailsDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
     <Compile Include="Features\Details\GetArticleQuery.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandler.cs" />
     <Compile Include="Features\Details\Mappings\HeroSectionMapper.cs" />
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
+    <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\MoreArticles\MoreArticlesController.cs" />
     <Compile Include="Features\MoreArticles\MoreArticlesQuery.cs" />
@@ -384,9 +386,6 @@
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiDto.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiProxy.cs" />
-    <Compile Include="Features\Tracking\GoogleAnalytics\GoogleAnalyticsDetailsModel.cs" />
-    <Compile Include="Features\Tracking\GoogleAnalytics\GoogleAnalyticsDetailsQuery.cs" />
-    <Compile Include="Features\Tracking\GoogleAnalytics\GoogleAnalyticsDetailsQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
@@ -493,6 +492,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\utils\dispatch-event.js" />
     <Content Include="Features\Shared\Assets\Js\vendor.js" />
+    <Content Include="Features\Shared\Views\Partials\_SocialMediaLinks.cshtml" />
     <Content Include="Global.asax" />
     <Content Include="postcss.config.js" />
     <Content Include="Web.config">
@@ -580,7 +580,6 @@
     <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\_author.scss" />
     <Content Include="Features\Shared\Assets\Css\Buttons\_buttons.scss" />
-    <Content Include="Features\Shared\Views\Partials\_SocialMediaLinks.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\_share-social.scss" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.scss" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Facebook.cshtml" />
@@ -645,7 +644,7 @@
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusData.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusView.cshtml" />
     <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
-    <Content Include="Features\Tracking\Views\GoogleAnalyticsDetails.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Trackings\_GoogleAnalyticsDetails.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

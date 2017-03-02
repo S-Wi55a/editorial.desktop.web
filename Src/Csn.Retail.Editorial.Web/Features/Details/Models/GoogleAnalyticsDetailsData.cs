@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System;
 
-namespace Csn.Retail.Editorial.Web.Features.Tracking.GoogleAnalytics
+namespace Csn.Retail.Editorial.Web.Features.Details.Models
 {
-    public class GoogleAnalyticsDetailsModel
+    public class GoogleAnalyticsDetailsData
     {
-        public string MemberTrackingId { get; set; }
+        public Guid? MemberTrackingId { get; set; }
         public string NetworkId { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }

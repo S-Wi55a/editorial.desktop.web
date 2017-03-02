@@ -2,6 +2,6 @@
 {
     public class TrackingApiDto
     {
-        public string ScriptBlock { get; set; }
+        public string TrackingScript { get; set; }
     }
 }

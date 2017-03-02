@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Tracking.GoogleAnalytics;
 using Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer;
 using Csn.Retail.Editorial.Web.Features.Tracking.WebMetricsScripts;
 using Csn.SimpleCqrs;
@@ -32,11 +31,5 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking
             return PartialView("HtmlTracking", model: container.GenericHtmlTracking);
         }
 
-        [ChildActionOnly]
-        public ActionResult GoogleAnalyticsDetails(GoogleAnalyticsDetailsQuery query)
-        {
-            var model = _queryDispatcher.Dispatch<GoogleAnalyticsDetailsQuery, GoogleAnalyticsDetailsModel>(query);
-            return PartialView(model);
-        }
     }
 }
