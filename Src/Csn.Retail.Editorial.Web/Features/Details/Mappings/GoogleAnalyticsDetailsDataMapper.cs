@@ -24,8 +24,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     public class GoogleAnalyticsDetailsDataMapper : IGoogleAnalyticsDetailsDataMapper
     {
         private readonly string _cacheKey = "editorial:desk:{0}:app:{1}";
-        private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 2, 0);
-        private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 15, 0);
+        private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 5, 0);
+        private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 30, 0);
 
         private readonly ICacheStore _cacheStore;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
