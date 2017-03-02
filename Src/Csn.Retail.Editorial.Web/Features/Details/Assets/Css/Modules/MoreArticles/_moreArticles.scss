@@ -32,6 +32,8 @@
     &__frame {
         width: 1065px; //@1200 width
         min-height: $img-height;
+        margin-left: 0;
+        font-size: 0;
 
         &.loading {
             background-image: url('images/spinner-dark.svg'); //TODO make img var

@@ -12,6 +12,8 @@
 @import "./modules/_article.scss";
 @import "./modules/_aside.scss";
 @import "./modules/_author.scss";
+
+// Module - Media Motive
 @import "css/modules/MediaMotive/_mediamotive.scss";
 
 // Module - Social Share
@@ -19,9 +21,6 @@
 
 // Module - Modal
 @import "Js/modules/modal/modal.scss";
-
-//Module - Slider
-@import 'Css/Modules/Lory/_lory.scss';
 
 // Module - More Articles
 @import 'Css/Modules/MoreArticles/_moreArticles.scss';
