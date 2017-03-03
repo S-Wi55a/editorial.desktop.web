@@ -47,12 +47,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
             var trackingResponse = new GoogleAnalyticsDetailsData
             {
                 MemberTrackingId = _userContext.CurrentUserId,
-                NetworkId = article.NetworkId,
-                Make = article.Items.Any() ? string.Join(",", article.Items.Select(i => i.Make ?? string.Empty).Distinct()) : null,
-                Model = article.Items.Any() ? string.Join(";", article.Items.Select(i => i.Model ?? string.Empty).Distinct()) : null,
-                PublishDate = article.PublishDateTime,
-                ContentGroup1 = "News and Reviews",
-                ContentGroup2 = "details",
+                NetworkId = article.GoogleAnalyticsDetailsData.NetworkId,
+                Make = article.GoogleAnalyticsDetailsData.Make,
+                Model = article.GoogleAnalyticsDetailsData.Model,
+                PublishDate = article.GoogleAnalyticsDetailsData.PublishDate,
+                ContentGroup1 = article.GoogleAnalyticsDetailsData.ContentGroup1,
+                ContentGroup2 = article.GoogleAnalyticsDetailsData.ContentGroup2,
                 ScriptBlock = GetCacheGaTracking()
             };
 
