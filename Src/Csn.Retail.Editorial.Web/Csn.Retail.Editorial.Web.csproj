@@ -455,7 +455,7 @@
     <Content Include="editorial\content\scripts\webtrends_custom.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
-    <Content Include="Features\Details\Assets\Js\editorsRating-component.js" />
+    <Content Include="Features\Details\Assets\Js\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticlesContentView.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
@@ -468,7 +468,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Ajax\ajax.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\InViewport\inViewport.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\htmlparser.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
