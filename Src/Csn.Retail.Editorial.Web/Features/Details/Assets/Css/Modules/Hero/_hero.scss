@@ -68,27 +68,3 @@
         }
     }
 }
-
-
-// TODO: can remove
-body:not(.ie) .hero {
-    ._c-slideshow {
-
-    padding-top: 33.333333%;
-    min-height: 400px;
-    overflow: hidden;
-
-	    &__slider {
-            top: 50%;
-            position: absolute;
-            transform: translateY(-50%);
-	    }
-
-        &__image {
-            width: 100%;
-        }
-
-    }
-
-}
-
