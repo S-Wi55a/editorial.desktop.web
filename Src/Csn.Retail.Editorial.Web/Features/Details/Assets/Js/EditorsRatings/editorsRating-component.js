@@ -1,25 +1,24 @@
 ﻿// Details Page css files
-
 require('css/Modules/Widgets/_editorsRatings.scss');
 
 import Modernizr from 'modernizr';
 import Circles from 'circles';
 import TinyAnimate from 'TinyAnimate';
-import { inViewport } from 'Js/Modules/InViewport/inViewport.js';
+import ScrollMagic from 'ScrollMagic';
 
-
+const editorsRatings = '.editors-ratings';
 const expertRatingSelector = '.expert-ratings';
 const expertRatingMeters = document.querySelectorAll('.expert-ratings__meter');
 
 const overallRatingGraph = {
     id:                  'overall-rating-graph',
     radius:              60,
-    value:               document.getElementById('overall-rating-graph').getAttribute('data-overall-rating'),
+    value:               0,
     maxValue:            100,
     width:               10,
     text:                function(value){return value;},
     colors:              ['#DBDBDB', '#007CC2'],
-    duration:            500,
+    duration:            0,
     wrpClass:            'overall-rating-graph__wrp',
     textClass:           'overall-rating-graph__text',
     valueStrokeClass:    'overall-rating-graph__valueStroke',
@@ -58,43 +57,55 @@ let AnimateMeter = function(index, list, duration = 1000) {
         'easeOutCubic');
 };
 
-function isInViewport(selector, threshold = 1, cb) {
-    const sections = document.querySelectorAll(selector);
 
-    window.addEventListener('scroll', inView)
-    inView();
+let init = (d, w, scope) => {
 
-    function inView() {
-        // Don't run the rest of the code if every section is already visible
-        if (document.querySelectorAll(selector + ':not(.visible)').length === 0) return;
+    const myCircle = Circles.create(overallRatingGraph);
 
-        // Run this code for every section in sections
-        for (const section of sections) {
-            if (section.getBoundingClientRect().top <= window.innerHeight * threshold && section.getBoundingClientRect().top > 0) {
-                section.classList.add('visible');
-                cb()
-                window.removeEventListener('scroll', inView)
-            }
-        }
+    // Set scene
+    const triggerElement = scope
+    const triggerHook = 0.6
+    w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
+
+
+    if (!Modernizr.meter) {
+        // Meter polyfill
+        require.ensure(['Js/Modules/meter/meter.js'],
+            function() {
+                for (var meter of expertRatingMeters) {
+                    meter.setAttribute('value', meter.getAttribute('data-value'));
+                }
+                require('Js/Modules/meter/meter.js');
+
+                new ScrollMagic.Scene({
+                    triggerElement: triggerElement,
+                    triggerHook: triggerHook,
+                    reverse: false
+                })
+                .on("enter", () => {
+                    myCircle.update(d.getElementById('overall-rating-graph').getAttribute('data-overall-rating'), 500)
+                })
+                .addTo(window.scrollMogicController);
+            },
+            'meter-polyfill');
+    } else {
+        new ScrollMagic.Scene({
+            triggerElement: triggerElement,
+            triggerHook: triggerHook,
+            reverse: false
+        })
+        .on("enter", () => {
+                     myCircle.update(d.getElementById('overall-rating-graph').getAttribute('data-overall-rating'), 500)
+                     AnimateMeters(expertRatingMeters, 200);
+        })
+        .addTo(window.scrollMogicController);
     }
-}
 
-if (!Modernizr.meter) {
-    // Meter polyfill
-    require.ensure(['Js/Modules/meter/meter.js'],
-        function() {
-            for (var meter of expertRatingMeters) {
-                meter.setAttribute('value', meter.getAttribute('data-value'));
-            }
-            require('Js/Modules/meter/meter.js');
-            inViewport(document, window, expertRatingSelector, 0.75, () => {
-                Circles.create(overallRatingGraph);
-            });
-        },
-        'meter-polyfill');
-} else {
-    isInViewport(expertRatingSelector, 0.75, () => {
-        Circles.create(overallRatingGraph);
-        AnimateMeters(expertRatingMeters, 200);
-    });
 }
+init(document, window, editorsRatings);
+
+
+
+
+
+

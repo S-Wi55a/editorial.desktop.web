@@ -4,7 +4,7 @@ require('./css/details-page.scss');
 //------------------------------------------------------------------------------------------------------------------
 
 import { loaded } from 'document-promises/document-promises.js';
-import { inViewport } from 'Js/Modules/InViewport/inViewport.js';
+import ScrollMagic from 'ScrollMagic';
 
 //------------------------------------------------------------------------------------------------------------------
 
@@ -248,14 +248,26 @@ loaded.then(function () {
     moreArticles(document);
 });
 
-//Lazy load More articles JS
 
+//Lazy load More articles JS
 let disqus = function(d, w, selector) {
     const disqusSelector = d.querySelector(selector);
     if (disqusSelector) {
-        inViewport(d, w, selector, 2, () => {
-            require('Js/Modules/Disqus/disqus.js').default()
-        });
+
+        // Set scene
+        const triggerElement = selector
+        const triggerHook = 1
+        const offset = (-1 * w.innerHeight) * 2;
+        w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
+
+        new ScrollMagic.Scene({
+            triggerElement: triggerElement,
+            triggerHook: triggerHook,
+            offset: offset,
+            reverse: false
+        })
+            .on("enter", ()=>{require('Js/Modules/Disqus/disqus.js').default()})
+            .addTo(w.scrollMogicController);
     }
 }
 disqus(document, window, '#disqus_thread');
