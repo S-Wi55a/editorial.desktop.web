@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
+using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
@@ -16,6 +17,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Headline { get; set; }
         public string Subheading { get; set; }
         public string Summary { get; set; }
+        public List<string> Categories { get; set; }
+        public List<string> Lifestyles { get; set; }
         public List<Contributor> Contributors { get; set; }
         public List<ContentSection> ContentSections { get; set; }
         public SocialMetaData SocialMetaData { get; set; }
@@ -29,6 +32,17 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public List<MoreArticleItem> MoreArticleData { get; set; }
         public SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
+        public GoogleAnalyticsDetailsDto GoogleAnalyticsDetailsData { get; set; }
+    }
+
+    public class GoogleAnalyticsDetailsDto
+    {
+        public string NetworkId { get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public string PublishDate { get; set; }
+        public string ContentGroup1 { get; set; }
+        public string ContentGroup2 { get; set; }
     }
 
     public class DisqusData
