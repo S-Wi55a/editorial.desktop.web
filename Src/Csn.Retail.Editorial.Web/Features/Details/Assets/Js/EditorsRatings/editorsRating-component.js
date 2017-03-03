@@ -61,6 +61,7 @@ let AnimateMeter = function(index, list, duration = 1000) {
 let init = (d, w, scope) => {
 
     const myCircle = Circles.create(overallRatingGraph);
+    myCircle.update(-1, 0);
 
     // Set scene
     const triggerElement = scope

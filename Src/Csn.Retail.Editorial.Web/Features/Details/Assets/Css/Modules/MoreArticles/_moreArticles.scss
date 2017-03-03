@@ -51,7 +51,7 @@
 
     &__filter {
 
-        @extend %button;
+        @extend %button--small;
         @extend %button--round;
         @extend %button--thin;
         @extend %button--primary-inverse;
@@ -60,7 +60,7 @@
         min-width: 120px;
         text-align: center;
         margin-right: 25px;
-        line-height: 27px !important;
+        font-size: $font-size-h5;
 
 
 
