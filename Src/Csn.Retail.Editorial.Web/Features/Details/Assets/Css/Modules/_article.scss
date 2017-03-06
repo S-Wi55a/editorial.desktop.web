@@ -12,62 +12,73 @@
     }
 
     &__heading {
-        @extend %h1;
+        @extend %display-3;
         color: $cs-black;
 
     }
     &__subheading {
         @extend %h2;
-        margin-top: 5px;
-        color: $cs-dark-grey;
+        margin-top: 1em;
     }
 
     &__summary {
-        @extend %p;
-        font-weight: bold;
-        color: $cs-dark-grey;
-        margin-top: 35px;
+
+        color: #9e9e9e;
 
         p {
-            margin-top: 35px;
+            margin-top: 1.25em;
+            @extend %rundown-text;
         }
-        &>p:first-child {
-                margin-top: 0;
-            }
+
+        &>div {
+            margin: 0;
+        }
     }
 
     &__copy{
-        color: $cs-light-grey;
-        margin-top: 35px;
+        color: #757575;
 
-        p {
-            margin-top: 1em;
+        &>h1,&>h2,&>h3,&>h4,&>h5,&>h6 {
+            margin-top: 40px;
         }
 
-        &>p:first-child {
-                margin-top: 0;
-            }
+        p {
+            margin-top: 1.25em;
+            @extend %p;
 
-        p+h2 {
-            margin-top: 1em;
+            &>br {
+                display: none;
+            }
+            strong+br {
+                display: inline;
+            }
+        }
+
+        &>div {
+            margin: 0;
+        }
+
+        .teads-inread {
+            margin-top: 1.25em !important;
+            font-size: 20px;
         }
     }
 
     &__img {
       width: 100%;
-      margin-top: 42px;
+      margin-top: 1.25em;
+      @extend %p;
     }
 
     &__img-caption {
-        @extend %font-size-small;
-        line-height: 28px;
+        @extend %tiny-text;
         margin: 7px auto;
         text-align: center;
         color: $cs-dark-grey;
     }
 
     &__type {
-        @extend %font-size-small;
+        font-size: $font-size-small;
         font-weight: 600;
         border-radius: 9999px;
         display: inline-block;
@@ -96,43 +107,32 @@
     }
 
     &__date {
-        @extend %font-size-small;
+        font-size: $font-size-small;
         display: inline-block;
         float: left;
         padding: 0 25px;
         line-height: 31px;
         color: $cs-light-grey;
         margin-bottom: 30px;
-
     }
 
     &__dateAndTypeContainer {
         float: left;
-        min-width: 293px;
+    }
+    &__share {
+        float: right;
     }
 
     &__pricing {
-        font-size: $font-size-h2;
-        font-weight: normal;
-        line-height: 40px;
-        color: $cs-darkest-grey;
-        margin-top: 3px;
-        margin-bottom: 15px
-    }
-
-    &__caption {
-        font-size: $font-size-quote;
-        font-weight: 300;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 46px;
-        color: $cs-black;
+        @extend %h2;
+        margin-top: 1em;
     }
 
     &__quote {
-        @extend %quote;
-        margin: 36px auto -18px;
+        @extend %blockquote;
         padding: 0 7.5%;
+        color: $cs-black;
+        margin-top: 1.25rem;
     }
 
     &__authors {

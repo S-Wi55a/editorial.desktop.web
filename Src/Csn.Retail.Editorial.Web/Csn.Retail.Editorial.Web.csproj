@@ -556,7 +556,6 @@
     <Content Include="Features\Details\Assets\Css\Modules\_article.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tyopgraphy\Extends\_typogrpahy-extends.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Screen\_variables-screen.scss" />
     <Content Include="Features\Details\Views\Partials\_ArticleBody.cshtml" />
@@ -642,6 +641,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroSlider.scss" />
     <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
     <Content Include="Features\Details\Views\Partials\Trackings\_GoogleAnalyticsDetails.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Variables\Typography\_extends-typography.scss" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -227,7 +227,7 @@ loaded.then(function () {
 // TEADS
 $(function () {
     if ($('#teads-video-container').length) {
-        $('#teads-video-container').insertAfter($('.article__copy p:eq(1)')).wrap('<p></p>');
+        $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
 
     }
 });

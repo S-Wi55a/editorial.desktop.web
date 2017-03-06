@@ -18,7 +18,9 @@
             @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
             <h2 class="article__subheading">@Model.SubHeading</h2>
         </header>
-        <div class="article__summary">@Model.Summary</div>
+        <div class="article__summary">
+            <p>@Model.Summary</p>
+        </div>
         @{ Html.RenderPartial("Partials/_ArticleBody", Model); }
         @{ Html.RenderPartial("Partials/_Contributors", Model); }
         @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
