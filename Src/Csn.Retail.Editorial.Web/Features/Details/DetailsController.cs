@@ -45,7 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         }
     }
 
-    public class DetailsPageRequestEvent : IEvent, IRequireGlobalSiteNav
+    public class DetailsPageRequestEvent : IEvent, IRequireGlobalSiteNav, IRequiredGoogleAnalyticsTrackingScript
     {
     }
 }

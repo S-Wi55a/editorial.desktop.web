@@ -42,6 +42,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterGeneric(typeof(LoadGlobalSiteDataOnPageLoad<>)).As(typeof(IAsyncEventHandler<>));
+            builder.RegisterGeneric(typeof(LoadGoogleAnalyticsTrackingScriptOnPageLoad<>)).As(typeof(IAsyncEventHandler<>));
         }
     }
 }

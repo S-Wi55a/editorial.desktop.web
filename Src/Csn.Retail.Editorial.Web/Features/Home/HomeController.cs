@@ -23,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Home
         }
     }
 
-    public class HomePageRequestEvent : IEvent, IRequireGlobalSiteNav
+    public class HomePageRequestEvent : IEvent, IRequireGlobalSiteNav, IRequiredGoogleAnalyticsTrackingScript
     {
     }
 }
