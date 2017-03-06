@@ -642,10 +642,9 @@
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroSlider.scss" />
     <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
     <Content Include="Features\Details\Views\Partials\Trackings\_GoogleAnalyticsDetails.cshtml" />
-    <Content Include="Features\Shared\Assets\Css\Variables\Typography\_extends-typography.scss" />
-    <None Include="Web.Staging.config">
+    <Content Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
