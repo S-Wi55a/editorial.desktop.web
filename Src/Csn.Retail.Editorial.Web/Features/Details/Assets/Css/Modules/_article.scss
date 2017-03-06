@@ -12,7 +12,7 @@
     }
 
     &__heading {
-        @extend %display-3;
+        @extend %h1;
         color: $cs-black;
 
     }
@@ -23,7 +23,7 @@
 
     &__summary {
 
-        color: #9e9e9e;
+        color: $cs-light-grey;
 
         p {
             margin-top: 1.25em;
@@ -36,7 +36,7 @@
     }
 
     &__copy{
-        color: #757575;
+        color: $cs-grey;
 
         &>h1,&>h2,&>h3,&>h4,&>h5,&>h6 {
             margin-top: 40px;
@@ -71,7 +71,8 @@
     }
 
     &__img-caption {
-        @extend %tiny-text;
+        font-size: $font-size-small;
+        line-height: 1em;
         margin: 7px auto;
         text-align: center;
         color: $cs-dark-grey;

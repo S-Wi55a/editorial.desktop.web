@@ -7,6 +7,10 @@
     $width: 355px;
     $img-width: 100px;
 
+    $title-font-size: 14px;
+    $title-line-height: 20px;
+    $title-height: $title-line-height * 2; // Line height * # of lines
+
     width: $width; //Since it will never be smaller than 1200
     white-space: normal;
     background-color: $cs-white;
@@ -33,11 +37,8 @@
 
     &__title {
 
-        $line-height: 20px;
-        $title-height: $line-height * 2; // Line height * # of lines
-
-        font-size: $font-size-h5;
-        line-height: 18px;
+        font-size: $title-font-size;
+        line-height: $title-line-height;
         max-height: $title-height; // Line height * # of lines
         margin-bottom: 4px;
       	overflow: hidden;
@@ -50,9 +51,9 @@
             width: 100%;
             margin-left: -5px;
 
-            font-size: $font-size-h5;
+            font-size: $title-font-size;
             font-weight: 600;
-            line-height: 18px;
+            line-height: $title-line-height;
             color: $cs-black;
         }
 
@@ -69,7 +70,7 @@
 			box-sizing: content-box;
 			float: right;
             position: relative;
-			top: -1*$line-height;
+			top: -1*$title-line-height;
             left: 100%;
 			width: 50%;
             margin-left: -50%;
@@ -80,7 +81,7 @@
     }
 
     &__link {
-        font-size: $font-size-h5;
+        font-size: $title-font-size;
         line-height: 22px;
         display: inline-block;
     }

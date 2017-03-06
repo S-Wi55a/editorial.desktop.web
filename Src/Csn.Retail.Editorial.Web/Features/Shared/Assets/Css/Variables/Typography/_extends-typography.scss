@@ -1,137 +1,61 @@
-﻿%display-1 {
-    font-size: 76px;
-    font-weight: $font-weight-400;
-    line-height: 1;
-}
-
-@media screen and (max-width: 1000px) {
-    %display-1 {
-        font-size: 57px;
-        font-weight: $font-weight-400;
-        line-height: 1;
-    }
-}
-
-%display-2 {
-    font-size: 61px;
-    font-weight: $font-weight-400;
-    line-height: 1;
-}
-
-@media screen and (max-width: 1000px) {
-    %display-2 {
-        font-size:2.98598em;
-        font-weight: $font-weight-400;
-        letter-spacing: -.005em;
-        line-height: 1.1;
-    }
-}
-
-%display-3 {
-    font-size: 48px;
+﻿%headline-1, %h1 {
+    font-size: $font-size-h1;
     font-weight: $font-weight-400;
     line-height: 1.1;
 }
 
-@media screen and (max-width: 1000px) {
-    %display-3 {
-        font-size: 39px;
-        font-weight: $font-weight-400;
-        line-height: 1.2;
-    }
-}
-
-%headline-1, %h1, %pullquote, %blockquote {
-    font-size: 39px;
-    font-weight: $font-weight-400;
-    line-height: 1.2;
-}
-
-@media screen and (max-width: 1000px) {
-    %headline-1, %h1, %pullquote, %blockquote {
-        font-size:33px;
-        font-weight: $font-weight-400;
-        letter-spacing: 0;
-        line-height: 1.2;
-    }
-}
-
 %headline-2, %h2 {
-    font-size: 31px;
+    font-size: $font-size-h2;
     font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.2
 }
 
-@media screen and (max-width: 1000px) {
-    %headline-2, %h2 {
-        font-size:27px;
-        font-weight: $font-weight-400;
-        letter-spacing: 0;
-        line-height: 1.3;
-    }
-}
-
 %headline-3, %h3 {
-    font-size: 25px;
-    font-weight: 400;
+    font-size: $font-size-h3;
+    font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.3;
 }
 
-@media screen and (max-width: 1000px) {
-    %headline-3, %h3 {
-        font-size: 23px;
-        font-weight: 400;
-        letter-spacing: 0;
-        line-height: 1.3;
-    }
-}
-
-%headline-4, %h4, %h5, %h6 {
-    font-size: 20px;
-    font-weight: 400;
+%headline-4, %h4 {
+    font-size: $font-size-h4;
+    font-weight: $font-weight-400;
     letter-spacing: .005em;
     line-height: 1.3;
 }
 
-@media screen and (max-width: 1000px) {
-    %headline-4, %h4, %h5, %h6 {
-        font-size:19px;
-        font-weight: 400;
-        letter-spacing: .005em;
-        line-height: 1.3;
-    }
+%h5 {
+    font-size: $font-size-h5;
+    font-weight: $font-weight-400;
+    letter-spacing: .005em;
+    line-height: 1.3;
+}
+
+%h6 {
+    font-size: $font-size-h6;
+    font-weight: $font-weight-400;
+    letter-spacing: .005em;
+    line-height: 1.3;
 }
 
 %p {
-    font-size: 1.25em;
-    font-weight: 400;
+    font-size: $font-size-h4;
+    font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;
 }
 
-%pp {
-    margin-top: 1.25em;
-}
-
-%strong-text, %strong {
-    font-weight: 400;
+%strong {
+    font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;
     margin: 0;
 }
 
-%secondary-text {
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 1.6
-}
-
 %tiny-text {
     font-size: 13px;
-    font-weight: 400;
+    font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;
 }
@@ -140,30 +64,30 @@
     color: inherit;
     float: left;
     font-size: 83px;
-    font-weight: 400;
+    font-weight: $font-weight-400;
     line-height: .75;
     margin-right: .15em;
     margin-top: .12em
 }
 
 %rundown-text {
-    font-size: 26px;
+    font-size: $font-size-rundown;
     font-weight: 300;
     line-height: 1.5em;
 }
 
-
 %pullquote, %blockquote {
-    font-family: $font-family-default;
-}
+    font-size: $font-size-quote;
+    font-weight: $font-weight-400;
+    line-height: 1.2;
 
-%pullquote:before, %blockquote:before {
-    content: "“";
-    margin-left: -.5em;
-}
-
-%pullquote:after, %blockquote:after {
-    content: "”";
+    &:before, &:before {
+        content: "“";
+        margin-left: -.5em;
+    }
+    &:after, &:after {
+        content: "”";
+    }
 }
 
 %hr {
@@ -174,13 +98,11 @@
     margin: 1em 0;
 }
 
-
 %cite {
     color: $cs-grey;
     font-style: italic;
-}
 
-%cite:before {
-    content: "— ";
+    &:before {
+        content: "— ";
+    }
 }
-
