@@ -11,22 +11,16 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     [AutoBind]
     public class MappingSetupTask : IMappingSetupTask
     {
-        private readonly IGoogleAnalyticsDetailsDataMapper _googleAnalyticsDetailsDataMapper;
         private readonly IHeroSectionMapper _heroSectionMapper;
 
-        public MappingSetupTask(IGoogleAnalyticsDetailsDataMapper googleAnalyticsDetailsDataMapper,
-            IHeroSectionMapper heroSectionMapper)
+        public MappingSetupTask(IHeroSectionMapper heroSectionMapper)
         {
-            _googleAnalyticsDetailsDataMapper = googleAnalyticsDetailsDataMapper;
             _heroSectionMapper = heroSectionMapper;
         }
         public void Run(IMapperConfigurationExpression cfg)
         {
             cfg.CreateMap<ArticleDetailsDto, ArticleViewModel>()
-                .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)))
-                .ForMember(dest => dest.GoogleAnalyticsDetailsData,
-                    opt => opt.MapFrom(src => _googleAnalyticsDetailsDataMapper.Map(src)));
-                //.ForMember(dest => dest.GoogleAnalyticsDetailsData, opt => opt.Ignore());
+                .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)));
 
             // Social Meta Data
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();
@@ -47,6 +41,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 
             // Disqus
             cfg.CreateMap<Shared.Proxies.EditorialApi.DisqusData, Models.DisqusData>();
+
+            // Google Analytics Data
+            cfg.CreateMap<GoogleAnalyticsDetailsDto, GoogleAnalyticsDetailsData>();
         }
     }
 }

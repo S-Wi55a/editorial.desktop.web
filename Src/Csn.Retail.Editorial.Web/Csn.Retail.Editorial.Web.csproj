@@ -359,7 +359,6 @@
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
-    <Compile Include="Features\Details\Mappings\GoogleAnalyticsDetailsDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
     <Compile Include="Features\Details\GetArticleQuery.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandler.cs" />
@@ -373,7 +372,9 @@
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteExtensions.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteResponseDto.cs" />
     <Compile Include="Features\Shared\GlobalSite\LoadGlobalSiteDataOnPageLoad.cs" />
+    <Compile Include="Features\Shared\GlobalSite\LoadGoogleAnalyticsTrackingScriptOnPageLoad.cs" />
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
+    <Compile Include="Features\Shared\Helpers\UserContextHelper.cs" />
     <Compile Include="Features\Shared\Models\MediaMotiveData.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleItem.cs" />
     <Compile Include="Features\Shared\Models\SeoData.cs" />

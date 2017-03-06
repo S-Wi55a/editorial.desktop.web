@@ -17,6 +17,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Headline { get; set; }
         public string Subheading { get; set; }
         public string Summary { get; set; }
+        public string SubType { get; set; }
+        public string ReviewLocation { get; set; }
+        public string MakeModelHeading { get; set; }
         public List<string> Categories { get; set; }
         public List<string> Lifestyles { get; set; }
         public List<Contributor> Contributors { get; set; }
