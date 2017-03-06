@@ -7,15 +7,13 @@
         {
             <div class="author">
                 <div class="author__image">
-                    <img src="@contributor.ImageUrl" />
+                    <img src="@contributor.ImageUrl" alt=""/>
                 </div>
                 <div class="author__details">
                     <div class="author__description">@contributor.Description</div>
                     <div class="author__name">@contributor.Name</div>
                     @*<div class="author__title">Author Title</div>*@
-                    <div class="author__links">
-                        <a href="@contributor.LinkUrl">@contributor.ButtonHeading</a>
-                    </div>
+                    <a class="author__links" href="@contributor.LinkUrl">@contributor.ButtonHeading</a>
                 </div>
 
             </div>

@@ -1,24 +1,17 @@
-﻿import {lory} from 'lory.js';
+﻿import Swiper from 'swiper'
 import {get} from 'Js/Modules/Ajax/ajax.js'
 import moreArticlesContentView from 'Js/MoreArticles/moreArticlesContentView.js'
 
 import ScrollMagic from 'ScrollMagic'
 
-const classNameSlideContainer = 'lory-slider__slides'
-const classNameFrame = 'lory-slider__frame'
-const classNamePrevCtrl = 'more-articles__nav-button--prev'
-const classNameNextCtrl = 'more-articles__nav-button--next'
-const classNameSlide = 'lory-slider__slide'
-
 const scopeSelector = '.more-articles'
-const slideContainer = '.' + classNameSlideContainer
-const frame = '.' + classNameFrame
-const prevCtrl = '.' + classNamePrevCtrl
-const nextCtrl = '.' + classNameNextCtrl
-const slide = '.' + classNameSlide
+const slideContainer = '.more-articles__slides'
+const frame = '.more-articles__frame'
+const prevCtrl = '.more-articles__nav-button--prev'
+const nextCtrl = '.more-articles__nav-button--next'
+const slide = '.more-articles__slide'
 const navButtons = '.more-articles__nav-button'
 const showHideButton = '.more-articles__button--show-hide'
-
 
 // Scroll Magic
 const contentOffset = 0.5; // range 0 - 1
@@ -30,9 +23,8 @@ window.scrollMogicController = window.scrollMogicController || new ScrollMagic.C
 
 // Init More Articles Slider
 let initMoreArticlesSlider = (selector, options) => {
-    const slider = document.querySelector(selector);
     options = Object.assign({}, options);
-    return lory(slider, options);
+    return Swiper(selector, options);
 }
 
 // Set text
@@ -151,17 +143,17 @@ let filterHandler = (e, ...args) => {
         //get url and set it to next
         updateButton(scope, nextCtrl, 'data-more-articles-query', el.pathname)
         //destory old slider
-        scope.querySelector('.lory-slider__slides').innerHTML = '';
+        scope.querySelector(slideContainer).innerHTML = '';
         //Init new slider
         updateContent(
             scope,
             nextCtrl,
             get,
-            '.lory-slider__slides',
+            slideContainer,
             () => {
                 slider.slideTo(0)
                 updateButton(scope, prevCtrl, 'disabled', 'true')
-                slider.setup();
+                slider.update();
             }
         )
     }
@@ -175,14 +167,14 @@ let filterHandler = (e, ...args) => {
 // handlers
 function buttonHandler(scope, slider, firstSlide, visibleSlides) {
     // Prev logic
-    if (slider.returnIndex() <= firstSlide) {
+    if (slider.activeIndex <= firstSlide) {
         updateButton(scope, prevCtrl, 'disabled', 'true')
     } else {
         updateButton(scope, prevCtrl, 'disabled')
     }
 
     //Next logic
-    if (slider.returnIndex() + visibleSlides >= slidesLength(scope, slide)) {
+    if (slider.activeIndex + visibleSlides >= slidesLength(scope, slide)) {
         updateButton(scope, nextCtrl, 'disabled', 'true')
     } else {
         updateButton(scope, nextCtrl, 'disabled')
@@ -191,7 +183,7 @@ function buttonHandler(scope, slider, firstSlide, visibleSlides) {
 
 function nextButtonHandler(scope, slider, offset, cb) {
     // Get slider index and check if offset from end
-    if (slider.returnIndex() >= slidesLength(scope, slide) - offset) {
+    if (slider.activeIndex >= slidesLength(scope, slide) - offset) {
         cb()
     }
 }
@@ -210,8 +202,8 @@ let filters = (scope, selector, cb, cbArgs) => {
 
 let scrollHandler = (scope, selector, className) => {
     const el = scope.querySelector(selector)
-    //if more acticles is already active then don't
-    if (!el.classList.contains(className)) {
+    //if more articles is already active then don't
+    if (el.classList.contains('active') && !el.classList.contains(className)) {
         toggleClass(document, scopeSelector, className, ['Show', 'Hide'])
     }
 }
@@ -241,18 +233,25 @@ let main = (scope) => {
     const offset = 2 + visibleSlides
 
     let options = {
-        classNameSlideContainer: classNameSlideContainer,
-        classNameFrame: classNameFrame,
-        classNamePrevCtrl: classNamePrevCtrl,
-        classNameNextCtrl: classNameNextCtrl,
-        infinite: false,
-        rewind: false,
-        rewindOnResize: false
-    }
-    const slider = initMoreArticlesSlider(scopeSelector, options);
 
-    const content = () => { return updateContent(scope, nextCtrl, get, '.lory-slider__slides', () => {
-        slider.setup()
+        // Optional parameters
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+
+        // Navigation arrows
+        nextButton: '.more-articles__nav-button--next',
+        prevButton: '.more-articles__nav-button--prev',
+
+        //Namespace
+        wrapperClass: 'more-articles__slides',
+        slideClass: 'more-articles__slide',
+    }
+    const slider = initMoreArticlesSlider(frame, options);
+
+    window.slider = slider
+
+    const content = () => { return updateContent(scope, nextCtrl, get, slideContainer, () => {
+        slider.update();
     })}
 
     // Init
@@ -277,7 +276,7 @@ updateContent(
     document.querySelector(scopeSelector),
     nextCtrl,
     get,
-    '.lory-slider__slides',
+    slideContainer,
     () => {
         main(document.querySelector(scopeSelector))
         // This is called in cb() if AJAX is sucessful on first time

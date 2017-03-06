@@ -466,7 +466,7 @@
     <Content Include="editorial\content\scripts\webtrends_custom.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
-    <Content Include="Features\Details\Assets\Js\editorsRating-component.js" />
+    <Content Include="Features\Details\Assets\Js\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticlesContentView.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
@@ -479,7 +479,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Ajax\ajax.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\InViewport\inViewport.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\htmlparser.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
@@ -490,8 +489,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-dark.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\utils\dispatch-event.js" />
     <Content Include="Features\Shared\Assets\Js\vendor.js" />
     <Content Include="Features\Shared\Views\Partials\_SocialMediaLinks.cshtml" />
     <Content Include="Global.asax" />
@@ -558,12 +555,9 @@
     <Content Include="Features\Details\Views\Partials\Layout\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\Brightcove\_brightcove-video-player.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_article.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\_hero.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tyopgraphy\Extends\_typogrpahy-extends.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Slideshow\slideshow.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Screen\_variables-screen.scss" />
     <Content Include="Features\Details\Views\Partials\_ArticleBody.cshtml" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_SingleImage.cshtml" />
@@ -575,7 +569,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.scss" />
     <Content Include="Features\Shared\Views\Partials\_Modal.cshtml" />
     <Content Include="Features\Details\Views\Partials\Modal\_SlideshowModal.cshtml" />
-    <Content Include="Features\Shared\Assets\Css\Modules\_c-spinner.scss" />
     <Content Include="Features\Shared\Assets\Css\Utilities\_utilities.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Settings\_variables-settings.scss" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
@@ -618,7 +611,6 @@
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\_MoreArticles.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mediamotive.scss" />
-    <Content Include="Features\Shared\Assets\Css\Modules\Lory\_lory.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
     <Content Include="Features\Home\Views\Index.cshtml" />
@@ -644,11 +636,15 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusData.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusView.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\Swiper\_swiper.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Modal\_modalSlider.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Hero\_hero.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroSlider.scss" />
     <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
     <Content Include="Features\Details\Views\Partials\Tracking\_GoogleAnalyticsDetails.cshtml" />
-    <None Include="Web.Staging.config">
+    <Content Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

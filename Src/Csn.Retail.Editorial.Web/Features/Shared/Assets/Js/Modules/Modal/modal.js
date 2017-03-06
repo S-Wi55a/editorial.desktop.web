@@ -40,6 +40,11 @@ class Modal {
         this._body.setAttribute('data-is-locked', 'false');
         this._modalContent.innerHTML = ''
         this._isActive = false;
+
+        let closeEvt = document.createEvent('Event')
+        closeEvt.initEvent('modal.close', true, true)
+        closeEvt.Response = this._scope;
+        window.dispatchEvent(closeEvt);
     }
 
     modalKeyPressed(event)
@@ -66,7 +71,7 @@ class Modal {
         this._modalContent.innerHTML = html; //can be changed to appendchild
 
         // HACK: needs to be here for index, should find better solution
-        document.querySelector('._c-slideshow--modal').setAttribute('data-slideshow-start', index);
+        document.querySelector('.slideshow--modal').setAttribute('data-slideshow-start', index);
 
 
         let ajaxEvt = document.createEvent('Event')

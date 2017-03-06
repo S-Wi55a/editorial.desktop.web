@@ -5,21 +5,27 @@ $font-family-default: 'Open Sans', Arial;
 $font-family-icons: 'csnicons';
 
 // Font Sizes
-$font-size-h1: 38px;
-$font-size-h2: 25px;
-$font-size-h3: 18px;
-$font-size-h4: 16px;
-$font-size-h5: 14px;
+$font-size-h1: 48px;
+// Scale - Major Third
+$font-size-h2: 31px;
+$font-size-h3: 25px;
+$font-size-h4: 20px;
+$font-size-h5: 16px;
 $font-size-h6: 12px;
 
+$font-size-small: 13px;
+$font-size-smaller: 11px;
+$font-size-smallest: 9px;
 
 $font-size-body: 16px;
-$font-size-p: $font-size-body;
-$font-size-small: 12px;
-$font-size-quote: 28px;
+
+$font-size-p: 20px;
+
+$font-size-rundown: 26px;
+
+$font-size-quote: 39px;
 
 // Font Weights
-
 $font-weight-100: 100;
 $font-weight-200: 200;
 $font-weight-300: 300;

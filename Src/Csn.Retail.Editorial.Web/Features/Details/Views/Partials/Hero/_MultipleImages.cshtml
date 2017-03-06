@@ -1,43 +1,44 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
 <div class="clearfix hero hero--multipleImages">
-
-    <div class="_c-slideshow _c-slideshow--gallery" data-slideshow data-slideshow-page-by="2">
-        <div class="_c-slideshow__slider">
-            <ul class="_c-slideshow__slides">
+    <div class="slideshow slideshow--hero slideshow--gallery-3-image">
+        <div class="slideshow__container  swiper-container">
+            <div class="slideshow__slides swiper-wrapper">
                 @{ var index = 0; }
                 @foreach (var image in Model.Images.Take(4))
             {
-                    <li class="_c-slideshow__slide">
+                    <div class="slideshow__slide swiper-slide">
                         <a href="@Url.Action("Images", "Details", new { imageIndex = index })" data-modal-trigger data-modal-type="slideshow">
-                            <img class="_c-slideshow__image"
+
+                            <img class="slideshow__image"
                                  sizes="100vw"
-                                 src="@image.Url?width=1024"
-                                 srcset="@image.Url?width=1024 2048w, @image.Url?width=768 1536w, @image.Url?width=512 1024w, @image.Url?width=384 768w"
+                                 src="@image.Url?width=1024&height=683"
+                                 srcset="@image.Url?width=1024&height=683 2048w, @image.Url?width=768&height=512 1536w, @image.Url?width=512&height=341 1024w, @image.Url?width=384&height=256 768w"
                                  alt="@image.AlternateText" />
                         </a>
-                    </li>
+                    </div>
                     index++;
                 }
                 @foreach (var image in Model.Images.Skip(4))
             {
-                    <li class="_c-slideshow__slide">
+                    <div class="slideshow__slide swiper-slide">
                         <a href="@Url.Action("Images", "Details", new { imageIndex = index })" data-modal-trigger data-modal-type="slideshow">
-                            <img class="_c-slideshow__image"
-                                 data-src="@image.Url?width=1024"
-                                 data-srcset="@image.Url?width=1024 2048w, @image.Url?width=768 1536w, @image.Url?width=512 1024w, @image.Url?width=384 768w"
+
+                            <img class="slideshow__image"
+                                 data-src="@image.Url?width=1024&height=683"
+                                 srcset="@image.Url?width=1024&height=683 2048w, @image.Url?width=768&height=512 1536w, @image.Url?width=512&height=341 1024w, @image.Url?width=384&height=256 768w"
                                  sizes="100vw"
                                  alt="@image.AlternateText" />
                         </a>
-                    </li>
+                    </div>
                     index++;
                 }
-            </ul>
-        </div>
-        <button class="_c-slideshow__nav _c-slideshow__nav--prev icon-chevron-left-sm" type="button" data-direction="prev">prev</button>
-        <button class="_c-slideshow__nav _c-slideshow__nav--next icon-chevron-right-sm" type="button" data-direction="next">next</button>
+            </div>
+            <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev">prev</button>
+            <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next">next</button>
 
-        <a class="_c-slideshow__view-photos" href="@Url.Action("Images", "Details", new { imageIndex = 0 })" data-modal-trigger data-modal-type="slideshow">View Photos</a>
+            <a class="slideshow__view-photos" href="@Url.Action("Images", "Details", new { imageIndex = 0 })" data-modal-trigger data-modal-type="slideshow">View Photos</a>
+        </div>
     </div>
 </div>
 @{ Html.RenderPartial("Partials/_Modal"); }

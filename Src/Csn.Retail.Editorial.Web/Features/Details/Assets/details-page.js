@@ -4,10 +4,9 @@ require('./css/details-page.scss');
 //------------------------------------------------------------------------------------------------------------------
 
 import { loaded } from 'document-promises/document-promises.js';
-import { inViewport } from 'Js/Modules/InViewport/inViewport.js';
+import ScrollMagic from 'ScrollMagic';
 
 //------------------------------------------------------------------------------------------------------------------
-
 
 // Dynamically set the public path for ajax/code-split requests
 let scripts = document.getElementsByTagName("script");
@@ -23,65 +22,150 @@ for (var i = 0; i < scriptsLength; i++) {
 
 //------------------------------------------------------------------------------------------------------------------
 
-
 // APP
 let aboveTheFold = function() {
-    // If Slideshow then must have Modal
-    if (document.querySelector('[data-slideshow]')) {
+    const multipleImageLayout = document.querySelector('.hero--multipleImages')
+    const imageAndVideoLayout = document.querySelector('.hero--imageAndVideo')
 
-        // Correct the size when the brightcove video is smaller than
-        if (document.querySelector('.hero .brightcove__iframe-wrapper') && document.querySelector('._c-slideshow__slides')) {
-            window.addEventListener('after.csn-slider.lazyload', function() {
-                document.querySelector('.hero .brightcove__iframe-wrapper').style.paddingTop = document.querySelector('._c-slideshow__slides').offsetHeight + "px"
-                window.addEventListener('resize', () => {
-                    document.querySelector('.hero .brightcove__iframe-wrapper').style.paddingTop = document.querySelector('._c-slideshow__slides').offsetHeight + "px"
-                })
+    if (multipleImageLayout || imageAndVideoLayout) {
+        require.ensure(['swiper', 'Js/Modules/Modal/modal.js'],
+    function(require) {
+        Swiper = require('swiper')
+
+        if (multipleImageLayout) {
+            const heroSwiper = new Swiper('.hero .slideshow__container', {
+                // Optional parameters
+                loop: true,
+                slidesPerView: 3,
+                slidesPerGroup: 1,
+
+                //Progress
+                watchSlidesProgress: true,
+                watchSlidesVisibility: true,
+
+                //Slides grid
+                centeredSlides: true,
+
+                //Images
+                preloadImages: false,
+                lazyLoading: true,
+                lazyLoadingInPrevNext: true,
+                lazyLoadingInPrevNextAmount: 3, // Can't be less than slidesPerView
+
+                // Navigation arrows
+                nextButton: '.slideshow__nav--next',
+                prevButton: '.slideshow__nav--prev',
+
+                //Namespace
+                containerModifierClass: 'slideshow',
+                wrapperClass: 'slideshow__slides',
+                slideClass: 'slideshow__slide',
+                lazyLoadingClass: 'slideshow__image',
+                lazyStatusLoadingClass: 'slideshow__image--loading',
+                lazyStatusLoadedClass: 'slideshow__image--loaded',
+                lazyPreloaderClass: 'slideshow__image--preloader',
+
+                //Breakpoints
+                breakpoints: {
+                    1199: {
+                        slidesPerView: 2,
+                    }
+                }
+            })
+        } else if (imageAndVideoLayout) {
+            const heroSwiper = new Swiper('.hero .slideshow__container', {
+                // Optional parameters
+                loop: true,
+                slidesPerView: 2,
+                slidesPerGroup: 1,
+
+                //Progress
+                watchSlidesProgress: true,
+                watchSlidesVisibility: true,
+
+                //Images
+                preloadImages: false,
+                lazyLoading: true,
+                lazyLoadingInPrevNext: true,
+                lazyLoadingInPrevNextAmount: 2, // Can't be less than slidesPerView
+
+                // Navigation arrows
+                nextButton: '.slideshow__nav--next',
+                prevButton: '.slideshow__nav--prev',
+
+                //Namespace
+                containerModifierClass: 'slideshow',
+                wrapperClass: 'slideshow__slides',
+                slideClass: 'slideshow__slide',
+                lazyLoadingClass: 'slideshow__image',
+                lazyStatusLoadingClass: 'slideshow__image--loading',
+                lazyStatusLoadedClass: 'slideshow__image--loaded',
+                lazyPreloaderClass: 'slideshow__image--preloader',
+
+                //Breakpoints
+                breakpoints: {
+                    1199: {
+                        slidesPerView: 1,
+                    }
+                }
             })
         }
 
-        //Lazy load - Above the fold because some detail layouts don't need it
-        require.ensure([
-                "Js/Modules/Slideshow/slideshow.js", "Js/Modules/Modal/modal.js"
-        ],
-            function() {
 
-                var Slideshow = require("Js/Modules/Slideshow/slideshow.js").default;
+        if (document.querySelector('[data-ajax-modal]')) {
 
-                //Setup slideshow
-                Slideshow({
-                    scope: '[data-slideshow]',
-                    showPages: false,
-                    lazyLoad: true,
-                    infinity: true
-                });
+            //init Modal JS
+            require('Js/Modules/Modal/modal.js');
 
-                if (document.querySelector("[data-ajax-modal]")) {
+            // load the modal slider after the ajax-event has completed //TODO: not using ajax anymore find better name
+            window.addEventListener('ajax-completed',
+                function() {
 
-                    //init Modal JS
-                    require("Js/Modules/Modal/modal.js");
+                    const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
+                    console.log(initSlide)
+                    const modalSwiper = new Swiper('._c-modal .slideshow', {
 
-                    var modalSlideshow = null;
+                        initialSlide: initSlide,
 
-                    // load the modal slider after the ajax-event has completed //TODO: not using ajax anymore find better name
-                    window.addEventListener('ajax-completed',
-                        function() {
-                            //Init modal slideshow
-                            modalSlideshow = Slideshow({
-                                scope: '[data-slideshow-modal]', //this needs to be unique
-                                pageBy: 1,
-                                showPages: false,
-                                lazyLoad: true,
-                                infinity: true
-                            })
-                        });
+                        // Optional parameters
+                        loop: true,
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+
+                        //Progress
+                        watchSlidesProgress: true,
+                        watchSlidesVisibility: true,
+
+                        //Images
+                        preloadImages: false,
+                        lazyLoading: true,
+                        lazyLoadingInPrevNext: true,
+                        lazyLoadingInPrevNextAmount: 1, // Can't be less than slidesPerView
+
+                        // Navigation arrows
+                        nextButton: '.slideshow__nav--next',
+                        prevButton: '.slideshow__nav--prev',
+
+                        //Namespace
+                        containerModifierClass: 'slideshow',
+                        wrapperClass: 'slideshow__slides',
+                        slideClass: 'slideshow__slide',
+                        lazyLoadingClass: 'slideshow__image',
+                        lazyStatusLoadingClass: 'slideshow__image--loading',
+                        lazyStatusLoadedClass: 'slideshow__image--loaded',
+                        lazyPreloaderClass: 'slideshow__image--preloader'
+
+                    })
 
                     // Resize Handler for modal window to shrink when window height is less than image
-                    let addSizeHandlers = function() {
+                    let resizeHandlers = function(windowHeightThreshold) {
 
                         let modalContent = document.querySelector('._c-modal__content');
-                        let el = modalContent.querySelector('._c-slideshow__slides');
-                        let threshold = 80; // TODO: find way to dynamically set spacing
-                        let windowHeight = window.innerHeight - threshold;
+                        let el = modalContent.querySelector('._c-modal .slideshow');
+                        let windowHeight = window.innerHeight - windowHeightThreshold;
+
+                        el.style.width = '';
+                        modalSwiper.onResize()
 
                         // Compare image dimensions with window
                         if (windowHeight < el.offsetHeight) {
@@ -92,21 +176,27 @@ let aboveTheFold = function() {
                             el.style.width = (Math.round(width)) + 'px';
 
                             //then force slider re position
-                            el.style.transform = 'translate3d(-' + width * modalSlideshow.currentSlide() + 'px,0,0)';
-                            el.style.webkitTransform = 'translate3d(-' + width * modalSlideshow.currentSlide() + 'px,0,0)';
+                            modalSwiper.onResize()
                         }
                     }
 
-                    let modalInner = document.querySelector('._c-modal__inner');
+                    let modalResizeHandler = resizeHandlers.bind(null, 80);
 
-                    ['after.csn-slider.lazyload', 'after.csn-slider.resize'].forEach(function(e) {
-                        modalInner.addEventListener(e, addSizeHandlers);
-                    });
+                    // Call it once to get approiate size on first view
+                    modalResizeHandler()
 
-                }
+                    // handle event
+                    window.addEventListener('resize', modalResizeHandler)
 
-            },
-            'details-page--slideshow-and-modal');
+                    window.addEventListener('modal.close', function() {
+                        window.removeEventListener('resize', modalResizeHandler)
+
+                    })
+
+                });
+        }
+    },
+    'Hero Slidier');
     }
 }
 aboveTheFold();
@@ -114,7 +204,7 @@ aboveTheFold();
 //Editors Rating
 let editorRatings = function() {
     if (document.querySelector('.editors-ratings')) {
-        require('./Js/editorsRating-component.js');
+        require('./Js/EditorsRatings/editorsRating-component.js');
     }
 }
 editorRatings();
@@ -137,7 +227,7 @@ loaded.then(function () {
 // TEADS
 $(function () {
     if ($('#teads-video-container').length) {
-        $('#teads-video-container').insertAfter($('.article__copy p:eq(1)')).wrap('<p></p>');
+        $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
 
     }
 });
@@ -158,14 +248,26 @@ loaded.then(function () {
     moreArticles(document);
 });
 
-//Lazy load More articles JS
 
+//Lazy load More articles JS
 let disqus = function(d, w, selector) {
     const disqusSelector = d.querySelector(selector);
     if (disqusSelector) {
-        inViewport(d, w, selector, 2, () => {
-            require('Js/Modules/Disqus/disqus.js').default()
-        });
+
+        // Set scene
+        const triggerElement = selector
+        const triggerHook = 1
+        const offset = (-1 * w.innerHeight) * 2;
+        w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
+
+        new ScrollMagic.Scene({
+            triggerElement: triggerElement,
+            triggerHook: triggerHook,
+            offset: offset,
+            reverse: false
+        })
+            .on("enter", ()=>{require('Js/Modules/Disqus/disqus.js').default()})
+            .addTo(w.scrollMogicController);
     }
 }
 disqus(document, window, '#disqus_thread');

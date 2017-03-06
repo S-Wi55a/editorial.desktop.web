@@ -206,8 +206,10 @@ module.exports = function () {
                 extensions: ['.js','.scss'],
                 alias: {
                     modernizr$: path.resolve(__dirname, './.modernizrrc.js'),
-                    "ScrollMagic": path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
-                    "debug.addIndicators": path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js')
+                    'ScrollMagic': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
+                    'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
+                    //'swiper': path.resolve(__dirname, './Features/Shared/Assets/Js/Modules/Swiper/swiper.custom.min.js')
+
                 },
                 descriptionFiles: ['package.json', 'bower.json'],
                 modules: listOfPaths

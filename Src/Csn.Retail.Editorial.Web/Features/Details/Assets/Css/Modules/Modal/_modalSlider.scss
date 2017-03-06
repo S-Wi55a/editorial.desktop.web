@@ -1,0 +1,101 @@
+﻿@import "css/modules/swiper/swiper";
+
+._c-modal .slideshow {
+
+
+    background-color: transparent;
+    width: 100%;
+
+    &__slides {
+
+    }
+
+    &__slide {
+
+    }
+
+    &__image {
+        width: 100%;
+        border-radius: 6px;
+    }
+
+    &__nav {
+		@extend %clearfix;
+		position: absolute;
+		top: 50%;
+		transform: translate3d(0,-50%,0);
+        -webkit-perspective: 1000; // remove flickering in animation
+        -webkit-backface-visibility: hidden; // remove flickering in animation
+		width: 30px;
+		height: 30px;
+		text-indent: 100%;
+	    cursor: pointer;
+        opacity: 1;
+        z-index: 3;
+
+		&:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            text-indent: 0;
+			font-family: 'csnicons';
+			color: $cs-white;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.8);
+			line-height: 30px;
+			font-size: 18px;
+		}
+
+
+        &--next,
+		&--prev {
+            background: rgba($cs-black, 0.8);
+            padding: 22px;
+            border-radius : 0px;
+            text-indent: -9999px;
+
+            &:hover:not([data-is-disabled="true"]) {
+                background: rgba($cs-dark-grey, 0.8);
+                &:before {
+                    color: $cs-white;
+                }
+            }
+
+            &[data-is-disabled="true"] {
+			    &:before {
+				    opacity: 0.3
+			    }
+            }
+
+            &:before {
+                position: absolute;
+                top: 8px;
+                color: $cs-white;
+
+			}
+        }
+
+		&--next {
+			right: 0px;
+
+			&:before {
+                content: "\E92A";
+                left: 2px;
+			}
+
+		}
+
+		&--prev {
+			left: 0px;
+
+			&:before {
+                content: "\E927";
+                left: -2px;
+			}
+		}
+	}
+
+}

@@ -82,6 +82,7 @@
         }
         .overall-rating-graph__valueStroke {
             stroke: $cs-primary;
+            stroke-linecap: round;
         }
         .overall-rating-graph__text {
             font-size: 58px !important;

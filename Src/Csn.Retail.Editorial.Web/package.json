@@ -71,10 +71,9 @@
     "custom-event": "^1.0.1",
     "document-promises": "^3.1.2",
     "jquery": "^3.1.0",
-    "lory.js": "^2.2.1",
     "meter-polyfill": "^1.7.1",
     "picturefill": "^3.0.2",
     "scrollmagic": "^2.0.5",
-    "vanilla-lazyload": "^4.0.3"
+    "swiper": "^3.4.1"
   }
 }
