@@ -58,7 +58,8 @@
             margin: 0;
         }
 
-        .teads-inread {
+        .teads-inread,
+        .brightcove {
             margin-top: 1.25em !important;
             font-size: 20px;
         }
@@ -173,5 +174,54 @@
 .article-type--video {
     .article > div:first-child{
         padding-top: (9/16)*100%;
+    }
+}
+
+
+// Drop Cap
+
+.article {
+    &.review {
+        .article__copy {
+            p:first-child:first-letter {
+                color: $cs-light-blue;
+            }
+        }
+    }
+    &.car-advice {
+        .article__copy {
+            p:first-child:first-letter {
+                color: $cs-accent-green;
+            }
+        }
+    }
+    &.video {
+        .article__copy {
+            p:first-child:first-letter {
+                color: $cs-orange;
+            }
+        }
+    }
+    &.news {
+        .article__copy {
+            p:first-child:first-letter {
+                color: $cs-red;
+            }
+        }
+    }
+    &.comparison {
+        .article__copy {
+            p:first-child:first-letter {
+                color: $cs-purple;
+            }
+        }
+    }
+    &__copy {
+        p:first-child::after {
+            @extend %clearfix;
+        }
+        p:first-child:first-letter {
+            @extend %drop-cap-paragraph;
+        }
     }
 }

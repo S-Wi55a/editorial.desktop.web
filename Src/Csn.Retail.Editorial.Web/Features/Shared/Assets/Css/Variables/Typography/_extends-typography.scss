@@ -60,14 +60,15 @@
     line-height: 1.6;
 }
 
-%drop-cap-paragraph:first-letter {
+%drop-cap-paragraph {
     color: inherit;
     float: left;
-    font-size: 83px;
-    font-weight: $font-weight-400;
+    font-size: 5.2em;
+    font-weight: $font-weight-300;
     line-height: .75;
-    margin-right: .15em;
-    margin-top: .12em
+    margin-right: .1em;
+    margin-top: .09em;
+    text-transform: capitalize;
 }
 
 %rundown-text {
