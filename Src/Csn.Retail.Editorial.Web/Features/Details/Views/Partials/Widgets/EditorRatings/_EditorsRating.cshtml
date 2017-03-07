@@ -3,8 +3,8 @@
 
 
 <div class="editors-ratings">
-    @{ Html.RenderPartial("Partials/Widgets/_ExpertRatings", Model.ExpertRatings); }
-    @{ Html.RenderPartial("Partials/Widgets/_ProCon", Model.ProsCons); }
+    @{ Html.RenderPartial("Partials/Widgets/EditorRatings/_ExpertRatings", Model.ExpertRatings); }
+    @{ Html.RenderPartial("Partials/Widgets/EditorRatings/_ProCon", Model.ProsCons); }
 </div>
 
 @*@Html.AssetJs("editorsRating-component", LoadType.Defer)*@

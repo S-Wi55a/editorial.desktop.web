@@ -39,7 +39,7 @@
 </footer>
 
 @section BottomScripts{
-    @Html.AssetJs("vendor")
+    @Html.AssetJs("vendor--" + tenantName)
     @Html.AssetJs("csn.common--" + tenantName, LoadType.Defer)
     @RenderSection("BottomScripts", false)
     @globalSiteData.Script.ToMvcHtmlString()

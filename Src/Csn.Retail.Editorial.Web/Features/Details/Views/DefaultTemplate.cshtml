@@ -26,16 +26,15 @@
 <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
     @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
     <div class="container">
-        @{ Html.RenderPartial("Partials/Layout/_Main"); }
-        @{ Html.RenderPartial("Partials/Layout/_Aside"); }
+        @{ Html.RenderPartial("Partials/_Main"); }
+        @{ Html.RenderPartial("Partials/_Aside"); }
     </div>
 </article>
 
 @if (Model.MoreArticleData != null && Model.MoreArticleData.Any())
 {
-    Html.RenderPartial("Partials/MoreArticles/_MoreArticlesContainer", Model.MoreArticleData);
+    Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticlesContainer", Model.MoreArticleData);
 }
-
 
 @section BottomScripts
 {

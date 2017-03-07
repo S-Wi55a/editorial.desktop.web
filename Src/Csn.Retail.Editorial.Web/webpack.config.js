@@ -70,7 +70,7 @@ function getEntryFiles(tenant) {
         entries[filename + '--' + tenant] = filePath;
     }
 
-    entries['vendor'] = ['./Features/Shared/Assets/Js/vendor.js'];
+    entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
     entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
 
     return entries;
@@ -220,7 +220,9 @@ module.exports = function () {
                     filename: isProd ? '[name]-[contenthash].css' : '[name].css',
                 }),
                 new webpack.optimize.CommonsChunkPlugin({
-                    names: ['csn.common' + '--' + tenant, 'vendor'],
+                   // names: ['csn.common' + '--' + tenant, 'vendor' + '--' + tenant],
+                    children: true,
+                    async: true,
                     minChunks: 2
                 }),
                 new webpack.NamedModulesPlugin(),

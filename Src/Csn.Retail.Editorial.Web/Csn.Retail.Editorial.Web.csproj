@@ -468,7 +468,9 @@
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-component.js" />
-    <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticlesContentView.js" />
+    <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-view.js" />
+    <Content Include="Features\Details\Assets\Js\StockForSale\stockForSale-component.js" />
+    <Content Include="Features\Details\Assets\Js\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\logo-bikesales.svg" />
@@ -551,20 +553,20 @@
     <Content Include="Features\Shared\Assets\Css\common.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_page-container.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_footer.scss" />
-    <Content Include="Features\Details\Views\Partials\Layout\_Main.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Layout\_Aside.cshtml" />
+    <Content Include="Features\Details\Views\Partials\_Main.cshtml" />
+    <Content Include="Features\Details\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\Brightcove\_brightcove-video-player.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_article.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Screen\_variables-screen.scss" />
-    <Content Include="Features\Details\Views\Partials\_ArticleBody.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Content\_ArticleBody.cshtml" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_SingleImage.cshtml" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_BrightcoveVideo.cshtml" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_Quote.cshtml" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_Html.cshtml" />
-    <Content Include="Features\Details\Views\Partials\_Contributors.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Content\_Contributors.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_SocialMetaData.cshtml" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.scss" />
     <Content Include="Features\Shared\Views\Partials\_Modal.cshtml" />
@@ -582,13 +584,13 @@
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Reddit.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Pinterest.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Googleplus.cshtml" />
-    <Content Include="Features\Details\Views\Partials\_SocialMediaLinks.cshtml" />
+    <Content Include="Features\Details\Views\Partials\SocialNetworks\_SocialMediaLinks.cshtml" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.eot" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.ttf" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.woff" />
-    <Content Include="Features\Details\Views\Partials\Widgets\_ExpertRatings.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Widgets\_ProCon.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Widgets\_EditorsRating.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ExpertRatings.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ProCon.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_EditorsRating.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\_editorsRatings.scss" />
     <Content Include=".modernizrrc.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.scss" />
@@ -597,7 +599,6 @@
     <Content Include=".babelrc" />
     <Content Include=".eslintrc.json" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\_procon.scss" />
-    <Content Include="Features\Details\Views\Partials\_RelatedArticles.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
@@ -609,7 +610,6 @@
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tile15.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Widgets\_MoreArticles.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mediamotive.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
@@ -630,7 +630,7 @@
     <Content Include="editorial\content\scripts\webm.clicktrack.min.js.map" />
     <Content Include="editorial\content\scripts\trafficSourceReferrer.min.js.map" />
     <Content Include="Features\Tracking\Views\WebMetricsScripts.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MoreArticles\_MoreArticlesContainer.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\MoreArticles\_MoreArticlesContainer.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\MoreArticles\_moreArticle.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\MoreArticles\_moreArticles.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />
@@ -645,6 +645,8 @@
     <Content Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Features\Details\Assets\Css\Modules\StockForSale\_stockForSale.scss" />
+    <Content Include="Features\Shared\Assets\Css\Variables\Typography\_extends-typography.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

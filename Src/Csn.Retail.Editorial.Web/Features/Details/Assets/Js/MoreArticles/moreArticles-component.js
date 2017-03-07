@@ -1,6 +1,6 @@
 ﻿import Swiper from 'swiper'
 import {get} from 'Js/Modules/Ajax/ajax.js'
-import moreArticlesContentView from 'Js/MoreArticles/moreArticlesContentView.js'
+import moreArticlesView from 'Js/MoreArticles/moreArticles-view.js'
 
 import ScrollMagic from 'ScrollMagic'
 
@@ -84,7 +84,7 @@ let removeEventListenerToButton = (scope, selector, event, fn) => {
 
 // Update List
 let updateList = (scope, selector, data) => {
-    scope.querySelector(selector).insertAdjacentHTML('beforeend', moreArticlesContentView(data))
+    scope.querySelector(selector).insertAdjacentHTML('beforeend', moreArticlesView(data))
 }
 
 // Update Content
