@@ -51,6 +51,7 @@
                 transition: opacity 0.3s ease-out;
                 backface-visibility: hidden; // remove flickering in animation
                 text-align: center;
+                text-shadow: 2px 2px 5px $cs-black;
             }
         }
 
@@ -179,7 +180,7 @@
             padding-top: percentage((2/3)/3); //Aspect ratio / number of images
 
             // Gallery with three images
-            .slideshow {
+            /*.slideshow {
                 &__container {
                     line-height: 0;
 
@@ -230,11 +231,11 @@
 			            }
                     }
                 }
-            }
+            }*/
         }
     }
 
-    body:not(.ie) .hero .slideshow {
+    /*body:not(.ie) .hero .slideshow {
         &--gallery-3-image {
             //Effects
             .swiper-slide-prev,
@@ -249,6 +250,6 @@
                 }
             }
         }
-    }
+    }*/
 }
 
