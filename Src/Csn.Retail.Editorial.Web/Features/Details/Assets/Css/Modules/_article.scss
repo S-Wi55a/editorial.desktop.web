@@ -40,6 +40,25 @@
 
         &>h1,&>h2,&>h3,&>h4,&>h5,&>h6 {
             margin-top: 40px;
+            color: $cs-black;
+        }
+        &>h1{
+            @extend %h1;
+        }
+        &>h2{
+            @extend %h2;
+        }
+        &>h3{
+            @extend %h3;
+        }
+        &>h4{
+            @extend %h4;
+        }
+        &>h5{
+            @extend %h5;
+        }
+        &>h6{
+            @extend %h6;
         }
 
         p {
@@ -73,7 +92,7 @@
 
     &__img-caption {
         font-size: $font-size-small;
-        line-height: 1em;
+        line-height: normal;
         margin: 7px auto;
         text-align: center;
         color: $cs-dark-grey;
