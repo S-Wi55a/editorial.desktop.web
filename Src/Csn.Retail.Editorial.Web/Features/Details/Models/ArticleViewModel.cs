@@ -31,6 +31,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
         public GoogleAnalyticsDetailsData GoogleAnalyticsDetailsData { get; set; }
+        public StockListingData StockListingData { get; set; }
+
     }
 
     public class HeroSection
@@ -92,6 +94,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Identifier { get; set; }
         public string ArticleUrl { get; set; }
         public string Title { get; set; }
+    }
+
+    public class StockListingData
+    {
+        public string Heading { get; set; }
+        public List<StockFilters> Filters { get; set; }
     }
 
 }

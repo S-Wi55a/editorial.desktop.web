@@ -36,6 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
         public GoogleAnalyticsDetailsDto GoogleAnalyticsDetailsData { get; set; }
+        public StockListingData StockListingData { get; set; }
     }
 
     public class GoogleAnalyticsDetailsDto
@@ -212,6 +213,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         SingleImage,
         BrightcoveVideo,
         Quote
+    }
+
+    public class StockListingData
+    {
+        public string Heading { get; set; }
+        public List<StockFilters> Filters { get; set; }
     }
 
 }

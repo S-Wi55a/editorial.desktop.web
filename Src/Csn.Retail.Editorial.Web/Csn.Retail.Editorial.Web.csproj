@@ -366,6 +366,11 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\Shared\Models\StockFilters.cs" />
+    <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
+    <Compile Include="Features\StockForSale\StockForSaleController.cs" />
+    <Compile Include="Features\StockForSale\StockForSaleQuery.cs" />
+    <Compile Include="Features\StockForSale\StockForSaleQueryHandler.cs" />
     <Compile Include="Features\MoreArticles\MoreArticlesController.cs" />
     <Compile Include="Features\MoreArticles\MoreArticlesQuery.cs" />
     <Compile Include="Features\MoreArticles\MoreArticlesQueryHandler.cs" />
