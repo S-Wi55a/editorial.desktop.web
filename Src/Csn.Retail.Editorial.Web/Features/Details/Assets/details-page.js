@@ -67,8 +67,10 @@ let aboveTheFold = function() {
 
                 //Breakpoints
                 breakpoints: {
-                    1199: {
+                    1200: {
                         slidesPerView: 2,
+                        //Slides grid
+                        centeredSlides: false
                     }
                 }
             })
@@ -104,7 +106,7 @@ let aboveTheFold = function() {
 
                 //Breakpoints
                 breakpoints: {
-                    1199: {
+                    1200: {
                         slidesPerView: 1,
                     }
                 }

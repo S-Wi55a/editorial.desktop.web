@@ -135,7 +135,7 @@ module.exports = function () {
                 filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: {
-                noParse: /jquery/,
+                noParse: /jquery|swiper|ScrollMagic/,
                 rules: [
                     {
                         test: [/\.js$/, /\.es6$/],
@@ -208,7 +208,6 @@ module.exports = function () {
                     modernizr$: path.resolve(__dirname, './.modernizrrc.js'),
                     'ScrollMagic': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
                     'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
-                    //'swiper': path.resolve(__dirname, './Features/Shared/Assets/Js/Modules/Swiper/swiper.custom.min.js')
 
                 },
                 descriptionFiles: ['package.json', 'bower.json'],
