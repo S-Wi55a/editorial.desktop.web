@@ -615,7 +615,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
     <Content Include="Features\Home\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_BasicSeoData.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Head\_WebTrendsData.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Tracking\_WebTrendsData.cshtml" />
     <Content Include="editorial\content\scripts\webtrends_custom.min.js.map" />
     <Content Include="editorial\content\scripts\webtrends.min.js.map" />
     <Content Include="editorial\content\scripts\webm.wt.plugins.min.js.map" />
@@ -641,7 +641,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_hero.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroSlider.scss" />
     <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Trackings\_GoogleAnalyticsDetails.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Tracking\_GoogleAnalyticsDetails.cshtml" />
     <Content Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

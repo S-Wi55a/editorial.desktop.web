@@ -18,9 +18,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
 
     public class LoadGoogleAnalyticsTrackingScriptOnPageLoad<T> : IAsyncEventHandler<T> where T : IEvent
     {
-        private readonly string _cacheKey = "editorial:googleanalytics:{0}:app_name:{1}";
-        private readonly TimeSpan _localCacheDuration = new TimeSpan(23, 59, 0);
-        private readonly TimeSpan _distributedCacheDuration = new TimeSpan(23, 59, 0);
+        private readonly string _cacheKey = "editorial:desktop:ga:{1}";
+        private readonly TimeSpan _localCacheDuration = new TimeSpan(24, 0, 0);
+        private readonly TimeSpan _distributedCacheDuration = new TimeSpan(24, 0, 0);
 
         private readonly ICacheStore _cacheStore;
         private readonly IContextStore<TrackingApiDto> _contextStore;
