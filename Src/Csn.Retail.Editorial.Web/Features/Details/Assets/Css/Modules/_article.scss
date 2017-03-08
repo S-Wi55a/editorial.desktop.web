@@ -1,7 +1,13 @@
 ﻿.article {
     padding-top: 60px;
-    padding-left: 75px;
-    padding-right: 44px;
+    padding-right: 30px;
+    position: relative;
+    float: left;
+    width: calc(100% - (300px + #{$grid-gutter-width/2}));
+
+    @include breakpoint($screen-lg) {
+        padding-right: 45px;
+    }
 
     .cf:after {
         @include cf;

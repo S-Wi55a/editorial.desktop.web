@@ -1,21 +1,21 @@
 ﻿/* Application Breakpoints */
 
-$screen-xs:                             480px;      // mobile landscape
+/*$screen-xs:                             480px;      // mobile landscape
 $screen-sm:                             768px;      // tablet
 $screen-md:                             992px;      // small desktop / labtop
 $screen-lg:                             1200px;     // normal desktop
 $screen-xl:                             1600px;     //
 $screen-hd:                             1920px;     // full hd
-$screen-xxl:                            2560px;     // imac screen
+$screen-xxl:                            2560px;     // imac screen*/
 
 
-$screen-xs:                             1200px;      // mobile landscape
-$screen-sm:                             1200px;      // tablet
-$screen-md:                             1200px;      // small desktop / labtop
+$screen-xs:                             992px;      // mobile landscape
+$screen-sm:                             992px;      // tablet
+$screen-md:                             992px;      // small desktop / labtop
 $screen-lg:                             1200px;     // normal desktop
-$screen-xl:                             1600px;     //
-$screen-hd:                             1920px;     // full hd
-$screen-xxl:                            2560px;     // imac screen
+$screen-xl:                             1200px;     //
+$screen-hd:                             1200px;     // full hd
+$screen-xxl:                            1200px;     // imac screen
 
 
 //== Container sizes
@@ -34,5 +34,3 @@ $container-lg:                 $screen-lg;
 
 
 $screen-sm-min:0;
-$screen-md-min:0;
-$screen-lg-min:0;

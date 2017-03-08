@@ -16,19 +16,11 @@
 }
 
 .hero--singleImage {
-
-    @include breakpoint($screen-lg) {
-        padding-left: 75px;
-        padding-right: 44px;
-    }
+    width: calc(100% - (300px + #{$grid-gutter-width/2}));
 }
 
 .hero--singleVideo {
-
-    @include breakpoint($screen-lg) {
-        padding-left: 75px;
-        padding-right: 44px;
-    }
+    width: calc(100% - (300px + #{$grid-gutter-width/2}));
 }
 
 .hero.hero--imageAndVideo {
