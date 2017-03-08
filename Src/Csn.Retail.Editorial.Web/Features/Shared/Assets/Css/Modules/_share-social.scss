@@ -89,15 +89,14 @@
     }
     &--reddit {
         background-color: $cs-white;
-        color: $cs-black;
-        border: 1px solid $cs-black;
-        font-size: 21px;
+        color: $color-reddit;
+        font-size: 45px;
 
         &:hover,
         &:visited,
         &:active,
         &:focus {
-            color: $cs-black;
+            color: $color-reddit;
             opacity: 0.66;
         }
     }
