@@ -51,7 +51,7 @@ let toggleClass = (scope, selector, className, ...text) => {
         if (scope.querySelector(selector).classList.contains(className)) {
             removeClass(scope, selector, className, text[0][0])
         } else {
-                addClass(scope, selector, className, text[0][1])
+            addClass(scope, selector, className, text[0][1])
         }
     }
 
@@ -137,6 +137,8 @@ let filterHandler = (e, ...args) => {
 
     if(!el.classList.contains(className)) {
 
+        userPreference = false
+
         // Clear all active classes and add to clicked el
         const filters = scope.querySelectorAll(el.className)
         for (var filter of filters) {
@@ -200,6 +202,9 @@ function buttonShowHideHandler() {
     } else if (userPreference) {
         userPreference = false
         toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+    } else {
+        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+
     }
 
 }
@@ -227,7 +232,7 @@ new ScrollMagic.Scene({
     offset: offset
 })
     .on("update", function (e) {
-        e.target.controller().info("scrollDirection") === 'REVERSE' ? this.trigger("enter") : null;
+        e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference ? this.trigger("enter") : null;
     })
     .on("enter", scrollHandler.bind(null, document, scopeSelector, 'show'))
     .addTo(window.scrollMogicController);
