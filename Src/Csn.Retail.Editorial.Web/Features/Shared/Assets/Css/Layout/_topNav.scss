@@ -1,0 +1,15 @@
+﻿.site-nav-wrapper {
+
+    .site-nav {
+        width: $screen-md;
+        padding-left: $grid-gutter-width/2;
+        padding-right: $grid-gutter-width/2;
+
+        @include breakpoint($screen-lg) {
+            width: $screen-lg;
+        }
+    }
+
+    .nav-top-level>.nav-home>a { width: 30px; }
+    .nav-top-level.network li:last-child { padding-right: 0; margin-right: 0;}
+}

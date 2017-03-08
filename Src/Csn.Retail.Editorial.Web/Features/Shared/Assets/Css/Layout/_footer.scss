@@ -1,7 +1,25 @@
 ﻿#page-footer{
     text-align: left;
+    line-height: 1.4;
 
     .footer-area--lower {
         padding-bottom: 200px;
+
+        a {
+            color: inherit;
+
+            &:hover {
+                color: inherit;
+            }
+            &:visited {
+                color: inherit;
+            }
+            &:active {
+                color: inherit;
+            }
+            &:focus {
+                color: inherit;
+            }
+        }
     }
 }

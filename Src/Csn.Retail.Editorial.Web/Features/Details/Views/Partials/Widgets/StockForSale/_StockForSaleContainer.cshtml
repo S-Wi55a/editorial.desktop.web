@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Csn.Retail.Editorial.Web.Features.Shared.Models.StockFilters>
+
+<div class="stock-for-sale">
+    <div class="stock-for-sale__filters">
+        <ul>
+        @* Loop through filters *@
+        @foreach (var filter in Model)
+            {
+                <li>
+                    <a href="@filter.Query" class="stock-for-sale__filter">@filter.Name</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="stock-for-sale__container"></div>
+    <button class="stock-for-sale__button more-articles__button--view-all">View All</button>
+</div>

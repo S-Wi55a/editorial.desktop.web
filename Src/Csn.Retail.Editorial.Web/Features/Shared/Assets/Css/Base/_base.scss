@@ -3,7 +3,7 @@
 }
 
 body {
-    min-width: 1200px;
+    min-width: $container-md;
     padding-top: 40px;
     margin: 0;
     text-rendering: optimizeLegibility;
@@ -17,18 +17,18 @@ body {
 
 
 a {
-    color: $cs-primary;
+    color: $cs-dark-blue;
 
     &:hover {
-        color: $cs-primary;
+        color: $cs-dark-blue;
     }
     &:visited {
-        color: $cs-primary;
+        color: $cs-dark-blue;
     }
     &:active {
-        color: $cs-primary;
+        color: $cs-dark-blue;
     }
     &:focus {
-        color: $cs-primary;
+        color: $cs-dark-blue;
     }
 }

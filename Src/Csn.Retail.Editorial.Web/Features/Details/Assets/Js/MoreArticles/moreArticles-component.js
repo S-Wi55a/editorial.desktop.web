@@ -12,6 +12,7 @@ const nextCtrl = '.more-articles__nav-button--next'
 const slide = '.more-articles__slide'
 const navButtons = '.more-articles__nav-button'
 const showHideButton = '.more-articles__button--show-hide'
+let userPreference = false
 
 // Scroll Magic
 const contentOffset = 0.5; // range 0 - 1
@@ -46,11 +47,14 @@ let removeClass = (scope, selector, className, text) => {
 
 // Toggle class
 let toggleClass = (scope, selector, className, ...text) => {
-    if (scope.querySelector(selector).classList.contains(className)) {
-        removeClass(scope, selector, className, text[0][0])
-    } else {
-        addClass(scope, selector, className, text[0][1])
+    if (!userPreference) {
+        if (scope.querySelector(selector).classList.contains(className)) {
+            removeClass(scope, selector, className, text[0][0])
+        } else {
+            addClass(scope, selector, className, text[0][1])
+        }
     }
+
 }
 
 
@@ -133,6 +137,8 @@ let filterHandler = (e, ...args) => {
 
     if(!el.classList.contains(className)) {
 
+        userPreference = false
+
         // Clear all active classes and add to clicked el
         const filters = scope.querySelectorAll(el.className)
         for (var filter of filters) {
@@ -189,7 +195,18 @@ function nextButtonHandler(scope, slider, offset, cb) {
 }
 
 function buttonShowHideHandler() {
-    toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+    //set user prefernce here
+    if (document.querySelector(scopeSelector).classList.contains('show')) {
+        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+        userPreference = true
+    } else if (userPreference) {
+        userPreference = false
+        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+    } else {
+        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+
+    }
+
 }
 
 // Filters
@@ -215,7 +232,7 @@ new ScrollMagic.Scene({
     offset: offset
 })
     .on("update", function (e) {
-        e.target.controller().info("scrollDirection") === 'REVERSE' ? this.trigger("enter") : null;
+        e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference ? this.trigger("enter") : null;
     })
     .on("enter", scrollHandler.bind(null, document, scopeSelector, 'show'))
     .addTo(window.scrollMogicController);

@@ -2,12 +2,20 @@
     line-height: 31px;
     font-size: 13px;
     padding: 0 20px;
+
+}
+
+%button--large {
+    @extend %button;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 %button--small {
     line-height: 27px;
     font-size: 13px;
     padding: 0 15px;
+    font-weight: 600;
 }
 
 %button--thin {

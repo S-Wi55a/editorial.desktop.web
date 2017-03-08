@@ -472,6 +472,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\EditorsRatings\editorsRating-component.js" />
+    <Content Include="Features\Details\Assets\Js\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-view.js" />
     <Content Include="Features\Details\Assets\Js\StockForSale\stockForSale-component.js" />
@@ -652,6 +653,8 @@
     </Content>
     <Content Include="Features\Details\Assets\Css\Modules\StockForSale\_stockForSale.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_extends-typography.scss" />
+    <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleContainer.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Layout\_topNav.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
