@@ -22,7 +22,7 @@ for (var i = 0; i < scriptsLength; i++) {
 
 //------------------------------------------------------------------------------------------------------------------
 
-// APP
+// Hero
 let aboveTheFold = require('Js/Hero/hero.js').default;
 aboveTheFold();
 

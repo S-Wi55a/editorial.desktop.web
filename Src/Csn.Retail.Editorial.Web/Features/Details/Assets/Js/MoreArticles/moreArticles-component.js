@@ -12,6 +12,7 @@ const nextCtrl = '.more-articles__nav-button--next'
 const slide = '.more-articles__slide'
 const navButtons = '.more-articles__nav-button'
 const showHideButton = '.more-articles__button--show-hide'
+let userPreference = false
 
 // Scroll Magic
 const contentOffset = 0.5; // range 0 - 1
@@ -46,11 +47,14 @@ let removeClass = (scope, selector, className, text) => {
 
 // Toggle class
 let toggleClass = (scope, selector, className, ...text) => {
-    if (scope.querySelector(selector).classList.contains(className)) {
-        removeClass(scope, selector, className, text[0][0])
-    } else {
-        addClass(scope, selector, className, text[0][1])
+    if (!userPreference) {
+        if (scope.querySelector(selector).classList.contains(className)) {
+            removeClass(scope, selector, className, text[0][0])
+        } else {
+                addClass(scope, selector, className, text[0][1])
+        }
     }
+
 }
 
 
@@ -189,7 +193,15 @@ function nextButtonHandler(scope, slider, offset, cb) {
 }
 
 function buttonShowHideHandler() {
-    toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+    //set user prefernce here
+    if (document.querySelector(scopeSelector).classList.contains('show')) {
+        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+        userPreference = true
+    } else if (userPreference) {
+        userPreference = false
+        toggleClass(document, scopeSelector, 'show', ['Show', 'Hide'])
+    }
+
 }
 
 // Filters
