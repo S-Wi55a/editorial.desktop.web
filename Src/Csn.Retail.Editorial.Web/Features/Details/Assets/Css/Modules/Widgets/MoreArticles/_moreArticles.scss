@@ -18,6 +18,9 @@
     transition: transform .333s, padding-top .3s;
 
     &.active {
+    }
+
+    &.ready {
         transform: translateY(87px);
     }
 

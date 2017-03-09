@@ -1,5 +1,9 @@
 ﻿._c-modal {
 
+    ._c-spinner {
+        display: none; 
+    }
+
 	/* dimensions: spanning the background from edge to edge */
 	position:fixed;
 	top: 0;
@@ -244,7 +248,7 @@
     {
         ._c-modal__content {
             width: 100%;
-            padding: 0 5%;
+            padding: 0 80px;
         }
     }
 	/* contains the content */
