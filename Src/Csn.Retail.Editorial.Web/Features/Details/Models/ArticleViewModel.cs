@@ -91,6 +91,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
 
     public class DisqusData
     {
+        public string DisqusSource { get; set; }
         public string Identifier { get; set; }
         public string ArticleUrl { get; set; }
         public string Title { get; set; }

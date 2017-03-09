@@ -2,7 +2,7 @@
 
 export default function () {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
     var d = document, s = d.createElement('script');
-    var disqus_shortname = 'carsales';
+    var disqus_shortname = window.disqus_shortname;
 
     s.src = '//' + disqus_shortname + '.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
     s.async = true;

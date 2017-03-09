@@ -51,6 +51,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 
     public class DisqusData
     {
+        public string DisqusSource { get; set; }
         public string Identifier { get; set; }
         public string ArticleUrl { get; set; }
         public string Title { get; set; }
