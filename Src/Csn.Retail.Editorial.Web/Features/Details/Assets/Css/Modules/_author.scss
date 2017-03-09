@@ -41,11 +41,7 @@
         display: inline-block;
         vertical-align: middle;
         margin-top: 10px;
-        @extend %button--small;
-        @extend %button--thin;
-        @extend %button--primary-inverse;
-        @extend %button--round;
-
+        @include button((small:true,thin:true,primary-inverse:true,round:true));
     }
 
     &+.author{

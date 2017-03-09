@@ -55,7 +55,7 @@
 
 
         &--active {
-            @include button((primary: true ));
+            @include button((small: true,primary: true ));
             cursor: default;
         }
 
@@ -132,7 +132,7 @@
 
     &__button {
 
-        @extend %button;
+        @include button();
 
         &--show-hide {
             color: $cs-primary;

@@ -106,8 +106,7 @@
     }
 
     &__type {
-        @extend %button;
-        @extend %button--round;
+        @include button((round:true));
         font-weight: 600;
         display: inline-block;
         float: left;

@@ -2,7 +2,6 @@
 @import "breakpoint-sass/stylesheets/breakpoint";
 
 .hero .slideshow {
-
     //Local Vars
     $icon-box-width: 44px;
     $icon-box-height: $icon-box-width;
@@ -19,18 +18,15 @@
     }
 
     &__slides {
-
     }
 
     &__slide {
-
         position: relative;
-		width: 100%;
+        width: 100%;
         min-height: 0;
         padding: 0;
 
         & > a {
-
             text-decoration: none;
 
             &:before {
@@ -59,7 +55,6 @@
             & > a {
                 &:before {
                     opacity: 1;
-
                 }
             }
         }
@@ -70,20 +65,18 @@
     }
 
     &__nav {
-		@extend %clearfix;
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		width: $icon-box-width;
-		height: $icon-box-width;
-		text-indent: 100%;
-	    cursor: pointer;
+        @extend %clearfix;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $icon-box-width;
+        height: $icon-box-width;
+        text-indent: 100%;
+        cursor: pointer;
         opacity: 1;
         z-index: 3;
         backface-visibility: hidden; // remove flickering in animation
-
-
-		&:before {
+        &:before {
             position: absolute;
             left: 0;
             top: 0;
@@ -92,64 +85,62 @@
             height: $icon-box-height;
             text-align: center;
             text-indent: 0;
-			font-family: $font-family-icons;
-			color: $cs-white;
+            font-family: $font-family-icons;
+            color: $cs-white;
             text-shadow: 0 1px 0 rgba($cs-black,0.8);
-			line-height: $icon-box-height;
-			font-size: 18px;
-		}
+            line-height: $icon-box-height;
+            font-size: 18px;
+        }
 
         &--next,
-		&--prev {
+        &--prev {
             background: rgba($cs-darker-grey, 0.8);
-            border-radius : 0px;
+            border-radius: 0px;
             text-indent: -9999px;
 
             &:hover:not([data-is-disabled="true"]) {
-                    background: rgba($cs-dark-grey, 0.7);
+                background: rgba($cs-dark-grey, 0.7);
+
                 &:before {
                     color: $cs-white;
                 }
             }
 
             &[data-is-disabled="true"] {
-			    &:before {
-				    opacity: 0.3
-			    }
+                &:before {
+                    opacity: 0.3
+                }
             }
 
             &:before {
                 position: absolute;
                 top: 1px;
                 color: $cs-white;
-			}
+            }
         }
 
-		&--next {
-			right: 0;
+        &--next {
+            right: 0;
 
-			&:before {
+            &:before {
                 content: "\E92A";
                 left: 2px;
-			}
+            }
+        }
 
-		}
+        &--prev {
+            left: 0px;
 
-		&--prev {
-			left: 0px;
-
-			&:before {
+            &:before {
                 content: "\E927";
                 left: -2px;
-			}
-		}
-	}
+            }
+        }
+    }
 
     &__view-photos {
-        @extend %button;
-        @extend %button--round;
+        @include button((round:true));
         @include buttonColor($cs-lightest-grey, $cs-darker-grey);
-
         position: absolute;
         right: 35px;
         bottom: 30px;
@@ -161,10 +152,9 @@
         padding-top: percentage((2/3)/2); //Aspect ratio / number of images
     }
 
-    &--image-video{
+    &--image-video {
         padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
     }
-
 }
 
 @include breakpoint($screen-lg) {
