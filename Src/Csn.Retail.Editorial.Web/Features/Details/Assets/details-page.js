@@ -24,13 +24,13 @@ for (var i = 0; i < scriptsLength; i++) {
 //------------------------------------------------------------------------------------------------------------------
 
 // Hero
-let aboveTheFold = require('Js/Hero/hero.js').default;
+let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
 aboveTheFold();
 
 //Editors Rating
 let editorRatings = function() {
     if (document.querySelector('.editors-ratings')) {
-        require('./Js/EditorsRatings/editorsRating-component.js');
+        require('./Js/Modules/EditorsRatings/editorsRating-component.js');
     }
 }
 editorRatings();
@@ -63,9 +63,9 @@ $(function () {
 let moreArticles = function(d) {
 
     if (d.querySelector('.more-articles')) {
-        require.ensure(['./Js/MoreArticles/moreArticles-component.js'],
+        require.ensure(['./Js/Modules/MoreArticles/moreArticles-component.js'],
         function() {
-            require('./Js/MoreArticles/moreArticles-component.js');
+            require('./Js/Modules/MoreArticles/moreArticles-component.js');
         },
         'More-Articles-Component');
     }

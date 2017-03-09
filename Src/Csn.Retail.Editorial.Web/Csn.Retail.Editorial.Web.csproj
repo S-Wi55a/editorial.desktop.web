@@ -471,12 +471,12 @@
     <Content Include="editorial\content\scripts\webtrends_custom.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
-    <Content Include="Features\Details\Assets\Js\EditorsRatings\editorsRating-component.js" />
-    <Content Include="Features\Details\Assets\Js\Hero\hero.js" />
-    <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-component.js" />
-    <Content Include="Features\Details\Assets\Js\MoreArticles\moreArticles-view.js" />
-    <Content Include="Features\Details\Assets\Js\StockForSale\stockForSale-component.js" />
-    <Content Include="Features\Details\Assets\Js\StockForSale\stockForSale-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\logo-bikesales.svg" />
@@ -597,14 +597,14 @@
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ExpertRatings.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ProCon.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_EditorsRating.cshtml" />
-    <Content Include="Features\Details\Assets\Css\Modules\Widgets\_editorsRatings.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\EditorRatings\_editorsRatings.scss" />
     <Content Include=".modernizrrc.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\Widgets\_expertRatings.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\EditorRatings\_expertRatings.scss" />
     <Content Include="bower.json" />
     <Content Include=".babelrc" />
     <Content Include=".eslintrc.json" />
-    <Content Include="Features\Details\Assets\Css\Modules\Widgets\_procon.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\EditorRatings\_procon.scss" />
     <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
@@ -637,8 +637,8 @@
     <Content Include="editorial\content\scripts\trafficSourceReferrer.min.js.map" />
     <Content Include="Features\Tracking\Views\WebMetricsScripts.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\MoreArticles\_MoreArticlesContainer.cshtml" />
-    <Content Include="Features\Details\Assets\Css\Modules\MoreArticles\_moreArticle.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\MoreArticles\_moreArticles.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticle.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticles.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusData.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusView.cshtml" />
@@ -651,7 +651,7 @@
     <Content Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Features\Details\Assets\Css\Modules\StockForSale\_stockForSale.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\StockForSale\_stockForSale.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_extends-typography.scss" />
     <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleContainer.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Layout\_topNav.scss" />

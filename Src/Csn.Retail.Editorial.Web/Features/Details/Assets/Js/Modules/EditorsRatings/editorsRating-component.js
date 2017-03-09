@@ -1,5 +1,5 @@
 ﻿// Details Page css files
-require('css/Modules/Widgets/_editorsRatings.scss');
+require('css/Modules/Widgets/EditorRatings/_editorsRatings.scss');
 
 import Modernizr from 'modernizr';
 import Circles from 'circles';
