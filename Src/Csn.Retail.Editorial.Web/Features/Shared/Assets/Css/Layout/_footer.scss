@@ -1,6 +1,16 @@
-﻿#page-footer{
+﻿#page-footer {
     text-align: left;
     line-height: 1.4;
+
+    .footer-area__wrapper {
+        width: $screen-md;
+        padding-left: $grid-gutter-width/2;
+        padding-right: $grid-gutter-width/2;
+
+        @include breakpoint($screen-lg) {
+            width: $screen-lg;
+        }
+    }
 
     .footer-area--lower {
         padding-bottom: 200px;
@@ -11,12 +21,15 @@
             &:hover {
                 color: inherit;
             }
+
             &:visited {
                 color: inherit;
             }
+
             &:active {
                 color: inherit;
             }
+
             &:focus {
                 color: inherit;
             }

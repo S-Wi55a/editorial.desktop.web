@@ -7,8 +7,11 @@
 
 .share-social__link {
 
-    width: 45px;
-    height: 45px;
+    $social-icon-width: 45px;
+    $social-icon-height: 45px;
+
+    width: $social-icon-width;
+    height: $social-icon-height;
     display: inline-block;
     border-radius: 9999px;
     position: relative;
@@ -32,8 +35,9 @@
             opacity: 0.66;
         }
     }
+
     &--twitter {
-        background-color: $color-twitter ;
+        background-color: $color-twitter;
         color: $cs-white;
         font-size: 21px;
 
@@ -45,6 +49,7 @@
             opacity: 0.66;
         }
     }
+
     &--google-plus {
         background-color: $color-google-plus;
         color: $cs-white;
@@ -58,6 +63,7 @@
             opacity: 0.66;
         }
     }
+
     &--tumblr {
         background-color: $color-tumblr;
         color: $cs-white;
@@ -71,6 +77,7 @@
             opacity: 0.66;
         }
     }
+
     &--pinterest {
         background-color: $color-pinterest;
         color: $cs-white;
@@ -83,6 +90,7 @@
             opacity: 0.66;
         }
     }
+
     &--reddit {
         background-color: $cs-white;
         color: $color-reddit;
@@ -96,6 +104,7 @@
             opacity: 0.66;
         }
     }
+
     &--email {
         background-color: $cs-white;
         color: $cs-black;
@@ -110,7 +119,8 @@
             opacity: 0.66;
         }
     }
-     &--sms {
+
+    &--sms {
         background-color: $cs-white;
         color: $cs-black;
         border: 1px solid $cs-black;
@@ -124,7 +134,6 @@
             opacity: 0.66;
         }
     }
-
 }
 
 .share-social__link-icon {

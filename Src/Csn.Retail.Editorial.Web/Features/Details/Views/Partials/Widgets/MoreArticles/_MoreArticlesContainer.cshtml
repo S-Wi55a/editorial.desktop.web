@@ -4,16 +4,26 @@
     <div class="container">
         <div class="more-articles__filters">
             @* Loop through filters *@
-            @{ var index = 0; }
-            @foreach (var tag in Model.Take(1))
+            @foreach (var tag in Model)
             {
-                <a href="@tag.Uri" class="more-articles__filter active">@tag.Title</a>
-                index++;
-            }
-            @foreach (var tag in Model.Skip(1))
-            {
-                <a href="@tag.Uri" class="more-articles__filter">@tag.Title</a>
-                index++;
+                if (tag == Model.First())
+                {
+                    //Do something with the first item
+                    <a href="@tag.Uri" class="more-articles__filter more-articles__filter--active">@tag.Title</a>
+
+                }
+                else if (tag == Model.Last())
+                {
+                    //Do something with the last item
+                    <a href="@tag.Uri" class="more-articles__filter more-articles__filter--last">@tag.Title</a>
+
+                }
+                else
+                {
+                    <a href="@tag.Uri" class="more-articles__filter">@tag.Title</a>
+
+                }
+
             }
         </div>
         <div class="more-articles__frame swiper-container">

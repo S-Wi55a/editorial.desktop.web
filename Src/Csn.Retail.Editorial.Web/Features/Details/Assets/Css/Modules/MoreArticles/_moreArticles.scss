@@ -47,28 +47,31 @@
 
     &__filter {
 
-        @extend %button--small;
-        @extend %button--round;
-        @extend %button--thin;
-        @extend %button--primary-inverse;
+        @include button(( small: true, round: true, thin: true, primary-inverse: true ));
         display: inline-block;
         text-align: center;
         margin-right: 25px;
 
 
 
-        &.active {
-            @extend %button--primary;
+        &--active {
+            @include button((primary: true ));
             cursor: default;
+        }
+
+        &--last {
+            border: none;
+            padding-left: 0;
+            padding-right: 0;
 
             &:hover,
             &:active,
             &:focus,
             &:visited {
-                background-color: rgba($cs-primary, 1);
-                border-color: rgba($cs-primary, 0);
-                color: $cs-white;
-                text-decoration: none;
+                background-color: transparent;
+                border-color: transparent;
+                color: $cs-primary;
+                text-decoration: underline;
             }
         }
     }

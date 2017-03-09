@@ -134,6 +134,13 @@ let filterHandler = (e, ...args) => {
     const slider = args[0][0]
     const scope = args[0][1]
     const className = args[0][2]
+    const classNameLast = args[0][3]
+    userPreference = true // assuming filter clicked is active
+
+
+    if (el.classList.contains(classNameLast)) {
+        window.location.href = el.href;
+    }
 
     if(!el.classList.contains(className)) {
 
@@ -226,18 +233,19 @@ let scrollHandler = (scope, selector, className) => {
 }
 
 // Set scene
-new ScrollMagic.Scene({
-    triggerElement: triggerElement,
-    triggerHook: triggerHook,
-    offset: offset
-})
-    .on("update", function (e) {
-        e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference ? this.trigger("enter") : null;
+let moreArticleScene = new ScrollMagic.Scene({
+        triggerElement: triggerElement,
+        triggerHook: triggerHook,
+        offset: offset
     })
+    .on("update",
+        function(e) {
+            e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference
+                ? this.trigger("enter")
+                : null;
+        })
     .on("enter", scrollHandler.bind(null, document, scopeSelector, 'show'))
     .addTo(window.scrollMogicController);
-
-
 
 
 // Main
@@ -281,7 +289,7 @@ let main = (scope) => {
     addEventListenerToButton(scope, nextCtrl, 'click', nextButtonHandler.bind(null, scope, slider, offset, content))
 
     //Init Filters
-    filters(scope, '.more-articles__filter', filterHandler, [slider, scope, 'active'])
+    filters(scope, '.more-articles__filter', filterHandler, [slider, scope, 'more-articles__filter--active', 'more-articles__filter--last'])
 
     // Init show/hide Button
     addEventListenerToButton(scope, showHideButton, 'click', buttonShowHideHandler)
