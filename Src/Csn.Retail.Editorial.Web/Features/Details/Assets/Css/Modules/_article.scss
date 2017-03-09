@@ -1,11 +1,12 @@
 ﻿.article {
-    padding-top: 60px;
+    padding-top: 30px;
     padding-right: 30px;
     position: relative;
     float: left;
     width: calc(100% - (300px + #{$grid-gutter-width/2}));
 
     @include breakpoint($screen-lg) {
+        padding-top: 60px;
         padding-right: 45px;
     }
 
@@ -125,7 +126,11 @@
         float: left;
         color: $cs-white;
         text-transform: uppercase;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
+
+        @include breakpoint($screen-lg) {
+            margin-bottom: 30px;
+        }
 
         &--review {
             background-color: $cs-light-blue;
@@ -159,7 +164,11 @@
         padding: 0 25px;
         line-height: 31px;
         color: $cs-light-grey;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
+
+        @include breakpoint($screen-lg) {
+            margin-bottom: 30px;
+        }
     }
 
     &__dateAndTypeContainer {
@@ -169,7 +178,11 @@
     &__share {
         &--top {
             float: right;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
+
+            @include breakpoint($screen-lg) {
+                margin-bottom: 20px;
+            }
 
             .share-social__link {
                 margin-top: -7.5px;

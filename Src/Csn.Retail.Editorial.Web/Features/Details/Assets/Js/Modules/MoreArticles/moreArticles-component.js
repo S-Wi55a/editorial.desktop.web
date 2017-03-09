@@ -237,9 +237,9 @@ let moreArticleScene = new ScrollMagic.Scene({
         triggerElement: triggerElement,
         triggerHook: triggerHook,
         offset: offset
-    })
+})
     .on("update",
-        function(e) {
+    function (e) {
             e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference
                 ? this.trigger("enter")
                 : null;
