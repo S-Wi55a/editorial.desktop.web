@@ -6,6 +6,7 @@ var glob = require('glob'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     AssetsPlugin = require('assets-webpack-plugin'),
+    BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
     HappyPack = require('happypack'),
     rimraf = require('rimraf');
 
@@ -234,7 +235,26 @@ module.exports = function () {
                     // loaders is the only required parameter:
                     id: 'sass',
                     loaders: devLoaderCSSExtract
-                })
+                }),
+                new BrowserSyncPlugin(
+                    // BrowserSync options 
+                    {
+                        // browse to http://localhost:3000/ during development 
+                        host: 'localhost',
+                        port: 3000,
+                        // proxy the Webpack Dev Server endpoint 
+                        // through BrowserSync 
+                        proxy: {
+                            target: 'http://localhost:8080'
+                        }
+                    },
+                    // plugin options 
+                    {
+                        // prevent BrowserSync from reloading the page 
+                        // and let Webpack Dev Server take care of this 
+                        reload: false
+                    }
+                )
             ],
             devtool: isProd ? "cheap-source-map" : "eval",
             devServer: {

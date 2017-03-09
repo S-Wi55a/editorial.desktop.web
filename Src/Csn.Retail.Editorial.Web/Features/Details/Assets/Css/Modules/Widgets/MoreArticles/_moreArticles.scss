@@ -26,7 +26,7 @@
     }
 
     &__frame {
-        width: calc(100% - #{$nav-width} - 5px ); //5px is buffer
+        width: calc(100% - #{$nav-width} - 10px ); //5px is buffer
         min-height: $img-height;
         margin-left: 0;
         font-size: 0;

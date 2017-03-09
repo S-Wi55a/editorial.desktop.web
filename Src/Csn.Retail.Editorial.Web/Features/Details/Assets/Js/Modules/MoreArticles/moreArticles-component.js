@@ -1,6 +1,6 @@
 ﻿import Swiper from 'swiper'
 import {get} from 'Js/Modules/Ajax/ajax.js'
-import moreArticlesView from 'Js/MoreArticles/moreArticles-view.js'
+import moreArticlesView from 'Js/Modules/MoreArticles/moreArticles-view.js'
 
 import ScrollMagic from 'ScrollMagic'
 
