@@ -1,66 +1,98 @@
-﻿%headline-1, %h1 {
-    font-size: $font-size-h1;
+﻿// Scale - Major Third
+$font-size-h1: emtopx(typeScale(1.25,5), $font-size-body);
+$font-size-h2: emtopx(typeScale(1.25,3), $font-size-body);
+$font-size-h3: emtopx(typeScale(1.25,2), $font-size-body);
+$font-size-h4: emtopx(typeScale(1.25,1), $font-size-body);
+$font-size-h5: emtopx(typeScale(1.25,0), $font-size-body);
+$font-size-h6: emtopx(typeScale(1.25,-1), $font-size-body);
+
+$font-size-p: emtopx(typeScale(1.25,1), $font-size-body);
+$font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
+
+// H1
+@mixin h1() {
+    font-size: emtopx(typeScale(1.2,5), $font-size-body);
     font-weight: $font-weight-300;
-    line-height: 1.1;
+    letter-spacing: -.005em;
+    line-height: 1.2;
+
+    @include breakpoint($screen-lg) {
+        font-size: emtopx(typeScale(1.25,5), $font-size-body);
+        font-weight: $font-weight-300;
+        line-height: 1.1;
+    }
 }
 
-%headline-2, %h2 {
-    font-size: $font-size-h2;
+// H2
+@mixin h2() {
+    font-size: emtopx(typeScale(1.2,3), $font-size-body);
     font-weight: $font-weight-300;
     letter-spacing: 0;
-    line-height: 1.2
+    line-height: 1.3;
+
+    @include breakpoint($screen-lg) {
+        font-size: emtopx(typeScale(1.25,3), $font-size-body);
+        font-weight: $font-weight-300;
+        letter-spacing: 0;
+        line-height: 1.2
+    }
 }
 
-%headline-3, %h3 {
-    font-size: $font-size-h3;
-    font-weight: $font-weight-300;
+// H3
+@mixin h3() {
+    font-size: emtopx(typeScale(1.2,2), $font-size-body);
+    font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.3;
+
+    @include breakpoint($screen-lg) {
+        font-size: emtopx(typeScale(1.25,2), $font-size-body);
+        font-weight: $font-weight-300;
+        letter-spacing: 0;
+        line-height: 1.3;
+    }
 }
 
-%headline-4, %h4 {
-    font-size: $font-size-h4;
+// H4, H5, H6
+@mixin h4() {
+    font-size: emtopx(typeScale(1.2,1), $font-size-body);
     font-weight: $font-weight-400;
     letter-spacing: .005em;
     line-height: 1.3;
+
+    @include breakpoint($screen-lg) {
+        font-size: emtopx(typeScale(1.25,1), $font-size-body);
+        font-weight: $font-weight-400;
+        letter-spacing: .005em;
+        line-height: 1.3;
+    }
 }
 
-%h5 {
-    font-size: $font-size-h5;
-    font-weight: $font-weight-400;
-    letter-spacing: .005em;
-    line-height: 1.3;
-}
-
-%h6 {
-    font-size: $font-size-h6;
-    font-weight: $font-weight-400;
-    letter-spacing: .005em;
-    line-height: 1.3;
-}
-
-%p {
+// P
+@mixin p() {
     font-size: $font-size-h4;
     font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;
 }
 
-%strong {
+// Strong
+@mixin strong() {
     font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;
-    margin: 0;
 }
 
-%tiny-text {
+// Tiny Text
+@mixin tiny-text() {
     font-size: 13px;
     font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;
 }
 
-%drop-cap-paragraph {
+// Drop Cap
+@mixin drop-cap-paragraph() {
     color: inherit;
     float: left;
     font-size: 5.2em;
@@ -71,13 +103,18 @@
     text-transform: capitalize;
 }
 
-%rundown-text {
-    font-size: $font-size-rundown;
-    font-weight: 300;
-    line-height: 1.5em;
+// Summary
+@mixin rundown-text() {
+
+    @include breakpoint($screen-lg) {
+        font-size: $font-size-rundown;
+        font-weight: 300;
+        line-height: 1.5em;
+    }
 }
 
-%pullquote, %blockquote {
+// Block Quote
+@mixin blockquote() {
     font-size: $font-size-quote;
     font-weight: $font-weight-400;
     line-height: 1.2;
@@ -86,12 +123,14 @@
         content: "“";
         margin-left: -.5em;
     }
+
     &:after, &:after {
         content: "”";
     }
 }
 
-%hr {
+// Hr
+@mixin hr() {
     border-bottom: 1px solid $cs-lighter-grey;
     border-left: none;
     border-right: none;
@@ -99,7 +138,9 @@
     margin: 1em 0;
 }
 
-%cite {
+
+// Cite
+@mixin cite() {
     color: $cs-grey;
     font-style: italic;
 

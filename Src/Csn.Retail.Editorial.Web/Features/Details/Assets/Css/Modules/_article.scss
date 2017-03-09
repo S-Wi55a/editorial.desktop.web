@@ -18,69 +18,75 @@
     }
 
     &__heading {
-        @extend %h1;
+        @include h1();
         color: $cs-black;
-
     }
+
     &__subheading {
-        @extend %h2;
+        @include h2();
         margin-top: 1em;
     }
 
     &__summary {
-
         color: $cs-light-grey;
 
         p {
             margin-top: 1.25em;
-            @extend %rundown-text;
+            @include rundown-text();
         }
 
-        &>div {
+        & > div {
             margin: 0;
         }
     }
 
-    &__copy{
+    &__copy {
         color: $cs-grey;
-        @extend %p;
+        @include p();
 
-        &>h1,&>h2,&>h3,&>h4,&>h5,&>h6 {
+        & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
             margin-top: 40px;
             color: $cs-black;
         }
-        &>h1{
-            @extend %h1;
+
+        & > h1 {
+            @include h1();
         }
-        &>h2{
-            @extend %h2;
+
+        & > h2 {
+            @include h2();
         }
-        &>h3{
-            @extend %h3;
+
+        & > h3 {
+            @include h3();
         }
-        &>h4{
-            @extend %h4;
+
+        & > h4 {
+            @include h4();
         }
-        &>h5{
-            @extend %h5;
+
+        & > h5 {
+            @include h4();
         }
-        &>h6{
-            @extend %h6;
+
+        & > h6 {
+            @include h4();
         }
 
         p {
             margin-top: 1.25em;
-            @extend %p;
+            @include p();
 
-            &>br {
+            & > br {
                 display: none;
             }
-            strong+br {
+
+            strong + br {
                 display: inline;
             }
         }
 
-        &>div {
+        & > div {
             margin: 0;
         }
 
@@ -92,9 +98,9 @@
     }
 
     &__img {
-      width: 100%;
-      margin-top: 1.25em;
-      @extend %p;
+        width: 100%;
+        margin-top: 1.25em;
+        @include p();
     }
 
     &__img-caption {
@@ -117,18 +123,23 @@
         &--review {
             background-color: $cs-light-blue;
         }
+
         &--car-advice {
             background-color: $cs-accent-green;
         }
+
         &--video {
             background-color: $cs-orange;
         }
+
         &--news {
             background-color: $cs-red;
         }
+
         &--comparison {
             background-color: $cs-purple;
         }
+
         &--feature {
             background-color: $cs-pink;
         }
@@ -147,6 +158,7 @@
     &__dateAndTypeContainer {
         float: left;
     }
+
     &__share {
         &--top {
             float: right;
@@ -163,12 +175,12 @@
     }
 
     &__pricing {
-        @extend %h2;
+        @include h2();
         margin-top: 1em;
     }
 
     &__quote {
-        @extend %blockquote;
+        @include blockquote();
         padding: 0 7.5%;
         color: $cs-black;
         margin-top: 1.25rem;
@@ -265,7 +277,7 @@
             @extend %clearfix;
         }
         p:first-child:first-letter {
-            @extend %drop-cap-paragraph;
+            @include drop-cap-paragraph();
         }
     }
 }

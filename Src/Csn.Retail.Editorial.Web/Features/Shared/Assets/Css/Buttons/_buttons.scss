@@ -56,3 +56,20 @@
         }
     }
 }
+
+
+@mixin buttonColor($color, $textColor) {
+    border-color: $color;
+    background-color: $color;
+    color: $textColor;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+        background-color: rgba($color, 0.7);
+        border-color: rgba($color, 0);
+        color: $textColor;
+        text-decoration: none;
+    }
+}

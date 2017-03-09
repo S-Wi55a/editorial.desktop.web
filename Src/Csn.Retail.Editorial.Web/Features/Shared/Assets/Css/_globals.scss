@@ -16,6 +16,10 @@
 @import "./utilities/_utilities.scss";
 
 // ---------------------------------------------------------------------------
+// Mixins
+@import "./mixins/_mixins.scss";
+
+// ---------------------------------------------------------------------------
 // Buttons
 @import "./buttons/_buttons.scss";
 
@@ -23,6 +27,3 @@
 // Typography
 @import "./variables/typography/extends-typography.scss";
 
-// ---------------------------------------------------------------------------
-// Mixins
-@import "./mixins/_mixins.scss";

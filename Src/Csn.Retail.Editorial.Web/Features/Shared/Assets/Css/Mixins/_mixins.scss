@@ -12,24 +12,6 @@
     height: auto;
 }
 
-@mixin buttonColor($color, $textColor){
-
-    border-color: $color;
-    background-color: $color;
-    color: $textColor;
-
-    &:hover,
-    &:active,
-    &:focus,
-    &:visited {
-        background-color: rgba($color, 0.7);
-        border-color: rgba($color, 0);
-        color: $textColor;
-        text-decoration: none;
-    }
-
-}
-
 //find matching height across different aspect ratios
 //w' + w" + w'" = t @ t =1
 @function  matchingAspectRatioHeight($aspectRatio, $aspectRatioList) {
@@ -41,4 +23,35 @@
         }
 
         @return  ($aspectRatio)* (1/$ratio)
+}
+
+// Convert px to em
+@function pxtoem($target, $context) {
+    @return ($target/$context)+0em;
+}
+// Convert em to px
+@function emtopx($target, $context) {
+    @return ($target*$context)+0px;
+}
+
+@function pow($number, $exponent) {
+    $value: 1;
+
+    @if $exponent > 0 {
+        @for $i from 1 through $exponent {
+            $value: $value * $number;
+        }
+    }
+    @else if $exponent < 0 {
+        @for $i from 1 through -$exponent {
+            $value: $value / $number;
+        }
+    }
+
+    @return $value;
+}
+
+// Type Scale
+@function typeScale($scale, $i) {
+    @return (1e3 * (pow($scale, $i))) / 1e3;
 }
