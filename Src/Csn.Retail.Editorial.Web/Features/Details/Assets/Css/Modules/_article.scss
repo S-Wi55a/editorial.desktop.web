@@ -44,9 +44,16 @@
         color: $cs-grey;
         @include p();
 
+        & > h1 {
+            color: $cs-black;
+        }
+
+        & > h2, & > h3, & > h4, & > h5, & > h6 {
+            color: $cs-dark-grey;
+        }
+
         & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
             margin-top: 40px;
-            color: $cs-black;
         }
 
         & > h1 {
