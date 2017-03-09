@@ -102,6 +102,16 @@
             margin: 0;
         }
 
+        ul {
+            list-style-type: disc;
+            margin-bottom: 0;
+            padding-left: 1.5em;
+
+            li {
+                display: list-item;
+            }
+        }
+
         .teads-inread,
         .brightcove {
             margin-top: 1.25em !important;
@@ -221,33 +231,33 @@
 
 // Single Image
 
-.article-type--singleImage,
+.article-type--singleimage,
 .article-type--video {
     position: relative;
+    width: $screen-md;
+    margin: auto;
 
-    div.container:first-child {
-        position: absolute;
-        z-index: 1;
-        left: 50%;
-        transform: translateX(-50%);
+    @include breakpoint($screen-lg) {
+        width: $screen-lg;
     }
 
     .aside {
+        position: absolute;
+        top: 0;
         padding-top: 0;
+        left: calc(100% - (300px + 30px));
     }
 }
 
 .article-type--singleImage {
-    .article > div:first-child{
-        padding-top: (2/3)*100%;
+    .hero--singleImage {
+
     }
 }
 
 
 .article-type--video {
-    .article > div:first-child{
-        padding-top: (9/16)*100%;
-    }
+
 }
 
 
