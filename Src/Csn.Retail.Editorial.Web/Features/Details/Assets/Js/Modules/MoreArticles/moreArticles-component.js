@@ -30,19 +30,21 @@ let initMoreArticlesSlider = (selector, options) => {
 
 // Set text
 let setText = (scope, selector, text) => {
-    scope.querySelector(selector).innerHTML = text.toString();
+    if (text) {
+        scope.querySelector(selector).innerHTML = text.toString(); 
+    }
 }
 
 // add class
 let addClass = (scope, selector, className, text) => {
     scope.querySelector(selector).classList.add(className)
-    setText(scope, showHideButton, text || className)
+    setText(scope, showHideButton, text)
 }
 
 // remove class
 let removeClass = (scope, selector, className, text) => {
     scope.querySelector(selector).classList.remove(className)
-    setText(scope, showHideButton, text || className)
+    setText(scope, showHideButton, text)
 }
 
 // Toggle class
@@ -224,27 +226,35 @@ let filters = (scope, selector, cb, cbArgs) => {
 
 //Scroll Magic
 
-let scrollHandler = (scope, selector, className) => {
+let scrollHandler = (scope, selector, className, classNameArr) => {
     const el = scope.querySelector(selector)
     //if more articles is already active then don't
     if (el.classList.contains('active') && !el.classList.contains(className)) {
-        toggleClass(document, scopeSelector, className, ['Show', 'Hide'])
+        toggleClass(document, scopeSelector, className, classNameArr)
     }
 }
 
 // Set scene
-let moreArticleScene = new ScrollMagic.Scene({
+let moreArticleScene1 = new ScrollMagic.Scene({
         triggerElement: triggerElement,
-        triggerHook: triggerHook,
-        offset: offset
-    })
+        triggerHook: 0,
+        reverse: false
+})
+    .on("enter", scrollHandler.bind(null, document, scopeSelector, 'ready'))
+    .addTo(window.scrollMogicController);
+
+let moreArticleScene2 = new ScrollMagic.Scene({
+    triggerElement: triggerElement,
+    triggerHook: triggerHook,
+    offset: offset
+})
     .on("update",
-        function(e) {
-            e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference
-                ? this.trigger("enter")
-                : null;
-        })
-    .on("enter", scrollHandler.bind(null, document, scopeSelector, 'show'))
+    function (e) {
+        e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference
+            ? this.trigger("enter")
+            : null;
+    })
+    .on("enter", scrollHandler.bind(null, document, scopeSelector, 'show', ['Show', 'Hide']))
     .addTo(window.scrollMogicController);
 
 

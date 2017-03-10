@@ -1,11 +1,12 @@
 ﻿.article {
-    padding-top: 60px;
+    padding-top: 30px;
     padding-right: 30px;
     position: relative;
     float: left;
     width: calc(100% - (300px + #{$grid-gutter-width/2}));
 
     @include breakpoint($screen-lg) {
+        padding-top: 60px;
         padding-right: 45px;
     }
 
@@ -24,7 +25,11 @@
 
     &__subheading {
         @include h2();
-        margin-top: 1em;
+        margin-top: 0.5em;
+
+        @include breakpoint($screen-lg) {
+            margin-top: 1em;
+        }
     }
 
     &__summary {
@@ -97,6 +102,16 @@
             margin: 0;
         }
 
+        ul {
+            list-style-type: disc;
+            margin-bottom: 0;
+            padding-left: 1.5em;
+
+            li {
+                display: list-item;
+            }
+        }
+
         .teads-inread,
         .brightcove {
             margin-top: 1.25em !important;
@@ -125,7 +140,11 @@
         float: left;
         color: $cs-white;
         text-transform: uppercase;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
+
+        @include breakpoint($screen-lg) {
+            margin-bottom: 30px;
+        }
 
         &--review {
             background-color: $cs-light-blue;
@@ -159,7 +178,11 @@
         padding: 0 25px;
         line-height: 31px;
         color: $cs-light-grey;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
+
+        @include breakpoint($screen-lg) {
+            margin-bottom: 30px;
+        }
     }
 
     &__dateAndTypeContainer {
@@ -169,7 +192,11 @@
     &__share {
         &--top {
             float: right;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
+
+            @include breakpoint($screen-lg) {
+                margin-bottom: 20px;
+            }
 
             .share-social__link {
                 margin-top: -7.5px;
@@ -204,34 +231,24 @@
 
 // Single Image
 
-.article-type--singleImage,
+.article-type--singleimage,
 .article-type--video {
     position: relative;
+    width: $screen-md;
+    margin: auto;
 
-    div.container:first-child {
-        position: absolute;
-        z-index: 1;
-        left: 50%;
-        transform: translateX(-50%);
+    @include breakpoint($screen-lg) {
+        width: $screen-lg;
     }
 
     .aside {
+        position: absolute;
+        top: 0;
         padding-top: 0;
+        left: calc(100% - (300px + 30px));
     }
 }
 
-.article-type--singleImage {
-    .article > div:first-child{
-        padding-top: (2/3)*100%;
-    }
-}
-
-
-.article-type--video {
-    .article > div:first-child{
-        padding-top: (9/16)*100%;
-    }
-}
 
 
 // Drop Cap

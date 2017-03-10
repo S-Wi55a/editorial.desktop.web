@@ -1,5 +1,9 @@
 ﻿._c-modal {
 
+    ._c-spinner {
+        display: none; 
+    }
+
 	/* dimensions: spanning the background from edge to edge */
 	position:fixed;
 	top: 0;
@@ -17,7 +21,7 @@
 	/* IE8 "hack" for nested _c-modals */
 	background-color: rgba(0, 0, 0, 0.8);
 
-    background-image: url('images/spinner-light.svg'); //TODO
+    background-image: url($spinner--light); //TODO
 	background-size: 200px 200px;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -175,8 +179,8 @@
 		/* position: centering vertical and horizontal */
 
 		position:fixed;
-        right: 20px;
-        top: 20px;
+        right: 0;
+        top: 0;
         width: 72px;
         height: 72px;
         border-radius: 36px;
@@ -244,7 +248,7 @@
     {
         ._c-modal__content {
             width: 100%;
-            padding: 0 5%;
+            padding: 0 80px;
         }
     }
 	/* contains the content */

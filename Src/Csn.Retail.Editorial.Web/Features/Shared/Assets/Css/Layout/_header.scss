@@ -1,8 +1,11 @@
 ﻿.page-header {
-    min-height: 130px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 
+    @include breakpoint($screen-lg) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 
     &__logo {
         background-color: transparent;
@@ -17,6 +20,5 @@
         background-size: contain;
         background-repeat: no-repeat;
         float: left;
-
     }
 }

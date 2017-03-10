@@ -17,10 +17,14 @@
 
 .hero--singleImage {
     width: calc(100% - (300px + #{$grid-gutter-width/2}));
+    float: left;
+    padding-right: 45px;
 }
 
 .hero--singleVideo {
     width: calc(100% - (300px + #{$grid-gutter-width/2}));
+    float: left;
+    padding-right: 45px;
 }
 
 .hero.hero--imageAndVideo {
