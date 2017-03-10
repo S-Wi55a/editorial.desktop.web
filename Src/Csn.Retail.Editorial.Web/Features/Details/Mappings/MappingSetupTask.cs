@@ -45,8 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
             // Google Analytics Data
             cfg.CreateMap<GoogleAnalyticsDetailsDto, GoogleAnalyticsDetailsData>();
 
-            // Stock For Sale
-            cfg.CreateMap<Shared.Proxies.EditorialApi.StockListingData, Models.StockListingData>();
+
         }
     }
 }

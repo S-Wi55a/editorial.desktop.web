@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Csn.Retail.Editorial.Web.Features.Shared.Models.StockFilters>
+﻿@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.StockListingData
 
 <div class="stock-for-sale">
     <div class="stock-for-sale__filters">
         <ul>
         @* Loop through filters *@
-        @foreach (var filter in Model)
+        @foreach (var filter in Model.Filters)
             {
                 <li>
                     <a href="@filter.Query" class="stock-for-sale__filter">@filter.Name</a>

@@ -46,3 +46,7 @@
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
 }
 
+@if (Model.StockListingData != null && Model.StockListingData.Filters.Any())
+{
+    Html.RenderPartial("Partials/Widgets/StockForSale/_StockForSaleContainer", Model.StockListingData);
+}

@@ -96,11 +96,4 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string ArticleUrl { get; set; }
         public string Title { get; set; }
     }
-
-    public class StockListingData
-    {
-        public string Heading { get; set; }
-        public List<StockFilters> Filters { get; set; }
-    }
-
 }
