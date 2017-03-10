@@ -6,7 +6,6 @@ require('./css/details-page.scss');
 import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
 
-
 //------------------------------------------------------------------------------------------------------------------
 
 // Dynamically set the public path for ajax/code-split requests

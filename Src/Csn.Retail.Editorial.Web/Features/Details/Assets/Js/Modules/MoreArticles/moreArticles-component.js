@@ -30,7 +30,7 @@ let initMoreArticlesSlider = (selector, options) => {
 
 // Set text
 let setText = (scope, selector, text) => {
-    if (text.length) {
+    if (text) {
         scope.querySelector(selector).innerHTML = text.toString(); 
     }
 }
@@ -241,7 +241,6 @@ let moreArticleScene1 = new ScrollMagic.Scene({
         reverse: false
 })
     .on("enter", scrollHandler.bind(null, document, scopeSelector, 'ready'))
-    .addIndicators()
     .addTo(window.scrollMogicController);
 
 let moreArticleScene2 = new ScrollMagic.Scene({
