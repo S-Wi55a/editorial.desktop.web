@@ -19,11 +19,11 @@
     @Html.AssetCss("csn.common--" + tenantName)
     @globalSiteData.Style.ToMvcHtmlString()
     @RenderSection("Styles", false)
-
-
 }
 @section TopScripts{
+    @Html.AssetJs("csn.common--" + tenantName, LoadType.Defer)
     @RenderSection("TopScripts", false)
+
 }
 
 
@@ -39,8 +39,9 @@
 </footer>
 
 @section BottomScripts{
+    @Html.AssetJs("manifest--" + tenantName)
     @Html.AssetJs("vendor--" + tenantName)
-    @Html.AssetJs("csn.common--" + tenantName, LoadType.Defer)
+
     @RenderSection("BottomScripts", false)
     @globalSiteData.Script.ToMvcHtmlString()
     @googleAnalyticTracking.TrackingScript.ToMvcHtmlString()

@@ -19,6 +19,7 @@
 
 
 @section TopScripts {
+    @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
 }
 
 @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
@@ -38,15 +39,16 @@
 
 @section BottomScripts
 {
-    @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
     @{ Html.RenderPartial("Partials/Tracking/_GoogleAnalyticsDetails", Model.GoogleAnalyticsDetailsData); }
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderPartial("Partials/Disqus/_DisqusData", Model.DisqusData); } @*Disqus View in Main*@
 
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
+    
+    @if (Model.StockListingData != null && Model.StockListingData.Filters.Any())
+    {
+        Html.RenderPartial("Partials/Widgets/StockForSale/_StockForSaleData", Model.StockListingData);
+    }
 }
 
-@if (Model.StockListingData != null && Model.StockListingData.Filters.Any())
-{
-    Html.RenderPartial("Partials/Widgets/StockForSale/_StockForSaleContainer", Model.StockListingData);
-}
+

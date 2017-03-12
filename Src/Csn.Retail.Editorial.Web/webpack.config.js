@@ -48,7 +48,7 @@ const URL_LIMIT = isProd ? 1 : null;
 
 
 var config = {
-    entryPointMatch: './Features/**/*-page.{js,ts}', // anything ends with -page.js
+    entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
     outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
     publicPath: './'
 }
@@ -70,12 +70,10 @@ function getEntryFiles(tenant) {
         let filename = path.basename(filePath, ext);
         entries[filename + '--' + tenant] = filePath;
     }
-
-    entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
-    entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
-
     return entries;
 }
+
+
 
 // Remove dist folder
 rimraf('./dist',
@@ -126,17 +124,24 @@ module.exports = function () {
 
         const devLoaderCSSExtract = ['style-loader'].concat(loaders);
 
+        const entries = getEntryFiles(tenant);
+
+        const pageEntries = Object.keys(getEntryFiles(tenant));
+
+        entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
+        entries['csn-common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
+
         moduleExportArr.push(
         {
             name: tenant,
-            entry: getEntryFiles(tenant),
+            entry: entries,
             output: {
                 path: config.outputPath,
                 publicPath: config.publicPath,
                 filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: {
-                noParse: /jquery|swiper|ScrollMagic/,
+                noParse: /jquery|swiper|ScrollMagic|modernizr/,
                 rules: [
                     {
                         test: [/\.js$/, /\.es6$/],
@@ -219,12 +224,25 @@ module.exports = function () {
                 new ExtractTextPlugin({
                     filename: isProd ? '[name]-[contenthash].css' : '[name].css',
                 }),
+                //Vendor & Manifest
                 new webpack.optimize.CommonsChunkPlugin({
-                   // names: ['csn.common' + '--' + tenant, 'vendor' + '--' + tenant],
+                    names: ['vendor' + '--' + tenant, 'manifest' + '--' + tenant],
+                    minChunks: Infinity
+                }),
+                // Per page
+                new webpack.optimize.CommonsChunkPlugin({
+                    names: pageEntries,
                     children: true,
-                    async: true,
+                    //async: true,
                     minChunks: 2
                 }),
+                // Common
+                new webpack.optimize.CommonsChunkPlugin({
+                    name: 'csn-common' + '--' + tenant,
+                    chunks: pageEntries,
+                    minChunks: 2
+                }),
+
                 new webpack.NamedModulesPlugin(),
                 new HappyPack({
                     // loaders is the only required parameter:
