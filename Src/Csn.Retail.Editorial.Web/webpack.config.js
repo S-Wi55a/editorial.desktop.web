@@ -129,7 +129,7 @@ module.exports = function () {
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
         entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
-        entries['csn-common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
+        entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
 
         moduleExportArr.push(
         {
@@ -233,7 +233,7 @@ module.exports = function () {
                 new webpack.optimize.CommonsChunkPlugin({
                     names: pageEntries,
                     children: true,
-                    //async: true,
+                    async: true,
                     minChunks: 2
                 }),
                 // Common
@@ -242,7 +242,6 @@ module.exports = function () {
                     chunks: pageEntries,
                     minChunks: 2
                 }),
-
                 new webpack.NamedModulesPlugin(),
                 new HappyPack({
                     // loaders is the only required parameter:

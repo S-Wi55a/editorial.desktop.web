@@ -655,6 +655,8 @@
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_extends-typography.scss" />
     <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleContainer.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Layout\_topNav.scss" />
+    <Content Include="Features\Shared\Views\Partials\Modal\_Modal.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleData.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

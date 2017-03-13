@@ -15,10 +15,13 @@
 }
 
 @section Styles{
-    <link rel="stylesheet" href="https://resource.csnstatic.com/carsales/globals/css/fonts-V1.base64.min.css">
     @Html.AssetCss("csn.common--" + tenantName)
-    @globalSiteData.Style.ToMvcHtmlString()
     @RenderSection("Styles", false)
+    <noscript id="deferred-styles">
+        <link rel="stylesheet" href="https://resource.csnstatic.com/carsales/globals/css/fonts-V1.base64.min.css">
+        @globalSiteData.Style.ToMvcHtmlString()
+    </noscript>
+
 }
 @section TopScripts{
     @Html.AssetJs("csn.common--" + tenantName, LoadType.Defer)
@@ -41,9 +44,22 @@
 @section BottomScripts{
     @Html.AssetJs("manifest--" + tenantName)
     @Html.AssetJs("vendor--" + tenantName)
-
     @RenderSection("BottomScripts", false)
+
+    <script>
+        var loadDeferredStyles = function() {
+            var addStylesNode = document.getElementById("deferred-styles");
+            var replacement = document.createElement("div");
+            replacement.innerHTML = addStylesNode.textContent;
+            document.body.appendChild(replacement)
+            addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+        var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+            webkitRequestAnimationFrame || msRequestAnimationFrame;
+        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+        else window.addEventListener('load', loadDeferredStyles);
+    </script>
+
     @globalSiteData.Script.ToMvcHtmlString()
     @googleAnalyticTracking.TrackingScript.ToMvcHtmlString()
 }
-
