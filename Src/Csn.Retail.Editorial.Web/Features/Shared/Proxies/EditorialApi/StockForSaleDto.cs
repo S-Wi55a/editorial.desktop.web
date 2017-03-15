@@ -8,8 +8,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public class StockForSaleDto
     {
         public List<StockListingItem> Items { get; set; }
-
-        public string ListingPageUrl { get; set; }
     }
 
     public class StockListingItem

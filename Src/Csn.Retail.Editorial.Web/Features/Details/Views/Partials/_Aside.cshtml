@@ -9,5 +9,15 @@
         Html.RenderPartial("Partials/Widgets/EditorRatings/_EditorsRating", Model);
 
     }
+     
+    @if (Model.StockListingData != null && Model.StockListingData.Filters.Any())
+    {
+        <script>
+            var csn_editorial = csn_editorial || {};
+            csn_editorial.stockForSale = @Html.Raw(Json.Encode(Model.StockListingData))
+        </script>
+        <div class="stock-for-sale-placeholder"></div>
+    }
 
 </div>
+

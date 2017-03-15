@@ -1,2 +1,174 @@
-﻿body {
+﻿@import "css/globals";
+
+.stock-for-sale {
+    //Local Vars
+    $border-radius: 6px;
+    $title-font-size: 14px;
+    $title-line-height: 18px;
+
+    width: 300px;
+    border-radius: $border-radius;
+    border: solid 1px $cs-lightest-grey;
+    padding: 30px;
+    position: relative;
+    font-size: 0;
+
+    &__header {
+        font-size: emtopx(typeScale(1.20,2), $font-size-body);
+        font-weight: $font-weight-300;
+        display: inline-block;
+        width: 145px;
+    }
+
+    &__select {
+        font-size: 14px;
+        width: calc(100% - 145px);
+        text-align: right;
+        padding: 0;
+        display: inline-block;
+
+        &::after {
+            content: "\e923";
+            font-family: $font-family-icons;
+            color: $cs-light-grey;
+            font-size: 18px;
+            vertical-align: middle;
+        }
+    }
+
+    &__list {
+    }
+
+    &__button-container {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    &__button {
+        @include button((round: true, thin: true, primary-inverse: true));
+        display: inline-block;
+    }
+    // Stock for sale options
+    .stock-for-sale-options {
+        position: absolute;
+        bottom: 0;
+        left: -100%;
+        width: 100%;
+        height: calc(100% - 66px);
+        background-color: $cs-white;
+        border-radius: $border-radius;
+        padding: 30px;
+        opacity: 0;
+        transition: .3s;
+
+        &.show {
+            left: 0;
+            opacity: 1;
+        }
+
+        &__list {
+        }
+
+        &__option {
+            font-size: $font-size-h4;
+            font-weight: $font-weight-600;
+            border-bottom: solid 1px $cs-lightest-grey;
+            padding: 5px 0 5px 20px;
+            position: relative;
+            transition: .3s;
+
+            &::after {
+                content: "\e929";
+                font-family: $font-family-icons;
+                color: $cs-light-grey;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                transition: .3s;
+            }
+
+            &:hover {
+                cursor: pointer;
+                padding-left: 30px;
+
+                &::after {
+                    right: 10px;
+                }
+            }
+        }
+    }
+    // Stock for sale item
+    .stock-for-sale-item {
+        font-size: 0;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $cs-lightest-grey;
+        margin-bottom: 20px;
+
+        &__image {
+            border-radius: $border-radius;
+            margin-bottom: 20px;
+        }
+
+        &__title {
+            font-size: $title-font-size;
+            line-height: $title-line-height;
+            color: $cs-dark-grey;
+            font-weight: $font-weight-600;
+            width: calc(100% - 85px);
+            display: inline-block;
+
+            &:hover,
+            &:visited,
+            &:focus,
+            &active {
+                color: $cs-dark-grey;
+            }
+        }
+
+        &__price {
+            min-width: 85px;
+            display: inline-block;
+            font-size: $font-size-body;
+            vertical-align: top;
+            font-weight: $font-weight-600;
+            text-align: right;
+            margin-top: -2px;
+        }
+
+        &__list {
+            display: inline-block;
+            width: calc(100% - 30px);
+            margin-top: 5px;
+        }
+
+        &__list-item {
+            font-size: $font-size-small;
+            color: $cs-dark-grey;
+            display: inline-block;
+            margin-left: 15px;
+            padding-right: 8px;
+
+            &::before {
+                content: "";
+                display: inline-block;
+                width: 7px;
+                height: 7px;
+                margin-right: 8px;
+                margin-left: -15px;
+                border-radius: 9999px;
+                background-color: $cs-primary;
+                vertical-align: middle;
+            }
+        }
+
+        &__location {
+            font-size: $font-size-small;
+            color: $cs-light-grey;
+            text-align: right;
+            min-width: 30px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+    }
 }

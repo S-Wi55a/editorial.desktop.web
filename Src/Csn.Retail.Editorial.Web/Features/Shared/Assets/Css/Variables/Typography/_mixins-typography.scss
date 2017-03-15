@@ -85,7 +85,7 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
 
 // Tiny Text
 @mixin tiny-text() {
-    font-size: 13px;
+    font-size: $font-size-small;
     font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;

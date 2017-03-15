@@ -140,7 +140,7 @@
 	</Target>
 
 	<Target Name="FrontEndBuild" DependsOnTargets="TaskNpmRestore">
-		<Message Text="Running gulp task..." Importance="high"/>
+		<Message Text="Running Webpack build..." Importance="high"/>
 		<Exec Command="npm run build-release" WorkingDirectory="$(TargetProjectDir)"/>
 	</Target>
 

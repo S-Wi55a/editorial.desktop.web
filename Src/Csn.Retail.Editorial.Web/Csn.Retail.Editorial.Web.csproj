@@ -652,11 +652,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\StockForSale\_stockForSale.scss" />
-    <Content Include="Features\Shared\Assets\Css\Variables\Typography\_extends-typography.scss" />
     <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleContainer.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Layout\_topNav.scss" />
     <Content Include="Features\Shared\Views\Partials\Modal\_Modal.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleData.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Variables\Images\_variables-images.scss" />
+    <Content Include="Features\Shared\Assets\Css\Variables\Typography\_mixins-typography.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

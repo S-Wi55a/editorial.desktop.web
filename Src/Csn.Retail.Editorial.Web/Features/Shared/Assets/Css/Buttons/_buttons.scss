@@ -1,9 +1,7 @@
-﻿@mixin button($options:()) {
-    
+﻿@mixin button($options: ()) {
     line-height: 31px;
     font-size: 13px;
     padding: 0 20px;
-
     /*@if (map-get($options, $key) == true ) {
     }*/
     @if (map-get($options, small) == true ) {
@@ -30,10 +28,14 @@
         background-color: $cs-primary;
         color: $cs-white;
 
+        &:visited {
+            color: $cs-primary;
+            text-decoration: none;
+        }
+
         &:hover,
         &:active,
-        &:focus,
-        &:visited {
+        &:focus {
             background-color: rgba($cs-primary, 0.7);
             border-color: rgba($cs-primary, 0);
             color: $cs-white;
@@ -45,10 +47,14 @@
         border-color: $cs-primary;
         color: $cs-primary;
 
+        &:visited {
+            color: $cs-primary;
+            text-decoration: none;
+        }
+
         &:hover,
         &:active,
-        &:focus,
-        &:visited {
+        &:focus {
             background-color: rgba($cs-primary, 0.7);
             border-color: rgba($cs-primary, 0);
             color: $cs-white;

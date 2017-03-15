@@ -220,6 +220,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     {
         public string Heading { get; set; }
         public List<StockFilters> Filters { get; set; }
+        public string ViewAllStockButton { get; set;  }
     }
 
 }

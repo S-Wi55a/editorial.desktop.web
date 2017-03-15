@@ -58,7 +58,6 @@ $(function () {
 });
 
 //Lazy load More articles JS
-
 let moreArticles = function(d) {
 
     if (d.querySelector('.more-articles')) {
@@ -73,8 +72,23 @@ loaded.then(function () {
     moreArticles(document);
 });
 
-
 //Lazy load More articles JS
+let stockForSale = function (d) {
+
+    if (d.querySelector('.stock-for-sale-placeholder')) {
+        require.ensure(['./Js/Modules/StockForSale/stockForSale-component.js'],
+            function () {
+                require('./Js/Modules/StockForSale/stockForSale-component.js');
+            },
+            'Stock-For-Sale-Component');
+    }
+}
+loaded.then(function () {
+    stockForSale(document);
+});
+
+
+//Lazy load Disqus
 let disqus = function(d, w, selector) {
     const disqusSelector = d.querySelector(selector);
     if (disqusSelector) {

@@ -7,7 +7,6 @@
 }
 
 @section Head {
-    @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
     @{ Html.RenderPartial("Partials/Tracking/_WebTrendsData", Model); }
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
     @{ Html.RenderPartial("Partials/Head/_SocialMetaData", Model.SocialMetaData); }
@@ -36,19 +35,14 @@
 {
     Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticlesContainer", Model.MoreArticleData);
 }
-
 @section BottomScripts
 {
+    @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
     @{ Html.RenderPartial("Partials/Tracking/_GoogleAnalyticsDetails", Model.GoogleAnalyticsDetailsData); }
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderPartial("Partials/Disqus/_DisqusData", Model.DisqusData); } @*Disqus View in Main*@
 
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     
-    @if (Model.StockListingData != null && Model.StockListingData.Filters.Any())
-    {
-        Html.RenderPartial("Partials/Widgets/StockForSale/_StockForSaleData", Model.StockListingData);
-    }
+
 }
-
-
