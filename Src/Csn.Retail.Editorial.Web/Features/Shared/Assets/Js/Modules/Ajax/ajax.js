@@ -1,4 +1,4 @@
-﻿function get(url, success = (resp)=>{}, error = ()=>{})
+﻿function get(url, success = (resp) => { }, error = ()=>{})
     {
 
         if (url === null || !url.length) {throw new Error('Invalid URL')}
@@ -14,7 +14,7 @@
 
             } else {
                 // We reached our target server, but it returned an error
-
+                error()
             }
         };
 

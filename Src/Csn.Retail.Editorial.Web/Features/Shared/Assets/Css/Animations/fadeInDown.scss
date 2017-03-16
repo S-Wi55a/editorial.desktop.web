@@ -1,0 +1,13 @@
+﻿@mixin fadeInDown($startingHeight) {
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translate3d(0, $startingHeight, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}

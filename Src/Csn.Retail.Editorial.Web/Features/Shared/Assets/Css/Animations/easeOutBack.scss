@@ -1,0 +1,19 @@
+﻿@mixin easeOutBack {
+    @keyframes easeOutBack {
+        from, 33%, to {
+            animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+
+        0% {
+            transform: translate3d(-150%, 0, 0);
+        }
+
+        33% {
+            transform: translate3d(10%, 0, 0);
+        }
+
+        to {
+            transform: translate3d(0%, 0, 0);
+        }
+    }
+}

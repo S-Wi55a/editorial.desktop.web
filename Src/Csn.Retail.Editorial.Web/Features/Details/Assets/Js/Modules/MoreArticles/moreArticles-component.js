@@ -240,7 +240,7 @@ let moreArticleScene1 = new ScrollMagic.Scene({
         triggerHook: 0,
         reverse: false
 })
-    .on("enter", scrollHandler.bind(null, document, scopeSelector, 'ready'))
+    .on("enter", toggleClass.bind(null, document, scopeSelector, 'ready'))
     .addTo(window.scrollMogicController);
 
 let moreArticleScene2 = new ScrollMagic.Scene({

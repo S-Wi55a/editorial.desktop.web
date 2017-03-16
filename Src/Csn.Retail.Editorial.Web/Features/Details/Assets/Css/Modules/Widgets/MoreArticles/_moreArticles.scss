@@ -20,7 +20,7 @@
     &.active {
     }
 
-    &.ready {
+    &.active.ready {
         transform: translateY(87px);
     }
 
@@ -151,7 +151,7 @@
         }
     }
 
-    &.show {
+    &.active.ready.show {
         padding-top: 10px;
         transform: translateY(0);
     }

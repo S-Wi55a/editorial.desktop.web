@@ -2,41 +2,54 @@
 
 import * as view from 'Js/Modules/StockForSale/stockForSale-view.js'
 import * as ajax from 'Js/Modules/Ajax/ajax.js'
+ 
 
+// Get Scope and cache selectors
+const scope = document.querySelector('.stock-for-sale-placeholder');
 
-const scope = document.querySelector('.stock-for-sale-placeholder')
-const stockForSaleOption = '.stock-for-sale-options__option'
-const stockForSaleList = '.stock-for-sale__list'
-const stockForSaleSelect = '.stock-for-sale__select'
-
-
-// load list of items
-const getAttrValue = (scope, selector, attr) => {
-
-    return scope.querySelector(selector).getAttribute(attr)
+// Get Attr
+const getAttrValue = (el, attr) => {
+    return el.getAttribute(attr)
   
 }
 
-// Set Button
-const setAttrValue = (scope, selector, attr, val) => {
-    scope.querySelector(selector).setAttribute(attr, value)
+// Set Attr
+const setAttrValue = (el, attr, val) => {
+    el.setAttribute(attr, val)
 }
+
 
 // Make Query - Ajax
-const makeQuery = (url, scope, selector) => {
+const makeQuery = (url, el, cb = () => {}, onError = () => {}) => {
 
     //Make Query
-    ajax.get(url, (resp) => {
-        //update list
-        scope.querySelector(selector).innerHTML = view.listItem(JSON.parse(resp))
-    })
+    ajax.get(url,
+        (resp) => {
+            //update list
+            el.innerHTML = view.listItem(JSON.parse(resp))
+            cb()
+        },
+        () => {
+            onError()  
+        }
+    )
 }
 
-const toggleCLass = (scope, selector, className) => {
+const toggleCLass = (el, className) => {
 
-    scope.querySelector(selector).classList.contains(className)
-        ? scope.querySelector(selector).classList.remove(className)
-        : scope.querySelector(selector).classList.add(className);
+    el.classList.contains(className) ? el.classList.remove(className) : el.classList.add(className);
+
+}
+
+
+const animateNavItems = (elList, className, timeBetween = 400) => {
+
+    const LENGTH = elList.length;
+
+    for (let i = 0; i < LENGTH; i++) {
+        window.setTimeout(toggleCLass.bind(null, elList[i], className), timeBetween * i)
+    }
+
 }
 
 // Init
@@ -44,9 +57,57 @@ const init = (scope, data) => {
     //Render container
     scope.innerHTML = view.container(data)
 
-    makeQuery(getAttrValue(scope, stockForSaleOption, 'data-stock-for-sale-query'), scope, stockForSaleList)
+    // Setup vars
+    const stockForSale = scope.querySelector('.stock-for-sale');
+    const stockForSaleOptions = scope.querySelector('.stock-for-sale-options');
+    const stockForSaleOption = scope.querySelectorAll('.stock-for-sale-options__option');
+    const stockForSaleList = scope.querySelector('.stock-for-sale__list');
+    const stockForSaleSelect = scope.querySelector('.stock-for-sale__select');
+    const stockForSaleButton = scope.querySelector('.stock-for-sale__button')
 
-    scope.querySelector(stockForSaleSelect).addEventListener('click', toggleCLass.bind(scope, stockForSaleOption, 'show')
+    // Load data
+    toggleCLass(stockForSale, 'loading')
+    makeQuery(
+        getAttrValue(stockForSaleOption[0], 'data-stock-for-sale-query'),
+        stockForSaleList,
+        () => {
+            stockForSale.classList.add('active')
+            toggleCLass(stockForSale, 'loading')
+            setAttrValue(stockForSaleButton, 'href', getAttrValue(stockForSaleOption[0], 'data-stock-for-sale-view-all-url'))
+        },
+        // On Error
+        () => {
+            toggleCLass(stockForSale, 'loading')  
+        }
+    )
+
+    stockForSaleSelect.addEventListener('click',
+        () => {
+            toggleCLass(stockForSale, 'show--nav')
+            animateNavItems(stockForSaleOption, 'easeOutBack', 100)
+        }
+    )
+
+    Array.from(stockForSaleOption).forEach((el) => {
+        el.addEventListener('click', () => {
+            toggleCLass(stockForSale, 'loading')
+            makeQuery(
+                getAttrValue(el, 'data-stock-for-sale-query'),
+                stockForSaleList,
+                () => {
+                    toggleCLass(stockForSale, 'show--nav')
+                    toggleCLass(stockForSale, 'loading')
+                    animateNavItems(stockForSaleOption, 'easeOutBack', 100)
+                    stockForSaleSelect.innerHTML = el.innerHTML
+                    setAttrValue(stockForSaleButton, 'href', getAttrValue(el, 'data-stock-for-sale-view-all-url'))
+                },
+                // On Error
+                () => {
+                    toggleCLass(stockForSale, 'loading')
+                }
+            )
+        })
+    })
 }
 
 init(scope, csn_editorial.stockForSale)
