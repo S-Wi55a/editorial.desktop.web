@@ -158,6 +158,12 @@
         border-bottom: 1px solid $cs-lightest-grey;
         margin-bottom: 20px;
 
+        &--no-items {
+            font-size: $font-size-small;
+            color: $cs-dark-grey;
+            text-align: center;
+        }
+
         &__image {
             border-radius: $border-radius;
             margin-bottom: 20px;

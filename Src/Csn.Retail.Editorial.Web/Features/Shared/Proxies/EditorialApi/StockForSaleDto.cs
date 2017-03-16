@@ -8,6 +8,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public class StockForSaleDto
     {
         public List<StockListingItem> Items { get; set; }
+        public string ResponseMessage { get; set; }
+
     }
 
     public class StockListingItem
@@ -19,6 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Price { get; set; }
         public string Location { get; set; }
         public string DetailsPageUrl { get; set; }
+
     }
 }
 

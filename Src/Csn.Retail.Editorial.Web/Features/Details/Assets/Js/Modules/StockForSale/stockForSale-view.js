@@ -33,32 +33,34 @@ const listItem = (data) => {
 
     const key = 'items';
 
-    const template = data[key].map((item) => {
-        return (`
-            <li class="stock-for-sale-item">
-                <a href="${item.detailsPageUrl}">
-                    <img class="stock-for-sale-item__image" src=${item.photoUrl}" />
-                </a>
-                <a href="${item.detailsPageUrl}">
-                    <h3 class="stock-for-sale-item__title">${item.title}</h3>
-                </a>
-                <p class="stock-for-sale-item__price">${item.price}</p>
-                <ul class="stock-for-sale-item__list">
-                    ${item.attributes.map(attr => `
-                        <li class="stock-for-sale-item__list-item">${attr}</li>
-                    `).join('')}
-                </ul>
-                <p class="stock-for-sale-item__location">${item.location}</p>
-            </li>
-            `)
-    })
-
     if (data[key].length) {
+        const template = data[key].map((item) => {
+            return (`
+                <li class="stock-for-sale-item">
+                    <a href="${item.detailsPageUrl}">
+                        <img class="stock-for-sale-item__image" src=${item.photoUrl}" />
+                    </a>
+                    <a href="${item.detailsPageUrl}">
+                        <h3 class="stock-for-sale-item__title">${item.title}</h3>
+                    </a>
+                    <p class="stock-for-sale-item__price">${item.price}</p>
+                    <ul class="stock-for-sale-item__list">
+                        ${item.attributes.map(attr => `
+                            <li class="stock-for-sale-item__list-item">${attr}</li>
+                        `).join('')}
+                    </ul>
+                    <p class="stock-for-sale-item__location">${item.location}</p>
+                </li>
+                `)
+        })
+
         return template.reduce((prev, current) => {
             return prev + current
         })
+
     } else {
-        return template
+
+        return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${data.responseMessage}</li>`
     }
 
 

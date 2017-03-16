@@ -60,6 +60,20 @@
         &--active {
             @include button((small: true,primary: true ));
             cursor: default;
+
+            &:visited {
+                color: $cs-primary;
+                text-decoration: none;
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: $cs-primary;
+                border-color: $cs-primary;
+                color: $cs-white;
+                text-decoration: none;
+            }
         }
 
         &--last {

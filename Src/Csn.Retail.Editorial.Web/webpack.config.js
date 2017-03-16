@@ -141,7 +141,7 @@ module.exports = function () {
                 filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: {
-                noParse: /jquery|swiper|ScrollMagic|modernizr/,
+                noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
                 rules: [
                     {
                         test: [/\.js$/, /\.es6$/],
@@ -212,10 +212,9 @@ module.exports = function () {
                 extensions: ['.js','.scss'],
                 alias: {
                     modernizr$: path.resolve(__dirname, './.modernizrrc.js'),
-                    'ScrollMagic': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
                     'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
-
                 },
+                aliasFields: ["browser"],
                 descriptionFiles: ['package.json', 'bower.json'],
                 modules: listOfPaths
             },
@@ -336,8 +335,7 @@ module.exports = function () {
                     }
                 }
             }
-        }
-            )
+        })
     });
     return moduleExportArr
 };
