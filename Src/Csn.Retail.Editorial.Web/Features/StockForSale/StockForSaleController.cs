@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.SimpleCqrs;
+using Newtonsoft.Json;
 
 namespace Csn.Retail.Editorial.Web.Features.StockForSale
 {
@@ -17,11 +18,12 @@ namespace Csn.Retail.Editorial.Web.Features.StockForSale
 
         [HttpGet]
         [Route("editorial/api/v1/stock-listing")]
-        public async Task<ActionResult> GetLatest(StockForSaleQuery query)
+        public async Task<object> GetLatest(StockForSaleQuery query)
         {
             var result = await _queryDispatcher.DispatchAsync<StockForSaleQuery, StockForSaleDto>(query);
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return JsonConvert.SerializeObject(result);
+
         }
     }
 }

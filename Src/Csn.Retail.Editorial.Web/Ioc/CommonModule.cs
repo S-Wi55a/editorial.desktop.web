@@ -12,6 +12,8 @@ using Csn.WebMetrics.Editorial.Interfaces;
 using Csn.WebMetrics.Editorial.Ioc;
 using Csn.WebMetrics.Ext.Interfaces;
 using Ingress.Autofac;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Csn.Retail.Editorial.Web.Ioc
 {
@@ -34,6 +36,11 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.AddIngress();
 
             builder.Register(x => new HttpContextWrapper(HttpContext.Current)).As<HttpContextBase>();
+
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
         }
     }
 
