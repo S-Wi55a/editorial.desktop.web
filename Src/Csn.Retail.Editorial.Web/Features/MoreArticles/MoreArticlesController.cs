@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.SimpleCqrs;
+using Newtonsoft.Json;
 
 namespace Csn.Retail.Editorial.Web.Features.MoreArticles
 {
@@ -17,11 +18,11 @@ namespace Csn.Retail.Editorial.Web.Features.MoreArticles
 
         [HttpGet]
         [Route("editorial/api/v1/more-articles")]
-        public async Task<ActionResult> GetLatest(MoreArticlesQuery query)
+        public async Task<object> GetLatest(MoreArticlesQuery query)
         {
             var result = await _queryDispatcher.DispatchAsync<MoreArticlesQuery, MoreArticlesDto>(query);
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return JsonConvert.SerializeObject(result);
         }
     }
 }

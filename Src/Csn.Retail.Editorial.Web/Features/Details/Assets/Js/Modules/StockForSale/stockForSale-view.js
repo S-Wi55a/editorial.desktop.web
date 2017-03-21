@@ -1,9 +1,9 @@
 ﻿const container = (data) => {
 
-    const moreArticlesPath = "/editorial/api/v1/stock-listing/?uri=";
+    const stockForSalePath = "/editorial/api/v1/stock-listing/?uri=";
     const limit = '%26limit=2';
 
-    return (`
+    return `
         <div class="stock-for-sale">
             <h2 class="stock-for-sale__header">${data.heading}</h2>
             <button class="stock-for-sale__select">${data.filters[0].name}</button>
@@ -18,7 +18,7 @@
                     ${data.filters.map(filter => `
                         <li
                             class="stock-for-sale-options__option"
-                            data-stock-for-sale-query="${moreArticlesPath}${filter.query}${limit}" 
+                            data-stock-for-sale-query="${stockForSalePath}${filter.query}${limit}" 
                             data-stock-for-sale-view-all-url="${filter.viewAllUrl}">
                             ${filter.name}
                         </li>
@@ -26,7 +26,7 @@
                 </ul>
             </div>
         </div>
-        `)
+        `
 }
 
 const listItem = (data) => {

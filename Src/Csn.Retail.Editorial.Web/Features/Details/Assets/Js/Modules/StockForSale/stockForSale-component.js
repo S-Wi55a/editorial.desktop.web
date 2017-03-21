@@ -1,7 +1,7 @@
 ﻿import 'Css/Modules/Widgets/StockForSale/_stockForSale.scss'
 
-import * as view from 'Js/Modules/StockForSale/stockForSale-view.js'
-import * as ajax from 'Js/Modules/Ajax/ajax.js'
+import * as View from 'Js/Modules/StockForSale/stockForSale-view.js'
+import * as Ajax from 'Js/Modules/Ajax/ajax.js'
  
 
 // Get Scope and cache selectors
@@ -23,10 +23,10 @@ const setAttrValue = (el, attr, val) => {
 const makeQuery = (url, el, cb = () => {}, onError = () => {}) => {
 
     //Make Query
-    ajax.get(url,
+    Ajax.get(url,
         (resp) => {
             //update list
-            el.innerHTML = view.listItem(JSON.parse(resp))
+            el.innerHTML = View.listItem(JSON.parse(resp))
             cb()
         },
         () => {
@@ -55,7 +55,7 @@ const animateNavItems = (elList, className, timeBetween = 400) => {
 // Init
 const init = (scope, data) => {
     //Render container
-    scope.innerHTML = view.container(data)
+    scope.innerHTML = View.container(data)
 
     // Setup vars
     const stockForSale = scope.querySelector('.stock-for-sale');

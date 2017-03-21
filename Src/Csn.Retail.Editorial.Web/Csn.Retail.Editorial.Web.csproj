@@ -605,7 +605,6 @@
     <Content Include=".babelrc" />
     <Content Include=".eslintrc.json" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\EditorRatings\_procon.scss" />
-    <Content Include="Features\Shared\Views\Partials\_Disqus.cshtml" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Settings\_settings--bikesales.scss" />
@@ -640,8 +639,6 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticle.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticles.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />
-    <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusData.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\Disqus\_DisqusView.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\Swiper\_swiper.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Modal\_modalSlider.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_hero.scss" />
@@ -659,6 +656,7 @@
     <Content Include="Features\Shared\Assets\Css\Animations\easeOutBack.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\fadeInDown.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\animations.scss" />
+    <Content Include="Features\Details\Views\Partials\Disqus\_Disqus.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

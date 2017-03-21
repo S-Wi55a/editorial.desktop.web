@@ -60,7 +60,7 @@ $(function () {
 //Lazy load More articles JS
 let moreArticles = function(d) {
 
-    if (d.querySelector('.more-articles')) {
+    if (d.querySelector('.more-articles-placeholder')) {
         require.ensure(['./Js/Modules/MoreArticles/moreArticles-component.js'],
         function() {
             require('./Js/Modules/MoreArticles/moreArticles-component.js');
