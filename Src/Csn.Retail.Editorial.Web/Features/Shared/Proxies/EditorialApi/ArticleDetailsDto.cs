@@ -37,6 +37,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public List<WebTrendData> WebTrendData { get; set; }
         public GoogleAnalyticsDetailsDto GoogleAnalyticsDetailsData { get; set; }
         public StockListingData StockListingData { get; set; }
+        public List<SpecDataItem> SpecData { get; set; }
+
     }
 
     public class GoogleAnalyticsDetailsDto
@@ -221,6 +223,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Heading { get; set; }
         public List<StockFilters> Filters { get; set; }
         public string ViewAllStockButton { get; set;  }
+    }
+
+    public class SpecDataItem
+    {
+        public string Uri { get; set; }
+        public string Description { get; set; }
     }
 
 }

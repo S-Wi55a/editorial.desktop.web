@@ -39,7 +39,9 @@ namespace Csn.Retail.Editorial.Web.Ioc
 
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                StringEscapeHandling = StringEscapeHandling.EscapeHtml
+
             };
         }
     }

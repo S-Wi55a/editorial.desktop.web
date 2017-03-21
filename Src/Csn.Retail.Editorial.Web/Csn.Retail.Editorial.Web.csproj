@@ -367,7 +367,11 @@
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
+    <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
+    <Compile Include="Features\Spec\SpecController.cs" />
+    <Compile Include="Features\Spec\SpecQuery.cs" />
+    <Compile Include="Features\Spec\SpecQueryHandler.cs" />
     <Compile Include="Features\StockForSale\StockForSaleController.cs" />
     <Compile Include="Features\StockForSale\StockForSaleQuery.cs" />
     <Compile Include="Features\StockForSale\StockForSaleQueryHandler.cs" />
@@ -576,7 +580,7 @@
     <Content Include="Features\Details\Views\Partials\Head\_SocialMetaData.cshtml" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.scss" />
     <Content Include="Features\Shared\Views\Partials\_Modal.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Modal\_SlideshowModal.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Modal\_ModalData.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Utilities\_utilities.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Settings\_variables-settings.scss" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
@@ -635,7 +639,6 @@
     <Content Include="editorial\content\scripts\webm.clicktrack.min.js.map" />
     <Content Include="editorial\content\scripts\trafficSourceReferrer.min.js.map" />
     <Content Include="Features\Tracking\Views\WebMetricsScripts.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Widgets\MoreArticles\_MoreArticlesContainer.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticle.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticles.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />

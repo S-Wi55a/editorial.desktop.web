@@ -2,6 +2,7 @@
 using Csn.Hystrix.RestClient;
 using Csn.Hystrix.RestClient.Dtos;
 using Csn.Retail.Editorial.Web.Features.MoreArticles;
+using Csn.Retail.Editorial.Web.Features.Spec;
 using Csn.Retail.Editorial.Web.Features.StockForSale;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
@@ -12,6 +13,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         Task<HystrixRestResponse<ArticleDetailsDto>> GetArticleAsync(EditorialApiInput input);
         Task<HystrixRestResponse<MoreArticlesDto>> GetLatestArticlesAsync(MoreArticlesQuery query);
         Task<HystrixRestResponse<StockForSaleDto>> GetStockListingAsync(StockForSaleQuery query);
+        Task<HystrixRestResponse<SpecDto>> GetSpecAsync(SpecQuery query);
+
     }
 
     [AutoBind]
@@ -47,6 +50,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
             var response = await _restClient.HostName(HostName)
                 .Path(query.Uri)
                 .GetAsync<StockForSaleDto>();
+
+            return response;
+        }
+
+        public async Task<HystrixRestResponse<SpecDto>> GetSpecAsync(SpecQuery query)
+        {
+            var response = await _restClient.HostName(HostName)
+                .Path(query.Uri)
+                .GetAsync<SpecDto>();
 
             return response;
         }
