@@ -4,7 +4,6 @@
 .more-article {
 
     // Local Vars
-    $width: 355px;
     $img-width: 100px;
 
     $title-font-size: 14px;
@@ -23,7 +22,7 @@
     }
 
     &__content {
-        width: percentage(($width - $img-width)/$width);
+        width: calc(100% - #{$img-width});
         padding: 0 20px;
         display: inline-block;
         vertical-align: middle;
@@ -32,7 +31,7 @@
     &__image {
         display: inline-block;
         vertical-align: middle;
-        width: percentage($img-width/$width);
+        width: $img-width;
     }
 
     &__title {

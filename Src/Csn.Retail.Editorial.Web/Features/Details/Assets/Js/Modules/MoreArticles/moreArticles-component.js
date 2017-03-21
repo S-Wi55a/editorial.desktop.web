@@ -37,17 +37,15 @@ let addClass = (el, className, cb) => {
     if (typeof cb === "function") {
         cb()
     }
-    //setText(scope.moreArticlesShowHideButton, text)
 }
 
 // remove class
 let removeClass = (el, className, cb) => {
     el.classList.remove(className)
+    console.log(typeof cb)
     if (typeof cb === "function") {
         cb()
     }
-
-    //setText(scope.moreArticlesShowHideButton, text)
 }
 
 // Toggle class
@@ -176,13 +174,13 @@ let filterHandler = (e, ...args) => {
     }
 
     if (!scope.self.classList.contains('show')) {
-        toggleClass(scope.self, 'show', ['Show', 'Hide'])
+        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')])
     }
 }
 
 
 // handlers
-function buttonHandler(scope, slider, firstSlide, visibleSlides) {
+let buttonHandler = (scope, slider, firstSlide, visibleSlides) => {
     // Prev logic
     if (slider.activeIndex <= firstSlide) {
         updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true')
@@ -198,24 +196,23 @@ function buttonHandler(scope, slider, firstSlide, visibleSlides) {
     }
 }
 
-function nextButtonHandler(slider, offset, cb) {
+let nextButtonHandler = (slider, offset, cb) => {
     // Get slider index and check if offset from end
     if (slider.activeIndex >= slider.slides.length - offset) {
         cb()
     }
 }
 
-function buttonShowHideHandler(scope) {
+let buttonShowHideHandler = (scope) => {
     //set user prefernce here
     if (scope.self.classList.contains('show')) {
-        toggleClass(scope.self, 'show', [setText(scope.moreArticlesShowHideButton, 'Show'), setText(scope.moreArticlesShowHideButton, 'Hide')])
+        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')])
         userPreference = true
     } else if (userPreference) {
         userPreference = false
-        toggleClass(scope.self, 'show', [setText(scope.moreArticlesShowHideButton, 'Show'), setText(scope.moreArticlesShowHideButton, 'Hide')])
+        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')])
     } else {
-        toggleClass(scope.self, 'show', [setText(scope.moreArticlesShowHideButton, 'Show'), setText(scope.moreArticlesShowHideButton, 'Hide')])
-
+        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')])
     }
 
 }
@@ -262,7 +259,7 @@ let scrollMagic = (scope) => {
             ? this.trigger("enter")
             : null;
     })
-    .on("enter", scrollHandler.bind(null, scope.self, 'show', ['Show', 'Hide']))
+    .on("enter", scrollHandler.bind(null, scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')]))
     .addTo(window.scrollMogicController);
 }
 
