@@ -1,8 +1,10 @@
 ﻿export default function() {
     const multipleImageLayout = document.querySelector('.hero--multipleImages')
     const imageAndVideoLayout = document.querySelector('.hero--imageAndVideo')
+    const singleImageLayout = document.querySelector('.hero--singleImage')
 
-    if (multipleImageLayout || imageAndVideoLayout) {
+
+    if (multipleImageLayout || imageAndVideoLayout || singleImageLayout) {
         require.ensure(['swiper', 'Js/Modules/Modal/modal.js'],
     function(require) {
         Swiper = require('swiper')
@@ -99,7 +101,6 @@
                 function() {
 
                     const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
-                    console.log(initSlide)
                     const modalSwiper = new Swiper('._c-modal .slideshow', {
 
                         initialSlide: initSlide,
@@ -130,7 +131,12 @@
                         lazyLoadingClass: 'slideshow__image',
                         lazyStatusLoadingClass: 'slideshow__image--loading',
                         lazyStatusLoadedClass: 'slideshow__image--loaded',
-                        lazyPreloaderClass: 'slideshow__image--preloader'
+                        lazyPreloaderClass: 'slideshow__image--preloader',
+
+                        //Pagination
+                        pagination: '.slideshow__pagination',
+                        paginationType: 'fraction',
+                        paginationHide: false
 
                     })
 

@@ -247,6 +247,10 @@
         padding-top: 0;
         left: calc(100% - (300px + 30px));
     }
+
+    ._c-modal .slideshow__nav {
+        display: none;
+    }
 }
 
 

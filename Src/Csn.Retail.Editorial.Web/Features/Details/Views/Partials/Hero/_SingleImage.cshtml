@@ -1,7 +1,22 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
-<div class="container">
-    <div class="hero hero--singleImage">
-        <div class="hero__imageContainer">@{ Html.RenderPartial("Partials/Hero/_FirstImage", @Model); }</div>
-    </div>
+<div class="clearfix hero hero--singleImage">
+    
+    @{ var index = 0; }
+    @foreach (var image in Model.Images.Take(1))
+        {
+            <div class="slideshow__slide swiper-slide">
+                <a href="@Url.Action("Images", "Details", new { imageIndex = index })" data-modal-trigger data-modal-type="slideshow">
+
+                    <img class="slideshow__image"
+                            sizes="100vw"
+                            src="@image.Url?width=1024&height=683"
+                            srcset="@image.Url?width=1024&height=683 2048w, @image.Url?width=768&height=512 1536w, @image.Url?width=512&height=341 1024w, @image.Url?width=384&height=256 768w"
+                            alt="@image.AlternateText" />
+                </a>
+            </div>
+        }
+
 </div>
+@{ Html.RenderPartial("Partials/Modal/_Modal"); }
+@{ Html.RenderPartial("Partials/Modal/_ModalData"); }
