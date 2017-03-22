@@ -32,8 +32,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<WebTrendData> WebTrendData { get; set; }
         public GoogleAnalyticsDetailsData GoogleAnalyticsDetailsData { get; set; }
         public StockListingData StockListingData { get; set; }
-        public List<SpecDataItem> SpecData { get; set; }
-
+        public SpecData SpecData { get; set; }
 
     }
 

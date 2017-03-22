@@ -37,8 +37,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public List<WebTrendData> WebTrendData { get; set; }
         public GoogleAnalyticsDetailsDto GoogleAnalyticsDetailsData { get; set; }
         public StockListingData StockListingData { get; set; }
-        public List<SpecDataItem> SpecData { get; set; }
+        public SpecData SpecData { get; set; }
 
+    }
+
+    public class SpecData
+    {
+        public string MinLabel { get; set; }
+        public string MaxLabel { get; set; }
+        public string MoreLabel { get; set; }
+        public List<SpecDataItem> Items { get; set; }
     }
 
     public class GoogleAnalyticsDetailsDto
