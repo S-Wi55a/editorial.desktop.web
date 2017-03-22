@@ -657,6 +657,10 @@
     <Content Include="Features\Shared\Assets\Css\Animations\fadeInDown.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\animations.scss" />
     <Content Include="Features\Details\Views\Partials\Disqus\_Disqus.cshtml" />
+    <None Include="Web.AwsRelease.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.AwsStaging.config" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -675,6 +679,15 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AwsRelease|AnyCPU'">
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
