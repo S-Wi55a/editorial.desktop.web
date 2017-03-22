@@ -32,20 +32,16 @@
     </div>
 </article>
 
-@if (Model.MoreArticleData != null && Model.MoreArticleData.Any())
-{
-    <script>
-        var csn_editorial = csn_editorial || {};
-        csn_editorial.moreArticles = @Html.Raw(JsonConvert.SerializeObject(Model.MoreArticleData));
-    </script>
-    <div class="more-articles-placeholder"></div>
-}
+@{ Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model); }
+
 @section BottomScripts
 {
     @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
     @{ Html.RenderPartial("Partials/Tracking/_GoogleAnalyticsDetails", Model.GoogleAnalyticsDetailsData); }
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
-    
+    @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
+  
 
 }
+

@@ -11,14 +11,6 @@
 
     }
      
-    @if (Model.StockListingData != null && Model.StockListingData.Filters.Any())
-    {
-        <script>
-            var csn_editorial = csn_editorial || {};
-            csn_editorial.stockForSale = @Html.Raw(JsonConvert.SerializeObject(Model.StockListingData));
-        </script>
-        <div class="stock-for-sale-placeholder"></div>
-    }
+    @{ Html.RenderPartial("Partials/Widgets/StockForSale/_StockForSaleData", Model); };
 
 </div>
-

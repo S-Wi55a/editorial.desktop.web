@@ -53,7 +53,6 @@ loaded.then(function () {
 $(function () {
     if ($('#teads-video-container').length) {
         $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
-
     }
 });
 
@@ -87,6 +86,24 @@ loaded.then(function () {
     stockForSale(document);
 });
 
+//Lazy load Spec Module
+let specModule = function (d) {
+
+    if (csn_editorial.specModule) {
+        // Add placeholder 
+        let el = d.querySelectorAll('.article__copy p')[1];
+        if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder"></div>');}
+
+        require.ensure(['./Js/Modules/SpecModule/specModule-component.js'],
+            function () {
+                require('./Js/Modules/SpecModule/specModule-component.js');
+            },
+            'Spec-Module-Component');
+    }
+}
+loaded.then(function () {
+    specModule(document);
+});
 
 //Lazy load Disqus
 let disqus = function(d, w, selector) {

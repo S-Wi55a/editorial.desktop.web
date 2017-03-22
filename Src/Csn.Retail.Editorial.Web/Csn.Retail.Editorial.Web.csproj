@@ -479,6 +479,8 @@
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-component.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
@@ -660,6 +662,9 @@
     <Content Include="Features\Shared\Assets\Css\Animations\fadeInDown.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\animations.scss" />
     <Content Include="Features\Details\Views\Partials\Disqus\_Disqus.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\MoreArticles\_MoreArticleData.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\SpecModule\_SpecModuleData.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleData.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
