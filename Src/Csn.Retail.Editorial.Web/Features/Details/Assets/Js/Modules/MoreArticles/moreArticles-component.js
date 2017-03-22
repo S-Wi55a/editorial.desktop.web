@@ -86,14 +86,6 @@ let addEventListenerToButton = (el, event, cb, cbArgs) => {
     }
 }
 
-// Add event listener to Button
-let removeEventListenerToButton = (scope, selector, event, fn) => {
-    let list = scope.querySelectorAll(selector);
-    for (var i of list) {
-        i.removeEventListener(event, fn, false)
-    }
-}
-
 // Update List
 let updateList = (el, data) => {
     el.insertAdjacentHTML('beforeend', View.article(data))
