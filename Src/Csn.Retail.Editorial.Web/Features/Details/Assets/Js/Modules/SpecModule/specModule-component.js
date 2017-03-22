@@ -7,7 +7,6 @@ import * as View from 'Js/Modules/SpecModule/specModule-view.js'
 // Get Scope and cache selectors
 const scope = document.querySelector('.spec-module-placeholder');
 
-
 // Init More Articles Slider
 let initMoreArticlesSlider = (selector, options) => {
     options = Object.assign({}, options);
@@ -71,15 +70,26 @@ const makeQuery = (url, el, cb = () => { }, onError = () => { }) => {
     )
 }
 
+// Toggle class
+const toggleClass = (el, className) => {
+    if (el.classList.contains(className)) {
+        el.classList.remove(className)
+    } else {
+        el.classList.add(className)
+    }
+}
+
 let init = (scope, data) => {
 
     //Render Container
     scope.innerHTML = View.container(data);
 
-    let sliderContainer = scope.querySelector('.spec-module .slideshow__container')
+    scope = scope.querySelector('.spec-module')
+    const sliderContainer = scope.querySelector('.spec-module .slideshow__container')
+    const loadingClass = 'loading'
 
     // Init Swiper
-    let options = {
+    const options = {
 
         // Optional parameters
         slidesPerView: 1,
@@ -111,16 +121,21 @@ let init = (scope, data) => {
         (e) => {
             const item = buildQuery(e, 'data-slide-index', slider, 'data-spec-url')
             if (item) {
+                toggleClass(scope, loadingClass)
                 makeQuery(item.url, item.slide,
                     (resp, el) => {
-                        console.log(resp)
                         el.innerHTML = View.item(JSON.parse(resp))
+                        toggleClass(scope, loadingClass)
                     }
                 )  
             }
         }
     )
 
- 
+    // add loading class
+    toggleClass(scope, loadingClass)
+    // trigger first item click
+    sliderBullets[0].dispatchEvent('click')
+    //remove loading class if applied
 }
 init(scope, csn_editorial.specModule)

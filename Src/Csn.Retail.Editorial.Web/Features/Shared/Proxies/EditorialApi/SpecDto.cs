@@ -5,7 +5,6 @@ using System.Web;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 {
-
     public class SpecDto
     {
         public BudgetDirectItems BudgetDirectData { get; set; }
@@ -15,8 +14,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public PriceNew PriceNew { get; set; }
         public string PricePrivate { get; set; }
         public string PriceTradeIn { get; set; }
-        public string RedBookCode { get; set; }
-        public string RedBookCodeLegacy { get; set; }
         public StrattonItems StrattonData { get; set; }
         public string Title { get; set; }
     }
@@ -49,6 +46,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Postcode { get; set; }
         public string QuoteType { get; set; }
         public string TermCondition { get; set; }
+        public Heading Headings { get; set; }
+
+        public class Heading
+        {
+            public string Title { get; set; }
+            public string FrequentPayment { get; set; }
+            public string GetQuote { get; set; }
+        }
     }
 
     public class StrattonItems
@@ -63,6 +68,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string ResidualPercentage { get; set; }
         public string TermInMonths { get; set; }
         public string WeeklyRepayments { get; set; }
+        public Heading Headings { get; set; }
+
+        public class Heading
+        {
+            public string Title { get; set; }
+            public string FrequentPayment { get; set; }
+            public string GetQuote { get; set; }
+        }
     }
 
     public class SpecDataImage

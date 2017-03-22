@@ -669,6 +669,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.AwsStaging.config" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
