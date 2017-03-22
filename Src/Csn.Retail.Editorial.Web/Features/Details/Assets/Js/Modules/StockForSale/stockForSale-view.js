@@ -38,7 +38,7 @@ const listItem = (data) => {
             return (`
                 <li class="stock-for-sale-item">
                     <a href="${item.detailsPageUrl}">
-                        <img class="stock-for-sale-item__image" src=${item.photoUrl}" />
+                        <img class="stock-for-sale-item__image" src="${item.photoUrl}" />
                     </a>
                     <a href="${item.detailsPageUrl}">
                         <h3 class="stock-for-sale-item__title">${item.title}</h3>
