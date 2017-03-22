@@ -18,7 +18,6 @@ const setAttrValue = (el, attr, val) => {
     el.setAttribute(attr, val)
 }
 
-
 // Make Query - Ajax
 const makeQuery = (url, el, cb = () => {}, onError = () => {}) => {
 
@@ -41,7 +40,6 @@ const toggleCLass = (el, className) => {
 
 }
 
-
 const animateNavItems = (elList, className, timeBetween = 400) => {
 
     const LENGTH = elList.length;
@@ -59,7 +57,6 @@ const init = (scope, data) => {
 
     // Setup vars
     const stockForSale = scope.querySelector('.stock-for-sale');
-    const stockForSaleOptions = scope.querySelector('.stock-for-sale-options');
     const stockForSaleOption = scope.querySelectorAll('.stock-for-sale-options__option');
     const stockForSaleList = scope.querySelector('.stock-for-sale__list');
     const stockForSaleSelect = scope.querySelector('.stock-for-sale__select');

@@ -2,21 +2,9 @@
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 import * as View from 'Js/Modules/MoreArticles/moreArticles-view.js'
 
-
 import ScrollMagic from 'ScrollMagic'
 
-const scopeSelector = '.more-articles'
-const slideContainer = '.more-articles__slides'
-const frame = '.more-articles__frame'
-const prevCtrl = '.more-articles__nav-button--prev'
-const nextCtrl = '.more-articles__nav-button--next'
-const slide = '.more-articles__slide'
-const navButtons = '.more-articles__nav-button'
-const showHideButton = '.more-articles__button--show-hide'
 let userPreference = false
-
-
-
 
 // Init More Articles Slider
 let initMoreArticlesSlider = (selector, options) => {
@@ -77,7 +65,7 @@ let addEventListenerToButton = (el, event, cb, cbArgs) => {
             }
         )
     } else {
-        for (var i of el) {
+        for (let i of el) {
             i.addEventListener(event, (e) => {
                     cb(e, cbArgs)
                 }

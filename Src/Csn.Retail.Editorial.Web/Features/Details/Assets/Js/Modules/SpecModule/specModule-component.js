@@ -22,7 +22,7 @@ const addEventListenerToButton = (el, event, cb, cbArgs) => {
         }
         )
     } else {
-        for (var i of el) {
+        for (let i of el) {
 
             i.addEventListener(event, (e) => {
                 cb(e, cbArgs)
