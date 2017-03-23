@@ -25,6 +25,7 @@
         width: 100%;
         min-height: 0;
         padding: 0;
+        background: $cs-black;
 
         & > a {
             text-decoration: none;
@@ -62,7 +63,6 @@
 
     &__image {
         width: 100%;
-        background: $cs-black;
     }
 
     &__nav {
@@ -153,7 +153,7 @@
         padding-top: percentage((2/3)/2); //Aspect ratio / number of images
         .slideshow {
             &__slide {
-                width: percentage(100/2);
+                width: percentage(1/2);
             }
         }
     }
@@ -162,7 +162,7 @@
         padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
         .slideshow {
             &__slide {
-                width: percentage(100);
+                width: percentage(1);
             }
         }
     }
@@ -176,7 +176,7 @@
             padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 3/2, 16/9))); //Aspect ratio / number of images
             .slideshow {
                 &__slide {
-                    width: percentage(100/2);
+                    width: percentage(1/2);
                 }
             }
         }
@@ -185,7 +185,7 @@
             padding-top: percentage((2/3)/3); //Aspect ratio / number of images
             .slideshow {
                 &__slide {
-                    width: percentage(100/3);
+                    width: percentage(1/3);
                 }
             }
         }
