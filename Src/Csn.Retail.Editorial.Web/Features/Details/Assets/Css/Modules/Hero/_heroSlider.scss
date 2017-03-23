@@ -63,6 +63,7 @@
 
     &__image {
         width: 100%;
+        background: $cs-black;
     }
 
     &__nav {
@@ -188,6 +189,7 @@
                     width: percentage(1/3);
                 }
             }
+           
         }
 
     }

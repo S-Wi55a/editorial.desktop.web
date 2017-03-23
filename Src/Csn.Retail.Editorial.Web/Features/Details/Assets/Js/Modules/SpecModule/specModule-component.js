@@ -70,6 +70,32 @@ const makeQuery = (url, el, cb = () => { }, onError = () => { }) => {
     )
 }
 
+// Pagination handler
+//const paginationHandler = (bullets, min, max, text) => {
+
+//    const bulletLength = bullets.length
+//    const limit = 10
+//    const pages = bulletLength / limit
+//    let currentPage = 0
+//    let pageWidth = 465
+//    const bar = querySelector
+
+//    //Asses how many bulets there are
+//    if (bulletLength > limit) {
+//        //if greater than then add more button
+//        max.innerHTML = text;
+//        max.addEventListener('click', () => {
+//            bar.style.WebkitTransform = "translate3d(,0,0)"; 
+//            // more button move pagination wrapper
+//            // move position of more button
+//        })
+//    }
+
+
+
+//}
+
+
 // Toggle class
 const toggleClass = (el, className) => {
     if (el.classList.contains(className)) {
@@ -132,10 +158,10 @@ let init = (scope, data) => {
         }
     )
 
-    // add loading class
-    toggleClass(scope, loadingClass)
-    // trigger first item click
-    sliderBullets[0].dispatchEvent('click')
-    //remove loading class if applied
+    //trigger first item click
+    sliderBullets[0].click()
+
+    window.slider = slider
+    // Add handlers for pagination
 }
 init(scope, csn_editorial.specModule)

@@ -5,12 +5,12 @@
 
     return `
         <div class="stock-for-sale">
-            <h2 class="stock-for-sale__header">${data.heading}</h2>
-            <button class="stock-for-sale__select">${data.filters[0].name}</button>
+            <h2 class="stock-for-sale__header">${data.heading || ''}</h2>
+            <button class="stock-for-sale__select">${data.filters[0].name || ''}</button>
             <ul class="stock-for-sale__list"></ul>
             <div class="stock-for-sale__button-container">
                 <a class="stock-for-sale__button stock-for-sale__button--view-all" href="">
-                    ${data.viewAllStockButton}
+                    ${data.viewAllStockButton || ''}
                 </a>
             </div>
             <div class="stock-for-sale-options">
@@ -18,9 +18,9 @@
                     ${data.filters.map(filter => `
                         <li
                             class="stock-for-sale-options__option"
-                            data-stock-for-sale-query="${stockForSalePath}${filter.query}${limit}" 
-                            data-stock-for-sale-view-all-url="${filter.viewAllUrl}">
-                            ${filter.name}
+                            data-stock-for-sale-query="${stockForSalePath || ''}${filter.query || ''}${limit || ''}" 
+                            data-stock-for-sale-view-all-url="${filter.viewAllUrl || ''}">
+                            ${filter.name || ''}
                         </li>
                     `).join('')}
                 </ul>
@@ -37,19 +37,19 @@ const listItem = (data) => {
         const template = data[key].map((item) => {
             return (`
                 <li class="stock-for-sale-item">
-                    <a href="${item.detailsPageUrl}">
-                        <img class="stock-for-sale-item__image" src="${item.photoUrl}" />
+                    <a href="${item.detailsPageUrl || ''}">
+                        <img class="stock-for-sale-item__image" src="${item.photoUrl || ''}" />
                     </a>
-                    <a href="${item.detailsPageUrl}">
-                        <h3 class="stock-for-sale-item__title">${item.title}</h3>
+                    <a href="${item.detailsPageUrl || ''}">
+                        <h3 class="stock-for-sale-item__title">${item.title || ''}</h3>
                     </a>
-                    <p class="stock-for-sale-item__price">${item.price}</p>
+                    <p class="stock-for-sale-item__price">${item.price || ''}</p>
                     <ul class="stock-for-sale-item__list">
                         ${item.attributes.map(attr => `
-                            <li class="stock-for-sale-item__list-item">${attr}</li>
+                            <li class="stock-for-sale-item__list-item">${attr || ''}</li>
                         `).join('')}
                     </ul>
-                    <p class="stock-for-sale-item__location">${item.location}</p>
+                    <p class="stock-for-sale-item__location">${item.location || ''}</p>
                 </li>
                 `)
         })
@@ -60,7 +60,7 @@ const listItem = (data) => {
 
     } else {
 
-        return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${data.responseMessage}</li>`
+        return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${data.responseMessage || ''}</li>`
     }
 
 

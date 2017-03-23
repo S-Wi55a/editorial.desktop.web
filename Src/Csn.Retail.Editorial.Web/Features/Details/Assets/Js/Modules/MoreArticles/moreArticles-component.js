@@ -80,7 +80,7 @@ let updateList = (el, data) => {
 }
 
 // Update Content
-let updateContent = function(frame, el, ajax, container, cb) {
+let updateContent = function(frame, el, container, cb) {
 
     const query = el ? el.getAttribute('data-more-articles-query'): null;
     const url = el ? el.getAttribute('data-more-articles-path') + query: null;
@@ -89,7 +89,7 @@ let updateContent = function(frame, el, ajax, container, cb) {
     if (!lock && query) {
         updateButton(el, 'data-disabled', 1)//Prevent multiple requests
         frame.classList.add('loading')
-        ajax(url, (json) => {
+        Ajax.get(url, (json) => {
             json = JSON.parse(json)
             if (json.nextQuery) {
                 updateButton(el, 'data-more-articles-query', json.nextQuery)
@@ -143,7 +143,6 @@ let filterHandler = (e, ...args) => {
         updateContent(
             scope.moreArticlesFrame,
             scope.moreArticlesNextCtrl,
-            Ajax.get,
             scope.moreArticlesSlideContainer,
             () => {
                 slider.slideTo(0)
@@ -328,7 +327,6 @@ const init = (scopeSelector, data) => {
     updateContent(
         scope.moreArticlesFrame,
         scope.moreArticlesNextCtrl,
-        Ajax.get,
         scope.moreArticlesSlideContainer,
         () => {
             main(scope)
