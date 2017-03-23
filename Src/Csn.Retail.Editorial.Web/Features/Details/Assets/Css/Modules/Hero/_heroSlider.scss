@@ -62,6 +62,7 @@
 
     &__image {
         width: 100%;
+        background: $cs-black;
     }
 
     &__nav {
@@ -148,12 +149,22 @@
         font-weight: 600;
     }
 
-    &--gallery-3-image {
+    &--gallery-multiple-image {
         padding-top: percentage((2/3)/2); //Aspect ratio / number of images
+        .slideshow {
+            &__slide {
+                width: percentage(100/2);
+            }
+        }
     }
 
     &--image-video {
         padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
+        .slideshow {
+            &__slide {
+                width: percentage(100);
+            }
+        }
     }
 }
 
@@ -161,14 +172,22 @@
 
     .hero .slideshow {
 
-        &--image-video{
+        &--image-video {
             padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 3/2, 16/9))); //Aspect ratio / number of images
+            .slideshow {
+                &__slide {
+                    width: percentage(100/2);
+                }
+            }
         }
 
-        &--gallery-3-image {
-
+        &--gallery-multiple-image {
             padding-top: percentage((2/3)/3); //Aspect ratio / number of images
-
+            .slideshow {
+                &__slide {
+                    width: percentage(100/3);
+                }
+            }
             // Gallery with three images
             /*.slideshow {
                 &__container {
@@ -224,7 +243,6 @@
             }*/
         }
     }
-
     /*body:not(.ie) .hero .slideshow {
         &--gallery-3-image {
             //Effects
@@ -242,4 +260,3 @@
         }
     }*/
 }
-
