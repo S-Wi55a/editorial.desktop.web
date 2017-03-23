@@ -25,6 +25,7 @@
         width: 100%;
         min-height: 0;
         padding: 0;
+        background: $cs-black;
 
         & > a {
             text-decoration: none;
@@ -148,12 +149,22 @@
         font-weight: 600;
     }
 
-    &--gallery-3-image {
+    &--gallery-multiple-images {
         padding-top: percentage((2/3)/2); //Aspect ratio / number of images
+        .slideshow {
+            &__slide {
+                width: percentage(1/2);
+            }
+        }
     }
 
     &--image-video {
         padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
+        .slideshow {
+            &__slide {
+                width: percentage(1);
+            }
+        }
     }
 }
 
@@ -161,85 +172,23 @@
 
     .hero .slideshow {
 
-        &--image-video{
+        &--image-video {
             padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 3/2, 16/9))); //Aspect ratio / number of images
-        }
-
-        &--gallery-3-image {
-
-            padding-top: percentage((2/3)/3); //Aspect ratio / number of images
-
-            // Gallery with three images
-            /*.slideshow {
-                &__container {
-                    line-height: 0;
-
-                    &::before,
-                    &::after {
-                        content: '';
-                        display: block;
-                        width: calc(#{percentage(1/3)} + 0.5px); //images per width ie. screenWidth / number of images
-                        padding-top: percentage((2/3)/3); //Aspect ratio / number of images
-                        background: rgba($cs-black, 0.5);
-                        position: absolute;
-                        top: 0;
-                        z-index: 2;
-                    }
-
-                    &::before {
-                        left: 0;
-                    }
-                    &::after {
-                        right: 0;
-                    }
-
-                }
-
+            .slideshow {
                 &__slide {
-                    & > a {
-                        &:before {
-                            background: rgba($cs-dark-grey, 0.8);
-                        }
-                    }
-                }
-
-                &__nav {
-                    &--next,
-		            &--prev {
-                        background: rgba($cs-light-grey, 0.8);
-
-                        &:hover:not([data-is-disabled="true"]) {
-                            background: rgba($cs-light-grey, 1);
-
-                            &:before {
-                                color: $cs-white;
-                            }
-                        }
-
-                        &:before {
-                            color: $cs-darker-grey;
-			            }
-                    }
-                }
-            }*/
-        }
-    }
-
-    /*body:not(.ie) .hero .slideshow {
-        &--gallery-3-image {
-            //Effects
-            .swiper-slide-prev,
-            .swiper-slide-next {
-                overflow: hidden;
-
-                .slideshow__image {
-                    filter: blur(2px);
-                    box-sizing: border-box;
-                    box-shadow: 0 0 0 2px rgba(0, 0, 0, .5);
-                    transform: translate3d(0, 0, 0);
+                    width: percentage(1/2);
                 }
             }
         }
-    }*/
-}
 
+        &--gallery-multiple-images {
+            padding-top: percentage((2/3)/3); //Aspect ratio / number of images
+            .slideshow {
+                &__slide {
+                    width: percentage(1/3);
+                }
+            }
+        }
+
+    }
+}
