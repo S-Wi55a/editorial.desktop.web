@@ -71,29 +71,73 @@ const makeQuery = (url, el, cb = () => { }, onError = () => { }) => {
 }
 
 // Pagination handler
-//const paginationHandler = (bullets, min, max, text) => {
+const paginationHandler = (container, bullets, min, max, text) => {
 
-//    const bulletLength = bullets.length
-//    const limit = 10
-//    const pages = bulletLength / limit
-//    let currentPage = 0
-//    let pageWidth = 465
-//    const bar = querySelector
+    //Cache el properties
+    const maxText = max.innerHTML
+    const minText = min.innerHTML
 
-//    //Asses how many bulets there are
-//    if (bulletLength > limit) {
-//        //if greater than then add more button
-//        max.innerHTML = text;
-//        max.addEventListener('click', () => {
-//            bar.style.WebkitTransform = "translate3d(,0,0)"; 
-//            // more button move pagination wrapper
-//            // move position of more button
-//        })
-//    }
+    let getSize = (element) => {
+        // we're assuming a reference to your element in a variable called 'element'
+        var style = element.currentStyle || window.getComputedStyle(element),
+            width = element.offsetWidth, // or use style.width
+            margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight),
+            padding = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight),
+            border = parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
 
+        //if the styles aren't loaded yet then set default size 
+        if ((width + margin - padding + border) === 0) {
+            return 15*3
+        } else {
+            return (width + margin - padding + border);            
+        }
 
+    }
 
-//}
+    const bulletLength = bullets.length
+    const limit = 10
+    const pages = bulletLength / limit
+    let currentPage = 0
+    let pageWidth = getSize(bullets[0]) * limit
+    const bar = container
+
+    bar.style.width = getSize(bullets[0]) * bulletLength + 'px';
+
+    //Asses how many bulets there are
+    if (bulletLength > limit) {
+        //if greater than then add more button
+        max.innerHTML = text;
+        max.addEventListener('click', () => {
+            console.log('currentPage: ', currentPage, 'Pages: ', pages)
+            if (currentPage < Math.floor(pages)) {
+                currentPage += 1;
+                bar.style.WebkitTransform = 'translate3d(-' + currentPage * pageWidth + 'px,0,0)';
+                min.innerHTML = text;
+                if (currentPage >= Math.floor(pages)) {
+                    max.innerHTML = maxText;
+                }
+            }
+
+        })
+
+        min.addEventListener('click', () => {
+            console.log('currentPage: ', currentPage)
+
+            if (currentPage > 0) {
+                currentPage -= 1;
+                bar.style.WebkitTransform = 'translate3d(-' + currentPage * pageWidth + 'px,0,0)';
+                max.innerHTML = text;
+
+                if (currentPage <= 0) {
+                    currentPage = 0;
+                    min.innerHTML = minText;
+                }
+            }
+
+        })
+    }
+
+}
 
 
 // Toggle class
@@ -113,6 +157,10 @@ let init = (scope, data) => {
     scope = scope.querySelector('.spec-module')
     const sliderContainer = scope.querySelector('.spec-module .slideshow__container')
     const loadingClass = 'loading'
+    const nextButton = scope.querySelector('.slideshow__pagination-label--max')
+    const prevButton = scope.querySelector('.slideshow__pagination-label--min')
+    const paginationBar = scope.querySelector('.slideshow__pagination')
+
 
     // Init Swiper
     const options = {
@@ -161,7 +209,7 @@ let init = (scope, data) => {
     //trigger first item click
     sliderBullets[0].click()
 
-    window.slider = slider
     // Add handlers for pagination
+    paginationHandler(paginationBar, sliderBullets, prevButton, nextButton, 'More')
 }
 init(scope, csn_editorial.specModule)

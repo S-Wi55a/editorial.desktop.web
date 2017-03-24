@@ -37,7 +37,7 @@
     &__pagination-wrapper {
         display: inline-block;
         vertical-align: middle;
-        max-width: 465px; //10 bullets * (width + margin)
+        max-width: 450px; //10 bullets * (width + margin)
         max-height: 30px;
         overflow: hidden;
         line-height: 30px;
@@ -45,10 +45,11 @@
     }
 
     &__pagination {
-        width: 9999px;
-        text-align: center;
+        text-align: left;
+        transform: translate3d(0px, 0px, 0px);
+        transition: .3s;
     }
-    
+
     .swiper-pagination-bullet {
         display: inline-block;
         width: 15px;
@@ -70,6 +71,15 @@
         font-weight: $font-weight-400;
         display: inline-block;
         vertical-align: middle;
+        min-width: 60px;
+
+        &--min {
+            text-align: right;
+        }
+
+        &--max {
+            text-align: left;
+        }
     }
 }
 
