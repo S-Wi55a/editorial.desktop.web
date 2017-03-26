@@ -99,6 +99,8 @@
             // load the modal slider after the ajax-event has completed //TODO: not using ajax anymore find better name
             window.addEventListener('ajax-completed',
                 function() {
+                    // This is for GA Gallery tracking requested by the BI team
+                    CsnInsightsEventTracker.sendPageView(eventContext.galleryMetaData);
 
                     const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
                     const modalSwiper = new Swiper('._c-modal .slideshow', {
