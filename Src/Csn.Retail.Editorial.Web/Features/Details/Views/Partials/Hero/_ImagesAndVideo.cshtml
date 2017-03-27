@@ -13,8 +13,8 @@
                 @{ var index = 0; }
                 @foreach (var image in Model.Images.Take(4))
                 {
-                    <div class="slideshow__slide swiper-slide">
-                        <a href="@Url.Action("Images", "Details", new {imageIndex = index})" data-modal-trigger data-modal-type="slideshow">
+                    <div class="slideshow__slide swiper-slide" data-modal-trigger data-modal-image-index="@index>
+                        <a href="@Url.Action("Images", "Details", new {imageIndex = index})">
 
                             <img class="slideshow__image"
                                  sizes="100vw"
@@ -27,8 +27,8 @@
                 }
                 @foreach (var image in Model.Images.Skip(4))
                 {
-                    <div class="slideshow__slide swiper-slide">
-                        <a href="@Url.Action("Images", "Details", new {imageIndex = index})" data-modal-trigger data-modal-type="slideshow">
+                    <div class="slideshow__slide swiper-slide" data-modal-trigger data-modal-image-index="@index>
+                        <a href="@Url.Action("Images", "Details", new {imageIndex = index})">
 
                             <img class="slideshow__image"
                                  data-src="@image.Url?width=1024&height=683"
@@ -47,7 +47,6 @@
         </div>
     </div>
 </div>
-@{ Html.RenderPartial("Partials/Modal/_Modal"); }
-@{ Html.RenderPartial("Partials/Modal/_ModalData"); }
+@{ Html.RenderPartial("Partials/Widgets/Modal/_ModalData"); }
 
 

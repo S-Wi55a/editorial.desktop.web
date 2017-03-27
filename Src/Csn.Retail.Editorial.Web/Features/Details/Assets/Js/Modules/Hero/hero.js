@@ -5,7 +5,7 @@
 
 
     if (multipleImageLayout || imageAndVideoLayout || singleImageLayout) {
-        require.ensure(['swiper', 'Js/Modules/Modal/modal.js'],
+        require.ensure(['swiper', 'Js/Modules/Modal/modal.js', 'Js/Modules/Hero/hero--modal-view.js'],
     function(require) {
         Swiper = require('swiper')
 
@@ -90,16 +90,29 @@
             })
         }
 
-
-        if (document.querySelector('[data-ajax-modal]')) {
+        let modalContainer = document.querySelector('._c-modal');
+        if (modalContainer) {
 
             //init Modal JS
-            require('Js/Modules/Modal/modal.js');
+            const Modal = require('Js/Modules/Modal/modal.js').default;
 
-            // load the modal slider after the ajax-event has completed //TODO: not using ajax anymore find better name
-            window.addEventListener('ajax-completed',
+            window.csn_modal = window.csn_modal || new Modal()
+
+            const View = require('Js/Modules/Hero/hero--modal-view.js');
+            const scope = document.querySelector('.hero');
+            //Add event listeners to hero content
+            const modalTrigger = scope.querySelectorAll('[data-modal-trigger]');
+            for (let item of modalTrigger) {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    //update content
+                    window.csn_modal.show(View.template(csn_editorial.hero, item.getAttribute('data-modal-image-index')), '_c-modal--slideshow');
+                });
+            }
+
+            // load the modal slider after the modal.content.added has completed
+            window.addEventListener('modal.content.added',
                 function() {
-
                     const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
                     const modalSwiper = new Swiper('._c-modal .slideshow', {
 

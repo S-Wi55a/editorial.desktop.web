@@ -25,10 +25,14 @@
         width: 100%;
         min-height: 0;
         padding: 0;
-        background: $cs-black;
 
         & > a {
             text-decoration: none;
+            height: 100%;
+            display: block;
+            background: $cs-black;
+            width: 100%;
+
 
             &:before {
                 position: absolute;
@@ -151,7 +155,7 @@
     }
 
     &--gallery-multiple-images {
-        padding-top: percentage((2/3)/2); //Aspect ratio / number of images
+        padding-top: calc(#{percentage((2/3)/2)} - 0.1%); //Aspect ratio / number of images
         .slideshow {
             &__slide {
                 width: percentage(1/2);
