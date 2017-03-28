@@ -113,6 +113,10 @@
             // load the modal slider after the modal.content.added has completed
             window.addEventListener('modal.content.added',
                 function() {
+
+                    // This is for GA Gallery tracking requested by the BI team
+                    CsnInsightsEventTracker.sendPageView(eventContext.galleryMetaData);
+
                     const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
                     const modalSwiper = new Swiper('._c-modal .slideshow', {
 

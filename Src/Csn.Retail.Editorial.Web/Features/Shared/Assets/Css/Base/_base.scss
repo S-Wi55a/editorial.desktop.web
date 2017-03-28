@@ -32,3 +32,18 @@ a {
         color: $cs-dark-blue;
     }
 }
+
+ol {
+    counter-reset: section;
+    padding-left: 1em;
+    margin-left: 1em;
+
+    li {
+        display: list-item;
+
+        /*&::before {
+            counter-increment: section;
+            content: counter(section)". ";
+        }*/
+    }
+}
