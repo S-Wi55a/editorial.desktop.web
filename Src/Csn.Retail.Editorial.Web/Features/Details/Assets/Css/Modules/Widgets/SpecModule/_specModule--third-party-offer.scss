@@ -1,0 +1,70 @@
+﻿@import "css/globals";
+
+.spec-module .third-party-offer {
+
+    $img-width: 78px + 15px;
+    font-size: 0;
+    margin-bottom: 15px;
+
+    &__logo {
+        width: $img-width;
+        display: inline-block;
+        vertical-align: middle;
+        padding-right: 15px;
+    }
+
+    &__content {
+        width: calc((100% - #{$img-width})*0.55);
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__heading {
+        font-size: $font-size-h6;
+        color: $cs-dark-grey;
+        margin-bottom: 3px;
+    }
+
+    &__price-container {
+    }
+
+    &__price {
+        font-size: $font-size-h4;
+        color: $cs-dark-grey;
+        font-weight: $font-weight-600;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__price-term {
+        font-size: $font-size-smaller;
+        color: $cs-dark-grey;
+        font-weight: $font-weight-400;
+        display: inline-block;
+        vertical-align: middle;
+        width: 35%;
+        margin-left: 5px;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline
+        }
+    }
+
+    &__link {
+        font-size: $font-size-h6;
+        font-weight: $font-weight-400;
+        display: inline-block;
+        vertical-align: middle;
+        width: calc((100% - #{$img-width})*0.45);
+        text-align: right;
+    }
+
+    &__terms-and-conditions {
+        font-size: $font-size-smaller;
+        color: $cs-dark-grey;
+        font-weight: $font-weight-400;
+        text-align: center;
+        margin-top: 15px;
+    }
+}

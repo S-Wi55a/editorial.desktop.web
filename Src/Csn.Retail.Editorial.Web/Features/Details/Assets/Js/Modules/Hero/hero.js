@@ -106,94 +106,95 @@
                 item.addEventListener('click', function (e) {
                     e.preventDefault();
                     //update content
-                    window.csn_modal.show(View.template(csn_editorial.hero, item.getAttribute('data-modal-image-index')), '_c-modal--slideshow');
+                    window.csn_modal.show(
+                        View.template(csn_editorial.hero, item.getAttribute('data-modal-image-index')),
+                        '_c-modal--slideshow',
+                        function () {
+
+                            // This is for GA Gallery tracking requested by the BI team
+                            CsnInsightsEventTracker.sendPageView(eventContext.galleryMetaData);
+
+                            const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
+                            const modalSwiper = new Swiper('._c-modal .slideshow', {
+
+                                initialSlide: initSlide,
+
+                                // Optional parameters
+                                loop: true,
+                                slidesPerView: 1,
+                                slidesPerGroup: 1,
+
+                                //Progress
+                                watchSlidesProgress: true,
+                                watchSlidesVisibility: true,
+
+                                //Images
+                                preloadImages: false,
+                                lazyLoading: true,
+                                lazyLoadingInPrevNext: true,
+                                lazyLoadingInPrevNextAmount: 1, // Can't be less than slidesPerView
+
+                                // Navigation arrows
+                                nextButton: '.slideshow__nav--next',
+                                prevButton: '.slideshow__nav--prev',
+
+                                //Namespace
+                                containerModifierClass: 'slideshow',
+                                wrapperClass: 'slideshow__slides',
+                                slideClass: 'slideshow__slide',
+                                lazyLoadingClass: 'slideshow__image',
+                                lazyStatusLoadingClass: 'slideshow__image--loading',
+                                lazyStatusLoadedClass: 'slideshow__image--loaded',
+                                lazyPreloaderClass: 'slideshow__image--preloader',
+
+                                //Pagination
+                                pagination: '.slideshow__pagination',
+                                paginationType: 'fraction',
+                                paginationHide: false
+
+                            })
+
+                            // Resize Handler for modal window to shrink when window height is less than image
+                            let resizeHandlers = function (windowHeightThreshold) {
+
+                                let modalContent = document.querySelector('._c-modal__content');
+                                let el = modalContent.querySelector('._c-modal .slideshow');
+                                let windowHeight = window.innerHeight - windowHeightThreshold;
+
+                                el.style.width = '';
+                                modalSwiper.onResize()
+
+                                // Compare image dimensions with window
+                                if (windowHeight < el.offsetHeight) {
+
+                                    let imageRatio = 3 / 2;
+                                    let width = Math.round((imageRatio * windowHeight));
+
+                                    el.style.width = (Math.round(width)) + 'px';
+
+                                    //then force slider re position
+                                    modalSwiper.onResize()
+                                }
+                            }
+
+                            let modalResizeHandler = resizeHandlers.bind(null, 80);
+
+                            // Call it once to get approiate size on first view
+                            modalResizeHandler()
+
+                            // handle event
+                            window.addEventListener('resize', modalResizeHandler)
+
+                            window.addEventListener('modal.close', function () {
+                                window.removeEventListener('resize', modalResizeHandler)
+
+                            })
+
+                        }
+                        );
                 });
             }
 
-            // load the modal slider after the modal.content.added has completed
-            window.addEventListener('modal.content.added',
-                function() {
-
-                    // This is for GA Gallery tracking requested by the BI team
-                    CsnInsightsEventTracker.sendPageView(eventContext.galleryMetaData);
-
-                    const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
-                    const modalSwiper = new Swiper('._c-modal .slideshow', {
-
-                        initialSlide: initSlide,
-
-                        // Optional parameters
-                        loop: true,
-                        slidesPerView: 1,
-                        slidesPerGroup: 1,
-
-                        //Progress
-                        watchSlidesProgress: true,
-                        watchSlidesVisibility: true,
-
-                        //Images
-                        preloadImages: false,
-                        lazyLoading: true,
-                        lazyLoadingInPrevNext: true,
-                        lazyLoadingInPrevNextAmount: 1, // Can't be less than slidesPerView
-
-                        // Navigation arrows
-                        nextButton: '.slideshow__nav--next',
-                        prevButton: '.slideshow__nav--prev',
-
-                        //Namespace
-                        containerModifierClass: 'slideshow',
-                        wrapperClass: 'slideshow__slides',
-                        slideClass: 'slideshow__slide',
-                        lazyLoadingClass: 'slideshow__image',
-                        lazyStatusLoadingClass: 'slideshow__image--loading',
-                        lazyStatusLoadedClass: 'slideshow__image--loaded',
-                        lazyPreloaderClass: 'slideshow__image--preloader',
-
-                        //Pagination
-                        pagination: '.slideshow__pagination',
-                        paginationType: 'fraction',
-                        paginationHide: false
-
-                    })
-
-                    // Resize Handler for modal window to shrink when window height is less than image
-                    let resizeHandlers = function(windowHeightThreshold) {
-
-                        let modalContent = document.querySelector('._c-modal__content');
-                        let el = modalContent.querySelector('._c-modal .slideshow');
-                        let windowHeight = window.innerHeight - windowHeightThreshold;
-
-                        el.style.width = '';
-                        modalSwiper.onResize()
-
-                        // Compare image dimensions with window
-                        if (windowHeight < el.offsetHeight) {
-
-                            let imageRatio = 3 / 2;
-                            let width = Math.round((imageRatio * windowHeight));
-
-                            el.style.width = (Math.round(width)) + 'px';
-
-                            //then force slider re position
-                            modalSwiper.onResize()
-                        }
-                    }
-
-                    let modalResizeHandler = resizeHandlers.bind(null, 80);
-
-                    // Call it once to get approiate size on first view
-                    modalResizeHandler()
-
-                    // handle event
-                    window.addEventListener('resize', modalResizeHandler)
-
-                    window.addEventListener('modal.close', function() {
-                        window.removeEventListener('resize', modalResizeHandler)
-
-                    })
-
-                });
         }
     },
     'Hero Slidier');

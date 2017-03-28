@@ -8,28 +8,25 @@
                 @foreach (var image in Model.Images.Take(4))
             {
                     <div class="slideshow__slide swiper-slide" data-modal-trigger data-modal-image-index="@index">
-                        <a href="@Url.Action("Images", "Details", new { imageIndex = index })">
 
                             <img class="slideshow__image"
                                  sizes="100vw"
                                  src="@image.Url?width=1024&height=683"
                                  srcset="@image.Url?width=1024&height=683 2048w, @image.Url?width=512&height=341 1024w, @image.Url?width=384&height=256 768w"
                                  alt="@image.AlternateText" />
-                        </a>
                     </div>
                     index++;
                 }
                 @foreach (var image in Model.Images.Skip(4))
             {
                     <div class="slideshow__slide swiper-slide" data-modal-trigger data-modal-image-index="@index">
-                        <a href="@Url.Action("Images", "Details", new { imageIndex = index })">
 
                             <img class="slideshow__image"
                                  data-src="@image.Url?width=1024&height=683"
                                  data-srcset="@image.Url?width=1024&height=683 2048w, @image.Url?width=512&height=341 1024w, @image.Url?width=384&height=256 768w"
                                  sizes="100vw"
                                  alt="@image.AlternateText" />
-                        </a>
+
                     </div>
                     index++;
                 }
@@ -37,7 +34,7 @@
             <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev">prev</button>
             <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next">next</button>
 
-            <a class="slideshow__view-photos" href="@Url.Action("Images", "Details", new { imageIndex = 0 })" data-modal-trigger data-modal-type="slideshow">View Photos</a>
+            <a class="slideshow__view-photos" href="@Url.Action("Images", "Details", new { imageIndex = 0 })" data-modal-trigger data-modal-image-index="0">View Photos</a>
         </div>
     </div>
 </div>

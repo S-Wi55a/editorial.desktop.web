@@ -1,6 +1,5 @@
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
-@using Newtonsoft.Json
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 @{
@@ -41,7 +40,4 @@
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
-  
-
 }
-

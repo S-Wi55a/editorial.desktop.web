@@ -1,6 +1,7 @@
-﻿const container = (data) => {
+﻿// Container
+const container = (data) => {
 
-    const moreArticlesPath = "/editorial/api/v1/spec/?uri=";
+    const specPath = "/editorial/api/v1/spec/?uri=";
 
     return `
         <div class="spec-module">
@@ -9,7 +10,7 @@
 
                     <div class="slideshow__slides swiper-wrapper">
                         ${data.items.map(item => `
-                            <div class="slideshow__slide swiper-slide" data-spec-url="${moreArticlesPath || '' }${item.uri || '' }"></div>
+                            <div class="slideshow__slide swiper-slide" data-spec-url="${specPath || '' }${item.uri || '' }"></div>
                         `).join('')}   
                     </div>
                     <div class="slideshow__nav-wrapper">
@@ -25,7 +26,7 @@
      `
 }
 
-
+// Items - Slide content
 const item = (data) => {
 
     const specsLength = data.items.length || 0
@@ -96,11 +97,26 @@ const item = (data) => {
         `
     } 
 
+    const price = (str, data, index) => {
+        if (data.priceNew) {
+            return `
+                    <p class="spec-item__price">${data.priceNew.price || ''}</p>
+                    <p class="spec-item__price-disclaimer" data-disclaimer="${encodeURI(data.priceNew.disclaimerText) || ''}">${data.priceNew.disclaimerTitle || ''}</p>
+            `
+        } else {
+            return `
+                    <dt class="spec-item__spec-item-title">${item.title || ''}</dt>
+                    <dd class="spec-item__spec-item-value">${item.value || ''}</dd>
+            `
+        }
+    } 
+
     return `
         <div class="spec-item">
             <div class="spec-item__column spec-item__column--1">
                 <h2 class="spec-item__heading">${data.title || ''}</h2>
                 <p class="spec-item__subheading">${data.description || ''}</p>
+                ${price`${data}`}
                 <div class="spec-item__image-container">
                     <img class="spec-item__image" src="${data.image.url || ''}" alt="${data.image.alternateText || ''}"/>
                 </div>
@@ -117,5 +133,15 @@ const item = (data) => {
 
 }
 
+const disclaimer = (data) => {
 
-export { container, item };
+    return `
+        <div class="spec-module-disclaimer">
+            <div class="spec-module-disclaimer__content">
+                <p>${data}</p>
+            </div>
+        </div>
+    `
+}
+
+export { container, item, disclaimer };

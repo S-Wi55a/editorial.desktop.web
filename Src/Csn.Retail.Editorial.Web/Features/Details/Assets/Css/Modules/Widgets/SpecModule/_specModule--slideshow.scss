@@ -1,0 +1,57 @@
+﻿@import "css/globals";
+
+.spec-module .slideshow {
+
+    &__nav-wrapper {
+        text-align: center;
+        margin-top: 30px;
+    }
+    // Pagination
+    &__pagination-wrapper {
+        display: inline-block;
+        vertical-align: middle;
+        max-width: 450px; //10 bullets * (width + margin)
+        max-height: 30px;
+        overflow: hidden;
+        line-height: 30px;
+        position: relative;
+    }
+
+    &__pagination {
+        text-align: left;
+        transform: translate3d(0px, 0px, 0px);
+        transition: .3s;
+    }
+
+    .swiper-pagination-bullet {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        margin: auto 15px;
+        border-radius: 9999px;
+        background-color: $cs-lighter-grey;
+        transition: .3s;
+        cursor: pointer;
+
+        &-active,
+        &:hover {
+            background-color: $cs-primary;
+        }
+    }
+
+    &__pagination-label {
+        font-size: $font-size-h6;
+        font-weight: $font-weight-400;
+        display: inline-block;
+        vertical-align: middle;
+        min-width: 60px;
+
+        &--min {
+            text-align: right;
+        }
+
+        &--max {
+            text-align: left;
+        }
+    }
+}

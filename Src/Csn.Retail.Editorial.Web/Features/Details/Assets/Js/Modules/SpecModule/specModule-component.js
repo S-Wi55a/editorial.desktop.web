@@ -3,6 +3,10 @@
 import Swiper from 'swiper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 import * as View from 'Js/Modules/SpecModule/specModule-view.js'
+import Modal from 'Js/Modules/Modal/modal.js'
+
+window.csn_modal = window.csn_modal || new Modal()
+
 
 // Get Scope and cache selectors
 const scope = document.querySelector('.spec-module-placeholder');
@@ -139,6 +143,13 @@ const paginationHandler = (container, bullets, min, max, text) => {
 
 }
 
+// Data disclaimer handler
+const disclaimerHandler = (el, attr) => {
+
+    const content = decodeURI(getAttribute(el, attr))
+    window.csn_modal.show(View.disclaimer(content))
+
+}
 
 // Toggle class
 const toggleClass = (el, className) => {
@@ -200,6 +211,11 @@ let init = (scope, data) => {
                     (resp, el) => {
                         el.innerHTML = View.item(JSON.parse(resp))
                         toggleClass(scope, loadingClass)
+                        //Add Handler for disclaimer
+                        const modalTrigger = scope.querySelectorAll('[data-disclaimer]');
+                        for (let item of modalTrigger) {
+                            item.addEventListener('click', disclaimerHandler.bind(null, item, 'data-disclaimer'));
+                        }
                     }
                 )  
             }
@@ -211,5 +227,6 @@ let init = (scope, data) => {
 
     // Add handlers for pagination
     paginationHandler(paginationBar, sliderBullets, prevButton, nextButton, 'More')
+
 }
 init(scope, csn_editorial.specModule)

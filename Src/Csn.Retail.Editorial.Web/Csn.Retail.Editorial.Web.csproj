@@ -476,6 +476,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\Hero\hero--modal-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
@@ -504,7 +505,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\Images\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\vendor.js" />
-    <Content Include="Features\Shared\Views\Partials\_SocialMediaLinks.cshtml" />
     <Content Include="Global.asax" />
     <Content Include="postcss.config.js" />
     <Content Include="Web.config">
@@ -581,8 +581,6 @@
     <Content Include="Features\Details\Views\Partials\Content\_Contributors.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_SocialMetaData.cshtml" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.scss" />
-    <Content Include="Features\Shared\Views\Partials\_Modal.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Modal\_ModalData.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Utilities\_utilities.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Settings\_variables-settings.scss" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
@@ -665,6 +663,13 @@
     <Content Include="Features\Details\Views\Partials\Widgets\MoreArticles\_MoreArticleData.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\SpecModule\_SpecModuleData.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleData.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Widgets\Modal\_ModalData.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module-disclaimer.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--slideshow.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--spec-item.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--third-party-offer.scss" />
+    <Content Include="Features\Shared\Assets\Css\Animations\fadeInUp.scss" />
+    <Content Include="Features\Shared\Assets\Css\Animations\fadeIn.scss" />
     <None Include="Web.AwsRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

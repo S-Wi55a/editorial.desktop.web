@@ -30,7 +30,6 @@ let addClass = (el, className, cb) => {
 // remove class
 let removeClass = (el, className, cb) => {
     el.classList.remove(className)
-    console.log(typeof cb)
     if (typeof cb === "function") {
         cb()
     }

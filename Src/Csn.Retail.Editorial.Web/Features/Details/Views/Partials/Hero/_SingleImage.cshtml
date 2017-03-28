@@ -6,14 +6,12 @@
     @foreach (var image in Model.Images.Take(1))
     {
         <div class="slideshow__slide swiper-slide" data-modal-trigger data-modal-image-index="@index">
-            <a href="@Url.Action("Images", "Details", new { imageIndex = index })">
 
                 <img class="slideshow__image"
                      sizes="100vw"
                      src="@image.Url?width=1024&height=683"
                      srcset="@image.Url?width=1024&height=683 1024w, @image.Url?width=768&height=512 768w"
                      alt="@image.AlternateText" />
-            </a>
         </div>
     }
 

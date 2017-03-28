@@ -24,7 +24,20 @@
         };
 
         request.send();
+
+
+
+        //$.get("example.php", function (resp) {
+        //        success(resp)
+        //    })
+        //    .fail(function () {
+        //        error()
+        //    });
 }
 
 
 export { get }
+
+
+
+
