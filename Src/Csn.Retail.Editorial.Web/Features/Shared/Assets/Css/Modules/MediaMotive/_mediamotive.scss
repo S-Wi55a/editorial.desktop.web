@@ -1,39 +1,16 @@
 ﻿.mediamotive-block {
     line-height: 0;
-
-    a {
-        img {
-            display: none;
-        }
-    }
+    font-size: 0;
 }
 
 .mrec-block {
     max-width: 300px;
     line-height: 0;
-
-    iframe {
-        margin-bottom: 35px !important;
-    }
-
-    a {
-        img {
-            display: none;
-        }
-    }
+    font-size: 0;
 }
 
 .mediamotive-leaderboard {
     float: right;
-}
-
-
-#Tile15.mediamotive-block {
-    a {
-        img {
-            display: none;
-        }
-    }
 }
 
 .teads-inread {
@@ -42,4 +19,8 @@
     &+iframe {
         display: none;
     }
+}
+
+#Tile3 {
+    margin-bottom: 35px;
 }

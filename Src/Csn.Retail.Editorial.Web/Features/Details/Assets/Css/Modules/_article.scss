@@ -3,7 +3,7 @@
     padding-right: 30px;
     position: relative;
     float: left;
-    width: calc(100% - (300px + #{$grid-gutter-width/2}));
+    width: calc(100% - 300px);
 
     @include breakpoint($screen-lg) {
         padding-top: 60px;
