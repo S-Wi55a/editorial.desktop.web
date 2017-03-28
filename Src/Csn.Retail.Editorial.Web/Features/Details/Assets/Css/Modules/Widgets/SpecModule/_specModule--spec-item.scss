@@ -8,7 +8,7 @@
     //reset
     p {
         line-height: normal;
-        margin: auto;
+        margin-top: auto;
     }
 
     &__column {
@@ -43,6 +43,15 @@
         color: $cs-dark-grey;
         display: inline-block;
         padding-top: 20px;
+
+        &--price-private,
+        &--price-trade-in {
+            padding-top: 0;
+            font-size: $font-size-h5;
+            color: $cs-dark-grey;
+            font-weight: $font-weight-600;
+            margin-top: 5px;
+        }
     }
 
     &__price-disclaimer {
@@ -56,6 +65,22 @@
         &:hover {
             text-decoration: underline
         }
+    }
+
+    &__price-container {
+        display: inline-block;
+        margin-top: 20px;
+
+        &:nth-of-type(2){
+            float: right;
+        }
+    }
+
+    &__price-label {
+        font-size: $font-size-h6;
+        color: $cs-grey;
+        font-weight: $font-weight-400;
+        display: block;
     }
 
     &__image-container {

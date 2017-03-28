@@ -97,7 +97,7 @@ const item = (data) => {
         `
     } 
 
-    const price = (str, data, index) => {
+    const price = (str, data) => {
         if (data.priceNew) {
             return `
                     <p class="spec-item__price">${data.priceNew.price || ''}</p>
@@ -105,8 +105,14 @@ const item = (data) => {
             `
         } else {
             return `
-                    <dt class="spec-item__spec-item-title">${item.title || ''}</dt>
-                    <dd class="spec-item__spec-item-value">${item.value || ''}</dd>
+                    <div class="spec-item__price-container">
+                        <div class="spec-item__price-label">Private Price Guide</div>
+                        <div class="spec-item__price spec-item__price--price-private">${data.pricePrivate || ''}</div>
+                    </div>
+                    <div class="spec-item__price-container">
+                        <div class="spec-item__price-label">Trade In Price Guide</div>
+                        <div class="spec-item__price spec-item__price--price-trade-in">${data.priceTradeIn || ''}</div>
+                    </div>
             `
         }
     } 
