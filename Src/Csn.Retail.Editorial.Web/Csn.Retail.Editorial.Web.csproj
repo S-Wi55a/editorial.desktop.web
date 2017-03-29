@@ -476,7 +476,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\Hero\hero--modal-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-view--modal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
@@ -521,6 +521,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Features\Details\Assets\Css\Modules\Modal\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
   </ItemGroup>
@@ -643,7 +644,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticles.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\Swiper\_swiper.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\Modal\_modalSlider.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroModalSlider.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_hero.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroSlider.scss" />
     <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
