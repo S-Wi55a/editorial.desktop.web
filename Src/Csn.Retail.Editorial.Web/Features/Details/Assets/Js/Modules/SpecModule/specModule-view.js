@@ -106,12 +106,12 @@ const item = (data) => {
         } else {
             return `
                     <div class="spec-item__price-container">
-                        <div class="spec-item__price-label">Private Price Guide</div>
-                        <div class="spec-item__price spec-item__price--price-private">${data.pricePrivate || ''}</div>
+                        <div class="spec-item__price-label">${data.pricePrivate.heading || ''}</div>
+                        <div class="spec-item__price spec-item__price--price-private">${data.pricePrivate.priceRange || ''}</div>
                     </div>
                     <div class="spec-item__price-container">
-                        <div class="spec-item__price-label">Trade In Price Guide</div>
-                        <div class="spec-item__price spec-item__price--price-trade-in">${data.priceTradeIn || ''}</div>
+                        <div class="spec-item__price-label">${data.priceTradeIn.heading || ''}</div>
+                        <div class="spec-item__price spec-item__price--price-trade-in">${data.priceTradeIn.priceRange || ''}</div>
                     </div>
             `
         }

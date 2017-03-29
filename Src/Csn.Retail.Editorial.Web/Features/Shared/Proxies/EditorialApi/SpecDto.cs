@@ -12,8 +12,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public SpecDataImage Image { get; set; }
         public List<SpecItems> Items { get; set; }
         public PriceNew PriceNew { get; set; }
-        public string PricePrivate { get; set; }
-        public string PriceTradeIn { get; set; }
+        public PricePrivate PricePrivate { get; set; }
+        public PriceTradeIn PriceTradeIn { get; set; }
         public StrattonItems StrattonData { get; set; }
         public string Title { get; set; }
     }
@@ -29,8 +29,19 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Title { get; set; }
         public string Value { get; set; }
     }
+    public class PricePrivate
+    {
+        public string Heading { get; set; }
+        public string PriceRange { get; set; }
+    }
 
+    public class PriceTradeIn
+    {
+        public string Heading { get; set; }
+        public string PriceRange { get; set; }
+    }
     public class PriceNew
+
     {
         public string DisclaimerTitle { get; set; }
         public string DisclaimerText { get; set; }
@@ -83,4 +94,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Url { get; set; }
         public string AlternateText { get; set; }
     }
+
 }
