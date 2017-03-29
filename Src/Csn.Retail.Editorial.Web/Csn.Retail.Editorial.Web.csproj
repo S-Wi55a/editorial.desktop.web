@@ -671,6 +671,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--third-party-offer.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\fadeInUp.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\fadeIn.scss" />
+    <Content Include="Features\Shared\Views\Partials\Hotjar\_hotjarTracking.cshtml" />
     <None Include="Web.AwsRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
