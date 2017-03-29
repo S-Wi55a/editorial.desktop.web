@@ -41,8 +41,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public HeroType Type { get; set; }
         public List<Image> Images { get; set; }
         public string BrightcoveVideoIFrameUrl { get; set; }
-        public string NetworkId { get; set; }
-        public int ImageIndex { get; set; }
     }
 
     public class SocialMetaData

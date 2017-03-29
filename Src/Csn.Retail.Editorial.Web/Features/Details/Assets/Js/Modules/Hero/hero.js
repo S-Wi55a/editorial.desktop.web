@@ -5,7 +5,7 @@
 
 
     if (multipleImageLayout || imageAndVideoLayout || singleImageLayout) {
-        require.ensure(['swiper', 'Js/Modules/Modal/modal.js', 'Js/Modules/Hero/hero--modal-view.js'],
+        require.ensure(['swiper', 'Js/Modules/Modal/modal.js', 'Js/Modules/Hero/hero-view--modal.js'],
     function(require) {
         Swiper = require('swiper')
 
@@ -98,7 +98,7 @@
 
             window.csn_modal = window.csn_modal || new Modal()
 
-            const View = require('Js/Modules/Hero/hero--modal-view.js');
+            const View = require('Js/Modules/Hero/hero-view--modal.js');
             const scope = document.querySelector('.hero');
             //Add event listeners to hero content
             const modalTrigger = scope.querySelectorAll('[data-modal-trigger]');

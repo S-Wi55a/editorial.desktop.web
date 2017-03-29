@@ -1,4 +1,3 @@
-@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
 <div class="clearfix hero hero--imageAndVideo">
@@ -39,7 +38,7 @@
             <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev">prev</button>
             <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next">next</button>
 
-            <a class="slideshow__view-photos" href="@Url.Action("Images", "Details", new {imageIndex = 0})" data-modal-trigger data-modal-image-index="0">View Photos</a>
+            <button class="slideshow__view-photos" data-modal-trigger data-modal-image-index="0">View Photos</button>
         </div>
     </div>
 </div>

@@ -7,6 +7,7 @@
     @include fadeIn();
     animation-duration: .666s;
     animation-name: fadeIn;
+    max-width: 1024px; // Largest Image Size
 
     &__slides {
     }
