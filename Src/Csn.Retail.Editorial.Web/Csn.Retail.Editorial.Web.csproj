@@ -672,6 +672,7 @@
     <Content Include="Features\Shared\Assets\Css\Animations\fadeIn.scss" />
     <Content Include="Features\Details\Views\Partials\Content\_Location_Type_Model.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_ltm.scss" />
+    <Content Include="Features\Shared\Views\Partials\Hotjar\_hotjarTracking.cshtml" />
     <None Include="Web.AwsRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
