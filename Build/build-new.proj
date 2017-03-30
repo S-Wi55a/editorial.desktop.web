@@ -297,6 +297,6 @@
     <Target Name="Build" DependsOnTargets="Compile"/>
     <Target Name="Test" DependsOnTargets="UnitTests"/>
 
-    <Target Name="Deploy" DependsOnTargets="Artifact;CopyOutputToDeploy;CreateNugetPackage;"/>
+    <Target Name="Deploy" DependsOnTargets="Artifact;CreateNugetPackage;"/>
 	<Target Name="DeployFromArtifacts" DependsOnTargets="TransformConfig;GenerateVersionFile;AppendGitDetailsInVersionFile;CopyOutputToDeploy"/>
 </Project>
