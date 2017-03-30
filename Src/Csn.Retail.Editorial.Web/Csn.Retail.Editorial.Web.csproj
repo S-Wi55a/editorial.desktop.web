@@ -521,7 +521,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Features\Details\Assets\Css\Modules\Modal\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
   </ItemGroup>
@@ -569,7 +568,7 @@
     <Content Include="Features\Details\Views\Partials\_Main.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\Brightcove\_brightcove-video-player.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\_article.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Content\_article.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
@@ -671,6 +670,8 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--third-party-offer.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\fadeInUp.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\fadeIn.scss" />
+    <Content Include="Features\Details\Views\Partials\Content\_Location_Type_Model.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\Content\_ltm.scss" />
     <None Include="Web.AwsRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

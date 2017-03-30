@@ -1,0 +1,33 @@
+﻿.ltm {
+    margin: 15px auto 30px;
+
+    @include breakpoint($screen-lg) {
+        margin: 30px auto 45px;
+    }
+
+    &__item {
+        display: inline-block;
+        padding: 0 30px;
+        border-left: 1px solid $cs-lightest-grey;
+        margin-top: 15px;
+    }
+
+    &__heading {
+        font-size: $font-size-h6;
+        color: $cs-grey;
+
+        @include breakpoint($screen-lg) {
+            font-size: $font-size-h5;
+        }
+    }
+
+    &__value {
+        font-size: $font-size-h5;
+        color: $cs-dark-grey;
+        font-weight: $font-weight-400;
+
+        @include breakpoint($screen-lg) {
+            @include p();
+        }
+    }
+}

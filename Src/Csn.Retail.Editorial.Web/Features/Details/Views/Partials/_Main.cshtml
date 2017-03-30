@@ -21,6 +21,7 @@
         <div class="article__summary">
             <p>@Model.Summary</p>
         </div>
+        @{ Html.RenderPartial("Partials/Content/_Location_Type_Model", Model); }
         @{ Html.RenderPartial("Partials/Content/_ArticleBody", Model); }
         <div class="article__share article__share--bottom cf">
             @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
