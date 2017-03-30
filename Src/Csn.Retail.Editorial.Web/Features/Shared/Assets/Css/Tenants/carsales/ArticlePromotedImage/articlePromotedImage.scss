@@ -1,0 +1,18 @@
+﻿// Article Promoted Image
+$article-promoted-image: 'images/carsales/poweredByMotoring.png';
+
+@mixin article-promoted-image() {
+    background-image: url($article-promoted-image);
+    background-size: 226px 28px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 226px;
+    height: 28px;
+    margin-top: 27px;
+    float: right;
+
+    @media (min-width: 1200px) {
+        height: 37px;
+        margin-top: 31px;
+    }
+}

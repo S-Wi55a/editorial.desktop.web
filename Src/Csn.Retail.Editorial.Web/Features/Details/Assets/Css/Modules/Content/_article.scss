@@ -211,7 +211,16 @@
     &__pricing {
         @include h2();
         margin-top: 1em;
+        display: inline-block;
     }
+
+    &__promotion {
+
+        @if($article-promoted-image != "") {
+            @include article-promoted-image();
+        }
+    }
+
 
     &__quote {
         @include blockquote();

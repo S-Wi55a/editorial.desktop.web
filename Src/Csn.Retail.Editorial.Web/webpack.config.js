@@ -17,7 +17,14 @@ var glob = require('glob'),
 const listofTenants = [
     'carsales',
     'constructionsales',
-    'bikesales'
+    'bikesales',
+    'carpoint',
+    'boatsales',
+    'boatpoint',
+    'trucksales',
+    'caravancampingsales',
+    'equipmentsales',
+    'farmmachinerysales',
 ];
 
 //---------------------------------------------------------------------------------------------------------
@@ -112,7 +119,7 @@ module.exports = function () {
                         options: {
                             includePaths: listOfPaths,
                             sourceMap: true,
-                            data: '@import "Css/Settings/_settings--' + tenant + '.scss";'
+                            data: '@import "Css/Tenants/' + tenant + '/' + tenant +'.scss";'
                         }
                     }
         ]

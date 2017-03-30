@@ -486,11 +486,12 @@
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
-    <Content Include="Features\Shared\Assets\Images\logo-bikesales.svg" />
-    <Content Include="Features\Shared\Assets\Images\logo-carsales.svg" />
-    <Content Include="Features\Shared\Assets\Images\logo-constructionsales.svg" />
-    <Content Include="Features\Shared\Assets\Images\spinner-dark.svg" />
-    <Content Include="Features\Shared\Assets\Images\spinner-light.svg" />
+    <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
+    <Content Include="Features\Shared\Assets\Images\Carsales\logo-carsales.svg" />
+    <Content Include="Features\Shared\Assets\Images\Carsales\poweredByMotoring.png" />
+    <Content Include="Features\Shared\Assets\Images\Constructionsales\logo-constructionsales.svg" />
+    <Content Include="Features\Shared\Assets\Images\Shared\spinner-dark.svg" />
+    <Content Include="Features\Shared\Assets\Images\Shared\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Ajax\ajax.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
@@ -521,9 +522,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Features\Details\Assets\Css\Modules\Modal\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
+    <Folder Include="Features\Shared\Assets\Images\Boatpoint\" />
+    <Folder Include="Features\Shared\Assets\Images\Boatsales\" />
+    <Folder Include="Features\Shared\Assets\Images\Caravancampingsales\" />
+    <Folder Include="Features\Shared\Assets\Images\Carpoint\" />
+    <Folder Include="Features\Shared\Assets\Images\Equipmentsales\" />
+    <Folder Include="Features\Shared\Assets\Images\Farmmachinerysales\" />
+    <Folder Include="Features\Shared\Assets\Images\Trucksales\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -569,7 +576,7 @@
     <Content Include="Features\Details\Views\Partials\_Main.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\Brightcove\_brightcove-video-player.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\_article.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Content\_article.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
@@ -611,9 +618,6 @@
     <Content Include=".eslintrc.json" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\EditorRatings\_procon.scss" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
-    <Content Include="Features\Shared\Assets\Css\Settings\_settings--carsales.scss" />
-    <Content Include="Features\Shared\Assets\Css\Settings\_settings--bikesales.scss" />
-    <Content Include="Features\Shared\Assets\Css\Settings\_settings--constructionsales.scss" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
@@ -672,6 +676,28 @@
     <Content Include="Features\Shared\Assets\Css\Animations\fadeInUp.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\fadeIn.scss" />
     <Content Include="Features\Shared\Views\Partials\Hotjar\_hotjarTracking.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Content\_articlePromotion.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\bikesales\Settings\_settings--bikesales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\carsales\Settings\_settings--carsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\constructionsales\Settings\_settings--constructionsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\bikesales\bikesales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\carsales\carsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\constructionsales\constructionsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\carpoint\carpoint.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\carpoint\Settings\_settings--carpoint.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\boatsales\boatsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\boatsales\Settings\_settings--boatsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\boatpoint\boatpoint.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\boatpoint\Settings\_settings--boatpoint.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\trucksales\trucksales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\trucksales\Settings\_settings--trucksales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\caravancampingsales\caravancampingsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\caravancampingsales\Settings\_settings--caravancampingsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\equipmentsales\equipmentsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\equipmentsales\Settings\_settings--equipmentsales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\farmmachinerysales\farmmachinerysales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\farmmachinerysales\Settings\_settings--farmmachinerysales.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\carsales\ArticlePromotedImage\articlePromotedImage.scss" />
     <None Include="Web.AwsRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

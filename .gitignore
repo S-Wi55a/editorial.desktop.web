@@ -69,8 +69,4 @@ Src/Csn.Retail.Editorial.Web/Csn.Retail.Editorial.Web.csproj.user
 .awspublish-resource.csnstatic.csstg.com.au
 .happypack
 
-# Images
-**/*.gif
-**/*.png
-**/*.jpg
-!fonts/**/*.svg
+
