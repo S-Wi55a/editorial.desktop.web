@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>Car Squad</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Carsales Static page Website</description>
+    <description>Carsales Editorial Website</description>
   </metadata>
   <files>
     <file src="Output\**" />

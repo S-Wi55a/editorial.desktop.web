@@ -219,7 +219,7 @@
 				<Message Text="Make the repo dev ready..." Importance="high"/>
 	</Target>
 
-	<Target Name="Artifact" DependsOnTargets="NugetRestore;CompileBuild;UnitTests;FrontEndBuild;CopySourceToOutput"/>
+	<Target Name="Artifact" DependsOnTargets="NugetRestore;CompileBuild;UnitTests;FrontEndBuild;CopySourceToOutputNoTransform"/>
 
 	<!-- LOAD CUSTOM TASKS -->
 	<Target Name="Compile" Condition="$(Configuration) != 'Feature'">
