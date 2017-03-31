@@ -83,13 +83,8 @@ function getEntryFiles(tenant) {
 
 
 // Remove dist folder
-rimraf('./dist',
-    function(err) {
-        if (err) {
-            throw err;
-        }
-        // done
-    });
+rimraf('./dist', function (err) { if (err) { throw err; } });
+
 
 module.exports = function () {
 
