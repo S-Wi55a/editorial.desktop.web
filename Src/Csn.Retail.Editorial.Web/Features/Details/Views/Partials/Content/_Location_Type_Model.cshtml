@@ -1,0 +1,34 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+    
+<div class="ltm">
+    @{
+        if (Model.MakeModelHeading != null)
+        {
+            <div class="ltm__item">
+                <div class="ltm__heading">Model Tested</div>
+                <div class="ltm__value">@Model.MakeModelHeading</div>
+            </div>
+        }
+
+    }
+    @{
+        if (Model.SubType != null)
+        {
+            <div class="ltm__item">
+                <div class="ltm__heading">Review Type</div>
+                <div class="ltm__value">@Model.SubType</div>
+            </div>
+        }
+
+    }
+    @{
+        if (Model.ReviewLocation != null)
+        {
+            <div class="ltm__item">
+                <div class="ltm__heading">Location</div>
+                <div class="ltm__value">@Model.ReviewLocation</div>
+            </div>
+        }
+
+    }
+</div>
