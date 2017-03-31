@@ -161,7 +161,7 @@
 				SourceFolder="$(TargetProjectDir)"
 				DestinationFolder="$(OutputDir)"
 				Subdirectories="true"
-				ExcludeFolders="obj;logs;Properties;node_modules;"
+				ExcludeFolders="obj;logs;Properties;node_modules;bower_components;.happypack;.vscode;dist;Assets;"
 				ExcludeFiles="*.cs;*.csproj*;*.less;packages.config;package.json;Project_Readme.html;gulpfile.js;*.less"
 				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
 				/>
