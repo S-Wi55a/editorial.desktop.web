@@ -1,8 +1,7 @@
 ﻿const container = (data) => {
 
-    if(!Array.isArray(data)){return ''}
 
-    const filtersLength = data.length
+    const filtersLength = data.moreArticleItems.length
     const moreArticlesPath = "/editorial/api/v1/more-articles/?uri=";
 
 
@@ -20,7 +19,7 @@
         <div class="more-articles">
             <div class="container">
                 <div class="more-articles__filters">
-                    ${data.map((filter, index) => filterView`${filter}${index}`).join('')}
+                    ${data.moreArticleItems.map((filter, index) => filterView`${filter}${index}`).join('')}
                 </div>
                 <div class="more-articles__frame swiper-container">
                     <div class="more-articles__slides swiper-wrapper">
@@ -28,11 +27,11 @@
                 </div>
 
                 <div class="more-articles__nav">
-                    <button class="more-articles__button more-articles__button--show-hide">Show</button>
+                    <button class="more-articles__button more-articles__button--show-hide">${data.headings.showHeading || 'Show'}</button>
                     <button class="more-articles__nav-button more-articles__nav-button--prev">Prev</button>
                     <button class="more-articles__nav-button more-articles__nav-button--next" 
                         data-more-articles-path="${moreArticlesPath || ''}" 
-                        data-more-articles-query="${data[0].uri || ''}">Next</button>
+                        data-more-articles-query="${data.moreArticleItems[0].uri || ''}">Next</button>
                 </div>
             </div>
         </div>

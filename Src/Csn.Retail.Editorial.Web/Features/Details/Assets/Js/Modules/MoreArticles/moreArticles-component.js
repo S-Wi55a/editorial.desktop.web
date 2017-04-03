@@ -5,6 +5,10 @@ import * as View from 'Js/Modules/MoreArticles/moreArticles-view.js'
 import ScrollMagic from 'ScrollMagic'
 
 let userPreference = false
+let showText = csn_editorial.moreArticles.headings.showHeading
+let hideText = csn_editorial.moreArticles.headings.hideHeading
+
+
 
 // Init More Articles Slider
 let initMoreArticlesSlider = (selector, options) => {
@@ -152,7 +156,7 @@ let filterHandler = (e, ...args) => {
     }
 
     if (!scope.self.classList.contains('show')) {
-        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')])
+        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
     }
 }
 
@@ -184,13 +188,13 @@ let nextButtonHandler = (slider, offset, cb) => {
 let buttonShowHideHandler = (scope) => {
     //set user prefernce here
     if (scope.self.classList.contains('show')) {
-        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')])
+        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
         userPreference = true
     } else if (userPreference) {
         userPreference = false
-        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')])
+        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
     } else {
-        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')])
+        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
     }
 
 }
@@ -237,7 +241,7 @@ let scrollMagic = (scope) => {
             ? this.trigger("enter")
             : null;
     })
-    .on("enter", scrollHandler.bind(null, scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, 'Show'), setText.bind(null, scope.moreArticlesShowHideButton, 'Hide')]))
+    .on("enter", scrollHandler.bind(null, scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]))
     .addTo(window.scrollMogicController);
 }
 

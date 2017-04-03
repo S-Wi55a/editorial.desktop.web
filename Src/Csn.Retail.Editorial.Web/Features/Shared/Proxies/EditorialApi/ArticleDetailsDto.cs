@@ -32,12 +32,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string DateAvailable { get; set; }
         public MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
-        public List<MoreArticleItem> MoreArticleData { get; set; }
+        public MoreArticleItem MoreArticleData { get; set; }
         public SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
         public GoogleAnalyticsDetailsDto GoogleAnalyticsDetailsData { get; set; }
         public StockListingData StockListingData { get; set; }
         public SpecData SpecData { get; set; }
+        public AlsoConsiderData AlsoConsiderData { get; set; }
 
     }
 
@@ -237,6 +238,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     {
         public string Uri { get; set; }
         public string Description { get; set; }
+    }
+
+    public class AlsoConsiderData
+    {
+        public string Uri { get; set; }
     }
 
 }
