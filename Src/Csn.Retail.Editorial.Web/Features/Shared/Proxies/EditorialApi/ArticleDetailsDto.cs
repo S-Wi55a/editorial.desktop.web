@@ -185,6 +185,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public enum HeroType
     {
         SingleImage,
+        DoubleImage,
         MultipleImages,
         Video,
         ImagesAndVideo
