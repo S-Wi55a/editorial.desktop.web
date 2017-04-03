@@ -1,0 +1,12 @@
+﻿@using Newtonsoft.Json
+@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+
+
+@if (Model.AlsoConsiderData != null)
+{
+    <script>
+        var csn_editorial = csn_editorial || {};
+        csn_editorial.alsoConsider = @Html.Raw(JsonConvert.SerializeObject(Model.AlsoConsiderData)) || null;
+    </script>
+    <div class="also-consider-placeholder"></div>
+}

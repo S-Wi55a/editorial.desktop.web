@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Csn.Hystrix.RestClient;
 using Csn.Hystrix.RestClient.Dtos;
+using Csn.Retail.Editorial.Web.Features.AlsoConsider;
 using Csn.Retail.Editorial.Web.Features.MoreArticles;
 using Csn.Retail.Editorial.Web.Features.Spec;
 using Csn.Retail.Editorial.Web.Features.StockForSale;
@@ -14,6 +15,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         Task<HystrixRestResponse<MoreArticlesDto>> GetLatestArticlesAsync(MoreArticlesQuery query);
         Task<HystrixRestResponse<StockForSaleDto>> GetStockListingAsync(StockForSaleQuery query);
         Task<HystrixRestResponse<SpecDto>> GetSpecAsync(SpecQuery query);
+        Task<HystrixRestResponse<AlsoConsiderDto>> GetAlsoConsiderAsync(AlsoConsiderQuery query);
+
 
     }
 
@@ -59,6 +62,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
             var response = await _restClient.HostName(HostName)
                 .Path(query.Uri)
                 .GetAsync<SpecDto>();
+
+            return response;
+        }
+        public async Task<HystrixRestResponse<AlsoConsiderDto>> GetAlsoConsiderAsync(AlsoConsiderQuery query)
+        {
+            var response = await _restClient.HostName(HostName)
+                .Path(query.Uri)
+                .GetAsync<AlsoConsiderDto>();
 
             return response;
         }

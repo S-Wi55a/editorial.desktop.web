@@ -3,23 +3,23 @@ using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.SimpleCqrs;
 
-namespace Csn.Retail.Editorial.Web.Features.Spec
+namespace Csn.Retail.Editorial.Web.Features.AlsoConsider
 {
     [AutoBind]
-    public class SpecQueryHandler : IAsyncQueryHandler<SpecQuery, SpecDto>
+    public class AlsoConsiderQueryHandler : IAsyncQueryHandler<AlsoConsiderQuery, AlsoConsiderDto>
     {
         private readonly IEditorialApiProxy _editorialApiProxy;
 
 
-        public SpecQueryHandler(IEditorialApiProxy editorialApiProxy)
+        public AlsoConsiderQueryHandler(IEditorialApiProxy editorialApiProxy)
         {
             _editorialApiProxy = editorialApiProxy;
         }
 
 
-        public async Task<SpecDto> HandleAsync(SpecQuery query)
+        public async Task<AlsoConsiderDto> HandleAsync(AlsoConsiderQuery query)
         {
-            var result = await _editorialApiProxy.GetSpecAsync(query);
+            var result = await _editorialApiProxy.GetAlsoConsiderAsync(query);
 
             if (!result.Succeed)
             {
@@ -30,5 +30,3 @@ namespace Csn.Retail.Editorial.Web.Features.Spec
         }
     }
 }
-
-

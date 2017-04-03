@@ -354,6 +354,9 @@
     <Compile Include="App_Start\SetupGlobalFilterTask.cs" />
     <Compile Include="App_Start\SetupDefaultRouteTask.cs" />
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
+    <Compile Include="Features\AlsoConsider\AlsoConsiderController.cs" />
+    <Compile Include="Features\AlsoConsider\AlsoConsiderQuery.cs" />
+    <Compile Include="Features\AlsoConsider\AlsoConsiderQueryHandler.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
@@ -367,6 +370,7 @@
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
+    <Compile Include="Features\Shared\Proxies\EditorialApi\AlsoConsiderDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
     <Compile Include="Features\Spec\SpecController.cs" />
@@ -475,6 +479,8 @@
     <Content Include="editorial\content\scripts\webtrends_custom.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Features\Details\Assets\details-page.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-view--modal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
@@ -522,7 +528,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Features\AlsoConsider\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Images\Boatpoint\" />
@@ -701,6 +706,8 @@
     <Content Include="Features\Shared\Assets\Css\Tenants\farmmachinerysales\farmmachinerysales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\farmmachinerysales\Settings\_settings--farmmachinerysales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\carsales\ArticlePromotedImage\articlePromotedImage.scss" />
+    <Content Include="Features\Details\Views\Partials\Widgets\AlsoConsider\_AlsoConsider.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <None Include="Web.AwsRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
