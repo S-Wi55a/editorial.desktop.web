@@ -598,7 +598,7 @@
     <Content Include="Features\Shared\Assets\Css\Utilities\_utilities.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Settings\_variables-settings.scss" />
     <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
-    <Content Include="Features\Details\Assets\Css\Modules\_author.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Content\_author.scss" />
     <Content Include="Features\Shared\Assets\Css\Buttons\_buttons.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\_share-social.scss" />
     <Content Include="Features\Shared\Assets\Fonts\fonts.scss" />

@@ -43,8 +43,6 @@ let mediaMotive = function () {
         },
         'Media-Motive');
 }
-
-/* window is ready */
 loaded.then(function () {
     mediaMotive();
 });
@@ -71,7 +69,7 @@ loaded.then(function () {
     moreArticles(document);
 });
 
-//Lazy load More articles JS
+//Lazy load Stock For Sale JS
 let stockForSale = function (d) {
 
     if (d.querySelector('.stock-for-sale-placeholder')) {
@@ -103,6 +101,21 @@ let specModule = function (d) {
 }
 loaded.then(function () {
     specModule(document);
+});
+
+//Lazy load Also Consider JS
+let alsoConsider = function (d) {
+
+    if (d.querySelector('.also-consider-placeholder')) {
+        require.ensure(['./Js/Modules/alsoConsider/alsoConsider-component.js'],
+            function () {
+                require('./Js/Modules/alsoConsider/alsoConsider-component.js');
+            },
+            'Also-Consider-Component');
+    }
+}
+loaded.then(function () {
+    alsoConsider(document);
 });
 
 //Lazy load Disqus
