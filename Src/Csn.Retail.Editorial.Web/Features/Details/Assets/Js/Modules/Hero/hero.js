@@ -44,7 +44,7 @@
 
                 //Breakpoints
                 breakpoints: {
-                    1200: {
+                    1199: {
                         slidesPerView: 2,
                         //Slides grid
                         centeredSlides: false
@@ -83,7 +83,7 @@
 
                 //Breakpoints
                 breakpoints: {
-                    1200: {
+                    1199: {
                         slidesPerView: 1,
                     }
                 }

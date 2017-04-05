@@ -708,6 +708,7 @@
     <Content Include="Features\Shared\Assets\Css\Tenants\carsales\ArticlePromotedImage\articlePromotedImage.scss" />
     <Content Include="Features\Details\Views\Partials\Widgets\AlsoConsider\_AlsoConsider.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
+    <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
     <None Include="Web.AwsRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -7,5 +7,5 @@ $cs-primary: #009DDC;
 
 // Logo
 $logo-header: 'images/carpoint/logo-carpoint.svg';
-$logo-header-width: 160px; // max width - leaderboard
-$logo-header-height: 70px;
+$logo-header-width: 234px; // max width = width(992) - leaderboard(728) - padding(30)
+$logo-header-height: 90px; // hieght limits width b/c aspect ratio
