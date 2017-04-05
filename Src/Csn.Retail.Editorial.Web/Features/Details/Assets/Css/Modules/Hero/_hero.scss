@@ -30,8 +30,11 @@
 .hero--singleVideo {
     width: calc(100% - (300px + #{$grid-gutter-width/2}));
     float: left;
-    padding-right: 45px;
-    padding-left: 15px;
+    padding-right: 0;
+
+    @include breakpoint($screen-lg) {
+        padding-right: 15px;
+    }
 }
 
 .hero.hero--imageAndVideo {
