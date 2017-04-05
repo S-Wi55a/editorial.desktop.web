@@ -21,9 +21,6 @@
                 watchSlidesProgress: true,
                 watchSlidesVisibility: true,
 
-                //Slides grid
-                centeredSlides: true,
-
                 //Images
                 preloadImages: false,
                 lazyLoading: true,
