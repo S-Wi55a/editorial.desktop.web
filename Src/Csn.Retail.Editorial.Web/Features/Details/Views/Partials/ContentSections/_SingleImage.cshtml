@@ -2,11 +2,12 @@
 
 <div>
     <img class="article__img"
-         srcset="@Model.Image.Url?width=668 1200w, @Model.Image.Url?width=477 992w"
-         sizes="100vw"
-         src="@Model.Image.Url?width=668"
+         sizes="(max-width: 1200px) 617px, 825px"
+         src="@Model.Image.Url?width=825&height=550"
+         srcset="@Model.Image.Url?width=617&height=411 617w, @Model.Image.Url?width=825&height=550 825w"
          alt="@Model.Image.AlternateText" />
-@if (Model.Image.Caption != null)
+
+    @if (Model.Image.Caption != null)
 {
     <div class="article__img-caption">@Model.Image.Caption</div>
 }
