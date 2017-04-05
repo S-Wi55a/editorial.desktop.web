@@ -15,7 +15,8 @@
     }
 }
 
-.hero--singleImage {
+.hero--singleImage,
+.hero--doubleImage {
     width: calc(100% - (300px + #{$grid-gutter-width/2}));
     float: left;
     padding-right: 15px;

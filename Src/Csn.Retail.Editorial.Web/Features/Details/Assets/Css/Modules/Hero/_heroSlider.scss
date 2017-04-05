@@ -154,6 +154,27 @@
         }
     }
 
+    &--double-image {
+        padding-top: calc(#{percentage(2/3)} - 1px); //Aspect ratio / number of images
+        .slideshow {
+
+            &__view-photos {
+                display: none;
+            }
+
+            &__nav {
+                opacity: 0;
+                transition: opacity .3s;
+            }
+        }
+
+        &:hover {
+            .slideshow__nav {
+                opacity: 1;
+            }
+        }
+    }
+
     &--image-video {
         padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
         .slideshow {

@@ -709,6 +709,7 @@
     <Content Include="Features\Details\Views\Partials\Widgets\AlsoConsider\_AlsoConsider.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
+    <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
     <None Include="Web.AwsRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

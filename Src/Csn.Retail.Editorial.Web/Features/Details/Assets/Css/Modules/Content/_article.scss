@@ -240,8 +240,8 @@
 
 
 // Single Image
-
 .article-type--singleimage,
+.article-type--doubleimage,
 .article-type--video {
     position: relative;
     width: $screen-md;
@@ -263,16 +263,18 @@
     }
 }
 
-.article-type--singleimage {
+.article-type--singleimage,
+.article-type--doubleimage {
     .article {
         &__heading {
             position: absolute;
             top: 0;
             transform: translateY(-100%);
-            padding: 50px 30px 25px 30px;
+            padding: 150px 30px 25px 30px;
             color: $cs-white;
             width: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(252,252,252,0) 1%,rgba(0,0,0,0.7) 100%);
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(252,252,252,0) 1%,rgba(0,0,0,0.85) 100%);
+            z-index: 1;
 
             @include breakpoint($screen-lg) {
                 width: calc(100% - 15px);

@@ -271,9 +271,9 @@ let main = (scope = {}) => {
     const slider = initMoreArticlesSlider(scope.moreArticlesFrame, options);
 
     const content = () => {
-        return updateContent(scope.moreArticlesFrame,
+        return updateContent(
+            scope.moreArticlesFrame,
             scope.moreArticlesNextCtrl,
-            Ajax.get,
             scope.moreArticlesSlideContainer,
             () => {
                 slider.update();

@@ -2,9 +2,10 @@
     const multipleImageLayout = document.querySelector('.hero--multipleImages')
     const imageAndVideoLayout = document.querySelector('.hero--imageAndVideo')
     const singleImageLayout = document.querySelector('.hero--singleImage')
+    const doubleImageLayout = document.querySelector('.hero--doubleImage')
 
 
-    if (multipleImageLayout || imageAndVideoLayout || singleImageLayout) {
+    if (multipleImageLayout || imageAndVideoLayout || singleImageLayout || doubleImageLayout) {
         require.ensure(['swiper', 'Js/Modules/Modal/modal.js', 'Js/Modules/Hero/hero-view--modal.js'],
     function(require) {
         Swiper = require('swiper')
@@ -88,7 +89,39 @@
                     }
                 }
             })
+        } else if (doubleImageLayout) {
+            const heroSwiper = new Swiper('.hero .slideshow__container', {
+                // Optional parameters
+                loop: true,
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+
+                //Progress
+                watchSlidesProgress: true,
+                watchSlidesVisibility: true,
+
+                //Images
+                preloadImages: false,
+                lazyLoading: true,
+                lazyLoadingInPrevNext: true,
+                lazyLoadingInPrevNextAmount: 2, // Can't be less than slidesPerView
+
+                // Navigation arrows
+                nextButton: '.slideshow__nav--next',
+                prevButton: '.slideshow__nav--prev',
+
+                //Namespace
+                containerModifierClass: 'slideshow',
+                wrapperClass: 'slideshow__slides',
+                slideClass: 'slideshow__slide',
+                lazyLoadingClass: 'slideshow__image',
+                lazyStatusLoadingClass: 'slideshow__image--loading',
+                lazyStatusLoadedClass: 'slideshow__image--loaded',
+                lazyPreloaderClass: 'slideshow__image--preloader',
+
+            })
         }
+
 
         let modalContainer = document.querySelector('._c-modal');
         if (modalContainer) {
