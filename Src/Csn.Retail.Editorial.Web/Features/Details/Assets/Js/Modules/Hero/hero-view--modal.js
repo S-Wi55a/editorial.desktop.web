@@ -7,9 +7,7 @@
             return `
                 <div class="slideshow__slide swiper-slide">
                     <img class="slideshow__image"
-                            sizes="100vw"
                             src="${item.url}?width=1024&height=683"
-                            srcset="${item.url}?width=1024&height=683 1024w, ${item.url}?width=768&height=512 768w"
                             alt="${item.alternateText || ''}" />
                 </div>
             `
@@ -18,8 +16,6 @@
                 <div class="slideshow__slide swiper-slide">
                     <img class="slideshow__image"
                             data-src="${item.url}width=1024&height=683"
-                            data-srcset="${item.url}?width=1024&height=683 1024w, ${item.url}?width=768&height=512 768w"
-                            sizes="100vw"
                             alt="${item.alternateText || ''}" />
                 </div>
             `
