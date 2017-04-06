@@ -4,6 +4,9 @@
     padding-left: 0;
     padding-right: 0;
     min-height: 0;
+
+    @include fadeIn();
+    animation: fadeIn 1s ease-in;
 }
 
 .hero__imageContainer {
