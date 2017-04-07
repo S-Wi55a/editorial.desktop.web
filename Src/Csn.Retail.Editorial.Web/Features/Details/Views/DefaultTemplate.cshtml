@@ -19,7 +19,11 @@
 
 @section TopScripts {
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("react", LoadType.Defer)
+    @Html.AssetJs("react-test", LoadType.Defer)
 }
+
+<div id="react-test-container"></div>
 
 @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
 

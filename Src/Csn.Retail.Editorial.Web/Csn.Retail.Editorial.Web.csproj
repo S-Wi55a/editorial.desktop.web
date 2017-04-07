@@ -490,6 +490,8 @@
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
+    <Content Include="Features\Details\Assets\Js\react\counter.js" />
+    <Content Include="Features\Details\Assets\Js\react\react.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
