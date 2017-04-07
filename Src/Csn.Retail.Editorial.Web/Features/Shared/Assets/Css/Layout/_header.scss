@@ -3,11 +3,11 @@
     padding-bottom: 15px;
     min-height: 120px;
 
-    @include breakpoint($screen-lg) {
+    /*@include breakpoint($screen-lg) {
         padding-top: 30px;
         padding-bottom: 30px;
         min-height: 150px;
-    }
+    }*/
 
     &__logo {
         background-color: transparent;
