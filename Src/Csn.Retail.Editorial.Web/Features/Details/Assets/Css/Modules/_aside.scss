@@ -8,6 +8,6 @@
     width: 300px + $grid-gutter-width/2;
 
     @include breakpoint($screen-lg) {
-        padding-top: 60px;
+        padding-top: 45px;
     }
 }
