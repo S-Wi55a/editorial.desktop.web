@@ -2,10 +2,7 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Details.Models;
-using Csn.Retail.Editorial.Web.Features.Home;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Details

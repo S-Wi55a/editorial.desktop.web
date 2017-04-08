@@ -20,7 +20,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
         public void Run(IMapperConfigurationExpression cfg)
         {
             cfg.CreateMap<ArticleDetailsDto, ArticleViewModel>()
-                .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)));
+                .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)))
+                .ForMember(dest => dest.UseDropCase, opt => opt.ResolveUsing<UseDropCaseResolver>());
 
             // Social Meta Data
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();
@@ -44,8 +45,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 
             // Google Analytics Data
             cfg.CreateMap<GoogleAnalyticsDetailsDto, GoogleAnalyticsDetailsData>();
-
-
         }
     }
 }
