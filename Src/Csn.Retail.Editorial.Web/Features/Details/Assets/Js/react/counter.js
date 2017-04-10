@@ -13,7 +13,7 @@ class Counter extends React.Component {
                     Amount: {this.state.amount}
                 </span>
                 <button onClick={() => this.setState(addOne)}>
-                    Add teo
+                    Add two
         </button>
             </div>
         );
