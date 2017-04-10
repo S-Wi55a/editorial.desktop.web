@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration.Configuration;
-using System.Security.Cryptography;
-using System.Xml.Serialization;
-using Csn.Retail.Editorial.Web.Features.Details.Models;
+﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
@@ -175,6 +170,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string SiteName { get; set; }
         public List<string> SocialSharingNetworks { get; set; }
 
+    }
+
+    public class SeoData
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string CanonicalUrl { get; set; }
+        public string AlternateUrl { get; set; }
+        public string Keywords { get; set; }
     }
 
     public enum ArticleTemplateType

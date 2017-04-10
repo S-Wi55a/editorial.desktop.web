@@ -12,15 +12,19 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     public class MappingSetupTask : IMappingSetupTask
     {
         private readonly IHeroSectionMapper _heroSectionMapper;
+        private readonly ISeoDataMapper _seoDataMapper;
 
-        public MappingSetupTask(IHeroSectionMapper heroSectionMapper)
+        public MappingSetupTask(IHeroSectionMapper heroSectionMapper,
+                                ISeoDataMapper seoDataMapper)
         {
             _heroSectionMapper = heroSectionMapper;
+            _seoDataMapper = seoDataMapper;
         }
         public void Run(IMapperConfigurationExpression cfg)
         {
             cfg.CreateMap<ArticleDetailsDto, ArticleViewModel>()
-                .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)));
+                .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)))
+                .ForMember(dest => dest.SeoData, opt => opt.MapFrom(src => _seoDataMapper.Map(src.SeoData)));
 
             // Social Meta Data
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();
@@ -44,8 +48,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 
             // Google Analytics Data
             cfg.CreateMap<GoogleAnalyticsDetailsDto, GoogleAnalyticsDetailsData>();
-
-
         }
     }
 }
