@@ -494,11 +494,18 @@
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
+    <Content Include="Features\Shared\Assets\Images\Boatpoint\logo-boatpoint.svg" />
+    <Content Include="Features\Shared\Assets\Images\Boatsales\logo-boatsales.svg" />
+    <Content Include="Features\Shared\Assets\Images\Caravancampingsales\logo-caravancampingsales.svg" />
+    <Content Include="Features\Shared\Assets\Images\Carpoint\logo-carpoint.svg" />
     <Content Include="Features\Shared\Assets\Images\Carsales\logo-carsales.svg" />
     <Content Include="Features\Shared\Assets\Images\Carsales\poweredByMotoring.png" />
     <Content Include="Features\Shared\Assets\Images\Constructionsales\logo-constructionsales.svg" />
+    <Content Include="Features\Shared\Assets\Images\Equipmentsales\logo-equipmentsales.svg" />
+    <Content Include="Features\Shared\Assets\Images\Farmmachinerysales\logo-farmmachinerysales.svg" />
     <Content Include="Features\Shared\Assets\Images\Shared\spinner-dark.svg" />
     <Content Include="Features\Shared\Assets\Images\Shared\spinner-light.svg" />
+    <Content Include="Features\Shared\Assets\Images\Trucksales\logo-trucksales.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Ajax\ajax.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
@@ -531,13 +538,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
-    <Folder Include="Features\Shared\Assets\Images\Boatpoint\" />
-    <Folder Include="Features\Shared\Assets\Images\Boatsales\" />
-    <Folder Include="Features\Shared\Assets\Images\Caravancampingsales\" />
-    <Folder Include="Features\Shared\Assets\Images\Carpoint\" />
-    <Folder Include="Features\Shared\Assets\Images\Equipmentsales\" />
-    <Folder Include="Features\Shared\Assets\Images\Farmmachinerysales\" />
-    <Folder Include="Features\Shared\Assets\Images\Trucksales\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
