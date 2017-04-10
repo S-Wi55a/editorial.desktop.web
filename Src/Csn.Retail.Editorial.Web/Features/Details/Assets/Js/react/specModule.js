@@ -1,9 +1,10 @@
 ﻿import React from 'react';
 import update from 'immutability-helper';
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
+import Slider, { Range } from 'rc-slider';
 
 const specPath = "/editorial/api/v1/spec/?uri=";
-const GLOBAL_specModuleData = csn_editorial.specModule;
+const GLOBAL_specModuleData = csn_editorial.specModule; //Set this to state
 
 
 const SpecModuleSlider = (props) => {
@@ -86,7 +87,7 @@ const Stratton = (props) => {
         )
 } 
 
-
+//Content
 const SpecModuleItem = (props) => {
     return (
         <div className="spec-item">
@@ -115,33 +116,34 @@ class SpecModule extends React.Component {
         super(props);
 
         this.state = {
+            urls: GLOBAL_specModuleData.items.slice(),
             items: new Array(GLOBAL_specModuleData.items.length),
             activeItemIndex: 0
         };
+
         this.sliderHandler = this.sliderHandler;
         this.ajaxHandler = this.ajaxHandler;
-
 
     }
 
     componentDidMount() {
-        const url = specPath + GLOBAL_specModuleData.items[this.state.activeItemIndex].uri;
+        const url = specPath + this.state.urls[this.state.activeItemIndex].uri;
         this.ajaxHandler(url, this.state.activeItemIndex);
 
     }
 
-    sliderHandler = (e, index, url) => {
-        e.preventDefault();
+    sliderHandler = (index) => {
         // Check if state.items has value
         // true: return data
         if (typeof this.state.items[index] !== 'undefined') {
-            console.log('using cached data')
+            //console.log('using cached data')
 
             this.setState({
                 activeItemIndex: index
             });
         } else {
-            console.log('not using cached data')
+            //console.log('not using cached data')
+            const url = specPath + this.state.urls[index].uri
             this.ajaxHandler(url, index);
         }       
     }
@@ -178,7 +180,7 @@ class SpecModule extends React.Component {
                             <div className="slideshow__pagination-label slideshow__pagination-label--min"></div>
                             <div className="slideshow__pagination-wrapper">
                                 <div className="slideshow__pagination swiper-pagination">
-                                    <SpecModuleSlider data={GLOBAL_specModuleData.items} clickHandler={this.sliderHandler}/>
+                                    <Slider dots min={0} max={this.state.urls.length} onAfterChange={this.sliderHandler}/>
                                 </div>
                             </div>
                             <div className="slideshow__pagination-label slideshow__pagination-label--max"></div>
