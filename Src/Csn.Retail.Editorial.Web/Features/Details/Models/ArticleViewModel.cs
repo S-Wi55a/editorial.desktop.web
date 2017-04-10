@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public Shared.Models.MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
         public MoreArticleItem MoreArticleData { get; set; }
-        public SeoData SeoData { get; set; }
+        public Shared.Models.SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
         public GoogleAnalyticsDetailsData GoogleAnalyticsDetailsData { get; set; }
         public StockListingData StockListingData { get; set; }

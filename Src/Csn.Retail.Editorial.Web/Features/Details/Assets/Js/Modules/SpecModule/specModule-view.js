@@ -124,7 +124,7 @@ const item = (data) => {
                 <p class="spec-item__subheading">${data.description || ''}</p>
                 ${price`${data}`}
                 <div class="spec-item__image-container">
-                    <img class="spec-item__image" src="${data.image.url || ''}" alt="${data.image.alternateText || ''}"/>
+                    ${data.image ? `<img class="spec-item__image" src="${data.image.url || ''}" alt="${data.image.alternateText || ''}" />` : ``}
                 </div>
                 <div class="spec-item__third-party-offers">
                     ${stratton`${data.strattonData}`}
@@ -144,7 +144,7 @@ const disclaimer = (data) => {
     return `
         <div class="spec-module-disclaimer">
             <div class="spec-module-disclaimer__content">
-                <p>${data}</p>
+                <p>${data || ''}</p>
             </div>
         </div>
     `

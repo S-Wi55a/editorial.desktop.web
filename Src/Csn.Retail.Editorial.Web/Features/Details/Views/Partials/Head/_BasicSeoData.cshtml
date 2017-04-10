@@ -3,7 +3,9 @@
 <title>@Model.Title</title>
 <meta name="description" content="@Model.Description" />
 <meta name="keywords" content="@Model.Keywords"/>
-
-
+@if(!Model.AllowSeoIndexing)
+{
+<meta name="robots" content="noindex, nofollow" />
+}
 <link rel="canonical" href="@Model.CanonicalUrl"/>
 <link rel="alternate" media="only screen and (max-width: 640px)" href="@Model.AlternateUrl"/>

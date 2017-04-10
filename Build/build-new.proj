@@ -94,19 +94,16 @@
 	</Target>
 
 	<!-- START: Tests -->
-		<!--
-	  <Target Name="UnitTests">
-	  	<Message Text="Running Unit Tests"/>
-	  	<xunit Assemblies="@(TestAssemblies)" />
-	  </Target>
-	  -->
-
 		<Target Name="UnitTests">
-		  <ItemGroup>
-			  <UnitTestsAssemblies Include="$(SrcDir)\**\bin\$(Configuration)\*.UnitTests.dll" />
-		  </ItemGroup>
-		  <Exec Command="$(ToolsDir)/NUnit/nunit-console.exe @(UnitTestsAssemblies) /framework:net-4.6" WorkingDirectory="$(SrcDir)" ContinueOnError="WarnAndContinue"/>
-		</Target>
+	  	<Message Text="Running Unit Tests"/>
+		<CreateItem Include="$(RootDir)\**\bin\$(Configuration)\**\*UnitTests.dll">
+			<Output TaskParameter="Include" ItemName="UnitTestAssemblies" />  
+		</CreateItem>
+		<!--<CreateItem Include="$(RootDir)\**\bin\$(Configuration)\**\*IntegrationTests.dll">
+			<Output TaskParameter="Include" ItemName="IntegrationTestAssemblies" />  
+		</CreateItem>-->
+		<Exec Command="$(ToolsDir)/NUnit/nunit3-console.exe @(UnitTestAssemblies) /result:TestResult-UnitTests.xml" WorkingDirectory="$(SrcDir)" ContinueOnError="WarnAndContinue"/>
+	  </Target>
 
 	  <!-- END: Tests -->
 
