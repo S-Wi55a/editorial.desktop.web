@@ -4,7 +4,19 @@
 
     $img-width: 78px + 15px;
     font-size: 0;
-    margin-bottom: 15px;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+
+    &:nth-of-type(odd) {
+        padding-right: 15px;
+    }
+
+    &:nth-of-type(even) {
+        padding-left: 15px;
+    }
+
+
 
     &__logo {
         width: $img-width;

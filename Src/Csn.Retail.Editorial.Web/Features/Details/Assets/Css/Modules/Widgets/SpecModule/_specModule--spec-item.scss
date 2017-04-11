@@ -26,16 +26,26 @@
         }
     }
 
-    &__heading {
-        font-size: $font-size-h2;
+    &__make {
+        font-size: $font-size-h4;
         font-weight: $font-weight-600;
         color: $cs-dark-grey;
     }
 
-    &__subheading {
-        font-size: $font-size-h5;
+    &__model {
+        font-size: $font-size-h2;
+        font-weight: $font-weight-300;
         color: $cs-dark-grey;
         padding-top: 5px;
+    }
+
+    &__variant {
+        font-size: $font-size-h2;
+        font-weight: $font-weight-300;
+        color: $cs-dark-grey;
+        border-top: 1px solid $cs-lighter-grey;
+        margin-top: 10px !important;
+        padding-top: 10px;
     }
 
     &__price {
@@ -81,88 +91,6 @@
         color: $cs-grey;
         font-weight: $font-weight-400;
         display: block;
-    }
-    //TODO: move out
-    &__selector {
-
-        $sm-handle-width: 20px;
-        $sm-rail-height: 4px;
-        $dot-height: 6px;
-
-        padding: 0 ($sm-handle-width/2);
-        margin-top: 30px;
-
-        .rc-slider {
-            position: relative;
-            padding-top: ($sm-handle-width/2) + ($sm-rail-height/2) + $dot-height;
-            padding-bottom: ($sm-handle-width/2) + ($sm-rail-height/2);
-            width: 100%;
-            border-radius: 6px;
-            box-sizing: border-box;
-
-            .rc-slider-rail {
-                position: absolute;
-                width: 100%;
-                background-color: $cs-lighter-grey;
-                height: $sm-rail-height;
-                border-radius: 6px;
-            }
-
-            .rc-slider-track {
-                position: absolute;
-                left: 0;
-                height: 4px;
-                border-radius: 6px;
-                background-color: $cs-light-grey;
-            }
-
-            .rc-slider-handle {
-                position: absolute;
-                margin-left: -1*($sm-handle-width/2);
-                margin-top: -1*($sm-handle-width/2) + ($sm-rail-height/2);
-                width: $sm-handle-width;
-                height: $sm-handle-width;
-                cursor: pointer;
-                border-radius: 50%;
-                background-color: $cs-primary;
-            }
-
-            .rc-slider-handle:hover {
-                border-color: #57c5f7;
-            }
-
-            .rc-slider-handle-active:active {
-                border-color: #57c5f7;
-                box-shadow: 0 0 5px #57c5f7;
-            }
-
-            .rc-slider-step {
-                position: absolute;
-                width: 100%;
-                height: 4px;
-                background: transparent;
-            }
-
-            .rc-slider-dot {
-                position: absolute;
-                top: -1*(($sm-handle-width/2) + ($sm-rail-height/2) + $dot-height);
-                margin-left: -1px;
-                width: 2px;
-                height: 2px;
-                background-color: $cs-black;
-                cursor: pointer;
-                border-radius: 50%;
-                vertical-align: middle;
-
-                &:first-child {
-                    margin-left: -1px;
-                }
-
-                &:last-child {
-                    margin-left: -1px;
-                }
-            }
-        }
     }
 
     &__spec-item-list-heading {
@@ -270,6 +198,9 @@
 
 
     &__third-party-offers {
-        padding: 30px 0;
+        width:calc(100% - 60px);
+        margin: auto;
+        padding: 30px 0 0;
+        border-top: 1px solid $cs-lightest-grey;
     }
 }
