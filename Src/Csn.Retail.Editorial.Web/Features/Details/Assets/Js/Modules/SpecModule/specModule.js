@@ -1,7 +1,12 @@
-﻿import React from 'react';
-import update from 'immutability-helper';
+﻿import React from 'react'
+import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
-import Slider, { Range } from 'rc-slider';
+import Slider, { Range } from 'rc-slider'
+import Modal from 'Js/Modules/Modal/modal.js'
+import * as View from 'Js/Modules/SpecModule/specModule-view.js'
+
+
+window.csn_modal = window.csn_modal || new Modal()
 
 const specPath = "/editorial/api/v1/spec/?uri=";
 const GLOBAL_specModuleData = csn_editorial.specModule; //Set this to state
@@ -42,7 +47,7 @@ const BudgetDirect = (props) => {
                     <span className="third-party-offer__price">
                         {props.data.annualCost}
                     </span>
-                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)}>
+                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
                         {props.data.headings.frequentPayment}
                     </span>
                 </div>
@@ -64,7 +69,7 @@ const Stratton = (props) => {
                     <span className="third-party-offer__price">
                         {props.data.monthlyRepayments}
                     </span>
-                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)}>
+                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
                         {props.data.headings.frequentPayment}
                     </span>
                 </div>
@@ -84,15 +89,15 @@ const SpecModuleItem = (props) => {
                 <p className="spec-item__variant">{props.data.description}</p>
                 {/* Price */}
                 <div className="spec-item__selector">
-                    <Slider dots min={0} max={props.sliderLength} onAfterChange={props.sliderHandler} />
+                    <Slider dots min={0} max={props.sliderLength} onChange={props.sliderHandler} />
                 </div>
             </div>
             <div className="spec-item__column spec-item__column--2">
                 <Specifications data={props.data.items} /> 
             </div>
             <div className="spec-item__third-party-offers">
-                {props.data.strattonData ? <Stratton data={props.data.strattonData} /> : ''}
-                {props.data.budgetDirectData ? <BudgetDirect data={props.data.budgetDirectData} /> : ''}
+                {props.data.strattonData ? <Stratton data={props.data.strattonData} disclaimerHandler={props.disclaimerHandler}/> : ''}
+                {props.data.budgetDirectData ? <BudgetDirect data={props.data.budgetDirectData} disclaimerHandler={props.disclaimerHandler}/> : ''}
             </div>
         </div>
     )
@@ -112,6 +117,7 @@ class SpecModule extends React.Component {
 
         this.sliderHandler = this.sliderHandler;
         this.ajaxHandler = this.ajaxHandler;
+        this.disclaimerHandler = this.disclaimerHandler;
 
     }
 
@@ -159,6 +165,14 @@ class SpecModule extends React.Component {
         });
     }
 
+    // Data disclaimer handler
+    disclaimerHandler = (e) => {
+     
+        const content = decodeURI(e.target.getAttribute('data-disclaimer'))
+        window.csn_modal.show(View.disclaimer(content))
+
+    }
+
 
     render() {
 
@@ -167,6 +181,7 @@ class SpecModule extends React.Component {
                 {this.state.items[this.state.activeItemIndex] ?
                     <SpecModuleItem
                         data={this.state.items[this.state.activeItemIndex]}
+                        disclaimerHandler={this.disclaimerHandler}
                         sliderLength={this.state.urls.length}
                         sliderHandler={this.sliderHandler} />
                     : ''}
