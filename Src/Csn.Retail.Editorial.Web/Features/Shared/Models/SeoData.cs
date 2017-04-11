@@ -7,5 +7,6 @@
         public string CanonicalUrl { get; set; }
         public string AlternateUrl { get; set; }
         public string Keywords { get; set; }
+        public bool AllowSeoIndexing { get; set; }
     }
 }
