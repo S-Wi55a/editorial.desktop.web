@@ -6,7 +6,6 @@ import Slider, { Range } from 'rc-slider';
 const specPath = "/editorial/api/v1/spec/?uri=";
 const GLOBAL_specModuleData = csn_editorial.specModule; //Set this to state
 
-
 const SpecificationsItem_DD = (props) => {
     return (
         <dd className="spec-item__spec-item-value" data-value="{props.item.value}">{props.item.value}</dd>
@@ -22,7 +21,7 @@ const SpecificationsItem_DT = (props) => {
 const Specifications = (props) => {
     return (
         <div>
-            <h3 className="spec-item__spec-item-list-heading">Specification</h3>
+            <h3 className="spec-item__spec-item-list-heading">Overview</h3>
             <dl className="spec-item__spec-item-list">
                 {props.data.map((item, index) =>
                     [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} />]
@@ -80,19 +79,20 @@ const SpecModuleItem = (props) => {
     return (
         <div className="spec-item">
             <div className="spec-item__column spec-item__column--1">
-                <h2 className="spec-item__heading">{props.data.title}</h2>
-                <p className="spec-item__subheading">{props.data.description}</p>
-                {/*Insert Price component*/}
-                <div className="spec-item__image-container">
-                    {props.data.image ? <img className="spec-item__image" src={props.data.image.url} alt={props.data.image.alternateText} /> : ''}
-                </div>
-                <div className="spec-item__third-party-offers">
-                    {props.data.strattonData ? <Stratton data={props.data.strattonData} /> : ''}
-                    {props.data.budgetDirectData ? <BudgetDirect data={props.data.budgetDirectData} /> : ''}
+                <h2 className="spec-item__make">{props.data.title}</h2>
+                <p className="spec-item__model">{props.data.description}</p>
+                <p className="spec-item__variant">{props.data.description}</p>
+                {/* Price */}
+                <div className="spec-item__selector">
+                    <Slider dots min={0} max={props.sliderLength} onAfterChange={props.sliderHandler} />
                 </div>
             </div>
             <div className="spec-item__column spec-item__column--2">
                 <Specifications data={props.data.items} /> 
+            </div>
+            <div className="spec-item__third-party-offers">
+                {props.data.strattonData ? <Stratton data={props.data.strattonData} /> : ''}
+                {props.data.budgetDirectData ? <BudgetDirect data={props.data.budgetDirectData} /> : ''}
             </div>
         </div>
     )
@@ -106,7 +106,8 @@ class SpecModule extends React.Component {
         this.state = {
             urls: GLOBAL_specModuleData.items.slice(),
             items: new Array(GLOBAL_specModuleData.items.length),
-            activeItemIndex: 0
+            activeItemIndex: 0,
+            isFetching: false
         };
 
         this.sliderHandler = this.sliderHandler;
@@ -115,9 +116,7 @@ class SpecModule extends React.Component {
     }
 
     componentDidMount() {
-        const url = specPath + this.state.urls[this.state.activeItemIndex].uri;
-        this.ajaxHandler(url, this.state.activeItemIndex);
-
+        this.sliderHandler(this.state.activeItemIndex)
     }
 
     sliderHandler = (index) => {
@@ -138,6 +137,12 @@ class SpecModule extends React.Component {
 
     // Ajax
     ajaxHandler = (url, index) => {
+
+        // Set State
+        this.setState({
+            isFetching: true
+        });
+
         Ajax.get(url, (data) => {
             data = JSON.parse(data);
 
@@ -147,7 +152,8 @@ class SpecModule extends React.Component {
             // Set State
             this.setState({
                 items: newState,
-                activeItemIndex: index
+                activeItemIndex: index,
+                isFetching: false
             });
 
         });
@@ -157,24 +163,13 @@ class SpecModule extends React.Component {
     render() {
 
         return (
-            <div className="spec-module">
-                <div className="slideshow slideshow--spec-module">
-                    <div className="slideshow__container swiper-container">
-
-                        <div className="slideshow__slides swiper-wrapper">
-                            {this.state.items[this.state.activeItemIndex] ? <SpecModuleItem data={this.state.items[this.state.activeItemIndex]} /> : '' }
-                        </div>
-                        <div className="slideshow__nav-wrapper">
-                            <div className="slideshow__pagination-label slideshow__pagination-label--min"></div>
-                            <div className="slideshow__pagination-wrapper">
-                                <div className="slideshow__pagination swiper-pagination">
-                                    <Slider dots min={0} max={this.state.urls.length} onAfterChange={this.sliderHandler}/>
-                                </div>
-                            </div>
-                            <div className="slideshow__pagination-label slideshow__pagination-label--max"></div>
-                        </div>
-                    </div>
-                </div>
+            <div className={this.state.isFetching ? "spec-module loading" : "spec-module"}>
+                {this.state.items[this.state.activeItemIndex] ?
+                    <SpecModuleItem
+                        data={this.state.items[this.state.activeItemIndex]}
+                        sliderLength={this.state.urls.length}
+                        sliderHandler={this.sliderHandler} />
+                    : ''}
             </div>
         );
     }
