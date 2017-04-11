@@ -1,4 +1,5 @@
-﻿import React from 'react';
+﻿import 'react-hot-loader/patch';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import SpecModule from './specModule';
 import { AppContainer } from 'react-hot-loader';

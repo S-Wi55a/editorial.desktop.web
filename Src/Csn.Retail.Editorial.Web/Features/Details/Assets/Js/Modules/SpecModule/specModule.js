@@ -7,18 +7,6 @@ const specPath = "/editorial/api/v1/spec/?uri=";
 const GLOBAL_specModuleData = csn_editorial.specModule; //Set this to state
 
 
-const SpecModuleSlider = (props) => {
-    return (
-        <div>
-            {props.data.map((item, index) => 
-                <div key={index}
-                    className="slideshow__slide swiper-slide swiper-pagination-bullet"
-                    onClick={(e) => { props.clickHandler(e, index, (specPath + item.uri)) }} />
-            )}
-        </div>
-    )
-}
-
 const SpecificationsItem_DD = (props) => {
     return (
         <dd className="spec-item__spec-item-value" data-value="{props.item.value}">{props.item.value}</dd>

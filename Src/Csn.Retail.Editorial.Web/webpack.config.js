@@ -132,9 +132,6 @@ module.exports = (env) => {
 
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
-
-        if (!isProd) { entries['react'] = ['react-hot-loader/patch']; }
-        entries['react-test'] = ['./Features/Details/Assets/Js/react/react.js'];
         entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
         entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
 
