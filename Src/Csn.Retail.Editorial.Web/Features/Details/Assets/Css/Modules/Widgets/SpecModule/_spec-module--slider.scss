@@ -27,7 +27,7 @@
             .rc-slider-track {
                 position: absolute;
                 left: 0;
-                height: 4px;
+                height: $sm-rail-height;
                 border-radius: 6px;
                 background-color: $cs-light-grey;
             }
@@ -41,15 +41,6 @@
                 cursor: pointer;
                 border-radius: 50%;
                 background-color: $cs-primary;
-            }
-
-            .rc-slider-handle:hover {
-                border-color: #57c5f7;
-            }
-
-            .rc-slider-handle-active:active {
-                border-color: #57c5f7;
-                box-shadow: 0 0 5px #57c5f7;
             }
 
             .rc-slider-step {

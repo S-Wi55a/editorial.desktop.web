@@ -49,9 +49,14 @@
     }
 
     &__price {
-        font-size: $font-size-h3;
-        color: $cs-dark-grey;
-        padding-top: 20px;
+
+        &--price-new {
+            font-size: $font-size-h2;
+            color: $cs-primary;
+            font-weight: $font-weight-600;
+            padding-top: 0;
+            display: inline-block;
+        }
 
         &--price-private,
         &--price-trade-in {
@@ -89,7 +94,7 @@
 
         .rc-slider {
             position: relative;
-            margin-top: 5px; 
+            margin-top: 5px;
             height: $sm-rail-height;
             width: 100%;
             border-radius: 6px;

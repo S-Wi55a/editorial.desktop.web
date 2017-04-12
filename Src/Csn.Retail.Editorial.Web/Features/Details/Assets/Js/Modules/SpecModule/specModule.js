@@ -12,9 +12,16 @@ window.csn_modal = window.csn_modal || new Modal()
 
 
 const SpecificationsItem_DD = (props) => {
-    return (
-        <dd className="spec-item__spec-item-value" data-value="{props.item.value}">{props.item.value}</dd>
-    )
+    if (props.last) {
+        return (
+            <dd className="spec-item__spec-item-value" data-value={props.item.value}>{props.item.value}</dd>
+        )
+    } else {
+        return (
+            <dd className="spec-item__spec-item-value">{props.item.value}</dd>
+        )
+    }
+
 }
 
 const SpecificationsItem_DT = (props) => {
@@ -24,12 +31,19 @@ const SpecificationsItem_DT = (props) => {
 } 
 
 const Specifications = (props) => {
+    const listLength = props.data.length;
+
     return (
         <div>
             <h3 className="spec-item__spec-item-list-heading">Overview</h3>
             <dl className="spec-item__spec-item-list">
-                {props.data.map((item, index) =>
-                    [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} />]
+                {props.data.map((item, index) => {
+                        if (index === listLength - 1) {
+                            return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} last={true} />]
+                        } else {
+                            return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} />]
+                        }
+                    }
                 )}
             </dl>
         </div>
@@ -84,8 +98,8 @@ const Price = (props) => {
     if (props.data.priceNew) {
         return (
             <div>
-                <p className="spec-item__price">{props.data.priceNew.price}</p>
-                <p className="spec-item__price-disclaimer" data-disclaimer="{encodeURI(props.data.priceNew.disclaimerText)}" onClick={props.disclaimerHandler}>{data.priceNew.disclaimerTitle}</p>
+                <p className="spec-item__price spec-item__price--price-new">{props.data.priceNew.price}</p>
+                <p className="spec-item__price-disclaimer" data-disclaimer={encodeURI(props.data.priceNew.disclaimerText)} onClick={props.disclaimerHandler}>{props.data.priceNew.disclaimerTitle}</p>
            </div>
         )
     } else {
