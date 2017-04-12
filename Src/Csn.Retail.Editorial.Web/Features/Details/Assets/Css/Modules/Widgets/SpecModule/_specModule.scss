@@ -9,6 +9,7 @@
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    min-height: 200px;
 
     @include breakpoint($screen-lg) {
         width: 85%;

@@ -6,10 +6,10 @@ import Modal from 'Js/Modules/Modal/modal.js'
 import * as View from 'Js/Modules/SpecModule/specModule-view.js'
 
 
-window.csn_modal = window.csn_modal || new Modal()
-
 const specPath = "/editorial/api/v1/spec/?uri=";
 const GLOBAL_specModuleData = csn_editorial.specModule; //Set this to state
+window.csn_modal = window.csn_modal || new Modal()
+
 
 const SpecificationsItem_DD = (props) => {
     return (
@@ -22,7 +22,7 @@ const SpecificationsItem_DT = (props) => {
         <dt className="spec-item__spec-item-title">{props.item.title}</dt>
     )
 } 
-// TODO: Get specfication title added to Jira
+
 const Specifications = (props) => {
     return (
         <div>
@@ -79,17 +79,45 @@ const Stratton = (props) => {
         )
 } 
 
+// Price
+const Price = (props) => {
+    if (props.data.priceNew) {
+        return (
+            <div>
+                <p className="spec-item__price">{props.data.priceNew.price}</p>
+                <p className="spec-item__price-disclaimer" data-disclaimer="{encodeURI(props.data.priceNew.disclaimerText)}" onClick={props.disclaimerHandler}>{data.priceNew.disclaimerTitle}</p>
+           </div>
+        )
+    } else {
+        return (
+            <div className="spec-item__price-container">
+                <div className="spec-item__price-item">
+                    <div className="spec-item__price-label">{props.data.pricePrivate.heading}</div>
+                    <div className="spec-item__price spec-item__price--price-private">{props.data.pricePrivate.priceRange}</div>
+                    <Range disabled min={0} max={100} allowCross={false} defaultValue={[0, 20]} />
+
+                </div>
+                <div className="spec-item__price-item">
+                    <div className="spec-item__price-label">{props.data.priceTradeIn.heading}</div>
+                    <div className="spec-item__price spec-item__price--price-trade-in">{props.data.priceTradeIn.priceRange}</div>
+                    <Range disabled min={0} max={100} allowCross={false} defaultValue={[20, 80]} />
+                </div>
+            </div>
+        )
+    } 
+}
+
 //Content
 const SpecModuleItem = (props) => {
     return (
-        <div className="spec-item">
+        <div className="spec-item ">
             <div className="spec-item__column spec-item__column--1">
                 <h2 className="spec-item__make">{props.data.title}</h2>
                 <p className="spec-item__model">{props.data.description}</p>
                 <p className="spec-item__variant">{props.data.description}</p>
-                {/* Price */}
+                <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
                 <div className="spec-item__selector">
-                    <Slider dots min={0} max={props.sliderLength} onChange={props.sliderHandler} />
+                    <Slider dots min={0} max={props.sliderLength - 1} onChange={props.sliderHandler} />
                 </div>
             </div>
             <div className="spec-item__column spec-item__column--2">
@@ -112,7 +140,9 @@ class SpecModule extends React.Component {
             urls: GLOBAL_specModuleData.items.slice(),
             items: new Array(GLOBAL_specModuleData.items.length),
             activeItemIndex: 0,
-            isFetching: false
+            pendingIndex: 0,
+            isFetching: false,
+            pendingRequests: 0
         };
 
         this.sliderHandler = this.sliderHandler;
@@ -125,12 +155,22 @@ class SpecModule extends React.Component {
         this.sliderHandler(this.state.activeItemIndex)
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        // If all ajax request are complete then set state
+        if (prevState.isFetching === true && this.state.pendingRequests <= 0) {
+            // Set State
+            this.setState({
+                activeItemIndex: this.state.pendingIndex,
+                isFetching: false
+            });
+        } 
+    }
+
     sliderHandler = (index) => {
         // Check if state.items has value
         // true: return data
         if (typeof this.state.items[index] !== 'undefined') {
             //console.log('using cached data')
-
             this.setState({
                 activeItemIndex: index
             });
@@ -145,8 +185,11 @@ class SpecModule extends React.Component {
     ajaxHandler = (url, index) => {
 
         // Set State
-        this.setState({
-            isFetching: true
+        this.setState((prevState, props) => {
+            return {
+                isFetching: true,
+                pendingRequests: prevState.pendingRequests + 1
+            };
         });
 
         Ajax.get(url, (data) => {
@@ -155,13 +198,13 @@ class SpecModule extends React.Component {
             // Cache data
             const newState = update(this.state.items, { $splice: [[index, 1, data]] });
 
-            // Set State
-            this.setState({
-                items: newState,
-                activeItemIndex: index,
-                isFetching: false
+            this.setState((prevState, props) => {
+                return {
+                    items: newState,
+                    pendingRequests: prevState.pendingRequests - 1,
+                    pendingIndex: index
+                };
             });
-
         });
     }
 

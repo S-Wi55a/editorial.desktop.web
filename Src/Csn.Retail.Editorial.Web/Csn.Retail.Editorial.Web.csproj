@@ -495,7 +495,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule - Copy\specModule-component.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\SpecModule - Copy\specModule-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
@@ -719,6 +719,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module--slider.scss" />
     <None Include="Web.AwsRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

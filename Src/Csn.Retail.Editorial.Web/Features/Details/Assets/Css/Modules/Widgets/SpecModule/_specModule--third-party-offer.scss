@@ -78,5 +78,7 @@
         font-weight: $font-weight-400;
         text-align: center;
         margin-top: 15px;
+        width: calc(200% + 30px);
+        margin-left: calc(-100% - 30px);
     }
 }

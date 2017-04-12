@@ -51,16 +51,15 @@
     &__price {
         font-size: $font-size-h3;
         color: $cs-dark-grey;
-        display: inline-block;
         padding-top: 20px;
 
         &--price-private,
         &--price-trade-in {
             padding-top: 0;
-            font-size: $font-size-h5;
-            color: $cs-dark-grey;
-            font-weight: $font-weight-600;
-            margin-top: 5px;
+            font-size: $font-size-h4;
+            color: $cs-primary;
+            font-weight: $font-weight-400;
+            //margin-top: 5px;
         }
     }
 
@@ -78,11 +77,41 @@
     }
 
     &__price-container {
-        display: inline-block;
-        margin-top: 20px;
+        //margin-top: 20px;
+    }
 
-        &:nth-of-type(2) {
-            float: right;
+    &__price-item {
+        margin-top: 10px;
+
+        $sm-handle-width: 20px;
+        $sm-rail-height: 7px;
+        $dot-height: 0px;
+
+        .rc-slider {
+            position: relative;
+            margin-top: 5px; 
+            height: $sm-rail-height;
+            width: 100%;
+            border-radius: 6px;
+            box-sizing: border-box;
+
+            .rc-slider-rail {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                background-color: $cs-lighter-grey;
+                height: $sm-rail-height;
+                border-radius: 6px;
+            }
+
+            .rc-slider-track {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: $sm-rail-height;
+                border-radius: 6px;
+                background-color: $cs-primary;
+            }
         }
     }
 
@@ -112,7 +141,7 @@
         font-size: $font-size-h5;
         color: $cs-dark-grey;
         font-weight: $font-weight-600;
-        margin: 5px 0 20px;
+        margin: 5px 0 15px;
     }
     //ANCAP Rating
     &__spec-item-value:last-child {
@@ -198,7 +227,7 @@
 
 
     &__third-party-offers {
-        width:calc(100% - 60px);
+        width: calc(100% - 60px);
         margin: auto;
         padding: 30px 0 0;
         border-top: 1px solid $cs-lightest-grey;
