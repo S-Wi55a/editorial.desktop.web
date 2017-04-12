@@ -2,13 +2,7 @@
 import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 import Slider, { Range } from 'rc-slider'
-import Modal from 'Js/Modules/Modal/modal.js'
 import * as View from 'Js/Modules/SpecModule/specModule-view.js'
-
-
-const specPath = "/editorial/api/v1/spec/?uri=";
-const GLOBAL_specModuleData = csn_editorial.specModule; //Set this to state
-window.csn_modal = window.csn_modal || new Modal()
 
 
 const SpecificationsItem_DD = (props) => {
@@ -151,8 +145,8 @@ class SpecModule extends React.Component {
         super(props);
 
         this.state = {
-            urls: GLOBAL_specModuleData.items.slice(),
-            items: new Array(GLOBAL_specModuleData.items.length),
+            urls: this.props.data.items.slice(),
+            items: new Array(this.props.data.items.length),
             activeItemIndex: 0,
             pendingIndex: 0,
             isFetching: false,
@@ -190,7 +184,7 @@ class SpecModule extends React.Component {
             });
         } else {
             //console.log('not using cached data')
-            const url = specPath + this.state.urls[index].uri
+            const url = this.props.path + this.state.urls[index].uri
             this.ajaxHandler(url, index);
         }       
     }
@@ -226,7 +220,7 @@ class SpecModule extends React.Component {
     disclaimerHandler = (e) => {
      
         const content = decodeURI(e.target.getAttribute('data-disclaimer'))
-        window.csn_modal.show(View.disclaimer(content))
+        this.props.modal.show(View.disclaimer(content))
 
     }
 

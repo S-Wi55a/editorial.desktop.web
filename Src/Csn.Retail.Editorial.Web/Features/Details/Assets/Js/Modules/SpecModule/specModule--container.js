@@ -6,13 +6,17 @@ import { AppContainer } from 'react-hot-loader';
 
 import 'Css/Modules/Widgets/SpecModule/_specModule.scss'; //TODO: CSS Module
 
+const specPath = "/editorial/api/v1/spec/?uri=";
+const GLOBAL_specModuleData = csn_editorial.specModule; //Set this to state
+window.csn_modal = window.csn_modal || new Modal()
+
 
 const app = document.createElement('div');
 document.querySelector(".spec-module-placeholder").appendChild(app);
 
-const render = App => {
+const render = SpecModule => {
     ReactDOM.render(
-        <AppContainer><App /></AppContainer>,
+        <AppContainer><SpecModule path={specPath} data={GLOBAL_specModuleData} modal={window.csn_modal}/></AppContainer>,
         app
     );
 };
