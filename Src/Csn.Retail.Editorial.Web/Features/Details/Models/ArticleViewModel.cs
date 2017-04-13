@@ -34,6 +34,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public StockListingData StockListingData { get; set; }
         public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
+        public bool UseDropCase { get; set; }
 
     }
 
@@ -53,7 +54,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Url { get; set; }
         public string SiteName { get; set; }
         public List<string> SocialSharingNetworks { get; set; }
-
     }
 
     public class ProCon

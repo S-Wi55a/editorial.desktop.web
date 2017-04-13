@@ -291,7 +291,7 @@
 // Drop Cap
 .article {
     &.review {
-        .article__copy {
+        .article__copy.drop-cap {
             p:first-child:first-letter {
                 color: $cs-light-blue;
             }
@@ -299,7 +299,7 @@
     }
 
     &.car-advice {
-        .article__copy {
+        .article__copy.drop-cap {
             p:first-child:first-letter {
                 color: $cs-accent-green;
             }
@@ -307,7 +307,7 @@
     }
 
     &.video {
-        .article__copy {
+        .article__copy.drop-cap {
             p:first-child:first-letter {
                 color: $cs-orange;
             }
@@ -315,7 +315,7 @@
     }
 
     &.news {
-        .article__copy {
+        .article__copy.drop-cap {
             p:first-child:first-letter {
                 color: $cs-red;
             }
@@ -323,7 +323,7 @@
     }
 
     &.comparison {
-        .article__copy {
+        .article__copy.drop-cap {
             p:first-child:first-letter {
                 color: $cs-purple;
             }
@@ -331,14 +331,14 @@
     }
 
     &.feature {
-        .article__copy {
+        .article__copy.drop-cap {
             p:first-child:first-letter {
                 color: $cs-pink;
             }
         }
     }
 
-    &__copy {
+    &__copy.drop-cap {
         p:first-child::after {
             @extend %clearfix;
         }

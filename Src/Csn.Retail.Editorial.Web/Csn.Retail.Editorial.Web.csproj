@@ -145,6 +145,10 @@
       <HintPath>..\packages\Csn.WebMetrics.Editorial.1.0.471.0\lib\net40\Csn.WebMetrics.Ext.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ingress.Autofac-Net45, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Autofac-Net45.1.3.1\lib\net452\Ingress.Autofac-Net45.dll</HintPath>
       <Private>True</Private>
@@ -362,6 +366,7 @@
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
+    <Compile Include="Features\Details\Mappings\UseDropCaseResolver.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
     <Compile Include="Features\Details\GetArticleQuery.cs" />
@@ -410,6 +415,8 @@
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Infrastructure\Constants\TenantNames.cs" />
+    <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckSummary.cs" />
     <Compile Include="Infrastructure\HealthChecks\IHealthChecker.cs" />
