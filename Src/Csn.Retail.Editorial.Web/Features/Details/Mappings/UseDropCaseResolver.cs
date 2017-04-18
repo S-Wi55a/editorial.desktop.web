@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
@@ -12,7 +13,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
         public bool Resolve(ArticleDetailsDto source, ArticleViewModel destination, bool destMember, ResolutionContext context)
         {
             // only use drop case if the first paragraph contains more than 255 chars
-            if (!source.ContentSections.IsNullOrEmpty() && GetCharacterCountOfFirstParagraph(source.ContentSections.First()) >= 240)
+            if (!source.ContentSections.IsNullOrEmpty() && CanApplyDropCase(source.ContentSections.First()))
             {
                 return true;
             }
@@ -20,11 +21,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
             return false;
         }
 
-        private int GetCharacterCountOfFirstParagraph(ContentSection contentSection)
+        private bool CanApplyDropCase(ContentSection contentSection)
         {
             if (contentSection.SectionType != ContentSectionType.Html)
             {
-                return 0;
+                return false;
             }
                 
             // load the content as HTML and check the length of the first node
@@ -33,7 +34,17 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 
             var result = doc.DocumentNode.FirstChild.GetFirstPararaphText();
 
-            return string.IsNullOrEmpty(result) ? 0 : result.Length;
+            if (string.IsNullOrEmpty(result))
+            {
+                return false;
+            }
+
+            if (!result.Substring(0, 1).All(char.IsLetter))
+            {
+                return false;
+            }
+
+            return result.Length > 0;
         }
     }
 }
