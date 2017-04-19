@@ -1,33 +1,31 @@
 ﻿using System.Threading.Tasks;
-using Csn.Hystrix.RestClient;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.TrackingApi
 {
     public interface ITrackingApiProxy
     {
-        Task<TrackingApiDto> GetTracking(TrackingApiInput input);
+        Task<SmartServiceResponse<TrackingApiDto>> GetTracking(TrackingApiInput input);
     }
 
     [AutoBind]
     public class TrackingApiProxy : ITrackingApiProxy
     {
-        private const string HostName = "TrackingScriptApiProxy";
-        private readonly IFluentHystrixRestClientFactory _restClient;
+        private const string ServiceName = "api-tracking-ga-scripts";
+        private readonly ISmartServiceClient _smartClient;
 
-        public TrackingApiProxy(IFluentHystrixRestClientFactory restClient)
+        public TrackingApiProxy(ISmartServiceClient smartClient)
         {
-            _restClient = restClient;
+            _smartClient = smartClient;
         }
 
-        public async Task<TrackingApiDto> GetTracking(TrackingApiInput input)
+        public Task<SmartServiceResponse<TrackingApiDto>> GetTracking(TrackingApiInput input)
         {
-            var response = await _restClient.HostName(HostName)
+            return _smartClient.Service(ServiceName)
                 .Path("v1/api/tracking/script")
-                .QueryParams("Application", input.ApplicationName)
+                .QueryString("Application", input.ApplicationName)
                 .GetAsync<TrackingApiDto>();
-
-            return response.Result;
         }
     }
 }
