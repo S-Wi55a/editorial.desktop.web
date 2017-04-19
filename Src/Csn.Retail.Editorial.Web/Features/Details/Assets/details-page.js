@@ -140,3 +140,19 @@ let disqus = function(d, w, selector) {
     }
 }
 disqus(document, window, '#disqus_thread');
+
+
+//Lazy Native Ads
+let nativeAds = function () {
+
+    if (!!csn_editorial && !!csn_editorial.nativeAds) {
+        require.ensure(['Js/Modules/NativeAds/nativeAds.js'],
+            function () {
+                require('Js/Modules/NativeAds/nativeAds.js');
+            },
+            'Native Ads');
+    }
+}
+loaded.then(function () {
+    nativeAds();
+});
