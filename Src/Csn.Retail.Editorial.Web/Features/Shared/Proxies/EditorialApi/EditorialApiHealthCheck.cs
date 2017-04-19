@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.HealthChecks;
 
@@ -30,10 +26,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 
             return new HealthCheckResult
             {
-                IsHealthy = (result.Succeed || result.StatusCode == HttpStatusCode.NotFound),
+                IsHealthy = (result.IsSucceed || result.HttpStatusCode == HttpStatusCode.NotFound),
                 FailureSeverity = FailureSeverity.Fatal,
                 Name = "EditorialApi",
-                Details = result.Result
+                Details = result.Data
             };
         }
     }

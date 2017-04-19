@@ -1,5 +1,4 @@
-﻿using System.Net;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -33,17 +32,17 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                 Id = query.Id
             });
 
-            if (!result.Succeed)
+            if (!result.IsSucceed)
             {
                 return new GetArticleResponse()
                 {
-                    HttpStatusCode = result.StatusCode
+                    HttpStatusCode = result.HttpStatusCode
                 };
             }
 
             return new GetArticleResponse()
             {
-                ArticleViewModel = _mapper.Map<ArticleViewModel>(result.Result)
+                ArticleViewModel = _mapper.Map<ArticleViewModel>(result.Data)
             };
         }
     }

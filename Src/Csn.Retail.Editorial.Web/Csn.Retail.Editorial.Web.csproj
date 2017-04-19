@@ -45,8 +45,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.3.0\lib\net45\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=4.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.4.0\lib\net45\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -149,68 +149,80 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.Autofac-Net45, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Autofac-Net45.1.3.1\lib\net452\Ingress.Autofac-Net45.dll</HintPath>
+    <Reference Include="Ingress.Autofac-Net45, Version=1.4.16.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Autofac-Net45.1.4.16\lib\net452\Ingress.Autofac-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.Cache-Net45, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache-Net45.1.2.1.0\lib\net452\Ingress.Cache-Net45.dll</HintPath>
+    <Reference Include="Ingress.Cache-Net45, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache-Net45.1.2.6.0\lib\net452\Ingress.Cache-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.Cache.Redis-Net45, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.Redis-Net45.1.1.2.0\lib\net452\Ingress.Cache.Redis-Net45.dll</HintPath>
+    <Reference Include="Ingress.Cache.Redis-Net45, Version=1.1.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.Redis-Net45.1.1.15.0\lib\net452\Ingress.Cache.Redis-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ingress.ContextStores-Net45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ContextStores-Net45.1.0.0.0\lib\net452\Ingress.ContextStores-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.ContextStores.HttpContextStore-Net45, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ContextStores.HttpContextStore-Net45.1.2.1.0\lib\net452\Ingress.ContextStores.HttpContextStore-Net45.dll</HintPath>
+    <Reference Include="Ingress.ContextStores.HttpContextStore-Net45, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ContextStores.HttpContextStore-Net45.1.2.4.0\lib\net452\Ingress.ContextStores.HttpContextStore-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.Core-Net45, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Core-Net45.1.1.2.0\lib\net452\Ingress.Core-Net45.dll</HintPath>
+    <Reference Include="Ingress.Core-Net45, Version=1.1.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core-Net45.1.1.9.0\lib\net452\Ingress.Core-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.HttpClient-Net45, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient-Net45.1.3.0.0\lib\net452\Ingress.HttpClient-Net45.dll</HintPath>
+    <Reference Include="Ingress.HttpClient-Net45, Version=1.3.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient-Net45.1.3.14.0\lib\net452\Ingress.HttpClient-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix-Net45, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix-Net45.1.2.2.0\lib\net452\Ingress.HttpClient.Hystrix-Net45.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Hystrix-Net45, Version=1.3.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix-Net45.1.3.7.0\lib\net452\Ingress.HttpClient.Hystrix-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix.RedisReporter-Net45, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix.RedisReporter-Net45.1.1.5.0\lib\net452\Ingress.HttpClient.Hystrix.RedisReporter-Net45.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Hystrix.Abstracts-Net45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.Abstracts-Net45.1.0.0\lib\net452\Ingress.HttpClient.Hystrix.Abstracts-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.Mvc.ComponentsHost-Net45, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Mvc.ComponentsHost-Net45.1.2.1.0\lib\net452\Ingress.Mvc.ComponentsHost-Net45.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Hystrix.RedisReporter-Net45, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.RedisReporter-Net45.1.3.6.0\lib\net452\Ingress.HttpClient.Hystrix.RedisReporter-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.PageComposers-Net45, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.PageComposers-Net45.1.2.1.0\lib\net452\Ingress.PageComposers-Net45.dll</HintPath>
+    <Reference Include="Ingress.Mvc.ComponentsHost-Net45, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Mvc.ComponentsHost-Net45.1.3.4.0\lib\net452\Ingress.Mvc.ComponentsHost-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.RedisHelpers-Net45, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.RedisHelpers-Net45.1.1.1.0\lib\net452\Ingress.RedisHelpers-Net45.dll</HintPath>
+    <Reference Include="Ingress.PageComposers-Net45, Version=1.3.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.PageComposers-Net45.1.3.7.0\lib\net452\Ingress.PageComposers-Net45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ingress.RedisHelpers-Net45, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.RedisHelpers-Net45.1.2.3.0\lib\net452\Ingress.RedisHelpers-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ingress.Serializers-Net45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Serializers-Net45.1.0.0.0\lib\net452\Ingress.Serializers-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.Serializers.Json-Net45, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Serializers.Json-Net45.1.1.1.0\lib\net452\Ingress.Serializers.Json-Net45.dll</HintPath>
+    <Reference Include="Ingress.Serializers.Json-Net45, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Serializers.Json-Net45.1.1.5.0\lib\net452\Ingress.Serializers.Json-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.ServiceClient-Net45, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient-Net45.1.4.1.0\lib\net452\Ingress.ServiceClient-Net45.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient-Net45, Version=1.6.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient-Net45.1.6.10.0\lib\net452\Ingress.ServiceClient-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.ServiceRegistry-Net45, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceRegistry-Net45.1.2.4.0\lib\net452\Ingress.ServiceRegistry-Net45.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient.Abstracts-Net45, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.Abstracts-Net45.1.0.5\lib\net452\Ingress.ServiceClient.Abstracts-Net45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ingress.ServiceRegistry-Net45, Version=1.3.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry-Net45.1.3.13.0\lib\net452\Ingress.ServiceRegistry-Net45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ingress.ServiceRegistry.Abstracts-Net45, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry.Abstracts-Net45.1.0.1\lib\net452\Ingress.ServiceRegistry.Abstracts-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -230,8 +242,8 @@
       <HintPath>..\packages\NLog.Extended.3.2.1\lib\net45-full\NLog.Extended.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="StackExchange.Redis, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StackExchange.Redis.1.2.0\lib\net46\StackExchange.Redis.dll</HintPath>
+    <Reference Include="StackExchange.Redis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.1\lib\net46\StackExchange.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SumoLogic.Logging.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6b03a58229215ab3, processorArchitecture=MSIL">
@@ -246,6 +258,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -718,9 +731,6 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
-    <None Include="Web.AwsRelease.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">
