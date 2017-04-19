@@ -1,9 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Csn.MultiTenant;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.MoreArticles
@@ -24,12 +21,12 @@ namespace Csn.Retail.Editorial.Web.Features.MoreArticles
         {
             var result = await _editorialApiProxy.GetLatestArticlesAsync(query);
 
-            if (!result.Succeed)
+            if (!result.IsSucceed)
             {
                 return null;
             }
 
-            return result.Result;
+            return result.Data;
         }
     }
 }

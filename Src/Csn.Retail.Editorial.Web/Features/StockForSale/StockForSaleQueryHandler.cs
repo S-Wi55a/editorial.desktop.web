@@ -16,17 +16,16 @@ namespace Csn.Retail.Editorial.Web.Features.StockForSale
             _editorialApiProxy = editorialApiProxy;
         }
 
-
         public async Task<StockForSaleDto> HandleAsync(StockForSaleQuery query)
         {
             var result = await _editorialApiProxy.GetStockListingAsync(query);
 
-            if (!result.Succeed)
+            if (!result.IsSucceed)
             {
                 return null;
             }
 
-            return result.Result;
+            return result.Data;
         }
     }
 }
