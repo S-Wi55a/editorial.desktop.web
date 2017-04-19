@@ -70,3 +70,4 @@ Src/Csn.Retail.Editorial.Web/Csn.Retail.Editorial.Web.csproj.user
 .happypack
 
 
+Src/Csn.Retail.Editorial.Web/app_data/*

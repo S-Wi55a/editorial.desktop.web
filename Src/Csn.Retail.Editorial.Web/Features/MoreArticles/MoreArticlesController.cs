@@ -26,5 +26,3 @@ namespace Csn.Retail.Editorial.Web.Features.MoreArticles
         }
     }
 }
-
-

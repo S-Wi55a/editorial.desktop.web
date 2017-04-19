@@ -4,6 +4,7 @@
 
     @include fadeInDown(-50%);
     @include easeOutBack();
+    @include fadeIn();
     //Local Vars
     $border-radius: 6px;
     $title-font-size: 14px;
@@ -16,6 +17,14 @@
     position: relative;
     font-size: 0;
     overflow: hidden;
+    display: none;
+    animation-duration: .5s;
+
+
+    &.active {
+        display: block;
+        animation-name: fadeIn;
+    }
 
     &.loading {
         &::before {

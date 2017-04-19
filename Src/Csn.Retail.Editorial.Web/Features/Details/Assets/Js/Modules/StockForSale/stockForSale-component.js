@@ -24,9 +24,11 @@ const makeQuery = (url, el, cb = () => {}, onError = () => {}) => {
     //Make Query
     Ajax.get(url,
         (resp) => {
+
+            resp = JSON.parse(resp)
             //update list
-            el.innerHTML = View.listItem(JSON.parse(resp))
-            cb()
+            el.innerHTML = View.listItem(resp)
+            cb(resp)
         },
         () => {
             onError()  
@@ -67,8 +69,12 @@ const init = (scope, data) => {
     makeQuery(
         getAttrValue(stockForSaleOption[0], 'data-stock-for-sale-query'),
         stockForSaleList,
-        () => {
-            stockForSale.classList.add('active')
+        (data) => {
+            //Hide modue if no items in all states
+            if (data && data.items.length > 0) {
+                stockForSale.classList.add('active')
+            } 
+
             toggleCLass(stockForSale, 'loading')
             setAttrValue(stockForSaleButton, 'href', getAttrValue(stockForSaleOption[0], 'data-stock-for-sale-view-all-url'))
         },

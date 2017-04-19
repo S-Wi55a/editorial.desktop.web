@@ -2,14 +2,13 @@
 using Bolt.Common.Extensions;
 using Csn.Cars.Cache;
 using Csn.Cars.Cache.Extensions;
-using Csn.Hystrix.RestClient;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.UserContext;
 using Csn.SimpleCqrs;
+using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
 {
@@ -18,21 +17,21 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
         private const string CacheProfileNameAnonymous = "GlobalSite.Anonymous";
         private const string CacheProfileNameMember = "GlobalSite.Member";
         private const string CacheKey = "GlobalSiteProvider:Get:{0}:{1}";
-        private const string HostName = "SiteNavApiProxy";
+        private const string ServiceName = "cmp-retail-appshell";
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
-        private readonly IFluentHystrixRestClientFactory _restClient;
+        private readonly ISmartServiceClient _smartClient;
         private readonly ICacheStore _cacheStore;
         private readonly IUserContext _userContext;
         private readonly IContextStore<GlobalSiteDataDto> _contextStore;
 
         public LoadGlobalSiteDataOnPageLoad(ITenantProvider<TenantInfo> tenantProvider,
-            IFluentHystrixRestClientFactory restClient,
+            ISmartServiceClient smartClient,
             ICacheStore cacheStore,
             IUserContext userContext,
             IContextStore<GlobalSiteDataDto> contextStore)
         {
             _tenantProvider = tenantProvider;
-            _restClient = restClient;
+            _smartClient = smartClient;
             _cacheStore = cacheStore;
             _userContext = userContext;
             _contextStore = contextStore;
@@ -55,12 +54,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
 
         private async Task<GlobalSiteDataDto> FetchFromApi()
         {
-            var response = await _restClient.HostName(HostName)
+            var response = await _smartClient.Service(ServiceName)
                 .Path(_tenantProvider.Current().SiteNavPath)
-                .QueryParams("memberId", _userContext.CurrentUserId)
+                .QueryString("memberId", _userContext.CurrentUserId.ToString())
                 .GetAsync<GlobalSiteResponseDto>();
 
-            return response?.Result?.Data;
+            return response?.Data?.Data;
         }
     }
 

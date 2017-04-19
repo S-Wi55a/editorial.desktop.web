@@ -24,7 +24,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
         {
             cfg.CreateMap<ArticleDetailsDto, ArticleViewModel>()
                 .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)))
+                .ForMember(dest => dest.UseDropCase, opt => opt.ResolveUsing<UseDropCaseResolver>())
                 .ForMember(dest => dest.SeoData, opt => opt.MapFrom(src => _seoDataMapper.Map(src.SeoData)));
+
 
             // Social Meta Data
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using Bolt.Common.Extensions;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -58,7 +55,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
                 ApplicationName = _tenantProvider.Current().GoogleAnalyticsApp
             });
 
-            return trackingResult.TrackingScript.IsNullOrWhiteSpace() ? null : trackingResult;
+            return trackingResult.IsSucceed && trackingResult.Data.TrackingScript.IsNullOrWhiteSpace() ? null : trackingResult.Data;
         }
     }
 }
