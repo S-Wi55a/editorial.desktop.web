@@ -388,7 +388,9 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\Shared\Models\PolarNativeViewModel.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
+    <Compile Include="Features\Shared\PolarNative\PolarNativeAds.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\AlsoConsiderDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
@@ -733,9 +735,6 @@
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
     <Content Include="Features\Shared\Views\Partials\NativeAds\_NativeAds.cshtml" />
-    <None Include="Web.AwsRelease.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

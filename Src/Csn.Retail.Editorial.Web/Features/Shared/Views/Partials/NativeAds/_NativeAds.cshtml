@@ -1,4 +1,13 @@
-﻿<script>
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.PolarNative;
+
+
+@{
+    var polarNativeAds = PolarNativeAds.PolarNativeViewModelHandler();
+
+}
+
+
+<script>
     var csn_editorial = csn_editorial || {};
     csn_editorial.nativeAds = {
         siteName : "mt.motoring", //From web config
@@ -6,6 +15,7 @@
         makeModel: "", //API
         setPropertyID: "NA-MOTOCOMAU-11237901" //From web config
     }
+    @polarNativeAds;
 </script>
 
 
