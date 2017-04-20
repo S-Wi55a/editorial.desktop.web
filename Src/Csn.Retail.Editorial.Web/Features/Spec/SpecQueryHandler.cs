@@ -10,25 +10,21 @@ namespace Csn.Retail.Editorial.Web.Features.Spec
     {
         private readonly IEditorialApiProxy _editorialApiProxy;
 
-
         public SpecQueryHandler(IEditorialApiProxy editorialApiProxy)
         {
             _editorialApiProxy = editorialApiProxy;
         }
 
-
         public async Task<SpecDto> HandleAsync(SpecQuery query)
         {
             var result = await _editorialApiProxy.GetSpecAsync(query);
 
-            if (!result.Succeed)
+            if (!result.IsSucceed)
             {
                 return null;
             }
 
-            return result.Result;
+            return result.Data;
         }
     }
 }
-
-

@@ -16,17 +16,16 @@ namespace Csn.Retail.Editorial.Web.Features.AlsoConsider
             _editorialApiProxy = editorialApiProxy;
         }
 
-
         public async Task<AlsoConsiderDto> HandleAsync(AlsoConsiderQuery query)
         {
             var result = await _editorialApiProxy.GetAlsoConsiderAsync(query);
 
-            if (!result.Succeed)
+            if (!result.IsSucceed)
             {
                 return null;
             }
 
-            return result.Result;
+            return result.Data;
         }
     }
 }
