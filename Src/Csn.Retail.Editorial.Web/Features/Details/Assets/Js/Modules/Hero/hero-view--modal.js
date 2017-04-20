@@ -15,7 +15,7 @@
             return `
                 <div class="slideshow__slide swiper-slide">
                     <img class="slideshow__image"
-                            data-src="${item.url}width=1024&height=683"
+                            data-src="${item.url}?width=1024&height=683"
                             alt="${item.alternateText || ''}" />
                 </div>
             `
