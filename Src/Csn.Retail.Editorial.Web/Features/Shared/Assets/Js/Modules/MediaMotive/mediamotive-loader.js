@@ -1,4 +1,6 @@
-﻿(function ($, w, krux) {
+﻿const postscribe = require("postscribe");
+
+(function ($, w, krux) {
     'use strict';
 
     w.MediaMotiveLoader = function () {
@@ -23,8 +25,11 @@
                     if (isKruxRequired) {
                         scriptUrl = scriptUrl + sasTags;
                     }
-                    postscribe('#' + tile, '<script src=\'' + scriptUrl + '\'><\/script>', function () {
-                        $('#' + tile).removeClass('loading');
+                    postscribe('#' + tile, '<script src=\'' + scriptUrl + '\'><\/script>',
+                    {
+                        done: function () {
+                            $('#' + tile).removeClass('loading');
+                        }
                     });
                 });
             }

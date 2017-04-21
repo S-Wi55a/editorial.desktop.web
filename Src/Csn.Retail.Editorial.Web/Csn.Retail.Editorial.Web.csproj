@@ -534,7 +534,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mm.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\postscribe.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\vendor.js" />

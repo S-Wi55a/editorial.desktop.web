@@ -75,6 +75,7 @@
     "jquery": "^3.1.0",
     "meter-polyfill": "^1.7.1",
     "picturefill": "^3.0.2",
+    "postscribe": "^2.0.8",
     "scrollmagic": "^2.0.5",
     "swiper": "^3.4.1"
   }
