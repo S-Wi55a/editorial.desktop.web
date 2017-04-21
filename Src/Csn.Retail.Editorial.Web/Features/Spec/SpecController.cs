@@ -20,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.Spec
         [Route("editorial/api/v1/spec")]
         public async Task<object> GetLatest(SpecQuery query)
         {
-            var result = await _queryDispatcher.DispatchAsync<SpecQuery, SpecDto>(query);
+            var result = await _queryDispatcher.DispatchAsync<SpecQuery, object>(query);
 
             return JsonConvert.SerializeObject(result);
         }

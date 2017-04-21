@@ -25,13 +25,14 @@ const SpecificationsItem_DT = (props) => {
 } 
 
 const Specifications = (props) => {
-    const listLength = props.data.length;
+    debugger;
+    const listLength = props.items.length;
 
     return (
         <div>
-            <h3 className="spec-item__spec-item-list-heading">Overview</h3>
+            <h3 className="spec-item__spec-item-list-heading">props.title</h3>
             <dl className="spec-item__spec-item-list">
-                {props.data.map((item, index) => {
+                {props.items.map((item, index) => {
                         if (index === listLength - 1) {
                             return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} last={true} />]
                         } else {
@@ -120,20 +121,20 @@ const SpecModuleItem = (props) => {
     return (
         <div className="spec-item ">
             <div className="spec-item__column spec-item__column--1">
-                <h2 className="spec-item__make">{props.data.title}</h2>
-                <p className="spec-item__model">{props.data.description}</p>
-                <p className="spec-item__variant">{props.data.description}</p>
+                <h2 className="spec-item__make">{props.data.title1}</h2>
+                <p className="spec-item__model">{props.data.title2}</p>
+                <p className="spec-item__variant">{props.data.title3}</p>
                 <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
                 <div className="spec-item__selector">
                     <Slider dots min={0} max={props.sliderLength - 1} onChange={props.sliderHandler} />
                 </div>
             </div>
             <div className="spec-item__column spec-item__column--2">
-                <Specifications data={props.data.items} /> 
+                <Specifications data={props.data.specItems} /> 
             </div>
             <div className="spec-item__third-party-offers">
-                {props.data.strattonData ? <Stratton data={props.data.strattonData} disclaimerHandler={props.disclaimerHandler}/> : ''}
-                {props.data.budgetDirectData ? <BudgetDirect data={props.data.budgetDirectData} disclaimerHandler={props.disclaimerHandler}/> : ''}
+                {props.data.financeQuoteData ? <Stratton data={props.data.financeQuoteData} disclaimerHandler={props.disclaimerHandler}/> : ''}
+                {props.data.insuranceQuoteData ? <BudgetDirect data={props.data.insuranceQuoteData} disclaimerHandler={props.disclaimerHandler}/> : ''}
             </div>
         </div>
     )
@@ -201,6 +202,7 @@ class SpecModule extends React.Component {
         });
 
         Ajax.get(url, (data) => {
+            debugger;
             data = JSON.parse(data);
 
             // Cache data
