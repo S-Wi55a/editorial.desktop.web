@@ -6,6 +6,7 @@ using Microsoft.Owin;
 using Owin;
 using System.Linq;
 using Csn.Retail.Editorial.Web.Infrastructure.StartUpTasks;
+using Ingress.Autofac;
 
 [assembly: OwinStartupAttribute(typeof(Csn.Retail.Editorial.Web.Startup))]
 namespace Csn.Retail.Editorial.Web
@@ -22,6 +23,7 @@ namespace Csn.Retail.Editorial.Web
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             RunStartUpTasks(container);
+            container.RunBootstrapperTasks();
             app.UseAutofacMiddleware(container);
             app.UseAutofacMvc();
         }
