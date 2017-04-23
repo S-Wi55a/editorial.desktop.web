@@ -392,12 +392,9 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\AlsoConsiderDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
-    <Compile Include="Features\Spec\SpecController.cs" />
-    <Compile Include="Features\Spec\ApiQuery.cs" />
-    <Compile Include="Features\Spec\SpecQueryHandler.cs" />
-    <Compile Include="Features\StockForSale\StockForSaleController.cs" />
-    <Compile Include="Features\StockForSale\StockForSaleQuery.cs" />
-    <Compile Include="Features\StockForSale\StockForSaleQueryHandler.cs" />
+    <Compile Include="Features\Shared\ApiProxy\ApiProxyController.cs" />
+    <Compile Include="Features\Shared\ApiProxy\ApiProxyQuery.cs" />
+    <Compile Include="Features\Shared\ApiProxy\ApiProxyQueryHandler.cs" />
     <Compile Include="Features\MoreArticles\MoreArticlesController.cs" />
     <Compile Include="Features\MoreArticles\MoreArticlesQuery.cs" />
     <Compile Include="Features\MoreArticles\MoreArticlesQueryHandler.cs" />

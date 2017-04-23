@@ -159,7 +159,7 @@ class SpecModule extends React.Component {
     }
 
     componentDidMount() {
-        this.sliderHandler(this.state.activeItemIndex)
+        this.sliderHandler(this.state.activeItemIndex);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -174,6 +174,7 @@ class SpecModule extends React.Component {
     }
 
     sliderHandler = (index) => {
+        debugger;
         // Check if state.items has value
         // true: return data
         if (typeof this.state.items[index] !== 'undefined') {
@@ -183,7 +184,7 @@ class SpecModule extends React.Component {
             });
         } else {
             //console.log('not using cached data')
-            const url = this.props.path + this.state.urls[index].uri
+            const url = this.props.path + this.state.urls[index].uri;
             this.ajaxHandler(url, index);
         }       
     }
