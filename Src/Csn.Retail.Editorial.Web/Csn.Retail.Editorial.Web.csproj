@@ -393,7 +393,7 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
     <Compile Include="Features\Spec\SpecController.cs" />
-    <Compile Include="Features\Spec\SpecQuery.cs" />
+    <Compile Include="Features\Spec\ApiQuery.cs" />
     <Compile Include="Features\Spec\SpecQueryHandler.cs" />
     <Compile Include="Features\StockForSale\StockForSaleController.cs" />
     <Compile Include="Features\StockForSale\StockForSaleQuery.cs" />

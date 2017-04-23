@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.SimpleCqrs;
 using Newtonsoft.Json;
 
@@ -18,9 +17,18 @@ namespace Csn.Retail.Editorial.Web.Features.Spec
 
         [HttpGet]
         [Route("editorial/api/v1/spec")]
-        public async Task<object> GetLatest(SpecQuery query)
+        public async Task<object> GetLatest(ApiQuery query)
         {
-            var result = await _queryDispatcher.DispatchAsync<SpecQuery, object>(query);
+            var result = await _queryDispatcher.DispatchAsync<ApiQuery, object>(query);
+
+            return JsonConvert.SerializeObject(result);
+        }
+
+        [HttpGet]
+        [Route("editorial/api/v1/retail-editorial-proxy")]
+        public async Task<object> Get(ApiQuery query)
+        {
+            var result = await _queryDispatcher.DispatchAsync<ApiQuery, object>(query);
 
             return JsonConvert.SerializeObject(result);
         }

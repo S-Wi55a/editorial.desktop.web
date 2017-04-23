@@ -6,7 +6,7 @@ using Csn.SimpleCqrs;
 namespace Csn.Retail.Editorial.Web.Features.Spec
 {
     [AutoBind]
-    public class SpecQueryHandler : IAsyncQueryHandler<SpecQuery, object>
+    public class SpecQueryHandler : IAsyncQueryHandler<ApiQuery, object>
     {
         private readonly IEditorialApiProxy _editorialApiProxy;
 
@@ -15,7 +15,7 @@ namespace Csn.Retail.Editorial.Web.Features.Spec
             _editorialApiProxy = editorialApiProxy;
         }
 
-        public async Task<object> HandleAsync(SpecQuery query)
+        public async Task<object> HandleAsync(ApiQuery query)
         {
             var result = await _editorialApiProxy.GetSpecAsync(query);
 

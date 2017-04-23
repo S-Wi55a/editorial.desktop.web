@@ -14,7 +14,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         Task<SmartServiceResponse<ArticleDetailsDto>> GetArticleAsync(EditorialApiInput input);
         Task<SmartServiceResponse<MoreArticlesDto>> GetLatestArticlesAsync(MoreArticlesQuery query);
         Task<SmartServiceResponse<StockForSaleDto>> GetStockListingAsync(StockForSaleQuery query);
-        Task<SmartServiceResponse<object>> GetSpecAsync(SpecQuery query);
+        Task<SmartServiceResponse<object>> GetSpecAsync(ApiQuery query);
         Task<SmartServiceResponse<AlsoConsiderDto>> GetAlsoConsiderAsync(AlsoConsiderQuery query);
     }
 
@@ -50,7 +50,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
                 .GetAsync<StockForSaleDto>();
         }
 
-        public Task<SmartServiceResponse<object>> GetSpecAsync(SpecQuery query)
+        public Task<SmartServiceResponse<object>> GetSpecAsync(ApiQuery query)
         {
             return _smartClient.Service(ServiceName)
                 .Path(query.Uri)

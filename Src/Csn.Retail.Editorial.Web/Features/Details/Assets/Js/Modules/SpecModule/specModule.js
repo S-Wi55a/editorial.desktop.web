@@ -26,13 +26,13 @@ const SpecificationsItem_DT = (props) => {
 
 const Specifications = (props) => {
     debugger;
-    const listLength = props.items.length;
+    const listLength = props.data.items.length;
 
     return (
         <div>
-            <h3 className="spec-item__spec-item-list-heading">props.title</h3>
+            <h3 className="spec-item__spec-item-list-heading">{props.data.title}</h3>
             <dl className="spec-item__spec-item-list">
-                {props.items.map((item, index) => {
+                {props.data.items.map((item, index) => {
                         if (index === listLength - 1) {
                             return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} last={true} />]
                         } else {
@@ -45,45 +45,43 @@ const Specifications = (props) => {
         )
 } 
 
-// Budjest Direct
-const BudgetDirect = (props) => {
+const InsuranceQuote = (props) => {
     return (
         <div className="spec-item__third-party-offer spec-item__third-party-offer--stratton third-party-offer">
             <img className="third-party-offer__logo" src={props.data.logoUrl} />
             <div className="third-party-offer__content">
-                <h3 className="third-party-offer__heading">{props.data.headings.title}</h3>
+                <h3 className="third-party-offer__heading">{props.data.title}</h3>
                 <div className="third-party-offer__price-container">
                     <span className="third-party-offer__price">
-                        {props.data.annualCost}
+                        {props.data.amount}
                     </span>
                     <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
-                        {props.data.headings.frequentPayment}
+                        {props.data.paymentFrequency}
                     </span>
                 </div>
             </div>
-            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.headings.getQuote}</a>
-            <div className="third-party-offer__terms-and-conditions">{props.data.termCondition}</div>
+            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.getQuoteText}</a>
+            <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
         </div>
         )
 } 
 
-// Stratton
-const Stratton = (props) => {
+const FinanceQuote = (props) => {
     return (
         <div className="spec-item__third-party-offer spec-item__third-party-offer--stratton third-party-offer">
             <img className= "third-party-offer__logo" src={props.data.logoUrl} />
             <div className="third-party-offer__content">
-                <h3 className="third-party-offer__heading">{props.data.headings.title}</h3>
+                <h3 className="third-party-offer__heading">{props.data.title}</h3>
                 <div className="third-party-offer__price-container">
                     <span className="third-party-offer__price">
-                        {props.data.monthlyRepayments}
+                        {props.data.amount}
                     </span>
                     <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
-                        {props.data.headings.frequentPayment}
+                        {props.data.paymentFrequency}
                     </span>
                 </div>
             </div>
-            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.headings.getQuote}</a>
+            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.getQuoteText}</a>
         </div>
         )
 } 
@@ -133,8 +131,8 @@ const SpecModuleItem = (props) => {
                 <Specifications data={props.data.specItems} /> 
             </div>
             <div className="spec-item__third-party-offers">
-                {props.data.financeQuoteData ? <Stratton data={props.data.financeQuoteData} disclaimerHandler={props.disclaimerHandler}/> : ''}
-                {props.data.insuranceQuoteData ? <BudgetDirect data={props.data.insuranceQuoteData} disclaimerHandler={props.disclaimerHandler}/> : ''}
+                {props.data.financeQuoteData ? <FinanceQuote data={props.data.financeQuoteData} disclaimerHandler={props.disclaimerHandler}/> : ''}
+                {props.data.insuranceQuoteData ? <InsuranceQuote data={props.data.insuranceQuoteData} disclaimerHandler={props.disclaimerHandler}/> : ''}
             </div>
         </div>
     )
