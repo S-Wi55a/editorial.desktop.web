@@ -40,12 +40,12 @@
     }
 
     &__variant {
-        font-size: $font-size-h2;
+        font-size: $font-size-h3;
         font-weight: $font-weight-300;
         color: $cs-dark-grey;
         border-top: 1px solid $cs-lighter-grey;
         margin-top: 10px !important;
-        padding-top: 10px;
+        padding: 10px 0;
     }
 
     &__price {
