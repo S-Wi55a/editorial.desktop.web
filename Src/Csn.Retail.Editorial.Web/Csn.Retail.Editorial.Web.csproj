@@ -390,7 +390,6 @@
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\AlsoConsiderDto.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
     <Compile Include="Features\Shared\ApiProxy\ApiProxyController.cs" />
     <Compile Include="Features\Shared\ApiProxy\ApiProxyQuery.cs" />
