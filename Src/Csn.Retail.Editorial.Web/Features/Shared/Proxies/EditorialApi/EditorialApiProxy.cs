@@ -2,7 +2,6 @@
 using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Features.AlsoConsider;
 using Csn.Retail.Editorial.Web.Features.MoreArticles;
-using Csn.Retail.Editorial.Web.Features.Shared.ApiProxy;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Ingress.ServiceClient.Abstracts;
 

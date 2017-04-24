@@ -64,6 +64,40 @@ const InsuranceQuote = (props) => {
             <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
         </div>
         )
+}
+
+const ThirdPartyOffers = (props) => {
+    debugger;
+    
+    var offers = [];
+
+    props.data.map((item, index) => {
+        offers.push(<ThirdPartyOffer data={item} disclaimerHandler={props.disclaimerHandler} key={index}/>);
+    });
+
+    return (<div>{ offers }</div>);
+} 
+
+
+const ThirdPartyOffer = (props) => {
+    return (
+        <div className="spec-item__third-party-offer spec-item__third-party-offer--stratton third-party-offer">
+            <img className="third-party-offer__logo" src={props.data.logoUrl} />
+            <div className="third-party-offer__content">
+                <h3 className="third-party-offer__heading">{props.data.title}</h3>
+                <div className="third-party-offer__price-container">
+                    <span className="third-party-offer__price">
+                        {props.data.amount}
+                    </span>
+                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
+                        {props.data.paymentFrequency}
+                    </span>
+                </div>
+            </div>
+            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.getQuoteText}</a>
+            <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
+        </div>
+        )
 } 
 
 const FinanceQuote = (props) => {
@@ -131,8 +165,7 @@ const SpecModuleItem = (props) => {
                 <Specifications data={props.data.specItems} /> 
             </div>
             <div className="spec-item__third-party-offers">
-                {props.data.financeQuoteData ? <FinanceQuote data={props.data.financeQuoteData} disclaimerHandler={props.disclaimerHandler}/> : ''}
-                {props.data.insuranceQuoteData ? <InsuranceQuote data={props.data.insuranceQuoteData} disclaimerHandler={props.disclaimerHandler}/> : ''}
+                {props.data.quotes ? <ThirdPartyOffers data={props.data.quotes} disclaimerHandler={props.disclaimerHandler}/> : ''}
             </div>
         </div>
     )
