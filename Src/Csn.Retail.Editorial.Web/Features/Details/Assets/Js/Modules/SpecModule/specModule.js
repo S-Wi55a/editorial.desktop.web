@@ -25,7 +25,6 @@ const SpecificationsItem_DT = (props) => {
 } 
 
 const Specifications = (props) => {
-    debugger;
     const listLength = props.data.items.length;
 
     return (
@@ -43,32 +42,9 @@ const Specifications = (props) => {
             </dl>
         </div>
         )
-} 
-
-const InsuranceQuote = (props) => {
-    return (
-        <div className="spec-item__third-party-offer spec-item__third-party-offer--stratton third-party-offer">
-            <img className="third-party-offer__logo" src={props.data.logoUrl} />
-            <div className="third-party-offer__content">
-                <h3 className="third-party-offer__heading">{props.data.title}</h3>
-                <div className="third-party-offer__price-container">
-                    <span className="third-party-offer__price">
-                        {props.data.amount}
-                    </span>
-                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
-                        {props.data.paymentFrequency}
-                    </span>
-                </div>
-            </div>
-            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.getQuoteText}</a>
-            <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
-        </div>
-        )
 }
 
 const ThirdPartyOffers = (props) => {
-    debugger;
-    
     var offers = [];
 
     props.data.map((item, index) => {
@@ -81,7 +57,7 @@ const ThirdPartyOffers = (props) => {
 
 const ThirdPartyOffer = (props) => {
     return (
-        <div className="spec-item__third-party-offer spec-item__third-party-offer--stratton third-party-offer">
+        <div className="spec-item__third-party-offer third-party-offer">
             <img className="third-party-offer__logo" src={props.data.logoUrl} />
             <div className="third-party-offer__content">
                 <h3 className="third-party-offer__heading">{props.data.title}</h3>
@@ -96,26 +72,6 @@ const ThirdPartyOffer = (props) => {
             </div>
             <a href={props.data.formUrl} className="third-party-offer__link">{props.data.getQuoteText}</a>
             <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
-        </div>
-        )
-} 
-
-const FinanceQuote = (props) => {
-    return (
-        <div className="spec-item__third-party-offer spec-item__third-party-offer--stratton third-party-offer">
-            <img className= "third-party-offer__logo" src={props.data.logoUrl} />
-            <div className="third-party-offer__content">
-                <h3 className="third-party-offer__heading">{props.data.title}</h3>
-                <div className="third-party-offer__price-container">
-                    <span className="third-party-offer__price">
-                        {props.data.amount}
-                    </span>
-                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
-                        {props.data.paymentFrequency}
-                    </span>
-                </div>
-            </div>
-            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.getQuoteText}</a>
         </div>
         )
 } 
@@ -207,7 +163,6 @@ class SpecModule extends React.Component {
     }
 
     sliderHandler = (index) => {
-        debugger;
         // Check if state.items has value
         // true: return data
         if (typeof this.state.items[index] !== 'undefined') {
@@ -224,7 +179,6 @@ class SpecModule extends React.Component {
 
     // Ajax
     ajaxHandler = (url, index) => {
-
         // Set State
         this.setState((prevState, props) => {
             return {
@@ -234,7 +188,6 @@ class SpecModule extends React.Component {
         });
 
         Ajax.get(url, (data) => {
-            debugger;
             data = JSON.parse(data);
 
             // Cache data

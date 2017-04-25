@@ -371,9 +371,6 @@
     <Compile Include="App_Start\SetupGlobalFilterTask.cs" />
     <Compile Include="App_Start\SetupDefaultRouteTask.cs" />
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
-    <Compile Include="Features\AlsoConsider\AlsoConsiderController.cs" />
-    <Compile Include="Features\AlsoConsider\AlsoConsiderQuery.cs" />
-    <Compile Include="Features\AlsoConsider\AlsoConsiderQueryHandler.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
@@ -389,14 +386,9 @@
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\AlsoConsiderDto.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
     <Compile Include="Features\Shared\ApiProxy\ApiProxyController.cs" />
     <Compile Include="Features\Shared\ApiProxy\ApiProxyQuery.cs" />
     <Compile Include="Features\Shared\ApiProxy\ApiProxyQueryHandler.cs" />
-    <Compile Include="Features\MoreArticles\MoreArticlesController.cs" />
-    <Compile Include="Features\MoreArticles\MoreArticlesQuery.cs" />
-    <Compile Include="Features\MoreArticles\MoreArticlesQueryHandler.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteExtensions.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteResponseDto.cs" />
     <Compile Include="Features\Shared\GlobalSite\LoadGlobalSiteDataOnPageLoad.cs" />
@@ -411,7 +403,6 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\MoreArticlesDto.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiDto.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiProxy.cs" />

@@ -1,6 +1,6 @@
 ﻿const container = (data) => {
 
-    const alsoConsiderQueryPath = "/editorial/api/v1/also-consider/?uri=";
+    const alsoConsiderQueryPath = "/editorial/api/v1/proxy/?uri=";
 
     return `<div class="also-consider" data-also-consider-query="${alsoConsiderQueryPath}${data.uri}"></div>`
 }
