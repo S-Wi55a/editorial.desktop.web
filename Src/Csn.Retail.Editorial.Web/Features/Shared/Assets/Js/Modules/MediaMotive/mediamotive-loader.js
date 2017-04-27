@@ -1,6 +1,6 @@
 ﻿const postscribe = require("postscribe");
 
-(function ($, w, krux) {
+!(function ($, w, krux) {
     'use strict';
 
     w.MediaMotiveLoader = function () {
@@ -14,7 +14,6 @@
                     console.warn('KruxSasHelper not loaded');
                 }
             }
-
 
             if ($(".mediamotive-block").length > 0) {
                 $(".mediamotive-block").each(function () {
@@ -42,5 +41,5 @@
 
 
 (function () {
-    new MediaMotiveLoader().init();
+    setTimeout(function() { new MediaMotiveLoader().init(); }, 250);
 })(jQuery, window);
