@@ -20,8 +20,8 @@
                 $(".mediamotive-block").each(function () {
                     var item = $(this);
                     var tile = item.attr('id');
-                    var isKruxRequired = (item.data('kruxRequired') == 'True');
-                    var scriptUrl = item.data('mediaMotiveUrl');
+                    var isKruxRequired = (item.attr('data-krux-required') == 'True');
+                    var scriptUrl = item.attr('data-media-motive-url');
                     if (isKruxRequired) {
                         scriptUrl = scriptUrl + sasTags;
                     }
