@@ -25,9 +25,9 @@
                     if (isKruxRequired) {
                         scriptUrl = scriptUrl + sasTags;
                     }
-
-                    postscribe('#' + tile, '<script src=\'' + scriptUrl + '\'><\/script>', function () {
-                        $('#' + tile).removeClass('loading');
+                    postscribe('#' + tile, '<script src=\'' + scriptUrl + '\'><\/script>',
+                    {
+                        done: function () { }
                     });
                 });
             }
