@@ -42,6 +42,6 @@
 })(jQuery, window);
 
 
-(function () {
+jQuery(document).ready(function () {
     new MediaMotiveLoader().init();
-})(jQuery, window);
+});
