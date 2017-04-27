@@ -1,6 +1,6 @@
 ﻿const postscribe = require("postscribe");
 
-!(function ($, w, krux) {
+!(function ($, w) {
     'use strict';
 
     w.MediaMotiveLoader = function () {
@@ -26,7 +26,9 @@
                     }
                     postscribe('#' + tile, '<script src=\'' + scriptUrl + '\'><\/script>',
                     {
-                        done: function () { }
+                        done: function () {
+                            console.log('Done ' + tile);
+                        }
                     });
                 });
             }
