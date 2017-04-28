@@ -43,5 +43,5 @@
 
 
 jQuery(document).ready(function () {
-    new MediaMotiveLoader().init();
+    setTimeout(function () { new MediaMotiveLoader().init(); }, 250);
 });
