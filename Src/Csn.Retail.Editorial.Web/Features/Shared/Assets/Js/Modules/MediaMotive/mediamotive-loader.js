@@ -31,6 +31,7 @@
                     postscribeQueue.push({ tile: tile, scriptUrl: scriptUrl})
                 });
 
+                //Recursively call postscribe
                 var p = function p(i, limit) {
 
                     if (i < limit) {
