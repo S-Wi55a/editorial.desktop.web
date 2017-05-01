@@ -1,4 +1,3 @@
-﻿require("./htmlparser.js");
-require("./mediamotive.js");
+﻿require("./mediamotive.js");
 require("./krux-sas-integrator.js");
 require("./mediamotive-loader.js");
