@@ -1,7 +1,9 @@
 ﻿const postscribe = require("postscribe");
 
-!(function ($, w) {
+(function ($, w) {
     'use strict';
+
+    var postscribeQueue = []
 
     w.MediaMotiveLoader = function () {
         var init = function () {
@@ -16,6 +18,8 @@
             }
 
             if ($(".mediamotive-block").length > 0) {
+                //Postscrie exhibits strange behaviour when called in parallel
+                //To prevent this we will build a queue and use callback for the queue
                 $(".mediamotive-block").each(function () {
                     var item = $(this);
                     var tile = item.attr('id');
@@ -24,13 +28,24 @@
                     if (isKruxRequired) {
                         scriptUrl = scriptUrl + sasTags;
                     }
-                    postscribe('#' + tile, '<script src=\'' + scriptUrl + '\'><\/script>',
-                    {
-                        done: function () {
-                            console.log('Done ' + tile);
-                        }
-                    });
+                    postscribeQueue.push({ tile: tile, scriptUrl: scriptUrl})
                 });
+
+                var p = function p(i, limit) {
+
+                    if (i < limit) {
+                        postscribe('#' + postscribeQueue[i].tile, '<script src=\'' + postscribeQueue[i].scriptUrl + '\'><\/script>',
+                            {
+                                done: function () {
+                                    i++
+                                    return p(i, limit)
+                                }
+                            });  
+                    }
+     
+                }
+
+                p(0, postscribeQueue.length)
             }
         };
 
@@ -39,9 +54,10 @@
         };
     };
 
+    jQuery(document).ready(function () {
+        new MediaMotiveLoader().init();
+    });
+
 })(jQuery, window);
 
 
-jQuery(document).ready(function () {
-    setTimeout(function () { new MediaMotiveLoader().init(); }, 250);
-});
