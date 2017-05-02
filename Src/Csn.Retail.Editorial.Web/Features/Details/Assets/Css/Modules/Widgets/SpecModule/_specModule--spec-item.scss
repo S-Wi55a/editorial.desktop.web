@@ -232,9 +232,14 @@
 
 
     &__third-party-offers {
-        width: calc(100% - 30px);
+        width: calc(100% - 60px);
         margin: auto;
         padding: 30px 0 0;
         border-top: 1px solid $cs-lightest-grey;
+
+        & > div {
+            margin-left: -15px;
+            width: calc(100% + 30px);
+        }
     }
 }
