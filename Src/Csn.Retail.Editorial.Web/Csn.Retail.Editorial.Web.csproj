@@ -494,7 +494,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />

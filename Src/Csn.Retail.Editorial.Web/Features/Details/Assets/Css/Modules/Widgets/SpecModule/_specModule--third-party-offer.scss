@@ -7,13 +7,14 @@
     width: 50%;
     display: inline-block;
     vertical-align: top;
+    padding: 0 30px;
 
     &:nth-of-type(odd) {
-        padding-right: 15px;
+        //padding-right: 15px;
     }
 
     &:nth-of-type(even) {
-        padding-left: 15px;
+        //padding-left: 15px;
     }
 
 

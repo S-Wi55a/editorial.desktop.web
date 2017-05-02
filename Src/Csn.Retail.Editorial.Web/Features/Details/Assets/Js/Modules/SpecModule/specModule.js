@@ -2,7 +2,7 @@
 import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 import Slider, { Range } from 'rc-slider'
-import * as View from 'Js/Modules/SpecModule/specModule-view.js'
+import * as View from 'Js/Modules/SpecModule/specModule--view.js'
 
 
 const SpecificationsItem_DD = (props) => {
@@ -56,8 +56,11 @@ const ThirdPartyOffers = (props) => {
 
 
 const ThirdPartyOffer = (props) => {
+
+    const titleNoSpace = props.data.companyName ? props.data.companyName.replace(/\s+/g, "-").toLowerCase() : '';
+
     return (
-        <div className="spec-item__third-party-offer third-party-offer">
+        <div className={'spec-item__third-party-offer third-party-offer third-party-offer--'+titleNoSpace}>
             <img className="third-party-offer__logo" src={props.data.logoUrl} />
             <div className="third-party-offer__content">
                 <h3 className="third-party-offer__heading">{props.data.title}</h3>

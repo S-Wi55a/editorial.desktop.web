@@ -270,7 +270,8 @@ module.exports = (env) => {
                             target: 'http://localhost:8080',
                             ws: true
                         },
-                        logLevel: "info"
+                        logLevel: "info",
+                        open: false
 
                     },
                     // plugin options 
