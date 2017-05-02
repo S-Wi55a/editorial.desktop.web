@@ -1,6 +1,8 @@
-﻿const container = (data) => {
+﻿import { proxy } from 'Js/Modules/Endpoints/endpoints';
 
-    const alsoConsiderQueryPath = "/editorial/api/v1/proxy/?uri=";
+const container = (data) => {
+
+    const alsoConsiderQueryPath = proxy;
 
     return `<div class="also-consider" data-also-consider-query="${alsoConsiderQueryPath}${data.uri}"></div>`
 }

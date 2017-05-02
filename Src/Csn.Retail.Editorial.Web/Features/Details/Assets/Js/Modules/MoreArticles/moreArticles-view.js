@@ -1,8 +1,9 @@
-﻿const container = (data) => {
+﻿import { proxy } from 'Js/Modules/Endpoints/endpoints';
 
+const container = (data) => {
 
     const filtersLength = data.moreArticleItems.length;
-    const moreArticlesPath = "/editorial/api/v1/proxy/?uri=";
+    const moreArticlesPath = proxy;
 
 
     const filterView = (str, filter, index) => {

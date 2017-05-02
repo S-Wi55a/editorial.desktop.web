@@ -3,10 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SpecModule from './specModule';
 import { AppContainer } from 'react-hot-loader';
+import { proxy } from 'Js/Modules/Endpoints/endpoints';
 
 import 'Css/Modules/Widgets/SpecModule/_specModule.scss'; //TODO: CSS Module
 
-const specPath = "/editorial/api/v1/proxy/?uri=";
+const specPath = proxy;
 const GLOBAL_specModuleData = csn_editorial.specModule; //Set this to state
 window.csn_modal = window.csn_modal || new Modal()
 

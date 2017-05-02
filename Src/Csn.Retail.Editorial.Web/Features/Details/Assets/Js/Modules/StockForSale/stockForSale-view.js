@@ -1,6 +1,8 @@
-﻿const container = (data) => {
+﻿import { proxy } from 'Js/Modules/Endpoints/endpoints';
 
-    const stockForSalePath = "/editorial/api/v1/proxy/?uri=";
+const container = (data) => {
+
+    const stockForSalePath = proxy;
     const limit = '%26limit=2';
 
     return `
