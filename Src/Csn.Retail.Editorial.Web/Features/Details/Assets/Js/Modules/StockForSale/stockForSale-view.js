@@ -1,6 +1,6 @@
 ﻿const container = (data) => {
 
-    const stockForSalePath = "/editorial/api/v1/stock-listing/?uri=";
+    const stockForSalePath = "/editorial/api/v1/proxy/?uri=";
     const limit = '%26limit=2';
 
     return `

@@ -1,8 +1,8 @@
 ﻿const container = (data) => {
 
 
-    const filtersLength = data.moreArticleItems.length
-    const moreArticlesPath = "/editorial/api/v1/more-articles/?uri=";
+    const filtersLength = data.moreArticleItems.length;
+    const moreArticlesPath = "/editorial/api/v1/proxy/?uri=";
 
 
     const filterView = (str, filter, index) => {

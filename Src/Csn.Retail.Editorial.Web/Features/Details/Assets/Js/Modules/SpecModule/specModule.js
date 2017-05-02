@@ -25,13 +25,13 @@ const SpecificationsItem_DT = (props) => {
 } 
 
 const Specifications = (props) => {
-    const listLength = props.data.length;
+    const listLength = props.data.items.length;
 
     return (
         <div>
-            <h3 className="spec-item__spec-item-list-heading">Overview</h3>
+            <h3 className="spec-item__spec-item-list-heading">{props.data.title}</h3>
             <dl className="spec-item__spec-item-list">
-                {props.data.map((item, index) => {
+                {props.data.items.map((item, index) => {
                         if (index === listLength - 1) {
                             return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} last={true} />]
                         } else {
@@ -42,47 +42,36 @@ const Specifications = (props) => {
             </dl>
         </div>
         )
+}
+
+const ThirdPartyOffers = (props) => {
+    var offers = [];
+
+    props.data.map((item, index) => {
+        offers.push(<ThirdPartyOffer data={item} disclaimerHandler={props.disclaimerHandler} key={index}/>);
+    });
+
+    return (<div>{ offers }</div>);
 } 
 
-// Budjest Direct
-const BudgetDirect = (props) => {
+
+const ThirdPartyOffer = (props) => {
     return (
-        <div className="spec-item__third-party-offer spec-item__third-party-offer--stratton third-party-offer">
+        <div className="spec-item__third-party-offer third-party-offer">
             <img className="third-party-offer__logo" src={props.data.logoUrl} />
             <div className="third-party-offer__content">
-                <h3 className="third-party-offer__heading">{props.data.headings.title}</h3>
+                <h3 className="third-party-offer__heading">{props.data.title}</h3>
                 <div className="third-party-offer__price-container">
                     <span className="third-party-offer__price">
-                        {props.data.annualCost}
+                        {props.data.amount}
                     </span>
                     <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
-                        {props.data.headings.frequentPayment}
+                        {props.data.paymentFrequency}
                     </span>
                 </div>
             </div>
-            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.headings.getQuote}</a>
-            <div className="third-party-offer__terms-and-conditions">{props.data.termCondition}</div>
-        </div>
-        )
-} 
-
-// Stratton
-const Stratton = (props) => {
-    return (
-        <div className="spec-item__third-party-offer spec-item__third-party-offer--stratton third-party-offer">
-            <img className= "third-party-offer__logo" src={props.data.logoUrl} />
-            <div className="third-party-offer__content">
-                <h3 className="third-party-offer__heading">{props.data.headings.title}</h3>
-                <div className="third-party-offer__price-container">
-                    <span className="third-party-offer__price">
-                        {props.data.monthlyRepayments}
-                    </span>
-                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
-                        {props.data.headings.frequentPayment}
-                    </span>
-                </div>
-            </div>
-            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.headings.getQuote}</a>
+            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.getQuoteText}</a>
+            <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
         </div>
         )
 } 
@@ -120,20 +109,19 @@ const SpecModuleItem = (props) => {
     return (
         <div className="spec-item ">
             <div className="spec-item__column spec-item__column--1">
-                <h2 className="spec-item__make">{props.data.title}</h2>
-                <p className="spec-item__model">{props.data.description}</p>
-                <p className="spec-item__variant">{props.data.description}</p>
+                <h2 className="spec-item__make">{props.data.title1}</h2>
+                <p className="spec-item__model">{props.data.title2}</p>
+                <p className="spec-item__variant">{props.data.title3}</p>
                 <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
                 <div className="spec-item__selector">
                     <Slider dots min={0} max={props.sliderLength - 1} onChange={props.sliderHandler} />
                 </div>
             </div>
             <div className="spec-item__column spec-item__column--2">
-                <Specifications data={props.data.items} /> 
+                <Specifications data={props.data.specItems} /> 
             </div>
             <div className="spec-item__third-party-offers">
-                {props.data.strattonData ? <Stratton data={props.data.strattonData} disclaimerHandler={props.disclaimerHandler}/> : ''}
-                {props.data.budgetDirectData ? <BudgetDirect data={props.data.budgetDirectData} disclaimerHandler={props.disclaimerHandler}/> : ''}
+                {props.data.quotes ? <ThirdPartyOffers data={props.data.quotes} disclaimerHandler={props.disclaimerHandler}/> : ''}
             </div>
         </div>
     )
@@ -160,7 +148,7 @@ class SpecModule extends React.Component {
     }
 
     componentDidMount() {
-        this.sliderHandler(this.state.activeItemIndex)
+        this.sliderHandler(this.state.activeItemIndex);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -184,14 +172,13 @@ class SpecModule extends React.Component {
             });
         } else {
             //console.log('not using cached data')
-            const url = this.props.path + this.state.urls[index].uri
+            const url = this.props.path + this.state.urls[index].uri;
             this.ajaxHandler(url, index);
         }       
     }
 
     // Ajax
     ajaxHandler = (url, index) => {
-
         // Set State
         this.setState((prevState, props) => {
             return {
