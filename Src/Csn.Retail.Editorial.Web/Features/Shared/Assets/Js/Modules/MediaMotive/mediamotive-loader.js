@@ -57,7 +57,7 @@ import { loaded } from 'document-promises/document-promises.js';
     };
 
 
-    loaded.then(() => {
+    $(function(){
         new MediaMotiveLoader().init();
     });
 
