@@ -27,7 +27,7 @@
 @section TopScripts{
     @Html.AssetJs("csn.common--" + tenantName, LoadType.Defer)
     @RenderSection("TopScripts", false)
-
+    @Html.AssetJs("csn.mm--" + tenantName, LoadType.Defer)
 }
 
 

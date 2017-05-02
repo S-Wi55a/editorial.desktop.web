@@ -151,7 +151,8 @@
             background-color: $cs-light-blue;
         }
 
-        &--car-advice {
+        &--car-advice,
+        &--riding-advice {
             background-color: $cs-accent-green;
         }
 
@@ -169,6 +170,10 @@
 
         &--feature {
             background-color: $cs-pink;
+        }
+
+        &--motoracing {
+            background-color: $cs-dark-grey;
         }
     }
 
@@ -298,7 +303,7 @@
         }
     }
 
-    &.car-advice {
+    &.car-advice,&.riding-advice {
         .article__copy.drop-cap {
             >p:first-child:first-letter {
                 color: $cs-accent-green;

@@ -134,6 +134,8 @@ module.exports = (env) => {
 
         entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
         entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
+        entries['csn.mm' + '--' + tenant] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mm.js'];
+
 
         moduleExportArr.push(
         {

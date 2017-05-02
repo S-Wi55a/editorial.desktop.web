@@ -34,19 +34,6 @@ let editorRatings = function() {
 }
 editorRatings();
 
-// Lazy load Media Motive
-let mediaMotive = function () {
-
-    require.ensure(['Js/Modules/MediaMotive/mm.js'],
-        function() {
-            require('Js/Modules/MediaMotive/mm.js');
-        },
-        'Media-Motive');
-}
-loaded.then(function () {
-    mediaMotive();
-});
-
 // TEADS
 $(function () {
     if ($('#teads-video-container').length) {

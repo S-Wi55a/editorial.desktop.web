@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     {
         public bool Resolve(ArticleDetailsDto source, ArticleViewModel destination, bool destMember, ResolutionContext context)
         {
-            // only use drop case if the first paragraph contains more than 255 chars
+            // only use drop case if the first paragraph contains more than 240 chars
             if (!source.ContentSections.IsNullOrEmpty() && CanApplyDropCase(source.ContentSections.First()))
             {
                 return true;
@@ -44,7 +44,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 return false;
             }
 
-            return result.Length > 0;
+            return result.Length > 240;
         }
     }
 }
