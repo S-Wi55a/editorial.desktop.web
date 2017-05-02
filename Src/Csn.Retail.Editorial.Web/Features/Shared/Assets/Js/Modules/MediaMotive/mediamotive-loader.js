@@ -1,4 +1,5 @@
 ﻿import postscribe from "postscribe";
+import { loaded } from 'document-promises/document-promises.js';
 
 (function ($, w) {
     'use strict';
@@ -38,7 +39,6 @@
                         postscribe('#' + postscribeQueue[i].tile, '<script src=\'' + postscribeQueue[i].scriptUrl + '\'><\/script>',
                             {
                                 done: function () {
-                                    console.log(i)
                                     i++
                                     return p(i, postscribeQueue)
                                 }
@@ -47,7 +47,6 @@
      
                 }
 
-                postscribe(document.body)
                 p(0, postscribeQueue)
             }
         };
@@ -57,8 +56,8 @@
         };
     };
 
-    $(function() {
-        console.log('ran')
+
+    loaded.then(() => {
         new MediaMotiveLoader().init();
     });
 
