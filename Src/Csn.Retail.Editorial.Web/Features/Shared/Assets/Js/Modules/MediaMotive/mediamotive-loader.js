@@ -1,5 +1,4 @@
 ﻿import postscribe from "postscribe";
-import { loaded } from 'document-promises/document-promises.js';
 
 (function ($, w) {
     'use strict';
