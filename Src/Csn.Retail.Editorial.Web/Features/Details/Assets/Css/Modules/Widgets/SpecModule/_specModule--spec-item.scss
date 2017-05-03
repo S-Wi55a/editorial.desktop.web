@@ -138,7 +138,7 @@
     }
 
     &__spec-item-title {
-        font-size: $font-size-h6;
+        font-size: 0; //$font-size-h6;
         color: $cs-grey;
     }
 
@@ -240,6 +240,66 @@
         & > div {
             margin-left: -15px;
             width: calc(100% + 30px);
+        }
+    }
+    // Icons
+    &__spec-item-value {
+
+        &::before {
+            font-family: $font-family-icons;
+            font-size: $font-size-h3;
+            display: inline-block;
+            color: $cs-grey;
+            vertical-align: middle;
+            margin-right: 15px;
+        }
+
+        &.body-style {
+            &::before {
+                content: "\e916";
+            }
+        }
+
+        &.drive {
+            &::before {
+                content: "\e916";
+            }
+        }
+
+        &.transmission {
+            &::before {
+                content: "\e962";
+            }
+        }
+
+        &.engine {
+            &::before {
+                content: "\e9c2";
+            }
+        }
+
+        &.fuel-type {
+            &::before {
+                content: "\e916";
+            }
+        }
+
+        &.fuel-consumption {
+            &::before {
+                content: "\e916";
+            }
+        }
+
+        &.power {
+            &::before {
+                content: "\e9c2";
+            }
+        }
+
+        &.safety-rating-ancap {
+            &::before {
+                content: "\e916";
+            }
         }
     }
 }

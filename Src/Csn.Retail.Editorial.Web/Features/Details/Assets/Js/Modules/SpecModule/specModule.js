@@ -7,13 +7,16 @@ import * as View from 'Js/Modules/SpecModule/specModule--view.js'
 
 const SpecificationsItem_DD = (props) => {
 
+    const iconClassName = props.item.title ? props.item.title.replace(/\s+/g, "-").replace(/\(|\)/g, "").toLowerCase() : '';
+
+
     if (props.last) {
         return (
-            <dd className="spec-item__spec-item-value" data-value={props.item.value}>{props.item.value}</dd>
+            <dd className={'spec-item__spec-item-value ' + iconClassName} data-value={props.item.value}>{props.item.value}</dd>
         )
     } else {
         return (
-            <dd className="spec-item__spec-item-value">{props.item.value}</dd>
+            <dd className={'spec-item__spec-item-value ' + iconClassName}>{props.item.value}</dd>
         )
     }
 
@@ -21,7 +24,7 @@ const SpecificationsItem_DD = (props) => {
 
 const SpecificationsItem_DT = (props) => {
 
-    const iconClassName = props.item.title ? props.item.title.replace(/\s+/g, "-").toLowerCase() : '';
+    const iconClassName = props.item.title ? props.item.title.replace(/\s+/g, "-").replace(/\(|\)/g, "").toLowerCase() : '';
 
     return (
         <dt className={'spec-item__spec-item-title ' + iconClassName}>{props.item.title}</dt>
