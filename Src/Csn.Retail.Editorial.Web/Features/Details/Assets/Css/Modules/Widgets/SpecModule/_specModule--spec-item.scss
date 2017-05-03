@@ -11,6 +11,10 @@
         margin-top: auto;
     }
 
+    &__column-container {
+        position: relative;
+    } 
+    
     &__column {
         padding: 0 30px;
         display: inline-block;
@@ -37,6 +41,7 @@
         font-weight: $font-weight-300;
         color: $cs-dark-grey;
         padding-top: 5px;
+        padding-bottom: 10px;
     }
 
     &__variant {
@@ -44,8 +49,9 @@
         font-weight: $font-weight-300;
         color: $cs-dark-grey;
         border-top: 1px solid $cs-lighter-grey;
-        margin-top: 10px !important;
+        margin-top: 10px;
         padding: 10px 0;
+        //height: 90px;
     }
 
     &__price {
@@ -256,7 +262,7 @@
 
         &.body-style {
             &::before {
-                content: "\e916";
+                content: "\e918";
             }
         }
 
@@ -268,13 +274,13 @@
 
         &.transmission {
             &::before {
-                content: "\e962";
+                content: "\e964";
             }
         }
 
         &.engine {
             &::before {
-                content: "\e9c2";
+                content: "\e958";
             }
         }
 
@@ -292,7 +298,7 @@
 
         &.power {
             &::before {
-                content: "\e9c2";
+                content: "\e9c4";
             }
         }
 

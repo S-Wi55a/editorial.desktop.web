@@ -85,7 +85,7 @@
             @include h4();
         }
 
-        p {
+        & > p {
             margin-top: 1.25em;
             @include p();
 

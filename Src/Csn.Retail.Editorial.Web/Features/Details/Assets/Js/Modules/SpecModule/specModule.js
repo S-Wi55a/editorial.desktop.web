@@ -107,13 +107,11 @@ const Price = (props) => {
                 <div className="spec-item__price-item">
                     <div className="spec-item__price-label">{props.data.pricePrivate.heading}</div>
                     <div className="spec-item__price spec-item__price--price-private">{props.data.pricePrivate.text}</div>
-                    <Range disabled min={rndLowestPrivate} max={rndHightestPrivate} allowCross={false} defaultValue={[props.data.pricePrivate.priceMin, props.data.pricePrivate.priceMax]} />
 
                 </div>
                 <div className="spec-item__price-item">
                     <div className="spec-item__price-label">{props.data.priceTradeIn.heading}</div>
                     <div className="spec-item__price spec-item__price--price-trade-in">{props.data.priceTradeIn.text}</div>
-                    <Range disabled min={rndLowestTradeIn} max={rndHightestTradeIn} allowCross={false} defaultValue={[props.data.priceTradeIn.priceMin, props.data.priceTradeIn.priceMax]} />
                 </div>
             </div>
         )
@@ -124,18 +122,21 @@ const Price = (props) => {
 const SpecModuleItem = (props) => {
     return (
         <div className="spec-item ">
+            <div className="spec-item__column-container">
             <div className="spec-item__column spec-item__column--1">
                 <h2 className="spec-item__make">{props.data.title1}</h2>
                 <p className="spec-item__model">{props.data.title2}</p>
                 <p className="spec-item__variant">{props.data.title3}</p>
                 <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
                 <div className="spec-item__selector">
+                    <p className="spec-item__selector-label"></p>
                     <Slider dots min={0} max={props.sliderLength - 1} onChange={props.sliderHandler} />
                 </div>
             </div>
             <div className="spec-item__column spec-item__column--2">
                 <Specifications data={props.data.specItems} /> 
             </div>
+                </div>
             <div className="spec-item__third-party-offers">
                 {props.data.quotes ? <ThirdPartyOffers data={props.data.quotes} disclaimerHandler={props.disclaimerHandler}/> : ''}
             </div>
