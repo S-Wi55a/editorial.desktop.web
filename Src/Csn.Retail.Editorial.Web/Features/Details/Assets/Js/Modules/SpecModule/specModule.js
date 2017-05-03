@@ -6,6 +6,7 @@ import * as View from 'Js/Modules/SpecModule/specModule--view.js'
 
 
 const SpecificationsItem_DD = (props) => {
+
     if (props.last) {
         return (
             <dd className="spec-item__spec-item-value" data-value={props.item.value}>{props.item.value}</dd>
@@ -19,8 +20,11 @@ const SpecificationsItem_DD = (props) => {
 }
 
 const SpecificationsItem_DT = (props) => {
+
+    const iconClassName = props.item.title ? props.item.title.replace(/\s+/g, "-").toLowerCase() : '';
+
     return (
-        <dt className="spec-item__spec-item-title">{props.item.title}</dt>
+        <dt className={'spec-item__spec-item-title ' + iconClassName}>{props.item.title}</dt>
     )
 } 
 
@@ -53,7 +57,6 @@ const ThirdPartyOffers = (props) => {
 
     return (<div>{ offers }</div>);
 } 
-
 
 const ThirdPartyOffer = (props) => {
 
@@ -89,18 +92,25 @@ const Price = (props) => {
            </div>
         )
     } else {
+
+        const rndNum = 10000;
+        const rndLowestPrivate = Math.floor(props.data.pricePrivate.priceMin / rndNum) * rndNum;
+        const rndHightestPrivate = Math.ceil(props.data.pricePrivate.priceMax / rndNum) * rndNum;
+        const rndLowestTradeIn = Math.floor(props.data.priceTradeIn.priceMin / rndNum) * rndNum;
+        const rndHightestTradeIn = Math.ceil(props.data.priceTradeIn.priceMax / rndNum) * rndNum;
+
         return (
             <div className="spec-item__price-container">
                 <div className="spec-item__price-item">
                     <div className="spec-item__price-label">{props.data.pricePrivate.heading}</div>
-                    <div className="spec-item__price spec-item__price--price-private">{props.data.pricePrivate.priceRange}</div>
-                    <Range disabled min={0} max={100} allowCross={false} defaultValue={[0, 20]} />
+                    <div className="spec-item__price spec-item__price--price-private">{props.data.pricePrivate.text}</div>
+                    <Range disabled min={rndLowestPrivate} max={rndHightestPrivate} allowCross={false} defaultValue={[props.data.pricePrivate.priceMin, props.data.pricePrivate.priceMax]} />
 
                 </div>
                 <div className="spec-item__price-item">
                     <div className="spec-item__price-label">{props.data.priceTradeIn.heading}</div>
-                    <div className="spec-item__price spec-item__price--price-trade-in">{props.data.priceTradeIn.priceRange}</div>
-                    <Range disabled min={0} max={100} allowCross={false} defaultValue={[20, 80]} />
+                    <div className="spec-item__price spec-item__price--price-trade-in">{props.data.priceTradeIn.text}</div>
+                    <Range disabled min={rndLowestTradeIn} max={rndHightestTradeIn} allowCross={false} defaultValue={[props.data.priceTradeIn.priceMin, props.data.priceTradeIn.priceMax]} />
                 </div>
             </div>
         )
