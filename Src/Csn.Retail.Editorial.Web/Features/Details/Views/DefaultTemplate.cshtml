@@ -36,7 +36,7 @@
 @section BottomScripts
 {
     @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
-    @{ Html.RenderPartial("Partials/Tracking/_GoogleAnalytics", Model.GaDimensions); }
+    @{ Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData); }
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
