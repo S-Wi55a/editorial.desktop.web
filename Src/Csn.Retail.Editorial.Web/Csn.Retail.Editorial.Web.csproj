@@ -676,7 +676,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_hero.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroSlider.scss" />
     <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Tracking\_GoogleAnalyticsDetails.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Tracking\_GoogleAnalytics.cshtml" />
     <Content Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
