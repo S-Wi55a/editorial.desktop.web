@@ -3,19 +3,11 @@
     startingIndex = parseInt(startingIndex)
 
     const items = (str, item, index) => {
-        if (index <= 4) {
+        {
             return `
                 <div class="slideshow__slide swiper-slide">
                     <img class="slideshow__image"
-                            src="${item.url}?width=1024&height=683"
-                            alt="${item.alternateText || ''}" />
-                </div>
-            `
-        } else {
-            return `
-                <div class="slideshow__slide swiper-slide">
-                    <img class="slideshow__image"
-                            data-src="${item.url}?width=1024&height=683"
+                            data-src="${item.url}?size=large&aspect=pad"
                             alt="${item.alternateText || ''}" />
                 </div>
             `

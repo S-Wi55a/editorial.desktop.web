@@ -148,6 +148,7 @@
                             const modalSwiper = new Swiper('._c-modal .slideshow', {
 
                                 initialSlide: initSlide,
+                                roundLengths: true,
 
                                 // Optional parameters
                                 loop: true,
@@ -160,9 +161,11 @@
 
                                 //Images
                                 preloadImages: false,
+                                updateOnImagesReady: false,
                                 lazyLoading: true,
                                 lazyLoadingInPrevNext: true,
                                 lazyLoadingInPrevNextAmount: 1, // Can't be less than slidesPerView
+                                lazyLoadingOnTransitionStart: true,
 
                                 // Navigation arrows
                                 nextButton: '.slideshow__nav--next',
@@ -184,40 +187,88 @@
 
                             })
 
-                            // Resize Handler for modal window to shrink when window height is less than image
-                            let resizeHandlers = function (windowHeightThreshold) {
+                            window.modalSwiper = modalSwiper
 
-                                let modalContent = document.querySelector('._c-modal__content');
-                                let el = modalContent.querySelector('._c-modal .slideshow');
-                                let windowHeight = window.innerHeight - windowHeightThreshold;
+                            let resizeHandler = (swiper) => {
 
-                                el.style.width = '';
-                                modalSwiper.onResize()
+                                const img = swiper.slides[swiper.activeIndex].querySelector('.slideshow__image')
+                                const w = swiper.slides[swiper.activeIndex].querySelector('.slideshow__image').width
+                                const h = swiper.slides[swiper.activeIndex].querySelector('.slideshow__image').height
 
-                                // Compare image dimensions with window
-                                if (windowHeight < el.offsetHeight) {
+                                let windowHeight = window.innerHeight - 80; //TODO - change to dynamic or var
+                                let windowWidth = window.innerWidth - 160; //TODO - change to dynamic or var
 
-                                    let imageRatio = 3 / 2;
-                                    let width = Math.round((imageRatio * windowHeight));
+                                let windowRatio = windowWidth / windowHeight;
 
-                                    el.style.width = (Math.round(width)) + 'px';
+                                let imageRatio = img.naturalWidth / img.naturalHeight;
 
-                                    //then force slider re position
-                                    modalSwiper.onResize()
+                                console.log('windowRatio: ', windowRatio, 'imageRatio: ', imageRatio, windowRatio/imageRatio )
+
+                                let compareRatio = windowRatio / imageRatio
+
+                                //imageRatio > 1 = wider
+                                //imageRatio < 1 = taller
+
+
+                                if (windowRatio < imageRatio) {
+
+                                        let width = windowWidth;
+                                        let height = Math.round((width / imageRatio));
+
+                                        console.log('w', imageRatio, windowWidth, height)
+
+                                        if (img.naturalWidth > width) {
+                                            swiper.wrapper[0].style.width = (Math.round(width)) + 'px';
+                                            swiper.wrapper[0].style.height = (Math.round(height)) + 'px';
+                                        } else {
+                                            swiper.wrapper[0].style.width = img.naturalWidth + 'px';
+                                            swiper.wrapper[0].style.height = img.naturalHeight + 'px';
+                                            swiper.onResize();
+                                        }
+                                    
+                                        //then force slider re-position
+                                        swiper.onResize()
+                                } else if (windowRatio > imageRatio) {
+
+                                        let width = Math.round((imageRatio * windowHeight));
+
+                                        let height = Math.round((width / imageRatio));
+
+                                        console.log('h', imageRatio, width, height)
+
+                                        if (img.naturalHeight > height) {
+                                            swiper.wrapper[0].style.width = (Math.round(width)) + 'px';
+                                            swiper.wrapper[0].style.height = (Math.round(height)) + 'px';
+                                        } else {
+                                            swiper.wrapper[0].style.width = img.naturalWidth + 'px';
+                                            swiper.wrapper[0].style.height = img.naturalHeight + 'px';
+                                            swiper.onResize();
+                                        }
+
+                                        //then force slider re-position
+                                        swiper.onResize()
                                 }
+
                             }
 
-                            let modalResizeHandler = resizeHandlers.bind(null, 80);
+                            // Call it once to get appropriate size on first view
+                            modalSwiper.once('lazyImageReady', (swiper, slide, image) => {
+                                swiper.onResize();
+                            })
 
-                            // Call it once to get approiate size on first view
-                            modalResizeHandler()
+                            modalSwiper.on('lazyImageReady', (swiper, slide, image) => {
+                                resizeHandler(swiper)
+                            })
+
+                            modalSwiper.on('click', (swiper) => {
+                                resizeHandler(swiper)
+                            })
 
                             // handle event
-                            window.addEventListener('resize', modalResizeHandler)
+                            window.addEventListener('resize', resizeHandler.bind(null, modalSwiper))
 
                             window.addEventListener('modal.close', function () {
-                                window.removeEventListener('resize', modalResizeHandler)
-
+                                window.removeEventListener('resize', resizeHandler)
                             })
 
                         }

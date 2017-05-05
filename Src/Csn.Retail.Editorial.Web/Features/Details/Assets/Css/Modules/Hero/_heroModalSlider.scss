@@ -7,14 +7,14 @@
     @include fadeIn();
     animation-duration: .666s;
     animation-name: fadeIn;
-    max-width: 1024px; // Largest Image Size
+    //max-width: 1024px; // Largest Image Size
 
     &__slides {
     }
 
     &__slide {
         &.lazyStatusLoadingClass {
-            background-image: url($spinner--light); //TODO
+            background-image: url($spinner--light);
             background-size: 200px 200px;
             background-position: center;
             background-repeat: no-repeat;
@@ -22,7 +22,7 @@
     }
 
     &__image {
-        width: calc(100% - 1px);
+        //width: 100%;//calc(100% - 1px);
         border-radius: 6px;
     }
 
