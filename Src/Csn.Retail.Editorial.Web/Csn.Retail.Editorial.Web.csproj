@@ -733,6 +733,7 @@
     <Content Include="Features\Shared\Views\Errors\Error404.cshtml" />
     <Content Include="Features\Shared\Views\Errors\ErrorTemplate.cshtml" />
     <Content Include="Features\Shared\Views\Errors\ErrorGeneric.cshtml" />
+    <Content Include="Features\Errors\Views\ErrorTemplate.cshtml" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

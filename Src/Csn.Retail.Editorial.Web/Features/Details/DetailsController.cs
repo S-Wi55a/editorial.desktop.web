@@ -52,7 +52,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             Response.StatusCode = (int)httpStatusCode;
 
-            return View("Errors/ErrorTemplate", new ErrorViewModel() { HttpStatusCode = httpStatusCode });
+            return View("~/Features/Errors/Views/ErrorTemplate.cshtml", new ErrorViewModel() { HttpStatusCode = httpStatusCode });
         }
     }
 

@@ -36,6 +36,7 @@ const listOfPaths = [
     'Features/Shared/Assets',
     'Features/Details/Assets',
     'Features/SiteNav/Assets',
+    'Features/Errors/Assets',
     'Features'
 ];
 //---------------------------------------------------------------------------------------------------------
@@ -133,7 +134,6 @@ module.exports = function () {
         entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
         entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
         entries['csn.mm' + '--' + tenant] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mm.js'];
-
 
         moduleExportArr.push(
         {
