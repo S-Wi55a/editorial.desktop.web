@@ -379,6 +379,7 @@
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
+    <Compile Include="Features\Details\Loggers\ArticleNotFoundLogger.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseResolver.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
