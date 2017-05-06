@@ -1,0 +1,40 @@
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@model Csn.Retail.Editorial.Web.Features.Shared.Models.ErrorViewModel
+
+@{
+    var tenantName = Html.CurrentTenant().Name.ToLower();
+}
+
+@section Head {
+    @*@{ Html.RenderPartial("Partials/Tracking/_WebTrendsData", Model); }*@
+}
+
+@section Styles {
+    @Html.AssetCss("details-page--" + tenantName)
+}
+
+
+@section TopScripts {
+    @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
+}
+
+<div class="container">
+    @if (Model.HttpStatusCode == HttpStatusCode.NotFound)
+    {
+        Html.RenderPartial("Errors/Error404");
+    }
+    else
+    {
+        Html.RenderPartial("Errors/ErrorGeneric");
+    }
+</div>
+
+@section BottomScripts
+{
+    @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
+    @*@{ Html.RenderPartial("Partials/Tracking/_GoogleAnalyticsDetails", Model.GoogleAnalyticsDetailsData); }*@
+    @*@{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }*@
+    @*@{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }*@
+    @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
+}

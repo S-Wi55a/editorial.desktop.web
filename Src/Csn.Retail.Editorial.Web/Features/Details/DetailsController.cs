@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.Loggers;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Details
@@ -41,14 +42,17 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                 return View("DefaultTemplate", response.ArticleViewModel);
             }
 
+            var httpStatusCode = HttpStatusCode.InternalServerError;
+
             if (response.HttpStatusCode == HttpStatusCode.NotFound)
             {
                 _logger.Log(HttpContext.Request.Url.ToString());
-                // log the not found
-                return new HttpNotFoundResult();
+                httpStatusCode = HttpStatusCode.NotFound;
             }
 
-            throw new HttpException(500, "Unable to retrieve article details");
+            Response.StatusCode = (int)httpStatusCode;
+
+            return View("Errors/ErrorTemplate", new ErrorViewModel() { HttpStatusCode = httpStatusCode });
         }
     }
 
