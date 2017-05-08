@@ -9,7 +9,6 @@
 
 @section Head {
     <title>@title</title>
-    @*@{ Html.RenderPartial("Partials/Tracking/_WebTrendsData", Model); }*@
 }
 
 @section Styles {
@@ -18,25 +17,26 @@
 
 
 @section TopScripts {
-    @*@Html.AssetJs("details-page--" + tenantName, LoadType.Defer)*@
+    @Html.AssetJs("error-page--" + tenantName, LoadType.Defer)
 }
 
-<div class="container error">
-    @if (Model.HttpStatusCode == HttpStatusCode.NotFound)
-    {
-        Html.RenderPartial("~/Features/Errors/Views/Error404.cshtml");
-    }
-    else
-    {
-        Html.RenderPartial("~/Features/Errors/Views/ErrorGeneric.cshtml");
-    }
+<div class="error-container">
+    <div class="error-content">
+        <h1 class="error-content__header">Ooops.....</h1>
+        @if (Model.HttpStatusCode == HttpStatusCode.NotFound)
+        {
+            Html.RenderPartial("~/Features/Errors/Views/Error404.cshtml");
+        }
+        else
+        {
+            Html.RenderPartial("~/Features/Errors/Views/ErrorGeneric.cshtml");
+        }
+    </div>
 </div>
 
 @section BottomScripts
 {
     @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
-    @*@{ Html.RenderPartial("Partials/Tracking/_GoogleAnalyticsDetails", Model.GoogleAnalyticsDetailsData); }*@
-    @*@{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }*@
     @*@{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }*@
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
 }

@@ -1,9 +1,27 @@
-﻿// Page - Error
+﻿@import "css/_globals.scss";
 
-// ---------------------------------------------------------------------------
-// Globals
-/*@import "css/_globals.scss";*/
+.error-container{
+    width:100%;
+}
 
-.error{
-    margin: 100px;
+.error-content{
+    margin: 150px 100px;
+    text-align:center;
+
+    &__header{
+        @include h1();
+        padding: 20px 0;
+        font-weight: bold;
+    }
+
+    @include breakpoint($screen-lg) {
+        &__header{
+            font-weight: bold;
+        }
+    }
+
+    &__message{
+        @include p();
+        padding: 6px 0;
+    }
 }
