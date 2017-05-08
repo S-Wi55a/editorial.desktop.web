@@ -140,9 +140,9 @@
                         View.template(csn_editorial.hero, item.getAttribute('data-modal-image-index')),
                         '_c-modal--slideshow',
                         function () {
-
                             // This is for GA Gallery tracking requested by the BI team
-                            CsnInsightsEventTracker.sendPageView(eventContext.galleryMetaData);
+                            eventContext.metaData.ContentGroup2 = 'gallery';
+                            CsnInsightsEventTracker.sendPageView(eventContext.metaData);
 
                             const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
                             const modalSwiper = new Swiper('._c-modal .slideshow', {
