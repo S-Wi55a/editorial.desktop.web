@@ -142,7 +142,7 @@
                         function () {
 
                             // This is for GA Gallery tracking requested by the BI team
-                            CsnInsightsEventTracker.sendPageView(eventContext.galleryMetaData);
+                            CsnInsightsEventTracker ? CsnInsightsEventTracker.sendPageView(eventContext.galleryMetaData) : null
 
                             const initialSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
                             const modalSwiper = new Swiper('._c-modal .slideshow', {

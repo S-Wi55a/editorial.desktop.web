@@ -7,7 +7,7 @@
             return `
                 <div class="slideshow__slide swiper-slide">
                     <img class="slideshow__image"
-                            data-src="${item.url}?size=large&aspect=pad"
+                            data-src="${item.url}?width=1024&height=683&aspect=pad"
                             alt="${item.alternateText || ''}" />
                 </div>
             `
