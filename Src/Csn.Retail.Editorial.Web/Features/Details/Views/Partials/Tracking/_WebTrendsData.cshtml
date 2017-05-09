@@ -1,6 +1,6 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+﻿@model Dictionary<string, string>
 
-@foreach (var item in Model.WebTrendData)
+@foreach (var tag in Model)
 {
-    <meta name="@item.Name" content="@item.Content" />
+    <meta name="WT.@tag.Key" content="@tag.Value" />
 }

@@ -7,7 +7,7 @@
 }
 
 @section Head {
-    @{ Html.RenderPartial("Partials/Tracking/_WebTrendsData", Model); }
+    @{ Html.RenderPartial("Partials/Tracking/_WebTrendsData", Model.WebTrendsTags); }
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
     @{ Html.RenderPartial("Partials/Head/_SocialMetaData", Model.SocialMetaData); }
 }
@@ -36,7 +36,7 @@
 @section BottomScripts
 {
     @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
-    @{ Html.RenderPartial("Partials/Tracking/_GoogleAnalyticsDetails", Model.GoogleAnalyticsDetailsData); }
+    @{ Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData); }
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }

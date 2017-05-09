@@ -1,0 +1,9 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.Helpers
+@using Newtonsoft.Json
+@model Dictionary<string, string>
+
+<script>
+    window.CsnInsights = window.CsnInsights || {};
+    CsnInsights.metaData = @Html.Raw(JsonConvert.SerializeObject(Model));
+    CsnInsights.memberTrackingId = "@UserContextHelper.GetMemberId()";
+</script>

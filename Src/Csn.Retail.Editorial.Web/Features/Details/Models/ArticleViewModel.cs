@@ -30,7 +30,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public MoreArticleItem MoreArticleData { get; set; }
         public Shared.Models.SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
+        public Dictionary<string, string> WebTrendsTags { get; set; }
         public GoogleAnalyticsDetailsData GoogleAnalyticsDetailsData { get; set; }
+        public Dictionary<string, string> InsightsData { get; set; }
         public StockListingData StockListingData { get; set; }
         public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
