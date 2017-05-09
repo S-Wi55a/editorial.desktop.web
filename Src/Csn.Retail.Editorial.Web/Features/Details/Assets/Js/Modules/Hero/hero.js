@@ -142,7 +142,12 @@
                         function () {
 
                             // This is for GA Gallery tracking requested by the BI team
-                            CsnInsightsEventTracker ? CsnInsightsEventTracker.sendPageView(eventContext.galleryMetaData) : null
+                            if (CsnInsightsEventTracker) {
+                                const eventContextCopy = Object.assign({}, eventContext.metaData);
+                                eventContextCopy.metaData.ContentGroup2 = 'gallery';
+                                CsnInsightsEventTracker.sendPageView(eventContextCopy.metaData);
+                            }
+
 
                             const initialSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
                             const modalSwiper = new Swiper('._c-modal .slideshow', {
