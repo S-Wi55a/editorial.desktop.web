@@ -513,6 +513,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
+    <Content Include="Features\Errors\Assets\error-page.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
@@ -734,6 +735,9 @@
     <Content Include="Features\Shared\Views\Errors\ErrorTemplate.cshtml" />
     <Content Include="Features\Shared\Views\Errors\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Views\ErrorTemplate.cshtml" />
+    <Content Include="Features\Errors\Views\Error404.cshtml" />
+    <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
+    <Content Include="Features\Errors\Assets\Css\error-page.scss" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

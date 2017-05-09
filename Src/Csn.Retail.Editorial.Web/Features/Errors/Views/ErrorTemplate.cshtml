@@ -37,6 +37,5 @@
 @section BottomScripts
 {
     @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
-    @*@{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }*@
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
 }
