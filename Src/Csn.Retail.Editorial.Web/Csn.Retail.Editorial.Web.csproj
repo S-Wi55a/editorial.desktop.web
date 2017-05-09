@@ -518,6 +518,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Ajax\ajax.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Endpoints\endpoints.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\htmlparser.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
