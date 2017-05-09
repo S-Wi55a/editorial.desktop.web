@@ -144,11 +144,12 @@
                             // This is for GA Gallery tracking requested by the BI team
                             CsnInsightsEventTracker.sendPageView(eventContext.galleryMetaData);
 
-                            const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
+                            const initialSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
                             const modalSwiper = new Swiper('._c-modal .slideshow', {
 
-                                initialSlide: initSlide,
+                                initialSlide: initialSlide,
                                 roundLengths: true,
+                                speed: 300,
 
                                 // Optional parameters
                                 loop: true,
@@ -183,17 +184,49 @@
                                 //Pagination
                                 pagination: '.slideshow__pagination',
                                 paginationType: 'fraction',
-                                paginationHide: false
+                                paginationHide: false,
 
+                                //Callbacks
+                                onInit: (swiper) => {
+
+                                    // Find the first image to be displayed
+                                    const _img = swiper.slides[swiper.activeIndex].querySelector('.slideshow__image')
+
+                                    const src = _img.getAttribute('data-src'),
+                                        srcset = _img.getAttribute('data-srcset'),
+                                        sizes = _img.getAttribute('data-sizes')
+
+                                    // Once image is loaded, use callback
+                                    swiper.loadImage(_img, src, srcset, sizes, false, () => {
+                                        if (typeof swiper === 'undefined' || swiper === null || !swiper) return;
+                                        else {
+                                            if (srcset) {
+                                                _img.setAttribute('srcset', srcset);
+                                                _img.removeAttribute('data-srcset');
+                                            }
+                                            if (sizes) {
+                                                _img.setAttribute('sizes', sizes);
+                                                _img.removeAttribute('data-sizes');
+                                            }
+                                            if (src) {
+                                                _img.setAttribute('src', src);
+                                                _img.removeAttribute('data-src');
+                                            }
+
+                                            // Set dimenions for wrapper and clear transtions
+                                            resizeHandler(swiper, _img)
+                                            swiper.slideTo(swiper.activeIndex)
+
+                                        }
+                                    })
+                                }
+                                
                             })
 
-                            window.modalSwiper = modalSwiper
+                            // Handler to set the dimensions of the Swiper wrapper
+                            function resizeHandler(swiper, img) {
 
-                            let resizeHandler = (swiper) => {
-
-                                const img = swiper.slides[swiper.activeIndex].querySelector('.slideshow__image')
-                                const w = swiper.slides[swiper.activeIndex].querySelector('.slideshow__image').width
-                                const h = swiper.slides[swiper.activeIndex].querySelector('.slideshow__image').height
+                                img = img || swiper.slides[swiper.activeIndex].querySelector('.slideshow__image')
 
                                 let windowHeight = window.innerHeight - 80; //TODO - change to dynamic or var
                                 let windowWidth = window.innerWidth - 160; //TODO - change to dynamic or var
@@ -202,39 +235,36 @@
 
                                 let imageRatio = img.naturalWidth / img.naturalHeight;
 
-                                console.log('windowRatio: ', windowRatio, 'imageRatio: ', imageRatio, windowRatio/imageRatio )
+                                swiper.wrapper[0].style.transition = "all 0.300s";
 
-                                let compareRatio = windowRatio / imageRatio
-
+                                //console.log(img, img.naturalWidth, img.naturalHeight, imageRatio, windowRatio)
                                 //imageRatio > 1 = wider
                                 //imageRatio < 1 = taller
 
-
+                                // If the image is portrait and greater than window size (plus threshold)
                                 if (windowRatio < imageRatio) {
 
                                         let width = windowWidth;
                                         let height = Math.round((width / imageRatio));
 
-                                        console.log('w', imageRatio, windowWidth, height)
-
                                         if (img.naturalWidth > width) {
                                             swiper.wrapper[0].style.width = (Math.round(width)) + 'px';
                                             swiper.wrapper[0].style.height = (Math.round(height)) + 'px';
+
+
                                         } else {
                                             swiper.wrapper[0].style.width = img.naturalWidth + 'px';
                                             swiper.wrapper[0].style.height = img.naturalHeight + 'px';
-                                            swiper.onResize();
                                         }
                                     
-                                        //then force slider re-position
-                                        swiper.onResize()
-                                } else if (windowRatio > imageRatio) {
+       
+                                }
+                                // If the image is landscape and greater than window size (plus threshold)
+                                else if (windowRatio > imageRatio) {
 
                                         let width = Math.round((imageRatio * windowHeight));
 
                                         let height = Math.round((width / imageRatio));
-
-                                        console.log('h', imageRatio, width, height)
 
                                         if (img.naturalHeight > height) {
                                             swiper.wrapper[0].style.width = (Math.round(width)) + 'px';
@@ -242,30 +272,26 @@
                                         } else {
                                             swiper.wrapper[0].style.width = img.naturalWidth + 'px';
                                             swiper.wrapper[0].style.height = img.naturalHeight + 'px';
-                                            swiper.onResize();
                                         }
-
-                                        //then force slider re-position
-                                        swiper.onResize()
-                                }
+                                } 
 
                             }
 
-                            // Call it once to get appropriate size on first view
-                            modalSwiper.once('lazyImageReady', (swiper, slide, image) => {
-                                swiper.onResize();
+                            // Init setup
+                            modalSwiper.wrapper[0].style.width = 0;
+
+                            modalSwiper.on('onTransitionStart', (swiper) => {
+                                swiper.wrapper[0].classList.add('swiper-transition')
+                                resizeHandler(swiper) // Set size of wrapper
                             })
 
-                            modalSwiper.on('lazyImageReady', (swiper, slide, image) => {
-                                resizeHandler(swiper)
-                            })
-
-                            modalSwiper.on('click', (swiper) => {
-                                resizeHandler(swiper)
+                            modalSwiper.on('onTransitionEnd', (swiper) => {
+                                swiper.onResize() // Reset state of swiper 
+                                swiper.wrapper[0].classList.remove('swiper-transition')
                             })
 
                             // handle event
-                            window.addEventListener('resize', resizeHandler.bind(null, modalSwiper))
+                            window.addEventListener('resize', resizeHandler.bind(null, modalSwiper, null ))
 
                             window.addEventListener('modal.close', function () {
                                 window.removeEventListener('resize', resizeHandler)
