@@ -35,8 +35,13 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialDetailsTrackingContainerProvider>()).As<IEditorialDetailsTrackingContainerProvider>();
             builder.Register(x => ObjectFactory.Instance.Resolve<IWebMetricsTrackingScriptBuilder>()).As<IWebMetricsTrackingScriptBuilder>();
 
-            //builder.RegisterType<ArticleIdentifierModelBinder>().AsModelBinderForTypes(typeof(ArticleIdentifier));
-            builder.AddIngress();
+            builder.AddIngress(new IngressSetupOptions
+            {
+                AssembliesToScanAndRegister = new[]
+                {
+                    typeof(AppShellClient.AppShellClient).Assembly
+                }
+            });
 
             builder.Register(x => new HttpContextWrapper(HttpContext.Current)).As<HttpContextBase>();
 
