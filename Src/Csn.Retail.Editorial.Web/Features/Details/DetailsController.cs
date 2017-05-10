@@ -51,6 +51,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             }
 
             Response.StatusCode = (int)httpStatusCode;
+            Response.TrySkipIisCustomErrors = true;
 
             return View("~/Features/Errors/Views/ErrorTemplate.cshtml", new ErrorViewModel() { HttpStatusCode = httpStatusCode });
         }
