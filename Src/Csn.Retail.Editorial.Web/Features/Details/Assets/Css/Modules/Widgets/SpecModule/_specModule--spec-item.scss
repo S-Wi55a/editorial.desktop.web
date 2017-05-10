@@ -13,8 +13,8 @@
 
     &__column-container {
         position: relative;
-    } 
-    
+    }
+
     &__column {
         padding: 0 30px;
         display: inline-block;
@@ -258,6 +258,7 @@
             color: $cs-grey;
             vertical-align: middle;
             margin-right: 15px;
+            font-weight: 400;
         }
 
         &.body-style {
@@ -268,7 +269,7 @@
 
         &.drive {
             &::before {
-                content: "\e916";
+                content: "\e901";
             }
         }
 
@@ -286,13 +287,13 @@
 
         &.fuel-type {
             &::before {
-                content: "\e916";
+                content: "\e902";
             }
         }
 
         &.fuel-consumption {
             &::before {
-                content: "\e916";
+                content: "\e902";
             }
         }
 
@@ -302,9 +303,23 @@
             }
         }
 
+
+        &.doors {
+            &::before {
+                content: "\e900";
+            }
+        }
+
+
+        &.seats {
+            &::before {
+                content: "\e904";
+            }
+        }
+
         &.safety-rating-ancap {
             &::before {
-                content: "\e916";
+                content: "\e903";
             }
         }
     }
