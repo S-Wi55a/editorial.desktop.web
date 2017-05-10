@@ -617,7 +617,6 @@
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Pinterest.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Googleplus.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_SocialMediaLinks.cshtml" />
-    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.eot" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.ttf" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.woff" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ExpertRatings.cshtml" />
