@@ -1,20 +1,19 @@
 ﻿@import "css/modules/swiper/swiper";
 
 ._c-modal .slideshow {
-    background-color: transparent;
+    background-color: black;
     width: 100%;
     border-radius: 6px;
     @include fadeIn();
     animation-duration: .666s;
     animation-name: fadeIn;
-    max-width: 1024px; // Largest Image Size
 
     &__slides {
     }
 
     &__slide {
         &.lazyStatusLoadingClass {
-            background-image: url($spinner--light); //TODO
+            background-image: url($spinner--light);
             background-size: 200px 200px;
             background-position: center;
             background-repeat: no-repeat;
@@ -22,7 +21,7 @@
     }
 
     &__image {
-        width: calc(100% - 1px);
+        width: 100%;
         border-radius: 6px;
     }
 
@@ -115,4 +114,20 @@
         padding: 5px;
         z-index: 1;
     }
+
+
+
+    /*// Swiper transistions used to hide resizing
+    .swiper-slide {
+        opacity: 1;
+        transition: opacity 0.300s;
+    }
+
+    .swiper-transition {
+
+        .swiper-slide {
+            transition: opacity 0s;
+            opacity: 0;
+        }
+    }*/
 }

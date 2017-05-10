@@ -505,7 +505,8 @@
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-view--modal.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal--view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />

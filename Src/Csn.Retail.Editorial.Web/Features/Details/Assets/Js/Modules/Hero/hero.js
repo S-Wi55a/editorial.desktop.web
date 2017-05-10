@@ -1,232 +1,108 @@
-﻿export default function() {
-    const multipleImageLayout = document.querySelector('.hero--multipleImages')
-    const imageAndVideoLayout = document.querySelector('.hero--imageAndVideo')
-    const singleImageLayout = document.querySelector('.hero--singleImage')
-    const doubleImageLayout = document.querySelector('.hero--doubleImage')
+﻿import { modalGallery } from 'Js/Modules/Hero/hero-modal.js'
+import Swiper from 'swiper'
+import Modal from 'Js/Modules/Modal/modal.js'
+import { template as modalView } from 'Js/Modules/Hero/hero-modal--view.js'
 
+export default function () {
 
-    if (multipleImageLayout || imageAndVideoLayout || singleImageLayout || doubleImageLayout) {
-        require.ensure(['swiper', 'Js/Modules/Modal/modal.js', 'Js/Modules/Hero/hero-view--modal.js'],
-    function(require) {
-        Swiper = require('swiper')
+    const multipleImageLayout = document.querySelector('.hero--multipleImages') ? 'MULTIPLE_IMAGE_LAYOUT' : null
+    const imageAndVideoLayout = document.querySelector('.hero--imageAndVideo') ? 'IMAGE_VIDEO_LAYOUT' : null
+    const singleImageLayout = document.querySelector('.hero--singleImage') ? 'SINGLE_IMAGE_LAYOUT' : null
+    const doubleImageLayout = document.querySelector('.hero--doubleImage') ? 'DOUBLE_IMAGE_LAYOUT' : null
+    const modalContainer = document.querySelector('._c-modal');
 
-        if (multipleImageLayout) {
-            const heroSwiper = new Swiper('.hero .slideshow__container', {
-                // Optional parameters
-                loop: true,
-                slidesPerView: 3,
-                slidesPerGroup: 1,
+    const layoutType = multipleImageLayout || imageAndVideoLayout || singleImageLayout || doubleImageLayout
 
-                //Progress
-                watchSlidesProgress: true,
-                watchSlidesVisibility: true,
+    // Set up slider and init slider
+    initSliderByLayoutType(layoutType)
 
-                //Images
-                preloadImages: false,
-                lazyLoading: true,
-                lazyLoadingInPrevNext: true,
-                lazyLoadingInPrevNextAmount: 3, // Can't be less than slidesPerView
+    if (modalContainer) {
 
-                // Navigation arrows
-                nextButton: '.slideshow__nav--next',
-                prevButton: '.slideshow__nav--prev',
+        const scope = document.querySelector('.hero');
 
-                //Namespace
-                containerModifierClass: 'slideshow',
-                wrapperClass: 'slideshow__slides',
-                slideClass: 'slideshow__slide',
-                lazyLoadingClass: 'slideshow__image',
-                lazyStatusLoadingClass: 'slideshow__image--loading',
-                lazyStatusLoadedClass: 'slideshow__image--loaded',
-                lazyPreloaderClass: 'slideshow__image--preloader',
+        window.csn_modal = window.csn_modal || new Modal()
 
-                //Breakpoints
-                breakpoints: {
-                    1199: {
-                        slidesPerView: 2,
-                        //Slides grid
-                        centeredSlides: false
-                    }
-                }
-            })
-        } else if (imageAndVideoLayout) {
-            const heroSwiper = new Swiper('.hero .slideshow__container', {
-                // Optional parameters
-                loop: true,
-                slidesPerView: 2,
-                slidesPerGroup: 1,
-
-                //Progress
-                watchSlidesProgress: true,
-                watchSlidesVisibility: true,
-
-                //Images
-                preloadImages: false,
-                lazyLoading: true,
-                lazyLoadingInPrevNext: true,
-                lazyLoadingInPrevNextAmount: 2, // Can't be less than slidesPerView
-
-                // Navigation arrows
-                nextButton: '.slideshow__nav--next',
-                prevButton: '.slideshow__nav--prev',
-
-                //Namespace
-                containerModifierClass: 'slideshow',
-                wrapperClass: 'slideshow__slides',
-                slideClass: 'slideshow__slide',
-                lazyLoadingClass: 'slideshow__image',
-                lazyStatusLoadingClass: 'slideshow__image--loading',
-                lazyStatusLoadedClass: 'slideshow__image--loaded',
-                lazyPreloaderClass: 'slideshow__image--preloader',
-
-                //Breakpoints
-                breakpoints: {
-                    1199: {
-                        slidesPerView: 1,
-                    }
-                }
-            })
-        } else if (doubleImageLayout) {
-            const heroSwiper = new Swiper('.hero .slideshow__container', {
-                // Optional parameters
-                loop: true,
-                slidesPerView: 1,
-                slidesPerGroup: 1,
-
-                //Progress
-                watchSlidesProgress: true,
-                watchSlidesVisibility: true,
-
-                //Images
-                preloadImages: false,
-                lazyLoading: true,
-                lazyLoadingInPrevNext: true,
-                lazyLoadingInPrevNextAmount: 2, // Can't be less than slidesPerView
-
-                // Navigation arrows
-                nextButton: '.slideshow__nav--next',
-                prevButton: '.slideshow__nav--prev',
-
-                //Namespace
-                containerModifierClass: 'slideshow',
-                wrapperClass: 'slideshow__slides',
-                slideClass: 'slideshow__slide',
-                lazyLoadingClass: 'slideshow__image',
-                lazyStatusLoadingClass: 'slideshow__image--loading',
-                lazyStatusLoadedClass: 'slideshow__image--loaded',
-                lazyPreloaderClass: 'slideshow__image--preloader',
-
-            })
+        //Add event listeners to hero content
+        const modalTrigger = scope.querySelectorAll('[data-modal-trigger]');
+        for (let item of modalTrigger) {
+            item.addEventListener('click', modalTriggerHandler.bind(null, item));
         }
-
-
-        let modalContainer = document.querySelector('._c-modal');
-        if (modalContainer) {
-
-            //init Modal JS
-            const Modal = require('Js/Modules/Modal/modal.js').default;
-
-            window.csn_modal = window.csn_modal || new Modal()
-
-            const View = require('Js/Modules/Hero/hero-view--modal.js');
-            const scope = document.querySelector('.hero');
-            //Add event listeners to hero content
-            const modalTrigger = scope.querySelectorAll('[data-modal-trigger]');
-            for (let item of modalTrigger) {
-                item.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    //update content
-                    window.csn_modal.show(
-                        View.template(csn_editorial.hero, item.getAttribute('data-modal-image-index')),
-                        '_c-modal--slideshow',
-                        function () {
-                            // This is for GA Gallery tracking requested by the BI team
-                            eventContext.metaData.ContentGroup2 = 'gallery';
-                            CsnInsightsEventTracker.sendPageView(eventContext.metaData);
-
-                            const initSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0
-                            const modalSwiper = new Swiper('._c-modal .slideshow', {
-
-                                initialSlide: initSlide,
-
-                                // Optional parameters
-                                loop: true,
-                                slidesPerView: 1,
-                                slidesPerGroup: 1,
-
-                                //Progress
-                                watchSlidesProgress: true,
-                                watchSlidesVisibility: true,
-
-                                //Images
-                                preloadImages: false,
-                                lazyLoading: true,
-                                lazyLoadingInPrevNext: true,
-                                lazyLoadingInPrevNextAmount: 1, // Can't be less than slidesPerView
-
-                                // Navigation arrows
-                                nextButton: '.slideshow__nav--next',
-                                prevButton: '.slideshow__nav--prev',
-
-                                //Namespace
-                                containerModifierClass: 'slideshow',
-                                wrapperClass: 'slideshow__slides',
-                                slideClass: 'slideshow__slide',
-                                lazyLoadingClass: 'slideshow__image',
-                                lazyStatusLoadingClass: 'slideshow__image--loading',
-                                lazyStatusLoadedClass: 'slideshow__image--loaded',
-                                lazyPreloaderClass: 'slideshow__image--preloader',
-
-                                //Pagination
-                                pagination: '.slideshow__pagination',
-                                paginationType: 'fraction',
-                                paginationHide: false
-
-                            })
-
-                            // Resize Handler for modal window to shrink when window height is less than image
-                            let resizeHandlers = function (windowHeightThreshold) {
-
-                                let modalContent = document.querySelector('._c-modal__content');
-                                let el = modalContent.querySelector('._c-modal .slideshow');
-                                let windowHeight = window.innerHeight - windowHeightThreshold;
-
-                                el.style.width = '';
-                                modalSwiper.onResize()
-
-                                // Compare image dimensions with window
-                                if (windowHeight < el.offsetHeight) {
-
-                                    let imageRatio = 3 / 2;
-                                    let width = Math.round((imageRatio * windowHeight));
-
-                                    el.style.width = (Math.round(width)) + 'px';
-
-                                    //then force slider re position
-                                    modalSwiper.onResize()
-                                }
-                            }
-
-                            let modalResizeHandler = resizeHandlers.bind(null, 80);
-
-                            // Call it once to get approiate size on first view
-                            modalResizeHandler()
-
-                            // handle event
-                            window.addEventListener('resize', modalResizeHandler)
-
-                            window.addEventListener('modal.close', function () {
-                                window.removeEventListener('resize', modalResizeHandler)
-
-                            })
-
-                        }
-                        );
-                });
-            }
-
-        }
-    },
-    'Hero Slidier');
     }
 }
+
+function initSliderByLayoutType(layoutType) {
+
+    let swiperOptions = {
+        // Optional parameters
+        loop: true,
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+
+        //Progress
+        watchSlidesProgress: true,
+        watchSlidesVisibility: true,
+
+        //Images
+        preloadImages: false,
+        lazyLoading: true,
+        lazyLoadingInPrevNext: true,
+        lazyLoadingInPrevNextAmount: 2, // Can't be less than slidesPerView
+
+        // Navigation arrows
+        nextButton: '.slideshow__nav--next',
+        prevButton: '.slideshow__nav--prev',
+
+        //Namespace
+        containerModifierClass: 'slideshow',
+        wrapperClass: 'slideshow__slides',
+        slideClass: 'slideshow__slide',
+        lazyLoadingClass: 'slideshow__image',
+        lazyStatusLoadingClass: 'slideshow__image--loading',
+        lazyStatusLoadedClass: 'slideshow__image--loaded',
+        lazyPreloaderClass: 'slideshow__image--preloader',
+
+    }
+
+    if (layoutType === 'MULTIPLE_IMAGE_LAYOUT') {
+
+        swiperOptions = Object.assign({}, swiperOptions, {
+            slidesPerView: 3,
+            //Breakpoints
+            breakpoints: {
+                1199: {
+                    slidesPerView: 2,
+                    //Slides grid
+                    centeredSlides: false
+                }
+            }
+        })
+
+        const heroSwiper = new Swiper('.hero .slideshow__container', swiperOptions)
+    } else if (layoutType === 'IMAGE_VIDEO_LAYOUT') {
+
+        swiperOptions = Object.assign({}, swiperOptions, {
+            slidesPerView: 2,
+            //Breakpoints
+            breakpoints: {
+                1199: {
+                    slidesPerView: 1,
+                }
+            }
+        })
+        const heroSwiper = new Swiper('.hero .slideshow__container', swiperOptions)
+    } else if (layoutType === 'DOUBLE_IMAGE_LAYOUT') {
+        const heroSwiper = new Swiper('.hero .slideshow__container', swiperOptions)
+    }
+}
+
+// Event Handler 
+function modalTriggerHandler(item, e) {
+
+    e.preventDefault()
+
+    const template = modalView(csn_editorial.hero, item.getAttribute('data-modal-image-index'))
+
+    //update content
+    window.csn_modal.show( template, '_c-modal--slideshow', modalGallery );
+}
+
