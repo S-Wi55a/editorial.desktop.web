@@ -8,7 +8,7 @@
     "build-custom": "SET NODE_ENV=development&& npm run webpack -- -d --color",
     "build-release": "SET NODE_ENV=production&& SET TENANT=&& npm run webpack -- -p --color",
     "dev-watch": "SET NODE_ENV=development&& npm run webpack -- -d --progress --colors --watch",
-    "dev": "SET NODE_ENV=development&& npm run webpack-dev-server -- -d --colors --hot --output-public-path=/dist/",
+    "dev": "SET NODE_ENV=development&& npm run webpack-dev-server -- -d --colors --hot ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm rebuild node-sass && npm run bower install",
     "webpack": "node node_modules/webpack/bin/webpack.js ",

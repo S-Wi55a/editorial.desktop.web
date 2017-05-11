@@ -37,12 +37,17 @@ const listOfPaths = [
     'Features/SiteNav/Assets',
     'Features'
 ];
+
+// list of path to search for files
+const s3path = 'dist/retail/editorial/'; //transfer to s3 is handles with gulp
+
 //---------------------------------------------------------------------------------------------------------
 
 var assetsPluginInstance = new AssetsPlugin({
         filename: 'webpack.assets.json',
         path: __dirname,
-        prettyPrint: true
+        prettyPrint: true,
+        fullPath: false
     });
 
 var isProd = process.env.NODE_ENV === 'production' ? true : false;
@@ -55,8 +60,8 @@ const URL_LIMIT = isProd ? 1 : null;
 
 var config = {
     entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
-    outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
-    publicPath: './'
+    outputPath: path.join(__dirname, s3path),
+    publicPath: s3path
 }
 
 
@@ -267,7 +272,8 @@ module.exports = function () {
                             target: 'http://localhost:8080',
                             ws: true
                         },
-                        logLevel: "info"
+                        logLevel: "info",
+                        open: false
 
                     },
                     // plugin options 
@@ -325,12 +331,6 @@ module.exports = function () {
                     warnings: true
                 },
                 proxy: {
-                    '/dist/dist': {
-                        target: 'http://localhost:8080',
-                        changeOrigin: true,
-                        secure: false,
-                        pathRewrite: { '^/dist/dist': 'dist' }
-                    },
                     '/': {
                         target: 'http://' + (tenant || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
                         changeOrigin: true,
