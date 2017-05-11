@@ -8,6 +8,7 @@ let userPreference = false
 let showText = csn_editorial.moreArticles.headings.showHeading
 let hideText = csn_editorial.moreArticles.headings.hideHeading
 
+const customEvent = new Event('csn_editorial.moreArticles.ready');
 
 
 // Init More Articles Slider
@@ -151,6 +152,7 @@ let filterHandler = (e, ...args) => {
                 slider.slideTo(0)
                 updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true')
                 slider.update();
+                window.dispatchEvent(customEvent)
             }
         )
     }
@@ -277,6 +279,7 @@ let main = (scope = {}) => {
             scope.moreArticlesSlideContainer,
             () => {
                 slider.update();
+                window.dispatchEvent(customEvent)
             }
         )
     }
@@ -336,6 +339,7 @@ const init = (scopeSelector, data) => {
             // This is called in cb() if AJAX is sucessful on first time
             scope.self.classList.add('active');
             updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true')
+            window.dispatchEvent(customEvent)
             }
     )
 

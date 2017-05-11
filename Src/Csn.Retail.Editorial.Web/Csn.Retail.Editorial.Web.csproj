@@ -388,7 +388,9 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\Shared\Models\PolarNativeViewModel.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
+    <Compile Include="Features\Shared\PolarNative\PolarNativeAds.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\AlsoConsiderDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
@@ -508,6 +510,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\NativeAdstest\nativeAds.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
@@ -537,6 +540,8 @@
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mm.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
     <Content Include="Features\Shared\Assets\Js\vendor.js" />
     <Content Include="Global.asax" />
     <Content Include="postcss.config.js" />
@@ -729,6 +734,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\NativeAds\_NativeAds.cshtml" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

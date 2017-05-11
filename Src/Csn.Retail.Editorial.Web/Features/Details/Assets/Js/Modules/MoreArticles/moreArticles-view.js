@@ -49,21 +49,23 @@ const article = (data) => {
 
     const template = data[key].map((item) => {
         return (`
-            <div class="more-article more-articles__slide swiper-slide">
-                <a class="more-article__link-container" href="${item.url || ''}">
-                    <div class="more-article__image">
-                        <img src="${item.image.url || ''}?width=140&height=93" alt="${item.image.alternateText || ''}" />
-                    </div>
-                    <div class="more-article__content">
-                        <div class="more-article__title">
-                            <h2 >${item.headline || ''}</h2>
+            <div class="more-articles__slide swiper-slide">
+                <div class="more-article">
+                    <a class="more-article__link-container" href="${item.url || ''}">
+                        <div class="more-article__image">
+                            <img src="${item.image.url || ''}?width=140&height=93" alt="${item.image.alternateText || ''}" />
                         </div>
-                        <p class="more-article__link" href="${item.url || ''}">${data.readMore || ''}</p>
-                        ${item.sponsored ?
-                            `<div class="more-article__banner more-article__banner--${item.sponsored || ''}">${item.sponsored || ''}</div>`
-                        : ''}
-                    </div>
-                </a>
+                        <div class="more-article__content">
+                            <div class="more-article__title">
+                                <h2 >${item.headline || ''}</h2>
+                            </div>
+                            <p class="more-article__link">${data.readMore || ''}</p>
+                            ${item.sponsored ?
+                                `<div class="more-article__banner more-article__banner--${item.sponsored || ''}">${item.sponsored || ''}</div>`
+                            : ''}
+                        </div>
+                    </a>
+                </div>
             </div>
         `)
     })

@@ -36,6 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public StockListingData StockListingData { get; set; }
         public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
+        public PolarNativeAds PolarNativeAds { get; set; }
 
     }
 
@@ -181,6 +182,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string CanonicalUrl { get; set; }
         public string AlternateUrl { get; set; }
         public string Keywords { get; set; }
+    }
+
+
+    public class PolarNativeAds
+    {
+        public string MakeModelHeading { get; set; }
+        public string AreaName { get; set; }
     }
 
     public enum ArticleTemplateType

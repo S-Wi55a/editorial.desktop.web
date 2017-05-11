@@ -3,13 +3,17 @@
 
 .more-article {
 
+    // Hide when using Native Ads
+    & ~ & {
+        display: none;
+    }
+
     // Local Vars
     $img-width: 100px;
 
     $title-font-size: 14px;
     $title-line-height: 18px;
     $title-height: $title-line-height * 2; // Line height * # of lines
-
     //width: $width; //Since it will never be smaller than 1200
     white-space: normal;
     background-color: $cs-white;
@@ -35,21 +39,19 @@
     }
 
     &__title {
-
         font-size: $title-font-size;
         line-height: $title-line-height;
         max-height: $title-height; // Line height * # of lines
         margin-bottom: 4px;
-      	overflow: hidden;
-		position: relative;
-	    top:0;
-	    bottom:0;
+        overflow: hidden;
+        position: relative;
+        top: 0;
+        bottom: 0;
 
         & > *:first-child {
             float: right;
             width: 100%;
             margin-left: -5px;
-
             font-size: $title-font-size;
             font-weight: 600;
             line-height: $title-line-height;
@@ -57,26 +59,26 @@
         }
 
         &::before {
-			content:"";
-			float: left;
-			width: 5px;
+            content: "";
+            float: left;
+            width: 5px;
             height: $title-height;
         }
 
-      &::after {
-			content: "\02026";
+        &::after {
+            content: "\02026";
             color: $cs-black;
-			box-sizing: content-box;
-			float: right;
+            box-sizing: content-box;
+            float: right;
             position: relative;
-			top: -1*$title-line-height;
+            top: -1*$title-line-height;
             left: 100%;
-			width: 50%;
+            width: 50%;
             margin-left: -50%;
-			padding-right: 5px;
-			text-align: center;
-			background: linear-gradient(to right, rgba(255, 255, 255, 0), white 33%, white);
-      }
+            padding-right: 5px;
+            text-align: center;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), white 33%, white);
+        }
     }
 
     &__link {
@@ -95,8 +97,14 @@
         margin-bottom: 5px;
         padding: 0 12px;
 
-        &--sponsored {
+        &--Sponsored {
             background-color: $cs-green;
+            color: $cs-white;
+            float: right;
+        }
+
+        &--Promoted {
+            background-color: $cs-light-blue;
             color: $cs-white;
             float: right;
         }
