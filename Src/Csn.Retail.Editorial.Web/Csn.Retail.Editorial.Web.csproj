@@ -379,6 +379,7 @@
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
+    <Compile Include="Features\Details\Loggers\ArticleNotFoundLogger.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseResolver.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
@@ -388,6 +389,7 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\AlsoConsiderDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
@@ -512,6 +514,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
+    <Content Include="Features\Errors\Assets\error-page.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
@@ -729,6 +732,13 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
+    <Content Include="Features\Shared\Views\Errors\Error404.cshtml" />
+    <Content Include="Features\Shared\Views\Errors\ErrorTemplate.cshtml" />
+    <Content Include="Features\Shared\Views\Errors\ErrorGeneric.cshtml" />
+    <Content Include="Features\Errors\Views\ErrorTemplate.cshtml" />
+    <Content Include="Features\Errors\Views\Error404.cshtml" />
+    <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
+    <Content Include="Features\Errors\Assets\Css\error-page.scss" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

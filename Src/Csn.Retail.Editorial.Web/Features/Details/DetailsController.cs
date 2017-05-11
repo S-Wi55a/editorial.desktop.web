@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Csn.Retail.Editorial.Web.Features.Details.Loggers;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Details
@@ -11,11 +13,13 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     {
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IEventDispatcher _eventDispatcher;
+        private readonly IArticleNotFoundLogger _logger;
 
-        public DetailsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher)
+        public DetailsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher, IArticleNotFoundLogger logger)
         {
             _queryDispatcher = queryDispatcher;
             _eventDispatcher = eventDispatcher;
+            _logger = logger;
         }
 
         [Route("editorial/details/{pageName:regex(^.*-\\d+/?$)}")]
@@ -38,7 +42,18 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                 return View("DefaultTemplate", response.ArticleViewModel);
             }
 
-            throw new HttpException(response.HttpStatusCode == HttpStatusCode.NotFound ? 404 : 500, string.Empty);
+            var httpStatusCode = HttpStatusCode.InternalServerError;
+
+            if (response.HttpStatusCode == HttpStatusCode.NotFound)
+            {
+                _logger.Log(HttpContext.Request.Url.ToString());
+                httpStatusCode = HttpStatusCode.NotFound;
+            }
+
+            Response.StatusCode = (int)httpStatusCode;
+            Response.TrySkipIisCustomErrors = true;
+
+            return View("~/Features/Errors/Views/ErrorTemplate.cshtml", new ErrorViewModel() { HttpStatusCode = httpStatusCode });
         }
     }
 
