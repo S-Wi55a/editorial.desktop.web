@@ -522,7 +522,6 @@
     <Content Include="Features\Shared\Assets\Images\Carsales\logo-carsales.svg" />
     <Content Include="Features\Shared\Assets\Images\Carsales\poweredByMotoring.png" />
     <Content Include="Features\Shared\Assets\Images\Constructionsales\logo-constructionsales.svg" />
-    <Content Include="Features\Shared\Assets\Images\Equipmentsales\logo-equipmentsales.svg" />
     <Content Include="Features\Shared\Assets\Images\Farmmachinerysales\logo-farmmachinerysales.svg" />
     <Content Include="Features\Shared\Assets\Images\Shared\spinner-dark.svg" />
     <Content Include="Features\Shared\Assets\Images\Shared\spinner-light.svg" />
@@ -720,8 +719,6 @@
     <Content Include="Features\Shared\Assets\Css\Tenants\trucksales\Settings\_settings--trucksales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\caravancampingsales\caravancampingsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\caravancampingsales\Settings\_settings--caravancampingsales.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tenants\equipmentsales\equipmentsales.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tenants\equipmentsales\Settings\_settings--equipmentsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\farmmachinerysales\farmmachinerysales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\farmmachinerysales\Settings\_settings--farmmachinerysales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\carsales\ArticlePromotedImage\articlePromotedImage.scss" />

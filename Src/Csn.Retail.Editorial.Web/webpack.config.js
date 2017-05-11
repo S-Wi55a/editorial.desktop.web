@@ -23,7 +23,6 @@ const listofTenants = [
     'boatpoint',
     'trucksales',
     'caravancampingsales',
-    'equipmentsales',
     'farmmachinerysales',
 ];
 
