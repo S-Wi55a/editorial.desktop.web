@@ -379,6 +379,7 @@
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
+    <Compile Include="Features\Details\Mappings\PolarNativeAdsMapper.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseResolver.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
@@ -388,9 +389,8 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
-    <Compile Include="Features\Shared\Models\PolarNativeViewModel.cs" />
+    <Compile Include="Features\Shared\Models\PolarNativeAds.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
-    <Compile Include="Features\Shared\PolarNative\PolarNativeAds.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\AlsoConsiderDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
@@ -561,6 +561,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
+    <Folder Include="Features\Shared\PolarNative\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -633,7 +634,6 @@
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Pinterest.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Googleplus.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_SocialMediaLinks.cshtml" />
-    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.eot" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.ttf" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.woff" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ExpertRatings.cshtml" />
