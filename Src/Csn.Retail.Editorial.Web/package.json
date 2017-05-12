@@ -72,10 +72,20 @@
   "dependencies": {
     "custom-event": "^1.0.1",
     "document-promises": "^3.1.2",
+    "humps": "^2.0.0",
     "jquery": "^3.1.0",
     "meter-polyfill": "^1.7.1",
+    "normalizer": "^1.2.7",
     "picturefill": "^3.0.2",
     "postscribe": "^2.0.8",
+    "prop-types": "^15.5.9",
+    "rc-slider": "^7.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "scrollmagic": "^2.0.5",
     "swiper": "^3.4.1"
   }
