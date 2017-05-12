@@ -1,5 +1,5 @@
 ﻿import * as ActionTypes from '../Actions/actions.js'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../Reducers/rootReducer'
 
 /**
@@ -15,11 +15,16 @@ import rootReducer from '../Reducers/rootReducer'
  * project.
  */
 
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-let store = createStore(rootReducer)
-
-window.ReduxStore = store
+let store = createStore(
+    rootReducer,
+    /* preloadedState, */
+    composeEnhancers()
+)
 
 
 // Log the initial state
