@@ -5,7 +5,9 @@ const smartGuidedNavigation = (state = data, action) => {
         case 'TEST_STATE':
             return state
         case 'CLEAR_STATE':
-            return {now:'clear'}
+            return { now: 'clear' }
+        case 'HOT_STATE':
+            return { now: 'hot' }
         default: 
             return state
     }

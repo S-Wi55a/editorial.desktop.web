@@ -27,6 +27,14 @@ let store = createStore(
 )
 
 
+if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('../Reducers/rootReducer', () => {
+        const nextRootReducer = require('../Reducers/rootReducer').default
+        store.replaceReducer(nextRootReducer)
+    })
+}
+
 // Log the initial state
 console.log('Store: ', store.getState())
 
