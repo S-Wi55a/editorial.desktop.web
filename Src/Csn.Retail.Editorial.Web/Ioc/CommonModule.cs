@@ -2,6 +2,8 @@ using System.Web;
 using Autofac;
 using Csn.Cars.Cache.Builder;
 using Csn.Logging;
+using Csn.Logging.NLog3;
+using Csn.Retail.Editorial.Web.Features.Details.Loggers;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
@@ -24,6 +26,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterGeneric(typeof(ContextStore<>)).As(typeof(IContextStore<>)).InstancePerRequest();
             builder.RegisterType<AutoMappedMapper>().As<IMapper>().SingleInstance();
             builder.Register(x => GetLogger.For<MvcApplication>()).As<ILogger>().SingleInstance();
+            builder.RegisterType<NLogLoggerFactory>().As<ILoggerFactory>().SingleInstance();
             builder.Register(x => CacheStoreBuilder.New().Build()).As<Csn.Cars.Cache.ICacheStore>().SingleInstance();
             builder.RegisterType<Serializer>().As<ISerializer>().SingleInstance();
             builder.RegisterType<SettingsProvider>().As<ISettingsProvider>().SingleInstance();
@@ -32,8 +35,13 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialDetailsTrackingContainerProvider>()).As<IEditorialDetailsTrackingContainerProvider>();
             builder.Register(x => ObjectFactory.Instance.Resolve<IWebMetricsTrackingScriptBuilder>()).As<IWebMetricsTrackingScriptBuilder>();
 
-            //builder.RegisterType<ArticleIdentifierModelBinder>().AsModelBinderForTypes(typeof(ArticleIdentifier));
-            builder.AddIngress();
+            builder.AddIngress(new IngressSetupOptions
+            {
+                AssembliesToScanAndRegister = new[]
+                {
+                    typeof(AppShellClient.AppShellClient).Assembly
+                }
+            });
 
             builder.Register(x => new HttpContextWrapper(HttpContext.Current)).As<HttpContextBase>();
 
@@ -43,6 +51,13 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 StringEscapeHandling = StringEscapeHandling.EscapeHtml
 
             };
+
+            // set up separate logger for this class so we can log separately
+            builder.RegisterType<ArticleNotFoundLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
+            {
+                var loggerFactory = c.Resolve<ILoggerFactory>();
+                return loggerFactory.For<ArticleNotFoundLogger>();
+            }).As<IArticleNotFoundLogger>().SingleInstance();
         }
     }
 

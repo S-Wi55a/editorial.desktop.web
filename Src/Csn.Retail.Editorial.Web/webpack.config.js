@@ -23,7 +23,6 @@ const listofTenants = [
     'boatpoint',
     'trucksales',
     'caravancampingsales',
-    'equipmentsales',
     'farmmachinerysales',
 ];
 
@@ -36,14 +35,20 @@ const listOfPaths = [
     'Features/Shared/Assets',
     'Features/Details/Assets',
     'Features/SiteNav/Assets',
+    'Features/Errors/Assets',
     'Features'
 ];
+
+// list of path to search for files
+const s3path = 'dist/retail/editorial/'; //transfer to s3 is handles with gulp
+
 //---------------------------------------------------------------------------------------------------------
 
 var assetsPluginInstance = new AssetsPlugin({
         filename: 'webpack.assets.json',
         path: __dirname,
-        prettyPrint: true
+        prettyPrint: true,
+        fullPath: false
     });
 
 var isProd = process.env.NODE_ENV === 'production' ? true : false;
@@ -56,8 +61,8 @@ const URL_LIMIT = isProd ? 1 : null;
 
 var config = {
     entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
-    outputPath: path.join(__dirname, isProd ? 'dist/retail/editorial' : 'dist'),
-    publicPath: './'
+    outputPath: path.join(__dirname, s3path),
+    publicPath: isProd ? './' : s3path
 }
 
 
@@ -135,7 +140,6 @@ module.exports = (env) => {
         entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
         entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
         entries['csn.mm' + '--' + tenant] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mm.js'];
-
 
         moduleExportArr.push(
         {
@@ -243,7 +247,7 @@ module.exports = (env) => {
                 }),
                 // Common
                 new webpack.optimize.CommonsChunkPlugin({
-                    name: 'csn-common' + '--' + tenant,
+                    name: 'csn.common' + '--' + tenant,
                     chunks: pageEntries,
                     minChunks: 2
                 }),
@@ -329,12 +333,6 @@ module.exports = (env) => {
                     warnings: true
                 },
                 proxy: {
-                    '/dist/dist': {
-                        target: 'http://localhost:8080',
-                        changeOrigin: true,
-                        secure: false,
-                        pathRewrite: { '^/dist/dist': 'dist' }
-                    },
                     '/': {
                         target: 'http://' + (tenant || 'carsales').toString().toLowerCase() + '.editorial.csdev.com.au',
                         changeOrigin: true,

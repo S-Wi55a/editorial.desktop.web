@@ -8,6 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string NetworkId { get; set; }
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string ArticleType { get; set; }
+        public bool IsSponsoredArticle { get; set; }
         public HeroSection HeroSection { get; set; }
         public string Headline { get; set; }
         public string Subheading { get; set; }

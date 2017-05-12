@@ -18,7 +18,6 @@ namespace Csn.Retail.Editorial.Web.Ioc
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<NLogLoggerFactory>().As<ILoggerFactory>().SingleInstance();
             builder.Register(x => CircuitBreakerFactoryBuilder
                 .New()
                 .WithLoggerFactory(x.Resolve<ILoggerFactory>())
