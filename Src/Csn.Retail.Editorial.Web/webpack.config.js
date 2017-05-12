@@ -62,7 +62,7 @@ const URL_LIMIT = isProd ? 1 : null;
 var config = {
     entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
     outputPath: path.join(__dirname, s3path),
-    publicPath: s3path
+    publicPath: isProd ? './' : s3path
 }
 
 
@@ -245,7 +245,7 @@ module.exports = function () {
                 }),
                 // Common
                 new webpack.optimize.CommonsChunkPlugin({
-                    name: 'csn-common' + '--' + tenant,
+                    name: 'csn.common' + '--' + tenant,
                     chunks: pageEntries,
                     minChunks: 2
                 }),
