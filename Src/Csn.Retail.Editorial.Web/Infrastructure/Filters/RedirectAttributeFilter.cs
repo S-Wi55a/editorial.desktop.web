@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Filters
 {

@@ -49,9 +49,6 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
 
         private bool IsMobiRedirectApplicable()
         {
-            // also need to check the domain here....if the domain is bikesales/carsales then we redirect. Otherwise we don't
-
-
             var isDesktopForcedByUser = _cookieStore.Get("showas")?.IsSame("dsk") ?? false;
 
             if (isDesktopForcedByUser) return false;
