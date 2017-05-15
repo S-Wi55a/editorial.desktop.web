@@ -7,7 +7,8 @@
   ],
   "plugins": [
     "dynamic-import-webpack",
-    "syntax-dynamic-import"
+    "syntax-dynamic-import",
+	"transform-object-rest-spread"
   ]
 
 }

@@ -539,6 +539,22 @@
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mm.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Actions\actions.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Containers\root.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Data\data.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\index.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Middleware\api.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\rootReducer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Actions\actionCreators.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Actions\actionTypes.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Reducers\facetsReducer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Reducers\articleTypeReducer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Reducers\bodyTypeReducer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Reducers\makeModelReducer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Reducers\nodesReducer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Reducers\iNavReducer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Store\store.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\SearchBar\Containers\SearchBar.js" />
     <Content Include="Features\Shared\Assets\Js\vendor.js" />
     <Content Include="Global.asax" />
     <Content Include="postcss.config.js" />
@@ -558,6 +574,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Components\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Components\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

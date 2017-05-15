@@ -1,5 +1,7 @@
 'use strict';
 
+var isProd = process.env.NODE_ENV === 'production' ? true : false;
+
 // Webpack build
 var glob = require('glob'),
     path = require('path'),
@@ -51,7 +53,6 @@ var assetsPluginInstance = new AssetsPlugin({
         fullPath: false
     });
 
-var isProd = process.env.NODE_ENV === 'production' ? true : false;
 
 const TENANTS = process.env.TENANT ? [process.env.TENANT.trim()] : listofTenants;
 
@@ -62,7 +63,7 @@ const URL_LIMIT = isProd ? 1 : null;
 var config = {
     entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
     outputPath: path.join(__dirname, s3path),
-    publicPath: s3path
+    publicPath: isProd ? './' : s3path
 }
 
 
@@ -245,7 +246,7 @@ module.exports = function () {
                 }),
                 // Common
                 new webpack.optimize.CommonsChunkPlugin({
-                    name: 'csn-common' + '--' + tenant,
+                    name: 'csn.common' + '--' + tenant,
                     chunks: pageEntries,
                     minChunks: 2
                 }),
