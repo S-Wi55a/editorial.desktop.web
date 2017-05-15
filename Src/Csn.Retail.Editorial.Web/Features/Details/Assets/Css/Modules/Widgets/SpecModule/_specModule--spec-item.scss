@@ -11,6 +11,10 @@
         margin-top: auto;
     }
 
+    &__column-container {
+        position: relative;
+    }
+
     &__column {
         padding: 0 30px;
         display: inline-block;
@@ -18,39 +22,55 @@
         vertical-align: top;
 
         &--1 {
-            width: 55%;
+            width: 50%;
         }
 
         &--2 {
-            width: auto;
+            width: 50%;
         }
     }
 
-    &__heading {
-        font-size: $font-size-h2;
+    &__make {
+        font-size: $font-size-h4;
         font-weight: $font-weight-600;
         color: $cs-dark-grey;
     }
 
-    &__subheading {
-        font-size: $font-size-h5;
+    &__model {
+        font-size: $font-size-h2;
+        font-weight: $font-weight-300;
         color: $cs-dark-grey;
         padding-top: 5px;
+        padding-bottom: 10px;
+    }
+
+    &__variant {
+        font-size: $font-size-h3;
+        font-weight: $font-weight-300;
+        color: $cs-dark-grey;
+        border-top: 1px solid $cs-lighter-grey;
+        margin-top: 10px;
+        padding: 10px 0;
+        //height: 90px;
     }
 
     &__price {
-        font-size: $font-size-h3;
-        color: $cs-dark-grey;
-        display: inline-block;
-        padding-top: 20px;
+
+        &--price-new {
+            font-size: $font-size-h2;
+            color: $cs-primary;
+            font-weight: $font-weight-600;
+            padding-top: 0;
+            display: inline-block;
+        }
 
         &--price-private,
         &--price-trade-in {
             padding-top: 0;
-            font-size: $font-size-h5;
-            color: $cs-dark-grey;
-            font-weight: $font-weight-600;
-            margin-top: 5px;
+            font-size: $font-size-h4;
+            color: $cs-primary;
+            font-weight: $font-weight-400;
+            //margin-top: 5px;
         }
     }
 
@@ -68,11 +88,41 @@
     }
 
     &__price-container {
-        display: inline-block;
-        margin-top: 20px;
+        //margin-top: 20px;
+    }
 
-        &:nth-of-type(2){
-            float: right;
+    &__price-item {
+        margin-top: 10px;
+
+        $sm-handle-width: 20px;
+        $sm-rail-height: 7px;
+        $dot-height: 0px;
+
+        .rc-slider {
+            position: relative;
+            margin-top: 5px;
+            height: $sm-rail-height;
+            width: 100%;
+            border-radius: 6px;
+            box-sizing: border-box;
+
+            .rc-slider-rail {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                background-color: $cs-lighter-grey;
+                height: $sm-rail-height;
+                border-radius: 6px;
+            }
+
+            .rc-slider-track {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: $sm-rail-height;
+                border-radius: 6px;
+                background-color: $cs-primary;
+            }
         }
     }
 
@@ -83,16 +133,6 @@
         display: block;
     }
 
-    &__image-container {
-        margin-top: 15px;
-        padding: 30px 0;
-        border-top: 1px solid $cs-lightest-grey;
-        border-bottom: 1px solid $cs-lightest-grey;
-    }
-
-    &__image {
-    }
-
     &__spec-item-list-heading {
         font-size: $font-size-h4;
         font-weight: $font-weight-600;
@@ -100,11 +140,11 @@
     }
 
     &__spec-item-list {
-        margin: 20px auto 0;
+        margin: 11px auto 0;
     }
 
     &__spec-item-title {
-        font-size: $font-size-h6;
+        font-size: 0; //$font-size-h6;
         color: $cs-grey;
     }
 
@@ -112,7 +152,7 @@
         font-size: $font-size-h5;
         color: $cs-dark-grey;
         font-weight: $font-weight-600;
-        margin: 5px 0 20px;
+        margin: 5px 0 15px;
     }
     //ANCAP Rating
     &__spec-item-value:last-child {
@@ -198,6 +238,89 @@
 
 
     &__third-party-offers {
-        padding: 30px 0;
+        width: calc(100% - 60px);
+        margin: 15px auto 0;
+        padding: 30px 0 0;
+        border-top: 1px solid $cs-lightest-grey;
+
+        & > div {
+            margin-left: -15px;
+            width: calc(100% + 30px);
+        }
+    }
+    // Icons
+    &__spec-item-value {
+
+        &::before {
+            font-family: $font-family-icons;
+            font-size: $font-size-h3;
+            display: inline-block;
+            color: $cs-grey;
+            vertical-align: middle;
+            margin-right: 15px;
+            font-weight: 400;
+        }
+
+        &.body-style {
+            &::before {
+                content: "\e918";
+            }
+        }
+
+        &.drive {
+            &::before {
+                content: "\e901";
+            }
+        }
+
+        &.transmission {
+            &::before {
+                content: "\e964";
+            }
+        }
+
+        &.engine {
+            &::before {
+                content: "\e958";
+            }
+        }
+
+        &.fuel-type {
+            &::before {
+                content: "\e902";
+            }
+        }
+
+        &.fuel-consumption {
+            &::before {
+                content: "\e902";
+            }
+        }
+
+        &.power {
+            &::before {
+                content: "\e9c4";
+            }
+        }
+
+
+        &.doors {
+            &::before {
+                content: "\e900";
+            }
+        }
+
+
+        &.seats {
+            &::before {
+                content: "\e904";
+            }
+        }
+
+        &.safety-rating-ancap {
+            &::before {
+                content: "\e903";
+            }
+        }
     }
 }

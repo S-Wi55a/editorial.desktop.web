@@ -4,7 +4,10 @@
 
     $img-width: 78px + 15px;
     font-size: 0;
-    margin-bottom: 15px;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 15px;
 
     &__logo {
         width: $img-width;
@@ -65,6 +68,34 @@
         color: $cs-dark-grey;
         font-weight: $font-weight-400;
         text-align: center;
-        margin-top: 15px;
+    }
+
+}
+
+// Budget Direct
+.spec-module .third-party-offer {
+
+    &:nth-of-type(odd).third-party-offer--budget-direct {
+        .third-party-offer__terms-and-conditions {
+            margin-top: 15px;
+            width: calc(200% + 30px);
+            margin-left: auto;
+        }
+    }
+
+    &:nth-of-type(even).third-party-offer--budget-direct {
+        .third-party-offer__terms-and-conditions {
+            margin-top: 15px;
+            width: calc(200% + 30px);
+            margin-left: calc(-100% - 30px);
+        }
+    }
+
+    &.third-party-offer--budget-direct:first-child:nth-last-child(1) {
+        .third-party-offer__terms-and-conditions {
+            margin-top: 15px;
+            width: calc(200% + 30px);
+            margin-left: calc(-50% - 15px);
+        }
     }
 }

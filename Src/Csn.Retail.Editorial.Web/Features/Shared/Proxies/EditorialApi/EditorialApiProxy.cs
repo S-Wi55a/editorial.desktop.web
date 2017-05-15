@@ -1,9 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Bolt.Common.Extensions;
-using Csn.Retail.Editorial.Web.Features.AlsoConsider;
-using Csn.Retail.Editorial.Web.Features.MoreArticles;
-using Csn.Retail.Editorial.Web.Features.Spec;
-using Csn.Retail.Editorial.Web.Features.StockForSale;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Ingress.ServiceClient.Abstracts;
 
@@ -12,10 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public interface IEditorialApiProxy
     {
         Task<SmartServiceResponse<ArticleDetailsDto>> GetArticleAsync(EditorialApiInput input);
-        Task<SmartServiceResponse<MoreArticlesDto>> GetLatestArticlesAsync(MoreArticlesQuery query);
-        Task<SmartServiceResponse<StockForSaleDto>> GetStockListingAsync(StockForSaleQuery query);
-        Task<SmartServiceResponse<SpecDto>> GetSpecAsync(SpecQuery query);
-        Task<SmartServiceResponse<AlsoConsiderDto>> GetAlsoConsiderAsync(AlsoConsiderQuery query);
+        Task<SmartServiceResponse<object>> GetAsync(string uri);
     }
 
     [AutoBind]
@@ -36,31 +29,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
                         .GetAsync<ArticleDetailsDto>();
         }
 
-        public Task<SmartServiceResponse<MoreArticlesDto>> GetLatestArticlesAsync(MoreArticlesQuery query)
+        public Task<SmartServiceResponse<object>> GetAsync(string uri)
         {
             return _smartClient.Service(ServiceName)
-                .Path(query.Uri)
-                .GetAsync<MoreArticlesDto>();
-        }
-
-        public Task<SmartServiceResponse<StockForSaleDto>> GetStockListingAsync(StockForSaleQuery query)
-        {
-            return _smartClient.Service(ServiceName)
-                .Path(query.Uri)
-                .GetAsync<StockForSaleDto>();
-        }
-
-        public Task<SmartServiceResponse<SpecDto>> GetSpecAsync(SpecQuery query)
-        {
-            return _smartClient.Service(ServiceName)
-                .Path(query.Uri)
-                .GetAsync<SpecDto>();
-        }
-        public Task<SmartServiceResponse<AlsoConsiderDto>> GetAlsoConsiderAsync(AlsoConsiderQuery query)
-        {
-            return _smartClient.Service(ServiceName)
-                .Path(query.Uri)
-                .GetAsync<AlsoConsiderDto>();
+                .Path(uri)
+                .GetAsync<object>();
         }
     }
 }

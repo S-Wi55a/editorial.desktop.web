@@ -3,22 +3,21 @@ using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.SimpleCqrs;
 
-namespace Csn.Retail.Editorial.Web.Features.StockForSale
+namespace Csn.Retail.Editorial.Web.Features.Shared.ApiProxy
 {
     [AutoBind]
-    public class StockForSaleQueryHandler : IAsyncQueryHandler<StockForSaleQuery, StockForSaleDto>
+    public class ApiProxyQueryHandler : IAsyncQueryHandler<ApiProxyQuery, object>
     {
         private readonly IEditorialApiProxy _editorialApiProxy;
 
-
-        public StockForSaleQueryHandler(IEditorialApiProxy editorialApiProxy)
+        public ApiProxyQueryHandler(IEditorialApiProxy editorialApiProxy)
         {
             _editorialApiProxy = editorialApiProxy;
         }
 
-        public async Task<StockForSaleDto> HandleAsync(StockForSaleQuery query)
+        public async Task<object> HandleAsync(ApiProxyQuery query)
         {
-            var result = await _editorialApiProxy.GetStockListingAsync(query);
+            var result = await _editorialApiProxy.GetAsync(query.Uri);
 
             if (!result.IsSucceed)
             {

@@ -1,0 +1,41 @@
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@model Csn.Retail.Editorial.Web.Features.Shared.Models.ErrorViewModel
+
+@{
+    var tenantName = Html.CurrentTenant().Name.ToLower();
+    var title = string.Format("{0} - www.{0}.com.au", Html.CurrentTenant().Name);
+}
+
+@section Head {
+    <title>@title</title>
+}
+
+@section Styles {
+    @Html.AssetCss("error-page--" + tenantName)
+}
+
+
+@section TopScripts {
+    @Html.AssetJs("error-page--" + tenantName, LoadType.Defer)
+}
+
+<div class="error-container">
+    <div class="error-content">
+        <h1 class="error-content__header">Ooops.....</h1>
+        @if (Model.HttpStatusCode == HttpStatusCode.NotFound)
+        {
+            Html.RenderPartial("~/Features/Errors/Views/Error404.cshtml");
+        }
+        else
+        {
+            Html.RenderPartial("~/Features/Errors/Views/ErrorGeneric.cshtml");
+        }
+    </div>
+</div>
+
+@section BottomScripts
+{
+    @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
+    @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
+}

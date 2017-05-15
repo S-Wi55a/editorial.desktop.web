@@ -79,9 +79,9 @@ let specModule = function (d) {
         let el = d.querySelectorAll('.article__copy p')[1];
         if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder"></div>');}
 
-        require.ensure(['./Js/Modules/SpecModule/specModule-component.js'],
+        require.ensure(['Js/Modules/SpecModule/specModule--container.js'],
             function () {
-                require('./Js/Modules/SpecModule/specModule-component.js');
+                require('Js/Modules/SpecModule/specModule--container.js');
             },
             'Spec-Module-Component');
     }
