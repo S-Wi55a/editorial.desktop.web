@@ -1,9 +1,14 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Shared.Helpers
 @using Newtonsoft.Json
 @model Dictionary<string, string>
+    
+@{ var trackingId = @UserContextHelper.GetMemberTrackingId(); }
 
 <script>
     window.CsnInsights = window.CsnInsights || {};
     CsnInsights.metaData = @Html.Raw(JsonConvert.SerializeObject(Model));
-    CsnInsights.memberTrackingId = "@UserContextHelper.GetMemberId()";
+    @if (!string.IsNullOrEmpty(trackingId))
+    {
+    <text>CsnInsights.memberTrackingId = "@trackingId";</text>
+    }
 </script>
