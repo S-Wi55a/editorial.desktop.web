@@ -9,5 +9,6 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.UserContext
     public class UserContext : IUserContext
     {
         public Guid? CurrentUserId => (HttpContext.Current?.User.Identity as UserIdentity)?.Id;
+        public Guid? MemberTrackingId => (HttpContext.Current?.User.Identity as UserIdentity)?.TrackingId;
     }
 }
