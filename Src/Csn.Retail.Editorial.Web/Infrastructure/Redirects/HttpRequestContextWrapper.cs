@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Web;
 using Bolt.Common.Extensions;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
 {
@@ -22,6 +23,7 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
         bool IsTouchDevice();
     }
 
+    [AutoBindAsPerRequest]
     public class HttpRequestContextWrapper : IRequestContextWrapper
     {
         public bool IsSecure()

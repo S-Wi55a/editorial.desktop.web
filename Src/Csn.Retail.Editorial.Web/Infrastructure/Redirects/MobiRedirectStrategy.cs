@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Bolt.Common.Extensions;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
 {
+    [AutoBind]
     public class MobiRedirectStrategy : IRedirectStrategy
     {
         private readonly ITenantProvider<TenantInfo> _tenantProvider;

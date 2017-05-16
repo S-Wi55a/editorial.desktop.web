@@ -1,6 +1,7 @@
 ﻿using Bolt.Common.Extensions;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
@@ -10,6 +11,7 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
     /// web application! But, until we form a better URL redirect alternative, this will have
     /// to do.
     /// </summary>
+    [AutoBind]
     public class CarMobiDetailsUrlBuilder : IMobiDetailsUrlBuilder
     {
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
