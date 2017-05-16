@@ -51,7 +51,6 @@ function nativeAds($, placements, registeredEvents) {
 
             // loop through each of the placements and check whether we need to push onto this page
             placements.forEach(function (placement) {
-
                 // If tile is already applied, skip
                 if (placement.active) {
                     return

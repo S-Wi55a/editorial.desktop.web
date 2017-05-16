@@ -13,11 +13,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     {
         private readonly IHeroSectionMapper _heroSectionMapper;
         private readonly ISeoDataMapper _seoDataMapper;
-        private readonly IPolarNativeAdsMapper _polarNativeAdsMapper;
+        private readonly IPolarNativeAdsDataMapper _polarNativeAdsMapper;
 
         public MappingSetupTask(IHeroSectionMapper heroSectionMapper,
                                 ISeoDataMapper seoDataMapper,
-                                IPolarNativeAdsMapper polarNativeAdsMapper)
+                                IPolarNativeAdsDataMapper polarNativeAdsMapper)
         {
             _heroSectionMapper = heroSectionMapper;
             _seoDataMapper = seoDataMapper;
@@ -29,11 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)))
                 .ForMember(dest => dest.UseDropCase, opt => opt.ResolveUsing<UseDropCaseResolver>())
                 .ForMember(dest => dest.SeoData, opt => opt.MapFrom(src => _seoDataMapper.Map(src.SeoData)))
-                .ForMember(dest => dest.PolarNativeAds, opt => opt.MapFrom(src => _polarNativeAdsMapper.Map())); //Adds Tenant info
-                //.ForMember(dest => dest.PolarNativeAds, opt => opt.MapFrom(src => _polarNativeAdsMapper.Map())); //Add page specific vales ie. areaName and makeModel
-
-
-
+                .ForMember(dest => dest.PolarNativeAdsData, opt => opt.MapFrom(src => _polarNativeAdsMapper.Map(src)));
 
             // Social Meta Data
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();

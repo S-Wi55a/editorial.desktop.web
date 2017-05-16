@@ -13,8 +13,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         {
             var heroMapper = Substitute.For<IHeroSectionMapper>();
             var seoDataMapper = Substitute.For<ISeoDataMapper>();
+            var polarNativeAdsMapper = Substitute.For<IPolarNativeAdsDataMapper>();
 
-            Mapper.Initialize(cfg => new MappingSetupTask(heroMapper, seoDataMapper).Run(cfg));
+            Mapper.Initialize(cfg => new MappingSetupTask(heroMapper, seoDataMapper, polarNativeAdsMapper).Run(cfg));
             Mapper.AssertConfigurationIsValid();
         }
     }
