@@ -232,6 +232,7 @@ module.exports = (env) => {
                 assetsPluginInstance,
                 new ExtractTextPlugin({
                     filename: isProd ? '[name]-[contenthash].css' : '[name].css',
+                    allChunks: true
                 }),
                 //Vendor & Manifest
                 new webpack.optimize.CommonsChunkPlugin({

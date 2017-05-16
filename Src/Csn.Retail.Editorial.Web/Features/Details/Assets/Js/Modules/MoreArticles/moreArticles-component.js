@@ -8,8 +8,6 @@ let userPreference = false
 let showText = csn_editorial.moreArticles.headings.showHeading
 let hideText = csn_editorial.moreArticles.headings.hideHeading
 
-
-
 // Init More Articles Slider
 let initMoreArticlesSlider = (selector, options) => {
     options = Object.assign({}, options);
