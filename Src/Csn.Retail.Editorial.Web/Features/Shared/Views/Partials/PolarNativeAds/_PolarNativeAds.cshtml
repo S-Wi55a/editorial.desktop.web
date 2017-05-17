@@ -11,10 +11,7 @@
     csn_editorial.nativeAds = {
         siteName: "@Html.CurrentTenant().PolarSiteName",
         areaName: "@Model.AreaName",
-        @if (!string.IsNullOrEmpty(Model.MakeModel))
-        {
-        <text>makeModel: "@Model.MakeModel",</text>
-        }
+        makeModel: "@Model.MakeModel",
         setPropertyID: "@Html.CurrentTenant().PolarSitePropertyId"
     };
 </script>

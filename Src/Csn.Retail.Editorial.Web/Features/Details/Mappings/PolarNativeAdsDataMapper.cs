@@ -30,7 +30,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 
             var data = new PolarNativeAdsData
             {
-                AreaName = "editorials_details"
+                AreaName = "editorials_details",
+                MakeModel = ""
             };
 
             if (source.Items != null && source.Items.Any())
