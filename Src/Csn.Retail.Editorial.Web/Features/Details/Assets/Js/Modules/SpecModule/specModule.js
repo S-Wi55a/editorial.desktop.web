@@ -3,12 +3,11 @@ import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 import Slider, { Range } from 'rc-slider'
 import * as View from 'Js/Modules/SpecModule/specModule--view.js'
-
+import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
 
 const SpecificationsItem_DD = (props) => {
 
     const iconClassName = props.item.title ? props.item.title.replace(/\s+/g, "-").replace(/\(|\)/g, "").toLowerCase() : '';
-
 
     if (props.last) {
         return (
@@ -55,7 +54,7 @@ const ThirdPartyOffers = (props) => {
     var offers = [];
 
     props.data.map((item, index) => {
-        offers.push(<ThirdPartyOffer data={item} disclaimerHandler={props.disclaimerHandler} key={index}/>);
+        offers.push(<ThirdPartyOffer data={item} disclaimerHandler={props.disclaimerHandler} key={index} tabOrModal={tabOrModal}/>);
     });
 
     return (<div>{ offers }</div>);
@@ -64,6 +63,21 @@ const ThirdPartyOffers = (props) => {
 const ThirdPartyOffer = (props) => {
 
     const titleNoSpace = props.data.companyName ? props.data.companyName.replace(/\s+/g, "-").toLowerCase() : '';
+
+    let tabOrModal = ''
+
+    if (props.tabOrModal) {
+
+        if (props.tabOrModal[titleNoSpace] === 'iframe') {
+            const iframe = `<iframe src=${props.data.formUrl}"></iframe>`
+            tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(e) => {
+                props.disclaimerHandler(titleNoSpace, e)
+            }} className="third-party-offer__link">{props.data.getQuoteText}</span>
+        } else {
+            tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link">{props.data.getQuoteText}</a>
+        }
+
+    }
 
     return (
         <div className={'spec-item__third-party-offer third-party-offer third-party-offer--'+titleNoSpace}>
@@ -79,7 +93,7 @@ const ThirdPartyOffer = (props) => {
                     </span>
                 </div>
             </div>
-            <a href={props.data.formUrl} className="third-party-offer__link">{props.data.getQuoteText}</a>
+            {tabOrModal}
             <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
         </div>
         )
@@ -95,12 +109,6 @@ const Price = (props) => {
            </div>
         )
     } else {
-
-        const rndNum = 10000;
-        const rndLowestPrivate = Math.floor(props.data.pricePrivate.priceMin / rndNum) * rndNum;
-        const rndHightestPrivate = Math.ceil(props.data.pricePrivate.priceMax / rndNum) * rndNum;
-        const rndLowestTradeIn = Math.floor(props.data.priceTradeIn.priceMin / rndNum) * rndNum;
-        const rndHightestTradeIn = Math.ceil(props.data.priceTradeIn.priceMax / rndNum) * rndNum;
 
         return (
             <div className="spec-item__price-container">
@@ -221,10 +229,16 @@ class SpecModule extends React.Component {
     }
 
     // Data disclaimer handler
-    disclaimerHandler = (e) => {
-     
+    disclaimerHandler = (className, e) => {
+
+        // e is always the last arg, If not called with className set e to className becasue className old event data when called with 1 arg
+        if (!(typeof className === 'string')) {
+            e = className
+            className = ''
+        } 
+
         const content = decodeURI(e.target.getAttribute('data-disclaimer'))
-        this.props.modal.show(View.disclaimer(content))
+        this.props.modal.show(View.disclaimer(content), className)
 
     }
 
