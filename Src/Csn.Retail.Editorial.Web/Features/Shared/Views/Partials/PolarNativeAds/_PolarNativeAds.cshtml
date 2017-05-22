@@ -1,0 +1,17 @@
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@model Csn.Retail.Editorial.Web.Features.Shared.Models.PolarNativeAdsData
+
+@if (!Html.CurrentTenant().DisplayPolarAds)
+{
+    return;
+}
+
+<script>
+    var csn_editorial = csn_editorial || {};
+    csn_editorial.nativeAds = {
+        siteName: "@Html.CurrentTenant().PolarSiteName",
+        areaName: "@Model.AreaName",
+        makeModel: "@Model.MakeModel",
+        setPropertyID: "@Html.CurrentTenant().PolarSitePropertyId"
+    };
+</script>

@@ -380,7 +380,7 @@
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
-    <Compile Include="Features\Details\Mappings\PolarNativeAdsMapper.cs" />
+    <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Details\Loggers\ArticleNotFoundLogger.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseResolver.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
@@ -391,7 +391,7 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
-    <Compile Include="Features\Shared\Models\PolarNativeAds.cs" />
+    <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />
     <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
     <Compile Include="Features\Shared\ApiProxy\ApiProxyController.cs" />
@@ -555,7 +555,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
-    <Folder Include="Features\Shared\PolarNative\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -725,7 +724,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\NativeAds\_NativeAds.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\PolarNativeAds\_PolarNativeAds.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module--slider.scss" />
     <Content Include="Features\Shared\Views\Errors\Error404.cshtml" />
     <Content Include="Features\Shared\Views\Errors\ErrorTemplate.cshtml" />

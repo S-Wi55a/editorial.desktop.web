@@ -13,11 +13,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool AllowSeoIndexOfDetails { get; set; }
         public bool AllowSeoIndexOfListing { get; set; }
 
-
-        public string SectionName { get; set; }
-        public string SitePropertyId { get; set; }
-        public string SiteName { get; set; }
-        public string ArticleType { get; set; }
+        #region Polar Native Ads
         public bool DisplayPolarAds { get; set; }
+        public string PolarSitePropertyId { get; set; }
+        public string PolarSiteName { get; set; }
+        #endregion
     }
 }
