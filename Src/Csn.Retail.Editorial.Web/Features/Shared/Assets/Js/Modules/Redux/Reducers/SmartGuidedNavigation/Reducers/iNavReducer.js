@@ -4,11 +4,13 @@ import { nodesReducer } from 'Js/Modules/Redux/Reducers/SmartGuidedNavigation/Re
 
 export const iNavReducer = (state = data.iNav, action) => {
     switch (action.type) {
-        case ActionTypes.TOGGLE_SELECTED:
-            
-            return {
-                ...state,
-                ...nodesReducer(state.Nodes, action)
+    case ActionTypes.TOGGLE_SELECTED:
+
+        return {
+            ...state,
+            ...{
+                Nodes: nodesReducer(state.Nodes, action)
+               }
             }
         default: 
             return state
