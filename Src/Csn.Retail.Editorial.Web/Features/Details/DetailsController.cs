@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.Loggers;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Details
@@ -23,6 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         }
 
         [Route("editorial/details/{pageName:regex(^.*-\\d+/?$)}")]
+        [RedirectAttributeFilter]
         // GET: Details
         public async Task<ActionResult> Index(ArticleIdentifier articleIdentifier)
         {
