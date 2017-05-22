@@ -1,14 +1,18 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Bolt.Common.Extensions;
 using Csn.Cars.Cache;
 using Csn.Cars.Cache.Extensions;
 using Csn.MultiTenant;
+using Csn.Retail.AppShellClient;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.UserContext;
 using Csn.SimpleCqrs;
 using Ingress.ServiceClient.Abstracts;
+using Csn.Logging;
+using ILogger = Csn.Logging.ILogger;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
 {
@@ -22,44 +26,55 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
         private readonly ISmartServiceClient _smartClient;
         private readonly ICacheStore _cacheStore;
         private readonly IUserContext _userContext;
-        private readonly IContextStore<GlobalSiteDataDto> _contextStore;
+        private readonly IContextStore<AppShellData> _contextStore;
+        private readonly IAppShellClient _proxy;
+        private readonly ILogger _logger;
 
         public LoadGlobalSiteDataOnPageLoad(ITenantProvider<TenantInfo> tenantProvider,
             ISmartServiceClient smartClient,
             ICacheStore cacheStore,
             IUserContext userContext,
-            IContextStore<GlobalSiteDataDto> contextStore)
+            IContextStore<AppShellData> contextStore,
+            IAppShellClient proxy,
+            ILogger logger)
         {
             _tenantProvider = tenantProvider;
             _smartClient = smartClient;
             _cacheStore = cacheStore;
             _userContext = userContext;
             _contextStore = contextStore;
+            _proxy = proxy;
+            _logger = logger;
         }
 
         public async Task HandleAsync(T eEvent)
         {
             if (!(eEvent is IRequireGlobalSiteNav)) return;
 
-            var currentUserId = _userContext.CurrentUserId;
+            //var response = await _cacheStore
+            //    .Profile(currentUserId.HasValue() ? CacheProfileNameMember : CacheProfileNameAnonymous)
+            //        .FetchAsync(async () => await FetchFromApi())
+            //        .CacheIf(x => x != null && x.TopNav.HasValue())
+            //        .GetAsync(CacheKey.FormatWith(_tenantProvider.Current().Name, currentUserId));
 
-            var response = await _cacheStore
-                .Profile(currentUserId.HasValue() ? CacheProfileNameMember : CacheProfileNameAnonymous)
-                    .FetchAsync(async () => await FetchFromApi())
-                    .CacheIf(x => x != null && x.TopNav.HasValue())
-                    .GetAsync(CacheKey.FormatWith(_tenantProvider.Current().Name, currentUserId));
+            //_contextStore.Set(response);
+            try
+            {
+                var response = _proxy.Get(new AppShellRequest
+                {
+                    CurrentUserId = _userContext.CurrentUserId?.ToString(),
+                    SiteName = _tenantProvider.Current().Name
+                });
 
-            _contextStore.Set(response);
-        }
-
-        private async Task<GlobalSiteDataDto> FetchFromApi()
-        {
-            var response = await _smartClient.Service(ServiceName)
-                .Path(_tenantProvider.Current().SiteNavPath)
-                .QueryString("memberId", _userContext.CurrentUserId.ToString())
-                .GetAsync<GlobalSiteResponseDto>();
-
-            return response?.Data?.Data;
+                if (response.IsSucceed)
+                {
+                    _contextStore.Set(response.Data.Data);
+                }
+            }
+            catch (Exception exc)
+            {
+                _logger.Error(exc, "Unable to load SiteNavigation v2");
+            }
         }
     }
 

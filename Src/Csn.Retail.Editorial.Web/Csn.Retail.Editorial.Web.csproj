@@ -113,6 +113,10 @@
       <HintPath>..\packages\Csn.RestClient.6.1.0.0\lib\net45\Csn.RestClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Csn.Retail.AppShellClient-Net45, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Retail.AppShellClient-Net45.1.1.1\lib\net452\Csn.Retail.AppShellClient-Net45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Csn.Serializers, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Serializers.2.0.0.0\lib\net45\Csn.Serializers.dll</HintPath>
       <Private>True</Private>
@@ -371,9 +375,6 @@
     <Compile Include="App_Start\SetupGlobalFilterTask.cs" />
     <Compile Include="App_Start\SetupDefaultRouteTask.cs" />
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
-    <Compile Include="Features\AlsoConsider\AlsoConsiderController.cs" />
-    <Compile Include="Features\AlsoConsider\AlsoConsiderQuery.cs" />
-    <Compile Include="Features\AlsoConsider\AlsoConsiderQueryHandler.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
@@ -391,20 +392,10 @@
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\AlsoConsiderDto.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\SpecDto.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\StockForSaleDto.cs" />
-    <Compile Include="Features\Spec\SpecController.cs" />
-    <Compile Include="Features\Spec\SpecQuery.cs" />
-    <Compile Include="Features\Spec\SpecQueryHandler.cs" />
-    <Compile Include="Features\StockForSale\StockForSaleController.cs" />
-    <Compile Include="Features\StockForSale\StockForSaleQuery.cs" />
-    <Compile Include="Features\StockForSale\StockForSaleQueryHandler.cs" />
-    <Compile Include="Features\MoreArticles\MoreArticlesController.cs" />
-    <Compile Include="Features\MoreArticles\MoreArticlesQuery.cs" />
-    <Compile Include="Features\MoreArticles\MoreArticlesQueryHandler.cs" />
+    <Compile Include="Features\Shared\ApiProxy\ApiProxyController.cs" />
+    <Compile Include="Features\Shared\ApiProxy\ApiProxyQuery.cs" />
+    <Compile Include="Features\Shared\ApiProxy\ApiProxyQueryHandler.cs" />
     <Compile Include="Features\Shared\GlobalSite\GlobalSiteExtensions.cs" />
-    <Compile Include="Features\Shared\GlobalSite\GlobalSiteResponseDto.cs" />
     <Compile Include="Features\Shared\GlobalSite\LoadGlobalSiteDataOnPageLoad.cs" />
     <Compile Include="Features\Shared\GlobalSite\LoadGoogleAnalyticsTrackingScriptOnPageLoad.cs" />
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
@@ -417,7 +408,6 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\MoreArticlesDto.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiDto.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiProxy.cs" />
@@ -432,6 +422,7 @@
     <Compile Include="Infrastructure\Constants\TenantNames.cs" />
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
+    <Compile Include="Infrastructure\Filters\RedirectAttributeFilter.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckSummary.cs" />
     <Compile Include="Infrastructure\HealthChecks\IHealthChecker.cs" />
@@ -458,6 +449,13 @@
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestRequestHeaderInterceptor.cs" />
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
+    <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
+    <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
+    <Compile Include="Infrastructure\Redirects\HttpRequestContextWrapper.cs" />
+    <Compile Include="Infrastructure\Redirects\IMobiDetailsUrlBuilder.cs" />
+    <Compile Include="Infrastructure\Redirects\MobiRedirectStrategy.cs" />
+    <Compile Include="Infrastructure\Redirects\RedirectInstruction.cs" />
+    <Compile Include="Infrastructure\Redirects\RedirectStrategy.cs" />
     <Compile Include="Infrastructure\RequestWrapper\IRequestWrapper.cs" />
     <Compile Include="Infrastructure\RequestWrapper\RequestWrapperExtensions.cs" />
     <Compile Include="Infrastructure\Serializers\JsonSerializer.cs" />
@@ -510,8 +508,9 @@
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-component.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
@@ -532,6 +531,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Ajax\ajax.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Endpoints\endpoints.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\htmlparser.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
@@ -648,7 +648,6 @@
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Pinterest.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Googleplus.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_SocialMediaLinks.cshtml" />
-    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.eot" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.ttf" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.woff" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ExpertRatings.cshtml" />
@@ -715,7 +714,6 @@
     <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleData.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\Modal\_ModalData.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module-disclaimer.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--slideshow.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--spec-item.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--third-party-offer.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\fadeInUp.scss" />
@@ -747,6 +745,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module--slider.scss" />
     <Content Include="Features\Shared\Views\Errors\Error404.cshtml" />
     <Content Include="Features\Shared\Views\Errors\ErrorTemplate.cshtml" />
     <Content Include="Features\Shared\Views\Errors\ErrorGeneric.cshtml" />

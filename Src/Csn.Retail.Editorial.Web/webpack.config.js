@@ -92,7 +92,9 @@ function getEntryFiles(tenant) {
 rimraf('./dist', function (err) { if (err) { throw err; } });
 
 
-module.exports = function () {
+module.exports = (env) => {
+
+    process.env.BABEL_ENV = env;
 
     let moduleExportArr = [];
 

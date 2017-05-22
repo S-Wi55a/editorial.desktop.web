@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Infrastructure.UserContext;
 
@@ -14,6 +11,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             var userContext = DependencyResolver.Current.GetService<IUserContext>();
 
             return userContext.CurrentUserId.ToString();
+        }
+
+        public static string GetMemberTrackingId()
+        {
+            var userContext = DependencyResolver.Current.GetService<IUserContext>();
+
+            return userContext.MemberTrackingId.HasValue && userContext.MemberTrackingId.Value != Guid.Empty ? userContext.MemberTrackingId.ToString() : string.Empty;
         }
     }
 }
