@@ -55,3 +55,24 @@
 @function typeScale($scale, $i) {
     @return (1e3 * (pow($scale, $i))) / 1e3;
 }
+
+// Links
+@mixin link($color: $cs-dark-blue, $hover: $cs-dark-blue, $visited: $cs-dark-blue, $active: $cs-dark-blue, $focus: $cs-dark-blue) {
+    color: $color;
+
+    &:hover {
+        color: $hover;
+    }
+
+    &:visited {
+        color: $visited;
+    }
+
+    &:active {
+        color: $active;
+    }
+
+    &:focus {
+        color: $focus;
+    }
+}

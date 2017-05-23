@@ -61,7 +61,7 @@
         display: inline-block;
 
         &::after {
-            content: "\e923";
+            content: $icon-chevron-down-md;
             font-family: $font-family-icons;
             color: $cs-light-grey;
             font-size: 18px;
@@ -140,7 +140,7 @@
 
 
             &::after {
-                content: "\e929";
+                content: $icon-chevron-right-md;
                 font-family: $font-family-icons;
                 color: $cs-light-grey;
                 position: absolute;

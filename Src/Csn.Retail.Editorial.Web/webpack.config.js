@@ -138,7 +138,7 @@ module.exports = (env) => {
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
         entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
-        entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
+        entries['csn.base' + '--' + tenant] = ['./Features/Shared/Assets/csn.base.js'];
         entries['csn.mm' + '--' + tenant] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mm.js'];
 
         moduleExportArr.push(
@@ -232,20 +232,21 @@ module.exports = (env) => {
                 assetsPluginInstance,
                 new ExtractTextPlugin({
                     filename: isProd ? '[name]-[contenthash].css' : '[name].css',
+                    allChunks: false
                 }),
-                //Vendor & Manifest
+                //Vendor & Manifest - Nothing is added unless manual 
                 new webpack.optimize.CommonsChunkPlugin({
-                    names: ['vendor' + '--' + tenant, 'manifest' + '--' + tenant],
+                    names: ['vendor' + '--' + tenant, 'csn.base' + '--' + tenant],
                     minChunks: Infinity
                 }),
-                // Per page
+                //Per page -- pulll chunks from page and make common chunk async load
                 new webpack.optimize.CommonsChunkPlugin({
                     names: pageEntries,
                     children: true,
                     async: true,
                     minChunks: 2
                 }),
-                // Common
+                // Common -- pull everything from pages and make global common chunk
                 new webpack.optimize.CommonsChunkPlugin({
                     name: 'csn.common' + '--' + tenant,
                     chunks: pageEntries,
@@ -286,6 +287,50 @@ module.exports = (env) => {
                     }
                 )
             ],
+            stats: {
+                //Add asset Information
+                assets: true,
+                // Sort assets by a field
+                assetsSort: "field",
+                // Add information about cached (not built) modules
+                cached: true,
+                // Add children information
+                children: true,
+                // Add chunk information (setting this to `false` allows for a less verbose output)
+                chunks: true,
+                // Add built modules information to chunk information
+                chunkModules: true,
+                // Add the origins of chunks and chunk merging info
+                chunkOrigins: false,
+                // Sort the chunks by a field
+                chunksSort: "field",
+                // Context directory for request shortening
+                //context: "../src/",
+                // `webpack --colors` equivalent
+                colors: true,
+                // Add errors
+                errors: true,
+                // Add details to errors (like resolving log)
+                errorDetails: true,
+                // Add the hash of the compilation
+                hash: false,
+                // Add built modules information
+                modules: false,
+                // Sort the modules by a field
+                modulesSort: "field",
+                // Add public path information
+                publicPath: false,
+                // Add information about the reasons why modules are included
+                reasons: false,
+                // Add the source code of modules
+                source: false,
+                // Add timing information
+                timings: true,
+                // Add webpack version information
+                version: false,
+                // Add warnings
+                warnings: true
+            },
             devtool: isProd ? "cheap-source-map" : "eval",
             devServer: {
                 stats: {
