@@ -4,9 +4,6 @@ const placements = [];
 const events = ['csn_editorial.moreArticles.ready'];
 const templates = {};
 
-
-
-
 // Templates
 
 // Note that if these handlebars need to be recompiled just go to http://plugin.mediavoice.com/
@@ -61,9 +58,6 @@ placements.push({
     placementId: '31',
     template: templates['more-article']
 });
-
-
-
 
 
 export { placements, events }

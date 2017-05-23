@@ -511,6 +511,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\NativeAdstest\nativeAds.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--tabOrModal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
@@ -741,6 +742,7 @@
     <Content Include="Features\Errors\Views\Error404.cshtml" />
     <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Assets\Css\error-page.scss" />
+    <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons-variables.scss" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">
