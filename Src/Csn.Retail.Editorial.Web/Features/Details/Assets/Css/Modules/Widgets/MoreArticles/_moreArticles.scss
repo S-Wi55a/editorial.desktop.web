@@ -127,7 +127,7 @@
             margin-right: 5px;
 
             &::before {
-                content: "\e925";
+                content: $icon-chevron-left-lg;
             }
 
             &[disabled] {
@@ -141,7 +141,7 @@
             margin-left: 5px;
 
             &::before {
-                content: "\e928";
+                content: $icon-chevron-right-lg;
             }
 
             &[disabled] {

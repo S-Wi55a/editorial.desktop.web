@@ -263,63 +263,63 @@
 
         &.body-style {
             &::before {
-                content: "\e918";
+                content: $icon-car-front-sm;
             }
         }
 
         &.drive {
             &::before {
-                content: "\e901";
+                content: $icon-car-front-sm;
             }
         }
 
         &.transmission {
             &::before {
-                content: "\e964";
+                content: $icon-gear-sm;
             }
         }
 
         &.engine {
             &::before {
-                content: "\e958";
+                content: $icon-engine-sm;
             }
         }
 
         &.fuel-type {
             &::before {
-                content: "\e902";
+                content: $icon-fuel-icon;
             }
         }
 
         &.fuel-consumption {
             &::before {
-                content: "\e902";
+                content: $icon-fuel-icon;
             }
         }
 
         &.power {
             &::before {
-                content: "\e9c4";
+                content: $icon-speedo-sm;
             }
         }
 
 
         &.doors {
             &::before {
-                content: "\e900";
+                content: $icon-door-icon;
             }
         }
 
 
         &.seats {
             &::before {
-                content: "\e904";
+                content: $icon-seat-icon;
             }
         }
 
         &.safety-rating-ancap {
             &::before {
-                content: "\e903";
+                content: $icon-safety-icon;
             }
         }
     }

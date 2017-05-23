@@ -8,20 +8,6 @@ import ScrollMagic from 'ScrollMagic';
 
 //------------------------------------------------------------------------------------------------------------------
 
-// Dynamically set the public path for ajax/code-split requests
-let scripts = document.getElementsByTagName("script");
-let scriptsLength = scripts.length;
-let patt = /csn\.common/;
-for (var i = 0; i < scriptsLength; i++) {
-    var str = scripts[i].getAttribute('src');
-    if (patt.test(str)) {
-        __webpack_public_path__ = str.substring(0, str.lastIndexOf("/")) + '/';
-        break;
-    }
-}
-
-//------------------------------------------------------------------------------------------------------------------
-
 // Hero
 let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
 aboveTheFold();

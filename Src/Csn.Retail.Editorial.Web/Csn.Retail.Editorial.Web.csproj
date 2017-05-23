@@ -422,6 +422,7 @@
     <Compile Include="Infrastructure\Constants\TenantNames.cs" />
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
+    <Compile Include="Infrastructure\Filters\RedirectAttributeFilter.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckSummary.cs" />
     <Compile Include="Infrastructure\HealthChecks\IHealthChecker.cs" />
@@ -448,6 +449,13 @@
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestRequestHeaderInterceptor.cs" />
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
+    <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
+    <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
+    <Compile Include="Infrastructure\Redirects\HttpRequestContextWrapper.cs" />
+    <Compile Include="Infrastructure\Redirects\IMobiDetailsUrlBuilder.cs" />
+    <Compile Include="Infrastructure\Redirects\MobiRedirectStrategy.cs" />
+    <Compile Include="Infrastructure\Redirects\RedirectInstruction.cs" />
+    <Compile Include="Infrastructure\Redirects\RedirectStrategy.cs" />
     <Compile Include="Infrastructure\RequestWrapper\IRequestWrapper.cs" />
     <Compile Include="Infrastructure\RequestWrapper\RequestWrapperExtensions.cs" />
     <Compile Include="Infrastructure\Serializers\JsonSerializer.cs" />
@@ -506,7 +514,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
-    <Content Include="Features\Shared\Assets\csn.common.js" />
+    <Content Include="Features\Shared\Assets\csn.base.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
     <Content Include="Features\Shared\Assets\Images\Boatpoint\logo-boatpoint.svg" />
@@ -589,7 +597,7 @@
     <Content Include="Features\Shared\Assets\Css\Tyopgraphy\_typography.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_variables-typography.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons.scss" />
-    <Content Include="Features\Shared\Assets\Css\common.scss" />
+    <Content Include="Features\Shared\Assets\Css\globalStyles.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_page-container.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_footer.scss" />
     <Content Include="Features\Details\Views\Partials\_Main.cshtml" />
