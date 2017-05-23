@@ -39,7 +39,6 @@
             height: $icon-box-height;
             color: $cs-white;
             font-family: $font-family-icons;
-            //content: '\E98E';
             font-size: 30px;
             line-height: $icon-box-height;
             opacity: 0;
@@ -120,7 +119,7 @@
             right: 0;
 
             &:before {
-                content: "\E92A";
+                content: $icon-chevron-right-sm;
                 left: 2px;
             }
         }
@@ -129,7 +128,7 @@
             left: 0px;
 
             &:before {
-                content: "\E927";
+                content: $icon-chevron-left-sm;
                 left: -2px;
             }
         }
