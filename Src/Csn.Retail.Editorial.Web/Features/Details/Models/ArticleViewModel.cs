@@ -11,7 +11,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string SubHeading { get; set; }
         public string Summary { get; set; }
         public string ArticleType { get; set; }
-        public string IsSponsoredArticle { get; set; }
         public string SubType { get; set; }
         public string ReviewLocation { get; set; }
         public string MakeModelHeading { get; set; }
@@ -38,7 +37,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public bool UseDropCase { get; set; }
-
+        public SponsoredArticle SponsoredArticle { get; set; }
     }
 
     public class HeroSection

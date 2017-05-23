@@ -151,6 +151,10 @@
             background-color: $cs-light-blue;
         }
 
+        &--sponsored {
+            background-color: $cs-sponsored-green;
+        }
+
         &--car-advice,
         &--riding-advice {
             background-color: $cs-accent-green;

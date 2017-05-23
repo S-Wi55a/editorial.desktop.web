@@ -8,8 +8,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string NetworkId { get; set; }
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string ArticleType { get; set; }
-        public bool IsSponsoredArticle { get; set; }
         public HeroSection HeroSection { get; set; }
+        public SponsoredArticle SponsoredArticle { get; set; }
         public string Headline { get; set; }
         public string Subheading { get; set; }
         public string Summary { get; set; }
@@ -151,6 +151,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public List<Image> Images { get; set; }
         public BrightcoveVideo BrightcoveVideo { get; set; }
 
+    }
+
+    public class SponsoredArticle
+    {
+        public string Label { get; set; }
+        public string DescriptionHeading { get; set; }
+        public string DescriptionText { get; set; }
     }
 
     public class Contributor
