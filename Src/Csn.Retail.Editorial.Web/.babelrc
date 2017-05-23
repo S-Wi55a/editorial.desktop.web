@@ -7,7 +7,6 @@
         //Transpile React components to JavaScript
     ],
     "plugins": [
-        "dynamic-import-webpack",
         "syntax-dynamic-import",
         "transform-object-rest-spread", ["transform-class-properties", { "spec": true }]
     ],
@@ -19,5 +18,4 @@
             ]
         }
     }
-
 }

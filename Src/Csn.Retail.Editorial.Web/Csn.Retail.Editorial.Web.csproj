@@ -380,6 +380,7 @@
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
+    <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Details\Loggers\ArticleNotFoundLogger.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseResolver.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
@@ -390,6 +391,7 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />
     <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
     <Compile Include="Features\Shared\Models\StockFilters.cs" />
     <Compile Include="Features\Shared\ApiProxy\ApiProxyController.cs" />
@@ -508,13 +510,15 @@
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\NativeAdstest\nativeAds.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--tabOrModal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
-    <Content Include="Features\Shared\Assets\csn.common.js" />
+    <Content Include="Features\Shared\Assets\csn.base.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
     <Content Include="Features\Shared\Assets\Images\Boatpoint\logo-boatpoint.svg" />
@@ -555,6 +559,8 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Reducers\SmartGuidedNavigation\Reducers\iNavReducer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Store\store.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\SearchBar\Containers\SearchBar.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
     <Content Include="Features\Shared\Assets\Js\vendor.js" />
     <Content Include="Global.asax" />
     <Content Include="postcss.config.js" />
@@ -615,7 +621,7 @@
     <Content Include="Features\Shared\Assets\Css\Tyopgraphy\_typography.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_variables-typography.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons.scss" />
-    <Content Include="Features\Shared\Assets\Css\common.scss" />
+    <Content Include="Features\Shared\Assets\Css\globalStyles.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_page-container.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_footer.scss" />
     <Content Include="Features\Details\Views\Partials\_Main.cshtml" />
@@ -745,6 +751,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\PolarNativeAds\_PolarNativeAds.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module--slider.scss" />
     <Content Include="Features\Shared\Views\Errors\Error404.cshtml" />
     <Content Include="Features\Shared\Views\Errors\ErrorTemplate.cshtml" />
@@ -753,6 +760,7 @@
     <Content Include="Features\Errors\Views\Error404.cshtml" />
     <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Assets\Css\error-page.scss" />
+    <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons-variables.scss" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

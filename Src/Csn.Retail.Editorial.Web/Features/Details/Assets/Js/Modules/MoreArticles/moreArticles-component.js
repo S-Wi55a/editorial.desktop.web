@@ -8,7 +8,7 @@ let userPreference = false
 let showText = csn_editorial.moreArticles.headings.showHeading
 let hideText = csn_editorial.moreArticles.headings.hideHeading
 
-
+const customEvent = new Event('csn_editorial.moreArticles.ready');
 
 // Init More Articles Slider
 let initMoreArticlesSlider = (selector, options) => {
@@ -19,7 +19,7 @@ let initMoreArticlesSlider = (selector, options) => {
 // Set text
 let setText = (el, text) => {
     if (text) {
-        el.innerHTML = text.toString(); 
+        el.innerHTML = text.toString();
     }
 }
 
@@ -64,15 +64,13 @@ let addEventListenerToButton = (el, event, cb, cbArgs) => {
 
     if (typeof el.length === 'undefined') {
         el.addEventListener(event, (e) => {
-                cb(e, cbArgs)
-            }
-        )
+            cb(e, cbArgs)
+        })
     } else {
         for (let i of el) {
             i.addEventListener(event, (e) => {
-                    cb(e, cbArgs)
-                }
-            )
+                cb(e, cbArgs)
+            })
         }
     }
 }
@@ -85,12 +83,12 @@ let updateList = (el, data) => {
 // Update Content
 let updateContent = function(frame, el, container, cb) {
 
-    const query = el ? el.getAttribute('data-more-articles-query'): null;
-    const url = el ? el.getAttribute('data-more-articles-path') + query: null;
+    const query = el ? el.getAttribute('data-more-articles-query') : null;
+    const url = el ? el.getAttribute('data-more-articles-path') + query : null;
     let lock = !!el.getAttribute('data-disabled')
 
     if (!lock && query) {
-        updateButton(el, 'data-disabled', 1)//Prevent multiple requests
+        updateButton(el, 'data-disabled', 1) //Prevent multiple requests
         frame.classList.add('loading')
         Ajax.get(url, (json) => {
             json = JSON.parse(json)
@@ -127,7 +125,7 @@ let filterHandler = (e, ...args) => {
         window.location.href = el.href;
     }
 
-    if(!el.classList.contains(className)) {
+    if (!el.classList.contains(className)) {
 
         userPreference = false
 
@@ -140,7 +138,7 @@ let filterHandler = (e, ...args) => {
 
         //get url and set it to next
         updateButton(scope.moreArticlesNextCtrl, 'data-more-articles-query', el.pathname)
-        //destory old slider
+            //destory old slider
         scope.moreArticlesSlideContainer.innerHTML = '';
         //Init new slider
         updateContent(
@@ -151,6 +149,7 @@ let filterHandler = (e, ...args) => {
                 slider.slideTo(0)
                 updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true')
                 slider.update();
+                window.dispatchEvent(customEvent)
             }
         )
     }
@@ -226,23 +225,23 @@ let scrollMagic = (scope) => {
             triggerElement: triggerElement,
             triggerHook: 0,
             reverse: false
-    })
-    .on("enter", toggleClass.bind(null, scope.self, 'ready'))
-    .addTo(window.scrollMogicController);
+        })
+        .on("enter", toggleClass.bind(null, scope.self, 'ready'))
+        .addTo(window.scrollMogicController);
 
     let moreArticleScene2 = new ScrollMagic.Scene({
-        triggerElement: triggerElement,
-        triggerHook: triggerHook,
-        offset: offset
-    })
-    .on("update",
-    function (e) {
-        e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference
-            ? this.trigger("enter")
-            : null;
-    })
-    .on("enter", scrollHandler.bind(null, scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]))
-    .addTo(window.scrollMogicController);
+            triggerElement: triggerElement,
+            triggerHook: triggerHook,
+            offset: offset
+        })
+        .on("update",
+            function(e) {
+                e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference ?
+                    this.trigger("enter") :
+                    null;
+            })
+        .on("enter", scrollHandler.bind(null, scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]))
+        .addTo(window.scrollMogicController);
 }
 
 // Main
@@ -277,6 +276,7 @@ let main = (scope = {}) => {
             scope.moreArticlesSlideContainer,
             () => {
                 slider.update();
+                window.dispatchEvent(customEvent)
             }
         )
     }
@@ -291,9 +291,9 @@ let main = (scope = {}) => {
     // Init next Button
     addEventListenerToButton
         (scope.moreArticlesNextCtrl,
-        'click',
-        nextButtonHandler.bind(null, slider, offset, content)
-    )
+            'click',
+            nextButtonHandler.bind(null, slider, offset, content)
+        )
 
     //Init Filters
     filters(scope.moreArticlesFilter, filterHandler, [slider, scope, 'more-articles__filter--active', 'more-articles__filter--last'])
@@ -308,9 +308,9 @@ let main = (scope = {}) => {
 const init = (scopeSelector, data) => {
 
     const scope = {
-        self: scopeSelector
-    }
-    //render container
+            self: scopeSelector
+        }
+        //render container
     scope.self.innerHTML = View.container(data)
 
     // Cache selectors
@@ -333,10 +333,11 @@ const init = (scopeSelector, data) => {
         scope.moreArticlesSlideContainer,
         () => {
             main(scope)
-            // This is called in cb() if AJAX is sucessful on first time
+                // This is called in cb() if AJAX is sucessful on first time
             scope.self.classList.add('active');
             updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true')
-            }
+            window.dispatchEvent(customEvent)
+        }
     )
 
 }
