@@ -5,7 +5,7 @@ export function modalGallery() {
 
     // This is for GA Gallery tracking requested by the BI team
     // CsnInsightsEventTracker is a global var so we check if it is present first
-    if (CsnInsightsEventTracker) {
+    if (window.CsnInsightsEventTracker) {
         const eventContextMetaDataCopy = Object.assign({}, eventContext.metaData);
         eventContextMetaDataCopy.ContentGroup2 = 'gallery';
         CsnInsightsEventTracker.sendPageView(eventContextMetaDataCopy);
