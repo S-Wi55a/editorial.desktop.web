@@ -8,7 +8,7 @@ const setPropertyID = csn_editorial.nativeAds.setPropertyID
 function loadPlacements() {
     import('Js/Modules/NativeAds/Area/Details/placements--' + areaName)
         .then(function (detailsPageNativeAds) {
-            nativeAds(jQuery, detailsPageNativeAds.placements, detailsPageNativeAds.events)
+            nativeAds(window.jQuery, detailsPageNativeAds.placements, detailsPageNativeAds.events)
         }).catch(function (err) {
             console.log('Failed to load placements', err);
         });

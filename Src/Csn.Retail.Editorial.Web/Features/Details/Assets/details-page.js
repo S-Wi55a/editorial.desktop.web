@@ -13,12 +13,11 @@ let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
 aboveTheFold();
 
 //Editors Rating
-let editorRatings = function() {
+(function editorRatings() {
     if (document.querySelector('.editors-ratings')) {
         require('./Js/Modules/EditorsRatings/editorsRating-component.js');
     }
-}
-editorRatings();
+})();
 
 // TEADS
 $(function() {
@@ -28,67 +27,67 @@ $(function() {
 });
 
 //Lazy load More articles JS
-let moreArticles = function(d) {
+loaded.then(() => {
+    (function moreArticles(d) {
 
-    if (d.querySelector('.more-articles-placeholder')) {
-        require.ensure(['./Js/Modules/MoreArticles/moreArticles-component.js'],
-            function() {
-                require('./Js/Modules/MoreArticles/moreArticles-component.js');
-            },
-            'More-Articles-Component');
-    }
-}
-loaded.then(function() {
-    moreArticles(document);
+        if (d.querySelector('.more-articles-placeholder')) {
+            (function moreArticles() {
+                import(/* webpackChunkName: "More-Articles" */ 'Js/Modules/MoreArticles/moreArticles-component.js').then(function (moreArticles) {
+                }).catch(function (err) {
+                    console.log('Failed to load More-Articles', err);
+                });
+            })()
+        }
+    })(document)
 });
 
 //Lazy load Stock For Sale JS
-let stockForSale = function(d) {
-
-    if (d.querySelector('.stock-for-sale-placeholder')) {
-        require.ensure(['./Js/Modules/StockForSale/stockForSale-component.js'],
-            function() {
-                require('./Js/Modules/StockForSale/stockForSale-component.js');
-            },
-            'Stock-For-Sale-Component');
-    }
-}
-loaded.then(function() {
-    stockForSale(document);
+loaded.then(() => {
+    (function stockForSale(d) {
+        if (d.querySelector('.stock-for-sale-placeholder')) {
+            (function stockForSale() {
+                import(/* webpackChunkName: "Stock-For-Sale" */ 'Js/Modules/StockForSale/stockForSale-component.js').then(function (stockForSale) {
+                }).catch(function (err) {
+                    console.log('Failed to load Stock-For-Sale', err);
+                });
+            })()
+        }
+    })(document)
 });
 
 //Lazy load Spec Module
-let specModule = function(d) {
+loaded.then(() => {
+    (function specModule(d) {
 
-    if (csn_editorial.specModule) {
-        // Add placeholder 
-        let el = d.querySelectorAll('.article__copy p')[1];
-        if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder"></div>'); }
+        if (csn_editorial.specModule) {
+            // Add placeholder 
+            let el = d.querySelectorAll('.article__copy p')[1];
+            if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder"></div>'); }
 
-        require.ensure(['Js/Modules/SpecModule/specModule--container.js'],
-            function() {
-                require('Js/Modules/SpecModule/specModule--container.js');
-            },
-            'Spec-Module-Component');
-    }
-}
-loaded.then(function() {
-    specModule(document);
+            (function specModule() {
+                import(/* webpackChunkName: "Spec-Module" */ 'Js/Modules/SpecModule/specModule--container.js').then(function (specModule) {
+                }).catch(function (err) {
+                    console.log('Failed to load Spec-Module', err);
+                });
+            })()
+        }
+    })(document)
 });
 
 //Lazy load Also Consider JS
-let alsoConsider = function(d) {
+loaded.then(() => {
+    (function alsoConsider(d) {
 
-    if (d.querySelector('.also-consider-placeholder')) {
-        require.ensure(['./Js/Modules/alsoConsider/alsoConsider-component.js'],
-            function() {
-                require('./Js/Modules/alsoConsider/alsoConsider-component.js');
-            },
-            'Also-Consider-Component');
-    }
-}
-loaded.then(function() {
-    alsoConsider(document);
+        if (d.querySelector('.also-consider-placeholder')) {
+            (function alsoConsider() {
+                import(/* webpackChunkName: "Also-Consider" */ 'Js/Modules/alsoConsider/alsoConsider-component.js').then(function (alsoConsider) {
+                }).catch(function (err) {
+                    console.log('Failed to load alsoConsider', err);
+                });
+            })()
+        }
+
+    })(document)
 });
 
 //Lazy load Disqus
@@ -115,45 +114,42 @@ let disqus = function(d, w, selector) {
 disqus(document, window, '#disqus_thread');
 
 //Lazy Native Ads
-let nativeAds = function() {
-
-    if (!!csn_editorial && !!csn_editorial.nativeAds) {
-        require.ensure(['Js/Modules/NativeAds/nativeAds.js'],
-            function() {
-                require('Js/Modules/NativeAds/nativeAds.js');
-            },
-            'Native Ads');
-    }
-}
-loaded.then(function() {
-    nativeAds();
+loaded.then(() => {
+    (function nativeAds() {
+        if (!!csn_editorial && !!csn_editorial.nativeAds) {
+            (function nativeAds() {
+                import(/* webpackChunkName: "Native Ads" */ 'Js/Modules/NativeAds/nativeAds.js').then(function (nativeAds) {
+                }).catch(function (err) {
+                    console.log('Failed to load nativeAds', err);
+                });
+            })()
+        }
+    })()
 });
 
 //Lazy load Redux 
-let redux = function (d) {
+loaded.then(() => {
+    (function redux(d) {
 
-    if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
-        function iNav() {
-            import(/* webpackChunkName: "iNav-Reducer" */ 'Js/Modules/Redux/iNav/Reducers/iNavParentReducer.js').then(function (iNav) {
-                window.injectAsyncReducer(window.store, 'iNav', iNav.iNavParentReducer)
-            }).catch(function (err) {
-                console.log('Failed to load iNav', err);
-            });
+        if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
+            (function iNav() {
+                import(/* webpackChunkName: "iNav-Reducer" */ 'Js/Modules/Redux/iNav/Reducers/iNavParentReducer.js').then(function (iNav) {
+                    window.injectAsyncReducer(window.store, 'iNav', iNav.iNavParentReducer)
+                }).catch(function (err) {
+                    console.log('Failed to load iNav', err);
+                });
+            })()
         }
-        iNav();
+    })(document)
+
+    if (module.hot) {
+        // Enable Webpack hot module replacement for reducers
+        module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavParentReducer', () => {
+            const nextReducer = require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer
+            window.injectAsyncReducer(window.store, 'iNav', nextReducer)
+        })
     }
 
-}
-loaded.then(function () {
-    redux(document);
 });
 
 
-if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavParentReducer', () => {
-        const nextReducer = require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer
-        console.log(nextReducer)
-        window.injectAsyncReducer(window.store, 'iNav', nextReducer)
-    })
-}
