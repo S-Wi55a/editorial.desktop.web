@@ -1,11 +1,11 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
-<div class="clearfix hero hero--singleImage">
+<div class="clearfix hero hero--singleImage" data-webm-section="image-gallery">
     
     @{ var index = 0; }
     @foreach (var image in Model.Images.Take(1))
     {
-        <div class="slideshow__slide swiper-slide" data-modal-trigger data-modal-image-index="@index">
+        <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                 <img class="slideshow__image"
                      sizes="(max-width: 1199px) 617px, 825px"

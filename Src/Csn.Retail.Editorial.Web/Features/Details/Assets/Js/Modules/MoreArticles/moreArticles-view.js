@@ -17,7 +17,7 @@ const container = (data) => {
     } 
 
     return `
-        <div class="more-articles">
+        <div class="more-articles" data-webm-section="more-articles">
             <div class="container">
                 <div class="more-articles__filters">
                     ${data.moreArticleItems.map((filter, index) => filterView`${filter}${index}`).join('')}
@@ -52,7 +52,7 @@ const article = (data) => {
         return (`
             <div class="more-articles__slide swiper-slide">
                 <div class="more-article">
-                    <a class="more-article__link-container" href="${item.url || ''}">
+                    <a class="more-article__link-container" data-webm-clickvalue="click-post" href="${item.url || ''}">
                         <div class="more-article__image">
                             <img src="${item.image.url || ''}?width=140&height=93" alt="${item.image.alternateText || ''}" />
                         </div>
