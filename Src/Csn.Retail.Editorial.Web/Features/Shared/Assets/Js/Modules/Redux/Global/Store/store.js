@@ -1,5 +1,8 @@
-﻿import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from '../Reducers/rootReducer'
+﻿import thunkMiddleware from 'redux-thunk'
+import { createStore, applyMiddleware, compose } from 'redux';
+import { createReducer} from '../Reducers/rootReducer'
+
+//import { fetchiNav } from 'Js/Modules/Redux/iNav/Actions/actions.js'
 
 /**
  * This is a reducer, a pure function with (state, action) => state signature.
@@ -19,17 +22,26 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-let store = createStore(
-    rootReducer,
-    /* preloadedState, */
-    composeEnhancers()
-)
 
 
-if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../Reducers/rootReducer', () => {
-        const nextRootReducer = require('../Reducers/rootReducer').default
-        store.replaceReducer(nextRootReducer)
-    })
+export function configureStore(/*preloadedState*/) {
+    const store = createStore(createReducer(),
+        /* preloadedState, */
+        composeEnhancers(
+            applyMiddleware(thunkMiddleware)
+        ));
+    store.asyncReducers = {};
+    return store;
 }
+
+
+export function injectAsyncReducer(store, name, asyncReducer) {
+    store.asyncReducers[name] = asyncReducer;
+    store.replaceReducer(createReducer(store.asyncReducers));
+}
+
+// TO test ryvuss when it is public
+//setTimeout(function() {
+//    console.log('starting fetch')
+//    store.dispatch(fetchiNav())
+//}, 2000)

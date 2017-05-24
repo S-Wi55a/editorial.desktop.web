@@ -1,14 +1,14 @@
-﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes.js'
+﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
 import { data } from 'Js/Modules/Redux/iNav/Data/data' //Test data //TODO: remove
-import { nodesReducer } from 'Js/Modules/Redux/iNav/Reducers/nodesReducer.js'
+import { iNavChildReducer } from 'Js/Modules/Redux/iNav/Reducers/iNavChildReducer'
 
-export const iNavReducer = (state = data, action) => {
+export const iNavParentReducer = (state = data, action) => {
     switch (action.type) {
     case ActionTypes.TOGGLE_SELECTED:
         return {
             ...state,
             ...{
-                nodes: nodesReducer(state.iNav, action)
+                iNav: iNavChildReducer(state.iNav, action)
                }
             }
         default: 

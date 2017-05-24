@@ -1,13 +1,13 @@
-﻿//TODO: need to make this async
+﻿import { combineReducers } from 'redux'
 
+// Because Redux needs at least one reducer or it will throw an error
+const emptyReducer = (state = {}, action) => {
+    return state
+}
 
-import { iNavReducer as iNav } from 'Js/Modules/Redux/iNav/Reducers/iNavParentReducer'
-import { combineReducers } from 'redux'
+export function createReducer(asyncReducers = { emptyReducer }) {
+    return combineReducers({
+        ...asyncReducers
+    });
+}
 
-// For now but should make this accept asyncReducers
-const rootReducer = combineReducers({
-    iNav, //This takes the slice which is from the key of smartGuidedNavigation
-    //errorMessage,
-})
-
-export default rootReducer
