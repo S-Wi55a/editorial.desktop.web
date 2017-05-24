@@ -37,8 +37,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public bool UseDropCase { get; set; }
+<<<<<<< HEAD
         public SponsoredArticle SponsoredArticle { get; set; }
+=======
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
+
+>>>>>>> master
     }
 
     public class HeroSection

@@ -13,20 +13,23 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     {
         private readonly IHeroSectionMapper _heroSectionMapper;
         private readonly ISeoDataMapper _seoDataMapper;
+        private readonly IPolarNativeAdsDataMapper _polarNativeAdsMapper;
 
         public MappingSetupTask(IHeroSectionMapper heroSectionMapper,
-                                ISeoDataMapper seoDataMapper)
+                                ISeoDataMapper seoDataMapper,
+                                IPolarNativeAdsDataMapper polarNativeAdsMapper)
         {
             _heroSectionMapper = heroSectionMapper;
             _seoDataMapper = seoDataMapper;
+            _polarNativeAdsMapper = polarNativeAdsMapper;
         }
         public void Run(IMapperConfigurationExpression cfg)
         {
             cfg.CreateMap<ArticleDetailsDto, ArticleViewModel>()
                 .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)))
                 .ForMember(dest => dest.UseDropCase, opt => opt.ResolveUsing<UseDropCaseResolver>())
-                .ForMember(dest => dest.SeoData, opt => opt.MapFrom(src => _seoDataMapper.Map(src.SeoData)));
-
+                .ForMember(dest => dest.SeoData, opt => opt.MapFrom(src => _seoDataMapper.Map(src.SeoData)))
+                .ForMember(dest => dest.PolarNativeAdsData, opt => opt.MapFrom(src => _polarNativeAdsMapper.Map(src)));
 
             // Social Meta Data
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();
