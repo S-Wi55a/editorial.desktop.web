@@ -58,6 +58,15 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<string> SocialSharingNetworks { get; set; }
     }
 
+    public class SponsoredArticle
+    {
+        public string Label { get; set; }
+        public string DescriptionHeading { get; set; }
+        public string DescriptionText { get; set; }
+        public string DescriptionUrl { get; set; }
+        public string DescriptionUrlText { get; set; }
+    }
+
     public class ProCon
     {
         public Pro Pros { get; set; }

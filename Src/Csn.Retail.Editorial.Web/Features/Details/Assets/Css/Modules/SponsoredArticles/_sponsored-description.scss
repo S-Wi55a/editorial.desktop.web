@@ -1,0 +1,33 @@
+﻿@import "css/globals";
+
+.sponsored-description {
+
+    @include fadeIn();
+    background-color: $cs-white;
+    border-radius: 6px;
+    width: calc(100vw - 160px);
+    max-height: calc(100vh - 160px);
+    padding: 80px;
+    text-align: center;
+    animation-duration: .666s;
+    animation-name: fadeIn;
+
+    @include breakpoint($screen-lg) {
+        width: calc(75vw - 160px);
+    }
+
+    &__content {
+        overflow: auto;
+        max-height: calc(100vh - 320px);
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        p {
+            text-align: left;
+        }
+    }
+}

@@ -158,6 +158,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Label { get; set; }
         public string DescriptionHeading { get; set; }
         public string DescriptionText { get; set; }
+        public string DescriptionUrl { get; set; }
+        public string DescriptionUrlText { get; set; }
     }
 
     public class Contributor

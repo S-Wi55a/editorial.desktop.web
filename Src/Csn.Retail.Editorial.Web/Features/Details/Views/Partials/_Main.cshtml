@@ -7,7 +7,7 @@
                 @{
                     if (Model.SponsoredArticle != null)
                     {
-                        <div class="article__type article__type--sponsored">@Model.SponsoredArticle.Label</div>
+                        Html.RenderPartial("Partials/Content/_SponsoredArticleTab", Model.SponsoredArticle);
                     }
                     else
                     {
