@@ -1,4 +1,4 @@
-﻿import * as ActionTypes from 'Js/Modules/Redux/Reducers/SmartGuidedNavigation/Actions/actionTypes.js'
+﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes.js'
 
 
 // Toggle IsSelected
@@ -16,8 +16,8 @@ export const toggleIsSelected = (isSelected, node, facet) => ({
 
 
 //var t = {
-//    type: 'SGN_TOGGLE_SELECTED',
-//    isSelected: true,
-//    node:'ArticleTypes', 
-//    facet:'Review'
+    //type: 'SGN_TOGGLE_SELECTED',
+    //isSelected: true,
+    //node:'ArticleTypes', 
+    //facet:'Review'
 //}

@@ -1,4 +1,4 @@
-﻿import * as iNav_ActionTypes from 'Js/Modules/Redux/Reducers/SmartGuidedNavigation/Actions/actionTypes.js'
+﻿import * as iNav_ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes.js'
 
 
 const facetsReducer = (state, action) => {

@@ -114,21 +114,6 @@ let disqus = function(d, w, selector) {
 }
 disqus(document, window, '#disqus_thread');
 
-
-//Lazy load Redux - //TODO: should me moved to global root reducer that is avaible for other reducers to attach too
-let redux = function(d) {
-
-    if (d.querySelector('#redux-placeholder')) {
-        require.ensure(['Js/Modules/Redux/Store/store.js'],
-            function() {
-                require('Js/Modules/Redux/Store/store.js');
-            },
-            'Redux-Component');
-    }
-}
-loaded.then(function() {
-    redux(document);
-});
 //Lazy Native Ads
 let nativeAds = function() {
 
