@@ -70,8 +70,8 @@ const ThirdPartyOffer = (props) => {
 
         if (props.tabOrModal[titleNoSpace] === 'iframe') {
             const iframe = `<iframe src=${props.data.formUrl}"></iframe>`
-            tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(e) => {
-                props.disclaimerHandler(titleNoSpace, e)
+            tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(p,e) => {
+                props.disclaimerHandler(titleNoSpace, p, e)
             }} className="third-party-offer__link">{props.data.getQuoteText}</span>
         } else {
             tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link">{props.data.getQuoteText}</a>
@@ -229,15 +229,12 @@ class SpecModule extends React.Component {
     }
 
     // Data disclaimer handler
-    disclaimerHandler = (className, e) => {
+    disclaimerHandler = (...args) => {
 
-        // e is always the last arg, If not called with className set e to className becasue className old event data when called with 1 arg
-        if (!(typeof className === 'string')) {
-            e = className
-            className = ''
-        } 
+        const synthEvt = args[args.length - 2]
+        const className = args[args.length - 3]
 
-        const content = decodeURI(e.target.getAttribute('data-disclaimer'))
+        const content = decodeURI(synthEvt.target.getAttribute('data-disclaimer'))
         this.props.modal.show(View.disclaimer(content), className)
 
     }
