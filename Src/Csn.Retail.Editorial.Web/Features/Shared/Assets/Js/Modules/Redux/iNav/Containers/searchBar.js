@@ -2,6 +2,8 @@
 import { connect } from 'react-redux'
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
 import SearchBarCategory from 'Js/Modules/Redux/iNav/Components/searchBarCategory'
+import SearchBarFormAction from 'Js/Modules/Redux/iNav/Components/searchBarFormAction'
+
 
 //import styles
 
@@ -22,13 +24,12 @@ class SearchBar extends React.Component {
     render() {
 
         const { iNav: { iNav: { nodes } } } = this.props
-        const { filterTypes, toggleSelected } = this.props
+        const { toggleSelected } = this.props
 
+        //Check if it has sub categories
         const nodesfiltered = nodes.filter(function (node) {
-            return this.find((filterType) => {
-                return node.name === filterType
-            });
-        }, filterTypes)
+            return !!node.facets 
+        })
 
         const categories = nodesfiltered.map((node) => {
             return (
@@ -44,6 +45,7 @@ class SearchBar extends React.Component {
                 <div className="searchbar__category-container">
                     {categories}
                 </div>
+                <SearchBarFormAction/>
             </div>
         )    
     }
@@ -52,8 +54,7 @@ class SearchBar extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        iNav: state.iNav,
-        filterTypes: ['ArticleTypes', 'BodyType', 'Make', 'Model']
+        iNav: state.iNav
     }
 }
 
@@ -61,6 +62,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         toggleSelected: (isSelected, node, facet) => {
             dispatch(Actions.toggleIsSelected(isSelected, node, facet))
+        },
+        updateQuery: () => {
+            dispatch(Actions.updateQuery())
         }
     }
 }

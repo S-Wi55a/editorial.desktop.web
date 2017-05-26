@@ -19,6 +19,10 @@ export const toggleIsSelected = (isSelected, node, facet) => ({
     facet //is string but can probably be changed to Id
 })
 
+export const updateQuery = () => ({
+    type: ActionTypes.UPDATE_QUERY_STRING
+})
+
 function requestiNav() {
     return {
         type: ActionTypes.FETCH_QUERY_REQUEST
