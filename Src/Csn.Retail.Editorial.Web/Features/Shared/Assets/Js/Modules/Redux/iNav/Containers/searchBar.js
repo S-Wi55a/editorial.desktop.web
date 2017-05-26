@@ -61,10 +61,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         toggleSelected: (isSelected, node, facet) => {
-            dispatch(Actions.toggleIsSelected(isSelected, node, facet))
-        },
-        updateQuery: () => {
-            dispatch(Actions.updateQuery())
+            dispatch([
+                Actions.toggleIsSelected(isSelected, node, facet),
+                Actions.updateQuery()
+                ])
         }
     }
 }

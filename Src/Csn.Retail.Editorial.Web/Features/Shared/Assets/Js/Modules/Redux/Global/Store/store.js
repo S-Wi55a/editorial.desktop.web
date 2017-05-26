@@ -1,6 +1,11 @@
-﻿import thunkMiddleware from 'redux-thunk'
-import { createStore, applyMiddleware, compose } from 'redux';
+﻿import { createStore, applyMiddleware, compose } from 'redux';
 import { createReducer} from '../Reducers/rootReducer'
+
+
+// Middleware
+import thunkMiddleware from 'redux-thunk'
+import reduxMulti from 'redux-multi'
+import { batchedSubscribe } from 'redux-batched-subscribe'
 
 //import { fetchiNav } from 'Js/Modules/Redux/iNav/Actions/actions.js'
 
@@ -28,7 +33,10 @@ export function configureStore(/*preloadedState*/) {
     const store = createStore(createReducer(),
         /* preloadedState, */
         composeEnhancers(
-            applyMiddleware(thunkMiddleware)
+            applyMiddleware(thunkMiddleware, reduxMulti),
+            batchedSubscribe((notify) => {
+                notify();
+            })
         ));
     store.asyncReducers = {};
     return store;

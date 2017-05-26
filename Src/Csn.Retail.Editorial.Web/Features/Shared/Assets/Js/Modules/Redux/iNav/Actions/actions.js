@@ -23,6 +23,18 @@ export const updateQuery = () => ({
     type: ActionTypes.UPDATE_QUERY_STRING
 })
 
+export const resetForm = () => ({
+    type: ActionTypes.RESET
+
+    //Use thunk
+
+    //Check cache for data for init state incase init state came from persited data
+    //or 
+    //make default request
+
+
+})
+
 function requestiNav() {
     return {
         type: ActionTypes.FETCH_QUERY_REQUEST

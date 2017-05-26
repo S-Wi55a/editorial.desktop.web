@@ -8,10 +8,16 @@ class SearchBarFormAction extends React.Component {
 
     constructor(props) {
         super(props);
+        this.resetForm = this.resetForm
     }
 
     componentWillMount() {
         this.props.updateQuery()
+    }
+
+    resetForm = (e) => {
+        e.preventDefault()
+        this.props.resetForm()
     }
 
     render() {
@@ -19,7 +25,7 @@ class SearchBarFormAction extends React.Component {
         //TODO: remove hard coded text
         return (
             <div>
-                <a>clear</a>
+                <a onClick={this.resetForm}>clear</a>
                 <a href={`${ryvuss.iNavWithCount}`}>{this.props.count}Articles</a>
             </div>
         )
@@ -37,6 +43,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         updateQuery: () => {
             dispatch(Actions.updateQuery())
+        },
+        resetForm: () => {
+            dispatch(Actions.resetForm())
         }
     }
 }
