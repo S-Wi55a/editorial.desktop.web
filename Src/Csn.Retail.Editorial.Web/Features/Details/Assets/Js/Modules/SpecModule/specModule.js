@@ -72,9 +72,9 @@ const ThirdPartyOffer = (props) => {
             const iframe = `<iframe src=${props.data.formUrl}"></iframe>`
             tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(e) => {
                 props.disclaimerHandler(titleNoSpace, e)
-            }} className="third-party-offer__link">{props.data.getQuoteText}</span>
+            }} className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</span>
         } else {
-            tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link">{props.data.getQuoteText}</a>
+            tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</a>
         }
 
     }
@@ -88,7 +88,7 @@ const ThirdPartyOffer = (props) => {
                     <span className="third-party-offer__price">
                         {props.data.amount}
                     </span>
-                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
+                    <span data-webm-clickvalue={'disclaimer-'+titleNoSpace} className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
                         {props.data.paymentFrequency}
                     </span>
                 </div>

@@ -11,7 +11,7 @@ const container = (data) => {
             <button class="stock-for-sale__select" data-webm-clickvalue="states">${data.filters[0].name || ''}</button>
             <ul class="stock-for-sale__list"></ul>
             <div class="stock-for-sale__button-container">
-                <a class="stock-for-sale__button stock-for-sale__button--view-all" href="">
+                <a class="stock-for-sale__button stock-for-sale__button--view-all" href="" data-webm-clickvalue="view-all-stock">
                     ${data.viewAllStockButton || ''}
                 </a>
             </div>

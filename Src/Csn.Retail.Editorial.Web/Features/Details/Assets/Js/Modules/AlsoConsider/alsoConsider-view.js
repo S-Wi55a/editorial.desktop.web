@@ -4,7 +4,7 @@ const container = (data) => {
 
     const alsoConsiderQueryPath = proxy;
 
-    return `<div class="also-consider" data-webm-section="also-consider" data-also-consider-query="${alsoConsiderQueryPath}${data.uri}"></div>`
+    return `<div class="also-consider" data-also-consider-query="${alsoConsiderQueryPath}${data.uri}"></div>`
 }
 
 const inner = (data) => {
