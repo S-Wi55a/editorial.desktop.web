@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import update from 'immutability-helper'
-import * as Ajax from 'Js/Modules/Ajax/ajax.js'
+import * as Ajax from 'Js/Modules/Ajax/ajax.js' //TODO: change to fetch
 import Slider, { Range } from 'rc-slider'
 import * as View from 'Js/Modules/SpecModule/specModule--view.js'
 import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'

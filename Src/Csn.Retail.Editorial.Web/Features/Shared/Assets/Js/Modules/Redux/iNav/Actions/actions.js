@@ -1,6 +1,15 @@
 ﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes.js'
 import fetch from 'isomorphic-fetch'
 
+// Test Action
+//var t = {
+//type: 'SGN_TOGGLE_SELECTED',
+//isSelected: true,
+//node:'ArticleTypes', 
+//facet:'Review'
+//}
+
+
 
 // Toggle IsSelected
 export const toggleIsSelected = (isSelected, node, facet) => ({
@@ -9,14 +18,6 @@ export const toggleIsSelected = (isSelected, node, facet) => ({
     node, //is string but can probably be changed to Id
     facet //is string but can probably be changed to Id
 })
-
-//var t = {
-    //type: 'SGN_TOGGLE_SELECTED',
-    //isSelected: true,
-    //node:'ArticleTypes', 
-    //facet:'Review'
-//}
-
 
 function requestiNav() {
     return {

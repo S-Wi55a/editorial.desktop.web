@@ -10,12 +10,6 @@ import { makeModelReducer } from 'Js/Modules/Redux/iNav/Reducers/makeModelReduce
 
 export const nodesReducer = (state, action) => {
     switch (action.type) {
-    case 'BODY_TYPE':
-        return state
-    case 'MAKE_MODEL':
-        return { ...state, ...{ now: 'hot' } }
-    case 'ARTICLE_TYPE':
-        return { ...state, ...{ now: 'hot' } }
     case iNav_ActionTypes.TOGGLE_SELECTED:
         //loop through array to find which reducer to call
             return state.map((node) => {

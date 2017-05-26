@@ -133,21 +133,32 @@ loaded.then(() => {
 
         if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
             (function iNav() {
-                import(/* webpackChunkName: "iNav-Reducer" */ 'Js/Modules/Redux/iNav/Reducers/iNavParentReducer.js').then(function (iNav) {
-                    window.injectAsyncReducer(window.store, 'iNav', iNav.iNavParentReducer)
-                }).catch(function (err) {
+                import
+                (/* webpackChunkName: "iNav-Reducer" */ 'Js/Modules/Redux/iNav/Reducers/iNavParentReducer.js').then(
+                    function(iNav) {
+                        window.injectAsyncReducer(window.store, 'iNav', iNav.iNavParentReducer)
+                    }).catch(function(err) {
                     console.log('Failed to load iNav', err);
                 });
-            })()
+            })();
+            (function searchBar() {
+                import
+                (/* webpackChunkName: "SearchBar" */ 'Js/Modules/Redux/iNav/index.js').then(function(searchBar) {
+                }).catch(function(err) {
+                    console.log('Failed to load SearchBar', err);
+                });
+            })();
         }
     })(document)
 
-    if (module.hot) {
-        // Enable Webpack hot module replacement for reducers
-        module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavParentReducer', () => {
-            const nextReducer = require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer
-            window.injectAsyncReducer(window.store, 'iNav', nextReducer)
-        })
+    if (process.env.NODE_ENV === 'development') {
+        if (module.hot) {
+            // Enable Webpack hot module replacement for reducers
+            module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavParentReducer', () => {
+                const nextReducer = require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer
+                window.injectAsyncReducer(window.store, 'iNav', nextReducer)
+            })
+        }
     }
 
 });
