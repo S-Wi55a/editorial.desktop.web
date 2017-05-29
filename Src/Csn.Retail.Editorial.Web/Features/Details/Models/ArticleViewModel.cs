@@ -11,6 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string SubHeading { get; set; }
         public string Summary { get; set; }
         public string ArticleType { get; set; }
+        public bool IsSponsoredArticle { get; set; }
         public string SubType { get; set; }
         public string ReviewLocation { get; set; }
         public string MakeModelHeading { get; set; }
@@ -37,7 +38,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public bool UseDropCase { get; set; }
-        public SponsoredArticle SponsoredArticle { get; set; }
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
     }
 
@@ -57,15 +57,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Url { get; set; }
         public string SiteName { get; set; }
         public List<string> SocialSharingNetworks { get; set; }
-    }
-
-    public class SponsoredArticle
-    {
-        public string Label { get; set; }
-        public string DescriptionHeading { get; set; }
-        public string DescriptionText { get; set; }
-        public string DescriptionUrl { get; set; }
-        public string DescriptionUrlText { get; set; }
     }
 
     public class ProCon

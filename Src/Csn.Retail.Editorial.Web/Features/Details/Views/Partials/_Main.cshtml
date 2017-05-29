@@ -5,9 +5,9 @@
         <div class="cf pos-r">
             <div class="article__dateAndTypeContainer">
                 @{
-                    if (Model.SponsoredArticle != null)
+                    if (Model.IsSponsoredArticle)
                     {
-                        Html.RenderPartial("Partials/Content/_SponsoredArticleTab", Model.SponsoredArticle);
+                        Html.RenderPartial("Partials/Content/_SponsoredArticleTab");
                     }
                     else
                     {
