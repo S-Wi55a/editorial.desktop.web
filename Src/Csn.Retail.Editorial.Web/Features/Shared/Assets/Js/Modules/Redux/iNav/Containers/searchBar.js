@@ -1,30 +1,35 @@
 ﻿import React from 'react'
+import 'immutable'
 import { connect } from 'react-redux'
+import ui from 'redux-ui';
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
+import { uiReducer } from 'Js/Modules/Redux/iNav/Reducers/uiReducer'
 import SearchBarCategory from 'Js/Modules/Redux/iNav/Components/searchBarCategory'
 import SearchBarFormAction from 'Js/Modules/Redux/iNav/Components/searchBarFormAction'
 
+//TODO: import styles
+import 'Js/Modules/Redux/iNav/css/iNav.scss'
 
-//import styles
-
+@ui({
+    key: 'searchBar',
+    state: {
+        isActive: false,
+    },
+    reducer: uiReducer
+})
 class SearchBar extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {active: false};
-        this.toggleActiveState = this.toggleActiveState
-    }
-
-    toggleActiveState = () => {
-        this.setState(prevState => ({
-            active: !prevState.active
-        }));
     }
 
     render() {
 
         const { iNav: { iNav: { nodes } } } = this.props
-        const { toggleSelected } = this.props
+        const { toggleSelected, toggleActiveState } = this.props
+        const { isActive } = this.props.ui //Immutable.js map
+
+        console.log(this.props.ui)
 
         //Check if it has sub categories
         const nodesfiltered = nodes.filter(function (node) {
@@ -37,11 +42,11 @@ class SearchBar extends React.Component {
             )
         })
 
-        const activeClass = this.state.active ? 'active' : ''
+        const activeClass = isActive ? 'active' : ''
 
         return (
             <div className={'searchbar container ' + activeClass}>
-                <button onClick={this.toggleActiveState}></button>
+                <button onClick={toggleActiveState}></button>
                 <div className="searchbar__category-container">
                     {categories}
                 </div>
@@ -65,6 +70,9 @@ const mapDispatchToProps = (dispatch) => {
                 Actions.toggleIsSelected(isSelected, node, facet),
                 Actions.updateQuery()
                 ])
+        },
+        toggleActiveState: () => {
+            dispatch(Actions.toggleIsActive())
         }
     }
 }

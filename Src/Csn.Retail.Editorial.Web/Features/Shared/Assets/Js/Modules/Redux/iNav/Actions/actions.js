@@ -1,16 +1,6 @@
 ﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes.js'
 import fetch from 'isomorphic-fetch'
 
-// Test Action
-//var t = {
-//type: 'SGN_TOGGLE_SELECTED',
-//isSelected: true,
-//node:'ArticleTypes', 
-//facet:'Review'
-//}
-
-
-
 // Toggle IsSelected
 export const toggleIsSelected = (isSelected, node, facet) => ({
     type: ActionTypes.TOGGLE_SELECTED,
@@ -84,3 +74,9 @@ export function fetchiNav(query) {
         // TODO: catch any error in the network call.
     }
 }
+
+
+// UI Actions (related to redux ui)
+export const toggleIsActive = () => ({
+    type: ActionTypes.TOGGLE_IS_ACTIVE
+})

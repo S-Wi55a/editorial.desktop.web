@@ -7,10 +7,10 @@
         //Transpile React components to JavaScript
     ],
     "plugins": [
+		"transform-decorators-legacy",
         "syntax-dynamic-import",
         "transform-object-rest-spread", 
 		["transform-class-properties", { "spec": true }],
-		"transform-decorators"
     ],
     "env": {
         "development": {
