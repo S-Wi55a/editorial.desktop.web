@@ -1,11 +1,13 @@
 ﻿import { createStore, applyMiddleware, compose } from 'redux';
 import { createReducer} from '../Reducers/rootReducer'
 
-
 // Middleware
 import thunkMiddleware from 'redux-thunk'
 import reduxMulti from 'redux-multi'
 import { batchedSubscribe } from 'redux-batched-subscribe'
+
+
+//TODO: Async Middleware
 
 //import { fetchiNav } from 'Js/Modules/Redux/iNav/Actions/actions.js'
 

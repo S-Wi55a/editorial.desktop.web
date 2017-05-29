@@ -1,5 +1,4 @@
 ﻿import React from 'react'
-import 'immutable'
 import { connect } from 'react-redux'
 import ui from 'redux-ui';
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
@@ -27,9 +26,7 @@ class SearchBar extends React.Component {
 
         const { iNav: { iNav: { nodes } } } = this.props
         const { toggleSelected, toggleActiveState } = this.props
-        const { isActive } = this.props.ui //Immutable.js map
-
-        console.log(this.props.ui)
+        const { isActive } = this.props.ui 
 
         //Check if it has sub categories
         const nodesfiltered = nodes.filter(function (node) {
