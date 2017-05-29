@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
-import Slider, { Range } from 'rc-slider'
+import Slider from 'rc-slider'
 import * as View from 'Js/Modules/SpecModule/specModule--view.js'
 import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
 
@@ -136,7 +136,7 @@ const SpecModuleItem = (props) => {
                 <p className="spec-item__model">{props.data.title2}</p>
                 <p className="spec-item__variant">{props.data.title3}</p>
                 <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
-                <div className="spec-item__selector">
+                <div className="spec-item__selector" data-webm-clickvalue="change-variant">
                     <p className="spec-item__selector-label"></p>
                     <Slider dots min={0} max={props.sliderLength - 1} onChange={props.sliderHandler} />
                 </div>
