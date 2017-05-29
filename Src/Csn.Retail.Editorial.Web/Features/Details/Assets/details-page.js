@@ -131,7 +131,7 @@ loaded.then(function () {
 //Lazy load More articles JS
 let sponsoredArticles = function(d) {
 
-    if (d.querySelector('.article__type--sponsored') || d.querySelector('.article__type--sponsored > .icon-info-icon')) {
+    if (d.querySelector('.article__type--sponsored')) {
         require.ensure(['Js/Modules/SponsoredArticles/sponsoredArticles.js'],
         function() {
             require('Js/Modules/SponsoredArticles/sponsoredArticles.js');
