@@ -4,7 +4,16 @@
     <div>
         <div class="cf pos-r">
             <div class="article__dateAndTypeContainer">
-                <div class="article__type article__type--@Model.ArticleType.ToLower().Replace(' ', '-')">@Model.ArticleType</div>
+                @{
+                    if (Model.IsSponsoredArticle)
+                    {
+                        Html.RenderPartial("Partials/Content/_SponsoredArticleTab");
+                    }
+                    else
+                    {
+                        @:<div class="article__type article__type--@Model.ArticleType.ToLower().Replace(' ', '-')">@Model.ArticleType</div>
+                    }
+                }
                 <div class="article__date">@Model.DateAvailable</div>
             </div>
 

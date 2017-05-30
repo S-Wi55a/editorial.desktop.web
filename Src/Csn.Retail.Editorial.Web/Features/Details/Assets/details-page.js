@@ -7,7 +7,6 @@ import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
 
 //------------------------------------------------------------------------------------------------------------------
-
 // Hero
 let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
 aboveTheFold();
@@ -114,7 +113,6 @@ let disqus = function(d, w, selector) {
 }
 disqus(document, window, '#disqus_thread');
 
-
 //Lazy Native Ads
 let nativeAds = function () {
 
@@ -128,4 +126,19 @@ let nativeAds = function () {
 }
 loaded.then(function () {
     nativeAds();
+});
+
+//Lazy load More articles JS
+let sponsoredArticles = function(d) {
+
+    if (d.querySelector('.article__type--sponsored')) {
+        require.ensure(['Js/Modules/SponsoredArticles/sponsoredArticles.js'],
+        function() {
+            require('Js/Modules/SponsoredArticles/sponsoredArticles.js');
+        },
+        'Sponsored-Articles-Component');
+    }
+}
+loaded.then(function () {
+    sponsoredArticles(document);
 });

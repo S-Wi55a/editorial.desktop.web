@@ -136,12 +136,12 @@
 
     &__type {
         @include button((round:true));
-        font-weight: 600;
+        color: $cs-white;
         display: inline-block;
         float: left;
-        color: $cs-white;
-        text-transform: uppercase;
+        font-weight: 600;
         margin-bottom: 15px;
+        text-transform: uppercase;
 
         @include breakpoint($screen-lg) {
             margin-bottom: 30px;
@@ -149,6 +149,18 @@
 
         &--review {
             background-color: $cs-light-blue;
+        }
+
+        &--sponsored {
+            background-color: $cs-sponsored-green;
+            cursor: pointer;
+            &::after {
+                color: $cs-white;
+                content: $icon-info-icon;
+                font-family: $font-family-icons;
+                font-size: 14px;
+                margin-left: 3px;
+            }
         }
 
         &--car-advice,

@@ -1459,6 +1459,10 @@
 }
 
 
-
+.icon-info-icon {
+    &:before {
+        content: $icon-info-icon;
+    }
+}
 
 
