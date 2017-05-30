@@ -23,14 +23,14 @@ const SearchBarCategory = ({ name, displayName, facets, toggleSelected }) => {
     })
 
     return (
-        <div className={'searchbar__category '}>
-            <div className="heading2">{displayName}</div>
-            <div className="searchbar__category-container--1">
+        <div className={'searchbar__category searchbar-category'}>
+            <div className="searchbar-category__heading">{displayName}</div>
+            <div className="searchbar-category__container searchbar-category__container--1">
                 <ul>
                     {facetsArr}
                 </ul>
             </div>
-            <div className="searchbar__category-container--2">
+            <div className="searchbar-category__container searchbar-category__container--2">
                 <ul>
                     {
                     (refinements.nodes) ? 

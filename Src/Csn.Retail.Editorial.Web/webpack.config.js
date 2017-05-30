@@ -106,7 +106,8 @@ module.exports = (env) => {
                         loader: 'css-loader',
                         options: {
                             sourceMap: isProd ? false : true,
-                            minimize: isProd ? true : false
+                            minimize: isProd ? true : false,
+                            //modules: true
                         }
                     },
                     'postcss-loader?sourceMap',

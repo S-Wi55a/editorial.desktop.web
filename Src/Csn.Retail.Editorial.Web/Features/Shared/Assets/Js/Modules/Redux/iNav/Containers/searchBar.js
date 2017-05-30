@@ -42,10 +42,14 @@ class SearchBar extends React.Component {
         const activeClass = isActive ? 'active' : ''
 
         return (
-            <div className={'searchbar container ' + activeClass}>
-                <button onClick={toggleActiveState}></button>
-                <div className="searchbar__category-container">
-                    {categories}
+            <div className={'searchbar ' + activeClass}>
+                <div className="container">
+                    <div className="searchbar__inner-wrapper">
+                        <button className="searchbar__toggle-button" onClick={toggleActiveState}></button>
+                        <div className="searchbar__category-container">
+                            {categories}
+                        </div>
+                    </div>
                 </div>
                 <SearchBarFormAction/>
             </div>
