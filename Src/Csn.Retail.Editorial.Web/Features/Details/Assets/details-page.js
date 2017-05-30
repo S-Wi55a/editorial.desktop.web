@@ -128,7 +128,7 @@ loaded.then(() => {
 });
 
 //Lazy load Redux 
-loaded.then(() => {
+//loaded.then(() => {
     (function redux(d) {
 
         if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
@@ -161,6 +161,6 @@ loaded.then(() => {
         }
     }
 
-});
+//});
 
 

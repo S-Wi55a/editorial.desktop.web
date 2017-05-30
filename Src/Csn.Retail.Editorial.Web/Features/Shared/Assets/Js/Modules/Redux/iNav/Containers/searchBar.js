@@ -39,7 +39,7 @@ class SearchBar extends React.Component {
             )
         })
 
-        const activeClass = isActive ? 'active' : ''
+        const activeClass = isActive ? 'isActive' : ''
 
         return (
             <div className={'searchbar ' + activeClass}>
@@ -49,9 +49,10 @@ class SearchBar extends React.Component {
                         <div className="searchbar__category-container">
                             {categories}
                         </div>
+                        <SearchBarFormAction/>
                     </div>
                 </div>
-                <SearchBarFormAction/>
+                
             </div>
         )    
     }

@@ -4,6 +4,7 @@ import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
 import { ryvuss } from 'Js/Modules/Endpoints/endpoints'
 
 
+//TODO: convert to dumb component
 class SearchBarFormAction extends React.Component { 
 
     constructor(props) {
@@ -24,9 +25,9 @@ class SearchBarFormAction extends React.Component {
 
         //TODO: remove hard coded text
         return (
-            <div>
-                <a onClick={this.resetForm}>clear</a>
-                <a href={`${ryvuss.iNavWithCount}`}>{this.props.count}Articles</a>
+            <div className="searchbar-form-action">
+                <a className="searchbar-form-action__button searchbar-form-action__button--clear" onClick={this.resetForm}>Clear</a>
+                <a className="searchbar-form-action__button searchbar-form-action__button--confirm" href={`${ryvuss.iNavWithCount}`}>{this.props.count} Articles</a>
             </div>
         )
     }

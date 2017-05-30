@@ -9,6 +9,7 @@
 .searchbar {
 
     $search-bar-height: 60px;
+    $search-bar-form-action-height: 60px;
     $category-container-height: 500px;
 
     border-top: 5px solid $cs-primary;
@@ -36,7 +37,6 @@
         width: $toggle-button-width;
         height: $search-bar-height;
         border-left: 1px solid $cs-lighter-grey;
-        border-right: 1px solid $cs-lighter-grey;
         position: absolute;
         left: -1 * $toggle-button-width;
     }
@@ -48,9 +48,21 @@
         position: relative;
         top: 0;
         background-color: $cs-white;
-        overflow: hidden;
-        max-height: $category-container-height + $search-bar-height;
+        max-height: $search-bar-height;
+        overflow-y: hidden;
+        transition-property: all;
+        transition-duration: .5s;
+        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+        border-right: 1px solid $cs-lighter-grey;
+        border-left: 1px solid $cs-lighter-grey;
     }
+
+    &.isActive {
+        .searchbar__category-container {
+            max-height: $category-container-height + $search-bar-height + $search-bar-form-action-height;
+        }
+    }
+
 
     &__category {
         width: percentage(1/3);
@@ -60,10 +72,18 @@
     }
     //Search category
     .searchbar-category {
+
+        $spacing: 20px;
+
         min-height: $category-container-height + $search-bar-height;
 
         &:nth-of-type(-n+2) {
             border-right: 1px solid $cs-lighter-grey;
+        }
+
+        &:nth-of-type(-n+3) {
+            z-index: 2;
+            position: relative;
         }
 
         &__heading {
@@ -73,12 +93,15 @@
             background-color: $cs-lightest-grey;
             font-size: 18px;
             font-weight: 600;
+            z-index: 1;
+            position: relative;
         }
 
         &__container {
-            max-height: $category-container-height;
+            max-height: $category-container-height - ($spacing*2);
             overflow-y: auto;
-            padding: 20px;
+            padding: 0 $spacing;
+            margin-top: $spacing;
 
             &--1 {
             }
@@ -86,6 +109,9 @@
     }
     //Search category item
     .searchbar-category-item {
+
+        $count-container-width: 50px;
+
         margin-top: 2px;
 
         &:nth-of-type(1) {
@@ -130,7 +156,8 @@
             display: inline-block;
             vertical-align: middle;
             color: $cs-dark-grey;
-            width: calc(100% - 40px - 50px)
+            width: calc(100% - 40px - #{$count-container-width}); // 100% - checkmark width+margin - $count-container-width
+            text-decoration: none;
         }
 
         &__count-container {
@@ -151,6 +178,33 @@
             padding: 0 6.5px;
             margin-left: 5px;
             vertical-align: middle
+        }
+    }
+    //searchbar-form-action
+    .searchbar-form-action {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: $search-bar-form-action-height;
+        background-color: $cs-lightest-grey;
+        border: 1px solid $cs-lighter-grey;
+        text-align: right;
+        line-height: $search-bar-form-action-height;
+        padding: 0 20px;
+        z-index: 1;
+
+        &__button {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 20px;
+
+            &--clear {
+                @include button(( round: true, thin: true, primary-inverse: true ));
+            }
+
+            &--confirm {
+                @include button(( round: true, thin: true, primary: true ));
+            }
         }
     }
 }
