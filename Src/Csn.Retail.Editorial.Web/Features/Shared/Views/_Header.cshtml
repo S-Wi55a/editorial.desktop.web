@@ -1,7 +1,7 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Shared.Models.MediaMotiveData
 
-<header id="page-header" class="page-header container">
-    <a href="~/" class="page-header__logo">Carsales.com.au - Australia's No.1 Auto Website">Carsales.com.au - Australia's No.1 Auto Website</a>
+<header id="page-header" class="page-header container" data-webm-section="page-header">
+    <a href="~/" class="page-header__logo" data-webm-clickvalue="site-icon">Carsales.com.au - Australia's No.1 Auto Website">Carsales.com.au - Australia's No.1 Auto Website</a>
     <div class="mediamotive-leaderboard">
         @{ Html.RenderPartial("Partials/MediaMotive/_Leaderboard", Model); }
     </div>

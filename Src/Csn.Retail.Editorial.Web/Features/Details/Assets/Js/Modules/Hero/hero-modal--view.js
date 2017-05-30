@@ -15,7 +15,7 @@
     }
 
     const container = (data) => `
-            <div class="slideshow slideshow--modal swiper-container" data-slideshow-modal data-slideshow-start="${startingIndex}">
+            <div class="slideshow slideshow--modal swiper-container" data-webm-section="image-modal" data-slideshow-modal data-slideshow-start="${startingIndex}">
         
                 <div class="slideshow__slides swiper-wrapper">
                     ${data.map((item, index) =>
@@ -25,8 +25,8 @@
         
                 <div class="slideshow__pagination swiper-pagination"></div>
 
-                <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev">prev</button>
-                <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next">next</button>
+                <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev" data-webm-clickvalue="previous">prev</button>
+                <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next" data-webm-clickvalue="next">next</button>
 
             </div>
         `

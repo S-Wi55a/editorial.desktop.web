@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
-import Slider, { Range } from 'rc-slider'
+import Slider from 'rc-slider'
 import * as View from 'Js/Modules/SpecModule/specModule--view.js'
 import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
 
@@ -72,9 +72,9 @@ const ThirdPartyOffer = (props) => {
             const iframe = `<iframe src=${props.data.formUrl}"></iframe>`
             tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(e) => {
                 props.disclaimerHandler(titleNoSpace, e)
-            }} className="third-party-offer__link">{props.data.getQuoteText}</span>
+            }} className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</span>
         } else {
-            tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link">{props.data.getQuoteText}</a>
+            tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</a>
         }
 
     }
@@ -88,7 +88,7 @@ const ThirdPartyOffer = (props) => {
                     <span className="third-party-offer__price">
                         {props.data.amount}
                     </span>
-                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
+                    <span data-webm-clickvalue={'disclaimer-'+titleNoSpace} className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
                         {props.data.paymentFrequency}
                     </span>
                 </div>
@@ -136,7 +136,7 @@ const SpecModuleItem = (props) => {
                 <p className="spec-item__model">{props.data.title2}</p>
                 <p className="spec-item__variant">{props.data.title3}</p>
                 <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
-                <div className="spec-item__selector">
+                <div className="spec-item__selector" data-webm-clickvalue="change-variant">
                     <p className="spec-item__selector-label"></p>
                     <Slider dots min={0} max={props.sliderLength - 1} onChange={props.sliderHandler} />
                 </div>
