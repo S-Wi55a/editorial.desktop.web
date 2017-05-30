@@ -5,6 +5,8 @@ using Autofac.Integration.Mvc;
 using Microsoft.Owin;
 using Owin;
 using System.Linq;
+using System.Web.Http;
+using Autofac.Integration.WebApi;
 using Csn.Retail.Editorial.Web.Infrastructure.StartUpTasks;
 using Ingress.Autofac;
 
@@ -18,10 +20,15 @@ namespace Csn.Retail.Editorial.Web
             var mvcAssembly = typeof(MvcApplication).Assembly;
 
             var builder = new ContainerBuilder();
+            var config = GlobalConfiguration.Configuration;
             builder.RegisterControllers(mvcAssembly);
             builder.RegisterAssemblyModules(mvcAssembly, typeof(Csn.SimpleCqrs.AutoFac.DispatchersModule).Assembly);
+            builder.RegisterApiControllers(mvcAssembly);
+            builder.RegisterHttpRequestMessage(config);
+            builder.RegisterWebApiFilterProvider(config);
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             RunStartUpTasks(container);
             container.RunBootstrapperTasks();
             app.UseAutofacMiddleware(container);
