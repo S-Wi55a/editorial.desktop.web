@@ -1,0 +1,25 @@
+﻿@using React.Web.Mvc
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>Hello React</title>
+</head>
+<body>
+HI PHIL
+<div id="content"></div>
+
+@Html.React("Component.ReactServer.CommentBoxes", new
+{
+    pollInterval = 2000
+})
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+@*<script src="~/dist/retail/editorial/reactServer-page--carsales.js"></script>*@
+@Html.ReactInitJavaScript()
+
+</body>
+</html>
+
+
