@@ -74,9 +74,20 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
         public string PlaceholderExpression { get; set; }
         public string MultiSelectMode { get; set; }
         public string RemoveAction { get; set; }
-        public List<object> Facets { get; set; }
+        public List<FacetNode> Facets { get; set; }
         public string Name { get; set; }
         public string DisplayName { get; set; }
         public string Type { get; set; }
+    }
+
+    public class FacetNode
+    {
+        public bool IsSelected { get; set; }
+        public string Value { get; set; }
+        public string DisplayValue { get; set; }
+        public string Action { get; set; }
+        public int Count { get; set; }
+        public RyvussNav Refinements { get; set; }
+        public string Expression { get; set; }
     }
 }
