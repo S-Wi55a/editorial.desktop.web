@@ -511,7 +511,10 @@
     <Compile Include="Ioc\MultiTenantModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Content Include="WebpackConfig\Server\webpack.server.config.babel.js" />
+    <Content Include="WebpackConfig\Client\webpack.client.config.js" />
+    <Content Include="WebpackConfig\Server\entries.config.js" />
+    <Content Include="WebpackConfig\Server\plugins.config.js" />
+    <Content Include="WebpackConfig\Server\webpack.server.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="editorial\content\scripts\ads.js" />
@@ -623,8 +626,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="gulpfile.js" />
-    <Content Include="webpack.server.config.js" />
-    <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -632,7 +633,6 @@
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\" />
-    <Folder Include="WebpackConfig\Client\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -821,14 +821,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="WebpackConfig\Shared\devServer.config.js" />
-    <Content Include="WebpackConfig\Shared\entries.config.js" />
+    <Content Include="WebpackConfig\Client\entries.config.js" />
     <Content Include="WebpackConfig\Shared\env.config.js" />
     <Content Include="WebpackConfig\Shared\loaders.config.js" />
     <Content Include="WebpackConfig\Shared\paths.config.js" />
-    <Content Include="WebpackConfig\Shared\plugins.config.js" />
+    <Content Include="WebpackConfig\Client\plugins.config.js" />
+    <Content Include="WebpackConfig\Shared\resolve.config.js" />
     <Content Include="WebpackConfig\Shared\stats.config.js" />
     <Content Include="WebpackConfig\Shared\tenants.config.js" />
-    <Content Include="WebpackConfig\wepack.isomorphic.config" />
+    <Content Include="WebpackConfig\webpack.isomorphic.config.js" />
     <Content Include="WebpackConfig\.babelrc" />
   </ItemGroup>
   <PropertyGroup>
