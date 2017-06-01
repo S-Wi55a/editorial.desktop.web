@@ -239,11 +239,11 @@ module.exports = (env) => {
                 descriptionFiles: ['package.json', 'bower.json'],
                 modules: listOfPaths
             },
-            externals: {
-                // Use external version of React (from CDN for client-side, or
-                // bundled with ReactJS.NET for server-side)
-                react: 'React'
-            },
+            //externals: {
+            //    // Use external version of React (from CDN for client-side, or
+            //    // bundled with ReactJS.NET for server-side)
+            //    react: 'React'
+            //},
             plugins: [
                 assetsPluginInstance,
                 new ExtractTextPlugin({

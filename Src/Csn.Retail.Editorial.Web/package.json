@@ -15,7 +15,11 @@
     "webpack": "node node_modules/webpack/bin/webpack.js ",
     "webpack-dev-server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "bower": "bower",
-    "build-server": "SET NODE_ENV=development&& npm run webpack -- -d --color --config webpack.server.config.js"
+    "babel": "babel",
+    "build-server": "npm run transform-webpack && SET NODE_ENV=development&& npm run webpack -- -d --color --config  TempWebpackConfig/Server/webpack.server.config.babel.js",
+    "transform-webpack": "npm run rimraf TempWebpackConfig && npm run babel -- WebpackConfig -d TempWebpackConfig",
+    "rimraf": "rimraf"
+
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +28,7 @@
     "ajv": "^5.1.5",
     "assets-webpack-plugin": "^3.5.1",
     "autoprefixer": "^7.1.1",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
@@ -41,6 +46,7 @@
     "browser-sync-webpack-plugin": "^1.1.4",
     "browserslist": "^2.1.4",
     "core-js": "^2.4.1",
+    "cross-env": "^5.0.0",
     "css-loader": "^0.28.3",
     "eslint": "^3.19.0",
     "eslint-config-defaults": "^9.0.0",
