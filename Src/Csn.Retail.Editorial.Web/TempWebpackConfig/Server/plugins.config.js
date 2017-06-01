@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.plugins = undefined;
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _webpack = require('webpack');
 
 var _webpack2 = _interopRequireDefault(_webpack);
@@ -21,10 +25,6 @@ var _assetsWebpackPlugin = require('assets-webpack-plugin');
 
 var _assetsWebpackPlugin2 = _interopRequireDefault(_assetsWebpackPlugin);
 
-var _browserSyncWebpackPlugin = require('browser-sync-webpack-plugin');
-
-var _browserSyncWebpackPlugin2 = _interopRequireDefault(_browserSyncWebpackPlugin);
-
 var _happypack = require('happypack');
 
 var _happypack2 = _interopRequireDefault(_happypack);
@@ -33,9 +33,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var assetsPluginInstance = new _assetsWebpackPlugin2.default({
     filename: 'webpack.assets.json',
-    path: __dirname,
+    path: _path2.default.resolve('./'),
     prettyPrint: true,
-    fullPath: false
+    fullPath: false,
+    update: true
 });
 
 var plugins = exports.plugins = function plugins(tenant) {

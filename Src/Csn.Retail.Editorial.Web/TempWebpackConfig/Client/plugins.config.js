@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.plugins = undefined;
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _webpack = require('webpack');
 
 var _webpack2 = _interopRequireDefault(_webpack);
@@ -33,9 +37,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var assetsPluginInstance = new _assetsWebpackPlugin2.default({
     filename: 'webpack.assets.json',
-    path: __dirname,
+    path: _path2.default.resolve('./'),
     prettyPrint: true,
-    fullPath: false
+    fullPath: false,
+    update: true
 });
 
 var plugins = exports.plugins = function plugins(tenant, pageEntries) {

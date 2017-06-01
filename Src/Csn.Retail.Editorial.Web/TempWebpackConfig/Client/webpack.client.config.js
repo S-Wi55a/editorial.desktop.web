@@ -51,8 +51,6 @@ module.exports = function () {
         entries['csn.base' + '--' + tenant] = ['./Features/Shared/Assets/csn.base.js'];
         entries['csn.mm' + '--' + tenant] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mm.js'];
 
-        entries['react-server-components' + '--' + tenant] = ['./Features/ReactServerRender/Assets/Js/react-server-components.js'];
-
         moduleExportArr.push({
             name: tenant,
             entry: entries,

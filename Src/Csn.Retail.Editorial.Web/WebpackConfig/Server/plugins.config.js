@@ -1,16 +1,17 @@
-﻿import webpack from 'webpack'
+﻿import path from 'path'
+import webpack from 'webpack'
 import {isProd} from '../Shared/env.config.js'
 import {devLoaderCSSExtract} from '../Shared/loaders.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import AssetsPlugin from 'assets-webpack-plugin'
-import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import HappyPack from 'happypack'
 
 var assetsPluginInstance = new AssetsPlugin({
     filename: 'webpack.assets.json',
-    path: __dirname,
+    path: path.resolve('./'),
     prettyPrint: true,
-    fullPath: false
+    fullPath: false,
+    update: true
 });
 
 export const plugins = (tenant) => {
