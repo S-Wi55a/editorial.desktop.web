@@ -16,7 +16,7 @@
     "webpack-dev-server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "bower": "bower",
     "babel": "babel",
-    "build-server": "npm run transform-webpack && SET NODE_ENV=development&& npm run webpack -- -d --color --config  TempWebpackConfig/Server/webpack.server.config.babel.js",
+    "build-server": "npm run transform-webpack && SET NODE_ENV=development&& npm run webpack -- -d --color --config  TempWebpackConfig/webpack.isomorphic.config.js",
     "transform-webpack": "npm run rimraf TempWebpackConfig && npm run babel -- WebpackConfig -d TempWebpackConfig",
     "rimraf": "rimraf"
 

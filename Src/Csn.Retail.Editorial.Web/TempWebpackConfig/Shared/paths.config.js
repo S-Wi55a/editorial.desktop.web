@@ -15,7 +15,7 @@ var rootRelativePath = exports.rootRelativePath = _path2.default.resolve('');
 
 //---------------------------------------------------------------------------------------------------------
 // list of path to search for files
-var listOfPaths = exports.listOfPaths = [_path2.default.resolve(__dirname, './'), 'node_modules', 'bower_components', 'Features/Shared/Assets', 'Features/Details/Assets', 'Features/SiteNav/Assets', 'Features/Errors/Assets', 'Features'];
+var listOfPaths = exports.listOfPaths = [_path2.default.resolve('./'), 'node_modules', 'bower_components', 'Features/Shared/Assets', 'Features/Details/Assets', 'Features/SiteNav/Assets', 'Features/Errors/Assets', 'Features'];
 
 // list of path to search for files
 var s3path = exports.s3path = 'dist/retail/editorial/'; //transfer to s3 is handles with gulp

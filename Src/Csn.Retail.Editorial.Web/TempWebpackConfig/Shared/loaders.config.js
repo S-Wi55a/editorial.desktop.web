@@ -9,9 +9,15 @@ var _envConfig = require('../Shared/env.config.js');
 
 var _pathsConfig = require('../Shared/paths.config.js');
 
-var path = require('path');
+var _path = require('path');
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var _path2 = _interopRequireDefault(_path);
+
+var _extractTextWebpackPlugin = require('extract-text-webpack-plugin');
+
+var _extractTextWebpackPlugin2 = _interopRequireDefault(_extractTextWebpackPlugin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
 var URL_LIMIT = _envConfig.isProd ? 1 : null;
@@ -40,7 +46,7 @@ var loaders = function loaders(tenant) {
 };
 
 var prodLoaderCSSExtract = exports.prodLoaderCSSExtract = function prodLoaderCSSExtract(tenant) {
-    return ExtractTextPlugin.extract({
+    return _extractTextWebpackPlugin2.default.extract({
         fallback: 'style-loader',
         use: loaders(tenant)
     });
@@ -55,7 +61,7 @@ var modules = exports.modules = function modules(tenant) {
     return {
         noParse: _envConfig.isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [{
-            test: require.resolve(path.resolve('Features/ReactServerRender/Assets/Js/index.js')),
+            test: require.resolve(_path2.default.resolve('Features/ReactServerRender/Assets/Js/index.js')),
             use: [{
                 loader: 'expose-loader',
                 options: 'ReactServerComponents'

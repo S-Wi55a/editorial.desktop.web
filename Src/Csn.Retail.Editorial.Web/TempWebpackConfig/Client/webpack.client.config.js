@@ -4,17 +4,13 @@ var _envConfig = require('../Shared/env.config.js');
 
 var _tenantsConfig = require('../Shared/tenants.config.js');
 
-var _pathsConfig = require('../Shared/paths.config.js');
-
-var _entriesConfig = require('../Shared/entries.config.js');
-
 var _loadersConfig = require('../Shared/loaders.config.js');
-
-var _pluginsConfig = require('../Shared/plugins.config.js');
 
 var _statsConfig = require('../Shared/stats.config.js');
 
 var _devServerConfig = require('../Shared/devServer.config.js');
+
+var _resolveConfig = require('../Shared/resolve.config.js');
 
 var _path = require('path');
 
@@ -24,18 +20,23 @@ var _rimraf = require('rimraf');
 
 var _rimraf2 = _interopRequireDefault(_rimraf);
 
+var _entriesConfig = require('../Client/entries.config.js');
+
+var _pluginsConfig = require('../Client/plugins.config.js');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Remove dist folder
+
+
+//From Client/
 (0, _rimraf2.default)('./dist', function (err) {
     if (err) {
         throw err;
     }
 });
 
-module.exports = function (env) {
-
-    process.env.BABEL_ENV = env;
+module.exports = function () {
 
     var moduleExportArr = [];
 
@@ -61,16 +62,7 @@ module.exports = function (env) {
                 filename: _envConfig.isProd ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: (0, _loadersConfig.modules)(tenant),
-            resolve: {
-                extensions: ['.js', '.scss'],
-                alias: {
-                    modernizr$: _path2.default.resolve('./.modernizrrc.js'),
-                    'debug.addIndicators': _path2.default.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js')
-                },
-                //aliasFields: ["browser"],
-                descriptionFiles: ['package.json', 'bower.json'],
-                modules: _pathsConfig.listOfPaths
-            },
+            resolve: _resolveConfig.resolve,
             plugins: (0, _pluginsConfig.plugins)(tenant, pageEntries),
             stats: _statsConfig.stats,
             devtool: _envConfig.isProd ? "cheap-source-map" : "eval",

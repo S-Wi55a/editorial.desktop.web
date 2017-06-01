@@ -1,14 +1,10 @@
 ﻿import {isProd} from '../Shared/env.config.js'
 import {listOfPaths} from '../Shared/paths.config.js'
-
-var path = require('path')
-
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+import path from 'path'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
 const URL_LIMIT = isProd ? 1 : null;
-
 
 const loaders = (tenant) => ([
     {

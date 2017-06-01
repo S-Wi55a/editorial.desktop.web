@@ -1,20 +1,22 @@
 import {isProd} from '../Shared/env.config.js'
 import {listofTenants, TENANTS} from '../Shared/tenants.config.js'
-import {rootRelativePath, listOfPaths, s3path} from '../Shared/paths.config.js'
-import {config, getEntryFiles} from '../Shared/entries.config.js'
 import {modules} from '../Shared/loaders.config.js'
-import {plugins} from '../Shared/plugins.config.js'
 import {stats} from '../Shared/stats.config.js'
 import {devServer} from '../Shared/devServer.config.js'
+import {resolve} from '../Shared/resolve.config.js'
 import path from 'path'
 import rimraf from 'rimraf'
+
+//From Client/
+import {config, getEntryFiles} from '../Client/entries.config.js'
+import {plugins} from '../Client/plugins.config.js'
+
+
 
 // Remove dist folder
 rimraf('./dist', function (err) { if (err) { throw err; } });
 
-module.exports = (env) => {
-
-    process.env.BABEL_ENV = env;
+module.exports = () => {
 
     let moduleExportArr = [];
 
@@ -41,16 +43,7 @@ module.exports = (env) => {
                     filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
                 },
                 module: modules(tenant),
-                resolve: {
-                    extensions: ['.js','.scss'],
-                    alias: {
-                        modernizr$: path.resolve('./.modernizrrc.js'),
-                        'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
-                    },
-                    //aliasFields: ["browser"],
-                    descriptionFiles: ['package.json', 'bower.json'],
-                    modules: listOfPaths
-                },
+                resolve: resolve,
                 plugins: plugins(tenant, pageEntries),
                 stats: stats,
                 devtool: isProd ? "cheap-source-map" : "eval",

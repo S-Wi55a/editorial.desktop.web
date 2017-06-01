@@ -1,14 +1,10 @@
 ﻿import webpack from 'webpack'
 import {isProd} from '../Shared/env.config.js'
 import {devLoaderCSSExtract} from '../Shared/loaders.config.js'
-
-
-
-var ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    AssetsPlugin = require('assets-webpack-plugin'),
-    BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
-    HappyPack = require('happypack');
-
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import AssetsPlugin from 'assets-webpack-plugin'
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
+import HappyPack from 'happypack'
 
 var assetsPluginInstance = new AssetsPlugin({
     filename: 'webpack.assets.json',
@@ -16,7 +12,6 @@ var assetsPluginInstance = new AssetsPlugin({
     prettyPrint: true,
     fullPath: false
 });
-
 
 export const plugins = (tenant, pageEntries) => {
     return [

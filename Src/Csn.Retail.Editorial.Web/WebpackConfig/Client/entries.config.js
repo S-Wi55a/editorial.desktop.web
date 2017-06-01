@@ -1,8 +1,7 @@
 ﻿import {s3path} from '../Shared/paths.config.js'
 import {isProd} from '../Shared/env.config.js'
-
-var glob = require('glob'),
-    path = require('path');
+import glob from 'glob'
+import path from 'path'
 
 
 export const config = {
@@ -10,7 +9,6 @@ export const config = {
     outputPath: path.resolve(s3path),
     publicPath: isProd ? './' : s3path
 }
-
 
 export function getEntryFiles(tenant) {
     if (!tenant) {
@@ -30,8 +28,6 @@ export function getEntryFiles(tenant) {
     }
     return entries;
 }
-
-
 
 //entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
 //entries['csn.base' + '--' + tenant] = ['./Features/Shared/Assets/csn.base.js'];

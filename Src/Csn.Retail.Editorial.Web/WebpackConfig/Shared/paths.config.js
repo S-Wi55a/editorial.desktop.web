@@ -5,7 +5,7 @@ export const rootRelativePath = path.resolve('')
 //---------------------------------------------------------------------------------------------------------
 // list of path to search for files
 export const listOfPaths = [
-    path.resolve(__dirname, './'),
+    path.resolve('./'),
     'node_modules',
     'bower_components',
     'Features/Shared/Assets',
