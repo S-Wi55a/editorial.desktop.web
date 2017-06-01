@@ -4,7 +4,6 @@ import {modules} from '../Shared/loaders.config.js'
 import {stats} from '../Shared/stats.config.js'
 import {devServer} from '../Shared/devServer.config.js'
 import {resolve} from '../Shared/resolve.config.js'
-import path from 'path'
 import rimraf from 'rimraf'
 
 //From Client/
@@ -23,10 +22,11 @@ module.exports = () => {
     //run through list of tenants
     TENANTS.forEach((tenant) => {
 
+        // The order here matters or the CommonChunkPlugin
         const entries = getEntryFiles(tenant);
-
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
+        //That is why these entries are added after
         entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
         entries['csn.base' + '--' + tenant] = ['./Features/Shared/Assets/csn.base.js'];
         entries['csn.mm' + '--' + tenant] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mm.js'];

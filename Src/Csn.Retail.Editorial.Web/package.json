@@ -22,7 +22,7 @@
     "dev-watch": "npm run transform-webpack && cross-env NODE_ENV=development&& npm run webpack -- -d --progress --colors --watch --config  TempWebpackConfig/webpack.isomorphic.config.js ",
     "dev-watch-client": "npm run transform-webpack && cross-env NODE_ENV=development&& npm run webpack -- -d --progress --colors --watch --config  TempWebpackConfig/Client/webpack.client.config.js ",
     "dev-watch-server": "npm run transform-webpack && cross-env NODE_ENV=development&& npm run webpack -- -d --progress --colors --watch --config  TempWebpackConfig/Server/webpack.server.config.js ",
-    "dev": "npm run transform-webpack && cross-env NODE_ENV=development&& concurrently \"npm run dev-watch-server\" \"npm run webpack-dev-server -- -d --colors --hot --config  TempWebpackConfig/Client/webpack.client.config.js\" "
+    "dev": "npm run transform-webpack && cross-env NODE_ENV=development&& concurrently -k \"npm run dev-watch-server\" \"npm run webpack-dev-server -- -d --colors --hot --config  TempWebpackConfig/Client/webpack.client.config.js\" "
   },
   "author": "",
   "license": "ISC",
@@ -51,7 +51,7 @@
     "concurrently": "^3.4.0",
     "core-js": "^2.4.1",
     "cross-env": "^5.0.0",
-    "css-loader": "^0.28.3",
+    "css-loader": "^0.28.4",
     "eslint": "^3.19.0",
     "eslint-config-defaults": "^9.0.0",
     "eslint-loader": "^1.7.1",
@@ -95,7 +95,7 @@
     "picturefill": "^3.0.2",
     "postscribe": "^2.0.8",
     "prop-types": "^15.5.10",
-    "rc-slider": "^7.0.8",
+    "rc-slider": "^8.0.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "^3.0.0-beta.6",
