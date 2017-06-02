@@ -23,13 +23,14 @@ namespace Csn.Retail.Editorial.Web
 
 		    //var url = DependencyResolver.Current.GetService<IAssetMapProvider>().Css(name);
 
-            ReactSiteConfiguration.Configuration
+		    ReactSiteConfiguration.Configuration
 		        //.SetUseDebugReact(true)
-		        .SetLoadBabel(false)
-		        .AddScriptWithoutTransform("/dist/retail/editorial/reactServer-page--carsales.js");
-		    //.DisableServerSideRendering();
+		        .SetReuseJavaScriptEngines(false) //TODO: remove in Prod
+                .SetLoadBabel(false)
+		        .AddScriptWithoutTransform("/dist--server/react-server-components.js");
+		        //.DisableServerSideRendering();
 
 
-        }
+		}
     }
 }

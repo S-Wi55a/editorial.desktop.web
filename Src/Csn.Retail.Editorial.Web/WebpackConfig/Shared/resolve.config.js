@@ -8,7 +8,7 @@ export const resolve = {
         modernizr$: path.resolve('./.modernizrrc.js'),
             'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
     },
-    //aliasFields: ["browser"],
+    aliasFields: ["browser"],
     descriptionFiles: ['package.json', 'bower.json'],
     modules: listOfPaths
 }

@@ -1,6 +1,5 @@
 import {isProd} from '../Shared/env.config.js'
 import {listofTenants, TENANTS} from '../Shared/tenants.config.js'
-import {modules} from '../Shared/loaders.config.js'
 import {stats} from '../Shared/stats.config.js'
 import {devServer} from '../Shared/devServer.config.js'
 import {resolve} from '../Shared/resolve.config.js'
@@ -9,7 +8,7 @@ import rimraf from 'rimraf'
 //From Client/
 import {config, getEntryFiles} from '../Client/entries.config.js'
 import {plugins} from '../Client/plugins.config.js'
-
+import {modules} from '../Client/loaders.config.js'
 
 
 // Remove dist folder

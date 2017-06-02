@@ -1,11 +1,13 @@
 ﻿import path from 'path'
 import webpack from 'webpack'
 import {isProd} from '../Shared/env.config.js'
-import {devLoaderCSSExtract} from '../Shared/loaders.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import AssetsPlugin from 'assets-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import HappyPack from 'happypack'
+
+//From Server/
+import {devLoaderCSSExtract} from '../Client/loaders.config.js'
 
 var assetsPluginInstance = new AssetsPlugin({
     filename: 'webpack.assets.json',

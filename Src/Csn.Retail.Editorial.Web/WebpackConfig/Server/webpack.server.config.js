@@ -1,7 +1,6 @@
 import {isProd} from '../Shared/env.config.js'
 import {listofTenants, TENANTS} from '../Shared/tenants.config.js'
 import {resolve} from '../Shared/resolve.config.js'
-import {modules} from '../Shared/loaders.config.js'
 import {stats} from '../Shared/stats.config.js'
 import {devServer} from '../Shared/devServer.config.js'
 import rimraf from 'rimraf'
@@ -9,8 +8,7 @@ import rimraf from 'rimraf'
 //From Server/
 import {config} from '../Server/entries.config.js'
 import {plugins} from '../Server/plugins.config.js'
-
-
+import {modules} from '../Server/loaders.config.js'
 
 // Remove dist folder
 rimraf('./dist--server', function (err) { if (err) { throw err; } });
@@ -24,17 +22,17 @@ module.exports = () => {
 
         const entries = {}
             
-        entries['react-server-components' + '--' + tenant] = ['./Features/ReactServerRender/Assets/Js/react-server-components.js'];
+        entries['react-server-components'] = ['./Features/React/Assets/Js/react-server-components.js'];
 
         moduleExportArr.push(
             {
-                target:'node',
+                //target:'node',
                 name: tenant,
                 entry: entries,
                 output: {
                     path: config.outputPath,
                     publicPath: config.publicPath,
-                    filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
+                    filename: '[name].js'
                 },
                 module: modules(tenant),
                 resolve: resolve,

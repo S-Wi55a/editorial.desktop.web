@@ -71,3 +71,9 @@ Src/Csn.Retail.Editorial.Web/Csn.Retail.Editorial.Web.csproj.user
 
 
 Src/Csn.Retail.Editorial.Web/app_data/*
+
+# Transpiled webpack config (Node does nto suppotr es6 yet)
+TempWebpackConfig
+
+# React Server build
+dist--server
