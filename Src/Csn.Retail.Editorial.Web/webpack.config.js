@@ -10,6 +10,9 @@ var glob = require('glob'),
     HappyPack = require('happypack'),
     rimraf = require('rimraf');
 
+    var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+
 //---------------------------------------------------------------------------------------------------------
 // List of Tenants
 // Make sure associated '_settings--tenant.scss' file is added to Features\Shared\Assets\Css\Settings\
@@ -154,7 +157,17 @@ module.exports = (env) => {
                 noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
                 rules: [
                     {
-                        test: [/\.js$/, /\.es6$/],
+                        enforce: 'pre',
+                        test: /\.jsx?$/,
+                        loader: "source-map-loader"
+                    },
+                    {
+                        enforce: 'pre',
+                        test: /\.tsx?$/,
+                        use: "source-map-loader"
+                    },
+                    {
+                        test: [/\.jsx?$/, /\.es6$/],
                         exclude: /(node_modules|bower_components|unitTest)/,
                         loaders: ['happypack/loader?id=babel']
                     },
@@ -162,6 +175,11 @@ module.exports = (env) => {
                         test: /\.modernizrrc.js$/,
                         exclude: /(node_modules|bower_components|unitTest)/,
                         loader: "modernizr-loader"
+                    },
+                    {
+                        test: /\.tsx?$/,
+                        exclude: /(node_modules|bower_components|unitTest)/,
+                        loaders: ['happypack/loader?id=babelTypeScript']
                     },
                     {
                         test: /\.css$/,
@@ -219,7 +237,7 @@ module.exports = (env) => {
                 ]
             },
             resolve: {
-                extensions: ['.js','.scss'],
+                extensions: ['.tsx', '.ts','.jsx','.js','.scss'],
                 alias: {
                     modernizr$: path.resolve(__dirname, './.modernizrrc.js'),
                     'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
@@ -259,6 +277,19 @@ module.exports = (env) => {
                 }),
                 new HappyPack({
                     // loaders is the only required parameter:
+                    id: 'babelTypeScript',
+                    loaders: ['babel-loader?cacheDirectory=true',
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            // disable type checker - we will use it in fork plugin
+                            transpileOnly: true,
+                            happyPackMode: true
+                        }
+                    }],
+                }),
+                new HappyPack({
+                    // loaders is the only required parameter:
                     id: 'sass',
                     loaders: devLoaderCSSExtract
                 }),
@@ -284,7 +315,10 @@ module.exports = (env) => {
                         // and let Webpack Dev Server take care of this 
                         reload: false
                     }
-                )
+                ),
+                new ForkTsCheckerWebpackPlugin({
+                    watch: './' // optional but improves performance (less stat calls)
+                })
             ],
             devtool: isProd ? "cheap-source-map" : "eval",
             devServer: {
