@@ -58,7 +58,7 @@ var assetsPluginInstance = new AssetsPlugin({
 
 var isProd = process.env.NODE_ENV === 'production' ? true : false;
 
-const TENANTS = process.env.TENANT ? [process.env.TENANT.trim()] : listofTenants;
+const TENANTS = process.env.TENANT === 'ALL' ? listofTenants : [process.env.TENANT.trim()];
 
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
 const URL_LIMIT = isProd ? 1 : null;

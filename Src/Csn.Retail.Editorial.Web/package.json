@@ -4,16 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=development&& cross-env TENANT=&& npm run webpack -- -d --color",
+    "build": "cross-env NODE_ENV=development&& cross-env TENANT=ALL && npm run webpack -- -d --color",
     "build-custom": "cross-env NODE_ENV=development&& npm run webpack -- -d --color",
-    "build-release": "cross-env NODE_ENV=production&& cross-env TENANT=&& npm run webpack -- -p --color",
+    "build-release": "cross-env NODE_ENV=production&& cross-env TENANT=ALL && npm run webpack -- -p --color",
     "dev-watch": "cross-env NODE_ENV=development&& npm run webpack -- -d --progress --colors --watch",
     "dev": "cross-env NODE_ENV=development&& npm run webpack-dev-server -- -d --colors --hot ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm rebuild node-sass && npm run bower install",
     "webpack": "node node_modules/webpack/bin/webpack.js ",
     "webpack-dev-server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "bower": "bower"
+    "bower": "bower",
+    "cross-env": "cross-env"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "babel-plugin-dynamic-import-webpack": "^1.0.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap-sass": "^3.3.7",
