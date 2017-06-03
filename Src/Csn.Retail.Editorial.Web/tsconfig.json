@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    //"outDir": "./apples/",
     "sourceMap": true,
     "noImplicitAny": true,
     "target": "es6",
     "module": "es6",
     "jsx": "react",
     "allowJs": true
-  }
+  },
+  "include": [
+    "Features/**/*"
+  ]
 }

@@ -255,9 +255,9 @@ module.exports = (env) => {
                 descriptionFiles: ['package.json', 'bower.json'],
                 modules: listOfPaths
             },
-            // externals: {
-            //     'jquery': 'jquery', //Pulling jQuery in through a CDN
-            // },
+            externals: {
+                'jquery': 'jquery', //Pulling jQuery in through a CDN
+            },
             plugins: [
                 assetsPluginInstance,
                 new ExtractTextPlugin({
@@ -329,7 +329,8 @@ module.exports = (env) => {
                     }
                 ),
                 new ForkTsCheckerWebpackPlugin({
-                    watch: './' // optional but improves performance (less stat calls)
+                    //watch: './Features', // optional but improves performance (less stat calls)
+                    workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
                 }),
                 new UglifyJsParallelPlugin({
                     workers: os.cpus().length, // usually having as many workers as cpu cores gives good results
