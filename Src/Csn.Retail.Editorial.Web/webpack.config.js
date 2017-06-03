@@ -11,6 +11,8 @@ var glob = require('glob'),
     rimraf = require('rimraf');
 
     var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+    var os = require('os');
+    var UglifyJsParallelPlugin = require('webpack-uglify-parallel');
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -154,7 +156,7 @@ module.exports = (env) => {
                 filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: {
-                noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
+                noParse: isProd ? /\A(?!x)x/ : /react|jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
                 rules: [
                     {
                         enforce: 'pre',
@@ -241,11 +243,21 @@ module.exports = (env) => {
                 alias: {
                     modernizr$: path.resolve(__dirname, './.modernizrrc.js'),
                     'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
+                    swiper$: path.resolve('node_modules', 'swiper/dist/js/swiper.min.js'),
+                    ScrollMagic$: path.resolve('node_modules', 'scrollmagic/scrollmagic/minified/ScrollMagic.min.js'),
+                    TinyAnimate$: path.resolve('node_modules', 'TinyAnimate/bin/TinyAnimate.js'),
+                    jquery$: path.resolve('node_modules', 'jquery/dist/jquery.min.js'),
+                    react$: path.resolve('node_modules', 'react/dist/react.min.js'),
+                    //Bower Components
+                    circles$: path.resolve('bower_components', 'circles/circles.min.js'),
                 },
                 aliasFields: ["browser"],
                 descriptionFiles: ['package.json', 'bower.json'],
                 modules: listOfPaths
             },
+            // externals: {
+            //     'jquery': 'jquery', //Pulling jQuery in through a CDN
+            // },
             plugins: [
                 assetsPluginInstance,
                 new ExtractTextPlugin({
@@ -318,6 +330,10 @@ module.exports = (env) => {
                 ),
                 new ForkTsCheckerWebpackPlugin({
                     watch: './' // optional but improves performance (less stat calls)
+                }),
+                new UglifyJsParallelPlugin({
+                    workers: os.cpus().length, // usually having as many workers as cpu cores gives good results
+                    // other uglify options
                 })
             ],
             devtool: isProd ? "cheap-source-map" : "eval",
