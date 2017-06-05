@@ -12,7 +12,7 @@
 
     width: 300px;
     border-radius: $border-radius;
-    border: solid 1px $cs-lightest-grey;
+    border: solid 1px $cs-lighter-grey;
     padding: 30px;
     position: relative;
     font-size: 0;
@@ -126,7 +126,7 @@
         &__option {
             font-size: $font-size-h4;
             font-weight: $font-weight-600;
-            border-bottom: solid 1px $cs-lightest-grey;
+            border-bottom: solid 1px $cs-lighter-grey;
             padding: 5px 0 5px 20px;
             position: relative;
             transform: translate3d(-150%, 0, 0);
@@ -164,7 +164,7 @@
     .stock-for-sale-item {
         font-size: 0;
         padding-bottom: 20px;
-        border-bottom: 1px solid $cs-lightest-grey;
+        border-bottom: 1px solid $cs-lighter-grey;
         margin-bottom: 20px;
 
         &--no-items {
