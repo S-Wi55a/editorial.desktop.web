@@ -1,6 +1,6 @@
 ﻿.ltm {
     margin: 15px auto 30px;
-    border: 1px solid $cs-lighter-grey;
+    border: 1px solid $cs-light-grey-2;
     border-radius: $cs-border-radius;
 
 
@@ -14,7 +14,7 @@
         margin: 15px auto;
 
         &:nth-of-type(n+2) {
-            border-left: 1px solid $cs-lighter-grey;
+            border-left: 1px solid $cs-light-grey-2;
         }
     }
 
@@ -29,7 +29,7 @@
 
     &__value {
         font-size: $font-size-h5;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         font-weight: $font-weight-400;
 
         @include breakpoint($screen-lg) {

@@ -34,7 +34,7 @@
         font-size: $font-size-small;
         line-height: 24px;
         margin-top: -3px;
-        color: $cs-light-grey;
+        color: $cs-light-grey-1;
     }
 
     &__links {
@@ -46,7 +46,7 @@
 
     &+.author{
         margin-top: 30px;
-        border-top: 1px solid $cs-lighter-grey;
+        border-top: 1px solid $cs-light-grey-2;
         padding-top: 30px;
 
     }
