@@ -270,7 +270,19 @@
 
         &.drive {
             &::before {
-                content: $icon-car-front-sm;
+                content: $icon-default-drive-icon;
+            }
+
+            &[data-value="Four%20Wheel%20Drive"]::before {
+                content: $icon-all-wheel-icon;
+            }
+
+            &[data-value="Front%20Wheel%20Drive"]::before {
+                content: $icon-front-wheel-icon;
+            }
+
+            &[data-value="Rear%20Wheel%20Drive"]::before {
+                content: $icon-rear-wheel-icon;
             }
         }
 
