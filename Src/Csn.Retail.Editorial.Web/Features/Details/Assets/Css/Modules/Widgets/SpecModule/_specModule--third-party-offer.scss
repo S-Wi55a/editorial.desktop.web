@@ -24,7 +24,7 @@
 
     &__heading {
         font-size: $font-size-h6;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         margin-bottom: 3px;
     }
 
@@ -33,7 +33,7 @@
 
     &__price {
         font-size: $font-size-h4;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         font-weight: $font-weight-600;
         display: inline-block;
         vertical-align: middle;
@@ -41,7 +41,7 @@
 
     &__price-term {
         font-size: $font-size-smaller;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         font-weight: $font-weight-400;
         display: inline-block;
         vertical-align: middle;
@@ -72,9 +72,9 @@
 
     &__terms-and-conditions {
         font-size: $font-size-smaller;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         font-weight: $font-weight-400;
-        text-align: center;
+        text-align: left;
     }
 }
 
@@ -101,7 +101,7 @@
         .third-party-offer__terms-and-conditions {
             margin-top: 15px;
             width: calc(200% + 30px);
-            margin-left: calc(-50% - 15px);
+            //margin-left: calc(-50% - 15px);
         }
     }
 }

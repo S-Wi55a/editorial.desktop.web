@@ -4,7 +4,7 @@ import * as View from 'Js/Modules/MoreArticles/moreArticles-view.js'
 
 import ScrollMagic from 'ScrollMagic'
 
-let userPreference = false
+let isActive = false
 let showText = csn_editorial.moreArticles.headings.showHeading
 let hideText = csn_editorial.moreArticles.headings.hideHeading
 
@@ -41,7 +41,7 @@ let removeClass = (el, className, cb) => {
 
 // Toggle class
 let toggleClass = (el, className, ...cb) => {
-    if (!userPreference) {
+    if (!isActive) {
         if (el.classList.contains(className)) {
             removeClass(el, className, cb[0][0])
         } else {
@@ -118,7 +118,7 @@ let filterHandler = (e, ...args) => {
     const scope = args[0][1]
     const className = args[0][2]
     const classNameLast = args[0][3]
-    userPreference = true // assuming filter clicked is active
+    //isActive = true // assuming filter clicked is active
 
 
     if (el.classList.contains(classNameLast)) {
@@ -127,7 +127,7 @@ let filterHandler = (e, ...args) => {
 
     if (!el.classList.contains(className)) {
 
-        userPreference = false
+        //isActive = false
 
         // Clear all active classes and add to clicked el
         const filters = scope.self.querySelectorAll(el.className)
@@ -155,7 +155,7 @@ let filterHandler = (e, ...args) => {
     }
 
     if (!scope.self.classList.contains('show')) {
-        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
+        buttonShowHideHandler(scope)
     }
 }
 
@@ -188,9 +188,9 @@ let buttonShowHideHandler = (scope) => {
     //set user prefernce here
     if (scope.self.classList.contains('show')) {
         toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
-        userPreference = true
-    } else if (userPreference) {
-        userPreference = false
+        isActive = true
+    } else if (isActive) {
+        isActive = false
         toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
     } else {
         toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
@@ -236,7 +236,7 @@ let scrollMagic = (scope) => {
         })
         .on("update",
             function(e) {
-                e.target.controller().info("scrollDirection") === 'REVERSE' && !userPreference ?
+                e.target.controller().info("scrollDirection") === 'REVERSE' && !isActive ?
                     this.trigger("enter") :
                     null;
             })
