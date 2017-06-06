@@ -165,6 +165,7 @@
             font-size: $font-size-h5;
             margin-top: 5px;
             display: inline-block;
+            vertical-align: middle;
         }
 
         &::before {
@@ -350,7 +351,7 @@
             display: inline-block;
             color: $cs-grey;
             vertical-align: middle;
-            margin-right: 15px;
+            margin-right: 0px;
             font-weight: 400;
         }
 
