@@ -6,9 +6,9 @@ import {resolve} from '../Shared/resolve.config.js'
 import rimraf from 'rimraf'
 
 //From Client/
-import {config, getEntryFiles} from '../Client/entries.config.js'
-import {plugins} from '../Client/plugins.config.js'
-import {modules} from '../Client/loaders.config.js'
+import {config, getEntryFiles} from './entries.config.js'
+import {plugins} from './plugins.config.js'
+import {modules} from './loaders.config.js'
 
 
 // Remove dist folder

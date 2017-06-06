@@ -511,6 +511,9 @@
     <Compile Include="Ioc\MultiTenantModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Content Include="Features\React\Assets\Js\rootReducer.js" />
+    <Content Include="Features\React\Assets\Js\searchBar.js" />
+    <Content Include="Features\React\Assets\Js\storeClient.js" />
     <Content Include="WebpackConfig\Client\entries.config.js" />
     <Content Include="WebpackConfig\Client\loaders.config.js" />
     <Content Include="WebpackConfig\Client\webpack.client.config.js" />
@@ -566,7 +569,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
-    <Content Include="Features\React\Assets\Js\Tutorial.js" />
+    <Content Include="Features\React\Assets\Js\Test.js" />
     <Content Include="Features\Shared\Assets\csn.base.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />

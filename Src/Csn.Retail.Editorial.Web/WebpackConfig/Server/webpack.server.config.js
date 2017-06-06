@@ -6,9 +6,9 @@ import {devServer} from '../Shared/devServer.config.js'
 import rimraf from 'rimraf'
 
 //From Server/
-import {config} from '../Server/entries.config.js'
-import {plugins} from '../Server/plugins.config.js'
-import {modules} from '../Server/loaders.config.js'
+import {config} from './entries.config.js'
+import {plugins} from './plugins.config.js'
+import {modules} from './loaders.config.js'
 
 // Remove dist folder
 rimraf('./dist--server', function (err) { if (err) { throw err; } });

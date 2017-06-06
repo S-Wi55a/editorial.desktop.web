@@ -1,13 +1,13 @@
-﻿import {CommentBox} from './Tutorial'
-//import {S as SearchBar} from 'Js/Modules/Redux/iNav/Containers/searchBar'
-import CategoryItem from 'Js/Modules/Redux/iNav/Components/categoryItem'
-import SearchBarCategory from 'Js/Modules/Redux/iNav/Components/searchBarCategory'
+﻿import {render} from './Test'
+//import 'React/Assets/Js/storeClient'
+//import * as s  from './storeClient'
+//import CategoryItem from 'Js/Modules/Redux/iNav/Components/categoryItem'
+import SearchBarTest from './searchBar'
 
 
- 
 export const Components = {
-    CommentBox,
-    //SearchBar,
-    CategoryItem,
-    SearchBarCategory
+    render,
+    //CategoryItem,
+    SearchBarTest
 }
+
