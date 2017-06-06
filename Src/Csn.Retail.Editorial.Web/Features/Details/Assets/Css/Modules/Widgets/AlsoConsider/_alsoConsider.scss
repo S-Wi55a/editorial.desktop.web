@@ -53,7 +53,6 @@
         text-align: center;
         position: relative;
         top: 0;
-        //transition: top .3s;
         order: 0;
         flex: 1 0 auto;
         align-self: flex-start;
@@ -61,16 +60,6 @@
 
         @include breakpoint($screen-lg) {
             max-width: percentage(1/4);
-        }
-
-
-
-        &:hover {
-            //top: -10px;
-
-            .also-consider-item__image {
-                //opacity: 0.8;
-            }
         }
 
         & > a {
