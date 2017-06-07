@@ -25,15 +25,15 @@ import { batchedSubscribe } from 'redux-batched-subscribe'
  */
 
 // Dev tools //TODO make prod version
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = compose //window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 
 
-export function configureStore(/*preloadedState*/) {
+export function configureStore(preloadedState) {
     const store = createStore(createReducer(),
-        /* preloadedState, */
+        preloadedState,
         composeEnhancers(
             applyMiddleware(thunkMiddleware, reduxMulti),
             batchedSubscribe((notify) => {

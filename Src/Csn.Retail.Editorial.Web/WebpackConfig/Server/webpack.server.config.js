@@ -22,7 +22,7 @@ module.exports = () => {
 
         const entries = {}
             
-        entries['react-server-components'] = ['./Features/React/Assets/Js/react-server-components.js'];
+        entries['react-server-components'] = ['./Features/React/Assets/Js/react-server-entry.js'];
 
         moduleExportArr.push(
             {

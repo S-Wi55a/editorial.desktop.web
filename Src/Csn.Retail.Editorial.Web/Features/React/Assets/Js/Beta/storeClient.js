@@ -33,10 +33,10 @@ export function injectAsyncReducer(store, name, asyncReducer) {
 }
 
 
-function rootReducer(state = {apples:11}, action) {
+function rootReducer(state = {apples:10}, action) {
     return state
 }
 
-export const store = configureStore(rootReducer)
+export const store = createStore(rootReducer)
 
 

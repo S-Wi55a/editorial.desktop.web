@@ -1,4 +1,9 @@
-﻿import React from 'react'
+﻿import { Provider } from 'react-redux'
+import * as s  from './storeClient'
+
+
+
+import React from 'react'
 import { connect } from 'react-redux'
 import ui from 'redux-ui';
 import { uiReducer } from 'Js/Modules/Redux/iNav/Reducers/uiReducer'
@@ -68,7 +73,7 @@ SearchBar = connect(
 
 const render = (props) => {
     return (
-        <SearchBar />
+        <SearchBar store={s.store}/>
     );
 };
 

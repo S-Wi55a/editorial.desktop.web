@@ -20,6 +20,9 @@ var assetsPluginInstance = new AssetsPlugin({
 export const plugins = (tenant) => {
     return [
         assetsPluginInstance,
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
+        }),
         new ExtractTextPlugin({
             filename: isProd ? '[name]-[contenthash].css' : '[name].css',
             allChunks: false

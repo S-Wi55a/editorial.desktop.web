@@ -429,8 +429,14 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
-    <Content Include="Features\React\Assets\Js\index.js" />
+    <Content Include="Features\React\Assets\Js\Beta\index.js" />
+    <Content Include="Features\React\Assets\Js\Beta\react-server-components.js" />
+    <Content Include="Features\React\Assets\Js\Beta\rootReducer.js" />
+    <Content Include="Features\React\Assets\Js\Beta\searchBar.js" />
+    <Content Include="Features\React\Assets\Js\Beta\storeClient.js" />
+    <Content Include="Features\React\Assets\Js\Beta\Test.js" />
     <Content Include="Features\React\Assets\Js\react-server-components.js" />
+    <Content Include="Features\React\Assets\Js\react-server-entry.js" />
     <Compile Include="Features\React\ReactController.cs" />
     <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />
     <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
@@ -513,7 +519,10 @@
     <Compile Include="Startup.cs" />
     <Content Include="Features\React\Assets\Js\rootReducer.js" />
     <Content Include="Features\React\Assets\Js\searchBar.js" />
+    <Content Include="Features\React\Assets\Js\SearchBarServerWapper.js" />
     <Content Include="Features\React\Assets\Js\storeClient.js" />
+    <Content Include="Features\React\Assets\Js\reduxServer.js" />
+    <Content Include="Features\React\Assets\Js\Test.js" />
     <Content Include="WebpackConfig\Client\entries.config.js" />
     <Content Include="WebpackConfig\Client\loaders.config.js" />
     <Content Include="WebpackConfig\Client\webpack.client.config.js" />
@@ -569,7 +578,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
-    <Content Include="Features\React\Assets\Js\Test.js" />
+    <Content Include="Features\React\Assets\Js\ReactServerConnect.js" />
     <Content Include="Features\Shared\Assets\csn.base.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />

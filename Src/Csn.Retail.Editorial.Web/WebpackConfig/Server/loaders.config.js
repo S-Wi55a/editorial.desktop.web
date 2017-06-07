@@ -48,10 +48,10 @@ export const modules = (tenant) => {
         noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [
         {
-            test: require.resolve(path.resolve('Features/React/Assets/Js/index.js')),
+            test: require.resolve(path.resolve('Features/React/Assets/Js/react-server-components.js')),
             use: [{
                 loader: 'expose-loader',
-                options: 'ReactServerComponents'
+                options: 'ReactServer'
             }]
         },
         {

@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web
 		    //var url = DependencyResolver.Current.GetService<IAssetMapProvider>().Css(name);
 
 		    ReactSiteConfiguration.Configuration
-		        //.SetUseDebugReact(true)
+		        .SetUseDebugReact(false)
 		        .SetReuseJavaScriptEngines(false) //TODO: remove in Prod
                 .SetLoadBabel(false)
 		        .AddScriptWithoutTransform("/dist--server/react-server-components.js");

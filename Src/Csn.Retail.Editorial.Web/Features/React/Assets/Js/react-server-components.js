@@ -1,5 +1,22 @@
-﻿// We use require here becasue the script needs to be evaluated (which happens in CommonJS modules)
-// So the exports are available globally on ReactServerComponents(from expose laoder) for ReactJS.net
-require('./index')
+﻿import {ReactServerConnect} from './ReactServerConnect'
+import {testComponent} from './Test'
+import SearchBarTest from './searchBar'
+
+//import 'React/Assets/Js/storeClient'
+//import * as s  from './storeClient'
+//import CategoryItem from 'Js/Modules/Redux/iNav/Components/categoryItem'
+//import SearchBarTest from './searchBar'
 
 
+export const Components = {
+    testComponent: ReactServerConnect(testComponent)
+    //CategoryItem,
+    //SearchBarTest
+}
+
+
+
+//ReactDOM.render(
+//    Components.testComponent({apples:5}), 
+//    document.getElementById('content')
+//);
