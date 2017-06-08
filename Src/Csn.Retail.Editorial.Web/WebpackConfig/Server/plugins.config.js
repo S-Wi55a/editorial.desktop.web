@@ -6,7 +6,7 @@ import AssetsPlugin from 'assets-webpack-plugin'
 import HappyPack from 'happypack'
 
 //From Server/
-import {devLoaderCSSExtract} from '../Server/loaders.config.js'
+import {devLoaderCSSExtract} from './loaders.config.js'
 
 
 var assetsPluginInstance = new AssetsPlugin({

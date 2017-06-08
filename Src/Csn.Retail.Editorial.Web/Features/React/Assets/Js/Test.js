@@ -1,4 +1,6 @@
-﻿export const testComponent = React.createClass({
+﻿import React from 'react'
+
+export const testComponent = React.createClass({
     render: function() {
         return (
             <div className="commentBox">

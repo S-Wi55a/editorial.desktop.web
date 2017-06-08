@@ -1,6 +1,5 @@
 ﻿'use strict'
 
-import * as ReduxStore  from 'Js/Modules/Redux/Global/Store/store.js'
 import React from 'react'
 import { Provider } from 'react-redux'
 
@@ -8,31 +7,29 @@ import { Provider } from 'react-redux'
 
 //const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
-console.log(global)
+const store = global.store
 
+let ReactServerConnect = function(store) {
 
-export const ReactServerConnect = function(WrappedComponent) {
+    return (WrappedComponent) => {
 
-    return (data) => {
+        console.log(global.count++)
+        //console.log('Component ' + ReducerName, global.count)
 
-        let {state, ...props} = data;
+        return (props) => {
 
-        state = {emptyReducer:'hi'}
+            return (
+                <Provider store={store} >
+                    <WrappedComponent {...props} />   
+                </Provider>
+            );
 
-        console.log(data)
-
-        //Enable Redux store 
-        const store = ReduxStore.configureStore(state)
-        
-        //let injectAsyncReducer = store.injectAsyncReducer
-
-        return (
-            <Provider store={store}>
-                <WrappedComponent {...props} />           
-            </Provider>
-        );
-
-    }
+        }
     }
 
 
+}
+
+ReactServerConnect = ReactServerConnect(store)
+
+export {ReactServerConnect}

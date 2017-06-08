@@ -18,7 +18,7 @@ for (var i = 0; i < scriptsLength; i++) {
 }
 
 //Enable Redux store globally
-window.store = store.configureStore()
+window.store = store.configureStore() //Init store
 window.injectAsyncReducer = store.injectAsyncReducer
 
 

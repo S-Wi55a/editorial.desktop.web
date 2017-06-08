@@ -7,7 +7,7 @@ import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import HappyPack from 'happypack'
 
 //From Server/
-import {devLoaderCSSExtract} from '../Client/loaders.config.js'
+import {devLoaderCSSExtract} from './loaders.config.js'
 
 var assetsPluginInstance = new AssetsPlugin({
     filename: 'webpack.assets.json',

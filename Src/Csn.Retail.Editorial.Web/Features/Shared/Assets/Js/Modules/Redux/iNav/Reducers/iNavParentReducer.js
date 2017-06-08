@@ -4,7 +4,7 @@ import { data } from 'Js/Modules/Redux/iNav/Data/data' //Test data //TODO: remov
 import { iNavChildReducer } from 'Js/Modules/Redux/iNav/Reducers/iNavChildReducer'
 import { iNavQueryReducer } from 'Js/Modules/Redux/iNav/Reducers/iNavQueryReducer'
 
-const initState = window.iNavState || data
+const initState = global.window.iNavState || data
 
 export const iNavParentReducer = (state = initState, action) => {
     switch (action.type) {

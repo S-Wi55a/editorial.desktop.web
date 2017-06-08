@@ -48,13 +48,6 @@ export const modules = (tenant) => {
         noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [
         {
-            test: require.resolve(path.resolve('Features/React/Assets/Js/react-server-components.js')),
-            use: [{
-                loader: 'expose-loader',
-                options: 'ReactServer'
-            }]
-        },
-        {
             test: [/\.js$/, /\.es6$/],
             exclude: /(node_modules|bower_components|unitTest)/,
             loaders: ['happypack/loader?id=babel']

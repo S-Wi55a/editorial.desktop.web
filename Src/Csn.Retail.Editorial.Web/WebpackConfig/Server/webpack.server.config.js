@@ -26,7 +26,7 @@ module.exports = () => {
 
         moduleExportArr.push(
             {
-                //target:'node',
+                target:'node',
                 name: tenant,
                 entry: entries,
                 output: {

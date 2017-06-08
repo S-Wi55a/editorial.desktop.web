@@ -9,14 +9,10 @@ import SearchBarTest from './searchBar'
 
 
 export const Components = {
-    testComponent: ReactServerConnect(testComponent)
+    testComponent: ReactServerConnect(testComponent, 'TestComponent'),
+    SearchBarTest: ReactServerConnect(SearchBarTest, 'SearchBar')
+
     //CategoryItem,
-    //SearchBarTest
 }
 
 
-
-//ReactDOM.render(
-//    Components.testComponent({apples:5}), 
-//    document.getElementById('content')
-//);

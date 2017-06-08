@@ -25,7 +25,7 @@ import { batchedSubscribe } from 'redux-batched-subscribe'
  */
 
 // Dev tools //TODO make prod version
-const composeEnhancers = compose //window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = global.window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
