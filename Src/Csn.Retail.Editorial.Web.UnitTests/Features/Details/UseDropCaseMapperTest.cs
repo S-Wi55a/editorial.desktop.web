@@ -82,7 +82,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
                     new ContentSection
                     {
                         SectionType = ContentSectionType.Html,
-                        Content = "<p>Backstage pass to the biggest one-make automotive party of the year."
+                        Content = "<p>Backstage pass to the biggest one-make automotive party of the year.</p>"
                     },
                     new ContentSection
                     {
@@ -112,7 +112,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
                     new ContentSection
                     {
                         SectionType = ContentSectionType.Html,
-                        Content = "<p>M310 backstage pass to the biggest one-make automotive party of the year."
+                        Content = "<p>M310 backstage pass to the biggest one-make automotive party of the year.</p>"
                     },
                     new ContentSection
                     {
