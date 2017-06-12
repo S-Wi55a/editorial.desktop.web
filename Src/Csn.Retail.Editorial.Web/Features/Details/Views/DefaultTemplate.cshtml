@@ -1,5 +1,6 @@
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@using React.Web.Mvc
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 @{
@@ -23,6 +24,7 @@
 
 @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
 
+
 @{ Html.RenderPartial("Partials/SearchBar/_searchBar"); }
 
 <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
@@ -44,4 +46,8 @@
     @{ Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model); }
     @{ Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData); }
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
+    @{
+        // We put this here to guaretee that all compoents that effect the store should be run beforehand
+        Html.RenderPartial("Partials/Redux/_ReduxStore");
+    }
 }

@@ -3,25 +3,25 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
-import SearchBar from 'Js/Modules/Redux/iNav/Containers/searchBar'
+import SearchBarContainer from 'Js/Modules/Redux/iNav/Containers/searchBarContainer'
 
 const store = window.store
 
-const render = SearchBar => {
+const render = (WrappedComponent) => {
     ReactDOM.render(
         <AppContainer searchbar>
             <Provider store={store}>
-                <SearchBar />
+                <WrappedComponent />
             </Provider>
         </AppContainer>,
         document.getElementById('redux-placeholder')
     );
 };
 
-render(SearchBar);
+render(SearchBarContainer);
 
 if (module.hot) {
-    module.hot.accept('Js/Modules/Redux/iNav/Containers/searchBar', () => render(SearchBar));
+    module.hot.accept('Js/Modules/Redux/iNav/Containers/searchBarContainer', () => render(SearchBarContainer));
 }
 
 

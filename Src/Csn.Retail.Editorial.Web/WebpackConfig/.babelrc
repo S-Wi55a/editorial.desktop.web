@@ -1,0 +1,8 @@
+// This local copy of babelrc is meant to transpile the webpack configs. While the root .babelrc is meant for webpacks babel laoder to allow for tree shaking
+
+{
+    "presets": [
+        ["es2015"],
+        // webpack understands the native import syntax, and uses it for tree shaking
+    ]
+}

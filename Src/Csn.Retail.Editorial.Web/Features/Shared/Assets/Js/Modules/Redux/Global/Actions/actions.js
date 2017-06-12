@@ -1,5 +1,4 @@
-﻿/*
- * action types
- */
+﻿//Global Action Type
 
-export const TEST_STATE = 'TEST_STATE'
+//Redux-ui
+export const UPDATE_UI_STATE = '@@redux-ui/UPDATE_UI_STATE';
