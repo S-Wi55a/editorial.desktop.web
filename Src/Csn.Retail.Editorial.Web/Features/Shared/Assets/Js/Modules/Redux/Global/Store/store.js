@@ -1,5 +1,6 @@
-﻿import { createStore, applyMiddleware, compose } from 'redux';
-import { createReducer} from 'Js/Modules/Redux/Global/Reducers/rootReducer'
+﻿import global from 'global-object' 
+import { createStore, applyMiddleware, compose } from 'redux';
+import { createReducer } from 'Js/Modules/Redux/Global/Reducers/rootReducer'
 
 // Middleware
 import thunkMiddleware from 'redux-thunk'
@@ -25,14 +26,14 @@ import { batchedSubscribe } from 'redux-batched-subscribe'
  */
 
 // Dev tools //TODO make prod version
-const composeEnhancers = global.window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 
-
 export function configureStore(preloadedState) {
-    const store = createStore(createReducer(),
+    const store = createStore(
+        createReducer(),
         preloadedState,
         composeEnhancers(
             applyMiddleware(thunkMiddleware, reduxMulti),
@@ -50,8 +51,3 @@ export function injectAsyncReducer(store, name, asyncReducer) {
     store.replaceReducer(createReducer(store.asyncReducers));
 }
 
-// TO test ryvuss when it is public
-//setTimeout(function() {
-//    console.log('starting fetch')
-//    store.dispatch(fetchiNav())
-//}, 2000)

@@ -1,10 +1,16 @@
-﻿import { combineReducers } from 'redux'
+﻿
+import { combineReducers } from 'redux'
 import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
 import { data } from 'Js/Modules/Redux/iNav/Data/data' //Test data //TODO: remove
 import { iNavChildReducer } from 'Js/Modules/Redux/iNav/Reducers/iNavChildReducer'
 import { iNavQueryReducer } from 'Js/Modules/Redux/iNav/Reducers/iNavQueryReducer'
 
-const initState = global.window.iNavState || data
+
+//TODO: get data from backend
+let initState = {}
+if (SERVER) {
+    initState = data
+}
 
 export const iNavParentReducer = (state = initState, action) => {
     switch (action.type) {

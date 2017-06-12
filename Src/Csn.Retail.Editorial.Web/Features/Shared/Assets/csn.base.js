@@ -1,8 +1,9 @@
 ﻿// Common css files
 require('Css/globalStyles.scss');
 
-import { loaded } from 'document-promises/document-promises.js'
-import * as store  from 'Js/Modules/Redux/Global/Store/store.js'
+import { loaded } from 'document-promises/document-promises'
+import * as store  from 'Js/Modules/Redux/Global/Store/store'
+import Immutable from 'immutable'
 
 
 // Dynamically set the public path for ajax/code-split requests
@@ -17,8 +18,16 @@ for (var i = 0; i < scriptsLength; i++) {
     }
 }
 
+
+// Grab the state from a global variable injected into the server-generated HTML
+const preloadedState = window.__PRELOADED_STATE__ 
+
+// Allow the passed state to be garbage-collected
+delete window.__PRELOADED_STATE__
+
+//Because ui uses Immutable or we get an error
+preloadedState.ui = Immutable.fromJS(preloadedState.ui);
+
 //Enable Redux store globally
-window.store = store.configureStore() //Init store
+window.store = store.configureStore(preloadedState) //Init store
 window.injectAsyncReducer = store.injectAsyncReducer
-
-

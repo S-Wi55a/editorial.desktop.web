@@ -13,13 +13,15 @@ var assetsPluginInstance = new AssetsPlugin({
     filename: 'webpack.assets.json',
     path: path.resolve('./'),
     prettyPrint: true,
-    fullPath: false,
-    update: true
+    fullPath: false
 });
 
 export const plugins = (tenant, pageEntries) => {
     return [
         assetsPluginInstance,
+        new webpack.DefinePlugin({
+            SERVER: JSON.stringify(false)
+        }),
         new ExtractTextPlugin({
             filename: isProd ? '[name]-[contenthash].css' : '[name].css',
             allChunks: false

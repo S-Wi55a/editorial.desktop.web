@@ -1,18 +1,13 @@
 ﻿import {ReactServerConnect} from './ReactServerConnect'
-import {testComponent} from './Test'
-import SearchBarTest from './searchBar'
+import {ReduxStore} from 'React/Assets/Js/ReduxStore'
 
-//import 'React/Assets/Js/storeClient'
-//import * as s  from './storeClient'
-//import CategoryItem from 'Js/Modules/Redux/iNav/Components/categoryItem'
-//import SearchBarTest from './searchBar'
-
+// Search Bar component
+import SearchBarContainer from 'Js/Modules/Redux/iNav/Containers/searchBarContainer'
+import {iNavParentReducer} from 'Js/Modules/Redux/iNav/Reducers/iNavParentReducer'
 
 export const Components = {
-    testComponent: ReactServerConnect(testComponent, 'TestComponent'),
-    SearchBarTest: ReactServerConnect(SearchBarTest, 'SearchBar')
-
-    //CategoryItem,
+    SearchBarContainer: ReactServerConnect(SearchBarContainer)('iNav', iNavParentReducer),
+    ReduxStore: ReactServerConnect(ReduxStore)()
 }
 
 

@@ -1,21 +1,20 @@
 ﻿'use strict'
 
+import global from 'global-object' 
 import React from 'react'
 import { Provider } from 'react-redux'
+import * as Store from 'Js/Modules/Redux/Global/Store/store.js'
 
-//import SearchBar from 'Js/Modules/Redux/iNav/Containers/searchBar'
+//Enable Redux store globally
+global.store = Store.configureStore()
+global.injectAsyncReducer = Store.injectAsyncReducer
 
-//const EnhancedComponent = higherOrderComponent(WrappedComponent);
+let ReactServerConnect = store => WrappedComponent => (reducerName, reducer) => {
 
-const store = global.store
-
-let ReactServerConnect = function(store) {
-
-    return (WrappedComponent) => {
-
-        console.log(global.count++)
-        //console.log('Component ' + ReducerName, global.count)
-
+        if (!(reducerName === 'undefiend' && reducer === 'undefiend')) {
+            global.injectAsyncReducer(store, reducerName, reducer) //TODO: Don't like this
+        }
+            
         return (props) => {
 
             return (
@@ -25,11 +24,9 @@ let ReactServerConnect = function(store) {
             );
 
         }
-    }
-
-
+        
 }
 
-ReactServerConnect = ReactServerConnect(store)
+ReactServerConnect = ReactServerConnect(global.store)
 
 export {ReactServerConnect}

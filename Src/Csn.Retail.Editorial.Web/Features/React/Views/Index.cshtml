@@ -10,16 +10,14 @@
 Test React Compoents
 <div id="content"></div>
 
-@Html.React("global.Components.testComponent", new
+@Html.React("global.Components.SearchBarContainer", new
 {
     initalData = 2000
-})
+},
+null, "redux-placeholder")
     
-    @* test if global is shared - modify global in first and check in second *@
-@Html.React("global.Components.testComponent", new
-{
-    initalData = 3000
-})
+@Html.React("global.Components.ReduxStore", new {})
+    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
 @*<script src="~/dist--server/react-server-components.js"></script>*@

@@ -1,4 +1,5 @@
-﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes.js'
+﻿import * as GlobalActions from 'Js/Modules/Redux/Global/Actions/actions'
+import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
 //import fetch from 'isomorphic-fetch'
 
 // Toggle IsSelected
@@ -77,6 +78,11 @@ function receiveiNav(data) {
 
 
 // UI Actions (related to redux ui)
-export const toggleIsActive = () => ({
-    type: ActionTypes.TOGGLE_IS_ACTIVE
+export const toggleIsActive = (key, name, value) => ({
+    type: GlobalActions.UPDATE_UI_STATE,
+    payload: {
+        key,
+        name,
+        value
+    }
 })
