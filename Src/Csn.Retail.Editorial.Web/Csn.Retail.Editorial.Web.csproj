@@ -438,6 +438,7 @@
     <Compile Include="Features\Details\GetArticleResponse.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Details\Loggers\ArticleNotFoundLogger.cs" />
+    <Compile Include="Features\Details\Mappings\SpecDataMapper.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseResolver.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
@@ -591,9 +592,10 @@
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\NativeAdstest\nativeAds.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--tabOrModal.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--modal-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\SponsoredArticles\sponsoredArticles.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
@@ -852,6 +854,9 @@
     <Content Include="Features\React\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\SearchBar\_searchBar.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Redux\_ReduxStore.cshtml" />
+    <Content Include="Features\Details\Assets\Css\Modules\SponsoredArticles\_sponsoredArticles.scss" />
+    <Content Include="Features\Details\Views\Partials\Content\_SponsoredArticleTab.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

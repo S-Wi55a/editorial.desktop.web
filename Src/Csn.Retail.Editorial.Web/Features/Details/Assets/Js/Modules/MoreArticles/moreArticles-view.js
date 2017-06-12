@@ -8,16 +8,16 @@ const container = (data) => {
 
     const filterView = (str, filter, index) => {
         if (index === 0) {
-            return `<a href="${filter.uri || ''}" class="more-articles__filter more-articles__filter--active">${filter.title || ''}</a>`
+            return `<a href="${filter.uri || ''}" class="more-articles__filter more-articles__filter--active" data-webm-clickvalue="view-all-articles">${filter.title || ''}</a>`
         } else if (index === filtersLength - 1) {
-            return `<a href="${filter.uri || ''}" class="more-articles__filter more-articles__filter--last">${filter.title}</a>`
+            return `<a href="${filter.uri || ''}" class="more-articles__filter more-articles__filter--last" data-webm-clickvalue="view-all-articles">${filter.title}</a>`
         } else {
-            return `<a href="${filter.uri || ''}" class="more-articles__filter">${filter.title || ''}</a>`
+            return `<a href="${filter.uri || ''}" class="more-articles__filter" data-webm-clickvalue="view-all-articles">${filter.title || ''}</a>`
         }
     } 
 
     return `
-        <div class="more-articles">
+        <div class="more-articles" data-webm-section="more-articles">
             <div class="container">
                 <div class="more-articles__filters">
                     ${data.moreArticleItems.map((filter, index) => filterView`${filter}${index}`).join('')}
@@ -28,9 +28,9 @@ const container = (data) => {
                 </div>
 
                 <div class="more-articles__nav">
-                    <button class="more-articles__button more-articles__button--show-hide">${data.headings.showHeading || 'Show'}</button>
-                    <button class="more-articles__nav-button more-articles__nav-button--prev">Prev</button>
-                    <button class="more-articles__nav-button more-articles__nav-button--next" 
+                    <button class="more-articles__button more-articles__button--show-hide" data-webm-clickvalue="hide">${data.headings.showHeading || 'Show'}</button>
+                    <button class="more-articles__nav-button more-articles__nav-button--prev" data-webm-clickvalue="previous">Prev</button>
+                    <button class="more-articles__nav-button more-articles__nav-button--next" data-webm-clickvalue="next"
                         data-more-articles-path="${moreArticlesPath || ''}" 
                         data-more-articles-query="${data.moreArticleItems[0].uri || ''}">Next</button>
                 </div>
@@ -52,7 +52,7 @@ const article = (data) => {
         return (`
             <div class="more-articles__slide swiper-slide">
                 <div class="more-article">
-                    <a class="more-article__link-container" href="${item.url || ''}">
+                    <a class="more-article__link-container" data-webm-clickvalue="click-post" href="${item.url || ''}">
                         <div class="more-article__image">
                             <img src="${item.image.url || ''}?width=140&height=93" alt="${item.image.alternateText || ''}" />
                         </div>

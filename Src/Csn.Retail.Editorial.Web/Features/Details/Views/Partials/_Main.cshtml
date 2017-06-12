@@ -4,11 +4,20 @@
     <div>
         <div class="cf pos-r">
             <div class="article__dateAndTypeContainer">
-                <div class="article__type article__type--@Model.ArticleType.ToLower().Replace(' ', '-')">@Model.ArticleType</div>
+                @{
+                    if (Model.IsSponsoredArticle)
+                    {
+                        Html.RenderPartial("Partials/Content/_SponsoredArticleTab");
+                    }
+                    else
+                    {
+                        @:<div class="article__type article__type--@Model.ArticleType.ToLower().Replace(' ', '-')">@Model.ArticleType</div>
+                    }
+                }
                 <div class="article__date">@Model.DateAvailable</div>
             </div>
 
-            <div class="article__share article__share--top">
+            <div class="article__share article__share--top" data-webm-section="social-sharing-top">
                 @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
             </div>
         </div>
@@ -24,7 +33,7 @@
         </div>
         @{ Html.RenderPartial("Partials/Content/_Location_Type_Model", Model); }
         @{ Html.RenderPartial("Partials/Content/_ArticleBody", Model); }
-        <div class="article__share article__share--bottom cf">
+        <div class="article__share article__share--bottom cf" data-webm-section="social-sharing-btm">
             @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
         </div>
         @{ Html.RenderPartial("Partials/Content/_Contributors", Model); }

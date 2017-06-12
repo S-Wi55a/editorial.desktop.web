@@ -3,7 +3,7 @@
 .spec-module .spec-item {
 
     @include clearfix;
-    text-align: center;
+    text-align: left;
     font-size: 0;
     //reset
     p {
@@ -13,6 +13,7 @@
 
     &__column-container {
         position: relative;
+        min-height: 400px;
     }
 
     &__column {
@@ -33,13 +34,13 @@
     &__make {
         font-size: $font-size-h4;
         font-weight: $font-weight-600;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
     }
 
     &__model {
         font-size: $font-size-h2;
         font-weight: $font-weight-300;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         padding-top: 5px;
         padding-bottom: 10px;
     }
@@ -47,8 +48,8 @@
     &__variant {
         font-size: $font-size-h3;
         font-weight: $font-weight-300;
-        color: $cs-dark-grey;
-        border-top: 1px solid $cs-lighter-grey;
+        color: $cs-dark-grey-1;
+        border-top: 1px solid $cs-light-grey-2;
         margin-top: 10px;
         padding: 10px 0;
         //height: 90px;
@@ -76,9 +77,9 @@
 
     &__price-disclaimer {
         font-size: $font-size-smaller;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         font-weight: $font-weight-400;
-        display: inline-block;
+        display: block;
         cursor: pointer;
         padding-left: 5px;
 
@@ -88,7 +89,7 @@
     }
 
     &__price-container {
-        //margin-top: 20px;
+        margin-top: 10px;
     }
 
     &__price-item {
@@ -110,7 +111,7 @@
                 position: absolute;
                 top: 0;
                 width: 100%;
-                background-color: $cs-lighter-grey;
+                background-color: $cs-light-grey-2;
                 height: $sm-rail-height;
                 border-radius: 6px;
             }
@@ -150,12 +151,12 @@
 
     &__spec-item-value {
         font-size: $font-size-h5;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         font-weight: $font-weight-600;
         margin: 5px 0 15px;
     }
     //ANCAP Rating
-    &__spec-item-value:last-child {
+    &__spec-item-value.safety-rating-ancap {
         font-size: 0;
 
         &::before,
@@ -164,6 +165,7 @@
             font-size: $font-size-h5;
             margin-top: 5px;
             display: inline-block;
+            vertical-align: middle;
         }
 
         &::before {
@@ -171,7 +173,7 @@
         }
 
         &::after {
-            color: $cs-lighter-grey;
+            color: $cs-light-grey-2;
             margin-left: 4px;
         }
 
@@ -241,7 +243,7 @@
         width: calc(100% - 60px);
         margin: 15px auto 0;
         padding: 30px 0 0;
-        border-top: 1px solid $cs-lightest-grey;
+        border-top: 1px solid $cs-light-grey-2;
 
         & > div {
             margin-left: -15px;
@@ -269,7 +271,19 @@
 
         &.drive {
             &::before {
-                content: $icon-car-front-sm;
+                content: $icon-default-drive-icon;
+            }
+
+            &[data-value="Four%20Wheel%20Drive"]::before {
+                content: $icon-all-wheel-icon;
+            }
+
+            &[data-value="Front%20Wheel%20Drive"]::before {
+                content: $icon-front-wheel-icon;
+            }
+
+            &[data-value="Rear%20Wheel%20Drive"]::before {
+                content: $icon-rear-wheel-icon;
             }
         }
 
@@ -303,13 +317,11 @@
             }
         }
 
-
         &.doors {
             &::before {
                 content: $icon-door-icon;
             }
         }
-
 
         &.seats {
             &::before {
@@ -318,9 +330,34 @@
         }
 
         &.safety-rating-ancap {
+            display: inline-block;
+            vertical-align: middle;
+
+
             &::before {
                 content: $icon-safety-icon;
             }
+        }
+    }
+
+    &__spec-item-title.safety-rating-ancap {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 5px 0 15px;
+
+        &::before {
+            font-family: $font-family-icons;
+            font-size: $font-size-h3;
+            display: inline-block;
+            color: $cs-grey;
+            vertical-align: middle;
+            margin-right: 0px;
+            font-weight: 400;
+        }
+
+
+        &::before {
+            content: $icon-safety-icon;
         }
     }
 }

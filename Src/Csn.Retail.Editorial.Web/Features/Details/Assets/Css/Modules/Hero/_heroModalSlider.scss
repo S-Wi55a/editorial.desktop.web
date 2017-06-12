@@ -64,7 +64,7 @@
             text-indent: -9999px;
 
             &:hover:not([data-is-disabled="true"]) {
-                background: rgba($cs-dark-grey, 0.8);
+                background: rgba($cs-dark-grey-1, 0.8);
 
                 &:before {
                     color: $cs-white;

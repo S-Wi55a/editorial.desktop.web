@@ -2,7 +2,7 @@
 
 @if (Model?.Contributors != null && Model.Contributors.Any())
 {
-    <div class="article__authors cf">
+    <div class="article__authors cf" data-webm-section="author-info">
         @foreach (var contributor in Model.Contributors)
         {
             <div class="author">
@@ -13,7 +13,7 @@
                     <div class="author__description">@contributor.Description</div>
                     <div class="author__name">@contributor.Name</div>
                     @*<div class="author__title">Author Title</div>*@
-                    <a class="author__links" href="@contributor.LinkUrl">@contributor.ButtonHeading</a>
+                    <a class="author__links" href="@contributor.LinkUrl" data-webm-clickvalue="see-all-editor-articles">@contributor.ButtonHeading</a>
                 </div>
 
             </div>

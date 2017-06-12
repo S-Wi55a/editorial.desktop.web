@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string SubHeading { get; set; }
         public string Summary { get; set; }
         public string ArticleType { get; set; }
-        public string IsSponsoredArticle { get; set; }
+        public bool IsSponsoredArticle { get; set; }
         public string SubType { get; set; }
         public string ReviewLocation { get; set; }
         public string MakeModelHeading { get; set; }
@@ -39,7 +39,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public bool UseDropCase { get; set; }
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
-
     }
 
     public class HeroSection
@@ -100,4 +99,17 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string ArticleUrl { get; set; }
         public string Title { get; set; }
     }
+
+
+    public class SpecData
+    {
+        public string MinLabel { get; set; }
+        public string MaxLabel { get; set; }
+        public string MoreLabel { get; set; }
+        public List<SpecDataItem> Items { get; set; }
+        public string Title1 { get; set; }
+        public string Title2 { get; set; }
+        public string Title3 { get; set; }
+    }
+
 }

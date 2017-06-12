@@ -13,8 +13,8 @@
     $category-container-height: 500px;
 
     border-top: 5px solid $cs-primary;
-    border-bottom: 1px solid $cs-lighter-grey;
-    background-color: $cs-lightest-grey;
+    border-bottom: 1px solid $cs-light-grey-3;
+    background-color: $cs-light-grey-3;
     font-size: 0;
     height: $search-bar-height;
     z-index: 1;
@@ -36,7 +36,7 @@
 
         width: $toggle-button-width;
         height: $search-bar-height;
-        border-left: 1px solid $cs-lighter-grey;
+        border-left: 1px solid $cs-light-grey-2;
         position: absolute;
         left: -1 * $toggle-button-width;
     }
@@ -53,8 +53,8 @@
         transition-property: all;
         transition-duration: .5s;
         transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-        border-right: 1px solid $cs-lighter-grey;
-        border-left: 1px solid $cs-lighter-grey;
+        border-right: 1px solid $cs-light-grey-2;
+        border-left: 1px solid $cs-light-grey-2;
     }
 
     &.isActive {
@@ -78,7 +78,7 @@
         min-height: $category-container-height + $search-bar-height;
 
         &:nth-of-type(-n+2) {
-            border-right: 1px solid $cs-lighter-grey;
+            border-right: 1px solid $cs-light-grey-2;
         }
 
         &:nth-of-type(-n+3) {
@@ -90,7 +90,7 @@
             height: $search-bar-height;
             line-height: $search-bar-height;
             padding: 0 20px;
-            background-color: $cs-lightest-grey;
+            background-color: $cs-light-grey-3;
             font-size: 18px;
             font-weight: 600;
             z-index: 1;
@@ -142,8 +142,8 @@
 
         &::before {
             content: '';
-            background-color: $cs-lightest-grey;
-            border: 1px solid $cs-light-grey;
+            background-color: $cs-light-grey-3;
+            border: 1px solid $cs-light-grey-2;
             border-radius: 9999px;
             width: 20px;
             height: 20px;
@@ -155,7 +155,7 @@
         &__link {
             display: inline-block;
             vertical-align: middle;
-            color: $cs-dark-grey;
+            color: $cs-dark-grey-1;
             width: calc(100% - 40px - #{$count-container-width}); // 100% - checkmark width+margin - $count-container-width
             text-decoration: none;
         }
@@ -186,8 +186,8 @@
         bottom: 0;
         width: 100%;
         height: $search-bar-form-action-height;
-        background-color: $cs-lightest-grey;
-        border: 1px solid $cs-lighter-grey;
+        background-color: $cs-light-grey-3;
+        border: 1px solid $cs-light-grey-2;
         text-align: right;
         line-height: $search-bar-form-action-height;
         padding: 0 20px;

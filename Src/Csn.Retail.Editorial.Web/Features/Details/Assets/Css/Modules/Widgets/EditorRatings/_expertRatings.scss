@@ -41,13 +41,13 @@
         height: 15px;
         border: none;
         background: none;
-        background-color: rgba($cs-lighter-grey, 0.59);
+        background-color: rgba($cs-light-grey-2, 0.59);
         border-radius: 100px;
 
 
         &::-webkit-meter-bar {
             background: none;
-            background-color: rgba($cs-lighter-grey, 0.59);
+            background-color: rgba($cs-light-grey-2, 0.59);
             border-radius: 100px;
 
         }
@@ -79,7 +79,7 @@
         padding: 25px 0 30px 0;
         height: 120px + 25px + 30px;
         .overall-rating-graph__maxValueStroke{
-            stroke: $cs-lighter-grey;
+            stroke: $cs-light-grey-2;
         }
         .overall-rating-graph__valueStroke {
             stroke: $cs-primary;

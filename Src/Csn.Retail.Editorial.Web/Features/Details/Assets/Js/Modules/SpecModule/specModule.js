@@ -1,23 +1,18 @@
 ﻿import React from 'react'
 import update from 'immutability-helper'
-import * as Ajax from 'Js/Modules/Ajax/ajax.js' //TODO: change to fetch
-import Slider, { Range } from 'rc-slider'
-import * as View from 'Js/Modules/SpecModule/specModule--view.js'
+import * as Ajax from 'Js/Modules/Ajax/ajax.js'
+import Slider from 'rc-slider'
+import * as View from 'Js/Modules/SpecModule/specModule--modal-view.js'
 import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
 
 const SpecificationsItem_DD = (props) => {
 
     const iconClassName = props.item.title ? props.item.title.replace(/\s+/g, "-").replace(/\(|\)/g, "").toLowerCase() : '';
 
-    if (props.last) {
-        return (
-            <dd className={'spec-item__spec-item-value ' + iconClassName} data-value={props.item.value}>{props.item.value}</dd>
-        )
-    } else {
-        return (
-            <dd className={'spec-item__spec-item-value ' + iconClassName}>{props.item.value}</dd>
-        )
-    }
+    return (
+        <dd className={'spec-item__spec-item-value ' + iconClassName} data-value={encodeURI(props.item.value)}>{props.item.value}</dd>
+    )
+
 
 }
 
@@ -31,18 +26,13 @@ const SpecificationsItem_DT = (props) => {
 } 
 
 const Specifications = (props) => {
-    const listLength = props.data.items.length;
 
     return (
         <div>
             <h3 className="spec-item__spec-item-list-heading">{props.data.title}</h3>
             <dl className="spec-item__spec-item-list">
-                {props.data.items.map((item, index) => {
-                        if (index === listLength - 1) {
-                            return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} last={true} />]
-                        } else {
-                            return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} />]
-                        }
+                {props.data.items.map((item) => {
+                        return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} />]
                     }
                 )}
             </dl>
@@ -72,9 +62,9 @@ const ThirdPartyOffer = (props) => {
             const iframe = `<iframe src=${props.data.formUrl}"></iframe>`
             tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(p,e) => {
                 props.disclaimerHandler(titleNoSpace, p, e)
-            }} className="third-party-offer__link">{props.data.getQuoteText}</span>
+            }} className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</span>
         } else {
-            tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link">{props.data.getQuoteText}</a>
+            tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</a>
         }
 
     }
@@ -88,7 +78,7 @@ const ThirdPartyOffer = (props) => {
                     <span className="third-party-offer__price">
                         {props.data.amount}
                     </span>
-                    <span className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
+                    <span data-webm-clickvalue={'disclaimer-'+titleNoSpace} className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
                         {props.data.paymentFrequency}
                     </span>
                 </div>
@@ -103,9 +93,11 @@ const ThirdPartyOffer = (props) => {
 const Price = (props) => {
     if (props.data.priceNew) {
         return (
-            <div>
-                <p className="spec-item__price spec-item__price--price-new">{props.data.priceNew.price}</p>
-                <p className="spec-item__price-disclaimer" data-disclaimer={encodeURI(props.data.priceNew.disclaimerText)} onClick={props.disclaimerHandler}>{props.data.priceNew.disclaimerTitle}</p>
+            <div className="spec-item__price-container">
+                <div className="spec-item__price-item">
+                    <p className="spec-item__price-label spec-item__price-disclaimer" data-disclaimer={encodeURI(props.data.priceNew.disclaimerText)} onClick={props.disclaimerHandler}>{props.data.priceNew.disclaimerTitle}</p>
+                    <p className="spec-item__price spec-item__price--price-new">{props.data.priceNew.price}</p>
+                </div>
            </div>
         )
     } else {
@@ -115,11 +107,6 @@ const Price = (props) => {
                 <div className="spec-item__price-item">
                     <div className="spec-item__price-label">{props.data.pricePrivate.heading}</div>
                     <div className="spec-item__price spec-item__price--price-private">{props.data.pricePrivate.text}</div>
-
-                </div>
-                <div className="spec-item__price-item">
-                    <div className="spec-item__price-label">{props.data.priceTradeIn.heading}</div>
-                    <div className="spec-item__price spec-item__price--price-trade-in">{props.data.priceTradeIn.text}</div>
                 </div>
             </div>
         )
@@ -128,6 +115,13 @@ const Price = (props) => {
 
 //Content
 const SpecModuleItem = (props) => {
+
+    let marks = {
+        0:props.scaffolding.title2
+    }
+
+    marks[props.sliderLength - 1] = props.scaffolding.title3
+
     return (
         <div className="spec-item ">
             <div className="spec-item__column-container">
@@ -136,9 +130,9 @@ const SpecModuleItem = (props) => {
                 <p className="spec-item__model">{props.data.title2}</p>
                 <p className="spec-item__variant">{props.data.title3}</p>
                 <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
-                <div className="spec-item__selector">
-                    <p className="spec-item__selector-label"></p>
-                    <Slider dots min={0} max={props.sliderLength - 1} onChange={props.sliderHandler} />
+                <div className="spec-item__selector" data-webm-clickvalue="change-variant">
+                    <p className="spec-item__selector-label">{props.scaffolding.title1}</p>
+                    <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onChange={props.sliderHandler} />
                 </div>
             </div>
             <div className="spec-item__column spec-item__column--2">
@@ -242,11 +236,14 @@ class SpecModule extends React.Component {
 
     render() {
 
+        const {title1, title2, title3} = this.props.data
+
         return (
             <div className={this.state.isFetching ? "spec-module loading" : "spec-module"}>
                 {this.state.items[this.state.activeItemIndex] ?
                     <SpecModuleItem
                         data={this.state.items[this.state.activeItemIndex]}
+                        scaffolding={{title1, title2, title3}}
                         disclaimerHandler={this.disclaimerHandler}
                         sliderLength={this.state.urls.length}
                         sliderHandler={this.sliderHandler} />

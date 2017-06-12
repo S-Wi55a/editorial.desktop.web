@@ -131,7 +131,7 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
 
 // Hr
 @mixin hr() {
-    border-bottom: 1px solid $cs-lighter-grey;
+    border-bottom: 1px solid $cs-light-grey-2;
     border-left: none;
     border-right: none;
     border-top: none;

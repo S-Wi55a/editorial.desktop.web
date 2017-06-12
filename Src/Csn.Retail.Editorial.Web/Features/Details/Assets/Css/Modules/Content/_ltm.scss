@@ -1,5 +1,8 @@
 ﻿.ltm {
     margin: 15px auto 30px;
+    border: 1px solid $cs-light-grey-2;
+    border-radius: $cs-border-radius;
+
 
     @include breakpoint($screen-lg) {
         margin: 30px auto 45px;
@@ -8,8 +11,11 @@
     &__item {
         display: inline-block;
         padding: 0 30px;
-        border-left: 1px solid $cs-lightest-grey;
-        margin-top: 15px;
+        margin: 15px auto;
+
+        &:nth-of-type(n+2) {
+            border-left: 1px solid $cs-light-grey-2;
+        }
     }
 
     &__heading {
@@ -23,7 +29,7 @@
 
     &__value {
         font-size: $font-size-h5;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         font-weight: $font-weight-400;
 
         @include breakpoint($screen-lg) {
