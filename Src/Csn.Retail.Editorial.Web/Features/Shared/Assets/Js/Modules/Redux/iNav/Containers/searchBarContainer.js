@@ -5,9 +5,21 @@ import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
 import SearchBar from 'Js/Modules/Redux/iNav/Components/searchBar'
 
 
+function getiNavNodes(iNav) {
+
+    //Check if it has sub categories
+    //TODO: add checks for iNav.iNav.nodes
+    const nodesfiltered = iNav.iNav.nodes.filter(function (node) {
+        return !!node.facets 
+    })
+
+    return nodesfiltered
+}
+
+
 const mapStateToProps = (state) => {
     return {
-        iNav: state.iNav
+        nodes: getiNavNodes(state.iNav)
     }
 }
 
@@ -19,7 +31,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 Actions.updateQuery()
                 ])
         },
-        toggleActiveState: () => {
+        toggleIsActive: () => {
             dispatch(Actions.toggleIsActive(ownProps.uiKey, 'isActive', !ownProps.ui.isActive))
         }
     }

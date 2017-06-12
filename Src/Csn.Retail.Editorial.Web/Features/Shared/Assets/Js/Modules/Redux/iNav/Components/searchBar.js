@@ -7,32 +7,19 @@ if (!SERVER) {
     require('Js/Modules/Redux/iNav/css/iNav.scss')  
 }
 
-const SearchBar = (props) => {
+const SearchBar = ({ nodes, toggleSelected, toggleIsActive, ui }) => {
 
-        const { iNav: { iNav: { nodes } } } = props
-        const { toggleSelected, toggleActiveState } = props
-        const { isActive } = props.ui 
-
-        //Check if it has sub categories //TODO do this in connect and then reselect
-        const nodesfiltered = nodes.filter(function (node) {
-            return !!node.facets 
-        })
-
-        const categories = nodesfiltered.map((node) => {
-            return (
-                <SearchBarCategory key={node.displayName} {...node} toggleSelected={toggleSelected} />
-            )
-        })
-
-        const activeClass = isActive ? 'isActive' : ''
+        const activeClass = ui.isActive ? 'isActive' : ''
 
         return (
             <div className={'searchbar ' + activeClass}>
                 <div className="container">
                     <div className="searchbar__inner-wrapper">
-                        <button className="searchbar__toggle-button" onClick={toggleActiveState}></button>
+                        <button className="searchbar__toggle-button" onClick={toggleIsActive}></button>
                         <div className="searchbar__category-container">
-                            {categories}
+                            {nodes.map((node) => {
+                                return (<SearchBarCategory key={node.displayName} {...node} toggleSelected={toggleSelected} />)
+                            })}
                         </div>
                         <SearchBarFormAction/>
                     </div>
