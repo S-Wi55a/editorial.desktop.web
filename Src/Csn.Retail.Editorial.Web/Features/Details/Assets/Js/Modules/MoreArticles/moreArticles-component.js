@@ -5,8 +5,8 @@ import * as View from 'Js/Modules/MoreArticles/moreArticles-view.js'
 import ScrollMagic from 'ScrollMagic'
 
 let isActive = false
-let showText = csn_editorial.moreArticles.headings.showHeading
-let hideText = csn_editorial.moreArticles.headings.hideHeading
+let showText = csn_editorial.moreArticles.showText
+let hideText = csn_editorial.moreArticles.hideText
 
 const customEvent = new Event('csn_editorial.moreArticles.ready');
 
@@ -159,22 +159,13 @@ let filterHandler = (e, ...args) => {
     }
 }
 
-
 // handlers
 let buttonHandler = (scope, slider, firstSlide, visibleSlides) => {
     // Prev logic
-    if (slider.activeIndex <= firstSlide) {
-        updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true')
-    } else {
-        updateButton(scope.moreArticlesPrevCtrl, 'disabled')
-    }
+    updateButton(scope.moreArticlesPrevCtrl, 'disabled', slider.activeIndex <= firstSlide ? 'true' : '');
 
     //Next logic
-    if (slider.activeIndex + visibleSlides >= slider.slides.length) {
-        updateButton(scope.moreArticlesNextCtrl, 'disabled', 'true')
-    } else {
-        updateButton(scope.moreArticlesNextCtrl, 'disabled')
-    }
+    updateButton(scope.moreArticlesNextCtrl, 'disabled', slider.activeIndex + visibleSlides >= slider.slides.length ? 'true' : '');
 }
 
 let nextButtonHandler = (slider, offset, cb) => {

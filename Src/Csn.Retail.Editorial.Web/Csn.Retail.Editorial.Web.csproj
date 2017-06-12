@@ -404,7 +404,6 @@
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
     <Compile Include="Features\Shared\Helpers\UserContextHelper.cs" />
     <Compile Include="Features\Shared\Models\MediaMotiveData.cs" />
-    <Compile Include="Features\Shared\Models\MoreArticleItem.cs" />
     <Compile Include="Features\Shared\Models\SeoData.cs" />
     <Compile Include="Features\Shared\Models\WebTrendData.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />

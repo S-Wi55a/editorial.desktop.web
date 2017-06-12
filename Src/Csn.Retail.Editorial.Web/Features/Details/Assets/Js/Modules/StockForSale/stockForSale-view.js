@@ -35,7 +35,7 @@ const listItem = (data) => {
 
     const key = 'items';
 
-    if (data[key].length) {
+    if (data && data[key].length) {
         const template = data[key].map((item) => {
             return (`
                 <li class="stock-for-sale-item">
@@ -53,19 +53,13 @@ const listItem = (data) => {
                     </ul>
                     <p class="stock-for-sale-item__location">${item.location || ''}</p>
                 </li>
-                `)
-        })
+                `);
+        });
 
         return template.reduce((prev, current) => {
-            return prev + current
-        })
-
-    } else {
-
-        return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${data.responseMessage || ''}</li>`
+            return prev + current;
+        });
     }
-
-
 }
 
 
