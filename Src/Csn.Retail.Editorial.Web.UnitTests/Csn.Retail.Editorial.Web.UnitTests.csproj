@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Features\Details\MappingConfigurationTest.cs" />
+    <Compile Include="Features\Details\UseDropCaseMapperTest.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -383,7 +383,7 @@
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Details\Loggers\ArticleNotFoundLogger.cs" />
     <Compile Include="Features\Details\Mappings\SpecDataMapper.cs" />
-    <Compile Include="Features\Details\Mappings\UseDropCaseResolver.cs" />
+    <Compile Include="Features\Details\Mappings\UseDropCaseMapper.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
     <Compile Include="Features\Details\GetArticleQuery.cs" />
