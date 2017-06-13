@@ -120,12 +120,7 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
     line-height: 1.2;
 
     &:before, &:before {
-        content: "“";
         margin-left: -.5em;
-    }
-
-    &:after, &:after {
-        content: "”";
     }
 }
 

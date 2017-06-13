@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Details.Loggers;
+using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
 
@@ -14,13 +13,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     {
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IEventDispatcher _eventDispatcher;
-        private readonly IArticleNotFoundLogger _logger;
 
-        public DetailsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher, IArticleNotFoundLogger logger)
+        public DetailsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher)
         {
             _queryDispatcher = queryDispatcher;
             _eventDispatcher = eventDispatcher;
-            _logger = logger;
         }
 
         [Route("editorial/details/{pageName:regex(^.*-\\d+/?$)}")]
@@ -44,18 +41,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                 return View("DefaultTemplate", response.ArticleViewModel);
             }
 
-            var httpStatusCode = HttpStatusCode.InternalServerError;
+            var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
+            errorsController.ControllerContext = new ControllerContext(this.Request.RequestContext, errorsController);
 
-            if (response.HttpStatusCode == HttpStatusCode.NotFound)
-            {
-                _logger.Log(HttpContext.Request.Url.ToString());
-                httpStatusCode = HttpStatusCode.NotFound;
-            }
-
-            Response.StatusCode = (int)httpStatusCode;
-            Response.TrySkipIisCustomErrors = true;
-
-            return View("~/Features/Errors/Views/ErrorTemplate.cshtml", new ErrorViewModel() { HttpStatusCode = httpStatusCode });
+            return await (response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404() : errorsController.ErrorGeneric());
         }
     }
 
