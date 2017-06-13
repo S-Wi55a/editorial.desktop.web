@@ -1,17 +1,17 @@
 ﻿using Csn.Logging;
 
-namespace Csn.Retail.Editorial.Web.Features.Details.Loggers
+namespace Csn.Retail.Editorial.Web.Features.Errors
 {
-    public interface IArticleNotFoundLogger
+    public interface IUrlNotFoundLogger
     {
         void Log(string requestUrl);
     }
 
-    public class ArticleNotFoundLogger : IArticleNotFoundLogger
+    public class UrlNotFoundLogger : IUrlNotFoundLogger
     {
         private readonly ILogger _logger;
 
-        public ArticleNotFoundLogger(ILogger logger)
+        public UrlNotFoundLogger(ILogger logger)
         {
             _logger = logger;
         }
