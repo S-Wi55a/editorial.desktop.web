@@ -2,12 +2,9 @@
 require('./css/details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
-console.log("In DEtails: ", Promise)
-
 
 //import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
-
 
 var thenify = function thenify(type, readyState) {
     return new Promise(function (resolve) {

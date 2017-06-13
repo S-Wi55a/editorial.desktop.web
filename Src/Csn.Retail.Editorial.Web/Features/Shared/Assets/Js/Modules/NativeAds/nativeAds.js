@@ -1,4 +1,6 @@
-﻿// get required parameters from query string
+﻿import CustomEvent from 'custom-event'
+
+// get required parameters from query string
 var siteName = csn_editorial.nativeAds.siteName
 const areaName = csn_editorial.nativeAds.areaName
 const makeModel = csn_editorial.nativeAds.makeModel
@@ -93,7 +95,7 @@ function nativeAds($, placements, registeredEvents) {
 
     // Need to run once
     registeredEvents.forEach((event) => {
-        const e = new Event(event);
+        const e = new CustomEvent(event);
         window.dispatchEvent(e)
     })
 
