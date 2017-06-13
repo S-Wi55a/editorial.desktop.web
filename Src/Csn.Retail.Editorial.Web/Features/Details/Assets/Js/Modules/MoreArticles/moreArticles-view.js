@@ -2,18 +2,14 @@
 
 const container = (data) => {
 
-    const filtersLength = data.filters.length;
     const moreArticlesPath = proxy;
 
-
     const filterView = (str, filter) => {
-            return `<a class="more-articles__filter more-articles__filter--active" data-webm-clickvalue="view-${filter.title}">${filter.title}</a>`;
-        //} else if (index === filtersLength - 1) {
-            //return `<a href="${filter.uri || ''}" class="more-articles__filter more-articles__filter--last" data-webm-clickvalue="view-all-articles">${filter.title}</a>`
+            return `<div class="more-articles__filter more-articles__filter--active" data-webm-clickvalue="view-${encodeURI(filter.title.toLowerCase())}">${filter.title}</div>`;
     }
 
     const linkView = (str, link) => {
-        return `<a href="${link.uri}" class="more-articles__link more-articles__link--last" data-webm-clickvalue="view-${link.text}">${link.text}</a>`;
+        return `<a href="${link.uri}" class="more-articles__link more-articles__link--last" data-webm-clickvalue="view-${encodeURI(link.text.toLowerCase())}">${link.text}</a>`;
     }
 
     return `

@@ -162,10 +162,10 @@ let filterHandler = (e, ...args) => {
 // handlers
 let buttonHandler = (scope, slider, firstSlide, visibleSlides) => {
     // Prev logic
-    updateButton(scope.moreArticlesPrevCtrl, 'disabled', slider.activeIndex <= firstSlide ? 'true' : '');
+    updateButton(scope.moreArticlesPrevCtrl, 'disabled', slider.activeIndex <= firstSlide ? 'true' : undefined);
 
     //Next logic
-    updateButton(scope.moreArticlesNextCtrl, 'disabled', slider.activeIndex + visibleSlides >= slider.slides.length ? 'true' : '');
+    updateButton(scope.moreArticlesNextCtrl, 'disabled', slider.activeIndex + visibleSlides >= slider.slides.length ? 'true' : undefined);
 }
 
 let nextButtonHandler = (slider, offset, cb) => {
@@ -177,16 +177,8 @@ let nextButtonHandler = (slider, offset, cb) => {
 
 let buttonShowHideHandler = (scope) => {
     //set user prefernce here
-    if (scope.self.classList.contains('show')) {
-        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
-        isActive = true
-    } else if (isActive) {
-        isActive = false
-        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
-    } else {
-        toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)])
-    }
-
+    isActive = scope.self.classList.contains('show');
+    toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]);
 }
 
 // Filters
@@ -212,27 +204,27 @@ let scrollMagic = (scope) => {
     }
 
     // Set scene
-    let moreArticleScene1 = new ScrollMagic.Scene({
-            triggerElement: triggerElement,
-            triggerHook: 0,
-            reverse: false
-        })
-        .on("enter", toggleClass.bind(null, scope.self, 'ready'))
-        .addTo(window.scrollMogicController);
+    new ScrollMagic.Scene({
+        triggerElement: triggerElement,
+        triggerHook: 0,
+        reverse: false
+    })
+    .on("enter", toggleClass.bind(null, scope.self, 'ready'))
+    .addTo(window.scrollMogicController);
 
-    let moreArticleScene2 = new ScrollMagic.Scene({
-            triggerElement: triggerElement,
-            triggerHook: triggerHook,
-            offset: offset
+    new ScrollMagic.Scene({
+        triggerElement: triggerElement,
+        triggerHook: triggerHook,
+        offset: offset
+    })
+    .on("update",
+        function(e) {
+            e.target.controller().info("scrollDirection") === 'REVERSE' && !isActive ?
+                this.trigger("enter") :
+                null;
         })
-        .on("update",
-            function(e) {
-                e.target.controller().info("scrollDirection") === 'REVERSE' && !isActive ?
-                    this.trigger("enter") :
-                    null;
-            })
-        .on("enter", scrollHandler.bind(null, scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]))
-        .addTo(window.scrollMogicController);
+    .on("enter", scrollHandler.bind(null, scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]))
+    .addTo(window.scrollMogicController);
 }
 
 // Main
