@@ -1,6 +1,10 @@
-﻿@using React.Web.Mvc
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@using React.Web.Mvc
 @{
     Layout = null;
+    var tenantName = Html.CurrentTenant().Name.ToLower();
+
 }
 <html>
 <head>
@@ -8,20 +12,21 @@
 </head>
 <body>
 Test React Compoents
-<div id="content"></div>
+<div id="redux-placeholder"></div>
 
-@Html.React("global.Components.SearchBarContainer", new
+@*@Html.React("global.Components.SearchBarContainer", new
 {
     initalData = 2000
 },
 null, "redux-placeholder")
     
-@Html.React("global.Components.ReduxStore", new {})
+@Html.React("global.Components.ReduxStore", new {})*@
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
-@*<script src="~/dist--server/react-server-components.js"></script>*@
-@Html.ReactInitJavaScript()
+@*@Html.AssetJs("csn.base--" + tenantName)
+@Html.AssetJs("vendor--" + tenantName)
+@Html.AssetJs("csn.common--" + tenantName)*@
+<script src="~/dist--server/react-server-components.js"></script>
+@*@Html.ReactInitJavaScript()*@
 
 </body>
 </html>

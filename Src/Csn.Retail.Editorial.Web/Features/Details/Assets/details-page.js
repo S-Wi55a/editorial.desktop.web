@@ -2,10 +2,37 @@
 require('./css/details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
+console.log("In DEtails: ", Promise)
 
-import { loaded } from 'document-promises/document-promises.js';
+
+//import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
 
+
+var thenify = function thenify(type, readyState) {
+    return new Promise(function (resolve) {
+        var listener = function listener() {
+            if (readyState.test(document.readyState)) {
+                document.removeEventListener(type, listener);
+
+                resolve();
+            }
+        };
+
+        document.addEventListener(type, listener);
+
+        listener();
+    });
+};
+
+// export thenfied parsed, contentLoaded, and loaded
+var parsed =  thenify('readystatechange', /^(?:interactive|complete)$/);
+var contentLoaded =  thenify('DOMContentLoaded', /^(?:interactive|complete)$/);
+var loaded = thenify('readystatechange', /^complete$/);
+
+
+
+console.log("Loaded: ",loaded)
 //------------------------------------------------------------------------------------------------------------------
 // Hero
 let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
@@ -31,7 +58,7 @@ loaded.then(() => {
 
         if (d.querySelector('.more-articles-placeholder')) {
             (function moreArticles() {
-                import ( /* webpackChunkName: "More-Articles" */ 'Js/Modules/MoreArticles/moreArticles-component.js').then(function(moreArticles) {}).catch(function(err) {
+                import( /* webpackChunkName: "More-Articles" */ 'Js/Modules/MoreArticles/moreArticles-component.js').then(function(moreArticles) {}).catch(function(err) {
                     console.log('Failed to load More-Articles', err);
                 });
             })()
@@ -44,7 +71,7 @@ loaded.then(() => {
     (function stockForSale(d) {
         if (d.querySelector('.stock-for-sale-placeholder')) {
             (function stockForSale() {
-                import ( /* webpackChunkName: "Stock-For-Sale" */ 'Js/Modules/StockForSale/stockForSale-component.js').then(function(stockForSale) {}).catch(function(err) {
+                import( /* webpackChunkName: "Stock-For-Sale" */ 'Js/Modules/StockForSale/stockForSale-component.js').then(function(stockForSale) {}).catch(function(err) {
                     console.log('Failed to load Stock-For-Sale', err);
                 });
             })()
@@ -62,7 +89,7 @@ loaded.then(() => {
             if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder" data-webm-section="spec-module"></div>'); }
 
             (function specModule() {
-                import ( /* webpackChunkName: "Spec-Module" */ 'Js/Modules/SpecModule/specModule--container.js').then(function(specModule) {}).catch(function(err) {
+                import( /* webpackChunkName: "Spec-Module" */ 'Js/Modules/SpecModule/specModule--container.js').then(function(specModule) {}).catch(function(err) {
                     console.log('Failed to load Spec-Module', err);
                 });
             })()
@@ -76,7 +103,7 @@ loaded.then(() => {
 
         if (d.querySelector('.also-consider-placeholder')) {
             (function alsoConsider() {
-                import ( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/alsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
+                import( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/alsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
                 });
             })()
@@ -110,36 +137,36 @@ disqus(document, window, '#disqus_thread');
 
 
 // load Redux 
-(function redux(d) {
+//(function redux(d) {
 
-    if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
-        (function iNav() {
-            import ( /* webpackChunkName: "iNav-Reducer" */ 'Js/Modules/Redux/iNav/Reducers/iNavParentReducer.js').then(
-                function(iNav) {
-                    window.injectAsyncReducer(window.store, 'iNav', iNav.iNavParentReducer)
-                }).catch(function(err) {
-                console.log('Failed to load iNav', err);
-            });
-        })();
-        (function searchBar() {
-            import ( /* webpackChunkName: "SearchBar" */ 'Js/Modules/Redux/iNav/index.js').then(function(searchBar) {}).catch(function(err) {
-                console.log('Failed to load SearchBar', err);
-            });
-        })();
-    }
+//    if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
+//        (function iNav() {
+//            import( /* webpackChunkName: "iNav-Reducer" */ 'Js/Modules/Redux/iNav/Reducers/iNavParentReducer.js').then(
+//                function(iNav) {
+//                    window.injectAsyncReducer(window.store, 'iNav', iNav.iNavParentReducer)
+//                }).catch(function(err) {
+//                console.log('Failed to load iNav', err);
+//            });
+//        })();
+//        (function searchBar() {
+//            import( /* webpackChunkName: "SearchBar" */ 'Js/Modules/Redux/iNav/index.js').then(function(searchBar) {}).catch(function(err) {
+//                console.log('Failed to load SearchBar', err);
+//            });
+//        })();
+//    }
 
-    if (process.env.NODE_ENV === 'development') {
-        if (module.hot) {
-            // Enable Webpack hot module replacement for reducers
-            module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavParentReducer', () => {
-                const nextReducer = require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer
-                window.injectAsyncReducer(window.store, 'iNav', nextReducer)
-            })
-        }
-    }
+//    if (process.env.NODE_ENV === 'development') {
+//        if (module.hot) {
+//            // Enable Webpack hot module replacement for reducers
+//            module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavParentReducer', () => {
+//                const nextReducer = require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer
+//                window.injectAsyncReducer(window.store, 'iNav', nextReducer)
+//            })
+//        }
+//    }
 
 
-})(document)
+//})(document)
 
 
 //Lazy Native Ads
@@ -147,7 +174,7 @@ loaded.then(() => {
     (function nativeAds() {
         if (!!csn_editorial && !!csn_editorial.nativeAds) {
             (function nativeAds() {
-                import ( /* webpackChunkName: "Native Ads" */ 'Js/Modules/NativeAds/nativeAds.js').then(function(nativeAds) {}).catch(function(err) {
+                import( /* webpackChunkName: "Native Ads" */ 'Js/Modules/NativeAds/nativeAds.js').then(function(nativeAds) {}).catch(function(err) {
                     console.log('Failed to load nativeAds', err);
                 });
             })()
@@ -160,7 +187,7 @@ loaded.then(() => {
     (function sponsoredArticles(d) {
         if (d.querySelector('.article__type--sponsored')) {
             (function nativeAds() {
-                import ( /* webpackChunkName: "Sponsored Articles" */ 'Js/Modules/SponsoredArticles/sponsoredArticles.js').then(function(sponsoredArticles) {}).catch(function(err) {
+                import( /* webpackChunkName: "Sponsored Articles" */ 'Js/Modules/SponsoredArticles/sponsoredArticles.js').then(function(sponsoredArticles) {}).catch(function(err) {
                     console.log('Failed to load sponsoredArticles', err);
                 });
             })()

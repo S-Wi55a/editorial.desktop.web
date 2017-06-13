@@ -3,14 +3,17 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { createReducer } from 'Js/Modules/Redux/Global/Reducers/rootReducer'
 
 // Middleware
-import thunkMiddleware from 'redux-thunk'
 import reduxMulti from 'redux-multi'
 import { batchedSubscribe } from 'redux-batched-subscribe'
+//import createSagaMiddleware from 'redux-saga'
+
+
+//import { helloSaga } from 'Js/Modules/Redux/iNav/Sagas/saga'
+
+//const sagaMiddleware = createSagaMiddleware()
 
 
 //TODO: Async Middleware
-
-//import { fetchiNav } from 'Js/Modules/Redux/iNav/Actions/actions.js'
 
 /**
  * This is a reducer, a pure function with (state, action) => state signature.
@@ -36,12 +39,15 @@ export function configureStore(preloadedState) {
         createReducer(),
         preloadedState,
         composeEnhancers(
-            applyMiddleware(thunkMiddleware, reduxMulti),
+            applyMiddleware(reduxMulti),
             batchedSubscribe((notify) => {
                 notify();
             })
         ));
     store.asyncReducers = {};
+
+    //sagaMiddleware.run(helloSaga)
+
     return store;
 }
 

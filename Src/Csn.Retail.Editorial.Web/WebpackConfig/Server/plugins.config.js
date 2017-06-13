@@ -9,7 +9,7 @@ import {devLoaderCSSExtract} from './loaders.config.js'
 export const plugins = (tenant) => {
     return [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"', //TODO add to shared / Correct the logic
+            'process.env.NODE_ENV': isProd ? '"production"': '"development"', //TODO add to shared / Correct the logic
             SERVER: JSON.stringify(true)
         }),
         new ExtractTextPlugin({

@@ -6,6 +6,9 @@ import AssetsPlugin from 'assets-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import HappyPack from 'happypack'
 
+//var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+
 //From Server/
 import {devLoaderCSSExtract} from './loaders.config.js'
 
@@ -20,7 +23,11 @@ export const plugins = (tenant, pageEntries) => {
     return [
         assetsPluginInstance,
         new webpack.DefinePlugin({
+            'process.env.NODE_ENV': isProd ? '"production"': '"development"', //TODO add to shared / Correct the logic
             SERVER: JSON.stringify(false)
+        }),
+        new webpack.ProvidePlugin({
+            //Promise: 'es6-promise-promise', // works as expected
         }),
         new ExtractTextPlugin({
             filename: isProd ? '[name]-[contenthash].css' : '[name].css',
@@ -35,7 +42,7 @@ export const plugins = (tenant, pageEntries) => {
         new webpack.optimize.CommonsChunkPlugin({
             names: pageEntries,
             children: true,
-            async: true,
+            async: 'commonsChunks',
             minChunks: 2
         }),
         // Common -- pull everything from pages and make global common chunk
@@ -77,6 +84,7 @@ export const plugins = (tenant, pageEntries) => {
                 // and let Webpack Dev Server take care of this 
                 reload: false
             }
-        )
+        ),
+        //new BundleAnalyzerPlugin()
     ]
 }
