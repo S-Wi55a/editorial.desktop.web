@@ -13,7 +13,7 @@
 
     &__column-container {
         position: relative;
-        min-height: 400px;
+        min-height: 500px;
     }
 
     &__column {
@@ -269,6 +269,7 @@
         &::before {
             font-family: $font-family-icons;
             font-size: $font-size-h3;
+            width: 25px;
             display: inline-block;
             color: $cs-grey;
             vertical-align: middle;
@@ -287,7 +288,8 @@
                 content: $icon-default-drive-icon;
             }
 
-            &[data-value="Four%20Wheel%20Drive"]::before {
+            &[data-value="Four%20Wheel%20Drive"]::before,
+            &[data-value="4X4%20Dual%20Range"]::before {
                 content: $icon-all-wheel-icon;
             }
 
@@ -349,6 +351,7 @@
 
             &::before {
                 content: $icon-safety-icon;
+                width: auto;
             }
         }
     }
@@ -371,6 +374,7 @@
 
         &::before {
             content: $icon-safety-icon;
+            margin-right: 15px;
         }
     }
 }
