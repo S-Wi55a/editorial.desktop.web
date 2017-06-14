@@ -59,6 +59,8 @@ const listItem = (data) => {
         return template.reduce((prev, current) => {
             return prev + current;
         });
+    } else {
+        return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${data.responseMessage || ''}</li>`;
     }
 }
 
