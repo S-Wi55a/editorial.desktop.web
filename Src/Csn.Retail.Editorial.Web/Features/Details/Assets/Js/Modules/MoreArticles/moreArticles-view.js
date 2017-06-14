@@ -2,41 +2,41 @@
 
 const container = (data) => {
 
-    const filtersLength = data.moreArticleItems.length;
     const moreArticlesPath = proxy;
 
+    const filterView = (str, filter) => {
+            return `<div class="more-articles__filter more-articles__filter--active" data-webm-clickvalue="view-${encodeURI(filter.title.toLowerCase())}">${filter.title}</div>`;
+    }
 
-    const filterView = (str, filter, index) => {
-        if (index === 0) {
-            return `<a href="${filter.uri || ''}" class="more-articles__filter more-articles__filter--active" data-webm-clickvalue="view-all-articles">${filter.title || ''}</a>`
-        } else if (index === filtersLength - 1) {
-            return `<a href="${filter.uri || ''}" class="more-articles__filter more-articles__filter--last" data-webm-clickvalue="view-all-articles">${filter.title}</a>`
-        } else {
-            return `<a href="${filter.uri || ''}" class="more-articles__filter" data-webm-clickvalue="view-all-articles">${filter.title || ''}</a>`
-        }
-    } 
+    const linkView = (str, link) => {
+        return `<a href="${link.uri}" class="more-articles__link more-articles__link--last" data-webm-clickvalue="view-${encodeURI(link.text.toLowerCase())}">${link.text}</a>`;
+    }
 
     return `
         <div class="more-articles" data-webm-section="more-articles">
             <div class="container">
-                <div class="more-articles__filters">
-                    ${data.moreArticleItems.map((filter, index) => filterView`${filter}${index}`).join('')}
+                <div class="more-articles__top-container">
+                    <div class="more-articles__filters">
+                        ${data.filters.map((filter, index) => filterView`${filter}${index}`).join('')}
+                    </div>
+                    <div class="more-articles__links">
+                        ${data.links.map((link) => linkView`${link}`).join('')}
+                    </div>
                 </div>
                 <div class="more-articles__frame swiper-container">
                     <div class="more-articles__slides swiper-wrapper">
                     </div>
                 </div>
-
                 <div class="more-articles__nav">
-                    <button class="more-articles__button more-articles__button--show-hide" data-webm-clickvalue="hide">${data.headings.showHeading || 'Show'}</button>
+                    <button class="more-articles__button more-articles__button--show-hide" data-webm-clickvalue="hide">${data.showText}</button>
                     <button class="more-articles__nav-button more-articles__nav-button--prev" data-webm-clickvalue="previous">Prev</button>
                     <button class="more-articles__nav-button more-articles__nav-button--next" data-webm-clickvalue="next"
                         data-more-articles-path="${moreArticlesPath || ''}" 
-                        data-more-articles-query="${data.moreArticleItems[0].uri || ''}">Next</button>
+                        data-more-articles-query="${data.filters[0].uri || ''}">Next</button>
                 </div>
             </div>
         </div>
-        `
+        `;
 }
 
 

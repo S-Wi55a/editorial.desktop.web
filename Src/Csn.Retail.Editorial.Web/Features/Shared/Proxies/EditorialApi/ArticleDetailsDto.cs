@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string DateAvailable { get; set; }
         public MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
-        public MoreArticleItem MoreArticleData { get; set; }
+        public MoreArticleData MoreArticleData { get; set; }
         public SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
         public Dictionary<string, string> WebTrendsTags { get; set; }
@@ -252,4 +252,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Uri { get; set; }
     }
 
+    public class MoreArticleData
+    {
+        public List<MoreArticleItem> MoreArticleItems { get; set; }
+    }
+
+    public class MoreArticleItem
+    {
+        public string Title { get; set; }
+        public string Uri { get; set; }
+    }
 }
