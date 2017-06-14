@@ -55,18 +55,16 @@
     }
 
     &__link {
-        @include link;
-        font-size: $font-size-h6;
+        @include button(( small: true, round: true, thin: true, primary-inverse: true ));
+        text-align: center;
         font-weight: $font-weight-400;
         display: inline-block;
         vertical-align: middle;
-        width: calc((100% - #{$img-width})*0.45);
-        text-align: right;
         cursor: pointer;
+        margin-top: 10px;
 
-
-        &:hover {
-            text-decoration: underline
+        @include breakpoint($screen-lg) {
+            margin-top: auto;
         }
     }
 
