@@ -105,8 +105,10 @@ const Price = (props) => {
         return (
             <div className="spec-item__price-container">
                 <div className="spec-item__price-item">
-                    <div className="spec-item__price-label">{props.data.pricePrivate.heading}</div>
-                    <div className="spec-item__price spec-item__price--price-private">{props.data.pricePrivate.text}</div>
+                    <div className="spec-item__price-label">{props.data.priceUsed.heading}</div>
+                    <div className="spec-item__price spec-item__price--price-used">{props.data.priceUsed.text}</div>
+                    <div className="spec-item__price-label">Estimated marked km for this vehicle is <span className="spec-item__kms-label average-kms">{props.data.priceUsed.averageKms}</span></div>
+                    <div className="spec-item__price-redbook-info redbook-disclaimer">^ Provided by Redbook</div>
                 </div>
             </div>
         )

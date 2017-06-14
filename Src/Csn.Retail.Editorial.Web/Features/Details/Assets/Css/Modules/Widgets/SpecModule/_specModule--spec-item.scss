@@ -52,10 +52,10 @@
         border-top: 1px solid $cs-light-grey-2;
         margin-top: 10px;
         padding: 10px 0;
-        //height: 90px;
     }
 
     &__price {
+        margin-top: 5px;
 
         &--price-new {
             font-size: $font-size-h2;
@@ -65,13 +65,11 @@
             display: inline-block;
         }
 
-        &--price-private,
-        &--price-trade-in {
+        &--price-used {
             padding-top: 0;
             font-size: $font-size-h4;
             color: $cs-primary;
             font-weight: $font-weight-400;
-            //margin-top: 5px;
         }
     }
 
@@ -132,6 +130,21 @@
         color: $cs-grey;
         font-weight: $font-weight-400;
         display: block;
+        margin-top: 5px;
+    }
+
+    &__price-redbook-info {
+        color: $cs-primary;
+        cursor: pointer;
+        display: block;
+        font-size: $font-size-h6;
+        font-weight: $font-weight-400;
+        margin-top: 5px;
+    }
+
+    &__kms-label {
+        color: $cs-primary;
+        cursor: pointer;
     }
 
     &__spec-item-list-heading {
