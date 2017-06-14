@@ -1,4 +1,5 @@
-﻿import Swiper from 'swiper'
+﻿import CustomEvent from 'custom-event'
+import Swiper from 'swiper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 import * as View from 'Js/Modules/MoreArticles/moreArticles-view.js'
 
@@ -8,7 +9,7 @@ let isActive = false
 let showText = csn_editorial.moreArticles.headings.showHeading
 let hideText = csn_editorial.moreArticles.headings.hideHeading
 
-const customEvent = new Event('csn_editorial.moreArticles.ready');
+const customEvent = new CustomEvent('csn_editorial.moreArticles.ready');
 
 // Init More Articles Slider
 let initMoreArticlesSlider = (selector, options) => {

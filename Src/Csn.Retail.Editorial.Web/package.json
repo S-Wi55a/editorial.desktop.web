@@ -78,11 +78,11 @@
     "jquery": "^3.2.1",
     "meter-polyfill": "^1.7.2",
     "picturefill": "^3.0.2",
+    "postscribe": "^2.0.8",
     "rc-slider": "^7.0.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "^3.0.0-beta.6",
-    "postscribe": "^2.0.8",
     "scrollmagic": "^2.0.5",
     "swiper": "^3.4.2"
   }
