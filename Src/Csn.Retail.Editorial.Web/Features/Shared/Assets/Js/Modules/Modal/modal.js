@@ -17,7 +17,7 @@ class Modal {
         window.addEventListener('close-modal', function () { $this.closeModal(); });
 
         this._scope.addEventListener('click', function (event) {
-            if (event.target.className.includes('_c-modal') || event.target.className == '_c-modal__close') {
+            if (event.target.classList.contains('_c-modal') || event.target.className == '_c-modal__close') {
                 $this.closeModal()
             }
         })

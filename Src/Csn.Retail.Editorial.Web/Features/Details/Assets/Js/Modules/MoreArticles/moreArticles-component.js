@@ -122,7 +122,7 @@ let filterHandler = (e, ...args) => {
     const scope = args[0][1]
     const className = args[0][2]
     const classNameLast = args[0][3]
-    //isActive = true // assuming filter clicked is active
+        //isActive = true // assuming filter clicked is active
 
 
     if (el.classList.contains(classNameLast)) {
@@ -142,7 +142,7 @@ let filterHandler = (e, ...args) => {
 
         //get url and set it to next
         updateButton(scope.moreArticlesNextCtrl, 'data-more-articles-query', el.pathname)
-        //destory old slider
+            //destory old slider
         scope.moreArticlesSlideContainer.innerHTML = '';
         //Init new slider
         updateContent(
@@ -163,22 +163,13 @@ let filterHandler = (e, ...args) => {
     }
 }
 
-
 // handlers
 let buttonHandler = (scope, slider, firstSlide, visibleSlides) => {
     // Prev logic
-    if (slider.activeIndex <= firstSlide) {
-        updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true')
-    } else {
-        updateButton(scope.moreArticlesPrevCtrl, 'disabled')
-    }
+    updateButton(scope.moreArticlesPrevCtrl, 'disabled', slider.activeIndex <= firstSlide ? 'true' : undefined);
 
     //Next logic
-    if (slider.activeIndex + visibleSlides >= slider.slides.length) {
-        updateButton(scope.moreArticlesNextCtrl, 'disabled', 'true')
-    } else {
-        updateButton(scope.moreArticlesNextCtrl, 'disabled')
-    }
+    updateButton(scope.moreArticlesNextCtrl, 'disabled', slider.activeIndex + visibleSlides >= slider.slides.length ? 'true' : undefined);
 }
 
 let nextButtonHandler = (slider, offset, cb) => {
@@ -190,10 +181,11 @@ let nextButtonHandler = (slider, offset, cb) => {
 
 let buttonShowHideHandler = (scope) => {
     //set user prefernce here
+    <<
+    << << < HEAD
     if (scope.self.classList.contains('show')) {
         toggleClass(scope.self,
-            'show',
-            [
+            'show', [
                 setText.bind(null, scope.moreArticlesShowHideButton, showText),
                 setText.bind(null, scope.moreArticlesShowHideButton, hideText)
             ])
@@ -201,20 +193,23 @@ let buttonShowHideHandler = (scope) => {
     } else if (isActive) {
         isActive = false
         toggleClass(scope.self,
-            'show',
-            [
+            'show', [
                 setText.bind(null, scope.moreArticlesShowHideButton, showText),
                 setText.bind(null, scope.moreArticlesShowHideButton, hideText)
             ])
     } else {
         toggleClass(scope.self,
-            'show',
-            [
+            'show', [
                 setText.bind(null, scope.moreArticlesShowHideButton, showText),
                 setText.bind(null, scope.moreArticlesShowHideButton, hideText)
             ])
     }
 
+    ===
+    === =
+    isActive = scope.self.classList.contains('show');
+    toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]); >>>
+    >>> > origin / master
 }
 
 // Filters
@@ -240,11 +235,26 @@ let scrollMagic = (scope) => {
     }
 
     // Set scene
-    let moreArticleScene1 = new ScrollMagic.Scene({
+    new ScrollMagic.Scene({
             triggerElement: triggerElement,
             triggerHook: 0,
             reverse: false
         })
+        .on("enter", toggleClass.bind(null, scope.self, 'ready'))
+        .addTo(window.scrollMogicController);
+
+    new ScrollMagic.Scene({
+            triggerElement: triggerElement,
+            triggerHook: triggerHook,
+            offset: offset
+        })
+        .on("update",
+            function(e) {
+                e.target.controller().info("scrollDirection") === 'REVERSE' && !isActive ?
+                    this.trigger("enter") :
+                    null;
+            }) <<
+        << << < HEAD
         .on("enter", toggleClass.bind(null, scope.self, 'ready'))
         .addTo(window.scrollMogicController);
 
@@ -255,19 +265,22 @@ let scrollMagic = (scope) => {
         })
         .on("update",
             function(e) {
-                e.target.controller().info("scrollDirection") === 'REVERSE' && !isActive
-                    ? this.trigger("enter")
-                    : null;
+                e.target.controller().info("scrollDirection") === 'REVERSE' && !isActive ?
+                    this.trigger("enter") :
+                    null;
             })
         .on("enter",
             scrollHandler.bind(null,
                 scope.self,
-                'show',
-                [
+                'show', [
                     setText.bind(null, scope.moreArticlesShowHideButton, showText),
                     setText.bind(null, scope.moreArticlesShowHideButton, hideText)
                 ]))
-        .addTo(window.scrollMogicController);
+        .addTo(window.scrollMogicController); ===
+    === =
+    .on("enter", scrollHandler.bind(null, scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]))
+        .addTo(window.scrollMogicController); >>>
+    >>> > origin / master
 }
 
 // Main
@@ -322,8 +335,7 @@ let main = (scope = {}) => {
 
     //Init Filters
     filters(scope.moreArticlesFilter,
-        filterHandler,
-        [slider, scope, 'more-articles__filter--active', 'more-articles__filter--last'])
+        filterHandler, [slider, scope, 'more-articles__filter--active', 'more-articles__filter--last'])
 
     // Init show/hide Button
     addEventListenerToButton(scope.moreArticlesShowHideButton, 'click', buttonShowHideHandler.bind(null, scope))
@@ -334,9 +346,9 @@ let main = (scope = {}) => {
 const init = (scopeSelector, data) => {
 
     const scope = {
-        self: scopeSelector
-    }
-    //render container
+            self: scopeSelector
+        }
+        //render container
     scope.self.innerHTML = View.container(data)
 
     // Cache selectors
@@ -359,7 +371,7 @@ const init = (scopeSelector, data) => {
         scope.moreArticlesSlideContainer,
         () => {
             main(scope)
-            // This is called in cb() if AJAX is sucessful on first time
+                // This is called in cb() if AJAX is sucessful on first time
             scope.self.classList.add('active');
             updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true')
             window.dispatchEvent(customEvent)
@@ -368,4 +380,3 @@ const init = (scopeSelector, data) => {
 
 }
 init(document.querySelector('.more-articles-placeholder'), csn_editorial.moreArticles)
-

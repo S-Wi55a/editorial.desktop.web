@@ -42,20 +42,33 @@
         }
     }
 
-    &__filters {
-        margin-bottom: 15px;
+    &__top-container {
         width: calc(100% - #{$nav-width});
+    }
+
+    &__filters,
+    &__links {
+        margin-bottom: 15px;
         display: inline-block;
     }
 
-    &__filter {
 
-        @include button(( small: true, round: true, thin: true, primary-inverse: true ));
+    &__filter,
+    &__link {
         display: inline-block;
         text-align: center;
         margin-right: 25px;
+    }
 
+    &__link {
+        font-size: 13px;
+        padding-left: 0;
+        padding-right: 0;
+        text-decoration: none;
+    }
 
+    &__filter {
+        @include button(( small: true, round: true, thin: true, primary-inverse: true ));
 
         &--active {
             @include button((small: true,primary: true ));

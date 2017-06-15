@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string DateAvailable { get; set; }
         public Shared.Models.MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
-        public MoreArticleItem MoreArticleData { get; set; }
+        public MoreArticleData MoreArticleData { get; set; }
         public Shared.Models.SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
         public Dictionary<string, string> WebTrendsTags { get; set; }
@@ -112,4 +112,25 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Title3 { get; set; }
     }
 
+    public class MoreArticleData
+    {
+        public string ShowText { get; set; }
+        public string HideText { get; set; }
+
+        public List<MoreArticleLink> Links { get; set; }
+
+        public List<MoreArticleFilter> Filters { get; set; }
+    }
+
+    public class MoreArticleFilter
+    {
+        public string Title { get; set; }
+        public string Uri { get; set; }
+    }
+
+    public class MoreArticleLink
+    {
+        public string Text { get; set; }
+        public string Uri { get; set; }
+    }
 }

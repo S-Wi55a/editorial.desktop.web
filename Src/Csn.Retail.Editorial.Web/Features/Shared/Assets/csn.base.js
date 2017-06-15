@@ -5,7 +5,7 @@ import "babel-polyfill";
 import 'picturefill';
 
 import { loaded } from 'document-promises/document-promises'
-import * as store  from 'Js/Modules/Redux/Global/Store/store'
+import * as store from 'Js/Modules/Redux/Global/Store/store'
 import Immutable from 'immutable'
 import detectIE from 'Js/Modules/DetectIE/detect-ie.js'
 
@@ -26,6 +26,7 @@ for (var i = 0; i < scriptsLength; i++) {
 let isIE = (el, validator) => {
     let version = validator();
     if (version) {
+        window.ie = true
         let ieVersion = 'ie' + version;
         el.classList.toggle('ie');
         el.classList.toggle(ieVersion);

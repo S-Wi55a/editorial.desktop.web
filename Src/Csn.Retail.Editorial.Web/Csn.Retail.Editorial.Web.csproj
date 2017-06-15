@@ -437,9 +437,8 @@
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
-    <Compile Include="Features\Details\Loggers\ArticleNotFoundLogger.cs" />
     <Compile Include="Features\Details\Mappings\SpecDataMapper.cs" />
-    <Compile Include="Features\Details\Mappings\UseDropCaseResolver.cs" />
+    <Compile Include="Features\Details\Mappings\UseDropCaseMapper.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
     <Compile Include="Features\Details\GetArticleQuery.cs" />
@@ -447,6 +446,8 @@
     <Compile Include="Features\Details\Mappings\HeroSectionMapper.cs" />
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
+    <Compile Include="Features\Errors\ErrorsController.cs" />
+    <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Content Include="Features\React\Assets\Js\Beta\index.js" />
     <Content Include="Features\React\Assets\Js\Beta\react-server-components.js" />
@@ -469,7 +470,6 @@
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
     <Compile Include="Features\Shared\Helpers\UserContextHelper.cs" />
     <Compile Include="Features\Shared\Models\MediaMotiveData.cs" />
-    <Compile Include="Features\Shared\Models\MoreArticleItem.cs" />
     <Compile Include="Features\Shared\Models\SeoData.cs" />
     <Compile Include="Features\Shared\Models\WebTrendData.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />
@@ -670,6 +670,7 @@
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\" />
+    <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -13,7 +13,7 @@ namespace Csn.Retail.Editorial.Web
             var routes = RouteTable.Routes;
 
             routes.RouteExistingFiles = true;
-            //routes.AppendTrailingSlash = true;
+            routes.AppendTrailingSlash = true;
 
             routes.IgnoreRoute("nshc/{*pathInfo}"); // This is important for production haproxy and netscalar setup
             routes.IgnoreRoute("compare/dist/{*pathInfo}");
@@ -33,8 +33,16 @@ namespace Csn.Retail.Editorial.Web
             routes.MapRoute(
                 name: "Default",
                 url: "editorial/{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-                );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                constraints: new { controller = @"(Tracking|Home)" }
+            );
+
+            // catch all route....used to catch bad urls. Warning....this will literally capture everything
+            routes.MapRoute(
+                "UnknownRoute",
+                "{*url}",
+                new { controller = "Errors", action = "Error404" }
+            );
         }
     }
 }

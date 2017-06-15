@@ -43,7 +43,10 @@
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
-    @{ Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model); }
+    @if (Model.MoreArticleData != null)
+    {
+        Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData);
+    }
     @if (Model.PolarNativeAdsData != null)
     {
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
