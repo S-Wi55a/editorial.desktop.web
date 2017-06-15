@@ -55,7 +55,8 @@ export function modalGallery() {
         paginationHide: false,
 
         //Callbacks
-        onInit: initSliderSize
+        onInit: initSliderSize,
+        onSlideChangeStart: swiper => swiper.onResize() //This is for IE when modal opens [MOTO-1671]
 
     }
 
@@ -113,7 +114,6 @@ function initSliderSize(swiper) {
         modalResizeHandler(swiper, _img)
         // Force transitions
         swiper.slideTo(swiper.activeIndex)
-
 
     })
 }
