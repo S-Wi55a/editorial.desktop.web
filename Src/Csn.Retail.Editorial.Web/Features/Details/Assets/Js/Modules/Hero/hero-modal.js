@@ -5,10 +5,10 @@ export function modalGallery() {
 
     // This is for GA Gallery tracking requested by the BI team
     // CsnInsightsEventTracker is a global var so we check if it is present first
-    if (CsnInsightsEventTracker) {
-        const eventContextMetaDataCopy = Object.assign({}, eventContext.metaData);
+    if (window.CsnInsightsEventTracker) {
+        const eventContextMetaDataCopy = Object.assign({}, window.eventContext.metaData);
         eventContextMetaDataCopy.ContentGroup2 = 'gallery';
-        CsnInsightsEventTracker.sendPageView(eventContextMetaDataCopy);
+        window.CsnInsightsEventTracker.sendPageView(eventContextMetaDataCopy);
     }
 
     const initialSlide = !!document.querySelector('.slideshow--modal') ? parseInt(document.querySelector('.slideshow--modal').getAttribute('data-slideshow-start')) : 0;
@@ -55,7 +55,8 @@ export function modalGallery() {
         paginationHide: false,
 
         //Callbacks
-        onInit: initSliderSize
+        onInit: initSliderSize,
+        onSlideChangeStart: swiper => swiper.onResize() //This is for IE when modal opens [MOTO-1671]
 
     }
 
@@ -113,7 +114,6 @@ function initSliderSize(swiper) {
         modalResizeHandler(swiper, _img)
         // Force transitions
         swiper.slideTo(swiper.activeIndex)
-
 
     })
 }
