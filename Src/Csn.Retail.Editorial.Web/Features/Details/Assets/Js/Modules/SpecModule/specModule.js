@@ -87,7 +87,14 @@ const ThirdPartyOffer = (props) => {
             <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
         </div>
         )
-} 
+}
+
+// KmsTag
+const KmsTag = (props) => {
+    return (
+        <div>{props.start}<span className="spec-item__kms-label" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.priceUsed.averageKms}</span>{props.end}</div>
+    )
+}
 
 // Price
 const Price = (props) => {
@@ -101,15 +108,17 @@ const Price = (props) => {
            </div>
         )
     } else {
-        var redbookDisclaimer = "^ RedBook has prepared data and valuations from information gathered from a variety of sources. The valuations are estimates based on average “Excluding Government Charges” prices which do not include stamp duty and other government charges, the odometer reading range set out above and the vehicle being in good condition. Whilst all care is taken in producing the data and valuations, RedBook does not and cannot guarantee or make any representations regarding the use of, or reliance, on it. RedBook is not responsible for all the information provided to it and you should not rely on the data or valuations without making your own independent assessment of the vehicle and other sources of information. RedBook is not liable for any loss or damages (other than in respect of any liability which may not lawfully be excluded) relating to your use of, or reliance on, this valuation and data."
+        var kmsText = props.data.kmsTitle.split("{kmsValue}")
 
         return (
             <div className="spec-item__price-container">
                 <div className="spec-item__price-item">
                     <div className="spec-item__price-label">{props.data.priceUsed.heading}</div>
                     <div className="spec-item__price spec-item__price--price-used">{props.data.priceUsed.text}</div>
-                    <div className="spec-item__price-label">Estimated marked km for this vehicle is <span className="spec-item__kms-label" data-disclaimer={redbookDisclaimer} onClick={props.disclaimerHandler}>{props.data.priceUsed.averageKms}</span></div>
-                    <div className="spec-item__price-redbook-info" data-disclaimer={redbookDisclaimer} onClick={props.disclaimerHandler}>^ Provided by Redbook</div>
+                    <div className="spec-item__price-label">
+                        <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} start={kmsText[0]} end={kmsText[1]}/>
+                    </div>
+                    <div className="spec-item__price-redbook-info" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>^ Provided by Redbook</div>
                 </div>
             </div>
         )
