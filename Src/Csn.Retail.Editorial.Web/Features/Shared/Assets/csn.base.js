@@ -4,8 +4,6 @@ require('Css/globalStyles.scss');
 import "babel-polyfill";
 import 'picturefill';
 
-import * as store from 'Js/Modules/Redux/Global/Store/store'
-import Immutable from 'immutable'
 import detectIE from 'Js/Modules/DetectIE/detect-ie.js'
 
 // Dynamically set the public path for ajax/code-split requests
@@ -32,10 +30,3 @@ let isIE = (el, validator) => {
 }
 
 isIE(document.body, detectIE);
-
-//Because ui uses Immutable or we get an error
-window.__PRELOADED_STATE__.ui = Immutable.fromJS(window.__PRELOADED_STATE__.ui);
-
-//Enable Redux store globally
-window.store = store.configureStore(window.__PRELOADED_STATE__) //Init store
-window.injectAsyncReducer = store.injectAsyncReducer

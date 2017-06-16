@@ -3,33 +3,9 @@ require('./css/details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
-//import { loaded } from 'document-promises/document-promises.js';
+import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
 
-var thenify = function thenify(type, readyState) {
-    return new Promise(function (resolve) {
-        var listener = function listener() {
-            if (readyState.test(document.readyState)) {
-                document.removeEventListener(type, listener);
-
-                resolve();
-            }
-        };
-
-        document.addEventListener(type, listener);
-
-        listener();
-    });
-};
-
-// export thenfied parsed, contentLoaded, and loaded
-var parsed =  thenify('readystatechange', /^(?:interactive|complete)$/);
-var contentLoaded =  thenify('DOMContentLoaded', /^(?:interactive|complete)$/);
-var loaded = thenify('readystatechange', /^complete$/);
-
-
-
-console.log("Loaded: ",loaded)
 //------------------------------------------------------------------------------------------------------------------
 // Hero
 let aboveTheFold = require('Js/Modules/Hero/hero.js').default;

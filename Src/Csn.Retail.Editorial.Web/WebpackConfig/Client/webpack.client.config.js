@@ -9,6 +9,7 @@ import rimraf from 'rimraf'
 import {config, getEntryFiles} from './entries.config.js'
 import {plugins} from './plugins.config.js'
 import {modules} from './loaders.config.js'
+import {externals} from './externals.config.js'
 
 
 // Remove dist folder
@@ -40,9 +41,10 @@ module.exports = () => {
                     filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
                 },
                 module: modules(tenant),
-                resolve: resolve,
+                resolve,
+                externals,
                 plugins: plugins(tenant, pageEntries),
-                stats: stats,
+                stats,
                 devtool: isProd ? "cheap-source-map" : "eval",
                 devServer: devServer(tenant)
             })
