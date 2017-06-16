@@ -83,7 +83,6 @@ let updateList = (el, data) => {
 
 // Update Content
 let updateContent = function(frame, el, container, cb) {
-
     const query = el ? el.getAttribute('data-more-articles-query') : null;
     const url = el ? el.getAttribute('data-more-articles-path') + query : null;
     let lock = !!el.getAttribute('data-disabled')
@@ -118,27 +117,17 @@ let filterHandler = (e, ...args) => {
     const slider = args[0][0]
     const scope = args[0][1]
     const className = args[0][2]
-    const classNameLast = args[0][3]
-    //isActive = true // assuming filter clicked is active
-
-
-    if (el.classList.contains(classNameLast)) {
-        window.location.href = el.href;
-    }
 
     if (!el.classList.contains(className)) {
-
-        //isActive = false
-
         // Clear all active classes and add to clicked el
-        const filters = scope.self.querySelectorAll(el.className)
-        for (var filter of filters) {
-            filter.classList.remove(className)
+        const filters = scope.self.querySelectorAll("." + el.className);
+        for (let filter of filters) {
+            filter.classList.remove(className);
         }
-        el.classList.add(className)
-
+        el.classList.add(className);
+        
         //get url and set it to next
-        updateButton(scope.moreArticlesNextCtrl, 'data-more-articles-query', el.pathname)
+        updateButton(scope.moreArticlesNextCtrl, 'data-more-articles-query', el.getAttribute('data-more-articles-query'));
             //destory old slider
         scope.moreArticlesSlideContainer.innerHTML = '';
         //Init new slider

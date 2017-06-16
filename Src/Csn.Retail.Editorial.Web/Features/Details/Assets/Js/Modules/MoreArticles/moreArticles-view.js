@@ -4,8 +4,8 @@ const container = (data) => {
 
     const moreArticlesPath = proxy;
 
-    const filterView = (str, filter) => {
-            return `<div class="more-articles__filter more-articles__filter--active" data-webm-clickvalue="view-${encodeURI(filter.title.toLowerCase())}">${filter.title}</div>`;
+    const filterView = (str, filter, index) => {
+        return `<div class="more-articles__filter${index == 0 ? " more-articles__filter--active" : ""}" data-webm-clickvalue="view-${encodeURI(filter.title.toLowerCase())}" data-more-articles-query="${filter.uri}">${filter.title}</div>`;
     }
 
     const linkView = (str, link) => {
