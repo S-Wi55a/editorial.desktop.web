@@ -91,8 +91,10 @@ const ThirdPartyOffer = (props) => {
 
 // KmsTag
 const KmsTag = (props) => {
+    var kmsTextSplit = props.kmsText.split("{kmsValue}")
+
     return (
-        <div className="spec-item__price-label">{props.start}<span className="spec-item__kms-label" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.priceUsed.averageKms}</span>{props.end}</div>
+        <div>{kmsTextSplit[0]}<span className="spec-item__kms-label" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.priceUsed.averageKms}</span>{kmsTextSplit[1]}</div>
     )
 }
 
@@ -108,15 +110,13 @@ const Price = (props) => {
            </div>
         )
     } else {
-        var kmsText = props.data.kmsTitle.split("{kmsValue}")
-
         return (
             <div className="spec-item__price-container">
                 <div className="spec-item__price-item">
                     <div className="spec-item__price-label">{props.data.priceUsed.heading}</div>
                     <div className="spec-item__price spec-item__price--price-used">{props.data.priceUsed.text}</div>
                     <div className="spec-item__price-label">
-                        <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} start={kmsText[0]} end={kmsText[1]}/>
+                        <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} kmsText={props.data.kmsTitle} />
                     </div>
                     <div className="spec-item__price-redbook-info" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.specDataProviderText}</div>
                 </div>
