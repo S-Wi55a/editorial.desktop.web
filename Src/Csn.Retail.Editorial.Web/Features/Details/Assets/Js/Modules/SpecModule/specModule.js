@@ -92,7 +92,7 @@ const ThirdPartyOffer = (props) => {
 // KmsTag
 const KmsTag = (props) => {
     return (
-        <div>{props.start}<span className="spec-item__kms-label" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.priceUsed.averageKms}</span>{props.end}</div>
+        <div className="spec-item__price-label">{props.start}<span className="spec-item__kms-label" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.priceUsed.averageKms}</span>{props.end}</div>
     )
 }
 
@@ -118,7 +118,7 @@ const Price = (props) => {
                     <div className="spec-item__price-label">
                         <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} start={kmsText[0]} end={kmsText[1]}/>
                     </div>
-                    <div className="spec-item__price-redbook-info" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>^ Provided by Redbook</div>
+                    <div className="spec-item__price-redbook-info" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.specDataProviderText}</div>
                 </div>
             </div>
         )
