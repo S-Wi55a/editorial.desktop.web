@@ -65,10 +65,17 @@
         padding-left: 0;
         padding-right: 0;
         text-decoration: none;
+
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: none;
+        }
     }
 
     &__filter {
         @include button(( small: true, round: true, thin: true, primary-inverse: true ));
+        cursor: pointer;
 
         &--active {
             @include button((small: true,primary: true ));
