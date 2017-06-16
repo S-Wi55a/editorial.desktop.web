@@ -35,6 +35,26 @@ console.log("Loaded: ",loaded)
 let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
 aboveTheFold();
 
+
+// load Redux 
+(function redux(d) {
+
+    if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
+        window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer);
+        require('Js/Modules/Redux/iNav/index.js');
+
+        if (module.hot) {
+            // Enable Webpack hot module replacement for reducers
+            module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavParentReducer',
+                () => {
+                    window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer)
+                })
+        }
+        
+    }
+
+})(document);
+
 //Editors Rating
 (function editorRatings() {
     if (document.querySelector('.editors-ratings')) {
@@ -131,40 +151,6 @@ let disqus = function(d, w, selector) {
     }
 }
 disqus(document, window, '#disqus_thread');
-
-
-// load Redux 
-//(function redux(d) {
-
-//    if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
-//        (function iNav() {
-//            import( /* webpackChunkName: "iNav-Reducer" */ 'Js/Modules/Redux/iNav/Reducers/iNavParentReducer.js').then(
-//                function(iNav) {
-//                    window.injectAsyncReducer(window.store, 'iNav', iNav.iNavParentReducer)
-//                }).catch(function(err) {
-//                console.log('Failed to load iNav', err);
-//            });
-//        })();
-//        (function searchBar() {
-//            import( /* webpackChunkName: "SearchBar" */ 'Js/Modules/Redux/iNav/index.js').then(function(searchBar) {}).catch(function(err) {
-//                console.log('Failed to load SearchBar', err);
-//            });
-//        })();
-//    }
-
-//    if (process.env.NODE_ENV === 'development') {
-//        if (module.hot) {
-//            // Enable Webpack hot module replacement for reducers
-//            module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavParentReducer', () => {
-//                const nextReducer = require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer
-//                window.injectAsyncReducer(window.store, 'iNav', nextReducer)
-//            })
-//        }
-//    }
-
-
-//})(document)
-
 
 //Lazy Native Ads
 loaded.then(() => {

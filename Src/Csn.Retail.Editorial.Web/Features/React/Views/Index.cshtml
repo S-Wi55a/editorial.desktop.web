@@ -14,19 +14,19 @@
 Test React Compoents
 <div id="redux-placeholder"></div>
 
-@*@Html.React("global.Components.SearchBarContainer", new
+@Html.React("global.Components.SearchBarContainer", new
 {
-    initalData = 2000
+   
 },
 null, "redux-placeholder")
     
-@Html.React("global.Components.ReduxStore", new {})*@
+@Html.React("global.Components.ReduxStore", new {})
     
 @*@Html.AssetJs("csn.base--" + tenantName)
 @Html.AssetJs("vendor--" + tenantName)
 @Html.AssetJs("csn.common--" + tenantName)*@
-<script src="~/dist--server/react-server-components.js"></script>
-@*@Html.ReactInitJavaScript()*@
+@*<script src="~/dist--server/react-server-components.js"></script>*@
+@Html.ReactInitJavaScript()
 
 </body>
 </html>

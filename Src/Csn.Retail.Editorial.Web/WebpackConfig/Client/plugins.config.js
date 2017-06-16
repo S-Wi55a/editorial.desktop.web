@@ -27,7 +27,6 @@ export const plugins = (tenant, pageEntries) => {
             SERVER: JSON.stringify(false)
         }),
         new webpack.ProvidePlugin({
-            //Promise: 'es6-promise-promise', // works as expected
         }),
         new ExtractTextPlugin({
             filename: isProd ? '[name]-[contenthash].css' : '[name].css',

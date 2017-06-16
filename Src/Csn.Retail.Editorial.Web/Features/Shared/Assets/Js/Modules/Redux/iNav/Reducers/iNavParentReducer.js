@@ -1,26 +1,24 @@
-﻿
+﻿import global from 'global-object' 
+
 import { combineReducers } from 'redux'
 import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
-import { data } from 'Js/Modules/Redux/iNav/Data/data' //Test data //TODO: remove
 import { iNavChildReducer } from 'Js/Modules/Redux/iNav/Reducers/iNavChildReducer'
 import { iNavQueryReducer } from 'Js/Modules/Redux/iNav/Reducers/iNavQueryReducer'
 
+let initState = global.__PRELOADED_STATE__ ? global.__PRELOADED_STATE__.iNav || {} : {}
 
-//TODO: get data from backend
-let initState = {}
-if (SERVER) {
-    initState = data
-}
+//We wrap the reducer to pass init data to it for it to work in ReactJS.NET
+export const iNavParentReducerPassInitData = initState => {
 
-export const iNavParentReducer = (state = initState, action) => {
-    switch (action.type) {
+    return (state = initState, action) => {
+        switch (action.type) {
         case ActionTypes.TOGGLE_SELECTED:
             return {
                 ...state,
                 ...{
                     iNav: iNavChildReducer(state.iNav, action)
-                   }
                 }
+            }
         case ActionTypes.UPDATE_QUERY_STRING:
             return {
                 ...state,
@@ -30,6 +28,9 @@ export const iNavParentReducer = (state = initState, action) => {
             }
         default: 
             return state
-    }
+        }
 
+    }
 }
+
+export const iNavParentReducer = iNavParentReducerPassInitData(initState)

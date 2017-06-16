@@ -47,7 +47,6 @@ export function configureStore(preloadedState) {
     store.asyncReducers = {};
 
     //sagaMiddleware.run(helloSaga)
-
     return store;
 }
 

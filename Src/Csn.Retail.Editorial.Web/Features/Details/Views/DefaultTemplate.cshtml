@@ -25,7 +25,7 @@
 @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
 
 
-@*@{ Html.RenderPartial("Partials/SearchBar/_searchBar"); }*@
+@{ Html.RenderPartial("Partials/SearchBar/_searchBar"); }
 
 <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
     @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
@@ -53,7 +53,7 @@
     }
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
     @{
-// We put this here to guaretee that all compoents that effect the store should be run beforehand
-//Html.RenderPartial("Partials/Redux/_ReduxStore");
+        // We put this here to guaretee that all compoents that effect the store should be run beforehand
+        Html.RenderPartial("Partials/Redux/_ReduxStore");
     }
 }
