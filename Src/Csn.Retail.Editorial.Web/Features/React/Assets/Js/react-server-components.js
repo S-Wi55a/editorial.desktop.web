@@ -1,5 +1,5 @@
 ﻿import {ReactServerConnect} from './ReactServerConnect'
-import {ReduxStore} from 'React/Assets/Js/ReduxStore'
+import {ReduxStore} from 'React/Assets/Js/Components/ReduxStore'
 
 // Search Bar component
 import SearchBarContainer from 'Js/Modules/Redux/iNav/Containers/searchBarContainer'

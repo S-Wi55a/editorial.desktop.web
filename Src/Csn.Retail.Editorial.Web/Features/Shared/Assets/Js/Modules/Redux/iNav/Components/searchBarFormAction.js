@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         updateQuery: () => {
-            dispatch(Actions.updateQuery())
+            dispatch(Actions.requestQuery())
         },
         resetForm: () => {
             dispatch(Actions.resetForm())

@@ -6,7 +6,8 @@
 				},
 			"modules": false, // for tree shaking
 			"useBuiltIns": true,
-			//"debug": true
+			//"debug": true,
+			//"include": []
 		}],
 
         "react"
@@ -17,7 +18,6 @@
         "syntax-dynamic-import",
         "transform-object-rest-spread", 
 		["transform-class-properties", { "spec": true }],
-		//["transform-runtime"]
  
 	],
     "env": {

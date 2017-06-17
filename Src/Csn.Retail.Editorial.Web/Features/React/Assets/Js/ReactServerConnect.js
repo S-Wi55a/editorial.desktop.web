@@ -3,7 +3,7 @@
 import global from 'global-object' 
 import React from 'react'
 import { Provider } from 'react-redux'
-import * as Store from 'Js/Modules/Redux/Global/Store/store.js'
+import * as Store from 'Js/Modules/Redux/Global/Store/store.server.js'
 
 //TODO: remove
 import { data } from 'Js/Modules/Redux/iNav/Data/data' //Test data 

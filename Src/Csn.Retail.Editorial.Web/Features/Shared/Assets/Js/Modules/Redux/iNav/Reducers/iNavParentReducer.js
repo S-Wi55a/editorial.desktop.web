@@ -26,6 +26,15 @@ export const iNavParentReducerPassInitData = initState => {
                     iNavQuery: iNavQueryReducer(state.iNavQuery, action, state) //Pass it full state as this reducer will return the segment needed
                 }
             }
+        case ActionTypes.FETCH_QUERY_SUCCESS:
+                console.log('Update view', action)
+            return {
+                ...state,
+                ...{
+                    iNav: iNavChildReducer(action.data.iNav, action),
+                    count: action.data.count
+                }
+            }
         default: 
             return state
         }

@@ -534,11 +534,12 @@
     <Compile Include="Ioc\MultiTenantModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Content Include="Features\React\Assets\Js\ReduxStore.js" />
+    <Content Include="Features\React\Assets\Js\Components\ReduxStore.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\searchBar.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\saga.js" />
     <Content Include="WebpackConfig\Client\entries.config.js" />
+    <Content Include="WebpackConfig\Client\externals.config.js" />
     <Content Include="WebpackConfig\Client\loaders.config.js" />
     <Content Include="WebpackConfig\Client\webpack.client.config.js" />
     <Content Include="WebpackConfig\Server\entries.config.js" />
@@ -664,7 +665,6 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
-    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
@@ -853,6 +853,8 @@
     <Content Include="Features\Details\Assets\Css\Modules\SponsoredArticles\_sponsoredArticles.scss" />
     <Content Include="Features\Details\Views\Partials\Content\_SponsoredArticleTab.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\client.middleware.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\server.middleware.js" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

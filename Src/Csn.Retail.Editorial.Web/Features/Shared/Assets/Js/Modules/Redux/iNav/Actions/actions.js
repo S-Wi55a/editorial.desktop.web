@@ -10,8 +10,11 @@ export const toggleIsSelected = (isSelected, node, facet) => ({
     facet //is string but can probably be changed to Id
 })
 
-export const updateQuery = () => ({
-    type: ActionTypes.UPDATE_QUERY_STRING
+export const requestQuery = (query) => ({
+    type: ActionTypes.FETCH_QUERY_REQUEST,
+    payload: {
+        query
+    }
 })
 
 export const resetForm = () => ({
