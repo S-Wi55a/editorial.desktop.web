@@ -8,7 +8,9 @@ var glob = require('glob'),
     AssetsPlugin = require('assets-webpack-plugin'),
     BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
     HappyPack = require('happypack'),
-    rimraf = require('rimraf');
+    rimraf = require('rimraf'),
+    BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 //---------------------------------------------------------------------------------------------------------
 // List of Tenants
@@ -55,8 +57,10 @@ var isProd = process.env.NODE_ENV === 'production' ? true : false;
 
 const TENANTS = process.env.TENANT ? [process.env.TENANT.trim()] : listofTenants;
 
+//const DEBUG = process.env.DEBUG === 'true' ? true : false;
+
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
-const URL_LIMIT = isProd ? 1 : null;
+const URL_LIMIT = isProd ? 1 : undefined;
 
 
 var config = {
@@ -137,9 +141,8 @@ module.exports = (env) => {
 
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
-        entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
-        entries['csn.base' + '--' + tenant] = ['./Features/Shared/Assets/csn.base.js'];
-        entries['csn.mm' + '--' + tenant] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mm.js'];
+        entries['csn.vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/csn.vendor.js'];
+        entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
 
         moduleExportArr.push(
         {
@@ -228,29 +231,39 @@ module.exports = (env) => {
                 descriptionFiles: ['package.json', 'bower.json'],
                 modules: listOfPaths
             },
+            externals: {
+                jquery: 'jQuery'
+            },
             plugins: [
                 assetsPluginInstance,
-                new ExtractTextPlugin({
-                    filename: isProd ? '[name]-[contenthash].css' : '[name].css',
-                    allChunks: false
-                }),
-                //Vendor & Manifest - Nothing is added unless manual 
-                new webpack.optimize.CommonsChunkPlugin({
-                    names: ['vendor' + '--' + tenant, 'csn.base' + '--' + tenant],
-                    minChunks: Infinity
-                }),
-                //Per page -- pulll chunks from page and make common chunk async load
+                //Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
                 new webpack.optimize.CommonsChunkPlugin({
                     names: pageEntries,
                     children: true,
-                    async: true,
                     minChunks: 2
                 }),
-                // Common -- pull everything from pages and make global common chunk
+                // Common -- pull everything from pages entries and make global common chunk
                 new webpack.optimize.CommonsChunkPlugin({
                     name: 'csn.common' + '--' + tenant,
                     chunks: pageEntries,
                     minChunks: 2
+                }),
+                //Vendor - Will look through every entry and match against itself or if a library from node_module is used twice
+                new webpack.optimize.CommonsChunkPlugin({
+                    name: 'csn.vendor' + '--' + tenant,
+                    minChunks: function (module, count) {
+                        // This prevents stylesheet resources with the .css or .scss extension
+                        // from being moved from their original chunk to the vendor chunk
+                        if(module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+                            return false;
+                        }
+                        return module.context && module.context.indexOf("node_modules") !== -1 && count >= 2;
+                    }
+                }),
+                //Manifest - Webpack Runtime
+                new webpack.optimize.CommonsChunkPlugin({
+                    name: 'csn.manifest' + '--' + tenant,
+                    minChunks: Infinity
                 }),
                 new webpack.NamedModulesPlugin(),
                 new HappyPack({
@@ -285,7 +298,12 @@ module.exports = (env) => {
                         // and let Webpack Dev Server take care of this 
                         reload: false
                     }
-                )
+                ),
+                new ExtractTextPlugin({
+                    filename: isProd ? '[name]-[contenthash].css' : '[name].css',
+                    allChunks: false
+                }),
+                new BundleAnalyzerPlugin()
             ],
             stats: {
                 //Add asset Information
