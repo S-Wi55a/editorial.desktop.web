@@ -157,7 +157,7 @@ module.exports = (env) => {
                 noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
                 rules: [
                     {
-                        test: [/\.js$/, /\.es6$/],
+                        test: [/\.jsx?$/, /\.es6$/],
                         exclude: /(node_modules|bower_components|unitTest)/,
                         loaders: ['happypack/loader?id=babel']
                     },
@@ -303,7 +303,7 @@ module.exports = (env) => {
                     filename: isProd ? '[name]-[contenthash].css' : '[name].css',
                     allChunks: false
                 }),
-                new BundleAnalyzerPlugin()
+                //new BundleAnalyzerPlugin()
             ],
             stats: {
                 //Add asset Information

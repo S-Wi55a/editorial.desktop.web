@@ -1,8 +1,5 @@
 //Polyfills
-import 'core-js/es6/symbol';
-import 'core-js/fn/object/assign';
-import 'core-js/fn/dom-collections/iterator';
-import 'core-js/fn/promise';
+import "babel-polyfill";
 import 'picturefill';
 
 //Vendors

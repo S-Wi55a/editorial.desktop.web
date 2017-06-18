@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
-import Slider from 'rc-slider'
+import Slider from 'rc-slider/lib/Slider'; 
 import * as View from 'Js/Modules/SpecModule/specModule--modal-view.js'
 import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
 
