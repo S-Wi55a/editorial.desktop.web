@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
-import Slider from 'rc-slider'
+import Slider from 'rc-slider/lib/Slider'; 
 import * as View from 'Js/Modules/SpecModule/specModule--modal-view.js'
 import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
 
@@ -87,7 +87,16 @@ const ThirdPartyOffer = (props) => {
             <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
         </div>
         )
-} 
+}
+
+// KmsTag
+const KmsTag = (props) => {
+    var kmsTextSplit = props.kmsText.split("{kmsValue}")
+
+    return (
+        <div>{kmsTextSplit[0]}<span className="spec-item__kms-label" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.priceUsed.averageKms}</span>{kmsTextSplit[1]}</div>
+    )
+}
 
 // Price
 const Price = (props) => {
@@ -101,12 +110,15 @@ const Price = (props) => {
            </div>
         )
     } else {
-
         return (
             <div className="spec-item__price-container">
                 <div className="spec-item__price-item">
-                    <div className="spec-item__price-label">{props.data.pricePrivate.heading}</div>
-                    <div className="spec-item__price spec-item__price--price-private">{props.data.pricePrivate.text}</div>
+                    <div className="spec-item__price-label">{props.data.priceUsed.heading}</div>
+                    <div className="spec-item__price spec-item__price--price-used">{props.data.priceUsed.text}</div>
+                    <div className="spec-item__price-label">
+                        <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} kmsText={props.data.kmsTitle} />
+                    </div>
+                    <div className="spec-item__price-redbook-info" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.specDataProviderText}</div>
                 </div>
             </div>
         )

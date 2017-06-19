@@ -1,14 +1,14 @@
 {
     "presets": [
-		["env", {
-			"targets": {
-				"browsers": ["> 1%", "last 1 versions"]
-				},
-			"modules": false, // for tree shaking
-			"useBuiltIns": true,
-			//"debug": true,
-			//"include": []
-		}],
+        ["env", {
+            "targets": {
+                "browsers": ["> 1%", "last 1 versions"]
+            },
+            "modules": false, // for tree shaking
+            "useBuiltIns": true,
+            //"debug": true,
+            //"include": []
+        }],
 
         "react"
         //Transpile React components to JavaScript
@@ -16,10 +16,9 @@
     "plugins": [
         "transform-decorators-legacy",
         "syntax-dynamic-import",
-        "transform-object-rest-spread", 
-		["transform-class-properties", { "spec": true }],
- 
-	],
+        "transform-object-rest-spread", ["transform-class-properties", { "spec": true }],
+
+    ],
     "env": {
         "development": {
             "plugins": [

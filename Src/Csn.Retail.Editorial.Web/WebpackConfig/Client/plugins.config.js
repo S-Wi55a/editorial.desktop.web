@@ -1,16 +1,16 @@
 ﻿import path from 'path'
 import webpack from 'webpack'
-import {isProd} from '../Shared/env.config.js'
+import { isProd, VIEW_BUNDLE } from '../Shared/env.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import AssetsPlugin from 'assets-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import HappyPack from 'happypack'
 
-//var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 //From Server/
-import {devLoaderCSSExtract} from './loaders.config.js'
+import { devLoaderCSSExtract } from './loaders.config.js'
 
 var assetsPluginInstance = new AssetsPlugin({
     filename: 'webpack.assets.json',
@@ -20,35 +20,40 @@ var assetsPluginInstance = new AssetsPlugin({
 });
 
 export const plugins = (tenant, pageEntries) => {
-    return [
+
+    let pluginsArr = [
         assetsPluginInstance,
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': isProd ? '"production"': '"development"', //TODO add to shared / Correct the logic
+            'process.env.NODE_ENV': isProd ? '"production"' : '"development"', //TODO add to shared / Correct the logic
             SERVER: JSON.stringify(false)
         }),
-        new webpack.ProvidePlugin({
-        }),
+        new webpack.ProvidePlugin({}),
         new ExtractTextPlugin({
             filename: isProd ? '[name]-[contenthash].css' : '[name].css',
             allChunks: false
         }),
-        //Vendor & Manifest - Nothing is added unless manual 
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor' + '--' + tenant, 'csn.base' + '--' + tenant],
-            minChunks: Infinity
-        }),
-        //Per page -- pulll chunks from page and make common chunk async load
-        new webpack.optimize.CommonsChunkPlugin({
-            names: pageEntries,
-            children: true,
-            async: 'commonsChunks',
-            minChunks: 2
-        }),
-        // Common -- pull everything from pages and make global common chunk
+        // Common -- pull everything from pages entries and make global common chunk
         new webpack.optimize.CommonsChunkPlugin({
             name: 'csn.common' + '--' + tenant,
             chunks: pageEntries,
             minChunks: 2
+        }),
+        //Vendor - Will look through every entry and match against itself or if a library from node_module is used twice
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'csn.vendor' + '--' + tenant,
+            minChunks: function(module, count) {
+                // This prevents stylesheet resources with the .css or .scss extension
+                // from being moved from their original chunk to the vendor chunk
+                if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+                    return false;
+                }
+                return module.context && module.context.indexOf("node_modules") !== -1;
+            }
+        }),
+        //Manifest - Webpack Runtime
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'csn.manifest' + '--' + tenant,
+            minChunks: Infinity
         }),
         new webpack.NamedModulesPlugin(),
         new HappyPack({
@@ -83,7 +88,12 @@ export const plugins = (tenant, pageEntries) => {
                 // and let Webpack Dev Server take care of this 
                 reload: false
             }
-        ),
-        //new BundleAnalyzerPlugin()
-    ]
+        )
+    ];
+
+    if (VIEW_BUNDLE) {
+        pluginsArr.push(new BundleAnalyzerPlugin())
+    }
+
+    return pluginsArr
 }
