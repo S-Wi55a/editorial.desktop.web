@@ -142,3 +142,13 @@ let sponsoredArticles = function(d) {
 loaded.then(function () {
     sponsoredArticles(document);
 });
+
+
+//Lazy load Media Motive Ads
+loaded.then(function () {
+    require.ensure(['Js/Modules/MediaMotive/mm.js'],
+        function() {
+            require('Js/Modules/MediaMotive/mm.js');
+        },
+        'Media Motive');
+});

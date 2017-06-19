@@ -27,6 +27,3 @@ render(SpecModule);
 if (module.hot) {
     module.hot.accept('./specModule', () => render(SpecModule));
 }
-
-
-//How to remove react hot laod from prod code

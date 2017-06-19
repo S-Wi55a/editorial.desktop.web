@@ -520,7 +520,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
-    <Content Include="Features\Shared\Assets\csn.base.js" />
+    <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
     <Content Include="Features\Shared\Assets\Images\Boatpoint\logo-boatpoint.svg" />
@@ -538,7 +538,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Endpoints\endpoints.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\htmlparser.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive.js" />
@@ -547,7 +546,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
-    <Content Include="Features\Shared\Assets\Js\vendor.js" />
+    <Content Include="Features\Shared\Assets\Js\csn.vendor.js" />
     <Content Include="Global.asax" />
     <Content Include="postcss.config.js" />
     <Content Include="Web.config">
