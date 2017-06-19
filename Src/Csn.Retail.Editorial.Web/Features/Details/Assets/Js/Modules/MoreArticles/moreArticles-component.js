@@ -5,9 +5,8 @@ import * as View from 'Js/Modules/MoreArticles/moreArticles-view.js'
 
 import ScrollMagic from 'ScrollMagic'
 
-let isActive = false
-let showText = csn_editorial.moreArticles.showText
-let hideText = csn_editorial.moreArticles.hideText
+let showText = csn_editorial.moreArticles.showText;
+let hideText = csn_editorial.moreArticles.hideText;
 
 const customEvent = new CustomEvent('csn_editorial.moreArticles.ready');
 
@@ -25,29 +24,20 @@ let setText = (el, text) => {
 }
 
 // add class
-let addClass = (el, className, cb) => {
-    el.classList.add(className)
-    if (typeof cb === "function") {
-        cb()
-    }
+let addClass = (el, className) => {
+    el.classList.add(className);
 }
 
 // remove class
-let removeClass = (el, className, cb) => {
-    el.classList.remove(className)
-    if (typeof cb === "function") {
-        cb()
-    }
+let removeClass = (el, className) => {
+    el.classList.remove(className);
 }
 
-// Toggle class
-let toggleClass = (el, className, ...cb) => {
-    if (!isActive) {
-        if (el.classList.contains(className)) {
-            removeClass(el, className, cb[0][0])
-        } else {
-            addClass(el, className, cb[0][1])
-        }
+let toggleClass = (el, className) => {
+    if (el.classList.contains(className)) {
+        removeClass(el, className);
+    } else {
+        addClass(el, className);
     }
 }
 
@@ -107,7 +97,6 @@ let updateContent = function(frame, el, container, cb) {
 
 }
 
-
 // handle filter active class
 let filterHandler = (e, ...args) => {
     e.preventDefault();
@@ -161,14 +150,35 @@ let buttonHandler = (scope, slider, firstSlide, visibleSlides) => {
 let nextButtonHandler = (slider, offset, cb) => {
     // Get slider index and check if offset from end
     if (slider.activeIndex >= slider.slides.length - offset) {
-        cb()
+        cb();
     }
 }
 
 let buttonShowHideHandler = (scope) => {
-    //set user prefernce here
-    isActive = scope.self.classList.contains('show');
-    toggleClass(scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]);
+    expandCollapsePanel(scope);
+
+    // turn off scroll magic...once user interacts with the MoreArticles module then we don't want any auto load to happen
+    disableScrollMagic();
+}
+
+let disableScrollMagic = () => {
+    if (scrollMagicManager) {
+        scrollMagicManager.removeScenes();
+    }
+}
+
+let expandCollapsePanel = (scope) => {
+    toggleClass(scope.self, 'show');
+
+    setText(scope.moreArticlesShowHideButton, scope.self.classList.contains('show') ? hideText : showText);
+}
+
+let expandPanel = (scope) => {
+    if(scope.self.classList.contains('show')){
+        return;
+    }
+
+    expandCollapsePanel(scope);
 }
 
 // Filters
@@ -176,55 +186,14 @@ let filters = (el, cb, cbArgs) => {
     addEventListenerToButton(el, 'click', cb, cbArgs)
 }
 
-//Scroll Magic
-let scrollMagic = (scope) => {
-
-    // Scroll Magic
-    const contentOffset = 0.5; // range 0 - 1
-    const triggerElement = '.article-type'
-    const triggerHook = 1
-    const offset = (document.querySelector(triggerElement).offsetHeight * contentOffset);
-    window.scrollMogicController = window.scrollMogicController || new ScrollMagic.Controller();
-
-    let scrollHandler = (el, className, classNameArr) => {
-        //if more articles is already active then don't
-        if (el.classList.contains('active') && !el.classList.contains(className)) {
-            toggleClass(el, className, classNameArr)
-        }
-    }
-
-    // Set scene
-    new ScrollMagic.Scene({
-        triggerElement: triggerElement,
-        triggerHook: 0,
-        reverse: false
-    })
-    .on("enter", toggleClass.bind(null, scope.self, 'ready'))
-    .addTo(window.scrollMogicController);
-
-    new ScrollMagic.Scene({
-        triggerElement: triggerElement,
-        triggerHook: triggerHook,
-        offset: offset
-    })
-    .on("update",
-        function(e) {
-            e.target.controller().info("scrollDirection") === 'REVERSE' && !isActive ?
-                this.trigger("enter") :
-                null;
-        })
-    .on("enter", scrollHandler.bind(null, scope.self, 'show', [setText.bind(null, scope.moreArticlesShowHideButton, showText), setText.bind(null, scope.moreArticlesShowHideButton, hideText)]))
-    .addTo(window.scrollMogicController);
-}
-
 // Main
 let main = (scope = {}) => {
 
     // Init Slider
 
-    const firstSlide = 0
+    const firstSlide = 0;
     const visibleSlides = 3;
-    const offset = 2 + visibleSlides
+    const offset = 2 + visibleSlides;
 
     let options = {
 
@@ -273,10 +242,61 @@ let main = (scope = {}) => {
 
     // Init show/hide Button
     addEventListenerToButton(scope.moreArticlesShowHideButton, 'click', buttonShowHideHandler.bind(null, scope))
-
 }
 
+// Encapsulates the functionality required for ScrollMagic on the MoreArticles module. Note that there are dependencies on methods
+// defined in the module which is why this class cannot be easily removed from this file
+class ScrollMagicManager {
+    constructor() {
+        this.contentOffset = 0.5; // range 0 - 1
+        this.triggerElement = '.article-type';
+        this.triggerHook = 1;
+        this.offset = 0;
+        this.sceneLoadMoreArticles = null;
+        this.sceneExpandMoreArticles = null;
+    }
 
+    init(scope) {
+        this.offset = (document.querySelector(this.triggerElement).offsetHeight * this.contentOffset);
+        window.scrollMagicController = window.scrollMagicController || new ScrollMagic.Controller();
+
+        this.sceneLoadMoreArticles = new ScrollMagic.Scene({
+            triggerElement: this.triggerElement,
+            triggerHook: 0,
+            reverse: false
+        })
+        .on("enter", toggleClass.bind(null, scope.self, 'ready'))
+        .addTo(window.scrollMagicController);
+
+        this.sceneExpandMoreArticles = new ScrollMagic.Scene({
+            triggerElement: this.triggerElement,
+            triggerHook: this.triggerHook,
+            offset: this.offset
+        })
+        .on("update",
+        function (e) {
+            e.target.controller().info("scrollDirection") === 'REVERSE' ?
+                this.trigger("enter") :
+                null;
+        })
+        .on("enter", this.scrollHandler.bind(null, scope))
+        .addTo(window.scrollMagicController);
+    }
+
+    scrollHandler(scope) {
+        // only expand the panel if MoreArticles module is active
+        if (scope.self.classList.contains('active')) {
+            expandPanel(scope);
+        }
+    }
+
+    removeScenes() {
+        this.sceneLoadMoreArticles.destroy();
+        this.sceneExpandMoreArticles.destroy();
+    }
+}
+
+let scrollMagicManager = new ScrollMagicManager();
 
 const init = (scopeSelector, data) => {
 
@@ -297,8 +317,8 @@ const init = (scopeSelector, data) => {
     scope.moreArticlesShowHideButton = scope.self.querySelector('.more-articles__button--show-hide')
     scope.moreArticlesFilter = scope.self.querySelectorAll('.more-articles__filter')
 
-    //Scroll Magic
-    scrollMagic(scope)
+    // Scroll Magic
+    scrollMagicManager.init(scope);
 
     updateContent(
         scope.moreArticlesFrame,
