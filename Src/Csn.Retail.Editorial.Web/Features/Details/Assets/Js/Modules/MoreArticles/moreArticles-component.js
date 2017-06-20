@@ -7,8 +7,7 @@ import ScrollMagic from 'ScrollMagic'
 
 let showText = csn_editorial.moreArticles.showText;
 let hideText = csn_editorial.moreArticles.hideText;
-
-let scrollMagicScenes = [];
+let scrollMagicScenes = null;
 
 const customEvent = new CustomEvent('csn_editorial.moreArticles.ready');
 
@@ -132,11 +131,11 @@ let filterHandler = (e, ...args) => {
                 slider.update();
                 window.dispatchEvent(customEvent);
             }
-        )
+        );
     }
 
     if (!scope.self.classList.contains('show')) {
-        buttonShowHideHandler(scope)
+        buttonShowHideHandler(scope);
     }
 }
 
@@ -157,34 +156,35 @@ let nextButtonHandler = (slider, offset, cb) => {
 }
 
 let buttonShowHideHandler = (scope) => {
-    expandCollapsePanel(scope);
+    panelToggle(scope);
 
     // turn off scroll magic...once user interacts with the MoreArticles module then we don't want any auto load to happen
     disableScrollMagic();
 }
 
-let expandCollapsePanel = (scope) => {
+// opens the MoreArticles panel if it is closed, and closes it if it is open
+let panelToggle = (scope) => {
     toggleClass(scope.self, 'show');
 
     setText(scope.moreArticlesShowHideButton, scope.self.classList.contains('show') ? hideText : showText);
 }
 
-let expandPanel = (scope) => {
+// opens the MoreArticles panel. If it is already open then does nothing
+let openPanel = (scope) => {
     if(scope.self.classList.contains('show')){
         return;
     }
 
-    expandCollapsePanel(scope);
+    panelToggle(scope);
 }
 
 // Filters
 let filters = (el, cb, cbArgs) => {
-    addEventListenerToButton(el, 'click', cb, cbArgs)
+    addEventListenerToButton(el, 'click', cb, cbArgs);
 }
 
 // Main
 let main = (scope = {}) => {
-
     // Init Slider
 
     const firstSlide = 0;
@@ -204,7 +204,8 @@ let main = (scope = {}) => {
         //Namespace
         wrapperClass: 'more-articles__slides',
         slideClass: 'more-articles__slide',
-    }
+    };
+
     const slider = initMoreArticlesSlider(scope.moreArticlesFrame, options);
 
     const content = () => {
@@ -214,9 +215,9 @@ let main = (scope = {}) => {
             scope.moreArticlesSlideContainer,
             () => {
                 slider.update();
-                window.dispatchEvent(customEvent)
+                window.dispatchEvent(customEvent);
             }
-        )
+        );
     }
 
     //Init Button Handlers
@@ -242,14 +243,16 @@ let main = (scope = {}) => {
 
 // Encapsulates the functionality required for ScrollMagic on the MoreArticles module. Note that there are dependencies on methods
 // defined in the module which is why this class cannot be easily removed from this file
-let initScrollMagic = (scope) => {
+let createScrollMagicScenes = (scope) => {
     const contentOffset = 0.5; // range 0 - 1
     const triggerElement = '.article-type';
     const triggerHook = 1;
     let offset = (document.querySelector(triggerElement).offsetHeight * contentOffset);
     window.scrollMagicController = window.scrollMagicController || new ScrollMagic.Controller();
 
-    scrollMagicScenes.push(
+    let scenes = [];
+
+    scenes.push(
         new ScrollMagic.Scene({
             triggerElement: triggerElement,
             triggerHook: 0,
@@ -259,7 +262,7 @@ let initScrollMagic = (scope) => {
         .addTo(window.scrollMagicController)
     );
 
-    scrollMagicScenes.push(
+    scenes.push(
         new ScrollMagic.Scene({
             triggerElement: triggerElement,
             triggerHook: triggerHook,
@@ -272,32 +275,36 @@ let initScrollMagic = (scope) => {
         .on("enter", scrollHandler.bind(null, scope))
         .addTo(window.scrollMagicController)
     );
+
+    return scenes;
 }
 
 let scrollHandler = (scope) => {
     // only expand the panel if MoreArticles module is active
     if (scope.self.classList.contains('active')) {
-        expandPanel(scope);
+        openPanel(scope);
     }
 }
 
-let removeScenes = () => {
+let removeScrollMagicScenes = (scrollMagicScenes) => {
     scrollMagicScenes.forEach((value) => {
         value.destroy();
     });
 }
 
 let disableScrollMagic = () => {
-    removeScenes();
+    if (typeof (scrollMagicScenes) != 'undefined') {
+        removeScrollMagicScenes(scrollMagicScenes);    
+    }
 }
 
 const init = (scopeSelector, data) => {
-
     const scope = {
-            self: scopeSelector
-        }
-        //render container
-    scope.self.innerHTML = View.container(data)
+        self: scopeSelector
+    }
+
+    //render container
+    scope.self.innerHTML = View.container(data);
 
     // Cache selectors
     scope.self = scope.self.querySelector('.more-articles')
@@ -311,20 +318,20 @@ const init = (scopeSelector, data) => {
     scope.moreArticlesFilter = scope.self.querySelectorAll('.more-articles__filter')
 
     // Scroll Magic
-    initScrollMagic(scope);
+    scrollMagicScenes = createScrollMagicScenes(scope);
 
     updateContent(
         scope.moreArticlesFrame,
         scope.moreArticlesNextCtrl,
         scope.moreArticlesSlideContainer,
         () => {
-            main(scope)
-                // This is called in cb() if AJAX is sucessful on first time
+            main(scope);
+            // This is called in cb() if AJAX is sucessful on first time
             scope.self.classList.add('active');
-            updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true')
-            window.dispatchEvent(customEvent)
+            updateButton(scope.moreArticlesPrevCtrl, 'disabled', 'true');
+            window.dispatchEvent(customEvent);
         }
-    )
-
+    );
 }
-init(document.querySelector('.more-articles-placeholder'), csn_editorial.moreArticles)
+
+init(document.querySelector('.more-articles-placeholder'), csn_editorial.moreArticles);
