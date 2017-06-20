@@ -8,6 +8,8 @@ const SearchBarCategory = ({ name, displayName, facets, toggleSelected }) => {
 
     let refinements = {}
 
+
+    //TODO: don't like thsi, maybe use connect here instead
     const facetsArr = facets.map((facet) => {
         
         // We do this here to avoid looping through again to pull out the refinements

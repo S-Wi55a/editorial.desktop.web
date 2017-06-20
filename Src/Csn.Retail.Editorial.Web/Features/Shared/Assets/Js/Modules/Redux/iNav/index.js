@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
 import SearchBarContainer from 'Js/Modules/Redux/iNav/Containers/searchBarContainer'
+import { watchFetchData } from 'Js/Modules/Redux/iNav/Sagas/UpdateiNavSaga'
 
+
+//Check for Store
 const store = window.store
 
 const render = (WrappedComponent) => {
@@ -18,10 +21,21 @@ const render = (WrappedComponent) => {
     );
 };
 
-render(SearchBarContainer);
 
-if (module.hot) {
-    module.hot.accept('Js/Modules/Redux/iNav/Containers/searchBarContainer', () => render(SearchBarContainer));
+//If store exists
+if (store) {
+    //Run sagas for search bar
+    window.store.runSaga(watchFetchData)
+    
+    //Render Searchbar Component
+    render(SearchBarContainer);
+
+    if (module.hot) {
+        module.hot.accept('Js/Modules/Redux/iNav/Containers/searchBarContainer', () => render(SearchBarContainer));
+    }
 }
+
+
+
 
 

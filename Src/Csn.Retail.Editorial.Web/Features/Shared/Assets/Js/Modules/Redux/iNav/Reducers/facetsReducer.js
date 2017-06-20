@@ -3,7 +3,7 @@
 
 const facetsReducer = (state, action) => {
     switch (action.type) {
-    case iNav_ActionTypes.TOGGLE_SELECTED:
+    case iNav_ActionTypes.TOGGLE_IS_SELECTED:
         //loop through array to find which reducer to call
         return state.map((facet) => {
                 if (facet.value === action.facet) {

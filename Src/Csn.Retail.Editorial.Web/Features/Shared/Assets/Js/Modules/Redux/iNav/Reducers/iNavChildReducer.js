@@ -3,7 +3,7 @@ import { nodesReducer } from 'Js/Modules/Redux/iNav/Reducers/nodesReducer'
 
 export const iNavChildReducer = (state, action) => {
     switch (action.type) {
-    case ActionTypes.TOGGLE_SELECTED:
+    case ActionTypes.TOGGLE_IS_SELECTED:
         return {
             ...state,
             ...{

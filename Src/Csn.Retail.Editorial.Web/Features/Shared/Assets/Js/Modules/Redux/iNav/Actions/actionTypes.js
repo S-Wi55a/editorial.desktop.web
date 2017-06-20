@@ -3,7 +3,7 @@
 const PREFIX = 'INAV/' //Prefix for iNav actions
 
 // Action Types
-export const TOGGLE_SELECTED = PREFIX + 'TOGGLE_SELECTED' //UI & data
+export const TOGGLE_IS_SELECTED = PREFIX + 'TOGGLE_IS_SELECTED' //UI & data
 export const RESET = PREFIX + 'RESET'
 export const UPDATE_QUERY_STRING = PREFIX + 'UPDATE_QUERY_STRING'
 

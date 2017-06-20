@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import SearchBarCategory from 'Js/Modules/Redux/iNav/Components/searchBarCategory'
-import SearchBarFormAction from 'Js/Modules/Redux/iNav/Components/searchBarFormAction'
+import SearchBarFormActionContainer from 'Js/Modules/Redux/iNav/Components/searchBarFormAction'
 
 //TODO: import styles
 if (!SERVER) {
@@ -21,7 +21,7 @@ const SearchBar = ({ nodes, toggleSelected, toggleIsActive, ui }) => {
                                 return (<SearchBarCategory key={node.displayName} {...node} toggleSelected={toggleSelected} />)
                             })}
                         </div>
-                        <SearchBarFormAction/>
+                        <SearchBarFormActionContainer/>
                     </div>
                 </div>
  
