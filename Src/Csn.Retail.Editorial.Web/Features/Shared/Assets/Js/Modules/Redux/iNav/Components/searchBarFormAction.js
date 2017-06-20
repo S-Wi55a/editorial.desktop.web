@@ -1,6 +1,5 @@
 ﻿import React from 'react'
 
-//TODO: convert to dumb component
 const SearchBarFormAction = ({resetForm, ryvuss, count, href}) => {
 
     //TODO: remove hard coded text

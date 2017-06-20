@@ -127,6 +127,8 @@ let disqus = function(d, w, selector) {
     }
 }
 disqus(document, window, '#disqus_thread');
+//TODO: delete scene
+
 
 //Lazy Native Ads
 loaded.then(() => {

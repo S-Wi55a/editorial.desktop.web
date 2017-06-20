@@ -4,6 +4,8 @@ import ui from 'redux-ui';
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
 import SearchBar from 'Js/Modules/Redux/iNav/Components/searchBar'
 
+
+//Selectors
 function getiNavNodes(iNav) {
 
     //Check if it has sub categories

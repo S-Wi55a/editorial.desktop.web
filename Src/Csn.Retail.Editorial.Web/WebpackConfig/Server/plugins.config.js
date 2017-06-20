@@ -7,7 +7,8 @@ import HappyPack from 'happypack'
 import {devLoaderCSSExtract} from './loaders.config.js'
 
 export const plugins = (tenant) => {
-    return [
+
+    let pluginsArr = [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': isProd ? '"production"': '"development"', //TODO add to shared / Correct the logic
             SERVER: JSON.stringify(true)
@@ -26,6 +27,14 @@ export const plugins = (tenant) => {
             // loaders is the only required parameter:
             id: 'sass',
             loaders: devLoaderCSSExtract(tenant)
-        })
+        })      
     ]
+
+    if (!isProd) {
+        pluginsArr.push(new webpack.optimize.ModuleConcatenationPlugin())
+
+    }
+
+
+    return pluginsArr
 }

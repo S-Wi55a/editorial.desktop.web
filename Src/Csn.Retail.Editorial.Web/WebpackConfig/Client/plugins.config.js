@@ -72,33 +72,38 @@ export const plugins = (tenant, pageEntries) => {
             id: 'sass',
             loaders: devLoaderCSSExtract(tenant)
         }),
-        new BrowserSyncPlugin(
-            // BrowserSync options 
-            {
-                // browse to http://localhost:3000/ during development 
-                host: 'localhost',
-                port: 3000,
-                // proxy the Webpack Dev Server endpoint 
-                // through BrowserSync 
-                proxy: {
-                    target: 'http://localhost:8080',
-                    ws: true
-                },
-                logLevel: "info",
-                open: false
-
-            },
-            // plugin options 
-            {
-                // prevent BrowserSync from reloading the page 
-                // and let Webpack Dev Server take care of this 
-                reload: false
-            }
-        )
     ];
 
     if (VIEW_BUNDLE) {
         pluginsArr.push(new BundleAnalyzerPlugin())
+    }
+    if (!isProd) {
+        pluginsArr.push(
+            new webpack.optimize.ModuleConcatenationPlugin(),
+            new BrowserSyncPlugin(
+                // BrowserSync options 
+                {
+                    // browse to http://localhost:3000/ during development 
+                    host: 'localhost',
+                    port: 3000,
+                    // proxy the Webpack Dev Server endpoint 
+                    // through BrowserSync 
+                    proxy: {
+                        target: 'http://localhost:8080',
+                        ws: true
+                    },
+                    logLevel: "info",
+                    open: false
+
+                },
+                // plugin options 
+                {
+                    // prevent BrowserSync from reloading the page 
+                    // and let Webpack Dev Server take care of this 
+                    reload: false
+                }
+            )
+        )
     }
 
     return pluginsArr
