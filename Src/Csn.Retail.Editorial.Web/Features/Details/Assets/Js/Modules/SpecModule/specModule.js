@@ -142,10 +142,12 @@ const SpecModuleItem = (props) => {
                 <p className="spec-item__model">{props.data.title2}</p>
                 <p className="spec-item__variant">{props.data.title3}</p>
                 <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
-                <div className="spec-item__selector" data-webm-clickvalue="change-variant">
-                    <p className="spec-item__selector-label">{props.scaffolding.title1}</p>
-                    <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onChange={props.sliderHandler} />
-                </div>
+                {props.sliderLength > 1 ? 
+                    <div className="spec-item__selector" data-webm-clickvalue="change-variant">
+                        <p className="spec-item__selector-label">{props.scaffolding.title1}</p>
+                        <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onChange={props.sliderHandler} />
+                    </div>
+                : ''}
             </div>
             <div className="spec-item__column spec-item__column--2">
                 <Specifications data={props.data.specItems} /> 
