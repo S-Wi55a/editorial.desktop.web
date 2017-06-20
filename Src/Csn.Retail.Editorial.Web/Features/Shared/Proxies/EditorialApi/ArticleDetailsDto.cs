@@ -251,15 +251,4 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     {
         public string Uri { get; set; }
     }
-
-    public class MoreArticleData
-    {
-        public List<MoreArticleItem> MoreArticleItems { get; set; }
-    }
-
-    public class MoreArticleItem
-    {
-        public string Title { get; set; }
-        public string Uri { get; set; }
-    }
 }
