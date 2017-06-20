@@ -293,7 +293,7 @@ let removeScrollMagicScenes = (scrollMagicScenes) => {
 }
 
 let disableScrollMagic = () => {
-    if (typeof (scrollMagicScenes) != 'undefined') {
+    if (typeof (scrollMagicScenes) !== 'undefined') {
         removeScrollMagicScenes(scrollMagicScenes);    
     }
 }
