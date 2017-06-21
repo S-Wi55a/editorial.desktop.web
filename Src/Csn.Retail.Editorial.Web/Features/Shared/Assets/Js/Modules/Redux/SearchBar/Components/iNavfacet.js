@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { ryvuss } from 'Js/Modules/Endpoints/endpoints'
 
-const CategoryItem = ({ isSelected, displayValue, name, toggleIsSelected, action, count }) => {
+const INavfacet = ({ isSelected, displayValue, name, toggleIsSelected, action, count }) => {
     
 
     //console.log('Category Item')
@@ -18,4 +18,4 @@ const CategoryItem = ({ isSelected, displayValue, name, toggleIsSelected, action
     )
 
 }
-export default CategoryItem
+export default INavfacet

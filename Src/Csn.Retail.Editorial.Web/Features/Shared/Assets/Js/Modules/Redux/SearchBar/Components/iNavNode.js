@@ -1,10 +1,10 @@
 ﻿import React from 'react'
-import CategoryItem from 'Js/Modules/Redux/iNav/Components/categoryItem'
+import INavfacet from 'Js/Modules/Redux/iNav/Components/iNavfacet'
 
 
 //TODO: check if isSelected for displaying panels
 
-const SearchBarCategory = ({ name, displayName, facets, toggleIsSelected }) => {
+const INavNode = ({ name, displayName, facets, toggleIsSelected }) => {
 
 
     console.log('Category Rendered')
@@ -23,7 +23,7 @@ const SearchBarCategory = ({ name, displayName, facets, toggleIsSelected }) => {
         }
 
         {/* We are adding displayName for the toggleSelected cb*/}
-        return <CategoryItem key={facet.displayValue} {...facet} name={name} toggleIsSelected={toggleIsSelected}/>
+        return <INavfacet key={facet.displayValue} {...facet} name={name} toggleIsSelected={toggleIsSelected}/>
     })
 
     return (
@@ -42,7 +42,7 @@ const SearchBarCategory = ({ name, displayName, facets, toggleIsSelected }) => {
                             if (node.facets) {
                                 return facets.map((facet) => {
                                     {/* We are adding displayName for the toggleSelected cb*/}
-                                    return <CategoryItem key={facet.displayValue} {...facet} name={name} toggleIsSelected={toggleIsSelected}/> 
+                                    return <INavfacet key={facet.displayValue} {...facet} name={name} toggleIsSelected={toggleIsSelected}/> 
                                 })                          
                             }
                         })
@@ -54,4 +54,4 @@ const SearchBarCategory = ({ name, displayName, facets, toggleIsSelected }) => {
         )
 }
 
-export default SearchBarCategory
+export default INavNode

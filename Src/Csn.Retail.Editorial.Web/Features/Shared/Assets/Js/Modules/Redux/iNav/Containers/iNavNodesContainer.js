@@ -2,13 +2,13 @@
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
-import SearchBarCategory from 'Js/Modules/Redux/iNav/Components/searchBarCategory'
+import INavNodeContainer from 'Js/Modules/Redux/iNav/Containers/iNavNodeContainer'
 
 //Wrapper component
-const SearchBarCategoryWrapper = ({nodes, toggleIsSelected}) => (
+const iNavNodes = ({nodes, toggleIsSelected}) => (
     <div>
         {nodes.map((node) => {
-            return (<SearchBarCategory key={node.displayName} {...node} toggleIsSelected={toggleIsSelected} />)
+            return (<INavNodeContainer key={node.displayName} node={node} toggleIsSelected={toggleIsSelected} />)
         })}
     </div>
 ) 
@@ -32,7 +32,7 @@ const getFilteredNodes = createSelector(
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        nodes: getFilteredNodes(state.iNav)
+        nodes: getFilteredNodes(state.iNav),
     }
 }
 
@@ -48,9 +48,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 // Connect the Component to the store
-const SearchBarCategoryWrapperContainer = connect(
+const INavNodesContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(SearchBarCategoryWrapper)
+)(iNavNodes)
 
-export default SearchBarCategoryWrapperContainer
+export default INavNodesContainer
