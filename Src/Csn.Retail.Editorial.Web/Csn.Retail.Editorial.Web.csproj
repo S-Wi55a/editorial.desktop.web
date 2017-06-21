@@ -538,7 +538,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.client.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.server.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\searchBar.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\searchBarCategoryWrapperContainer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\searchBarFormActionContainer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\saga.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\UpdateiNavSaga.js" />

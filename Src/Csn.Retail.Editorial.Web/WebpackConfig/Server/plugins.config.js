@@ -30,7 +30,7 @@ export const plugins = (tenant) => {
         })      
     ]
 
-    if (!isProd) {
+    if (isProd) {
         pluginsArr.push(new webpack.optimize.ModuleConcatenationPlugin())
 
     }

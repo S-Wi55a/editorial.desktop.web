@@ -27,8 +27,9 @@ namespace Csn.Retail.Editorial.Web
 		        .SetUseDebugReact(false)
 		        .SetReuseJavaScriptEngines(false) //TODO: remove in Prod
                 .SetLoadBabel(false)
-		        .AddScriptWithoutTransform("/dist--server/react-server-components.js");
-		        //.DisableServerSideRendering();
+		        .AddScriptWithoutTransform("/dist--server/react-server-components.js")
+		        //.DisableServerSideRendering()
+                ;
 
 
 		}

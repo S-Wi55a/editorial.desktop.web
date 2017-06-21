@@ -9,7 +9,7 @@ function getiNavCount(iNav) {
 
 const mapStateToProps = (state) => {
     return {
-        count: getiNavCount(state),
+        count: getiNavCount(state.iNav),
         href: ''//TODO: get multiselected query
     }
 }
@@ -30,4 +30,4 @@ SearchBarFormAction = connect(
 export default SearchBarFormActionContainer
 
 
-//TPo add loading spinner
+//TODO: add loading spinner

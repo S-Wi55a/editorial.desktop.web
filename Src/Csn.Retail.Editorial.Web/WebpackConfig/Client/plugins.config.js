@@ -77,9 +77,13 @@ export const plugins = (tenant, pageEntries) => {
     if (VIEW_BUNDLE) {
         pluginsArr.push(new BundleAnalyzerPlugin())
     }
+    if (isProd) {
+        pluginsArr.push(
+            new webpack.optimize.ModuleConcatenationPlugin()
+        )
+    }
     if (!isProd) {
         pluginsArr.push(
-            new webpack.optimize.ModuleConcatenationPlugin(),
             new BrowserSyncPlugin(
                 // BrowserSync options 
                 {

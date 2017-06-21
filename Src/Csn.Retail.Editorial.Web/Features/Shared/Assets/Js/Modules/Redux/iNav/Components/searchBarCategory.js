@@ -4,8 +4,10 @@ import CategoryItem from 'Js/Modules/Redux/iNav/Components/categoryItem'
 
 //TODO: check if isSelected for displaying panels
 
-const SearchBarCategory = ({ name, displayName, facets, toggleSelected }) => {
+const SearchBarCategory = ({ name, displayName, facets, toggleIsSelected }) => {
 
+
+    console.log('Category Rendered')
     let refinements = {}
 
 
@@ -21,7 +23,7 @@ const SearchBarCategory = ({ name, displayName, facets, toggleSelected }) => {
         }
 
         {/* We are adding displayName for the toggleSelected cb*/}
-        return <CategoryItem key={facet.displayValue} {...facet} name={name} toggleSelected={toggleSelected}/>
+        return <CategoryItem key={facet.displayValue} {...facet} name={name} toggleIsSelected={toggleIsSelected}/>
     })
 
     return (
@@ -40,7 +42,7 @@ const SearchBarCategory = ({ name, displayName, facets, toggleSelected }) => {
                             if (node.facets) {
                                 return facets.map((facet) => {
                                     {/* We are adding displayName for the toggleSelected cb*/}
-                                    return <CategoryItem key={facet.displayValue} {...facet} name={name} toggleSelected={toggleSelected}/> 
+                                    return <CategoryItem key={facet.displayValue} {...facet} name={name} toggleIsSelected={toggleIsSelected}/> 
                                 })                          
                             }
                         })

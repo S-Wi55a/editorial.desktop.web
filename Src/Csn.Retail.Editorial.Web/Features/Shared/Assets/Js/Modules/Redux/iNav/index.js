@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
-import SearchBarContainer from 'Js/Modules/Redux/iNav/Containers/searchBarContainer'
+import SearchBar from 'Js/Modules/Redux/iNav/Components/searchBar'
 import { watchFetchData } from 'Js/Modules/Redux/iNav/Sagas/UpdateiNavSaga'
 
 
@@ -28,10 +28,10 @@ if (store) {
     window.store.runSaga(watchFetchData)
     
     //Render Searchbar Component
-    render(SearchBarContainer);
+    render(SearchBar);
 
     if (module.hot) {
-        module.hot.accept('Js/Modules/Redux/iNav/Containers/searchBarContainer', () => render(SearchBarContainer));
+        module.hot.accept('Js/Modules/Redux/iNav/Containers/searchBarContainer', () => render(SearchBar));
     }
 }
 
