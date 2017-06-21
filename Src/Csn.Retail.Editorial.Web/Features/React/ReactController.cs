@@ -11,19 +11,20 @@ namespace Csn.Retail.Editorial.Web.Features.React
 {
     public class ReactController : Controller
     {
-        private readonly IEventDispatcher _eventDispatcher;
 
-        public ReactController(IEventDispatcher eventDispatcher)
+        [Route("editorial/react/")]
+        // GET: React
+        public ActionResult Index()
         {
-            _eventDispatcher = eventDispatcher;
-        }
-
-        // GET: Home
-        public async Task<ActionResult> Index()
-        {
-            await _eventDispatcher.DispatchAsync(new HomePageRequestEvent());
 
             return View();
+        }
+
+        [Route("editorial/react/listing")]
+        public ActionResult Listing()
+        {
+
+            return View("~/Features/React/Views/Listing.cshtml");
         }
     }
 }

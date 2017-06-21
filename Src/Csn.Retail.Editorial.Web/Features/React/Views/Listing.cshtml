@@ -1,0 +1,34 @@
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@using React.Web.Mvc
+@{
+    Layout = null;
+    var tenantName = Html.CurrentTenant().Name.ToLower();
+
+}
+<html>
+<head>
+    <title>Lisitngs</title>
+</head>
+<body>
+Lsting React Compoents
+<div id="redux-placeholder"></div>
+
+@*@Html.React("global.Components.SearchBarContainer", new
+{
+   
+},
+null, "redux-placeholder")
+    
+@Html.React("global.Components.ReduxStore", new {})*@
+    
+@*@Html.AssetJs("csn.base--" + tenantName)
+@Html.AssetJs("vendor--" + tenantName)
+@Html.AssetJs("csn.common--" + tenantName)*@
+@*<script src="~/dist--server/react-server-components.js"></script>*@
+@*@Html.ReactInitJavaScript()*@
+
+</body>
+</html>
+
+

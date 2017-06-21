@@ -538,10 +538,13 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.client.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.server.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\searchBarCategoryWrapperContainer.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\searchBarFormActionContainer.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\saga.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\UpdateiNavSaga.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\iNavNodeContainer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Components\searchBar.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Components\searchBarFormAction.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Containers\searchBarFormActionContainer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\index.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\iNavNodesContainer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\updateiNavSaga.js" />
     <Content Include="WebpackConfig\Client\entries.config.js" />
     <Content Include="WebpackConfig\Client\externals.config.js" />
     <Content Include="WebpackConfig\Client\loaders.config.js" />
@@ -627,15 +630,12 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actionsTypes.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Containers\root.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\immutableJSHelper.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\categoryItem.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\searchBarCategory.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\searchBarFormAction.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\searchBarContainer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\iNavFacet.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\iNavNode.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Data\data.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Reducers\rootReducer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actionTypes.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\facetsReducer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\iNavChildReducer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\nodesReducer.js" />
@@ -662,6 +662,8 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Actions\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Reducers\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
@@ -842,7 +844,6 @@
     <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Assets\Css\error-page.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons-variables.scss" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\css\iNav.scss" />
     <Content Include="Views\web.config" />
     <Content Include="Features\React\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\SearchBar\_searchBar.cshtml" />
@@ -852,6 +853,8 @@
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\client.middleware.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\server.middleware.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\css\searchBar.scss" />
+    <Content Include="Features\React\Views\Listing.cshtml" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">
