@@ -5,6 +5,7 @@ import INavfacet from 'Js/Modules/Redux/iNav/Components/iNavFacet'
 
 
 //TODO: handle cb for switch panel UI
+//TODO: Handle cb for toggle is selected which may be different
 
 
 const INavNodeList = ({displayName, facets, name, toggleIsSelected}) => (  

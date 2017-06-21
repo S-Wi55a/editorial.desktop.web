@@ -5,10 +5,10 @@ import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
 import INavNodeContainer from 'Js/Modules/Redux/iNav/Containers/iNavNodeContainer'
 
 //Wrapper component
-const iNavNodes = ({nodes, toggleIsSelected}) => (
+const iNavNodes = ({nodes}) => (
     <div>
         {nodes.map((node) => {
-            return (<INavNodeContainer key={node.displayName} node={node} toggleIsSelected={toggleIsSelected} />)
+            return (<INavNodeContainer key={node.displayName} node={node} />)
         })}
     </div>
 ) 
@@ -36,21 +36,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        toggleIsSelected: (isSelected, node, facet, query) => {
-            dispatch([
-                Actions.fetchQueryRequest(query),
-                Actions.toggleIsSelected(isSelected, node, facet)
-            ])
-        }
-    }
-}
-
 // Connect the Component to the store
 const INavNodesContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(iNavNodes)
 
 export default INavNodesContainer
