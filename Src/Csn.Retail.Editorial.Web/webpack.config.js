@@ -8,7 +8,9 @@ var glob = require('glob'),
     AssetsPlugin = require('assets-webpack-plugin'),
     BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
     HappyPack = require('happypack'),
-    rimraf = require('rimraf');
+    rimraf = require('rimraf'),
+    BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 //---------------------------------------------------------------------------------------------------------
 // List of Tenants
@@ -55,8 +57,10 @@ var isProd = process.env.NODE_ENV === 'production' ? true : false;
 
 const TENANTS = process.env.TENANT ? [process.env.TENANT.trim()] : listofTenants;
 
+const VIEW_BUNDLE = process.env.VIEW_BUNDLE === 'true ' ? true : false;
+
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
-const URL_LIMIT = isProd ? 1 : null;
+const URL_LIMIT = isProd ? 1 : undefined;
 
 
 var config = {
@@ -137,9 +141,86 @@ module.exports = (env) => {
 
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
-        entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
-        entries['csn.base' + '--' + tenant] = ['./Features/Shared/Assets/csn.base.js'];
-        entries['csn.mm' + '--' + tenant] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mm.js'];
+        entries['csn.vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/csn.vendor.js'];
+        entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
+
+
+        let plugins = [
+            assetsPluginInstance,
+            //Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
+            new webpack.optimize.CommonsChunkPlugin({
+                names: pageEntries,
+                children: true,
+                minChunks: 2
+            }),
+            // Common -- pull everything from pages entries and make global common chunk
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'csn.common' + '--' + tenant,
+                chunks: pageEntries,
+                minChunks: 2
+            }),
+            //Vendor - Will look through every entry and match against itself or if a library from node_module is used twice
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'csn.vendor' + '--' + tenant,
+                minChunks: function(module, count) {
+                    // This prevents stylesheet resources with the .css or .scss extension
+                    // from being moved from their original chunk to the vendor chunk
+                    if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+                        return false;
+                    }
+                    return module.context && module.context.indexOf("node_modules") !== -1;
+                }
+            }),
+            //Manifest - Webpack Runtime
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'csn.manifest' + '--' + tenant,
+                minChunks: Infinity
+            }),
+            new webpack.NamedModulesPlugin(),
+            new HappyPack({
+                // loaders is the only required parameter:
+                id: 'babel',
+                loaders: ['babel-loader?cacheDirectory=true']
+            }),
+            new HappyPack({
+                // loaders is the only required parameter:
+                id: 'sass',
+                loaders: devLoaderCSSExtract
+            }),
+            new BrowserSyncPlugin(
+                // BrowserSync options 
+                {
+                    // browse to http://localhost:3000/ during development 
+                    host: 'localhost',
+                    port: 3000,
+                    // proxy the Webpack Dev Server endpoint 
+                    // through BrowserSync 
+                    proxy: {
+                        target: 'http://localhost:8080',
+                        ws: true
+                    },
+                    logLevel: "info",
+                    open: false
+
+                },
+                // plugin options 
+                {
+                    // prevent BrowserSync from reloading the page 
+                    // and let Webpack Dev Server take care of this 
+                    reload: false
+                }
+            ),
+            new ExtractTextPlugin({
+                filename: isProd ? '[name]-[contenthash].css' : '[name].css',
+                allChunks: false
+            })
+        ];
+
+        if (VIEW_BUNDLE) {
+            plugins.push(new BundleAnalyzerPlugin())
+        } 
+
+
 
         moduleExportArr.push(
         {
@@ -151,10 +232,10 @@ module.exports = (env) => {
                 filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: {
-                noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
+                noParse: isProd ? /\A(?!x)x/ : /swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
                 rules: [
                     {
-                        test: [/\.js$/, /\.es6$/],
+                        test: [/\.jsx?$/, /\.es6$/],
                         exclude: /(node_modules|bower_components|unitTest)/,
                         loaders: ['happypack/loader?id=babel']
                     },
@@ -228,65 +309,10 @@ module.exports = (env) => {
                 descriptionFiles: ['package.json', 'bower.json'],
                 modules: listOfPaths
             },
-            plugins: [
-                assetsPluginInstance,
-                new ExtractTextPlugin({
-                    filename: isProd ? '[name]-[contenthash].css' : '[name].css',
-                    allChunks: false
-                }),
-                //Vendor & Manifest - Nothing is added unless manual 
-                new webpack.optimize.CommonsChunkPlugin({
-                    names: ['vendor' + '--' + tenant, 'csn.base' + '--' + tenant],
-                    minChunks: Infinity
-                }),
-                //Per page -- pulll chunks from page and make common chunk async load
-                new webpack.optimize.CommonsChunkPlugin({
-                    names: pageEntries,
-                    children: true,
-                    async: true,
-                    minChunks: 2
-                }),
-                // Common -- pull everything from pages and make global common chunk
-                new webpack.optimize.CommonsChunkPlugin({
-                    name: 'csn.common' + '--' + tenant,
-                    chunks: pageEntries,
-                    minChunks: 2
-                }),
-                new webpack.NamedModulesPlugin(),
-                new HappyPack({
-                    // loaders is the only required parameter:
-                    id: 'babel',
-                    loaders: ['babel-loader?cacheDirectory=true']
-                }),
-                new HappyPack({
-                    // loaders is the only required parameter:
-                    id: 'sass',
-                    loaders: devLoaderCSSExtract
-                }),
-                new BrowserSyncPlugin(
-                    // BrowserSync options 
-                    {
-                        // browse to http://localhost:3000/ during development 
-                        host: 'localhost',
-                        port: 3000,
-                        // proxy the Webpack Dev Server endpoint 
-                        // through BrowserSync 
-                        proxy: {
-                            target: 'http://localhost:8080',
-                            ws: true
-                        },
-                        logLevel: "info",
-                        open: false
-
-                    },
-                    // plugin options 
-                    {
-                        // prevent BrowserSync from reloading the page 
-                        // and let Webpack Dev Server take care of this 
-                        reload: false
-                    }
-                )
-            ],
+            externals: {
+                jquery: 'jQuery'
+            },
+            plugins: plugins,
             stats: {
                 //Add asset Information
                 assets: true,
@@ -389,4 +415,7 @@ module.exports = (env) => {
     });
     return moduleExportArr
 };
+
+
+
 

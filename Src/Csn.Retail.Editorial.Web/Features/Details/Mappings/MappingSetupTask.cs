@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using SocialMetaData = Csn.Retail.Editorial.Web.Features.Details.Models.SocialMetaData;
 using MediaMotiveData = Csn.Retail.Editorial.Web.Features.Shared.Models.MediaMotiveData;
-using MoreArticleData = Csn.Retail.Editorial.Web.Features.Details.Models.MoreArticleData;
 
 namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 {
@@ -64,14 +61,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 
             // Google Analytics Data
             cfg.CreateMap<GoogleAnalyticsDetailsDto, GoogleAnalyticsDetailsData>();
-
-            cfg.CreateMap<Shared.Proxies.EditorialApi.MoreArticleData, MoreArticleData>()
-                .ForMember(dest => dest.HideText, opt => opt.UseValue("Hide"))
-                .ForMember(dest => dest.ShowText, opt => opt.UseValue("Show"))
-                .ForMember(dest => dest.Filters, opt => opt.MapFrom(src => src.MoreArticleItems.Take(1)))
-                .ForMember(dest => dest.Links, opt => opt.MapFrom(src => new List<MoreArticleLink>(){ new MoreArticleLink(){ Text = "View all articles", Uri = "/editorial/results/"}}));
-
-            cfg.CreateMap<Shared.Proxies.EditorialApi.MoreArticleItem, MoreArticleFilter>();
         }
     }
 }

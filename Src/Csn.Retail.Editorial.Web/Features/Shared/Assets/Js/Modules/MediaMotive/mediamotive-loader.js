@@ -1,4 +1,4 @@
-﻿import postscribe from "postscribe";
+﻿import postscribe from 'postscribe';
 
 (function ($, w) {
     'use strict';

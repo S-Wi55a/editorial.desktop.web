@@ -111,26 +111,4 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Title2 { get; set; }
         public string Title3 { get; set; }
     }
-
-    public class MoreArticleData
-    {
-        public string ShowText { get; set; }
-        public string HideText { get; set; }
-
-        public List<MoreArticleLink> Links { get; set; }
-
-        public List<MoreArticleFilter> Filters { get; set; }
-    }
-
-    public class MoreArticleFilter
-    {
-        public string Title { get; set; }
-        public string Uri { get; set; }
-    }
-
-    public class MoreArticleLink
-    {
-        public string Text { get; set; }
-        public string Uri { get; set; }
-    }
 }
