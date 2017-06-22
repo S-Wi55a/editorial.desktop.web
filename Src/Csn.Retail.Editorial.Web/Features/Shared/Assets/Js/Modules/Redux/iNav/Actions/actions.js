@@ -1,5 +1,4 @@
-﻿import * as GlobalActions from 'Js/Modules/Redux/Global/Actions/actions'
-import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
+﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
 
 // Toggle IsSelected
 export const toggleIsSelected = (isSelected, node, facet) => ({
@@ -17,16 +16,9 @@ export const fetchQueryRequest = (query) => ({
     }
 })
 
-export const resetForm = () => ({
-    type: ActionTypes.RESET
-})
-
-// UI Actions (related to redux ui)
-export const toggleIsActive = (key, name, value) => ({
-    type: GlobalActions.UPDATE_UI_STATE,
+export const reset = (query) => ({
+    type: ActionTypes.RESET,
     payload: {
-        key,
-        name,
-        value
+        query
     }
 })

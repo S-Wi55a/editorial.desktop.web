@@ -1,6 +1,4 @@
-﻿import * as GlobalActionTypes from 'Js/Modules/Redux/Global/Actions/actionsTypes'
-
-const PREFIX = 'INAV/' //Prefix for iNav actions
+﻿const PREFIX = 'INAV/' //Prefix for iNav actions
 
 // Action Types
 export const TOGGLE_IS_SELECTED = PREFIX + 'TOGGLE_IS_SELECTED' //UI & data
@@ -14,5 +12,3 @@ export const FETCH_QUERY_FAILURE = PREFIX + 'FETCH_QUERY_FAILURE'
 
 export const MODEL_SELECTED = PREFIX + 'MODEL_SELECTED' //UI - can be internal
 
-//UI
-export const TOGGLE_IS_ACTIVE = PREFIX + 'TOGGLE_IS_ACTIVE'

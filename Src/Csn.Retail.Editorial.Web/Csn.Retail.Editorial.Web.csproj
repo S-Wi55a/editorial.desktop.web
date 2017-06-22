@@ -536,15 +536,16 @@
     <Compile Include="Startup.cs" />
     <Content Include="Features\React\Assets\Js\Components\ReduxStore.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\UIHelpers.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.client.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.server.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\iNavNodeContainer.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Components\searchBar.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Components\searchBarFormAction.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Action\actionTypes.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Containers\searchBarContainer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Containers\searchBarFormActionContainer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\iNavNodesContainer.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\updateiNavSaga.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\iNavSaga.js" />
     <Content Include="WebpackConfig\Client\entries.config.js" />
     <Content Include="WebpackConfig\Client\externals.config.js" />
     <Content Include="WebpackConfig\Client\loaders.config.js" />
@@ -602,7 +603,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
-    <Content Include="Features\React\Assets\Js\ReactServerConnect.js" />
+    <Content Include="Features\React\Assets\Js\Util\ReactServerConnect.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
@@ -659,7 +660,7 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
-    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Actions\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Components\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Reducers\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>

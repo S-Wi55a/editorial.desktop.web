@@ -103,6 +103,7 @@
         "jquery": "^3.2.1",
         "meter-polyfill": "^1.7.2",
         "normalizer": "^1.2.7",
+        "object-path": "^0.11.4",
         "picturefill": "^3.0.2",
         "postscribe": "^2.0.8",
         "prop-types": "^15.5.10",

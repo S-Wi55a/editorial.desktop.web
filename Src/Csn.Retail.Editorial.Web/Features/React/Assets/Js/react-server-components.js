@@ -2,7 +2,7 @@
 import {ReduxStore} from 'React/Assets/Js/Components/ReduxStore'
 
 // Search Bar component
-import SearchBar from 'Js/Modules/Redux/SearchBar/Components/searchBar'
+import SearchBar from 'Js/Modules/Redux/SearchBar/Containers/searchBarContainer'
 import {iNavParentReducerPassInitData} from 'Js/Modules/Redux/iNav/Reducers/iNavReducer'
 
 export const Components = {

@@ -2,7 +2,6 @@
 require('Css/globalStyles.scss');
 
 import * as store from 'Js/Modules/Redux/Global/Store/store.client.js'
-import Immutable from 'immutable'
 import detectIE from 'Js/Modules/DetectIE/detect-ie.js'
 
 // **REQUIRE** - Dynamically set the public path for ajax/code-split requests or webpack won't know where to get chunks
@@ -33,9 +32,6 @@ for (var i = 0; i < scriptsLength; i++) {
 //Check to see if there is a preloaded state
 window.__PRELOADED_STATE__ = window.__PRELOADED_STATE__ || {}
 
-//Because the UI in the Store uses Immutable or we get an error
-window.__PRELOADED_STATE__.ui = Immutable.fromJS(window.__PRELOADED_STATE__.ui);
-
 //Enable Redux store globally
-window.store = store.configureStore(window.__PRELOADED_STATE__) //Init store
+window.store = store.configureStore() //Init store
 window.injectAsyncReducer = store.injectAsyncReducer

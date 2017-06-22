@@ -227,6 +227,29 @@
                 @include button(( round: true, thin: true, primary: true ));
             }
         }
+
+        &.isLoading {
+            .searchbar-form-action__loader {
+                display: inline-block;
+                vertical-align: top;
+                width: $search-bar-form-action-height/2;
+                height: $search-bar-form-action-height;
+                
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    z-index: 2;
+                    background-image: url($spinner--dark);
+                    background-size: 100px 100px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
     }
 }
 

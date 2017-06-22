@@ -3,8 +3,8 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
-import SearchBar from 'Js/Modules/Redux/SearchBar/Components/searchBar'
-import { watchFetchData } from 'Js/Modules/Redux/iNav/Sagas/iNavSaga'
+import SearchBar from 'Js/Modules/Redux/SearchBar/Containers/searchBarContainer'
+import { watchINavSagaActions } from 'Js/Modules/Redux/iNav/Sagas/iNavSaga'
 
 
 //Check for Store
@@ -25,13 +25,13 @@ const render = (WrappedComponent) => {
 //If store exists
 if (store) {
     //Run sagas for search bar
-    window.store.runSaga(watchFetchData)
+    window.store.runSaga(watchINavSagaActions)
     
     //Render Searchbar Component
     render(SearchBar);
 
     if (module.hot) {
-        module.hot.accept('Js/Modules/Redux/SearchBar/Components/searchBar', () => render(SearchBar));
+        module.hot.accept('Js/Modules/Redux/SearchBar/Containers/searchBarContainer', () => render(SearchBar));
     }
 }
 
