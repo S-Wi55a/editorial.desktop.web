@@ -1,17 +1,20 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
-import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
 import INavNodeContainer from 'Js/Modules/Redux/iNav/Containers/iNavNodeContainer'
 
 //Wrapper component
-const iNavNodes = ({nodes}) => (
-    <div>
+const iNavNodes = ({ nodes }) => {
+    console.log('iNavNodes comp rendered')
+
+    return (
+        <div>
         {nodes.map((node) => {
             return (<INavNodeContainer key={node.displayName} node={node} />)
         })}
     </div>
-) 
+    )
+}
 
 //Selectors
 const getiNavNodes = (iNav) => iNav.iNav.nodes

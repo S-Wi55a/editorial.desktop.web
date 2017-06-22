@@ -1,15 +1,19 @@
 ﻿import { proxy } from 'Js/Modules/Endpoints/endpoints';
 
-const container = (data) => {
+// replaces all non alphanumeric characters with a hyphen and makes string lower case
+let hyphenateNonAlphaNumeric = (input) => {
+    return input.replace(/\W+/g, "-").toLowerCase();
+};
 
+const container = (data) => {
     const moreArticlesPath = proxy;
 
-    const filterView = (str, filter) => {
-            return `<div class="more-articles__filter more-articles__filter--active" data-webm-clickvalue="view-${encodeURI(filter.title.toLowerCase())}">${filter.title}</div>`;
+    const filterView = (str, filter, index) => {
+        return `<div class="more-articles__filter${index === 0 ? " more-articles__filter--active" : ""}" data-webm-clickvalue="view-${hyphenateNonAlphaNumeric(filter.title)}" data-more-articles-query="${filter.uri}">${filter.title}</div>`;
     }
 
     const linkView = (str, link) => {
-        return `<a href="${link.uri}" class="more-articles__link more-articles__link--last" data-webm-clickvalue="view-${encodeURI(link.text.toLowerCase())}">${link.text}</a>`;
+        return `<a href="${link.uri}" class="more-articles__link more-articles__link--last" data-webm-clickvalue="${hyphenateNonAlphaNumeric(link.text)}">${link.text}</a>`;
     }
 
     return `
@@ -41,12 +45,9 @@ const container = (data) => {
 
 
 const article = (data) => {
-
-
     const key = 'items';
 
     if (!Array.isArray(data[key])) { return '' }
-
 
     const template = data[key].map((item) => {
         return (`
@@ -68,21 +69,17 @@ const article = (data) => {
                     </a>
                 </div>
             </div>
-        `)
-    })
+        `);
+    });
 
     if (data[key].length) {
-
         return template.reduce((prev, current) => {
-            return prev + current
-        })
+            return prev + current;
+        });
 
     } else {
-
-        return template
+        return template;
     }
-
 }
-
 
 export { container, article };

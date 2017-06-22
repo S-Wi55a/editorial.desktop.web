@@ -6,11 +6,10 @@ import * as SearchBarActions from 'Js/Modules/Redux/SearchBar/Action/actionTypes
 import { getUI } from 'Js/Modules/Redux/Global/Helpers/UIHelpers'
 
 
-const SearchBarFormAction = ({reset, count, href, ui, uiKey, updateUI}) => {
+const SearchBarFormAction = ({reset, count, href, ui}) => {
 
     const isLoadingClass = ui.isLoading ? 'isLoading' : ''
 
-    console.log('Searchbar comp: ', ui.isLoading)
     //TODO: remove hard coded text
     return (
         <div className={'searchbar-form-action ' + isLoadingClass}>
@@ -21,6 +20,7 @@ const SearchBarFormAction = ({reset, count, href, ui, uiKey, updateUI}) => {
     )
 }
 
+//Make Memonized selectors - the UI prop changes b/c in inherits from parent
 
 // Selectors
 function getiNavCount(iNav) {
