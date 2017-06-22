@@ -11,7 +11,7 @@ const sagaMiddleware = createSagaMiddleware()
 
 const middlewareDev = [
     require('redux-immutable-state-invariant').default(),
-    require('redux-unhandled-action').default((action) => console.error(`Action ${action} didn't lead to creation of a new state object`, action)) ]
+    require('redux-unhandled-action').default((action) => console.warn(`Action ${action} didn't lead to creation of a new state object`, action)) ]
 
 const middlewareProd = [reduxMulti,sagaMiddleware]
 

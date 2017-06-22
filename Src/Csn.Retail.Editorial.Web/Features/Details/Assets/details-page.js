@@ -16,14 +16,14 @@ aboveTheFold();
 (function redux(d) {
 
     if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
-        window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer);
+        window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
         require('Js/Modules/Redux/SearchBar/index.js');
 
         if (module.hot) {
             // Enable Webpack hot module replacement for reducers
-            module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavParentReducer',
+            module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavReducer',
                 () => {
-                    window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavParentReducer').iNavParentReducer)
+                    window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer)
                 })
         }
 

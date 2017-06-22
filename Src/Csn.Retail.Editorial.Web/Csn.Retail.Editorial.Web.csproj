@@ -636,10 +636,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Reducers\rootReducer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actionTypes.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\facetsReducer.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\iNavChildReducer.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\nodesReducer.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\iNavParentReducer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\iNavReducer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
     <Content Include="Features\Shared\Assets\Js\csn.vendor.js" />
