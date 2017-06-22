@@ -2,7 +2,7 @@
 import { connect } from 'react-redux'
 import ui from 'redux-ui';
 import INavNodesContainer from 'Js/Modules/Redux/iNav/Containers/iNavNodesContainer'
-import SearchBarFormActionContainer from 'Js/Modules/Redux/SearchBar/Components/searchBarFormAction'
+import SearchBarFormActionContainer from 'Js/Modules/Redux/SearchBar/Containers/searchBarFormActionContainer'
 
 //TODO: import styles
 if (!SERVER) {

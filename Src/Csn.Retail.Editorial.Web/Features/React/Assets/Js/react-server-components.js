@@ -1,4 +1,4 @@
-﻿import {ReactServerConnect} from './ReactServerConnect'
+﻿import {ReactServerConnect} from 'React/Assets/Js/Util/ReactServerConnect'
 import {ReduxStore} from 'React/Assets/Js/Components/ReduxStore'
 
 // Search Bar component

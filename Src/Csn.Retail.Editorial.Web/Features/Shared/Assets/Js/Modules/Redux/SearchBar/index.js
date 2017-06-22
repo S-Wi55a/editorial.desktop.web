@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
 import SearchBar from 'Js/Modules/Redux/SearchBar/Components/searchBar'
-import { watchFetchData } from 'Js/Modules/Redux/iNav/Sagas/updateiNavSaga'
+import { watchFetchData } from 'Js/Modules/Redux/iNav/Sagas/iNavSaga'
 
 
 //Check for Store

@@ -19,7 +19,11 @@ let ReactServerConnect = store => WrappedComponent => (reducerName, reducer) => 
 
             if ((typeof reducerName !== 'undefined' && typeof reducer !== 'undefined')) {
                 //Pass the inital state to the reducer
-                global.injectAsyncReducer(store, reducerName, reducer(data)) //TODO: Find alternative to adding globally here
+                //we are reserving the props.state to pass init state
+
+                props.state = data // TODO: remove when no longer passing in stub data
+
+                global.injectAsyncReducer(store, reducerName, reducer(props.state)) //TODO: Find alternative to adding globally here
             }
 
             return (

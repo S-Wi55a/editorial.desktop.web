@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
-import SearchBarFormAction from 'Modules/Redux/iNav/Components/searchBarFormAction'
+import SearchBarFormAction from 'Js/Modules/Redux/SearchBar/Components/searchBarFormAction'
 
 function getiNavCount(iNav) {
     return iNav.count
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-SearchBarFormAction = connect(
+const SearchBarFormActionContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(SearchBarFormAction)
