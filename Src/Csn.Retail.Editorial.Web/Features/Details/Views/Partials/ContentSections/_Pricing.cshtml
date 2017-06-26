@@ -3,6 +3,7 @@
 @if (Model?.Price != null)
 {
     <div class="article__pricing">
-        @Model.Price.Currency@Model.Price.MinPrice - @Model.Price.Currency@Model.Price.MaxPrice
+        <div class="article__pricing--description">@Model.Price.PriceDescription</div>
+        <div class="article__pricing--price">@Model.Price.PriceText</div>
     </div>
 }
