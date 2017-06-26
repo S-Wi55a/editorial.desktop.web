@@ -5,6 +5,7 @@ require('./css/details-page.scss');
 
 import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
+import Modal from 'Js/Modules/Modal/modal.js'
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero
@@ -152,3 +153,24 @@ loaded.then(function () {
         },
         'Media Motive');
 });
+
+window.csn_modal = window.csn_modal || new Modal();
+
+loaded.then(function() {
+    document.querySelector('.article__pricing--label').addEventListener('click',
+        (e) => {
+            let disclaimerText = e.target.getAttribute('data-disclaimer');
+            console.log('test');
+            window.csn_modal.show(disclaimerTemplate(disclaimerText), '');
+        });
+});
+
+let disclaimerTemplate = function(disclaimerText) {
+    return `
+        <div class="spec-module-disclaimer">
+            <div class="spec-module-disclaimer__content">
+                <p>${disclaimerText || ''}</p>
+            </div>
+        </div>
+    `;
+}

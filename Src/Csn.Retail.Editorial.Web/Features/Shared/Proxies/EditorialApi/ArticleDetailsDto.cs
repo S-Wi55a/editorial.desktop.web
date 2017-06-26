@@ -124,7 +124,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public class PriceModel
     {
         public string PriceText { get; set; }
-        public string PriceDescription { get; set; }
+        public string PriceLabel { get; set; }
         public string PriceDisclaimer { get; set; }
     }
 

@@ -88,7 +88,6 @@
         & > p {
             margin-top: 1.25em;
             @include p();
-
             /*& > br {
                 display: none;
             }
@@ -154,6 +153,7 @@
         &--sponsored {
             background-color: $cs-sponsored-green;
             cursor: pointer;
+
             &::after {
                 color: $cs-white;
                 content: $icon-info-icon;
@@ -227,9 +227,22 @@
     }
 
     &__pricing {
-        @include h2();
         margin-top: 1em;
         display: inline-block;
+
+        &--label {
+            cursor: pointer;
+
+            &:hover,
+            &:active,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        &--price {
+            @include h2();
+        }
     }
 
     &__promotion {
