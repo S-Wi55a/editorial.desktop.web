@@ -127,80 +127,7 @@
             }
         }
     }
-    //Search category item
-    .searchbar-category-item {
-
-        $count-container-width: 50px;
-
-        margin-top: 2px;
-
-        &:nth-of-type(1) {
-            margin-top: 0;
-        }
-
-        &__checkbox {
-            display: none;
-        }
-
-        &.isSelected {
-            &::before {
-                content: $icon-tick-md;
-                font-family: $font-family-icons;
-                font-size: 14px;
-                font-weight: 600;
-                color: $cs-white;
-                background-color: $cs-primary;
-                border-radius: 9999px;
-                width: 20px;
-                height: 20px;
-                display: inline-block;
-                line-height: 20px;
-                text-align: center;
-                border: 0 solid $cs-primary;
-            }
-        }
-
-        &::before {
-            content: '';
-            background-color: $cs-light-grey-3;
-            border: 1px solid $cs-light-grey-2;
-            border-radius: 9999px;
-            width: 20px;
-            height: 20px;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 20px;
-            cursor: pointer;
-        }
-
-        &__link {
-            display: inline-block;
-            vertical-align: middle;
-            color: $cs-dark-grey-1;
-            width: calc(100% - 40px - #{$count-container-width}); // 100% - checkmark width+margin - $count-container-width
-            text-decoration: none;
-        }
-
-        &__count-container {
-            width: 50px;
-            display: inline-block;
-            font-size: $font-size-h6;
-            text-align: right;
-            vertical-align: middle
-        }
-
-        &__count {
-            color: $cs-white;
-            background-color: $cs-primary;
-            border-radius: 9999px;
-            display: inline-block;
-            font-size: $font-size-h6;
-            text-align: center;
-            padding: 0 6.5px;
-            margin-left: 5px;
-            vertical-align: middle
-        }
-    }
+   
     //searchbar-form-action
     .searchbar-form-action {
         position: absolute;
@@ -253,4 +180,5 @@
     }
 }
 
+@import "js/modules/redux/inav/css/inavlistitem";
 

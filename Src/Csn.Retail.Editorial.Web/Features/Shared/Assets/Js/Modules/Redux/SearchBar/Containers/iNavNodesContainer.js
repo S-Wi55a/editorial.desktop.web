@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
-import INavNodeContainer from 'Js/Modules/Redux/iNav/Containers/iNavNodeContainer'
+import INavNodeContainer from '\Js/Modules/Redux/SearchBar/Containers/iNavNodeContainer'
 
 //Wrapper component
 const iNavNodes = ({ nodes }) => {

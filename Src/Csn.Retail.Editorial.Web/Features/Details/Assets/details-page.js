@@ -17,7 +17,7 @@ aboveTheFold();
 
     if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
         window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
-        require('Js/Modules/Redux/SearchBar/index.js');
+        require('Js/Modules/Redux/SearchBar/SearchBar.js');
 
         if (module.hot) {
             // Enable Webpack hot module replacement for reducers

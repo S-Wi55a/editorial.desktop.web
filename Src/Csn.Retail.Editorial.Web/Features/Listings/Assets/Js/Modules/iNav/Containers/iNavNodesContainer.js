@@ -8,7 +8,7 @@ import Collapse,  { Panel } from 'rc-collapse';
 const iNavNodes = ({ nodes }) => {
 
     return (
-        <Collapse accordion={true}>
+        <Collapse accordion={true} defaultActiveKey={'1'}>
             {nodes.map((node, index) => {
                 return (
                     <Panel key={index} header={node.displayName} showArrow={false}>

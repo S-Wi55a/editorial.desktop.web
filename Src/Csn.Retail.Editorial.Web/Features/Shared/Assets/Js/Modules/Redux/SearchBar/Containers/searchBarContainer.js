@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import ui from 'redux-ui';
-import INavNodesContainer from 'Js/Modules/Redux/iNav/Containers/iNavNodesContainer'
+import INavNodesContainer from 'Js/Modules/Redux/SearchBar/Containers/iNavNodesContainer'
 import SearchBarFormActionContainer from 'Js/Modules/Redux/SearchBar/Containers/searchBarFormActionContainer'
 import { getUI } from 'Js/Modules/Redux/Global/Helpers/UIHelpers'
 import * as SearchBarActions from 'Js/Modules/Redux/SearchBar/Action/actionTypes'

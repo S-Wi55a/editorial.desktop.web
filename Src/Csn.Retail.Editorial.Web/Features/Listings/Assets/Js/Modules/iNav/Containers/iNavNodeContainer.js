@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
-import INavfacet from 'Js/Modules/iNav/Components/iNavFacet'
+import INavfacet from 'Js/Modules/Redux/iNav/Components/iNavFacet'
 
 
 //TODO: handle cb for switch panel UI

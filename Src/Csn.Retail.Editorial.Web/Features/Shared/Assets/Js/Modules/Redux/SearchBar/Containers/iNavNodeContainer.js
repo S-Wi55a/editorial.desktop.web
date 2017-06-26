@@ -10,8 +10,8 @@ import INavfacet from 'Js/Modules/Redux/iNav/Components/iNavFacet'
 
 const INavNodeList = ({displayName, facets, name, toggleIsSelected}) => (  
     <div>
-        <div className="iNav-category__heading">{displayName}</div>
-        <div className="iNav-category__container iNav-category__container--1">
+        <div className="searchbar-category__heading">{displayName}</div>
+        <div className="searchbar-category__container searchbar-category__container--1">
             <ul>
                 {facets.map((facet) => {
                     return <INavfacet key={facet.displayValue} {...facet} name={name} toggleIsSelected={toggleIsSelected}/>
@@ -24,11 +24,11 @@ const INavNodeList = ({displayName, facets, name, toggleIsSelected}) => (
 
 
 const INavNode = ({ node, refinements, toggleIsSelected }) => (
-        <div className={'iNav__category iNav-category'}>
+        <div className={'searchbar__category searchbar-category'}>
             <INavNodeList {...node} toggleIsSelected={toggleIsSelected} />
             {
                 (Object.getOwnPropertyNames(refinements).length > 0) ? 
-                    <div className="iNav-category__container iNav-category__container--2">
+                    <div className="searchbar-category__container searchbar-category__container--2">
                         <INavNodeList {...refinements} toggleIsSelected={toggleIsSelected} />
                     </div>
                 : ''
