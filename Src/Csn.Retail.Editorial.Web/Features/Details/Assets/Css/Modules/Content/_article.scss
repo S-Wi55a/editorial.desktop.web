@@ -232,6 +232,8 @@
 
         &--label {
             cursor: pointer;
+            color: $cs-dark-grey-1;
+            font-size: 14px;
 
             &:hover,
             &:active,
