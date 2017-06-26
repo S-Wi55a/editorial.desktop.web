@@ -154,14 +154,13 @@ loaded.then(function () {
         'Media Motive');
 });
 
+// display disclaimer on pricing guide
 window.csn_modal = window.csn_modal || new Modal();
 
-loaded.then(function() {
-    document.querySelector('.article__pricing--label').addEventListener('click',
-        (e) => {
-            window.csn_modal.show(disclaimerTemplate(e.target.getAttribute('data-disclaimer')));
-        });
-});
+document.querySelector('.article__pricing--label').addEventListener('click',
+    (e) => {
+        window.csn_modal.show(disclaimerTemplate(e.target.getAttribute('data-disclaimer')));
+    });
 
 let disclaimerTemplate = function(disclaimerText) {
     return `
