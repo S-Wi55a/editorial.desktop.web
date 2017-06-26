@@ -77,3 +77,6 @@ TempWebpackConfig
 
 # React Server build
 dist--server
+
+# Remove when eligant workflow has been made
+.package-lock.json
