@@ -10,6 +10,7 @@ export const listOfPaths = [
     'bower_components',
     'Features/Shared/Assets',
     'Features/Details/Assets',
+    'Features/Listings/Assets',
     'Features/SiteNav/Assets',
     'Features/Errors/Assets',
     'Features'

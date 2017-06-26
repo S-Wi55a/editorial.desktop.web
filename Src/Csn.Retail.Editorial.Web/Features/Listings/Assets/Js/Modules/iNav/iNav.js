@@ -3,11 +3,11 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
-import SearchBar from 'Js/Modules/Redux/SearchBar/Containers/searchBarContainer'
+import SearchBar from 'Js/Modules/iNav/Containers/iNavContainer'
 import { watchINavSagaActions } from 'Js/Modules/Redux/iNav/Sagas/iNavSaga'
 
 if (!SERVER) {
-    require('Js/Modules/Redux/SearchBar/css/searchBar.scss')  
+    require('Js/Modules/iNav/css/iNav.scss')  
 }
 
 //Check for Store
@@ -20,7 +20,7 @@ const render = (WrappedComponent) => {
                 <WrappedComponent />
             </Provider>
         </AppContainer>,
-        document.getElementById('redux-placeholder')
+        document.getElementById('iNav')
     );
 };
 
@@ -34,7 +34,7 @@ if (store) {
     render(SearchBar);
 
     if (module.hot) {
-        module.hot.accept('Js/Modules/Redux/SearchBar/Containers/searchBarContainer', () => render(SearchBar));
+        module.hot.accept('Js/Modules/iNav/Containers/iNavContainer', () => render(SearchBar));
     }
 }
 

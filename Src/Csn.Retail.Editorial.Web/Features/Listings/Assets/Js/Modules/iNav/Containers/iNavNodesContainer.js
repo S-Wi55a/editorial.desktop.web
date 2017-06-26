@@ -1,17 +1,22 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
-import INavNodeContainer from 'Js/Modules/Redux/iNav/Containers/iNavNodeContainer'
+import INavNodeContainer from 'Js/Modules/iNav/Containers/iNavNodeContainer'
+import Collapse,  { Panel } from 'rc-collapse';
 
 //Wrapper component
 const iNavNodes = ({ nodes }) => {
 
     return (
-        <div>
-        {nodes.map((node) => {
-            return (<INavNodeContainer key={node.displayName} node={node} />)
-        })}
-    </div>
+        <Collapse accordion={true}>
+            {nodes.map((node, index) => {
+                return (
+                    <Panel key={index} header={node.displayName} showArrow={false}>
+                        <INavNodeContainer node={node} />
+                    </Panel>
+                    )
+            })}
+        </Collapse>
     )
 }
 

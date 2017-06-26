@@ -1,0 +1,166 @@
+﻿@import "css/globals";
+
+
+.iNav {
+
+    $iNav-header-height: 60px;
+    $category-container-height: 500px;
+    $spacing: 20px;
+
+    width: 33%;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        background-color: $cs-primary;
+        height: 5px;
+    }
+    // RC collapse
+    .rc-collapse-anim-active {
+        transition: height 0.2s ease-out;
+    }
+
+    .rc-collapse > .rc-collapse-item {
+
+        &::after {
+            content: '';
+            display: block;
+            width: calc(100% - #{($spacing*2)});
+            margin-left: $spacing;
+            border-bottom: 1px solid $cs-light-grey-2;
+        }
+
+        &:last-child {
+            &::after {
+                border-bottom: 0 solid $cs-light-grey-2;
+            }
+        }
+    }
+
+    .rc-collapse > .rc-collapse-item > .rc-collapse-header {
+        height: $iNav-header-height;
+        line-height: $iNav-header-height;
+        font-size: 18px;
+        font-weight: 600;
+        z-index: 1;
+        position: relative;
+        padding: 0 $spacing;
+    }
+
+    .rc-collapse > .rc-collapse-item > .rc-collapse-header::after {
+        content: $icon-chevron-down-md;
+        font-family: $font-family-icons;
+        font-size: 21px;
+        font-weight: 600;
+        color: $cs-light-grey-1;
+        float: right;
+    }
+
+    .rc-collapse-content-inactive {
+        display: none;
+    }
+
+    .rc-collapse-content {
+        overflow: hidden;
+    }
+    // Category container
+    &__category-container {
+        position: relative;
+        background-color: $cs-white;
+        border-right: 1px solid $cs-light-grey-2;
+        border-left: 1px solid $cs-light-grey-2;
+        border-bottom: 1px solid $cs-light-grey-2;
+    }
+
+    &__category {
+        font-size: $font-size-body;
+    }
+    //Search category
+    .iNav-category {
+        margin-bottom: $spacing;
+
+        &__container {
+            max-height: $category-container-height - ($spacing*2);
+            overflow-y: auto;
+            padding: 0 $spacing;
+
+            &--1 {
+            }
+        }
+    }
+    //Search category item
+    .iNav-category-item {
+
+        $count-container-width: 75px;
+
+        margin-top: 2px;
+
+        &:nth-of-type(1) {
+            margin-top: 0;
+        }
+
+        &__checkbox {
+            display: none;
+        }
+
+        &.isSelected {
+            &::before {
+                content: $icon-tick-md;
+                font-family: $font-family-icons;
+                font-size: 14px;
+                font-weight: 600;
+                color: $cs-white;
+                background-color: $cs-primary;
+                border-radius: 9999px;
+                width: 20px;
+                height: 20px;
+                display: inline-block;
+                line-height: 20px;
+                text-align: center;
+                border: 0 solid $cs-primary;
+            }
+        }
+
+        &::before {
+            content: '';
+            background-color: $cs-light-grey-3;
+            border: 1px solid $cs-light-grey-2;
+            border-radius: 9999px;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        &__link {
+            display: inline-block;
+            vertical-align: middle;
+            color: $cs-dark-grey-1;
+            width: calc(100% - 40px - #{$count-container-width}); // 100% - checkmark width+margin - $count-container-width
+            text-decoration: none;
+        }
+
+        &__count-container {
+            width: $count-container-width;
+            display: inline-block;
+            font-size: $font-size-h6;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        &__count {
+            color: $cs-white;
+            background-color: $cs-primary;
+            border-radius: 9999px;
+            display: inline-block;
+            font-size: $font-size-h6;
+            text-align: center;
+            padding: 0 6.5px;
+            margin-left: 5px;
+            vertical-align: middle
+        }
+    }
+}

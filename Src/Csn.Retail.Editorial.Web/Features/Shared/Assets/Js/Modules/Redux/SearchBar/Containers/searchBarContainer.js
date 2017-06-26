@@ -6,10 +6,6 @@ import SearchBarFormActionContainer from 'Js/Modules/Redux/SearchBar/Containers/
 import { getUI } from 'Js/Modules/Redux/Global/Helpers/UIHelpers'
 import * as SearchBarActions from 'Js/Modules/Redux/SearchBar/Action/actionTypes'
 
-if (!SERVER) {
-    require('Js/Modules/Redux/SearchBar/css/searchBar.scss')  
-}
-
 const SearchBarComponent = ( {ui, toggleIsSelected }) => {
 
     const activeClass = ui.isActive ? 'isActive' : ''

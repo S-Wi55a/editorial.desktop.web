@@ -1,16 +1,15 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
-import INavfacet from 'Js/Modules/Redux/iNav/Components/iNavFacet'
+import INavfacet from 'Js/Modules/iNav/Components/iNavFacet'
 
 
 //TODO: handle cb for switch panel UI
 //TODO: Handle cb for toggle is selected which may be different
 
-
-const INavNodeList = ({displayName, facets, name, toggleIsSelected}) => (  
+// This is separated for displaying sub lists
+const INavNodeList = ({facets, name, toggleIsSelected}) => (  
     <div>
-        <div className="iNav-category__heading">{displayName}</div>
         <div className="iNav-category__container iNav-category__container--1">
             <ul>
                 {facets.map((facet) => {

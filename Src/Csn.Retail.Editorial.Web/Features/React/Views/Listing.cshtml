@@ -2,33 +2,31 @@
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @using React.Web.Mvc
 @{
-    Layout = null;
+    Layout = "~/Features/Shared/Views/_LayoutBasic.cshtml";
     var tenantName = Html.CurrentTenant().Name.ToLower();
 
 }
-<html>
-<head>
-    <title>Lisitngs</title>
-</head>
-<body>
-Lsting React Compoents
-<div id="redux-placeholder"></div>
 
-@*@Html.React("global.Components.SearchBarContainer", new
+@section Styles {
+    @Html.AssetCss("listings-page--" + tenantName)
+}
+
+
+@section TopScripts {
+    @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
+}
+
+
+<div class="container">
+    @Html.React("global.Components.iNav", new { }, null, "iNav")
+
+</div>
+
+
+@section BottomScripts
 {
-   
-},
-null, "redux-placeholder")
-    
-@Html.React("global.Components.ReduxStore", new {})*@
-    
-@*@Html.AssetJs("csn.base--" + tenantName)
-@Html.AssetJs("vendor--" + tenantName)
-@Html.AssetJs("csn.common--" + tenantName)*@
-@*<script src="~/dist--server/react-server-components.js"></script>*@
-@*@Html.ReactInitJavaScript()*@
-
-</body>
-</html>
-
-
+    @{
+        // We put this here to guaretee that all compoents that effect the store should be run beforehand
+        Html.RenderPartial("Partials/Redux/_ReduxStore");
+    }    
+}
