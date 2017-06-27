@@ -506,6 +506,7 @@
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\ArticlePricing\articlePricing.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal--view.js" />
@@ -514,7 +515,6 @@
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\NativeAdstest\nativeAds.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--tabOrModal.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--modal-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SponsoredArticles\sponsoredArticles.js" />
@@ -544,6 +544,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mm.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal-disclaimer-view.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
@@ -704,7 +705,6 @@
     <Content Include="Features\Details\Views\Partials\Widgets\SpecModule\_SpecModuleData.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleData.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\Modal\_ModalData.cshtml" />
-    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module-disclaimer.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--spec-item.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--third-party-offer.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\fadeInUp.scss" />
@@ -749,6 +749,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\SponsoredArticles\_sponsoredArticles.scss" />
     <Content Include="Features\Details\Views\Partials\Content\_SponsoredArticleTab.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
+    <Content Include="Features\Shared\Assets\Css\Mixins\_mixin-modal.scss" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

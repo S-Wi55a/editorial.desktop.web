@@ -2,7 +2,7 @@
 import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 import Slider from 'rc-slider/lib/Slider'; 
-import * as View from 'Js/Modules/SpecModule/specModule--modal-view.js'
+import {disclaimerTemplate} from 'Js/Modules/Modal/modal-disclaimer-view'
 import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
 
 const SpecificationsItem_DD = (props) => {
@@ -250,7 +250,7 @@ class SpecModule extends React.Component {
         } 
 
         const content = decodeURI(e.target.getAttribute('data-disclaimer'))
-        this.props.modal.show(View.disclaimer(content), className)
+        this.props.modal.show(disclaimerTemplate(content), className)
 
     }
 

@@ -155,19 +155,4 @@ loaded.then(function () {
 });
 
 // display disclaimer on pricing guide
-window.csn_modal = window.csn_modal || new Modal();
-
-document.querySelector('.article__pricing--label').addEventListener('click',
-    (e) => {
-        window.csn_modal.show(disclaimerTemplate(e.target.getAttribute('data-disclaimer')));
-    });
-
-let disclaimerTemplate = function(disclaimerText) {
-    return `
-        <div class="spec-module-disclaimer">
-            <div class="spec-module-disclaimer__content">
-                <p>${disclaimerText || ''}</p>
-            </div>
-        </div>
-    `;
-}
+require('Js/Modules/ArticlePricing/articlePricing.js');
