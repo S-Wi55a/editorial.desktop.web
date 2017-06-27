@@ -108,25 +108,25 @@ const Price = (props) => {
                     <p className="spec-item__price spec-item__price--price-new">{props.data.priceNew.price}</p>
                 </div>
            </div>
-        );
-    }
-
-    if (props.data.priceUsed) {
+        )
+    } else if (props.data.priceUsed) {
         return (
             <div className="spec-item__price-container">
                 <div className="spec-item__price-item">
                     <div className="spec-item__price-label">{props.data.priceUsed.heading}</div>
                     <div className="spec-item__price spec-item__price--price-used">{props.data.priceUsed.text}</div>
                     <div className="spec-item__price-label">
-                        <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} kmsText={props.data.kmsTitle} />
+                        <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} kmsText={props.data
+                            .kmsTitle} />
                     </div>
                     <div className="spec-item__price-redbook-info" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.specDataProviderText}</div>
                 </div>
             </div>
-        );
+        )
+    } else {
+        return (<div className="spec-item__price-container"></div>)
     }
 
-    return (<div className="spec-item__price-container"></div>);
 }
 
 //Content
