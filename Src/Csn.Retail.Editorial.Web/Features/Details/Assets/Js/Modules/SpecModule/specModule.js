@@ -108,8 +108,10 @@ const Price = (props) => {
                     <p className="spec-item__price spec-item__price--price-new">{props.data.priceNew.price}</p>
                 </div>
            </div>
-        )
-    } else {
+        );
+    }
+
+    if (props.data.priceUsed) {
         return (
             <div className="spec-item__price-container">
                 <div className="spec-item__price-item">
@@ -121,8 +123,10 @@ const Price = (props) => {
                     <div className="spec-item__price-redbook-info" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.specDataProviderText}</div>
                 </div>
             </div>
-        )
-    } 
+        );
+    }
+
+    return (<div className="spec-item__price-container"></div>);
 }
 
 //Content
