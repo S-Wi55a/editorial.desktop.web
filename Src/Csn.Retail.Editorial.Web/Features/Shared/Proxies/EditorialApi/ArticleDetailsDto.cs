@@ -123,9 +123,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 
     public class PriceModel
     {
-        public string MinPrice { get; set; }
-        public string MaxPrice { get; set; }
-        public string Currency { get; set; }
+        public string PriceText { get; set; }
+        public string PriceLabel { get; set; }
+        public string PriceDisclaimer { get; set; }
     }
 
     public class EditorialItem

@@ -5,6 +5,7 @@ require('./css/details-page.scss');
 
 import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
+import Modal from 'Js/Modules/Modal/modal.js'
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero
@@ -152,3 +153,6 @@ loaded.then(function () {
         },
         'Media Motive');
 });
+
+// display disclaimer on pricing guide
+require('Js/Modules/ArticlePricing/articlePricing.js');

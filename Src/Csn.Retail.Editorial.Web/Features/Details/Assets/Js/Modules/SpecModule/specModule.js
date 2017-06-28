@@ -2,7 +2,7 @@
 import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 import Slider from 'rc-slider/lib/Slider'; 
-import * as View from 'Js/Modules/SpecModule/specModule--modal-view.js'
+import {disclaimerTemplate} from 'Js/Modules/Modal/modal-disclaimer-view'
 import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
 
 const SpecificationsItem_DD = (props) => {
@@ -109,20 +109,24 @@ const Price = (props) => {
                 </div>
            </div>
         )
-    } else {
+    } else if (props.data.priceUsed) {
         return (
             <div className="spec-item__price-container">
                 <div className="spec-item__price-item">
                     <div className="spec-item__price-label">{props.data.priceUsed.heading}</div>
                     <div className="spec-item__price spec-item__price--price-used">{props.data.priceUsed.text}</div>
                     <div className="spec-item__price-label">
-                        <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} kmsText={props.data.kmsTitle} />
+                        <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} kmsText={props.data
+                            .kmsTitle} />
                     </div>
                     <div className="spec-item__price-redbook-info" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.specDataProviderText}</div>
                 </div>
             </div>
         )
-    } 
+    } else {
+        return (<div className="spec-item__price-container"></div>)
+    }
+
 }
 
 //Content
@@ -246,7 +250,7 @@ class SpecModule extends React.Component {
         } 
 
         const content = decodeURI(e.target.getAttribute('data-disclaimer'))
-        this.props.modal.show(View.disclaimer(content), className)
+        this.props.modal.show(disclaimerTemplate(content), className)
 
     }
 
