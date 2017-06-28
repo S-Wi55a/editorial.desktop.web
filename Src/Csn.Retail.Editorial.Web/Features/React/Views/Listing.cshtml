@@ -18,8 +18,16 @@
 
 
 <div class="container">
-    @Html.React("global.Components.iNav", new { }, null, "iNav")
+    
+    @* AddDataToStore is a special component for when we just want to pass data to a reducer that is shared across components *@
+    @Html.React("global.Components.AddDataToStore", new {
+        reducerKey = "iNav",
+        reducerName = "iNavParentReducerPassInitData"
+    }, serverOnly: true)
 
+    @Html.React("global.Components.INavBreadCrumbs", new {}, containerId: "iNavBreadcrumbs")
+
+    @Html.React("global.Components.INav", new {}, containerId: "iNav")
 </div>
 
 

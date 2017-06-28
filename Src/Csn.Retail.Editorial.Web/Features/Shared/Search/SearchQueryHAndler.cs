@@ -35,7 +35,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
                 Count = result.Data.Count,
                 INav = new RyvussNav()
                 {
-                    Nodes = result.Data.INav.Nodes.Where(n => n.Name == "Type" || n.Name == "Make" || n.Name == "BodyType" || n.Name == "Year").ToList()
+                    Nodes = result.Data.INav.Nodes.Where(n => n.Name == "Type" || n.Name == "Make" || n.Name == "BodyType" || n.Name == "Year").ToList(),
+                    BreadCrumbs = result.Data.INav.BreadCrumbs.ToList()
                 } 
             };
         }

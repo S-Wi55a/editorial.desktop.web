@@ -3,10 +3,6 @@ import { ryvuss } from 'Js/Modules/Endpoints/endpoints'
 
 const INavfacet = ({ isSelected, displayValue, name, toggleIsSelected, action, count }) => {
     
-
-    //console.log('Category Item')
-
-
     return (
         <li className={`iNav-category-item ${isSelected ? 'isSelected': ''}`} onClick={() => {toggleIsSelected(isSelected, name, displayValue, action)}}>
             <input className="iNav-category-item__checkbox" type="checkbox" checked={isSelected} readOnly="true"/>

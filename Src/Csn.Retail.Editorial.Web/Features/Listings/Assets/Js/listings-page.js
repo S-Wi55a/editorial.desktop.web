@@ -1,9 +1,17 @@
 ﻿// load Redux 
 (function redux(d) {
 
-    if (d.querySelector('#iNav')) { //TODO: change to iNav check
+    if (d.querySelector('#csn-store')) { //TODO: change to iNav check
         window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
-        require('Js/Modules/iNav/iNav.js');
+        if (d.querySelector('#iNav')) {
+            require('Js/Modules/iNav/iNav.js');
+        }
+        //if (d.querySelector('#')) {
+            require('Js/Modules/iNavBreadCrumbs/iNavBreadCrumbs.js');
+        //}
+
+        
+        
 
         if (module.hot) {
             // Enable Webpack hot module replacement for reducers

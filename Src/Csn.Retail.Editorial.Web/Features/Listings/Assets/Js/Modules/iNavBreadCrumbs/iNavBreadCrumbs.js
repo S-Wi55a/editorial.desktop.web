@@ -3,11 +3,10 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
-import INav from 'Js/Modules/iNav/Containers/iNavContainer'
-import { watchINavSagaActions } from 'Js/Modules/Redux/iNav/Sagas/iNavSaga'
+import INavBreadCrumbsContainer from 'Js/Modules/iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
 
 if (!SERVER) {
-    require('Js/Modules/iNav/css/iNav.scss')  
+    require('Js/Modules/iNavBreadCrumbs/Css/iNavBreadCrumbs.scss')  
 }
 
 //Check for Store
@@ -15,26 +14,24 @@ const store = window.store
 
 const render = (WrappedComponent) => {
     ReactDOM.render(
-        <AppContainer iNav>
+        <AppContainer iNavBreadcrumbs>
             <Provider store={store}>
                 <WrappedComponent />
             </Provider>
         </AppContainer>,
-        document.getElementById('iNav')
+        document.getElementById('iNavBreadcrumbs')
     );
 };
 
 
 //If store exists
 if (store) {
-    //Run sagas for search bar
-    window.store.runSaga(watchINavSagaActions)
     
     //Render Searchbar Component
-    render(INav);
+    render(INavBreadCrumbsContainer);
 
     if (module.hot) {
-        module.hot.accept('Js/Modules/iNav/Containers/iNavContainer', () => render(INav));
+        module.hot.accept('Js/Modules/iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer', () => render(INavBreadCrumbsContainer));
     }
 }
 

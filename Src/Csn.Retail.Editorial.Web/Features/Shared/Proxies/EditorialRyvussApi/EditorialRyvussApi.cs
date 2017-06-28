@@ -66,6 +66,17 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
     public class RyvussNav
     {
         public List<RyvussNavNode> Nodes { get; set; }
+        public List<BreadCrumbs> BreadCrumbs { get; set; }
+
+    }
+
+    public class BreadCrumbs
+    {
+        public string Aspect { get; set; }
+        public string AspectDisplay { get; set; }
+        public string Facet { get; set; }
+        public string FacetDisplay { get; set; }
+        public string RemoveAction { get; set; }
     }
 
     public class RyvussNavNode
