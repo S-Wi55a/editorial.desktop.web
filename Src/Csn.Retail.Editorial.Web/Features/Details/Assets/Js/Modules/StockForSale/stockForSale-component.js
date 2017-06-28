@@ -2,6 +2,9 @@
 
 import * as View from 'Js/Modules/StockForSale/stockForSale-view.js'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
+
+import Modal from 'Js/Modules/Modal/modal.js'
+import { disclaimerTemplate } from 'Js/Modules/Modal/modal-disclaimer-view'
  
 
 // Get Scope and cache selectors
@@ -20,36 +23,44 @@ const setAttrValue = (el, attr, val) => {
 
 // Make Query - Ajax
 const makeQuery = (url, el, cb = () => {}, onError = () => {}) => {
-
     //Make Query
     Ajax.get(url,
         (resp) => {
 
-            resp = JSON.parse(resp)
+            resp = JSON.parse(resp);
             //update list
-            el.innerHTML = View.listItem(resp)
-            cb(resp)
+            el.innerHTML = View.listItem(resp);
+            cb(resp);
         },
         () => {
-            onError()  
+            onError();
         }
-    )
+    );
+}
+
+window.csn_modal = window.csn_modal || new Modal();
+
+// add click handlers for displaying pricing disclaimers for each stock item
+const initPriceDisclaimers = () => {
+    Array.from(scope.querySelectorAll('.stock-for-sale-item-pricing__label')).forEach((el) => {
+        el.addEventListener('click',
+            (e) => {
+                window.csn_modal.show(disclaimerTemplate(e.target.getAttribute('data-disclaimer'), 'pricing-guide-disclaimer'));
+            }
+        );
+    });
 }
 
 const toggleCLass = (el, className) => {
-
     el.classList.contains(className) ? el.classList.remove(className) : el.classList.add(className);
-
 }
 
 const animateNavItems = (elList, className, timeBetween = 400) => {
-
     const LENGTH = elList.length;
 
     for (let i = 0; i < LENGTH; i++) {
         window.setTimeout(toggleCLass.bind(null, elList[i], className), timeBetween * i)
     }
-
 }
 
 // Init
@@ -62,7 +73,8 @@ const init = (scope, data) => {
     const stockForSaleOption = scope.querySelectorAll('.stock-for-sale-options__option');
     const stockForSaleList = scope.querySelector('.stock-for-sale__list');
     const stockForSaleSelect = scope.querySelector('.stock-for-sale__select');
-    const stockForSaleButton = scope.querySelector('.stock-for-sale__button')
+    const stockForSaleButton = scope.querySelector('.stock-for-sale__button');
+    
 
     // Load data
     toggleCLass(stockForSale, 'loading')
@@ -72,11 +84,12 @@ const init = (scope, data) => {
         (data) => {
             //Hide modue if no items in all states
             if (data && data.items.length > 0) {
-                stockForSale.classList.add('active')
-            } 
+                stockForSale.classList.add('active');
+                initPriceDisclaimers();
+            }
 
-            toggleCLass(stockForSale, 'loading')
-            setAttrValue(stockForSaleButton, 'href', getAttrValue(stockForSaleOption[0], 'data-stock-for-sale-view-all-url'))
+            toggleCLass(stockForSale, 'loading');
+            setAttrValue(stockForSaleButton, 'href', getAttrValue(stockForSaleOption[0], 'data-stock-for-sale-view-all-url'));
         },
         // On Error
         () => {
@@ -86,10 +99,10 @@ const init = (scope, data) => {
 
     stockForSaleSelect.addEventListener('click',
         () => {
-            toggleCLass(stockForSale, 'show--nav')
-            animateNavItems(stockForSaleOption, 'easeOutBack', 100)
+            toggleCLass(stockForSale, 'show--nav');
+            animateNavItems(stockForSaleOption, 'easeOutBack', 100);
         }
-    )
+    );
 
     Array.from(stockForSaleOption).forEach((el) => {
         el.addEventListener('click', () => {

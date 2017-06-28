@@ -194,16 +194,6 @@
             }
         }
 
-        &__price {
-            min-width: 85px;
-            display: inline-block;
-            font-size: $font-size-body;
-            vertical-align: top;
-            font-weight: $font-weight-600;
-            text-align: right;
-            margin-top: -2px;
-        }
-
         &__list {
             display: inline-block;
             width: calc(100% - 30px);
@@ -237,6 +227,28 @@
             min-width: 30px;
             display: inline-block;
             margin-top: 5px;
+        }
+
+        .stock-for-sale-item-pricing {
+            min-width: 85px;
+            display: inline-block;
+            text-align: right;
+
+            &__price {
+                font-size: $font-size-body;
+                vertical-align: top;
+                font-weight: $font-weight-600;
+                margin-top: -2px;
+            }
+
+            &__label {
+                font-size: $font-size-smaller;
+
+                &:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
