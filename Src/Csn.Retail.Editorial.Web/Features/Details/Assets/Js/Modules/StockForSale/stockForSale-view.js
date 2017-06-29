@@ -69,7 +69,7 @@ const priceData = (data) => {
         return (`
             <div class="stock-for-sale-item-pricing">
                 <p class="stock-for-sale-item-pricing__price">${data.text}</p>
-                <p class="stock-for-sale-item-pricing__label" data-disclaimer="${data.disclaimer}">${data.label}</p>
+                <p class="stock-for-sale-item-pricing__label" data-disclaimer="${data.disclaimer}">${data.label || ''}</p>
             </div>
         `);
     }
