@@ -29,7 +29,9 @@ namespace Csn.Retail.Editorial.Web
                 .SetLoadBabel(false)
                 //.SetLoadReact(false)
                 .AddScriptWithoutTransform("/dist--server/react-server-components.js")
-		        //.DisableServerSideRendering()
+		        .SetStartEngines(2)
+		        .SetMaxEngines(2)
+                //.DisableServerSideRendering()
                 ;
 
 

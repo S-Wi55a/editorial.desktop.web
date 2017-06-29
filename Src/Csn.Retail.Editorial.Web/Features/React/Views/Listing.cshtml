@@ -1,9 +1,16 @@
 ﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@using Newtonsoft.Json
 @using React.Web.Mvc
+@model object
+
+
+
 @{
     Layout = "~/Features/Shared/Views/_LayoutBasic.cshtml";
     var tenantName = Html.CurrentTenant().Name.ToLower();
+
+    var data = JsonConvert.SerializeObject(Model);
 
 }
 
@@ -19,10 +26,13 @@
 
 <div class="container">
     
+
     @* AddDataToStore is a special component for when we just want to pass data to a reducer that is shared across components *@
-    @Html.React("global.Components.AddDataToStore", new {
+    @Html.React("global.Components.AddDataToStore", new
+    {
         reducerKey = "iNav",
-        reducerName = "iNavParentReducerPassInitData"
+        reducerName = "iNavParentReducerPassInitData",
+        state = Model
     }, serverOnly: true)
 
     @Html.React("global.Components.INavBreadCrumbs", new {}, containerId: "iNavBreadcrumbs")

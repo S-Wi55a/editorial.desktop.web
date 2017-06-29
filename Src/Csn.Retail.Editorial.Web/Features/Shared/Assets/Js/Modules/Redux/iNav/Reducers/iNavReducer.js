@@ -6,9 +6,6 @@ import update from 'immutability-helper';
 
 // This is the entry Reducer and should be loaded witht component
 
-// Check if there is a preloaded state
-let initState = global.__PRELOADED_STATE__ ? global.__PRELOADED_STATE__.iNav || {} : {}
-
 //We wrap the reducer to pass init data to it for it to work in ReactJS.NET
 export const iNavParentReducerPassInitData = initState => {
 
@@ -31,6 +28,9 @@ export const iNavParentReducerPassInitData = initState => {
 
     }
 }
+
+// Check if there is a preloaded state
+let initState = global.__PRELOADED_STATE__ ? global.__PRELOADED_STATE__.iNav || {} : {}
 
 export const iNavParentReducer = iNavParentReducerPassInitData(initState)
 

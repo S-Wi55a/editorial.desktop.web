@@ -6,9 +6,6 @@ import { Provider } from 'react-redux'
 import * as Store from 'Js/Modules/Redux/Global/Store/store.server.js'
 import * as Reducers from '../Reducers/ReactServerReducersCollection.js'
 
-//TODO: remove
-import { data } from 'Js/Modules/Redux/iNav/Data/data' //Test data 
-
 
 //Enable Redux store globally
 global.store = Store.configureStore()
@@ -28,13 +25,12 @@ let ReactServerConnect = store => WrappedComponent => (reducerKey, reducerName) 
                 //Pass the inital state to the reducer
                 //we are reserving the props.state to pass init state             
                 if (!store.asyncReducers.hasOwnProperty(props.reducerKey)) { //This is to prevent duplcating data passed to Store if it alread has it
-                    store.injectAsyncReducer(store, reducerKey, Reducers[reducerName](props.state || data)) // TODO: remove when no longer passing in stub data
+                    store.injectAsyncReducer(store, reducerKey, Reducers[reducerName](props.state || null))
                 }
             }
-
             return (
                 <Provider store={store} >
-                    <WrappedComponent {...props} />   
+                    <WrappedComponent {...props} pear={true}/>   
                 </Provider>
             );
 
