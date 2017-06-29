@@ -1,4 +1,5 @@
-﻿@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+﻿@using Csn.Retail.Editorial.Web.Features.React.Models
+@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @using Newtonsoft.Json
 @using React.Web.Mvc
@@ -10,7 +11,9 @@
     Layout = "~/Features/Shared/Views/_LayoutBasic.cshtml";
     var tenantName = Html.CurrentTenant().Name.ToLower();
 
-    var data = JsonConvert.SerializeObject(Model);
+    //This can be changed to just a domain name instead ie. Lisitng or Details which could propbably limit the amount of stores created
+    // It may also remove the need to create a GUID as each compoent can reference the 'storeId' they want
+    var GUID = Guid.NewGuid().ToString();
 
 }
 
@@ -26,25 +29,28 @@
 
 <div class="container">
     
-
     @* AddDataToStore is a special component for when we just want to pass data to a reducer that is shared across components *@
     @Html.React("global.Components.AddDataToStore", new
-    {
-        reducerKey = "iNav",
-        reducerName = "iNavParentReducerPassInitData",
-        state = Model
-    }, serverOnly: true)
+        {
+            reducerKey = "iNav",
+            reducerName = "iNavParentReducerPassInitData",
+            storeId = GUID,
+            state = Model,
+            id = "Add DAta To Store"
+        }, 
+        serverOnly: true)
 
-    @Html.React("global.Components.INavBreadCrumbs", new {}, containerId: "iNavBreadcrumbs")
+    @Html.React("global.Components.INavBreadCrumbs", new { storeId = GUID }, containerId: "iNavBreadcrumbs")
 
-    @Html.React("global.Components.INav", new {}, containerId: "iNav")
+    @Html.React("global.Components.INav", new { storeId = GUID }, containerId: "iNav")
 </div>
 
 
 @section BottomScripts
 {
     @{
-        // We put this here to guaretee that all compoents that effect the store should be run beforehand
-        Html.RenderPartial("Partials/Redux/_ReduxStore");
+    // We put this here to guaretee that all compoents that effect the store should be run beforehand
+    Html.RenderPartial("Partials/Redux/_ReduxStore", new ReduxStoreModel(){StoreId = GUID});
+
     }    
 }

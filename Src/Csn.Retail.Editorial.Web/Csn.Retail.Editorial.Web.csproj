@@ -457,6 +457,7 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Content Include="Features\React\Assets\Js\react-server-components.js" />
     <Content Include="Features\React\Assets\Js\react-server-entry.js" />
+    <Compile Include="Features\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Features\React\ReactController.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleData.cs" />
     <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />

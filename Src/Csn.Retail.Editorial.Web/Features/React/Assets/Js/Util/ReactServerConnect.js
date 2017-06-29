@@ -5,15 +5,33 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import * as Store from 'Js/Modules/Redux/Global/Store/store.server.js'
 import * as Reducers from '../Reducers/ReactServerReducersCollection.js'
+import uuidv4 from 'uuid/v4'
+
+global.stores = {} 
+
+function storesFactory(stores) {
+    return storeId => {
+
+        if (stores.hasOwnProperty(storeId)) {
+            return stores[storeId]
+        } else {
+            stores[storeId] = Store.configureStore()
+            stores[storeId].injectAsyncReducer = Store.injectAsyncReducer
+            stores[storeId].id = storeId
+
+            return stores[storeId]  
+        }
+    }
+}
 
 
-//Enable Redux store globally
-global.store = Store.configureStore()
-global.store.injectAsyncReducer = Store.injectAsyncReducer
-
-let ReactServerConnect = store => WrappedComponent => (reducerKey, reducerName) => {
-         
+let ReactServerConnect = storesFactory => WrappedComponent => (reducerKey, reducerName) => {
+    
         return (props) => {
+
+            //Should always pass a storeId as using the uuidv4 could create a memory leak
+            //TODO: protection for non storeIds memory managment
+            const store = (typeof props.storeId !== 'undefined') ? storesFactory(props.storeId) : storesFactory(uuidv4()) 
 
             // In the scenerio where we want to use the 'AddDataToStore' component 
             // We need ot manually add the reducers and init data, so we leave the option to do so
@@ -30,14 +48,14 @@ let ReactServerConnect = store => WrappedComponent => (reducerKey, reducerName) 
             }
             return (
                 <Provider store={store} >
-                    <WrappedComponent {...props} pear={true}/>   
+                    <WrappedComponent {...props} storeId={store.id} />   
                 </Provider>
             );
 
         }
-        
 }
+    
+ReactServerConnect = ReactServerConnect(storesFactory(global.stores))
 
-ReactServerConnect = ReactServerConnect(global.store)
-
+// Exports
 export {ReactServerConnect}

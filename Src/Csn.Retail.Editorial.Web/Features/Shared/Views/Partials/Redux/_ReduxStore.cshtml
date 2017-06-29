@@ -1,2 +1,9 @@
 ﻿@using React.Web.Mvc
-@Html.React("global.Components.Store", new {}, null, "csn-store")
+@model Csn.Retail.Editorial.Web.Features.React.Models.ReduxStoreModel
+
+@Html.React("global.Components.Store", new
+{
+    storeId = Model.StoreId,
+    id = "Redux Store"
+
+}, null, "csn-store")

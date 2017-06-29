@@ -12,8 +12,17 @@ function createMarkup(preloadedState) {
     return state
 };
 
-const Store = props => <script dangerouslySetInnerHTML={createMarkup(props.store)} />
-  
+function deleteStore(storeId) {
+    delete global.stores[storeId]
+}
+
+const Store = props => {
+
+    // Remove Reference to global.Stores to hopefully help with Garbage Colelction
+    deleteStore(props.storeId)
+    return <script dangerouslySetInnerHTML={createMarkup(props.store)} />
+    }
+
 const mapStateToProps = (state) => {
     return {
         store: state
