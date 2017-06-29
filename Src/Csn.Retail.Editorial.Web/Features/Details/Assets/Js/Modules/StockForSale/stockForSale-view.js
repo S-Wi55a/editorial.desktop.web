@@ -45,7 +45,7 @@ const listItem = (data) => {
                     <a href="${item.detailsPageUrl || ''}" data-webm-clickvalue="stock-clicked">
                         <h3 class="stock-for-sale-item__title">${item.title || ''}</h3>
                     </a>
-                    <p class="stock-for-sale-item__price">${item.price || ''}</p>
+                    ${priceData(item.priceData)}
                     <ul class="stock-for-sale-item__list">
                         ${item.attributes.map(attr => `
                             <li class="stock-for-sale-item__list-item">${attr || ''}</li>
@@ -62,8 +62,20 @@ const listItem = (data) => {
     } else {
         return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${data.responseMessage || ''}</li>`;
     }
-}
+};
 
+const priceData = (data) => {
+    if (data && data.text) {
+        return (`
+            <div class="stock-for-sale-item-pricing">
+                <p class="stock-for-sale-item-pricing__price">${data.text}</p>
+                <p class="stock-for-sale-item-pricing__label" data-disclaimer="${data.disclaimer}">${data.label || ''}</p>
+            </div>
+        `);
+    }
+
+    return (``);
+};
 
 
 export { container, listItem };
