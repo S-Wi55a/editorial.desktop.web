@@ -7,6 +7,7 @@ using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Ingress.ServiceClient.Abstracts;
+using Newtonsoft.Json.Linq;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
 {
@@ -34,6 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 .QueryString("q", input.RyvussPredicates)
                 .QueryString("count", "true")
                 .QueryString("inav", "true")
+                .QueryString("sr", "||10|")
                 //.QueryString("sr", "|Latest|{0}|{1}".FormatWith(input.Offset, input.Limit))
                 .GetAsync<RyvussResult>();
         }
@@ -45,6 +47,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 .QueryString("q", input.RyvussPredicates)
                 .QueryString("count", "true")
                 .QueryString("inav", "true")
+                .QueryString("sr", "||10|")
                 //.QueryString("sr", "|Latest|{0}|{1}".FormatWith(input.Offset, input.Limit))
                 .GetAsync<object>();
         }
@@ -61,6 +64,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
     {
         public string Count { get; set; }
         public RyvussNav INav { get; set; }
+        public List<JObject> SearchResults { get; set; }
+    }
+
+    public class RyvussSearchResults
+    {
+        public string Headline { get; set; }
+        public DateTime DateAvailable { get; set; }
     }
 
     public class RyvussNav

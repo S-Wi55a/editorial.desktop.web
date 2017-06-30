@@ -642,7 +642,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Containers\root.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\immutableJSHelper.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\iNavFacet.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Data\data.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Reducers\rootReducer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actionTypes.js" />

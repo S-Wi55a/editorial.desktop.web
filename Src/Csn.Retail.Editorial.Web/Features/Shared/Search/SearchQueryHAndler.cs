@@ -37,7 +37,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
                 {
                     Nodes = result.Data.INav.Nodes.Where(n => n.Name == "Type" || n.Name == "Make" || n.Name == "BodyType" || n.Name == "Year").ToList(),
                     BreadCrumbs = result.Data.INav.BreadCrumbs.ToList()
-                } 
+                },
+                SearchResults = result.Data.SearchResults
             };
         }
     }
