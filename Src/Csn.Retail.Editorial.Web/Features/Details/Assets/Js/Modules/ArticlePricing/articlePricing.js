@@ -7,7 +7,7 @@ window.csn_modal = window.csn_modal || new Modal();
 let pricingLabel = document.querySelector('.article__pricing-label');
 
 if (pricingLabel) {
-    test.addEventListener('click',
+    pricingLabel.addEventListener('click',
         (e) => {
             window.csn_modal.show(disclaimerTemplate(e.target.getAttribute('data-disclaimer'), 'pricing-guide-disclaimer'));
         });
