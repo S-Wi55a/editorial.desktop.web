@@ -1,37 +1,24 @@
 ﻿'use strict'
 
-import global from 'global-object' 
 import React from 'react'
 import { Provider } from 'react-redux'
 import * as Store from 'Js/Modules/Redux/Global/Store/store.server.js'
 import * as Reducers from '../Reducers/ReactServerReducersCollection.js'
-import uuidv4 from 'uuid/v4'
 
-global.stores = {} 
+function storesFactory() {
 
-function storesFactory(stores) {
-    return storeId => {
+    const store = Store.configureStore()
+    store.injectAsyncReducer = Store.injectAsyncReducer
 
-        if (stores.hasOwnProperty(storeId)) {
-            return stores[storeId]
-        } else {
-            stores[storeId] = Store.configureStore()
-            stores[storeId].injectAsyncReducer = Store.injectAsyncReducer
-            stores[storeId].id = storeId
+    return store  
 
-            return stores[storeId]  
-        }
-    }
 }
 
-
-let ReactServerConnect = storesFactory => WrappedComponent => (reducerKey, reducerName) => {
+const ReactServerConnect = WrappedComponent => (reducerKey, reducerName) => {
     
         return (props) => {
 
-            //Should always pass a storeId as using the uuidv4 could create a memory leak
-            //TODO: protection for non storeIds memory managment
-            const store = (typeof props.storeId !== 'undefined') ? storesFactory(props.storeId) : storesFactory(uuidv4()) 
+            const store = storesFactory()
 
             // In the scenerio where we want to use the 'AddDataToStore' component 
             // We need ot manually add the reducers and init data, so we leave the option to do so
@@ -42,20 +29,19 @@ let ReactServerConnect = storesFactory => WrappedComponent => (reducerKey, reduc
 
                 //Pass the inital state to the reducer
                 //we are reserving the props.state to pass init state             
-                if (!store.asyncReducers.hasOwnProperty(props.reducerKey)) { //This is to prevent duplcating data passed to Store if it alread has it
-                    store.injectAsyncReducer(store, reducerKey, Reducers[reducerName](props.state || null))
-                }
+                store.injectAsyncReducer(store, reducerKey, Reducers[reducerName](props.state || null))
+
             }
+
             return (
                 <Provider store={store} >
-                    <WrappedComponent {...props} storeId={store.id} />   
+                    <WrappedComponent {...props} />   
                 </Provider>
+
             );
 
         }
 }
     
-ReactServerConnect = ReactServerConnect(storesFactory(global.stores))
-
 // Exports
 export {ReactServerConnect}

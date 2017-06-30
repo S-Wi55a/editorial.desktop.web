@@ -3,8 +3,7 @@ import { combineReducers } from 'redux'
 import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
 import update from 'immutability-helper';
 
-
-// This is the entry Reducer and should be loaded witht component
+// This is the entry Reducer and should be loaded with component
 
 //We wrap the reducer to pass init data to it for it to work in ReactJS.NET
 export const iNavParentReducerPassInitData = initState => {
@@ -29,8 +28,8 @@ export const iNavParentReducerPassInitData = initState => {
     }
 }
 
-// Check if there is a preloaded state
-let initState = global.__PRELOADED_STATE__ ? global.__PRELOADED_STATE__.iNav || {} : {}
+// Check if there is a preloaded state fro iNav
+let initState = global.__PRELOADED_STATE__iNav
 
 export const iNavParentReducer = iNavParentReducerPassInitData(initState)
 

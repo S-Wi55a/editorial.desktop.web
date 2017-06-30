@@ -21,16 +21,14 @@ namespace Csn.Retail.Editorial.Web
             //	.SetLoadBabel(false)
             //	.AddScriptWithoutTransform("~/Scripts/bundle.server.js")
 
-		    //var url = DependencyResolver.Current.GetService<IAssetMapProvider>().Css(name);
-
 		    ReactSiteConfiguration.Configuration
-		        .SetUseDebugReact(false)
+		        //.SetStartEngines(2)
+		        //.SetMaxEngines(2)
+                .SetUseDebugReact(false)
 		        .SetReuseJavaScriptEngines(false) //TODO: remove in Prod
                 .SetLoadBabel(false)
                 //.SetLoadReact(false)
                 .AddScriptWithoutTransform("/dist--server/react-server-components.js")
-		        .SetStartEngines(2)
-		        .SetMaxEngines(2)
                 //.DisableServerSideRendering()
                 ;
 

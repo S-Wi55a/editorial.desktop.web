@@ -13,7 +13,6 @@
 
     //This can be changed to just a domain name instead ie. Lisitng or Details which could propbably limit the amount of stores created
     // It may also remove the need to create a GUID as each compoent can reference the 'storeId' they want
-    var GUID = Guid.NewGuid().ToString();
 
 }
 
@@ -29,28 +28,26 @@
 
 <div class="container">
     
-    @* AddDataToStore is a special component for when we just want to pass data to a reducer that is shared across components *@
-    @Html.React("global.Components.AddDataToStore", new
-        {
-            reducerKey = "iNav",
-            reducerName = "iNavParentReducerPassInitData",
-            storeId = GUID,
-            state = Model,
-            id = "Add DAta To Store"
-        }, 
-        serverOnly: true)
+    @*//State is required b/c there is no guarentee that it will be available for other components*@
+    @Html.React("global.Components.INavBreadCrumbs", new { state = Model }, containerId: "iNavBreadcrumbs")
 
-    @Html.React("global.Components.INavBreadCrumbs", new { storeId = GUID }, containerId: "iNavBreadcrumbs")
+    @Html.React("global.Components.INav", new { state = Model }, containerId: "iNav")
 
-    @Html.React("global.Components.INav", new { storeId = GUID }, containerId: "iNav")
+
+
 </div>
 
 
 @section BottomScripts
 {
     @{
-    // We put this here to guaretee that all compoents that effect the store should be run beforehand
-    Html.RenderPartial("Partials/Redux/_ReduxStore", new ReduxStoreModel(){StoreId = GUID});
+    //Store - you have to manually request what part of the store you want b/c there is no guartee the data will be there from the components rendered earlier
+    Html.RenderPartial("Partials/Redux/_ReduxStore", new ReduxStoreModel()
+    {
+        ReducerKey = "iNav",
+        ReducerName = "iNavParentReducerPassInitData",
+        State = Model
+    });
 
     }    
 }
