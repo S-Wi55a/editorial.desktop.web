@@ -15,7 +15,7 @@ aboveTheFold();
 // load Redux 
 (function redux(d) {
 
-    if (d.querySelector('#redux-placeholder')) { //TODO: change to iNav check
+    if (d.querySelector('#searchBarContainer')) { //TODO: change to iNav check
         window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
         require('Js/Modules/Redux/SearchBar/SearchBar.js');
 
