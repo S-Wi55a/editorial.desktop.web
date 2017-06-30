@@ -186,7 +186,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public enum ArticleTemplateType
     {
         NarrowHero,
-        WideHero
+        WideHero,
+        Standard,
+        Wide
     }
 
     public enum HeroType
