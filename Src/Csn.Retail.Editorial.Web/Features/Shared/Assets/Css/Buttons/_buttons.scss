@@ -11,6 +11,14 @@
         font-weight: 600;
     }
 
+    @if (map-get($options, extra-small) == true ) {
+        line-height: 23px;
+        font-size: 13px;
+        padding: 0 15px;
+        font-weight: 600;
+    }
+
+
     @if (map-get($options, large) == true ) {
     }
 

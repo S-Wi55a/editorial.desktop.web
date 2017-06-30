@@ -1,19 +1,24 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { createSelector } from 'reselect'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
 
-const INavBreadCrumb = ({fetchQuery, facetDisplay, removeAction}) => (
-    <div className="iNavBreadCrumb" onClick={()=>fetchQuery(removeAction)}>
+const INavBreadCrumb = ({removeBreadCrumb, facet, facetDisplay, removeAction}) => (
+    <div className="iNavBreadCrumb" onClick={() =>removeBreadCrumb(removeAction, facet)}>
         {facetDisplay}
     </div>
 )
 
-const INavBreadCrumbs = ({ breadCrumbs, fetchQuery }) => (
+const INavBreadCrumbs = ({ breadCrumbs, removeBreadCrumb }) => (
         <div className="iNavBreadCrumbs">
-            {breadCrumbs.map((breadCrumb) => {
-                return <INavBreadCrumb key={breadCrumb.facetDisplay} {...breadCrumb}/>
-            })}
+            <ReactCSSTransitionGroup
+                transitionName="iNavBreadCrumbTransition"
+                transitionEnterTimeout={300}
+                transitionLeaveTimeout={300}>
+                {breadCrumbs.map((breadCrumb) => {
+                    return <INavBreadCrumb key={breadCrumb.facetDisplay} {...breadCrumb} removeBreadCrumb={removeBreadCrumb}/>
+                })}
+            </ReactCSSTransitionGroup>
         </div>
     )
 
@@ -34,10 +39,15 @@ const mapStateToProps = (state) => {
     }
 }
 
+
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchQuery: (query) => {
-            dispatch(Actions.fetchQueryRequest(query))
+        removeBreadCrumb: (query, facet) => {
+            dispatch([
+                Actions.fetchQueryRequest(query),
+                Actions.removeBreadCrumb(facet)
+            ])
         }
     }
 }

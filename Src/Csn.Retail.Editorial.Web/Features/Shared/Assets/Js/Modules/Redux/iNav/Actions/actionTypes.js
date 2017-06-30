@@ -2,6 +2,7 @@
 
 // Action Types
 export const TOGGLE_IS_SELECTED = PREFIX + 'TOGGLE_IS_SELECTED' //UI & data
+export const REMOVE_BREAD_CRUMB = PREFIX + 'REMOVE_BREAD_CRUMB' //UI & data
 export const RESET = PREFIX + 'RESET'
 export const UPDATE_QUERY_STRING = PREFIX + 'UPDATE_QUERY_STRING'
 

@@ -8,6 +8,13 @@ export const toggleIsSelected = (isSelected, node, facet) => ({
     facet //is string but can probably be changed to Id
 })
 
+// Remove Bread Crumb
+export const removeBreadCrumb = (facet) => ({
+    type: ActionTypes.REMOVE_BREAD_CRUMB,
+    facet 
+})
+
+
 // Fetch data
 export const fetchQueryRequest = (query) => ({
     type: ActionTypes.FETCH_QUERY_REQUEST,

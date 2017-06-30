@@ -12,6 +12,8 @@ export const iNavParentReducerPassInitData = initState => {
         switch (action.type) {
             case ActionTypes.TOGGLE_IS_SELECTED:
                 return isSelectedToggle(state, action)
+            case ActionTypes.REMOVE_BREAD_CRUMB:
+                return RemoveBreadCrumbs(state, action)
             case ActionTypes.FETCH_QUERY_SUCCESS:
                 //we are not doing a deep merge becasue we are replacing the complete state object
                 //besides isSelected all UI is handled ina deifferent state branch and this replaced obj
@@ -55,6 +57,34 @@ function isSelectedToggle(state, action) {
                                          
                             }
                         }
+                    }
+                }
+
+            })
+        return newState
+        
+    } catch (e) {
+        return state
+    } 
+
+
+        
+     
+}
+
+
+function RemoveBreadCrumbs(state, action) {
+
+    try {
+
+        const breadCrumbIndex = state.iNav.breadCrumbs.findIndex((breadCrumb) => breadCrumb.facet === action.facet)
+
+        const newState = update(state,
+            {
+
+                iNav: {
+                    breadCrumbs: {
+                        $splice: [[breadCrumbIndex,1]]                      
                     }
                 }
 
