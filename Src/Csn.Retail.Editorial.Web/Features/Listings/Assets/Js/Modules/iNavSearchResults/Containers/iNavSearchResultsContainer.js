@@ -1,17 +1,13 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import INavSearchResult from 'Js/Modules/iNavSearchResults/Component/iNavSearchResult'
 
-const INavSearchResult = ({removeBreadCrumb, facet, facetDisplay, removeAction}) => (
-    <div className="iNavBreadCrumb" onClick={() =>removeBreadCrumb(removeAction, facet)}>
-        {facetDisplay}
-    </div>
-)
-
-const INavSearchResults = ({ searchResults }) => (
-    <div className="iNavBreadCrumbs">
+const INavSearchResults = ({ searchResults, count }) => (
+    <div className="iNavSearchResults">
+        <div className="iNavSearchResults__count">{count} Articles found {/* TODO: remove hardcoded text */}</div>
             <ReactCSSTransitionGroup
-                transitionName="iNavBreadCrumbTransition"
+                transitionName="iNavSearchResultsTransition"
                 transitionEnterTimeout={300}
                 transitionLeaveTimeout={300}>
                 {searchResults.map((searchResult) => {
@@ -22,14 +18,18 @@ const INavSearchResults = ({ searchResults }) => (
 )
 
 //Selectors
-const getiNavSearchResults = (searchResults) => {
-    return searchResults        
+const getiNavSearchResults = (state) => {
+    return state.searchResults        
+}
+const getiNavCount = (state) => {
+    return state.count        
 }
 
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        searchResults: getiNavSearchResults(state.searchResults)
+        searchResults: getiNavSearchResults(state.iNav),
+        count: getiNavCount(state.iNav)
     }
 }
 

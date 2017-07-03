@@ -1,13 +1,16 @@
 ﻿@import "css/globals";
 
+#iNav {
+    $iNav-width: 315px;
 
+    width: $iNav-width;
+    float: left;
+}
 .iNav {
 
     $iNav-header-height: 60px;
     $category-container-height: 500px;
     $spacing: 20px;
-
-    width: 33%;
 
     &::before {
         content: '';

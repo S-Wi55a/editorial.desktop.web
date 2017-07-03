@@ -1,0 +1,75 @@
+﻿@import "css/_globals.scss";
+
+.iNavSearchResult {
+    $spacing: 20px;
+
+    width: calc(50% - #{($spacing)};
+    display: inline-block;
+    vertical-align: top;
+    margin-left: $spacing;
+    margin-bottom: $spacing;
+    opacity: 1;
+    transition: opacity .3s;
+
+    @include breakpoint($screen-lg) {
+        width: calc(50% - #{($spacing*2)};
+        margin-left: $spacing * 2;
+        margin-bottom: $spacing*2;
+    }
+
+    &:hover {
+        opacity: 0.75;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    &__image-frame {
+        padding-top: percentage((2/3));
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__image {
+        @include img-responsive();
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__content-wrapper {
+        background-color: $cs-light-grey-3;
+        padding: 15px;
+        color: $cs-dark-grey-1;
+    }
+
+    &__heading {
+        @include p();
+        color: $cs-dark-grey-1;
+    }
+
+    &__date {
+        @include tiny-text();
+        margin-top: 15px;
+    }
+    //Transition
+    &.iNavSearchResultsTransition-enter {
+        opacity: 0.01;
+    }
+
+    &.iNavSearchResultsTransition-enter.iNavSearchResultsTransition-enter-active {
+        opacity: 1;
+        transition: opacity 300ms ease-in;
+    }
+
+    &.iNavSearchResultsTransition-leave {
+        opacity: 1;
+    }
+
+    &.iNavSearchResultsTransition-leave.iNavSearchResultsTransition-leave-active {
+        opacity: 0.01;
+        transition: opacity 300ms ease-in;
+    }
+}

@@ -4,10 +4,13 @@
     window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
         
     if (d.querySelector('#iNav')) {
-        require('Js/Modules/iNav/iNav.js');
+        require('Js/Modules/iNav/iNav');
     }
     if (d.querySelector('#iNavBreadcrumbs')) {
-        require('Js/Modules/iNavBreadCrumbs/iNavBreadCrumbs.js');
+        require('Js/Modules/iNavBreadCrumbs/iNavBreadCrumbs');
+    }
+    if (d.querySelector('#iNavSearchResults')) {
+        require('Js/Modules/iNavSearchResults/iNavSearchResults');
     }
 
         

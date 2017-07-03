@@ -451,6 +451,9 @@
     <Compile Include="Features\Home\HomeController.cs" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Containers\iNavBreadCrumbsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\iNavBreadCrumbs.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Component\iNavSearchResult.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Containers\iNavSearchResultsContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\iNavSearchResults.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodeContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.js" />
@@ -668,6 +671,7 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Listings\Assets\Css\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
+    <Folder Include="Features\Shared\Assets\Css\Tyopgraphy\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Components\" />
@@ -709,7 +713,6 @@
     <Content Include="Features\Details\Views\Partials\Hero\_ImagesAndVideo.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_FirstImage.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Colors\_variables-colors.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tyopgraphy\_typography.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_variables-typography.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons.scss" />
     <Content Include="Features\Shared\Assets\Css\globalStyles.scss" />
@@ -866,6 +869,8 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Css\iNavListItem.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Css\iNavBreadCrumbs.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResult.scss" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">
