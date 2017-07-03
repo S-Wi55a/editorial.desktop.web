@@ -55,6 +55,12 @@
         font-weight: 600;
         color: $cs-light-grey-1;
         float: right;
+        transition: transform .3s;
+        transform: rotate(0deg)
+    }
+
+    .rc-collapse > .rc-collapse-item-active > .rc-collapse-header::after {
+        transform: rotate(180deg)
     }
 
     .rc-collapse-content-inactive {
@@ -89,7 +95,6 @@
             }
         }
     }
-    
 }
 
 @import "js/modules/redux/inav/css/inavlistitem";
