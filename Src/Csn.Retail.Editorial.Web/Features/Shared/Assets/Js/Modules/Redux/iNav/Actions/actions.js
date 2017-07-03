@@ -1,11 +1,10 @@
 ﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
 
 // Toggle IsSelected
-export const toggleIsSelected = (isSelected, node, facet) => ({
+export const toggleIsSelected = (node, facet) => ({
     type: ActionTypes.TOGGLE_IS_SELECTED,
-    isSelected,
-    node, //is string but can probably be changed to Id
-    facet //is string but can probably be changed to Id
+    node, 
+    facet 
 })
 
 // Remove Bread Crumb

@@ -1,6 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import * as Actions from 'Js/Modules/Redux/iNav/Actions/actions'
+import * as GlobalActions from 'Js/Modules/Redux/Global/Actions/actions'
 import INavfacet from 'Js/Modules/Redux/iNav/Components/iNavFacet'
 
 
@@ -68,7 +69,8 @@ const mapDispatchToProps = (dispatch) => {
         toggleIsSelected: (isSelected, node, facet, query) => {
             dispatch([
                 Actions.fetchQueryRequest(query),
-                Actions.toggleIsSelected(isSelected, node, facet)
+                Actions.toggleIsSelected(node, facet), // This is to simulate a quick UI
+                isSelected ? Actions.removeBreadCrumb(facet) : GlobalActions.noop() // This is to simulate a quick UI
             ])
         }
     }
