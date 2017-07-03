@@ -460,6 +460,9 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Content Include="Features\React\Assets\Js\react-server-components.js" />
     <Content Include="Features\React\Assets\Js\react-server-entry.js" />
+    <Compile Include="Features\Listings\GetListingsResponse.cs" />
+    <Compile Include="Features\Listings\ListingsController.cs" />
+    <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Features\React\ReactController.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleData.cs" />
@@ -871,6 +874,7 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Css\iNavBreadCrumbs.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResult.scss" />
+    <Content Include="Features\Listings\Views\ListingTemplate.cshtml" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

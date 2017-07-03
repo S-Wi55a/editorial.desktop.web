@@ -23,14 +23,6 @@ namespace Csn.Retail.Editorial.Web.Features.React
             return View();
         }
 
-        //[Route("editorial/react/listing")]
-        //public ActionResult Listing()
-        //{
-
-        //    return View("~/Features/React/Views/Listing.cshtml");
-        //}
-
-
         private readonly IQueryDispatcher _queryDispatcher;
 
         public ReactController(IQueryDispatcher queryDispatcher)

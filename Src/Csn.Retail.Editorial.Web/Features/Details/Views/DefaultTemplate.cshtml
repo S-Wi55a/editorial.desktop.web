@@ -53,7 +53,7 @@
     }
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
     @{
-        // We put this here to guaretee that all compoents that effect the store should be run beforehand
+        // We put this here to guaretee that all componets that effect the store should be run beforehand
         Html.RenderPartial("Partials/Redux/_ReduxStore");
     }
 }
