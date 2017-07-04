@@ -13,29 +13,25 @@
 }
 
 @section Styles {
-    @Html.AssetCss("details-page--" + tenantName)
+    @Html.AssetCss("sponsored-details-page--" + tenantName)
 }
 
 
 @section TopScripts {
-    @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("sponsored-details-page--" + tenantName, LoadType.Defer)
 }
 
-
-<div class="page-container">
+<div class="page-container sponsored">
     @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
         <div class="container">
             @{ Html.RenderPartial("Partials/_Main"); }
-            @{ Html.RenderPartial("Partials/_Aside"); }
         </div>
     </article>
     @{ Html.RenderPartial("Partials/Modal/_Modal"); }
 </div>
-
-
 
 @section BottomScripts
 {

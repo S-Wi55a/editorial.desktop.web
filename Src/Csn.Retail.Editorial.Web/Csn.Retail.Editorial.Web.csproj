@@ -503,6 +503,7 @@
     <Content Include="editorial\content\scripts\webtrends_custom.js" />
     <Content Include="editorial\content\scripts\webtrends_custom.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="Features\Details\Assets\sponsored-details-page.js" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
@@ -567,6 +568,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
+    <Folder Include="Features\Sponsored\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
@@ -614,7 +616,7 @@
     <Content Include="Features\Details\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\Brightcove\_brightcove-video-player.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_article.scss" />
-    <Content Include="Features\Details\Assets\Css\Details-page.scss" />
+    <Content Include="Features\Details\Assets\Css\details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Screen\_variables-screen.scss" />
@@ -750,6 +752,8 @@
     <Content Include="Features\Details\Views\Partials\Content\_SponsoredArticleTab.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixin-modal.scss" />
+    <Content Include="Features\Details\Views\SponsoredTemplate.cshtml" />
+    <Content Include="Features\Details\Assets\Css\sponsored-details-page.scss" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
 
@@ -35,6 +36,15 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);
 
             var response = dispatchedQuery.Result;
+
+
+            if (response.ArticleViewModel != null &&
+                response.ArticleViewModel.ArticleTemplateType == ArticleTemplateType.Wide &&
+                response.ArticleViewModel.IsSponsoredArticle)
+            {
+                return View("SponsoredTemplate", response.ArticleViewModel);
+
+            }
 
             if (response.ArticleViewModel != null)
             {
