@@ -1,14 +1,35 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.ContentSection
 
-<div>
-    <img class="article__img"
-         sizes="(max-width: 1199px) 617px, 825px"
-         src="@Model.Image.Url?width=825&height=550"
-         srcset="@Model.Image.Url?width=617&height=411 617w, @Model.Image.Url?width=825&height=550 825w"
-         alt="@Model.Image.AlternateText" />
 
-    @if (Model.Image.Caption != null)
+@if (Model.Image.Type == "Wide")
 {
-    <div class="article__img-caption">@Model.Image.Caption</div>
+    <div class="container-fluid">
+        <div class="article__img-frame article__img-frame--wide">
+            <img class="article__img article__img--wide"
+                 sizes="(max-width: 1199px) 617px, 825px"
+                 src="@Model.Image.Url?width=825&height=550"
+                 srcset="@Model.Image.Url?width=617&height=411 617w, @Model.Image.Url?width=825&height=550 825w"
+                 alt="@Model.Image.AlternateText" />
+        </div>
+    </div>
 }
-</div>
+else
+{
+    // Single Image
+    <div class="container">
+        <div>
+            <img class="article__img"
+                 sizes="(max-width: 1199px) 617px, 825px"
+                 src="@Model.Image.Url?width=825&height=550"
+                 srcset="@Model.Image.Url?width=617&height=411 617w, @Model.Image.Url?width=825&height=550 825w"
+                 alt="@Model.Image.AlternateText" />
+
+            @if (Model.Image.Caption != null)
+            {
+                <div class="article__img-caption">@Model.Image.Caption</div>
+            }
+        </div>
+    </div>
+}
+
+

@@ -503,7 +503,6 @@
     <Content Include="editorial\content\scripts\webtrends_custom.js" />
     <Content Include="editorial\content\scripts\webtrends_custom.min.js" />
     <Content Include="favicon.ico" />
-    <Content Include="Features\Details\Assets\sponsored-details-page.js" />
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
@@ -533,6 +532,8 @@
     <Content Include="Features\Shared\Assets\Images\Carsales\poweredByMotoring.png" />
     <Content Include="Features\Shared\Assets\Images\Constructionsales\logo-constructionsales.svg" />
     <Content Include="Features\Shared\Assets\Images\Farmmachinerysales\logo-farmmachinerysales.svg" />
+    <Content Include="Features\Shared\Assets\Images\Carsales\carsales-103x40-white.png" />
+    <Content Include="Features\Shared\Assets\Images\Shared\mouse-scroll.png" />
     <Content Include="Features\Shared\Assets\Images\Shared\spinner-dark.svg" />
     <Content Include="Features\Shared\Assets\Images\Shared\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Images\Trucksales\logo-trucksales.svg" />
@@ -752,8 +753,15 @@
     <Content Include="Features\Details\Views\Partials\Content\_SponsoredArticleTab.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixin-modal.scss" />
-    <Content Include="Features\Details\Views\SponsoredTemplate.cshtml" />
-    <Content Include="Features\Details\Assets\Css\sponsored-details-page.scss" />
+    <Content Include="Features\Details\Views\Partials\Hero\_WideImage.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Base\_grid.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Content\_articleDropCap.scss" />
+    <Content Include="Features\Details\Views\Partials\Content\_ArticleTypeAndSocialIcons.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Content\_ArticleHeader.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Content\_ArticleSummary.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Content\_ArticleShare--Bottom.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Animations\bounce.scss" />
+    <Content Include="Features\Shared\Views\_Header--Transparent.cshtml" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

@@ -195,7 +195,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         DoubleImage,
         MultipleImages,
         Video,
-        ImagesAndVideo
+        ImagesAndVideo,
+        WideImage
     }
 
     public class Image
@@ -203,6 +204,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Url { get; set; }
         public string AlternateText { get; set; }
         public string Caption { get; set; }
+        public string Type { get; set; }
     }
 
     public class BrightcoveVideo

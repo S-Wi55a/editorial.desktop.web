@@ -21,6 +21,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 Type = article.HeroSection.Type,
                 Images = article.HeroSection.Images,
                 BrightcoveVideoIFrameUrl = GetBrightcoveVideoIFrameUrl(article.HeroSection.BrightcoveVideo),
+                Headline = article.Headline,
+                SubHeading = article.Subheading
             };
         }
 

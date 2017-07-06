@@ -1,13 +1,19 @@
 ﻿// Module - Aside
 
 .aside {
+    $width: 300px;
+    $spacing: 90px;
+
+    display: inline-block;
+    vertical-align: top;
+    transform: translateX(-50%);
+    left: calc(50% - ((#{($screen-md - $width - $spacing)})/2));
+    width: 300px;
     padding-top: 30px;
-    padding-left: $grid-gutter-width/2;
     position: relative;
-    float: left;
-    width: 300px + $grid-gutter-width/2;
 
     @include breakpoint($screen-lg) {
         padding-top: 45px;
+        left: calc(50% - ((#{($screen-lg - $width - $spacing)})/2));
     }
 }

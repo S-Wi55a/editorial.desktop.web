@@ -1,15 +1,38 @@
 ﻿@import "css/globals";
 
+
+// All Article types other than wide
+.article-type:not(.article-type--wideimage) {
+
+    $aside-width: 300px;
+    $spacing: 30px;
+
+    font-size: 0;
+
+    .article {
+        left: calc(50% - ((#{$aside-width} + #{$spacing})/2));
+        display: inline-block;
+        vertical-align: top;
+        transform: translate(-50%);
+
+        & .container {
+            padding-left: 0;
+            padding-right: 0;
+            width: calc(#{$screen-md} - #{$aside-width} - #{$spacing*2});
+
+            @include breakpoint($screen-lg) {
+                width: calc(#{$screen-lg} - #{$aside-width} - #{$spacing*2});
+            }
+        }
+    }
+}
+
 .article {
     padding-top: 30px;
-    padding-right: 0;
     position: relative;
-    float: left;
-    width: calc(100% - (300px + 15px));
 
     @include breakpoint($screen-lg) {
         padding-top: 45px;
-        padding-right: 15px;
     }
 
     .cf:after {
@@ -47,9 +70,13 @@
         }
     }
 
-    &__copy {
+    &__copy .container {
         color: $cs-grey;
         @include p();
+
+        &-fluid {
+            padding: 0;
+        }
 
         & > h1 {
             color: $cs-black;
@@ -125,6 +152,37 @@
         width: 100%;
         margin-top: 1.25em;
         @include p();
+
+        &--wide {
+            position: absolute;
+            top: 50%;
+            left: -50%;
+            transform: translate(50%, -50%);
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    &__img-frame {
+        width: 100vw;
+        position: relative;
+        overflow: hidden;
+        margin-top: 1.25em;
+
+
+        &::before {
+            content: '';
+            display: block;
+            padding-top: percentage(9/16);
+        }
+
+        &--wide {
+            max-height: 450px;
+        }
+
+        .article__img {
+            margin-top: 0;
+        }
     }
 
     &__img-caption {
@@ -289,7 +347,9 @@
         position: absolute;
         top: 0;
         padding-top: 0;
-        left: calc(100% - (300px + 30px));
+        right: 15px;
+        left: auto;
+        transform: none;
     }
 
     ._c-modal .slideshow__nav {
@@ -311,9 +371,6 @@
             z-index: 1;
             pointer-events: none;
 
-            @include breakpoint($screen-lg) {
-                width: calc(100% - 15px);
-            }
         }
 
         &__subheading {
@@ -326,64 +383,4 @@
     }
 }
 
-
-// Drop Cap
-.article {
-    &.review {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-light-blue;
-            }
-        }
-    }
-
-    &.car-advice,&.riding-advice {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-accent-green;
-            }
-        }
-    }
-
-    &.video {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-orange;
-            }
-        }
-    }
-
-    &.news {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-red;
-            }
-        }
-    }
-
-    &.comparison {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-purple;
-            }
-        }
-    }
-
-    &.feature {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-pink;
-            }
-        }
-    }
-
-    &__copy.drop-cap {
-        &>p:first-child::after {
-            @extend %clearfix;
-        }
-
-        &>p:first-child:first-letter {
-            @include drop-cap-paragraph();
-        }
-    }
-}
+@import "articledropcap";

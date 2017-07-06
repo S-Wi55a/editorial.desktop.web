@@ -1,0 +1,10 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+
+<div class="container" >
+    <header>
+        <h1 class="article__heading">@Model.Headline</h1>
+        @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
+        @{Html.RenderPartial("Partials/Content/_articlePromotion");}
+        <h2 class="article__subheading">@Model.SubHeading</h2>
+    </header>
+</div>

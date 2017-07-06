@@ -1,52 +1,28 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
+@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+    
+@{
+    var isSponsoredAndWide = Model.IsSponsoredArticle && Model.ArticleTemplateType == ArticleTemplateType.Wide ? true : false;
+
+}
 
 <div class="article @Model.ArticleType.ToLower()">
-    <div>
-        <div class="cf pos-r">
-            <div class="article__dateAndTypeContainer">
-                @{
-                    if (Model.IsSponsoredArticle)
-                    {
-                        Html.RenderPartial("Partials/Content/_SponsoredArticleTab");
-                    }
-                    else
-                    {
-                        @:<div class="article__type article__type--@Model.ArticleType.ToLower().Replace(' ', '-')">@Model.ArticleType</div>
-                    }
-                }
-                <div class="article__date">@Model.DateAvailable</div>
+    @{ Html.RenderPartial("Partials/Content/_ArticleTypeAndSocialIcons", Model); }
+    @if (!isSponsoredAndWide) { Html.RenderPartial("Partials/Content/_ArticleHeader", Model); }
+    @{ Html.RenderPartial("Partials/Content/_ArticleSummary", Model); }
+    @{ Html.RenderPartial("Partials/Content/_Location_Type_Model", Model); }
+    @{ Html.RenderPartial("Partials/Content/_ArticleBody", Model); }
+    @{ Html.RenderPartial("Partials/Content/_ArticleShare--Bottom", Model); }
+    @{ Html.RenderPartial("Partials/Content/_Contributors", Model); }
+    @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
+    @{ Html.RenderPartial("Partials/Disqus/_Disqus", Model.DisqusData); }
+    @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
+    @{
+        if (Model.MediaMotiveData.MediaMotiveItem.FindIndex(item => item.TileId == "Tile7") >= 0)
+        {
+            <div class="container" >
+                @{ Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData); }
             </div>
-
-            <div class="article__share article__share--top" data-webm-section="social-sharing-top">
-                @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
-            </div>
-        </div>
-
-        <header>
-            <h1 class="article__heading">@Model.Headline</h1>
-                @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
-                @{Html.RenderPartial("Partials/Content/_articlePromotion");}
-            <h2 class="article__subheading">@Model.SubHeading</h2>
-        </header>
-        <div class="article__summary">
-            <p>@Model.Summary</p>
-        </div>
-        @{ Html.RenderPartial("Partials/Content/_Location_Type_Model", Model); }
-        @{ Html.RenderPartial("Partials/Content/_ArticleBody", Model); }
-        <div class="article__share article__share--bottom cf" data-webm-section="social-sharing-btm">
-            @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
-        </div>
-        @{ Html.RenderPartial("Partials/Content/_Contributors", Model); }
-        @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
-        @{ Html.RenderPartial("Partials/Disqus/_Disqus", Model.DisqusData); }
-        @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
-        @{
-            if (Model.MediaMotiveData.MediaMotiveItem.FindIndex(item => item.TileId == "Tile7") >= 0)
-            {
-                Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData);
-            }
         }
-
-    </div>
-
+    }
 </div>

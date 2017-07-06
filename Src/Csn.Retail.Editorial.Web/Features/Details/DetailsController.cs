@@ -37,15 +37,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             var response = dispatchedQuery.Result;
 
-
-            if (response.ArticleViewModel != null &&
-                response.ArticleViewModel.ArticleTemplateType == ArticleTemplateType.Wide &&
-                response.ArticleViewModel.IsSponsoredArticle)
-            {
-                return View("SponsoredTemplate", response.ArticleViewModel);
-
-            }
-
             if (response.ArticleViewModel != null)
             {
                 return View("DefaultTemplate", response.ArticleViewModel);

@@ -1,9 +1,12 @@
+@using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 @{
     var tenantName = Html.CurrentTenant().Name.ToLower();
+    var isSponsoredAndWide = Model.IsSponsoredArticle && Model.ArticleTemplateType == ArticleTemplateType.Wide ? true : false;
+
 }
 
 @section Head {
@@ -16,22 +19,22 @@
     @Html.AssetCss("details-page--" + tenantName)
 }
 
-
 @section TopScripts {
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
 }
 
 
 <div class="page-container">
-    @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
+
+    @if (isSponsoredAndWide) { Html.RenderPartial("_Header--Transparent"); }
+    else { Html.RenderPartial("_Header", Model.MediaMotiveData); }
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
-        <div class="container">
-            @{ Html.RenderPartial("Partials/_Main"); }
-            @{ Html.RenderPartial("Partials/_Aside"); }
-        </div>
+        @{ Html.RenderPartial("Partials/_Main"); }
+        @if (!isSponsoredAndWide) { Html.RenderPartial("Partials/_Aside"); }
     </article>
+
     @{ Html.RenderPartial("Partials/Modal/_Modal"); }
 </div>
 
