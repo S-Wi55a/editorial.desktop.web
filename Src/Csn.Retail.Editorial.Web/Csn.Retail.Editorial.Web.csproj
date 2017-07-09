@@ -758,6 +758,11 @@
     <Content Include="Features\Details\Assets\Css\Modules\Content\_articleDropCap.scss" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleTypeAndSocialIcons.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleHeader.cshtml" />
+    <Content Include="Features\Details\Views\Bikesales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Carsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Constructionsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Farmmachinerysales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleSummary.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleShare--Bottom.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Animations\bounce.scss" />
