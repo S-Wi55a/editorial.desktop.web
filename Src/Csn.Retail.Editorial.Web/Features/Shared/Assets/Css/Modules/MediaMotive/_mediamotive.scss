@@ -29,8 +29,8 @@
 
     &__title {
         padding-bottom: 10px;
-        font-size: $font-size-body;
-        font-weight:bold;
+        font-size: $font-size-small;
+        color: $cs-light-grey-1;
     }
 }
 
@@ -41,19 +41,11 @@
 .sponsoredlink {
     text-decoration: none;
     line-height: normal;
+    margin-bottom:25px;
+    display: block;
 
     &:hover {
         text-decoration: none;
-    }
-
-    .title,
-    .link {
-        font-weight: bold;
-        color: $cs-dark-grey-2;
-
-        &:hover {
-            text-decoration: underline;
-        }
     }
 
     .desc {
@@ -67,11 +59,16 @@
     }
 
     .title {
+        color: $cs-dark-grey-2;
         font-size: $font-size-body;
     }
 
     .link {
-        padding-bottom: 25px;
+        color: $cs-dark-blue;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .desc,
