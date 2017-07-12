@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
             MediaMotiveAdUnit adUnit;
 
             // we need to look up the ad unit based on the tileId provided. If the tile does not exist then return null
-            if (!query.MediaMotiveData.AdUnits.TryGetValue(query.TileId.ToLower(), out adUnit))
+            if (query.MediaMotiveData.AdUnits == null || !query.MediaMotiveData.AdUnits.TryGetValue(query.TileId.ToLower(), out adUnit))
             {
                 return null;
             }

@@ -74,6 +74,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string NoScriptPath { get; set; } // AdClick
         public string NoScriptImagePath { get; set; } // IServer
         public Dictionary<string, MediaMotiveAdUnit> AdUnits { get; set; }
+        public bool ShowSponsoredTextLinks { get; set; }
     }
 
     public class MediaMotiveAdUnit

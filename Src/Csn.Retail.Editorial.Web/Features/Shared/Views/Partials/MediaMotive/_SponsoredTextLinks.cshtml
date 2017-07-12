@@ -1,6 +1,8 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.MediaMotiveData
 
+@if (Model.ShowSponsoredTextLinks)
+{
 <div class="sponsored-text-links">
     <div class="sponsored-text-links__title">Sponsored Links</div>
     <div class="sponsored-text-links__ads">
@@ -11,3 +13,4 @@
         @{ Html.RenderAction("Index", "MediaMotiveAds", new { query = new MediaMotiveAdQuery() { TileId = "Tile13", MediaMotiveData = Model } }); }
     </div>
 </div>
+}
