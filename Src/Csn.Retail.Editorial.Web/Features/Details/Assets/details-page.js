@@ -22,8 +22,8 @@ editorRatings();
 
 // TEADS
 $(function () {
-    if ($('#teads-video-container').length) {
-        $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
+    if ($('#Tile7').length) {
+        $('#Tile7').insertAfter($('.article__copy p:eq(1)'));
     }
 });
 
