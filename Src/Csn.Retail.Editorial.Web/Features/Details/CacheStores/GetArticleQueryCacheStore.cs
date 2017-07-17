@@ -16,9 +16,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details.CacheStores
     {
         private readonly ICacheStore _cacheStore;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
-        private readonly string _cacheKey = "editorial:desk:{0}:details:{1}";
+        private readonly string _cacheKey = "editorial:desk:{0}:{1}:details:{2}";
         private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 5, 0);
         private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 30, 0);
+        private readonly string _buildVersion = System.Configuration.ConfigurationManager.AppSettings["BuildVersion"];
 
         public GetArticleQueryCacheStore(ICacheStore cacheStore, ITenantProvider<TenantInfo> tenantProvider)
         {
@@ -28,7 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.CacheStores
 
         public async Task<GetArticleResponse> GetAsync(GetArticleQuery query, Func<GetArticleQuery, Task<GetArticleResponse>> fetchAsync)
         {
-            var cacheKey = _cacheKey.FormatWith(_tenantProvider.Current().Name, query.Id);
+            var cacheKey = _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name, query.Id);
 
             // check the cache
             var cachedArticle = await _cacheStore.GetAsync<ArticleViewModel>(cacheKey);
