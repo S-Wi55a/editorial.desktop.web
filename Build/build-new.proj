@@ -2,8 +2,9 @@
 	<Import Project="Build.Config.proj"/>
 
 	<PropertyGroup>
-    	<Version Condition="$(BUILD_NUMBER) == ''">1</Version>
-		<Version Condition="$(BUILD_NUMBER) != ''">$(BUILD_NUMBER)</Version>
+    	<Version Condition="$(BUILD_NUMBER) == ''">1.0.0</Version>
+		<Version Condition="$(BUILD_NUMBER) != ''">1.0.$(BUILD_NUMBER)</Version>
+		<Version Condition="$(bamboo_buildNumber) != ''" >$(bamboo_buildNumber).0.0-$(bamboo_planRepository_branchName)</Version>
 		<AssemblyVersion>1.0.$(Version)</AssemblyVersion>
 
 		<RootDir>$(MSBuildProjectDirectory)\..</RootDir>
@@ -295,9 +296,9 @@
 	<Target Name="DeployFromArtifacts" DependsOnTargets="TransformConfig;GenerateVersionFile;AppendGitDetailsInVersionFile;CopyOutputToDeploy"/>
 
 	<Target Name="UpdateBuildVersion">
-	    <Message Text="Updating Web.config with build version" />
+	    <Message Text="Updating Web.config with build version $(bamboo_buildNumber)" />
 	    <XmlPoke XmlInputPath="$(SrcDir)\$(TargetProjectName)\web.config"
 	             Query="//configuration/appSettings/add[@key='BuildVersion']/@value"
-	             Value="$(Version)"/>
+	             Value="$(bamboo_buildNumber)"/>
 	  </Target>
 </Project>
