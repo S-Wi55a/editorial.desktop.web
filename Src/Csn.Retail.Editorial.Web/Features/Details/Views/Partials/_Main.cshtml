@@ -38,7 +38,8 @@
         </div>
         @{ Html.RenderPartial("Partials/Content/_Contributors", Model); }
         @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
-        @{ Html.RenderPartial("Partials/Disqus/_Disqus", Model.DisqusData); }
+        @if (Model.DisqusData != null) { Html.RenderPartial("Partials/Disqus/_Disqus", Model.DisqusData); }
+
         @{ Html.RenderPartial("_Disclaimer"); }
         @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
         @{ Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData); }
