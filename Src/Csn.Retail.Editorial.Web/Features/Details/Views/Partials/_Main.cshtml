@@ -24,19 +24,12 @@
 
     @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
 
-    @if (!isSponsored) { Html.RenderPartial("Partials/Disqus/_Disqus", Model.DisqusData); }
+    @if (Model.DisqusData != null) { Html.RenderPartial("Partials/Disqus/_Disqus", Model.DisqusData); }
+
 
     @{ Html.RenderPartial("_Disclaimer"); }
 
     @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
 
-    @{
-        if (Model.MediaMotiveData.MediaMotiveItem.FindIndex(item => item.TileId == "Tile7") >= 0)
-        {
-            <div class="container" >
-                @{ Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData); }
-            </div>
-        }
-    }
-
+    @{ Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData); }
 </div>

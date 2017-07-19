@@ -68,24 +68,23 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public class MediaMotiveData
     {
         public string KruxId { get; set; }
-        public string MediaMotiveDomain { get; set; }
-        public List<MMItem> MediaMotiveItem { get; set; }
+        public string BaseUrl { get; set; }
+        public string CommonTags { get; set; }
+        public string ScriptPath { get; set; } // JServer
+        public string NoScriptPath { get; set; } // AdClick
+        public string NoScriptImagePath { get; set; } // IServer
+        public Dictionary<string, MediaMotiveAdUnit> AdUnits { get; set; }
+        public bool ShowSponsoredTextLinks { get; set; }
+    }
 
-        public class MMItem
-        {
-            public string TileId { get; set; }
-            public string TileDescription { get; set; }
-            public string DataKruxRequired { get; set; }
-            public string TileUri { get; set; }
-            public TileUrl TileUrls { get; set; }
-
-            public class TileUrl
-            {
-                public string JServerUrl { get; set; }
-                public string AdClickUrl { get; set; }
-                public string IServerUrl { get; set; }
-            }
-        }
+    public class MediaMotiveAdUnit
+    {
+        public string TileId { get; set; }
+        public string Description { get; set; }
+        public bool DataKruxRequired { get; set; }
+        public string Tags { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
     }
 
     public class ProCon
