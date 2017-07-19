@@ -3,10 +3,11 @@
     font-size: 0;
 }
 
-.mrec-block {
+.mediamotive-mrec {
     max-width: 300px;
     line-height: 0;
     font-size: 0;
+    margin-bottom: 35px;
 }
 
 .mediamotive-leaderboard {
@@ -21,6 +22,74 @@
     }
 }
 
-#Tile3 {
-    margin-bottom: 35px;
+.sponsored-text-links {
+    border-radius: 6px;
+    border: solid 1px $cs-light-grey-2;
+    padding: 30px 30px 5px;
+
+    &__title {
+        padding-bottom: 10px;
+        font-size: $font-size-small;
+        color: $cs-light-grey-1;
+    }
+
+    &__ads{
+        position: relative;
+        min-height:140px;
+    }
+}
+
+.mediamotive-sponsoredlink.mediamotive-block--loading{
+    .loader{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height:140px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        background-color: rgba($cs-white, 0.7);
+        background-image: url($spinner--dark);
+        background-size: 200px 200px;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top:-10px;
+    }
+}
+
+.sponsoredlink {
+    text-decoration: none;
+    line-height: normal;
+    margin-bottom: 25px;
+    display: block;
+    font-size: $font-size-smaller;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    .desc {
+        color: $cs-light-grey-5;
+    }
+
+    .title,
+    .desc,
+    .link {
+        display: block;
+    }
+
+    .title {
+        color: $cs-dark-grey-2;
+        font-size: $font-size-body;
+    }
+
+    .link {
+        color: $cs-dark-blue;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }

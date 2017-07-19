@@ -42,13 +42,6 @@
 
         @{ Html.RenderPartial("_Disclaimer"); }
         @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
-        @{
-            if (Model.MediaMotiveData.MediaMotiveItem.FindIndex(item => item.TileId == "Tile7") >= 0)
-            {
-                Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData);
-            }
-        }
-
+        @{ Html.RenderPartial("Partials/MediaMotive/_Teads", Model.MediaMotiveData); }
     </div>
-
 </div>
