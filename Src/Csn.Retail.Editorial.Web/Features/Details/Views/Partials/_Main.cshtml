@@ -17,7 +17,7 @@
     @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
     @if (Model.DisqusData != null) { Html.RenderPartial("Partials/Disqus/_Disqus", Model.DisqusData); }
 
-        @{ Html.RenderPartial("_Disclaimer"); }
+    @{ Html.RenderPartial("_Disclaimer"); }
     @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
     @{
         if (Model.MediaMotiveData.MediaMotiveItem.FindIndex(item => item.TileId == "Tile7") >= 0)
