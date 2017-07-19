@@ -750,6 +750,11 @@
     <Content Include="Features\Details\Views\Partials\Content\_SponsoredArticleTab.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixin-modal.scss" />
+    <Content Include="Features\Details\Views\Bikesales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Carsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Constructionsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Farmmachinerysales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\_Disclaimer.cshtml" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">
