@@ -135,29 +135,28 @@ const SpecModuleItem = (props) => {
     let marks = {
         0:props.scaffolding.title2
     }
-
     marks[props.sliderLength - 1] = props.scaffolding.title3
 
     return (
         <div className="spec-item ">
             <div className="spec-item__column-container">
-            <div className="spec-item__column spec-item__column--1">
-                <h2 className="spec-item__make">{props.data.title1}</h2>
-                <p className="spec-item__model">{props.data.title2}</p>
-                <p className="spec-item__variant">{props.data.title3}</p>
-                <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
-                {props.sliderLength > 1 ? 
-                    <div className="spec-item__selector" data-webm-clickvalue="change-variant">
-                        <p className="spec-item__selector-label">{props.scaffolding.title1}</p>
-                        <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onChange={props.sliderHandler} />
-                    </div>
-                : ''}
-            </div>
-            <div className="spec-item__column spec-item__column--2">
-                <Specifications data={props.data.specItems} /> 
-            </div>
+                <div className="spec-item__column spec-item__column--1">
+                    <h2 className="spec-item__make">{props.data.title1}</h2>
+                    <p className="spec-item__model">{props.data.title2}</p>
+                    <p className="spec-item__variant">{props.data.title3}</p>
+                    <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
+                    {props.sliderLength > 1 ? 
+                        <div className="spec-item__selector" data-webm-clickvalue="change-variant">
+                            <p className="spec-item__selector-label">{props.scaffolding.title1}</p>
+                            <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderHandler} />
+                        </div>
+                    : ''}
                 </div>
-            <div className="spec-item__third-party-offers">
+                <div className="spec-item__column spec-item__column--2">
+                    <Specifications data={props.data.specItems} /> 
+                </div>
+            </div>
+            <div className={props.isFetchingQuotes ? "spec-item__third-party-offers loading" : "spec-item__third-party-offers "}>
                 {props.data.quotes ? <ThirdPartyOffers data={props.data.quotes} disclaimerHandler={props.disclaimerHandler}/> : ''}
             </div>
         </div>
@@ -169,72 +168,95 @@ class SpecModule extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            urls: this.props.data.items.slice(),
-            items: new Array(this.props.data.items.length),
-            activeItemIndex: 0,
-            pendingIndex: 0,
-            isFetching: false,
-            pendingRequests: 0
+        this.state = {            
+            items: new Array(0),
+            activeItemIndex: 0,            
+            isFetchingQuotes: false,
+            pendingRequests: 0,
+            specVariantsQuery: this.props.data,
+            fetchingVariants: false,
+            sliderLength: 0
         };
 
         this.sliderHandler = this.sliderHandler;
-        this.ajaxHandler = this.ajaxHandler;
+        this.getQuotesData = this.getQuotesData;
         this.disclaimerHandler = this.disclaimerHandler;
 
     }
 
     componentDidMount() {
-        this.sliderHandler(this.state.activeItemIndex);
+        //this.sliderHandler(this.state.activeItemIndex);        
+        this.getVariantsData(this.state.specVariantsQuery);
+        
     }
 
     componentDidUpdate(prevProps, prevState) {
         // If all ajax request are complete then set state
-        if (prevState.isFetching === true && this.state.pendingRequests <= 0) {
+        if (prevState.isFetchingQuotes === true && this.state.pendingRequests <= 0) {
             // Set State
-            this.setState({
-                activeItemIndex: this.state.pendingIndex,
-                isFetching: false
+            this.setState({                
+                isFetchingQuotes: false
             });
-        } 
+        }
     }
 
     sliderHandler = (index) => {
-        // Check if state.items has value
-        // true: return data
-        if (typeof this.state.items[index] !== 'undefined') {
-            //console.log('using cached data')
+        
+        if (this.state.items[index] && this.state.items[index].quotes.length > 0) {            
             this.setState({
                 activeItemIndex: index
             });
-        } else {
-            //console.log('not using cached data')
-            const url = this.props.path + this.state.urls[index].uri;
-            this.ajaxHandler(url, index);
+        } else {                        
+            const url = this.props.path + this.state.items[index].specQuotesUrl;
+            this.getQuotesData(url, index);
         }       
     }
 
-    // Ajax
-    ajaxHandler = (url, index) => {
+    getVariantsData = (specVariantsQuery) => {        
         // Set State
         this.setState((prevState, props) => {
-            return {
-                isFetching: true,
+            return {                
+                fetchingVariants: true,
                 pendingRequests: prevState.pendingRequests + 1
             };
         });
-
+        const url = this.props.path + specVariantsQuery;
         Ajax.get(url, (data) => {
-            data = JSON.parse(data);
-
+            data = JSON.parse(data);            
             // Cache data
-            const newState = update(this.state.items, { $splice: [[index, 1, data]] });
-
             this.setState((prevState, props) => {
                 return {
-                    items: newState,
+                    items: data.specDataVariants,
+                    sliderLength: data.specDataVariants.length,
                     pendingRequests: prevState.pendingRequests - 1,
-                    pendingIndex: index
+                    fetchingVariants: false
+                };
+            });
+        });
+
+    }
+
+    // Ajax
+    getQuotesData = (url, index) => {
+
+        // Set State
+        this.setState((prevState, props) => {
+            return {
+                isFetchingQuotes: true,
+                activeItemIndex: index,
+                pendingRequests: prevState.pendingRequests + 1
+            };
+        });
+        Ajax.get(url, (data) => {
+            data = JSON.parse(data);            
+            // Cache data
+            const itemsCopy = this.state.items;            
+            itemsCopy[index].quotes = data.quotes;
+
+            this.setState((prevState, props) => {
+                return {                    
+                    pendingRequests: prevState.pendingRequests - 1,                    
+                    items: itemsCopy
                 };
             });
         });
@@ -260,14 +282,16 @@ class SpecModule extends React.Component {
         const {title1, title2, title3} = this.props.data
 
         return (
-            <div className={this.state.isFetching ? "spec-module loading" : "spec-module"}>
+            <div className={this.state.fetchingVariants ? "spec-module loading" : "spec-module"}>
                 {this.state.items[this.state.activeItemIndex] ?
                     <SpecModuleItem
                         data={this.state.items[this.state.activeItemIndex]}
                         scaffolding={{title1, title2, title3}}
                         disclaimerHandler={this.disclaimerHandler}
-                        sliderLength={this.state.urls.length}
-                        sliderHandler={this.sliderHandler} />
+                        sliderLength={this.state.sliderLength}
+                        sliderHandler={this.sliderHandler}
+                        isFetchingQuotes = {this.state.isFetchingQuotes}
+                        />
                     : ''}
             </div>
         );
