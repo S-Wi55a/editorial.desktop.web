@@ -15,6 +15,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
     {
         Task<SmartServiceResponse<RyvussResult>> GetAsync(EditorialRyvussApiInput input);
         Task<SmartServiceResponse<object>> GetAsyncProxy(EditorialRyvussApiInput input);
+        Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussNavInput input);
     }
 
     [AutoBind]
@@ -31,12 +32,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
         public Task<SmartServiceResponse<RyvussResult>> GetAsync(EditorialRyvussApiInput input)
         {
             return _smartClient.Service(ServiceName)
-                .Path("/v4/EditorialListing")
+                .Path("/v4/editoriallistingretail")
                 .QueryString("q", input.RyvussPredicates)
                 .QueryString("count", "true")
-                .QueryString("inav", "true")
-                .QueryString("sr", "||10|")
-                //.QueryString("sr", "|Latest|{0}|{1}".FormatWith(input.Offset, input.Limit))
+                .QueryString("inav", "RetailNav|Retail|ShowZero")
+                .QueryString("sr", $"|latest|{input.Offset}|{input.Limit}")
                 .GetAsync<RyvussResult>();
         }
 
@@ -51,13 +51,32 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 //.QueryString("sr", "|Latest|{0}|{1}".FormatWith(input.Offset, input.Limit))
                 .GetAsync<object>();
         }
+
+        public Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussNavInput input)
+        {
+            return _smartClient.Service(ServiceName)
+                .Path("/v4/editoriallistingretail")
+                .QueryString("q", input.Query)
+                .QueryString("inav", "RetailNav|Retail|ShowZero")
+                .QueryString("sr", $"|latest|{input.Offset}|{input.Limit}")
+                .QueryString("count", "true")
+                .GetAsync<T>();
+        }
     }
 
     public class EditorialRyvussApiInput
     {
         public int Limit { get; set; }
-        public string Offset { get; set; }
+        public int Offset { get; set; }
         public string RyvussPredicates { get; set; }
+    }
+
+    public class EditorialRyvussNavInput
+    {
+        public string Query { get; set; }
+        public int Limit { get; set; }
+        public int Offset { get; set; }
+
     }
 
     public class RyvussResult

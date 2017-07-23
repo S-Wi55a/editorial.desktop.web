@@ -9,7 +9,7 @@ using Csn.SimpleCqrs;
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search
 {
     [AutoBind]
-    public class SearchQueryHandler : IAsyncQueryHandler<SearchQuery, object>
+    public class SearchQueryHandler : IAsyncQueryHandler<SearchQuery, RyvussResult>
     {
         private readonly IEditorialRyvussApiProxy _ryvussProxy;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
@@ -21,25 +21,32 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
             _tenantProvider = tenantProvider;
         }
 
-        public async Task<object> HandleAsync(SearchQuery query)
+        public async Task<RyvussResult> HandleAsync(SearchQuery query)
         {
+            //var input = new EditorialRyvussNavInput()
+            //{
+            //    Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
+            //    Limit = query.Limit == 0 ? 10 : query.Limit,
+            //    Offset = query.Offset
+            //};
+
+            //var result = await _ryvussProxy.GetAsync<RyvussNavResult>(input);
+
             var result = await _ryvussProxy.GetAsync(new EditorialRyvussApiInput()
             {
-                RyvussPredicates = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query
+                RyvussPredicates = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
+                Limit = query.Limit == 0 ? 10 : query.Limit,
+                Offset = query.Offset
             });
 
             if (!result.IsSucceed) return null;
 
-            return new RyvussResult()
-            {
-                Count = result.Data.Count,
-                INav = new RyvussNav()
-                {
-                    Nodes = result.Data.INav.Nodes.Where(n => n.Name == "Type" || n.Name == "Make" || n.Name == "BodyType" || n.Name == "Year").ToList(),
-                    BreadCrumbs = result.Data.INav.BreadCrumbs.ToList()
-                },
-                SearchResults = result.Data.SearchResults
-            };
+            return result.Data;
         }
+    }
+
+    public class RyvussNavResult
+    {
+        
     }
 }

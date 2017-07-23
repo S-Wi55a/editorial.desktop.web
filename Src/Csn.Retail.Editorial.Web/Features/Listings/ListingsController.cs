@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
@@ -30,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new ListingsPageRequestEvent());
 
-            var dispatchedQuery = _queryDispatcher.DispatchAsync<SearchQuery, object>(new SearchQuery()
+            var dispatchedQuery = _queryDispatcher.DispatchAsync<SearchQuery, RyvussResult>(new SearchQuery()
             {
                 Query = q
             });
