@@ -8,6 +8,7 @@ using Csn.Retail.Editorial.Web.Features.Home;
 using Csn.SimpleCqrs;
 using System.Net;
 using System.Web.Http;
+using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search;
 
 namespace Csn.Retail.Editorial.Web.Features.React
@@ -33,7 +34,7 @@ namespace Csn.Retail.Editorial.Web.Features.React
         [System.Web.Mvc.Route("editorial/react/listing")]
         public async Task<ActionResult> Get([FromUri]string q = null)
         {
-            var result = await _queryDispatcher.DispatchAsync<SearchQuery, object>(new SearchQuery()
+            var result = await _queryDispatcher.DispatchAsync<SearchQuery, RyvussResult>(new SearchQuery()
             {
                 Query = q
             });
