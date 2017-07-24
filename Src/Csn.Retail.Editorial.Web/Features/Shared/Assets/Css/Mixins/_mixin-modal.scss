@@ -1,12 +1,11 @@
 ﻿@mixin modal($className) {
     .#{$className} {
-
         @include fadeIn();
         background-color: $cs-white;
         border-radius: 6px;
         width: calc(100vw - 160px);
         max-height: calc(100vh - 160px);
-        padding: 25px 25px 15px;
+        padding: 80px;
         text-align: center;
         animation-duration: .666s;
         animation-name: fadeIn;
@@ -19,9 +18,9 @@
             overflow: auto;
             max-height: calc(100vh - 320px);
         }
-        
-        @media (min-width: 2450px) {
-            padding: 40px;
-        }
+    }
+
+    .stratton {
+        padding: 25px 25px 15px;
     }
 }

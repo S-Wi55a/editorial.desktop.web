@@ -3,10 +3,10 @@
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 
-@if (!Model.SpecDataVariantsQuery.IsNullOrEmpty())
+@if (!Model.SpecDataGetVariantsUrl.IsNullOrEmpty())
 {
     <script>
         var csn_editorial = csn_editorial || {};
-        csn_editorial.specVariantsQuery = @Html.Raw(JsonConvert.SerializeObject(Model.SpecDataVariantsQuery)) || null;
+        csn_editorial.specVariantsQuery = '@Html.Raw(Model.SpecDataGetVariantsUrl)' || null;
     </script>
 }

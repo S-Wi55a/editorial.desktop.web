@@ -39,7 +39,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public bool UseDropCase { get; set; }
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
-        public string SpecDataVariantsQuery { get; set; }
+        public string SpecDataGetVariantsUrl { get; set; }
     }
 
     public class HeroSection
