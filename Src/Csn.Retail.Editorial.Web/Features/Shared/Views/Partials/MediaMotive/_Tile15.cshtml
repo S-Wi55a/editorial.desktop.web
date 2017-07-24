@@ -1,20 +1,4 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Shared.Models.MediaMotiveData
+﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.MediaMotiveData
 
-@foreach (var mediamotivedata in Model.MediaMotiveItem)
-{
-    if (mediamotivedata.TileId == "Tile15")
-    {
-        var mediaMotiveDomain = Model.MediaMotiveDomain;
-        var tileUri = mediamotivedata.TileUri;
-
-        <div id="@mediamotivedata.TileId" class="mediamotive-block" data-krux-required="True" data-media-motive-url="@mediaMotiveDomain@mediamotivedata.TileUrls.JServerUrl@tileUri">
-            <noscript>
-                <a target="_blank" href="@mediaMotiveDomain@mediamotivedata.TileUrls.AdClickUrl@tileUri">
-                    <img src="@mediaMotiveDomain@mediamotivedata.TileUrls.IServerUrl@tileUri" width="628" height="60" border="0" alt="Advertisement" />
-                </a>
-            </noscript>
-        </div>
-
-        break;
-    }
-}
+@{ Html.RenderAction("Index", "MediaMotiveAds", new { query = new MediaMotiveAdQuery() { TileId = "Tile15", MediaMotiveData = Model } }); }
