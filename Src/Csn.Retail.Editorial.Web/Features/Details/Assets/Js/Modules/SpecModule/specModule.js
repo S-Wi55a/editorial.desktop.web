@@ -183,9 +183,7 @@ class SpecModule extends React.Component {
     }
 
     componentDidMount() {
-        //this.sliderHandler(this.state.activeItemIndex);        
         this.getVariantsData(this.state.specVariantsQuery);
-        
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -199,7 +197,6 @@ class SpecModule extends React.Component {
     }
 
     sliderHandler = (index) => {
-        
         if (this.state.items[index] && this.state.items[index].quotes && this.state.items[index].quotes.length > 0) {
             this.setState({
                 activeItemIndex: index
@@ -231,7 +228,6 @@ class SpecModule extends React.Component {
                 };
             });
         });
-
     }
 
     // Ajax
@@ -269,10 +265,9 @@ class SpecModule extends React.Component {
         }
         
         const content = decodeURI(e.target.getAttribute('data-disclaimer'))
-        this.props.modal.show(disclaimerTemplate(content, className), className)
+        this.props.modal.show(disclaimerTemplate(content), className)
 
     }
-
 
     render() {
 
