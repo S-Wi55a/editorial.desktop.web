@@ -167,7 +167,7 @@ class SpecModule extends React.Component {
         super(props);
 
         this.state = {            
-            items: new Array(0),
+            items: [],
             activeItemIndex: 0,            
             isFetchingQuotes: false,
             pendingRequests: 0,
@@ -177,9 +177,7 @@ class SpecModule extends React.Component {
         };
 
         this.sliderHandler = this.sliderHandler;
-        this.getQuotesData = this.getQuotesData;
         this.disclaimerHandler = this.disclaimerHandler;
-
     }
 
     componentDidMount() {
@@ -197,7 +195,7 @@ class SpecModule extends React.Component {
     }
 
     sliderHandler = (index) => {
-        if (this.state.items[index] && this.state.items[index].quotes && this.state.items[index].quotes.length > 0) {
+        if (this.state.items[index] && this.state.items[index].quotes) {
             this.setState({
                 activeItemIndex: index
             });
