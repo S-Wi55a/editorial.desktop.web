@@ -215,12 +215,12 @@ class SpecModule extends React.Component {
         });
         const url = this.props.path + specVariantsQuery;
         Ajax.get(url, (data) => {
-            data = JSON.parse(data);            
+            data = JSON.parse(data);
             // Cache data
             this.setState((prevState, props) => {
                 return {
-                    items: data.specDataVariants,
-                    sliderLength: data.specDataVariants.length,
+                    items: (data && data.specDataVariants && data.specDataVariants.length) ? data.specDataVariants : [],
+                    sliderLength: (data && data.specDataVariants && data.specDataVariants.length) ? data.specDataVariants.length : 0,
                     pendingRequests: prevState.pendingRequests - 1,
                     fetchingVariants: false
                 };
@@ -270,7 +270,7 @@ class SpecModule extends React.Component {
     render() {
 
         const {title1, title2, title3} = this.props.data
-
+        if (this.state.items.length <= 0 && !this.state.fetchingVariants) return null;
         return (
             <div className={this.state.fetchingVariants ? "spec-module loading" : "spec-module"}>
                 {this.state.items[this.state.activeItemIndex] ?

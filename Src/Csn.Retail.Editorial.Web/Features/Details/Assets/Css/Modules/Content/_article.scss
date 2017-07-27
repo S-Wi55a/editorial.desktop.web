@@ -278,7 +278,7 @@
 .article-type--doubleimage,
 .article-type--video {
     position: relative;
-    width: $screen-md;
+    width: $screen-sm;
     margin: auto;
 
     @include breakpoint($screen-lg) {
