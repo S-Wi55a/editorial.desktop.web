@@ -117,58 +117,26 @@
     }
 
     iframe {
-        width: 100%;
-        min-height: 850px;
         border: none;
-
-        @include breakpoint($screen-md) {
-            max-width: calc(100vw - 160px);
-            max-height: calc(100vh - 320px);
-            min-height: 584px;
-        }
-
-        @include breakpoint($screen-lg) {
-            max-width: calc(100vw - 380px);
-            max-height: calc(100vh - 400px);
-            min-height: 584px;
-        }
+        width: 100%;
+        height: 600px;
+        max-height: calc(100vh - 160px);
     }
 
     .csn-modal {
-        padding: 20px;
-        min-height: 640px;
+        padding: 15px;
         width: calc(100vw - 320px);
-        max-height: calc(100vh - 100px);
+        min-width: 800px;
+        max-height: none;
 
         &__content {
-            min-height: 600px;
-            max-height: calc(100vh - 120px);
+            height: auto;
+            max-height: none;
         }
 
         @include breakpoint($screen-md) {
-            width: calc(100vw - 120px);
-
-            &__content {
-                max-height: calc(100vh - 400px);
-            }
-        }
-
-        @include breakpoint($screen-lg) {
-            width: calc(80vw - 320px);
-        }
-    }
-
-    ._c-modal__content {
-        width: calc(100vw - 320px);
-
-        @include breakpoint($screen-md) {
-            width: calc(100vw - 120px);
-            max-width: calc(100vw - 120px);
-        }
-
-        @include breakpoint($screen-lg) {
-            width: calc(80vw - 320px);
-            max-width: calc(100vw - 320px);
+            width: calc(100vw - 160px);
+            max-width: 1000px;
         }
     }
 }

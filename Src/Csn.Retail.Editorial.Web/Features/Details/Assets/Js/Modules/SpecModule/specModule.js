@@ -1,5 +1,4 @@
 ﻿import React from 'react'
-import update from 'immutability-helper'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 import Slider from 'rc-slider/lib/Slider'; 
 import {disclaimerTemplate} from 'Js/Modules/Modal/modal-disclaimer-view'
@@ -255,8 +254,8 @@ class SpecModule extends React.Component {
     }
 
     // Data disclaimer handler
-    disclaimerHandler = (className, e) => {
-        // e is always the last arg, If not called with className set e to className becasue className old event data when called with 1 arg
+    disclaimerHandler = (className, e, wrap) => {
+        // e is always the last arg, If not called with className set e to className becasue className equals old event data when called with 1 arg
         if (!(typeof className === 'string')) {
             e = className
             className = ''
