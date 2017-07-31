@@ -5,7 +5,7 @@
 
 @{
     var tenantName = Html.CurrentTenant().Name.ToLower();
-    var isSponsoredAndWide = Model.IsSponsoredArticle && Model.ArticleTemplateType == ArticleTemplateType.Wide ? true : false;
+    var isWide = Model.ArticleTemplateType == ArticleTemplateType.Wide ? true : false;
 
 }
 
@@ -26,13 +26,12 @@
 
 <div class="page-container">
 
-    @if (isSponsoredAndWide) { Html.RenderPartial("_Header--Transparent"); }
-    else { Html.RenderPartial("_Header", Model.MediaMotiveData); }
+    @{ Html.RenderPartial("_Header", Model); }
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
         @{ Html.RenderPartial("Partials/_Main"); }
-        @if (!isSponsoredAndWide) { Html.RenderPartial("Partials/_Aside"); }
+        @if (!isWide) { Html.RenderPartial("Partials/_Aside"); }
     </article>
 
     @{ Html.RenderPartial("Partials/Modal/_Modal"); }

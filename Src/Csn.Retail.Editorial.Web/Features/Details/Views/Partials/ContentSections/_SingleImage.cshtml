@@ -6,9 +6,9 @@
     <div class="container-fluid">
         <div class="article__img-frame article__img-frame--wide">
             <img class="article__img article__img--wide"
-                 sizes="(max-width: 1199px) 617px, 825px"
-                 src="@Model.Image.Url?width=825&height=550"
-                 srcset="@Model.Image.Url?width=617&height=411 617w, @Model.Image.Url?width=825&height=550 825w"
+                 sizes="(max-width: 1199px) 1600px, 1920px"
+                 src="@Model.Image.Url"
+                 srcset="@Model.Image.Url?width=1600&height=1060 1600w, @Model.Image.Url?width=1920&height=1280 1920w"
                  alt="@Model.Image.AlternateText" />
         </div>
     </div>
@@ -19,9 +19,9 @@ else
     <div class="container">
         <div>
             <img class="article__img"
-                 sizes="(max-width: 1199px) 617px, 825px"
-                 src="@Model.Image.Url?width=825&height=550"
-                 srcset="@Model.Image.Url?width=617&height=411 617w, @Model.Image.Url?width=825&height=550 825w"
+                 sizes="(max-width: 1199px) 825px, 1024px"
+                 src="@Model.Image.Url?width=1024&height=682"
+                 srcset="@Model.Image.Url?width=825&height=550 825w, @Model.Image.Url?width=1024&height=682 1024w"
                  alt="@Model.Image.AlternateText" />
 
             @if (Model.Image.Caption != null)

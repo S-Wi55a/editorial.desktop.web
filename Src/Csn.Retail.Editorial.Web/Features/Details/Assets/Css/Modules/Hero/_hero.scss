@@ -20,6 +20,7 @@
 
 .hero--singleImage,
 .hero--doubleImage {
+    position: absolute;
     width: calc(100% - (300px + #{$grid-gutter-width/2}));
     float: left;
     padding-right: 15px;
@@ -31,12 +32,14 @@
 }
 
 .hero--singleVideo {
-    width: calc(100% - (300px + #{$grid-gutter-width/2}));
-    float: left;
-    padding-right: 0;
+    $aside-width: 300px; //TODO: make as global
+    $spacing: 30px;
+
+    position:absolute;
+    width: calc(#{$screen-md} - #{$aside-width} - #{$spacing*2});
 
     @include breakpoint($screen-lg) {
-        padding-right: 15px;
+        width: calc(#{$screen-lg} - #{$aside-width} - #{$spacing*2});
     }
 }
 
@@ -90,7 +93,7 @@
     }
 
     &__frame {
-        width: 100vw;
+        width: 100%;
         max-height: 640px;
         position: relative;
         overflow: hidden;
@@ -98,7 +101,7 @@
         &::before {
             content: '';
             display: block;
-            padding-top: percentage(9/16);
+            padding-top: percentage(1/2.53);
         }
     }
 
@@ -161,7 +164,7 @@
     }
 
     &__action {
-        content: url($image--mouse-scoll);
+        content: url($image--arrow-down);
         position: absolute;
         bottom: 50px;
         left: 50%;
