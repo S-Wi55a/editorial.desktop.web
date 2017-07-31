@@ -40,6 +40,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public bool UseDropCase { get; set; }
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
         public ArticleTemplateType ArticleTemplateType { get; set; }
+        public string SpecDataGetVariantsUrl { get; set; }
 
     }
 

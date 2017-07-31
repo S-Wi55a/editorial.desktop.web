@@ -1,6 +1,5 @@
 ﻿@mixin modal($className) {
     .#{$className} {
-
         @include fadeIn();
         background-color: $cs-white;
         border-radius: 6px;
@@ -21,5 +20,3 @@
         }
     }
 }
-
-

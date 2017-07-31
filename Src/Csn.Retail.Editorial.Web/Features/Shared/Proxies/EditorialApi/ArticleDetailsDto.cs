@@ -37,6 +37,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public StockListingData StockListingData { get; set; }
         public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
+        public string SpecDataGetVariantsUrl { get; set; }
     }
 
     public class SpecData

@@ -116,10 +116,32 @@
         background-repeat: no-repeat;
     }
 
+    .csn-modal {
+        padding: 15px;
+        width: calc(100vw - 320px);
+        min-width: 800px;
+        max-height: none;
+
+        &__content {
+            height: auto;
+            max-height: none;
+
+            &::before {
+                @include cf()
+            }
+        }
+
+        @include breakpoint($screen-md) {
+            width: calc(100vw - 160px);
+            max-width: 1000px;
+        }
+    }
+
     iframe {
-        width: 100%;
-        height: calc(100vh - 330px);
-        max-height: 584px;
         border: none;
+        width: 100%;
+        height: 602px;
+        max-height: calc(100vh - 160px);
+        float: left;
     }
 }
