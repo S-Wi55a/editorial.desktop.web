@@ -25,10 +25,7 @@
         <header>
             <h1 class="article__heading">@Model.Headline</h1>
             @{Html.RenderPartial("Partials/ContentSections/_Pricing", Model);}
-            <div class="cf article__meta">
-                @{Html.RenderPartial("Partials/Content/_articlePromotion");}
                 @{ Html.RenderPartial("Partials/Content/_Location_Type_Model", Model); }
-            </div>
             <h2 class="article__subheading">@Model.SubHeading</h2>
         </header>
         <div class="article__summary">
@@ -37,6 +34,7 @@
         @{ Html.RenderPartial("Partials/Content/_ArticleBody", Model); }
         <div class="article__share article__share--bottom cf" data-webm-section="social-sharing-btm">
             @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
+            @{Html.RenderPartial("Partials/Content/_articlePromotion");}
         </div>
         @{ Html.RenderPartial("Partials/Content/_Contributors", Model); }
         @{ Html.RenderPartial("Partials/MediaMotive/_Tile15", Model.MediaMotiveData); }
