@@ -82,6 +82,7 @@ const ThirdPartyOffer = (props) => {
             </div>
             {tabOrModal}
             <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
+                { props.data.impressionUrl ? <img src={props.data.impressionUrl} className="third-party-offer__impression-url"/> : ''}
         </div>
         )
 }
@@ -89,7 +90,6 @@ const ThirdPartyOffer = (props) => {
 // KmsTag
 const KmsTag = (props) => {
     var kmsTextSplit = props.kmsText.split("{kmsValue}")
-
     return (
         <div>{kmsTextSplit[0]}<span className="spec-item__kms-label" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.priceUsed.averageKms}</span>{kmsTextSplit[1]}</div>
     )
