@@ -48,7 +48,7 @@
     }
 
     &__copy {
-        color: $cs-grey;
+        color: $cs-light-grey-5;
         @include p();
 
         & > h1 {
@@ -56,7 +56,7 @@
         }
 
         & > h2, & > h3, & > h4, & > h5, & > h6 {
-            color: $cs-dark-grey-1;
+            color: $cs-dark-grey-2;
         }
 
         & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
@@ -90,13 +90,10 @@
         & > p {
             margin-top: 1.25em;
             @include p();
-            /*& > br {
-                display: none;
-            }
 
-            strong + br {
-                display: inline;
-            }*/
+            strong {
+                color: $cs-dark-grey-2;
+            }
         }
 
         & > div {
