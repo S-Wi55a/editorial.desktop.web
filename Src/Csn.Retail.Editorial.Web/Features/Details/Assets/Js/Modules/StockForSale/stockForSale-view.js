@@ -20,7 +20,7 @@ const container = (data) => {
                     ${data.filters.map(filter => `
                         <li
                             class="stock-for-sale-options__option"
-                            data-stock-for-sale-query="${stockForSalePath || ''}${filter.query || ''}${limit || ''}" 
+                            data-stock-for-sale-query="${stockForSalePath || ''}${filter.query || ''}${filter.extendedQuery ? ('%26' + filter.extendedQuery) :''}${limit || ''}" 
                             data-stock-for-sale-view-all-url="${filter.viewAllUrl || ''}">
                             ${filter.name || ''}
                         </li>

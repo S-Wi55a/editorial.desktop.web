@@ -9,6 +9,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
     {
         public string Name { get; set; }
         public string Query { get; set; }
+        public string ExtendedQuery { get; set; }
         public string ViewAllUrl { get; set; }
 
 
