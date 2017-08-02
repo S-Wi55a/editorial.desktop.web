@@ -35,17 +35,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public GoogleAnalyticsDetailsDto GoogleAnalyticsDetailsData { get; set; }
         public Dictionary<string, string> InsightsData { get; set; }
         public StockListingData StockListingData { get; set; }
-        public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public string SpecDataGetVariantsUrl { get; set; }
-    }
-
-    public class SpecData
-    {
-        public string MinLabel { get; set; }
-        public string MaxLabel { get; set; }
-        public string MoreLabel { get; set; }
-        public List<SpecDataItem> Items { get; set; }
     }
 
     public class GoogleAnalyticsDetailsDto
@@ -241,12 +232,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Heading { get; set; }
         public List<StockFilters> Filters { get; set; }
         public string ViewAllStockButton { get; set;  }
-    }
-
-    public class SpecDataItem
-    {
-        public string Uri { get; set; }
-        public string Description { get; set; }
     }
 
     public class AlsoConsiderData
