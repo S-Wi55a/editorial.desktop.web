@@ -23,11 +23,11 @@
         vertical-align: top;
 
         &--1 {
-            width: 50%;
+            width: 60%;
         }
 
         &--2 {
-            width: 50%;
+            width: 40%;
         }
     }
 
@@ -158,7 +158,8 @@
     }
 
     &__spec-item-title {
-        font-size: 0; //$font-size-h6;
+        font-size: 0;
+        line-height: 0;
         color: $cs-grey;
     }
 
@@ -167,6 +168,7 @@
         color: $cs-dark-grey-1;
         font-weight: $font-weight-600;
         margin: 5px 0 15px;
+        display: flex;
     }
     //ANCAP Rating
     &__spec-item-value.safety-rating-ancap {
