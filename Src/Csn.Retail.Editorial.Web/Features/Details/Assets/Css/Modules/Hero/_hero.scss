@@ -107,11 +107,16 @@
 
     &__frame-image {
         position: absolute;
-        top: 50%;
-        left: -50%;
-        transform: translate(50%, -50%);
+        top: 0;
+        left: 0;
         width: 100%;
         max-width: 100%;
+
+        &:not(.csn-parallax) {
+            top: 50%;
+            left: -50%;
+            transform: translate(50%, -50%);
+        }
     }
 
     &__content {
