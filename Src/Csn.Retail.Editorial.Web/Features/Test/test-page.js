@@ -1,1 +1,1 @@
-import './test.ts'
+import './test'

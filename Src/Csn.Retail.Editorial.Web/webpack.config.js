@@ -1,5 +1,4 @@
 'use strict';
-
 // Webpack build
 var glob = require('glob'),
     path = require('path'),
@@ -13,6 +12,10 @@ var glob = require('glob'),
     var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
     var os = require('os');
     var UglifyJsParallelPlugin = require('webpack-uglify-parallel');
+
+    var happyThreadPool = HappyPack.ThreadPool({ size: 4 });
+
+console.log(os.cpus().length);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -58,7 +61,7 @@ var assetsPluginInstance = new AssetsPlugin({
 
 var isProd = process.env.NODE_ENV === 'production' ? true : false;
 
-const TENANTS = process.env.TENANT === 'ALL' ? listofTenants : [process.env.TENANT.trim()];
+const TENANTS = process.env.TENANT.toLowerCase() === 'all' ? listofTenants : [process.env.TENANT.trim()];
 
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
 const URL_LIMIT = isProd ? 1 : null;
@@ -285,15 +288,17 @@ module.exports = (env) => {
                 new HappyPack({
                     // loaders is the only required parameter:
                     id: 'babel',
+                    threadPool: happyThreadPool,
                     loaders: ['babel-loader?cacheDirectory=true']
                 }),
                 new HappyPack({
                     // loaders is the only required parameter:
                     id: 'babelTypeScript',
+                    threadPool: happyThreadPool,
                     loaders: ['babel-loader?cacheDirectory=true',
                     {
-                        loader: 'ts-loader',
-                        options: {
+                        path: 'ts-loader',
+                        query: {
                             // disable type checker - we will use it in fork plugin
                             transpileOnly: true,
                             happyPackMode: true
@@ -303,7 +308,8 @@ module.exports = (env) => {
                 new HappyPack({
                     // loaders is the only required parameter:
                     id: 'sass',
-                    loaders: devLoaderCSSExtract
+                    threadPool: happyThreadPool,
+                    loaders: devLoaderCSSExtract //TODO and see if this a bottle neck
                 }),
                 new BrowserSyncPlugin(
                     // BrowserSync options 
@@ -330,12 +336,12 @@ module.exports = (env) => {
                 ),
                 new ForkTsCheckerWebpackPlugin({
                     //watch: './Features', // optional but improves performance (less stat calls)
-                    workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
+                    //workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
                 }),
-                new UglifyJsParallelPlugin({
-                    workers: os.cpus().length, // usually having as many workers as cpu cores gives good results
-                    // other uglify options
-                })
+                // new UglifyJsParallelPlugin({
+                //     workers: os.cpus().length - 1 , // usually having as many workers as cpu cores gives good results
+                //     // other uglify options
+                // })
             ],
             devtool: isProd ? "cheap-source-map" : "eval",
             devServer: {
