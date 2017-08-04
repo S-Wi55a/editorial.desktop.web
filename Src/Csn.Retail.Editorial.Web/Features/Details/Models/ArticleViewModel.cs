@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string SubHeading { get; set; }
         public string Summary { get; set; }
         public string ArticleType { get; set; }
-        public string IsSponsoredArticle { get; set; }
+        public bool IsSponsoredArticle { get; set; }
         public string SubType { get; set; }
         public string ReviewLocation { get; set; }
         public string MakeModelHeading { get; set; }
@@ -26,9 +26,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public EditorialExpertRating ExpertRatings { get; set; }
         public ProCon ProsCons { get; set; }
         public string DateAvailable { get; set; }
-        public Shared.Models.MediaMotiveData MediaMotiveData { get; set; }
+        public MediaMotiveData MediaMotiveData { get; set; }
         public DisqusData DisqusData { get; set; }
-        public MoreArticleItem MoreArticleData { get; set; }
+        public MoreArticleData MoreArticleData { get; set; }
         public Shared.Models.SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
         public Dictionary<string, string> WebTrendsTags { get; set; }
@@ -38,7 +38,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public bool UseDropCase { get; set; }
-
+        public PolarNativeAdsData PolarNativeAdsData { get; set; }
+        public string SpecDataGetVariantsUrl { get; set; }
     }
 
     public class HeroSection
@@ -98,5 +99,17 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Identifier { get; set; }
         public string ArticleUrl { get; set; }
         public string Title { get; set; }
+    }
+
+
+    public class SpecData
+    {
+        public string MinLabel { get; set; }
+        public string MaxLabel { get; set; }
+        public string MoreLabel { get; set; }
+        public List<SpecDataItem> Items { get; set; }
+        public string Title1 { get; set; }
+        public string Title2 { get; set; }
+        public string Title3 { get; set; }
     }
 }

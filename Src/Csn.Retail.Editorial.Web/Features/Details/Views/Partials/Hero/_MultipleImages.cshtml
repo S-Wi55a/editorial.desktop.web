@@ -1,13 +1,13 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
-<div class="clearfix hero hero--multipleImages">
+<div class="clearfix hero hero--multipleImages" data-webm-section="image-gallery">
     <div class="slideshow slideshow--hero slideshow--gallery-multiple-images">
         <div class="slideshow__container  swiper-container">
             <div class="slideshow__slides swiper-wrapper">
                 @{ var index = 0; }
                 @foreach (var image in Model.Images.Take(4))
             {
-                    <div class="slideshow__slide swiper-slide" data-modal-trigger data-modal-image-index="@index">
+                    <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"
                                  sizes="(max-width: 1199px) 50vw, (max-width: 1488px) 33vw, 33vw"
@@ -19,20 +19,20 @@
                 }
                 @foreach (var image in Model.Images.Skip(4))
             {
-                    <div class="slideshow__slide swiper-slide" data-modal-trigger data-modal-image-index="@index">
+                    <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"
-                                 data-src="(max-width: 1199px) 50vw, (max-width: 1488px) 33vw, 33vw"
+                                 data-src="@image.Url?width=1024&height=683"
                                  data-srcset="@image.Url?width=496&height=331 496w, @image.Url?width=1024&height=683 1024w"
-                                 sizes="(max-width: 1199px) 50vw, 33vw"
+                                 sizes="(max-width: 1199px) 50vw, (max-width: 1488px) 33vw, 33vw"
                                  alt="@image.AlternateText" />
 
                     </div>
                     index++;
                 }
             </div>
-            <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev">prev</button>
-            <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next">next</button>
+            <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev" data-webm-clickvalue="previous">prev</button>
+            <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next" data-webm-clickvalue="next">next</button>
 
             <button class="slideshow__view-photos" data-modal-trigger data-modal-image-index="0">View Photos</button>
         </div>

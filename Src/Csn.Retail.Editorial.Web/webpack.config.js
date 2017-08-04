@@ -7,7 +7,9 @@ var glob = require('glob'),
     AssetsPlugin = require('assets-webpack-plugin'),
     BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
     HappyPack = require('happypack'),
-    rimraf = require('rimraf');
+    rimraf = require('rimraf'),
+    BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
     var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
     var os = require('os');
@@ -63,8 +65,10 @@ var isProd = process.env.NODE_ENV === 'production' ? true : false;
 
 const TENANTS = process.env.TENANT.toLowerCase() === 'all' ? listofTenants : [process.env.TENANT.trim()];
 
+const VIEW_BUNDLE = process.env.VIEW_BUNDLE === 'true ' ? true : false;
+
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
-const URL_LIMIT = isProd ? 1 : null;
+const URL_LIMIT = isProd ? 1 : undefined;
 
 
 var config = {
@@ -145,9 +149,110 @@ module.exports = (env) => {
 
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
-        entries['vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/vendor.js'];
+        entries['csn.vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/csn.vendor.js'];
         entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
-        entries['csn.mm' + '--' + tenant] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mm.js'];
+
+
+        let plugins = [
+            assetsPluginInstance,
+            //Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
+            new webpack.optimize.CommonsChunkPlugin({
+                names: pageEntries,
+                children: true,
+                minChunks: 2
+            }),
+            // Common -- pull everything from pages entries and make global common chunk
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'csn.common' + '--' + tenant,
+                chunks: pageEntries,
+                minChunks: 2
+            }),
+            //Vendor - Will look through every entry and match against itself or if a library from node_module is used twice
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'csn.vendor' + '--' + tenant,
+                minChunks: function(module, count) {
+                    // This prevents stylesheet resources with the .css or .scss extension
+                    // from being moved from their original chunk to the vendor chunk
+                    if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+                        return false;
+                    }
+                    return module.context && module.context.indexOf("node_modules") !== -1;
+                }
+            }),
+            //Manifest - Webpack Runtime
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'csn.manifest' + '--' + tenant,
+                minChunks: Infinity
+            }),
+            new webpack.NamedModulesPlugin(),
+            new HappyPack({
+                    // loaders is the only required parameter:
+                    id: 'babel',
+                    threadPool: happyThreadPool,
+                    loaders: ['babel-loader?cacheDirectory=true']
+                }),
+                new HappyPack({
+                    // loaders is the only required parameter:
+                    id: 'babelTypeScript',
+                    threadPool: happyThreadPool,
+                    loaders: ['babel-loader?cacheDirectory=true',
+                    {
+                        path: 'ts-loader',
+                        query: {
+                            // disable type checker - we will use it in fork plugin
+                            transpileOnly: true,
+                            happyPackMode: true
+                        }
+                    }],
+                }),
+                new HappyPack({
+                    // loaders is the only required parameter:
+                    id: 'sass',
+                    threadPool: happyThreadPool,
+                    loaders: devLoaderCSSExtract //TODO and see if this a bottle neck
+                }),
+            new BrowserSyncPlugin(
+                // BrowserSync options 
+                {
+                    // browse to http://localhost:3000/ during development 
+                    host: 'localhost',
+                    port: 3000,
+                    // proxy the Webpack Dev Server endpoint 
+                    // through BrowserSync 
+                    proxy: {
+                        target: 'http://localhost:8080',
+                        ws: true
+                    },
+                    logLevel: "info",
+                    open: false
+
+                },
+                // plugin options 
+                {
+                    // prevent BrowserSync from reloading the page 
+                    // and let Webpack Dev Server take care of this 
+                    reload: false
+                }
+            ),
+            new ExtractTextPlugin({
+                filename: isProd ? '[name]-[contenthash].css' : '[name].css',
+                allChunks: false
+            }),
+            new ForkTsCheckerWebpackPlugin({
+                //watch: './Features', // optional but improves performance (less stat calls)
+                //workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
+            }),
+            // new UglifyJsParallelPlugin({
+            //     workers: os.cpus().length - 1 , // usually having as many workers as cpu cores gives good results
+            //     // other uglify options
+            // })
+        ];
+
+        if (VIEW_BUNDLE) {
+            plugins.push(new BundleAnalyzerPlugin())
+        } 
+
+
 
         moduleExportArr.push(
         {
@@ -259,90 +364,53 @@ module.exports = (env) => {
                 modules: listOfPaths
             },
             externals: {
-                'jquery': 'jquery', //Pulling jQuery in through a CDN
+                jquery: 'jQuery'
             },
-            plugins: [
-                assetsPluginInstance,
-                new ExtractTextPlugin({
-                    filename: isProd ? '[name]-[contenthash].css' : '[name].css',
-                }),
-                //Vendor & Manifest
-                new webpack.optimize.CommonsChunkPlugin({
-                    names: ['vendor' + '--' + tenant, 'manifest' + '--' + tenant],
-                    minChunks: Infinity
-                }),
-                // Per page
-                new webpack.optimize.CommonsChunkPlugin({
-                    names: pageEntries,
-                    children: true,
-                    async: true,
-                    minChunks: 2
-                }),
-                // Common
-                new webpack.optimize.CommonsChunkPlugin({
-                    name: 'csn.common' + '--' + tenant,
-                    chunks: pageEntries,
-                    minChunks: 2
-                }),
-                new webpack.NamedModulesPlugin(),
-                new HappyPack({
-                    // loaders is the only required parameter:
-                    id: 'babel',
-                    threadPool: happyThreadPool,
-                    loaders: ['babel-loader?cacheDirectory=true']
-                }),
-                new HappyPack({
-                    // loaders is the only required parameter:
-                    id: 'babelTypeScript',
-                    threadPool: happyThreadPool,
-                    loaders: ['babel-loader?cacheDirectory=true',
-                    {
-                        path: 'ts-loader',
-                        query: {
-                            // disable type checker - we will use it in fork plugin
-                            transpileOnly: true,
-                            happyPackMode: true
-                        }
-                    }],
-                }),
-                new HappyPack({
-                    // loaders is the only required parameter:
-                    id: 'sass',
-                    threadPool: happyThreadPool,
-                    loaders: devLoaderCSSExtract //TODO and see if this a bottle neck
-                }),
-                new BrowserSyncPlugin(
-                    // BrowserSync options 
-                    {
-                        // browse to http://localhost:3000/ during development 
-                        host: 'localhost',
-                        port: 3000,
-                        // proxy the Webpack Dev Server endpoint 
-                        // through BrowserSync 
-                        proxy: {
-                            target: 'http://localhost:8080',
-                            ws: true
-                        },
-                        logLevel: "info",
-                        open: false
-
-                    },
-                    // plugin options 
-                    {
-                        // prevent BrowserSync from reloading the page 
-                        // and let Webpack Dev Server take care of this 
-                        reload: false
-                    }
-                ),
-                new ForkTsCheckerWebpackPlugin({
-                    //watch: './Features', // optional but improves performance (less stat calls)
-                    //workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
-                }),
-                // new UglifyJsParallelPlugin({
-                //     workers: os.cpus().length - 1 , // usually having as many workers as cpu cores gives good results
-                //     // other uglify options
-                // })
-            ],
+            plugins: plugins,
+            stats: {
+                //Add asset Information
+                assets: true,
+                // Sort assets by a field
+                assetsSort: "field",
+                // Add information about cached (not built) modules
+                cached: true,
+                // Add children information
+                children: true,
+                // Add chunk information (setting this to `false` allows for a less verbose output)
+                chunks: true,
+                // Add built modules information to chunk information
+                chunkModules: true,
+                // Add the origins of chunks and chunk merging info
+                chunkOrigins: false,
+                // Sort the chunks by a field
+                chunksSort: "field",
+                // Context directory for request shortening
+                //context: "../src/",
+                // `webpack --colors` equivalent
+                colors: true,
+                // Add errors
+                errors: true,
+                // Add details to errors (like resolving log)
+                errorDetails: true,
+                // Add the hash of the compilation
+                hash: false,
+                // Add built modules information
+                modules: false,
+                // Sort the modules by a field
+                modulesSort: "field",
+                // Add public path information
+                publicPath: false,
+                // Add information about the reasons why modules are included
+                reasons: false,
+                // Add the source code of modules
+                source: false,
+                // Add timing information
+                timings: true,
+                // Add webpack version information
+                version: false,
+                // Add warnings
+                warnings: true
+            },
             devtool: isProd ? "cheap-source-map" : "eval",
             devServer: {
                 stats: {
@@ -401,4 +469,7 @@ module.exports = (env) => {
     });
     return moduleExportArr
 };
+
+
+
 

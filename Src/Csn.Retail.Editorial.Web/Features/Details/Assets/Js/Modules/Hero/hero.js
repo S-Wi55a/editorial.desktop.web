@@ -78,6 +78,7 @@ function initSliderByLayoutType(layoutType) {
         })
 
         const heroSwiper = new Swiper('.hero .slideshow__container', swiperOptions)
+
     } else if (layoutType === 'IMAGE_VIDEO_LAYOUT') {
 
         swiperOptions = Object.assign({}, swiperOptions, {
@@ -105,4 +106,3 @@ function modalTriggerHandler(item, e) {
     //update content
     window.csn_modal.show( template, '_c-modal--slideshow', modalGallery );
 }
-

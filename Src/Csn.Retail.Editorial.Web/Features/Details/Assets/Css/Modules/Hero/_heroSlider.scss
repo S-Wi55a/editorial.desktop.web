@@ -39,7 +39,6 @@
             height: $icon-box-height;
             color: $cs-white;
             font-family: $font-family-icons;
-            //content: '\E98E';
             font-size: 30px;
             line-height: $icon-box-height;
             opacity: 0;
@@ -91,12 +90,12 @@
 
         &--next,
         &--prev {
-            background: rgba($cs-darker-grey, 0.8);
+            background: rgba($cs-dark-grey-2, 0.8);
             border-radius: 0px;
             text-indent: -9999px;
 
             &:hover:not([data-is-disabled="true"]) {
-                background: rgba($cs-dark-grey, 0.7);
+                background: rgba($cs-dark-grey-1, 0.7);
 
                 &:before {
                     color: $cs-white;
@@ -120,7 +119,7 @@
             right: 0;
 
             &:before {
-                content: "\E92A";
+                content: $icon-chevron-right-sm;
                 left: 2px;
             }
         }
@@ -129,7 +128,7 @@
             left: 0px;
 
             &:before {
-                content: "\E927";
+                content: $icon-chevron-left-sm;
                 left: -2px;
             }
         }
@@ -137,7 +136,7 @@
 
     &__view-photos {
         @include button((round:true));
-        @include buttonColor($cs-lightest-grey, $cs-darker-grey);
+        @include buttonColor($cs-light-grey-3, $cs-dark-grey-2);
         position: absolute;
         right: 35px;
         bottom: 30px;

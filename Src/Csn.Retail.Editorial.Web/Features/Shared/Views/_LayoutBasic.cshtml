@@ -25,11 +25,10 @@
 
 }
 @section TopScripts{
-    @Html.AssetJs("manifest--" + tenantName, LoadType.Defer)
-    @Html.AssetJs("vendor--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.manifest--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.vendor--" + tenantName, LoadType.Defer)
     @Html.AssetJs("csn.common--" + tenantName, LoadType.Defer)
     @RenderSection("TopScripts", false)
-    @Html.AssetJs("csn.mm--" + tenantName, LoadType.Defer)
 }
 
 
@@ -45,10 +44,10 @@
 </footer>
 
 @section BottomScripts{
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     @RenderSection("BottomScripts", false)
 
     <script>

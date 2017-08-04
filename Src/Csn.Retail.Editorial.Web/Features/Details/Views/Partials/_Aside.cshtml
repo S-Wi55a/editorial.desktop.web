@@ -4,13 +4,11 @@
 <div class="aside ">
     <!-- Aside Section -->
     @{ Html.RenderPartial("Partials/MediaMotive/_Mrec", Model.MediaMotiveData); }
-
     @if (Model?.ExpertRatings != null && Model?.ProsCons != null)
     {
         Html.RenderPartial("Partials/Widgets/EditorRatings/_EditorsRating", Model);
 
     }
-     
     @{ Html.RenderPartial("Partials/Widgets/StockForSale/_StockForSaleData", Model); }
-
+    @{ Html.RenderPartial("Partials/MediaMotive/_SponsoredTextLinks", Model.MediaMotiveData); }
 </div>

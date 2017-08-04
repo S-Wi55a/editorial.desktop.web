@@ -5,13 +5,14 @@
     $spacing: 30px;
 
     margin-top: 30px;
-    border-top: 1px solid $cs-lighter-grey;
+    border-top: 1px solid $cs-light-grey-2;
     padding-top: 20px;
     font-size: 0;
+    position: relative;
 
     &__header {
         font-size: $font-size-h4;
-        color: $cs-dark-grey;
+        color: $cs-dark-grey-1;
         margin-bottom: 25px;
 
         @include breakpoint($screen-lg) {
@@ -53,7 +54,6 @@
         text-align: center;
         position: relative;
         top: 0;
-        transition: top .3s;
         order: 0;
         flex: 1 0 auto;
         align-self: flex-start;
@@ -61,16 +61,6 @@
 
         @include breakpoint($screen-lg) {
             max-width: percentage(1/4);
-        }
-
-
-
-        &:hover {
-            top: -10px;
-
-            .also-consider-item__image {
-                opacity: 0.8;
-            }
         }
 
         & > a {
@@ -86,7 +76,7 @@
 
         &__title {
             font-size: $font-size-h6;
-            color: $cs-dark-grey;
+            color: $cs-dark-grey-1;
             padding-top: 10px;
         }
 

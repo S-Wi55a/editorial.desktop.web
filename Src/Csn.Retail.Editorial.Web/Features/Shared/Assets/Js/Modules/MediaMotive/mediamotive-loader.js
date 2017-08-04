@@ -1,4 +1,4 @@
-﻿import postscribe from "postscribe";
+﻿import postscribe from 'postscribe';
 
 (function ($, w) {
     'use strict';
@@ -28,7 +28,7 @@
                     if (isKruxRequired) {
                         scriptUrl = scriptUrl + sasTags;
                     }
-                    postscribeQueue.push({ tile: tile, scriptUrl: scriptUrl})
+                    postscribeQueue.push({ tile: tile, scriptUrl: scriptUrl });
                 });
 
                 //Recursively call postscribe
@@ -36,17 +36,17 @@
 
                     if (i < postscribeQueue.length) {
                         postscribe('#' + postscribeQueue[i].tile, '<script src=\'' + postscribeQueue[i].scriptUrl + '\'><\/script>',
-                            {
-                                done: function () {
-                                    i++
-                                    return p(i, postscribeQueue)
-                                }
-                            });  
+                        {
+                            done: function () {
+                                $('#' + postscribeQueue[i].tile).removeClass('mediamotive-block--loading');
+                                i++;
+                                return p(i, postscribeQueue);
+                            }
+                        });  
                     }
-     
                 }
 
-                p(0, postscribeQueue)
+                p(0, postscribeQueue);
             }
         };
 
@@ -61,5 +61,3 @@
     });
 
 })(jQuery, window);
-
-

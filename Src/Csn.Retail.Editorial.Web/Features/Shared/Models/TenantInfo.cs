@@ -12,5 +12,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string HotjarTracking { get; set; }
         public bool AllowSeoIndexOfDetails { get; set; }
         public bool AllowSeoIndexOfListing { get; set; }
+
+        #region Polar Native Ads
+        public bool DisplayPolarAds { get; set; }
+        public string PolarSitePropertyId { get; set; }
+        public string PolarSiteName { get; set; }
+        #endregion
+        public string MobiSiteUrl { get; set; }
     }
 }

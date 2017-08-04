@@ -5,23 +5,9 @@ require('./css/details-page.scss');
 
 import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
+import Modal from 'Js/Modules/Modal/modal.js'
 
 //------------------------------------------------------------------------------------------------------------------
-
-// Dynamically set the public path for ajax/code-split requests
-let scripts = document.getElementsByTagName("script");
-let scriptsLength = scripts.length;
-let patt = /csn\.common/;
-for (var i = 0; i < scriptsLength; i++) {
-    var str = scripts[i].getAttribute('src');
-    if (patt.test(str)) {
-        __webpack_public_path__ = str.substring(0, str.lastIndexOf("/")) + '/';
-        break;
-    }
-}
-
-//------------------------------------------------------------------------------------------------------------------
-
 // Hero
 let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
 aboveTheFold();
@@ -36,7 +22,8 @@ editorRatings();
 
 // TEADS
 $(function () {
-    if ($('#teads-video-container').length) {
+    if ($('#Tile7').length) {
+        $('#Tile7').wrap('<div id="teads-video-container" style="clear: both"></div>');
         $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
     }
 });
@@ -74,10 +61,10 @@ loaded.then(function () {
 //Lazy load Spec Module
 let specModule = function (d) {
 
-    if (csn_editorial.specModule) {
+    if (csn_editorial.specVariantsQuery) {
         // Add placeholder 
         let el = d.querySelectorAll('.article__copy p')[1];
-        if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder"></div>');}
+        if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder" data-webm-section="spec-module"></div>');}
 
         require.ensure(['Js/Modules/SpecModule/specModule--container.js'],
             function () {
@@ -127,3 +114,46 @@ let disqus = function(d, w, selector) {
     }
 }
 disqus(document, window, '#disqus_thread');
+
+//Lazy Native Ads
+let nativeAds = function () {
+
+    if (!!csn_editorial && !!csn_editorial.nativeAds) {
+        require.ensure(['Js/Modules/NativeAds/nativeAds.js'],
+            function () {
+                require('Js/Modules/NativeAds/nativeAds.js');
+            },
+            'Native Ads');
+    }
+}
+loaded.then(function () {
+    nativeAds();
+});
+
+//Lazy load More articles JS
+let sponsoredArticles = function(d) {
+
+    if (d.querySelector('.article__type--sponsored')) {
+        require.ensure(['Js/Modules/SponsoredArticles/sponsoredArticles.js'],
+        function() {
+            require('Js/Modules/SponsoredArticles/sponsoredArticles.js');
+        },
+        'Sponsored-Articles-Component');
+    }
+}
+loaded.then(function () {
+    sponsoredArticles(document);
+});
+
+
+//Lazy load Media Motive Ads
+loaded.then(function () {
+    require.ensure(['Js/Modules/MediaMotive/mm.js'],
+        function() {
+            require('Js/Modules/MediaMotive/mm.js');
+        },
+        'Media Motive');
+});
+
+// display disclaimer on pricing guide
+require('Js/Modules/ArticlePricing/articlePricing.js');

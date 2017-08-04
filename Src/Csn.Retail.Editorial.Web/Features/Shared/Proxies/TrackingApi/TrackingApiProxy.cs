@@ -25,6 +25,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.TrackingApi
             return _smartClient.Service(ServiceName)
                 .Path("v1/api/tracking/script")
                 .QueryString("Application", input.ApplicationName)
+                .QueryString("IncludeNielsen", "true")
                 .GetAsync<TrackingApiDto>();
         }
     }

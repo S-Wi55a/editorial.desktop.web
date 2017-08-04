@@ -16,7 +16,6 @@
     @Html.AssetCss("details-page--" + tenantName)
 }
 
-
 @section TopScripts {
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
 }
@@ -31,7 +30,6 @@
     </div>
 </article>
 @{ Html.RenderPartial("Partials/Modal/_Modal"); }
-@{ Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model); }
 
 @section BottomScripts
 {
@@ -40,5 +38,13 @@
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
+    @if (Model.MoreArticleData != null)
+    {
+        Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData);
+    }
+    @if (Model.PolarNativeAdsData != null)
+    {
+        Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
+    }
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
 }

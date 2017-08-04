@@ -8,10 +8,8 @@ import { proxy } from 'Js/Modules/Endpoints/endpoints';
 import 'Css/Modules/Widgets/SpecModule/_specModule.scss'; //TODO: CSS Module
 
 const specPath = proxy;
-const GLOBAL_specModuleData = csn_editorial.specModule; //Set this to state
+const GLOBAL_specModuleData = csn_editorial.specVariantsQuery; //Set this to state
 window.csn_modal = window.csn_modal || new Modal()
-
-
 const app = document.createElement('div');
 document.querySelector(".spec-module-placeholder").appendChild(app);
 
@@ -27,6 +25,3 @@ render(SpecModule);
 if (module.hot) {
     module.hot.accept('./specModule', () => render(SpecModule));
 }
-
-
-//How to remove react hot laod from prod code

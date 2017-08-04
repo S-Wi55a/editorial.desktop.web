@@ -4,6 +4,7 @@
         $sm-handle-width: 20px;
         $sm-rail-height: 4px;
         $dot-height: 6px;
+        $dot-width: 6px;
 
         padding: 0 ($sm-handle-width/2);
         margin-top: 30px;
@@ -13,9 +14,9 @@
 
         &-label {
             font-size: $font-size-h4;
-            font-weight: $font-weight-300;
-            color: $cs-dark-grey;
-            padding-bottom: 10px;
+            font-weight: $font-weight-600;
+            color: $cs-dark-grey-1;
+            padding-bottom: 25px;
             margin-left: -1 * ($sm-handle-width/2);
         }
 
@@ -30,7 +31,7 @@
             .rc-slider-rail {
                 position: absolute;
                 width: 100%;
-                background-color: $cs-lighter-grey;
+                background-color: $cs-light-grey-2;
                 height: $sm-rail-height;
                 border-radius: 6px;
             }
@@ -40,7 +41,7 @@
                 left: 0;
                 height: $sm-rail-height;
                 border-radius: 6px;
-                background-color: $cs-light-grey;
+                background-color: $cs-light-grey-1;
             }
 
             .rc-slider-handle {
@@ -64,21 +65,49 @@
 
             .rc-slider-dot {
                 position: absolute;
-                top: -1*(($sm-handle-width/2) + ($sm-rail-height/2) + $dot-height);
+                top: -25px;
                 margin-left: -1px;
-                width: 2px;
-                height: 2px;
-                background-color: $cs-black;
+                width: $dot-width;
+                height: $dot-height;
+                background-color: $cs-light-grey-1;
                 cursor: pointer;
                 border-radius: 50%;
                 vertical-align: middle;
 
                 &:first-child {
-                    margin-left: -1px;
+                    margin-left: -1*($dot-width/2);
                 }
 
+                &:nth-of-type(2) {
+                    margin-left: -1*($dot-width/2);
+                }
+            }
+
+            .rc-slider-mark {
+                position: relative;
+                padding-bottom: 20px;
+                top: 18px;
+                left: 0;
+                width: calc(100% + #{$sm-handle-width});
+                left: -1*($sm-handle-width/2);
+                font-size: 12px;
+            }
+
+            .rc-slider-mark-text {
+                position: absolute;
+                display: inline-block;
+                vertical-align: middle;
+                text-align: left;
+                cursor: pointer;
+                color: $cs-dark-grey-1;
+                width: auto !important;
+                margin-left: auto !important;
+                font-weight: $font-weight-700;
+                white-space: nowrap;
+
                 &:last-child {
-                    margin-left: -1px;
+                    text-align: right;
+                    transform: translateX(-100%);
                 }
             }
         }

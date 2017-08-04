@@ -51,7 +51,7 @@
             text-align: center;
             text-indent: 0;
             font-family: $font-family-icons;
-            content: '\e94d';
+            content: $icon-cross-lg;
             text-indent: 0;
             color: $cs-white;
             line-height: 66px;
@@ -65,8 +65,10 @@
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
-    max-width: calc(100vw - 160px);
+    max-width: calc(100vw - 80px);
 
 }
+
+@include modal("csn-modal");
 
 

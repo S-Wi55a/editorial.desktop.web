@@ -23,7 +23,7 @@
         background-repeat: no-repeat;
         background-position: center;
         float: left;
-        max-width: ($screen-md - $leader-board-width - $grid-gutter-width - 15px); 
+        max-width: ($screen-sm - $leader-board-width - $grid-gutter-width - 15px); 
         @include breakpoint($screen-lg) {
             max-width: 100%;
         }

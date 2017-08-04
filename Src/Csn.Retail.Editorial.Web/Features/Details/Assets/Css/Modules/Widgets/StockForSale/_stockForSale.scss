@@ -1,5 +1,9 @@
 ﻿@import "css/globals";
 
+.stock-for-sale-placeholder{
+    margin-bottom: 35px;
+}
+
 .stock-for-sale {
 
     @include fadeInDown(-50%);
@@ -12,7 +16,7 @@
 
     width: 300px;
     border-radius: $border-radius;
-    border: solid 1px $cs-lightest-grey;
+    border: solid 1px $cs-light-grey-2;
     padding: 30px;
     position: relative;
     font-size: 0;
@@ -61,9 +65,9 @@
         display: inline-block;
 
         &::after {
-            content: "\e923";
+            content: $icon-chevron-down-md;
             font-family: $font-family-icons;
-            color: $cs-light-grey;
+            color: $cs-light-grey-1;
             font-size: 18px;
             vertical-align: middle;
             padding-left: 5px;
@@ -74,7 +78,7 @@
 
         &:hover {
             cursor: pointer;
-            color: rgba($cs-dark-grey, 0.7);
+            color: rgba($cs-dark-grey-1, 0.7);
 
             &::after {
                 animation-name: fadeInDown
@@ -126,7 +130,7 @@
         &__option {
             font-size: $font-size-h4;
             font-weight: $font-weight-600;
-            border-bottom: solid 1px $cs-lightest-grey;
+            border-bottom: solid 1px $cs-light-grey-2;
             padding: 5px 0 5px 20px;
             position: relative;
             transform: translate3d(-150%, 0, 0);
@@ -140,9 +144,9 @@
 
 
             &::after {
-                content: "\e929";
+                content: $icon-chevron-right-md;
                 font-family: $font-family-icons;
-                color: $cs-light-grey;
+                color: $cs-light-grey-1;
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
@@ -164,12 +168,12 @@
     .stock-for-sale-item {
         font-size: 0;
         padding-bottom: 20px;
-        border-bottom: 1px solid $cs-lightest-grey;
+        border-bottom: 1px solid $cs-light-grey-2;
         margin-bottom: 20px;
 
         &--no-items {
             font-size: $font-size-small;
-            color: $cs-dark-grey;
+            color: $cs-dark-grey-1;
             text-align: center;
         }
 
@@ -181,7 +185,7 @@
         &__title {
             font-size: $title-font-size;
             line-height: $title-line-height;
-            color: $cs-dark-grey;
+            color: $cs-dark-grey-1;
             font-weight: $font-weight-600;
             width: calc(100% - 85px);
             display: inline-block;
@@ -190,18 +194,8 @@
             &:visited,
             &:focus,
             &active {
-                color: $cs-dark-grey;
+                color: $cs-dark-grey-1;
             }
-        }
-
-        &__price {
-            min-width: 85px;
-            display: inline-block;
-            font-size: $font-size-body;
-            vertical-align: top;
-            font-weight: $font-weight-600;
-            text-align: right;
-            margin-top: -2px;
         }
 
         &__list {
@@ -212,7 +206,7 @@
 
         &__list-item {
             font-size: $font-size-small;
-            color: $cs-dark-grey;
+            color: $cs-dark-grey-1;
             display: inline-block;
             margin-left: 15px;
             padding-right: 8px;
@@ -232,11 +226,33 @@
 
         &__location {
             font-size: $font-size-small;
-            color: $cs-light-grey;
+            color: $cs-light-grey-1;
             text-align: right;
             min-width: 30px;
             display: inline-block;
             margin-top: 5px;
+        }
+    }
+
+    .stock-for-sale-item-pricing {
+        min-width: 85px;
+        display: inline-block;
+        text-align: right;
+
+        &__price {
+            font-size: $font-size-body;
+            vertical-align: top;
+            font-weight: $font-weight-600;
+            margin-top: -2px;
+        }
+
+        &__label {
+            font-size: $font-size-smaller;
+
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
     }
 }

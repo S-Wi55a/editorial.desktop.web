@@ -8,10 +8,10 @@ const container = (data) => {
     return `
         <div class="stock-for-sale">
             <h2 class="stock-for-sale__header">${data.heading || ''}</h2>
-            <button class="stock-for-sale__select">${data.filters[0].name || ''}</button>
+            <button class="stock-for-sale__select" data-webm-clickvalue="states">${data.filters[0].name || ''}</button>
             <ul class="stock-for-sale__list"></ul>
             <div class="stock-for-sale__button-container">
-                <a class="stock-for-sale__button stock-for-sale__button--view-all" href="">
+                <a class="stock-for-sale__button stock-for-sale__button--view-all" href="" data-webm-clickvalue="view-all-stock">
                     ${data.viewAllStockButton || ''}
                 </a>
             </div>
@@ -35,17 +35,17 @@ const listItem = (data) => {
 
     const key = 'items';
 
-    if (data[key].length) {
+    if (data && data[key].length) {
         const template = data[key].map((item) => {
             return (`
                 <li class="stock-for-sale-item">
-                    <a href="${item.detailsPageUrl || ''}">
+                    <a href="${item.detailsPageUrl || ''}" data-webm-clickvalue="stock-clicked">
                         <img class="stock-for-sale-item__image" src="${item.photoUrl || ''}" />
                     </a>
-                    <a href="${item.detailsPageUrl || ''}">
+                    <a href="${item.detailsPageUrl || ''}" data-webm-clickvalue="stock-clicked">
                         <h3 class="stock-for-sale-item__title">${item.title || ''}</h3>
                     </a>
-                    <p class="stock-for-sale-item__price">${item.price || ''}</p>
+                    ${priceData(item.priceData)}
                     <ul class="stock-for-sale-item__list">
                         ${item.attributes.map(attr => `
                             <li class="stock-for-sale-item__list-item">${attr || ''}</li>
@@ -53,21 +53,29 @@ const listItem = (data) => {
                     </ul>
                     <p class="stock-for-sale-item__location">${item.location || ''}</p>
                 </li>
-                `)
-        })
+                `);
+        });
 
         return template.reduce((prev, current) => {
-            return prev + current
-        })
-
+            return prev + current;
+        });
     } else {
+        return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${data.responseMessage || ''}</li>`;
+    }
+};
 
-        return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${data.responseMessage || ''}</li>`
+const priceData = (data) => {
+    if (data && data.text) {
+        return (`
+            <div class="stock-for-sale-item-pricing">
+                <p class="stock-for-sale-item-pricing__price">${data.text}</p>
+                <p class="stock-for-sale-item-pricing__label" data-disclaimer="${data.disclaimer}">${data.label || ''}</p>
+            </div>
+        `);
     }
 
-
-}
-
+    return (``);
+};
 
 
 export { container, listItem };

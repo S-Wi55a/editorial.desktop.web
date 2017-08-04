@@ -7,7 +7,7 @@
     $img-height: 67px;
 
     background: $cs-white;
-    border-top: solid 1px $cs-lighter-grey;
+    border-top: solid 1px $cs-light-grey-2;
     padding-top: 10px;
     padding-bottom: 15px;
     position: fixed;
@@ -42,20 +42,40 @@
         }
     }
 
-    &__filters {
-        margin-bottom: 15px;
+    &__top-container {
         width: calc(100% - #{$nav-width});
+    }
+
+    &__filters,
+    &__links {
+        margin-bottom: 15px;
         display: inline-block;
     }
 
-    &__filter {
 
-        @include button(( small: true, round: true, thin: true, primary-inverse: true ));
+    &__filter,
+    &__link {
         display: inline-block;
         text-align: center;
         margin-right: 25px;
+    }
 
+    &__link {
+        font-size: 13px;
+        padding-left: 0;
+        padding-right: 0;
+        text-decoration: none;
 
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+
+    &__filter {
+        @include button(( small: true, round: true, thin: true, primary-inverse: true ));
+        cursor: pointer;
 
         &--active {
             @include button((small: true,primary: true ));
@@ -118,8 +138,8 @@
             height: 30px;
             line-height: 30px;
             text-align: center;
-            border: solid 1px $cs-light-grey;
-            color: $cs-darkest-grey;
+            border: solid 1px $cs-light-grey-1;
+            color: $cs-dark-grey-3;
         }
 
 
@@ -127,7 +147,7 @@
             margin-right: 5px;
 
             &::before {
-                content: "\e925";
+                content: $icon-chevron-left-lg;
             }
 
             &[disabled] {
@@ -141,7 +161,7 @@
             margin-left: 5px;
 
             &::before {
-                content: "\e928";
+                content: $icon-chevron-right-lg;
             }
 
             &[disabled] {
