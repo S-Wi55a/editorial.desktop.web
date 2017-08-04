@@ -3,7 +3,6 @@
 const container = (data) => {
 
     const stockForSalePath = proxy;
-    const limit = '%26limit=2';
 
     return `
         <div class="stock-for-sale">
@@ -20,7 +19,7 @@ const container = (data) => {
                     ${data.filters.map(filter => `
                         <li
                             class="stock-for-sale-options__option"
-                            data-stock-for-sale-query="${stockForSalePath || ''}${filter.query || ''}${filter.extendedQuery ? ('%26' + filter.extendedQuery) :''}${limit || ''}" 
+                            data-stock-for-sale-query="${stockForSalePath || ''}${filter.query || ''}${'?limit=2'}"
                             data-stock-for-sale-view-all-url="${filter.viewAllUrl || ''}">
                             ${filter.name || ''}
                         </li>
