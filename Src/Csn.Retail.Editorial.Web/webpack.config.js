@@ -8,17 +8,11 @@ var glob = require('glob'),
     BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
     HappyPack = require('happypack'),
     rimraf = require('rimraf'),
-    BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+    BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
+    ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin'),
+    os = require('os');
 
-
-    var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-    var os = require('os');
-    var UglifyJsParallelPlugin = require('webpack-uglify-parallel');
-
-    var happyThreadPool = HappyPack.ThreadPool({ size: 4 });
-
-console.log(os.cpus().length);
-
+console.log('CPU\'S', os.cpus().length);
 
 //---------------------------------------------------------------------------------------------------------
 // List of Tenants
@@ -61,20 +55,22 @@ var assetsPluginInstance = new AssetsPlugin({
         fullPath: false
     });
 
-var isProd = process.env.NODE_ENV === 'production' ? true : false;
+const IS_PROD = process.env.NODE_ENV === 'production' ? true : false;
 
 const TENANTS = process.env.TENANT.toLowerCase() === 'all' ? listofTenants : [process.env.TENANT.trim()];
 
 const VIEW_BUNDLE = process.env.VIEW_BUNDLE === 'true ' ? true : false;
 
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
-const URL_LIMIT = isProd ? 1 : undefined;
+const URL_LIMIT = IS_PROD ? 1 : undefined;
+
+const happyThreadPool = HappyPack.ThreadPool({ size: 4 });
 
 
 var config = {
     entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
     outputPath: path.join(__dirname, s3path),
-    publicPath: isProd ? './' : s3path
+    publicPath: IS_PROD ? './' : s3path
 }
 
 
@@ -116,15 +112,15 @@ module.exports = (env) => {
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: isProd ? false : true,
-                            minimize: isProd ? true : false
+                            sourceMap: IS_PROD ? false : true,
+                            minimize: IS_PROD ? true : false
                         }
                     },
                     'postcss-loader?sourceMap',
                     {
                         loader: 'resolve-url-loader',
                         options: {
-                            sourceMap: isProd ? false : true,
+                            sourceMap: IS_PROD ? false : true,
                             keepQuery: true
                         }
                     },
@@ -235,21 +231,23 @@ module.exports = (env) => {
                 }
             ),
             new ExtractTextPlugin({
-                filename: isProd ? '[name]-[contenthash].css' : '[name].css',
+                filename: IS_PROD ? '[name]-[contenthash].css' : '[name].css',
                 allChunks: false
             }),
             new ForkTsCheckerWebpackPlugin({
-                //watch: './Features', // optional but improves performance (less stat calls)
+                watch: './Features', // optional but improves performance (less stat calls)
                 //workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
-            }),
-            // new UglifyJsParallelPlugin({
-            //     workers: os.cpus().length - 1 , // usually having as many workers as cpu cores gives good results
-            //     // other uglify options
-            // })
+            })
         ];
 
         if (VIEW_BUNDLE) {
             plugins.push(new BundleAnalyzerPlugin())
+        } 
+
+        if (IS_PROD) {
+            plugins.push(
+                  new webpack.optimize.UglifyJsPlugin({})
+            )
         } 
 
 
@@ -261,10 +259,10 @@ module.exports = (env) => {
             output: {
                 path: config.outputPath,
                 publicPath: config.publicPath,
-                filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
+                filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: {
-                noParse: isProd ? /\A(?!x)x/ : /react|jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
+                noParse: IS_PROD ? /\A(?!x)x/ : /react|jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
                 rules: [
                     {
                         enforce: 'pre',
@@ -294,13 +292,13 @@ module.exports = (env) => {
                     {
                         test: /\.css$/,
                         exclude: /(node_modules|bower_components|unitTest)/,
-                        use: isProd ? prodLoaderCSSExtract : devLoaderCSSExtract
+                        use: IS_PROD ? prodLoaderCSSExtract : devLoaderCSSExtract
 
                     },
                     {
                         test: /\.scss$/,
                         exclude: [/(node_modules|bower_components|unitTest)/],
-                        use: isProd ? prodLoaderCSSExtract : devLoaderCSSExtract
+                        use: IS_PROD ? prodLoaderCSSExtract : devLoaderCSSExtract
                     },
                     {
                         test: /.*\.(gif|png|jpe?g|svg)$/i,
@@ -310,7 +308,7 @@ module.exports = (env) => {
                                 loader: 'url-loader',
                                 options: {
                                     limit: URL_LIMIT,
-                                    name: isProd ? 'images/[name]-[hash].[ext]' : 'images/[name].[ext]'
+                                    name: IS_PROD ? 'images/[name]-[hash].[ext]' : 'images/[name].[ext]'
                                 }
                             },
                             {
@@ -339,7 +337,7 @@ module.exports = (env) => {
                                 loader: 'url-loader',
                                 options: {
                                     limit: URL_LIMIT,
-                                    name: isProd ? 'fonts/[name]-[hash].[ext]' : 'fonts/[name].[ext]'
+                                    name: IS_PROD ? 'fonts/[name]-[hash].[ext]' : 'fonts/[name].[ext]'
                                 }
                             }
                         ]
@@ -411,7 +409,7 @@ module.exports = (env) => {
                 // Add warnings
                 warnings: true
             },
-            devtool: isProd ? "cheap-source-map" : "eval",
+            devtool: IS_PROD ? "cheap-source-map" : "eval",
             devServer: {
                 stats: {
                     // Add asset Information

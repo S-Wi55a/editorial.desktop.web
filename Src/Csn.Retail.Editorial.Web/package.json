@@ -12,7 +12,7 @@
     "postinstall": "npm run bower install",
     "build": "cross-env NODE_ENV=development cross-env TENANT=ALL && npm run webpack -- -d --color",
     "build-custom": "cross-env NODE_ENV=development npm run webpack -- -d --color",
-    "build-release": "cross-env NODE_ENV=production cross-env TENANT= npm run webpack -- -p --color",
+    "build-release": "cross-env NODE_ENV=production cross-env TENANT=ALL npm run webpack -- -p --color",
     "build-release-custom": "cross-env NODE_ENV=production npm run webpack -- -p --color",
     "dev-watch": "cross-env NODE_ENV=development npm run webpack -- -d --progress --colors --watch",
     "dev": "cross-env NODE_ENV=development npm run webpack-dev-server -- -d --colors --hot"
