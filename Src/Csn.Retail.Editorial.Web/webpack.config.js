@@ -10,7 +10,10 @@ var glob = require('glob'),
     rimraf = require('rimraf'),
     BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
     ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin'),
-    os = require('os');
+    os = require('os'),
+    ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin'),
+    WebpackNotifierPlugin = require('webpack-notifier');
+
 
 console.log('CPU\'S', os.cpus().length);
 
@@ -47,18 +50,11 @@ const listOfPaths = [
 const s3path = 'dist/retail/editorial/'; //transfer to s3 is handles with gulp
 
 //---------------------------------------------------------------------------------------------------------
-
-var assetsPluginInstance = new AssetsPlugin({
-        filename: 'webpack.assets.json',
-        path: __dirname,
-        prettyPrint: true,
-        fullPath: false
-    });
+// Remove dist folder
+rimraf('./dist', function (err) { if (err) { throw err; } });
 
 const IS_PROD = process.env.NODE_ENV === 'production' ? true : false;
-
 const TENANTS = process.env.TENANT.toLowerCase() === 'all' ? listofTenants : [process.env.TENANT.trim()];
-
 const VIEW_BUNDLE = process.env.VIEW_BUNDLE === 'true ' ? true : false;
 
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
@@ -66,13 +62,67 @@ const URL_LIMIT = IS_PROD ? 1 : undefined;
 
 const happyThreadPool = HappyPack.ThreadPool({ size: 4 });
 
-
 var config = {
     entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
     outputPath: path.join(__dirname, s3path),
     publicPath: IS_PROD ? './' : s3path
 }
 
+//Plugins vars
+const assetsPluginInstance = new AssetsPlugin({
+        filename: 'webpack.assets.json',
+        path: __dirname,
+        prettyPrint: true,
+        fullPath: false
+    });
+
+const ForkTsCheckerWebpackPluginInstance = tenant => {
+        let arr = []
+
+        if(!IS_PROD){
+            arr.unshift(new ForkTsCheckerNotifierWebpackPlugin({ title: `${tenant} - TypeScript` }))
+        }
+
+        arr.push(
+            new ForkTsCheckerWebpackPlugin({
+                watch: './Features/**/*', // optional but improves performance (less stat calls)
+            }))
+        
+        return arr
+
+}
+
+const CommonsChunkPlugin = (pageEntries, tenant) => [
+            //Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
+            new webpack.optimize.CommonsChunkPlugin({
+                names: pageEntries,
+                children: true,
+                minChunks: 2
+            }),
+            // Common -- pull everything from pages entries and make global common chunk
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'csn.common' + '--' + tenant,
+                chunks: pageEntries,
+                minChunks: 2
+            }),
+            //Vendor - Will look through every entry and match against itself or if a library from node_module is used twice
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'csn.vendor' + '--' + tenant,
+                minChunks: function(module, count) {
+                    // This prevents stylesheet resources with the .css or .scss extension
+                    // from being moved from their original chunk to the vendor chunk
+                    if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+                        return false;
+                    }
+                    return module.context && module.context.indexOf("node_modules") !== -1;
+                }
+            }),
+            //Manifest - Webpack Runtime
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'csn.manifest' + '--' + tenant,
+                minChunks: Infinity
+            })
+]
 
 function getEntryFiles(tenant) {
     if (!tenant) {
@@ -92,11 +142,6 @@ function getEntryFiles(tenant) {
     }
     return entries;
 }
-
-
-
-// Remove dist folder
-rimraf('./dist', function (err) { if (err) { throw err; } });
 
 
 module.exports = (env) => {
@@ -151,36 +196,6 @@ module.exports = (env) => {
 
         let plugins = [
             assetsPluginInstance,
-            //Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
-            new webpack.optimize.CommonsChunkPlugin({
-                names: pageEntries,
-                children: true,
-                minChunks: 2
-            }),
-            // Common -- pull everything from pages entries and make global common chunk
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'csn.common' + '--' + tenant,
-                chunks: pageEntries,
-                minChunks: 2
-            }),
-            //Vendor - Will look through every entry and match against itself or if a library from node_module is used twice
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'csn.vendor' + '--' + tenant,
-                minChunks: function(module, count) {
-                    // This prevents stylesheet resources with the .css or .scss extension
-                    // from being moved from their original chunk to the vendor chunk
-                    if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
-                        return false;
-                    }
-                    return module.context && module.context.indexOf("node_modules") !== -1;
-                }
-            }),
-            //Manifest - Webpack Runtime
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'csn.manifest' + '--' + tenant,
-                minChunks: Infinity
-            }),
-            new webpack.NamedModulesPlugin(),
             new HappyPack({
                     // loaders is the only required parameter:
                     id: 'babel',
@@ -207,50 +222,73 @@ module.exports = (env) => {
                     threadPool: happyThreadPool,
                     loaders: devLoaderCSSExtract //TODO and see if this a bottle neck
                 }),
-            new BrowserSyncPlugin(
-                // BrowserSync options 
-                {
-                    // browse to http://localhost:3000/ during development 
-                    host: 'localhost',
-                    port: 3000,
-                    // proxy the Webpack Dev Server endpoint 
-                    // through BrowserSync 
-                    proxy: {
-                        target: 'http://localhost:8080',
-                        ws: true
-                    },
-                    logLevel: "info",
-                    open: false
-
-                },
-                // plugin options 
-                {
-                    // prevent BrowserSync from reloading the page 
-                    // and let Webpack Dev Server take care of this 
-                    reload: false
-                }
-            ),
+            
             new ExtractTextPlugin({
                 filename: IS_PROD ? '[name]-[contenthash].css' : '[name].css',
                 allChunks: false
-            }),
-            new ForkTsCheckerWebpackPlugin({
-                watch: './Features', // optional but improves performance (less stat calls)
-                //workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
             })
         ];
+
+        plugins = plugins.concat(ForkTsCheckerWebpackPluginInstance(tenant))
+
+        //Dev
+        if(!IS_PROD) {
+            //WebpackNotifierPlugin
+            plugins.push(new WebpackNotifierPlugin())
+            //NamedModulesPlugin
+            plugins.push(new webpack.NamedModulesPlugin())
+            //CommonsChunkPlugin
+            plugins = plugins.concat(CommonsChunkPlugin(pageEntries, tenant))
+            //BrowserSync
+            plugins.push(
+                new BrowserSyncPlugin(
+                    // BrowserSync options 
+                    {
+                        // browse to http://localhost:3000/ during development 
+                        host: 'localhost',
+                        port: 3000,
+                        // proxy the Webpack Dev Server endpoint 
+                        // through BrowserSync 
+                        proxy: {
+                            target: 'http://localhost:8080',
+                            ws: true
+                        },
+                        logLevel: "info",
+                        open: false
+
+                    },
+                    // plugin options 
+                    {
+                        // prevent BrowserSync from reloading the page 
+                        // and let Webpack Dev Server take care of this 
+                        reload: false
+                    }
+                )
+            )
+        }
+
+        //Production
+        if(IS_PROD) {
+
+            //Uglify
+            plugins.push(
+                new webpack.optimize.UglifyJsPlugin({
+                    beautify: false,
+                    mangle: {
+                        screw_ie8: true,
+                        keep_fnames: true
+                    },
+                    compress: {
+                        screw_ie8: true
+                    },
+                    comments: false
+                })
+            )
+        }
 
         if (VIEW_BUNDLE) {
             plugins.push(new BundleAnalyzerPlugin())
         } 
-
-        if (IS_PROD) {
-            plugins.push(
-                  new webpack.optimize.UglifyJsPlugin({})
-            )
-        } 
-
-
 
         moduleExportArr.push(
         {
@@ -352,7 +390,6 @@ module.exports = (env) => {
                     swiper$: path.resolve('node_modules', 'swiper/dist/js/swiper.min.js'),
                     ScrollMagic$: path.resolve('node_modules', 'scrollmagic/scrollmagic/minified/ScrollMagic.min.js'),
                     TinyAnimate$: path.resolve('node_modules', 'TinyAnimate/bin/TinyAnimate.js'),
-                    jquery$: path.resolve('node_modules', 'jquery/dist/jquery.min.js'),
                     react$: path.resolve('node_modules', 'react/dist/react.min.js'),
                     //Bower Components
                     circles$: path.resolve('bower_components', 'circles/circles.min.js'),
