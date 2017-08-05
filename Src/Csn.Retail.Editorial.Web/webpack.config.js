@@ -76,22 +76,6 @@ const assetsPluginInstance = new AssetsPlugin({
         fullPath: false
     });
 
-const ForkTsCheckerWebpackPluginInstance = tenant => {
-        let arr = []
-
-        if(!IS_PROD){
-            arr.unshift(new ForkTsCheckerNotifierWebpackPlugin({ title: `${tenant} - TypeScript` }))
-        }
-
-        arr.push(
-            new ForkTsCheckerWebpackPlugin({
-                watch: './Features/**/*', // optional but improves performance (less stat calls)
-            }))
-        
-        return arr
-
-}
-
 const CommonsChunkPlugin = (pageEntries, tenant) => [
             //Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
             new webpack.optimize.CommonsChunkPlugin({
@@ -211,7 +195,7 @@ module.exports = (env) => {
                         path: 'ts-loader',
                         query: {
                             // disable type checker - we will use it in fork plugin
-                            transpileOnly: true,
+                            transpileOnly: IS_PROD ? false : true,
                             happyPackMode: true
                         }
                     }],
@@ -228,8 +212,6 @@ module.exports = (env) => {
                 allChunks: false
             })
         ];
-
-        plugins = plugins.concat(ForkTsCheckerWebpackPluginInstance(tenant))
 
         //Dev
         if(!IS_PROD) {
@@ -265,25 +247,15 @@ module.exports = (env) => {
                     }
                 )
             )
-        }
-
-        //Production
-        if(IS_PROD) {
-
-            //Uglify
-            plugins.push(
-                new webpack.optimize.UglifyJsPlugin({
-                    beautify: false,
-                    mangle: {
-                        screw_ie8: true,
-                        keep_fnames: true
-                    },
-                    compress: {
-                        screw_ie8: true
-                    },
-                    comments: false
+            plugins = plugins.concat([
+                new ForkTsCheckerNotifierWebpackPlugin({ 
+                    title: `${tenant} - TypeScript`,
+                }),
+                new ForkTsCheckerWebpackPlugin({
+                    watch: './Features/**/*', // optional but improves performance (less stat calls),
                 })
-            )
+            ])
+
         }
 
         if (VIEW_BUNDLE) {
@@ -446,7 +418,7 @@ module.exports = (env) => {
                 // Add warnings
                 warnings: true
             },
-            devtool: IS_PROD ? "cheap-source-map" : "eval",
+            devtool: IS_PROD ? 'source-map' : 'eval',
             devServer: {
                 stats: {
                     // Add asset Information
