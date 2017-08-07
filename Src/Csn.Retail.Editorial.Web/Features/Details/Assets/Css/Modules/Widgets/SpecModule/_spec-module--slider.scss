@@ -9,8 +9,12 @@
         padding: 0 ($sm-handle-width/2);
         margin-top: 30px;
         position: absolute;
-        width: calc(50% - 60px);
+        width: calc(60% - 60px);
         bottom: 0;
+
+        @include breakpoint($screen-lg) {
+            width: calc(65% - 60px);
+        }
 
         &-label {
             font-size: $font-size-h4;
