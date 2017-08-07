@@ -12,6 +12,10 @@
         width: calc(60% - 60px);
         bottom: 0;
 
+        @include breakpoint($screen-lg) {
+            width: calc(65% - 60px);
+        }
+
         &-label {
             font-size: $font-size-h4;
             font-weight: $font-weight-600;

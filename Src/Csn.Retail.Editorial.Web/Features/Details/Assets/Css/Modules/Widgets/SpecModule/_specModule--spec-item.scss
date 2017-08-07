@@ -24,10 +24,18 @@
 
         &--1 {
             width: 60%;
+
+            @include breakpoint($screen-lg) {
+                width: 65%;
+            }
         }
 
         &--2 {
             width: 40%;
+
+            @include breakpoint($screen-lg) {
+                width: 35%;
+            }
         }
     }
 
