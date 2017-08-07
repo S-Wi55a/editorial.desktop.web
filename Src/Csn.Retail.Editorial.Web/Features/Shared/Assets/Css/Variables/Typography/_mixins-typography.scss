@@ -6,7 +6,7 @@ $font-size-h4: emtopx(typeScale(1.25,1), $font-size-body); //20px
 $font-size-h5: emtopx(typeScale(1.25,0), $font-size-body); //16px
 $font-size-h6: emtopx(typeScale(1.25,-1), $font-size-body); //12.8px
 
-$font-size-p: emtopx(typeScale(1.25,1), $font-size-body); //20px
+$font-size-p: emtopx(typeScale(1.125,1), $font-size-body); //18px
 $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body); //31.25px
 
 // H1
@@ -70,7 +70,7 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body); //31.25px
 
 // P
 @mixin p() {
-    font-size: $font-size-h4; //20px
+    font-size: $font-size-p; //18px
     font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;
@@ -105,7 +105,7 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body); //31.25px
 
 // Summary
 @mixin rundown-text() {
-
+    @include p();
     @include breakpoint($screen-lg) {
         font-size: $font-size-rundown;
         font-weight: 300;
