@@ -90,10 +90,6 @@
         & > p {
             margin-top: 1.25em;
             @include p();
-
-            strong {
-                color: $cs-dark-grey-2;
-            }
         }
 
         & > div {
@@ -108,6 +104,10 @@
             li {
                 display: list-item;
             }
+        }
+
+        strong, b {
+            color: $cs-dark-grey-2;
         }
 
         .teads-inread,
