@@ -285,6 +285,10 @@
     width: $screen-sm;
     margin: auto;
 
+    @include breakpoint($screen-md) {
+        width: $screen-md;
+    }
+
     @include breakpoint($screen-lg) {
         width: $screen-lg;
     }
