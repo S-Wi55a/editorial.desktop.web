@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -465,6 +465,10 @@
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Features\React\ReactController.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdsController.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleData.cs" />
     <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />
     <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
@@ -477,7 +481,6 @@
     <Compile Include="Features\Shared\GlobalSite\LoadGoogleAnalyticsTrackingScriptOnPageLoad.cs" />
     <Compile Include="Features\Shared\HealthCheck\HealthCheckController.cs" />
     <Compile Include="Features\Shared\Helpers\UserContextHelper.cs" />
-    <Compile Include="Features\Shared\Models\MediaMotiveData.cs" />
     <Compile Include="Features\Shared\Models\SeoData.cs" />
     <Compile Include="Features\Shared\Models\WebTrendData.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />
@@ -604,15 +607,14 @@
     <Content Include="Features\Details\Assets\details-page.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\ArticlePricing\articlePricing.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal--view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\NativeAdstest\nativeAds.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--tabOrModal.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--modal-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SponsoredArticles\sponsoredArticles.js" />
@@ -643,6 +645,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mm.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal-disclaimer-view.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actionsTypes.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Containers\root.js" />
@@ -768,6 +771,7 @@
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_SponsoredTextLinks.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tile15.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
@@ -816,7 +820,6 @@
     <Content Include="Features\Details\Views\Partials\Widgets\SpecModule\_SpecModuleData.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\StockForSale\_StockForSaleData.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\Modal\_ModalData.cshtml" />
-    <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module-disclaimer.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--spec-item.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule--third-party-offer.scss" />
     <Content Include="Features\Shared\Assets\Css\Animations\fadeInUp.scss" />
@@ -875,6 +878,13 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResult.scss" />
     <Content Include="Features\Listings\Views\ListingTemplate.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Mixins\_mixin-modal.scss" />
+    <Content Include="Features\Details\Views\Bikesales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Carsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Constructionsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Farmmachinerysales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\_Disclaimer.cshtml" />
+    <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">
@@ -949,8 +959,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

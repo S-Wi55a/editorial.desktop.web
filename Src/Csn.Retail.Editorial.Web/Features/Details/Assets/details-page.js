@@ -5,6 +5,7 @@ require('./css/details-page.scss');
 
 import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
+import Modal from 'Js/Modules/Modal/modal.js'
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero
@@ -39,8 +40,9 @@ aboveTheFold();
 })();
 
 // TEADS
-$(function() {
-    if ($('#teads-video-container').length) {
+$(function () {
+    if ($('#Tile7').length) {
+        $('#Tile7').wrap('<div id="teads-video-container" style="clear: both"></div>');
         $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
     }
 });
@@ -165,3 +167,6 @@ loaded.then(function() {
         },
         'Media Motive');
 });
+
+// display disclaimer on pricing guide
+require('Js/Modules/ArticlePricing/articlePricing.js');

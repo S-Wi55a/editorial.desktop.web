@@ -1,23 +1,23 @@
 ﻿// Scale - Major Third
-$font-size-h1: emtopx(typeScale(1.25,5), $font-size-body);
-$font-size-h2: emtopx(typeScale(1.25,3), $font-size-body);
-$font-size-h3: emtopx(typeScale(1.25,2), $font-size-body);
-$font-size-h4: emtopx(typeScale(1.25,1), $font-size-body);
-$font-size-h5: emtopx(typeScale(1.25,0), $font-size-body);
-$font-size-h6: emtopx(typeScale(1.25,-1), $font-size-body);
+$font-size-h1: emtopx(typeScale(1.25,5), $font-size-body); //48.82813px
+$font-size-h2: emtopx(typeScale(1.25,3), $font-size-body); //31.25px
+$font-size-h3: emtopx(typeScale(1.25,2), $font-size-body); //25px
+$font-size-h4: emtopx(typeScale(1.25,1), $font-size-body); //20px
+$font-size-h5: emtopx(typeScale(1.25,0), $font-size-body); //16px
+$font-size-h6: emtopx(typeScale(1.25,-1), $font-size-body); //12.8px
 
-$font-size-p: emtopx(typeScale(1.25,1), $font-size-body);
-$font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
+$font-size-p: emtopx(typeScale(1.25,1), $font-size-body); //20px
+$font-size-quote: emtopx(typeScale(1.25,3), $font-size-body); //31.25px
 
 // H1
 @mixin h1() {
-    font-size: emtopx(typeScale(1.2,5), $font-size-body);
+    font-size: emtopx(typeScale(1.2,5), $font-size-body); //39.81312px
     font-weight: $font-weight-300;
     letter-spacing: -.005em;
     line-height: 1.2;
 
     @include breakpoint($screen-lg) {
-        font-size: emtopx(typeScale(1.25,5), $font-size-body);
+        font-size: emtopx(typeScale(1.25,5), $font-size-body); //48.82813px
         font-weight: $font-weight-300;
         line-height: 1.1;
     }
@@ -25,13 +25,13 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
 
 // H2
 @mixin h2() {
-    font-size: emtopx(typeScale(1.2,3), $font-size-body);
+    font-size: emtopx(typeScale(1.2,3), $font-size-body); //27.648px
     font-weight: $font-weight-300;
     letter-spacing: 0;
     line-height: 1.3;
 
     @include breakpoint($screen-lg) {
-        font-size: emtopx(typeScale(1.25,3), $font-size-body);
+        font-size: emtopx(typeScale(1.25,3), $font-size-body); //31.25px
         font-weight: $font-weight-300;
         letter-spacing: 0;
         line-height: 1.2
@@ -40,13 +40,13 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
 
 // H3
 @mixin h3() {
-    font-size: emtopx(typeScale(1.2,2), $font-size-body);
+    font-size: emtopx(typeScale(1.2,2), $font-size-body); //23.04px
     font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.3;
 
     @include breakpoint($screen-lg) {
-        font-size: emtopx(typeScale(1.25,2), $font-size-body);
+        font-size: emtopx(typeScale(1.25,2), $font-size-body); //25px
         font-weight: $font-weight-300;
         letter-spacing: 0;
         line-height: 1.3;
@@ -55,13 +55,13 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
 
 // H4, H5, H6
 @mixin h4() {
-    font-size: emtopx(typeScale(1.2,1), $font-size-body);
+    font-size: emtopx(typeScale(1.2,1), $font-size-body); //19.2px
     font-weight: $font-weight-400;
     letter-spacing: .005em;
     line-height: 1.3;
 
     @include breakpoint($screen-lg) {
-        font-size: emtopx(typeScale(1.25,1), $font-size-body);
+        font-size: emtopx(typeScale(1.25,1), $font-size-body); //20px
         font-weight: $font-weight-400;
         letter-spacing: .005em;
         line-height: 1.3;
@@ -70,7 +70,7 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
 
 // P
 @mixin p() {
-    font-size: $font-size-h4;
+    font-size: $font-size-h4; //20px
     font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;
@@ -85,7 +85,7 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
 
 // Tiny Text
 @mixin tiny-text() {
-    font-size: $font-size-small;
+    font-size: $font-size-small; //13px
     font-weight: $font-weight-400;
     letter-spacing: 0;
     line-height: 1.6;
@@ -115,7 +115,7 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body);
 
 // Block Quote
 @mixin blockquote() {
-    font-size: $font-size-quote;
+    font-size: $font-size-quote; //31.25px
     font-weight: $font-weight-400;
     line-height: 1.2;
 

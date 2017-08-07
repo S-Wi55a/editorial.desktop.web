@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
