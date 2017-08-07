@@ -156,3 +156,21 @@ loaded.then(function () {
 
 // display disclaimer on pricing guide
 require('Js/Modules/ArticlePricing/articlePricing.js');
+
+
+//Parallax
+loaded.then(function () {
+    if (document.querySelector('.csn-parallax')) {
+        require.ensure(['rellax'],
+            function () {
+                const Rellax = require('rellax');
+                let rellax = new Rellax('.csn-parallax', {});
+                
+                window.addEventListener('resize', function() {
+                    rellax.destroy();
+                    rellax = new Rellax('.csn-parallax', {});
+                });
+            },
+            'Parallax - Rellax');
+    }   
+});
