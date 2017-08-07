@@ -133,13 +133,16 @@
     }
 
     &__type {
-        @include button((round:true));
+        line-height: 31px;
+        font-size: 13px;
+        padding: 0 20px;
         color: $cs-white;
         display: inline-block;
         float: left;
         font-weight: 600;
         margin-bottom: 15px;
         text-transform: uppercase;
+        border-radius: 4px;
 
         @include breakpoint($screen-lg) {
             margin-bottom: 30px;
