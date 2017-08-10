@@ -6,7 +6,6 @@ require('./css/details-page.scss');
 import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
 import 'debug.addIndicators';
-import Modal from 'Js/Modules/Modal/modal.js'
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero
@@ -163,45 +162,7 @@ loaded.then(function () {
 // display disclaimer on pricing guide
 require('Js/Modules/ArticlePricing/articlePricing.js');
 
-
-//Sticky Nav
-let stickySidebar = function(d, w, selector) {
-    const aside = d.querySelector(selector);
-
-
-    var ResizeSensor = require('css-element-queries/src/ResizeSensor');
-
-    var element = document.querySelector(selector);
-    new ResizeSensor(element, function() {
-        console.log('Changed to ' + element.clientHeight);
-    });
-
-
-
-
-    //check if more articles is loded if not use default values
-    const moreArticles = document.querySelector('.more-articles')
-    let triggerHookValue = moreArticles ? moreArticles.offsetHeight : 137;
-
-
-    if (aside) { 
-        
-        // Set scene
-        const offset = document.querySelector(selector).offsetHeight;
-        w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
-
-        new ScrollMagic.Scene({
-                triggerElement: selector,
-                triggerHook: (window.innerHeight - triggerHookValue)/window.innerHeight,
-                offset: offset,
-            })
-            .on("enter", ()=>{console.log('enter')})
-            .on("leave", ()=>{console.log('leave')})
-            .addIndicators({name: "Sticky Nav", colorEnd: "#FF0000"})
-            .addTo(w.scrollMogicController);
-    }
-}
-
+//Sticky Sidebar
 loaded.then(function() {
-    stickySidebar(document, window, '.aside');
+    require('Js/Modules/StickySidebar/StickySidebar.js').default(document, window, document.querySelector('.aside'));
 })

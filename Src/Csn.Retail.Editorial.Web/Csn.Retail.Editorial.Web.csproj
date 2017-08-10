@@ -510,6 +510,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\ArticlePricing\articlePricing.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal--view.js" />
@@ -617,7 +618,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\Brightcove\_brightcove-video-player.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_article.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
-    <Content Include="Features\Details\Assets\Css\Modules\_aside.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Content\_aside.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Screen\_variables-screen.scss" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleBody.cshtml" />
