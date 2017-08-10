@@ -510,7 +510,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\ArticlePricing\articlePricing.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal--view.js" />

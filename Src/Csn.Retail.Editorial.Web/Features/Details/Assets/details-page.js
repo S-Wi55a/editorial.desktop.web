@@ -163,6 +163,10 @@ loaded.then(function () {
 require('Js/Modules/ArticlePricing/articlePricing.js');
 
 //Sticky Sidebar
+
 loaded.then(function() {
-    require('Js/Modules/StickySidebar/StickySidebar.js').default(document, window, document.querySelector('.aside'));
+    const aside = document.querySelector('.aside');
+    if (aside) {
+        require('Js/Modules/StickySidebar/stickySidebar.js').default(document, window, aside);
+    }
 })
