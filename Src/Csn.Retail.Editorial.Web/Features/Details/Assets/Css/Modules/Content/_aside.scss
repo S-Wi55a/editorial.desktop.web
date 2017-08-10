@@ -3,9 +3,11 @@
 .aside {
     padding-top: 30px;
     padding-left: $grid-gutter-width/2;
+    padding-bottom: $grid-gutter-width/2;
     position: relative;
     float: left;
     width: 300px + $grid-gutter-width/2;
+
 
     @include breakpoint($screen-lg) {
         padding-top: 45px;
