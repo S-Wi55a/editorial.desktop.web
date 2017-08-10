@@ -5,7 +5,7 @@ require('./css/details-page.scss');
 
 import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
-import 'debug.addIndicators';
+if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero

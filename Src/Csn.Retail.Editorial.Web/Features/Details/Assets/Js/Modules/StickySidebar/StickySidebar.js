@@ -1,5 +1,6 @@
 ﻿import ScrollMagic from 'ScrollMagic';
-import 'debug.addIndicators';
+if (process.env.DEBUG) { require('debug.addIndicators'); }
+
 
 export default function(d, w, selector) {
     const aside = selector;
@@ -32,11 +33,15 @@ export default function(d, w, selector) {
                 offset: d.querySelector('body').offsetHeight // We do this to prevent the scene starting early
             })
             .on('update', (e)=>onUpdate(aside, references, e)) 
-            .addIndicators({name: "Sticky Nav", colorEnd: "#FF0000"})
             .addTo(w.scrollMogicController);
 
-        w.stickySidebarScene = stickySidebarScene //TODO: remove
 
+        if (process.env.DEBUG) {
+            w.stickySidebarScene = stickySidebarScene
+            stickySidebarScene.addIndicators({ name: "Sticky Nav" })
+
+            
+        }
 
         new ResizeSensor(aside, function() {
             stickySidebarScene.offset(aside.offsetHeight)
@@ -75,12 +80,12 @@ export default function(d, w, selector) {
             if(el.style.position === 'static') {setStyles(el, {left})} //this ensures that when the window is resized the sidebar moves w/ it
             
             
-            console.log(pinState, STATE, FORWARD, triggerHookValueCache)
+            if (process.env.DEBUG) { console.log(pinState, STATE, FORWARD, triggerHookValueCache) }
 
-
-            
+                       
             if (!pinState && STATE === 'DURING' && FORWARD && !REACHED_BOTTOM ) {
-                console.log('1')
+                if (process.env.DEBUG) { console.log('1') }
+                
                 pinState = true
                 const css = {
                     top: (window.innerHeight - setTriggerHookValue()) - el.offsetHeight + 'px',
@@ -90,8 +95,8 @@ export default function(d, w, selector) {
                 setStyles(el, css)
             } 
             else if (pinState && STATE === 'DURING' && REVERSE && el.style.position === 'fixed') {
-                console.log('2')
-
+                if (process.env.DEBUG) { console.log('2') }
+                
                 const top = EL_COORDINATES.top
                 pinState = false
                 const css = {  
@@ -105,7 +110,7 @@ export default function(d, w, selector) {
                 SCENE.triggerHook(r.calcTriggerHookFromTop(r.siteNavHeight))
             }
             else if (!pinState && STATE === 'BEFORE' && REVERSE && el.style.position === 'absolute') {
-                console.log('3')
+                if (process.env.DEBUG) { console.log('3') }
 
                 pinState = true
                 const css = {
@@ -116,7 +121,7 @@ export default function(d, w, selector) {
                 setStyles(el, css)
             }
             else if (pinState && STATE === 'BEFORE' && FORWARD && el.style.position === 'fixed') {
-                console.log('4')
+                if (process.env.DEBUG) { console.log('4') }
 
                 const top = EL_COORDINATES.top
                 pinState = false
@@ -131,7 +136,7 @@ export default function(d, w, selector) {
             }
             //If starting Pos is reached
             else if (pinState && e.scrollPos < r.startingCoordinatesTop() - r.siteNavHeight) {
-                console.log('5')
+                if (process.env.DEBUG) { console.log('5') }
 
                 pinState = false
                 const css = {
@@ -145,7 +150,8 @@ export default function(d, w, selector) {
             }
             //If footer is reached
             else if (pinState && REACHED_BOTTOM ) {
-                console.log('6')
+                if (process.env.DEBUG) { console.log('6') }
+
                 pinState = false
                 const css = {  
                     top: r.footerCoordinatesTop() - el.offsetHeight  + 'px',
