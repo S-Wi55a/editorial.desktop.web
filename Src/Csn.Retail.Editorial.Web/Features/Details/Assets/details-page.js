@@ -60,7 +60,6 @@ loaded.then(function () {
 
 //Lazy load Spec Module
 let specModule = function (d) {
-    debugger
     if (csn_editorial.specVariantsQuery) {
         // Add placeholder 
         let el = d.querySelectorAll('.article__copy p');
