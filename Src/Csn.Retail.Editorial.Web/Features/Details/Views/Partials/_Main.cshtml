@@ -3,14 +3,13 @@
 
 @{
     var isSponsored = Model.IsSponsoredArticle;
-    var isWide = Model.ArticleTemplateType == ArticleTemplateType.Wide ? true : false;
 
 }
 
 <div class="article @Model.ArticleType.ToLower()">
     @{ Html.RenderPartial("Partials/Content/_ArticleTypeAndSocialIcons", Model); }
 
-    @if (!isWide) { Html.RenderPartial("Partials/Content/_ArticleHeader", Model); }
+    @{ Html.RenderPartial("Partials/Content/_ArticleHeader", Model); }
 
     @{ Html.RenderPartial("Partials/Content/_ArticleSummary", Model); }
 

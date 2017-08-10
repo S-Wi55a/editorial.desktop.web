@@ -1,15 +1,20 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.ContentSection
 
 
-@if (Model.Image.Type == "Wide")
+@if (Model.Image.Type == "Wide") //With Parallax
 {
     <div class="container-fluid">
         <div class="article__img-frame article__img-frame--wide">
-            <img class="article__img article__img--wide"
-                 sizes="(max-width: 1199px) 1600px, 1920px"
-                 src="@Model.Image.Url"
-                 srcset="@Model.Image.Url&width=1600&height=1060 1600w, @Model.Image.Url&width=1920&height=1280 1920w"
-                 alt="@Model.Image.AlternateText" />
+            @* // TODO: Can add conditional for parallax container *@
+            <div class="article__img-frame__paralalx-container csn-parallax"
+                 data-rellax-percentage="0.5"
+                 data-rellax-speed="-2">
+                <img class="article__img article__img--wide "
+                     sizes="(max-width: 1199px) 1600px, 1920px"
+                     src="@Model.Image.Url"
+                     srcset="@Model.Image.Url?pxc_width=1600&pxc_method=crop 1600w, @Model.Image.Url?pxc_width=1920&pxc_method=crop 1920w"
+                     alt="@Model.Image.AlternateText"/>
+            </div>
         </div>
     </div>
 }

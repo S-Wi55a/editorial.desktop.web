@@ -177,9 +177,21 @@
         }
 
         &--wide {
+            $img-ratio: 1/2.53;
+            // The 155 is a catch all for rellax speeds of (-2,2)
+            height: calc((100vw * (#{$img-ratio})) - 155px);
             max-height: 450px;
+            min-height: 250px;
         }
 
+        &__paralalx-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        } 
+        
         .article__img {
             margin-top: 0;
         }

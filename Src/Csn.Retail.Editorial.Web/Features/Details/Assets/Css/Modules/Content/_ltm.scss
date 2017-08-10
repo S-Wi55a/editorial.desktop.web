@@ -1,11 +1,11 @@
 ﻿.ltm {
-    margin: 15px auto 30px;
+    margin: 15px auto 0;
     border: 1px solid $cs-light-grey-2;
     border-radius: $cs-border-radius;
 
 
     @include breakpoint($screen-lg) {
-        margin: 30px auto 45px;
+        margin: 30px auto 0;
     }
 
     &__item {
