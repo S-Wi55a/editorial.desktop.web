@@ -63,7 +63,7 @@ let specModule = function (d) {
     if (csn_editorial.specVariantsQuery) {
         // Add placeholder 
         let el = d.querySelectorAll('.article__copy p');
-        el = (el && el.length >= 2) ? el[1] : (el ? el[0] : undefined);
+        el = (el.length >= 2) ? el[1] : (el.length ? el[0] : undefined);
         if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder" data-webm-section="spec-module"></div>');}
 
         require.ensure(['Js/Modules/SpecModule/specModule--container.js'],
