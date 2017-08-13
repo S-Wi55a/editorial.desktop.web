@@ -74,6 +74,10 @@
         font-weight: $font-weight-400;
         text-align: left;
     }
+
+    &__impression-url{
+        display: none;
+    }
 }
 
 // Budget Direct
