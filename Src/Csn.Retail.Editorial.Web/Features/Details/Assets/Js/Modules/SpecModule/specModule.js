@@ -51,6 +51,7 @@ const ThirdPartyOffers = (props) => {
 
 const ThirdPartyOffer = (props) => {
 
+    const isDisabled = props.data.amount === 'N/A' ? true : false
     const titleNoSpace = props.data.companyName ? props.data.companyName.replace(/\s+/g, "-").toLowerCase() : '';
 
     let tabOrModal = ''
@@ -67,7 +68,7 @@ const ThirdPartyOffer = (props) => {
     }
 
     return (
-        <div className={'spec-item__third-party-offer third-party-offer third-party-offer--'+titleNoSpace}>
+        <div className={'spec-item__third-party-offer third-party-offer third-party-offer--'+titleNoSpace + (isDisabled ? ' third-party-offer--disabled' : '')}>
             <img className="third-party-offer__logo" src={props.data.logoUrl} />
             <div className="third-party-offer__content">
                 <h3 className="third-party-offer__heading">{props.data.title}</h3>
