@@ -32,21 +32,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public SeoData SeoData { get; set; }
         public List<WebTrendData> WebTrendData { get; set; }
         public Dictionary<string, string> WebTrendsTags { get; set; }
-        public GoogleAnalyticsDetailsDto GoogleAnalyticsDetailsData { get; set; }
         public Dictionary<string, string> InsightsData { get; set; }
         public StockListingData StockListingData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public string SpecDataGetVariantsUrl { get; set; }
-    }
-
-    public class GoogleAnalyticsDetailsDto
-    {
-        public string NetworkId { get; set; }
-        public string Make { get; set; }
-        public string Model { get; set; }
-        public string PublishDate { get; set; }
-        public string ContentGroup1 { get; set; }
-        public string ContentGroup2 { get; set; }
     }
 
     public class DisqusData
