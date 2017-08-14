@@ -777,6 +777,7 @@
     <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleShare--Bottom.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Animations\bounce.scss" />
+    <Content Include="Features\Details\Views\Partials\Hero\_WideVideo.cshtml" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

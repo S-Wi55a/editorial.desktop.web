@@ -187,7 +187,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         MultipleImages,
         Video,
         ImagesAndVideo,
-        WideImage
+        WideImage,
+        WideVideo
     }
 
     public class Image
