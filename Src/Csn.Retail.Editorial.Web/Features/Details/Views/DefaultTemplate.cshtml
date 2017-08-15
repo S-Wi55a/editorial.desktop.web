@@ -55,4 +55,7 @@
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
     }
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
+    @Html.AssetJs("csn.mediaMotive--" + tenantName)
+    @{ Html.RenderPartial("Partials/MediaMotive/_MediaMotiveScripts"); }
+
 }
