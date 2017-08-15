@@ -24,8 +24,7 @@
 
     @if (Model.DisqusData != null) { Html.RenderPartial("Partials/Disqus/_Disqus", Model.DisqusData); }
 
-
-    @{ Html.RenderPartial("_Disclaimer"); }
+    @{ Html.RenderPartial("Partials/Content/_Disclaimer"); }
 
     @{ Html.RenderPartial("Partials/MediaMotive/_Tracking", Model.MediaMotiveData); }
 
