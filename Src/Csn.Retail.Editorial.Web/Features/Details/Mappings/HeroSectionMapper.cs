@@ -1,5 +1,6 @@
 ﻿using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using HeroSection = Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection;
 
 namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
@@ -21,9 +22,15 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 Type = article.HeroSection.Type,
                 Images = article.HeroSection.Images,
                 BrightcoveVideoIFrameUrl = GetBrightcoveVideoIFrameUrl(article.HeroSection.BrightcoveVideo),
+                BrightcoveVideoEncodingUrl = GetBrightcoveVideoEncodingUrl(article.HeroSection.BrightcoveVideo),
                 Headline = article.Headline,
                 SubHeading = article.Subheading
             };
+        }
+
+        private string GetBrightcoveVideoEncodingUrl(BrightcoveVideo video)
+        {
+            return video == null || video.EncodingUrl.IsNullOrEmpty() ? null : video.EncodingUrl;
         }
 
         private string GetBrightcoveVideoIFrameUrl(BrightcoveVideo video)
