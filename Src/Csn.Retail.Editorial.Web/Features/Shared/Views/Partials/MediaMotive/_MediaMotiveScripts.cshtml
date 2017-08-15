@@ -61,7 +61,7 @@
 
 //Look through all the ad tiles and use postscribe to laod them asynchronously
     (function ($, w) {
-        'use strict';
+        //'use strict';
 
         var postscribeQueue = []
 
@@ -95,7 +95,7 @@
                     var p = function (i, postscribeQueue) {
 
                         if (i < postscribeQueue.length) {
-                            postscribe('#' + postscribeQueue[i].tile, '<script src=\'' + postscribeQueue[i].scriptUrl + '\'><\/script>',
+                            postscribe('#' + postscribeQueue[i].tile, '<script src="' + postscribeQueue[i].scriptUrl + '"><\/script>',
                                 {
                                     done: function () {
                                         $('#' + postscribeQueue[i].tile).removeClass('mediamotive-block--loading');
