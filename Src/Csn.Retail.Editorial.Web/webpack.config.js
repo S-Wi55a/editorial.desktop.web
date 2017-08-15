@@ -144,7 +144,6 @@ module.exports = (env) => {
         entries['csn.vendor' + '--' + tenant] = ['./Features/Shared/Assets/Js/csn.vendor.js'];
         entries['csn.common' + '--' + tenant] = ['./Features/Shared/Assets/csn.common.js'];
 
-
         let plugins = [
             assetsPluginInstance,
             //Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
@@ -162,7 +161,7 @@ module.exports = (env) => {
             //Vendor - Will look through every entry and match against itself or if a library from node_module is used twice
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'csn.vendor' + '--' + tenant,
-                minChunks: function(module, count) {
+                minChunks: function(module) {
                     // This prevents stylesheet resources with the .css or .scss extension
                     // from being moved from their original chunk to the vendor chunk
                     if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
