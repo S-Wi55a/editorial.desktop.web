@@ -97,7 +97,7 @@
 
                     }
 
-                    @*window.Krux || ((Krux = function () { Krux.q.push(arguments) }).q = []);
+                    window.Krux || ((Krux = function () { Krux.q.push(arguments) }).q = []);
 
                     (function() {
                         var k = document.createElement('script');
@@ -108,7 +108,7 @@
                             (location.protocol === "https:" ? "https:" : "http:") + "//cdn.krxd.net/controltag?confid=@Model.KruxId";
                         var s = document.getElementsByTagName('script')[0];
                         s.parentNode.insertBefore(k, s);
-                    }());*@
+                    }());
                 };
 
                 return {
