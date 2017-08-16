@@ -17,6 +17,12 @@ let initMoreArticlesSlider = (selector, options) => {
     return Swiper(selector, options);
 }
 
+// Set attribute
+let setAttribute = (el, attr, value) => {
+    if (el.hasAttribute(attr)) {
+        el.setAttribute(attr, value);
+    }
+}
 // Set text
 let setText = (el, text) => {
     if (text) {
@@ -165,7 +171,7 @@ let buttonShowHideHandler = (scope) => {
 // opens the MoreArticles panel if it is closed, and closes it if it is open
 let panelToggle = (scope) => {
     toggleClass(scope.self, 'show');
-
+    setAttribute(scope.moreArticlesShowHideButton, 'data-webm-clickvalue', (scope.self.classList.contains('show') ? hideText : showText).toLowerCase());
     setText(scope.moreArticlesShowHideButton, scope.self.classList.contains('show') ? hideText : showText);
 }
 

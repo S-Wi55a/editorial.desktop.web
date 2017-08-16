@@ -24,12 +24,12 @@ namespace Csn.Retail.Editorial.Web
 		    ReactSiteConfiguration.Configuration
 		        //.SetStartEngines(2)
 		        //.SetMaxEngines(2)
-                .SetUseDebugReact(false)
+                .SetUseDebugReact(true)
 		        .SetReuseJavaScriptEngines(false) //TODO: remove in Prod
                 .SetLoadBabel(false)
                 //.SetLoadReact(false)
                 .AddScriptWithoutTransform("/dist--server/react-server-components.js")
-                //.DisableServerSideRendering()
+                .DisableServerSideRendering()
                 ;
 
 

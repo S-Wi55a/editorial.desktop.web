@@ -48,7 +48,7 @@
     }
 
     &__copy {
-        color: $cs-grey;
+        color: $cs-light-grey-5;
         @include p();
 
         & > h1 {
@@ -56,7 +56,7 @@
         }
 
         & > h2, & > h3, & > h4, & > h5, & > h6 {
-            color: $cs-dark-grey-1;
+            color: $cs-dark-grey-2;
         }
 
         & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
@@ -90,13 +90,6 @@
         & > p {
             margin-top: 1.25em;
             @include p();
-            /*& > br {
-                display: none;
-            }
-
-            strong + br {
-                display: inline;
-            }*/
         }
 
         & > div {
@@ -111,6 +104,10 @@
             li {
                 display: list-item;
             }
+        }
+
+        strong, b {
+            color: $cs-dark-grey-2;
         }
 
         .teads-inread,
@@ -136,13 +133,16 @@
     }
 
     &__type {
-        @include button((round:true));
+        line-height: 31px;
+        font-size: 13px;
+        padding: 0 20px;
         color: $cs-white;
         display: inline-block;
         float: left;
         font-weight: 600;
         margin-bottom: 15px;
         text-transform: uppercase;
+        border-radius: 4px;
 
         @include breakpoint($screen-lg) {
             margin-bottom: 30px;
@@ -270,6 +270,10 @@
         padding: 31px 40px;
         margin-top: 35px;
     }
+
+    &__meta {
+        float: right;
+    }
 }
 
 
@@ -280,6 +284,10 @@
     position: relative;
     width: $screen-sm;
     margin: auto;
+
+    @include breakpoint($screen-md) {
+        width: $screen-md;
+    }
 
     @include breakpoint($screen-lg) {
         width: $screen-lg;

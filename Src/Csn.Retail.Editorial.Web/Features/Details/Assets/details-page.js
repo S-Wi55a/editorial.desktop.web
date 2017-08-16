@@ -77,10 +77,10 @@ loaded.then(() => {
 //Lazy load Spec Module
 loaded.then(() => {
     (function specModule(d) {
-
-        if (csn_editorial.specModule) {
-            // Add placeholder 
-            let el = d.querySelectorAll('.article__copy p')[1];
+    if (csn_editorial.specVariantsQuery) {
+        // Add placeholder 
+        let el = d.querySelectorAll('.article__copy p');
+        el = (el.length >= 2) ? el[1] : (el.length ? el[0] : undefined);
             if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder" data-webm-section="spec-module"></div>'); }
 
             (function specModule() {
@@ -156,16 +156,6 @@ loaded.then(() => {
             })()
         }
     })(document)
-});
-
-
-//Lazy load Media Motive Ads
-loaded.then(function() {
-    require.ensure(['Js/Modules/MediaMotive/mm.js'],
-        function() {
-            require('Js/Modules/MediaMotive/mm.js');
-        },
-        'Media Motive');
 });
 
 // display disclaimer on pricing guide

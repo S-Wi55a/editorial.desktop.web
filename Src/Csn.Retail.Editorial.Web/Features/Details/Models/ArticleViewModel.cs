@@ -35,7 +35,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public GoogleAnalyticsDetailsData GoogleAnalyticsDetailsData { get; set; }
         public Dictionary<string, string> InsightsData { get; set; }
         public StockListingData StockListingData { get; set; }
-        public SpecData SpecData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public bool UseDropCase { get; set; }
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
@@ -99,17 +98,5 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Identifier { get; set; }
         public string ArticleUrl { get; set; }
         public string Title { get; set; }
-    }
-
-
-    public class SpecData
-    {
-        public string MinLabel { get; set; }
-        public string MaxLabel { get; set; }
-        public string MoreLabel { get; set; }
-        public List<SpecDataItem> Items { get; set; }
-        public string Title1 { get; set; }
-        public string Title2 { get; set; }
-        public string Title3 { get; set; }
     }
 }
