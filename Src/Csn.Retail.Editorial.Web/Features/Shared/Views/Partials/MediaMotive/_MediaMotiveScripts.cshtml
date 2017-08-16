@@ -63,7 +63,7 @@
     (function ($, w) {
         //'use strict';
 
-        var postscribeQueue = []
+        //var postscribeQueue = []
 
         w.MediaMotiveLoader = function () {
             var init = function () {
@@ -88,25 +88,30 @@
                         if (isKruxRequired) {
                             scriptUrl = scriptUrl + sasTags;
                         }
-                        postscribeQueue.push({ tile: tile, scriptUrl: scriptUrl });
+                        postscribe('#' + tile, '<script src="' + scriptUrl + '"><\/script>', {
+                            done: function () {
+                                $('#' + tile).removeClass('mediamotive-block--loading');
+                            }
+                        });
+
                     });
 
                     //Recursively call postscribe
-                    var p = function (i, postscribeQueue) {
+                    //var p = function (i, postscribeQueue) {
                         
-                        if (i < postscribeQueue.length) {
-                            postscribe('#' + postscribeQueue[i].tile, '<script async src="' + postscribeQueue[i].scriptUrl + '"><\/script>',
-                                {
-                                    done: function () {
-                                        $('#' + postscribeQueue[i].tile).removeClass('mediamotive-block--loading');
-                                        i++;
-                                        return p(i, postscribeQueue);
-                                    }
-                                });  
-                        }
-                    }
+                    //    if (i < postscribeQueue.length) {
+                    //        postscribe('#' + postscribeQueue[i].tile, '<script async src="' + postscribeQueue[i].scriptUrl + '"><\/script>',
+                    //            {
+                    //                done: function () {
+                    //                    $('#' + postscribeQueue[i].tile).removeClass('mediamotive-block--loading');
+                    //                    i++;
+                    //                    return p(i, postscribeQueue);
+                    //                }
+                    //            });  
+                    //    }
+                    //}
 
-                    p(0, postscribeQueue);
+                    //p(0, postscribeQueue);
                 }
             };
 
