@@ -95,7 +95,7 @@
                     var p = function (i, postscribeQueue) {
                         
                         if (i < postscribeQueue.length) {
-                            postscribe('#' + postscribeQueue[i].tile, '<script src=' + postscribeQueue[i].scriptUrl + '><\/script>',
+                            postscribe('#' + postscribeQueue[i].tile, '<script async src="' + postscribeQueue[i].scriptUrl + '"><\/script>',
                                 {
                                     done: function () {
                                         $('#' + postscribeQueue[i].tile).removeClass('mediamotive-block--loading');
