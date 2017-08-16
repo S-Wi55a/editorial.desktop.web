@@ -10,11 +10,11 @@ const setPropertyID = csn_editorial.nativeAds.setPropertyID
 function loadPlacements() {
     import('Js/Modules/NativeAds/Area/Details/placements--' + areaName)
         .then(function (detailsPageNativeAds) {
-            nativeAds(window.jQuery, detailsPageNativeAds.placements, detailsPageNativeAds.events)
+            nativeAds(jQuery, detailsPageNativeAds.placements, detailsPageNativeAds.events)
         }).catch(function (err) {
             console.log('Failed to load placements', err);
         });
-    }
+}
 loadPlacements();
 
 // Turn into name function to be used a call back
@@ -27,7 +27,7 @@ function nativeAds($, placements, registeredEvents) {
         return window.NATIVEADS_QUEUE;
     };
 
-    q().push(["setPropertyID", setPropertyID ]);
+    q().push(["setPropertyID", setPropertyID]);
 
     q().push(["enableMOAT", true, true]);
 
@@ -83,7 +83,7 @@ function nativeAds($, placements, registeredEvents) {
                         //console.log('onRender: ', $element)
                     },
                     onFill: function (data) {
-                         //console.dir(data);
+                        //console.dir(data);
                     },
                     onError: function (error) {
                         //console.log('Error: ', error)
@@ -102,7 +102,7 @@ function nativeAds($, placements, registeredEvents) {
     function getRandomArbitrary() {
         return Math.floor(Math.random() * (9999999 - 999999)) + 999999;
     }
-    
+
 };
 
 (function (d, s, id) {

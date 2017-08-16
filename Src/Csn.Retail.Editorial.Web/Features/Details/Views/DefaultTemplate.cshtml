@@ -17,7 +17,6 @@
     @Html.AssetCss("details-page--" + tenantName)
 }
 
-
 @section TopScripts {
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
 }
@@ -40,7 +39,6 @@
 {
     @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
     @{ Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData); }
-    @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
     @if (Model.MoreArticleData != null)
@@ -52,8 +50,8 @@
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
     }
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
-    @{
-        // We put this here to guaretee that all componets that effect the store should be run beforehand
-        Html.RenderPartial("Partials/Redux/_ReduxStore");
-    }
+    @{ Html.RenderPartial("Partials/MediaMotive/_MediaMotiveScripts"); }
+    @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
+
+
 }

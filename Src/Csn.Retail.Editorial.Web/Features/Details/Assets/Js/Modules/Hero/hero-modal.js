@@ -67,14 +67,14 @@ export function modalGallery() {
     modalSwiper.wrapper[0].style.width = 0;
 
     //Add event listeners
-    modalSwiper.on('onTransitionStart', (swiper) => {
-        swiper.wrapper[0].classList.add('swiper-transition')
+    modalSwiper.once('onTransitionStart', (swiper) => {
+        swiper.wrapper[0].classList.add('swiper-transition') //MOTO-1677
         modalResizeHandler(swiper) // Set size of wrapper
     })
 
-    modalSwiper.on('onTransitionEnd', (swiper) => {
+    modalSwiper.once('onTransitionEnd', (swiper) => {
         swiper.onResize() // Reset state of swiper 
-        swiper.wrapper[0].classList.remove('swiper-transition')
+        swiper.wrapper[0].classList.remove('swiper-transition') //MOTO-1677
     })
 
     window.addEventListener('resize', modalResizeHandler.bind(null, modalSwiper, null))

@@ -1,11 +1,12 @@
-﻿@using Newtonsoft.Json
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@using Newtonsoft.Json
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 
-@if (Model.SpecData != null)
+@if (!Model.SpecDataGetVariantsUrl.IsNullOrEmpty())
 {
     <script>
         var csn_editorial = csn_editorial || {};
-        csn_editorial.specModule = @Html.Raw(JsonConvert.SerializeObject(Model.SpecData)) || null;
+        csn_editorial.specVariantsQuery = '@Html.Raw(Model.SpecDataGetVariantsUrl)' || null;
     </script>
 }

@@ -5,6 +5,7 @@ require('./css/details-page.scss');
 
 import { loaded } from 'document-promises/document-promises.js';
 import ScrollMagic from 'ScrollMagic';
+import Modal from 'Js/Modules/Modal/modal.js'
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero
@@ -39,8 +40,9 @@ aboveTheFold();
 })();
 
 // TEADS
-$(function() {
-    if ($('#teads-video-container').length) {
+$(function () {
+    if ($('#Tile7').length) {
+        $('#Tile7').wrap('<div id="teads-video-container" style="clear: both"></div>');
         $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
     }
 });
@@ -75,10 +77,10 @@ loaded.then(() => {
 //Lazy load Spec Module
 loaded.then(() => {
     (function specModule(d) {
-
-        if (csn_editorial.specModule) {
-            // Add placeholder 
-            let el = d.querySelectorAll('.article__copy p')[1];
+    if (csn_editorial.specVariantsQuery) {
+        // Add placeholder 
+        let el = d.querySelectorAll('.article__copy p');
+        el = (el.length >= 2) ? el[1] : (el.length ? el[0] : undefined);
             if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder" data-webm-section="spec-module"></div>'); }
 
             (function specModule() {
@@ -135,12 +137,14 @@ loaded.then(() => {
     (function nativeAds() {
         if (!!csn_editorial && !!csn_editorial.nativeAds) {
             (function nativeAds() {
-                import ( /* webpackChunkName: "Native Ads" */ 'Js/Modules/NativeAds/nativeAds.js').then(function(nativeAds) {}).catch(function(err) {
-                    console.log('Failed to load nativeAds', err);
-                });
-            })()
+                import
+                (/* webpackChunkName: "Native Ads" */ 'Js/Modules/NativeAds/nativeAds.js').then(function(nativeAds) {})
+                    .catch(function(err) {
+                        console.log('Failed to load nativeAds', err);
+                    });
+            })();
         }
-    })()
+    })();
 });
 
 //Lazy load Sponsored articles JS
@@ -148,20 +152,15 @@ loaded.then(() => {
     (function sponsoredArticles(d) {
         if (d.querySelector('.article__type--sponsored')) {
             (function nativeAds() {
-                import ( /* webpackChunkName: "Sponsored Articles" */ 'Js/Modules/SponsoredArticles/sponsoredArticles.js').then(function(sponsoredArticles) {}).catch(function(err) {
-                    console.log('Failed to load sponsoredArticles', err);
-                });
-            })()
+                import
+                (/* webpackChunkName: "Sponsored Articles" */ 'Js/Modules/SponsoredArticles/sponsoredArticles.js')
+                    .then(function(sponsoredArticles) {}).catch(function(err) {
+                        console.log('Failed to load sponsoredArticles', err);
+                    });
+            })();
         }
-    })(document)
+    })(document);
 });
 
-
-//Lazy load Media Motive Ads
-loaded.then(function() {
-    require.ensure(['Js/Modules/MediaMotive/mm.js'],
-        function() {
-            require('Js/Modules/MediaMotive/mm.js');
-        },
-        'Media Motive');
-});
+// display disclaimer on pricing guide
+require('Js/Modules/ArticlePricing/articlePricing.js');

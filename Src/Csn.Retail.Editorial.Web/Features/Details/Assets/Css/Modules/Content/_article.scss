@@ -1,4 +1,6 @@
-﻿.article {
+﻿@import "css/globals";
+
+.article {
     padding-top: 30px;
     padding-right: 0;
     position: relative;
@@ -46,7 +48,7 @@
     }
 
     &__copy {
-        color: $cs-grey;
+        color: $cs-light-grey-5;
         @include p();
 
         & > h1 {
@@ -54,7 +56,7 @@
         }
 
         & > h2, & > h3, & > h4, & > h5, & > h6 {
-            color: $cs-dark-grey-1;
+            color: $cs-dark-grey-2;
         }
 
         & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
@@ -88,14 +90,6 @@
         & > p {
             margin-top: 1.25em;
             @include p();
-
-            /*& > br {
-                display: none;
-            }
-
-            strong + br {
-                display: inline;
-            }*/
         }
 
         & > div {
@@ -110,6 +104,10 @@
             li {
                 display: list-item;
             }
+        }
+
+        strong, b {
+            color: $cs-dark-grey-2;
         }
 
         .teads-inread,
@@ -135,13 +133,16 @@
     }
 
     &__type {
-        @include button((round:true));
+        line-height: 31px;
+        font-size: 13px;
+        padding: 0 20px;
         color: $cs-white;
         display: inline-block;
         float: left;
         font-weight: 600;
         margin-bottom: 15px;
         text-transform: uppercase;
+        border-radius: 4px;
 
         @include breakpoint($screen-lg) {
             margin-bottom: 30px;
@@ -154,6 +155,7 @@
         &--sponsored {
             background-color: $cs-sponsored-green;
             cursor: pointer;
+
             &::after {
                 color: $cs-white;
                 content: $icon-info-icon;
@@ -227,9 +229,24 @@
     }
 
     &__pricing {
-        @include h2();
         margin-top: 1em;
         display: inline-block;
+
+        &-label {
+            cursor: pointer;
+            color: $cs-light-grey-1;
+            font-size: $font-size-small;
+
+            &:hover,
+            &:active,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        &-price {
+            @include h2();
+        }
     }
 
     &__promotion {
@@ -253,6 +270,10 @@
         padding: 31px 40px;
         margin-top: 35px;
     }
+
+    &__meta {
+        float: right;
+    }
 }
 
 
@@ -261,8 +282,12 @@
 .article-type--doubleimage,
 .article-type--video {
     position: relative;
-    width: $screen-md;
+    width: $screen-sm;
     margin: auto;
+
+    @include breakpoint($screen-md) {
+        width: $screen-md;
+    }
 
     @include breakpoint($screen-lg) {
         width: $screen-lg;
@@ -301,6 +326,10 @@
 
         &__subheading {
             margin-top: 0;
+        }
+
+        &__pricing {
+            margin-bottom: 31px;
         }
     }
 }
@@ -364,5 +393,14 @@
         &>p:first-child:first-letter {
             @include drop-cap-paragraph();
         }
+    }
+}
+
+.article-disclaimer {
+    font-size: $font-size-smaller;
+    color: $cs-light-grey-2;
+
+    &__heading {
+        font-weight: bold;
     }
 }

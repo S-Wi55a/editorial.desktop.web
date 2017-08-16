@@ -9,8 +9,12 @@
         padding: 0 ($sm-handle-width/2);
         margin-top: 30px;
         position: absolute;
-        width: calc(50% - 60px);
+        width: calc(60% - 60px);
         bottom: 0;
+
+        @include breakpoint($screen-lg) {
+            width: calc(65% - 60px);
+        }
 
         &-label {
             font-size: $font-size-h4;
@@ -69,7 +73,7 @@
                 margin-left: -1px;
                 width: $dot-width;
                 height: $dot-height;
-                background-color: $cs-black;
+                background-color: $cs-light-grey-1;
                 cursor: pointer;
                 border-radius: 50%;
                 vertical-align: middle;
@@ -89,7 +93,7 @@
                 top: 18px;
                 left: 0;
                 width: calc(100% + #{$sm-handle-width});
-                left: -1*($sm-handle-width/2); 
+                left: -1*($sm-handle-width/2);
                 font-size: 12px;
             }
 
