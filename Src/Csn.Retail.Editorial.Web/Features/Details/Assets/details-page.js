@@ -137,12 +137,14 @@ loaded.then(() => {
     (function nativeAds() {
         if (!!csn_editorial && !!csn_editorial.nativeAds) {
             (function nativeAds() {
-                import ( /* webpackChunkName: "Native Ads" */ 'Js/Modules/NativeAds/nativeAds.js').then(function(nativeAds) {}).catch(function(err) {
-                    console.log('Failed to load nativeAds', err);
-                });
-            })()
+                import
+                (/* webpackChunkName: "Native Ads" */ 'Js/Modules/NativeAds/nativeAds.js').then(function(nativeAds) {})
+                    .catch(function(err) {
+                        console.log('Failed to load nativeAds', err);
+                    });
+            })();
         }
-    })()
+    })();
 });
 
 //Lazy load Sponsored articles JS
@@ -150,12 +152,14 @@ loaded.then(() => {
     (function sponsoredArticles(d) {
         if (d.querySelector('.article__type--sponsored')) {
             (function nativeAds() {
-                import ( /* webpackChunkName: "Sponsored Articles" */ 'Js/Modules/SponsoredArticles/sponsoredArticles.js').then(function(sponsoredArticles) {}).catch(function(err) {
-                    console.log('Failed to load sponsoredArticles', err);
-                });
-            })()
+                import
+                (/* webpackChunkName: "Sponsored Articles" */ 'Js/Modules/SponsoredArticles/sponsoredArticles.js')
+                    .then(function(sponsoredArticles) {}).catch(function(err) {
+                        console.log('Failed to load sponsoredArticles', err);
+                    });
+            })();
         }
-    })(document)
+    })(document);
 });
 
 // display disclaimer on pricing guide
