@@ -48,9 +48,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 
             // Disqus
             cfg.CreateMap<Shared.Proxies.EditorialApi.DisqusData, Models.DisqusData>();
-
-            // Google Analytics Data
-            cfg.CreateMap<GoogleAnalyticsDetailsDto, GoogleAnalyticsDetailsData>();
         }
     }
 }
