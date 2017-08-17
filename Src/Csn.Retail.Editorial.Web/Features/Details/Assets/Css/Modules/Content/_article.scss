@@ -365,7 +365,9 @@
 
     .aside {
         padding-top: 0;
-        left: 45px;
+        left: calc(100% - 315px);
+        position: absolute;
+        top: 0;
         transform: none;
     }
 
@@ -373,15 +375,6 @@
         display: none;
     }
 }
-
-.article-type--video {
-    &::before {
-        content: '';
-        display: block;
-        padding-top: percentage(9/16);
-    }
-}
-
 
 .article-type--singleimage,
 .article-type--doubleimage {
