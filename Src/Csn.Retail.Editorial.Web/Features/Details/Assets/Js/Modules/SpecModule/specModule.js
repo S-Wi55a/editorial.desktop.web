@@ -145,7 +145,7 @@ const SpecModuleItem = (props) => {
                     {props.sliderLength > 1 ? 
                         <div className="spec-item__selector" data-webm-clickvalue="change-variant">
                             <p className="spec-item__selector-label">{props.scaffolding.title1}</p>
-                            <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderHandler} />
+                            <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />
                         </div>
                     : ''}
                 </div>
@@ -153,7 +153,7 @@ const SpecModuleItem = (props) => {
                     <Specifications data={props.data.specItems} /> 
                 </div>
             </div>
-            <div className={props.isFetchingQuotes ? "spec-item__third-party-offers loading" : "spec-item__third-party-offers "}>
+            <div className={props.isFetchingQuotes || !props.data.quotes ? "spec-item__third-party-offers loading" : "spec-item__third-party-offers "}>
                 {props.data.quotes ? <ThirdPartyOffers data={props.data.quotes} disclaimerHandler={props.disclaimerHandler}/> : ''}
             </div>
         </div>
@@ -175,7 +175,8 @@ class SpecModule extends React.Component {
             sliderLength: 0
         };
 
-        this.sliderHandler = this.sliderHandler;
+        this.sliderOnAfterChangeHandler = this.sliderOnAfterChangeHandler;
+        this.sliderOnChangeHandler = this.sliderOnChangeHandler;
         this.disclaimerHandler = this.disclaimerHandler;
     }
 
@@ -193,7 +194,7 @@ class SpecModule extends React.Component {
         }
     }
 
-    sliderHandler = (index) => {
+    sliderOnAfterChangeHandler = (index) => {
         if (this.state.items[index] && this.state.items[index].quotes) {
             this.setState({
                 activeItemIndex: index
@@ -202,6 +203,11 @@ class SpecModule extends React.Component {
             const url = this.props.path + this.state.items[index].specQuotesUrl;
             this.getQuotesData(url, index);
         }       
+    }
+    sliderOnChangeHandler = (index) => {
+        this.setState({
+            activeItemIndex: index
+        });
     }
 
     getVariantsData = (specVariantsQuery) => {        
@@ -278,7 +284,8 @@ class SpecModule extends React.Component {
                         scaffolding={{title1, title2, title3}}
                         disclaimerHandler={this.disclaimerHandler}
                         sliderLength={this.state.sliderLength}
-                        sliderHandler={this.sliderHandler}
+                        sliderOnAfterChangeHandler={this.sliderOnAfterChangeHandler}
+                        sliderOnChangeHandler={this.sliderOnChangeHandler}
                         isFetchingQuotes = {this.state.isFetchingQuotes}
                         />
                     : ''}
