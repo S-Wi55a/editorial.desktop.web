@@ -79,7 +79,7 @@
                     if ($(".mediamotive-block").length > 0) {
                         //Postscribe exhibits strange behaviour when called in parallel
                         //To prevent this we will build a queue and use callback for the queue
-                        $(".mediamotive-block").each(function () {
+                        $(".mediamotive-block").each(function (index ) {
                             var item = $(this);
                             var tile = item.attr('id');
                             var isKruxRequired = (item.attr('data-krux-required') == 'true');
@@ -90,6 +90,21 @@
                             postscribe('#' + tile, '<script src="' + scriptUrl + '"><\/script>', {
                                 done: function () {
                                     $('#' + tile).removeClass('mediamotive-block--loading');
+
+                                    if (index === $(".mediamotive-block").length - 1) {
+                                        window.Krux || ((Krux = function () { Krux.q.push(arguments) }).q = []);
+
+                                        (function() {
+                                            var k = document.createElement('script');
+                                            k.type = 'text/javascript';
+                                            k.async = true;
+                                            var m, src = (m = location.href.match(/\bkxsrc=([^&]+)/)) && decodeURIComponent(m[1]);
+                                            k.src = /^https?:\/\/([^\/]+\.)?krxd\.net(:\d{1,5})?\//i.test(src) ? src : src === "disable" ? "" :
+                                                (location.protocol === "https:" ? "https:" : "http:") + "//cdn.krxd.net/controltag?confid=@Model.KruxId";
+                                            var s = document.getElementsByTagName('script')[0];
+                                            s.parentNode.insertBefore(k, s);
+                                        }());
+                                    }
                                 }
                             });
 
@@ -97,18 +112,7 @@
 
                     }
 
-                    window.Krux || ((Krux = function () { Krux.q.push(arguments) }).q = []);
 
-                    (function() {
-                        var k = document.createElement('script');
-                        k.type = 'text/javascript';
-                        k.async = true;
-                        var m, src = (m = location.href.match(/\bkxsrc=([^&]+)/)) && decodeURIComponent(m[1]);
-                        k.src = /^https?:\/\/([^\/]+\.)?krxd\.net(:\d{1,5})?\//i.test(src) ? src : src === "disable" ? "" :
-                            (location.protocol === "https:" ? "https:" : "http:") + "//cdn.krxd.net/controltag?confid=@Model.KruxId";
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(k, s);
-                    }());
                 };
 
                 return {
