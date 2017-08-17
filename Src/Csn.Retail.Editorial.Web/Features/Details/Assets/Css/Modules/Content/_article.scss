@@ -2,7 +2,7 @@
 
 
 // All Article types other than wide
-.article-type:not(.article-type--wideimage) {
+.article-type:not(.article-type--wideimage):not(.article-type--widevideo) {
 
     $aside-width: 300px;
     $spacing: 30px;
