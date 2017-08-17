@@ -388,7 +388,6 @@
     <Compile Include="Features\Details\GetArticleQueryHandler.cs" />
     <Compile Include="Features\Details\Mappings\HeroSectionMapper.cs" />
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
-    <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
