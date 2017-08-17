@@ -35,7 +35,6 @@
     $aside-width: 300px; //TODO: make as global
     $spacing: 30px;
 
-    position:absolute;
     width: calc(#{$screen-md} - #{$aside-width} - #{$spacing*2});
 
     @include breakpoint($screen-lg) {
