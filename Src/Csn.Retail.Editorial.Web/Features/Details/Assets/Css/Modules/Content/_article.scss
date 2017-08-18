@@ -10,10 +10,18 @@
     font-size: 0;
 
     .article {
-        left: calc(50% - ((#{$aside-width} + #{$spacing})/2));
+        left: calc(50% - (#{$aside-width}/2));
         display: inline-block;
         vertical-align: top;
         transform: translate(-50%);
+
+        @include breakpoint($screen-md) {
+            left: calc(50% - (#{$aside-width} + #{$spacing})/2);
+        }
+
+        @include breakpoint($screen-lg) {
+            left: calc(50% - (#{$aside-width} + #{$spacing})/2);
+        }
 
         & .container {
             padding-left: 0;
@@ -365,10 +373,18 @@
 
     .aside {
         padding-top: 0;
-        left: calc(100% - 315px);
+        left: calc(100% - 300px);
         position: absolute;
         top: 0;
         transform: none;
+
+        @include breakpoint($screen-md) {
+            left: calc(100% - 315px);
+        }
+
+        @include breakpoint($screen-lg) {
+            left: calc(100% - 315px);
+        }
     }
 
     ._c-modal .slideshow__nav {

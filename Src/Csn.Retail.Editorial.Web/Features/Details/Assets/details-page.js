@@ -147,6 +147,9 @@ loaded.then(function () {
 // display disclaimer on pricing guide
 require('Js/Modules/ArticlePricing/articlePricing.js');
 
+// add hero-wide-video
+require('Js/Modules/Hero/hero-wide-video.js');
+
 
 //Parallax
 loaded.then(function () {
