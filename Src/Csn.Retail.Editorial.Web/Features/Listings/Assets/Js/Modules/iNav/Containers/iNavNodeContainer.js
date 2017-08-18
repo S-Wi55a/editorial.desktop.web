@@ -9,7 +9,7 @@ import INavfacet from 'Js/Modules/Redux/iNav/Components/iNavFacet'
 //TODO: Handle cb for toggle is selected which may be different
 
 // This is separated for displaying sub lists
-const INavNodeList = ({facets, name, toggleIsSelected}) => (  
+const INavNodeList = ({ facets, name, toggleIsSelected }) => (
     <div>
         <div className="iNav-category__container iNav-category__container--1">
             <ul>
@@ -19,50 +19,22 @@ const INavNodeList = ({facets, name, toggleIsSelected}) => (
             </ul>        
         </div>
     </div>
-
-    )
-
-
-const INavNode = ({ node, refinements, toggleIsSelected }) => (
-        <div className={'iNav__category iNav-category'}>
-            <INavNodeList {...node} toggleIsSelected={toggleIsSelected} />
-            {
-                (Object.getOwnPropertyNames(refinements).length > 0) ? 
-                    <div className="iNav-category__container iNav-category__container--2">
-                        <INavNodeList {...refinements} toggleIsSelected={toggleIsSelected} />
-                    </div>
-                : ''
-            }
-        </div>
-    )
+);
 
 
-//Selectors
-//NOTE: we are not memonizing here becuase we are repalcing the whole iNav obj on every fetch which results ina full rerender
-const getRefinements = (state, props) => {
+const INavNode = ({ node, toggleIsSelected }) => (
+    <div className={'iNav__category iNav-category'}>
+        <INavNodeList {...node} toggleIsSelected={toggleIsSelected} />
+    </div>
+);
 
-    let refinements = {}
-    if (props.facets) {
-        props.facets.forEach((facet) => {
-        
-            if (facet.refinements) {
-                refinements = {
-                    ...refinements,
-                    ...facet.refinements
-                }
-            }
-        })
-    }
-
-    return refinements.nodes ? refinements.nodes[0] : refinements
-}
 
 // Redux Connect
 const mapStateToProps = (state, ownProps) => {
     return {
-        refinements: getRefinements(state, ownProps.node)
+    
     }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -71,15 +43,15 @@ const mapDispatchToProps = (dispatch) => {
                 Actions.fetchQueryRequest(query),
                 Actions.toggleIsSelected(node, facet), // This is to simulate a quick UI
                 isSelected ? Actions.removeBreadCrumb(facet) : GlobalActions.noop() // This is to simulate a quick UI
-            ])
+            ]);
         }
     }
 }
 
 // Connect the Component to the store
 const INavNodeContainer = connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
-)(INavNode)
+)(INavNode);
 
 export default INavNodeContainer
