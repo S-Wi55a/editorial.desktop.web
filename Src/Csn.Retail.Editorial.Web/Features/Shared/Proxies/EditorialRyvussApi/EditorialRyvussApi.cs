@@ -83,13 +83,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
     {
         public string Count { get; set; }
         public RyvussNav INav { get; set; }
-        public List<JObject> SearchResults { get; set; }
+        public List<SearchResult> SearchResults { get; set; }
     }
 
-    public class RyvussSearchResults
+    public class SearchResult
     {
+        public string Id { get; set; }
         public string Headline { get; set; }
         public DateTime DateAvailable { get; set; }
+        public string PhotoPath { get; set; }
     }
 
     public class RyvussNav

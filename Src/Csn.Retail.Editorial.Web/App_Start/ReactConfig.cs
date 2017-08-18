@@ -22,14 +22,15 @@ namespace Csn.Retail.Editorial.Web
             //	.AddScriptWithoutTransform("~/Scripts/bundle.server.js")
 
 		    ReactSiteConfiguration.Configuration
-		        //.SetStartEngines(2)
-		        //.SetMaxEngines(2)
+		        .SetStartEngines(1)
+		        .SetMaxEngines(1)
                 .SetUseDebugReact(true)
 		        .SetReuseJavaScriptEngines(false) //TODO: remove in Prod
                 .SetLoadBabel(false)
-                //.SetLoadReact(false)
+                .SetLoadReact(false)
                 .AddScriptWithoutTransform("/dist--server/react-server-components.js")
-                .DisableServerSideRendering()
+                //.AddScript("/Features/Listings/Assets/Js/Modules/iNavSearchResults/Containers/iNavSearchResultsContainer.js")
+                //.DisableServerSideRendering()
                 ;
 
 
