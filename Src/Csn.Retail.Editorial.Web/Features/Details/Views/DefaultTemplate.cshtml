@@ -35,7 +35,6 @@
 {
     @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
     @{ Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData); }
-    @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
     @if (Model.MoreArticleData != null)
@@ -47,4 +46,8 @@
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
     }
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
+    @{ Html.RenderPartial("Partials/MediaMotive/_MediaMotiveScripts"); }
+    @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
+
+
 }
