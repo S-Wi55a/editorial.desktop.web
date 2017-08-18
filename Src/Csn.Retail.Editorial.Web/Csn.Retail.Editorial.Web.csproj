@@ -381,7 +381,6 @@
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
-    <Compile Include="Features\Details\Mappings\SpecDataMapper.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseMapper.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Details\Models\ArticleViewModel.cs" />
@@ -389,7 +388,6 @@
     <Compile Include="Features\Details\GetArticleQueryHandler.cs" />
     <Compile Include="Features\Details\Mappings\HeroSectionMapper.cs" />
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
-    <Compile Include="Features\Details\Models\GoogleAnalyticsDetailsData.cs" />
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
@@ -542,10 +540,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Endpoints\endpoints.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\krux-sas-integrator.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive-loader.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediamotive.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mm.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal-disclaimer-view.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
@@ -758,8 +752,9 @@
     <Content Include="Features\Details\Views\Carsales\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Constructionsales\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Farmmachinerysales\_Disclaimer.cshtml" />
-    <Content Include="Features\Details\Views\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Content\_Disclaimer.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_MediaMotiveScripts.cshtml" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

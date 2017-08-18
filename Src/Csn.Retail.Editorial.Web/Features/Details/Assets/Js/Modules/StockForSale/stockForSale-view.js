@@ -4,7 +4,7 @@ const container = (data) => {
 
     const stockForSalePath = proxy;
     const limit = '%26limit=2';
-
+ 
     return `
         <div class="stock-for-sale">
             <h2 class="stock-for-sale__header">${data.heading || ''}</h2>
@@ -20,7 +20,7 @@ const container = (data) => {
                     ${data.filters.map(filter => `
                         <li
                             class="stock-for-sale-options__option"
-                            data-stock-for-sale-query="${stockForSalePath || ''}${filter.query || ''}${limit || ''}" 
+                            data-stock-for-sale-query="${stockForSalePath || ''}${filter.stockQuery || ''}${limit || ''}"
                             data-stock-for-sale-view-all-url="${filter.viewAllUrl || ''}">
                             ${filter.name || ''}
                         </li>
@@ -60,7 +60,7 @@ const listItem = (data) => {
             return prev + current;
         });
     } else {
-        return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${data.responseMessage || ''}</li>`;
+        return `<li class="stock-for-sale-item stock-for-sale-item--no-items">${ (data && data.responseMessage) ? data.responseMessage : ''}</li>`;
     }
 };
 
