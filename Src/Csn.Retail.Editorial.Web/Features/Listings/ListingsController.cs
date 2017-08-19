@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
@@ -24,10 +23,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         }
 
-        [System.Web.Mvc.Route("editorial/listings/")]
+        [Route("editorial/listings/")]
         [RedirectAttributeFilter]
-        // GET: Details
-        public async Task<ActionResult> Index([FromUri]string q = null)
+        public async Task<ActionResult> Index(string q = null)
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new ListingsPageRequestEvent());
 
@@ -40,15 +38,15 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             var response = dispatchedQuery.Result;
 
-            //if (response != null)
-            //{
+            if (response != null)
+            {
                 return View("ListingTemplate", response);
-            //}
+            }
 
-            //var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
-            //errorsController.ControllerContext = new ControllerContext(this.Request.RequestContext, errorsController);
+            var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
+            errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
 
-            //return await (response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404() : errorsController.ErrorGeneric());
+            return await errorsController.ErrorGeneric();
         }
     }
 

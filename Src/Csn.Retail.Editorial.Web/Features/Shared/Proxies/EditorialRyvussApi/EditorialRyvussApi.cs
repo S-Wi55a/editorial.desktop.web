@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using Bolt.Common.Extensions;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Ingress.ServiceClient.Abstracts;
-using Newtonsoft.Json.Linq;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
 {
     public interface IEditorialRyvussApiProxy
     {
         Task<SmartServiceResponse<RyvussResult>> GetAsync(EditorialRyvussApiInput input);
-        Task<SmartServiceResponse<object>> GetAsyncProxy(EditorialRyvussApiInput input);
         Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussNavInput input);
     }
 
@@ -38,18 +32,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 .QueryString("inav", "RetailNav|Retail|ShowZero")
                 .QueryString("sr", $"|latest|{input.Offset}|{input.Limit}")
                 .GetAsync<RyvussResult>();
-        }
-
-        public Task<SmartServiceResponse<object>> GetAsyncProxy(EditorialRyvussApiInput input)
-        {
-            return _smartClient.Service(ServiceName)
-                .Path("/v4/EditorialListing")
-                .QueryString("q", input.RyvussPredicates)
-                .QueryString("count", "true")
-                .QueryString("inav", "true")
-                .QueryString("sr", "||10|")
-                //.QueryString("sr", "|Latest|{0}|{1}".FormatWith(input.Offset, input.Limit))
-                .GetAsync<object>();
         }
 
         public Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussNavInput input)

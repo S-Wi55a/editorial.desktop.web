@@ -16,7 +16,7 @@ namespace Csn.Retail.Editorial.Web.Features.React
     public class ReactController : Controller
     {
 
-        [System.Web.Mvc.Route("editorial/react/")]
+        //[System.Web.Mvc.Route("editorial/react/")]
         // GET: React
         public ActionResult Index()
         {
@@ -31,7 +31,12 @@ namespace Csn.Retail.Editorial.Web.Features.React
             _queryDispatcher = queryDispatcher;
         }
 
-        [System.Web.Mvc.Route("editorial/react/listing")]
+        /// <summary>
+        /// NOTE: removing this...use /editorial/listings/ (ListingsController instead)
+        /// </summary>
+        /// <param name="q"></param>
+        /// <returns></returns>
+        //[System.Web.Mvc.Route("editorial/react/listing")]
         public async Task<ActionResult> Get([FromUri]string q = null)
         {
             var result = await _queryDispatcher.DispatchAsync<SearchQuery, RyvussResult>(new SearchQuery()
