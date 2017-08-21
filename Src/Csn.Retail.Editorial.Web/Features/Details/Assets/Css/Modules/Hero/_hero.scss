@@ -281,6 +281,15 @@
 }
 
 // Full screen hero video (playing)
+#fullhero_video {
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: fill;
+    position: absolute;
+    width: auto;
+}
+
 .fullherovideo {
     &--wrap {
         align-items: center;
@@ -319,6 +328,12 @@
         overflow: hidden;
         position: relative;
         width: 100%;
+    }
+
+    &__container {
+        .video-js {
+            margin: 0 auto;
+        }
     }
 
     &__action-close {

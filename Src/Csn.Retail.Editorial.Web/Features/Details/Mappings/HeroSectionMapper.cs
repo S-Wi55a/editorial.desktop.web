@@ -21,12 +21,18 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
             {
                 Type = article.HeroSection.Type,
                 Images = article.HeroSection.Images,
+                BrightcovePlayerId = GetBrightcovePlayerId(article.HeroSection.BrightcoveVideo),
                 BrightcoveVideoId = GetBrightcoveVideoId(article.HeroSection.BrightcoveVideo),
                 BrightcoveVideoIFrameUrl = GetBrightcoveVideoIFrameUrl(article.HeroSection.BrightcoveVideo),
                 BrightcoveVideoEncodingUrl = GetBrightcoveVideoEncodingUrl(article.HeroSection.BrightcoveVideo),
                 Headline = article.Headline,
                 SubHeading = article.Subheading
             };
+        }
+
+        private string GetBrightcovePlayerId(BrightcoveVideo video)
+        {
+            return video == null || video.PlayerId.IsNullOrEmpty() ? null : video.PlayerId;
         }
 
         private string GetBrightcoveVideoId(BrightcoveVideo video)
