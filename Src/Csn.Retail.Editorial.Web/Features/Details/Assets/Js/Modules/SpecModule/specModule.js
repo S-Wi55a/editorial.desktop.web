@@ -145,16 +145,16 @@ const SpecModuleItem = (props) => {
                     {props.sliderLength > 1 ? 
                         <div className="spec-item__selector" data-webm-clickvalue="change-variant">
                             <p className="spec-item__selector-label">{props.scaffolding.title1}</p>
-                            <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderHandler} />
+                            <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />
                         </div>
-                    : ''}
+                        : ''}
                 </div>
                 <div className="spec-item__column spec-item__column--2">
                     <Specifications data={props.data.specItems} /> 
                 </div>
             </div>
-            <div className={props.isFetchingQuotes ? "spec-item__third-party-offers loading" : "spec-item__third-party-offers "}>
-                {props.data.quotes ? <ThirdPartyOffers data={props.data.quotes} disclaimerHandler={props.disclaimerHandler}/> : ''}
+            <div className={props.isFetchingQuotes || !props.data.quotes ? "spec-item__third-party-offers loading" : "spec-item__third-party-offers "}>
+                {props.data.quotes ? <ThirdPartyOffers data={props.data.quotes} disclaimerHandler={props.disclaimerHandler} /> : ' '}
             </div>
         </div>
     )
@@ -165,9 +165,9 @@ class SpecModule extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {            
+        this.state = {
             items: [],
-            activeItemIndex: 0,            
+            activeItemIndex: 0,
             isFetchingQuotes: false,
             pendingRequests: 0,
             specVariantsQuery: this.props.data,
@@ -175,7 +175,8 @@ class SpecModule extends React.Component {
             sliderLength: 0
         };
 
-        this.sliderHandler = this.sliderHandler;
+        this.sliderOnAfterChangeHandler = this.sliderOnAfterChangeHandler;
+        this.sliderOnChangeHandler = this.sliderOnChangeHandler;
         this.disclaimerHandler = this.disclaimerHandler;
     }
 
@@ -187,27 +188,32 @@ class SpecModule extends React.Component {
         // If all ajax request are complete then set state
         if (prevState.isFetchingQuotes === true && this.state.pendingRequests <= 0) {
             // Set State
-            this.setState({                
+            this.setState({
                 isFetchingQuotes: false
             });
         }
     }
 
-    sliderHandler = (index) => {
+    sliderOnAfterChangeHandler = (index) => {
         if (this.state.items[index] && this.state.items[index].quotes) {
             this.setState({
                 activeItemIndex: index
             });
-        } else {                        
+        } else {
             const url = this.props.path + this.state.items[index].specQuotesUrl;
             this.getQuotesData(url, index);
-        }       
+        }
+    }
+    sliderOnChangeHandler = (index) => {
+        this.setState({
+            activeItemIndex: index
+        });
     }
 
-    getVariantsData = (specVariantsQuery) => {        
+    getVariantsData = (specVariantsQuery) => {
         // Set State
         this.setState((prevState, props) => {
-            return {                
+            return {
                 fetchingVariants: true,
                 pendingRequests: prevState.pendingRequests + 1
             };
@@ -239,14 +245,14 @@ class SpecModule extends React.Component {
             };
         });
         Ajax.get(url, (data) => {
-            data = JSON.parse(data);            
+            data = JSON.parse(data);
             // Cache data
-            const itemsCopy = this.state.items;            
+            const itemsCopy = this.state.items;
             itemsCopy[index].quotes = data.quotes;
 
             this.setState((prevState, props) => {
-                return {                    
-                    pendingRequests: prevState.pendingRequests - 1,                    
+                return {
+                    pendingRequests: prevState.pendingRequests - 1,
                     items: itemsCopy
                 };
             });
@@ -260,7 +266,7 @@ class SpecModule extends React.Component {
             e = className
             className = ''
         }
-        
+
         const content = decodeURI(e.target.getAttribute('data-disclaimer'))
         this.props.modal.show(disclaimerTemplate(content), className)
 
@@ -268,19 +274,20 @@ class SpecModule extends React.Component {
 
     render() {
 
-        const {title1, title2, title3} = this.props.data
+        const { title1, title2, title3 } = this.props.data
         if (this.state.items.length <= 0 && !this.state.fetchingVariants) return null;
         return (
             <div className={this.state.fetchingVariants ? "spec-module loading" : "spec-module"}>
                 {this.state.items[this.state.activeItemIndex] ?
                     <SpecModuleItem
                         data={this.state.items[this.state.activeItemIndex]}
-                        scaffolding={{title1, title2, title3}}
+                        scaffolding={{ title1, title2, title3 }}
                         disclaimerHandler={this.disclaimerHandler}
                         sliderLength={this.state.sliderLength}
-                        sliderHandler={this.sliderHandler}
-                        isFetchingQuotes = {this.state.isFetchingQuotes}
-                        />
+                        sliderOnAfterChangeHandler={this.sliderOnAfterChangeHandler}
+                        sliderOnChangeHandler={this.sliderOnChangeHandler}
+                        isFetchingQuotes={this.state.isFetchingQuotes}
+                    />
                     : ''}
             </div>
         );
