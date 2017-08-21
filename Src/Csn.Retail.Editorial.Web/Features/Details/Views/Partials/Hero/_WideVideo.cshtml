@@ -15,12 +15,21 @@
                 <h1 class="hero__heading">@Model.Headline</h1>
             </header>
             <div class="hero__playbutton-container">
-                <div class="hero__playbutton">
+                <div data-video-id="@Model.BrightcoveVideoId"  class="hero__playbutton">
                     Watch Video
                 </div>
             </div>
             <div class="hero__action"></div>
         </div>
 
+    </div>
+</div>
+
+<div class="fullherovideo fullherovideo--wrap fullherovideo--wrap-hide">
+    <div class="fullherovideo__inner">
+        
+        <button class="fullherovideo__action-close">
+            <i class="fullherovideo__action-icon"></i>
+        </button>
     </div>
 </div>

@@ -21,11 +21,17 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
             {
                 Type = article.HeroSection.Type,
                 Images = article.HeroSection.Images,
+                BrightcoveVideoId = GetBrightcoveVideoId(article.HeroSection.BrightcoveVideo),
                 BrightcoveVideoIFrameUrl = GetBrightcoveVideoIFrameUrl(article.HeroSection.BrightcoveVideo),
                 BrightcoveVideoEncodingUrl = GetBrightcoveVideoEncodingUrl(article.HeroSection.BrightcoveVideo),
                 Headline = article.Headline,
                 SubHeading = article.Subheading
             };
+        }
+
+        private string GetBrightcoveVideoId(BrightcoveVideo video)
+        {
+            return video == null || video.VideoId.IsNullOrEmpty() ? null : video.VideoId;
         }
 
         private string GetBrightcoveVideoEncodingUrl(BrightcoveVideo video)

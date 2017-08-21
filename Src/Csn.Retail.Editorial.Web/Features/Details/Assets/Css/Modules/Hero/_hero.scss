@@ -112,7 +112,7 @@
     &__video-container {
         height: 100%;
         left: 0;
-        opacity: 0.8;
+        opacity: 0.7;
         position: absolute;
         top: 0;
         width: 100%;
@@ -178,6 +178,7 @@
         width: 100%;
         max-height: 640px;
         position: relative;
+        opacity: 0.85;
         overflow: hidden;
 
         &::before {
@@ -217,7 +218,7 @@
             display: block;
             position: absolute;
             background-color: $cs-black;
-            opacity: 0.15;
+            opacity: 0;
             width: 100%;
             height: 100%;
         }
@@ -272,5 +273,110 @@
         @include bounce();
         animation: bounce 1.5s linear;
         animation-iteration-count: infinite;
+    }
+}
+
+// Full screen hero video (playing)
+.fullherovideo {
+    &--wrap {
+        align-items: center;
+        display: -webkit-flex;
+        display: flex;
+        height: 100%;
+        left: 0;
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        -webkit-align-items: center;
+    }
+
+    &--wrap-show {
+        pointer-events: auto;
+
+        .fullherovideo__inner {
+            opacity: 1;
+        }
+    }
+
+    &--wrap-hide {
+        &__inner {
+            -webkit-animation: hideVideo 1.25s forwards;
+            animation: hideVideo 1.25s forwards;
+        }
+    }
+
+    &__inner {
+        background: $cs-black;
+        height: 100%;
+        margin: 0 auto;
+        opacity: 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    &__action-close {
+        cursor: pointer;
+        font-size: 2.15em;
+        font-weight: bold;
+        position: relative;
+        overflow: hidden;
+        color: $cs-white;
+        border: 2px solid;
+        border-radius: 40px;
+        position: absolute;
+        top: 60px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        padding: 0;
+    }
+
+    &__action-icon {
+        &::before {
+            content: $icon-cross-lg;
+            font-family: $font-family-icons;
+            font-style: normal;
+            color: $cs-white;
+        }
+    }
+}
+
+/* Animation for hiding the video wrapper */
+@-webkit-keyframes hideVideo {
+    0% {
+        width: 100vw;
+        height: 100vh;
+        opacity: 1;
+        -webkit-transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
+        transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
+    }
+
+    100% {
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        -webkit-transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
+        transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
+    }
+}
+
+@keyframes hideVideo {
+    0% {
+        width: 100vw;
+        height: 100vh;
+        opacity: 1;
+        -webkit-transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
+        transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
+    }
+
+    100% {
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        -webkit-transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
+        transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
     }
 }
