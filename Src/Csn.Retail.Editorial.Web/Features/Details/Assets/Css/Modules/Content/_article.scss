@@ -9,6 +9,11 @@
 
     font-size: inherit;
 
+    & .container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
     .article {
         left: calc(50% - (#{$aside-width}/2));
         display: inline-block;
