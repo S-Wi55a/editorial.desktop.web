@@ -24,7 +24,11 @@
     width: calc(100% - (300px + #{$grid-gutter-width/2}));
     float: left;
     padding-right: 15px;
-    padding-left: 15px;
+
+    @include breakpoint($screen-md) {
+        padding-left: 15px;
+        padding-right: 32px;
+    }
 
     @include breakpoint($screen-sm) {
         width: calc(100% - (285px + #{$grid-gutter-width/2}));
@@ -39,7 +43,7 @@
     }
 
     @include breakpoint($screen-lg) {
-        padding-right: 30px;
+        padding-right: 32px;
     }
 }
 

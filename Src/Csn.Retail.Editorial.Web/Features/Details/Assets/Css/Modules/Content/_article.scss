@@ -5,9 +5,9 @@
 .article-type:not(.article-type--wideimage):not(.article-type--widevideo) {
 
     $aside-width: 300px;
-    $spacing: 30px;
+    $spacing: 31px;
 
-    font-size: 0;
+    font-size: inherit;
 
     .article {
         left: calc(50% - (#{$aside-width}/2));
