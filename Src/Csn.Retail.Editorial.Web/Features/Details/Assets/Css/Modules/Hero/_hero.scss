@@ -111,12 +111,16 @@
         background-color: $cs-black;
         overflow: hidden;
         position: relative;
+
+        .hero__heading {
+            text-shadow: none;
+        }
     }
 
     &__video-container {
         height: 100%;
         left: 0;
-        opacity: 0.7;
+        opacity: 0.4;
         position: absolute;
         top: 0;
         width: 100%;
