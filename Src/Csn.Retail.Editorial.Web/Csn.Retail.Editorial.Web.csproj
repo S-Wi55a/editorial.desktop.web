@@ -26,6 +26,7 @@
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -508,6 +509,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\ArticlePricing\articlePricing.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal.js" />
@@ -519,7 +521,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SponsoredArticles\sponsoredArticles.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickSidebarScrollingDown.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
@@ -547,6 +549,8 @@
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
     <Content Include="Features\Shared\Assets\Js\csn.vendor.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Utils\optimizedResize.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Utils\utils.js" />
     <Content Include="Global.asax" />
     <Content Include="postcss.config.js" />
     <Content Include="Web.config">
