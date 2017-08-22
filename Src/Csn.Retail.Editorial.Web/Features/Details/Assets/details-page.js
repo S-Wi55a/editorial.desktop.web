@@ -157,6 +157,6 @@ require('Js/Modules/ArticlePricing/articlePricing.js');
 loaded.then(function() {
     const aside = document.querySelector('.aside');
     if (aside) {
-        require('Js/Modules/StickySidebar/stickySidebar.js').default(document, window, aside);
+        require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
     }
 })

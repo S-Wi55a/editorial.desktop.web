@@ -1,7 +1,8 @@
 ﻿// Common css files
 require('Css/globalStyles.scss');
 
-import detectIE from 'Js/Modules/DetectIE/detect-ie.js'
+import detectIE from 'Js/Modules/DetectIE/detect-ie'
+import 'Features/Shared/Assets/Js/Modules/Utils/optimizedResize'
 
 // Dynamically set the public path for ajax/code-split requests
 let scripts = document.getElementsByTagName("script");
