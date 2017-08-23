@@ -154,7 +154,7 @@ loaded.then(function () {
 require('Js/Modules/ArticlePricing/articlePricing.js');
 
 //Sticky Sidebar
-if(!document.querySelector('body').classList.contains('ie11') || !isMobile.tablet || !isMobile.phone){
+if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
     loaded.then(function() {
         const aside = document.querySelector('.aside');
         if (aside) {

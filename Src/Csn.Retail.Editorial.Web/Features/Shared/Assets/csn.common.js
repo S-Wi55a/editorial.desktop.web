@@ -21,8 +21,8 @@ let isIE = (el, validator) => {
     let version = validator();
     if (version) {
         window.ie = true
-        let ieVersion = 'ie' + version;
-        el.classList.toggle('ie');
+        let ieVersion = version.type + version.number;
+        el.classList.toggle(version.type);
         el.classList.toggle(ieVersion);
     }
 }
