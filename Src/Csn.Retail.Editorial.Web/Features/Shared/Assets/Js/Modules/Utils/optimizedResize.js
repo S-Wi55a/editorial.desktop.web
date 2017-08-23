@@ -1,11 +1,11 @@
-﻿(function() {
-    var throttle = function(type, name, obj) {
+(function() {
+    const throttle = function(type, name, obj) {
         obj = obj || window;
-        var running = false;
-        var func = function() {
+        let running = false;
+        const func = function() {
             if (running) { return; }
             running = true;
-            requestAnimationFrame(function() {
+            requestAnimationFrame(() => {
                 obj.dispatchEvent(new CustomEvent(name));
                 running = false;
             });
@@ -14,5 +14,5 @@
     };
 
     /* init - you can init any event */
-    throttle("resize", "optimizedResize");
+    throttle('resize', 'optimizedResize');
 })();
