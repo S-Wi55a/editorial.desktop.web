@@ -8,7 +8,7 @@ export function scrollingUp(pin, el, ref, e) {
         STATE: e.target.state(),
         FORWARD: e.target.controller().info('scrollDirection') === 'FORWARD',
         REVERSE: e.target.controller().info('scrollDirection') === 'REVERSE',
-        REACHED_TOP: e.scrollPos <= ref.startingCoordinatesTop(),
+        REACHED_TOP: e.scrollPos + ref.siteNavHeight <= ref.startingCoordinatesTop(),
     }
     if (state.FORWARD) {
         lock.up = false; // the lock is for debouncing
