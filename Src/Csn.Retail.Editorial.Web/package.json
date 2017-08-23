@@ -20,8 +20,8 @@
         "build-release": "npm run transform-webpack && cross-env NODE_ENV=production cross-env TENANT= npm run webpack -- -p --color --config  TempWebpackConfig/webpack.isomorphic.config.js ",
         "build-release-custom": "npm run transform-webpack && cross-env NODE_ENV=production npm run webpack -- -p --color --config  TempWebpackConfig/webpack.isomorphic.config.js ",
         "dev-watch": "npm run transform-webpack && cross-env NODE_ENV=development npm run webpack -- --progress --colors --watch --config  TempWebpackConfig/webpack.isomorphic.config.js ",
-        "dev-watch-client": "cross-env NODE_ENV=development npm run webpack -- --progress --colors --watch --config  TempWebpackConfig/Client/webpack.client.config.js ",
-        "dev-watch-server": "cross-env NODE_ENV=development npm run webpack -- --progress --colors --watch --config  TempWebpackConfig/Server/webpack.server.config.js ",
+        "dev-watch-client": "cross-env NODE_ENV=development && npm run webpack -- --progress --colors --watch --config  TempWebpackConfig/Client/webpack.client.config.js ",
+        "dev-watch-server": "cross-env NODE_ENV=development && npm run webpack -- --progress --colors --watch --config  TempWebpackConfig/Server/webpack.server.config.js ",
         "dev": "npm run transform-webpack && cross-env NODE_ENV=development concurrently -k \"npm run dev-watch-server\" \"npm run webpack-dev-server -- --colors --hot --watch --config  TempWebpackConfig/Client/webpack.client.config.js\" "
     },
     "author": "",
