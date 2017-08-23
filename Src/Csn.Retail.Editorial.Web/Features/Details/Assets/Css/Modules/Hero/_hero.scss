@@ -156,7 +156,7 @@
 
     &__playbutton {
         border: 1px solid $cs-white;
-        border-radius: 5px;
+        border-radius: 9999px;
         color: $cs-white;
         cursor: pointer;
         display: inline-block;
@@ -348,20 +348,17 @@
     }
 
     &__action-close {
-        cursor: pointer;
-        font-size: 2.15em;
-        font-weight: bold;
-        position: relative;
-        overflow: hidden;
         color: $cs-white;
-        border: 3px solid;
-        border-radius: 40px;
-        position: absolute;
-        top: 30px;
-        right: 50px;
-        width: 60px;
+        cursor: pointer;
+        font-size: 3.15em;
+        font-weight: bold;
         height: 60px;
+        overflow: hidden;
         padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60px;
     }
 
     &__action-icon {
