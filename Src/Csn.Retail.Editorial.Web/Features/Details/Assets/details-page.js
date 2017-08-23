@@ -3,9 +3,10 @@ require('./css/details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
-import { loaded } from 'document-promises/document-promises.js';
-import ScrollMagic from 'ScrollMagic';
-import Modal from 'Js/Modules/Modal/modal.js'
+import { loaded } from 'document-promises/document-promises.js'
+import ScrollMagic from 'ScrollMagic'
+import * as isMobile from 'ismobilejs'
+if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero
@@ -118,13 +119,17 @@ let disqus = function(d, w, selector) {
         const offset = (-1 * w.innerHeight) * 2;
         w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
 
-        new ScrollMagic.Scene({
-                triggerElement: triggerElement,
-                triggerHook: triggerHook,
-                offset: offset,
-                reverse: false
+        let scene = new ScrollMagic.Scene({
+            triggerElement: triggerElement,
+            triggerHook: triggerHook,
+            offset: offset,
+            reverse: false
+        })
+            .on("enter", () => {
+                require('Js/Modules/Disqus/disqus.js').default();
+                scene.destroy(true)
+                scene = null
             })
-            .on("enter", () => { require('Js/Modules/Disqus/disqus.js').default() })
             .addTo(w.scrollMogicController);
     }
 }
@@ -164,3 +169,13 @@ loaded.then(() => {
 
 // display disclaimer on pricing guide
 require('Js/Modules/ArticlePricing/articlePricing.js');
+
+//Sticky Sidebar
+if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
+    loaded.then(function() {
+        const aside = document.querySelector('.aside');
+        if (aside) {
+            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
+        }
+    })
+}
