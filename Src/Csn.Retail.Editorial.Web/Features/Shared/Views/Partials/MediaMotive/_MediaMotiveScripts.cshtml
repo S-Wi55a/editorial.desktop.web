@@ -1,4 +1,4 @@
-﻿<script>    
+﻿@*<script>    
     (function (wn) {
         "use strict";
 
@@ -63,8 +63,6 @@
     (function ($, w) {
         //'use strict';
 
-        var postscribeQueue = []
-
         w.MediaMotiveLoader = function () {
             var init = function () {
                 var sasTags = '';
@@ -83,30 +81,19 @@
                     $(".mediamotive-block").each(function () {
                         var item = $(this);
                         var tile = item.attr('id');
-                        var isKruxRequired = (item.attr('data-krux-required') == 'True');
+                        var isKruxRequired = (item.attr('data-krux-required') == 'true');
                         var scriptUrl = item.attr('data-media-motive-url');
                         if (isKruxRequired) {
                             scriptUrl = scriptUrl + sasTags;
                         }
-                        postscribeQueue.push({ tile: tile, scriptUrl: scriptUrl });
+                        postscribe('#' + tile, '<script src="' + scriptUrl + '"><\/script>', {
+                            done: function () {
+                                $('#' + tile).removeClass('mediamotive-block--loading');
+                            }
+                        });
+
                     });
 
-                    //Recursively call postscribe
-                    var p = function (i, postscribeQueue) {
-
-                        if (i < postscribeQueue.length) {
-                            postscribe('#' + postscribeQueue[i].tile, '<script src="' + postscribeQueue[i].scriptUrl + '"><\/script>',
-                                {
-                                    done: function () {
-                                        $('#' + postscribeQueue[i].tile).removeClass('mediamotive-block--loading');
-                                        i++;
-                                        return p(i, postscribeQueue);
-                                    }
-                                });  
-                        }
-                    }
-
-                    p(0, postscribeQueue);
                 }
             };
 
@@ -122,4 +109,4 @@
 
     })(jQuery, window);
     });
-</script>
+</script>*@

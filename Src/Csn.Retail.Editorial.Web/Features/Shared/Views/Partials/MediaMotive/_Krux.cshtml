@@ -1,7 +1,135 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.MediaMotiveData
+<script>    
+    (function (wn) {
+        "use strict";
 
+        wn.KruxSasHelper = function () {
+            var retrieve = function (n) {
+                var m, k = "kx" + n;
+                if (window.localStorage) {
+                    return window.localStorage[k] || "";
+                } else if (navigator.cookieEnabled) {
+                    m = document.cookie.match(k + "=([^;]*)");
+                    return (m && unescape(m[1])) || "";
+                } else {
+                    return "";
+                }
+            }
+
+            var getSasData = function () {
+                var user = retrieve('user');
+                var segments = retrieve('segs');
+
+                var ksg = "";
+
+                if (segments) {
+                    ksg = segments;
+                }
+
+                return {
+                    kuid: user,
+                    ksg: ksg
+                }
+            }
+
+            var getSasTags = function () {
+                var user = retrieve("user");
+                var segments = retrieve("segs") ? retrieve("segs").split(",") : "";
+
+                var kvs = [];
+                if (user) {
+                    kvs.push("kuid=" + user);
+                }
+
+                if (segments) {
+                    kvs.push("ksg=" + segments.join(","));
+                }
+
+                return kvs.length ? kvs.join("/") : "";
+            };
+
+            return {
+                getSasTags: getSasTags,
+                getSasData: getSasData
+            };
+        };
+
+    })(window);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js"></script>
+<script>
+    window.addEventListener("load", function() {
+
+//Look through all the ad tiles and use postscribe to laod them asynchronously
+        (function ($, w) {
+            //'use strict';
+
+            w.MediaMotiveLoader = function () {
+                var init = function () {
+                    var sasTags = '';
+                    if (w.KruxSasHelper) {
+                        var sasTagsValue = new w.KruxSasHelper().getSasTags();
+                        sasTags = '/' + sasTagsValue;
+                    } else {
+                        if (console) {
+                            console.warn('KruxSasHelper not loaded');
+                        }
+                    }
+
+                    if ($(".mediamotive-block").length > 0) {
+                        //Postscribe exhibits strange behaviour when called in parallel
+                        //To prevent this we will build a queue and use callback for the queue
+                        $(".mediamotive-block").each(function (index ) {
+                            var item = $(this);
+                            var tile = item.attr('id');
+                            var isKruxRequired = (item.attr('data-krux-required') == 'true');
+                            var scriptUrl = item.attr('data-media-motive-url');
+                            if (isKruxRequired) {
+                                scriptUrl = scriptUrl + sasTags;
+                            }
+                            postscribe('#' + tile, '<script src="' + scriptUrl + '"><\/script>', {
+                                done: function () {
+                                    $('#' + tile).removeClass('mediamotive-block--loading');
+
+                                    if (index === $(".mediamotive-block").length - 1) {
+                                        window.Krux || ((Krux = function () { Krux.q.push(arguments) }).q = []);
+
+                                        (function() {
+                                            var k = document.createElement('script');
+                                            k.type = 'text/javascript';
+                                            k.async = true;
+                                            var m, src = (m = location.href.match(/\bkxsrc=([^&]+)/)) && decodeURIComponent(m[1]);
+                                            k.src = /^https?:\/\/([^\/]+\.)?krxd\.net(:\d{1,5})?\//i.test(src) ? src : src === "disable" ? "" :
+                                                (location.protocol === "https:" ? "https:" : "http:") + "//cdn.krxd.net/controltag?confid=@Model.KruxId";
+                                            var s = document.getElementsByTagName('script')[0];
+                                            s.parentNode.insertBefore(k, s);
+                                        }());
+                                    }
+                                }
+                            });
+
+                        });
+
+                    }
+
+
+                };
+
+                return {
+                    init: init
+                };
+            };
+
+
+            $(function(){
+                new MediaMotiveLoader().init();
+            });
+
+        })(jQuery, window);
+    });
+</script>
 <script class="kxct" data-id="@Model.KruxId" data-timing="async" data-version="1.9" type="text/javascript">
-    window.Krux || ((Krux = function () { Krux.q.push(arguments) }).q = []);
+    @*window.Krux || ((Krux = function () { Krux.q.push(arguments) }).q = []);
 
     (function() {
         var k = document.createElement('script');
@@ -12,5 +140,5 @@
         (location.protocol === "https:" ? "https:" : "http:") + "//cdn.krxd.net/controltag?confid=@Model.KruxId";
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(k, s);
-    }());
+    }());*@
 </script>
