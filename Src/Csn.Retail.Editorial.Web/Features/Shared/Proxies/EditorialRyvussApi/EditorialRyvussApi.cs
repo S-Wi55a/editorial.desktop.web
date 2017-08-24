@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Ingress.ServiceClient.Abstracts;
 
@@ -8,8 +9,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
 {
     public interface IEditorialRyvussApiProxy
     {
-        Task<SmartServiceResponse<RyvussResult>> GetAsync(EditorialRyvussApiInput input);
-        Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussNavInput input);
+        Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInputNew input);
     }
 
     [AutoBind]
@@ -23,95 +23,41 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
             _smartClient = smartClient;
         }
 
-        public Task<SmartServiceResponse<RyvussResult>> GetAsync(EditorialRyvussApiInput input)
+        public Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInputNew input)
         {
-            return _smartClient.Service(ServiceName)
+            var client = _smartClient.Service(ServiceName)
                 .Path("/v4/editoriallistingretail")
-                .QueryString("q", input.RyvussPredicates)
-                .QueryString("count", "true")
-                .QueryString("inav", "RetailNav|Retail|ShowZero")
-                .QueryString("sr", $"|latest|{input.Offset}|{input.Limit}")
-                .GetAsync<RyvussResult>();
-        }
+                .QueryString("q", input.Query);
 
-        public Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussNavInput input)
-        {
-            return _smartClient.Service(ServiceName)
-                .Path("/v4/editoriallistingretail")
-                .QueryString("q", input.Query)
-                .QueryString("inav", "RetailNav|Retail|ShowZero")
-                .QueryString("sr", $"|latest|{input.Offset}|{input.Limit}")
-                .QueryString("count", "true")
-                .GetAsync<T>();
+            if (!string.IsNullOrEmpty(input.NavigationName))
+            {
+                var nav = input.PostProcessors == null || !input.PostProcessors.Any() ? input.NavigationName : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
+                client = client.QueryString("inav", nav);
+            }
+
+            if (input.IncludeSearchResults)
+            {
+                client = client.QueryString("sr", $"|{input.SortOrder}|{input.Offset}|{input.Limit}");
+            }
+
+            if (input.IncludeCount)
+            {
+                client = client.QueryString("count", "true");
+            }
+
+            return client.GetAsync<T>();
         }
     }
 
-    public class EditorialRyvussApiInput
-    {
-        public int Limit { get; set; }
-        public int Offset { get; set; }
-        public string RyvussPredicates { get; set; }
-    }
-
-    public class EditorialRyvussNavInput
+    public class EditorialRyvussInputNew
     {
         public string Query { get; set; }
+        public string NavigationName { get; set; }
+        public List<string> PostProcessors { get; set; }
+        public bool IncludeCount { get; set; }
+        public bool IncludeSearchResults { get; set; }
         public int Limit { get; set; }
         public int Offset { get; set; }
-
-    }
-
-    public class RyvussResult
-    {
-        public string Count { get; set; }
-        public RyvussNav INav { get; set; }
-        public List<SearchResult> SearchResults { get; set; }
-    }
-
-    public class SearchResult
-    {
-        public string Id { get; set; }
-        public string Headline { get; set; }
-        public DateTime DateAvailable { get; set; }
-        public string PhotoPath { get; set; }
-    }
-
-    public class RyvussNav
-    {
-        public List<RyvussNavNode> Nodes { get; set; }
-        public List<BreadCrumbs> BreadCrumbs { get; set; }
-
-    }
-
-    public class BreadCrumbs
-    {
-        public string Aspect { get; set; }
-        public string AspectDisplay { get; set; }
-        public string Facet { get; set; }
-        public string FacetDisplay { get; set; }
-        public string RemoveAction { get; set; }
-    }
-
-    public class RyvussNavNode
-    {
-        public bool IsSelected { get; set; }
-        public string PlaceholderExpression { get; set; }
-        public string MultiSelectMode { get; set; }
-        public string RemoveAction { get; set; }
-        public List<FacetNode> Facets { get; set; }
-        public string Name { get; set; }
-        public string DisplayName { get; set; }
-        public string Type { get; set; }
-    }
-
-    public class FacetNode
-    {
-        public bool IsSelected { get; set; }
-        public string Value { get; set; }
-        public string DisplayValue { get; set; }
-        public string Action { get; set; }
-        public int Count { get; set; }
-        public RyvussNav Refinements { get; set; }
-        public string Expression { get; set; }
+        public string SortOrder { get; set; }
     }
 }

@@ -4,7 +4,7 @@ const INavSearchResult = (props) => (
     <div className="iNavSearchResult">
         <a href={'#'}>
             <div className="iNavSearchResult__image-frame">
-                <img className="iNavSearchResult__image" src={'https://editorial.li.csnstatic.com/carsales' + props.photoPath} />
+                <img className="iNavSearchResult__image" src={props.imageUrl} />
             </div>
             <div className="iNavSearchResult__content-wrapper">
                 <div className="iNavSearchResult__heading">

@@ -463,7 +463,6 @@
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\React\Models\ReduxStoreModel.cs" />
-    <Compile Include="Features\React\ReactController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdsController.cs" />
@@ -491,9 +490,13 @@
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiDto.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiProxy.cs" />
+    <Compile Include="Features\Shared\Search\Aspect\AspectQuery.cs" />
+    <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
+    <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
+    <Compile Include="Features\Shared\Search\Nav\MapperConfiguration.cs" />
+    <Compile Include="Features\Shared\Search\Nav\NavResult.cs" />
+    <Compile Include="Features\Shared\Search\Refinements\RefinementsQuery.cs" />
     <Compile Include="Features\Shared\Search\SearchController.cs" />
-    <Compile Include="Features\Shared\Search\SearchQuery.cs" />
-    <Compile Include="Features\Shared\Search\SearchQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
@@ -864,7 +867,6 @@
     <Content Include="Features\Errors\Assets\Css\error-page.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons-variables.scss" />
     <Content Include="Views\web.config" />
-    <Content Include="Features\React\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\SearchBar\_searchBar.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Redux\_ReduxStore.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\SponsoredArticles\_sponsoredArticles.scss" />
@@ -873,7 +875,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\client.middleware.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\server.middleware.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\css\searchBar.scss" />
-    <Content Include="Features\React\Views\Listing.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Css\iNavListItem.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Css\iNavBreadCrumbs.scss" />
