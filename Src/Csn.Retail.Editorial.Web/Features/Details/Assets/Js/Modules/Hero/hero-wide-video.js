@@ -16,24 +16,22 @@ const heroVideoHtml = (videoId, playerId) => {
 };
 
 if (watchVideo) {
-    let heroVideoId = watchVideo.getAttribute('data-video-id');
-    let heroPlayerId = watchVideo.getAttribute('data-player-id');
+    const heroVideoId = watchVideo.getAttribute('data-video-id');
+    const heroPlayerId = watchVideo.getAttribute('data-player-id');
 
     heroFulVideoContainer.innerHTML = heroVideoHtml(heroVideoId, heroPlayerId);
 
-    let s = document.createElement('script');
+    const s = document.createElement('script');
     s.src = "//players.brightcove.net/674523943001/" + heroPlayerId + "_default/index.min.js";
     document.body.appendChild(s);
 
     watchVideo.addEventListener('click',
         (e) => {
-            playHeroVideo();
+            playHeroVideo(window.videojs);
 
-            setTimeout(function () {
-                heroContent.classList.toggle('hero__fade-out');
-                heroFullVideo.classList.remove('fullherovideo--wrap-hide');
-                heroFullVideo.classList.add('fullherovideo--wrap-show');
-            }, 100);
+            heroContent.classList.toggle('hero__slide-out');
+            heroFullVideo.classList.remove('fullherovideo--wrap-hide');
+            heroFullVideo.classList.add('fullherovideo--wrap-show');
         }
     );
 }
@@ -41,26 +39,26 @@ if (watchVideo) {
 if (heroFullVideoClose) {
     heroFullVideoClose.addEventListener('click',
         (e) => {
-            heroContent.classList.remove('hero__fade-out');
-            setTimeout(function () { closeHeroVideo(); }, 600);
+            heroContent.classList.remove('hero__slide-out');
+            closeHeroVideo();
         }
     );
 }
 
 function closeHeroVideo() {
-    stopHeroVideo();
+    stopHeroVideo(window.videojs);
     heroFullVideo.classList.add('fullherovideo--wrap-hide');
     heroFullVideo.classList.remove('fullherovideo--wrap-show');
 }
 
-function playHeroVideo() {
-    let myPlayer = videojs('fullhero_video');
+function playHeroVideo(videojs) {
+    const myPlayer = videojs('fullhero_video');
     myPlayer.play();
 }
 
 
-function stopHeroVideo() {
-    let myPlayer = videojs('fullhero_video');
+function stopHeroVideo(videojs) {
+    const myPlayer = videojs('fullhero_video');
     myPlayer.pause();    
 }
 

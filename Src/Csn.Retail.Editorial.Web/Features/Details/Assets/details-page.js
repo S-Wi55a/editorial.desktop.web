@@ -148,7 +148,9 @@ loaded.then(function () {
 require('Js/Modules/ArticlePricing/articlePricing.js');
 
 // add hero-wide-video
-require('Js/Modules/Hero/hero-wide-video.js');
+if (document.querySelector('.article-type--widevideo')) {
+    require('Js/Modules/Hero/hero-wide-video.js');
+}
 
 
 //Parallax
