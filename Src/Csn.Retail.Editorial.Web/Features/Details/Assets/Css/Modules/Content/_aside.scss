@@ -10,10 +10,16 @@
     left: calc(50% - ((#{($screen-md - $width - $spacing)})/2));
     width: 300px;
     padding-top: 30px;
+    padding-bottom: $grid-gutter-width/2;
     position: relative;
+
 
     @include breakpoint($screen-lg) {
         padding-top: 45px;
         left: calc(50% - ((#{($screen-lg - $width - $spacing)})/2));
     }
+}
+
+.scrollmagic-pin-wrapper--aside {
+    float: left;
 }
