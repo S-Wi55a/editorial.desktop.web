@@ -13,7 +13,7 @@ if (!SERVER) {
 // Check for Store
 const store = window.store;
 
-const render = (WrappedComponent) => {
+const render = WrappedComponent => {
     ReactDOM.render(
         <AppContainer searchbar>
             <Provider store={store}>

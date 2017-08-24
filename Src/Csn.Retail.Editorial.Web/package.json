@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "eslint":"eslint",
+        "eslint": "eslint",
         "postinstall": "npm run bower install",
         "webpack": "webpack",
         "webpack-dev-server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
@@ -59,6 +59,7 @@
         "eslint": "^4.3.0",
         "eslint-config-airbnb": "^15.1.0",
         "eslint-config-defaults": "^9.0.0",
+        "eslint-import-resolver-webpack": "^0.8.3",
         "eslint-loader": "^1.9.0",
         "eslint-plugin-import": "^2.7.0",
         "eslint-plugin-jsx-a11y": "^5.1.1",
@@ -85,7 +86,6 @@
         "redux-immutable-state-invariant": "^2.0.0",
         "redux-unhandled-action": "^1.2.0",
         "resolve-url-loader": "^2.1.0",
-        "rimraf": "^2.6.1",
         "sass-loader": "^6.0.6",
         "script-loader": "^0.7.0",
         "style-loader": "^0.18.2",
@@ -127,6 +127,7 @@
         "redux-ui": "^0.1.1",
         "reselect": "^3.0.1",
         "scrollmagic": "^2.0.5",
-        "swiper": "^3.4.2"
+        "swiper": "^3.4.2",
+        "rimraf": "^2.6.1"        
     }
 }
