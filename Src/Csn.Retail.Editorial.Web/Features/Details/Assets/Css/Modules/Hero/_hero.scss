@@ -305,7 +305,6 @@
 .fullherovideo {
     &--wrap {
         align-items: center;
-        display: -webkit-flex;
         display: flex;
         height: 100%;
         left: 0;
@@ -323,8 +322,6 @@
         .fullherovideo__inner {
             opacity: 1;
             transition: opacity 1.7s ease-in-out;
-            -moz-transition: opacity 1.7s ease-in-out;
-            -webkit-transition: opacity 1.7s ease-in-out;
         }
     }
 
@@ -332,8 +329,6 @@
         .fullherovideo__inner {
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            -moz-transition: opacity 1.5s ease-in-out;
-            -webkit-transition: opacity 1.5s ease-in-out;
         }
     }
 

@@ -31,10 +31,17 @@
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
         
-        <div class="container">
-            @{ Html.RenderPartial("Partials/_Main"); }
-            @if (!isWide) { Html.RenderPartial("Partials/_Aside"); }
-        </div>
+        @if (!isWide)
+        {
+            <div class="container">
+                @{ Html.RenderPartial("Partials/_Main"); }
+                @{ Html.RenderPartial("Partials/_Aside"); }
+            </div>
+        }
+        else
+        {
+            Html.RenderPartial("Partials/_Main");
+        }
     </article>
 
     @{ Html.RenderPartial("Partials/Modal/_Modal"); }

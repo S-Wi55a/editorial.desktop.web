@@ -39,30 +39,11 @@
     }
 }
 
-.article-type.article-type--wideimage, .article-type {
-    $aside-width: 300px;
-    $spacing: 31px;
-
-    font-size: inherit;
-
-    & .container {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-
+.article-type.article-type--wideimage, .article-type.article-type--widevideo {
     .article {
-        left: 50%;
-        display: inline-block;
-        vertical-align: top;
-        transform: translate(-50%);
-
         & .container {
-            padding-left: 0;
-            padding-right: 0;
-            width: calc(#{$screen-md} - #{$aside-width} - #{$spacing*2});
-
             @include breakpoint($screen-lg) {
-                width: calc(#{$screen-lg} - #{$aside-width} - #{$spacing*2});
+                width: $screen-md;
             }
         }
     }
