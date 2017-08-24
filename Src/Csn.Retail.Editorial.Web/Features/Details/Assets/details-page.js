@@ -3,8 +3,10 @@ require('./css/details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
-import { loaded } from 'document-promises/document-promises.js';
-import ScrollMagic from 'ScrollMagic';
+import { loaded } from 'document-promises/document-promises.js'
+import ScrollMagic from 'ScrollMagic'
+import * as isMobile from 'ismobilejs'
+if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero
@@ -102,13 +104,17 @@ let disqus = function(d, w, selector) {
         const offset = (-1 * w.innerHeight) * 2;
         w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
 
-        new ScrollMagic.Scene({
+        let scene = new ScrollMagic.Scene({
             triggerElement: triggerElement,
             triggerHook: triggerHook,
             offset: offset,
             reverse: false
         })
-            .on("enter", ()=>{require('Js/Modules/Disqus/disqus.js').default()})
+            .on("enter", () => {
+                require('Js/Modules/Disqus/disqus.js').default();
+                scene.destroy(true)
+                scene = null
+            })
             .addTo(w.scrollMogicController);
     }
 }
@@ -152,7 +158,6 @@ if (document.querySelector('.article-type--widevideo')) {
     require('Js/Modules/Hero/hero-wide-video.js');
 }
 
-
 //Parallax
 loaded.then(function () {
     if (document.querySelector('.csn-parallax')) {
@@ -169,3 +174,13 @@ loaded.then(function () {
             'Parallax - Rellax');
     }   
 });
+
+//Sticky Sidebar
+if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
+    loaded.then(function() {
+        const aside = document.querySelector('.aside');
+        if (aside) {
+            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
+        }
+    })
+}
