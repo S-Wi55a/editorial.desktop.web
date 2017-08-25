@@ -9,7 +9,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
 {
     public interface IEditorialRyvussApiProxy
     {
-        Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInputNew input);
+        Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInput input);
     }
 
     [AutoBind]
@@ -23,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
             _smartClient = smartClient;
         }
 
-        public Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInputNew input)
+        public Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInput input)
         {
             var client = _smartClient.Service(ServiceName)
                 .Path("/v4/editoriallistingretail")
@@ -49,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
         }
     }
 
-    public class EditorialRyvussInputNew
+    public class EditorialRyvussInput
     {
         public string Query { get; set; }
         public string NavigationName { get; set; }

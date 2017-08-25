@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
 {
@@ -17,7 +18,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
 
     public class NavNode
     {
-        public bool IsSelected { get; set; }
         public string MultiSelectMode { get; set; }
         public List<FacetNode> Facets { get; set; }
         public string Name { get; set; }
@@ -33,6 +33,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public int Count { get; set; }
         public string Expression { get; set; }
         public bool IsRefineable { get; set; }
+        public Refinement Refinement { get; set; }
+        public NavNode Refinements { get; set; }
     }
 
     public class BreadCrumb

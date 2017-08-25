@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
@@ -37,14 +36,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
         public async Task<IHttpActionResult> GetAspectRefinements([FromUri]string refinementAspect, [FromUri]string parentExpression, [FromUri]string q = null)
         {
             // to be replaced with refinements query handler
-            var result = await _queryDispatcher.DispatchAsync<RefinementsQuery, NavResult>(new RefinementsQuery()
+            var result = await _queryDispatcher.DispatchAsync<RefinementsQuery, RefinementResult>(new RefinementsQuery()
             {
                 Query = q,
                 Aspect = refinementAspect,
                 ParentExpression = parentExpression
             });
 
-            if (result?.INav?.Nodes != null && result.INav.Nodes.Any()) return Ok(result.INav.Nodes.First());
+            if (result != null) return Ok(result);
 
             return NotFound();
         }
@@ -54,13 +53,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
         public async Task<IHttpActionResult> GetAspect(string aspect, [FromUri]string q = null)
         {
             // to be replaced with aspect query handler
-            var result = await _queryDispatcher.DispatchAsync<AspectQuery, NavResult>(new AspectQuery()
+            var result = await _queryDispatcher.DispatchAsync<AspectQuery, AspectResult>(new AspectQuery()
             {
                 Query = q,
                 Aspect = aspect
             });
 
-            if (result?.INav?.Nodes != null && result.INav.Nodes.Any()) return Ok(result.INav.Nodes.First());
+            if (result != null) return Ok(result);
 
             return NotFound();
         }

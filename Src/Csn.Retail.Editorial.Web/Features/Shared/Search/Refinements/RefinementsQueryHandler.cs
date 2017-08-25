@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
@@ -14,7 +12,7 @@ using Csn.SimpleCqrs;
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
 {
     [AutoBind]
-    public class RefinementsQueryHandler : IAsyncQueryHandler<RefinementsQuery, NavResult>
+    public class RefinementsQueryHandler : IAsyncQueryHandler<RefinementsQuery, RefinementResult>
     {
         private readonly IEditorialRyvussApiProxy _ryvussProxy;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
@@ -27,12 +25,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
             _mapper = mapper;
         }
 
-        public async Task<NavResult> HandleAsync(RefinementsQuery query)
+        public async Task<RefinementResult> HandleAsync(RefinementsQuery query)
         {
             // TODO: Add validation filters for the query
 
 
-            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInputNew()
+            var ryvussResult = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {
                 Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
                 IncludeCount = true,
@@ -40,9 +38,17 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
                 PostProcessors = new List<string> { $"Retail({query.Aspect},{query.ParentExpression})", "ShowZero" }
             });
 
-            var resultData = !result.IsSucceed ? null : result.Data;
+            var resultData = !ryvussResult.IsSucceed ? null : ryvussResult.Data;
 
-            return resultData == null ? null : _mapper.Map<NavResult>(resultData);
+            if (resultData?.INav?.Nodes == null || !resultData.INav.Nodes.Any()) return null;
+
+            var firstNode = resultData.INav.Nodes.First();
+
+            var result = _mapper.Map<RefinementResult>(firstNode);
+
+            result.Count = resultData.Count;
+
+            return result;
         }
     }
 }
