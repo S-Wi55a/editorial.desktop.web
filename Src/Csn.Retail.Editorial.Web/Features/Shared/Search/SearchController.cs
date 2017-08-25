@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
@@ -32,31 +33,34 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
         }
 
         [HttpGet]
-        [Route("editorial/api/v1/search/nav/aspect")]
-        public async Task<IHttpActionResult> GetAspect([FromUri]string q = null)
+        [Route("editorial/api/v1/search/nav/aspects/refinements")]
+        public async Task<IHttpActionResult> GetAspectRefinements([FromUri]string refinementAspect, [FromUri]string parentExpression, [FromUri]string q = null)
         {
-            // to be replaced with aspect query handler
-            var result = await _queryDispatcher.DispatchAsync<AspectQuery, NavResult>(new AspectQuery()
+            // to be replaced with refinements query handler
+            var result = await _queryDispatcher.DispatchAsync<RefinementsQuery, NavResult>(new RefinementsQuery()
             {
-                Query = q
+                Query = q,
+                Aspect = refinementAspect,
+                ParentExpression = parentExpression
             });
 
-            if (result != null) return Ok(result);
+            if (result?.INav?.Nodes != null && result.INav.Nodes.Any()) return Ok(result.INav.Nodes.First());
 
             return NotFound();
         }
 
         [HttpGet]
-        [Route("editorial/api/v1/search/nav/aspect/refinements")]
-        public async Task<IHttpActionResult> GetAspectRefinements([FromUri]string q = null)
+        [Route("editorial/api/v1/search/nav/aspects/{aspect}")]
+        public async Task<IHttpActionResult> GetAspect(string aspect, [FromUri]string q = null)
         {
-            // to be replaced with refinements query handler
-            var result = await _queryDispatcher.DispatchAsync<RefinementsQuery, NavResult>(new RefinementsQuery()
+            // to be replaced with aspect query handler
+            var result = await _queryDispatcher.DispatchAsync<AspectQuery, NavResult>(new AspectQuery()
             {
-                Query = q
+                Query = q,
+                Aspect = aspect
             });
 
-            if (result != null) return Ok(result);
+            if (result?.INav?.Nodes != null && result.INav.Nodes.Any()) return Ok(result.INav.Nodes.First());
 
             return NotFound();
         }

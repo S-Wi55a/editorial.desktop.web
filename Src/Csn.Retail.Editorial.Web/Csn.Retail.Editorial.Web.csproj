@@ -491,11 +491,13 @@
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiProxy.cs" />
     <Compile Include="Features\Shared\Search\Aspect\AspectQuery.cs" />
+    <Compile Include="Features\Shared\Search\Aspect\AspectQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\Nav\MapperConfiguration.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavResult.cs" />
     <Compile Include="Features\Shared\Search\Refinements\RefinementsQuery.cs" />
+    <Compile Include="Features\Shared\Search\Refinements\RefinementsQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\SearchController.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
@@ -889,7 +891,6 @@
     <Content Include="Features\Details\Views\Partials\Content\_Disclaimer.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_MediaMotiveScripts.cshtml" />
-    <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
