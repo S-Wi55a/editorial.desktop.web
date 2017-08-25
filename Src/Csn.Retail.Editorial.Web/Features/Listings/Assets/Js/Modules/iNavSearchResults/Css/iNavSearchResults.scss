@@ -7,21 +7,12 @@
     float: left;
 }
 
-.iNavSearchResults {
-    $spacing: 20px;
+/*.iNavSearchResults {
 
+    $spacing: 20px;
     font-size: 0;
 
-    &__count {
-        @include h4();
-        margin-left: $spacing;
-        margin-bottom: $spacing;
-
-        @include breakpoint($screen-lg) {
-            margin-left: $spacing * 2;
-        }
-    }
-}
+}*/
 
 
 @import "inavsearchresult";

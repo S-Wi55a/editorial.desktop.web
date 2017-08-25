@@ -448,6 +448,8 @@
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\iNavArticleCount.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Containers\iNavBreadCrumbsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\iNavBreadCrumbs.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Component\iNavSearchResult.js" />
@@ -888,6 +890,7 @@
     <Content Include="Features\Details\Views\Partials\Content\_Disclaimer.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_MediaMotiveScripts.cshtml" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Css\iNavArticleCount.scss" />
     <None Include="Web.AwsStaging.config" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <None Include="Web.Test.config">

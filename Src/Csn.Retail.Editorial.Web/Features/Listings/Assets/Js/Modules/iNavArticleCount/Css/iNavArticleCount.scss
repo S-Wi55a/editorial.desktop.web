@@ -1,0 +1,9 @@
+﻿@import "css/_globals.scss";
+
+.iNavArticleCount {
+    $spacing: 20px;
+    @include h4();
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+    
+}
