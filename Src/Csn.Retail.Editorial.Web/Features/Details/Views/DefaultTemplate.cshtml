@@ -30,6 +30,7 @@
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
+        
         @if (!isWide)
         {
             <div class="container">

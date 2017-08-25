@@ -30,6 +30,18 @@
         padding-right: 32px;
     }
 
+    @include breakpoint($screen-sm) {
+        width: calc(100% - (285px + #{$grid-gutter-width/2}));
+    }
+
+    @include breakpoint($screen-md) {
+        width: calc(100% - (315px + #{$grid-gutter-width/2}));
+    }
+
+    @include breakpoint($screen-lg) {
+        width: calc(100% - (300px + #{$grid-gutter-width/2}));
+    }
+
     @include breakpoint($screen-lg) {
         padding-right: 32px;
     }
@@ -95,10 +107,81 @@
         position: relative;
     }
 
+    &--wideVideo {
+        background-color: $cs-black;
+        overflow: hidden;
+        position: relative;
+
+        .hero__heading {
+            text-shadow: none;
+        }
+    }
+
+    &__video-container {
+        height: 100%;
+        left: 0;
+        opacity: 0.4;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    &__video-player {
+        height: auto;
+        left: 50%;
+        min-height: 100%;
+        min-width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+    }
+
+    &__video-frame {
+        max-height: $height;
+        width: 100%;
+
+        &::before {
+            content: '';
+            display: block;
+            padding-top: percentage(1/2.53);
+        }
+    }
+
+    &__playbutton-container {
+        position: relative;
+        top: 50%;
+    }
+
+    &__playbutton {
+        border: 1px solid $cs-white;
+        border-radius: 9999px;
+        color: $cs-white;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 600;
+        height: 40px;
+        letter-spacing: 1px;
+        line-height: 40px;
+        padding: 0 25px;
+        text-transform: uppercase;
+        transition: transform .2s, background-color .2s, border-color .2s, -webkit-transform .2s;
+
+        &:hover {
+            background-color: $cs-white;
+            border-color: $cs-white;
+            color: $cs-black;
+        }
+    }
+
+
+
     &__frame {
         width: 100%;
         max-height: 640px;
         position: relative;
+        opacity: 0.85;
         overflow: hidden;
 
         &::before {
@@ -126,18 +209,24 @@
         position: absolute;
         width: 100%;
         height: 100%;
+        right: 0;
         top: 0;
+
+        &.hero__slide-out {
+            right: 100%;
+            transition: all 1.5s ease;
+        }
 
         .container {
             height: 100%;
         }
 
-        &::before{
+        &::before {
             content: '';
             display: block;
             position: absolute;
             background-color: $cs-black;
-            opacity: 0.15;
+            opacity: 0;
             width: 100%;
             height: 100%;
         }
@@ -192,5 +281,87 @@
         @include bounce();
         animation: bounce 1.5s linear;
         animation-iteration-count: infinite;
+    }
+}
+
+// Full screen hero video (playing)
+#fullhero_video {
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: contain;
+    position: absolute;
+    width: auto;
+
+    video {
+        height: 100%;
+
+        @include breakpoint($screen-lg) {
+            height: auto;
+        }
+    }
+}
+
+.fullherovideo {
+    &--wrap {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        left: 0;
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10000001;
+        -webkit-align-items: center;
+    }
+
+    &--wrap-show {
+        pointer-events: auto;
+
+        .fullherovideo__inner {
+            opacity: 1;
+            transition: opacity 1.7s ease-in-out;
+        }
+    }
+
+    &--wrap-hide {
+        .fullherovideo__inner {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+    }
+
+    &__inner {
+        background: $cs-black;
+        height: 100%;
+        margin: 0 auto;
+        opacity: 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    &__action-close {
+        color: $cs-white;
+        cursor: pointer;
+        font-size: 3.15em;
+        font-weight: bold;
+        height: 60px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60px;
+    }
+
+    &__action-icon {
+        &::before {
+            content: $icon-cross-lg;
+            font-family: $font-family-icons;
+            font-style: normal;
+            color: $cs-white;
+        }
     }
 }

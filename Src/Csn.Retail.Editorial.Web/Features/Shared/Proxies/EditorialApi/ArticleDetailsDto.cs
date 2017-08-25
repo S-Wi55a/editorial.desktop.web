@@ -176,7 +176,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         MultipleImages,
         Video,
         ImagesAndVideo,
-        WideImage
+        WideImage,
+        WideVideo
     }
 
     public class Image
@@ -191,6 +192,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     {
         public string VideoId { get; set; }
         public string PlayerId { get; set; }
+        public string EncodingUrl { get; set; }
     }
 
     // this captures all the possible properties across all the content section

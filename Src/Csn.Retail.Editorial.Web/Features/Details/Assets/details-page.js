@@ -136,7 +136,7 @@ loaded.then(function () {
 });
 
 //Lazy load More articles JS
-let sponsoredArticles = function(d) {
+let sponsoredArticles = function(d) {B
 
     if (d.querySelector('.article__type--sponsored')) {
         require.ensure(['Js/Modules/SponsoredArticles/sponsoredArticles.js'],
@@ -152,6 +152,11 @@ loaded.then(function () {
 
 // display disclaimer on pricing guide
 require('Js/Modules/ArticlePricing/articlePricing.js');
+
+// add hero-wide-video
+if (document.querySelector('.article-type--widevideo')) {
+    require('Js/Modules/Hero/hero-wide-video.js');
+}
 
 //Parallax
 loaded.then(function () {

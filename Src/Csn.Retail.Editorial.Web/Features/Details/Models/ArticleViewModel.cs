@@ -46,7 +46,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
     {
         public HeroType Type { get; set; }
         public List<Image> Images { get; set; }
+        public string BrightcovePlayerId { get; set; }
+        public string BrightcoveVideoId { get; set; }
         public string BrightcoveVideoIFrameUrl { get; set; }
+        public string BrightcoveVideoEncodingUrl { get; set; }
         public string Headline { get; set; }
         public string SubHeading { get; set; }
     }
