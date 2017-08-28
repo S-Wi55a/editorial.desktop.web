@@ -55,7 +55,9 @@ const article = (data) => {
                 <div class="more-article">
                     <a class="more-article__link-container" data-webm-clickvalue="click-post" href="${item.url || ''}">
                         <div class="more-article__image">
-                            <img src="${item.image.url || ''}?width=140&height=93" alt="${item.image.alternateText || ''}" />
+                            <img class="stock-for-sale-item__image" src="${item.image.url}?width=100&height=66"
+                                srcset="${item.image.url}?width=100&height=66 100w"
+                                sizes="(min-width: 768px) 100px" alt="${item.image.alternateText || ''}" />
                         </div>
                         <div class="more-article__content">
                             <div class="more-article__title">
