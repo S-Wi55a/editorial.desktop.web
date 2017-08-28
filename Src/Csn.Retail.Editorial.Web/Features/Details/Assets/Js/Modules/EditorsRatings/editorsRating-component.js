@@ -11,20 +11,20 @@ const expertRatingSelector = '.expert-ratings';
 const expertRatingMeters = document.querySelectorAll('.expert-ratings__meter');
 
 const overallRatingGraph = {
-    id:                  'overall-rating-graph',
-    radius:              60,
-    value:               0,
-    maxValue:            100,
-    width:               10,
-    text:                function(value){return value;},
-    colors:              ['#DBDBDB', '#007CC2'],
-    duration:            0,
-    wrpClass:            'overall-rating-graph__wrp',
-    textClass:           'overall-rating-graph__text',
-    valueStrokeClass:    'overall-rating-graph__valueStroke',
+    id: 'overall-rating-graph',
+    radius: 60,
+    value: 0,
+    maxValue: 100,
+    width: 10,
+    text: function(value) { return value; },
+    colors: ['#DBDBDB', '#007CC2'],
+    duration: 0,
+    wrpClass: 'overall-rating-graph__wrp',
+    textClass: 'overall-rating-graph__text',
+    valueStrokeClass: 'overall-rating-graph__valueStroke',
     maxValueStrokeClass: 'overall-rating-graph__maxValueStroke',
-    styleWrapper:        true,
-    styleText:           true
+    styleWrapper: true,
+    styleText: true
 };
 
 
@@ -79,34 +79,28 @@ let init = (d, w, scope) => {
                 require('Js/Modules/meter/meter.js');
 
                 new ScrollMagic.Scene({
-                    triggerElement: triggerElement,
-                    triggerHook: triggerHook,
-                    reverse: false
-                })
-                .on("enter", () => {
-                    myCircle.update(d.getElementById('overall-rating-graph').getAttribute('data-overall-rating'), 500)
-                })
-                .addTo(window.scrollMogicController);
+                        triggerElement: triggerElement,
+                        triggerHook: triggerHook,
+                        reverse: false
+                    })
+                    .on("enter", () => {
+                        myCircle.update(d.getElementById('overall-rating-graph').getAttribute('data-overall-rating'), 500)
+                    })
+                    .addTo(window.scrollMogicController);
             },
             'meter-polyfill');
     } else {
         new ScrollMagic.Scene({
-            triggerElement: triggerElement,
-            triggerHook: triggerHook,
-            reverse: false
-        })
-        .on("enter", () => {
-                     myCircle.update(d.getElementById('overall-rating-graph').getAttribute('data-overall-rating'), 500)
-                     AnimateMeters(expertRatingMeters, 200);
-        })
-        .addTo(window.scrollMogicController);
+                triggerElement: triggerElement,
+                triggerHook: triggerHook,
+                reverse: false
+            })
+            .on("enter", () => {
+                myCircle.update(d.getElementById('overall-rating-graph').getAttribute('data-overall-rating'), 500)
+                AnimateMeters(expertRatingMeters, 200);
+            })
+            .addTo(window.scrollMogicController);
     }
 
 }
 init(document, window, editorsRatings);
-
-
-
-
-
-

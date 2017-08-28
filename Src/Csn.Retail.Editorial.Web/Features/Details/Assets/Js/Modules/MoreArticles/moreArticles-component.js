@@ -121,10 +121,10 @@ let filterHandler = (e, ...args) => {
             filter.classList.remove(className);
         }
         el.classList.add(className);
-        
+
         //get url and set it to next
         updateButton(scope.moreArticlesNextCtrl, 'data-more-articles-query', el.getAttribute('data-more-articles-query'));
-            //destory old slider
+        //destory old slider
         scope.moreArticlesSlideContainer.innerHTML = '';
         //Init new slider
         updateContent(
@@ -177,7 +177,7 @@ let panelToggle = (scope) => {
 
 // opens the MoreArticles panel. If it is already open then does nothing
 let openPanel = (scope) => {
-    if(scope.self.classList.contains('show')){
+    if (scope.self.classList.contains('show')) {
         return;
     }
 
@@ -299,8 +299,8 @@ let removeScrollMagicScenes = (scrollMagicScenes) => {
 }
 
 let disableScrollMagic = () => {
-    if (typeof (scrollMagicScenes) !== 'undefined') {
-        removeScrollMagicScenes(scrollMagicScenes);    
+    if (typeof(scrollMagicScenes) !== 'undefined') {
+        removeScrollMagicScenes(scrollMagicScenes);
     }
 }
 
