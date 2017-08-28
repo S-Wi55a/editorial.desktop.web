@@ -1,11 +1,10 @@
 ﻿using System.Threading.Tasks;
-using System.Web.Mvc;
+using System.Web.Http;
 using Csn.SimpleCqrs;
-using Newtonsoft.Json;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.ApiProxy
 {
-    public class ApiProxyController : Controller
+    public class ApiProxyController : ApiController
     {
         private readonly IQueryDispatcher _queryDispatcher;
 
@@ -16,11 +15,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.ApiProxy
 
         [HttpGet]
         [Route("editorial/api/v1/proxy")]
-        public async Task<object> Get(ApiProxyQuery query)
+        public async Task<IHttpActionResult> Get([FromUri]ApiProxyQuery query)
         {
             var result = await _queryDispatcher.DispatchAsync<ApiProxyQuery, object>(query);
 
-            return JsonConvert.SerializeObject(result);
+            return Ok(result);
         }
     }
 }

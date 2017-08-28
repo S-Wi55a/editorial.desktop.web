@@ -1,0 +1,27 @@
+﻿@import "css/_globals.scss";
+
+#iNavSearchResults {
+    $iNav-width: 315px;
+
+    width: calc(100% - #{$iNav-width});
+    float: left;
+}
+
+.iNavSearchResults {
+    $spacing: 20px;
+
+    font-size: 0;
+
+    &__count {
+        @include h4();
+        margin-left: $spacing;
+        margin-bottom: $spacing;
+
+        @include breakpoint($screen-lg) {
+            margin-left: $spacing * 2;
+        }
+    }
+}
+
+
+@import "inavsearchresult";

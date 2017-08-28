@@ -1,0 +1,184 @@
+﻿@import "css/globals";
+
+//TODO: change
+#redux-placeholder {
+    z-index: 2;
+    position: relative;
+}
+
+.searchbar {
+
+    $search-bar-height: 60px;
+    $search-bar-form-action-height: 60px;
+    $category-container-height: 500px;
+
+    //border-bottom: 1px solid $cs-light-grey-3;
+    background-color: $cs-light-grey-3;
+    font-size: 0;
+    height: $search-bar-height + 5px; //becasue of border
+    z-index: 1;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        background-color: $cs-primary;
+        height: 5px;
+    }
+
+    &__inner-wrapper {
+        position: relative;
+    }
+
+    &__toggle-button {
+
+        $toggle-button-width: 70px;
+
+        &::before {
+            content: $icon-magnifying-sm;
+            font-family: $font-family-icons;
+            font-size: 30px;
+        }
+
+        width: $toggle-button-width;
+        height: $search-bar-height;
+        border-left: 1px solid $cs-light-grey-2;
+        position: absolute;
+        left: -1 * $toggle-button-width;
+    }
+
+    &__category-container {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        position: relative;
+        top: 0;
+        background-color: $cs-white;
+        max-height: $search-bar-height;
+        overflow-y: hidden;
+        transition-property: all;
+        transition-duration: .5s;
+        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+        border-right: 1px solid $cs-light-grey-2;
+        border-left: 1px solid $cs-light-grey-2;
+        padding-bottom: $search-bar-form-action-height;
+    }
+
+    &.isActive {
+        .searchbar__category-container {
+            max-height: $category-container-height + $search-bar-height + $search-bar-form-action-height;
+        }
+
+        .searchbar-category__container {
+            display: block;
+        }
+    }
+
+
+    &__category {
+        width: percentage(1/3);
+        font-size: $font-size-body;
+        display: inline-block;
+        vertical-align: top;
+    }
+    //Search category
+    .searchbar-category {
+
+        $spacing: 20px;
+
+        min-height: $category-container-height + $search-bar-height;
+
+        &:nth-of-type(-n+2) {
+            border-right: 1px solid $cs-light-grey-2;
+        }
+
+
+        &:nth-of-type(-n+3) {
+            z-index: 2;
+            position: relative;
+        }
+        //Hide 3+
+        &:nth-of-type(n+4) {
+            display: none;
+        }
+
+
+
+        &__heading {
+            height: $search-bar-height;
+            line-height: $search-bar-height;
+            padding: 0 20px;
+            background-color: $cs-light-grey-3;
+            font-size: 18px;
+            font-weight: 600;
+            z-index: 1;
+            position: relative;
+        }
+
+        &__container {
+            max-height: $category-container-height - ($spacing*2);
+            overflow-y: auto;
+            padding: 0 $spacing;
+            margin-top: $spacing;
+            display: none;
+
+
+            &--1 {
+            }
+        }
+    }
+   
+    //searchbar-form-action
+    .searchbar-form-action {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: $search-bar-form-action-height;
+        background-color: $cs-light-grey-3;
+        border: 1px solid $cs-light-grey-2;
+        text-align: right;
+        line-height: $search-bar-form-action-height;
+        padding: 0 20px;
+        z-index: 0;
+
+        &__button {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 20px;
+
+            &--clear {
+                @include button(( round: true, thin: true, primary-inverse: true ));
+            }
+
+            &--confirm {
+                @include button(( round: true, thin: true, primary: true ));
+            }
+        }
+
+        &.isLoading {
+            .searchbar-form-action__loader {
+                display: inline-block;
+                vertical-align: top;
+                width: $search-bar-form-action-height/2;
+                height: $search-bar-form-action-height;
+                
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    z-index: 2;
+                    background-image: url($spinner--dark);
+                    background-size: 100px 100px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+}
+
+@import "js/modules/redux/inav/css/inavlistitem";
+

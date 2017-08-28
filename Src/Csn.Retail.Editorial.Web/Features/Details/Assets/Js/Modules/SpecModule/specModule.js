@@ -8,11 +8,8 @@ const SpecificationsItem_DD = (props) => {
 
     const iconClassName = props.item.title ? props.item.title.replace(/\s+/g, "-").replace(/\(|\)/g, "").toLowerCase() : '';
 
-    return (
-        <dd className={'spec-item__spec-item-value ' + iconClassName} data-value={encodeURI(props.item.value)}>{props.item.value}</dd>
-    )
-
-
+    return <dd className={'spec-item__spec-item-value ' + iconClassName} data-value={encodeURI(props.item.value)}>{props.item.value}</dd>
+    
 }
 
 const SpecificationsItem_DT = (props) => {
@@ -58,9 +55,9 @@ const ThirdPartyOffer = (props) => {
 
     if (props.tabOrModal) {
         if (props.tabOrModal[titleNoSpace] === 'iframe') {
-            const iframe = `<iframe src=${props.data.formUrl}></iframe>`
-            tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(e) => {
-                props.disclaimerHandler(titleNoSpace, e)
+            const iframe = `<iframe src=${props.data.formUrl}"></iframe>`
+            tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(p,e) => {
+                props.disclaimerHandler(titleNoSpace, p, e)
             }} className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</span>
         } else {
             tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</a>
@@ -261,14 +258,12 @@ class SpecModule extends React.Component {
     }
 
     // Data disclaimer handler
-    disclaimerHandler = (className, e, wrap) => {
-        // e is always the last arg, If not called with className set e to className becasue className equals old event data when called with 1 arg
-        if (!(typeof className === 'string')) {
-            e = className
-            className = ''
-        }
+    disclaimerHandler = (...args) => {
 
-        const content = decodeURI(e.target.getAttribute('data-disclaimer'))
+        const synthEvt = args[args.length - 2]
+        const className = args[args.length - 3]
+
+        const content = decodeURI(synthEvt.target.getAttribute('data-disclaimer'))
         this.props.modal.show(disclaimerTemplate(content), className)
 
     }

@@ -1,0 +1,63 @@
+﻿@import "css/_globals.scss";
+
+.iNavBreadCrumbs {
+    @include clearfix();
+    margin-bottom: 25px;
+
+
+}
+
+.iNavBreadCrumb {
+    float: left;
+    @include button(( extra-small: true, round: true, thin: true, primary-inverse: true ));
+    cursor: pointer;
+    transition: .3s;
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    &::after {
+        content: $icon-cross-md;
+        font-family: $font-family-icons;
+        font-size: 14px;
+        color: $cs-primary;
+        margin-left: 15px;
+        display: inline-block;
+        vertical-align: baseline;
+    }
+
+    &:visited {
+        color: $cs-primary;
+        text-decoration: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $cs-primary;
+        border-color: $cs-primary;
+        color: $cs-white;
+        text-decoration: none;
+
+        &::after {
+            color: $cs-white;
+        }
+    }
+
+    &.iNavBreadCrumbTransition-enter {
+        opacity: 0.01;
+    }
+
+    &.iNavBreadCrumbTransition-enter.iNavBreadCrumbTransition-enter-active {
+        opacity: 1;
+        transition: opacity 300ms ease-in;
+    }
+
+    &.iNavBreadCrumbTransition-leave {
+        opacity: 1;
+    }
+
+    &.iNavBreadCrumbTransition-leave.iNavBreadCrumbTransition-leave-active {
+        opacity: 0.01;
+        transition: opacity 300ms ease-in;
+    }
+}
