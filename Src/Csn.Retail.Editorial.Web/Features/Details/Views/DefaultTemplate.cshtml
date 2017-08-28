@@ -27,7 +27,7 @@
 
 <div class="page-container">
 
-    @{ Html.RenderPartial("Partials/SearchBar/_searchBar"); }
+    @{ Html.RenderPartial("_Header", Model); }
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
