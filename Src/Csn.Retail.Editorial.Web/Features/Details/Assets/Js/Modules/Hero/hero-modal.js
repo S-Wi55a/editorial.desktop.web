@@ -79,7 +79,7 @@ export function modalGallery() {
 
     window.addEventListener('resize', modalResizeHandler.bind(null, modalSwiper, null))
 
-    window.addEventListener('modal.close', function () {
+    window.addEventListener('modal.close', function() {
         window.removeEventListener('resize', modalResizeHandler)
     })
 }
@@ -112,7 +112,7 @@ function initSliderSize(swiper) {
 
         // Set dimenions for wrapper 
         modalResizeHandler(swiper, _img)
-        // Force transitions
+            // Force transitions
         swiper.slideTo(swiper.activeIndex)
 
     })

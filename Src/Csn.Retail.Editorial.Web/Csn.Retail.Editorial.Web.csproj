@@ -62,6 +62,10 @@
       <HintPath>..\packages\Autofac.Owin.4.0.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.0.1\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
@@ -73,6 +77,9 @@
     <Reference Include="Bolt.Common.Extensions, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bolt.Common.Extensions.1.0.4.0\lib\net45\Bolt.Common.Extensions.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="ClearScript, Version=5.4.8.0, Culture=neutral, PublicKeyToken=935d0c957da47c73, processorArchitecture=MSIL">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.V8.2.2.0\lib\net45\ClearScript.dll</HintPath>
     </Reference>
     <Reference Include="Csn.Cars.Cache, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Cars.Cache.2.0.1.0\lib\net45\Csn.Cars.Cache.dll</HintPath>
@@ -230,11 +237,29 @@
       <HintPath>..\packages\Ingress.ServiceRegistry.Abstracts-Net45.1.0.1\lib\net452\Ingress.ServiceRegistry.Abstracts-Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.ChakraCore, Version=2.3.2.0, Culture=neutral, PublicKeyToken=c608b2a8cc9e4472, processorArchitecture=MSIL">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.ChakraCore.2.3.2\lib\net45\JavaScriptEngineSwitcher.ChakraCore.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c608b2a8cc9e4472, processorArchitecture=MSIL">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.Core.2.2.0\lib\net45\JavaScriptEngineSwitcher.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.Msie, Version=2.3.2.0, Culture=neutral, PublicKeyToken=c608b2a8cc9e4472, processorArchitecture=MSIL">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.Msie.2.3.2\lib\net45\JavaScriptEngineSwitcher.Msie.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.V8, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c608b2a8cc9e4472, processorArchitecture=MSIL">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.V8.2.2.0\lib\net45\JavaScriptEngineSwitcher.V8.dll</HintPath>
+    </Reference>
+    <Reference Include="JSPool, Version=2.0.1.0, Culture=neutral, PublicKeyToken=2fc7775f73072640, processorArchitecture=MSIL">
+      <HintPath>..\packages\JSPool.2.0.1\lib\net451\JSPool.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MsieJavaScriptEngine, Version=2.1.2.0, Culture=neutral, PublicKeyToken=a3a2846a37ac0d3e, processorArchitecture=MSIL">
+      <HintPath>..\packages\MsieJavaScriptEngine.2.1.2\lib\net45\MsieJavaScriptEngine.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -246,6 +271,15 @@
     <Reference Include="NLog.Extended, Version=3.2.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.Extended.3.2.1\lib\net45-full\NLog.Extended.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="React.Core, Version=3.0.1.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
+      <HintPath>..\packages\React.Core.3.0.1\lib\net40\React.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="React.Web, Version=3.0.1.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
+      <HintPath>..\packages\React.Web.3.0.1\lib\net40\React.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="React.Web.Mvc4, Version=3.0.1.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
+      <HintPath>..\packages\React.Web.Mvc4.3.0.1\lib\net40\React.Web.Mvc4.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.1.2.1\lib\net46\StackExchange.Redis.dll</HintPath>
@@ -267,13 +301,26 @@
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -315,6 +362,12 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="VroomJs, Version=1.2.3.0, Culture=neutral, PublicKeyToken=e7c52e67fcb0044f, processorArchitecture=MSIL">
+      <HintPath>..\packages\VroomJs.1.2.3\lib\net45\VroomJs.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -373,9 +426,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\SetupGlobalFilterTask.cs" />
     <Compile Include="App_Start\SetupDefaultRouteTask.cs" />
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
+    <Compile Include="App_Start\SetupWebApiFormattersTask.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
@@ -392,6 +448,21 @@
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Containers\iNavBreadCrumbsContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\iNavBreadCrumbs.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Component\iNavSearchResult.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Containers\iNavSearchResultsContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\iNavSearchResults.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodeContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
+    <Content Include="Features\React\Assets\Js\react-server-components.js" />
+    <Content Include="Features\React\Assets\Js\react-server-entry.js" />
+    <Compile Include="Features\Listings\GetListingsResponse.cs" />
+    <Compile Include="Features\Listings\ListingsController.cs" />
+    <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
+    <Compile Include="Features\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdsController.cs" />
@@ -415,9 +486,23 @@
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
+    <Compile Include="Features\Shared\Proxies\EditorialRyvussApi\EditorialRyvussApi.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiDto.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiProxy.cs" />
+    <Compile Include="Features\Shared\Search\Aspect\AspectQuery.cs" />
+    <Compile Include="Features\Shared\Search\Aspect\AspectQueryHandler.cs" />
+    <Compile Include="Features\Shared\Search\Aspect\AspectResult.cs" />
+    <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
+    <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
+    <Compile Include="Features\Shared\Search\Shared\MapperConfiguration.cs" />
+    <Compile Include="Features\Shared\Search\Nav\NavResult.cs" />
+    <Compile Include="Features\Shared\Search\Refinements\RefinementResult.cs" />
+    <Compile Include="Features\Shared\Search\Refinements\RefinementsQuery.cs" />
+    <Compile Include="Features\Shared\Search\Refinements\RefinementsQueryHandler.cs" />
+    <Compile Include="Features\Shared\Search\SearchController.cs" />
+    <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
+    <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
@@ -476,6 +561,28 @@
     <Compile Include="Ioc\MultiTenantModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Content Include="Features\React\Assets\Js\Components\ReduxStore.js" />
+    <Content Include="Features\Listings\Assets\Js\listings-page.js" />
+    <Content Include="Features\React\Assets\Js\Reducers\ReactServerReducersCollection.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\UIHelpers.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.client.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.server.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Action\actionTypes.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Containers\iNavNodeContainer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Containers\iNavNodesContainer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Containers\searchBarContainer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Containers\searchBarFormActionContainer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\iNavSaga.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\searchBar.js" />
+    <Content Include="WebpackConfig\Client\entries.config.js" />
+    <Content Include="WebpackConfig\Client\externals.config.js" />
+    <Content Include="WebpackConfig\Client\loaders.config.js" />
+    <Content Include="WebpackConfig\Client\webpack.client.config.js" />
+    <Content Include="WebpackConfig\Server\entries.config.js" />
+    <Content Include="WebpackConfig\Server\loaders.config.js" />
+    <Content Include="WebpackConfig\Server\plugins.config.js" />
+    <Content Include="WebpackConfig\Server\webpack.server.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="editorial\content\scripts\ads.js" />
@@ -528,6 +635,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
+    <Content Include="Features\React\Assets\Js\Util\ReactServerConnect.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales--white.svg" />
@@ -560,6 +668,14 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Meter\meter.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal-disclaimer-view.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actionsTypes.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Containers\root.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\immutableJSHelper.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\iNavFacet.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Reducers\rootReducer.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actions.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actionTypes.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\iNavReducer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
     <Content Include="Features\Shared\Assets\Js\csn.vendor.js" />
@@ -577,13 +693,19 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="gulpfile.js" />
-    <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Features\Details\Assets\Images\" />
+    <Folder Include="Features\Listings\Assets\Css\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Sponsored\" />
+    <Folder Include="Features\Shared\Assets\Css\Tyopgraphy\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Components\" />
+    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Reducers\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
@@ -621,7 +743,6 @@
     <Content Include="Features\Details\Views\Partials\Hero\_ImagesAndVideo.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_FirstImage.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Colors\_variables-colors.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tyopgraphy\_typography.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_variables-typography.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons.scss" />
     <Content Include="Features\Shared\Assets\Css\globalStyles.scss" />
@@ -764,9 +885,21 @@
     <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Assets\Css\error-page.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons-variables.scss" />
+    <Content Include="Views\web.config" />
+    <Content Include="Features\Details\Views\Partials\SearchBar\_searchBar.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\Redux\_ReduxStore.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\SponsoredArticles\_sponsoredArticles.scss" />
     <Content Include="Features\Details\Views\Partials\Content\_SponsoredArticleTab.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\client.middleware.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\server.middleware.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\css\searchBar.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Css\iNavListItem.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Css\iNavBreadCrumbs.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResult.scss" />
+    <Content Include="Features\Listings\Views\ListingTemplate.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixin-modal.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_WideImage.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_articleDropCap.scss" />
@@ -788,6 +921,15 @@
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WebpackConfig\Shared\devServer.config.js" />
+    <Content Include="WebpackConfig\Shared\env.config.js" />
+    <Content Include="WebpackConfig\Client\plugins.config.js" />
+    <Content Include="WebpackConfig\Shared\paths.config.js" />
+    <Content Include="WebpackConfig\Shared\resolve.config.js" />
+    <Content Include="WebpackConfig\Shared\stats.config.js" />
+    <Content Include="WebpackConfig\Shared\tenants.config.js" />
+    <Content Include="WebpackConfig\webpack.isomorphic.config.js" />
+    <Content Include="WebpackConfig\.babelrc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
