@@ -5,6 +5,9 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import AssetsPlugin from 'assets-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import HappyPack from 'happypack'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
+import WebpackNotifierPlugin from 'webpack-notifier'
 
 const happyThreadPool = HappyPack.ThreadPool({ size: 3 });
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -106,7 +109,6 @@ export const plugins = (tenant, pageEntries) => {
         )
     }
     if (!isProd) {
-        pluginsArr.push(new WebpackNotifierPlugin())
         pluginsArr.push(
             new BrowserSyncPlugin(
                 // BrowserSync options 
@@ -132,8 +134,13 @@ export const plugins = (tenant, pageEntries) => {
                 }
             )
         )
+        pluginsArr.push(new WebpackNotifierPlugin(
+            { 
+                title: `${tenant} - Server - Webpack`,
+            }
+        ))
         pluginsArr.push(new ForkTsCheckerNotifierWebpackPlugin({ 
-            title: `${tenant} - TypeScript`,
+            title: `${tenant} - Client - TypeScript`,
         }))  
     }
 

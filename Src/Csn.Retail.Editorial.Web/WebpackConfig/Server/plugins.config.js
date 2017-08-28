@@ -2,6 +2,9 @@
 import {isProd} from '../Shared/env.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HappyPack from 'happypack'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
+import WebpackNotifierPlugin from 'webpack-notifier'
 
 //From Server/
 import {devLoaderCSSExtract} from './loaders.config.js'
@@ -60,10 +63,16 @@ export const plugins = (tenant) => {
         pluginsArr.push(new webpack.optimize.ModuleConcatenationPlugin())
     }
     if (!isProd) {
-        pluginsArr.push(new WebpackNotifierPlugin()),
-        pluginsArr.push(        new ForkTsCheckerNotifierWebpackPlugin({ 
-            title: `${tenant} - TypeScript`,
-        }))       
+        pluginsArr.push(new WebpackNotifierPlugin(
+            { 
+                title: `${tenant} - Server - Webpack`,
+            }
+        ))
+        pluginsArr.push(new ForkTsCheckerNotifierWebpackPlugin(
+            { 
+                title: `${tenant} - Server - TypeScript`,
+            }
+        ))       
     }        
     
 

@@ -46,8 +46,18 @@ export const modules = (tenant) => {
     return {
         noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [
+        // {
+        //     enforce: 'pre',
+        //     test: /\.jsx?$/,
+        //     loader: "source-map-loader"
+        // },
+        // {
+        //     enforce: 'pre',
+        //     test: /\.tsx?$/,
+        //     use: "source-map-loader"
+        // },
         {
-            test: [/\.js$/, /\.es6$/],
+            test: [/\.jsx?$/, /\.es6$/],
             exclude: /(node_modules|bower_components|unitTest)/,
             loaders: [          
                 {
@@ -63,6 +73,11 @@ export const modules = (tenant) => {
             test: /\.modernizrrc.js$/,
             exclude: /(node_modules|bower_components|unitTest)/,
             loader: "modernizr-loader"
+        },
+        {
+            test: /\.tsx?$/,
+            exclude: /(node_modules|bower_components|unitTest)/,
+            loaders: ['happypack/loader?id=babelTypeScript']
         },
         {
             test: /\.css$/,
