@@ -6,6 +6,8 @@
             assetsSort: "field",
             // Add information about cached (not built) modules
             cached: true,
+            // Show cached assets (setting this to `false` only shows emitted files)
+            cachedAssets: false,
             // Add children information
             children: true,
             // Add chunk information (setting this to `false` allows for a less verbose output)
@@ -30,6 +32,8 @@
             modules: false,
             // Sort the modules by a field
             modulesSort: "field",
+            // Show performance hint when file size exceeds `performance.maxAssetSize`
+            performance: true,
             // Add public path information
             publicPath: false,
             // Add information about the reasons why modules are included
@@ -39,7 +43,7 @@
             // Add timing information
             timings: true,
             // Add webpack version information
-            version: false,
+            version: true,
             // Add warnings
             warnings: true
     },

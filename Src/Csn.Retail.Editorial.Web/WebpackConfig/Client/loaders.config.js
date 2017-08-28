@@ -1,4 +1,5 @@
-﻿import {isProd} from '../Shared/env.config.js'
+﻿import path from 'path'
+import {isProd} from '../Shared/env.config.js'
 import {listOfPaths} from '../Shared/paths.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
@@ -48,7 +49,15 @@ export const modules = (tenant) => {
         {
             test: [/\.js$/, /\.es6$/],
             exclude: /(node_modules|bower_components|unitTest)/,
-            loaders: ['happypack/loader?id=babel']
+            loaders: [          
+                {
+                    loader: 'cache-loader',
+                    options: {
+                        cacheDirectory: path.resolve('.cache')
+                    }
+                },
+                'happypack/loader?id=babel'
+            ]
         },
         {
             test: /\.modernizrrc.js$/,

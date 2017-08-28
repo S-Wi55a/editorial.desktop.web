@@ -6,13 +6,13 @@ import AssetsPlugin from 'assets-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import HappyPack from 'happypack'
 
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+const happyThreadPool = HappyPack.ThreadPool({ size: 3 });
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 //From Server/
 import { devLoaderCSSExtract } from './loaders.config.js'
 
-var assetsPluginInstance = new AssetsPlugin({
+const assetsPluginInstance = new AssetsPlugin({
     filename: 'webpack.assets.json',
     path: path.resolve('./'),
     prettyPrint: true,
@@ -65,12 +65,14 @@ export const plugins = (tenant, pageEntries) => {
         new HappyPack({
             // loaders is the only required parameter:
             id: 'babel',
-            loaders: ['babel-loader?cacheDirectory=true']
+            loaders: ['babel-loader?cacheDirectory=true'],
+            threadPool: happyThreadPool
         }),
         new HappyPack({
             // loaders is the only required parameter:
             id: 'sass',
-            loaders: devLoaderCSSExtract(tenant)
+            loaders: devLoaderCSSExtract(tenant),
+            threadPool: happyThreadPool
         }),
     ];
 

@@ -11,6 +11,8 @@ import { plugins } from './plugins.config.js'
 import { modules } from './loaders.config.js'
 import { externals } from './externals.config.js'
 
+import os from 'os'
+console.log('Cores: ' + os.cpus().length)
 
 // Remove dist folder
 rimraf('./dist', function(err) { if (err) { throw err; } });
