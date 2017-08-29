@@ -24,11 +24,6 @@
     "react"
   ],
   "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "WebpackConfig/webpack.isomorphic.config.js"
-      }
-    },
     "import/ignore": [
       "\\.(scss|less|css)$"
     ]
