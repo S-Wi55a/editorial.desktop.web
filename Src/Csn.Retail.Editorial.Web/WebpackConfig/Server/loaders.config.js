@@ -1,6 +1,5 @@
 ﻿import {isProd} from '../Shared/env.config.js'
 import {listOfPaths} from '../Shared/paths.config.js'
-import path from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
@@ -45,7 +44,7 @@ export const devLoaderCSSExtract = (tenant) => (['style-loader'].concat(loaders(
 export const modules = (tenant) => {
 
     return {
-        noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
+        //noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [
         // {
         //     enforce: 'pre',

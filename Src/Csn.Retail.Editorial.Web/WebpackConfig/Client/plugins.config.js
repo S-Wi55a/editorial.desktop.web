@@ -50,7 +50,7 @@ export const plugins = (tenant, pageEntries) => {
         //Vendor - Will look through every entry and match against itself or if a library from node_module is used twice
         new webpack.optimize.CommonsChunkPlugin({
             name: 'csn.vendor' + '--' + tenant,
-            minChunks: function(module, count) {
+            minChunks: function(module) {
                 // This prevents stylesheet resources with the .css or .scss extension
                 // from being moved from their original chunk to the vendor chunk
                 if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {

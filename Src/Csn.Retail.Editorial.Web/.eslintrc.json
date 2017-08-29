@@ -11,12 +11,17 @@
     "browser": true,
     "node": true
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "rules": {
+    "react/prop-types": 0,
+    "no-console": 1
   },
   "plugins": [
     "import",
-    "import-resolver-webpack"
+    "react"
   ],
   "settings": {
     "import/resolver": {

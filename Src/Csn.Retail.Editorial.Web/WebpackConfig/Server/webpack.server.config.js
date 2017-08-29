@@ -1,5 +1,5 @@
 import {isProd} from '../Shared/env.config.js'
-import {listofTenants, TENANTS} from '../Shared/tenants.config.js'
+import {TENANTS} from '../Shared/tenants.config.js'
 import {resolve} from '../Shared/resolve.config.js'
 import {stats} from '../Shared/stats.config.js'
 import {devServer} from '../Shared/devServer.config.js'
