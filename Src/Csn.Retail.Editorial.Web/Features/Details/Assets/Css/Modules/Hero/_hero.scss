@@ -20,23 +20,41 @@
 
 .hero--singleImage,
 .hero--doubleImage {
+    position: absolute;
     width: calc(100% - (300px + #{$grid-gutter-width/2}));
     float: left;
     padding-right: 15px;
-    padding-left: 15px;
+
+    @include breakpoint($screen-md) {
+        padding-left: 15px;
+        padding-right: 32px;
+    }
+
+    @include breakpoint($screen-sm) {
+        width: calc(100% - (285px + #{$grid-gutter-width/2}));
+    }
+
+    @include breakpoint($screen-md) {
+        width: calc(100% - (315px + #{$grid-gutter-width/2}));
+    }
 
     @include breakpoint($screen-lg) {
-        padding-right: 30px;
+        width: calc(100% - (300px + #{$grid-gutter-width/2}));
+    }
+
+    @include breakpoint($screen-lg) {
+        padding-right: 32px;
     }
 }
 
 .hero--singleVideo {
-    width: calc(100% - (300px + #{$grid-gutter-width/2}));
-    float: left;
-    padding-right: 0;
+    $aside-width: 300px; //TODO: make as global
+    $spacing: 30px;
+
+    width: calc(#{$screen-md} - #{$aside-width} - #{$spacing*2});
 
     @include breakpoint($screen-lg) {
-        padding-right: 15px;
+        width: calc(#{$screen-lg} - #{$aside-width} - #{$spacing*2});
     }
 }
 
@@ -74,6 +92,276 @@
         }
         .brightcove {
             width: percentage(matchingAspectRatioHeight(16/9, (3/2, 3/2, 16/9))); //The intersection where 3:2 and 16:9 have the same height
+        }
+    }
+}
+
+//Wide
+.hero {
+
+    $ratio: (16/9);
+    $height: 640px;
+
+    &--wideImage {
+        background-color: $cs-black;
+        position: relative;
+    }
+
+    &--wideVideo {
+        background-color: $cs-black;
+        overflow: hidden;
+        position: relative;
+
+        .hero__heading {
+            text-shadow: none;
+        }
+    }
+
+    &__video-container {
+        height: 100%;
+        left: 0;
+        opacity: 0.4;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    &__video-player {
+        height: auto;
+        left: 50%;
+        min-height: 100%;
+        min-width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+    }
+
+    &__video-frame {
+        max-height: $height;
+        width: 100%;
+
+        &::before {
+            content: '';
+            display: block;
+            padding-top: percentage(1/2.53);
+        }
+    }
+
+    &__playbutton-container {
+        position: relative;
+        top: 50%;
+    }
+
+    &__playbutton {
+        border: 1px solid $cs-white;
+        border-radius: 9999px;
+        color: $cs-white;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 600;
+        height: 40px;
+        letter-spacing: 1px;
+        line-height: 40px;
+        padding: 0 25px;
+        text-transform: uppercase;
+        transition: transform .2s, background-color .2s, border-color .2s, -webkit-transform .2s;
+
+        &:hover {
+            background-color: $cs-white;
+            border-color: $cs-white;
+            color: $cs-black;
+        }
+    }
+
+
+
+    &__frame {
+        width: 100%;
+        max-height: 640px;
+        position: relative;
+        opacity: 0.85;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            display: block;
+            padding-top: percentage(1/2.53);
+        }
+    }
+
+    &__frame-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+
+        &:not(.csn-parallax) {
+            top: 50%;
+            left: -50%;
+            transform: translate(50%, -50%);
+        }
+    }
+
+    &__content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        right: 0;
+        top: 0;
+
+        &.hero__slide-out {
+            right: 100%;
+            transition: all 1.5s ease;
+        }
+
+        .container {
+            height: 100%;
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            background-color: $cs-black;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__header-container {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &__heading {
+        width: 55%;
+        color: $cs-white;
+        font-size: emtopx(typeScale(1.2,7), $font-size-body); //57.33089px
+        font-weight: $font-weight-600;
+        line-height: 1em;
+        text-shadow: 1px 1px 3px rgba($cs-black,0.8);
+
+
+        @include breakpoint($screen-lg) {
+            font-size: emtopx(typeScale(1.2,8), $font-size-body); //68.79707px
+        }
+    }
+
+    &__subheading {
+        width: 50%;
+        color: $cs-white;
+        margin-top: 1em;
+        font-size: emtopx(typeScale(1.2,3), $font-size-body); //27.648px
+        font-weight: $font-weight-400;
+        letter-spacing: 0;
+        line-height: 1.3;
+        text-shadow: 1px 1px 3px rgba($cs-black,0.8);
+
+
+        @include breakpoint($screen-lg) {
+            font-size: emtopx(typeScale(1.25,3), $font-size-body); //31.25px
+            font-weight: $font-weight-400;
+            letter-spacing: 0;
+            line-height: 1.2
+        }
+    }
+
+    &__action {
+        content: url($image--arrow-down);
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include bounce();
+        animation: bounce 1.5s linear;
+        animation-iteration-count: infinite;
+    }
+}
+
+// Full screen hero video (playing)
+#fullhero_video {
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: contain;
+    position: absolute;
+    width: auto;
+
+    video {
+        height: 100%;
+
+        @include breakpoint($screen-lg) {
+            height: auto;
+        }
+    }
+}
+
+.fullherovideo {
+    &--wrap {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        left: 0;
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10000001;
+        -webkit-align-items: center;
+    }
+
+    &--wrap-show {
+        pointer-events: auto;
+
+        .fullherovideo__inner {
+            opacity: 1;
+            transition: opacity 1.7s ease-in-out;
+        }
+    }
+
+    &--wrap-hide {
+        .fullherovideo__inner {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+    }
+
+    &__inner {
+        background: $cs-black;
+        height: 100%;
+        margin: 0 auto;
+        opacity: 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    &__action-close {
+        color: $cs-white;
+        cursor: pointer;
+        font-size: 3.15em;
+        font-weight: bold;
+        height: 60px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60px;
+    }
+
+    &__action-icon {
+        &::before {
+            content: $icon-cross-lg;
+            font-family: $font-family-icons;
+            font-style: normal;
+            color: $cs-white;
         }
     }
 }

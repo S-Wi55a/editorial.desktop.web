@@ -1,14 +1,40 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.ContentSection
 
-<div>
-    <img class="article__img"
-         sizes="(max-width: 1199px) 617px, 825px"
-         src="@Model.Image.Url?width=825&height=550"
-         srcset="@Model.Image.Url?width=617&height=411 617w, @Model.Image.Url?width=825&height=550 825w"
-         alt="@Model.Image.AlternateText" />
 
-    @if (Model.Image.Caption != null)
+@if (Model.Image.Type == "Wide") //With Parallax
 {
-    <div class="article__img-caption">@Model.Image.Caption</div>
+    <div class="container-fluid">
+        <div class="article__img-frame article__img-frame--wide">
+            @* // TODO: Can add conditional for parallax container *@
+            <div class="article__img-frame__paralalx-container csn-parallax"
+                 data-rellax-percentage="0.5"
+                 data-rellax-speed="-2">
+                <img class="article__img article__img--wide "
+                     sizes="(max-width: 1199px) 1600px, 1920px"
+                     src="@Model.Image.Url"
+                     srcset="@Model.Image.Url&pxc_width=1600&pxc_method=crop 1600w, @Model.Image.Url&pxc_width=1920&pxc_method=crop 1920w"
+                     alt="@Model.Image.AlternateText"/>
+            </div>
+        </div>
+    </div>
 }
-</div>
+else
+{
+    // Single Image
+    <div class="container">
+        <div>
+            <img class="article__img"
+                 sizes="(max-width: 1199px) 825px, 1024px"
+                 src="@Model.Image.Url?width=1024&height=682"
+                 srcset="@Model.Image.Url?width=825&height=550 825w, @Model.Image.Url?width=1024&height=682 1024w"
+                 alt="@Model.Image.AlternateText" />
+
+            @if (Model.Image.Caption != null)
+            {
+                <div class="article__img-caption">@Model.Image.Caption</div>
+            }
+        </div>
+    </div>
+}
+
+

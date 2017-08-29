@@ -1,3 +1,6 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.ContentSection
 
-@Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+<div class="container">
+
+    @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+</div>

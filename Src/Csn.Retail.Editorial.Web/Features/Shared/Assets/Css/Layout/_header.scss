@@ -2,13 +2,11 @@
     padding-top: 15px;
     padding-bottom: 15px;
     min-height: 120px;
-
     /*@include breakpoint($screen-lg) {
         padding-top: 30px;
         padding-bottom: 30px;
         min-height: 150px;
     }*/
-
     &__logo {
         background-color: transparent;
         color: transparent;
@@ -24,8 +22,25 @@
         background-position: center;
         float: left;
         max-width: ($screen-sm - $leader-board-width - $grid-gutter-width - 15px); 
+
         @include breakpoint($screen-lg) {
             max-width: 100%;
+        }
+    }
+
+
+    &--transparent {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+
+        .page-header__logo {
+            background-image: url($logo-header--transparent);
+            width: $logo-header-width--transparent;
+            height: $logo-header-height--transparent;
+
         }
     }
 }

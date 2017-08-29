@@ -165,6 +165,28 @@ loaded.then(() => {
 // display disclaimer on pricing guide
 require('Js/Modules/ArticlePricing/articlePricing.js');
 
+// add hero-wide-video
+if (document.querySelector('.article-type--widevideo')) {
+    require('Js/Modules/Hero/hero-wide-video.js');
+}
+
+//Parallax
+loaded.then(function () {
+    if (document.querySelector('.csn-parallax')) {
+        require.ensure(['rellax'],
+            function () {
+                const Rellax = require('rellax');
+                let rellax = new Rellax('.csn-parallax', {});
+                
+                window.addEventListener('resize', function() {
+                    rellax.destroy();
+                    rellax = new Rellax('.csn-parallax', {});
+                });
+            },
+            'Parallax - Rellax');
+    }   
+});
+
 //Sticky Sidebar
 if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
    loaded.then(function() {

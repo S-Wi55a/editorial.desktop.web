@@ -1,3 +1,4 @@
+@using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @using React.Web.Mvc
@@ -5,6 +6,8 @@
 
 @{
     var tenantName = Html.CurrentTenant().Name.ToLower();
+    var isWide = Model.ArticleTemplateType == ArticleTemplateType.Wide ? true : false;
+
 }
 
 @section Head {
@@ -21,19 +24,31 @@
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
 }
 
-@{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
+
+<div class="page-container">
+
+    @{ Html.RenderPartial("_Header", Model); }
+
+    <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
+        @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
+        
+        @if (!isWide)
+        {
+            <div class="container">
+                @{ Html.RenderPartial("Partials/_Main"); }
+                @{ Html.RenderPartial("Partials/_Aside"); }
+            </div>
+        }
+        else
+        {
+            Html.RenderPartial("Partials/_Main");
+        }
+    </article>
+
+    @{ Html.RenderPartial("Partials/Modal/_Modal"); }
+</div>
 
 
-@{ Html.RenderPartial("Partials/SearchBar/_searchBar"); }
-
-<article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
-    @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
-    <div class="container">
-        @{ Html.RenderPartial("Partials/_Main"); }
-        @{ Html.RenderPartial("Partials/_Aside"); }
-    </div>
-</article>
-@{ Html.RenderPartial("Partials/Modal/_Modal"); }
 
 @section BottomScripts
 {
