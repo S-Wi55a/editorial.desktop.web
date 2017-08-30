@@ -35,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect
                 Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
                 IncludeCount = true,
                 NavigationName = "RetailNav",
-                PostProcessors = new List<string> { $"Retail({query.Aspect})", "ShowZero" }
+                PostProcessors = new List<string> { "Retail", "FacetSort", $"RetailAspect({query.Aspect})", "ShowZero" }
             });
 
             var resultData = !ryvussResult.IsSucceed ? null : ryvussResult.Data;

@@ -5,14 +5,17 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import AssetsPlugin from 'assets-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import HappyPack from 'happypack'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
+import WebpackNotifierPlugin from 'webpack-notifier'
 
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+const happyThreadPool = HappyPack.ThreadPool({ size: 3 });
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 //From Server/
 import { devLoaderCSSExtract } from './loaders.config.js'
 
-var assetsPluginInstance = new AssetsPlugin({
+const assetsPluginInstance = new AssetsPlugin({
     filename: 'webpack.assets.json',
     path: path.resolve('./'),
     prettyPrint: true,
@@ -47,7 +50,7 @@ export const plugins = (tenant, pageEntries) => {
         //Vendor - Will look through every entry and match against itself or if a library from node_module is used twice
         new webpack.optimize.CommonsChunkPlugin({
             name: 'csn.vendor' + '--' + tenant,
-            minChunks: function(module, count) {
+            minChunks: function(module) {
                 // This prevents stylesheet resources with the .css or .scss extension
                 // from being moved from their original chunk to the vendor chunk
                 if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
@@ -65,13 +68,36 @@ export const plugins = (tenant, pageEntries) => {
         new HappyPack({
             // loaders is the only required parameter:
             id: 'babel',
-            loaders: ['babel-loader?cacheDirectory=true']
+            loaders: ['babel-loader?cacheDirectory=true'],
+            threadPool: happyThreadPool
         }),
         new HappyPack({
             // loaders is the only required parameter:
             id: 'sass',
-            loaders: devLoaderCSSExtract(tenant)
+            loaders: devLoaderCSSExtract(tenant),
+            threadPool: happyThreadPool
         }),
+        new HappyPack({
+            // loaders is the only required parameter:
+            id: 'babelTypeScript',
+            threadPool: happyThreadPool,
+            loaders: ['babel-loader?cacheDirectory=true',
+            {
+                path: 'ts-loader',
+                query: {
+                    // disable type checker - we will use it in fork plugin
+                    transpileOnly: isProd ? false : true,
+                    happyPackMode: true
+                }
+            }],
+        }),
+        new webpack.EnvironmentPlugin({
+            NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+            DEBUG: false
+        }),
+        new ForkTsCheckerWebpackPlugin({
+            watch: './Features/**/*', // optional but improves performance (less stat calls),
+        }) 
     ];
 
     if (VIEW_BUNDLE) {
@@ -108,6 +134,14 @@ export const plugins = (tenant, pageEntries) => {
                 }
             )
         )
+        pluginsArr.push(new WebpackNotifierPlugin(
+            { 
+                title: `${tenant} - Server - Webpack`,
+            }
+        ))
+        pluginsArr.push(new ForkTsCheckerNotifierWebpackPlugin({ 
+            title: `${tenant} - Client - TypeScript`,
+        }))  
     }
 
     return pluginsArr

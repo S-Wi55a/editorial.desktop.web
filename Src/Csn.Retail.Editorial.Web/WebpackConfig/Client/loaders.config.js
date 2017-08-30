@@ -1,4 +1,5 @@
-﻿import {isProd} from '../Shared/env.config.js'
+﻿import path from 'path'
+import {isProd} from '../Shared/env.config.js'
 import {listOfPaths} from '../Shared/paths.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
@@ -45,15 +46,38 @@ export const modules = (tenant) => {
     return {
         noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [
+        // {
+        //     enforce: 'pre',
+        //     test: /\.jsx?$/,
+        //     loader: "source-map-loader"
+        // },
+        // {
+        //     enforce: 'pre',
+        //     test: /\.tsx?$/,
+        //     use: "source-map-loader"
+        // },
         {
-            test: [/\.js$/, /\.es6$/],
+            test: [/\.jsx?$/, /\.es6$/],
             exclude: /(node_modules|bower_components|unitTest)/,
-            loaders: ['happypack/loader?id=babel']
+            loaders: [          
+                {
+                    loader: 'cache-loader',
+                    options: {
+                        cacheDirectory: path.resolve('.cache')
+                    }
+                },
+                'happypack/loader?id=babel'
+            ]
         },
         {
             test: /\.modernizrrc.js$/,
             exclude: /(node_modules|bower_components|unitTest)/,
             loader: "modernizr-loader"
+        },
+        {
+            test: /\.tsx?$/,
+            exclude: /(node_modules|bower_components|unitTest)/,
+            loaders: ['happypack/loader?id=babelTypeScript']
         },
         {
             test: /\.css$/,

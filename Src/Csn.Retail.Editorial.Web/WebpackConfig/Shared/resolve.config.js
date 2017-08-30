@@ -3,8 +3,8 @@ import {listOfPaths} from '../Shared/paths.config.js'
 
  
 export const resolve = {
-    extensions: ['.js','.scss'],
-        alias: {
+    extensions: ['.tsx', '.ts','.jsx','.js','.scss'],
+    alias: {
         modernizr$: path.resolve('./.modernizrrc.js'),
             'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
     },

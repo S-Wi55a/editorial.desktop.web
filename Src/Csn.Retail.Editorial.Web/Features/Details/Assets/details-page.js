@@ -13,7 +13,6 @@ if (process.env.DEBUG) { require('debug.addIndicators'); }
 let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
 aboveTheFold();
 
-
 // load Redux 
 (function redux(d) {
 

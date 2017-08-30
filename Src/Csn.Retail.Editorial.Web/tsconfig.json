@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "outDir":"./CompiledTypeScript",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "target": "es6",
+    "module": "es6",
+    "jsx": "react",
+    "allowJs": false,
+    "traceResolution": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "Features/Shared/Assets/*",
+        "Features/Details/Assets/*",
+        "Features/SiteNav/Assets/*",
+        "Features/Errors/Assets/*",
+        "Features/*"
+      ]
+    }
+  },
+  "include": [
+    "Features/"
+  ],
+  "exclude": [
+      "node_modules",
+      "bower_components", 
+      "jspm_packages",
+      "**/*.scss",
+      "./CompiledTypeScript"
+  ]
+}

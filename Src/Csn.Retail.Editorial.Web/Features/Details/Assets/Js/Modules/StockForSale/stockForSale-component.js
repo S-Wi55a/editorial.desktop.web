@@ -1,6 +1,6 @@
 ﻿import 'Css/Modules/Widgets/StockForSale/_stockForSale.scss'
 
-import * as View from 'Js/Modules/StockForSale/stockForSale-view.js'
+import * as View from 'Js/Modules/StockForSale/stockForSale-view'
 import * as Ajax from 'Js/Modules/Ajax/ajax.js'
 
 import Modal from 'Js/Modules/Modal/modal.js'
