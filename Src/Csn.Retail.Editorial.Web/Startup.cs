@@ -27,6 +27,7 @@ namespace Csn.Retail.Editorial.Web
             builder.RegisterHttpRequestMessage(config);
             builder.RegisterWebApiFilterProvider(config);
             var container = builder.Build();
+            container.RunBootstrapperTasks();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             RunStartUpTasks(container);
