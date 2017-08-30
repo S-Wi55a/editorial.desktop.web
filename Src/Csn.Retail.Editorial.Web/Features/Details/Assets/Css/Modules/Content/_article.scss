@@ -43,8 +43,12 @@
     .article {
         & .container {
             @include breakpoint($screen-lg) {
-                width: $screen-md;
+                width: 850px;
             }
+        }
+
+        &__subheading {
+            margin-top: 0px;
         }
     }
 }
