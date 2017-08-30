@@ -1,4 +1,5 @@
-﻿import path from 'path'
+﻿import os from 'os'
+import path from 'path'
 import webpack from 'webpack'
 import { isProd, VIEW_BUNDLE } from '../Shared/env.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
@@ -9,7 +10,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
 import WebpackNotifierPlugin from 'webpack-notifier'
 
-const happyThreadPool = HappyPack.ThreadPool({ size: 3 });
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length - 1 });
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 //From Server/

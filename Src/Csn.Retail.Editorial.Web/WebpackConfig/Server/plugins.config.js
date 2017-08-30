@@ -1,4 +1,5 @@
-﻿import webpack from 'webpack'
+﻿import os from 'os'
+import webpack from 'webpack'
 import {isProd} from '../Shared/env.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HappyPack from 'happypack'
@@ -9,7 +10,7 @@ import WebpackNotifierPlugin from 'webpack-notifier'
 //From Server/
 import {devLoaderCSSExtract} from './loaders.config.js'
 
-const happyThreadPool = HappyPack.ThreadPool({ size: 3 });
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length - 1 });
 
 
 export const plugins = (tenant) => {
