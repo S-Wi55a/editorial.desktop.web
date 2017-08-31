@@ -55,7 +55,7 @@ typings/
 # dotenv environment variables file
 .env
 
-
+.cache/
 .vs
 bin
 obj

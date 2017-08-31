@@ -32,14 +32,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
         }
 
         [HttpGet]
-        [Route("editorial/api/v1/search/nav/aspects/refinements")]
-        public async Task<IHttpActionResult> GetAspectRefinements([FromUri]string refinementAspect, [FromUri]string parentExpression, [FromUri]string q = null)
+        [Route("editorial/api/v1/search/nav/aspects/{aspect}/refinements")]
+        public async Task<IHttpActionResult> GetAspectRefinements(string aspect, [FromUri]string refinementAspect, [FromUri]string parentExpression, [FromUri]string q = null)
         {
             // to be replaced with refinements query handler
             var result = await _queryDispatcher.DispatchAsync<RefinementsQuery, RefinementResult>(new RefinementsQuery()
             {
                 Query = q,
-                Aspect = refinementAspect,
+                Aspect = aspect,
+                AspectRefinement = refinementAspect,
                 ParentExpression = parentExpression
             });
 

@@ -35,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
                 IncludeCount = true,
                 IncludeSearchResults = true,
                 NavigationName = "RetailNav",
-                PostProcessors = new List<string> { "Retail", "ShowZero"}
+                PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero"}
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
