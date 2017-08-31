@@ -13,9 +13,6 @@ import WebpackNotifierPlugin from 'webpack-notifier'
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length >= 4 ? 3 : os.cpus().length - 1});
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-//From Server/
-import { devLoaderCSSExtract } from './loaders.config.js'
-
 const assetsPluginInstance = new AssetsPlugin({
     filename: 'webpack.assets.json',
     path: path.resolve('./'),

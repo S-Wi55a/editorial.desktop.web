@@ -7,11 +7,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
 import WebpackNotifierPlugin from 'webpack-notifier'
 
-//From Server/
-import {devLoaderCSSExtract} from './loaders.config.js'
-
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length >= 4 ? 3 : os.cpus().length - 1});
-
 
 export const plugins = (tenant) => {
 
@@ -29,12 +25,6 @@ export const plugins = (tenant) => {
             // loaders is the only required parameter:
             id: 'babel',
             loaders: ['babel-loader?cacheDirectory=true'],
-            threadPool: happyThreadPool
-        }),
-        new HappyPack({
-            // loaders is the only required parameter:
-            id: 'sass',
-            loaders: devLoaderCSSExtract(tenant),
             threadPool: happyThreadPool
         }),
         new HappyPack({
