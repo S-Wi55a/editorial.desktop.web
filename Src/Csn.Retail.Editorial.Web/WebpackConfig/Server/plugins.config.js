@@ -10,7 +10,7 @@ import WebpackNotifierPlugin from 'webpack-notifier'
 //From Server/
 import {devLoaderCSSExtract} from './loaders.config.js'
 
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length - 1 });
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length >= 4 ? 3 : os.cpus().length - 1});
 
 
 export const plugins = (tenant) => {
