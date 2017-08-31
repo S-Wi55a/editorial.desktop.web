@@ -26,9 +26,7 @@
 
 
 <div class="page-container">
-
-    @{ Html.RenderPartial("_Header", Model); }
-
+@{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
         
@@ -67,6 +65,4 @@
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
     @{ Html.RenderPartial("Partials/MediaMotive/_MediaMotiveScripts"); }
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
-
-
 }

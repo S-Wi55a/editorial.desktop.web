@@ -1,4 +1,5 @@
-﻿import {isProd} from '../Shared/env.config.js'
+﻿import path from 'path'
+import {isProd} from '../Shared/env.config.js'
 import {listOfPaths} from '../Shared/paths.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
@@ -40,11 +41,12 @@ export const prodLoaderCSSExtract = (tenant) => (ExtractTextPlugin.extract({
 export const devLoaderCSSExtract = (tenant) => (['style-loader'].concat(loaders(tenant)))
 
 
-
 export const modules = (tenant) => {
 
+    const CSSLoader = isProd ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
+
     return {
-        //noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
+        noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [
         // {
         //     enforce: 'pre',
@@ -59,28 +61,59 @@ export const modules = (tenant) => {
         {
             test: [/\.jsx?$/, /\.es6$/],
             exclude: /(node_modules|bower_components|unitTest)/,
-            loaders: ['happypack/loader?id=babel']
+            use: [          
+                {
+                    loader: 'cache-loader',
+                    options: {
+                        cacheDirectory: path.resolve('.cache')
+                    }
+                },
+                'happypack/loader?id=babel'
+            ]
         },
         {
             test: /\.modernizrrc.js$/,
             exclude: /(node_modules|bower_components|unitTest)/,
-            loader: "modernizr-loader"
+            use: 'modernizr-loader'
         },
         {
             test: /\.tsx?$/,
             exclude: /(node_modules|bower_components|unitTest)/,
-            loaders: ['happypack/loader?id=babelTypeScript']
+            use: [
+                {
+                    loader: 'cache-loader',
+                    options: {
+                        cacheDirectory: path.resolve('.cache')
+                    }
+                },
+                'happypack/loader?id=babelTypeScript'
+            ]
         },
         {
             test: /\.css$/,
             exclude: /(node_modules|bower_components|unitTest)/,
-            use: isProd ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
-
+            loaders: [                
+                {
+                loader: 'cache-loader',
+                options: {
+                    cacheDirectory: path.resolve('.cache')
+                    }
+                },
+                ...CSSLoader
+            ]
         },
         {
             test: /\.scss$/,
             exclude: [/(node_modules|bower_components|unitTest)/],
-            use: isProd ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
+            use: [              
+            {
+                loader: 'cache-loader',
+                options: {
+                    cacheDirectory: path.resolve('.cache')
+                    }
+                },
+                ...CSSLoader
+            ]                  
         },
         {
             test: /.*\.(gif|png|jpe?g|svg)$/i,
