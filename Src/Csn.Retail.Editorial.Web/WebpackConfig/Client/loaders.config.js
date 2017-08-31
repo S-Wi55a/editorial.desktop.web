@@ -43,6 +43,8 @@ export const devLoaderCSSExtract = (tenant) => (['style-loader'].concat(loaders(
 
 export const modules = (tenant) => {
 
+    const CSSLoader = isProd ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
+
     return {
         noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [
@@ -59,7 +61,7 @@ export const modules = (tenant) => {
         {
             test: [/\.jsx?$/, /\.es6$/],
             exclude: /(node_modules|bower_components|unitTest)/,
-            loaders: [          
+            use: [          
                 {
                     loader: 'cache-loader',
                     options: {
@@ -72,23 +74,46 @@ export const modules = (tenant) => {
         {
             test: /\.modernizrrc.js$/,
             exclude: /(node_modules|bower_components|unitTest)/,
-            loader: "modernizr-loader"
+            use: 'modernizr-loader'
         },
         {
             test: /\.tsx?$/,
             exclude: /(node_modules|bower_components|unitTest)/,
-            loaders: ['happypack/loader?id=babelTypeScript']
+            use: [
+                {
+                    loader: 'cache-loader',
+                    options: {
+                        cacheDirectory: path.resolve('.cache')
+                    }
+                },
+                'happypack/loader?id=babelTypeScript'
+            ]
         },
         {
             test: /\.css$/,
             exclude: /(node_modules|bower_components|unitTest)/,
-            use: isProd ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
-
+            loaders: [                
+                {
+                loader: 'cache-loader',
+                options: {
+                    cacheDirectory: path.resolve('.cache')
+                    }
+                },
+                ...CSSLoader
+            ]
         },
         {
             test: /\.scss$/,
             exclude: [/(node_modules|bower_components|unitTest)/],
-            use: isProd ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
+            use: [              
+            {
+                loader: 'cache-loader',
+                options: {
+                    cacheDirectory: path.resolve('.cache')
+                    }
+                },
+                ...CSSLoader
+            ]                  
         },
         {
             test: /.*\.(gif|png|jpe?g|svg)$/i,

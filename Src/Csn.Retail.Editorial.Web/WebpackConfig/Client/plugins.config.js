@@ -74,12 +74,6 @@ export const plugins = (tenant, pageEntries) => {
         }),
         new HappyPack({
             // loaders is the only required parameter:
-            id: 'sass',
-            loaders: devLoaderCSSExtract(tenant),
-            threadPool: happyThreadPool
-        }),
-        new HappyPack({
-            // loaders is the only required parameter:
             id: 'babelTypeScript',
             threadPool: happyThreadPool,
             loaders: ['babel-loader?cacheDirectory=true',
