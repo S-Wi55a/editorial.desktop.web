@@ -1,10 +1,11 @@
-import rimraf from 'rimraf';
+import rimraf from 'rimraf'
 
-import { isProd } from '../Shared/env.config';
-import { TENANTS } from '../Shared/tenants.config';
-import { stats } from '../Shared/stats.config';
-import { devServer } from '../Shared/devServer.config';
-import { resolve } from '../Shared/resolve.config';
+import { isProd } from '../Shared/env.config'
+import { TENANTS } from '../Shared/tenants.config'
+import { stats } from '../Shared/stats.config'
+import { devServer } from '../Shared/devServer.config'
+import { resolve } from '../Shared/resolve.config'
+import { modules } from '../Shared/loaders.config.js'
 
 import os from 'os'
 console.log('Cores: ' + os.cpus().length)
@@ -12,8 +13,6 @@ console.log('Cores: ' + os.cpus().length)
 // From Client/
 import { config, getEntryFiles } from './entries.config';
 import { plugins } from './plugins.config';
-import { modules } from './loaders.config';
-import { externals } from './externals.config';
 
 // Remove dist folder
 rimraf('./dist', err => { if (err) { throw err; } });
@@ -44,7 +43,6 @@ module.exports = () => {
             },
             module: modules(tenant),
             resolve,
-            externals,
             plugins: plugins(tenant, pageEntries),
             stats,
             devtool: isProd ? 'cheap-source-map' : 'eval',
