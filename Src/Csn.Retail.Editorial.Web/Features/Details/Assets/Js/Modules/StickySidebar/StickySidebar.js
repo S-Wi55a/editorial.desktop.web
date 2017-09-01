@@ -28,11 +28,11 @@ export function init(d, w, aside) {
     // Scroll Magic Controller
     w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
 
-    // let sceneSimple = new ScrollMagic.Scene({
-    //         triggerElement: aside,
-    //         triggerHook: 1 - (w.innerHeight - references.siteNavHeight)/w.innerHeight,
-    //     })  
-    //     .addTo(w.scrollMogicController);
+    let sceneSimple = new ScrollMagic.Scene({
+            triggerElement: aside,
+            triggerHook: 1 - (w.innerHeight - references.siteNavHeight)/w.innerHeight,
+        })  
+        .addTo(w.scrollMogicController);
 
     let sceneDown = new ScrollMagic.Scene({
             triggerElement: aside,
@@ -47,7 +47,7 @@ export function init(d, w, aside) {
         })       
         .addTo(w.scrollMogicController);
 
-    //const boundScrollingSimple = (e)=>{scrollingSimple(pin, aside, references, e)}
+    const boundScrollingSimple = (e)=>{scrollingSimple(pin, aside, references, e)}
     const boundScrollingDown = (e)=>{scrollingDown(pin, aside, references, e)}
     const boundScrollingUp = (e)=>{scrollingUp(pin, aside, references, e)}
 
@@ -56,10 +56,10 @@ export function init(d, w, aside) {
         if (aside.offsetHeight < window.innerHeight) {
             sceneDown.off('update', boundScrollingDown) 
             sceneUp.off('update', boundScrollingUp) 
-            // sceneSimple.on('update', boundScrollingSimple)
+            sceneSimple.on('update', boundScrollingSimple)
         } 
         else {
-            //sceneSimple.off('update', boundScrollingSimple)
+            sceneSimple.off('update', boundScrollingSimple)
             sceneDown.on('update', boundScrollingDown) 
             sceneUp.on('update', boundScrollingUp) 
         }
@@ -75,9 +75,12 @@ export function init(d, w, aside) {
         
         screenSizeCheck();
     });
-    new ResizeSensor(document.querySelector('#disqus_thread'), function() {
-        sceneDown.trigger('update')
-    });
+    if(document.querySelector('#disqus_thread')){
+        new ResizeSensor(document.querySelector('#disqus_thread'), function() {
+            sceneDown.trigger('update')
+        })
+    }
+
 
     // handle event
     window.addEventListener("optimizedResize", screenSizeCheck);
@@ -86,12 +89,12 @@ export function init(d, w, aside) {
     if (process.env.DEBUG) {
         w.sceneDown = sceneDown
         w.sceneUp = sceneUp
-        // w.sceneSimple = sceneSimple
+        w.sceneSimple = sceneSimple
 
 
         sceneDown.addIndicators({ name: "sceneDown" })   
         sceneUp.addIndicators({ name: "sceneUp" })   
-        // sceneSimple.addIndicators({ name: "sceneSimple" })   
+        sceneSimple.addIndicators({ name: "sceneSimple" })   
 
 
     }    

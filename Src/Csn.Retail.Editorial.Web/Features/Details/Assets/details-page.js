@@ -189,10 +189,14 @@ loaded.then(function () {
 
 //Sticky Sidebar
 if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
-   loaded.then(function() {
-       const aside = document.querySelector('.aside');
-       if (aside) {
-           require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
-       }
-   })
+    const aside = document.querySelector('.aside');
+
+    if(aside.offsetHeight > document.querySelector('article .article') ? document.querySelector('article .article').offsetHeight : 0){
+        loaded.then(function() {     
+            if (aside) {
+                require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
+            }
+        })
+    }
+
 }
