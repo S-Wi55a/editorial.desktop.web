@@ -7,9 +7,6 @@ if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 export function init(d, w, aside) {
 
-    // Vars
-    const pin = {state: false}
-
     //Wrap aside with a refernce wrapper
     const wrapper = aside.parentNode.insertBefore(d.createElement('div'), aside)
     wrapper.classList.add('scrollmagic-pin-wrapper--aside');
@@ -47,13 +44,18 @@ export function init(d, w, aside) {
         })       
         .addTo(w.scrollMogicController);
 
-    const boundScrollingSimple = (e)=>{scrollingSimple(pin, aside, references, e)}
-    const boundScrollingDown = (e)=>{scrollingDown(pin, aside, references, e)}
-    const boundScrollingUp = (e)=>{scrollingUp(pin, aside, references, e)}
+    const boundScrollingSimple = (e)=>{scrollingSimple(aside, references, e)}
+    const boundScrollingDown = (e)=>{scrollingDown(aside, references, e)}
+    const boundScrollingUp = (e)=>{scrollingUp(aside, references, e)}
 
     //Check ScreenSize
     function screenSizeCheck() {
-        if (aside.offsetHeight < window.innerHeight) {
+        if(aside.offsetHeight > (document.querySelector('article .article') ? document.querySelector('article .article').offsetHeight : 0)){
+            sceneDown.off('update', boundScrollingDown) 
+            sceneUp.off('update', boundScrollingUp) 
+            sceneSimple.off('update', boundScrollingSimple)
+        }
+        else if (aside.offsetHeight < window.innerHeight) {
             sceneDown.off('update', boundScrollingDown) 
             sceneUp.off('update', boundScrollingUp) 
             sceneSimple.on('update', boundScrollingSimple)
@@ -68,7 +70,6 @@ export function init(d, w, aside) {
     screenSizeCheck();
 
     //As modules load in the sidebar the hight grows, ResizeSensor has a callback when the size changes
-    //TODO: turn into factory
     new ResizeSensor(aside, function() {
         sceneDown.offset(aside.offsetHeight)
         sceneUp.triggerHook(1 - (w.innerHeight - references.siteNavHeight) / w.innerHeight) // to trigger update
@@ -80,7 +81,6 @@ export function init(d, w, aside) {
             sceneDown.trigger('update')
         })
     }
-
 
     // handle event
     window.addEventListener("optimizedResize", screenSizeCheck);

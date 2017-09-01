@@ -13,7 +13,7 @@ const lock = {
     }
 }
 
-export function scrollingUp(pin, el, ref, e) {
+export function scrollingUp(el, ref, e) {
 
     const state = {
         STATE: e.target.state(),
@@ -32,9 +32,6 @@ export function scrollingUp(pin, el, ref, e) {
 
     if (state.REVERSE) {
 
-        if (process.env.DEBUG) { 
-            //console.log("Scence Up:: pinState: " + pin.state + " State: " + state.STATE + " Reached Top: " + state.REACHED_TOP + " Lock Up: ", lock.up)
-        }
         if (!state.REACHED_TOP) {
             lock.up.HAS_REACHED_TOP = false;
         }
@@ -94,7 +91,7 @@ export function scrollingUp(pin, el, ref, e) {
 
 }
 
-export function scrollingDown(pin, el, ref, e) {
+export function scrollingDown(el, ref, e) {
 
     const state = {
         STATE: e.target.state(),
@@ -115,9 +112,6 @@ export function scrollingDown(pin, el, ref, e) {
         // Update Trigger hook when more article height changes
         e.target.triggerHook(Utils.elementScreenRealEstate('.more-articles').heightInPercentage)
 
-        if (process.env.DEBUG) { 
-        //console.log("Scence Down:: pinState: " + pin.state , " State: " + state.STATE , " Reached Bottom: " + state.REACHED_BOTTOM, " Lock: ", lock.down ) 
-        }
         // We are reversing the lock ere b/c of lazy laoded contnet. If page laods when user is already scrolled at the bottom then it will think its locked,
         // so we check on every update so when the user scrolls is corrects itself
         if (!state.REACHED_BOTTOM) {            
@@ -132,7 +126,6 @@ export function scrollingDown(pin, el, ref, e) {
                 top: ref.footerCoordinatesTop() - el.offsetHeight  + 'px',
                 position: 'absolute'
             }
-            pin.state = false
             Utils.setStylesForElement(el, css)
             lock.down.HAS_REACHED_BOTTOM = true;
             lock.down.IS_DURING = false;
@@ -147,7 +140,6 @@ export function scrollingDown(pin, el, ref, e) {
                 top: (window.innerHeight - Utils.elementScreenRealEstate('.more-articles').height) - el.offsetHeight + 'px',
                 position: 'fixed'
             }
-            pin.state = true
             Utils.setStylesForElement(el, css)
             lock.down.HAS_REACHED_BOTTOM = false;
             lock.down.IS_DURING = true;
@@ -161,7 +153,6 @@ export function scrollingDown(pin, el, ref, e) {
                 top: Utils.distanceFromStartingPoint(e.target, ref.triggerHookUp(), ref.wrapper, 0 , window) + 'px',
                 position: 'absolute'
             }
-            pin.state = false
             Utils.setStylesForElement(el, css)
             lock.down.HAS_REACHED_BOTTOM = false;
             lock.down.IS_DURING = false;
@@ -172,7 +163,7 @@ export function scrollingDown(pin, el, ref, e) {
 
 }
 
-export function scrollingSimple(pin, el, ref, e) {
+export function scrollingSimple(el, ref, e) {
 
     const state = {
         STATE: e.target.state(),
@@ -225,9 +216,6 @@ export function scrollingSimple(pin, el, ref, e) {
         lock.down.HAS_REACHED_BOTTOM = false;
         lock.down.IS_DURING = false;
 
-        if (process.env.DEBUG) { 
-            //console.log("Scence Up:: pinState: " + pin.state + " State: " + state.STATE + " Reached Top: " + state.REACHED_TOP + " Lock Up: ", lock.up)
-        }
         if (!state.REACHED_TOP) {
             lock.up.HAS_REACHED_TOP = false;
         }

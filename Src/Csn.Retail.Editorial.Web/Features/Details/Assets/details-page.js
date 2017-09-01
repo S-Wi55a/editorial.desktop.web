@@ -190,13 +190,11 @@ loaded.then(function () {
 //Sticky Sidebar
 if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
     const aside = document.querySelector('.aside');
-
-    if(aside.offsetHeight > document.querySelector('article .article') ? document.querySelector('article .article').offsetHeight : 0){
-        loaded.then(function() {     
-            if (aside) {
-                require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
-            }
-        })
-    }
+    loaded.then(function() {     
+        if (aside) {
+            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
+        }
+    })
+    
 
 }
