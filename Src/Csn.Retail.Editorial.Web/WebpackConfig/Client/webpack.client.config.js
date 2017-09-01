@@ -31,7 +31,8 @@ module.exports = () => {
         // That is why these entries are added after
         entries[`csn.vendor--${tenant}`] = ['./Features/Shared/Assets/Js/csn.vendor.js'];
         entries[`csn.common--${tenant}`] = ['./Features/Shared/Assets/csn.common.js'];
-
+        entries[`csn.mediaMotive--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
+        
         moduleExportArr.push({
             target: 'web',
             name: tenant,
