@@ -181,7 +181,7 @@
         width: 100%;
         max-height: 640px;
         position: relative;
-        opacity: 0.85;
+        opacity: 0.6;
         overflow: hidden;
 
         &::before {
@@ -239,13 +239,11 @@
     }
 
     &__heading {
-        width: 55%;
+        width: 75%;
         color: $cs-white;
         font-size: emtopx(typeScale(1.2,7), $font-size-body); //57.33089px
         font-weight: $font-weight-600;
         line-height: 1em;
-        text-shadow: 1px 1px 3px rgba($cs-black,0.8);
-
 
         @include breakpoint($screen-lg) {
             font-size: emtopx(typeScale(1.2,8), $font-size-body); //68.79707px
@@ -345,23 +343,23 @@
     &__action-close {
         color: $cs-white;
         cursor: pointer;
-        font-size: 3.15em;
+        font-size: 4em;
         font-weight: bold;
-        height: 60px;
         overflow: hidden;
         padding: 0;
         position: absolute;
-        right: 0;
-        top: 0;
-        width: 60px;
+        left: 50px;
+        top: 10px;
+        width: 70px;
     }
 
     &__action-icon {
         &::before {
-            content: $icon-cross-lg;
+            color: $cs-white;
+            content: $icon-circle-left-lg;
             font-family: $font-family-icons;
             font-style: normal;
-            color: $cs-white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
     }
 }
