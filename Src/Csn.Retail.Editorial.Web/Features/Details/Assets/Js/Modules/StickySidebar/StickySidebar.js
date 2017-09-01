@@ -18,34 +18,36 @@ export function init(d, w, aside) {
     //Module Vars
     const references = {
         wrapper,
-        startingCoordinatesTop : () => { return wrapper.getBoundingClientRect().top - d.querySelector('body').getBoundingClientRect().top },
+        startingCoordinatesTop : wrapper.getBoundingClientRect().top,
         siteNavHeight: d.querySelector('.site-nav-wrapper').offsetHeight,
-        footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - d.querySelector('body').getBoundingClientRect().top  }
+        footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - wrapper.getBoundingClientRect().top },
+        triggerHookUp: ()=> 1 - (w.innerHeight - d.querySelector('.site-nav-wrapper').offsetHeight) / w.innerHeight,
+        triggerHookDown : ()=> Utils.elementScreenRealEstate('.more-articles').heightInPercentage
     }
          
     // Scroll Magic Controller
     w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
 
-    let sceneSimple = new ScrollMagic.Scene({
-            triggerElement: aside,
-            triggerHook: 1 - (w.innerHeight - references.siteNavHeight)/w.innerHeight,
-        })  
-        .addTo(w.scrollMogicController);
-  
+    // let sceneSimple = new ScrollMagic.Scene({
+    //         triggerElement: aside,
+    //         triggerHook: 1 - (w.innerHeight - references.siteNavHeight)/w.innerHeight,
+    //     })  
+    //     .addTo(w.scrollMogicController);
+
     let sceneDown = new ScrollMagic.Scene({
             triggerElement: aside,
-            triggerHook: Utils.elementScreenRealEstate('.more-articles').heightInPercentage,
+            triggerHook: references.triggerHookDown(),
             offset: aside.offsetHeight 
         })
         .addTo(w.scrollMogicController);
 
     let sceneUp = new ScrollMagic.Scene({
             triggerElement: aside,
-            triggerHook: 1 - (w.innerHeight - references.siteNavHeight)/w.innerHeight,
+            triggerHook: references.triggerHookUp(),
         })       
         .addTo(w.scrollMogicController);
 
-    const boundScrollingSimple = (e)=>{scrollingSimple(pin, aside, references, e)}
+    //const boundScrollingSimple = (e)=>{scrollingSimple(pin, aside, references, e)}
     const boundScrollingDown = (e)=>{scrollingDown(pin, aside, references, e)}
     const boundScrollingUp = (e)=>{scrollingUp(pin, aside, references, e)}
 
@@ -54,10 +56,10 @@ export function init(d, w, aside) {
         if (aside.offsetHeight < window.innerHeight) {
             sceneDown.off('update', boundScrollingDown) 
             sceneUp.off('update', boundScrollingUp) 
-            sceneSimple.on('update', boundScrollingSimple)
+            // sceneSimple.on('update', boundScrollingSimple)
         } 
         else {
-            sceneSimple.off('update', boundScrollingSimple)
+            //sceneSimple.off('update', boundScrollingSimple)
             sceneDown.on('update', boundScrollingDown) 
             sceneUp.on('update', boundScrollingUp) 
         }
@@ -66,9 +68,15 @@ export function init(d, w, aside) {
     screenSizeCheck();
 
     //As modules load in the sidebar the hight grows, ResizeSensor has a callback when the size changes
+    //TODO: turn into factory
     new ResizeSensor(aside, function() {
         sceneDown.offset(aside.offsetHeight)
+        sceneUp.triggerHook(1 - (w.innerHeight - references.siteNavHeight) / w.innerHeight) // to trigger update
+        
         screenSizeCheck();
+    });
+    new ResizeSensor(document.querySelector('#disqus_thread'), function() {
+        sceneDown.trigger('update')
     });
 
     // handle event
@@ -78,12 +86,12 @@ export function init(d, w, aside) {
     if (process.env.DEBUG) {
         w.sceneDown = sceneDown
         w.sceneUp = sceneUp
-        w.sceneSimple = sceneSimple
+        // w.sceneSimple = sceneSimple
 
 
         sceneDown.addIndicators({ name: "sceneDown" })   
         sceneUp.addIndicators({ name: "sceneUp" })   
-        sceneSimple.addIndicators({ name: "sceneSimple" })   
+        // sceneSimple.addIndicators({ name: "sceneSimple" })   
 
 
     }    
