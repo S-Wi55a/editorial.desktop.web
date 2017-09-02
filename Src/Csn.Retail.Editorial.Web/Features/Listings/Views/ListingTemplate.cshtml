@@ -18,6 +18,7 @@
 
 
 @section TopScripts {
+    @Html.AssetJs("listings.vendor", LoadType.Defer)
     @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
 }
 
