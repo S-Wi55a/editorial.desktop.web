@@ -1,22 +1,13 @@
-import rimraf from 'rimraf'
-
-import { isProd } from '../Shared/env.config'
+import { IS_PROD } from '../Shared/env.config'
 import { TENANTS } from '../Shared/tenants.config'
 import { stats } from '../Shared/stats.config'
 import { devServer } from '../Shared/devServer.config'
 import { resolve } from '../Shared/resolve.config'
 
-import os from 'os'
-console.log('Cores: ' + os.cpus().length)
-
 // From Client/
 import { config, getEntryFiles } from './entries.config';
 import { plugins } from './plugins.config';
 import { modules } from './loaders.config'
-
-
-// Remove dist folder
-//rimraf('./dist', err => { if (err) { throw err; } });
 
 module.exports = () => {
 
@@ -39,13 +30,13 @@ module.exports = () => {
             output: {
                 path: config.outputPath,
                 publicPath: config.publicPath,
-                filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
+                filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: modules(tenant),
             resolve,
             plugins: plugins(tenant, pageEntries),
             stats,
-            devtool: isProd ? 'none' : 'eval',
+            devtool: IS_PROD ? 'none' : 'eval',
             devServer: devServer(tenant),
             externals: {
                 'react' : 'React',

@@ -1,10 +1,10 @@
 ﻿import path from 'path'
-import {isProd} from '../Shared/env.config.js'
+import {IS_PROD} from '../Shared/env.config.js'
 import {listOfPaths} from '../Shared/paths.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
-const URL_LIMIT = isProd ? 1 : null;
+const URL_LIMIT = IS_PROD ? 1 : null;
 
 const loaders = (tenant) => ([
     {
@@ -16,8 +16,8 @@ const loaders = (tenant) => ([
     {
         loader: 'css-loader',
         options: {
-            sourceMap: isProd ? false : true,
-            minimize: isProd ? true : false,
+            sourceMap: IS_PROD ? false : true,
+            minimize: IS_PROD ? true : false,
             //modules: true
         }
     },
@@ -25,7 +25,7 @@ const loaders = (tenant) => ([
     {
         loader: 'resolve-url-loader',
         options: {
-            sourceMap: isProd ? false : true,
+            sourceMap: IS_PROD ? false : true,
             keepQuery: true
         }
     },
@@ -49,10 +49,10 @@ export const devLoaderCSSExtract = (tenant) => (['style-loader'].concat(loaders(
 
 export const modules = (tenant) => {
 
-    let CSSLoader = isProd ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
+    let CSSLoader = IS_PROD ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
 
     return {
-        noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
+        noParse: IS_PROD ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [
         // {
         //     enforce: 'pre',
@@ -113,7 +113,7 @@ export const modules = (tenant) => {
                     loader: 'url-loader',
                     options: {
                         limit: URL_LIMIT,
-                        name: isProd ? 'images/[name]-[hash].[ext]' : 'images/[name].[ext]'
+                        name: IS_PROD ? 'images/[name]-[hash].[ext]' : 'images/[name].[ext]'
                     }
                 },
                 {
@@ -142,7 +142,7 @@ export const modules = (tenant) => {
                     loader: 'url-loader',
                     options: {
                         limit: URL_LIMIT,
-                        name: isProd ? 'fonts/[name]-[hash].[ext]' : 'fonts/[name].[ext]'
+                        name: IS_PROD ? 'fonts/[name]-[hash].[ext]' : 'fonts/[name].[ext]'
                     }
                 }
             ]

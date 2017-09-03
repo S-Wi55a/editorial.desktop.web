@@ -1,4 +1,4 @@
-﻿import {isProd} from '../Shared/env.config.js'
+﻿import {IS_PROD} from '../Shared/env.config.js'
 
 export const modules = () => {
 
@@ -24,7 +24,7 @@ export const modules = () => {
                     {
                         loader: 'ts-loader', 
                         options: {
-                        transpileOnly: isProd ? false : true,
+                        transpileOnly: IS_PROD ? false : true,
                           //visualStudioErrorFormat: true,
                           logLevel: 'warn'
                         } 

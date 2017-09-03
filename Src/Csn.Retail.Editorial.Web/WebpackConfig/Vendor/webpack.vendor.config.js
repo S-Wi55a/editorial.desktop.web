@@ -1,7 +1,4 @@
-import rimraf from 'rimraf'
-import path from 'path'
-
-import { isProd } from '../Shared/env.config'
+import { IS_PROD } from '../Shared/env.config'
 import { stats } from '../Shared/stats.config'
 import { resolve } from '../Shared/resolve.config'
 import { devServer } from '../Shared/devServer.config'
@@ -20,13 +17,13 @@ module.exports = [{
         output: {
             path: config.outputPath,
             publicPath: config.publicPath,
-            filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
+            filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
         },
         module: modules,
         resolve,
         plugins,
         stats,
-        devtool: isProd ? 'cheap-source-map' : 'eval',
+        devtool: IS_PROD ? 'cheap-source-map' : 'eval',
         devServer: devServer('carsales') //TODO: set default value
         
     }]

@@ -1,15 +1,14 @@
-﻿import os from 'os'
-import path from 'path'
+﻿import path from 'path'
 import webpack from 'webpack'
-import { s3path } from '../Shared/paths.config.js'
-import { isProd, VIEW_BUNDLE } from '../Shared/env.config.js'
+import { IS_PROD, IS_DEV, VIEW_BUNDLE } from '../Shared/env.config.js'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import AssetsPlugin from 'assets-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
-import HappyPack from 'happypack'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
 import WebpackNotifierPlugin from 'webpack-notifier'
+import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin'
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -26,11 +25,11 @@ export const plugins = (tenant, pageEntries) => {
     let pluginsArr = [
         assetsPluginInstance,
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': isProd ? '"production"' : '"development"', //TODO add to shared / Correct the logic
+            'process.env.NODE_ENV': IS_PROD ? '"production"' : '"development"', //TODO add to shared / Correct the logic
             SERVER: JSON.stringify(false)
         }),
         new ExtractTextPlugin({
-            filename: isProd ? '[name]-[contenthash].css' : '[name].css',
+            filename: IS_PROD ? '[name]-[contenthash].css' : '[name].css',
             allChunks: false
         }),
         //Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
@@ -54,19 +53,22 @@ export const plugins = (tenant, pageEntries) => {
         new webpack.EnvironmentPlugin({
             NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
             DEBUG: false
-        })
-
+        }),
+        new CaseSensitivePathsPlugin()        
     ];
 
     if (VIEW_BUNDLE) {
         pluginsArr.push(new BundleAnalyzerPlugin())
     }
-    if (isProd) {
+    if (IS_PROD) {
         pluginsArr.push(
             new webpack.optimize.ModuleConcatenationPlugin()
         )
     }
-    if (!isProd) {
+    if (IS_DEV) {
+        pluginsArr.push(    
+            new WatchMissingNodeModulesPlugin(path.resolve('node_modules'))
+        )
         pluginsArr.push(
             new ForkTsCheckerWebpackPlugin({
                 watch: './Features/**/*', // optional but improves performance (less stat calls),

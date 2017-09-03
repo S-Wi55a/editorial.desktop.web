@@ -1,4 +1,4 @@
-import {isProd} from '../Shared/env.config.js'
+import {IS_PROD} from '../Shared/env.config.js'
 import {resolve} from '../Shared/resolve.config.js'
 import {stats} from '../Shared/stats.config.js'
 import {devServer} from '../Shared/devServer.config.js'
@@ -33,7 +33,7 @@ module.exports = () => {
         resolve: resolve,
         plugins: plugins(),
         stats: stats,
-        devtool: isProd ? "cheap-source-map" : "eval",
+        devtool: IS_PROD ? "cheap-source-map" : "eval",
         devServer: devServer('carsales') //TODO: fix
     }]
 }
