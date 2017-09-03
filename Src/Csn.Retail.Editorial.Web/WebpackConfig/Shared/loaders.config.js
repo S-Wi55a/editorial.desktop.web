@@ -8,6 +8,12 @@ const URL_LIMIT = isProd ? 1 : null;
 
 const loaders = (tenant) => ([
     {
+        loader: 'cache-loader',
+        options: {
+            cacheDirectory: path.resolve('.cache')
+            }
+    },
+    {
         loader: 'css-loader',
         options: {
             sourceMap: isProd ? false : true,
@@ -43,7 +49,7 @@ export const devLoaderCSSExtract = (tenant) => (['style-loader'].concat(loaders(
 
 export const modules = (tenant) => {
 
-    const CSSLoader = isProd ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
+    let CSSLoader = isProd ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
 
     return {
         noParse: isProd ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
@@ -92,28 +98,12 @@ export const modules = (tenant) => {
         {
             test: /\.css$/,
             exclude: /(node_modules|bower_components|unitTest)/,
-            loaders: [                
-                {
-                loader: 'cache-loader',
-                options: {
-                    cacheDirectory: path.resolve('.cache')
-                    }
-                },
-                ...CSSLoader
-            ]
+            loaders: [...CSSLoader]
         },
         {
             test: /\.scss$/,
             exclude: [/(node_modules|bower_components|unitTest)/],
-            use: [              
-            {
-                loader: 'cache-loader',
-                options: {
-                    cacheDirectory: path.resolve('.cache')
-                    }
-                },
-                ...CSSLoader
-            ]                  
+            use: [...CSSLoader]                  
         },
         {
             test: /.*\.(gif|png|jpe?g|svg)$/i,
