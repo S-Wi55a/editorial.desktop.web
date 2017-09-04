@@ -73,7 +73,7 @@ export function init(d, w, aside) {
     new ResizeSensor(aside, function() {
         sceneDown.offset(aside.offsetHeight)
         sceneUp.triggerHook(1 - (w.innerHeight - references.siteNavHeight) / w.innerHeight) // to trigger update
-        
+        sceneDown.trigger('update')
         screenSizeCheck();
     });
     if(document.querySelector('#disqus_thread')){

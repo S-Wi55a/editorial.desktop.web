@@ -120,7 +120,7 @@ export function scrollingDown(el, ref, e) {
         }
             
         //Reached footer
-        if (state.REACHED_BOTTOM && !lock.down.HAS_REACHED_BOTTOM) {
+        if (state.REACHED_BOTTOM) {
             if (process.env.DEBUG) { console.log('Down 1') }
                
             const css = {  
