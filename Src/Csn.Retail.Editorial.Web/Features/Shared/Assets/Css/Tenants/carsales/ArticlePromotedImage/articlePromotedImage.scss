@@ -1,5 +1,5 @@
 ﻿// Article Promoted Image
-$article-promoted-image: 'images/carsales/poweredByMotoring.png';
+$article-promoted-image: 'Images/Carsales/poweredByMotoring.png';
 
 @mixin article-promoted-image() {
     background-image: url($article-promoted-image);

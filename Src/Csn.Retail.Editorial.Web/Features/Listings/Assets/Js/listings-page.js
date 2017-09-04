@@ -1,4 +1,6 @@
-﻿// load Redux 
+﻿import * as store from 'Js/Modules/Redux/Global/Store/store.client.js'
+
+// load Redux 
 (function redux(d) {
 
     window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
@@ -24,3 +26,10 @@
 
 
 })(document);
+
+//Check to see if there is a preloaded state
+window.__PRELOADED_STATE__ = window.__PRELOADED_STATE__ || {}
+
+//Enable Redux store globally
+window.store = store.configureStore() //Init store
+window.injectAsyncReducer = store.injectAsyncReducer

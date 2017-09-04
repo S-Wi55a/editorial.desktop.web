@@ -1,18 +1,16 @@
-﻿import {IS_PROD} from '../Shared/env.config.js'
+﻿import {s3path} from '../Shared/paths.config.js'
+import {IS_PROD} from '../Shared/env.config.js'
 import glob from 'glob'
 import path from 'path'
 
-
 export const config = {
-    entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
-    outputPath: path.resolve('dist--server'),
-    publicPath: IS_PROD ? './' : 'dist--server'
+    entryPointMatch: './Features/**/*.vendor.js', // anything ends with -page.js
+    outputPath: path.resolve(s3path),
+    publicPath: IS_PROD ? './' : s3path
 }
 
-export function getEntryFiles(tenant) {
-    if (!tenant) {
-        tenant = '';
-    }
+export function getEntryFiles() {
+
     let entries = {};
 
     let matchedFiles = glob.sync(config.entryPointMatch);
@@ -23,7 +21,8 @@ export function getEntryFiles(tenant) {
         let filePath = matchedFiles[i];
         let ext = path.extname(filePath);
         let filename = path.basename(filePath, ext);
-        entries[filename + '--' + tenant] = filePath;
+        entries[filename] = filePath;
     }
     return entries;
 }
+

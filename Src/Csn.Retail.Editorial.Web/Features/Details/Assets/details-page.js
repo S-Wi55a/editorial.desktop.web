@@ -1,5 +1,5 @@
 ﻿// Details Page css files
-require('./css/details-page.scss');
+require('./Css/Details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
@@ -12,25 +12,6 @@ if (process.env.DEBUG) { require('debug.addIndicators'); }
 // Hero
 let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
 aboveTheFold();
-
-// load Redux 
-(function redux(d) {
-
-    if (d.querySelector('#searchBarContainer')) { //TODO: change to iNav check
-        window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
-        require('Js/Modules/Redux/SearchBar/SearchBar.js');
-
-        if (module.hot) {
-            // Enable Webpack hot module replacement for reducers
-            module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavReducer',
-                () => {
-                    window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer)
-                })
-        }
-
-    }
-
-})(document);
 
 //Editors Rating
 (function editorRatings() {
@@ -98,7 +79,7 @@ loaded.then(() => {
 
         if (d.querySelector('.also-consider-placeholder')) {
             (function alsoConsider() {
-                import ( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/alsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
+                import ( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
                 });
             })()
