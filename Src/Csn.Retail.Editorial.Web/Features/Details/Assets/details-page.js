@@ -84,11 +84,7 @@ loaded.then(() => {
 
         if (d.querySelector('.also-consider-placeholder')) {
             (function alsoConsider() {
-<<<<<<< HEAD
-                import ( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/alsoConsider/alsoConsider-component.js').catch(function(err) {
-=======
-                import ( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
->>>>>>> master
+                import ( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/AlsoConsider/alsoConsider-component.js').catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
                 });
             })()
@@ -182,7 +178,7 @@ if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet 
     const aside = document.querySelector('.aside');
     loaded.then(function() {     
         if (aside) {
-            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
+            require('Js/Modules/StickySidebar/StickySidebar.js').init(document, window, aside);
         }
     })
     
