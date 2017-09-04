@@ -34,7 +34,7 @@ const loaders = (tenant) => ([
         options: {
             includePaths: listOfPaths,
             sourceMap: true,
-            data: '@import "Css/Tenants/' + tenant + '/' + tenant +'.scss";'
+            data: '@import "Css/Tenants/' + tenant.charAt(0).toUpperCase() + tenant.slice(1) + '/' + tenant +'.scss";'
         }
     }
 ])
@@ -91,8 +91,8 @@ export const modules = (tenant) => {
             use: [...CSSLoader]                  
         },
         {
-            test: /.*\.(gif|png|jpe?g|svg)$/i,
-            exclude: [/(node_modules|bower_components|unitTest)/, /fonts/],
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            exclude: [/(node_modules|bower_components|unitTest)/, /Fonts/],
             use: [
                 {
                     loader: 'url-loader',
@@ -104,24 +104,31 @@ export const modules = (tenant) => {
                 {
                     loader: 'image-webpack-loader',
                     options: {
-                        progressive: true,
-                        optipng: {
-                            optimizationLevel: 7,
-                        },
                         gifsicle: {
                             interlaced: false,
+                        },
+                        optipng: {
+                            optimizationLevel: 7,
                         },
                         pngquant: {
                             quality: '65-90',
                             speed: 4
+                        },
+                        mozjpeg: {
+                            progressive: true,
+                            quality: 65
+                        },
+                        // Specifying webp here will create a WEBP version of your JPG/PNG images
+                        webp: {
+                            quality: 75
                         }
                     }
                 }
             ]
         },
         {
-            test: /\.(eot|svg|ttf|woff|woff2)$/,
-            exclude: /(images|img)/,
+            test: /\.(eot|ttf|woff|woff2|svg)$/,
+            exclude: /Images/,
             use: [
                 {
                     loader: 'url-loader',
