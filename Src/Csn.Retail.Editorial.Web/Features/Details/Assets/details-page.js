@@ -1,5 +1,5 @@
 ﻿// Details Page css files
-require('./Css/details-page.scss');
+require('./Css/Details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
