@@ -25,12 +25,11 @@ export function setStylesForElement(el, css) {
     
 }
 
-export function distanceFromStartingPoint(scene, anchor, ref, offset = 0, w) {
+export function distanceFromStartingPoint(scene, elPosition, ref, offset = 0) {
     const scrollPosition = scene.controller().info().scrollPos
-    const triggerHookPosition = w.innerHeight - (w.innerHeight - anchor*w.innerHeight)
     const referenceStartingPoint = Math.abs(document.querySelector('body').getBoundingClientRect().top - ref.getBoundingClientRect().top)
     const elementHeight = offset
   
-    return scrollPosition + triggerHookPosition - referenceStartingPoint - elementHeight   
+    return scrollPosition + elPosition - referenceStartingPoint - elementHeight   
 }
 

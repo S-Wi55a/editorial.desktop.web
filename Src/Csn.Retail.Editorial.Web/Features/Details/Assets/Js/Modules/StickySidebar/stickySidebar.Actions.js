@@ -1,5 +1,6 @@
 ﻿import * as Utils from 'Features/Details/Assets/Js/Modules/StickySidebar/stickySidebar.utils.js'
 
+// Locks are to prevent calling a bloack of code when ina current state
 const lock = {
     up: {
         HAS_REACHED_TOP: false,
@@ -64,7 +65,7 @@ export function scrollingUp(el, ref, e) {
         
         }
         // The top trigger has passed the trigger hook
-        else if (state.STATE === 'DURING' && !lock.up.IS_BEFORE && !lock.up.IS_DURING) {
+        else if (state.STATE === 'DURING' && !lock.up.IS_BEFORE && !lock.up.IS_DURING && !lock.up.HAS_REACHED_TOP) {
             if (process.env.DEBUG) { console.log('Up 3') }
 
             let css = {}
@@ -75,7 +76,7 @@ export function scrollingUp(el, ref, e) {
                 }
             } else {
                 css = {  
-                    top: Utils.distanceFromStartingPoint(e.target, ref.triggerHookDown(), ref.wrapper, el.offsetHeight , window) + 'px',
+                    top: Utils.distanceFromStartingPoint(e.target, el.getBoundingClientRect().bottom , ref.wrapper, el.offsetHeight) + 'px',
                     position: 'absolute',
                 }
             }
@@ -150,7 +151,7 @@ export function scrollingDown(el, ref, e) {
             if (process.env.DEBUG) { console.log('Down 3') }
 
             const css = {  
-                top: Utils.distanceFromStartingPoint(e.target, ref.triggerHookUp(), ref.wrapper, 0 , window) + 'px',
+                top: Utils.distanceFromStartingPoint(e.target, window.innerHeight - (window.innerHeight - ref.triggerHookUp()*window.innerHeight) , ref.wrapper, 0) + 'px',
                 position: 'absolute'
             }
             Utils.setStylesForElement(el, css)
