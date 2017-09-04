@@ -21,7 +21,7 @@ export function scrollingUp(el, ref, e) {
         FORWARD: e.target.controller().info('scrollDirection') === 'FORWARD',
         REVERSE: e.target.controller().info('scrollDirection') === 'REVERSE',
         REACHED_TOP: e.scrollPos + ref.siteNavHeight <= Math.abs(document.querySelector('body').getBoundingClientRect().top - ref.wrapper.getBoundingClientRect().top),
-        REACHED_BOTTOM: Utils.elementScreenRealEstate('#page-footer').heightInPercentage <= ref.triggerHookDown       
+        REACHED_BOTTOM: Utils.elementScreenRealEstate(ref.pageFooter).heightInPercentage <= ref.triggerHookDown       
     }
 
     if (state.FORWARD) {
@@ -98,7 +98,7 @@ export function scrollingDown(el, ref, e) {
         STATE: e.target.state(),
         FORWARD: e.target.controller().info('scrollDirection') === 'FORWARD', 
         REVERSE: e.target.controller().info('scrollDirection') === 'REVERSE',        
-        REACHED_BOTTOM: Utils.elementScreenRealEstate('#page-footer').heightInPercentage <= e.target.triggerHook()
+        REACHED_BOTTOM: Utils.elementScreenRealEstate(ref.pageFooter).heightInPercentage <= e.target.triggerHook()
     }
 
     if (state.REVERSE) {
@@ -109,9 +109,6 @@ export function scrollingDown(el, ref, e) {
     }
 
     if (state.FORWARD) {
-
-        // Update Trigger hook when more article height changes
-        //e.target.triggerHook(Utils.elementScreenRealEstate('.more-articles').heightInPercentage)
 
         // We are reversing the lock ere b/c of lazy laoded contnet. If page laods when user is already scrolled at the bottom then it will think its locked,
         // so we check on every update so when the user scrolls is corrects itself

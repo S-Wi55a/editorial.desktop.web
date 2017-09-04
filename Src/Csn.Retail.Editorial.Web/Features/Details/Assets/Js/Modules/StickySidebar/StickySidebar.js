@@ -12,6 +12,9 @@ export function init(d, w, aside, baseReference) {
     wrapper.classList.add('scrollmagic-pin-wrapper--aside');
     wrapper.appendChild(aside);
 
+    // Cache Footer
+    const pageFooter = document.querySelector('#page-footer')
+    
     //Module Vars
     const references = {
         wrapper,
@@ -19,7 +22,8 @@ export function init(d, w, aside, baseReference) {
         siteNavHeight: d.querySelector('.site-nav-wrapper').offsetHeight,
         footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - wrapper.getBoundingClientRect().top },
         triggerHookUp: ()=> 1 - (w.innerHeight - d.querySelector('.site-nav-wrapper').offsetHeight) / w.innerHeight,
-        triggerHookDown : (window.innerHeight - baseReference) / window.innerHeight
+        triggerHookDown : (window.innerHeight - baseReference) / window.innerHeight,
+        pageFooter
     }
          
     // Scroll Magic Controller

@@ -1,7 +1,6 @@
 ﻿// Helper Functions
-export function elementScreenRealEstate(selector) {
+export function elementScreenRealEstate(el) {
     //check if more articles is loaded if not use default values
-    const el = document.querySelector(selector)
     const height =  el ? window.innerHeight - el.getBoundingClientRect().top : 0
 
     return {
