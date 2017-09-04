@@ -21,10 +21,15 @@ aboveTheFold();
 })();
 
 // TEADS
-$(function () {
-    if ($('#Tile7').length) {
-        $('#Tile7').wrap('<div id="teads-video-container" style="clear: both"></div>');
-        $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
+loaded.then(() => {
+
+    const tile7 = document.querySelector('#Tile7')
+    if (tile7) {
+        const parentEl = document.querySelectorAll('.article__copy p')
+        if(parentEl.length) {
+            parentEl[0].insertAdjacentHTML('afterend', '<div id="teads-video-container" style="clear:both;"></div>')
+            document.querySelector('#teads-video-container').appendChild(tile7)
+        }        
     }
 });
 
