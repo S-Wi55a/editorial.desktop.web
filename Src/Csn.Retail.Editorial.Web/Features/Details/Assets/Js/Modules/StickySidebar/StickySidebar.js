@@ -5,7 +5,7 @@ import { scrollingUp, scrollingDown, scrollingSimple } from 'Features/Details/As
 
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
-export function init(d, w, aside) {
+export function init(d, w, aside, baseReference) {
 
     //Wrap aside with a refernce wrapper
     const wrapper = aside.parentNode.insertBefore(d.createElement('div'), aside)
@@ -19,7 +19,7 @@ export function init(d, w, aside) {
         siteNavHeight: d.querySelector('.site-nav-wrapper').offsetHeight,
         footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - wrapper.getBoundingClientRect().top },
         triggerHookUp: ()=> 1 - (w.innerHeight - d.querySelector('.site-nav-wrapper').offsetHeight) / w.innerHeight,
-        triggerHookDown : ()=> Utils.elementScreenRealEstate('.more-articles').heightInPercentage
+        triggerHookDown : (window.innerHeight - baseReference) / window.innerHeight
     }
          
     // Scroll Magic Controller
@@ -33,7 +33,7 @@ export function init(d, w, aside) {
 
     let sceneDown = new ScrollMagic.Scene({
             triggerElement: aside,
-            triggerHook: references.triggerHookDown(),
+            triggerHook: references.triggerHookDown,
             offset: aside.offsetHeight 
         })
         .addTo(w.scrollMogicController);
@@ -73,12 +73,11 @@ export function init(d, w, aside) {
     new ResizeSensor(aside, function() {
         sceneDown.offset(aside.offsetHeight)
         sceneUp.triggerHook(1 - (w.innerHeight - references.siteNavHeight) / w.innerHeight) // to trigger update
-        sceneDown.trigger('update')
         screenSizeCheck();
     });
     if(document.querySelector('#disqus_thread')){
         new ResizeSensor(document.querySelector('#disqus_thread'), function() {
-            sceneDown.trigger('update')
+            sceneDown.trigger(references.triggerHookDown) //TODO: check if this works correctly
         })
     }
 
