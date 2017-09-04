@@ -46,35 +46,17 @@ export const prodLoaderCSSExtract = (tenant) => (ExtractTextPlugin.extract({
 
 export const devLoaderCSSExtract = (tenant) => (['style-loader'].concat(loaders(tenant)))
 
-
 export const modules = (tenant) => {
 
     let CSSLoader = IS_PROD ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
 
     return {
-        noParse: IS_PROD ? /\A(?!x)x/ : /jquery|swiper|ScrollMagic|modernizr|TinyAnimate|circles/,
         rules: [
-        // {
-        //     enforce: 'pre',
-        //     test: /\.jsx?$/,
-        //     loader: "source-map-loader"
-        // },
-        // {
-        //     enforce: 'pre',
-        //     test: /\.tsx?$/,
-        //     use: "source-map-loader"
-        // },
         {
             test: [/\.jsx?$/, /\.es6$/],
             exclude: /(node_modules|bower_components|unitTest)/,
-            use: [          
-                {
-                    loader: 'cache-loader',
-                    options: {
-                        cacheDirectory: path.resolve('.cache')
-                    }
-                },
-                'happypack/loader?id=babel'
+            use: [
+                'babel-loader?cacheDirectory=true'
             ]
         },
         {
@@ -86,19 +68,22 @@ export const modules = (tenant) => {
             test: /\.tsx?$/,
             exclude: /(node_modules|bower_components|unitTest)/,
             use: [
+                'babel-loader?cacheDirectory=true',
                 {
-                    loader: 'cache-loader',
+                    loader: 'ts-loader', 
                     options: {
-                        cacheDirectory: path.resolve('.cache')
-                    }
-                },
-                'happypack/loader?id=babelTypeScript'
+                    transpileOnly: IS_PROD ? false : true,
+                      //visualStudioErrorFormat: true,
+                      logLevel: 'warn'
+                    } 
+                }
             ]
+            
         },
         {
             test: /\.css$/,
             exclude: /(node_modules|bower_components|unitTest)/,
-            loaders: [...CSSLoader]
+            use: [...CSSLoader]
         },
         {
             test: /\.scss$/,

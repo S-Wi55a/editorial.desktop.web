@@ -1,21 +1,13 @@
-import rimraf from 'rimraf'
-
-import { isProd } from '../Shared/env.config'
+import { IS_PROD } from '../Shared/env.config'
 import { TENANTS } from '../Shared/tenants.config'
 import { stats } from '../Shared/stats.config'
 import { devServer } from '../Shared/devServer.config'
 import { resolve } from '../Shared/resolve.config'
-import { modules } from '../Shared/loaders.config.js'
-
-import os from 'os'
-console.log('Cores: ' + os.cpus().length)
 
 // From Client/
 import { config, getEntryFiles } from './entries.config';
 import { plugins } from './plugins.config';
-
-// Remove dist folder
-rimraf('./dist', err => { if (err) { throw err; } });
+import { modules } from './loaders.config'
 
 module.exports = () => {
 
@@ -29,9 +21,9 @@ module.exports = () => {
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
         // That is why these entries are added after
-        entries[`csn.vendor--${tenant}`] = ['./Features/Shared/Assets/Js/csn.vendor.js'];
         entries[`csn.common--${tenant}`] = ['./Features/Shared/Assets/csn.common.js'];
-
+        entries[`csn.mediaMotive--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
+        
         moduleExportArr.push({
             target: 'web',
             name: tenant,
@@ -39,14 +31,24 @@ module.exports = () => {
             output: {
                 path: config.outputPath,
                 publicPath: config.publicPath,
-                filename: isProd ? '[name]-[chunkhash].js' : '[name].js'
+                filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: modules(tenant),
             resolve,
             plugins: plugins(tenant, pageEntries),
             stats,
-            devtool: isProd ? 'cheap-source-map' : 'eval',
-            devServer: devServer(tenant)
+            devtool: IS_PROD ? 'none' : 'eval',
+            devServer: devServer(tenant),
+            externals: {
+                'react' : 'React',
+                'react-dom' : 'ReactDOM',
+                'redux' : 'Redux',
+                'react-redux' : 'ReactRedux',
+                'immutable' : 'Immutable',
+                'ScrollMagic': 'ScrollMagic',
+                'swiper': 'Swiper',
+                //TODO: add redux saga
+            }
         });
     });
     return moduleExportArr;
