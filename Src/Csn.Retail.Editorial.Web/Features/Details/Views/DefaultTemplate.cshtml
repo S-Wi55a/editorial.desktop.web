@@ -20,6 +20,8 @@
 @section TopScripts {
     @Html.AssetJs("details.vendor", LoadType.Defer)
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
+
 }
 
 @{ Html.RenderPartial("_Header", Model.MediaMotiveData); }
