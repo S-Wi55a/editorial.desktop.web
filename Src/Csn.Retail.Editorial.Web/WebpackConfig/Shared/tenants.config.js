@@ -15,4 +15,4 @@ export const listofTenants = [
 ];
 
 
-export const TENANTS = process.env.TENANT ? [process.env.TENANT.trim()] : listofTenants;
+export const TENANTS = process.env.TENANT ? [process.env.TENANT.trim().toLowerCase()] : listofTenants;
