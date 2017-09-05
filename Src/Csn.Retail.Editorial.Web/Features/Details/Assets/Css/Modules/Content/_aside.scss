@@ -1,6 +1,7 @@
 ﻿@import "css/globals";
 
 // Module - Aside
+// Module - Aside
 
 .aside {
     $width: 300px;
@@ -8,13 +9,11 @@
 
     display: inline-block;
     vertical-align: top;
-    transform: translateX(-50%);
+    margin-left: -$width/2;
     left: calc(50% - ((#{($screen-md - $width - $spacing)})/2));
-    width: 300px;
+    width: $width;
     padding-top: 30px;
-    padding-bottom: $grid-gutter-width/2;
     position: relative;
-
 
     @include breakpoint($screen-lg) {
         padding-top: 45px;
@@ -23,5 +22,26 @@
 }
 
 .scrollmagic-pin-wrapper--aside {
-    float: left;
+    $width: 300px;
+    $spacing: 90px;
+
+    width: $width;
+    display: inline-block;
+    vertical-align: top;
+    left: calc(50% - ((#{($screen-md - $width - $spacing)})/2));
+    margin-left: -$width/2;
+    position: relative;
+
+    .aside{
+        left: auto;
+        margin-left: auto;
+        
+        @include breakpoint($screen-lg) {
+            left: auto
+        }
+    }
+
+    @include breakpoint($screen-lg) {
+        left: calc(50% - ((#{($screen-lg - $width - $spacing)})/2));
+    }
 }
