@@ -36,13 +36,14 @@ export const plugins = (tenant, pageEntries) => {
         new webpack.optimize.CommonsChunkPlugin({
             names: pageEntries,
             children: true,
-            minChunks: 2
-        }),
-        // Common -- pull everything from pages entries and make global common chunk
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'csn.common' + '--' + tenant,
-            chunks: pageEntries,
-            minChunks: 2
+            minChunks: function(module) {
+                // This prevents stylesheet resources with the .css or .scss extension
+                // from being moved from their original chunk to the vendor chunk
+                if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+                    return false;
+                }
+                return true;
+            }
         }),
         //Manifest - Webpack Runtime
         new webpack.optimize.CommonsChunkPlugin({
@@ -63,6 +64,25 @@ export const plugins = (tenant, pageEntries) => {
     if (IS_PROD) {
         pluginsArr.push(
             new webpack.optimize.ModuleConcatenationPlugin()
+        )
+        pluginsArr.push(
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                  warnings: false,
+                  // Disabled because of an issue with Uglify breaking seemingly valid code:
+                  // https://github.com/facebookincubator/create-react-app/issues/2376
+                  // Pending further investigation:
+                  // https://github.com/mishoo/UglifyJS2/issues/2011
+                  comparisons: false,
+                },
+                output: {
+                  comments: false,
+                  // Turned on because emoji and regex is not minified properly using default
+                  // https://github.com/facebookincubator/create-react-app/issues/2488
+                  ascii_only: true,
+                },
+                sourceMap: false,
+              })
         )
     }
     if (IS_DEV) {

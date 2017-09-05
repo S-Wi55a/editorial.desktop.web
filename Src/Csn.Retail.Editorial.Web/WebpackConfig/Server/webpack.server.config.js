@@ -33,7 +33,7 @@ module.exports = () => {
         resolve: resolve,
         plugins: plugins(),
         stats: stats,
-        devtool: IS_PROD ? "cheap-source-map" : "eval",
+        devtool: IS_PROD ? 'none' : 'eval',
         devServer: devServer('carsales') //TODO: fix
     }]
 }

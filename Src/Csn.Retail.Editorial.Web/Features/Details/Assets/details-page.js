@@ -25,9 +25,10 @@ loaded.then(() => {
 
     const tile7 = document.querySelector('#Tile7')
     if (tile7) {
-        const parentEl = document.querySelectorAll('.article__copy p')
-        if(parentEl.length) {
-            parentEl[0].insertAdjacentHTML('afterend', '<div id="teads-video-container" style="clear:both;"></div>')
+        let el = document.querySelectorAll('.article__copy p');
+        el = (el.length >= 2) ? el[1] : (el.length ? el[0] : undefined);
+        if(el){
+            el.insertAdjacentHTML('afterend', '<div id="teads-video-container" style="clear:both;"></div>')
             document.querySelector('#teads-video-container').appendChild(tile7)
         }        
     }

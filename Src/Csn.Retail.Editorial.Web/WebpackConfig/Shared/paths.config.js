@@ -8,12 +8,12 @@ export const listOfPaths = [
     path.resolve('./'),
     'node_modules',
     'bower_components',
-    'Features',    
     'Features/Shared/Assets',
     'Features/Details/Assets',
     'Features/Listings/Assets',
     'Features/SiteNav/Assets',
-    'Features/Errors/Assets'
+    'Features/Errors/Assets',
+    'Features'    
 ];
 
 // list of path to search for files
