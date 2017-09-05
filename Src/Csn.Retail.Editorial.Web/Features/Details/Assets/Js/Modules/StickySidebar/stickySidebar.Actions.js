@@ -135,7 +135,7 @@ export function scrollingDown(el, ref, e) {
             if (process.env.DEBUG) { console.log('Down 2') }
 
             const css = {
-                top: (window.innerHeight - 51) - el.offsetHeight + 'px',
+                top: (window.innerHeight - ref.baseReference) - el.offsetHeight + 'px',
                 position: 'fixed'
             }
             Utils.setStylesForElement(el, css)

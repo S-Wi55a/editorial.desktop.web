@@ -1,6 +1,5 @@
 ﻿import ScrollMagic from 'ScrollMagic'
 import ResizeSensor from 'css-element-queries/src/ResizeSensor'
-import * as Utils from 'Features/Details/Assets/Js/Modules/StickySidebar/stickySidebar.utils.js'
 import { scrollingUp, scrollingDown, scrollingSimple } from 'Features/Details/Assets/Js/Modules/StickySidebar/stickySidebar.Actions.js'
 
 if (process.env.DEBUG) { require('debug.addIndicators'); }
@@ -23,7 +22,8 @@ export function init(d, w, aside, baseReference) {
         footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - wrapper.getBoundingClientRect().top },
         triggerHookUp: ()=> 1 - (w.innerHeight - d.querySelector('.site-nav-wrapper').offsetHeight) / w.innerHeight,
         triggerHookDown : (window.innerHeight - baseReference) / window.innerHeight,
-        pageFooter
+        pageFooter,
+        baseReference
     }
          
     // Scroll Magic Controller
