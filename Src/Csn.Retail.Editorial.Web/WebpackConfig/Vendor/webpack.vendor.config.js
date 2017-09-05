@@ -21,9 +21,9 @@ module.exports = [{
         },
         module: modules,
         resolve,
-        plugins,
+        plugins: plugins(),
         stats,
-        devtool: IS_PROD ? 'cheap-source-map' : 'eval',
+        devtool: IS_PROD ? 'none' : 'eval',
         devServer: devServer('carsales') //TODO: set default value
         
     }]
