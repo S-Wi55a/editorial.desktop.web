@@ -13,6 +13,7 @@ if (!SERVER) {
 //Check for Store
 const store = window.store
 
+// TODO: extract this out
 const render = (WrappedComponent) => {
     ReactDOM.render(
         <AppContainer iNav>

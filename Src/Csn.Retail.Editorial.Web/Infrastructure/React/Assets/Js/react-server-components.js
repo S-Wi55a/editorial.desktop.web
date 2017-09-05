@@ -7,10 +7,8 @@ import INav from 'Js/Modules/iNav/Containers/iNavContainer'
 import INavBreadCrumbsContainer from 'Js/Modules/iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
 import INavSearchResultsContainer from 'Js/Modules/iNavSearchResults/Containers/iNavSearchResultsContainer'
 
-
 // Reducers
 import {iNavParentReducerPassInitData} from 'Js/Modules/Redux/iNav/Reducers/iNavReducer'
-
 
 //All Components are called and loaded into memorey
 export const Components = {

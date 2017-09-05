@@ -13,7 +13,8 @@ export const listOfPaths = [
     'Features/Listings/Assets',
     'Features/SiteNav/Assets',
     'Features/Errors/Assets',
-    'Features'    
+    'Features',
+    'Infrastructure'    
 ];
 
 // list of path to search for files

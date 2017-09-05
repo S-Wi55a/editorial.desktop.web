@@ -1,9 +1,15 @@
-﻿import * as store from 'Js/Modules/Redux/Global/Store/store.client.js'
+﻿import {configureStore, injectAsyncReducer} from 'Js/Modules/Redux/Global/Store/store.client.js'
+
+//Check to see if there is a preloaded state
+window.__PRELOADED_STATE__ = window.__PRELOADED_STATE__ || {}
+
+//Enable Redux store globally
+window.store = configureStore(); //Init store
 
 // load Redux 
 (function redux(d) {
 
-    window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
+    injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
         
     if (d.querySelector('#iNav')) {
         require('Js/Modules/iNav/iNav');
@@ -20,16 +26,7 @@
         // Enable Webpack hot module replacement for reducers
         module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavReducer',
             () => {
-                window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer)
+                injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer)
             })
     }
-
-
 })(document);
-
-//Check to see if there is a preloaded state
-window.__PRELOADED_STATE__ = window.__PRELOADED_STATE__ || {}
-
-//Enable Redux store globally
-window.store = store.configureStore() //Init store
-window.injectAsyncReducer = store.injectAsyncReducer

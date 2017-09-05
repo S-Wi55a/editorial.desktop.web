@@ -1,23 +1,13 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
-import INavNodeContainer from 'Js/Modules/iNav/Containers/iNavNodeContainer'
-import Collapse,  { Panel } from 'rc-collapse';
+import INavMenuHeader from 'Js/Modules/iNav/Components/iNavMenuHeader'
+import ui from 'redux-ui'
+import * as SearchBarActions from 'Js/Modules/Redux/SearchBar/Action/actionTypes'
 
 //Wrapper component
 const iNavNodes = ({ nodes }) => {
-
-    return (
-        <Collapse accordion={true} defaultActiveKey={'0'}>
-            {nodes.map((node, index) => {
-                return (
-                    <Panel key={index} header={node.displayName} showArrow={false}>
-                        <INavNodeContainer node={node} />
-                    </Panel>
-                    )
-            })}
-        </Collapse>
-    )
+    return <INavMenuHeader nodes={nodes} />    
 }
 
 //Selectors
@@ -44,8 +34,27 @@ const mapStateToProps = (state) => {
 }
 
 // Connect the Component to the store
-const INavNodesContainer = connect(
+const INavNodesContainerConnect = connect(
     mapStateToProps
 )(iNavNodes)
+
+
+// Add the UI to the store
+const INavNodesContainer = ui({
+    key: 'iNavNodesContainer',
+    state: {
+        isVisible: 0 // ID because some buttons can contain multiple items
+    },
+    // customReducer: you can handle the UI state for this component's scope by dispatching actions
+    reducer: (state, action) => {
+        // state represents *only* the UI state for this component's scope - not any children
+        switch (action.type) {
+        case SearchBarActions.TOGGLE_IS_ACTIVE:
+            return state.set('isActive', !state.get('isActive'))
+        default:
+            return state
+        }
+    }
+  })(INavNodesContainerConnect);
 
 export default INavNodesContainer

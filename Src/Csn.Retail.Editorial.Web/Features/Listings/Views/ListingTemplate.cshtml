@@ -1,4 +1,4 @@
-﻿@using Csn.Retail.Editorial.Web.Features.React.Models
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.React.Models
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @using Newtonsoft.Json
@@ -22,12 +22,12 @@
     @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
 }
 
+@Html.React("global.Components.INav", new { state = Model }, containerId: "iNav")
 
 <div class="container">
-    
+
     @*//State is required b/c there is no guarentee that it will be available for other components*@
     @Html.React("global.Components.INavBreadCrumbs", new { state = Model }, containerId: "iNavBreadcrumbs")
-    @Html.React("global.Components.INav", new { state = Model }, containerId: "iNav")
     @Html.React("global.Components.INavSearchResults", new { state = Model }, containerId: "iNavSearchResults")
 
  

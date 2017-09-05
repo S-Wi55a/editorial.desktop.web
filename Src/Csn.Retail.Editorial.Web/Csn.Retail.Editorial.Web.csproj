@@ -448,6 +448,8 @@
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Content Include="Features\Details\Assets\Js\details.vendor.js" />
+    <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Containers\iNavBreadCrumbsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\iNavBreadCrumbs.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Component\iNavSearchResult.js" />
@@ -457,12 +459,9 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodeContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
-    <Content Include="Features\React\Assets\Js\react-server-components.js" />
-    <Content Include="Features\React\Assets\Js\react-server-entry.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
-    <Compile Include="Features\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdsController.cs" />
@@ -541,6 +540,7 @@
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestRequestHeaderInterceptor.cs" />
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
+    <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
     <Compile Include="Infrastructure\Redirects\HttpRequestContextWrapper.cs" />
@@ -561,9 +561,7 @@
     <Compile Include="Ioc\MultiTenantModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Content Include="Features\React\Assets\Js\Components\ReduxStore.js" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
-    <Content Include="Features\React\Assets\Js\Reducers\ReactServerReducersCollection.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\UIHelpers.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.client.js" />
@@ -575,6 +573,11 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\Containers\searchBarFormActionContainer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\iNavSaga.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\searchBar.js" />
+    <Content Include="Infrastructure\React\Assets\Js\Components\ReduxStore.js" />
+    <Content Include="Infrastructure\React\Assets\Js\react-server-components.js" />
+    <Content Include="Infrastructure\React\Assets\Js\react-server-entry.js" />
+    <Content Include="Infrastructure\React\Assets\Js\Reducers\ReactServerReducersCollection.js" />
+    <Content Include="Infrastructure\React\Assets\Js\Util\ReactServerConnect.js" />
     <Content Include="WebpackConfig\Client\entries.config.js" />
     <Content Include="WebpackConfig\Client\externals.config.js" />
     <Content Include="WebpackConfig\Client\loaders.config.js" />
@@ -623,7 +626,6 @@
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal--view.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\MoreArticles\moreArticles-view.js" />
@@ -635,7 +637,6 @@
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
-    <Content Include="Features\React\Assets\Js\Util\ReactServerConnect.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales--white.svg" />
@@ -734,7 +735,6 @@
     <Content Include="Features\Shared\Views\_LayoutBasic.cshtml" />
     <Content Include="Features\Shared\Views\_Header.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Layout\_header.scss" />
-    <Content Include="eslint.json" />
     <Content Include="Features\Details\Views\DefaultTemplate.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_SingleImage.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_SingleVideo.cshtml" />
@@ -917,6 +917,7 @@
     <Content Include="Features\Shared\Assets\Css\Animations\bounce.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_WideVideo.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
+    <Content Include="tsconfig.json" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
