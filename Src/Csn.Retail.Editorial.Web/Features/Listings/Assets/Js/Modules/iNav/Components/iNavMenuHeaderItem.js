@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ui from 'redux-ui'
-import * as SearchBarActions from 'Js/Modules/Redux/SearchBar/Action/actionTypes'
+import * as iNav from 'Js/Modules/Redux/iNav/Actions/actionTypes'
 
 const INavMenuHeaderItemComponent = ({ui, node, toggleIsSelected}) => { 
   
@@ -16,7 +16,7 @@ const INavMenuHeaderItemComponent = ({ui, node, toggleIsSelected}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
       toggleIsSelected: () => {
-          dispatch({type:SearchBarActions.TOGGLE_IS_ACTIVE})
+          dispatch({type:iNav.TOGGLE_IS_ACTIVE})
       }
   }
 }

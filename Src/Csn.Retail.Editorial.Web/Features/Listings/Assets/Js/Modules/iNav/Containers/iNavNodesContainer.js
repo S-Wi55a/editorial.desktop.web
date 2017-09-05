@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 import INavMenuHeader from 'Js/Modules/iNav/Components/iNavMenuHeader'
 import ui from 'redux-ui'
-import * as SearchBarActions from 'Js/Modules/Redux/SearchBar/Action/actionTypes'
+import * as iNav from 'Js/Modules/Redux/iNav/Actions/actionTypes'
 
 //Wrapper component
 const iNavNodes = ({ nodes }) => {
@@ -49,7 +49,7 @@ const INavNodesContainer = ui({
     reducer: (state, action) => {
         // state represents *only* the UI state for this component's scope - not any children
         switch (action.type) {
-        case SearchBarActions.TOGGLE_IS_ACTIVE:
+        case iNav.TOGGLE_IS_ACTIVE:
             return state.set('isActive', !state.get('isActive'))
         default:
             return state

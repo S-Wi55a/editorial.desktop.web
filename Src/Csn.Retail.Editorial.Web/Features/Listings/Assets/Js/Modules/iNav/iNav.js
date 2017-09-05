@@ -7,7 +7,7 @@ import INav from 'Js/Modules/iNav/Containers/iNavContainer'
 import { watchINavSagaActions } from 'Js/Modules/Redux/iNav/Sagas/iNavSaga'
 
 if (!SERVER) {
-    require('Js/Modules/iNav/css/iNav.scss')  
+    require('Js/Modules/iNav/Css/iNav.scss')  
 }
 
 //Check for Store
