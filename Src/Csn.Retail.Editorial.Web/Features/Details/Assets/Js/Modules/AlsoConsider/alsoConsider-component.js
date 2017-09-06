@@ -1,7 +1,7 @@
 ﻿import 'Css/Modules/Widgets/AlsoConsider/_alsoConsider.scss'
 
-import * as View from 'Js/Modules/AlsoConsider/alsoConsider-view.js'
-import * as Ajax from 'Js/Modules/Ajax/ajax.js'
+import * as View from 'AlsoConsider/alsoConsider-view.js'
+import * as Ajax from 'Ajax/ajax.js'
 
 // Get Scope and cache selectors
 const scope = document.querySelector('.also-consider-placeholder');

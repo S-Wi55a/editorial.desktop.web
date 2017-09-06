@@ -1,4 +1,4 @@
-﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
+﻿import * as ActionTypes from 'Redux/iNav/Actions/actionTypes'
 
 // Toggle IsSelected
 export const toggleIsSelected = (node, facet) => ({

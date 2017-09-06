@@ -1,3 +1,3 @@
-﻿import {iNavParentReducerPassInitData} from 'Js/Modules/Redux/iNav/Reducers/iNavReducer'
+﻿import {iNavParentReducerPassInitData} from 'Redux/iNav/Reducers/iNavReducer'
 
 export {iNavParentReducerPassInitData}

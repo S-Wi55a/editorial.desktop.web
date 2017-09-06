@@ -1,1 +1,0 @@
-const HELLO_WORLD = 'HELLO_WORLDS'

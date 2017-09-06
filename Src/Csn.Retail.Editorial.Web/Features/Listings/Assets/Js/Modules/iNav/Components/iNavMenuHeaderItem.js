@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ui from 'redux-ui'
-import * as iNav from 'Js/Modules/Redux/iNav/Actions/actionTypes'
+import * as iNav from 'Redux/iNav/Actions/actionTypes'
 
 const INavMenuHeaderItemComponent = ({ui, node, toggleIsSelected}) => { 
   

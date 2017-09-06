@@ -1,6 +1,6 @@
 ﻿import global from 'global-object'
 import { combineReducers } from 'redux'
-import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
+import * as ActionTypes from 'Redux/iNav/Actions/actionTypes'
 import update from 'immutability-helper';
 
 // This is the entry Reducer and should be loaded with component

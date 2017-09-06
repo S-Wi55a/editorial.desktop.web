@@ -1,9 +1,9 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
-import INavMenuHeader from 'Js/Modules/iNav/Components/iNavMenuHeader'
+import INavMenuHeader from 'iNav/Components/iNavMenuHeader'
 import ui from 'redux-ui'
-import * as iNav from 'Js/Modules/Redux/iNav/Actions/actionTypes'
+import * as iNav from 'Redux/iNav/Actions/actionTypes'
 
 //Wrapper component
 const iNavNodes = ({ nodes }) => {

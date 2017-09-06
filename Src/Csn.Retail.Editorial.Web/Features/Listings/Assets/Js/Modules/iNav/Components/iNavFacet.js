@@ -1,5 +1,5 @@
 ﻿import React from 'react'
-import { ryvuss } from 'Js/Modules/Endpoints/endpoints'
+import { ryvuss } from 'Endpoints/endpoints'
 
 const INavfacet = ({ isSelected, displayValue, name, toggleIsSelected, action, count }) => {
     

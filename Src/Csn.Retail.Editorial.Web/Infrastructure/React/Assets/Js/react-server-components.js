@@ -1,13 +1,13 @@
-﻿import {ReactServerConnect} from 'React/Assets/Js/Util/ReactServerConnect'
-import {ReduxStore} from 'React/Assets/Js/Components/ReduxStore'
+﻿import {ReactServerConnect} from 'Util/ReactServerConnect'
+import {ReduxStore} from 'Components/ReduxStore'
 
 // Search Bar component
-import INav from 'Js/Modules/iNav/Containers/iNavContainer'
-import INavBreadCrumbsContainer from 'Js/Modules/iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
-import INavSearchResultsContainer from 'Js/Modules/iNavSearchResults/Containers/iNavSearchResultsContainer'
+import INav from 'iNav/Containers/iNavContainer'
+import INavBreadCrumbsContainer from 'iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
+import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchResultsContainer'
 
 // Reducers
-import {iNavParentReducerPassInitData} from 'Js/Modules/Redux/iNav/Reducers/iNavReducer'
+import {iNavParentReducerPassInitData} from 'Redux/iNav/Reducers/iNavReducer'
 
 //All Components are called and loaded into memorey
 export const Components = {

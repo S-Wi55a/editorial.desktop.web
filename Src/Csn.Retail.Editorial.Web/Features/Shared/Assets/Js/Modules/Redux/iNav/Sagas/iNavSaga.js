@@ -1,9 +1,9 @@
-﻿import * as ActionTypes from 'Js/Modules/Redux/iNav/Actions/actionTypes'
-import * as iNav from 'Js/Modules/Redux/iNav/Actions/actionTypes'
+﻿import * as ActionTypes from 'Redux/iNav/Actions/actionTypes'
+import * as iNav from 'Redux/iNav/Actions/actionTypes'
 import { delay } from 'redux-saga'
 import { call, put, takeEvery, takeLatest, all } from 'redux-saga/effects'
 import fetch from 'isomorphic-fetch'
-import * as endPoint from 'Js/Modules/Endpoints/endpoints'
+import * as endPoint from 'Endpoints/endpoints'
 
 
 const Api = {

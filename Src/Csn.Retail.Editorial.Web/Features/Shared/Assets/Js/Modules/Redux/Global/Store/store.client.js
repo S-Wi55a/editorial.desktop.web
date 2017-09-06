@@ -1,6 +1,6 @@
 ﻿import { createStore, } from 'redux';
-import { createReducer } from 'Js/Modules/Redux/Global/Reducers/rootReducer'
-import { enhancer, sagaMiddleware } from 'Js/Modules/Redux/Global/Middleware/middleware'
+import { createReducer } from 'Redux/Global/Reducers/rootReducer'
+import { enhancer, sagaMiddleware } from 'Redux/Global/Middleware/middleware'
 
 export function configureStore(preloadedState) {
     return {

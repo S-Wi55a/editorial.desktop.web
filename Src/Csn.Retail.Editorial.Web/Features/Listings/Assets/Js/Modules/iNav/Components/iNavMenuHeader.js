@@ -1,8 +1,8 @@
 import React from 'react'
-import INavMenuHeaderItem from 'Js/Modules/iNav/Components/iNavMenuHeaderItem'
+import INavMenuHeaderItem from 'iNav/Components/iNavMenuHeaderItem'
 
 if (!SERVER) {
-  require('Js/Modules/iNav/Css/iNav.MenuHeader.scss')  
+  require('iNav/Css/iNav.MenuHeader.scss')  
 }
 
 const INavMenuHeader = ({nodes}) => { 

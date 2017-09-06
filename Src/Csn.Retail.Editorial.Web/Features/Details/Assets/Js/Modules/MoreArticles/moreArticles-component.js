@@ -1,7 +1,7 @@
 ﻿import CustomEvent from 'custom-event'
 import Swiper from 'swiper'
-import * as Ajax from 'Js/Modules/Ajax/ajax.js'
-import * as View from 'Js/Modules/MoreArticles/moreArticles-view.js'
+import * as Ajax from 'Ajax/ajax.js'
+import * as View from 'MoreArticles/moreArticles-view.js'
 
 import ScrollMagic from 'ScrollMagic'
 

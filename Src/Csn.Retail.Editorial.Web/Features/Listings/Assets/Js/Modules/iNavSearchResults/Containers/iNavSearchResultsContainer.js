@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import INavSearchResult from 'Js/Modules/iNavSearchResults/Component/iNavSearchResult'
+import INavSearchResult from 'iNavSearchResults/Component/iNavSearchResult'
 
 const INavSearchResults = ({ searchResults, count }) => (
     <div className="iNavSearchResults">
