@@ -6,9 +6,6 @@ import INav from 'iNav/Containers/iNavContainer'
 import INavBreadCrumbsContainer from 'iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
 import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchResultsContainer'
 
-// Reducers
-import {iNavParentReducerPassInitData} from 'Redux/iNav/Reducers/iNavReducer'
-
 //All Components are called and loaded into memorey
 export const Components = {
     INavSearchResults: ReactServerConnect(INavSearchResultsContainer)('iNav', 'iNavParentReducerPassInitData'),

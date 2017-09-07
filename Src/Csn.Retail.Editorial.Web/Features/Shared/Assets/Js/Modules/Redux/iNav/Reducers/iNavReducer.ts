@@ -1,14 +1,17 @@
 ﻿import global from 'global-object'
-import { combineReducers } from 'redux'
-import * as ActionTypes from 'Redux/iNav/Actions/actionTypes'
-import update from 'immutability-helper';
+import { Actions, ActionTypes} from 'Redux/iNav/Actions/actions'
+import update from 'immutability-helper'
+
+
+/// <reference path="../Types/iNav.types" />
+
 
 // This is the entry Reducer and should be loaded with component
 
 //We wrap the reducer to pass init data to it for it to work in ReactJS.NET
-export const iNavParentReducerPassInitData = initState => {
+export const iNavParentReducerPassInitData = (initState: any) => {
 
-    return (state = initState, action) => {
+    return (state = initState, action: Actions) => {
         switch (action.type) {
             case ActionTypes.TOGGLE_IS_SELECTED:
                 return isSelectedToggle(state, action)
@@ -31,13 +34,13 @@ export const iNavParentReducerPassInitData = initState => {
 }
 
 // Check if there is a preloaded state fro iNav
-let initState = global.__PRELOADED_STATE__iNav
+const initState: any = global.__PRELOADED_STATE__iNav
 
 export const iNavParentReducer = iNavParentReducerPassInitData(initState)
 
 // We use update from 'immutability-helper' because the item we are selecting is deply nested
 // This ensures that we return a new obj and nto mutate the state
-function isSelectedToggle(state, action) {
+function isSelectedToggle(state: State, action: any): any {
 
     try {
 

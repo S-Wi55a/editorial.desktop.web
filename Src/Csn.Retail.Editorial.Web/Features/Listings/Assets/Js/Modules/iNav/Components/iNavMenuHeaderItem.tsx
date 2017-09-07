@@ -1,9 +1,17 @@
-import React from 'react'
+import * as React from "react"
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux';
+
 import ui from 'redux-ui'
 import * as iNav from 'Redux/iNav/Actions/actionTypes'
 
-const INavMenuHeaderItemComponent = ({ui, node, toggleIsSelected}) => { 
+interface IINavMenuHeaderItemComponent {
+  ui: any,
+  node: any //TODO: update
+  toggleIsSelected: any //TODO: update
+}
+
+const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ui, node, toggleIsSelected}) => { 
   
   return (
         <div className={['iNav__menu-header-item', ui.isActive?'isActive':''].join(' ')} onClick={toggleIsSelected}>
@@ -13,7 +21,7 @@ const INavMenuHeaderItemComponent = ({ui, node, toggleIsSelected}) => {
 }
 
 //Connect
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
       toggleIsSelected: () => {
           dispatch({type:iNav.TOGGLE_IS_ACTIVE})
@@ -30,7 +38,7 @@ const INavMenuHeaderItemComponentConnect = connect(
 // Add the UI to the store
 const INavMenuHeaderItem = ui({
   state: {
-    isActive: (props) => props.index === props.ui.getIn(['iNavNodesContainer', 'isVisible'])
+    isActive: (props: any) => props.index === props.ui.getIn(['iNavNodesContainer', 'isVisible'])
   }
 })(INavMenuHeaderItemComponentConnect);
 

@@ -1,12 +1,12 @@
-﻿import * as React from "react";
+﻿import * as React from "react"
 
-interface IINavSearchResult {
+interface IINavSearchResultProps {
     imageUrl: string,
     headline: string,
     dateAvailable: string
 }
 
-const INavSearchResult = ({imageUrl, headline, dateAvailable}: IINavSearchResult) => (
+const INavSearchResult = ({imageUrl, headline, dateAvailable}: IINavSearchResultProps) => (
     <div className="iNavSearchResult">
         <a href={'#'}>
             <div className="iNavSearchResult__image-frame">

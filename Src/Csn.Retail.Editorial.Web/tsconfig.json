@@ -8,6 +8,8 @@
     "jsx": "react",
     "allowJs": false,
     "traceResolution": false,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
       "*": [
