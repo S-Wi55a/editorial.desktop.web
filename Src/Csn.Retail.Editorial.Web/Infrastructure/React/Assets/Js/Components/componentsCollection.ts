@@ -1,4 +1,5 @@
 ﻿import { ReactServerConnect } from 'Util/reactServerConnect'
+import Reducers from '../Reducers/registeredServerReducerCollection'
 
 // Preloaded State Component
 import PreloadedState from './preloadedState'
@@ -8,14 +9,12 @@ import INav from 'iNav/Containers/iNavContainer'
 import INavBreadCrumbsContainer from 'iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
 import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchResultsContainer'
 
-//TODO: make reducer enum
-
 //All Components are called and loaded into memorey
 export const Components = {
-    INavPreloadedState:  ReactServerConnect(PreloadedState)('iNav', 'iNavParentReducer', true),    
-    INavSearchResults: ReactServerConnect(INavSearchResultsContainer)('iNav', 'iNavParentReducer'),
-    INavBreadCrumbs: ReactServerConnect(INavBreadCrumbsContainer)('iNav', 'iNavParentReducer'),
-    INav: ReactServerConnect(INav)('iNav', 'iNavParentReducer')
+    INavPreloadedState: ReactServerConnect(PreloadedState)('iNav', Reducers['iNav'], true),    
+    INavSearchResults: ReactServerConnect(INavSearchResultsContainer)('iNav', Reducers['iNav']),
+    INavBreadCrumbs: ReactServerConnect(INavBreadCrumbsContainer)('iNav', Reducers['iNav']),
+    INav: ReactServerConnect(INav)('iNav', Reducers['iNav'])
 }
 
 
