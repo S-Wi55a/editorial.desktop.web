@@ -19,8 +19,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-const ReduxStore = connect(
+const PreloadedState = connect(
     mapStateToProps,
 )(Store)
 
-export {ReduxStore}
+export default PreloadedState

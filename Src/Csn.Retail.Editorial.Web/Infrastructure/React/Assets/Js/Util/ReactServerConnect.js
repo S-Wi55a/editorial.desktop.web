@@ -3,7 +3,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import * as Store from 'Redux/Global/Store/store.server.js'
-import * as Reducers from '../Reducers/ReactServerReducersCollection.js'
+import * as Reducers from '../Reducers/reactServerReducersCollection.js'
 
 function storesFactory() {
 
@@ -14,16 +14,10 @@ function storesFactory() {
 
 }
 
-const ReactServerConnect = WrappedComponent => (reducerKey, reducerName) => {
-    
+const ReactServerConnect = WrappedComponent => (reducerKey, reducerName, addReducerKey = false) => {
     return (props) => {
 
         const store = storesFactory()
-
-        // In the scenerio where we want to use the 'AddDataToStore' component 
-        // We need ot manually add the reducers and init data, so we leave the option to do so
-        reducerKey = typeof props.reducerKey !== 'undefined' ?  props.reducerKey : reducerKey
-        reducerName = typeof props.reducerName !== 'undefined' ?  props.reducerName : reducerName
 
         if ((typeof reducerKey !== 'undefined' && typeof reducerName !== 'undefined')) {
 
@@ -32,10 +26,10 @@ const ReactServerConnect = WrappedComponent => (reducerKey, reducerName) => {
             store.injectAsyncReducer(store, reducerKey, Reducers[reducerName](props.state || null))
 
         }
-
+        // addReducerKey is for preload store only and will be ignore otherwise
         return (
             <Provider store={store} >
-                <WrappedComponent {...props} />   
+                <WrappedComponent {...props} reducerKey={addReducerKey && reducerKey}/>
             </Provider>
 
         );

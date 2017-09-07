@@ -2,14 +2,10 @@
 import { Actions, ActionTypes} from 'Redux/iNav/Actions/actions'
 import update from 'immutability-helper'
 
-
-/// <reference path="../Types/iNav.types" />
-
-
 // This is the entry Reducer and should be loaded with component
 
 //We wrap the reducer to pass init data to it for it to work in ReactJS.NET
-export const iNavParentReducerPassInitData = (initState: any) => {
+export const iNavParentReducer = (initState: any = null) => {
 
     return (state = initState, action: Actions) => {
         switch (action.type) {
@@ -33,14 +29,9 @@ export const iNavParentReducerPassInitData = (initState: any) => {
     }
 }
 
-// Check if there is a preloaded state fro iNav
-const initState: any = global.__PRELOADED_STATE__iNav
-
-export const iNavParentReducer = iNavParentReducerPassInitData(initState)
-
 // We use update from 'immutability-helper' because the item we are selecting is deply nested
 // This ensures that we return a new obj and nto mutate the state
-function isSelectedToggle(state: State, action: any): any {
+function isSelectedToggle(state: State, action: Actions): any {
 
     try {
 
