@@ -4,7 +4,7 @@ import { createSelector } from 'reselect'
 import INavMenuHeader from 'iNav/Components/iNavMenuHeader'
 import { ActionTypes } from 'Redux/iNav/Actions/actions'
 import { local as ui } from 'redux-fractal';
-import { createStore, compose } from 'redux';
+import { createStore, compose } from 'redux'
 
 //Wrapper component
 const iNavNodes = ({ nodes }) => {
@@ -34,9 +34,38 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const INavNodesContainer =   connect(
-  mapStateToProps
-)(iNavNodes)
+const componentRootReducer = (state: any, action: any): any => {
+  // state represents *only* the UI state for this component's scope - not any children
+  switch (action.type) {
+    case ActionTypes.TOGGLE_IS_ACTIVE:
+      return {
+        ...state,
+        activeItemId: action.payload.id
+      }
+    default:
+      return state
+  }
+}
+
+const wrapper = compose(
+
+  connect(
+    mapStateToProps
+  ),
+
+  ui({
+    key: 'iNavNodesContainer',
+    createStore: (props: any) => {
+      return createStore(componentRootReducer, { activeItemId: null }) // NOTE: if list dynamically changes, id may be incorrect as id is set only on inital state.
+    },
+    filterGlobalActions: (action: any) => {
+      const allowedActions = [ActionTypes.TOGGLE_IS_ACTIVE];
+      return allowedActions.indexOf(action.type) !== -1;
+    }
+  })
+);
+
+const INavNodesContainer = wrapper(iNavNodes)
 
 export default INavNodesContainer
 

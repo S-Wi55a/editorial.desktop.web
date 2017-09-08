@@ -8,7 +8,7 @@ import { ActionTypes } from 'Redux/iNav/Actions/actions'
 interface IINavMenuHeaderItemComponent {
   ui: any,
   node: any //TODO: update
-  toggleIsSelected: (id: number) => any
+  toggleIsSelected: (id: number, isActive: boolean) => any
   index: number,
   isActive: boolean  
 }
@@ -16,7 +16,7 @@ interface IINavMenuHeaderItemComponent {
 const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ isActive, node, toggleIsSelected, index }) => {
 
   return (
-    <div className={['iNav__menu-header-item', isActive && 'isActive'].join(' ')} onClick={() => toggleIsSelected(index)}>
+    <div className={['iNav__menu-header-item', isActive && 'isActive'].join(' ')} onClick={() => toggleIsSelected(index, isActive)}>
       {node.displayName}
     </div>
   )
@@ -28,7 +28,7 @@ const componentRootReducer = (state: any, action: any): any => {
     case ActionTypes.TOGGLE_IS_ACTIVE:
       return {
         ...state,
-        isActive: !state.isActive && state.id === action.payload.id
+        isActive: !action.payload.isActive && state.id === action.payload.id
       }
     default:
       return state
@@ -43,11 +43,12 @@ const wrapper = compose(
     },
     mapDispatchToProps: (dispatch: Dispatch<any>) => {
       return {
-        toggleIsSelected: (id: number) => {
+        toggleIsSelected: (id: number, isActive: boolean) => {
           dispatch({
             type: ActionTypes.TOGGLE_IS_ACTIVE,
             payload: {
-              id
+              id,
+              isActive
             }
           })
         }
