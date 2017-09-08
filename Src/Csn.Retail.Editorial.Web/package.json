@@ -32,6 +32,7 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@types/isomorphic-fetch": "0.0.34",
         "@types/react-redux": "^5.0.7",
         "@types/redux-ui": "0.0.12",
         "TinyAnimate": "^0.4.0",
@@ -140,6 +141,7 @@
         "react-redux": "^5.0.6",
         "redux": "^3.7.2",
         "redux-batched-subscribe": "^0.1.6",
+        "redux-fractal": "^1.7.1",
         "redux-multi": "^0.1.91",
         "redux-saga": "^0.15.6",
         "redux-thunk": "^2.2.0",

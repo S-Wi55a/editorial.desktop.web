@@ -1,4 +1,4 @@
-﻿import * as ActionTypes from 'Redux/iNav/Actions/actionTypes'
+﻿import { Actions , ActionTypes } from 'Redux/iNav/Actions/actions'
 import * as iNav from 'Redux/iNav/Actions/actionTypes'
 import { delay } from 'redux-saga'
 import { call, put, takeEvery, takeLatest, all } from 'redux-saga/effects'
@@ -15,17 +15,17 @@ const Api = {
 }
 
 // Our worker Saga: will fetch our data
-export function* fetchData(action) {
+export function* fetchData(action: Actions) {
     try {
         //show loader
-        yield put({ type: iNav.SHOW_LOADER })
+        yield put({ type: ActionTypes.SHOW_LOADER }) //UI Specific actions
         const data = yield call(Api.fetchiNav, action.payload.query)
         yield put({ type: ActionTypes.FETCH_QUERY_SUCCESS, data })
     } catch (error) {
         yield put({ type: ActionTypes.FETCH_QUERY_FAILURE, error })
     } finally {
         //Hide loader
-        yield put({ type: iNav.HIDE_LOADER })
+        yield put({ type: ActionTypes.HIDE_LOADER }) //UI specific actions
   
     }
 }

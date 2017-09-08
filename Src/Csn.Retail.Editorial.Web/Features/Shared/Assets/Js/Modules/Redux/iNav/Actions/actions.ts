@@ -24,7 +24,8 @@ interface IReset extends Action {
 }
 
 interface IFETCH_QUERY_SUCCESS extends Action {
-    type: ActionTypes.FETCH_QUERY_SUCCESS
+    type: ActionTypes.FETCH_QUERY_SUCCESS,
+    payload: any //TODO: fix
 }
 
 interface IPayload {

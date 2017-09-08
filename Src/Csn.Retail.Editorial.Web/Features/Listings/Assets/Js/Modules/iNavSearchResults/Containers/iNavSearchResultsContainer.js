@@ -11,8 +11,8 @@ const INavSearchResults = ({ searchResults, count }) => (
             transitionEnterTimeout={300}
             transitionLeaveTimeout={300}>
             {
-                searchResults.map((searchResult) => {
-                    return <INavSearchResult key={searchResult.id} {...searchResult} />;
+                searchResults.map((searchResult, index) => {
+                    return <INavSearchResult key={index} {...searchResult} />;
                 })
             }
         </ReactCSSTransitionGroup>

@@ -1,7 +1,5 @@
 ﻿import {configureStore, injectAsyncReducer} from 'Redux/Global/Store/store.client.js'
 
-// //Check to see if there is a preloaded state
-// window.__PRELOADED_STATE__ = window.__PRELOADED_STATE__ || {}
 
 //Enable Redux store globally
 window.store = configureStore(); //Init store
