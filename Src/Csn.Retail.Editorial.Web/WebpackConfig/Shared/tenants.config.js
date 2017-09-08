@@ -6,13 +6,13 @@ export const listofTenants = [
     'carsales',
     'constructionsales',
     'bikesales',
-    'carpoint',
-    'boatsales',
-    'boatpoint',
-    'trucksales',
-    'caravancampingsales',
+    //'carpoint',
+    //'boatsales',
+    //'boatpoint',
+    //'trucksales',
+    //'caravancampingsales',
     'farmmachinerysales',
 ];
 
 
-export const TENANTS = process.env.TENANT ? [process.env.TENANT.trim()] : listofTenants;
+export const TENANTS = process.env.TENANT ? [process.env.TENANT.trim().toLowerCase()] : listofTenants;

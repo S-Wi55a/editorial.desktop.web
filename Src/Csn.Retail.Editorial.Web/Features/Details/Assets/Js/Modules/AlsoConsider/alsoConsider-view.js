@@ -1,4 +1,4 @@
-﻿import { proxy } from 'Js/Modules/Endpoints/endpoints';
+﻿import { proxy } from 'Endpoints/endpoints';
 
 const container = (data) => {
 
@@ -18,7 +18,9 @@ const inner = (data) => {
                     return `
                         <li class="also-consider-item">
                             <a href="${item.articleUrl || ''}" data-webm-clickvalue="click-post">
-                                <img class="also-consider-item__image" src="${item.image.url || ''}" alt="${item.image.alternateText || ''}"/>
+                                <img class="salso-consider-item__image" src="${item.image.url}?width=167"
+                                    srcset="${item.image.url}?width=167 167w"
+                                    sizes="(min-width: 768px) 167px" alt="${item.image.alternateText || ''}" />
                                 <h3 class="also-consider-item__title">${item.linkText || ''}</h3>
                                 <p class="also-consider-item__description">${item.description || ''}</p>
                             </a>

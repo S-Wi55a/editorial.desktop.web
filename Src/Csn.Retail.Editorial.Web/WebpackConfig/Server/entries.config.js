@@ -1,4 +1,4 @@
-﻿import {isProd} from '../Shared/env.config.js'
+﻿import {IS_PROD} from '../Shared/env.config.js'
 import glob from 'glob'
 import path from 'path'
 
@@ -6,7 +6,7 @@ import path from 'path'
 export const config = {
     entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
     outputPath: path.resolve('dist--server'),
-    publicPath: isProd ? './' : 'dist--server'
+    publicPath: IS_PROD ? './' : 'dist--server'
 }
 
 export function getEntryFiles(tenant) {

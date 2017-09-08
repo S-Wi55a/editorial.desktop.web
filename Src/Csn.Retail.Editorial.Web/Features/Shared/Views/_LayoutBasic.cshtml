@@ -26,7 +26,7 @@
 }
 @section TopScripts{
     @Html.AssetJs("csn.manifest--" + tenantName, LoadType.Defer)
-    @Html.AssetJs("csn.vendor--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.vendor", LoadType.Defer)
     @Html.AssetJs("csn.common--" + tenantName, LoadType.Defer)
     @RenderSection("TopScripts", false)
 }

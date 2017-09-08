@@ -1,5 +1,5 @@
 ﻿// Details Page css files
-require('css/Modules/Widgets/EditorRatings/_editorsRatings.scss');
+require('Css/Modules/Widgets/EditorRatings/_editorsRatings.scss');
 
 import Modernizr from 'modernizr';
 import Circles from 'circles';
@@ -7,7 +7,6 @@ import TinyAnimate from 'TinyAnimate';
 import ScrollMagic from 'ScrollMagic';
 
 const editorsRatings = '.editors-ratings';
-const expertRatingSelector = '.expert-ratings';
 const expertRatingMeters = document.querySelectorAll('.expert-ratings__meter');
 
 const overallRatingGraph = {
@@ -71,12 +70,12 @@ let init = (d, w, scope) => {
 
     if (!Modernizr.meter) {
         // Meter polyfill
-        require.ensure(['Js/Modules/meter/meter.js'],
+        require.ensure(['Meter/meter.js'],
             function() {
                 for (var meter of expertRatingMeters) {
                     meter.setAttribute('value', meter.getAttribute('data-value'));
                 }
-                require('Js/Modules/meter/meter.js');
+                require('Meter/meter.js');
 
                 new ScrollMagic.Scene({
                         triggerElement: triggerElement,

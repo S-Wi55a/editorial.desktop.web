@@ -1,7 +1,7 @@
-﻿import { modalGallery } from 'Js/Modules/Hero/hero-modal.js'
+﻿import { modalGallery } from 'Hero/hero-modal.js'
 import Swiper from 'swiper'
-import Modal from 'Js/Modules/Modal/modal.js'
-import { template as modalView } from 'Js/Modules/Hero/hero-modal--view.js'
+import Modal from 'Modal/modal.js'
+import { template as modalView } from 'Hero/hero-modal--view.js'
 
 export default function () {
 

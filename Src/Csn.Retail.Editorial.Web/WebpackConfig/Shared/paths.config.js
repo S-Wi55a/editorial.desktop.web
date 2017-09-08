@@ -1,19 +1,22 @@
 ﻿import path from 'path';
 
-export const rootRelativePath = path.resolve('');
-
+export const rootRelativePath = path.resolve('./');
 //---------------------------------------------------------------------------------------------
 // list of path to search for files
 export const listOfPaths = [
-    path.resolve('./'),
     'node_modules',
     'bower_components',
-    'Features',    
+    'Features/Shared/Assets/Js/Modules/',
+    'Features/Details/Assets/Js/Modules/',
+    'Features/Listings/Assets/Js/Modules/',
+    'Features/SiteNav/Assets/Js/Modules/',
+    'Features/Errors/Assets/Js/Modules/',
     'Features/Shared/Assets',
     'Features/Details/Assets',
     'Features/Listings/Assets',
     'Features/SiteNav/Assets',
-    'Features/Errors/Assets'
+    'Features/Errors/Assets',
+    'Infrastructure/React/Assets/Js/'
 ];
 
 // list of path to search for files

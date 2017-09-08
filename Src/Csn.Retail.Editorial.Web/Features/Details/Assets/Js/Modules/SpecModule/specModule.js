@@ -1,8 +1,8 @@
 ﻿import React from 'react'
-import * as Ajax from 'Js/Modules/Ajax/ajax.js'
+import * as Ajax from 'Ajax/ajax.js'
 import Slider from 'rc-slider/lib/Slider'; 
-import {disclaimerTemplate} from 'Js/Modules/Modal/modal-disclaimer-view'
-import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
+import {disclaimerTemplate} from 'Modal/modal-disclaimer-view'
+import {tabOrModal} from 'SpecModule/specModule--tabOrModal.js'
 
 const SpecificationsItem_DD = (props) => {
 

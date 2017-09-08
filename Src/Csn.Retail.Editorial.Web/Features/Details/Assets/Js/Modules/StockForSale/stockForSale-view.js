@@ -1,4 +1,4 @@
-﻿import { proxy } from 'Js/Modules/Endpoints/endpoints';
+﻿import { proxy } from 'Endpoints/endpoints';
 
 const container = (data) => {
 
@@ -40,7 +40,9 @@ const listItem = (data) => {
             return (`
                 <li class="stock-for-sale-item">
                     <a href="${item.detailsPageUrl || ''}" data-webm-clickvalue="stock-clicked">
-                        <img class="stock-for-sale-item__image" src="${item.photoUrl || ''}" />
+                        <img class="stock-for-sale-item__image" src="${item.photoUrl}?width=238"
+                            srcset="${item.photoUrl}?width=238 238w"
+                            sizes="(min-width: 768px) 238px" />
                     </a>
                     <a href="${item.detailsPageUrl || ''}" data-webm-clickvalue="stock-clicked">
                         <h3 class="stock-for-sale-item__title">${item.title || ''}</h3>

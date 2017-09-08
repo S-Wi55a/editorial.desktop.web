@@ -7,15 +7,17 @@
     "module": "es6",
     "jsx": "react",
     "allowJs": false,
-    "traceResolution": true,
+    "traceResolution": false,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
       "*": [
-        "Features/Shared/Assets/*",
-        "Features/Details/Assets/*",
-        "Features/SiteNav/Assets/*",
-        "Features/Errors/Assets/*",
-        "Features/*"
+        "Features/Shared/Assets/Js/Modules/*",
+        "Features/Details/Assets/Js/Modules/*",
+        "Features/Listings/Assets/Js/Modules/*",
+        "Features/SiteNav/Assets/Js/Modules/*",
+        "Features/Errors/Assets/Js/Modules/*"
       ]
     }
   },

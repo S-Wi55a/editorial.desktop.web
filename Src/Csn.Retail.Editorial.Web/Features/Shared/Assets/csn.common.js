@@ -1,8 +1,7 @@
 ﻿// Common css files
 require('Css/globalStyles.scss');
 
-import * as store from 'Js/Modules/Redux/Global/Store/store.client.js'
-import detectIE from 'Js/Modules/DetectIE/detect-ie.js'
+import detectIE from 'DetectIE/detect-ie.js'
 
 // **REQUIRE** - Dynamically set the public path for ajax/code-split requests or webpack won't know where to get chunks
 let scripts = document.getElementsByTagName("script");
@@ -26,12 +25,3 @@ for (var i = 0; i < scriptsLength; i++) {
         el.classList.toggle(ieVersion);
     }
 })(document.body, detectIE);
-
-
-
-//Check to see if there is a preloaded state
-window.__PRELOADED_STATE__ = window.__PRELOADED_STATE__ || {}
-
-//Enable Redux store globally
-window.store = store.configureStore() //Init store
-window.injectAsyncReducer = store.injectAsyncReducer

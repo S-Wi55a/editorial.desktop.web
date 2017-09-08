@@ -1,4 +1,4 @@
-﻿import Modal from 'Js/Modules/Modal/modal.js'
+﻿import Modal from 'Modal/modal.js'
 
 import 'Css/Modules/SponsoredArticles/_sponsoredArticles.scss';
 
