@@ -145,7 +145,6 @@
         "redux-multi": "^0.1.91",
         "redux-saga": "^0.15.6",
         "redux-thunk": "^2.2.0",
-        "redux-ui": "^0.1.1",
         "rellax": "^1.1.0",
         "reselect": "^3.0.1",
         "scrollmagic": "^2.0.5",
