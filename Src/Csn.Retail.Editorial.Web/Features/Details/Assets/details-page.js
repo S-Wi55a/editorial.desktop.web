@@ -1,5 +1,5 @@
 ﻿// Details Page css files
-require('./css/details-page.scss');
+require('./Css/Details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
@@ -13,26 +13,6 @@ if (process.env.DEBUG) { require('debug.addIndicators'); }
 let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
 aboveTheFold();
 
-
-// load Redux 
-(function redux(d) {
-
-    if (d.querySelector('#searchBarContainer')) { //TODO: change to iNav check
-        window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer);
-        require('Js/Modules/Redux/SearchBar/SearchBar.js');
-
-        if (module.hot) {
-            // Enable Webpack hot module replacement for reducers
-            module.hot.accept('Js/Modules/Redux/iNav/Reducers/iNavReducer',
-                () => {
-                    window.injectAsyncReducer(window.store, 'iNav', require('Js/Modules/Redux/iNav/Reducers/iNavReducer').iNavParentReducer)
-                })
-        }
-
-    }
-
-})(document);
-
 //Editors Rating
 (function editorRatings() {
     if (document.querySelector('.editors-ratings')) {
@@ -41,10 +21,16 @@ aboveTheFold();
 })();
 
 // TEADS
-$(function () {
-    if ($('#Tile7').length) {
-        $('#Tile7').wrap('<div id="teads-video-container" style="clear: both"></div>');
-        $('#teads-video-container').insertAfter($('.article__copy p:eq(1)'));
+loaded.then(() => {
+
+    const tile7 = document.querySelector('#Tile7')
+    if (tile7) {
+        let el = document.querySelectorAll('.article__copy p');
+        el = (el.length >= 2) ? el[1] : (el.length ? el[0] : undefined);
+        if(el){
+            el.insertAdjacentHTML('afterend', '<div id="teads-video-container" style="clear:both;"></div>')
+            document.querySelector('#teads-video-container').appendChild(tile7)
+        }        
     }
 });
 
@@ -99,7 +85,7 @@ loaded.then(() => {
 
         if (d.querySelector('.also-consider-placeholder')) {
             (function alsoConsider() {
-                import ( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/alsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
+                import ( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
                 });
             })()
@@ -171,11 +157,11 @@ loaded.then(() => {
 require('Js/Modules/ArticlePricing/articlePricing.js');
 
 //Sticky Sidebar
-if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
-    loaded.then(function() {
-        const aside = document.querySelector('.aside');
-        if (aside) {
-            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
-        }
-    })
-}
+//if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
+//    loaded.then(function() {
+//        const aside = document.querySelector('.aside');
+//        if (aside) {
+//            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
+//        }
+//    })
+//}

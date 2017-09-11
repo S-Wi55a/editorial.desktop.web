@@ -15,8 +15,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
 
     public class LoadGoogleAnalyticsTrackingScriptOnPageLoad<T> : IAsyncEventHandler<T> where T : IEvent
     {
-        private readonly string _cacheKey = "editorial:desktop:ga:{1}";
-        private readonly TimeSpan _localCacheDuration = new TimeSpan(24, 0, 0);
+        private readonly string _cacheKey = "editorial:desktop:ga:{0}";
+        private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 30, 0);
         private readonly TimeSpan _distributedCacheDuration = new TimeSpan(24, 0, 0);
 
         private readonly ICacheStore _cacheStore;
@@ -38,7 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
         {
             if (!(eEvent is IRequiredGoogleAnalyticsTrackingScript)) return;
 
-            var cacheKey = _cacheKey.FormatWith(_tenantProvider.Current().Name, _tenantProvider.Current().GoogleAnalyticsApp);
+            var cacheKey = _cacheKey.FormatWith(_tenantProvider.Current().GoogleAnalyticsApp);
 
             var response = await _cacheStore.OnCacheMiss(GetGaTracking)
                         .CacheIf(x => !string.IsNullOrWhiteSpace(x.TrackingScript))

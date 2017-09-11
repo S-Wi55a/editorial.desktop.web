@@ -1,8 +1,8 @@
-﻿import path from 'path'
+﻿import path from 'path';
 
-export const rootRelativePath = path.resolve('')
+export const rootRelativePath = path.resolve('');
 
-//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
 // list of path to search for files
 export const listOfPaths = [
     path.resolve('./'),
@@ -13,8 +13,8 @@ export const listOfPaths = [
     'Features/Listings/Assets',
     'Features/SiteNav/Assets',
     'Features/Errors/Assets',
-    'Features'
+    'Features'    
 ];
 
 // list of path to search for files
-export const s3path = 'dist/retail/editorial/'; //transfer to s3 is handles with gulp
+export const s3path = 'dist/retail/editorial/'; // transfer to s3 is handles with gulp
