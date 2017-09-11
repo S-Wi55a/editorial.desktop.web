@@ -875,7 +875,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\client.middleware.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\server.middleware.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\css\searchBar.scss" />
-    <Content Include="Features\React\Views\Listing.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Css\iNavListItem.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Css\iNavBreadCrumbs.scss" />
