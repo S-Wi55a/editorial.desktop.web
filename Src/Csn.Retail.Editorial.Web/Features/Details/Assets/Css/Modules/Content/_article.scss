@@ -3,38 +3,34 @@
 
 // All Article types other than wide
 .article-type:not(.article-type--wideimage):not(.article-type--widevideo) {
-    $aside-width: 300px;
-    $spacing: 31px;
+    font-size: 0;
 
-    font-size: inherit;
-
-    & .container {
-        padding-left: 0px;
-        padding-right: 0px;
+    & > .container {
+        padding-left: 0;
+        padding-right: 0;
+        position: relative;
+        pointer-events: none;
     }
 
     .article {
-        left: calc(50% - (#{$aside-width}/2));
         display: inline-block;
-        vertical-align: top;
-        transform: translate(-50%);
+        padding-left: 15px;
+        margin-right: 15px;
+        width: calc(#{$screen-sm - $aside-width - ($grid-gutter-width)});
 
         @include breakpoint($screen-md) {
-            left: calc(50% - (#{$aside-width} + #{$spacing})/2);
+            margin-right: 45px;
+            
         }
 
         @include breakpoint($screen-lg) {
-            left: calc(50% - (#{$aside-width} + #{$spacing})/2);
+            width: calc(#{$screen-lg - $aside-width - ($grid-gutter-width*2)});
         }
 
         & .container {
             padding-left: 0;
             padding-right: 0;
-            width: calc(#{$screen-md} - #{$aside-width} - #{$spacing*2});
-
-            @include breakpoint($screen-lg) {
-                width: calc(#{$screen-lg} - #{$aside-width} - #{$spacing*2});
-            }
+            width: 100%;
         }
     }
 }
@@ -389,22 +385,6 @@
         width: $screen-lg;
     }
 
-    .aside {
-        padding-top: 0;
-        left: calc(100% - 300px);
-        position: absolute;
-        top: 0;
-        transform: none;
-
-        @include breakpoint($screen-md) {
-            left: calc(100% - 315px);
-        }
-
-        @include breakpoint($screen-lg) {
-            left: calc(100% - 315px);
-        }
-    }
-
     ._c-modal .slideshow__nav {
         display: none;
     }
@@ -419,12 +399,6 @@
 
         & > * {
             pointer-events: auto;
-        }
-
-        &::before {
-            content: '';
-            display: block;
-            padding-top: percentage(2/3);
         }
 
         header {

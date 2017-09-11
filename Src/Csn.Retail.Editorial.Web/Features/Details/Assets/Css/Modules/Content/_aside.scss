@@ -1,23 +1,35 @@
 ﻿@import "css/globals";
 
 // Module - Aside
-// Module - Aside
 
 .aside {
-    $width: 300px;
     $spacing: 90px;
 
     display: inline-block;
     vertical-align: top;
-    margin-left: -$width/2;
-    left: calc(50% - ((#{($screen-md - $width - $spacing)})/2));
-    width: $width;
+    width: $aside-width;
+    left: calc(#{$screen-sm - $aside-width - ($grid-gutter-width/2)});
+    
     padding-top: 30px;
-    position: relative;
+    position: absolute;
+
+    @include breakpoint($screen-md) {
+        left: calc(#{$screen-sm - $aside-width + ($grid-gutter-width/2)});        
+    }
 
     @include breakpoint($screen-lg) {
         padding-top: 45px;
-        left: calc(50% - ((#{($screen-lg - $width - $spacing)})/2));
+        left: calc(#{$screen-lg - $aside-width - ($grid-gutter-width/2)});
+    }
+}
+
+.article-type--singleimage,
+.article-type--doubleimage,
+.article-type--video {
+    .aside {
+        padding-top: 0;
+        position: absolute;
+        top: 0;
     }
 }
 
@@ -45,3 +57,5 @@
         left: calc(50% - ((#{($screen-lg - $width - $spacing)})/2));
     }
 }
+
+

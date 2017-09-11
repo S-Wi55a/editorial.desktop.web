@@ -19,43 +19,21 @@
 }
 
 .hero--singleImage,
-.hero--doubleImage {
-    position: absolute;
-    width: calc(100% - (300px + #{$grid-gutter-width/2}));
+.hero--doubleImage,
+.hero--singleVideo {
+    width: calc(#{$screen-sm - $aside-width - $grid-gutter-width});
     float: left;
-    padding-right: 15px;
-
-    @include breakpoint($screen-md) {
-        padding-left: 15px;
-        padding-right: 32px;
-    }
-
-    @include breakpoint($screen-sm) {
-        width: calc(100% - (285px + #{$grid-gutter-width/2}));
-    }
-
-    @include breakpoint($screen-md) {
-        width: calc(100% - (315px + #{$grid-gutter-width/2}));
-    }
+    padding-left: 15px;
 
     @include breakpoint($screen-lg) {
-        width: calc(100% - (300px + #{$grid-gutter-width/2}));
+        width: calc(#{$screen-lg - $aside-width - ($grid-gutter-width*2)});
     }
 
-    @include breakpoint($screen-lg) {
-        padding-right: 32px;
-    }
 }
 
-.hero--singleVideo {
-    $aside-width: 300px; //TODO: make as global
-    $spacing: 30px;
-
-    width: calc(#{$screen-md} - #{$aside-width} - #{$spacing*2});
-
-    @include breakpoint($screen-lg) {
-        width: calc(#{$screen-lg} - #{$aside-width} - #{$spacing*2});
-    }
+.hero.hero--imageAndVideo,
+.hero--multipleImages {
+    width: 100%;
 }
 
 .hero.hero--imageAndVideo {
