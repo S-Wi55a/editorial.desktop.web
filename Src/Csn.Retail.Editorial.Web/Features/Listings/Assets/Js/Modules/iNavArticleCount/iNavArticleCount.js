@@ -1,11 +1,12 @@
-﻿import React from 'react'
+﻿import 'react-hot-loader/patch';
+import React from 'react'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import INavArticleCountComponent from 'Js/Modules/iNavArticleCount/Components/iNavArticleCountComponent'
+import INavArticleCountComponent from 'iNavArticleCount/Components/iNavArticleCountComponent'
 
 if (!SERVER) {
-    require('Js/Modules/iNavArticleCount/Css/iNavArticleCount.scss')
+    require('iNavArticleCount/Css/iNavArticleCount.scss')
 }
 
 //Check for Store
@@ -30,7 +31,7 @@ if (store) {
     render(INavArticleCountComponent);
 
     if (module.hot) {
-        module.hot.accept('Js/Modules/iNavArticleCount/Components/iNavArticleCountComponent', () => render(INavArticleCountComponent));
+        module.hot.accept('iNavArticleCount/Components/iNavArticleCountComponent', () => render(INavArticleCountComponent));
     }
 }
 

@@ -18,7 +18,7 @@ module.exports = () => {
 
     const entries = {}
         
-    entries['react-server-components'] = ['./Features/React/Assets/Js/react-server-entry.js'];
+    entries['react-server-components'] = ['./Infrastructure/React/Assets/Js/react-server-entry.js'];
 
     return [{
         target:'node',

@@ -1,2 +1,2 @@
-import 'Js/Modules/MediaMotive/kruxSasHelper'
-import 'Js/Modules/MediaMotive/mediaMotiveLoader'
+import 'MediaMotive/kruxSasHelper'
+import 'MediaMotive/mediaMotiveLoader'

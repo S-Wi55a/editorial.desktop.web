@@ -1,5 +1,5 @@
 ﻿import React from 'react'
-import INavNodesContainer from 'Js/Modules/iNav/Containers/iNavNodesContainer'
+import INavNodesContainer from 'iNav/Containers/iNavNodesContainer'
 
 
 //TODO: memonized

@@ -70,12 +70,12 @@ let init = (d, w, scope) => {
 
     if (!Modernizr.meter) {
         // Meter polyfill
-        require.ensure(['Js/Modules/Meter/meter.js'],
+        require.ensure(['Meter/meter.js'],
             function() {
                 for (var meter of expertRatingMeters) {
                     meter.setAttribute('value', meter.getAttribute('data-value'));
                 }
-                require('Js/Modules/Meter/meter.js');
+                require('Meter/meter.js');
 
                 new ScrollMagic.Scene({
                         triggerElement: triggerElement,
