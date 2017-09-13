@@ -362,10 +362,11 @@
             color: $cs-white;
             width: 100%;
             background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(252, 252, 252, 0) 1%, rgba(0, 0, 0, 0.85) 100%);
-            top: -46px + -45px; //Height of container above (button and padding)
+            top: -46px + -50px; //Height of container above (button and padding)
             @include breakpoint($screen-lg) {
-                top: -61px + -60px; //Height of container above (button and padding)
+                top: -61px + -65px; //Height of container above (button and padding)
             }
+            pointer-events: none;
         }
         &__subheading {
             margin-top: 0;
