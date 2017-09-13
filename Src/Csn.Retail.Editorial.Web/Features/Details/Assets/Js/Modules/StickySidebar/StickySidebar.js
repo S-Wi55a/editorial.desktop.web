@@ -6,19 +6,17 @@ if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 export function init(d, w, aside, baseReference) {
 
-    //Wrap aside with a refernce wrapper
-    const wrapper = aside.parentNode.insertBefore(d.createElement('div'), aside)
-    wrapper.classList.add('scrollmagic-pin-wrapper--aside');
-    wrapper.appendChild(aside);
-
     // Cache Footer
-    const pageFooter = document.querySelector('#page-footer')
+    const pageFooter = d.querySelector('#page-footer')
+    const siteNavHeight = d.querySelector('.site-nav-wrapper')
+    const wrapper = d.querySelector('.wrapper--aside')
+    
     
     //Module Vars
     const references = {
         wrapper,
         startingCoordinatesTop : wrapper.getBoundingClientRect().top,
-        siteNavHeight: d.querySelector('.site-nav-wrapper').offsetHeight,
+        siteNavHeight: siteNavHeight.offsetHeight,
         footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - wrapper.getBoundingClientRect().top },
         triggerHookUp: ()=> 1 - (w.innerHeight - d.querySelector('.site-nav-wrapper').offsetHeight) / w.innerHeight,
         triggerHookDown : (w.innerHeight - baseReference) / w.innerHeight,

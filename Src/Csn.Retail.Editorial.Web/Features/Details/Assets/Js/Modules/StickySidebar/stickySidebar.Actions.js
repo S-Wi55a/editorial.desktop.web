@@ -144,7 +144,7 @@ export function scrollingDown(el, ref, e) {
             lock.down.IS_BEFORE = false;
 
         }
-        else if (state.STATE === 'BEFORE' && el.style.position === 'fixed' && !lock.down.IS_BEFORE ) {
+        else if (state.STATE === 'BEFORE' && el.style.position === 'fixed' && !lock.down.IS_BEFORE  && !lock.down.IS_DURING ) {
             if (process.env.DEBUG) { console.log('Down 3') }
 
             const css = {  
