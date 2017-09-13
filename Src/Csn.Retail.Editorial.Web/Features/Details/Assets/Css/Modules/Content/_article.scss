@@ -20,36 +20,33 @@
             $width: $screen-sm - ($aside-width + $grid-gutter-width);
             position: relative;
             left: calc(-1*(#{$screen-sm - $width})/2);
-            width: calc(#{#{$width}
+            width: calc(#{#{$width}});
+            @include breakpoint($screen-md) {
+                $width: $screen-md - ($aside-width + $grid-gutter-width);
+                left: calc(-1*(#{$screen-md - $width})/2);
+                width: calc(#{#{$width}});
+            }
+            @include breakpoint($screen-lg) {
+                $width: $screen-lg - ($aside-width + $grid-gutter-width);
+                left: calc(-1*(#{$screen-lg - $width})/2);
+                width: calc(#{#{$width}});
+            }
         }
-        );
-        @include breakpoint($screen-md) {
-            $width: $screen-md - ($aside-width + $grid-gutter-width);
-            left: calc(-1*(#{$screen-md - $width})/2);
-            width: calc(#{#{$width}
-        }
-        );
     }
-    @include breakpoint($screen-lg) {
-        $width: $screen-lg - ($aside-width + $grid-gutter-width);
-        left: calc(-1*(#{$screen-lg - $width})/2);
-        width: calc(#{#{$width}
-    }
-    );
-}
-
-
-}
-
-}
-
 }
 .article-type.article-type--wideimage,
 .article-type.article-type--widevideo {
     .article {
         & .container {
+            $width: $screen-sm - ($aside-width + $grid-gutter-width);
+            width: calc(#{#{$width}});
+            @include breakpoint($screen-md) {
+                $width: $screen-md - ($aside-width + $grid-gutter-width);
+                width: calc(#{#{$width}});
+            }
             @include breakpoint($screen-lg) {
-                width: 850px;
+                $width: $screen-lg - ($aside-width + $grid-gutter-width);
+                width: calc(#{#{$width}});
             }
         }
         &__subheading {
