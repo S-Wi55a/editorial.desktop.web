@@ -7,7 +7,7 @@
     "module": "es6",
     "jsx": "react",
     "allowJs": false,
-    "traceResolution": true,
+    "traceResolution": false,
     "baseUrl": ".",
     "paths": {
       "*": [

@@ -21,7 +21,7 @@ export function init(d, w, aside, baseReference) {
         siteNavHeight: d.querySelector('.site-nav-wrapper').offsetHeight,
         footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - wrapper.getBoundingClientRect().top },
         triggerHookUp: ()=> 1 - (w.innerHeight - d.querySelector('.site-nav-wrapper').offsetHeight) / w.innerHeight,
-        triggerHookDown : (window.innerHeight - baseReference) / window.innerHeight,
+        triggerHookDown : (w.innerHeight - baseReference) / w.innerHeight,
         pageFooter,
         baseReference
     }
@@ -31,7 +31,7 @@ export function init(d, w, aside, baseReference) {
 
     let sceneSimple = new ScrollMagic.Scene({
             triggerElement: aside,
-            triggerHook: 1 - (w.innerHeight - references.siteNavHeight)/w.innerHeight,
+            triggerHook: 1 - (w.innerHeight - references.siteNavHeight) / w.innerHeight,
         })  
         .addTo(w.scrollMogicController);
 

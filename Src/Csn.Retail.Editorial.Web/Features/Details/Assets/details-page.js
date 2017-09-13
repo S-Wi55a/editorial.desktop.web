@@ -174,12 +174,12 @@ loaded.then(function () {
     }   
 });
 
-// //Sticky Sidebar
-// if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
-//     const aside = document.querySelector('.aside');
-//     loaded.then(function() {     
-//         if (aside) {
-//             require('Js/Modules/StickySidebar/StickySidebar.js').init(document, window, aside, 137);
-//         }
-//     })
-// }
+//Sticky Sidebar
+if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
+    const aside = document.querySelector('.aside');
+    loaded.then(function() {     
+        if (aside) {
+            require('Js/Modules/StickySidebar/StickySidebar.js').init(document, window, aside, 137);
+        }
+    })
+}

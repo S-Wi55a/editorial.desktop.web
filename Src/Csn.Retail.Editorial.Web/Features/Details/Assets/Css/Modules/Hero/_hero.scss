@@ -21,12 +21,46 @@
 .hero--singleImage,
 .hero--doubleImage,
 .hero--singleVideo {
-    width: calc(#{$screen-sm - $aside-width - $grid-gutter-width});
-    float: left;
-    padding-left: 15px;
+    display: inline-block;
+    padding-left: 0;
+    padding-right: 0;
+    margin: auto;
+    position: absolute;
+    left: $screen-sm/2;
+    margin-left: -1*($screen-sm - ($aside-width + $grid-gutter-width))/2;
 
+    @include breakpoint($screen-sm) {
+        left: 50%;        
+    }
+    
+    @include breakpoint($screen-md) {
+        margin-left: -1*($screen-md - ($aside-width + $grid-gutter-width))/2;
+        
+    }
     @include breakpoint($screen-lg) {
-        width: calc(#{$screen-lg - $aside-width - ($grid-gutter-width*2)});
+        margin-left: -1*($screen-lg - ($aside-width + $grid-gutter-width))/2;
+        
+    } 
+
+    & > .container {
+        $width: $screen-sm - ($aside-width + $grid-gutter-width);
+        padding-left: 15px;
+        padding-right: 15px;
+        position: relative;
+        left: calc(-1*(#{$screen-sm - $width})/2);
+        width: calc(#{#{$width}});
+        
+        @include breakpoint($screen-md) {
+            $width: $screen-md - ($aside-width + $grid-gutter-width);
+            left: calc(-1*(#{$screen-md - $width})/2);
+            width: calc(#{#{$width}});
+        }           
+        
+        @include breakpoint($screen-lg) {
+            $width: $screen-lg - ($aside-width + $grid-gutter-width);
+            left: calc(-1*(#{$screen-lg - $width})/2);
+            width: calc(#{#{$width}});
+        }
     }
 
 }
