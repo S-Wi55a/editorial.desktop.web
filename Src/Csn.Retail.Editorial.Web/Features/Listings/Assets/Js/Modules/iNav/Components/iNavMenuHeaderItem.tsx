@@ -1,9 +1,10 @@
 import * as React from "react"
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
-import { local as ui } from 'redux-fractal';
 import { createStore, compose } from 'redux';
 import { ActionTypes } from 'Redux/iNav/Actions/actions'
+import { injectAsyncReducer } from 'Redux/Global/Store/store.server.js'
+import UI from 'ui'
 
 interface IINavMenuHeaderItemComponent {
   ui: any,
@@ -22,7 +23,26 @@ const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemC
   )
 }
 
-const componentRootReducer = (state: any, action: any): any => {
+const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+  return {
+    toggleIsSelected: (id: number, isActive: boolean) => {
+      dispatch({
+        type: ActionTypes.TOGGLE_IS_ACTIVE,
+        payload: {
+          id,
+          isActive
+        }
+      })
+    }
+  }
+}
+
+// const initUIState = {
+//   id: props.index, 
+//   isActive: false
+// }
+
+const componentRootReducer = (state: any = null, action: any): any => {
   // state represents *only* the UI state for this component's scope - not any children
   switch (action.type) {
     case ActionTypes.TOGGLE_IS_ACTIVE:
@@ -35,32 +55,13 @@ const componentRootReducer = (state: any, action: any): any => {
   }
 }
 
-const wrapper = compose(
-  ui({
-    key: props => `iNavNodesContainerItem_${props.index}`,
-    createStore: (props: any) => {
-      return createStore(componentRootReducer, { id: props.index, isActive: false }) // NOTE: if list dynamically changes, id may be incorrect as id is set only on inital state.
-    },
-    mapDispatchToProps: (dispatch: Dispatch<any>) => {
-      return {
-        toggleIsSelected: (id: number, isActive: boolean) => {
-          dispatch({
-            type: ActionTypes.TOGGLE_IS_ACTIVE,
-            payload: {
-              id,
-              isActive
-            }
-          })
-        }
-      }
-    },
-    filterGlobalActions: (action: any) => {
-      const allowedActions = [ActionTypes.TOGGLE_IS_ACTIVE];
-      return allowedActions.indexOf(action.type) !== -1;
-    }
-  })
-)
+// //TODO: wrap in HMR
+// injectAsyncReducer(global.store, `ui/iNavNodesContainerItem_${props.index}`, componentRootReducer);
 
-const INavMenuHeaderItem = wrapper(INavMenuHeaderItemComponent)
+//export default connect(null,mapDispatchToProps)(INavMenuHeaderItemComponent)
 
-export default INavMenuHeaderItem
+
+export default connect(null,mapDispatchToProps)(UI({
+  key: (props)=>props.node.name,
+  reducer: componentRootReducer
+})(INavMenuHeaderItemComponent))
