@@ -1,5 +1,5 @@
-﻿import { createStore, applyMiddleware, compose } from 'redux';
-import { createReducer } from 'Js/Modules/Redux/Global/Reducers/rootReducer'
+﻿import { createStore } from 'redux';
+import { createReducer } from 'Redux/Global/Reducers/rootReducer'
 
 
 // This is a light weight version of the client store

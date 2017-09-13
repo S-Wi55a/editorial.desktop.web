@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SpecModule from './specModule';
 import { AppContainer } from 'react-hot-loader';
-import { proxy } from 'Js/Modules/Endpoints/endpoints';
+import { proxy } from 'Endpoints/endpoints';
 
 import 'Css/Modules/Widgets/SpecModule/_specModule.scss'; //TODO: CSS Module
 

@@ -1,4 +1,4 @@
-﻿import * as Utils from 'Features/Details/Assets/Js/Modules/StickySidebar/stickySidebar.utils.js'
+﻿import * as Utils from 'Features/Details/Assets/StickySidebar/stickySidebar.utils.js'
 
 const lock = { up: false }
 

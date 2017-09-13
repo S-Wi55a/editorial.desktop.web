@@ -1,4 +1,4 @@
-﻿import { proxy } from 'Js/Modules/Endpoints/endpoints';
+﻿import { proxy } from 'Endpoints/endpoints';
 
 // replaces all non alphanumeric characters with a hyphen and makes string lower case
 let hyphenateNonAlphaNumeric = (input) => {

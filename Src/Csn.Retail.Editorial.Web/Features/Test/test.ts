@@ -1,1 +1,3 @@
-const HELLO_WORLD = 'HELLO_WORLDS'
+interface IApple {
+    core: number;
+}
