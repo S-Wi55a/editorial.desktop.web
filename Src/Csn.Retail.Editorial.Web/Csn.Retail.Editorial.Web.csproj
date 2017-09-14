@@ -564,6 +564,9 @@
     <Content Include="Features\React\Assets\Js\Components\ReduxStore.js" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
     <Content Include="Features\React\Assets\Js\Reducers\ReactServerReducersCollection.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\kruxSasHelper.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotive.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotiveLoader.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\UIHelpers.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.client.js" />
@@ -700,7 +703,6 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Listings\Assets\Css\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
-    <Folder Include="Features\Sponsored\" />
     <Folder Include="Features\Shared\Assets\Css\Tyopgraphy\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\" />
@@ -895,7 +897,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\client.middleware.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\server.middleware.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\SearchBar\css\searchBar.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Css\iNavListItem.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Css\iNavBreadCrumbs.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
