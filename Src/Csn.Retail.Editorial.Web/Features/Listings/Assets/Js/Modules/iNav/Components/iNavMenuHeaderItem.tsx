@@ -2,14 +2,14 @@ import * as React from "react"
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
 import { createStore, compose } from 'redux';
-import { ActionTypes } from 'Redux/iNav/Actions/actions'
-import { injectAsyncReducer } from 'Redux/Global/Store/store.server.js'
+import { Actions, ActionTypes } from 'iNav/Actions/actions'
+import * as iNavTypes from 'Redux/iNav/Types'
 import UI from 'ReactReduxUI'
 
 interface IINavMenuHeaderItemComponent {
   ui: any,
-  node: any //TODO: update
-  toggleIsSelected: (id: number, isActive: boolean) => any
+  node: iNavTypes.INode
+  toggleIsSelected: (id: number, isActive: boolean) => Actions
   index: number,
   isActive: boolean  
 }
@@ -22,11 +22,11 @@ const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemC
   )
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+const mapDispatchToProps = (dispatch: Dispatch<Actions>) => {
   return {
     toggleIsSelected: (id: number, isActive: boolean) => {
       dispatch({
-        type: ActionTypes.TOGGLE_IS_ACTIVE,
+        type: ActionTypes.UI.TOGGLE_IS_ACTIVE,
         payload: {
           id,
           isActive
@@ -36,10 +36,9 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => {
   }
 }
 
-const componentRootReducer = (initUIState) => (state: any = initUIState, action: any): any => {
-  // state represents *only* the UI state for this component's scope - not any children
+const componentRootReducer = (initUIState: any) => (state: any = initUIState, action: Actions): any => {
   switch (action.type) {
-    case ActionTypes.TOGGLE_IS_ACTIVE:
+    case ActionTypes.UI.TOGGLE_IS_ACTIVE:
       return {
         ...state,
         isActive: !action.payload.isActive && state.id === action.payload.id
@@ -49,7 +48,10 @@ const componentRootReducer = (initUIState) => (state: any = initUIState, action:
   }
 }
 
-export default connect(null,mapDispatchToProps)(UI({
+export default connect(
+  null,
+  mapDispatchToProps
+)(UI({
   key: (props)=>props.node.name,
   state: (props)=>({
     id: props.index, 

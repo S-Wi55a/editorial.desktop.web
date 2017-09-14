@@ -1,28 +1,31 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import INavMenuHeader from 'iNav/Components/iNavMenuHeader'
-import { ActionTypes } from 'Redux/iNav/Actions/actions'
-import { injectAsyncReducer } from 'Redux/Global/Store/store.server.js'
-
+import INavNodeContainer from 'iNav/Containers/iNavNodeContainer'
+import * as iNavTypes from 'Redux/iNav/Types'
+import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import UI from 'ReactReduxUI'
 
-// TODO: add node Interface
 
 //Wrapper component
-const iNavNodes:React.StatelessComponent<{nodes:any}>  = ({ nodes }) => {
-  return <INavMenuHeader nodes={nodes} />
+const iNavNodes:React.StatelessComponent<{nodes:iNavTypes.INode[]}>  = ({ nodes }) => {
+  return (
+  <div>
+    <INavMenuHeader nodes={nodes} />
+    <INavNodeContainer nodes={nodes} />
+  </div>
+  )
 }
 // Redux Connect
-const mapStateToProps = ({iNav}:any) => {
+const mapStateToProps = (state:iNavTypes.State) => {
   return {
-    nodes: iNav.iNav.nodes
+    nodes: state.iNav.iNav.nodes
   }
 }
 
-
-const componentRootReducer = (initUIState: any) => (state: any = initUIState, action: any): any => {
+const componentRootReducer = (initUIState: any) => (state = initUIState, action: Actions): any => {
   switch (action.type) {
-    case ActionTypes.TOGGLE_IS_ACTIVE:
+    case ActionTypes.UI.TOGGLE_IS_ACTIVE:
       return {
         ...state,
         activeItemId: action.payload.id
@@ -31,7 +34,6 @@ const componentRootReducer = (initUIState: any) => (state: any = initUIState, ac
       return state
   }
 }
-
 
 export default connect(mapStateToProps)(UI({
   key: 'ui/iNavNodes',
