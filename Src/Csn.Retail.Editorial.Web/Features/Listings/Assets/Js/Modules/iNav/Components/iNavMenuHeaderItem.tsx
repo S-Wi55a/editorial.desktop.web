@@ -4,7 +4,7 @@ import { Dispatch } from 'redux';
 import { createStore, compose } from 'redux';
 import { ActionTypes } from 'Redux/iNav/Actions/actions'
 import { injectAsyncReducer } from 'Redux/Global/Store/store.server.js'
-import UI from 'ui'
+import UI from 'ReactReduxUI'
 
 interface IINavMenuHeaderItemComponent {
   ui: any,
@@ -15,7 +15,6 @@ interface IINavMenuHeaderItemComponent {
 }
 
 const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ isActive, node, toggleIsSelected, index }) => {
-
   return (
     <div className={['iNav__menu-header-item', isActive && 'isActive'].join(' ')} onClick={() => toggleIsSelected(index, isActive)}>
       {node.displayName}
@@ -37,12 +36,7 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => {
   }
 }
 
-// const initUIState = {
-//   id: props.index, 
-//   isActive: false
-// }
-
-const componentRootReducer = (state: any = null, action: any): any => {
+const componentRootReducer = (initUIState) => (state: any = initUIState, action: any): any => {
   // state represents *only* the UI state for this component's scope - not any children
   switch (action.type) {
     case ActionTypes.TOGGLE_IS_ACTIVE:
@@ -55,13 +49,11 @@ const componentRootReducer = (state: any = null, action: any): any => {
   }
 }
 
-// //TODO: wrap in HMR
-// injectAsyncReducer(global.store, `ui/iNavNodesContainerItem_${props.index}`, componentRootReducer);
-
-//export default connect(null,mapDispatchToProps)(INavMenuHeaderItemComponent)
-
-
 export default connect(null,mapDispatchToProps)(UI({
   key: (props)=>props.node.name,
+  state: (props)=>({
+    id: props.index, 
+    isActive: false 
+  }),
   reducer: componentRootReducer
 })(INavMenuHeaderItemComponent))

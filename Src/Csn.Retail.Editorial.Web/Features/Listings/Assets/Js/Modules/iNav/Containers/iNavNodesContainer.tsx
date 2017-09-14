@@ -4,8 +4,7 @@ import INavMenuHeader from 'iNav/Components/iNavMenuHeader'
 import { ActionTypes } from 'Redux/iNav/Actions/actions'
 import { injectAsyncReducer } from 'Redux/Global/Store/store.server.js'
 
-import UI from 'ui'
-
+import UI from 'ReactReduxUI'
 
 // TODO: add node Interface
 
@@ -14,18 +13,14 @@ const iNavNodes:React.StatelessComponent<{nodes:any}>  = ({ nodes }) => {
   return <INavMenuHeader nodes={nodes} />
 }
 // Redux Connect
-const mapStateToProps = (state: any) => {
+const mapStateToProps = ({iNav}:any) => {
   return {
-    nodes: state.iNav.iNav.nodes
+    nodes: iNav.iNav.nodes
   }
 }
 
-const initUIState = {
-  activeItemId: null
-}
 
-const componentRootReducer = (state: any = initUIState, action: any): any => {
-  // state represents *only* the UI state for this component's scope - not any children
+const componentRootReducer = (initUIState: any) => (state: any = initUIState, action: any): any => {
   switch (action.type) {
     case ActionTypes.TOGGLE_IS_ACTIVE:
       return {
@@ -37,13 +32,11 @@ const componentRootReducer = (state: any = initUIState, action: any): any => {
   }
 }
 
-//TODO: wrap in HMR
-//injectAsyncReducer(global.store, 'ui/iNavNodes', componentRootReducer);
-
-
-
 
 export default connect(mapStateToProps)(UI({
   key: 'ui/iNavNodes',
-  reducer: componentRootReducer
+  reducer: componentRootReducer,
+  state: {
+    activeItemId: null
+  }
 })(iNavNodes))

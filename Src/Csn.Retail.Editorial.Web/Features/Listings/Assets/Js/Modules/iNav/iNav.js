@@ -28,8 +28,6 @@ const render = (WrappedComponent) => {
 
 //If store exists
 if (store) {
-    //Run sagas for search bar //NOTE: this may be an issues since we will create 3 different sagas
-    window.store.runSaga(watchINavSagaActions)
     
     //Render Searchbar Component
     render(INav);
