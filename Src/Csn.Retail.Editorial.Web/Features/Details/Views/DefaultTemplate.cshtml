@@ -35,17 +35,15 @@
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
 
+        @{ Html.RenderPartial("Partials/_Main"); }
+
         @if (!isWide)
         {
-            <div class="container">
-                @{ Html.RenderPartial("Partials/_Main"); }
-                @{ Html.RenderPartial("Partials/_Aside"); }
-            </div>
+            Html.RenderPartial("Partials/_Aside");
         }
-        else
-        {
-            Html.RenderPartial("Partials/_Main");
-        }
+
+
+
     </article>
 
     @{ Html.RenderPartial("Partials/Modal/_Modal"); }

@@ -1,47 +1,59 @@
 ﻿@import "css/globals";
 
 // Module - Aside
-// Module - Aside
 
-.aside {
-    $width: 300px;
-    $spacing: 90px;
-
+.wrapper--aside {
     display: inline-block;
     vertical-align: top;
-    margin-left: -$width/2;
-    left: calc(50% - ((#{($screen-md - $width - $spacing)})/2));
-    width: $width;
-    padding-top: 30px;
     position: relative;
+    left: 50%;
+    margin-left: -1*$aside-width/2;
+    
+}
+.aside {
+    width: 300px;
 
-    @include breakpoint($screen-lg) {
-        padding-top: 45px;
-        left: calc(50% - ((#{($screen-lg - $width - $spacing)})/2));
-    }
 }
 
-.scrollmagic-pin-wrapper--aside {
-    $width: 300px;
-    $spacing: 90px;
 
-    width: $width;
-    display: inline-block;
-    vertical-align: top;
-    left: calc(50% - ((#{($screen-md - $width - $spacing)})/2));
-    margin-left: -$width/2;
-    position: relative;
 
-    .aside{
-        left: auto;
-        margin-left: auto;
-        
+.article-type--multipleimages,
+.article-type--imagesandvideo {
+    .wrapper--aside {
+        padding-top: 30px;
+        margin-top: -30px;
         @include breakpoint($screen-lg) {
-            left: auto
+            margin-top: -45px;
+            padding-top: 45px;
+            
+        }
+        
+        .aside{
+            padding-top: 30px;
+
+            @include breakpoint($screen-lg) {
+                padding-top: 45px;
+            }
         }
     }
+}
 
-    @include breakpoint($screen-lg) {
-        left: calc(50% - ((#{($screen-lg - $width - $spacing)})/2));
+.article-type--singleimage,
+.article-type--doubleimage,
+.article-type--video {
+    .wrapper--aside {
+        margin-top: -30px;
+        @include breakpoint($screen-lg) {
+            margin-top: -45px;
+        }
+    
+        .aside{
+            padding-top: 30px;
+            @include breakpoint($screen-lg) {
+                padding-top: 45px;
+            }
+        }
     }
 }
+
+
