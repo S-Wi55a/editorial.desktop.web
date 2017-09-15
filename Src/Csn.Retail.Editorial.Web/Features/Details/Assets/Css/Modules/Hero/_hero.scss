@@ -19,43 +19,55 @@
 }
 
 .hero--singleImage,
-.hero--doubleImage {
+.hero--doubleImage,
+.hero--singleVideo {
+    display: inline-block;
+    padding-left: 0;
+    padding-right: 0;
+    margin: auto;
     position: absolute;
-    width: calc(100% - (300px + #{$grid-gutter-width/2}));
-    float: left;
-    padding-right: 15px;
-
-    @include breakpoint($screen-md) {
-        padding-left: 15px;
-        padding-right: 32px;
-    }
+    left: $screen-sm/2;
+    margin-left: -1*($screen-sm - ($aside-width + $grid-gutter-width))/2;
 
     @include breakpoint($screen-sm) {
-        width: calc(100% - (285px + #{$grid-gutter-width/2}));
+        left: 50%;        
     }
-
+    
     @include breakpoint($screen-md) {
-        width: calc(100% - (315px + #{$grid-gutter-width/2}));
+        margin-left: -1*($screen-md - ($aside-width + $grid-gutter-width))/2;
+        
+    }
+    @include breakpoint($screen-lg) {
+        margin-left: -1*($screen-lg - ($aside-width + $grid-gutter-width))/2;
+        
+    } 
+
+    & > .container {
+        $width: $screen-sm - ($aside-width + $grid-gutter-width);
+        padding-left: 15px;
+        padding-right: 15px;
+        position: relative;
+        left: calc(-1*(#{$screen-sm - $width})/2);
+        width: calc(#{#{$width}});
+        
+        @include breakpoint($screen-md) {
+            $width: $screen-md - ($aside-width + $grid-gutter-width);
+            left: calc(-1*(#{$screen-md - $width})/2);
+            width: calc(#{#{$width}});
+        }           
+        
+        @include breakpoint($screen-lg) {
+            $width: $screen-lg - ($aside-width + $grid-gutter-width);
+            left: calc(-1*(#{$screen-lg - $width})/2);
+            width: calc(#{#{$width}});
+        }
     }
 
-    @include breakpoint($screen-lg) {
-        width: calc(100% - (300px + #{$grid-gutter-width/2}));
-    }
-
-    @include breakpoint($screen-lg) {
-        padding-right: 32px;
-    }
 }
 
-.hero--singleVideo {
-    $aside-width: 300px; //TODO: make as global
-    $spacing: 30px;
-
-    width: calc(#{$screen-md} - #{$aside-width} - #{$spacing*2});
-
-    @include breakpoint($screen-lg) {
-        width: calc(#{$screen-lg} - #{$aside-width} - #{$spacing*2});
-    }
+.hero.hero--imageAndVideo,
+.hero--multipleImages {
+    width: 100%;
 }
 
 .hero.hero--imageAndVideo {

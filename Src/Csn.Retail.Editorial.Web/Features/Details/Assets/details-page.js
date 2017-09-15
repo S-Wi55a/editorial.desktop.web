@@ -182,6 +182,4 @@ if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet 
             require('Js/Modules/StickySidebar/StickySidebar.js').init(document, window, aside, 137);
         }
     })
-    
-
 }
