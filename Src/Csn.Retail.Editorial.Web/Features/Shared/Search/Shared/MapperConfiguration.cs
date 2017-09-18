@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
@@ -21,7 +22,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public void Run(IMapperConfigurationExpression cfg)
         {
             cfg.CreateMap<RyvussNavResultDto, NavResult>();
-            cfg.CreateMap<RyvussNavDto, Nav.Nav>();
+
+            cfg.CreateMap<BreadCrumbDto, BreadCrumb>();
+
+            cfg.CreateMap<RyvussNavDto, Nav.Nav>()
+                .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => src != null ? GetCustomBreadCrumbs(src.BreadCrumbs) : new List<BreadCrumb>()));
+
             cfg.CreateMap<RyvussNavNodeDto, NavNode>();
 
             cfg.CreateMap<RefinementsNodeDto, NavNode>()
@@ -40,10 +46,19 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => GetRefinement(src)))
                 .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => GetRefinements(src)));
 
-            cfg.CreateMap<BreadCrumbDto, BreadCrumb>();
-
             cfg.CreateMap<SearchResultDto, SearchResult>()
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => $"https://editorial.li.csnstatic.com/carsales{src.PhotoPath}")); // TODO: remove hardcoding
+        }
+
+        private IList<BreadCrumb> GetCustomBreadCrumbs(ICollection<BreadCrumbDto> src)
+        {
+            if (src.Count < 1)
+            {
+                return new List<BreadCrumb>();
+            }
+            src.Add(new BreadCrumbDto { RemoveAction = string.Empty, FacetDisplay = "Clear All"});
+
+            return _mapper.Map<IList<BreadCrumb>>(src);
         }
 
         private bool IsRefineable(FacetNodeDto input)

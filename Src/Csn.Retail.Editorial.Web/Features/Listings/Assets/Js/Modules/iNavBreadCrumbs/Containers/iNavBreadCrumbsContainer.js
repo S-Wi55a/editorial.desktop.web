@@ -1,10 +1,11 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import * as Actions from 'Redux/iNav/Actions/actions'
+import { fetchINav } from 'Redux/iNav/Actions/actions'
+
 
 const INavBreadCrumb = ({removeBreadCrumb, aspect, facet, facetDisplay, removeAction}) => (
-    <div className="iNavBreadCrumb" onClick={() =>removeBreadCrumb(removeAction, aspect, facet)}>
+    <div className="iNavBreadCrumb" onClick={() =>removeBreadCrumb(removeAction)}>
         {facetDisplay}
     </div>
 )
@@ -22,33 +23,17 @@ const INavBreadCrumbs = ({ breadCrumbs, removeBreadCrumb }) => (
         </div>
     )
 
-//Selectors
-const getiNavBreadCrumbs = (iNav) => {
-
-    return [{
-        "facetDisplay": "Clear All", //TODO: remove hard coded data
-        "removeAction": ""
-    }].concat(iNav.iNav.breadCrumbs);
-        
-}
-
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        breadCrumbs: getiNavBreadCrumbs(state.iNav)
+        breadCrumbs: state.iNav.iNav.breadCrumbs ? state.iNav.iNav.breadCrumbs : []
     }
 }
 
-
-
 const mapDispatchToProps = (dispatch) => {
     return {
-        removeBreadCrumb: (query, aspect, facet) => {
-            dispatch([
-                Actions.fetchQueryRequest(query),
-                Actions.removeBreadCrumb(facet), // This is to simulate a quick UI
-                Actions.toggleIsSelected(aspect, facet), // This is to simulate a quick UI
-            ])
+        removeBreadCrumb: (query) => {
+            dispatch(fetchINav(query))
         }
     }
 }

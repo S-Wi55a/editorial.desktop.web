@@ -1,5 +1,6 @@
-﻿import { Action } from 'redux'
+﻿import { Action, Dispatch } from 'redux'
 import { ActionTypes } from 'Redux/iNav/Actions/actionTypes'
+import * as endpoints from 'Endpoints/endpoints'
     
 interface IToggleIsSelected extends Action {
     type: ActionTypes.TOGGLE_IS_SELECTED;
@@ -67,5 +68,23 @@ export const reset = (query: string) => ({
         query
     }
 })
+
+
+// Thunks (Ref: https://github.com/gaearon/redux-thunk)
+export function fetchINav(query: string) {
+
+    return (dispatch: Dispatch<Actions>) => {
+        dispatch({ type: ActionTypes.FETCH_QUERY_REQUEST })
+
+        return fetch(endpoints.iNav + query)
+            .then(
+                response => response.json(),
+                error => console.log('An error occured.', error)
+            )
+            .then(json =>
+                dispatch({ type: ActionTypes.FETCH_QUERY_SUCCESS, data: json })
+            )
+    }
+}
 
 export { ActionTypes }
