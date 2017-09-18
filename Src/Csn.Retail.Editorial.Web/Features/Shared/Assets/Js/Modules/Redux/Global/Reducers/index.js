@@ -1,5 +1,4 @@
 ﻿import { combineReducers } from 'redux'
-import { localReducer } from 'redux-fractal';
 
 // Because Redux needs at least one reducer or it will throw an error
 const emptyReducer = (state = {}) => {
@@ -8,8 +7,11 @@ const emptyReducer = (state = {}) => {
 
 export function createReducer(asyncReducers = { emptyReducer }) {
     return combineReducers({
-        local: localReducer,
         ...asyncReducers
     });
 }
 
+export function injectAsyncReducer(store, name, asyncReducer) {
+    store.asyncReducers[name] = asyncReducer;
+    store.replaceReducer(createReducer(store.asyncReducers));
+}
