@@ -56,13 +56,13 @@ export default connect(
   null,
   mapDispatchToProps
 )(UI({
-  key: (props)=>`ui/INavMenuHeaderItemComponent_${props.node.name}`,  
-  state: (props)=>({
+  key: (props: IINavMenuHeaderItemComponent)=>`ui/INavMenuHeaderItemComponent_${props.node.name}`,  
+  state: (props: IINavMenuHeaderItemComponent)=>({
     id: props.index, 
     isActive: false,
   }),
   reducer: componentRootReducer,
-  mapStateToProps: (state: State, ownProps) => {
+  mapStateToProps: (state: State, ownProps: IINavMenuHeaderItemComponent) => {
     return {
       count: state[`ui/INavNodeContainer_${ownProps.node.name}`] ? state[`ui/INavNodeContainer_${ownProps.node.name}`].internalItemsCount : 0
     }

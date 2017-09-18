@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Actions>) => {
   }
 }
 
-const componentRootReducer = (initUIState: any) => (state = initUIState, action: Actions): any => {
+const componentRootReducer = (initUIState: any) => (state = initUIState, action: Actions) => {
   switch (action.type) {
     case ActionTypes.UI.TOGGLE_IS_ACTIVE:
       return {

@@ -1,7 +1,4 @@
 ﻿import React from 'react'
-import { connect } from 'react-redux'
-import * as Actions from 'Redux/iNav/Actions/actions'
-import * as GlobalActions from 'Redux/Global/Actions/actions' //TODO: change
 import INavNodeContainer from 'iNav/Containers/iNavNodeContainer'
 import { INode } from 'Redux/iNav/Types'
 

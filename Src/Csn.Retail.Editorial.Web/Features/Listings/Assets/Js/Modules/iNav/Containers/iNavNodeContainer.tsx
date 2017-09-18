@@ -6,8 +6,6 @@ import UI from 'ReactReduxUI'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { Dispatch } from 'redux';
 
-
-
 if (!SERVER) {
   require('iNav/Css/iNav.NodesContainer')  
 }
@@ -29,7 +27,7 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = ({ facet
   </div>
 );
 
-const componentRootReducer = (initUIState: any, ownProps: any) => (state: any = initUIState, action: Actions): any => {
+const componentRootReducer = (initUIState: any, ownProps: IINavNodeContainer) => (state: any = initUIState, action: Actions) => {
   switch (action.type) {
     case ActionTypes.UI.INCREMENT:
       if (action.payload.name === ownProps.name)
@@ -49,12 +47,12 @@ const componentRootReducer = (initUIState: any, ownProps: any) => (state: any = 
 
 // Connect the Component to the store
 export default (UI({
-  key: (props)=>`ui/INavNodeContainer_${props.name}`,
-  state: (props)=>({
+  key: (props: IINavNodeContainer)=>`ui/INavNodeContainer_${props.name}`,
+  state: (props: IINavNodeContainer)=>({
     internalItemsCount: 0
   }),
   reducer: componentRootReducer,
-  mapDispatchToProps: (dispatch: Dispatch<Actions>, ownProps) => ({
+  mapDispatchToProps: (dispatch: Dispatch<Actions>, ownProps: IINavNodeContainer) => ({
     increment: ()=>dispatch({
       type: ActionTypes.UI.INCREMENT,
       payload: {
