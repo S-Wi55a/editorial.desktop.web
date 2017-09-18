@@ -1,44 +1,27 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import INavMenuHeader from 'iNav/Components/iNavMenuHeader'
+import * as Actions from 'Redux/iNav/Actions/actions'
+import * as GlobalActions from 'Redux/Global/Actions/actions' //TODO: change
 import INavNodeContainer from 'iNav/Containers/iNavNodeContainer'
-import * as iNavTypes from 'Redux/iNav/Types'
-import { Actions, ActionTypes } from 'iNav/Actions/actions'
-import UI from 'ReactReduxUI'
+import { INode } from 'Redux/iNav/Types'
 
+if (!SERVER) {
+  require('iNav/Css/iNav.NodesContainer')  
+}
 
-//Wrapper component
-const iNavNodes:React.StatelessComponent<{nodes:iNavTypes.INode[]}>  = ({ nodes }) => {
-  return (
-  <div>
-    <INavMenuHeader nodes={nodes} />
-    <INavNodeContainer nodes={nodes} />
+interface IINavNodesContainer {
+  nodes: INode[] 
+  activeItemId: number
+  onClick: ()=>void
+}
+
+const INavNodesContainer: React.StatelessComponent<IINavNodesContainer> = ({ nodes, activeItemId, onClick }) => (
+  <div className={'iNav__category iNav-category'} onClick={onClick}>
+    {nodes.map((node, index) => {
+      return <INavNodeContainer key={node.name} {...node} activeItemId={activeItemId} index={index} />
+    })}
   </div>
-  )
-}
-// Redux Connect
-const mapStateToProps = (state:iNavTypes.State) => {
-  return {
-    nodes: state.iNav.iNav.nodes
-  }
-}
+);
 
-const componentRootReducer = (initUIState: any) => (state = initUIState, action: Actions): any => {
-  switch (action.type) {
-    case ActionTypes.UI.TOGGLE_IS_ACTIVE:
-      return {
-        ...state,
-        activeItemId: action.payload.id
-      }
-    default:
-      return state
-  }
-}
-
-export default connect(mapStateToProps)(UI({
-  key: 'ui/iNavNodes',
-  reducer: componentRootReducer,
-  state: {
-    activeItemId: null
-  }
-})(iNavNodes))
+// Connect the Component to the store
+export default INavNodesContainer

@@ -18,4 +18,8 @@
 export enum UI {  
     // UI //TODO: move out or have Action Types specfifically for UI
     TOGGLE_IS_ACTIVE = 'UI/TOGGLE_IS_ACTIVE',
+    CANCEL = 'UI/CANCEL',
+    INCREMENT = 'UI/INCREMENT',
+    DECREMENT = 'UI/DECREMENT'
+    
   }

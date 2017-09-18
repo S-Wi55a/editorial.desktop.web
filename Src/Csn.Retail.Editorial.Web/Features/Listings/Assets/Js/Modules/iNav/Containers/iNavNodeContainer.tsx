@@ -1,54 +1,71 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import * as Actions from 'Redux/iNav/Actions/actions'
-import * as GlobalActions from 'Redux/Global/Actions/actions' //TODO: change
 import INavfacet from 'iNav/Components/iNavFacet'
-import * as iNavTypes from 'Redux/iNav/Types'
+import { INode } from 'Redux/iNav/Types'
+import UI from 'ReactReduxUI'
+import { Actions, ActionTypes } from 'iNav/Actions/actions'
+import { Dispatch } from 'redux';
 
 
 
-//TODO: handle cb for switch panel UI
-//TODO: Handle cb for toggle is selected which may be different
+if (!SERVER) {
+  require('iNav/Css/iNav.NodesContainer')  
+}
+interface IINavNodeContainer extends INode {
+  index: number
+  activeItemId: number
+}
 
 // This is separated for displaying sub lists
-const INavNodePage:React.StatelessComponent<any> = ({ facets, name, toggleIsSelected }: {facets: iNavTypes.IFacet[]}) => (
-    <div>
-        <div className="iNav-category__container iNav-category__container--1">
-            <ul>
-                {facets.map((facet) => {
-                    return <INavfacet key={facet.displayValue} {...facet}/>
-                })}
-            </ul>        
-        </div>
-    </div>
-);
-
-const INavNodes:React.StatelessComponent<any> = ({nodes}:{nodes:iNavTypes.INode[]}) => (
-    <div className={'iNav__category iNav-category'}>
-        {nodes.map((node) => {
-            return <INavNodePage key={node.name} {...node} />
+const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = ({ facets, index, activeItemId, name }) => (
+  <div className={['iNav-category__container', activeItemId === index ? 'isActive' : ''].join(' ')}>
+    <div className={['iNav-category__container-page'].join(' ')}>
+      <ul className='iNav-category__list'>
+        {facets.map((facet) => {
+          return <INavfacet key={facet.displayValue} {...facet} />
         })}
+      </ul>
     </div>
+  </div>
 );
 
-
-// Redux Connect
-const mapDispatchToProps = (dispatch) => {
-    return {
-        toggleIsSelected: (isSelected, node, facet, query) => {
-            dispatch([
-                Actions.fetchQueryRequest(query),
-                Actions.toggleIsSelected(node, facet), // This is to simulate a quick UI
-                isSelected ? Actions.removeBreadCrumb(facet) : GlobalActions.noop() // This is to simulate a quick UI
-            ]);
-        }
-    }
+const componentRootReducer = (initUIState: any, ownProps: any) => (state: any = initUIState, action: Actions): any => {
+  switch (action.type) {
+    case ActionTypes.UI.INCREMENT:
+      if (action.payload.name === ownProps.name)
+      return {
+        ...state,
+        internalItemsCount: state.internalItemsCount + 1
+      }
+    case ActionTypes.UI.DECREMENT:
+      return {
+        ...state,
+        internalItemsCount: state.internalItemsCount <= 0 ? 0 : state.internalItemsCount - 1
+      }
+    default:
+      return state
+  }
 }
 
 // Connect the Component to the store
-const INavNodesContainer = connect(
-    null,
-    mapDispatchToProps
-)(INavNodes);
-
-export default INavNodesContainer
+export default (UI({
+  key: (props)=>`ui/INavNodeContainer_${props.name}`,
+  state: (props)=>({
+    internalItemsCount: 0
+  }),
+  reducer: componentRootReducer,
+  mapDispatchToProps: (dispatch: Dispatch<Actions>, ownProps) => ({
+    increment: ()=>dispatch({
+      type: ActionTypes.UI.INCREMENT,
+      payload: {
+        name: ownProps.name
+      }
+    }),
+    decrement: ()=>dispatch({
+      type: ActionTypes.UI.DECREMENT,
+      payload: {
+        name: ownProps.name
+      }
+    })    
+  })
+})(INavNodeContainer))
