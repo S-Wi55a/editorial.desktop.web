@@ -10,7 +10,7 @@
     &__container {
         @include fadeInDown(-25%);
         
-        max-height: $category-container-height - ($spacing*2);
+        max-height: $category-container-height;
         padding: $spacing;
         width: 350px;
         font-size: $font-size-body;
@@ -29,8 +29,10 @@
             animation-name: fadeInDown;                    
         }
         &-page {
+            $cancel-bar-height: 65px;
+            $header-height: 35px;
             overflow-y: auto;
-            max-height: $category-container-height - ($spacing*4);
+            max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $header-height;
             position: relative;
             &::after {
                 content: '';
@@ -45,6 +47,16 @@
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
             }
         }
+    }
+
+    &__header {
+        font-family: $font-family-default;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: $font-weight-600;
+        text-align: left;
+        color: $cs-dark-grey-2;
+        margin-bottom: 15px;
     }
 
     &__list {

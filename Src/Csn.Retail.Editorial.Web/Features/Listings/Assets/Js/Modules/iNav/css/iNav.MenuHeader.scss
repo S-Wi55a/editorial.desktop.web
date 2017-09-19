@@ -5,6 +5,7 @@
     @include fadeInUp(25%);
     display: flex;
     position: relative;
+    cursor: pointer;
     
     &-item {
         border: solid 1px $cs-grey;
