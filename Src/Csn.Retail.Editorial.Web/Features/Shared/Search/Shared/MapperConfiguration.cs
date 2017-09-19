@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -14,10 +15,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
     public class MappingSetupTask : IMappingSetupTask
     {
         private readonly IMapper _mapper;
+        private readonly IImageMapper _imageMapper;
+        private readonly IBreadCrumbMapper _breadCrumbMapper;
 
-        public MappingSetupTask(IMapper mapper)
+        public MappingSetupTask(IMapper mapper, IImageMapper imageMapper, IBreadCrumbMapper breadCrumbMapper)
         {
             _mapper = mapper;
+            _imageMapper = imageMapper;
+            _breadCrumbMapper = breadCrumbMapper;
         }
         public void Run(IMapperConfigurationExpression cfg)
         {
@@ -26,7 +31,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
             cfg.CreateMap<BreadCrumbDto, BreadCrumb>();
 
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
-                .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => src != null ? GetCustomBreadCrumbs(src.BreadCrumbs) : new List<BreadCrumb>()));
+                .ForMember(dest => dest.BreadCrumbs,
+                    opt => opt.MapFrom(src => src != null && src.BreadCrumbs != null
+                        ? _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)
+                        : new List<BreadCrumb>()));
 
             cfg.CreateMap<RyvussNavNodeDto, NavNode>();
 
@@ -39,57 +47,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
             cfg.CreateMap<RyvussNavNodeDto, RefinementResult>()
                 .ForMember(dest => dest.Count, opt => opt.Ignore())
-                .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => GetRefinements(src)));
+                .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<NavNode>(src.GetRefinements())));
 
             cfg.CreateMap<FacetNodeDto, FacetNode>()
-                .ForMember(dest => dest.IsRefineable, opt => opt.MapFrom(src => IsRefineable(src)))
-                .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => GetRefinement(src)))
-                .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => GetRefinements(src)));
+                .ForMember(dest => dest.IsRefineable, opt => opt.MapFrom(src => src.IsRefineable()))
+                .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetRefinement()))
+                .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<NavNode>(src.GetRefinements())));
 
             cfg.CreateMap<SearchResultDto, SearchResult>()
-                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => $"https://editorial.li.csnstatic.com/carsales{src.PhotoPath}")); // TODO: remove hardcoding
-        }
-
-        private IList<BreadCrumb> GetCustomBreadCrumbs(ICollection<BreadCrumbDto> src)
-        {
-            if (src.Count < 1)
-            {
-                return new List<BreadCrumb>();
-            }
-            src.Add(new BreadCrumbDto { RemoveAction = string.Empty, FacetDisplay = "Clear All"});
-
-            return _mapper.Map<IList<BreadCrumb>>(src);
-        }
-
-        private bool IsRefineable(FacetNodeDto input)
-        {
-            if (input.MetaData?.IsRefineable == null || !input.MetaData.IsRefineable.Any())
-                return false;
-
-            return input.MetaData.IsRefineable.First();
-        }
-
-        private Refinement GetRefinement(FacetNodeDto input)
-        {
-            if (input.MetaData?.Refinement == null || !input.MetaData.Refinement.Any())
-                return null;
-
-            return input.MetaData.Refinement.First();
-        }
-
-        private NavNode GetRefinements(FacetNodeDto input)
-        {
-            if (input.MetaData?.Refinements == null || !input.MetaData.Refinements.Any())
-                return null;
-
-            return _mapper.Map<NavNode>(input.MetaData.Refinements.First());
-        }
-
-        private NavNode GetRefinements(RyvussNavNodeDto input)
-        {
-            var refinementNode = input.MetaData?.Refinements?.FirstOrDefault();
-
-            return refinementNode == null ? null : _mapper.Map<NavNode>(refinementNode);
-        }
+                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => _imageMapper.MapImageUrl(src)));
+        }        
     }
 }

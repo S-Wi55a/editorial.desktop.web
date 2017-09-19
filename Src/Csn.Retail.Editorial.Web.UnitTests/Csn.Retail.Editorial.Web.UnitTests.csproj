@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Shared\ImageUrlHelperTests.cs" />
+    <Compile Include="Features\Shared\Search\BreadCrumbsMapperTests.cs" />
+    <Compile Include="Features\Shared\Search\MapperExtensionsTests.cs" />
     <Compile Include="Features\Details\MappingConfigurationTest.cs" />
     <Compile Include="Features\Details\UseDropCaseMapperTest.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensionsTests.cs" />
@@ -71,6 +74,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -470,6 +470,8 @@
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdsController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
+    <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleData.cs" />
     <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />
     <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
@@ -495,6 +497,8 @@
     <Compile Include="Features\Shared\Search\Aspect\AspectQuery.cs" />
     <Compile Include="Features\Shared\Search\Aspect\AspectQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\Aspect\AspectResult.cs" />
+    <Compile Include="Features\Shared\Search\Extensions\MapperExtensions.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\Shared\MapperConfiguration.cs" />
@@ -505,6 +509,7 @@
     <Compile Include="Features\Shared\Search\SearchController.cs" />
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
+    <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
