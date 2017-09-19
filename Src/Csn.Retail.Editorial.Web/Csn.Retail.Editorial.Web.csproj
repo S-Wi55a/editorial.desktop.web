@@ -936,6 +936,7 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavContainer.tsx" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactReduxUI\index.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Types\index.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
