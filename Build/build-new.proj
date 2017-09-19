@@ -121,6 +121,7 @@
 	<Target Name="TaskNpmRestore">
 			<Message Text="Restoring front end build..." Importance="high"/>
 			<Exec Command="SET PATH" />
+			<Exec Command="E:\Tools\nodejs\npm -v" />
 			<Exec Command="npm install" WorkingDirectory="$(TargetProjectDir)"/>
 
 	</Target>
