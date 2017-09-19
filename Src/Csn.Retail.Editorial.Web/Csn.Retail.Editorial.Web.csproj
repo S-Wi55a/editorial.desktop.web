@@ -685,9 +685,6 @@
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Css\Tyopgraphy\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
-    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\" />
-    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\" />
-    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Css\" />
     <Folder Include="Features\Sponsored\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
@@ -937,6 +934,11 @@
     <Content Include="Features\Shared\Assets\Js\Modules\ReactReduxUI\index.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Types\index.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\thunks.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actionTypes.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actions.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\thunks.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\index.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

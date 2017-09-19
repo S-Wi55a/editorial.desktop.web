@@ -15,6 +15,7 @@
             font-family: $font-family-default;
             font-size: $font-size-body;
             font-weight: $font-weight-600;
+            cursor: pointer;
             &--cancel{
                 color: $cs-grey;
                 float: left;

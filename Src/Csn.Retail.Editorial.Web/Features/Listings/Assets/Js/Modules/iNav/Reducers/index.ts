@@ -1,5 +1,5 @@
 ﻿import global from 'global-object'
-import { Actions, ActionTypes} from 'Redux/iNav/Actions/actions'
+import { Actions, ActionTypes} from 'iNav/Actions/actions'
 import update from 'immutability-helper'
 
 // This is the entry Reducer and should be loaded with component

@@ -1,7 +1,7 @@
 import * as React from "react"
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
-import { createStore, compose } from 'redux';
+import { createStore, compose } from 'redux'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import * as iNavTypes from 'Redux/iNav/Types'
 import UI from 'ReactReduxUI'
@@ -55,6 +55,7 @@ const componentRootReducer = (initUIState: any) => (state: any = initUIState, ac
         isActive: action.payload.isActive && state.id === action.payload.id
       }
     case ActionTypes.UI.CANCEL:
+    case ActionTypes.UI.CLOSE_INAV:
       return {
         ...state,
         isActive: false        

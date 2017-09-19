@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import * as Actions from 'Redux/iNav/Actions/actions'
+import * as Actions from 'iNav/Actions/actions'
 
 const INavBreadCrumb = ({removeBreadCrumb, aspect, facet, facetDisplay, removeAction}) => (
     <div className="iNavBreadCrumb" onClick={() =>removeBreadCrumb(removeAction, aspect, facet)}>

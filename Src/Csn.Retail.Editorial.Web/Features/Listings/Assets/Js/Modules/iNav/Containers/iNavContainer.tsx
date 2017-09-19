@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
 import INavMenuHeader from 'iNav/Components/iNavMenuHeader'
 import INavNodesContainer from 'iNav/Containers/iNavNodesContainer'
-import { State, INode } from 'Redux/iNav/Types'
+import { State, INode } from 'iNav/Types'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import UI from 'ReactReduxUI'
 
@@ -54,6 +54,7 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
         activeItemId: action.payload.isActive ? action.payload.id : null        
       }
     case ActionTypes.UI.CANCEL:
+    case ActionTypes.UI.CLOSE_INAV:    
       return {
         ...state,
         activeItemId: null        

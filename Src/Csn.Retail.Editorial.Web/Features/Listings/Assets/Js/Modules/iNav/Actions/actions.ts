@@ -1,6 +1,7 @@
 ﻿import { Action } from 'redux'
 import * as ActionTypes from 'iNav/Actions/actionTypes'
 import * as INavTypes from 'Redux/iNav/Types'
+import * as Thunks from 'iNav/Actions/thunks'
 
 interface IToggleIsActive extends Action {
     type: ActionTypes.UI.TOGGLE_IS_ACTIVE
@@ -12,6 +13,10 @@ interface IToggleIsActive extends Action {
 
 interface ICancel extends Action {
     type: ActionTypes.UI.CANCEL
+}
+
+interface ICloseINav extends Action {
+    type: ActionTypes.UI.CLOSE_INAV
 }
 
 interface IIncrement extends Action {
@@ -32,5 +37,6 @@ export type Actions = IToggleIsActive
     | ICancel
     | IIncrement
     | IDecrement
+    | ICloseINav
 
-export { ActionTypes }
+export { ActionTypes, Thunks }
