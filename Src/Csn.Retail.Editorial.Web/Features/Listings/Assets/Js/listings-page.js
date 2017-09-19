@@ -11,7 +11,7 @@ window.store = configureStore(); //Init store
     // Check if there is a preloaded state from iNav
     const initState = window.__PRELOADED_STATE__iNav
 
-    injectAsyncReducer(window.store, 'iNav', require('Redux/iNav/Reducers/iNavReducer').iNavParentReducer(initState));
+    window.store.addReducer('iNav', require('Redux/iNav/Reducers/iNavReducer').iNavParentReducer(initState));
 
     if (d.querySelector('#iNav')) {
         require('iNav/iNav');
