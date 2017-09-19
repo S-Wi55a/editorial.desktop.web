@@ -22,9 +22,11 @@ const INav:React.StatelessComponent<IINavNodes>  = ({ nodes, activeItemId, cance
   return (
     <div className={['iNav', activeItemId !== null  ? 'isActive' : ''].join(' ')} onClick={()=>activeItemId !== null && cancel()}>
       <div className="iNav__container">
+        <div onClick={(e)=>{e.stopPropagation()}}>
         <INavMenuHeader nodes={nodes} />
         {/* This click handler is to prevent the clicke event propigating nad triggering the cancel fn */}
-        <INavNodesContainer nodes={nodes} activeItemId={activeItemId} onClick={(e)=>{e.stopPropagation()}} />
+        <INavNodesContainer nodes={nodes} activeItemId={activeItemId} />
+        </div>
       </div> 
     </div>
   )
@@ -50,6 +52,11 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
       return {
         ...state,
         activeItemId: action.payload.isActive ? action.payload.id : null        
+      }
+    case ActionTypes.UI.CANCEL:
+      return {
+        ...state,
+        activeItemId: null        
       }
     default:
       return state

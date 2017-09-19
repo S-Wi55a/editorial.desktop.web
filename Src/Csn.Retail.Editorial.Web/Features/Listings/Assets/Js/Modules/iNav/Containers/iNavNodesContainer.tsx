@@ -12,8 +12,8 @@ interface IINavNodesContainer {
   onClick: ()=>void
 }
 
-const INavNodesContainer: React.StatelessComponent<IINavNodesContainer> = ({ nodes, activeItemId, onClick }) => (
-  <div className={'iNav__category iNav-category'} onClick={onClick}>
+const INavNodesContainer: React.StatelessComponent<IINavNodesContainer> = ({ nodes, activeItemId }) => (
+  <div className={'iNav__category iNav-category'}>
     {nodes.map((node, index) => {
       return <INavNodeContainer key={node.name} {...node} activeItemId={activeItemId} index={index} />
     })}
