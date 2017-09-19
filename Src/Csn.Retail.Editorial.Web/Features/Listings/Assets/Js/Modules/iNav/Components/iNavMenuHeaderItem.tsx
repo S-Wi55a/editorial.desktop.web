@@ -26,6 +26,13 @@ const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemC
 }
 
 // Redux Connect
+
+const mapStateToProps = (state: State, ownProps: IINavMenuHeaderItemComponent) => {
+  return {
+    count: state[`ui/INavNodeContainer_${ownProps.node.name}`] ? state[`ui/INavNodeContainer_${ownProps.node.name}`].internalItemsCount : 0
+  }
+}
+
 const mapDispatchToProps = (dispatch: Dispatch<Actions>) => {
   return {
     toggleIsSelected: (id: number, isActive: boolean) => {
@@ -47,13 +54,18 @@ const componentRootReducer = (initUIState: any) => (state: any = initUIState, ac
         ...state,
         isActive: action.payload.isActive && state.id === action.payload.id
       }
+    case ActionTypes.UI.CANCEL:
+      return {
+        ...state,
+        isActive: false        
+      }
     default:
       return state
   }
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(UI({
   key: (props: IINavMenuHeaderItemComponent)=>`ui/INavMenuHeaderItemComponent_${props.node.name}`,  
@@ -61,10 +73,5 @@ export default connect(
     id: props.index, 
     isActive: false,
   }),
-  reducer: componentRootReducer,
-  mapStateToProps: (state: State, ownProps: IINavMenuHeaderItemComponent) => {
-    return {
-      count: state[`ui/INavNodeContainer_${ownProps.node.name}`] ? state[`ui/INavNodeContainer_${ownProps.node.name}`].internalItemsCount : 0
-    }
-  }
+  reducer: componentRootReducer
 })(INavMenuHeaderItemComponent))
