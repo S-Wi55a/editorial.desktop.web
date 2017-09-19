@@ -2,12 +2,14 @@
 
 import React from 'react'
 import { Provider } from 'react-redux'
-import * as Store from 'Redux/Global/Store/store.server.js'
+import { configureStore } from 'Redux/Global/Store/store.server.js'
+import { injectAsyncReducer } from 'Redux/Global/Reducers'
+
 
 function storesFactory() {
 
-    const store = Store.configureStore()
-    store.injectAsyncReducer = Store.injectAsyncReducer
+    const store = configureStore()
+    store.injectAsyncReducer = injectAsyncReducer
 
     return store  
 
