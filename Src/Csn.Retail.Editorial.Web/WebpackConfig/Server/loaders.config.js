@@ -24,7 +24,7 @@ export const modules = () => {
                     {
                         loader: 'ts-loader', 
                         options: {
-                        transpileOnly: IS_PROD ? false : true,
+                        transpileOnly: IS_PROD ? true : true,
                           //visualStudioErrorFormat: true,
                           logLevel: 'warn'
                         } 
