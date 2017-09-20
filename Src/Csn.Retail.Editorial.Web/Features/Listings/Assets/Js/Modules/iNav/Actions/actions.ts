@@ -1,6 +1,6 @@
 ﻿import { Action } from 'redux'
-import * as ActionTypes from 'iNav/Actions/actionTypes'
-import * as INavTypes from 'Redux/iNav/Types'
+import * as ActionTypes from 'iNav/Actions/ActionTypes'
+import * as INavTypes from 'iNav/Types'
 import * as Thunks from 'iNav/Actions/thunks'
 
 interface IToggleIsActive extends Action {
@@ -13,10 +13,12 @@ interface IToggleIsActive extends Action {
 
 interface ICancel extends Action {
     type: ActionTypes.UI.CANCEL
+    payload?: any    
 }
 
 interface ICloseINav extends Action {
     type: ActionTypes.UI.CLOSE_INAV
+    payload?: any
 }
 
 interface IIncrement extends Action {
@@ -32,11 +34,25 @@ interface IDecrement extends Action {
         name: string
     }
 }
+
+interface IFetchQuerySuccess extends Action {
+    type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS | ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS
+    payload: {
+        name?: string
+        data: INavTypes.IINavResponse
+    }
+}
+
+
+type UIActions = IToggleIsActive
+| ICancel
+| IIncrement
+| IDecrement
+| ICloseINav
+
+type APIActions = IFetchQuerySuccess
+
 // Fetch data
-export type Actions = IToggleIsActive
-    | ICancel
-    | IIncrement
-    | IDecrement
-    | ICloseINav
+export type Actions = UIActions | APIActions
 
 export { ActionTypes, Thunks }

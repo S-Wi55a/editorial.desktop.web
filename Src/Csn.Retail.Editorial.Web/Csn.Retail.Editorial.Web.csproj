@@ -935,10 +935,15 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Types\index.ts" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\thunks.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actionTypes.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actions.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\thunks.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\index.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Types\index.ts" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavFacet.tsx" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\api.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\ui.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\index.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

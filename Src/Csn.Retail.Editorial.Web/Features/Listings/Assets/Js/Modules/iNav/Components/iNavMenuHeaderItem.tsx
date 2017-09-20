@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
 import { createStore, compose } from 'redux'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
-import * as iNavTypes from 'Redux/iNav/Types'
+import * as iNavTypes from 'iNav/Types'
 import UI from 'ReactReduxUI'
 import { State } from 'Redux/iNav/Types'
 

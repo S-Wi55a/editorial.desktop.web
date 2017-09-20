@@ -7,13 +7,15 @@
     $count-container-width: 75px;
 
     margin-top: 2px;
-
+    cursor: pointer;
+    
     &:nth-of-type(1) {
         margin-top: 0;
     }
 
     &__checkbox {
         display: none;
+        cursor: pointer;        
     }
 
     &.isSelected {
@@ -53,9 +55,11 @@
         color: $cs-dark-grey-1;
         width: calc(100% - 40px - #{$count-container-width}); // 100% - checkmark width+margin - $count-container-width
         text-decoration: none;
-
+        cursor: pointer;
+        
         &:hover,
-        &:visited{
+        &:visited,
+        &:focus{
             text-decoration: none;
             color: $cs-dark-grey-1;
         }

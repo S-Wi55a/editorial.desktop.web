@@ -1,6 +1,8 @@
 ﻿import global from 'global-object'
-import { Actions, ActionTypes} from 'iNav/Actions/actions'
+import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import update from 'immutability-helper'
+import { INode, IINavResponse } from 'iNav/Types'
+
 
 // This is the entry Reducer and should be loaded with component
 
@@ -13,15 +15,16 @@ export const iNavParentReducer = (initState: any = null) => {
                 return isSelectedToggle(state, action)
             case ActionTypes.REMOVE_BREAD_CRUMB:
                 return RemoveBreadCrumbs(state, action)
-            case ActionTypes.FETCH_QUERY_SUCCESS:
+            case ActionTypes.API.INAV.FETCH_QUERY_SUCCESS:
                 //we are not doing a deep merge becasue we are replacing the complete state object
                 //besides isSelected all UI is handled ina deifferent state branch and this replaced obj
                 //won't affect the new state
-                //TODO: use immutable.js instead
                 return {
                     ...state,
-                    ...action.data
+                    ...action.payload.data
                 }
+            case ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS:
+                return aspectReducer(state, action)
             default:
                 return state
         }
@@ -31,39 +34,32 @@ export const iNavParentReducer = (initState: any = null) => {
 
 // We use update from 'immutability-helper' because the item we are selecting is deply nested
 // This ensures that we return a new obj and nto mutate the state
-function isSelectedToggle(state: State, action: Actions): any {
+function aspectReducer(state: IINavResponse, action: Actions): IINavResponse {
 
     try {
-
-        const nodeIndex = state.iNav.nodes.findIndex((node)=>node.name === action.node)
-        const facetIndex = state.iNav.nodes[nodeIndex].facets.findIndex((facet) => facet.value === action.facet)
-        const currentIsSelectedState = state.iNav.nodes[nodeIndex].facets[facetIndex].isSelected
+        const nodeIndex = state.iNav.nodes.findIndex((node: INode) => node.name === action.payload.name)
         const newState = update(state,
             {
 
                 iNav: {
                     nodes: {
                         [nodeIndex]: {
-                            facets: {
-                                [facetIndex]: {
-                                    isSelected: { $set: !currentIsSelectedState }
-                                } 
-                                         
-                            }
+                            $set : action.payload.data
                         }
                     }
                 }
 
             })
         return newState
-        
+
     } catch (e) {
+        console.log(e)        
         return state
-    } 
+    }
 
 
-        
-     
+
+
 }
 
 
@@ -78,18 +74,18 @@ function RemoveBreadCrumbs(state, action) {
 
                 iNav: {
                     breadCrumbs: {
-                        $splice: [[breadCrumbIndex,1]]                      
+                        $splice: [[breadCrumbIndex, 1]]
                     }
                 }
 
             })
         return newState
-        
+
     } catch (e) {
         return state
-    } 
+    }
 
 
-        
-     
+
+
 }

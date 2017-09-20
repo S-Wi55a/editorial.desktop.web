@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { Actions, ActionTypes, Thunks } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
+import { State } from 'iNav/Types'
+
 
 
 if (!SERVER) {
@@ -12,6 +14,7 @@ if (!SERVER) {
 //TODO: how to get test data driven?
 
 interface IINavConfirmCancelBar {
+    index?: number
     count: number
     pendingQuery: string
 }
@@ -23,14 +26,14 @@ const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({
     </div>
 )
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: State, ownProps: IINavConfirmCancelBar) => {
     return {
-        count: state.iNav.count,
+        count: typeof state.iNav.iNav.nodes[ownProps.index].count !== 'undefined' ? state.iNav.iNav.nodes[ownProps.index].count : state.iNav.count,
         pendingQuery: state.iNav.pendingQuery ? state.iNav.pendingQuery : '' 
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Thunks.fetchINav>) => {
+const mapDispatchToProps = (dispatch: Dispatch<any>) => {
     return {
         onClick: (query: string)=>dispatch([
             Thunks.fetchINav(query),

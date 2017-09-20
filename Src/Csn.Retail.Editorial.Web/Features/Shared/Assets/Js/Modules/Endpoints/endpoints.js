@@ -1,3 +1,7 @@
 ﻿export const proxy = '/editorial/api/v1/proxy/?uri=';
-export const iNav = '/editorial/api/v1/search/nav?q=';
+export const iNav = {
+    base: '/editorial/api/v1/search/nav?q=',
+    aspect: '/editorial/api/v1/search/nav/aspects/',
+    refinment: ''
+}
 export const csnstatic = 'https://editorial.li.csnstatic.com/'

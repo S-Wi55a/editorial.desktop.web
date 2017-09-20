@@ -6,6 +6,7 @@ export interface State {
 
 export interface IINavResponse{
     iNav: IINav
+    count?: number
 }
 
 export interface IINav {
@@ -19,6 +20,7 @@ export interface INavMetadata {
 }
 
 export interface INode {
+    count?: number
     multiSelectMode: string
     facets: IFacet[]
     name: string

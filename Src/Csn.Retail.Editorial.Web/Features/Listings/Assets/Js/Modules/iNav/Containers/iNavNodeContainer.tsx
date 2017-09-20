@@ -23,12 +23,12 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = ({ facet
       <div className='iNav-category__list-wrapper'>
         <ul className='iNav-category__list'>
           {facets.map((facet) => {
-            return <INavfacet key={facet.displayValue} {...facet} />
+            return <INavfacet key={facet.displayValue} {...facet} aspect={name}/>
           })}
         </ul>
       </div>
     </div>
-    <INavConfirmCancelBar/>
+    <INavConfirmCancelBar index={index}/>
   </div>
 );
 
