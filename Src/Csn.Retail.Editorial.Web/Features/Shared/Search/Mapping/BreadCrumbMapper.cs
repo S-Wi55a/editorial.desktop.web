@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
-using Ingress.Core.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
 {

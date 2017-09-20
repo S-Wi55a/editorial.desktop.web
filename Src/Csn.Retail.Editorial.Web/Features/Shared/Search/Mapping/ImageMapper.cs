@@ -1,5 +1,6 @@
 ﻿using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
 {
@@ -7,6 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
     {
         string MapImageUrl(SearchResultDto source);
     }
+    [AutoBind]
     public class ImageMapper : IImageMapper
     {
         private readonly IImageUrlHelper _imageUrlHelper;

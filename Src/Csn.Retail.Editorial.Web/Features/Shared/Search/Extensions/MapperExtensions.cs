@@ -8,7 +8,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 {
     public static class MapperExtensions
     {
-        
         public static bool IsRefineable(this FacetNodeDto source)
         {
             if (source.MetaData?.IsRefineable == null || !source.MetaData.IsRefineable.Any())
@@ -33,7 +32,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 
         public static RefinementsNodeDto GetRefinements(this FacetNodeDto source)
         {
-            return source.MetaData?.Refinements.FirstOrDefault();
+            return source.MetaData?.Refinements?.FirstOrDefault();
         }        
     }
 }

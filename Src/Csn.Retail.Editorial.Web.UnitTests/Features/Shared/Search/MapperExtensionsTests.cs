@@ -1,28 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
-using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using NUnit.Framework;
-using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
 {
     [TestFixture]
     public class MapperExtensionsTests
     {
-        //private IMapper _iMapper;
-
-        [SetUp]
-        public void FixtureSetUp()
-        {
-            //var iMapper = new AutoMappedMapper();
-            //var iBreadCrumbMapper 
-
-            //Mapper.Initialize(cfg => new MappingSetupTask(iMapper).Run(cfg));            
-        }
-
         [Test]
         public void FacetNodeIsRefineable()
         {
@@ -90,9 +76,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
                     Refinements = new List<RefinementsNodeDto> { new RefinementsNodeDto { DisplayName = "Review" } }
                 }
             };
-            var dtoWithNoRefinements = new FacetNodeDto
+            var dtoWithNoRefinements = new RyvussNavNodeDto
             {
-                MetaData = new FacetNodeMetaDataDto()
+                MetaData = new RefinementsMetaDataDto()
             };
 
             //Act
@@ -104,7 +90,5 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
             Assert.AreEqual(result.DisplayName, dto.MetaData.Refinements.First().DisplayName);
             Assert.AreEqual(resultWithEmptySource, null);
         }
-
-        
     }
 }
