@@ -1,0 +1,36 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
+    
+<div class="clearfix hero hero--wideVideo">
+    <div class="hero__video-frame">
+        <div class="hero__video-container">
+            <video class="hero__video-player" muted="true" loop="true" playsinline="true" preload="auto" autoplay>
+                <source src="@Model.BrightcoveVideoEncodingUrl" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+    
+    <div class="hero__content">
+        <div class="container">
+            <header class="hero__header-container">
+                <h1 class="hero__heading">@Model.Headline</h1>
+            </header>
+            <div class="hero__playbutton-container">
+                <div data-video-id="@Model.BrightcoveVideoId" data-player-id="@Model.BrightcovePlayerId" class="hero__playbutton">
+                    Watch Video
+                </div>
+            </div>
+            <div class="hero__action"></div>
+        </div>
+
+    </div>
+</div>
+
+<div class="fullherovideo fullherovideo--wrap fullherovideo--wrap-hide">
+    <div class="fullherovideo__inner">
+        <div class="fullherovideo__container"></div>
+
+        <button class="fullherovideo__action-close">
+            <i class="fullherovideo__action-icon"></i>
+        </button>
+    </div>
+</div>

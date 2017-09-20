@@ -1,0 +1,27 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
+
+<div class="clearfix hero hero--wideImage" >
+    
+    <div class="hero__frame">
+        @{ var index = 0; }
+        @foreach (var image in Model.Images.Take(1))
+        {
+            //TODO: add conditional for parallax
+            <img class="hero__frame-image csn-parallax"
+                 sizes="(max-width: 1199px) 1600px, 1920px"
+                 src="@image.Url"
+                 srcset="@image.Url&pxc_width=1600&pxc_method=crop 1600w, @image.Url&pxc_width=1920&pxc_method=crop 1920w"
+                 alt="@image.AlternateText" /> 
+        }
+    </div>
+    <div class="hero__content">
+        <div class="container">
+            <header class="hero__header-container">
+                <h1 class="hero__heading">@Model.Headline</h1>
+            </header>
+            <div class="hero__action"></div>
+        </div>
+
+    </div>
+
+</div>

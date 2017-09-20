@@ -37,14 +37,21 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public bool UseDropCase { get; set; }
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
+        public ArticleTemplateType ArticleTemplateType { get; set; }
         public string SpecDataGetVariantsUrl { get; set; }
+
     }
 
     public class HeroSection
     {
         public HeroType Type { get; set; }
         public List<Image> Images { get; set; }
+        public string BrightcovePlayerId { get; set; }
+        public string BrightcoveVideoId { get; set; }
         public string BrightcoveVideoIFrameUrl { get; set; }
+        public string BrightcoveVideoEncodingUrl { get; set; }
+        public string Headline { get; set; }
+        public string SubHeading { get; set; }
     }
 
     public class SocialMetaData

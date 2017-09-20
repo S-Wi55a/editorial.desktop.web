@@ -1,39 +1,35 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
 <div class="clearfix hero hero--doubleImage" data-webm-section="image-gallery">
-    <div class="slideshow slideshow--hero slideshow--double-image">
-        <div class="slideshow__container  swiper-container">
-            <div class="slideshow__slides swiper-wrapper">
-                @{ var index = 0; }
-                @foreach (var image in Model.Images.Take(1))
-                {
-                    <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
+    <div class="container">
+        <div class="slideshow slideshow--hero slideshow--double-image">
+            <div class="slideshow__container  swiper-container">
+                <div class="slideshow__slides swiper-wrapper">
+
+                    <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="0">
 
                         <img class="slideshow__image"
-                             sizes="(max-width: 1199px) 617px, 825px"
-                             src="@image.Url?width=825&height=550"
-                             srcset="@image.Url?width=617&height=411 617w, @image.Url?width=825&height=550 825w"
-                             alt="@image.AlternateText" />
+                                sizes="(max-width: 1199px) 617px, 825px"
+                                src="@Model.Images[0].Url?width=825&height=550"
+                                srcset="@Model.Images[0].Url?width=617&height=411 617w, @Model.Images[0].Url?width=825&height=550 825w"
+                                alt="@Model.Images[0].AlternateText" />
                     </div>
-                    index++;
-                }
-                @foreach (var image in Model.Images.Skip(1))
-                {
-                    <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
+
+                    <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="1">
 
                         <img class="slideshow__image"
-                             sizes="(max-width: 1199px) 617px, 825px"
-                             data-src="@image.Url?width=825&height=550"
-                             data-srcset="@image.Url?width=617&height=411 617w, @image.Url?width=825&height=550 825w"
-                             alt="@image.AlternateText" />
+                                sizes="(max-width: 1199px) 617px, 825px"
+                                data-src="@Model.Images[1].Url?width=825&height=550"
+                                data-srcset="@Model.Images[1].Url?width=617&height=411 617w, @Model.Images[1].Url?width=825&height=550 825w"
+                                alt="@Model.Images[1].AlternateText" />
                     </div>
-                    index++;
-                }
+
+                </div>
+                <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev" data-webm-clickvalue="previous">prev</button>
+                <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next" data-webm-clickvalue="next">next</button>
+
+                <button class="slideshow__view-photos" data-modal-trigger data-modal-image-index="0" data-webm-clickvalue="view-photos">View Photos</button>
             </div>
-            <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev" data-webm-clickvalue="previous">prev</button>
-            <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next" data-webm-clickvalue="next">next</button>
-
-            <button class="slideshow__view-photos" data-modal-trigger data-modal-image-index="0" data-webm-clickvalue="view-photos">View Photos</button>
         </div>
     </div>
 </div>
