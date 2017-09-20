@@ -72,7 +72,7 @@ export const modules = (tenant) => {
                 {
                     loader: 'ts-loader', 
                     options: {
-                    transpileOnly: IS_PROD ? false : true,
+                    transpileOnly: true,
                       //visualStudioErrorFormat: true,
                       logLevel: 'warn'
                     } 
