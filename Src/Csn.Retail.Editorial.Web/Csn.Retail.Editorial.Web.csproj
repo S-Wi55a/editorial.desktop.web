@@ -450,6 +450,7 @@
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Content Include="Features\Details\Assets\Js\details.vendor.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\iNavArticleCount.js" />

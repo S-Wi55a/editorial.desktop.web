@@ -26,7 +26,7 @@ if (watchVideo) {
     document.body.appendChild(s);
 
     watchVideo.addEventListener('click',
-        (e) => {
+        () => {
             playHeroVideo(window.videojs);
 
             heroContent.classList.toggle('hero__slide-out');
@@ -38,7 +38,7 @@ if (watchVideo) {
 
 if (heroFullVideoClose) {
     heroFullVideoClose.addEventListener('click',
-        (e) => {
+        () => {
             heroContent.classList.remove('hero__slide-out');
             closeHeroVideo();
         }
