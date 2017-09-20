@@ -4,6 +4,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
 import INav from 'iNav/Containers/iNavContainer'
+<<<<<<< HEAD
+
+if (!SERVER) {
+    require('iNav/Css/iNav.scss')  
+}
+=======
+>>>>>>> 8ef38d1cdbeb7b7f46ca1e4e858afcd1b1222690
 
 //Check for Store
 const store = window.store

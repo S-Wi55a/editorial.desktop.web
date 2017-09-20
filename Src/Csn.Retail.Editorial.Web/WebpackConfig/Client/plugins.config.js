@@ -8,7 +8,6 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
 import WebpackNotifierPlugin from 'webpack-notifier'
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin'
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -54,8 +53,7 @@ export const plugins = (tenant, pageEntries) => {
         new webpack.EnvironmentPlugin({
             NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
             DEBUG: false
-        }),
-        new CaseSensitivePathsPlugin()        
+        })
     ];
 
     if (VIEW_BUNDLE) {

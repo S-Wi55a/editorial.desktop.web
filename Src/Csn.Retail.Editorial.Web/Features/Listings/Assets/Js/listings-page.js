@@ -1,4 +1,5 @@
-﻿import { configureStore, injectAsyncReducer } from 'Redux/Global/Store/store.client.js'
+﻿import { configureStore } from 'Redux/Global/Store/store.client.js'
+import { injectAsyncReducer } from 'Redux/Global/Reducers'
 
 
 //Enable Redux store globally

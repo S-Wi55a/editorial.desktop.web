@@ -3,13 +3,24 @@ import { applyMiddleware, compose } from 'redux';
 // Middleware
 import reduxMulti from 'redux-multi'
 import { batchedSubscribe } from 'redux-batched-subscribe'
+<<<<<<< HEAD
+import createSagaMiddleware from 'redux-saga'
 import ReduxThunk from 'redux-thunk'
+
+// we use this ref later
+const sagaMiddleware = createSagaMiddleware()
+=======
+>>>>>>> 8ef38d1cdbeb7b7f46ca1e4e858afcd1b1222690
 
 const middlewareDev = [
     require('redux-immutable-state-invariant').default() 
     ]
 
+<<<<<<< HEAD
 const middlewareProd = [reduxMulti, ReduxThunk]
+=======
+const middlewareProd = [reduxMulti]
+>>>>>>> 8ef38d1cdbeb7b7f46ca1e4e858afcd1b1222690
 
 //Array of middlewars to attach to the store
 const middleware = process.env.NODE_ENV !== 'production' ? middlewareDev.concat(middlewareProd) : middlewareProd;
