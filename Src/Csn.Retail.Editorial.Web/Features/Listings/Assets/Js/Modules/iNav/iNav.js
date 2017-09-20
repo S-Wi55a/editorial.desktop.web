@@ -31,8 +31,3 @@ if (store) {
         module.hot.accept('iNav/Containers/iNavContainer', () => render(INav));
     }
 }
-
-
-
-
-
