@@ -3,10 +3,10 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
-import INavBreadCrumbsContainer from 'Js/Modules/iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
+import INavBreadCrumbsContainer from 'iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
 
 if (!SERVER) {
-    require('Js/Modules/iNavBreadCrumbs/Css/iNavBreadCrumbs.scss')  
+    require('iNavBreadCrumbs/Css/iNavBreadCrumbs.scss')  
 }
 
 //Check for Store
@@ -31,7 +31,7 @@ if (store) {
     render(INavBreadCrumbsContainer);
 
     if (module.hot) {
-        module.hot.accept('Js/Modules/iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer', () => render(INavBreadCrumbsContainer));
+        module.hot.accept('iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer', () => render(INavBreadCrumbsContainer));
     }
 }
 

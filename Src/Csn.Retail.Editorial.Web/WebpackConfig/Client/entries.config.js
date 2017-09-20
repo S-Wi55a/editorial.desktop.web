@@ -4,7 +4,7 @@ import glob from 'glob'
 import path from 'path'
 
 export const config = {
-    entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
+    entryPointMatch: './Features/**/*-page.+(js|ts)', // anything ends with -page.js
     outputPath: path.resolve(s3path),
     publicPath: IS_PROD ? './' : s3path
 }

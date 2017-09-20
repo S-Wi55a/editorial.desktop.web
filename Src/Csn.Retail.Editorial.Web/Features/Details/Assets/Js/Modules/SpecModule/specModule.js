@@ -1,8 +1,8 @@
 ﻿import React from 'react'
-import * as Ajax from 'Js/Modules/Ajax/ajax.js'
+import * as Ajax from 'Ajax/ajax.js'
 import Slider from 'rc-slider/lib/Slider'; 
-import {disclaimerTemplate} from 'Js/Modules/Modal/modal-disclaimer-view'
-import {tabOrModal} from 'Js/Modules/SpecModule/specModule--tabOrModal.js'
+import {disclaimerTemplate} from 'Modal/modal-disclaimer-view'
+import {tabOrModal} from 'SpecModule/specModule--tabOrModal.js'
 
 const SpecificationsItem_DD = (props) => {
 
@@ -55,7 +55,7 @@ const ThirdPartyOffer = (props) => {
 
     if (props.tabOrModal) {
         if (props.tabOrModal[titleNoSpace] === 'iframe') {
-            const iframe = `<iframe src=${props.data.formUrl}"></iframe>`
+            const iframe = `<iframe src=${props.data.formUrl}></iframe>`
             tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(p,e) => {
                 props.disclaimerHandler(titleNoSpace, p, e)
             }} className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</span>

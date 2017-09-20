@@ -1,4 +1,4 @@
-﻿import * as Utils from 'Features/Details/Assets/Js/Modules/StickySidebar/stickySidebar.utils.js'
+﻿import * as Utils from 'Features/Details/Assets/StickySidebar/stickySidebar.utils.js'
 
 // Locks are to prevent calling a bloack of code when ina current state
 const lock = {

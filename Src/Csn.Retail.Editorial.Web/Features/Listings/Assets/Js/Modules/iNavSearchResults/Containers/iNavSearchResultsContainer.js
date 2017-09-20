@@ -1,18 +1,17 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import INavSearchResult from 'Js/Modules/iNavSearchResults/Component/iNavSearchResult'
+import INavSearchResult from 'iNavSearchResults/Component/iNavSearchResult'
 
 const INavSearchResults = ({ searchResults, count }) => (
-    <div className="iNavSearchResults">
-        <div className="iNavSearchResults__count">{count} Articles found</div>
+    <div className="iNavSearchResults">        
         <ReactCSSTransitionGroup
             transitionName="iNavSearchResultsTransition"
             transitionEnterTimeout={300}
             transitionLeaveTimeout={300}>
             {
-                searchResults.map((searchResult) => {
-                    return <INavSearchResult key={searchResult.id} {...searchResult} />;
+                searchResults.map((searchResult, index) => {
+                    return <INavSearchResult key={index} {...searchResult} />;
                 })
             }
         </ReactCSSTransitionGroup>
@@ -23,8 +22,7 @@ const INavSearchResults = ({ searchResults, count }) => (
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        searchResults: state.iNav.searchResults,
-        count: state.iNav.count
+        searchResults: state.iNav.searchResults        
     }
 }
 

@@ -5,7 +5,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
 import WebpackNotifierPlugin from 'webpack-notifier'
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin'
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 
 export const plugins = (tenant = 'sever') => {
 
@@ -22,8 +21,7 @@ export const plugins = (tenant = 'sever') => {
         new webpack.EnvironmentPlugin({
             NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
             DEBUG: false
-        }),
-        new CaseSensitivePathsPlugin()                
+        })             
     ]
 
     if (IS_PROD) {

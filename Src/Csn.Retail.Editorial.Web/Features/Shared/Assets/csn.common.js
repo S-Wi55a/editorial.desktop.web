@@ -1,7 +1,7 @@
 ﻿// Common css files
 require('Css/globalStyles.scss');
 
-import detectIE from 'Js/Modules/DetectIE/detect-ie.js'
+import detectIE from 'DetectIE/detect-ie.js'
 
 // **REQUIRE** - Dynamically set the public path for ajax/code-split requests or webpack won't know where to get chunks
 let scripts = document.getElementsByTagName("script");

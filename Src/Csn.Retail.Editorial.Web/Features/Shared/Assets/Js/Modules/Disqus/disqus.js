@@ -1,4 +1,4 @@
-﻿require('Js/Modules/Disqus/_disqus.scss')
+﻿require('Disqus/_disqus.scss')
 
 export default function () {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
     var d = document, s = d.createElement('script');
