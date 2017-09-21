@@ -31,7 +31,10 @@ const INavfacet: React.StatelessComponent<IINavfacet> = ({ isSelected, displayVa
 
 const mapDispatchToProps = (dispatch: Dispatch<Thunks.Types>) => {
     return {
-        onClick: (aspect:string, query: string)=>dispatch(Thunks.fetchINavAspect(aspect, query))
+        onClick: (aspect:string, query: string)=>dispatch([
+            { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: {query} },
+            Thunks.fetchINavAspect(aspect, query)
+        ])
     }
 }
 

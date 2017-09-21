@@ -43,16 +43,33 @@ interface IFetchQuerySuccess extends Action {
     }
 }
 
+interface IUpdatePendingQuery extends Action {
+    type: ActionTypes.INAV.UPDATE_PENDING_QUERY
+    payload: {
+        query: string
+    }
+}
+
+interface IUpdatePreviousState extends Action {
+    type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE
+    payload: {
+        data: INavTypes.IINavResponse
+    }
+}
+
 
 type UIActions = IToggleIsActive
-| ICancel
-| IIncrement
-| IDecrement
-| ICloseINav
+    | ICancel
+    | IIncrement
+    | IDecrement
+    | ICloseINav
 
 type APIActions = IFetchQuerySuccess
 
+type INavActions = IUpdatePendingQuery 
+    | IUpdatePreviousState
+
 // Fetch data
-export type Actions = UIActions | APIActions
+export type Actions = UIActions | APIActions | INavActions
 
 export { ActionTypes, Thunks }

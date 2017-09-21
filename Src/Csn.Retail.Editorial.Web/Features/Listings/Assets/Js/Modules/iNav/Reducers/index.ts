@@ -9,36 +9,30 @@ import { INode, IINavResponse } from 'iNav/Types'
 //We wrap the reducer to pass init data to it for it to work in ReactJS.NET
 export const iNavParentReducer = (initState: any = null) => {
 
-    return (state = initState, action: Actions) => {
+    const s = {
+        ...initState,
+        ...{ previousState: initState }
+    }
+
+    return (state = s, action: Actions) => {
         switch (action.type) {
-            case ActionTypes.UI.TOGGLE_IS_ACTIVE:
-                if(action.payload.isActive){
-                    const previousState = { ...state }
-                    return {
-                        ...state,
-                        previousState
-                    }
-                } else if(!action.payload.isActive && typeof state.previousState !== 'undefined'){
-                    return {
-                        ...state.previousState
-                    }
-                } else {
-                    return state
-                }
             case ActionTypes.UI.CANCEL:
-                if(typeof state.previousState !== 'undefined') {
-                    return {
-                        ...state.previousState
-                    }
-                } else {return state}
-            // case ActionTypes.TOGGLE_IS_SELECTED:
-            //     return isSelectedToggle(state, action)
-            // case ActionTypes.REMOVE_BREAD_CRUMB:
-            //     return RemoveBreadCrumbs(state, action)
+                return {
+                    ...state,
+                    ...state.previousState
+                }
+            case ActionTypes.INAV.UPDATE_PENDING_QUERY: {
+                return {
+                    ...state,
+                    ...{ pendingQuery: action.payload.query }
+                }
+            }
+            case ActionTypes.INAV.UPDATE_PREVIOUS_STATE:
+            return {
+                ...state,
+                ...{ previousState: { ...action.payload.data } }
+            }
             case ActionTypes.API.INAV.FETCH_QUERY_SUCCESS:
-                //we are not doing a deep merge becasue we are replacing the complete state object
-                //besides isSelected all UI is handled ina deifferent state branch and this replaced obj
-                //won't affect the new state
                 return {
                     ...state,
                     ...action.payload.data
@@ -48,7 +42,6 @@ export const iNavParentReducer = (initState: any = null) => {
             default:
                 return state
         }
-
     }
 }
 

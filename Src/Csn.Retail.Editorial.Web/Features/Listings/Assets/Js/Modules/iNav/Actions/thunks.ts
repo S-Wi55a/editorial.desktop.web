@@ -15,7 +15,10 @@ export const fetchINav: fetchINav = (query: string) =>  (dispatch: Dispatch<Acti
 
             )
             .then(data =>
-                dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS, payload: { data } })
+                dispatch([
+                    { type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS, payload: { data } },
+                    { type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE,  payload: { data } }
+                ])
             )
     }
 
