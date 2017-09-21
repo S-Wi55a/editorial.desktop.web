@@ -15,7 +15,6 @@
 
     &__checkbox {
         display: none;
-        cursor: pointer;        
     }
 
     &.isSelected {
@@ -46,7 +45,6 @@
         display: inline-block;
         vertical-align: middle;
         margin-right: 20px;
-        cursor: pointer;
     }
 
     &__link {
@@ -55,7 +53,6 @@
         color: $cs-dark-grey-1;
         width: calc(100% - 40px - #{$count-container-width}); // 100% - checkmark width+margin - $count-container-width
         text-decoration: none;
-        cursor: pointer;
         
         &:hover,
         &:visited,
@@ -83,5 +80,26 @@
         padding: 0 6.5px;
         margin-left: 5px;
         vertical-align: middle
+    }
+
+    &--noResults {
+        opacity: 0.75;
+        cursor: not-allowed;
+        
+        &.iNav-category-item {            
+            &.isSelected {
+                &::before {
+                    background-color: $cs-grey;
+                }
+            }
+        }
+        .iNav-category-item {
+            &__count {
+                background-color: $cs-grey;                  
+            }
+            &__link {
+                cursor: not-allowed;
+            }
+        }
     }
 }

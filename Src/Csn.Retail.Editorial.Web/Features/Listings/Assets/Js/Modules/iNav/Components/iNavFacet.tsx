@@ -18,7 +18,7 @@ interface IINavfacet extends IFacet {
 const INavfacet: React.StatelessComponent<IINavfacet> = ({ isSelected, displayValue, value, action, count, aspect, onClick }) => {
     
     return (
-        <li className={`iNav-category-item ${isSelected ? 'isSelected': ''}`} onClick={()=>{onClick(aspect, action)}} >
+        <li className={`iNav-category-item ${isSelected ? 'isSelected': ''} ${count ? '' : 'iNav-category-item--noResults' }`} onClick={()=>{count > 0 && onClick(aspect, action)}} >
             <input className="iNav-category-item__checkbox" type="checkbox" checked={isSelected} readOnly="true"/>
             <a className="iNav-category-item__link" href={`${iNav}${action}`} onClick={e => e.preventDefault()}>{displayValue}</a>
             <span className="iNav-category-item__count-container">
