@@ -51,7 +51,7 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
     case ActionTypes.UI.TOGGLE_IS_ACTIVE:
       return {
         ...state,
-        activeItemId: action.payload.isActive ? action.payload.id : null        
+        activeItemId: action.payload.isActive ? action.payload.id : null,
       }
     case ActionTypes.UI.CANCEL:
     case ActionTypes.UI.CLOSE_INAV:    
@@ -71,6 +71,6 @@ export default connect(
   key: 'ui/INavNodes',
   reducer: componentRootReducer,
   state: {
-    activeItemId: null
+    activeItemId: null,
   }
 })(INav))

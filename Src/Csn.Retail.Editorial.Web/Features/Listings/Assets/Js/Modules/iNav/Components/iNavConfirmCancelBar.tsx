@@ -11,14 +11,13 @@ if (!SERVER) {
     require('iNav/Css/iNav.ConfirmCancelBar')  
   }
 
-//TODO: how to get test data driven?
 
 interface IINavConfirmCancelBar {
     index?: number
     count: number
     pendingQuery: string
 }
-
+//TODO: how to get hardcoded words data driven?
 const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({count, onClick, pendingQuery}) => (
     <div className='iNav-category__confirmCancelBar confirmCancelBar'>
         <div className='confirmCancelBar__button confirmCancelBar__button--cancel'>Cancel</div>

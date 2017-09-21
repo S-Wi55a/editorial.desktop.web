@@ -11,10 +11,30 @@ export const iNavParentReducer = (initState: any = null) => {
 
     return (state = initState, action: Actions) => {
         switch (action.type) {
-            case ActionTypes.TOGGLE_IS_SELECTED:
-                return isSelectedToggle(state, action)
-            case ActionTypes.REMOVE_BREAD_CRUMB:
-                return RemoveBreadCrumbs(state, action)
+            case ActionTypes.UI.TOGGLE_IS_ACTIVE:
+                if(action.payload.isActive){
+                    const previousState = { ...state }
+                    return {
+                        ...state,
+                        previousState
+                    }
+                } else if(!action.payload.isActive && typeof state.previousState !== 'undefined'){
+                    return {
+                        ...state.previousState
+                    }
+                } else {
+                    return state
+                }
+            case ActionTypes.UI.CANCEL:
+                if(typeof state.previousState !== 'undefined') {
+                    return {
+                        ...state.previousState
+                    }
+                } else {return state}
+            // case ActionTypes.TOGGLE_IS_SELECTED:
+            //     return isSelectedToggle(state, action)
+            // case ActionTypes.REMOVE_BREAD_CRUMB:
+            //     return RemoveBreadCrumbs(state, action)
             case ActionTypes.API.INAV.FETCH_QUERY_SUCCESS:
                 //we are not doing a deep merge becasue we are replacing the complete state object
                 //besides isSelected all UI is handled ina deifferent state branch and this replaced obj
@@ -40,15 +60,13 @@ function aspectReducer(state: IINavResponse, action: Actions): IINavResponse {
         const nodeIndex = state.iNav.nodes.findIndex((node: INode) => node.name === action.payload.name)
         const newState = update(state,
             {
-
                 iNav: {
                     nodes: {
                         [nodeIndex]: {
                             $set : action.payload.data
                         }
-                    }
+                    },
                 }
-
             })
         return newState
 

@@ -25,24 +25,33 @@ const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemC
   )
 }
 
-// Redux Connect
+function findIsSelected(facets: iNavTypes.IFacet[]) {
+  let count = 0
+  facets.forEach(item => {
+    if(item.isSelected) {count++}
+  });
+  return count
+}
 
+// Redux Connect
 const mapStateToProps = (state: State, ownProps: IINavMenuHeaderItemComponent) => {
   return {
-    count: state[`ui/INavNodeContainer_${ownProps.node.name}`] ? state[`ui/INavNodeContainer_${ownProps.node.name}`].internalItemsCount : 0
+    count: findIsSelected(state.iNav.iNav.nodes[ownProps.index].facets)
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Actions>) => {
+const mapDispatchToProps = (dispatch: Dispatch<Actions[]>) => {
   return {
     toggleIsSelected: (id: number, isActive: boolean) => {
-      dispatch({
-        type: ActionTypes.UI.TOGGLE_IS_ACTIVE,
-        payload: {
-          id,
-          isActive: !isActive
+      dispatch([
+        {type: ActionTypes.UI.CANCEL},
+        { type: ActionTypes.UI.TOGGLE_IS_ACTIVE,
+          payload: {
+            id,
+            isActive: !isActive
+          }
         }
-      })
+      ])
     }
   }
 }
