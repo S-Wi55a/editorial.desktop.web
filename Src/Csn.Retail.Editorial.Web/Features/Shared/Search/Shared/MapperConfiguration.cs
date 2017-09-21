@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping;
@@ -31,10 +30,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
             cfg.CreateMap<BreadCrumbDto, BreadCrumb>();
 
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
-                .ForMember(dest => dest.BreadCrumbs,
-                    opt => opt.MapFrom(src => src != null && src.BreadCrumbs != null
-                        ? _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)
-                        : new List<BreadCrumb>()));
+                .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)));
 
             cfg.CreateMap<RyvussNavNodeDto, NavNode>();
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -22,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         }
         public IList<BreadCrumb> GetAggregatedBreadCrumbs(ICollection<BreadCrumbDto> source)
         {
-            if (source.Count < 1)
+            if (source == null || !source.Any())
             {
                 return new List<BreadCrumb>();
             }
