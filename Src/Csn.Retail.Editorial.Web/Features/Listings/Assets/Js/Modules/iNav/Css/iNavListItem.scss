@@ -4,7 +4,7 @@
 //Search category item
 .iNav-category-item {
 
-    $count-container-width: 75px;
+    $count-container-width: 100px;
 
     margin-top: 2px;
     cursor: pointer;
@@ -62,7 +62,7 @@
         }
     }
 
-    &__count-container {
+    &__meta-container {
         width: $count-container-width;
         display: inline-block;
         font-size: $font-size-h6;
@@ -79,11 +79,33 @@
         text-align: center;
         padding: 0 6.5px;
         margin-left: 5px;
-        vertical-align: middle
+        line-height: 21px;
+        height: 21px;
+        vertical-align: middle;
+    }
+
+    &__refinement {
+        height: 21px;
+        width: 21px;
+        line-height: 21px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        position: relative;
+                
+        &::before {
+            content: $icon-circle-right-lg;
+            font-family: $font-family-icons;
+            color: $cs-primary;
+            display: block;
+            position: absolute;
+            font-size: 21px;
+        }   
+        
     }
 
     &--noResults {
-        opacity: 0.75;
+        opacity: 0.5;
         cursor: not-allowed;
         
         &.iNav-category-item {            
@@ -99,6 +121,11 @@
             }
             &__link {
                 cursor: not-allowed;
+            }
+            &__refinement {
+                &::before {
+                    color: $cs-grey;
+                }
             }
         }
     }

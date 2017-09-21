@@ -15,15 +15,19 @@ interface IINavfacet extends IFacet {
     onClick: Thunks.Types
 }
 
-const INavfacet: React.StatelessComponent<IINavfacet> = ({ isSelected, displayValue, value, action, count, aspect, onClick }) => {
+const INavfacet: React.StatelessComponent<IINavfacet> = ({ isSelected, displayValue, value, action, count, aspect, isRefineable, onClick }) => {
     
     return (
         <li className={`iNav-category-item ${isSelected ? 'isSelected': ''} ${count ? '' : 'iNav-category-item--noResults' }`} onClick={()=>{count > 0 && onClick(aspect, action)}} >
             <input className="iNav-category-item__checkbox" type="checkbox" checked={isSelected} readOnly="true"/>
             <a className="iNav-category-item__link" href={`${iNav}${action}`} onClick={e => e.preventDefault()}>{displayValue}</a>
-            <span className="iNav-category-item__count-container">
+            <span className="iNav-category-item__meta-container">
                 <span className="iNav-category-item__count">{count}</span>
+                {                
+                    isRefineable ? <span className="iNav-category-item__refinement"></span> : ''
+                }
             </span>
+
         </li>
     )
 }

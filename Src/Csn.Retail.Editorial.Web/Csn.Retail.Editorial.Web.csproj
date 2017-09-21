@@ -458,7 +458,6 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\iNavBreadCrumbs.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Containers\iNavSearchResultsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\iNavSearchResults.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavFacet.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
@@ -933,8 +932,6 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavContainer.tsx" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactReduxUI\index.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Types\index.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\thunks.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actions.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\thunks.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\index.ts" />

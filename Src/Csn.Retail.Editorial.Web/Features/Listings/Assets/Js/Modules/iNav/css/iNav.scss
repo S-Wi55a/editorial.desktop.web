@@ -22,19 +22,32 @@
         height: 5px;
     }
 
-    &::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: -1;
-    }
-
     &.isActive {
         opacity: 1;
         box-shadow: 0 0 0px 1000vh rgba(0,0,0,0.75); 
+
+        &::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+
+        .iNav__container {
+
+            &::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 0;
+            }
+        }
     }
 
     // Category container
@@ -43,19 +56,6 @@
         height: $iNav-header-height;
         display: flex;
         align-items: center;
-        justify-content: center;
-
-        &::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 0;
-        }
-    
+        justify-content: center;  
     }
-
-
 }
