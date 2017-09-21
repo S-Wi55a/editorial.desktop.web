@@ -3,12 +3,13 @@ import { applyMiddleware, compose } from 'redux';
 // Middleware
 import reduxMulti from 'redux-multi'
 import { batchedSubscribe } from 'redux-batched-subscribe'
+import ReduxThunk from 'redux-thunk'
 
 const middlewareDev = [
     require('redux-immutable-state-invariant').default() 
     ]
 
-const middlewareProd = [reduxMulti]
+const middlewareProd = [reduxMulti, ReduxThunk]
 
 //Array of middlewars to attach to the store
 const middleware = process.env.NODE_ENV !== 'production' ? middlewareDev.concat(middlewareProd) : middlewareProd;

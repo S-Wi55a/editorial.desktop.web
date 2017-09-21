@@ -460,8 +460,6 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\iNavSearchResults.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavFacet.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavContainer.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodeContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
@@ -471,6 +469,8 @@
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdsController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
+    <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleData.cs" />
     <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />
     <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
@@ -496,6 +496,8 @@
     <Compile Include="Features\Shared\Search\Aspect\AspectQuery.cs" />
     <Compile Include="Features\Shared\Search\Aspect\AspectQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\Aspect\AspectResult.cs" />
+    <Compile Include="Features\Shared\Search\Extensions\MapperExtensions.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\Shared\MapperConfiguration.cs" />
@@ -506,6 +508,7 @@
     <Compile Include="Features\Shared\Search\SearchController.cs" />
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
+    <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
@@ -573,8 +576,10 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\UIHelpers.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\middleware.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Reducers\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.client.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.server.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Utils\hmr.js" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.js" />
     <Content Include="Infrastructure\React\Assets\Js\react-server-entry.js" />
     <Content Include="Infrastructure\React\Assets\Js\Util\ReactServerConnect.js" />
@@ -659,7 +664,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actionsTypes.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\immutableJSHelper.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Reducers\rootReducer.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
     <Content Include="Features\Shared\Assets\Js\csn.vendor.js" />
@@ -919,11 +923,11 @@
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Component\iNavSearchResult.tsx" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeaderItem.tsx" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actions.ts" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actionTypes.ts" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\iNavReducer.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Sagas\iNavSaga.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Types\iNav.types.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Types\index.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\componentsCollection.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Reducers\registeredServerReducerCollection.ts" />
   </ItemGroup>
