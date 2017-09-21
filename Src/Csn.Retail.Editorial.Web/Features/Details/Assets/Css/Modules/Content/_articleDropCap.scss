@@ -1,0 +1,61 @@
+﻿
+// Drop Cap
+.article {
+    &.review {
+        .drop-cap {
+            & > p:first-child:first-letter {
+                color: $cs-light-blue;
+            }
+        }
+    }
+
+    &.car-advice, &.riding-advice {
+        .drop-cap {
+            & > p:first-child:first-letter {
+                color: $cs-accent-green;
+            }
+        }
+    }
+
+    &.video {
+        .drop-cap {
+            & > p:first-child:first-letter {
+                color: $cs-orange;
+            }
+        }
+    }
+
+    &.news {
+        .drop-cap {
+            & > p:first-child:first-letter {
+                color: $cs-red;
+            }
+        }
+    }
+
+    &.comparison {
+        .drop-cap {
+            & > p:first-child:first-letter {
+                color: $cs-purple;
+            }
+        }
+    }
+
+    &.feature {
+        .drop-cap {
+            & > p:first-child:first-letter {
+                color: $cs-pink;
+            }
+        }
+    }
+
+    &__copy.drop-cap {
+        & > p:first-child::after {
+            @extend %clearfix;
+        }
+
+        & > p:first-child:first-letter {
+            @include drop-cap-paragraph();
+        }
+    }
+}

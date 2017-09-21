@@ -5,6 +5,7 @@ using Csn.Logging;
 using Csn.Logging.NLog3;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.Serializers;
@@ -28,6 +29,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.Register(x => GetLogger.For<MvcApplication>()).As<ILogger>().SingleInstance();
             builder.RegisterType<NLogLoggerFactory>().As<ILoggerFactory>().SingleInstance();
             builder.Register(x => CacheStoreBuilder.New().Build()).As<Csn.Cars.Cache.ICacheStore>().SingleInstance();
+            builder.Register(x => EditorialSettings.Instance).As<EditorialSettings>().SingleInstance();
             builder.RegisterType<Serializer>().As<ISerializer>().SingleInstance();
             builder.RegisterType<SettingsProvider>().As<ISettingsProvider>().SingleInstance();
 

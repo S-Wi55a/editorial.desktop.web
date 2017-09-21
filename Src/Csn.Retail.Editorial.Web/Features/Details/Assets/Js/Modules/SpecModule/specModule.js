@@ -55,7 +55,7 @@ const ThirdPartyOffer = (props) => {
 
     if (props.tabOrModal) {
         if (props.tabOrModal[titleNoSpace] === 'iframe') {
-            const iframe = `<iframe src=${props.data.formUrl}"></iframe>`
+            const iframe = `<iframe src=${props.data.formUrl}></iframe>`
             tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(p,e) => {
                 props.disclaimerHandler(titleNoSpace, p, e)
             }} className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</span>

@@ -22,40 +22,18 @@
         height: 5px;
     }
 
-    &::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: -1;
-    }
-
     &.isActive {
         opacity: 1;
-        box-shadow: 0 0 0px 1000vh rgba(0,0,0,0.75); 
-    }
+        box-shadow: 0 0 0px 1000vh rgba(0,0,0,0.75);
 
-    // Category container
-    &__container {
-
-        height: $iNav-header-height;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &::before {
+        &::after {
             content: '';
             position: fixed;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
-            z-index: 0;
+            z-index: -1;
         }
-    
-    }
-
 
 }

@@ -2,20 +2,58 @@
 
 // Module - Aside
 
-.aside {
-    padding-top: 30px;
-    padding-left: $grid-gutter-width/2;
-    padding-bottom: $grid-gutter-width/2;
+.wrapper--aside {
+    display: inline-block;
+    vertical-align: top;
     position: relative;
-    float: left;
-    width: 300px + $grid-gutter-width/2;
+    left: 50%;
+    margin-left: -1*$aside-width/2;
+    
+}
+.aside {
+    width: 300px;
+
+}
 
 
-    @include breakpoint($screen-lg) {
-        padding-top: 45px;
+
+.article-type--multipleimages,
+.article-type--imagesandvideo {
+    .wrapper--aside {
+        padding-top: 30px;
+        margin-top: -30px;
+        @include breakpoint($screen-lg) {
+            margin-top: -45px;
+            padding-top: 45px;
+            
+        }
+        
+        .aside{
+            padding-top: 30px;
+
+            @include breakpoint($screen-lg) {
+                padding-top: 45px;
+            }
+        }
     }
 }
 
-.scrollmagic-pin-wrapper--aside {
-    float: left;
+.article-type--singleimage,
+.article-type--doubleimage,
+.article-type--video {
+    .wrapper--aside {
+        margin-top: -30px;
+        @include breakpoint($screen-lg) {
+            margin-top: -45px;
+        }
+    
+        .aside{
+            padding-top: 30px;
+            @include breakpoint($screen-lg) {
+                padding-top: 45px;
+            }
+        }
+    }
 }
+
+

@@ -22,3 +22,11 @@ else if (Model.Type == HeroType.DoubleImage)
 {
     Html.RenderPartial("Partials/Hero/_DoubleImage", Model);
 }
+else if (Model.Type == HeroType.WideImage)
+{
+    Html.RenderPartial("Partials/Hero/_WideImage", Model);
+}
+else if (Model.Type == HeroType.WideVideo)
+{
+    Html.RenderPartial("Partials/Hero/_WideVideo", Model);
+}
