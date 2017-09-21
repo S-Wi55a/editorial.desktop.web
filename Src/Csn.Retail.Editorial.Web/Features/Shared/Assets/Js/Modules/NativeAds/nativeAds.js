@@ -8,7 +8,7 @@ const setPropertyID = csn_editorial.nativeAds.setPropertyID
 
 // Dynamic import but relies on promise to excetue  
 function loadPlacements() {
-    import('Js/Modules/NativeAds/Area/Details/placements--' + areaName)
+    import('NativeAds/Area/Details/placements--' + areaName)
         .then(function (detailsPageNativeAds) {
             nativeAds(jQuery, detailsPageNativeAds.placements, detailsPageNativeAds.events)
         }).catch(function (err) {

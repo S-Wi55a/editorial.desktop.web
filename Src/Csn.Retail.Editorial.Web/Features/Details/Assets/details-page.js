@@ -10,13 +10,13 @@ if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero
-let aboveTheFold = require('Js/Modules/Hero/hero.js').default;
+let aboveTheFold = require('Hero/hero.js').default;
 aboveTheFold();
 
 //Editors Rating
 (function editorRatings() {
     if (document.querySelector('.editors-ratings')) {
-        require('./Js/Modules/EditorsRatings/editorsRating-component.js');
+        require('EditorsRatings/editorsRating-component.js');
     }
 })();
 
@@ -40,7 +40,7 @@ loaded.then(() => {
 
         if (d.querySelector('.more-articles-placeholder')) {
             (function moreArticles() {
-                import ( /* webpackChunkName: "More-Articles" */ 'Js/Modules/MoreArticles/moreArticles-component.js').then(function(moreArticles) {}).catch(function(err) {
+                import ( /* webpackChunkName: "More-Articles" */ 'MoreArticles/moreArticles-component.js').then(function(moreArticles) {}).catch(function(err) {
                     console.log('Failed to load More-Articles', err);
                 });
             })()
@@ -53,7 +53,7 @@ loaded.then(() => {
     (function stockForSale(d) {
         if (d.querySelector('.stock-for-sale-placeholder')) {
             (function stockForSale() {
-                import ( /* webpackChunkName: "Stock-For-Sale" */ 'Js/Modules/StockForSale/stockForSale-component.js').then(function(stockForSale) {}).catch(function(err) {
+                import ( /* webpackChunkName: "Stock-For-Sale" */ 'StockForSale/stockForSale-component.js').then(function(stockForSale) {}).catch(function(err) {
                     console.log('Failed to load Stock-For-Sale', err);
                 });
             })()
@@ -71,7 +71,7 @@ loaded.then(() => {
             if (el) { el.insertAdjacentHTML('afterend', '<div class="spec-module-placeholder" data-webm-section="spec-module"></div>'); }
 
             (function specModule() {
-                import ( /* webpackChunkName: "Spec-Module" */ 'Js/Modules/SpecModule/specModule--container.js').then(function(specModule) {}).catch(function(err) {
+                import ( /* webpackChunkName: "Spec-Module" */ 'SpecModule/specModule--container.js').then(function(specModule) {}).catch(function(err) {
                     console.log('Failed to load Spec-Module', err);
                 });
             })()
@@ -85,7 +85,7 @@ loaded.then(() => {
 
         if (d.querySelector('.also-consider-placeholder')) {
             (function alsoConsider() {
-                import ( /* webpackChunkName: "Also-Consider" */ 'Js/Modules/AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
+                import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
                 });
             })()
@@ -112,7 +112,7 @@ let disqus = function(d, w, selector) {
             reverse: false
         })
             .on("enter", () => {
-                require('Js/Modules/Disqus/disqus.js').default();
+                require('Disqus/disqus.js').default();
                 scene.destroy(true)
                 scene = null
             })
@@ -120,8 +120,6 @@ let disqus = function(d, w, selector) {
     }
 }
 disqus(document, window, '#disqus_thread');
-//TODO: delete scene
-
 
 //Lazy Native Ads
 loaded.then(() => {
@@ -129,7 +127,7 @@ loaded.then(() => {
         if (!!csn_editorial && !!csn_editorial.nativeAds) {
             (function nativeAds() {
                 import
-                (/* webpackChunkName: "Native Ads" */ 'Js/Modules/NativeAds/nativeAds.js').then(function(nativeAds) {})
+                (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
                     .catch(function(err) {
                         console.log('Failed to load nativeAds', err);
                     });
@@ -144,7 +142,7 @@ loaded.then(() => {
         if (d.querySelector('.article__type--sponsored')) {
             (function nativeAds() {
                 import
-                (/* webpackChunkName: "Sponsored Articles" */ 'Js/Modules/SponsoredArticles/sponsoredArticles.js')
+                (/* webpackChunkName: "Sponsored Articles" */ 'SponsoredArticles/sponsoredArticles.js')
                     .then(function(sponsoredArticles) {}).catch(function(err) {
                         console.log('Failed to load sponsoredArticles', err);
                     });
@@ -154,14 +152,36 @@ loaded.then(() => {
 });
 
 // display disclaimer on pricing guide
-require('Js/Modules/ArticlePricing/articlePricing.js');
+require('ArticlePricing/articlePricing.js');
+
+// add hero-wide-video
+if (document.querySelector('.article-type--widevideo')) {
+    require('Js/Modules/Hero/hero-wide-video.js');
+}
+
+//Parallax
+loaded.then(function () {
+    if (document.querySelector('.csn-parallax')) {
+        require.ensure(['rellax'],
+            function () {
+                const Rellax = require('rellax');
+                let rellax = new Rellax('.csn-parallax', {});
+                
+                window.addEventListener('resize', function() {
+                    rellax.destroy();
+                    rellax = new Rellax('.csn-parallax', {});
+                });
+            },
+            'Parallax - Rellax');
+    }   
+});
 
 //Sticky Sidebar
-//if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
-//    loaded.then(function() {
-//        const aside = document.querySelector('.aside');
-//        if (aside) {
-//            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside);
-//        }
-//    })
-//}
+if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
+    const aside = document.querySelector('.aside');
+    loaded.then(function() {     
+        if (aside) {
+//            require('StickySidebar/stickySidebar.js').init(document, window, aside);
+        }
+    })
+}

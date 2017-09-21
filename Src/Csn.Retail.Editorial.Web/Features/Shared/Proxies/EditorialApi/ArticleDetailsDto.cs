@@ -165,8 +165,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 
     public enum ArticleTemplateType
     {
-        NarrowHero,
-        WideHero,
         Standard,
         Wide
     }
@@ -177,7 +175,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         DoubleImage,
         MultipleImages,
         Video,
-        ImagesAndVideo
+        ImagesAndVideo,
+        WideImage,
+        WideVideo
     }
 
     public class Image
@@ -185,12 +185,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Url { get; set; }
         public string AlternateText { get; set; }
         public string Caption { get; set; }
+        public string Type { get; set; }
     }
 
     public class BrightcoveVideo
     {
         public string VideoId { get; set; }
         public string PlayerId { get; set; }
+        public string EncodingUrl { get; set; }
     }
 
     // this captures all the possible properties across all the content section

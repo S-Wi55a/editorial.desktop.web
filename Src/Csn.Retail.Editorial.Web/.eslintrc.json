@@ -17,18 +17,14 @@
   ],
   "rules": {
     "react/prop-types": 0,
-    "no-console": 1
+    "no-console": 1,
+    "react/display-name": 0
   },
   "plugins": [
     "import",
     "react"
   ],
   "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "WebpackConfig/webpack.isomorphic.config.js"
-      }
-    },
     "import/ignore": [
       "\\.(scss|less|css)$"
     ]

@@ -1,16 +1,18 @@
 ﻿@import "css/globals";
+@import "iNav/Css/iNav.variables";
 
 #iNav {
-    $iNav-width: 315px;
-
     width: $iNav-width;
-    float: left;
+    position: relative;
+    z-index: 1;
 }
-.iNav {
 
-    $iNav-header-height: 60px;
-    $category-container-height: 500px;
-    $spacing: 20px;
+.iNav {
+    background-color: $iNav-background-color;
+    border-bottom: 1px solid $cs-light-grey-2;   
+    position: relative;
+    box-shadow: 0 0 0px 1000vh rgba(0,0,0,0); 
+    transition: box-shadow .3s;
 
     &::before {
         content: '';
@@ -19,85 +21,43 @@
         background-color: $cs-primary;
         height: 5px;
     }
-    // RC collapse
-    .rc-collapse-anim-active {
-        transition: height 0.2s ease-out;
+
+    &::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
     }
 
-    .rc-collapse > .rc-collapse-item {
-
-        &::after {
-            content: '';
-            display: block;
-            width: calc(100% - #{($spacing*2)});
-            margin-left: $spacing;
-            border-bottom: 1px solid $cs-light-grey-2;
-        }
-
-        &:last-child {
-            &::after {
-                border-bottom: 0 solid $cs-light-grey-2;
-            }
-        }
+    &.isActive {
+        opacity: 1;
+        box-shadow: 0 0 0px 1000vh rgba(0,0,0,0.75); 
     }
 
-    .rc-collapse > .rc-collapse-item > .rc-collapse-header {
-        height: $iNav-header-height;
-        line-height: $iNav-header-height;
-        font-size: 18px;
-        font-weight: 600;
-        z-index: 1;
-        position: relative;
-        padding: 0 $spacing;
-    }
-
-    .rc-collapse > .rc-collapse-item > .rc-collapse-header::after {
-        content: $icon-chevron-down-md;
-        font-family: $font-family-icons;
-        font-size: 21px;
-        font-weight: 600;
-        color: $cs-light-grey-1;
-        float: right;
-        transition: transform .3s;
-        transform: rotate(0deg)
-    }
-
-    .rc-collapse > .rc-collapse-item-active > .rc-collapse-header::after {
-        transform: rotate(180deg)
-    }
-
-    .rc-collapse-content-inactive {
-        display: none;
-    }
-
-    .rc-collapse-content {
-        overflow: hidden;
-    }
     // Category container
-    &__category-container {
-        position: relative;
-        background-color: $cs-white;
-        border-right: 1px solid $cs-light-grey-2;
-        border-left: 1px solid $cs-light-grey-2;
-        border-bottom: 1px solid $cs-light-grey-2;
-    }
+    &__container {
 
-    &__category {
-        font-size: $font-size-body;
-    }
-    //Search category
-    .iNav-category {
-        margin-bottom: $spacing;
+        height: $iNav-header-height;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        &__container {
-            max-height: $category-container-height - ($spacing*2);
-            overflow-y: auto;
-            padding: 0 $spacing;
-
-            &--1 {
-            }
+        &::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 0;
         }
+    
     }
+
+
 }
 
-@import "js/modules/redux/inav/css/inavlistitem";
+@import "./iNavListItem.scss";

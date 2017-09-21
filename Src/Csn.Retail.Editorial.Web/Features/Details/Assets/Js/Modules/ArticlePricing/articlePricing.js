@@ -1,5 +1,5 @@
-﻿import Modal from 'Js/Modules/Modal/modal.js'
-import {disclaimerTemplate} from 'Js/Modules/Modal/modal-disclaimer-view'
+﻿import Modal from 'Modal/modal.js'
+import {disclaimerTemplate} from 'Modal/modal-disclaimer-view'
 
 // display disclaimer on pricing guide
 window.csn_modal = window.csn_modal || new Modal();

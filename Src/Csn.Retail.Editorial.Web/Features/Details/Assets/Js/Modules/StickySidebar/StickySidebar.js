@@ -1,26 +1,28 @@
 ﻿import ScrollMagic from 'ScrollMagic'
 import ResizeSensor from 'css-element-queries/src/ResizeSensor'
-import * as Utils from 'Features/Details/Assets/Js/Modules/StickySidebar/stickySidebar.utils.js'
-import { scrollingUp, scrollingDown, scrollingSimple } from 'Features/Details/Assets/Js/Modules/StickySidebar/stickySidebar.Actions.js'
+import * as Utils from 'Features/Details/Assets/StickySidebar/stickySidebar.utils.js'
+import { scrollingUp, scrollingDown, scrollingSimple } from 'Features/Details/Assets/StickySidebar/stickySidebar.Actions.js'
 
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
-export function init(d, w, aside) {
+export function init(d, w, aside, baseReference) {
 
-    // Vars
-    const pin = {state: false}
-
-    //Wrap aside with a refernce wrapper
-    const wrapper = aside.parentNode.insertBefore(d.createElement('div'), aside)
-    wrapper.classList.add('scrollmagic-pin-wrapper--aside');
-    wrapper.appendChild(aside);
-
+    // Cache Footer
+    const pageFooter = d.querySelector('#page-footer')
+    const siteNavHeight = d.querySelector('.site-nav-wrapper')
+    const wrapper = d.querySelector('.wrapper--aside')
+    
+    
     //Module Vars
     const references = {
         wrapper,
-        startingCoordinatesTop : () => { return wrapper.getBoundingClientRect().top - d.querySelector('body').getBoundingClientRect().top },
-        siteNavHeight: d.querySelector('.site-nav-wrapper').offsetHeight,
-        footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - d.querySelector('body').getBoundingClientRect().top  }
+        startingCoordinatesTop : wrapper.getBoundingClientRect().top,
+        siteNavHeight: siteNavHeight.offsetHeight,
+        footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - wrapper.getBoundingClientRect().top },
+        triggerHookUp: ()=> 1 - (w.innerHeight - d.querySelector('.site-nav-wrapper').offsetHeight) / w.innerHeight,
+        triggerHookDown : (w.innerHeight - baseReference) / w.innerHeight,
+        pageFooter,
+        baseReference
     }
          
     // Scroll Magic Controller
@@ -28,30 +30,35 @@ export function init(d, w, aside) {
 
     let sceneSimple = new ScrollMagic.Scene({
             triggerElement: aside,
-            triggerHook: 1 - (w.innerHeight - references.siteNavHeight)/w.innerHeight,
+            triggerHook: 1 - (w.innerHeight - references.siteNavHeight) / w.innerHeight,
         })  
         .addTo(w.scrollMogicController);
-  
+
     let sceneDown = new ScrollMagic.Scene({
             triggerElement: aside,
-            triggerHook: Utils.elementScreenRealEstate('.more-articles').heightInPercentage,
+            triggerHook: references.triggerHookDown,
             offset: aside.offsetHeight 
         })
         .addTo(w.scrollMogicController);
 
     let sceneUp = new ScrollMagic.Scene({
             triggerElement: aside,
-            triggerHook: 1 - (w.innerHeight - references.siteNavHeight)/w.innerHeight,
+            triggerHook: references.triggerHookUp(),
         })       
         .addTo(w.scrollMogicController);
 
-    const boundScrollingSimple = (e)=>{scrollingSimple(pin, aside, references, e)}
-    const boundScrollingDown = (e)=>{scrollingDown(pin, aside, references, e)}
-    const boundScrollingUp = (e)=>{scrollingUp(pin, aside, references, e)}
+    const boundScrollingSimple = (e)=>{scrollingSimple(aside, references, e)}
+    const boundScrollingDown = (e)=>{scrollingDown(aside, references, e)}
+    const boundScrollingUp = (e)=>{scrollingUp(aside, references, e)}
 
     //Check ScreenSize
     function screenSizeCheck() {
-        if (aside.offsetHeight < window.innerHeight) {
+        if(aside.offsetHeight > (document.querySelector('article .article') ? document.querySelector('article .article').offsetHeight : 0)){
+            sceneDown.off('update', boundScrollingDown) 
+            sceneUp.off('update', boundScrollingUp) 
+            sceneSimple.off('update', boundScrollingSimple)
+        }
+        else if (aside.offsetHeight < window.innerHeight) {
             sceneDown.off('update', boundScrollingDown) 
             sceneUp.off('update', boundScrollingUp) 
             sceneSimple.on('update', boundScrollingSimple)
@@ -68,8 +75,14 @@ export function init(d, w, aside) {
     //As modules load in the sidebar the hight grows, ResizeSensor has a callback when the size changes
     new ResizeSensor(aside, function() {
         sceneDown.offset(aside.offsetHeight)
+        sceneUp.triggerHook(1 - (w.innerHeight - references.siteNavHeight) / w.innerHeight) // to trigger update
         screenSizeCheck();
     });
+    if(document.querySelector('#disqus_thread')){
+        new ResizeSensor(document.querySelector('#disqus_thread'), function() {
+            sceneDown.trigger(references.triggerHookDown) //TODO: check if this works correctly
+        })
+    }
 
     // handle event
     window.addEventListener("optimizedResize", screenSizeCheck);

@@ -1,115 +1,152 @@
 ﻿@import "css/globals";
-
+// All Article types other than wide
+.article-type:not(.article-type--wideimage):not(.article-type--widevideo) {
+    font-size: 0;
+    .article {
+        display: inline-block;
+        padding-left: 0;
+        padding-right: 0;
+        margin: auto;
+        position: relative;
+        left: 50%;
+        margin-left: -1*($screen-sm - ($aside-width + $grid-gutter-width))/2;
+        @include breakpoint($screen-md) {
+            margin-left: -1*($screen-md - ($aside-width + $grid-gutter-width))/2;
+        }
+        @include breakpoint($screen-lg) {
+            margin-left: -1*($screen-lg - ($aside-width + $grid-gutter-width))/2;
+        }
+        & .container {
+            $width: $screen-sm - ($aside-width + $grid-gutter-width);
+            position: relative;
+            left: calc(-1*(#{$screen-sm - $width})/2);
+            width: calc(#{#{$width}});
+            @include breakpoint($screen-md) {
+                $width: $screen-md - ($aside-width + $grid-gutter-width);
+                left: calc(-1*(#{$screen-md - $width})/2);
+                width: calc(#{#{$width}});
+            }
+            @include breakpoint($screen-lg) {
+                $width: $screen-lg - ($aside-width + $grid-gutter-width);
+                left: calc(-1*(#{$screen-lg - $width})/2);
+                width: calc(#{#{$width}});
+            }
+        }
+    }
+}
+.article-type.article-type--wideimage,
+.article-type.article-type--widevideo {
+    .article {
+        & .container {
+            $width: $screen-sm - ($aside-width + $grid-gutter-width);
+            width: calc(#{#{$width}});
+            @include breakpoint($screen-md) {
+                $width: $screen-md - ($aside-width + $grid-gutter-width);
+                width: calc(#{#{$width}});
+            }
+            @include breakpoint($screen-lg) {
+                $width: $screen-lg - ($aside-width + $grid-gutter-width);
+                width: calc(#{#{$width}});
+            }
+        }
+        &__subheading {
+            margin-top: 0px;
+        }
+    }
+}
 .article {
     padding-top: 30px;
-    padding-right: 0;
-    position: relative;
-    float: left;
-    width: calc(100% - (300px + 15px));
-
     @include breakpoint($screen-lg) {
         padding-top: 45px;
-        padding-right: 15px;
     }
-
     .cf:after {
         @include cf;
     }
-
     .pos-r {
         position: relative;
     }
-
     &__heading {
         @include h1();
         color: $cs-black;
     }
-
     &__subheading {
         @include h2();
         margin-top: 0.5em;
-
         @include breakpoint($screen-lg) {
             margin-top: 1em;
         }
     }
-
     &__summary {
         color: $cs-light-grey-1;
-
         p {
             margin-top: 1.25em;
             @include rundown-text();
         }
-
-        & > div {
+        &>div {
             margin: 0;
         }
     }
-
-    &__copy {
+    &__copy .container {
         color: $cs-light-grey-5;
         @include p();
-
-        & > h1 {
+        &-fluid {
+            padding: 0;
+        }
+        &>h1 {
             color: $cs-black;
         }
-
-        & > h2, & > h3, & > h4, & > h5, & > h6 {
+        &>h2,
+        &>h3,
+        &>h4,
+        &>h5,
+        &>h6 {
             color: $cs-dark-grey-2;
         }
-
-        & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
+        &>h1,
+        &>h2,
+        &>h3,
+        &>h4,
+        &>h5,
+        &>h6 {
             margin-top: 40px;
         }
-
-        & > h1 {
+        &>h1 {
             @include h1();
         }
-
-        & > h2 {
+        &>h2 {
             @include h2();
         }
-
-        & > h3 {
+        &>h3 {
             @include h3();
         }
-
-        & > h4 {
+        &>h4 {
             @include h4();
         }
-
-        & > h5 {
+        &>h5 {
             @include h4();
         }
-
-        & > h6 {
+        &>h6 {
             @include h4();
         }
-
-        & > p {
+        &>p {
             margin-top: 1.25em;
             @include p();
         }
-
-        & > div {
+        &>div {
             margin: 0;
         }
-
         ul {
             list-style-type: disc;
             margin-bottom: 0;
             padding-left: 1.5em;
-
             li {
                 display: list-item;
             }
         }
-
-        strong, b {
+        strong,
+        b {
             color: $cs-dark-grey-2;
         }
-
         .teads-inread,
         .brightcove,
         .spec-module {
@@ -117,13 +154,47 @@
             font-size: 20px;
         }
     }
-
     &__img {
         width: 100%;
         margin-top: 1.25em;
         @include p();
+        &--wide {
+            position: absolute;
+            top: 50%;
+            left: -50%;
+            transform: translate(50%, -50%);
+            width: 100%;
+            max-width: 100%;
+        }
     }
-
+    &__img-frame {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        margin-top: 1.25em;
+        &::before {
+            content: '';
+            display: block;
+            padding-top: percentage(9/16);
+        }
+        &--wide {
+            $img-ratio: 1/2.53;
+            // The 155 is a catch all for rellax speeds of (-2,2)
+            height: calc((100vw * (#{$img-ratio})) - 155px);
+            max-height: 450px;
+            min-height: 250px;
+        }
+        &__paralalx-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .article__img {
+            margin-top: 0;
+        }
+    }
     &__img-caption {
         font-size: $font-size-small;
         line-height: normal;
@@ -131,7 +202,6 @@
         text-align: center;
         color: $cs-dark-grey-1;
     }
-
     &__type {
         line-height: 31px;
         font-size: 13px;
@@ -143,19 +213,15 @@
         margin-bottom: 15px;
         text-transform: uppercase;
         border-radius: 4px;
-
         @include breakpoint($screen-lg) {
             margin-bottom: 30px;
         }
-
         &--review {
             background-color: $cs-light-blue;
         }
-
         &--sponsored {
             background-color: $cs-sponsored-green;
             cursor: pointer;
-
             &::after {
                 color: $cs-white;
                 content: $icon-info-icon;
@@ -164,33 +230,26 @@
                 margin-left: 3px;
             }
         }
-
         &--car-advice,
         &--riding-advice {
             background-color: $cs-accent-green;
         }
-
         &--video {
             background-color: $cs-orange;
         }
-
         &--news {
             background-color: $cs-red;
         }
-
         &--comparison {
             background-color: $cs-purple;
         }
-
         &--feature {
             background-color: $cs-pink;
         }
-
         &--motoracing {
             background-color: $cs-dark-grey-1;
         }
     }
-
     &__date {
         font-size: $font-size-small;
         display: inline-block;
@@ -199,207 +258,128 @@
         line-height: 31px;
         color: $cs-light-grey-1;
         margin-bottom: 15px;
-
         @include breakpoint($screen-lg) {
             margin-bottom: 30px;
         }
     }
-
     &__dateAndTypeContainer {
         float: left;
     }
-
     &__share {
         &--top {
             float: right;
             margin-bottom: 5px;
-
             @include breakpoint($screen-lg) {
                 margin-bottom: 20px;
             }
-
+            
             .share-social__link {
                 margin-top: -7.5px;
             }
         }
-
         &--bottom {
             margin-top: 35px;
         }
     }
-
     &__pricing {
         margin-top: 1em;
         display: inline-block;
-
         &-label {
             cursor: pointer;
             color: $cs-light-grey-1;
             font-size: $font-size-small;
-
             &:hover,
             &:active,
             &:focus {
                 text-decoration: underline;
             }
         }
-
         &-price {
             @include h2();
         }
     }
-
     &__promotion {
-
-        @if($article-promoted-image != "") {
+        @if($article-promoted-image !="") {
             @include article-promoted-image();
         }
     }
-
-
     &__quote {
         @include blockquote();
         padding: 0 7.5%;
         color: $cs-black;
         margin-top: 1.25rem;
     }
-
     &__authors {
         border-radius: 6px;
         border: solid 1px $cs-light-grey-2;
         padding: 31px 40px;
         margin-top: 35px;
     }
-
     &__meta {
         float: right;
     }
 }
-
-
 // Single Image
 .article-type--singleimage,
 .article-type--doubleimage,
 .article-type--video {
-    position: relative;
-    width: $screen-sm;
-    margin: auto;
-
-    @include breakpoint($screen-md) {
-        width: $screen-md;
+    .article {
+        &::before {
+            content: '';
+            display: block;
+            padding-top: percentage(9/16);
+        }
     }
-
-    @include breakpoint($screen-lg) {
-        width: $screen-lg;
-    }
-
-    .aside {
-        position: absolute;
-        top: 0;
-        padding-top: 0;
-        left: calc(100% - (300px + 30px));
-    }
-
     ._c-modal .slideshow__nav {
         display: none;
     }
 }
-
+.article-type--video {
+    .article {
+        &::before {
+            padding-top: percentage(9/16);
+        }
+    }
+}
 .article-type--singleimage,
 .article-type--doubleimage {
     .article {
+        z-index: 1;
+        pointer-events: none;
+        &::before {
+            padding-top: percentage(2/3);
+        }
+        &>* {
+            pointer-events: auto;
+        }
+        header {
+            position: relative;
+        }
         &__heading {
             position: absolute;
-            top: 0;
             transform: translateY(-100%);
             padding: 150px 30px 25px 30px;
             color: $cs-white;
             width: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(252,252,252,0) 1%,rgba(0,0,0,0.85) 100%);
-            z-index: 1;
-            pointer-events: none;
-
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(252, 252, 252, 0) 1%, rgba(0, 0, 0, 0.85) 100%);
+            top: -46px + -50px; //Height of container above (button and padding)
             @include breakpoint($screen-lg) {
-                width: calc(100% - 15px);
+                top: -61px + -65px; //Height of container above (button and padding)
             }
+            pointer-events: none;
         }
-
         &__subheading {
             margin-top: 0;
         }
-
         &__pricing {
             margin-bottom: 31px;
         }
     }
 }
-
-
-// Drop Cap
-.article {
-    &.review {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-light-blue;
-            }
-        }
-    }
-
-    &.car-advice,&.riding-advice {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-accent-green;
-            }
-        }
-    }
-
-    &.video {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-orange;
-            }
-        }
-    }
-
-    &.news {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-red;
-            }
-        }
-    }
-
-    &.comparison {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-purple;
-            }
-        }
-    }
-
-    &.feature {
-        .article__copy.drop-cap {
-            &>p:first-child:first-letter {
-                color: $cs-pink;
-            }
-        }
-    }
-
-    &__copy.drop-cap {
-        &>p:first-child::after {
-            @extend %clearfix;
-        }
-
-        &>p:first-child:first-letter {
-            @include drop-cap-paragraph();
-        }
-    }
-}
-
+@import "articledropcap";
 .article-disclaimer {
     font-size: $font-size-smaller;
     color: $cs-light-grey-2;
-
     &__heading {
         font-weight: bold;
     }

@@ -1,4 +1,4 @@
-﻿import * as ActionTypes from 'Js/Modules/Redux/Global/Actions/actionsTypes'
+﻿import * as ActionTypes from 'Redux/Global/Actions/actionsTypes'
 
 //Global Action Type
 

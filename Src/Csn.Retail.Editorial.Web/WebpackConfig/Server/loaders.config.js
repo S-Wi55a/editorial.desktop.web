@@ -1,10 +1,9 @@
-﻿import {IS_PROD} from '../Shared/env.config.js'
+﻿import { IS_PROD } from '../Shared/env.config.js'
 
 export const modules = () => {
 
     return {
-        rules: [
-            {
+        rules: [{
                 test: [/\.jsx?$/, /\.es6$/],
                 exclude: /(node_modules|bower_components|unitTest)/,
                 use: [
@@ -22,15 +21,15 @@ export const modules = () => {
                 use: [
                     'babel-loader?cacheDirectory=true',
                     {
-                        loader: 'ts-loader', 
+                        loader: 'ts-loader',
                         options: {
-                        transpileOnly: IS_PROD ? true : true,
-                          //visualStudioErrorFormat: true,
-                          logLevel: 'warn'
-                        } 
+                            transpileOnly: IS_PROD ? true : true,
+                            visualStudioErrorFormat: IS_PROD ? false : true,
+                            logLevel: 'warn'
+                        }
                     }
                 ]
-                
+
             }
         ]
     }

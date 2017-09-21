@@ -1,4 +1,4 @@
-﻿import { proxy } from 'Js/Modules/Endpoints/endpoints';
+﻿import { proxy } from 'Endpoints/endpoints';
 
 const container = (data) => {
 

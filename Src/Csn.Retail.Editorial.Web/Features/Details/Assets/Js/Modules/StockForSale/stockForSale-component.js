@@ -1,10 +1,10 @@
 ﻿import 'Css/Modules/Widgets/StockForSale/_stockForSale.scss'
 
-import * as View from 'Js/Modules/StockForSale/stockForSale-view'
-import * as Ajax from 'Js/Modules/Ajax/ajax.js'
+import * as View from 'StockForSale/stockForSale-view'
+import * as Ajax from 'Ajax/ajax.js'
 
-import Modal from 'Js/Modules/Modal/modal.js'
-import { disclaimerTemplate } from 'Js/Modules/Modal/modal-disclaimer-view'
+import Modal from 'Modal/modal.js'
+import { disclaimerTemplate } from 'Modal/modal-disclaimer-view'
  
 
 // Get Scope and cache selectors
