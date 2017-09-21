@@ -920,10 +920,6 @@
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeaderItem.tsx" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.tsx" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actions.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actionTypes.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\iNavReducer.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Types\index.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\componentsCollection.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Reducers\registeredServerReducerCollection.ts" />
   </ItemGroup>
