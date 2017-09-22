@@ -3,7 +3,7 @@ import { applyMiddleware, compose } from 'redux';
 // Middleware
 import reduxMulti from 'redux-multi'
 import { batchedSubscribe } from 'redux-batched-subscribe'
-import ReduxThunk from 'redux-thunk'
+import ReduxThunk from 'redux-thunk' 
 
 const middlewareDev = [
     require('redux-immutable-state-invariant').default() 

@@ -1,4 +1,4 @@
-﻿import {iNavParentReducer} from 'Redux/iNav/Reducers/iNavReducer'
+﻿import {iNavParentReducer} from 'iNav/Reducers'
 
 const Reducers = {
     iNav: iNavParentReducer

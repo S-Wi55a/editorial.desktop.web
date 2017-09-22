@@ -1,10 +1,6 @@
-﻿import { createStore, } from 'redux';
-import { createReducer } from 'Redux/Global/Reducers'
+﻿import { createStore } from 'redux-async-reducer';
 import { enhancer } from 'Redux/Global/Middleware/middleware'
 
 export function configureStore(preloadedState) {
-    return {
-        ...createStore(createReducer(), preloadedState, enhancer),
-        asyncReducers: {}
-    }
+    return createStore(null, preloadedState, enhancer)
 }

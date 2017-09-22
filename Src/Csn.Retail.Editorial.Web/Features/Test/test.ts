@@ -1,3 +1,0 @@
-interface IApple {
-    core: number;
-}

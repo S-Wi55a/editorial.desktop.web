@@ -6,6 +6,7 @@ export interface State {
 
 export interface IINavResponse{
     iNav: IINav
+    count?: number
 }
 
 export interface IINav {
@@ -19,15 +20,11 @@ export interface INavMetadata {
 }
 
 export interface INode {
-    isSelected: boolean
-    placeholderExpression: string
+    count?: number
     multiSelectMode: string
-    removeAction: string
     facets: IFacet[]
-    metadata: INodeMetadata
     name: string
     displayName: string
-    type: string
 }
 
 export interface INodeMetadata {
@@ -41,11 +38,13 @@ export interface IFacet {
     action: string
     count: number,
     expression: string,
-    metadata: IFacetMetadata
+    isRefineable: boolean
+    refinement: IRefinement
 }
 
-export interface IFacetMetadata {
-    isRefineable: boolean[]
+export interface IRefinement {
+    aspect: string
+    parentExpression: string
 }
 
 export interface SearchResults { }

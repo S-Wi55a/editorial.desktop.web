@@ -1,6 +1,9 @@
 ﻿@mixin cf {
-    @extend %clearfix;
+    content:"";
+    display:block;
+    clear:both;
 }
+
 
 // Responsive image
 //

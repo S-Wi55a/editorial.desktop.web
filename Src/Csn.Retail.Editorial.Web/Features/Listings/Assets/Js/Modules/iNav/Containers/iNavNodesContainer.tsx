@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import INavNodeContainer from 'iNav/Containers/iNavNodeContainer'
-import { INode } from 'Redux/iNav/Types'
+import { INode } from 'iNav/Types'
 
 if (!SERVER) {
   require('iNav/Css/iNav.NodesContainer')  

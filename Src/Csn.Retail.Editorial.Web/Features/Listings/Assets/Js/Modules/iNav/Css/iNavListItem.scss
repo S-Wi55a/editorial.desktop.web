@@ -4,10 +4,11 @@
 //Search category item
 .iNav-category-item {
 
-    $count-container-width: 75px;
+    $count-container-width: 100px;
 
     margin-top: 2px;
-
+    cursor: pointer;
+    
     &:nth-of-type(1) {
         margin-top: 0;
     }
@@ -44,7 +45,6 @@
         display: inline-block;
         vertical-align: middle;
         margin-right: 20px;
-        cursor: pointer;
     }
 
     &__link {
@@ -53,15 +53,16 @@
         color: $cs-dark-grey-1;
         width: calc(100% - 40px - #{$count-container-width}); // 100% - checkmark width+margin - $count-container-width
         text-decoration: none;
-
+        
         &:hover,
-        &:visited{
+        &:visited,
+        &:focus{
             text-decoration: none;
             color: $cs-dark-grey-1;
         }
     }
 
-    &__count-container {
+    &__meta-container {
         width: $count-container-width;
         display: inline-block;
         font-size: $font-size-h6;
@@ -78,6 +79,54 @@
         text-align: center;
         padding: 0 6.5px;
         margin-left: 5px;
-        vertical-align: middle
+        line-height: 21px;
+        height: 21px;
+        vertical-align: middle;
+    }
+
+    &__refinement {
+        height: 21px;
+        width: 21px;
+        line-height: 21px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        position: relative;
+                
+        &::before {
+            content: $icon-circle-right-lg;
+            font-family: $font-family-icons;
+            color: $cs-primary;
+            display: block;
+            position: absolute;
+            font-size: 21px;
+        }   
+        
+    }
+
+    &--noResults {
+        opacity: 0.5;
+        cursor: not-allowed;
+        
+        &.iNav-category-item {            
+            &.isSelected {
+                &::before {
+                    background-color: $cs-grey;
+                }
+            }
+        }
+        .iNav-category-item {
+            &__count {
+                background-color: $cs-grey;                  
+            }
+            &__link {
+                cursor: not-allowed;
+            }
+            &__refinement {
+                &::before {
+                    color: $cs-grey;
+                }
+            }
+        }
     }
 }

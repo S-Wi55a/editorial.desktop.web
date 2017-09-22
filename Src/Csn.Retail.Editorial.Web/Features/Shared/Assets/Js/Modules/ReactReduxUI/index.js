@@ -40,12 +40,12 @@ export default (Config) => (Component) => {
       const existingState = this.store.getState()[this.compKey]
 
       // Add the reduce and update the store
-      injectAsyncReducer(this.store, this.compKey, this.componentRootReducer(this.persist ? existingState : this.compState, this.props));
+      this.store.addReducer(this.compKey, this.componentRootReducer(this.persist ? existingState : this.compState, this.props));
       
     }
 
     componentWillUnmount() {
-       !this.persist && injectAsyncReducer(this.store, this.compKey, this.componentRootReducer({}));
+       !this.persist && this.store.addReducer(this.compKey, this.componentRootReducer({}));
     }
     render() {
       return <ConnectComp {...this.props}/>

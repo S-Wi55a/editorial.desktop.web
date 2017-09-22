@@ -10,7 +10,7 @@
     &__container {
         @include fadeInDown(-25%);
         
-        max-height: $category-container-height - ($spacing*2);
+        max-height: $category-container-height;
         padding: $spacing;
         width: 350px;
         font-size: $font-size-body;
@@ -29,25 +29,60 @@
             animation-name: fadeInDown;                    
         }
         &-page {
-            overflow-y: auto;
-            max-height: $category-container-height - ($spacing*4);
             position: relative;
-            &::after {
-                content: '';
-                width: 100%;
-                position: absolute;
-                bottom: 0;
-                height: 45px;
-                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
-                background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-                background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-                background: linear-gradient(to bottom, rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-            }
+            overflow: hidden;
+        }
+    }
+
+    &__header {
+        font-family: $font-family-default;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: $font-weight-600;
+        text-align: left;
+        color: $cs-dark-grey-2;
+    }
+
+    &__list-wrapper {
+        $cancel-bar-height: 65px;
+        $header-height: 35px;
+        overflow-y: auto;
+        max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $header-height + 15px;
+        &::before {
+            content: '';
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            height: 15px;
+            background: linear-gradient(to bottom, rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        }
+        &::after {
+            content: '';
+            width: 100%;
+            position: absolute;
+            z-index: 0;
+            top: 345px + 15px;
+            height: 15px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         }
     }
 
     &__list {
 
+        position: relative;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        z-index: 0;
+
+
+        &::before {
+            content: '';
+            width: 100%;
+            position: absolute;
+            top: 0;
+            height: 15px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        }
     }
 }

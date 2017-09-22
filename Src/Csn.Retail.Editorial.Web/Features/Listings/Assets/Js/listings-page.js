@@ -1,6 +1,4 @@
 ﻿import { configureStore } from 'Redux/Global/Store/store.client.js'
-import { injectAsyncReducer } from 'Redux/Global/Reducers'
-
 
 //Enable Redux store globally
 window.store = configureStore(); //Init store
@@ -11,7 +9,7 @@ window.store = configureStore(); //Init store
     // Check if there is a preloaded state from iNav
     const initState = window.__PRELOADED_STATE__iNav
 
-    injectAsyncReducer(window.store, 'iNav', require('Redux/iNav/Reducers/iNavReducer').iNavParentReducer(initState));
+    window.store.addReducer('iNav', require('iNav/Reducers').iNavParentReducer(initState));
 
     if (d.querySelector('#iNav')) {
         require('iNav/iNav');
@@ -29,9 +27,9 @@ window.store = configureStore(); //Init store
 
     if (module.hot) {
         // Enable Webpack hot module replacement for reducers
-        module.hot.accept('Redux/iNav/Reducers/iNavReducer',
+        module.hot.accept('iNav/Reducers',
             () => {
-                injectAsyncReducer(window.store, 'iNav', require('Redux/iNav/Reducers/iNavReducer').iNavParentReducer)
+                window.store.addReducer('iNav', require('iNav/Reducers').iNavParentReducer)
             })
     }
 })(document);
