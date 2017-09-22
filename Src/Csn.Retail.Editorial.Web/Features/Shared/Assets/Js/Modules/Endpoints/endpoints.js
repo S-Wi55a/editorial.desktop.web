@@ -4,4 +4,3 @@ export const iNav = {
     aspect: '/editorial/api/v1/search/nav/aspects/',
     refinment: ''
 }
-export const csnstatic = 'https://editorial.li.csnstatic.com/'
