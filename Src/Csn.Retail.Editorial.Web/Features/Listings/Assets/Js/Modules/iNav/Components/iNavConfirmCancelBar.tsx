@@ -5,8 +5,6 @@ import { Actions, ActionTypes, Thunks } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
 import { State } from 'iNav/Types'
 
-
-
 if (!SERVER) {
     require('iNav/Css/iNav.ConfirmCancelBar')  
   }
@@ -14,8 +12,9 @@ if (!SERVER) {
 
 interface IINavConfirmCancelBar {
     index?: number
-    count: number
-    pendingQuery: string
+    count?: number
+    pendingQuery?: string
+    onClick?: (q: string)=>void
 }
 //TODO: how to get hardcoded words data driven?
 const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({count, onClick, pendingQuery}) => (
@@ -32,7 +31,7 @@ const mapStateToProps = (state: State, ownProps: IINavConfirmCancelBar) => {
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+const mapDispatchToProps = (dispatch: any) => {
     return {
         onClick: (query: string)=>dispatch([
             Thunks.fetchINav(query),

@@ -19,7 +19,7 @@ const INavfacet: React.StatelessComponent<IINavfacet> = ({ isSelected, displayVa
     
     return (
         <li className={`iNav-category-item ${isSelected ? 'isSelected': ''} ${count ? '' : 'iNav-category-item--noResults' }`} onClick={()=>{count > 0 && onClick(aspect, action)}} >
-            <input className="iNav-category-item__checkbox" type="checkbox" checked={isSelected} readOnly="true"/>
+            <input className="iNav-category-item__checkbox" type="checkbox" checked={isSelected} readOnly={true}/>
             <a className="iNav-category-item__link" href={`${iNav}${action}`} onClick={e => e.preventDefault()}>{displayValue}</a>
             <span className="iNav-category-item__meta-container">
                 <span className="iNav-category-item__count">{count}</span>
@@ -33,7 +33,7 @@ const INavfacet: React.StatelessComponent<IINavfacet> = ({ isSelected, displayVa
 }
 
 
-const mapDispatchToProps = (dispatch: Dispatch<Thunks.Types>) => {
+const mapDispatchToProps = (dispatch: any) => {
     return {
         onClick: (aspect:string, query: string)=>dispatch([
             { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: {query} },

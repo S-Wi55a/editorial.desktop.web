@@ -2,9 +2,9 @@ import { Dispatch } from 'redux';
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
 
-type fetchINav = (q: string) => (d: Dispatch<Actions>) => Promise<any>
+type fetchINav = (q: string) => (d: Dispatch<any>) => Promise<any>
 
-export const fetchINav: fetchINav = (query: string) =>  (dispatch: Dispatch<Actions>) => {
+export const fetchINav: fetchINav = (query: string) =>  (dispatch: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
 
@@ -22,9 +22,9 @@ export const fetchINav: fetchINav = (query: string) =>  (dispatch: Dispatch<Acti
             )
     }
 
-type fetchINavAspect = (a: string, q: string) => (d: Dispatch<Actions>) => Promise<any>
+type fetchINavAspect = (a: string, q: string) => (d: Dispatch<any>) => Promise<any>
     
-export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) => (dispatch: Dispatch<Actions>) => {
+export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) => (dispatch: Dispatch<any>) => {
 
         dispatch({ type: ActionTypes.API.ASPECT.FETCH_QUERY_REQUEST })
 

@@ -74,11 +74,11 @@ function aspectReducer(state: IINavResponse, action: Actions): IINavResponse {
 }
 
 
-function RemoveBreadCrumbs(state, action) {
+function RemoveBreadCrumbs(state: any, action: any) {
 
     try {
 
-        const breadCrumbIndex = state.iNav.breadCrumbs.findIndex((breadCrumb) => breadCrumb.facet === action.facet)
+        const breadCrumbIndex = state.iNav.breadCrumbs.findIndex((breadCrumb: any) => breadCrumb.facet === action.facet)
 
         const newState = update(state,
             {

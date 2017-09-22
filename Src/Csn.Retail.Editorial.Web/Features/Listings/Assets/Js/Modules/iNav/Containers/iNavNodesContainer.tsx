@@ -9,7 +9,6 @@ if (!SERVER) {
 interface IINavNodesContainer {
   nodes: INode[] 
   activeItemId: number
-  onClick: ()=>void
 }
 
 const INavNodesContainer: React.StatelessComponent<IINavNodesContainer> = ({ nodes, activeItemId }) => (
