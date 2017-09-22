@@ -943,6 +943,7 @@
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\index.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\iNav.ts" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

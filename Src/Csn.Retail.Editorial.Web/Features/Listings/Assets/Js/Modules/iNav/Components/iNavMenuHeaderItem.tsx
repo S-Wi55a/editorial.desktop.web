@@ -5,7 +5,7 @@ import { createStore, compose } from 'redux'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import * as iNavTypes from 'iNav/Types'
 import UI from 'ReactReduxUI'
-import { State } from 'Redux/iNav/Types'
+import { State } from 'iNav/Types'
 
 
 interface IINavMenuHeaderItemComponent {
@@ -40,7 +40,7 @@ const mapStateToProps = (state: State, ownProps: IINavMenuHeaderItemComponent) =
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Actions[]>) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     toggleIsSelected: (id: number, isActive: boolean) => {
       dispatch([

@@ -7,6 +7,7 @@ export interface State {
 export interface IINavResponse{
     iNav: IINav
     count?: number
+    pendingQuery?: string    
 }
 
 export interface IINav {
