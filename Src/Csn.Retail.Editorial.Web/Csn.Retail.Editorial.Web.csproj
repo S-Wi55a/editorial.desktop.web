@@ -458,7 +458,6 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\iNavBreadCrumbs.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Containers\iNavSearchResultsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\iNavSearchResults.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavFacet.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
@@ -689,9 +688,6 @@
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Css\Tyopgraphy\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
-    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Components\" />
-    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Containers\" />
-    <Folder Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Css\" />
     <Folder Include="Features\Sponsored\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
@@ -871,7 +867,6 @@
     <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Assets\Css\error-page.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons-variables.scss" />
-    <Content Include="Views\web.config" />
     <Content Include="Features\Details\Views\Partials\SearchBar\_searchBar.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Redux\_ReduxStore.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\SponsoredArticles\_sponsoredArticles.scss" />
@@ -935,19 +930,31 @@
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeaderItem.tsx" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.tsx" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actions.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Actions\actionTypes.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Reducers\iNavReducer.ts" />
-    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\iNav\Types\index.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\componentsCollection.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Reducers\registeredServerReducerCollection.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.ConfirmCancelBar.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavConfirmCancelBar.tsx" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.variables.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodeContainer.tsx" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavContainer.tsx" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactReduxUI\index.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actions.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\thunks.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\index.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Types\index.ts" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavFacet.tsx" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\api.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\ui.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\index.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\iNav.ts" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

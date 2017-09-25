@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import INavNodeContainer from 'iNav/Containers/iNavNodeContainer'
-import { INode } from 'Redux/iNav/Types'
+import { INode } from 'iNav/Types'
 
 if (!SERVER) {
   require('iNav/Css/iNav.NodesContainer')  
@@ -9,7 +9,6 @@ if (!SERVER) {
 interface IINavNodesContainer {
   nodes: INode[] 
   activeItemId: number
-  onClick: ()=>void
 }
 
 const INavNodesContainer: React.StatelessComponent<IINavNodesContainer> = ({ nodes, activeItemId }) => (

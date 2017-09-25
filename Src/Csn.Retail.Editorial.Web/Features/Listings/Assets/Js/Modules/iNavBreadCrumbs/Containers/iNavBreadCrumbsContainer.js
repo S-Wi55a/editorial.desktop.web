@@ -1,10 +1,9 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { fetchINav } from 'Redux/iNav/Actions/actions'
+import { Thunks } from 'iNav/Actions/actions'
 
-
-const INavBreadCrumb = ({removeBreadCrumb, aspect, facet, facetDisplay, removeAction}) => (
+const INavBreadCrumb = ({removeBreadCrumb, facetDisplay, removeAction}) => (
     <div className="iNavBreadCrumb" onClick={() =>removeBreadCrumb(removeAction)}>
         {facetDisplay}
     </div>
@@ -33,7 +32,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         removeBreadCrumb: (query) => {
-            dispatch(fetchINav(query))
+            dispatch(Thunks.fetchINav(query))
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿import { Action } from 'redux'
-import * as ActionTypes from 'iNav/Actions/actionTypes'
-import * as INavTypes from 'Redux/iNav/Types'
+import * as ActionTypes from 'iNav/Actions/ActionTypes'
+import * as INavTypes from 'iNav/Types'
+import * as Thunks from 'iNav/Actions/thunks'
 
 interface IToggleIsActive extends Action {
     type: ActionTypes.UI.TOGGLE_IS_ACTIVE
@@ -12,6 +13,12 @@ interface IToggleIsActive extends Action {
 
 interface ICancel extends Action {
     type: ActionTypes.UI.CANCEL
+    payload?: any    
+}
+
+interface ICloseINav extends Action {
+    type: ActionTypes.UI.CLOSE_INAV
+    payload?: any
 }
 
 interface IIncrement extends Action {
@@ -27,10 +34,42 @@ interface IDecrement extends Action {
         name: string
     }
 }
-// Fetch data
-export type Actions = IToggleIsActive
+
+interface IFetchQuerySuccess extends Action {
+    type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS | ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS
+    payload: {
+        name?: string
+        data: INavTypes.IINavResponse
+    }
+}
+
+interface IUpdatePendingQuery extends Action {
+    type: ActionTypes.INAV.UPDATE_PENDING_QUERY
+    payload: {
+        query: string
+    }
+}
+
+interface IUpdatePreviousState extends Action {
+    type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE
+    payload: {
+        data: INavTypes.IINavResponse
+    }
+}
+
+
+type UIActions = IToggleIsActive
     | ICancel
     | IIncrement
     | IDecrement
+    | ICloseINav
 
-export { ActionTypes }
+type APIActions = IFetchQuerySuccess
+
+type INavActions = IUpdatePendingQuery 
+    | IUpdatePreviousState
+
+// Fetch data
+export type Actions = UIActions | APIActions | INavActions
+
+export { ActionTypes, Thunks }

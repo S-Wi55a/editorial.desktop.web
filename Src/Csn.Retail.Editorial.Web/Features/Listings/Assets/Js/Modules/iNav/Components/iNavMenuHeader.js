@@ -4,7 +4,7 @@ import INavMenuHeaderItem from 'iNav/Components/iNavMenuHeaderItem'
 if (!SERVER) {
   require('iNav/Css/iNav.MenuHeader.scss')  
 }
-
+//TODO: Covert to dumb component
 class INavMenuHeader extends React.Component {
 
   constructor(props){

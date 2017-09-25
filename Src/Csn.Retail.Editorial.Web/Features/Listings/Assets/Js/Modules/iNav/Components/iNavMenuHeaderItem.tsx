@@ -1,11 +1,11 @@
 import * as React from "react"
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
-import { createStore, compose } from 'redux';
+import { createStore, compose } from 'redux'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
-import * as iNavTypes from 'Redux/iNav/Types'
+import * as iNavTypes from 'iNav/Types'
 import UI from 'ReactReduxUI'
-import { State } from 'Redux/iNav/Types'
+import { State } from 'iNav/Types'
 
 
 interface IINavMenuHeaderItemComponent {
@@ -25,24 +25,33 @@ const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemC
   )
 }
 
-// Redux Connect
+function findIsSelected(facets: iNavTypes.IFacet[]) {
+  let count = 0
+  facets.forEach(item => {
+    if(item.isSelected) {count++}
+  });
+  return count
+}
 
+// Redux Connect
 const mapStateToProps = (state: State, ownProps: IINavMenuHeaderItemComponent) => {
   return {
-    count: state[`ui/INavNodeContainer_${ownProps.node.name}`] ? state[`ui/INavNodeContainer_${ownProps.node.name}`].internalItemsCount : 0
+    count: findIsSelected(state.iNav.iNav.nodes[ownProps.index].facets)
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Actions>) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     toggleIsSelected: (id: number, isActive: boolean) => {
-      dispatch({
-        type: ActionTypes.UI.TOGGLE_IS_ACTIVE,
-        payload: {
-          id,
-          isActive: !isActive
+      dispatch([
+        {type: ActionTypes.UI.CANCEL},
+        { type: ActionTypes.UI.TOGGLE_IS_ACTIVE,
+          payload: {
+            id,
+            isActive: !isActive
+          }
         }
-      })
+      ])
     }
   }
 }
@@ -55,6 +64,7 @@ const componentRootReducer = (initUIState: any) => (state: any = initUIState, ac
         isActive: action.payload.isActive && state.id === action.payload.id
       }
     case ActionTypes.UI.CANCEL:
+    case ActionTypes.UI.CLOSE_INAV:
       return {
         ...state,
         isActive: false        

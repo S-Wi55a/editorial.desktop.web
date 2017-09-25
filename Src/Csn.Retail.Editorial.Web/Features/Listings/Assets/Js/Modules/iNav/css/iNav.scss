@@ -24,7 +24,7 @@
 
     &.isActive {
         opacity: 1;
-        box-shadow: 0 0 0px 1000vh rgba(0,0,0,0.75);
+        box-shadow: 0 0 0px 1000vh rgba(0,0,0,0.75); 
 
         &::after {
             content: '';
@@ -37,19 +37,25 @@
         }
 
         .iNav__container {
-            height: $iNav-header-height;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+            &::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 0;
+            }
         }
     }
+
     // Category container
     &__container {
+
         height: $iNav-header-height;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: center;  
     }
 }
-
-@import "./iNavListItem.scss";

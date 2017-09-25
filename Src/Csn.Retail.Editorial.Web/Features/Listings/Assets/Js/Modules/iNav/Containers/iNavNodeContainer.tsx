@@ -1,7 +1,8 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import INavfacet from 'iNav/Components/iNavFacet'
-import { INode } from 'Redux/iNav/Types'
+import INavConfirmCancelBar from 'iNav/Components/iNavConfirmCancelBar'
+import { INode } from 'iNav/Types'
 import UI from 'ReactReduxUI'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { Dispatch } from 'redux';
@@ -15,55 +16,21 @@ interface IINavNodeContainer extends INode {
 }
 
 // This is separated for displaying sub lists
-const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = ({ facets, index, activeItemId, name }) => (
+const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = ({ facets, index, activeItemId, name, displayName }) => (
   <div className={['iNav-category__container', activeItemId === index ? 'isActive' : ''].join(' ')}>
+    <div className='iNav-category__header'>{displayName}</div>
     <div className={['iNav-category__container-page'].join(' ')}>
-      <ul className='iNav-category__list'>
-        {facets.map((facet) => {
-          return <INavfacet key={facet.displayValue} {...facet} />
-        })}
-      </ul>
+      <div className='iNav-category__list-wrapper'>
+        <ul className='iNav-category__list'>
+          {facets.map((facet) => {
+            return <INavfacet key={facet.displayValue} {...facet} aspect={name}/>
+          })}
+        </ul>
+      </div>
     </div>
+    <INavConfirmCancelBar index={index}/>
   </div>
 );
 
-const componentRootReducer = (initUIState: any, ownProps: IINavNodeContainer) => (state: any = initUIState, action: Actions) => {
-  switch (action.type) {
-    case ActionTypes.UI.INCREMENT:
-      if (action.payload.name === ownProps.name)
-      return {
-        ...state,
-        internalItemsCount: state.internalItemsCount + 1
-      }
-    case ActionTypes.UI.DECREMENT:
-      return {
-        ...state,
-        internalItemsCount: state.internalItemsCount <= 0 ? 0 : state.internalItemsCount - 1
-      }
-    default:
-      return state
-  }
-}
-
 // Connect the Component to the store
-export default (UI({
-  key: (props: IINavNodeContainer)=>`ui/INavNodeContainer_${props.name}`,
-  state: (props: IINavNodeContainer)=>({
-    internalItemsCount: 0
-  }),
-  reducer: componentRootReducer,
-  mapDispatchToProps: (dispatch: Dispatch<Actions>, ownProps: IINavNodeContainer) => ({
-    increment: ()=>dispatch({
-      type: ActionTypes.UI.INCREMENT,
-      payload: {
-        name: ownProps.name
-      }
-    }),
-    decrement: ()=>dispatch({
-      type: ActionTypes.UI.DECREMENT,
-      payload: {
-        name: ownProps.name
-      }
-    })    
-  })
-})(INavNodeContainer))
+export default INavNodeContainer
