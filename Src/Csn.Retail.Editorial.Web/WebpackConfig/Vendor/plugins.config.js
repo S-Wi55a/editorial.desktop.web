@@ -16,6 +16,9 @@ export const plugins = () => {
         let pluginsArr = [
             assetsPluginInstance,              
             new webpack.NamedModulesPlugin(),
+            new webpack.DefinePlugin({
+                'process.env.NODE_ENV': IS_PROD ? '"production"': '"development"', //TODO add to shared / Correct the logic
+            }),
         ]
     
         if (IS_PROD) {
