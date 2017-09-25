@@ -377,10 +377,6 @@
     }
 }
 @import "articledropcap";
-.article-disclaimer {
-    font-size: $font-size-smaller;
-    color: $cs-light-grey-2;
-    &__heading {
-        font-weight: bold;
-    }
-}
+
+// Module - Disclaimer 
+@import "Css/Modules/ArticleDisclaimer/disclaimer";

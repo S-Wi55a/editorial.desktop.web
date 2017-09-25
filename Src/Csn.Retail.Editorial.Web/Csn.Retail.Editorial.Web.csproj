@@ -569,7 +569,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\kruxSasHelper.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotive.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotiveLoader.js" />
@@ -686,7 +685,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Features\Details\Assets\Images\" />
-    <Folder Include="Features\Listings\Assets\Css\" />
+    <Folder Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Css\Tyopgraphy\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
@@ -902,6 +901,16 @@
     <Content Include="tsconfig.json" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.MenuHeader.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNavListItem.scss" />
+    <Content Include="Features\Listings\Views\Carsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Partials\Content\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Bikesales\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Constructionsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Farmmachinerysales\_Disclaimer.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\ArticleDisclaimer\disclaimer.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.variables.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Content\_articleDropCap.scss" />
+    <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
+    <Content Include="Features\Listings\Views\Partials\_Aside.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -921,6 +930,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Component\iNavSearchResult.tsx" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actions.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actionTypes.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeaderItem.tsx" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.tsx" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
