@@ -23,13 +23,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         [Route("editorial/details/{pageName:regex(^.*-\\d+/?$)}")]
         [RedirectAttributeFilter]
         // GET: Details
-        public async Task<ActionResult> Index(ArticleIdentifier articleIdentifier)
+        public async Task<ActionResult> Index(ArticleIdentifier articleIdentifier, bool __preview=false)
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsPageRequestEvent());
             
             var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
                 {
-                    Id = articleIdentifier.Id
+                    Id = articleIdentifier.Id,
+                    IsPreview = __preview
                 });
 
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);

@@ -29,7 +29,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             {
                 ServiceName = _tenantProvider.Current().Name,
                 ViewType = "desktop",
-                Id = query.Id
+                Id = query.Id,
+                IsPreview = query.IsPreview
             });
 
             if (!result.IsSucceed)
