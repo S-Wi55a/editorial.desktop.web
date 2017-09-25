@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         }
 
-        [Route("editorial/listings/")]
+        [Route("editorial/beta-results/")]
         [RedirectAttributeFilter]
         public async Task<ActionResult> Index(string q = null)
         {
