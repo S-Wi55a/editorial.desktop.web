@@ -1,29 +1,35 @@
 ﻿.pros-and-cons {
     margin-top: 30px;
-
+    font-size: $font-size-body;
+    
     &__pro {
         border-top: 1px solid $cs-light-grey-2;
     }
+
     &__con {
         border-top: 1px solid $cs-light-grey-2;
         margin-top: 15px;
     }
+
     &__pro-heading {
         color: $cs-accent-green;
         margin-top: 10px;
     }
+
     &__con-heading {
         color: $cs-red;
         margin-top: 10px;
     }
+
     &__pro-list {
         padding-left: 15px;
     }
+
     &__con-list {
         padding-left: 15px;
     }
-    &__pro-list-item {
 
+    &__pro-list-item {
         margin-top: 13px;
 
         &::before {
@@ -37,10 +43,9 @@
             background-color: $cs-accent-green;
             vertical-align: middle;
         }
-
     }
-    &__con-list-item {
 
+    &__con-list-item {
         margin-top: 13px;
 
         &::before {
