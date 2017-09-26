@@ -5,8 +5,8 @@ import path from 'path'
 
 export const config = {
     entryPointMatch: './Features/**/*-page.js', // anything ends with -page.js
-    outputPath: path.resolve('dist--server'),
-    publicPath: IS_PROD ? './' : 'dist--server'
+    outputPath: path.resolve('serverjs'),
+    publicPath: IS_PROD ? './' : 'serverjs'
 }
 
 export function getEntryFiles(tenant) {

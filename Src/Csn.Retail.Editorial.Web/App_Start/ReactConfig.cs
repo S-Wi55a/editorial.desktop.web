@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web
 		        .SetReuseJavaScriptEngines(false) //TODO: remove in Prod
                 .SetLoadBabel(false)
                 .SetLoadReact(false)
-                .AddScriptWithoutTransform("/dist--server/react-server-components.js")
+                .AddScriptWithoutTransform("/serverjs/react-server-components.js")
                 //.AddScript("/Features/Listings/Assets/Js/Modules/iNavSearchResults/Containers/iNavSearchResultsContainer.js")
                 //.DisableServerSideRendering()
                 ;
