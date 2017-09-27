@@ -12,7 +12,7 @@ import {modules} from './loaders.config.js'
 
 
 // Remove dist folder
-rimraf('./serverjs', function (err) { if (err) { throw err; } });
+rimraf('./dist--server', function (err) { if (err) { throw err; } });
 
 module.exports = () => {
 
