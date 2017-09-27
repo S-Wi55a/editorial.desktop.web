@@ -1,7 +1,7 @@
 ﻿import ScrollMagic from 'ScrollMagic'
 import ResizeSensor from 'css-element-queries/src/ResizeSensor'
-import * as Utils from 'Features/Details/Assets/StickySidebar/stickySidebar.utils.js'
-import { scrollingUp, scrollingDown, scrollingSimple } from 'Features/Details/Assets/StickySidebar/stickySidebar.Actions.js'
+import * as Utils from 'StickySidebar/stickySidebar.utils.js'
+import { scrollingUp, scrollingDown, scrollingSimple } from 'StickySidebar/stickySidebar.Actions.js'
 
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
