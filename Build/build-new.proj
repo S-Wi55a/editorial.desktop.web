@@ -161,6 +161,18 @@
 				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
 				/>
 	</Target>
+	
+	<Target Name="CopyServerScripts">
+		<RemoveDir Directories="$(OutputDir)\dist--server"/>
+		<MakeDir Directories="$(OutputDir)\dist--server"/>
+		<RoboCopy
+				SourceFolder="$(TargetProjectDir)\dist--server"
+				DestinationFolder="$(OutputDir)\dist--server"
+				Subdirectories="true"
+				ExcludeFolders=""				
+				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
+				/>
+	</Target>
 
 	<Target Name="TaskCopyPublicFolderToOutput">
 		<RoboCopy
@@ -208,7 +220,7 @@
 				Mirror="true"
 				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
 				/>
-	</Target>
+	</Target>	
 
 	<Target Name="DevReady" DependsOnTargets="NugetRestore;CompileBuild;">
 				<Message Text="Make the repo dev ready..." Importance="high"/>
