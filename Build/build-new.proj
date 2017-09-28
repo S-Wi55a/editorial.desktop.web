@@ -163,6 +163,7 @@
 	</Target>
 	
 	<Target Name="CopyServerScripts">
+		<Message Text="Copying Server Scripts..." Importance="high"/>
 		<RemoveDir Directories="$(OutputDir)\dist--server"/>
 		<MakeDir Directories="$(OutputDir)\dist--server"/>
 		<RoboCopy
@@ -198,7 +199,7 @@
 		<Message Text="Copying source to output..." Importance="high"/>
 	</Target>
 
-	<Target Name="CopySourceToOutputNoTransform"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput">
+	<Target Name="CopySourceToOutputNoTransform"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput;CopyServerScripts;">
 		<Message Text="Copying source to output..." Importance="high"/>
 	</Target>
 
