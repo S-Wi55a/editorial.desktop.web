@@ -194,7 +194,7 @@
 								StackTrace="true" />
 	</Target>
 
-	<Target Name="CopySourceToOutput"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput;TaskTransformConfig">
+	<Target Name="CopySourceToOutput"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput;CopyServerScripts;TaskTransformConfig">
 		<Message Text="Copying source to output..." Importance="high"/>
 	</Target>
 
