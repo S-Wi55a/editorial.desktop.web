@@ -9,6 +9,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
     public class RefinementResult : NavNode
     {
         public int Count { get; set; }
-        public NavNode Refinements { get; set; }
+        public RefinementNavNode Refinements { get; set; }
+    }
+
+    public class RefinementNavNode : NavNode
+    {
+        public string ParentExpression { get; set; }
     }
 }

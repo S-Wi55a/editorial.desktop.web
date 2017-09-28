@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
+﻿using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
-using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 {
@@ -33,6 +30,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         public static RefinementsNodeDto GetRefinements(this FacetNodeDto source)
         {
             return source.MetaData?.Refinements?.FirstOrDefault();
-        }        
+        }
+
+        public static string GetParentExpression(this RefinementsNodeDto source)
+        {
+            return source.Metadata != null && source.Metadata.ParentExpression != null
+                ? source.Metadata.ParentExpression.FirstOrDefault()
+                : string.Empty;
+        }
     }
 }
