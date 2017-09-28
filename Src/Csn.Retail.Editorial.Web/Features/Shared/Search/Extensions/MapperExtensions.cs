@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 
         public static Refinement GetParentExpression(this RefinementsNodeDto source)
         {
-            if(source.Metadata != null && source.Metadata.ParentExpression != null){
+            if(source.Metadata?.ParentExpression != null){
                 
                 return new Refinement {
                     ParentExpression =  source.Metadata.ParentExpression.FirstOrDefault(),
