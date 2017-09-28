@@ -36,7 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
             cfg.CreateMap<RefinementsNodeDto, RefinementNavNode>()
                 .ForMember(dest => dest.MultiSelectMode, opt => opt.Ignore())
-                .ForMember(dest => dest.ParentExpression, opt => opt.MapFrom(src => src.GetParentExpression()));
+                .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetParentExpression()));
 
             cfg.CreateMap<RyvussNavNodeDto, AspectResult>()
                 .ForMember(dest => dest.Count, opt => opt.Ignore());

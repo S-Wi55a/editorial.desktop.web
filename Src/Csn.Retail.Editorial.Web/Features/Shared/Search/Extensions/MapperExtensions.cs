@@ -21,7 +21,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
             return source.MetaData.Refinement.First();
         }
 
-
         public static RefinementsNodeDto GetRefinements(this RyvussNavNodeDto source)
         {
             return source.MetaData?.Refinements?.FirstOrDefault();            
@@ -32,11 +31,17 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
             return source.MetaData?.Refinements?.FirstOrDefault();
         }
 
-        public static string GetParentExpression(this RefinementsNodeDto source)
+        public static Refinement GetParentExpression(this RefinementsNodeDto source)
         {
-            return source.Metadata != null && source.Metadata.ParentExpression != null
-                ? source.Metadata.ParentExpression.FirstOrDefault()
-                : string.Empty;
+            if(source.Metadata != null && source.Metadata.ParentExpression != null){
+                
+                return new Refinement {
+                    ParentExpression =  source.Metadata.ParentExpression.FirstOrDefault(),
+                    Aspect = source.Name
+                };
+            }
+
+            return new Refinement();
         }
     }
 }
