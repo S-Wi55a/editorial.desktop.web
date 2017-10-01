@@ -29,6 +29,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details.CacheStores
 
         public async Task<GetArticleResponse> GetAsync(GetArticleQuery query, Func<GetArticleQuery, Task<GetArticleResponse>> fetchAsync)
         {
+            if (query.IsPreview)
+            {
+                // bypass cache for articles which are being previewed
+                return await fetchAsync.Invoke(query);
+            }
+
             var cacheKey = _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name, query.Id);
 
             // check the cache

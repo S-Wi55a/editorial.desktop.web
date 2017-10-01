@@ -70,8 +70,8 @@ export const modules = (tenant) => {
                     {
                         loader: 'ts-loader',
                         options: {
-                            transpileOnly: IS_PROD ? true : true,
-                            visualStudioErrorFormat: IS_PROD ? false : true,
+                            transpileOnly: IS_PROD ? false : true, // Performance reasons - https://github.com/TypeStrong/ts-loader
+                            visualStudioErrorFormat: true,
                             logLevel: 'warn'
                         }
                     }

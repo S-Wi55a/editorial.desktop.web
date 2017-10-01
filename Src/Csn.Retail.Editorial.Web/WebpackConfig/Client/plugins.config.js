@@ -89,7 +89,6 @@ export const plugins = (tenant, pageEntries) => {
         )
         pluginsArr.push(
             new ForkTsCheckerWebpackPlugin({
-                watch: './Features/**/*', // optional but improves performance (less stat calls),
                 checkSyntacticErrors: true
             }) 
         )
