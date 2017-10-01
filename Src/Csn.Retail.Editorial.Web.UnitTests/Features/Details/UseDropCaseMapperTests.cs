@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Details.Mappings;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using NUnit.Framework;
@@ -10,7 +6,7 @@ using NUnit.Framework;
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
 {
     [TestFixture]
-    internal class UseDropCaseMapperTest
+    internal class UseDropCaseMapperTests
     {
         [Test]
         public void WithContentValue()

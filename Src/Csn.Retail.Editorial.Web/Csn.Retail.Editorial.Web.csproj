@@ -578,7 +578,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.client.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Store\store.server.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Utils\hmr.js" />
-    <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.js" />
     <Content Include="Infrastructure\React\Assets\Js\react-server-entry.js" />
     <Content Include="Infrastructure\React\Assets\Js\Util\ReactServerConnect.js" />
     <Content Include="WebpackConfig\Client\entries.config.js" />
@@ -955,6 +954,8 @@
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\iNav.ts" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
+    <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\preloadedState.d.ts" />
+    <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -23,8 +23,7 @@ export const modules = () => {
                     {
                         loader: 'ts-loader',
                         options: {
-                            transpileOnly: IS_PROD ? true : true,
-                            visualStudioErrorFormat: IS_PROD ? false : true,
+                            visualStudioErrorFormat: true,
                             logLevel: 'warn'
                         }
                     }
