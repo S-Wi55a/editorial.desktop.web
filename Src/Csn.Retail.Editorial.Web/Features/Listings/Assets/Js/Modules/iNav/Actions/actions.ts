@@ -36,7 +36,7 @@ interface IDecrement extends Action {
 }
 
 interface IFetchQuerySuccess extends Action {
-    type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS | ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS
+    type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS | ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS | ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS
     payload: {
         name?: string
         data: INavTypes.IINavResponse
@@ -57,12 +57,17 @@ interface IUpdatePreviousState extends Action {
     }
 }
 
+interface ISwitchPage extends Action {
+    type: ActionTypes.UI.SWITCH_PAGE_FORWARD | ActionTypes.UI.SWITCH_PAGE_BACK
+    payload? : any
+}
 
 type UIActions = IToggleIsActive
     | ICancel
     | IIncrement
     | IDecrement
     | ICloseINav
+    | ISwitchPage
 
 type APIActions = IFetchQuerySuccess
 

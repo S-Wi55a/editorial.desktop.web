@@ -7,7 +7,8 @@ export interface State {
 export interface IINavResponse{
     iNav: IINav
     count?: number
-    pendingQuery?: string    
+    pendingQuery?: string
+    currentRefinement?: string   
 }
 
 export interface IINav {
@@ -26,6 +27,12 @@ export interface INode {
     facets: IFacet[]
     name: string
     displayName: string
+    refinements?: IRefinements
+}
+
+export interface IRefinements {
+    facets: IFacet[]
+    displayName: string
 }
 
 export interface INodeMetadata {
@@ -40,7 +47,9 @@ export interface IFacet {
     count: number,
     expression: string,
     isRefineable: boolean
-    refinement: IRefinement
+    refinement?: IRefinement
+    refinements?: IRefinements
+    
 }
 
 export interface IRefinement {
