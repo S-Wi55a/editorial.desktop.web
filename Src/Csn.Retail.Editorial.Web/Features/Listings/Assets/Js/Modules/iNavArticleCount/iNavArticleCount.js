@@ -5,10 +5,6 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import INavArticleCountComponent from 'iNavArticleCount/Components/iNavArticleCountComponent'
 
-if (!SERVER) {
-    require('iNavArticleCount/Css/iNavArticleCount.scss')
-}
-
 //Check for Store
 const store = window.store
 

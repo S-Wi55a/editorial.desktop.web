@@ -462,6 +462,8 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
+    <Compile Include="Features\Listings\GetListingsQuery.cs" />
+    <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
@@ -469,6 +471,7 @@
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleData.cs" />
     <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />
@@ -496,7 +499,9 @@
     <Compile Include="Features\Shared\Search\Aspect\AspectQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\Aspect\AspectResult.cs" />
     <Compile Include="Features\Shared\Search\Extensions\MapperExtensions.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\DateAvailableMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\ResultsMessageMapper.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\Shared\MapperConfiguration.cs" />
@@ -519,6 +524,7 @@
     <Compile Include="Infrastructure\Constants\TenantNames.cs" />
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />
     <Compile Include="Infrastructure\Filters\RedirectAttributeFilter.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckSummary.cs" />
@@ -686,7 +692,6 @@
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Css\Tyopgraphy\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
-    <Folder Include="Features\Sponsored\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>

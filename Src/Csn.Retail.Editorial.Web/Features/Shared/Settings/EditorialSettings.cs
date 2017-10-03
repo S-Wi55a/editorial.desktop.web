@@ -11,5 +11,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Settings
 
         [ConfigurationProperty("ImageServerUrlTemplate", IsRequired = true)]
         public string ImageServerUrlTemplate => this["ImageServerUrlTemplate"] as string;
+
+        [ConfigurationProperty("DetailsUrlFormat", IsRequired = true)]
+        public string DetailsUrlFormat => this["DetailsUrlFormat"] as string;
+
+        [ConfigurationProperty("TilePublishDateFormat", IsRequired = true)]
+        public string TilePublishDateFormat => this["TilePublishDateFormat"] as string;
     }
 }
