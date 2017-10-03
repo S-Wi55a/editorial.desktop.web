@@ -15,8 +15,7 @@ const INavSearchResults = ({ searchResults }) => (
                     })
                 }
             </ReactCSSTransitionGroup>
-            <div>{JSON.stringify(searchResults)}</div>
-        </div>    
+        </div>
 );
 
 // Redux Connect

@@ -1,24 +1,47 @@
 ﻿@import "css/_globals.scss";
 
 .iNavSearchResult {
-    $spacing: 20px;
+    $spacing: 15px;
 
     width: calc(50% - #{($spacing)};
     display: inline-block;
     vertical-align: top;
-    margin-left: $spacing;
     margin-bottom: $spacing;
-    opacity: 1;
-    transition: opacity .3s;
 
-    @include breakpoint($screen-lg) {
-        width: calc(50% - #{($spacing*2)};
-        margin-left: $spacing * 2;
-        margin-bottom: $spacing*2;
+
+    &:nth-of-type(odd) {
+        margin-right: $spacing;
     }
 
-    &:hover {
-        opacity: 0.75;
+    @include breakpoint($screen-lg) {
+        $spacing: 30px;
+
+        width: calc(50% - #{($spacing)};
+        margin-bottom: $spacing;
+
+        &:nth-of-type(odd) {
+            margin-right: $spacing;
+        }
+    }
+
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover::before {
+        opacity: 1;
     }
 
     a:hover {
@@ -46,8 +69,13 @@
     }
 
     &__heading {
-        @include p();
+        font-size: $font-size-p; //18px
+        font-weight: $font-weight-400;
+        letter-spacing: 0;
+        line-height: 1.6;
         color: $cs-dark-grey-1;
+        height: 3.2em;
+        overflow: hidden;
     }
 
     &__date {

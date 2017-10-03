@@ -690,7 +690,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
-    <Folder Include="Features\Shared\Assets\Css\Tyopgraphy\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
@@ -877,7 +876,6 @@
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Css\iNavBreadCrumbs.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResult.scss" />
     <Content Include="Features\Listings\Views\ListingTemplate.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixin-modal.scss" />
@@ -909,6 +907,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Content\_articleDropCap.scss" />
     <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
     <Content Include="Features\Listings\Views\Partials\_Aside.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
