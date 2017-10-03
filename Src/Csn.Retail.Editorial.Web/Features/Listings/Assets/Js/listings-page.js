@@ -1,4 +1,6 @@
-﻿import { configureStore } from 'Redux/Global/Store/store.client.js'
+﻿require('Css/listings-page.scss');
+
+import { configureStore } from 'Redux/Global/Store/store.client.js'
 
 //Enable Redux store globally
 window.store = configureStore(); //Init store

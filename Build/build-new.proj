@@ -156,8 +156,22 @@
 				SourceFolder="$(TargetProjectDir)"
 				DestinationFolder="$(OutputDir)"
 				Subdirectories="true"
-				ExcludeFolders="obj;logs;Properties;node_modules;bower_components;.happypack;.vscode;dist;"
-				ExcludeFiles="*.cs;*.csproj*;*.less;packages.config;package.json;Project_Readme.html;gulpfile.js;*.less;*.scss;.babelrc;.eslintrc.json;.modernizrrc.js;bower.json;eslint.json;webpack.config.js;yarn.lock;*.map;*.css;*.js;*.png;*.svg;*.jpg;*.gif;*.eot;*.ttf;*.woff"
+				ExcludeFolders="obj;logs;Properties;node_modules;bower_components;.happypack;.vscode;dist;.cache;"
+				ExcludeFiles="*.cs;*.csproj*;*.less;packages.config;package.json;Project_Readme.html;gulpfile.js;*.less;*.scss;.babelrc;.eslintrc.json;.modernizrrc.js;bower.json;eslint.json;webpack.config.js;yarn.lock;*.map;*.css;*.js;*.png;*.svg;*.jpg;*.gif;*.eot;*.ttf;*.woff;*.ts;*.tsx;"
+				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
+				/>
+	</Target>
+	
+	<Target Name="CopyServerScripts">
+		<Message Text="Copying Server Scripts..." Importance="high"/>
+		<RemoveDir Directories="$(OutputDir)\dist--server"/>
+		<MakeDir Directories="$(OutputDir)\dist--server"/>
+		<RoboCopy
+				SourceFolder="$(TargetProjectDir)\dist--server"
+				DestinationFolder="$(OutputDir)\dist--server"
+				Subdirectories="true"
+				ExcludeFolders="obj"
+				ExcludeFiles="*.cs;"
 				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
 				/>
 	</Target>
@@ -182,11 +196,11 @@
 								StackTrace="true" />
 	</Target>
 
-	<Target Name="CopySourceToOutput"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput;TaskTransformConfig">
+	<Target Name="CopySourceToOutput"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput;CopyServerScripts;TaskTransformConfig">
 		<Message Text="Copying source to output..." Importance="high"/>
 	</Target>
 
-	<Target Name="CopySourceToOutputNoTransform"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput">
+	<Target Name="CopySourceToOutputNoTransform"  DependsOnTargets="TaskGenerateVersionInfo;TaskCopySourceToOutput;CopyServerScripts;">
 		<Message Text="Copying source to output..." Importance="high"/>
 	</Target>
 
@@ -208,7 +222,7 @@
 				Mirror="true"
 				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
 				/>
-	</Target>
+	</Target>	
 
 	<Target Name="DevReady" DependsOnTargets="NugetRestore;CompileBuild;">
 				<Message Text="Make the repo dev ready..." Importance="high"/>

@@ -1,0 +1,41 @@
+@import "css/_globals.scss";
+
+// Page - Listings
+
+.listing-page {
+
+    .container {
+        font-size: 0;
+        
+        .main {
+
+            display: inline-block;
+            $width: $screen-sm - ($aside-width + $grid-gutter-width);
+            width: calc(#{#{$width}});
+
+            @include breakpoint($screen-md) {
+                $width: $screen-md - ($aside-width + $grid-gutter-width);
+                width: calc(#{#{$width}});
+            }
+
+            @include breakpoint($screen-lg) {
+                $width: $screen-lg - ($aside-width + $grid-gutter-width);
+                width: calc(#{#{$width}});
+            }
+        }
+    }
+}
+
+
+// Module - Aside
+
+.wrapper--aside {
+    display: inline-block;
+    vertical-align: top;    
+}
+
+.aside {
+    width: 300px;
+}
+
+@import "Css/Modules/ArticleDisclaimer/disclaimer";
