@@ -1,7 +1,6 @@
 @using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
-@using React.Web.Mvc
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 @{
@@ -11,7 +10,6 @@
 }
 
 @section Head {
-    @{ Html.RenderPartial("Partials/Tracking/_WebTrendsData", Model.WebTrendsTags); }
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
     @{ Html.RenderPartial("Partials/Head/_SocialMetaData", Model.SocialMetaData); }
 }
@@ -24,9 +22,7 @@
     @Html.AssetJs("details.vendor", LoadType.Defer)
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
     @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
-
 }
-
 
 <div class="page-container">
     
@@ -41,14 +37,10 @@
         {
             Html.RenderPartial("Partials/_Aside");
         }
-
-
-
     </article>
 
     @{ Html.RenderPartial("Partials/Modal/_Modal"); }
 </div>
-
 
 
 @section BottomScripts
