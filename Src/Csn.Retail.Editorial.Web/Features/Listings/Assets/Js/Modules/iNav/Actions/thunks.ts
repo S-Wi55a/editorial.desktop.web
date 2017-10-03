@@ -40,9 +40,9 @@ export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) 
     }
 
 
-type fetchINavRefinement = (a: string, r: string, p: string, q: string) => (d: any) => Promise<any>
+type fetchINavRefinement = (a: string, r: string, p: string, q: string, action?: Actions) => (d: any) => Promise<any>
     
-export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string) => (dispatch: any ) => {
+export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, action?: Actions) => (dispatch: any ) => {
 
         dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
 
@@ -52,7 +52,10 @@ export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinem
                 error => dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { error } })
             )
             .then(data => {
-                dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data, name: aspect, parentExpression }})
+                dispatch([
+                    { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data, name: aspect, parentExpression }},
+                    action
+                ])
             })
     }
 

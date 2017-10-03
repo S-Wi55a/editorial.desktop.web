@@ -17,6 +17,7 @@ interface ICategory {
   switchPageBack?: (a: any)=>any
   refinementId?: number  
   id?: number
+  isLoading: boolean
 }
 
 interface IINavList extends ICategory {
@@ -27,7 +28,11 @@ interface IINavList extends ICategory {
 }
 
 const INavList: React.StatelessComponent<IINavList> = (props) => (
-  <div className={['iNav-category__list-wrapper', (props.refinementId === props.id) ? 'iNav-category__list-wrapper--isVisible' : ''].join(' ') }>
+  <div className={[
+      'iNav-category__list-wrapper', 
+      (props.refinementId === props.id) ? 'iNav-category__list-wrapper--isVisible' : '',
+      (props.isLoading) ? 'iNav-category__list-wrapper--isLoading' : ''
+      ].join(' ') }>
     {/* Show back button if level 2 or 3 */} 
     {props.isRefinement && <div className='iNav-category__back-button' onClick={props.switchPageBack}>{props.displayName}</div>}
     <ul className='iNav-category__list'>
@@ -37,10 +42,7 @@ const INavList: React.StatelessComponent<IINavList> = (props) => (
           {...props}
           {...facet}
           aspect={props.name} 
-          pendingQuery={props.pendingQuery} 
-          currentRefinement={props.currentRefinement} 
           id={index} 
-          isRefinement={props.isRefinement}
           />
       })}
     </ul>
@@ -63,13 +65,15 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
       <INavList {...props}/>
       {/* Second Level*/}
       { props.refinements && 
-        <INavList 
+        <INavList
           {...props.refinements} 
           name={props.name} 
           isRefinement={true} 
           switchPageBack={props.switchPageBack} 
           pendingQuery={props.pendingQuery} 
-          currentRefinement={props.currentRefinement}/>
+          currentRefinement={props.currentRefinement}
+          isLoading={props.isLoading}
+          />
       }
       {/* Third Level*/}
       { props.refinements && props.refinements.facets && props.refinements.facets.map((facet, index)=>{
@@ -85,6 +89,7 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
               pendingQuery={props.pendingQuery} 
               currentRefinement={props.currentRefinement} 
               id={index}
+              isLoading={props.isLoading}
               />
           }
         })
@@ -97,7 +102,8 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
   </div>
 };
 
-const mapStateToProps = (state: State, ownProps: IINavNodeContainer) => {
+// Connect
+const mapStateToProps = (state: any, ownProps: IINavNodeContainer) => {
   return {
       pendingQuery: state.iNav.pendingQuery,
       currentRefinement: state.iNav.currentRefinement,
@@ -115,6 +121,7 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 }
 
+// UI Reducer
 const componentRootReducer = (initUIState: any) => (state = initUIState, action: Actions) => {
   switch (action.type) {
     case ActionTypes.UI.SWITCH_PAGE_FORWARD:
@@ -128,11 +135,26 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
         ...state,
         activePage: state.activePage > 1 ? state.activePage - 1 : 1
       }
+    // Reset the page back to start when menu is cancel/closed
     case ActionTypes.UI.CANCEL:
     case ActionTypes.UI.CLOSE_INAV: 
       return {
         ...state,
         activePage: 1
+      }
+    case ActionTypes.API.ASPECT.FETCH_QUERY_REQUEST:
+    case ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST:
+      return {
+        ...state,
+        isLoading: true
+      }
+    case ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS:
+    case ActionTypes.API.ASPECT.FETCH_QUERY_FAILURE:
+    case ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS:
+    case ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE:
+      return {
+        ...state,
+        isLoading: false
       }
     default:
       return state
@@ -147,6 +169,7 @@ export default connect(
   reducer: componentRootReducer,
   state: {
     activePage: 1,
-    refinementId: null
+    refinementId: null,
+    isLoading: false
   }
 })(INavNodeContainer))

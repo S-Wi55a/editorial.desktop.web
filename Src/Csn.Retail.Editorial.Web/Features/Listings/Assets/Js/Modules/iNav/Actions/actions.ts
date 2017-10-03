@@ -35,6 +35,18 @@ interface IDecrement extends Action {
     }
 }
 
+interface IFetchQueryRequest extends Action {
+    type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST | ActionTypes.API.ASPECT.FETCH_QUERY_REQUEST | ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST
+    payload: {}
+}
+
+interface IFetchQueryError extends Action {
+    type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE | ActionTypes.API.ASPECT.FETCH_QUERY_FAILURE | ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE
+    payload: {
+        error: string
+    }
+}
+
 interface IFetchQuerySuccess extends Action {
     type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS | ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS | ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS
     payload: {
@@ -69,7 +81,7 @@ type UIActions = IToggleIsActive
     | ICloseINav
     | ISwitchPage
 
-type APIActions = IFetchQuerySuccess
+type APIActions = IFetchQueryRequest | IFetchQuerySuccess | IFetchQueryError
 
 type INavActions = IUpdatePendingQuery 
     | IUpdatePreviousState

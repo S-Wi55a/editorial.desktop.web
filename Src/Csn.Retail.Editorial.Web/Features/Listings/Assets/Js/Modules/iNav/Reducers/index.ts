@@ -84,8 +84,7 @@ function refinementReducer(state: IINavResponse, action: Actions): IINavResponse
                                 $set : action.payload.data
                             }
                         },
-                    },
-                    currentRefinement: { $set: action.payload.parentExpression }
+                    }
                 })
             return newState
     
