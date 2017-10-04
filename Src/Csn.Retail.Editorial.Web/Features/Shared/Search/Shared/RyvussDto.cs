@@ -35,6 +35,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
     {
         public string DisplayName { get; set; }
         public List<FacetNodeDto> Facets { get; set; }
+        public string Name { get; set; }
+        public RefinementMetadataDto Metadata { get; set; }
+    }
+
+    public class RefinementMetadataDto
+    {
+        public List<string> ParentExpression { get; set; }
     }
 
     // Turn these into generic types so the metadata type can

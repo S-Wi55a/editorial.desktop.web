@@ -40,4 +40,23 @@ export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) 
     }
 
 
-export type Types = fetchINav & fetchINavAspect
+type fetchINavRefinement = (a: string, r: string, p: string, q: string, action?: Actions) => (d: any) => Promise<any>
+    
+export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, action?: Actions) => (dispatch: any ) => {
+
+        dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
+
+        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query))
+            .then(
+                response => response.json(),
+                error => dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { error } })
+            )
+            .then(data => {
+                dispatch([
+                    { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data, name: aspect, parentExpression }},
+                    action
+                ])
+            })
+    }
+
+export type Types = fetchINav & fetchINavAspect & fetchINavRefinement

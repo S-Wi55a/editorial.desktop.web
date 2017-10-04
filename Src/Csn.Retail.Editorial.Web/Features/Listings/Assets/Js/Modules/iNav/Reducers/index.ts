@@ -39,6 +39,8 @@ export const iNavParentReducer = (initState: any = null) => {
                 }
             case ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS:
                 return aspectReducer(state, action)
+            case ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS:
+                return refinementReducer(state, action)
             default:
                 return state
         }
@@ -67,11 +69,30 @@ function aspectReducer(state: IINavResponse, action: Actions): IINavResponse {
         console.log(e)        
         return state
     }
-
-
-
-
 }
+
+
+function refinementReducer(state: IINavResponse, action: Actions): IINavResponse {
+    
+        try {
+            const nodeIndex = state.iNav.nodes.findIndex((node: INode) => node.name === action.payload.name)
+            const newState = update(state,
+                {
+                    iNav: {
+                        nodes: {
+                            [nodeIndex]: {
+                                $set : action.payload.data
+                            }
+                        },
+                    }
+                })
+            return newState
+    
+        } catch (e) {
+            console.log(e)        
+            return state
+        }
+    }
 
 
 function RemoveBreadCrumbs(state: any, action: any) {

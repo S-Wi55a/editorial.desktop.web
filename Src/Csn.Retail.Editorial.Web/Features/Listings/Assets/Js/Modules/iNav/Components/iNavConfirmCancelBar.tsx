@@ -15,11 +15,12 @@ interface IINavConfirmCancelBar {
     count?: number
     pendingQuery?: string
     onClick?: (q: string)=>void
+    cancel?: ()=>void
 }
 //TODO: how to get hardcoded words data driven?
-const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({count, onClick, pendingQuery}) => (
+const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({count, onClick, pendingQuery, cancel}) => (
     <div className='iNav-category__confirmCancelBar confirmCancelBar'>
-        <div className='confirmCancelBar__button confirmCancelBar__button--cancel'>Cancel</div>
+        <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel}>Cancel</div>
         <div className='confirmCancelBar__button confirmCancelBar__button--show' onClick={()=>onClick(pendingQuery)}>Show {count} Articles</div>
     </div>
 )
@@ -36,7 +37,10 @@ const mapDispatchToProps = (dispatch: any) => {
         onClick: (query: string)=>dispatch([
             Thunks.fetchINav(query),
             {type:ActionTypes.UI.CLOSE_INAV}
-        ])
+        ]),
+        cancel: ()=>{
+            dispatch({type: ActionTypes.UI.CANCEL})
+          }
     }
 }
 
