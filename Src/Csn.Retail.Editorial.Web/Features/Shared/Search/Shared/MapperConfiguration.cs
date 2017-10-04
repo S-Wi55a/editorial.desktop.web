@@ -16,16 +16,24 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         private readonly IMapper _mapper;
         private readonly IImageMapper _imageMapper;
         private readonly IBreadCrumbMapper _breadCrumbMapper;
+        private readonly IResultsMessageMapper _resultsMessageMapper;
+        private readonly IArticleUrlMapper _articleUrlMapper;
 
-        public MappingSetupTask(IMapper mapper, IImageMapper imageMapper, IBreadCrumbMapper breadCrumbMapper)
+
+        public MappingSetupTask(IMapper mapper, IImageMapper imageMapper, IBreadCrumbMapper breadCrumbMapper,
+            IResultsMessageMapper resultsMessageMapper, IArticleUrlMapper articleUrlMapper)
         {
             _mapper = mapper;
             _imageMapper = imageMapper;
             _breadCrumbMapper = breadCrumbMapper;
+            _resultsMessageMapper = resultsMessageMapper;
+            _articleUrlMapper = articleUrlMapper;
         }
         public void Run(IMapperConfigurationExpression cfg)
         {
-            cfg.CreateMap<RyvussNavResultDto, NavResult>();
+            cfg.CreateMap<RyvussNavResultDto, NavResult>()
+                .ForMember(dest => dest.NoResultsMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultMessage(src.Count)))
+                .ForMember(dest => dest.NoResultsInstructionMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)));
 
             cfg.CreateMap<BreadCrumbDto, BreadCrumb>();
 
@@ -54,7 +62,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<NavNode>(src.GetRefinements())));
 
             cfg.CreateMap<SearchResultDto, SearchResult>()
-                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => _imageMapper.MapImageUrl(src)));
+                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => _imageMapper.MapImageUrl(src)))
+                .ForMember(dest => dest.DateAvailable, opt => opt.MapFrom(src => src.MapDateAvailable()))
+                .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => _articleUrlMapper.MapDetailsUrl(src)));
         }        
     }
 }

@@ -1,9 +1,10 @@
-﻿@using Csn.Retail.Editorial.Web.Infrastructure.React.Models
+﻿@using Csn.Retail.Editorial.Web.Features.Listings.Models
+@using Csn.Retail.Editorial.Web.Infrastructure.React.Models
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @using Newtonsoft.Json
 @using React.Web.Mvc
-@model object
+@model ListingsViewModel
 
 @section Head{
     <meta name="robots" content="noindex">
@@ -22,15 +23,15 @@
     @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
 }
 <div class="listing-page">
-    @Html.React("global.Components.INav", new { state = Model }, containerId: "iNav")
+    @Html.React("global.Components.INav", new { state = Model.NavResults }, containerId: "iNav")
 
     <div class="container">
 
         <div class="main">
-            @Html.React("global.Components.INavArticleCount", new {state = Model}, containerId: "iNavArticleCount")
+            @Html.React("global.Components.INavArticleCount", new {state = Model.NavResults }, containerId: "iNavArticleCount")
             @*//State is required b/c there is no guarentee that it will be available for other components*@
-            @Html.React("global.Components.INavBreadCrumbs", new {state = Model}, containerId: "iNavBreadcrumbs")
-            @Html.React("global.Components.INavSearchResults", new {state = Model}, containerId: "iNavSearchResults")
+            @Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults }, containerId: "iNavBreadcrumbs")
+            @Html.React("global.Components.INavSearchResults", new {state = Model.NavResults }, containerId: "iNavSearchResults")
         
             @{ Html.RenderPartial("_Disclaimer"); }
         </div>
@@ -40,5 +41,5 @@
 
 @section BottomScripts
 {
-    @Html.React("global.Components.INavPreloadedState", new { state = Model }, containerId: "INavPreloadedState")
+    @Html.React("global.Components.INavPreloadedState", new { state = Model.NavResults }, containerId: "INavPreloadedState")
 }
