@@ -8,7 +8,8 @@ export interface IINavResponse{
     iNav: IINav
     count?: number
     pendingQuery?: string
-    currentRefinement?: string   
+    currentRefinement?: string
+    searchResults: ISearchResults[]
 }
 
 export interface IINav {
@@ -44,8 +45,8 @@ export interface IFacet {
     value: string
     displayValue: string
     action: string
-    count: number,
-    expression: string,
+    count: number
+    expression: string
     isRefineable: boolean
     refinement?: IRefinement
     refinements?: IRefinements
@@ -57,4 +58,10 @@ export interface IRefinement {
     parentExpression: string
 }
 
-export interface SearchResults { }
+export interface ISearchResults {
+    imageUrl: string
+    headline: string
+    dateAvailable: string
+    articleDetailsUrl: string
+    label: string 
+}

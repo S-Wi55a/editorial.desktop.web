@@ -472,6 +472,7 @@
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
+    <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
     <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleData.cs" />
     <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />

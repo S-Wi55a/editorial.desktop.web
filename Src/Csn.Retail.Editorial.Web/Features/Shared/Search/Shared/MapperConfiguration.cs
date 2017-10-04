@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping;
@@ -64,7 +66,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
             cfg.CreateMap<SearchResultDto, SearchResult>()
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => _imageMapper.MapImageUrl(src)))
                 .ForMember(dest => dest.DateAvailable, opt => opt.MapFrom(src => src.MapDateAvailable()))
-                .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => _articleUrlMapper.MapDetailsUrl(src)));
-        }        
+                .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => _articleUrlMapper.MapDetailsUrl(src)))     
+                .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.GetSponsoredLabel()));
+
+        }
     }
 }

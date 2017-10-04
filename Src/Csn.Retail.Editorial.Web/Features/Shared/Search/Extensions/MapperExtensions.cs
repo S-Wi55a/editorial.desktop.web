@@ -1,5 +1,11 @@
-﻿using System.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Linq;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
+using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+using NLog.LogReceiverService;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 {
@@ -30,7 +36,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         {
             return source.MetaData?.Refinements?.FirstOrDefault();
         }
-
         public static Refinement GetParentExpression(this RefinementsNodeDto source)
         {
             if(source.Metadata?.ParentExpression != null){
@@ -42,6 +47,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
             }
 
             return new Refinement();
+        }
+        public static string GetSponsoredLabel(this SearchResultDto source)
+        {
+            return source.ArticleTypes?.FirstOrDefault(x => x.Equals(ArticleTypes.Sponsored));
         }
     }
 }

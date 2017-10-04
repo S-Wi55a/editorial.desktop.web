@@ -1,28 +1,23 @@
 ﻿import * as React from "react"
+import { ISearchResults } from 'iNav/Types'
 
 if (!SERVER) {
     require('iNavSearchResults/Css/iNavSearchResult.scss')
 }
 
-interface IINavSearchResultProps {
-    imageUrl: string,
-    headline: string,
-    dateAvailable: string,
-    articleDetailsUrl: string
-}
-
-const INavSearchResult = ({ imageUrl, headline, dateAvailable, articleDetailsUrl }: IINavSearchResultProps) => (
+const INavSearchResult = (props: ISearchResults) => (
     <div className="iNavSearchResult">
-        <a href={articleDetailsUrl}>
+        <a href={props.articleDetailsUrl}>
             <div className="iNavSearchResult__image-frame">
-                <img className="iNavSearchResult__image" src={imageUrl} />
+                <img className="iNavSearchResult__image" src={props.imageUrl} />
+
             </div>
             <div className="iNavSearchResult__content-wrapper">
                 <div className="iNavSearchResult__heading">
-                    {headline}
+                    {props.headline}
                 </div>
                 <div className="iNavSearchResult__date">
-                    {dateAvailable}
+                    {props.dateAvailable}
                 </div>
             </div>
         </a>
