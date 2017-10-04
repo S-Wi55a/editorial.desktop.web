@@ -1,11 +1,15 @@
 ﻿import ScrollMagic from 'ScrollMagic'
 import ResizeSensor from 'css-element-queries/src/ResizeSensor'
-import * as Utils from 'Features/Details/Assets/StickySidebar/stickySidebar.utils.js'
-import { scrollingUp, scrollingDown, scrollingSimple } from 'Features/Details/Assets/StickySidebar/stickySidebar.Actions.js'
+import { scrollingUp, scrollingDown, scrollingSimple } from 'StickySidebar/stickySidebar.Actions.js'
 
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 export function init(d, w, aside, baseReference) {
+
+    if (typeof d === 'undefined' ||  typeof w === 'undefined' ||  typeof aside === 'undefined' ||  typeof baseReference === 'undefined') {
+        console.error('Please check if you are passing the correct arguments to init')
+        return
+    }
 
     // Cache Footer
     const pageFooter = d.querySelector('#page-footer')
