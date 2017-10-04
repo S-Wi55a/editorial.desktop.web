@@ -1,7 +1,9 @@
-﻿namespace Csn.Retail.Editorial.Web.Features.Listings.Models
+﻿using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
+
+namespace Csn.Retail.Editorial.Web.Features.Listings.Models
 {
     public class ListingsViewModel
     {
-        public string Count { get; set; }
+        public NavResult NavResults { get; set; }
     }
 }

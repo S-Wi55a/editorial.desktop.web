@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 
@@ -16,6 +17,34 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
         public static MvcHtmlString ToMvcHtmlString(this string source)
         {
             return string.IsNullOrWhiteSpace(source) ? MvcHtmlString.Empty : MvcHtmlString.Create(source);
+        }
+
+        public static string MakeUrlFriendly(this string data)
+        {
+            if (string.IsNullOrEmpty(data))
+                return data;
+
+            var result = new StringBuilder();
+            var addHyphen = false;
+
+            foreach (var chr in data.Trim())
+            {
+                if (char.IsLetterOrDigit(chr) || chr == '!')
+                {
+                    if (addHyphen)
+                    {
+                        result.Append('-');
+                        addHyphen = false;
+                    }
+
+                    result.Append(char.ToLower(chr));
+                }
+                else
+                {
+                    addHyphen = true;
+                }
+            }
+            return result.ToString().Trim('-');
         }
     }
 }

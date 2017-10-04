@@ -13,13 +13,16 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
     {
         private IBreadCrumbMapper _testSubject;
         private IImageMapper _imageMapper;
+        private IResultsMessageMapper _resultsMessageMapper;
+        private IArticleUrlMapper _articleUrlMapper;
         [SetUp]
         public void Setup()
         {
             var iMapper = new AutoMappedMapper();
             _imageMapper = Substitute.For<IImageMapper>();
-
-            Mapper.Initialize(cfg => new MappingSetupTask(iMapper, _imageMapper, _testSubject).Run(cfg));
+            _resultsMessageMapper = Substitute.For<IResultsMessageMapper>();
+            _articleUrlMapper = Substitute.For<IArticleUrlMapper>();
+            Mapper.Initialize(cfg => new MappingSetupTask(iMapper, _imageMapper, _testSubject, _resultsMessageMapper, _articleUrlMapper).Run(cfg));
             _testSubject = new BreadCrumbMapper(iMapper);
         }
 

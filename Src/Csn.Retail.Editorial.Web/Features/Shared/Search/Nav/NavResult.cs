@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
@@ -8,6 +9,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public int Count { get; set; }
         public Nav INav { get; set; }
         public List<SearchResult> SearchResults { get; set; }
+        public string NoResultsMessage { get; set; }
+        public string NoResultsInstructionMessage { get; set; }
     }
 
     public class Nav
@@ -50,5 +53,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
     {
         public string Headline { get; set; }
         public string ImageUrl { get; set; }
+        public string DateAvailable { get; set; }
+        public string ArticleDetailsUrl { get; set; }        
     }
 }
