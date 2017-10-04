@@ -14,7 +14,6 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
         private IBreadCrumbMapper _testSubject;
         private IImageMapper _imageMapper;
         private IResultsMessageMapper _resultsMessageMapper;
-        private IDateAvailableMapper _dateAvailableMapper;
         private IArticleUrlMapper _articleUrlMapper;
         [SetUp]
         public void Setup()
@@ -22,9 +21,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
             var iMapper = new AutoMappedMapper();
             _imageMapper = Substitute.For<IImageMapper>();
             _resultsMessageMapper = Substitute.For<IResultsMessageMapper>();
-            _dateAvailableMapper = Substitute.For<IDateAvailableMapper>();
             _articleUrlMapper = Substitute.For<IArticleUrlMapper>();
-            Mapper.Initialize(cfg => new MappingSetupTask(iMapper, _imageMapper, _testSubject, _resultsMessageMapper, _dateAvailableMapper, _articleUrlMapper).Run(cfg));
+            Mapper.Initialize(cfg => new MappingSetupTask(iMapper, _imageMapper, _testSubject, _resultsMessageMapper, _articleUrlMapper).Run(cfg));
             _testSubject = new BreadCrumbMapper(iMapper);
         }
 

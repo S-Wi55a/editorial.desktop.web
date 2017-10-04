@@ -36,8 +36,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Infrastructure.Extensions
 
             //Act
             var result = article.GetSlug();
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(result, string.Empty);
+
+            //Assert
             Assert.AreEqual("this-is-a-test-1234", result);
         }
     }

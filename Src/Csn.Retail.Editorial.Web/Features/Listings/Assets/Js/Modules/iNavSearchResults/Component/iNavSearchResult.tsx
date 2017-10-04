@@ -1,5 +1,9 @@
 ﻿import * as React from "react"
 
+if (!SERVER) {
+    require('iNavSearchResults/Css/iNavSearchResult.scss')
+}
+
 interface IINavSearchResultProps {
     imageUrl: string,
     headline: string,

@@ -5,10 +5,6 @@ import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
 import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchResultsContainer'
 
-if (!SERVER) {
-    require('iNavSearchResults/Css/iNavSearchResult.scss')
-}
-
 //Check for Store
 const store = window.store
 

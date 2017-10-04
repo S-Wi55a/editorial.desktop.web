@@ -15,7 +15,7 @@
         @include h4();
         line-height: $spacing;
         margin-top: 40px;
-        margin-bottom: 20px;
+        margin-bottom: $spacing;
     }
 
     &__instructionMessage {

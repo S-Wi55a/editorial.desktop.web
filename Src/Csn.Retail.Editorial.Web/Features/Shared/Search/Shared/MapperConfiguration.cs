@@ -17,18 +17,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         private readonly IImageMapper _imageMapper;
         private readonly IBreadCrumbMapper _breadCrumbMapper;
         private readonly IResultsMessageMapper _resultsMessageMapper;
-        private readonly IDateAvailableMapper _dateAvailableMapper;
         private readonly IArticleUrlMapper _articleUrlMapper;
 
 
         public MappingSetupTask(IMapper mapper, IImageMapper imageMapper, IBreadCrumbMapper breadCrumbMapper,
-            IResultsMessageMapper resultsMessageMapper, IDateAvailableMapper dateAvailableMapper, IArticleUrlMapper articleUrlMapper)
+            IResultsMessageMapper resultsMessageMapper, IArticleUrlMapper articleUrlMapper)
         {
             _mapper = mapper;
             _imageMapper = imageMapper;
             _breadCrumbMapper = breadCrumbMapper;
             _resultsMessageMapper = resultsMessageMapper;
-            _dateAvailableMapper = dateAvailableMapper;
             _articleUrlMapper = articleUrlMapper;
         }
         public void Run(IMapperConfigurationExpression cfg)
@@ -62,7 +60,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
             cfg.CreateMap<SearchResultDto, SearchResult>()
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => _imageMapper.MapImageUrl(src)))
-                .ForMember(dest => dest.DateAvailable, opt => opt.MapFrom(src => _dateAvailableMapper.MapDateAvailable(src)))
+                .ForMember(dest => dest.DateAvailable, opt => opt.MapFrom(src => src.MapDateAvailable()))
                 .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => _articleUrlMapper.MapDetailsUrl(src)));
         }        
     }
