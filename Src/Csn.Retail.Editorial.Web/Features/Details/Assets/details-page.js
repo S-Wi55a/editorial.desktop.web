@@ -181,7 +181,7 @@ if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet 
     const aside = document.querySelector('.aside');
     loaded.then(function() {     
         if (aside) {
-            require('StickySidebar/stickySidebar.js').init(document, window, aside);
+            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside, 137);
         }
     })
 }
