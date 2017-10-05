@@ -67,6 +67,7 @@ Src/Csn.Retail.Editorial.Web/logs*
 Src/packages
 Src/WebEssentials2015-Settings.json
 Src/Csn.Retail.Editorial.Web/Csn.Retail.Editorial.Web.csproj.user
+Src/Csn.Retail.Editorial.Web.sln.DotSettings.user
 .awspublish-resource.csnstatic.csstg.com.au
 .happypack
 .vscode/

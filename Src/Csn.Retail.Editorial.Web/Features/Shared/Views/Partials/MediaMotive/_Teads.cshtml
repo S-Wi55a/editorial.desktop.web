@@ -1,4 +1,5 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
 @model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.MediaMotiveData
 
-@{ Html.RenderAction("Index", "MediaMotiveAds", new { query = new MediaMotiveAdQuery() { TileId = "Tile7", MediaMotiveData = Model } }); }
+@{ Html.RenderMediaMotiveDetailsAd(new MediaMotiveDetailsAdQuery() { TileId = "Tile7", MediaMotiveData = Model }); }

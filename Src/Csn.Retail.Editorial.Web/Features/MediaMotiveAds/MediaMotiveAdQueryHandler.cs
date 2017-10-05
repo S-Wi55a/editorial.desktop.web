@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
+using Bolt.Common.Extensions;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Utils;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
@@ -10,24 +11,42 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
     [AutoBind]
     public class MediaMotiveAdQueryHandler : IQueryHandler<MediaMotiveAdQuery, MediaMotiveAdViewModel>
     {
+        private readonly IEnumerable<IMediaMotiveTagBuilder> _tagBuilders;
+
+        public MediaMotiveAdQueryHandler(IEnumerable<IMediaMotiveTagBuilder> tagBuilders)
+        {
+            _tagBuilders = tagBuilders;
+        }
+
         public MediaMotiveAdViewModel Handle(MediaMotiveAdQuery query)
         {
-            // we need to look up the ad unit based on the tileId provided. If the tile does not exist then return null
-            if (query.MediaMotiveData.AdUnits == null || !query.MediaMotiveData.AdUnits.TryGetValue(query.TileId.ToLower(), out MediaMotiveAdUnit adUnit))
+            // put these logic into MediaMotiveUrlArgsBuilder
+            var tags = _tagBuilders
+                .Where(builder => builder.IsMatch(query))
+                .SelectMany(x => x.Build(query))
+                .Where(x => !x.Name.IsNullOrEmpty())
+                .Select(x => $"{x.Name}={string.Join(",", x.Values.NullSafe().Select(v => v.NullSafe().ToLower()))}").Distinct().ToList();
+
+            var urlargs = string.Join("/", tags);
+
+            // lookup the ad settings for this tile
+            if (!MediaMotiveAdSettings.AdTypes.TryGetValue(query.TileId, out MediaMotiveAdSetting adSetting))
             {
                 return null;
             }
 
+            var dimensions = adSetting.AdSize.Dimensions().First();
+
             return new MediaMotiveAdViewModel()
             {
-                TileId = adUnit.TileId,
-                Description = adUnit.Description,
-                Height = adUnit.Height,
-                Width = adUnit.Width,
-                DataKruxRequired = adUnit.DataKruxRequired,
-                ScriptUrl = $"{query.MediaMotiveData.BaseUrl}{query.MediaMotiveData.ScriptPath}{query.MediaMotiveData.CommonTags}{adUnit.Tags}",
-                NoScriptUrl = $"{query.MediaMotiveData.BaseUrl}{query.MediaMotiveData.NoScriptPath}{query.MediaMotiveData.CommonTags}{adUnit.Tags}",
-                NoScriptImageUrl = $"{query.MediaMotiveData.BaseUrl}{query.MediaMotiveData.NoScriptImagePath}{query.MediaMotiveData.CommonTags}{adUnit.Tags}"
+                TileId = query.TileId,
+                Description = adSetting.Description.ToString(),
+                Height = dimensions.Height,
+                Width = dimensions.Width,
+                DataKruxRequired = adSetting.DataKruxRequired,
+                ScriptUrl = $"//mm.carsales.com.au/carsales/jserver/{urlargs}",
+                NoScriptUrl = $"//mm.carsales.com.au/carsales/adclick/{urlargs}",
+                NoScriptImageUrl = $"//mm.carsales.com.au/carsales/iserver/{urlargs}"
             };
         }
     }

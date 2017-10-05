@@ -3,17 +3,17 @@
 
 @if (Model.ArticleTemplateType == ArticleTemplateType.Wide)
 {
-    <header id="page-header" class="page-header page-header--transparent container" data-webm-section="page-header">
-        <div class="container">
-            <a href="~/" class="page-header__logo" data-webm-clickvalue="site-icon">Carsales.com.au - Australia's No.1 Auto Website">Carsales.com.au - Australia's No.1 Auto Website</a>
-        </div>
-    </header>
+<header id="page-header" class="page-header page-header--transparent container" data-webm-section="page-header">
+    <div class="container">
+        <a href="~/" class="page-header__logo" data-webm-clickvalue="site-icon">Carsales.com.au - Australia's No.1 Auto Website">Carsales.com.au - Australia's No.1 Auto Website</a>
+    </div>
+</header>
 }
 else
 {
-    <header id="page-header" class="page-header container" data-webm-section="page-header">
-        <a href="~/" class="page-header__logo" data-webm-clickvalue="site-icon">Carsales.com.au - Australia's No.1 Auto Website">Carsales.com.au - Australia's No.1 Auto Website</a>
+<header id="page-header" class="page-header container" data-webm-section="page-header">
+    <a href="~/" class="page-header__logo" data-webm-clickvalue="site-icon">Carsales.com.au - Australia's No.1 Auto Website">Carsales.com.au - Australia's No.1 Auto Website</a>
     @{ Html.RenderPartial("Partials/MediaMotive/_Leaderboard", Model.MediaMotiveData); }
-    </header>
+</header>
 }
 

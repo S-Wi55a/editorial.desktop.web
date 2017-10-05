@@ -50,7 +50,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         }
         public static string GetSponsoredLabel(this SearchResultDto source)
         {
-            return source.ArticleTypes?.FirstOrDefault(x => x.Equals(ArticleTypes.Sponsored));
+            return source.ArticleTypes?.FirstOrDefault(x => x.Equals(ArticleType.Sponsored.ToString()));
         }
     }
 }

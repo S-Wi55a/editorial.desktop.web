@@ -465,11 +465,20 @@
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
+    <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdsController.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSetting.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSettings.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\MediaMotiveTag.cs" />
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
@@ -562,7 +571,6 @@
     <Compile Include="Infrastructure\Redirects\RedirectStrategy.cs" />
     <Compile Include="Infrastructure\RequestWrapper\IRequestWrapper.cs" />
     <Compile Include="Infrastructure\RequestWrapper\RequestWrapperExtensions.cs" />
-    <Compile Include="Infrastructure\Serializers\JsonSerializer.cs" />
     <Compile Include="Infrastructure\StartUpTasks\IStartUpTask.cs" />
     <Compile Include="Infrastructure\UserContext\IUserContext.cs" />
     <Compile Include="Infrastructure\UserContext\UserContext.cs" />
@@ -865,6 +873,8 @@
     <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
     <Content Include="Features\Listings\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
+    <Content Include="Features\MediaMotiveAds\Views\_Leaderboard.cshtml" />
+    <Content Include="Features\MediaMotiveAds\Views\_Mrec.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
