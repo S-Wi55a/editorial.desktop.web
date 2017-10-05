@@ -10,7 +10,7 @@ const INavSearchResult = (props: ISearchResults) => (
         <a href={props.articleDetailsUrl}>
             <div className="iNavSearchResult__image-frame">
                 <img className="iNavSearchResult__image" src={props.imageUrl} />
-
+                {props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${props.label}`}>{props.label}</div> : ''}
             </div>
             <div className="iNavSearchResult__content-wrapper">
                 <div className="iNavSearchResult__heading">
