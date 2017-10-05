@@ -2,7 +2,6 @@
 import { State, IFacet, IRefinement } from 'iNav/Types'
 import { iNav } from 'Endpoints/endpoints'
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux';
 import { Actions, ActionTypes, Thunks } from 'iNav/Actions/actions'
 
 if (!SERVER) {
@@ -10,13 +9,13 @@ if (!SERVER) {
 }
 
 interface IINavfacet extends IFacet {
-  aspect: string
+  aspect: string  
+  id: number  
+  refinement?: IRefinement
   fetchAspect?: Thunks.Types
   fetchRefinementAndUpdatePendingQuery?: Thunks.Types
   fetchRefinementAndSwitchPage?: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number)=>Actions  
   pendingQuery?: string
-  refinement: IRefinement
-  id: number
   isRefinement?: boolean
 }
 

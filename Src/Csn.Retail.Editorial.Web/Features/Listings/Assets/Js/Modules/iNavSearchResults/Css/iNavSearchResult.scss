@@ -3,10 +3,14 @@
 .iNavSearchResult {
     $spacing: 15px;
 
-    width: calc(50% - #{($spacing)};
+    width: calc(50% - #{($spacing)});
     display: inline-block;
     vertical-align: top;
     margin-bottom: $spacing;
+    
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transition: all 0.3s ease-in-out;
+    position: relative;
 
 
     &:nth-of-type(odd) {
@@ -16,7 +20,7 @@
     @include breakpoint($screen-lg) {
         $spacing: 30px;
 
-        width: calc(50% - #{($spacing)};
+        width: calc(50% - #{($spacing)});
         margin-bottom: $spacing;
 
         &:nth-of-type(odd) {
@@ -24,9 +28,6 @@
         }
     }
 
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    transition: all 0.3s ease-in-out;
-    position: relative;
 
     &::before {
         content: '';
@@ -52,6 +53,26 @@
         padding-top: percentage((2/3));
         position: relative;
         overflow: hidden;
+    }
+
+    &__image-label {
+        border-radius: $cs-border-radius--small;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        font-size: $font-size-small;
+        line-height: 30px;
+        color: $cs-white;
+        padding: 0 15px; 
+        text-transform: uppercase;
+
+        &--Sponsored {
+            background-color: $cs-green;
+        }
+
+        &--Promoted {
+            background-color: $cs-purple;
+        }
     }
 
     &__image {

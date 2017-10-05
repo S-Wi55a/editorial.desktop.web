@@ -55,5 +55,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public string ImageUrl { get; set; }
         public string DateAvailable { get; set; }
         public string ArticleDetailsUrl { get; set; }        
+        public string Label { get; set; }
+
     }
 }

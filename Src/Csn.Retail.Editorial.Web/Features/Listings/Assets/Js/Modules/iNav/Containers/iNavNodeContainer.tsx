@@ -8,14 +8,14 @@ import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { Dispatch } from 'redux';
 
 if (!SERVER) {
-  require('iNav/Css/iNav.NodesContainer')  
+  require('iNav/Css/iNav.NodesContainer')
 }
 
 interface ICategory {
   pendingQuery?: string
   currentRefinement?: string
   switchPageBack?: (a: any)=>any
-  refinementId?: number  
+  refinementId?: number
   id?: number
   isLoading: boolean
 }
@@ -29,20 +29,20 @@ interface IINavList extends ICategory {
 
 const INavList: React.StatelessComponent<IINavList> = (props) => (
   <div className={[
-      'iNav-category__list-wrapper', 
+      'iNav-category__list-wrapper',
       (props.refinementId === props.id) ? 'iNav-category__list-wrapper--isVisible' : '',
       (props.isLoading) ? 'iNav-category__list-wrapper--isLoading' : ''
       ].join(' ') }>
-    {/* Show back button if level 2 or 3 */} 
+    {/* Show back button if level 2 or 3 */}
     {props.isRefinement && <div className='iNav-category__back-button' onClick={props.switchPageBack}>{props.displayName}</div>}
     <ul className='iNav-category__list'>
       {props.facets.map((facet, index) => {
-        return <INavfacet 
-          key={facet.displayValue} 
+        return <INavfacet
+          key={facet.displayValue}
           {...props}
           {...facet}
-          aspect={props.name} 
-          id={index} 
+          aspect={props.name}
+          id={index}
           />
       })}
     </ul>
@@ -53,6 +53,8 @@ interface IINavNodeContainer extends INode, ICategory {
   index: number
   activeItemId: number
   activePage: number
+  refinementId: number | null,
+  isLoading: boolean
 }
 
 // This is separated for displaying sub lists
@@ -64,13 +66,13 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
       {/* First Level*/}
       <INavList {...props}/>
       {/* Second Level*/}
-      { props.refinements && 
+      { props.refinements &&
         <INavList
-          {...props.refinements} 
-          name={props.name} 
-          isRefinement={true} 
-          switchPageBack={props.switchPageBack} 
-          pendingQuery={props.pendingQuery} 
+          {...props.refinements}
+          name={props.name}
+          isRefinement={true}
+          switchPageBack={props.switchPageBack}
+          pendingQuery={props.pendingQuery}
           currentRefinement={props.currentRefinement}
           isLoading={props.isLoading}
           />
@@ -78,16 +80,16 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
       {/* Third Level*/}
       { props.refinements && props.refinements.facets && props.refinements.facets.map((facet, index)=>{
           if(facet.isRefineable){
-            return <INavList 
+            return <INavList
               key={facet.displayValue}
               {...props.refinements}
               {...facet.refinements}
-              name={props.name} 
-              refinementId={props.refinementId}  
-              isRefinement={true} 
-              switchPageBack={props.switchPageBack} 
-              pendingQuery={props.pendingQuery} 
-              currentRefinement={props.currentRefinement} 
+              name={props.name}
+              refinementId={props.refinementId}
+              isRefinement={true}
+              switchPageBack={props.switchPageBack}
+              pendingQuery={props.pendingQuery}
+              currentRefinement={props.currentRefinement}
               id={index}
               isLoading={props.isLoading}
               />
@@ -137,7 +139,7 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
       }
     // Reset the page back to start when menu is cancel/closed
     case ActionTypes.UI.CANCEL:
-    case ActionTypes.UI.CLOSE_INAV: 
+    case ActionTypes.UI.CLOSE_INAV:
       return {
         ...state,
         activePage: 1
@@ -165,7 +167,7 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(UI({
-  key: (props: IINavNodeContainer)=>`ui/iNavNodeContainer${props.name}`,  
+  key: (props: IINavNodeContainer)=>`ui/iNavNodeContainer${props.name}`,
   reducer: componentRootReducer,
   state: {
     activePage: 1,
