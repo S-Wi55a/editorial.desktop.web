@@ -42,7 +42,7 @@ export const iNavParentReducer = (initState: any = null) => {
             case ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS:
                 return refinementReducer(state, action)
             case ActionTypes.INAV.ADD_PROMOTED_ARTICLE:
-                return state//promotedReducer(state, action)
+                return promotedReducer(state, action)
             default:
                 return state
         }
@@ -73,29 +73,44 @@ function aspectReducer(state: IINavResponse, action: Actions): IINavResponse {
     }
 }
 
-
 function refinementReducer(state: IINavResponse, action: Actions): IINavResponse {
     
-        try {
-            const nodeIndex = state.iNav.nodes.findIndex((node: INode) => node.name === action.payload.name)
-            const newState = update(state,
-                {
-                    iNav: {
-                        nodes: {
-                            [nodeIndex]: {
-                                $set : action.payload.data
-                            }
-                        },
-                    }
-                })
-            return newState
-    
-        } catch (e) {
-            console.log(e)        
-            return state
-        }
+    try {
+        const nodeIndex = state.iNav.nodes.findIndex((node: INode) => node.name === action.payload.name)
+        const newState = update(state,
+            {
+                iNav: {
+                    nodes: {
+                        [nodeIndex]: {
+                            $set : action.payload.data
+                        }
+                    },
+                }
+            })
+        return newState
+
+    } catch (e) {
+        console.log(e)        
+        return state
     }
+}
 
+function promotedReducer(state: IINavResponse, action: Actions) {
+    
+    try {
+        const newState = update(state,
+            {
+                searchResults: {
+                    [action.payload.location]: {
+                        $set : action.payload
+                    }
+                }           
+            })
+        return newState
 
-
-function promotedReducer(){}
+    } catch (e) {
+        console.log(e)        
+        return state
+    }
+        
+}

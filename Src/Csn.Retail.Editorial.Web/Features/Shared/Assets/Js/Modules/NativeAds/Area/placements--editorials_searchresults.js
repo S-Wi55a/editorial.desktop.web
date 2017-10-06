@@ -9,13 +9,30 @@ const store = window.store || console.warn("No Redux store available")
 // We are highjacking the template function and using it to pass data to our Redux Store
 
 templates['search-result'] = (location) => (Handlebars, depth0, helpers, partials, data) => { 
-     store.dispatch(
+    
+    var date = new Date(depth0.pubDate);
+    var options = { year: 'numeric', month: 'long' };
+
+    function closestImageBasedOnRes(num, arr) {
+        var curr = arr[0];
+        var diff = Math.abs (num - curr.sourceWidth);
+        for (var val = 0; val < arr.length; val++) {
+            var newdiff = Math.abs (num - arr[val].sourceWidth);
+            if (newdiff < diff) {
+                diff = newdiff;
+                curr = arr[val];
+            }
+        }
+        return curr.href;
+    }
+
+    store.dispatch(
          {
              type: "ADD_PROMOTED_ARTICLE",
              payload: {
-                imageUrl: depth0.image.instances[0],
+                imageUrl: closestImageBasedOnRes(480, depth0.image.instances),
                 headline: depth0.title,
-                dateAvailable: depth0.pubDate,
+                dateAvailable: date.toLocaleDateString('en-AU', options),
                 articleDetailsUrl: depth0.link,
                 label: depth0.custom.PlacementType,
                 location
