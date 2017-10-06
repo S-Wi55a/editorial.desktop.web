@@ -81,5 +81,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public string Headline { get; set; }
         public DateTime DateAvailable { get; set; }
         public string PhotoPath { get; set; }
+        public List<string> ArticleTypes { get; set; }
     }
 }

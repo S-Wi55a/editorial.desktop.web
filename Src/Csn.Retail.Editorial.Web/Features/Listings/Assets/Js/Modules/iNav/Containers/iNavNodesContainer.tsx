@@ -14,7 +14,15 @@ interface IINavNodesContainer {
 const INavNodesContainer: React.StatelessComponent<IINavNodesContainer> = ({ nodes, activeItemId }) => (
   <div className={'iNav__category iNav-category'}>
     {nodes.map((node, index) => {
-      return <INavNodeContainer key={node.name} {...node} activeItemId={activeItemId} index={index} />
+      return <INavNodeContainer 
+        key={node.name} 
+        {...node} 
+        activeItemId={activeItemId} 
+        index={index} 
+        activePage={1}
+        refinementId={null}
+        isLoading={false}
+        />
     })}
   </div>
 );
