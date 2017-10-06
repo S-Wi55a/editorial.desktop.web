@@ -846,7 +846,6 @@
     <Content Include="Features\Details\Views\Partials\Content\_ArticleSummary.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleShare--Bottom.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_MediaMotiveScripts.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Css\iNavArticleCount.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_WideVideo.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
@@ -915,6 +914,7 @@
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\preloadedState.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorials_searchresults.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

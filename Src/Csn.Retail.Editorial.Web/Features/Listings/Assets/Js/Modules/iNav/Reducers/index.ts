@@ -41,6 +41,8 @@ export const iNavParentReducer = (initState: any = null) => {
                 return aspectReducer(state, action)
             case ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS:
                 return refinementReducer(state, action)
+            case ActionTypes.INAV.ADD_PROMOTED_ARTICLE:
+                return state//promotedReducer(state, action)
             default:
                 return state
         }
@@ -95,29 +97,5 @@ function refinementReducer(state: IINavResponse, action: Actions): IINavResponse
     }
 
 
-function RemoveBreadCrumbs(state: any, action: any) {
 
-    try {
-
-        const breadCrumbIndex = state.iNav.breadCrumbs.findIndex((breadCrumb: any) => breadCrumb.facet === action.facet)
-
-        const newState = update(state,
-            {
-
-                iNav: {
-                    breadCrumbs: {
-                        $splice: [[breadCrumbIndex, 1]]
-                    }
-                }
-
-            })
-        return newState
-
-    } catch (e) {
-        return state
-    }
-
-
-
-
-}
+function promotedReducer(){}

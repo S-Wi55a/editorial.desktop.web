@@ -4,6 +4,7 @@
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @using Newtonsoft.Json
 @using React.Web.Mvc
+@using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 @model ListingsViewModel
 
 @section Head{
@@ -21,6 +22,8 @@
 @section TopScripts {
     @Html.AssetJs("listings.vendor", LoadType.Defer)
     @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
+
 }
 <div class="listing-page">
     @Html.React("global.Components.INav", new { state = Model.NavResults }, containerId: "iNav")
@@ -41,5 +44,17 @@
 
 @section BottomScripts
 {
-    @Html.React("global.Components.INavPreloadedState", new { state = Model.NavResults }, containerId: "INavPreloadedState")
+    @Html.React("global.Components.INavPreloadedState", new {state = Model.NavResults}, containerId: "INavPreloadedState")
+    @{@*Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);*@}
+    @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
+
+<script>
+    var csn_editorial = csn_editorial || {};
+    csn_editorial.nativeAds = {
+        siteName: "mt.motoring",
+        areaName: "editorials_searchresults",
+        makeModel: "",
+        setPropertyID: "NA-MOTOCOMAU-11237901"
+    };
+</script>
 }

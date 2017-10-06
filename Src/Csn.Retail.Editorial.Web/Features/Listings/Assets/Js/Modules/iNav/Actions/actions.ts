@@ -69,6 +69,18 @@ interface IUpdatePreviousState extends Action {
     }
 }
 
+interface IAddPromotedArticle extends Action {
+    type: ActionTypes.INAV.ADD_PROMOTED_ARTICLE
+    payload: {
+        imageUrl: string,
+        headline: string,
+        dateAvailable: string,
+        articleDetailsUrl: string,
+        label: string,
+        location: number
+    }
+}
+
 interface ISwitchPage extends Action {
     type: ActionTypes.UI.SWITCH_PAGE_FORWARD | ActionTypes.UI.SWITCH_PAGE_BACK
     payload? : any
@@ -85,6 +97,7 @@ type APIActions = IFetchQueryRequest | IFetchQuerySuccess | IFetchQueryError
 
 type INavActions = IUpdatePendingQuery 
     | IUpdatePreviousState
+    | IAddPromotedArticle
 
 // Fetch data
 export type Actions = UIActions | APIActions | INavActions

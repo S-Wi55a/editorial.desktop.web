@@ -1,6 +1,7 @@
 ﻿require('Css/listings-page.scss');
 
 import { configureStore } from 'Redux/Global/Store/store.client.js'
+import { loaded } from 'document-promises/document-promises.js'
 
 //Enable Redux store globally
 window.store = configureStore(); //Init store
@@ -35,3 +36,18 @@ window.store = configureStore(); //Init store
             })
     }
 })(document);
+
+//Lazy Native Ads
+loaded.then(() => {
+    (function nativeAds() {
+        if (!!csn_editorial && !!csn_editorial.nativeAds) {
+            (function nativeAds() {
+                import
+                (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
+                    .catch(function(err) {
+                        console.log('Failed to load nativeAds', err);
+                    });
+            })();
+        }
+    })();
+});
