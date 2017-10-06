@@ -27,5 +27,26 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
 
             return string.Join(seperator, source);
         }
+
+        /// <summary>
+        /// Recursively flattens IEnumerable<T> where children of type T can be obtained using recursion func
+        /// </summary>
+        public static IEnumerable<T> Flatten<T>(this IEnumerable<T> source, Func<T, IEnumerable<T>> recursion)
+        {
+            var result = new List<T>();
+
+            foreach (var item in source)
+            {
+                result.Add(item);
+
+                var recursiveItems = recursion(item);
+
+                if (recursiveItems == null) continue;
+
+                result.AddRange(recursiveItems.Flatten(recursion));
+            }
+
+            return result;
+        }
     }
 }
