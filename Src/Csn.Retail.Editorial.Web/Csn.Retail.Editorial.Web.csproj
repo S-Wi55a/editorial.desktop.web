@@ -476,6 +476,7 @@
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\CommonTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\MediaMotiveTag.cs" />
@@ -531,6 +532,7 @@
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Infrastructure\Constants\TenantNames.cs" />
+    <Compile Include="Infrastructure\ContextStores\ContextStoreKeys.cs" />
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />

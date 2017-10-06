@@ -1,8 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Listings.Models
-@using Csn.Retail.Editorial.Web.Infrastructure.React.Models
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
-@using Newtonsoft.Json
 @using React.Web.Mvc
 @model ListingsViewModel
 
@@ -21,6 +19,7 @@
 @section TopScripts {
     @Html.AssetJs("listings.vendor", LoadType.Defer)
     @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
 }
 <div class="listing-page">
     @Html.React("global.Components.INav", new { state = Model.NavResults }, containerId: "iNav")

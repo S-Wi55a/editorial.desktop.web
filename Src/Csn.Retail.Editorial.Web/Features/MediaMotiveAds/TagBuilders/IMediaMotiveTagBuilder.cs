@@ -6,6 +6,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
     {
         IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query);
 
-        bool IsMatch(MediaMotiveAdQuery query);
+        bool IsApplicable(MediaMotiveAdQuery query);
     }
 }

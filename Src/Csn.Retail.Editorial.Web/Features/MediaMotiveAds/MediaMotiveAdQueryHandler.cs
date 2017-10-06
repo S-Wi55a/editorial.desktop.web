@@ -22,7 +22,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         {
             // put these logic into MediaMotiveUrlArgsBuilder
             var tags = _tagBuilders
-                .Where(builder => builder.IsMatch(query))
+                .Where(builder => builder.IsApplicable(query))
                 .SelectMany(x => x.Build(query))
                 .Where(x => !x.Name.IsNullOrEmpty())
                 .Select(x => $"{x.Name}={string.Join(",", x.Values.NullSafe().Select(v => v.NullSafe().ToLower()))}").Distinct().ToList();
