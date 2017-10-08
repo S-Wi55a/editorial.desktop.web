@@ -72,6 +72,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public string Facet { get; set; }
         public string FacetDisplay { get; set; }
         public string RemoveAction { get; set; }
+        public List<BreadCrumbDto> Children { get; set; }
     }
 
     public class SearchResultDto
