@@ -2,6 +2,7 @@ declare module 'Endpoints/endpoints'
 declare module 'ReactReduxUI'
 declare module 'iNav/Components/iNavMenuHeader'
 declare module 'global-object'
+declare module 'react-image'
 
 declare var SERVER: boolean
 

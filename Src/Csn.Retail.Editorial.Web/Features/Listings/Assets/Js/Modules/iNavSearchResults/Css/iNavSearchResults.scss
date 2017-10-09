@@ -1,0 +1,22 @@
+﻿@import "css/_globals.scss";
+// May not need this
+.iNavSearchResults {
+    //Transition
+    &.iNavSearchResultsTransition-enter {
+        opacity: 0.01;
+    }
+
+    &.iNavSearchResultsTransition-enter.iNavSearchResultsTransition-enter-active {
+        opacity: 1;
+        transition: opacity 300ms ease-in;
+    }
+
+    &.iNavSearchResultsTransition-leave {
+        opacity: 1;
+    }
+
+    &.iNavSearchResultsTransition-leave.iNavSearchResultsTransition-leave-active {
+        opacity: 0.01;
+        transition: opacity 300ms ease-in;
+    }
+}

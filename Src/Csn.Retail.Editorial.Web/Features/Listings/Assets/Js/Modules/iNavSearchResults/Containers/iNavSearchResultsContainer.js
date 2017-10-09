@@ -1,20 +1,24 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group'
 import INavSearchResult from 'iNavSearchResults/Component/iNavSearchResult'
+
+if (!SERVER) {
+    require('iNavSearchResults/Css/iNavSearchResults.scss')
+}
 
 const INavSearchResults = ({ searchResults }) => (
     <div className="iNavSearchResults">        
-        <ReactCSSTransitionGroup
+        <CSSTransitionGroup 
             transitionName="iNavSearchResultsTransition"
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={300}>
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}>
             {
                 searchResults.map((searchResult, index) => {
                     return <INavSearchResult key={index} {...searchResult} />;
                 })
             }
-        </ReactCSSTransitionGroup>
+        </CSSTransitionGroup>
         <div>{JSON.stringify(searchResults)}</div>
     </div>
 );

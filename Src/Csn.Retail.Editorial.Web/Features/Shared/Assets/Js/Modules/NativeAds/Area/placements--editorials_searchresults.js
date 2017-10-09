@@ -1,6 +1,6 @@
 ﻿// details page - related articles
 const placements = [];
-const events = ['csn_editorial.moreArticles.ready'];
+const events = ['csn_editorial.listings.ready'];
 const templates = {};
 
 const store = window.store || console.warn("No Redux store available")
