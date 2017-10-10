@@ -5,9 +5,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 {
     public static class SettingsHtmlHelpers
     {
+        private static VideosApiSettings _videosApiSettings;
+
         public static VideosApiSettings VideosApiSettings(this HtmlHelper html)
         {
-            return DependencyResolver.Current.GetService<VideosApiSettings>();
+            return _videosApiSettings ?? (_videosApiSettings = DependencyResolver.Current.GetService<VideosApiSettings>());
         }
     }
 }
