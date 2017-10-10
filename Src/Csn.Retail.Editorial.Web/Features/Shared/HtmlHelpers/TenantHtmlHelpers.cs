@@ -4,9 +4,9 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
+namespace Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 {
-    public static class TenantExtensions
+    public static class TenantHtmlHelpers
     {
         public static TenantInfo CurrentTenant(this HtmlHelper html)
         {

@@ -14,6 +14,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Settings
 
         [ConfigurationProperty("DetailsUrlFormat", IsRequired = true)]
         public string DetailsUrlFormat => this["DetailsUrlFormat"] as string;
-
     }
 }

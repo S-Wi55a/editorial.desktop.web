@@ -50,6 +50,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string BrightcoveVideoEncodingUrl { get; set; }
         public string Headline { get; set; }
         public string SubHeading { get; set; }
+        public string NetworkId { get; set; }
     }
 
     public class SocialMetaData
