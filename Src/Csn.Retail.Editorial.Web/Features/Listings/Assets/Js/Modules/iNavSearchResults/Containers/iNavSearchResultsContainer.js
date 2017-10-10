@@ -1,27 +1,35 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { CSSTransitionGroup } from 'react-transition-group'
+import Timer from 'ReactAnimations/Timer'
+import { Fade } from 'ReactAnimations/Fade'
 import INavSearchResult from 'iNavSearchResults/Component/iNavSearchResult'
 
 if (!SERVER) {
     require('iNavSearchResults/Css/iNavSearchResults.scss')
 }
-
-const INavSearchResults = ({ searchResults }) => (
-    <div className="iNavSearchResults">        
-        <CSSTransitionGroup 
-            transitionName="iNavSearchResultsTransition"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}>
+    
+class INavSearchResults extends React.Component {
+    render() {
+      return (
+        <div className="iNavSearchResults">        
             {
-                searchResults.map((searchResult, index) => {
-                    return <INavSearchResult key={index} {...searchResult} />;
+                this.props.searchResults.map((searchResult,i) => {
+                    let animationDuration = 75
+                    let delay = (i % 2 === 0) ? animationDuration*i : animationDuration*(i-1) 
+                    return  (
+                        <Timer key={`${searchResult.headline}${Math.random()}`} delay={delay}>
+                            <Fade duration={animationDuration}>                            
+                                <INavSearchResult {...searchResult} />
+                            </Fade>
+                        </Timer>
+                    )
                 })
             }
-        </CSSTransitionGroup>
-        <div>{JSON.stringify(searchResults)}</div>
-    </div>
-);
+            </div>
+            )
+    }
+  }
+
 
 // Redux Connect
 const mapStateToProps = (state) => {
