@@ -84,7 +84,7 @@ export function init(d, w, aside, baseReference) {
     });
     if(document.querySelector('#disqus_thread')){
         new ResizeSensor(document.querySelector('#disqus_thread'), function() {
-            sceneDown.trigger(references.triggerHookDown) //TODO: check if this works correctly
+            sceneDown.triggerHook(references.triggerHookDown) //TODO: check if this works correctly
         })
     }
 
