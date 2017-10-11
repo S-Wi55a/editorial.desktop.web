@@ -919,6 +919,7 @@
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\preloadedState.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
+    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
