@@ -3,6 +3,7 @@ using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
@@ -28,7 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
                 return new List<BreadCrumb>();
             }
 
-            var results = _mapper.Map<IList<BreadCrumb>>(source);
+            var results = _mapper.Map<IList<BreadCrumb>>(source.Flatten(x => x.Children));
             results.Add(new BreadCrumb { RemoveAction = string.Empty, FacetDisplay = "Clear All" });
 
             return results;
