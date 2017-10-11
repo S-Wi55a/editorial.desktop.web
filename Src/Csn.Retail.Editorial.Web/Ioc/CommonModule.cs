@@ -30,6 +30,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterType<NLogLoggerFactory>().As<ILoggerFactory>().SingleInstance();
             builder.Register(x => CacheStoreBuilder.New().Build()).As<Csn.Cars.Cache.ICacheStore>().SingleInstance();
             builder.Register(x => EditorialSettings.Instance).As<EditorialSettings>().SingleInstance();
+            builder.Register(x => VideosApiSettings.Instance).As<VideosApiSettings>().SingleInstance();
             builder.RegisterType<Serializer>().As<ISerializer>().SingleInstance();
             builder.RegisterType<SettingsProvider>().As<ISettingsProvider>().SingleInstance();
 
