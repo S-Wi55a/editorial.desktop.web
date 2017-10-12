@@ -336,6 +336,8 @@
     }
 
     &--wrap-hide {
+        z-index: -1;
+
         .fullherovideo__inner {
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
