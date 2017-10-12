@@ -922,6 +922,11 @@
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\fade.1.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Fade\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Timer\index.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.js" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\index.1.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -10,10 +10,10 @@ window.store = configureStore(); //Init store
 (function redux(d) {
 
     // Check if there is a preloaded state from iNav
-    const initState = window.__PRELOADED_STATE__iNav
+    const initState = window.__PRELOADED_STATE__csn_search.iNav
 
-    window.store.addReducer('iNav', require('iNav/Reducers').iNavParentReducer(initState));
-
+    window.store.addReducer('csn_search', require('iNav/Reducers').iNavParentReducer(initState))
+    
     if (d.querySelector('#iNav')) {
         require('iNav/iNav');
     }
@@ -32,7 +32,7 @@ window.store = configureStore(); //Init store
         // Enable Webpack hot module replacement for reducers
         module.hot.accept('iNav/Reducers',
             () => {
-                window.store.addReducer('iNav', require('iNav/Reducers').iNavParentReducer)
+                window.store.addReducer('csn_search', require('iNav/Reducers').iNavParentReducer)
             })
     }
 })(document);

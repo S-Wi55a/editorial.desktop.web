@@ -34,7 +34,7 @@ const INav:React.StatelessComponent<IINavNodes>  = ({ nodes, activeItemId, cance
 // Redux Connect
 const mapStateToProps = (state: State) => {
   return {
-    nodes: state.iNav.iNav.nodes
+    nodes: state.csn_search.iNav.iNav.nodes
   }
 }
 

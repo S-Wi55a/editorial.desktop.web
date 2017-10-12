@@ -12,11 +12,11 @@ import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchR
 
 //All Components are called and loaded into memorey
 export const Components = {
-    INavPreloadedState: ReactServerConnect(PreloadedState)('iNav', Reducers['iNav'], true),
-    INavArticleCount: ReactServerConnect(INavArticleCountComponent)('iNav', Reducers["iNav"]),
-    INavSearchResults: ReactServerConnect(INavSearchResultsContainer)('iNav', Reducers['iNav']),
-    INavBreadCrumbs: ReactServerConnect(INavBreadCrumbsContainer)('iNav', Reducers['iNav']),
-    INav: ReactServerConnect(INav)('iNav', Reducers['iNav'])
+    INavPreloadedState: ReactServerConnect(PreloadedState)('csn_search', Reducers['iNav'], true),
+    INavArticleCount: ReactServerConnect(INavArticleCountComponent)('csn_search', Reducers["iNav"]),
+    INavSearchResults: ReactServerConnect(INavSearchResultsContainer)('csn_search', Reducers['iNav']),
+    INavBreadCrumbs: ReactServerConnect(INavBreadCrumbsContainer)('csn_search', Reducers['iNav']),
+    INav: ReactServerConnect(INav)('csn_search', Reducers['iNav'])
 }
 
 

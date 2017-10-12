@@ -14,7 +14,7 @@ class INavSearchResults extends React.Component {
         <div className="iNavSearchResults">        
             {
                 this.props.searchResults.map((searchResult,i) => {
-                    let animationDuration = 75
+                    let animationDuration = SERVER ? 0 : 75
                     let delay = (i % 2 === 0) ? animationDuration*i : animationDuration*(i-1) 
                     return  (
                         <Timer key={`${searchResult.headline}${Math.random()}`} delay={delay}>
@@ -34,7 +34,7 @@ class INavSearchResults extends React.Component {
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        searchResults: state.iNav.searchResults        
+        searchResults: state.csn_search.iNav.searchResults        
     }
 }
 

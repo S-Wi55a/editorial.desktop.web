@@ -27,8 +27,8 @@ const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({
 
 const mapStateToProps = (state: State, ownProps: IINavConfirmCancelBar) => {
     return {
-        count: typeof state.iNav.iNav.nodes[ownProps.index].count !== 'undefined' ? state.iNav.iNav.nodes[ownProps.index].count : state.iNav.count,
-        pendingQuery: state.iNav.pendingQuery ? state.iNav.pendingQuery : '' 
+        count: typeof state.csn_search.iNav.iNav.nodes[ownProps.index].count !== 'undefined' ? state.csn_search.iNav.iNav.nodes[ownProps.index].count : state.csn_search.iNav.count,
+        pendingQuery: state.csn_search.iNav.pendingQuery ? state.csn_search.iNav.pendingQuery : '' 
     }
 }
 

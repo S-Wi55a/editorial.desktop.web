@@ -1,7 +1,9 @@
 
 //NOTE: This State should sit else where
 export interface State {
-    iNav: IINavResponse
+    csn_search: {
+        iNav: IINavResponse
+    }  
 }
 
 export interface IINavResponse{

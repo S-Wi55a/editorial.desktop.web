@@ -32,7 +32,6 @@
 
         <div class="main">
             @Html.React("global.Components.INavArticleCount", new {state = Model.NavResults }, containerId: "iNavArticleCount")
-            @*//State is required b/c there is no guarentee that it will be available for other components*@
             @*@Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults }, containerId: "iNavBreadcrumbs")*@
             @Html.React("global.Components.INavSearchResults", new {state = Model.NavResults }, containerId: "iNavSearchResults")
         
