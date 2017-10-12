@@ -523,6 +523,7 @@
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
     <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
+    <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
@@ -556,7 +557,8 @@
     <Compile Include="Infrastructure\Extensions\GuidExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SerializerExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\StringExtensions.cs" />
-    <Compile Include="Infrastructure\Extensions\TenantExtensions.cs" />
+    <Compile Include="Features\Shared\HtmlHelpers\SettingsHtmlHelpers.cs" />
+    <Compile Include="Features\Shared\HtmlHelpers\TenantHtmlHelpers.cs" />
     <Compile Include="Infrastructure\Filters\ErrorHandlerAttributeFilter.cs" />
     <Compile Include="Infrastructure\HystrixRestClientUtils\ApiMonitorReporter.cs" />
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestReporter.cs" />
@@ -672,6 +674,7 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
+    <Folder Include="Infrastructure\HtmlHelpers\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
@@ -928,6 +931,7 @@
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\preloadedState.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
+    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
