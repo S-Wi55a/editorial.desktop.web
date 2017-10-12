@@ -4,13 +4,16 @@ const heroFullVideo = document.querySelector('.fullherovideo--wrap');
 const heroFullVideoClose = document.querySelector('.fullherovideo__action-close');
 const heroFulVideoContainer = document.querySelector('.fullherovideo__container');
 
-const heroVideoHtml = (videoId, playerId) => {
+const heroVideoHtml = (videoId, playerId, articleId, videosApiUrl, service) => {
     return `
         <video id="fullhero_video" preload="auto"
             data-video-id="${videoId || ''}"
             data-account="674523943001"
             data-player="${playerId || ''}"
             data-embed="default"
+            data-csn-videos-api-url="${videosApiUrl || ''}"
+            data-csn-article-id="${articleId || ''}"
+            data-csn-service="${service || ''}"
             class="video-js" controls=""></video>
     `;
 };
@@ -18,8 +21,11 @@ const heroVideoHtml = (videoId, playerId) => {
 if (watchVideo) {
     const heroVideoId = watchVideo.getAttribute('data-video-id');
     const heroPlayerId = watchVideo.getAttribute('data-player-id');
+    const articleId = watchVideo.getAttribute('data-article-id');
+    const videosApiUrl = watchVideo.getAttribute('data-videos-api-url');
+    const service = watchVideo.getAttribute('data-service');
 
-    heroFulVideoContainer.innerHTML = heroVideoHtml(heroVideoId, heroPlayerId);
+    heroFulVideoContainer.innerHTML = heroVideoHtml(heroVideoId, heroPlayerId, articleId, videosApiUrl, service);
 
     const s = document.createElement('script');
     s.src = "//players.brightcove.net/674523943001/" + heroPlayerId + "_default/index.min.js";

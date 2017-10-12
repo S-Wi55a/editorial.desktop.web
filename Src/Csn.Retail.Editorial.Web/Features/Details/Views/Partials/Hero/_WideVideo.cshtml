@@ -1,5 +1,11 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
-    
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
+
+@{
+    var tenantName = Html.CurrentTenant().Name.ToLower();
+    var videosApiUrl = Html.VideosApiSettings().Url;
+}
+
 <div class="clearfix hero hero--wideVideo">
     <div class="hero__video-frame">
         <div class="hero__video-container">
@@ -15,7 +21,7 @@
                 <h1 class="hero__heading">@Model.Headline</h1>
             </header>
             <div class="hero__playbutton-container">
-                <div data-video-id="@Model.BrightcoveVideoId" data-player-id="@Model.BrightcovePlayerId" class="hero__playbutton">
+                <div data-video-id="@Model.BrightcoveVideoId" data-player-id="@Model.BrightcovePlayerId" data-videos-api-url="@videosApiUrl" data-article-id="@Model.NetworkId" data-service="@tenantName" class="hero__playbutton">
                     Watch Video
                 </div>
             </div>

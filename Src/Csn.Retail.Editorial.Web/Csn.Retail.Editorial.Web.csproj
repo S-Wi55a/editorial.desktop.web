@@ -513,6 +513,7 @@
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
     <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
+    <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
@@ -545,7 +546,8 @@
     <Compile Include="Infrastructure\Extensions\GuidExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SerializerExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\StringExtensions.cs" />
-    <Compile Include="Infrastructure\Extensions\TenantExtensions.cs" />
+    <Compile Include="Features\Shared\HtmlHelpers\SettingsHtmlHelpers.cs" />
+    <Compile Include="Features\Shared\HtmlHelpers\TenantHtmlHelpers.cs" />
     <Compile Include="Infrastructure\Filters\ErrorHandlerAttributeFilter.cs" />
     <Compile Include="Infrastructure\HystrixRestClientUtils\ApiMonitorReporter.cs" />
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestReporter.cs" />
@@ -662,6 +664,7 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
+    <Folder Include="Infrastructure\HtmlHelpers\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
@@ -917,15 +920,12 @@
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorials_searchresults.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorials_details.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResult.1.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
-    <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\fade.1.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Fade\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Timer\index.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.js" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\index.1.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
   </ItemGroup>
   <PropertyGroup>
