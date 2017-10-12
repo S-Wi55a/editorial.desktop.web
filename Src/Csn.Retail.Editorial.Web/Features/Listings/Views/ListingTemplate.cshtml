@@ -1,6 +1,7 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Listings.Models
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Newtonsoft.Json
 @using React.Web.Mvc
 @model ListingsViewModel
 
@@ -27,11 +28,12 @@
 
         <div class="main">
             @Html.React("global.Components.INavArticleCount", new {state = Model.NavResults }, containerId: "iNavArticleCount")
-            @*//State is required b/c there is no guarentee that it will be available for other components*@
             @Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults }, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSearchResults", new {state = Model.NavResults }, containerId: "iNavSearchResults")
+            @Html.React("global.Components.INavPagination", new { state = Model.NavResults }, containerId: "iNavPagination")
         
             @{ Html.RenderPartial("_Disclaimer"); }
+
         </div>
         @*@{Html.RenderPartial("Partials/_Aside");}*@
     </div>

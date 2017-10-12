@@ -25,6 +25,9 @@ window.store = configureStore(); //Init store
     if (d.querySelector('#iNavSearchResults')) {
         require('iNavSearchResults/iNavSearchResults');
     }
+    if (d.querySelector('#iNavPagination')) {
+        require('iNavPagination/iNavPagination');
+    }
 
 
     if (module.hot) {

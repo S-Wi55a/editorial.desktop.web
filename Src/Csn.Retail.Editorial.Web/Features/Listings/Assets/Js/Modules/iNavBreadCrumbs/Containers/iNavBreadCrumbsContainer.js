@@ -2,11 +2,10 @@
 import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Thunks } from 'iNav/Actions/actions'
+import { iNav } from 'Endpoints/endpoints'
 
-const INavBreadCrumb = ({removeBreadCrumb, facetDisplay, removeAction}) => (
-    <div className="iNavBreadCrumb" onClick={() =>removeBreadCrumb(removeAction)}>
-        {facetDisplay}
-    </div>
+const INavBreadCrumb = ({facetDisplay, removeAction}) => (
+    <a className="iNavBreadCrumb" href={iNav.home(removeAction)}>{facetDisplay}</a>    
 )
 
 const INavBreadCrumbs = ({ breadCrumbs, removeBreadCrumb }) => (
@@ -16,7 +15,7 @@ const INavBreadCrumbs = ({ breadCrumbs, removeBreadCrumb }) => (
                 transitionEnterTimeout={300}
                 transitionLeaveTimeout={300}>
                 {breadCrumbs.map((breadCrumb) => {
-                    return <INavBreadCrumb key={breadCrumb.facetDisplay} {...breadCrumb} removeBreadCrumb={removeBreadCrumb}/>
+                    return <INavBreadCrumb key={breadCrumb.facetDisplay} {...breadCrumb} />
                 })}
             </ReactCSSTransitionGroup>
         </div>
@@ -29,18 +28,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        removeBreadCrumb: (query) => {
-            dispatch(Thunks.fetchINav(query))
-        }
-    }
-}
-
 // Connect the Component to the store
 const INavBreadCrumbsContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(INavBreadCrumbs)
 
 export default INavBreadCrumbsContainer

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using AutoMapper;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
+﻿using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping;
@@ -35,7 +33,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         {
             cfg.CreateMap<RyvussNavResultDto, NavResult>()
                 .ForMember(dest => dest.NoResultsMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultMessage(src.Count)))
-                .ForMember(dest => dest.NoResultsInstructionMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)));
+                .ForMember(dest => dest.NoResultsInstructionMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)))
+                .ForMember(dest => dest.PendingQuery, opt => opt.Ignore())
+                .ForMember(dest => dest.Paging, opt => opt.Ignore())
+                .ForMember(dest => dest.Sorting, opt => opt.Ignore());
 
             cfg.CreateMap<BreadCrumbDto, BreadCrumb>();
 

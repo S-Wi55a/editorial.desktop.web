@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
@@ -11,6 +11,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public List<SearchResult> SearchResults { get; set; }
         public string NoResultsMessage { get; set; }
         public string NoResultsInstructionMessage { get; set; }
+        public PagingViewModel Paging { get; set; }
+        public SortingViewModel Sorting { get; set; }
+        public string PendingQuery { get; set; }
     }
 
     public class Nav

@@ -456,11 +456,14 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\iNavArticleCount.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Containers\iNavBreadCrumbsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\iNavBreadCrumbs.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Containers\iNavPaginationContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\iNavPagination.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Containers\iNavSearchResultsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\iNavSearchResults.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
+    <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
@@ -554,6 +557,7 @@
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestRequestHeaderInterceptor.cs" />
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
+    <Compile Include="Infrastructure\ModelBinders\SmartModelBinder.cs" />
     <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
@@ -662,6 +666,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
+    <Folder Include="Features\Listings\Helpers\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
@@ -868,6 +873,7 @@
     <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
     <Content Include="Features\Listings\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -917,7 +923,6 @@
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\iNav.ts" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
-    <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\preloadedState.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
   </ItemGroup>
   <PropertyGroup>
