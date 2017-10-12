@@ -3,6 +3,7 @@ declare module 'ReactReduxUI'
 declare module 'iNav/Components/iNavMenuHeader'
 declare module 'global-object'
 declare module 'react-image'
+declare module 'custom-event'
 
 declare var SERVER: boolean
 

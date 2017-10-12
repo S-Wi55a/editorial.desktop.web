@@ -86,6 +86,14 @@ interface ISwitchPage extends Action {
     payload? : any
 }
 
+interface IFetchNativeAds extends Action {
+    type: ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT 
+    payload: {
+        event: string
+    }
+}
+
+
 type UIActions = IToggleIsActive
     | ICancel
     | IIncrement
@@ -98,6 +106,7 @@ type APIActions = IFetchQueryRequest | IFetchQuerySuccess | IFetchQueryError
 type INavActions = IUpdatePendingQuery 
     | IUpdatePreviousState
     | IAddPromotedArticle
+    | IFetchNativeAds
 
 // Fetch data
 export type Actions = UIActions | APIActions | INavActions

@@ -1,7 +1,7 @@
 ﻿import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import update from 'immutability-helper'
 import { INode, IINavResponse } from 'iNav/Types'
-
+import CustomEvent from 'custom-event'
 
 // This is the entry Reducer and should be loaded with component
 
@@ -25,6 +25,11 @@ export const iNavReducer = (state: any, action: Actions) => {
                 return refinementReducer(state, action)
             case ActionTypes.INAV.ADD_PROMOTED_ARTICLE:
                 return promotedReducer(state, action)
+            case ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT:
+                // This is a side effect
+                const e = new CustomEvent(action.payload.event);
+                if(typeof window !== 'undefined'){dispatchEvent(e)}  
+                return state
             default:
                 return state
         }
@@ -48,7 +53,6 @@ function aspectReducer(state: IINavResponse, action: Actions): IINavResponse {
                 }
             })
         return newState
-
     } catch (e) {
         console.log(e)        
         return state
@@ -86,14 +90,7 @@ function promotedReducer(state: IINavResponse, action: Actions) {
                     [action.payload.location]: {
                         $set : action.payload
                     }
-                },
-                // previousState: {
-                //     searchResults: {
-                //         [action.payload.location]: {
-                //             $set : action.payload
-                //         }
-                //     } 
-                // }           
+                }
             })
         return newState
     } catch (e) {

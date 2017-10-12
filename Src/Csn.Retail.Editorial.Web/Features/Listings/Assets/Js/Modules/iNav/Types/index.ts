@@ -3,6 +3,9 @@
 export interface State {
     csn_search: {
         iNav: IINavResponse
+        history: {
+            iNav: IINavResponse
+        }
     }  
 }
 

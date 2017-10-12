@@ -1,6 +1,6 @@
 ﻿import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import update from 'immutability-helper'
-import { INode, IINavResponse } from 'iNav/Types'
+import { State } from 'iNav/Types'
 import { iNavReducer } from 'iNav/Reducers/iNav'
 import { iNavHistoryReducer } from 'iNav/Reducers/history'
 
@@ -11,23 +11,36 @@ export const iNavParentReducer = (initState: any = null) => {
         state = {
             iNav: initState,
             history: { iNav: initState }
-        }, 
+        },
         action: Actions
     ) => {
         switch (action.type) {
             case ActionTypes.UI.CANCEL:
-                return {
-                    ...state,
-                    iNav:{ ...state.history.iNav },
-                }
+                return iNavMenuReducer(state, action)
             default:
-                return {   
-                        iNav: iNavReducer(state.iNav, action),
-                        history: iNavHistoryReducer(state.history, action)
-                    }
-        
+                return {
+                    iNav: iNavReducer(state.iNav, action),
+                    history: iNavHistoryReducer(state.history, action)
+                }
+
+        }
     }
 }
 
-
+function iNavMenuReducer(state: any, action: Actions) {
+    
+    try {
+        const newState = update(state,
+            {
+                iNav: {
+                    iNav: {
+                        $set : state.history.iNav.iNav
+                    }
+                }
+            })
+        return newState
+    } catch (e) {
+        console.log(e)        
+        return state
+    }       
 }

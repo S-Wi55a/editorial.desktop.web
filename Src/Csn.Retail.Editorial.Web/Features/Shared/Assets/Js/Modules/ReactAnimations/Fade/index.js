@@ -6,13 +6,13 @@ const transitionStyles = {
   entered:  { opacity: 1 },
 };
 
-export const Fade = ({ in: inProp, children, duration}) => (
-  <Transition in={inProp} timeout={duration || 0}>
+export const Fade = ({ in: inProp, children, duration, startingOpacity = 0 }) => (
+  <Transition in={inProp} timeout={duration || 0} startingOpacity={startingOpacity}>
     {(state) => (
       <span style={{
         ...{
             transition: `opacity ${duration}ms ease-in-out`,
-            opacity: 0,
+            opacity: startingOpacity,
           },
         ...transitionStyles[state]
       }}>
