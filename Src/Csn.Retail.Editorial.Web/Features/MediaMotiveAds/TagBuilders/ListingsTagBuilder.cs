@@ -33,12 +33,26 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             var tagList = new List<MediaMotiveTag>();
 
-            if (breadCrumbs == null || !breadCrumbs.Any())
-                return tagList;
+            if (breadCrumbs == null || !breadCrumbs.Any()) return tagList;
 
+            // have a tenant specific list of ad tags
+
+            // have a list of ad tags and key used to extract from breadcrumbs
+
+            // then we loop through breadcrumbs and get the tags. For values which are not present have defaults
 
 
             return tagList;
         }
+    }
+
+    public class BreadcrumbAdTagMapper
+    {
+        private Dictionary<string, string> _mapping = new Dictionary<string, string>()
+        {
+            { "Make",  SasAdTags.SasAdTagKeys.Make },
+            { "Model",  SasAdTags.SasAdTagKeys.Model },
+            { "Category",  SasAdTags.SasAdTagKeys.Category }
+        };
     }
 }
