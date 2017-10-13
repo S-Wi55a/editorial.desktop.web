@@ -4,11 +4,11 @@ using System.Web.Mvc;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.ModelBinders
 {
-    public class SmartModelBinder : DefaultModelBinder
+    public class ListingQueryModelBinder : DefaultModelBinder
     {
         private readonly IEnumerable<IFilteredModelBinder> _filteredModelBinders;
 
-        public SmartModelBinder(IEnumerable<IFilteredModelBinder> filteredModelBinders)
+        public ListingQueryModelBinder(IEnumerable<IFilteredModelBinder> filteredModelBinders)
         {
             _filteredModelBinders = filteredModelBinders;
         }

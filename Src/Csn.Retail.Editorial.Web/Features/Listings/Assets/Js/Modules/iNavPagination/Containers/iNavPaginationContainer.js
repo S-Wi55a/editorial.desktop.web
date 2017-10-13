@@ -55,18 +55,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        removeBreadCrumb: (query) => {
-            dispatch(Thunks.fetchINav(query))
-        }
-    }
-}
-
 // Connect the Component to the store
 const INavPaginationContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(INavPagination)
 
 export default INavPaginationContainer

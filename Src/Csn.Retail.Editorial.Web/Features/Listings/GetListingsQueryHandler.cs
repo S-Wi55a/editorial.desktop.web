@@ -20,13 +20,15 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly IMapper _mapper;
         private readonly IPaginationHelper _paginationHelper;
+        private readonly ISortingHelper _sortingHelper;
 
-        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper)
+        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper, ISortingHelper sortingHelper)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
             _mapper = mapper;
             _paginationHelper = paginationHelper;
+            _sortingHelper = sortingHelper;
         }
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
@@ -49,6 +51,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             {
                 navResults.PendingQuery = string.IsNullOrEmpty(query.Q) ? string.Empty: query.Q;
                 navResults.Paging = _paginationHelper.GetPaginationData(resultData.Count, query.Limit, query.Skip, query.SortOrder, query.Q);
+                //navResults.Sorting = _sortingHelper.GetPaginationData(resultData.Count, query.Limit, query.Skip, query.SortOrder, query.Q);
             }
 
             return resultData == null ? null : new GetListingsResponse

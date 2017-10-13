@@ -1,0 +1,7 @@
+﻿@import "css/_globals.scss";
+
+
+.iNavSorting {
+    @include clearfix();
+    margin-bottom: 25px;
+}

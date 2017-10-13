@@ -10,12 +10,12 @@ namespace Csn.Retail.Editorial.Web
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
-            RegisterModelBinders();
+            //RegisterModelBinders();
         }
 
-        private static void RegisterModelBinders()
-        {
-            ModelBinders.Binders.DefaultBinder = new SmartModelBinder(DependencyResolver.Current.GetServices<IFilteredModelBinder>());
-        }
+        //private static void RegisterModelBinders()
+        //{
+        //    ModelBinders.Binders.DefaultBinder = new SmartModelBinder(DependencyResolver.Current.GetServices<IFilteredModelBinder>());
+        //}
     }
 }

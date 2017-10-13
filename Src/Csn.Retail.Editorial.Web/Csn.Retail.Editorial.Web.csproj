@@ -460,9 +460,12 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\iNavPagination.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Containers\iNavSearchResultsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\iNavSearchResults.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Containers\iNavSortingContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\iNavSorting.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
+    <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
     <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
@@ -474,6 +477,9 @@
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
+    <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
+    <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
+    <Compile Include="Features\Shared\Helpers\SortKeyValues.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
     <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
@@ -874,6 +880,7 @@
     <Content Include="Features\Listings\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Css\iNavSorting.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

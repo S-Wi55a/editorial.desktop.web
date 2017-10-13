@@ -8,6 +8,7 @@ import PreloadedState from './preloadedState'
 import INav from 'iNav/Containers/iNavContainer'
 import INavArticleCountComponent from 'iNavArticleCount/Components/iNavArticleCountComponent'
 import INavBreadCrumbsContainer from 'iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
+import INavSortingContainer from 'iNavSorting/Containers/iNavSortingContainer'
 import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchResultsContainer'
 import INavPaginationContainer from 'iNavPagination/Containers/iNavPaginationContainer'
 
@@ -18,6 +19,7 @@ export const Components = {
 
     INavArticleCount: ReactServerConnect(INavArticleCountComponent)('iNav', Reducers["iNav"]),
     INavPagination: ReactServerConnect(INavPaginationContainer)('iNav', Reducers['iNav']),
+    INavSorting: ReactServerConnect(INavSortingContainer)('iNav', Reducers['iNav']),
     INavSearchResults: ReactServerConnect(INavSearchResultsContainer)('iNav', Reducers['iNav']),
     INavBreadCrumbs: ReactServerConnect(INavBreadCrumbsContainer)('iNav', Reducers['iNav']),
     INav: ReactServerConnect(INav)('iNav', Reducers['iNav'])
