@@ -40,14 +40,20 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero" }
             });
 
-            var resultData = !result.IsSucceed ? null : result.Data;
-
-            return resultData == null ? null : new GetListingsResponse
+            if (!result.IsSucceed)
             {
-                ListingsViewModel = new ListingsViewModel
+                return new GetListingsResponse()
                 {
-                    NavResults = _mapper.Map<NavResult>(resultData)
-                }
+                    HttpStatusCode = result.HttpStatusCode
+                };
+            }
+
+            var listingsViewModel = _mapper.Map<ListingsViewModel>(result.Data);
+
+
+            return new GetListingsResponse()
+            {
+                ListingsViewModel = listingsViewModel
             };
         }
     }

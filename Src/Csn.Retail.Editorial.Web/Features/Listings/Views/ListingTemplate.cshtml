@@ -2,7 +2,6 @@
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using React.Web.Mvc
-@using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 @model ListingsViewModel
 
 @section Head{
@@ -42,16 +41,9 @@
 @section BottomScripts
 {
     @Html.React("global.Components.INavPreloadedState", new {state = Model.NavResults}, containerId: "INavPreloadedState")
-    @{@*Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);*@}
+    @if (Model.PolarNativeAdsData != null)
+    {
+        Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
+    }    
     @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
-
-<script>
-    var csn_editorial = csn_editorial || {};
-    csn_editorial.nativeAds = {
-        siteName: "cs.editorials",
-        areaName: "searchresults",
-        makeModel: "",
-        setPropertyID: "NA-CARSCOMAU-11237502"
-    };
-</script>
 }

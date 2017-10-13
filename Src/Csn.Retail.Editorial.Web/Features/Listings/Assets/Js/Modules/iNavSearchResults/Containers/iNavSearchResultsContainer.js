@@ -17,6 +17,9 @@ class INavSearchResults extends React.Component {
         <div className="iNavSearchResults">        
             {
                 this.props.searchResults.map((searchResult,i) => {
+
+                  //TODO: add Teads component
+
                     let animationDuration = SERVER ? 0 : 75
                     let delay = (i % 2 === 0) ? animationDuration*i : animationDuration*(i-1) 
                     return  (

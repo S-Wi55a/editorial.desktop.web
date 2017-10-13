@@ -464,6 +464,8 @@
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
+    <Compile Include="Features\Listings\Mappings\MappingSetupTask.cs" />
+    <Compile Include="Features\Listings\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
