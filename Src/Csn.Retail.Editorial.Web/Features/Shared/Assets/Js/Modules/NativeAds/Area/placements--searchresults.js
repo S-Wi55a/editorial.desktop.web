@@ -55,15 +55,21 @@ placements.push({
     location: 'body', // We need to location to always be true
     name: 'details-page-more-articles-1',
     placementId: '30',
-    template: templates['search-result'](3) // Set the placement location 
-});
-
+    template: templates['search-result'](4) // Set the placement location 
+})
 placements.push({
     location: 'body', // We need to location to always be true
     name: 'details-page-related-articles-2',
     placementId: '31',
-    template: templates['search-result'](4) // Set the placement location 
-});
+    template: templates['search-result'](9) // Set the placement location 
+})
+placements.push({
+    location: 'body', // We need to location to always be true
+    name: 'details-page-more-articles-3',
+    placementId: '32',
+    template: templates['search-result'](14) // Set the placement location 
+})
+
 
 
 export { placements, events }

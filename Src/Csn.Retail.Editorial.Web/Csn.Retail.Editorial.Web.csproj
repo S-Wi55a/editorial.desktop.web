@@ -918,7 +918,6 @@
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\preloadedState.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
-    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorials_searchresults.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorials_details.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Fade\index.js" />
@@ -927,6 +926,7 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.js" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--searchresults.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
