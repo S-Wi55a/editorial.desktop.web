@@ -18,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly VideosApiSettings _videosApiSettings;
 
-        private readonly string _brightcoveIFrameUrl = "http://players.brightcove.net/674523943001/{0}_default/index.html?videoId={1}&csnVideosApiUrl={2}&csnArticleId={3}&csnService={4}";
+        private readonly string _brightcoveIFrameUrl = "https://players.brightcove.net/674523943001/{0}_default/index.html?videoId={1}&csnVideosApiUrl={2}&csnArticleId={3}&csnService={4}";
 
         public BrightcoveIFrameBuilder(ITenantProvider<TenantInfo> tenantProvider, VideosApiSettings videosApiSettings)
         {
