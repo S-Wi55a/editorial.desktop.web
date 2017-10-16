@@ -479,6 +479,7 @@
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\CommonTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsBreadCrumbTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\MediaMotiveTag.cs" />
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />

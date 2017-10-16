@@ -28,7 +28,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             return new List<MediaMotiveTag>()
             {
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Site, _tenantProvider.Current().MediaMotiveAccountId),
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, "TBC"),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Method, "get"),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Tile, query.TileId),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Size, dimensions.Select(x => $"{x.Width}x{x.Height}")),
