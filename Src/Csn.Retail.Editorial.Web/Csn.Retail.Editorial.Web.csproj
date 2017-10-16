@@ -479,7 +479,7 @@
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
     <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
-    <Compile Include="Features\Shared\Helpers\SortKeyValues.cs" />
+    <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
     <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
@@ -563,7 +563,6 @@
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestRequestHeaderInterceptor.cs" />
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
-    <Compile Include="Infrastructure\ModelBinders\SmartModelBinder.cs" />
     <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />

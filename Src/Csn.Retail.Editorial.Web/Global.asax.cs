@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using System.Web.Http;
-using Csn.Retail.Editorial.Web.Infrastructure.ModelBinders;
 
 namespace Csn.Retail.Editorial.Web
 {
@@ -10,12 +9,6 @@ namespace Csn.Retail.Editorial.Web
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
-            //RegisterModelBinders();
         }
-
-        //private static void RegisterModelBinders()
-        //{
-        //    ModelBinders.Binders.DefaultBinder = new SmartModelBinder(DependencyResolver.Current.GetServices<IFilteredModelBinder>());
-        //}
     }
 }

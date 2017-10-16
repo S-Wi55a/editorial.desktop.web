@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace Csn.Retail.Editorial.Web.Features.Shared.Models
+namespace Csn.Retail.Editorial.Web.Features.Listings.Models
 {
     public class PagingViewModel
     {
@@ -16,8 +13,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public long TotalPageCount { get; set; }
         public long CurrentPageNo { get; set; }
         public int Limit { get; set; }
-        public bool ShowInitialSeparator { get; set; }
-        public bool ShowTrailingSeparator { get; set; }
         public string DisplayText { get; set; }
     }
 

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Csn.Retail.Editorial.Web.Features.Listings.Models;
 
-namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
+namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 {
     public class EditorialSortKeyValues
     {
@@ -12,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
         private const string OldestName = "Oldest Articles";
 
         private static IDictionary<string, ISortKeyItem> _items;
-        private static readonly Object ThisLock = new Object();
+        private static readonly object ThisLock = new object();
 
         public static IDictionary<string, ISortKeyItem> Items
         {
@@ -35,5 +34,21 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                 }
             }
         }
+    }
+    public interface ISortKeyItem
+    {
+        string DisplayName { get; }
+        string Key { get; }
+    }
+    public class SortKeyItem : ISortKeyItem
+    {
+        public SortKeyItem(string key, string displayName)
+        {
+            DisplayName = displayName;
+            Key = key;
+        }
+
+        public string DisplayName { get; }
+        public string Key { get; }
     }
 }

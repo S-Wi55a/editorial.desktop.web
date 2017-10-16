@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
@@ -18,6 +18,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 
         public PagingViewModel GetPaginationData(int count, int limit, int skip, string sortOrder, string query)
         {
+            if (count < 1)
+            {
+                return new PagingViewModel();
+            }
             var currentPageNumber = GetCurrentPageNo(skip, limit);            
             var totalPages = limit != 0 ? (int)Math.Ceiling((double)count / limit)  : 0;            
             var fistPageLink = count > 0 ? GeneratePageLink(1, limit, query): null; // Only if there's at leaset one record
@@ -36,11 +40,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                 Next = nextPageLink,
                 Pages = GeneratePageLinks(currentPageNumber, limit, totalPages, query).ToList(), // Only if more than 2 pages
                 Limit = limit,
-                ShowTrailingSeparator = totalPages > 4 && currentPageNumber < totalPages - 2,
-                ShowInitialSeparator = totalPages > 4 && currentPageNumber > 2,
                 DisplayText = GetDisplayText(count, totalPages, skip, currentPageNumber, limit)
             };
-        }
+        }        
 
         private string GetDisplayText(int count, int totalPages, int skip, int currentPageNumber, int limit)
         {

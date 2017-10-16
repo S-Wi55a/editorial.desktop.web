@@ -42,12 +42,10 @@ const INavPagination = ({ paging, sortOrder }) =>  {
                     <INavPageNavigator { ...paging.previous } show={paging.previous} direction={'previous'} sortOrder={sortOrder}/>
                     <INavPage { ...paging.first } currentPage={paging.currentPageNo} limit={paging.limit} sortOrder={sortOrder}/> 
                     <INavPageSeparator {...paging} text='...' initial={true}/>
-
                     {paging.pages.map((page) => {
                         return <INavPage  key={page.pageNo} { ...page } currentPage={paging.currentPageNo} limit={paging.limit} sortOrder={sortOrder}/>
                     })}
-                    <INavPageSeparator {...paging} text='...' trailing={true}/>
-                    
+                    <INavPageSeparator {...paging} text='...' trailing={true}/>                    
                     <INavPage  { ...paging.last } currentPage={paging.currentPageNo} limit={paging.limit} sortOrder={sortOrder}/>
                     <INavPageNavigator { ...paging.next } show={paging.next}  direction={'next'} sortOrder={sortOrder}/>
              {sortOrder.value}
