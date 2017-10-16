@@ -20,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 
             if (viewData == null) return Content(String.Empty);
 
-            return PartialView("~/Features/MediaMotiveAds/Views/Index.cshtml", viewData);
+            return PartialView("~/Features/MediaMotiveAds/Views/DetailsAd.cshtml", viewData);
         }
     }
 }

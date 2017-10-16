@@ -23,16 +23,16 @@
     @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
 }
 <div class="listing-page">
-    @Html.React("global.Components.INav", new { state = Model.NavResults }, containerId: "iNav")
+    @Html.React("global.Components.INav", new {state = Model.NavResults}, containerId: "iNav")
 
     <div class="container">
 
         <div class="main">
-            @Html.React("global.Components.INavArticleCount", new {state = Model.NavResults }, containerId: "iNavArticleCount")
+            @Html.React("global.Components.INavArticleCount", new {state = Model.NavResults}, containerId: "iNavArticleCount")
             @*//State is required b/c there is no guarentee that it will be available for other components*@
-            @Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults }, containerId: "iNavBreadcrumbs")
-            @Html.React("global.Components.INavSearchResults", new {state = Model.NavResults }, containerId: "iNavSearchResults")
-        
+            @Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults}, containerId: "iNavBreadcrumbs")
+            @Html.React("global.Components.INavSearchResults", new {state = Model.NavResults}, containerId: "iNavSearchResults")
+
             @{ Html.RenderPartial("_Disclaimer"); }
         </div>
         @{Html.RenderPartial("Partials/_Aside");}
@@ -42,4 +42,5 @@
 @section BottomScripts
 {
     @Html.React("global.Components.INavPreloadedState", new { state = Model.NavResults }, containerId: "INavPreloadedState")
+    @{ Html.RenderPartial("Partials/MediaMotive/_Krux"); }
 }

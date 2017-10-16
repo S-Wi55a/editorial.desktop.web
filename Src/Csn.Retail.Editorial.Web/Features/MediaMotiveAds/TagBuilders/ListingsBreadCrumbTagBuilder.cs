@@ -2,6 +2,7 @@
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 {
@@ -54,7 +55,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 
             if (_aspectToAdTagMapping.TryGetValue(breadCrumb.Aspect, out var adTag))
             {
-                adTags.Add(new MediaMotiveTag(adTag, breadCrumb.Facet));
+                adTags.Add(new MediaMotiveTag(adTag, breadCrumb.Facet.ToLowerAlphaNumericOnly()));
             }
 
             if (breadCrumb.Children != null)

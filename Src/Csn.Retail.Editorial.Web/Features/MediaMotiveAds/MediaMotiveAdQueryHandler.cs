@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
                 .Where(builder => builder.IsApplicable(query))
                 .SelectMany(x => x.Build(query))
                 .Where(x => !x.Name.IsNullOrEmpty())
-                .Select(x => $"{x.Name}={string.Join(",", x.Values.NullSafe().Select(v => v.NullSafe().ToLower()))}").Distinct().ToList();
+                .Select(x => $"{x.Name}={string.Join(",", x.Values.NullSafe().Select(v => v.NullSafe()))}").Distinct().ToList();
 
             var urlargs = string.Join("/", tags);
 
