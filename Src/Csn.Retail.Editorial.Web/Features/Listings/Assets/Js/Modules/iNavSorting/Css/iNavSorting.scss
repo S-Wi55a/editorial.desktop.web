@@ -1,7 +1,23 @@
 ﻿@import "css/_globals.scss";
 
 
-.iNavSorting {
+.iNavSorting__container {
     @include clearfix();
     margin-bottom: 25px;
 }
+
+.iNavSorting {
+    font-size: 14px;
+    display: inline-block;
+    font-weight: $font-weight-600;
+
+
+    &--select {
+        width: 171px;
+        border-radius: 4px;
+        border: solid 1px $cs-grey;
+        height: 40px;
+        padding: 0 15px;        
+    }
+}
+
