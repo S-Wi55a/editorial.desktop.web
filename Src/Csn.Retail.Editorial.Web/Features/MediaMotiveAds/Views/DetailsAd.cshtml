@@ -1,9 +1,13 @@
-﻿@model Csn.Retail.Editorial.Web.Features.MediaMotiveAds.MediaMotiveAdViewModel
+﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+@using Csn.Retail.Editorial.Web.Infrastructure.Utils
+@model Csn.Retail.Editorial.Web.Features.MediaMotiveAds.MediaMotiveAdViewModel
+    
 
 <div id="@Model.TileId" 
      class="mediamotive-block mediamotive-@Model.Description.ToLower() mediamotive-block--loading" 
      data-krux-required="@Model.DataKruxRequired.ToString().ToLower()" 
-     data-media-motive-url="@Model.ScriptUrl">
+     @{ /*We are addding the Random Key and the ViewId key here becasue the view model is getting cached*/ }
+     data-media-motive-url="@($"{Model.ScriptUrl}/{SasAdTags.SasAdTagKeys.Random}={RandomNumberGenerator.Generate()}/{SasAdTags.SasAdTagKeys.ViewId}={RandomNumberGenerator.Generate()}")">
     @if (!string.IsNullOrEmpty(Model.NoScriptImageUrl))
     {
         <span class="loader"></span>

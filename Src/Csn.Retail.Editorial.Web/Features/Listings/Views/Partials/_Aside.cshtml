@@ -1,11 +1,6 @@
-﻿@using Newtonsoft.Json
-@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
-
-<div class="wrapper--aside">
+﻿<div class="wrapper--aside">
     <div class="aside ">
         <!-- Aside Section -->
-        @{ Html.RenderPartial("Partials/MediaMotive/_Mrec", Model.MediaMotiveData); }
-        
-        @{ Html.RenderPartial("Partials/MediaMotive/_SponsoredTextLinks", Model.MediaMotiveData); }        
+        @{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Mrec.cshtml"); }
     </div>
 </div>
