@@ -1,9 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.Models
 {
     public class PagingViewModel
     {
+        public PagingViewModel()
+        {
+            Pages = Enumerable.Empty<PagingItemViewModel>();
+        }
         public PagingItemViewModel First { get; set; }
         public PagingItemViewModel Last { get; set; }
         public PagingItemViewModel Previous { get; set; }
