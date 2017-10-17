@@ -130,9 +130,9 @@ const Price = (props) => {
 const SpecModuleItem = (props) => {
 
     let marks = {
-        0:props.scaffolding.title2
+        0:'Price Min'
     }
-    marks[props.sliderLength - 1] = props.scaffolding.title3
+    marks[props.sliderLength - 1] = 'Price Max'
 
     return (
         <div className="spec-item ">
@@ -144,7 +144,7 @@ const SpecModuleItem = (props) => {
                     <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
                     {props.sliderLength > 1 ? 
                         <div className="spec-item__selector" data-webm-clickvalue="change-variant">
-                            <p className="spec-item__selector-label">{props.scaffolding.title1}</p>
+                            <p className="spec-item__selector-label">Model Selector</p>
                             <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />
                         </div>
                         : ''}
@@ -268,14 +268,12 @@ class SpecModule extends React.Component {
 
     render() {
 
-        const { title1, title2, title3 } = this.props.data
         if (this.state.items.length <= 0 && !this.state.fetchingVariants) return null;
         return (
             <div className={this.state.fetchingVariants ? "spec-module loading" : "spec-module"}>
                 {this.state.items[this.state.activeItemIndex] ?
                     <SpecModuleItem
                         data={this.state.items[this.state.activeItemIndex]}
-                        scaffolding={{ title1, title2, title3 }}
                         disclaimerHandler={this.disclaimerHandler}
                         sliderLength={this.state.sliderLength}
                         sliderOnAfterChangeHandler={this.sliderOnAfterChangeHandler}
