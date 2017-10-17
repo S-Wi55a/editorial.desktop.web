@@ -20,7 +20,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
         {
             if (count < 1)
             {
-                return new PagingViewModel();
+                return new PagingViewModel
+                {
+                    Pages = new List<PagingItemViewModel>()
+                };
             }
             var currentPageNumber = GetCurrentPageNo(skip, limit);            
             var totalPages = limit != 0 ? (int)Math.Ceiling((double)count / limit)  : 0;            

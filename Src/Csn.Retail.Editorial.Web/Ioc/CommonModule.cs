@@ -8,12 +8,17 @@ using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+using Csn.Retail.Editorial.Web.Infrastructure.Utils;
 using Csn.Serializers;
 using Csn.Serializers.Json;
 using Csn.SimpleCqrs;
 using Csn.WebMetrics.Editorial.Interfaces;
 using Csn.WebMetrics.Editorial.Ioc;
 using Csn.WebMetrics.Ext.Interfaces;
+using Expresso.Parser;
+using Expresso.Sanitisation;
+using Expresso.Syntax;
+using Expresso.Syntax.Rose;
 using Ingress.Autofac;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -33,6 +38,11 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.Register(x => VideosApiSettings.Instance).As<VideosApiSettings>().SingleInstance();
             builder.RegisterType<Serializer>().As<ISerializer>().SingleInstance();
             builder.RegisterType<SettingsProvider>().As<ISettingsProvider>().SingleInstance();
+
+            builder.RegisterType<RoseTreeSanitiser>().AsSelf().SingleInstance();
+            builder.RegisterType<RoseTreeFormatter>().As<IExpressionFormatter>().SingleInstance();
+            builder.RegisterType<RoseTreeParser>().As<IExpressionParser>().SingleInstance();
+            builder.RegisterType<RoseTreeSyntax>().As<IExpressionSyntax>().SingleInstance();
 
             // Tracking
             builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialDetailsTrackingContainerProvider>()).As<IEditorialDetailsTrackingContainerProvider>();

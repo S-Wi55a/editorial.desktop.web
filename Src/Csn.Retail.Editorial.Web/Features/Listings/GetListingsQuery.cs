@@ -5,7 +5,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
     public class GetListingsQuery : IQuery
     {
         private int _limit;
-        private string _sortORder;
+        private string _sortOrder;
         public string Q { get; set; }
         public int Skip { get; set; }
 
@@ -17,8 +17,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         public string SortOrder
         {
-            get => string.IsNullOrEmpty(_sortORder) ? "Latest" : _sortORder;
-            set => _sortORder = value;
+            get => string.IsNullOrEmpty(_sortOrder) ? "Latest" : _sortOrder;
+            set => _sortOrder = value;
         }
+
+        public string Keyword { get; set; }
     }
 }

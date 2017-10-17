@@ -29,7 +29,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
                 return new List<BreadCrumb>();
             }
 
-            var results = _mapper.Map<IList<BreadCrumb>>(source.Flatten(x => x.Children));
+            var results = _mapper.Map<IList<BreadCrumb>>(source.Where(a => a.Type == "FacetBreadCrumb").Flatten(x => x.Children));
+            var keywordBreadCrumb = source.FirstOrDefault(a => a.Type == "KeywordBreadCrumb");
+            if (keywordBreadCrumb != null)
+            {
+                results.Insert(0, new BreadCrumb { RemoveAction = keywordBreadCrumb.RemoveAction, FacetDisplay = keywordBreadCrumb.Term.Trim('(', ')') });
+            }
             results.Add(new BreadCrumb { RemoveAction = string.Empty, FacetDisplay = "Clear All" });
 
             return results;

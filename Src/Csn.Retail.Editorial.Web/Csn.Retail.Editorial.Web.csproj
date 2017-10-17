@@ -158,6 +158,21 @@
     <Reference Include="Csn.WebMetrics.Ext, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.WebMetrics.Editorial.1.0.478.0\lib\net40\Csn.WebMetrics.Ext.dll</HintPath>
     </Reference>
+    <Reference Include="Expresso, Version=42.0.330.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expresso.42.0.330\lib\net46\Expresso.dll</HintPath>
+    </Reference>
+    <Reference Include="Expresso.Parser, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expresso.Parser.42.0.313\lib\net46\Expresso.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="FParsec, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40ccfc0a09edbb5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\FParsec.1.0.2\lib\net40-client\FParsec.dll</HintPath>
+    </Reference>
+    <Reference Include="FParsecCS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40ccfc0a09edbb5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\FParsec.1.0.2\lib\net40-client\FParsecCS.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Core.4.0.0.1\lib\net40\FSharp.Core.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
@@ -578,6 +593,7 @@
     <Compile Include="Infrastructure\UserContext\IUserContext.cs" />
     <Compile Include="Infrastructure\UserContext\UserContext.cs" />
     <Compile Include="Infrastructure\Utils\RandomNumberGenerator.cs" />
+    <Compile Include="Infrastructure\Utils\RoseTreeSyntax.cs" />
     <Compile Include="Ioc\RestClientModule.cs" />
     <Compile Include="Ioc\CommonModule.cs" />
     <Compile Include="Ioc\ConventionsModule.cs" />

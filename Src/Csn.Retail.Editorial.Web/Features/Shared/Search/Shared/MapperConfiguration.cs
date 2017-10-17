@@ -35,10 +35,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.NoResultsMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultMessage(src.Count)))
                 .ForMember(dest => dest.NoResultsInstructionMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)))
                 .ForMember(dest => dest.PendingQuery, opt => opt.Ignore())
+                .ForMember(dest => dest.Keyword, opt => opt.Ignore())
                 .ForMember(dest => dest.Paging, opt => opt.Ignore())
                 .ForMember(dest => dest.Sorting, opt => opt.Ignore());
 
-            cfg.CreateMap<BreadCrumbDto, BreadCrumb>();
+            cfg.CreateMap<BreadCrumbDto, BreadCrumb>()
+                .ForMember(dest => dest.Term, opt => opt.Ignore());
 
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
                 .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)));
