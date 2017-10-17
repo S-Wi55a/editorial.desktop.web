@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="Features\Details\GetArticleQueryCacheStoreTests.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandlerTests.cs" />
+    <Compile Include="Features\Listings\ListingsQueryHandlerTests.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandlerTests.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsBreadCrumbTagBuilderTests.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsTagBuilderTests.cs" />
