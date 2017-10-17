@@ -317,6 +317,9 @@
 }
 
 .fullherovideo {
+
+    $icon-font-size: 50px;
+
     &--wrap {
         align-items: center;
         display: flex;
@@ -361,23 +364,21 @@
     &__action-close {
         color: $cs-white;
         cursor: pointer;
-        font-size: 4em;
-        font-weight: bold;
-        overflow: hidden;
         padding: 0;
         position: absolute;
-        left: 50px;
-        top: 10px;
-        width: 70px;
-    }
+        left: 15px;
+        top: 15px;
+        width:  $icon-font-size;
+        height:  $icon-font-size;
 
-    &__action-icon {
         &::before {
             color: $cs-white;
             content: $icon-circle-left-lg;
             font-family: $font-family-icons;
             font-style: normal;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-size:  $icon-font-size;
+            line-height:  $icon-font-size;
         }
     }
 }
