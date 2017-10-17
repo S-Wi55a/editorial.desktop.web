@@ -20,7 +20,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 
         public MediaMotiveAdViewModel Handle(MediaMotiveAdQuery query)
         {
-            // put these logic into MediaMotiveUrlArgsBuilder
             var tags = _tagBuilders
                 .Where(builder => builder.IsApplicable(query))
                 .SelectMany(x => x.Build(query))

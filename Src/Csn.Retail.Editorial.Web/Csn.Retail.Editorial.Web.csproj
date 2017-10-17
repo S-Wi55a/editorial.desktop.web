@@ -703,7 +703,7 @@
     <Content Include="Features\Shared\Assets\Css\Variables\_variables.scss" />
     <Content Include="Features\Shared\Assets\Css\Base\_base.scss" />
     <Content Include="Features\Shared\Views\_LayoutBasic.cshtml" />
-    <Content Include="Features\Shared\Views\_Header.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Layout\_header.scss" />
     <Content Include="Features\Details\Views\DefaultTemplate.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_SingleImage.cshtml" />
@@ -763,12 +763,12 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\EditorRatings\_procon.scss" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_SponsoredTextLinks.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tile15.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_SponsoredTextLinks.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Teads.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tile15.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mediamotive.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
@@ -862,7 +862,6 @@
     <Content Include="Features\Details\Views\Partials\Content\_ArticleSummary.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleShare--Bottom.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_MediaMotiveScripts.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Css\iNavArticleCount.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_WideVideo.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
@@ -883,6 +882,8 @@
     <Content Include="Features\MediaMotiveAds\Views\_Leaderboard.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\_Mrec.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\DetailsAd.cshtml" />
+    <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

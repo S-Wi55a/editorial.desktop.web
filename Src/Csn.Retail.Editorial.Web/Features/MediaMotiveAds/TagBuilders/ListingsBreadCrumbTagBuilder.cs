@@ -21,7 +21,8 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             { "Model", SasAdTags.SasAdTagKeys.Model },
             { "Type", SasAdTags.SasAdTagKeys.ArticleType },
             { "Lifestyle", SasAdTags.SasAdTagKeys.Lifestyle },
-            { "Category", SasAdTags.SasAdTagKeys.Category }
+            { "Category", SasAdTags.SasAdTagKeys.Category },
+            { "Keyword", SasAdTags.SasAdTagKeys.Keyword }
         };
 
         public IEnumerable<MediaMotiveTag> BuildTags(RyvussNavResultDto navResult)

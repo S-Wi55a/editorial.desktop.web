@@ -23,5 +23,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string MediaMotiveUrl { get; set; }
         public string KruxId { get; set; }
         #endregion
+
+        #region Content
+
+        public string SiteLogoText { get; set; }
+        #endregion
     }
 }

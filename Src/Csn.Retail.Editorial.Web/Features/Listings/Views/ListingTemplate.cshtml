@@ -1,7 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Listings.Models
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
-@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @using React.Web.Mvc
 @model ListingsViewModel
 
@@ -23,6 +22,7 @@
     @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
 }
 <div class="listing-page">
+    @{ Html.RenderPartial("Partials/_Header"); }
     @Html.React("global.Components.INav", new {state = Model.NavResults}, containerId: "iNav")
 
     <div class="container">
