@@ -6,6 +6,7 @@ import INavNodesContainer from 'iNav/Containers/iNavNodesContainer'
 import { State, INode } from 'iNav/Types'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import UI from 'ReactReduxUI'
+import KeywordSearch from 'iNav/Components/iNavKeywordSearch'
 
 if (!SERVER) {
   require('iNav/Css/iNav.scss')  
@@ -14,18 +15,20 @@ if (!SERVER) {
 interface IINavNodes {
   nodes: INode[], 
   activeItemId: number | null
+  keywordSearchIsActive: boolean
   cancel: ()=>Dispatch<Actions>
 }
 
 //Wrapper component
-const INav:React.StatelessComponent<IINavNodes>  = ({ nodes, activeItemId, cancel }) => {
+const INav:React.StatelessComponent<IINavNodes>  = ({ nodes, activeItemId, cancel, keywordSearchIsActive }) => {
   return (
     <div className={['iNav', activeItemId !== null  ? 'isActive' : ''].join(' ')} onClick={()=>activeItemId !== null && cancel()}>
       <div className="iNav__container">
-        <div onClick={(e)=>{e.stopPropagation()}}>
-        <INavMenuHeader nodes={nodes} />
+        <KeywordSearch keywordSearchIsActive={keywordSearchIsActive}/>
         {/* This click handler is to prevent the clicke event propigating nad triggering the cancel fn */}
-        <INavNodesContainer nodes={nodes} activeItemId={activeItemId} />
+        <div onClick={(e)=>{e.stopPropagation()}}>
+          <INavMenuHeader nodes={nodes} />
+          <INavNodesContainer nodes={nodes} activeItemId={activeItemId} />
         </div>
       </div> 
     </div>
@@ -53,6 +56,16 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
         ...state,
         activeItemId: action.payload.isActive ? action.payload.id : null,
       }
+    case ActionTypes.UI.FOCUS:
+    case ActionTypes.UI.BLUR:
+      if(action.meta.form === 'keywordSearch' && action.meta.field === 'keyword') {
+        return {
+          ...state,
+          keywordSearchIsActive: !state.keywordSearchIsActive
+        }
+      } else {
+        return state
+      }
     case ActionTypes.UI.CANCEL:
     case ActionTypes.UI.CLOSE_INAV:    
       return {
@@ -72,5 +85,6 @@ export default connect(
   reducer: componentRootReducer,
   state: {
     activeItemId: null,
+    keywordSearchIsActive: false
   }
 })(INav))

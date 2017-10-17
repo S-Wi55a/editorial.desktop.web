@@ -1,6 +1,7 @@
 ﻿require('Css/listings-page.scss');
 
 import { configureStore } from 'Redux/Global/Store/store.client.js'
+import { reducer as formReducer } from 'redux-form'
 
 //Enable Redux store globally
 window.store = configureStore(); //Init store
@@ -12,6 +13,8 @@ window.store = configureStore(); //Init store
     const initState = window.__PRELOADED_STATE__iNav
 
     window.store.addReducer('iNav', require('iNav/Reducers').iNavParentReducer(initState));
+    window.store.addReducer('form', formReducer);
+    
 
     if (d.querySelector('#iNav')) {
         require('iNav/iNav');
@@ -32,6 +35,10 @@ window.store = configureStore(); //Init store
         module.hot.accept('iNav/Reducers',
             () => {
                 window.store.addReducer('iNav', require('iNav/Reducers').iNavParentReducer)
+            })
+        module.hot.accept(formReducer,
+            () => {
+                window.store.addReducer('form', formReducer);
             })
     }
 })(document);

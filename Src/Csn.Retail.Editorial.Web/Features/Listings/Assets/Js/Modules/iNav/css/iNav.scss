@@ -56,6 +56,27 @@
         height: $iNav-header-height;
         display: flex;
         align-items: center;
-        justify-content: center;  
+        justify-content: center;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: $grid-gutter-width/2;
+        padding-right: $grid-gutter-width/2;
+        @include breakpoint($screen-md) {
+            width: calc(#{$screen-md});
+        }
+        @include breakpoint($screen-lg) {
+            width: calc(#{$screen-lg});
+        } 
     }
+
+    // &__categories {
+
+    //     overflow: hidden;
+    //     transition: width 0.333s; 
+    //     width: 100%;
+
+    //     &--isShrunk{
+    //         width: 0;
+    //     }
+    // }
 }

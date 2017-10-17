@@ -1,4 +1,6 @@
 @import "css/globals";
+@import "iNav/Css/iNav.variables";
+
 .iNav__menu-header {
     $item-height: 52px;
     @include fadeInDown(-25%);
@@ -6,6 +8,7 @@
     display: flex;
     position: relative;
     cursor: pointer;
+
     
     &-item {
         border: solid 1px $cs-grey;
@@ -15,13 +18,13 @@
         background-color: $cs-white;
         border-left-width: 0;
         &:first-of-type {
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
+            border-top-left-radius: $iNav-border-radius;
+            border-bottom-left-radius: $iNav-border-radius;
             border-left-width: 1px;
         }
         &:last-of-type {
-            border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px;
+            border-top-right-radius: $iNav-border-radius;
+            border-bottom-right-radius: $iNav-border-radius;
         }
         &::before {
             content: $icon-chevron-down-lg;

@@ -921,6 +921,9 @@
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\preloadedState.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
     <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\Keyword\index.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.tsx" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.keywordSearch.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
