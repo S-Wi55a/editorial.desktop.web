@@ -10,10 +10,12 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
+using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 using Expresso.Expressions;
 using Expresso.Syntax;
+using IContextStore = Ingress.ContextStores.IContextStore;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
 {
@@ -27,9 +29,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly ISortingHelper _sortingHelper;
         private readonly IExpressionParser _parser;
         private readonly IExpressionSyntax _expressionSyntax;
+        private readonly IContextStore _contextStore;
 
-        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper, 
-            ISortingHelper sortingHelper, IExpressionParser parser, IExpressionSyntax expressionSyntax)
+        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
+            ISortingHelper sortingHelper, IExpressionParser parser, IExpressionSyntax expressionSyntax, IContextStore contextStore)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
@@ -38,6 +41,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _sortingHelper = sortingHelper;
             _parser = parser;
             _expressionSyntax = expressionSyntax;
+            _contextStore = contextStore;
         }
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
@@ -58,6 +62,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
+
+            _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
             var navResults = _mapper.Map<NavResult>(resultData);
 

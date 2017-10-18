@@ -14,6 +14,28 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
             return string.IsNullOrWhiteSpace(source) ? string.Empty : RegexAlphaNumericOnly.Replace(source, string.Empty);
         }
 
+        public static string ToLowerAlphaNumericOnly(this string data)
+        {
+            if (string.IsNullOrEmpty(data))
+                return data;
+
+            var result = new StringBuilder();
+
+            foreach (var chr in data)
+            {
+                if (char.IsLetter(chr))
+                {
+                    result.Append(char.ToLower(chr));
+                }
+                else if(char.IsNumber(chr))
+                {
+                    result.Append(chr);
+                }
+            }
+
+            return result.ToString();
+        }
+
         public static MvcHtmlString ToMvcHtmlString(this string source)
         {
             return string.IsNullOrWhiteSpace(source) ? MvcHtmlString.Empty : MvcHtmlString.Create(source);

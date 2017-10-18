@@ -453,6 +453,7 @@
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
+    <Compile Include="Features\Details\Mappings\BrightcoveIFrameBuilder.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseMapper.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
@@ -486,11 +487,22 @@
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
+    <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdsController.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSetting.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSettings.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\CommonTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsBreadCrumbTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\MediaMotiveTag.cs" />
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
     <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
@@ -547,6 +559,7 @@
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Infrastructure\Constants\TenantNames.cs" />
+    <Compile Include="Infrastructure\ContextStores\ContextStoreKeys.cs" />
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />
@@ -588,7 +601,6 @@
     <Compile Include="Infrastructure\Redirects\RedirectStrategy.cs" />
     <Compile Include="Infrastructure\RequestWrapper\IRequestWrapper.cs" />
     <Compile Include="Infrastructure\RequestWrapper\RequestWrapperExtensions.cs" />
-    <Compile Include="Infrastructure\Serializers\JsonSerializer.cs" />
     <Compile Include="Infrastructure\StartUpTasks\IStartUpTask.cs" />
     <Compile Include="Infrastructure\UserContext\IUserContext.cs" />
     <Compile Include="Infrastructure\UserContext\UserContext.cs" />
@@ -717,7 +729,7 @@
     <Content Include="Features\Shared\Assets\Css\Variables\_variables.scss" />
     <Content Include="Features\Shared\Assets\Css\Base\_base.scss" />
     <Content Include="Features\Shared\Views\_LayoutBasic.cshtml" />
-    <Content Include="Features\Shared\Views\_Header.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Layout\_header.scss" />
     <Content Include="Features\Details\Views\DefaultTemplate.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_SingleImage.cshtml" />
@@ -777,12 +789,12 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\EditorRatings\_procon.scss" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_SponsoredTextLinks.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tile15.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_SponsoredTextLinks.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Teads.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tile15.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mediamotive.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
@@ -876,7 +888,6 @@
     <Content Include="Features\Details\Views\Partials\Content\_ArticleSummary.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleShare--Bottom.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_MediaMotiveScripts.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Css\iNavArticleCount.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_WideVideo.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
@@ -894,8 +905,13 @@
     <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
     <Content Include="Features\Listings\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
+     <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Css\iNavSorting.scss" />
+    <Content Include="Features\MediaMotiveAds\Views\_Leaderboard.cshtml" />
+    <Content Include="Features\MediaMotiveAds\Views\_Mrec.cshtml" />
+    <Content Include="Features\MediaMotiveAds\Views\DetailsAd.cshtml" />
+    <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -946,6 +962,7 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
+    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

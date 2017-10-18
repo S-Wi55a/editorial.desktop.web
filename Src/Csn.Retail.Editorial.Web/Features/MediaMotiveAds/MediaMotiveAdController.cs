@@ -4,23 +4,23 @@ using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 {
-    public class MediaMotiveAdsController : Controller
+    public class MediaMotiveAdController : Controller
     {
         private readonly IQueryDispatcher _queryDispatcher;
-        public MediaMotiveAdsController(IQueryDispatcher queryDispatcher)
+        public MediaMotiveAdController(IQueryDispatcher queryDispatcher)
         {
             _queryDispatcher = queryDispatcher;
         }
 
         [ChildActionOnly]
-        [Route("MediaMotiveAds")]
+        [Route("MediaMotiveAd")]
         public ActionResult Index(MediaMotiveAdQuery query)
         {
             var viewData = _queryDispatcher.Dispatch<MediaMotiveAdQuery, MediaMotiveAdViewModel>(query);
 
             if (viewData == null) return Content(String.Empty);
 
-            return PartialView(viewData);
+            return PartialView("~/Features/MediaMotiveAds/Views/Index.cshtml", viewData);
         }
     }
 }
