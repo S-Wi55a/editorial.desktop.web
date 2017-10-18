@@ -20,27 +20,30 @@
 @section TopScripts {
     @Html.AssetJs("listings.vendor", LoadType.Defer)
     @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
 }
 <div class="listing-page">
-    @Html.React("global.Components.INav", new { state = Model.NavResults }, containerId: "iNav")
+    @{ Html.RenderPartial("Partials/_Header"); }
+    @Html.React("global.Components.INav", new {state = Model.NavResults}, containerId: "iNav")
 
     <div class="container">
 
         <div class="main">
-            @Html.React("global.Components.INavArticleCount", new {state = Model.NavResults }, containerId: "iNavArticleCount")
-            @Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults }, containerId: "iNavBreadcrumbs")
+            @Html.React("global.Components.INavArticleCount", new {state = Model.NavResults}, containerId: "iNavArticleCount")
+            @Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults}, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSorting", new { state = Model.NavResults }, containerId: "iNavSorting")
-            @Html.React("global.Components.INavSearchResults", new {state = Model.NavResults }, containerId: "iNavSearchResults")
+            @Html.React("global.Components.INavSearchResults", new {state = Model.NavResults}, containerId: "iNavSearchResults")
             @Html.React("global.Components.INavPagination", new { state = Model.NavResults }, containerId: "iNavPagination")
-        
+
             @{ Html.RenderPartial("_Disclaimer"); }
 
         </div>
-        @*@{Html.RenderPartial("Partials/_Aside");}*@
+        @{Html.RenderPartial("Partials/_Aside");}
     </div>
 </div>
 
 @section BottomScripts
 {
     @Html.React("global.Components.INavPreloadedState", new { state = Model.NavResults }, containerId: "INavPreloadedState")
+    @{ Html.RenderPartial("Partials/MediaMotive/_Krux"); }
 }
