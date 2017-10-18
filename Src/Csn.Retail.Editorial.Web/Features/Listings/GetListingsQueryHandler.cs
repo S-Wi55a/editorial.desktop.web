@@ -67,7 +67,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             var navResults = _mapper.Map<NavResult>(resultData);
 
-            if (resultData != null)
+            if (navResults != null)
             {
                 navResults.PendingQuery = string.IsNullOrEmpty(query.Q) ? string.Empty: query.Q;
                 navResults.Paging = _paginationHelper.GetPaginationData(resultData.Count, query.Limit, query.Skip, query.SortOrder, query.Q);
