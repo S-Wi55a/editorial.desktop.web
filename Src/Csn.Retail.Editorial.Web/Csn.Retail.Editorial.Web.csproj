@@ -967,6 +967,7 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.keywordSearch.scss" />
     <Content Include="Features\Listings\Assets\css\listings-page.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

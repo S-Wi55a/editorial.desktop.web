@@ -92,12 +92,14 @@
         &--clear {
             border-top: solid 1px $cs-grey;
             border-bottom: solid 1px $cs-grey;
+            position: relative;
+            z-index: 1;
 
 
             &::before {
                 opacity: 0;                
                 content: $icon-cross-lg;
-                font-size: 23px;    
+                font-size: 18px;    
                 transition: opacity 0.333s;            
             }
         }

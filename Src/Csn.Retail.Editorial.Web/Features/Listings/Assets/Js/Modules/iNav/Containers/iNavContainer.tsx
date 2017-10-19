@@ -7,6 +7,7 @@ import { State, INode } from 'iNav/Types'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import UI from 'ReactReduxUI'
 import KeywordSearch from 'iNav/Components/iNavKeywordSearch'
+import {reset} from 'redux-form';
 
 if (!SERVER) {
   require('iNav/Css/iNav.scss')  
@@ -22,11 +23,11 @@ interface IINavNodes {
 //Wrapper component
 const INav:React.StatelessComponent<IINavNodes>  = ({ nodes, activeItemId, cancel, keywordSearchIsActive }) => {
   return (
-    <div className={['iNav', activeItemId !== null  ? 'isActive' : ''].join(' ')} onClick={()=>activeItemId !== null && cancel()}>
-      <div className="iNav__container">
+    <div className={['iNav', activeItemId !== null || keywordSearchIsActive ? 'isActive' : ''].join(' ')} onClick={()=>{if(activeItemId !== null || keywordSearchIsActive){cancel()}}}>
+      <div className="iNav__container" onClick={(e)=>{e.stopPropagation()}}>
         <KeywordSearch keywordSearchIsActive={keywordSearchIsActive}/>
-        {/* This click handler is to prevent the clicke event propigating nad triggering the cancel fn */}
-        <div onClick={(e)=>{e.stopPropagation()}}>
+        {/* This click handler is to prevent the click event propigating and triggering the cancel fn */}
+        <div>
           <INavMenuHeader nodes={nodes} />
           <INavNodesContainer nodes={nodes} activeItemId={activeItemId} />
         </div>
@@ -41,10 +42,13 @@ const mapStateToProps = (state: State) => {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Actions>) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     cancel: ()=>{
-      dispatch({type: ActionTypes.UI.CANCEL})
+      dispatch([
+        {type: ActionTypes.UI.CANCEL},
+        reset('keywordSearch')
+      ])
     }
   }
 }
@@ -57,11 +61,11 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
         activeItemId: action.payload.isActive ? action.payload.id : null,
       }
     case ActionTypes.UI.FOCUS:
-    case ActionTypes.UI.BLUR:
       if(action.meta.form === 'keywordSearch' && action.meta.field === 'keyword') {
         return {
           ...state,
-          keywordSearchIsActive: !state.keywordSearchIsActive
+          keywordSearchIsActive: true,
+          activeItemId: null          
         }
       } else {
         return state
@@ -70,7 +74,8 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
     case ActionTypes.UI.CLOSE_INAV:    
       return {
         ...state,
-        activeItemId: null        
+        activeItemId: null,
+        keywordSearchIsActive: false       
       }
     default:
       return state
