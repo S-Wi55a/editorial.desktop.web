@@ -7,11 +7,17 @@
     font-weight: $font-weight-600;
     color: $cs-dark-grey-2;
     position: absolute;
-    right: 15px;
-    top: 40px;
+    right: $grid-gutter-width/2;
+    top: 30px;
     border: solid 1px $cs-grey;
     border-radius: $iNav-border-radius;
     cursor: pointer;
+
+    @include breakpoint($screen-lg) {
+        top: 45px;  
+        right: $grid-gutter-width;
+        
+    }    
     
     &::after {
         position: absolute;

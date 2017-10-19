@@ -2,19 +2,24 @@
 @import "iNav/Css/iNav.variables";
 
 .iNavArticleCount {
-    $spacing: 20px;
     @include h4();
-    line-height: $spacing;
-    margin-top: 40px;
-    margin-bottom: 45px;
+    line-height: $iNav-sort-height;
+    margin-top: 30px;
+    margin-bottom: 35px;
     display: inline-block;
     max-width: calc(100% - #{$iNav-sort-width} - #{$grid-gutter-width});
+
+    @include breakpoint($screen-lg) {
+        margin-top: 45px;
+        margin-bottom: 45px;
+        
+    }
 }
 
 .noResults {
-
+    $spacing: 20px;
+    
     &__message {
-        $spacing: 20px;
         @include h4();
         line-height: $spacing;
         margin-top: 40px;
@@ -22,7 +27,6 @@
     }
 
     &__instructionMessage {
-        $spacing: 20px;
         font-size: $font-size-body;
         margin-top: $spacing;
         margin-bottom: $spacing;
