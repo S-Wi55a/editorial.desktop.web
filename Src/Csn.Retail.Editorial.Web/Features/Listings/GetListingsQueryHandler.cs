@@ -68,26 +68,16 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
             var navResults = _mapper.Map<NavResult>(resultData);
-
-            if (navResults != null)
-            {
-
-            }
-
-            return resultData == null
-                ? null
-                : new GetListingsResponse
+            
+            return resultData == null ? null : new GetListingsResponse
                 {
                     ListingsViewModel = new ListingsViewModel
                     {
                         NavResults = navResults,
-                        Paging = _paginationHelper.GetPaginationData(navResults.Count,
-                            PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q,
-                            query.Keyword),
-                        Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder,
-                            query.Q, query.Keyword),
-                        CurrentQuery = string.IsNullOrEmpty(query.Q) ? string.Empty : query.Q,
-                        Keyword = query.Keyword;
+                        Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
+                        Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
+                        CurrentQuery = string.IsNullOrEmpty(query.Q) ? string.Empty : $"/?q={query.Q}&sortOrder=Latest&keyword={query.Keyword}",
+                        Keyword = query.Keyword
                     }
                 };
         }
