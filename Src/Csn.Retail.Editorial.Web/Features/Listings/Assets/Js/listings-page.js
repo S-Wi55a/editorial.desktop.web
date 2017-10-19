@@ -10,9 +10,9 @@ window.store = configureStore(); //Init store
 (function redux(d) {
 
     // Check if there is a preloaded state from iNav
-    const initState = window.__PRELOADED_STATE__iNav
+    const initState = window.__PRELOADED_STATE__store.listings
 
-    window.store.addReducer('iNav', require('iNav/Reducers').iNavParentReducer(initState));
+    window.store.addReducer('store', require('iNav/Reducers').iNavParentReducer(initState));
     window.store.addReducer('form', formReducer);
     
 
@@ -40,7 +40,7 @@ window.store = configureStore(); //Init store
         // Enable Webpack hot module replacement for reducers
         module.hot.accept('iNav/Reducers',
             () => {
-                window.store.addReducer('iNav', require('iNav/Reducers').iNavParentReducer)
+                window.store.addReducer('store', require('iNav/Reducers').iNavParentReducer)
             })
         module.hot.accept(formReducer,
             () => {

@@ -45,7 +45,7 @@ class INav extends React.Component<IINavNodes> {
 // Redux Connect
 const mapStateToProps = (state: State) => {
   return {
-    nodes: state.iNav.iNav.nodes
+    nodes: state.store.listings.navResults.iNav.nodes
   }
 }
 

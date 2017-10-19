@@ -47,6 +47,10 @@
         }
     }
 
+    &__keywordSearch-form {
+        display: inline;
+    }
+
     &__keywordSearch-input {
     
         width: calc(100% - #{$iNav-header-item-height*2});

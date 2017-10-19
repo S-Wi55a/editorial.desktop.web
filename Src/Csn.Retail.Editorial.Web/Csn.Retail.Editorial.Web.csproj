@@ -969,6 +969,8 @@
     <Content Include="Features\Listings\Assets\css\listings-page.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -3,29 +3,34 @@ import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
 import queryString from 'query-string'
 
-type fetchINav = (q?: string) => (d: Dispatch<any>, getState: any) => Promise<any>
+type fetchINav = (q?: string) => (d: Dispatch<any>, getState: any) => any
 
 export const fetchINav: fetchINav = (query?: string) =>  (dispatch: any, getState: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
 
-        const {pendingQuery:q} = typeof query !== 'undefined' ? query : getState().iNav
-        const {keyword} = typeof getState().form.keywordSearch !== 'undefined' && 
-                          typeof getState().form.keywordSearch.values !== 'undefined' ? 
-                          getState().form.keywordSearch.values : ''
+        const q = typeof query !== 'undefined' ? query : getState().store.listings.pendingQuery
+        const keyword = typeof getState().form.keywordSearch !== 'undefined' && 
+                          typeof getState().form.keywordSearch.values !== 'undefined' &&
+                          typeof getState().form.keywordSearch.values.keyword !== 'undefined' ? 
+                          getState().form.keywordSearch.values.keyword : ''
         
-        return fetch(`${iNav.base}?${queryString.stringify({q,keyword})}`)
-            .then(
-            response => response.json(),
-            error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
+        // TODO: REMOVE FOR PHASE 2
+        return window.location.replace(`?${queryString.stringify({q,keyword})}`)
 
-            )
-            .then(data =>
-                dispatch([
-                    { type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS, payload: { data } },
-                    { type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE,  payload: { data } }
-                ])
-            )
+
+        // return fetch(`${iNav.api}?${queryString.stringify({q,keyword})}`)
+        //     .then(
+        //     response => response.json(),
+        //     error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
+
+        //     )
+        //     .then(data =>
+        //         dispatch([
+        //             { type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS, payload: { data } },
+        //             { type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE,  payload: { data } }
+        //         ])
+        //     )
     }
 
 type fetchINavAspect = (a: string, q: string) => (d: Dispatch<any>) => Promise<any>

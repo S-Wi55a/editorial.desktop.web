@@ -29,9 +29,9 @@ const INavSorting = ({ sorting, limit, query, isVisible }) =>  {
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        isVisible: !!state.iNav.count,
-        sorting: state.iNav.sorting,
-        query: state.iNav.pendingQuery
+        isVisible: !!state.store.listings.navResults.count,
+        sorting: state.store.listings.sorting,
+        query: state.store.listings.currentQuery
     }
 }
 
@@ -51,4 +51,3 @@ const INavSortingContainer = connect(
 )(INavSorting)
 
 export default INavSortingContainer
-//TODO: hide when count is 0
