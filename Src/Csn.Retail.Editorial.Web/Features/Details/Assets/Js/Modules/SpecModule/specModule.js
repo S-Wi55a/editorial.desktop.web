@@ -55,10 +55,12 @@ const ThirdPartyOffer = (props) => {
 
     if (props.tabOrModal) {
         if (props.tabOrModal[titleNoSpace] === 'iframe') {
-            const iframe = `<iframe src=${props.data.formUrl}></iframe>`
-            tabOrModal = <span data-disclaimer={encodeURI(iframe)} onClick={(p,e) => {
-                props.disclaimerHandler(titleNoSpace, p, e)
-            }} className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</span>
+            tabOrModal = <span 
+                onClick={() => {
+                    props.disclaimerHandler(`<iframe src=${props.data.formUrl}></iframe>`, titleNoSpace)
+                }} 
+                className="third-party-offer__link" 
+                data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</span>
         } else {
             tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</a>
         }
@@ -73,7 +75,7 @@ const ThirdPartyOffer = (props) => {
                     <span className="third-party-offer__price">
                         {props.data.amount}
                     </span>
-                    <span data-webm-clickvalue={'disclaimer-'+titleNoSpace} className="third-party-offer__price-term" data-disclaimer={encodeURI(props.data.disclaimer)} onClick={props.disclaimerHandler}>
+                    <span data-webm-clickvalue={'disclaimer-'+titleNoSpace} className="third-party-offer__price-term" onClick={()=>props.disclaimerHandler(props.data.disclaimer)}>
                         {props.data.paymentFrequency}
                     </span>
                 </div>
@@ -89,7 +91,7 @@ const ThirdPartyOffer = (props) => {
 const KmsTag = (props) => {
     var kmsTextSplit = props.kmsText.split("{kmsValue}")
     return (
-        <div>{kmsTextSplit[0]}<span className="spec-item__kms-label" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.priceUsed.averageKms}</span>{kmsTextSplit[1]}</div>
+        <div>{kmsTextSplit[0]}<span className="spec-item__kms-label" onClick={()=>props.disclaimerHandler(props.data.specDataDisclaimerText)}>{props.data.priceUsed.averageKms}</span>{kmsTextSplit[1]}</div>
     )
 }
 
@@ -99,7 +101,7 @@ const Price = (props) => {
         return (
             <div className="spec-item__price-container">
                 <div className="spec-item__price-item">
-                    <p className="spec-item__price-label spec-item__price-disclaimer" data-disclaimer={encodeURI(props.data.priceNew.disclaimerText)} onClick={props.disclaimerHandler}>{props.data.priceNew.disclaimerTitle}</p>
+                    <p className="spec-item__price-label spec-item__price-disclaimer" onClick={()=>props.disclaimerHandler(props.data.priceNew.disclaimerText)}>{props.data.priceNew.disclaimerTitle}</p>
                     <p className="spec-item__price spec-item__price--price-new">{props.data.priceNew.price}</p>
                 </div>
            </div>
@@ -114,7 +116,7 @@ const Price = (props) => {
                         <KmsTag data={props.data} disclaimerHandler={props.disclaimerHandler} kmsText={props.data
                             .kmsTitle} />
                     </div>
-                    <div className="spec-item__price-redbook-info" data-disclaimer={props.data.specDataDisclaimerText} onClick={props.disclaimerHandler}>{props.data.specDataProviderText}</div>
+                    <div className="spec-item__price-redbook-info" onClick={()=>props.disclaimerHandler(props.data.specDataDisclaimerText)}>{props.data.specDataProviderText}</div>
                 </div>
             </div>
         )
@@ -128,9 +130,9 @@ const Price = (props) => {
 const SpecModuleItem = (props) => {
 
     let marks = {
-        0:props.scaffolding.title2
+        0:'Price Min'
     }
-    marks[props.sliderLength - 1] = props.scaffolding.title3
+    marks[props.sliderLength - 1] = 'Price Max'
 
     return (
         <div className="spec-item ">
@@ -142,7 +144,7 @@ const SpecModuleItem = (props) => {
                     <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
                     {props.sliderLength > 1 ? 
                         <div className="spec-item__selector" data-webm-clickvalue="change-variant">
-                            <p className="spec-item__selector-label">{props.scaffolding.title1}</p>
+                            <p className="spec-item__selector-label">Model Selector</p>
                             <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />
                         </div>
                         : ''}
@@ -258,26 +260,20 @@ class SpecModule extends React.Component {
     }
 
     // Data disclaimer handler
-    disclaimerHandler = (...args) => {
+    disclaimerHandler = (content, className) => {
 
-        const synthEvt = args[args.length - 2]
-        const className = args[args.length - 3]
-
-        const content = decodeURI(synthEvt.target.getAttribute('data-disclaimer'))
         this.props.modal.show(disclaimerTemplate(content), className)
 
     }
 
     render() {
 
-        const { title1, title2, title3 } = this.props.data
         if (this.state.items.length <= 0 && !this.state.fetchingVariants) return null;
         return (
             <div className={this.state.fetchingVariants ? "spec-module loading" : "spec-module"}>
                 {this.state.items[this.state.activeItemIndex] ?
                     <SpecModuleItem
                         data={this.state.items[this.state.activeItemIndex]}
-                        scaffolding={{ title1, title2, title3 }}
                         disclaimerHandler={this.disclaimerHandler}
                         sliderLength={this.state.sliderLength}
                         sliderOnAfterChangeHandler={this.sliderOnAfterChangeHandler}

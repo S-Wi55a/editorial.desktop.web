@@ -9,9 +9,19 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Infrastructure.Extensions
         [Test]
         public void UrlFriendlyTest()
         {
-            var urlFriendly = "Mike Sinclair".MakeUrlFriendly();
+            Assert.AreEqual("mike-sinclair", "Mike Sinclair".MakeUrlFriendly());
+        }
 
-            Assert.AreEqual("mike-sinclair", urlFriendly);
+        [Test]
+        public void LowercaseAlphaNumericOnlyTest()
+        {
+            Assert.AreEqual("alpharomeo", "Alpha Romeo".ToLowerAlphaNumericOnly());
+        }
+
+        [Test]
+        public void AlphaNumericOnlyTest()
+        {
+            Assert.AreEqual("AlphaRomeo", "Alpha Romeo".AlphaNumericOnly());
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
@@ -8,8 +7,10 @@ using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
+using IContextStore = Ingress.ContextStores.IContextStore;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
 {
@@ -19,12 +20,14 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IEditorialRyvussApiProxy _ryvussProxy;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly IMapper _mapper;
+        private readonly IContextStore _contextStore;
 
-        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper)
+        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IContextStore contextStore)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
             _mapper = mapper;
+            _contextStore = contextStore;
         }
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
@@ -41,6 +44,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
+
+            _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
             return resultData == null ? null : new GetListingsResponse
             {
