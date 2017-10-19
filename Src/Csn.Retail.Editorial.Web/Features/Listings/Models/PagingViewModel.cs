@@ -23,7 +23,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
     public class PagingItemViewModel
     {
         public long PageNo { get; set; }
-        public long Offset { get; set; }
-        public string Query { get; set; }
+        public string Url { get; set; }
     }
 }

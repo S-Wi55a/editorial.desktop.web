@@ -70,9 +70,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             if (navResults != null)
             {
-                navResults.PendingQuery = string.IsNullOrEmpty(query.Q) ? string.Empty: query.Q;
-                navResults.Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q);
-                navResults.Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q);
+                navResults.Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword);
+                navResults.Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword);
+                navResults.CurrentQuery = string.IsNullOrEmpty(query.Q) ? string.Empty : query.Q;
                 navResults.Keyword = query.Keyword;
             }
             

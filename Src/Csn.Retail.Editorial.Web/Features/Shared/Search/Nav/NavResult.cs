@@ -15,7 +15,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         //Should move to ListingViewModel
         public PagingViewModel Paging { get; set; } 
         public SortingViewModel Sorting { get; set; }
-        public string PendingQuery { get; set; }
+        public string CurrentQuery { get; set; }
         public string Keyword { get; set; }
     }
 
