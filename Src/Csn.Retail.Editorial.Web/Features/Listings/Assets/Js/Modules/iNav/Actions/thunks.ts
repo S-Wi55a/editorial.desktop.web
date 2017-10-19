@@ -3,13 +3,13 @@ import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
 import queryString from 'query-string'
 
-type fetchINav = () => (d: Dispatch<any>, getState: any) => Promise<any>
+type fetchINav = (q?: string) => (d: Dispatch<any>, getState: any) => Promise<any>
 
-export const fetchINav: fetchINav = () =>  (dispatch: any, getState: any) => {
+export const fetchINav: fetchINav = (query?: string) =>  (dispatch: any, getState: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
 
-        const {pendingQuery:q} = getState().iNav
+        const {pendingQuery:q} = typeof query !== 'undefined' ? query : getState().iNav
         const {keyword} = typeof getState().form.keywordSearch !== 'undefined' && 
                           typeof getState().form.keywordSearch.values !== 'undefined' ? 
                           getState().form.keywordSearch.values : ''

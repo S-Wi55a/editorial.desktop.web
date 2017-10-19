@@ -23,6 +23,10 @@
         position: absolute;
         top: 0;
         transition: width 0.333s;
+
+        @include breakpoint($screen-lg) {
+            width: calc(100% - 10px);            
+        }
         
         &--isActive {
             width: calc(#{$screen-sm} - #{$grid-gutter-width});
