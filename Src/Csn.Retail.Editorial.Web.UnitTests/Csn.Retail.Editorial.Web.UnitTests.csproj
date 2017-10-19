@@ -44,6 +44,9 @@
     <Reference Include="Csn.MultiTenant, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.MultiTenant.4.0.0.0\lib\net45\Csn.MultiTenant.dll</HintPath>
     </Reference>
+    <Reference Include="Expresso, Version=42.0.330.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expresso.42.0.330\lib\net46\Expresso.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
@@ -84,7 +87,7 @@
   <ItemGroup>
     <Compile Include="Features\Details\GetArticleQueryCacheStoreTests.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandlerTests.cs" />
-     <Compile Include="Features\Shared\Helpers\PaginationHelperTest.cs" />
+    <Compile Include="Features\Shared\Helpers\PaginationHelperTest.cs" />
     <Compile Include="Features\Listings\ListingsQueryHandlerTests.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandlerTests.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsBreadCrumbTagBuilderTests.cs" />

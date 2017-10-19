@@ -9,13 +9,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
     public interface ISortingHelper
     {
-        SortingViewModel GenerateSortByViewModel(IDictionary<string, ISortKeyItem> sortKeys, string currrentSort);
+        SortingViewModel GenerateSortByViewModel(IDictionary<string, ISortKeyItem> sortKeys, string currrentSort, string query, string keyword);
     }
 
     [AutoBind]
     public class SortingHelper : ISortingHelper
     {
-        public SortingViewModel GenerateSortByViewModel(IDictionary<string, ISortKeyItem> sortKeys, string currrentSort)
+        public SortingViewModel GenerateSortByViewModel(IDictionary<string, ISortKeyItem> sortKeys, string currrentSort, string query, string keyword)
         {
             var model = new SortingViewModel
             {
@@ -23,7 +23,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                 {
                     Selected = x.Key.Equals(currrentSort, StringComparison.InvariantCultureIgnoreCase),
                     Label = x.Value.DisplayName,
-                    Value = x.Value.Key
+                    Value = x.Value.Key,
+                    Url = $"/?q={query}&keyword={keyword}"
                 }).ToList()
             };
             return model;

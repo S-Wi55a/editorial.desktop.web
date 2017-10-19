@@ -5,7 +5,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
     public class ListingsViewModel
     {
         public NavResult NavResults { get; set; }
-        
-        // Pagin/Sorting should be part of this model rather than NavResult - fix it with Redux stores updates
+        public PagingViewModel Paging { get; set; }
+        public SortingViewModel Sorting { get; set; }
+        public string CurrentQuery { get; set; }
+        public string Keyword { get; set; }        
     }
 }

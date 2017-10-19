@@ -17,7 +17,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             var testSubject = new PaginationHelper();
 
             //Act
-            var result = testSubject.GetPaginationData(314, 20, 120, "Sort", "test_query");
+            var result = testSubject.GetPaginationData(314, 20, 120, "Sort", "test_query", "keyword");
 
 
             //Assert
@@ -29,15 +29,15 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             //Assert previous page is valid
             Assert.IsNotNull(result.Previous);            
             Assert.AreEqual(result.Previous.PageNo, 6);
-            Assert.AreEqual(result.Previous.Skip, 100);
-            Assert.AreEqual(result.Previous.Query, "test_query");
+            Assert.AreEqual(result.Previous.Url.Contains("test_query"), true);
+            Assert.AreEqual(result.Previous.Url.Contains("keyword"), true);
 
             //Assert last page is valid
             Assert.IsNotNull(result.Next);
             Assert.AreEqual(result.Next.PageNo, 8);
-            Assert.AreEqual(result.Next.Skip, 140);
-            Assert.AreEqual(result.Next.Query, "test_query");
-            
+            Assert.AreEqual(result.Next.Url.Contains("test_query"), true);
+            Assert.AreEqual(result.Next.Url.Contains("keyword"), true);
+
             //Total Page count is valid
             Assert.AreEqual(result.TotalPageCount, 16);
         }
@@ -49,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             var testSubject = new PaginationHelper();
 
             //Act
-            var result = testSubject.GetPaginationData(0, 20, 0, "Sort", "test_query");
+            var result = testSubject.GetPaginationData(0, 20, 0, "Sort", "test_query", "keyword");
 
             //Assert
             Assert.IsNotNull(result);

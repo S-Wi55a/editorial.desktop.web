@@ -21,8 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             { "Model", SasAdTags.SasAdTagKeys.Model },
             { "Type", SasAdTags.SasAdTagKeys.ArticleType },
             { "Lifestyle", SasAdTags.SasAdTagKeys.Lifestyle },
-            { "Category", SasAdTags.SasAdTagKeys.Category },
-            { "Keyword", SasAdTags.SasAdTagKeys.Keyword }
+            { "Category", SasAdTags.SasAdTagKeys.Category }
         };
 
         public IEnumerable<MediaMotiveTag> BuildTags(RyvussNavResultDto navResult)
@@ -34,17 +33,21 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 
             foreach (var breadcrumb in navResult.INav.BreadCrumbs)
             {
-                // check if we have previously processed the same aspect...we only process an aspect once
-                if (isAspectProcessed.TryGetValue(breadcrumb.Aspect, out bool isProcessed) && isProcessed)
+                if (breadcrumb.IsFacetBreadCrumb)
                 {
-                    continue;
+                    // check if we have previously processed the same aspect...we only process an aspect once
+                    if (isAspectProcessed.TryGetValue(breadcrumb.Aspect, out var isProcessed) && isProcessed)
+                    {
+                        continue;
+                    }
+                    isAspectProcessed.Add(breadcrumb.Aspect, true);
+                    results.AddRange(GetTagsForBreadcrumbAndChildren(breadcrumb));
                 }
-
-                isAspectProcessed.Add(breadcrumb.Aspect, true);
-
-                results.AddRange(GetTagsForBreadcrumbAndChildren(breadcrumb));
+                else if(breadcrumb.IsKeywordBreadCrumb)
+                {
+                    results.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Keyword, breadcrumb.Term.Trim('(', ')')));
+                }
             }
-
             return results;
         }
 

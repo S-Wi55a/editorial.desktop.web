@@ -4,7 +4,7 @@ import { Thunks } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
 
 if (!SERVER) {
-    require('iNavSorting/Css/iNavSorting.scss')  
+    require('iNavSorting/Css/iNavSorting.scss')
 }
 
 const INavSorOption = ({ selected, label, value,query }) => {
@@ -20,7 +20,7 @@ const INavSorting = ({ sorting, limit, query, isVisible }) =>  {
      return <div className={`iNavSorting__container ${isVisible ? '' : 'hide' }`}>
             <select className='iNavSorting' onChange={()=>{fetchQuery({q:query})}}>
                 {sorting.sortListItems.map((sortItem) =>{
-                    return  <INavSorOption key={sortItem.value} { ...sortItem } query={query} limit={limit}></INavSorOption>
+                    return  <INavSorOption key={sortItem.value} { ...sortItem } ></INavSorOption>
                 })}             
             </select>
         </div>

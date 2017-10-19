@@ -393,6 +393,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -558,6 +559,7 @@
     <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsViewModel.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
+    <Compile Include="Infrastructure\Constants\PageItemsLimit.cs" />
     <Compile Include="Infrastructure\Constants\TenantNames.cs" />
     <Compile Include="Infrastructure\ContextStores\ContextStoreKeys.cs" />
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
@@ -605,7 +607,6 @@
     <Compile Include="Infrastructure\UserContext\IUserContext.cs" />
     <Compile Include="Infrastructure\UserContext\UserContext.cs" />
     <Compile Include="Infrastructure\Utils\RandomNumberGenerator.cs" />
-    <Compile Include="Infrastructure\Utils\RoseTreeSyntax.cs" />
     <Compile Include="Ioc\RestClientModule.cs" />
     <Compile Include="Ioc\CommonModule.cs" />
     <Compile Include="Ioc\ConventionsModule.cs" />
