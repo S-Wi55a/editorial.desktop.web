@@ -30,8 +30,8 @@
 
         <div class="main">
             @Html.React("global.Components.INavArticleCount", new {state = Model.NavResults}, containerId: "iNavArticleCount")
-            @Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults}, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSorting", new { state = Model.NavResults }, containerId: "iNavSorting")
+            @Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults}, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSearchResults", new {state = Model.NavResults}, containerId: "iNavSearchResults")
             @Html.React("global.Components.INavPagination", new { state = Model.NavResults }, containerId: "iNavPagination")
 

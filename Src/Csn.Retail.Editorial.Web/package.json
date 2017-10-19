@@ -134,6 +134,7 @@
         "picturefill": "^3.0.2",
         "postscribe": "^2.0.8",
         "prop-types": "^15.5.10",
+        "query-string": "^5.0.0",
         "rc-collapse": "^1.7.6",
         "rc-slider": "^8.3.1",
         "react": "^16.0.0",

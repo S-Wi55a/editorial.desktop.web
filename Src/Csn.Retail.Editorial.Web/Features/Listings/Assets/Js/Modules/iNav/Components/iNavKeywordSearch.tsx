@@ -25,6 +25,7 @@ const KeywordInput: React.StatelessComponent<any> = (props) => (
       type="text" 
       className={`iNav__keywordSearch-input ${props.meta.active ? 'iNav__keywordSearch-input--isActive' : ''}`} 
       placeholder={'Keyword search'}
+      autoComplete="on"
     />
 )
 
@@ -36,7 +37,7 @@ let KeywordSearchComponent: React.StatelessComponent<any> = (props) => {
         {/* When in focus update class*/}
         <Field name="keyword" component={KeywordInput} type="text"/>
         {/* button needs to hav click which triggers keyword api call*/}
-        <button className="iNav__keywordSearch-button iNav__keywordSearch-button--search" type="submit" onClick={()=>{props.fetchSearchResults(props.pendingQuery + props.pendingKeywordValue)}}></button>
+        <button className="iNav__keywordSearch-button iNav__keywordSearch-button--search" type="submit" onClick={props.fetchSearchResults}></button>
         <button className="iNav__keywordSearch-button iNav__keywordSearch-button--clear"></button>
       </form>
     </div>
@@ -52,9 +53,7 @@ const mapStateToProps = (state: any, ownProps: IKeywordComponent) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-      fetchSearchResults: (query: string)=>dispatch([
-          Thunks.fetchINav(query)
-      ]),
+      fetchSearchResults: ()=>dispatch(Thunks.fetchINav()),
       cancel: ()=>{
           dispatch({type: ActionTypes.UI.CANCEL})
         }

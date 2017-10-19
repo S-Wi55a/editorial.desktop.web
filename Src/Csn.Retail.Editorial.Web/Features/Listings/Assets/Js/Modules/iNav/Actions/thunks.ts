@@ -1,14 +1,20 @@
 import { Dispatch } from 'redux';
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
+import queryString from 'query-string'
 
-type fetchINav = (q: string) => (d: Dispatch<any>) => Promise<any>
+type fetchINav = () => (d: Dispatch<any>, getState: any) => Promise<any>
 
-export const fetchINav: fetchINav = (query: string) =>  (dispatch: any) => {
+export const fetchINav: fetchINav = () =>  (dispatch: any, getState: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
 
-        return fetch(`${iNav.base}${query}`)
+        const {pendingQuery:q} = getState().iNav
+        const {keyword} = typeof getState().form.keywordSearch !== 'undefined' && 
+                          typeof getState().form.keywordSearch.values !== 'undefined' ? 
+                          getState().form.keywordSearch.values : ''
+        
+        return fetch(`${iNav.base}?${queryString.stringify({q,keyword})}`)
             .then(
             response => response.json(),
             error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })

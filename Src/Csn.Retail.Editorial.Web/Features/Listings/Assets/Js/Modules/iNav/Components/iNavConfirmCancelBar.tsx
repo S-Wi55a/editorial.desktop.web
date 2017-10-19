@@ -15,15 +15,19 @@ interface IINavConfirmCancelBar {
     index?: number
     count?: number
     pendingQuery?: string
-    fetchSearchResults?: (q: string)=>void
+    fetchSearchResults?: ()=>void
     cancel?: ()=>void
 }
 //TODO: how to get hardcoded words data driven?
 const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({count, fetchSearchResults, pendingQuery, cancel}) => (
     <div className='iNav-category__confirmCancelBar confirmCancelBar'>
         <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel}>Cancel</div>
-        <div className='confirmCancelBar__button confirmCancelBar__button--show' onClick={()=>fetchSearchResults(pendingQuery)}>Show {count} Articles</div>      
-        {/*<a className='confirmCancelBar__button confirmCancelBar__button--show' href={iNav.home(pendingQuery)} >Show {count} Articles</a>*/}
+        <a className='confirmCancelBar__button confirmCancelBar__button--show' href={iNav.home(pendingQuery)} 
+            onClick={(e)=>{
+                e.preventDefault()
+                fetchSearchResults()
+            }
+        }>Show {count} Articles</a>      
     </div>
 )
 
@@ -36,8 +40,8 @@ const mapStateToProps = (state: State, ownProps: IINavConfirmCancelBar) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        fetchSearchResults: (query: string)=>dispatch([
-            Thunks.fetchINav(query),
+        fetchSearchResults: ()=>dispatch([
+            Thunks.fetchINav(),
             {type:ActionTypes.UI.CLOSE_INAV}
         ]),
         cancel: ()=>{

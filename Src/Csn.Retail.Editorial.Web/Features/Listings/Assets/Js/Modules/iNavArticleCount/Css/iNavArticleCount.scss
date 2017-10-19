@@ -1,4 +1,5 @@
 ﻿@import "css/_globals.scss";
+@import "iNav/Css/iNav.variables";
 
 .iNavArticleCount {
     $spacing: 20px;
@@ -6,6 +7,8 @@
     line-height: $spacing;
     margin-top: 40px;
     margin-bottom: 45px;
+    display: inline-block;
+    max-width: calc(100% - #{$iNav-sort-width} - #{$grid-gutter-width});
 }
 
 .noResults {

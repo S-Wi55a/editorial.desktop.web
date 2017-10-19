@@ -7,19 +7,18 @@ if (!SERVER) {
     require('iNavSorting/Css/iNavSorting.scss')  
 }
 
-const INavSorOption = ({ selected, label, value, limit, query }) => {
-    if (selected) {
-        return <option value={value} selected='true'>{label}</option>
-    } else {
-        //need to fix the on change event // skip should be 0 when selected
-        //<option selected="true"><a href="{iNav.home(!!query? query:'', limit, 0, value)}"> {label}</a></option>
-        return <option value={value}>{label}</option>
-    }
+const INavSorOption = ({ selected, label, value,query }) => {
+        return <option value={value} selected={selected}>{label}</option>
+    // } else {
+    //     //need to fix the on change event // skip should be 0 when selected
+    //     //<option selected="true"><a href="{iNav.home(!!query? query:'', limit, 0, value)}"> {label}</a></option>
+    //     return <option value={value}>{label}</option>
+    // }
 }
 
-const INavSorting = ({ sorting, limit, query }) =>  {    
-     return <div className='iNavSorting__container'>
-            <select className='iNavSorting iNavSorting--select' >
+const INavSorting = ({ sorting, limit, query, isVisible }) =>  {    
+     return <div className={`iNavSorting__container ${isVisible ? '' : 'hide' }`}>
+            <select className='iNavSorting' onChange={()=>{fetchQuery({q:query})}}>
                 {sorting.sortListItems.map((sortItem) =>{
                     return  <INavSorOption key={sortItem.value} { ...sortItem } query={query} limit={limit}></INavSorOption>
                 })}             
@@ -30,15 +29,26 @@ const INavSorting = ({ sorting, limit, query }) =>  {
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
+        isVisible: !!state.iNav.count,
         sorting: state.iNav.sorting,
-        pageLimit: state.iNav.paging.limit,
         query: state.iNav.pendingQuery
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchQuery: (query) => {dispatch([
+            Thunks.fetchINav(query)
+        ])}
+    }
+}
+
+
 // Connect the Component to the store
 const INavSortingContainer = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(INavSorting)
 
 export default INavSortingContainer
+//TODO: hide when count is 0

@@ -15,6 +15,7 @@
             display: inline-block;
             $width: $screen-sm - ($aside-width + $grid-gutter-width);
             width: calc(#{#{$width}});
+            position: relative;
 
             @include breakpoint($screen-md) {
                 $width: $screen-md - ($aside-width + $grid-gutter-width);
