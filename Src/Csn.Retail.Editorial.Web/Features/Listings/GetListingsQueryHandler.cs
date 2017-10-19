@@ -44,6 +44,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _expressionFormatter = expressionFormatter;
             _contextStore = contextStore;
         }
+
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
             query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
@@ -59,7 +60,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 IncludeCount = true,
                 IncludeSearchResults = true,
                 NavigationName = "RetailNav",
-                PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero" }
+                PostProcessors = new List<string> {"Retail", "FacetSort", "ShowZero"}
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
@@ -70,19 +71,25 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             if (navResults != null)
             {
-                navResults.Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword);
-                navResults.Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword);
-                navResults.CurrentQuery = string.IsNullOrEmpty(query.Q) ? string.Empty : query.Q;
-                navResults.Keyword = query.Keyword;
+
             }
-            
-            return resultData == null ? null : new GetListingsResponse
-            {
-                ListingsViewModel = new ListingsViewModel
+
+            return resultData == null
+                ? null
+                : new GetListingsResponse
                 {
-                    NavResults = navResults
-                }
-            };
+                    ListingsViewModel = new ListingsViewModel
+                    {
+                        NavResults = navResults,
+                        Paging = _paginationHelper.GetPaginationData(navResults.Count,
+                            PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q,
+                            query.Keyword),
+                        Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder,
+                            query.Q, query.Keyword),
+                        CurrentQuery = string.IsNullOrEmpty(query.Q) ? string.Empty : query.Q,
+                        Keyword = query.Keyword;
+                    }
+                };
         }
 
         private string AppendOrUpdateKeywordExpression(string query, string keyword)

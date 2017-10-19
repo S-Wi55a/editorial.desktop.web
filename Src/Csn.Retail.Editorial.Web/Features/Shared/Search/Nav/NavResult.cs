@@ -11,12 +11,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public List<SearchResult> SearchResults { get; set; }
         public string NoResultsMessage { get; set; }
         public string NoResultsInstructionMessage { get; set; }
-
-        //Should move to ListingViewModel
-        public PagingViewModel Paging { get; set; } 
-        public SortingViewModel Sorting { get; set; }
-        public string CurrentQuery { get; set; }
-        public string Keyword { get; set; }
     }
 
     public class Nav
