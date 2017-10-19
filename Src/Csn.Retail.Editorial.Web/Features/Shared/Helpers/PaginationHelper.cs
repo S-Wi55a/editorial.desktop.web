@@ -8,7 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
     public interface IPaginationHelper
     {        
-        PagingViewModel GetPaginationData(int count, int limit, int skip, string sortOrder, string query);
+        PagingViewModel GetPaginationData(int count, int limit, int offset, string sortOrder, string query);
     }
 
     [AutoBind]
@@ -16,14 +16,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
     {        
         private const int MinPageNo = 1;
 
-        public PagingViewModel GetPaginationData(int count, int limit, int skip, string sortOrder, string query)
+        public PagingViewModel GetPaginationData(int count, int limit, int offset, string sortOrder, string query)
         {
             if (count < 1)
             {
                 return new PagingViewModel();
             }
-            var currentPageNumber = GetCurrentPageNo(skip, limit);            
-            var totalPages = limit != 0 ? (int)Math.Ceiling((double)count / limit)  : 0;            
+            var currentPageNumber = GetCurrentPageNo(offset, limit);
+            var totalPages = limit != 0 ? (int)Math.Ceiling((double)count / limit)  : 0;
             var fistPageLink = count > 0 ? GeneratePageLink(1, limit, query): null; // Only if there's at leaset one record
             var lastPageLink = totalPages >= 2 ? GeneratePageLink(totalPages, limit, query) : null; // Only if more 1 page
             var previousPageLink = totalPages >= 2 && currentPageNumber > 1 ? GeneratePageLink(currentPageNumber -1, limit, query): null; //Only there's room to nevigate to previous page
@@ -33,21 +33,20 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             {
                 TotalCount = count,
                 CurrentPageNo = currentPageNumber,
-                TotalPageCount = totalPages,                
+                TotalPageCount = totalPages,
                 First = fistPageLink,
                 Last = lastPageLink,
                 Previous = previousPageLink,
                 Next = nextPageLink,
                 Pages = GeneratePageLinks(currentPageNumber, limit, totalPages, query).ToList(), // Only if more than 2 pages
-                Limit = limit,
-                DisplayText = GetDisplayText(count, totalPages, skip, currentPageNumber, limit)
+                DisplayText = GetDisplayText(count, totalPages, offset, currentPageNumber, limit)
             };
         }        
 
-        private string GetDisplayText(int count, int totalPages, int skip, int currentPageNumber, int limit)
+        private string GetDisplayText(int count, int totalPages, int offset, int currentPageNumber, int limit)
         {
             if (count < 1) return string.Empty;
-            return skip + 1 + " - " + (currentPageNumber != totalPages ? skip + limit : count) + " of " + count + " Article(s)";
+            return offset + 1 + " - " + (currentPageNumber != totalPages ? offset + limit : count) + " of " + count + " Article(s)";
         }
 
         private IEnumerable<PagingItemViewModel> GeneratePageLinks(long currentPageNo, int itemsPerPage, int totalPages, string query)
@@ -89,12 +88,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             return list;
         }
 
-        private int GetCurrentPageNo(int offset, int itemsPerPage)
+        private int GetCurrentPageNo(int limit, int itemsPerPage)
         {
             if (itemsPerPage == 0)
                 return MinPageNo;
 
-            var result = (offset / itemsPerPage) + MinPageNo;
+            var result = (limit / itemsPerPage) + MinPageNo;
             return result < MinPageNo ? MinPageNo : result;
         }
 
@@ -102,12 +101,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 
         private PagingItemViewModel GeneratePageLink(long pageNo, int limit, string query)
         {
-            var skip = (pageNo - MinPageNo) * limit;
+            var offset = (pageNo - MinPageNo) * limit;
 
             return new PagingItemViewModel
             {
                 PageNo = pageNo,
-                Skip = skip,
+                Offset = offset,
                 Query = query
             };
         }

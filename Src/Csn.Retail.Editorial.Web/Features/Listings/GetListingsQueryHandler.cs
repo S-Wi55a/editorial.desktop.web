@@ -9,6 +9,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
@@ -28,11 +29,11 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IPaginationHelper _paginationHelper;
         private readonly ISortingHelper _sortingHelper;
         private readonly IExpressionParser _parser;
-        private readonly IExpressionSyntax _expressionSyntax;
+        private readonly IExpressionFormatter _expressionFormatter;
         private readonly IContextStore _contextStore;
 
         public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
-            ISortingHelper sortingHelper, IExpressionParser parser, IExpressionSyntax expressionSyntax, IContextStore contextStore)
+            ISortingHelper sortingHelper, IExpressionParser parser, IExpressionFormatter expressionFormatter, IContextStore contextStore)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
@@ -40,7 +41,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _paginationHelper = paginationHelper;
             _sortingHelper = sortingHelper;
             _parser = parser;
-            _expressionSyntax = expressionSyntax;
+            _expressionFormatter = expressionFormatter;
             _contextStore = contextStore;
         }
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
@@ -52,8 +53,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {
                 Query = query.Q,
-                Limit = query.Limit,
-                Offset = query.Skip,
+                Offset = query.Offset,
+                Limit = PageItemsLimit.ListingPageItemsLimit,
                 SortOrder = query.SortOrder,
                 IncludeCount = true,
                 IncludeSearchResults = true,
@@ -70,8 +71,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             if (navResults != null)
             {
                 navResults.PendingQuery = string.IsNullOrEmpty(query.Q) ? string.Empty: query.Q;
-                navResults.Paging = _paginationHelper.GetPaginationData(resultData.Count, query.Limit, query.Skip, query.SortOrder, query.Q);
-                navResults.Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder);
+                navResults.Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q);
+                navResults.Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q);
                 navResults.Keyword = query.Keyword;
             }
             
@@ -86,22 +87,32 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         private string AppendOrUpdateKeywordExpression(string query, string keyword)
         {
-            if (keyword.IsNullOrEmpty()) return query;
-
             var currentExpression = _parser.Parse(query);
+            var currentKeywordExpression = Expression.Create();
+
             if (currentExpression != EmptyExpression.Instance && currentExpression is BranchExpression)
             {
-                var currentKeywordExpression = ((BranchExpression) currentExpression).Expressions.FirstOrDefault(a => a is KeywordExpression);
-                if (currentKeywordExpression != null)
-                {
-                    ((BranchExpression)currentExpression).Expressions.Remove(currentKeywordExpression);
-                    currentExpression.And(new KeywordExpression("Keywords", $"({keyword})"));
-                    return _expressionSyntax.Format(currentExpression);
-                }
+                currentKeywordExpression = ((BranchExpression)currentExpression).Expressions.FirstOrDefault(a => a is KeywordExpression);
             }
 
-            var keywordexpression = new KeywordExpression("Keywords", $"({keyword})");
-            return _expressionSyntax.Format(currentExpression & keywordexpression);
+            if (!keyword.IsNullOrEmpty())
+            {
+                var keywordexpression = new KeywordExpression("Keywords", $"({keyword})");
+                if (currentKeywordExpression != null && currentKeywordExpression != EmptyExpression.Instance)
+                {
+                    ((BranchExpression) currentExpression).Expressions.Remove(currentKeywordExpression);                    
+                }
+
+                return _expressionFormatter.Format(currentExpression & keywordexpression);
+            }
+
+            if (currentKeywordExpression != null && currentKeywordExpression != EmptyExpression.Instance)
+            {
+                ((BranchExpression)currentExpression).Expressions.Remove(currentKeywordExpression);
+                return _expressionFormatter.Format(currentExpression);
+            }
+
+            return query;
         }
     }
 }

@@ -42,7 +42,6 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterType<RoseTreeSanitiser>().AsSelf().SingleInstance();
             builder.RegisterType<RoseTreeFormatter>().As<IExpressionFormatter>().SingleInstance();
             builder.RegisterType<RoseTreeParser>().As<IExpressionParser>().SingleInstance();
-            builder.RegisterType<RoseTreeSyntax>().As<IExpressionSyntax>().SingleInstance();
 
             // Tracking
             builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialDetailsTrackingContainerProvider>()).As<IEditorialDetailsTrackingContainerProvider>();

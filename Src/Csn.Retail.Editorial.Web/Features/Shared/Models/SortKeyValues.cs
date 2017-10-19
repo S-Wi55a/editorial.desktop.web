@@ -10,31 +10,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         private const string OldestKey = "Oldest";
         private const string OldestName = "Oldest Articles";
 
-        private static IDictionary<string, ISortKeyItem> _items;
-        private static readonly object ThisLock = new object();
-
-        public static IDictionary<string, ISortKeyItem> Items
+        public static IDictionary<string, ISortKeyItem> Items => new Dictionary<string, ISortKeyItem>
         {
-            get
-            {
-                lock (ThisLock)
-                {
-                    if (_items != null)
-                    {
-                        return _items;
-                    }
-
-                    _items = new Dictionary<string, ISortKeyItem>
-                    {
-                        {LatestKey, new SortKeyItem(LatestKey, LatestName)},
-                        {OldestKey, new SortKeyItem(OldestKey, OldestName)}
-                    };
-
-                    return _items;
-                }
-            }
-        }
+            { LatestKey, new SortKeyItem(LatestKey, LatestName) },
+            { OldestKey, new SortKeyItem(OldestKey, OldestName) }
+        };
     }
+
     public interface ISortKeyItem
     {
         string DisplayName { get; }

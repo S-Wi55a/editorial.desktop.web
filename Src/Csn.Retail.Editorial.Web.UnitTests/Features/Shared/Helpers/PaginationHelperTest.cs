@@ -29,13 +29,13 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             //Assert previous page is valid
             Assert.IsNotNull(result.Previous);            
             Assert.AreEqual(result.Previous.PageNo, 6);
-            Assert.AreEqual(result.Previous.Skip, 100);
+            Assert.AreEqual(result.Previous.Offset, 100);
             Assert.AreEqual(result.Previous.Query, "test_query");
 
             //Assert last page is valid
             Assert.IsNotNull(result.Next);
             Assert.AreEqual(result.Next.PageNo, 8);
-            Assert.AreEqual(result.Next.Skip, 140);
+            Assert.AreEqual(result.Next.Offset, 140);
             Assert.AreEqual(result.Next.Query, "test_query");
             
             //Total Page count is valid

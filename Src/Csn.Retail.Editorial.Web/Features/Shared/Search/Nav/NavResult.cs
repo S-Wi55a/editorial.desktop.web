@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav

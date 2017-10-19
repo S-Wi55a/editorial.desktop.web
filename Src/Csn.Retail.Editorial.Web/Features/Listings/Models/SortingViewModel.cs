@@ -17,6 +17,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
     {
         public string Label { get; set; }
         public string Value { get; set; }
+        public string Query { get; set; }
         public bool Selected { get; set; }
     }
 }
