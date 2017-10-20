@@ -39,7 +39,7 @@ export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) 
 
         dispatch({ type: ActionTypes.API.ASPECT.FETCH_QUERY_REQUEST })
 
-        return fetch(`${iNav.aspect}${aspect}?q=${query}`)
+        return fetch(`${iNav.aspect}${aspect}${query}`)
             .then(
             response => response.json(),
             error => dispatch({ type: ActionTypes.API.ASPECT.FETCH_QUERY_FAILURE, payload: { error } })

@@ -22,7 +22,7 @@ interface IINavConfirmCancelBar {
 const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({count, fetchINav, pendingQuery, cancel}) => (
     <div className='iNav-category__confirmCancelBar confirmCancelBar'>
         <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel}>Cancel</div>
-        <a className='confirmCancelBar__button confirmCancelBar__button--show' href={iNav.home(pendingQuery)} 
+        <a className='confirmCancelBar__button confirmCancelBar__button--show' href={pendingQuery} 
             onClick={(e)=>{
                 e.preventDefault()
                 fetchINav()

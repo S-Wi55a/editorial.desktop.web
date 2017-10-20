@@ -33,10 +33,7 @@
         float: right;
         color: $cs-light-grey-1;
         font-weight: 900;
-        animation-duration: .5s;
-        animation-fill-mode: forwards;
-        backface-visibility: hidden;
-        transition: transform .3s;
+        pointer-events: none;
     }
 }
 
