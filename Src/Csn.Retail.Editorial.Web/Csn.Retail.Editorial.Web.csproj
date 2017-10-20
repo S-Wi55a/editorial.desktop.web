@@ -537,7 +537,9 @@
     <Compile Include="Features\Shared\Search\Aspect\AspectResult.cs" />
     <Compile Include="Features\Shared\Search\Extensions\MapperExtensions.cs" />
     <Compile Include="Features\Shared\Search\Mapping\DateAvailableMapper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\FacetNodeActionResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\RefinementsNavNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ResultsMessageMapper.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
