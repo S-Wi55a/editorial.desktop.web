@@ -1,29 +1,18 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import { Thunks } from 'iNav/Actions/actions'
-import { iNav } from 'Endpoints/endpoints'
+import { Field, reduxForm } from 'redux-form'
 
 if (!SERVER) {
     require('iNavSorting/Css/iNavSorting.scss')
 }
 
-const INavSorOption = ({ selected, label, value,query }) => {
-        return <option value={value} selected={selected}>{label}</option>
-    // } else {
-    //     //need to fix the on change event // skip should be 0 when selected
-    //     //<option selected="true"><a href="{iNav.home(!!query? query:'', limit, 0, value)}"> {label}</a></option>
-    //     return <option value={value}>{label}</option>
-    // }
-}
-
-const INavSorting = ({ sorting, limit, query, isVisible }) =>  {    
+const INavSorting = ({ sorting, isVisible, fetchQuery }) =>  {    
      return <div className={`iNavSorting__container ${isVisible ? '' : 'hide' }`}>
-            <select className='iNavSorting' onChange={()=>{fetchQuery({q:query})}}>
-                {sorting.sortListItems.map((sortItem) =>{
-                    return  <INavSorOption key={sortItem.value} { ...sortItem } ></INavSorOption>
-                })}             
-            </select>
-        </div>
+                <Field name="sortOrder" component="select" className='iNavSorting' onChange={(event, newValue)=>fetchQuery(event, newValue)}>
+                    {sorting.sortListItems.map((sortItem) => <option key={sortItem.value} value={sortItem.url}>{sortItem.label}</option>)}   
+                </Field>            
+            </div>
 }
 
 // Redux Connect
@@ -31,23 +20,28 @@ const mapStateToProps = (state) => {
     return {
         isVisible: !!state.store.listings.navResults.count,
         sorting: state.store.listings.sorting,
-        query: state.store.listings.currentQuery
+        initialValues: {
+            sortOrder: state.store.listings.sorting.sortListItems.find(el=>el.selected === true).value
+          }
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchQuery: (query) => {dispatch([
-            Thunks.fetchINav(query)
-        ])}
+        fetchQuery: (event, newValue) => {
+            dispatch(Thunks.fetchINav(newValue))
+        }
     }
 }
 
 
-// Connect the Component to the store
 const INavSortingContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(INavSorting)
+  )(reduxForm({
+    // a unique name for the form
+    form: 'sort',
+    enableReinitialize: true
+  })(INavSorting))
 
 export default INavSortingContainer
