@@ -12,11 +12,11 @@ using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
-using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 using Expresso.Expressions;
 using Expresso.Syntax;
 using IContextStore = Ingress.ContextStores.IContextStore;
+using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
 {
@@ -67,7 +67,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
-            var navResults = _mapper.Map<NavResult>(resultData);
+            var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.SortOrder; });
             
             return resultData == null ? null : new GetListingsResponse
                 {
@@ -76,7 +76,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                         NavResults = navResults,
                         Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
                         Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
-                        CurrentQuery = string.IsNullOrEmpty(query.Q) ? string.Empty : $"/?q={query.Q}&sortOrder=Latest&keyword={query.Keyword}",
+                        CurrentQuery = string.IsNullOrEmpty(query.Q) ? string.Empty : $"?q={query.Q}&sortOrder=Latest&keyword={query.Keyword}",
                         Keyword = query.Keyword
                     }
                 };
@@ -89,6 +89,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             if (currentExpression != EmptyExpression.Instance && currentExpression is BranchExpression)
             {
+                
                 currentKeywordExpression = ((BranchExpression)currentExpression).Expressions.FirstOrDefault(a => a is KeywordExpression);
             }
 

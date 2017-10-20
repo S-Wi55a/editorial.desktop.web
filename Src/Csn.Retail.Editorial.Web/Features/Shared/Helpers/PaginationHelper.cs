@@ -106,7 +106,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             return new PagingItemViewModel
             {
                 PageNo = pageNo,
-                Url = $"/?q={query}&offset={offset}&sortOrder={sortOrder}&keyword={keyword}"
+                Url = $"?q={query}&offset={offset}&sortOrder={sortOrder}&keyword={keyword}"
             };        
         }
         #endregion
