@@ -55,11 +55,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
             cfg.CreateMap<RyvussNavNodeDto, RefinementResult>()
                 .ForMember(dest => dest.Count, opt => opt.Ignore())
-                .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<RefinementNavNode>(src.GetRefinements())));
+                .ForMember(dest => dest.Refinements, opt => opt.ResolveUsing<RefinementsNavNodeResolver>());
 
             cfg.CreateMap<FacetNodeDto, FacetNode>()
                 .ForMember(dest => dest.IsRefineable, opt => opt.MapFrom(src => src.IsRefineable()))
                 .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetRefinement()))
+                .ForMember(dest => dest.Action, opt => opt.ResolveUsing<FacetNodeActionResolver>())
                 .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<NavNode>(src.GetRefinements())));
 
             cfg.CreateMap<SearchResultDto, SearchResult>()
@@ -70,4 +71,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
         }
     }
+
 }

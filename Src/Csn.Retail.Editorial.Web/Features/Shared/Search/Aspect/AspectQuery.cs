@@ -6,5 +6,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect
     {
         public string Query { get; set; }
         public string Aspect { get; set; }
+        public string SortOrder { get; set; }
     }
 }

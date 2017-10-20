@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                     Selected = x.Key.Equals(currrentSort, StringComparison.InvariantCultureIgnoreCase),
                     Label = x.Value.DisplayName,
                     Value = x.Value.Key,
-                    Url = $"/?q={query}&keyword={keyword}"
+                    Url = $"?q={query}&keyword={keyword}"
                 }).ToList()
             };
             return model;
