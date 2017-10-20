@@ -16,7 +16,7 @@ export const fetchINav: fetchINav = (query?: string) =>  (dispatch: any, getStat
                           getState().form.keywordSearch.values.keyword : ''
         
         // TODO: REMOVE FOR PHASE 2
-        return window.location.replace(`?${queryString.stringify({q,keyword})}`)
+        return window.location.replace(`${q}${queryString.stringify({keyword})}`)
 
 
         // return fetch(`${iNav.api}?${queryString.stringify({q,keyword})}`)
@@ -39,7 +39,7 @@ export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) 
 
         dispatch({ type: ActionTypes.API.ASPECT.FETCH_QUERY_REQUEST })
 
-        return fetch(`${iNav.aspect}${aspect}?q=${query}`)
+        return fetch(`${iNav.aspect}${aspect}${query}`)
             .then(
             response => response.json(),
             error => dispatch({ type: ActionTypes.API.ASPECT.FETCH_QUERY_FAILURE, payload: { error } })
