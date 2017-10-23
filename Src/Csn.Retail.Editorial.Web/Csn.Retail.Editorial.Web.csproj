@@ -437,6 +437,7 @@
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
+    <Compile Include="Features\Details\DetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
     <Compile Include="Features\Details\Mappings\BrightcoveIFrameBuilder.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
@@ -568,6 +569,7 @@
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
     <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
+    <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />
     <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
     <Compile Include="Infrastructure\Redirects\HttpRequestContextWrapper.cs" />
@@ -677,6 +679,7 @@
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
+    <Folder Include="Views\DetailsRedirect\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
