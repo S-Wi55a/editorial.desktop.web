@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
@@ -106,7 +107,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             return new PagingItemViewModel
             {
                 PageNo = pageNo,
-                Url = $"?q={query}&offset={offset}&sortOrder={sortOrder}&keyword={keyword}"
+                Url = $"?q={query}&offset={offset}{UrlParamsFormatter.GetSortParam(sortOrder)}{UrlParamsFormatter.GetKeywordParam(keyword)}"
             };        
         }
         #endregion

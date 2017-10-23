@@ -1,4 +1,5 @@
-﻿using Csn.SimpleCqrs;
+﻿using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
 {
@@ -9,8 +10,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public int Offset { get; set; }
         public string SortOrder
         {
-            get => string.IsNullOrEmpty(_sortOrder) ? "Latest" : _sortOrder;
-            set => _sortOrder = value;
+            get => _sortOrder == string.Empty ? EditorialSortKeyValues.ListingPageDefaultSort : _sortOrder;
+            set => _sortOrder = EditorialSortKeyValues.Items.TryGetValue(value, out var sortOrder)
+                ? sortOrder.Key
+                : EditorialSortKeyValues.ListingPageDefaultSort;
         }
         public string Keyword { get; set; }
     }

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
@@ -10,11 +10,8 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Constants;
-using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.SimpleCqrs;
-using Expresso.Expressions;
-using Expresso.Syntax;
 using IContextStore = Ingress.ContextStores.IContextStore;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
@@ -28,28 +25,27 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IMapper _mapper;
         private readonly IPaginationHelper _paginationHelper;
         private readonly ISortingHelper _sortingHelper;
-        private readonly IExpressionParser _parser;
-        private readonly IExpressionFormatter _expressionFormatter;
         private readonly IContextStore _contextStore;
+        private readonly IKeywordExpressionHelper _keywordExpressionHelper;
 
         public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
-            ISortingHelper sortingHelper, IExpressionParser parser, IExpressionFormatter expressionFormatter, IContextStore contextStore)
+            ISortingHelper sortingHelper, IContextStore contextStore, IKeywordExpressionHelper keywordExpressionHelper)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
             _mapper = mapper;
             _paginationHelper = paginationHelper;
             _sortingHelper = sortingHelper;
-            _parser = parser;
-            _expressionFormatter = expressionFormatter;
+            
             _contextStore = contextStore;
+            _keywordExpressionHelper = keywordExpressionHelper;
         }
 
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
             query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
 
-            query.Q = AppendOrUpdateKeywordExpression(query.Q, query.Keyword);
+            query.Q = _keywordExpressionHelper.AppendOrUpdate(query.Q, query.Keyword);
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {
@@ -76,41 +72,15 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                         NavResults = navResults,
                         Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
                         Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
-                        CurrentQuery = string.IsNullOrEmpty(query.Q) ? string.Empty : $"?q={query.Q}&sortOrder=Latest&keyword={query.Keyword}",
+                        CurrentQuery = GetFormatterQuery(query),
                         Keyword = query.Keyword
                     }
                 };
         }
 
-        private string AppendOrUpdateKeywordExpression(string query, string keyword)
+        private static string GetFormatterQuery(GetListingsQuery query)
         {
-            var currentExpression = _parser.Parse(query);
-            var currentKeywordExpression = Expression.Create();
-
-            if (currentExpression != EmptyExpression.Instance && currentExpression is BranchExpression)
-            {
-                
-                currentKeywordExpression = ((BranchExpression)currentExpression).Expressions.FirstOrDefault(a => a is KeywordExpression);
-            }
-
-            if (!keyword.IsNullOrEmpty())
-            {
-                var keywordexpression = new KeywordExpression("Keywords", $"({keyword})");
-                if (currentKeywordExpression != null && currentKeywordExpression != EmptyExpression.Instance)
-                {
-                    ((BranchExpression) currentExpression).Expressions.Remove(currentKeywordExpression);                    
-                }
-
-                return _expressionFormatter.Format(currentExpression & keywordexpression);
-            }
-
-            if (currentKeywordExpression != null && currentKeywordExpression != EmptyExpression.Instance)
-            {
-                ((BranchExpression)currentExpression).Expressions.Remove(currentKeywordExpression);
-                return _expressionFormatter.Format(currentExpression);
-            }
-
-            return query;
+            return string.IsNullOrEmpty(query.Q) ? string.Empty : $"?q={query.Q}{UrlParamsFormatter.GetKeywordParam(query.Keyword)}{UrlParamsFormatter.GetSortParam(query.SortOrder)}";
         }
     }
 }

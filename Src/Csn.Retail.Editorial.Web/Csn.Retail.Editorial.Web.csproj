@@ -483,6 +483,8 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
+    <Compile Include="Features\Shared\Formatters\UrlParamsFormatter.cs" />
+    <Compile Include="Features\Shared\Helpers\KeywordExpressionHelper.cs" />
     <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />

@@ -15,6 +15,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
             { LatestKey, new SortKeyItem(LatestKey, LatestName) },
             { OldestKey, new SortKeyItem(OldestKey, OldestName) }
         };
+
+        public static string ListingPageDefaultSort => Items[LatestKey].Key;
     }
 
     public interface ISortKeyItem
@@ -22,6 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         string DisplayName { get; }
         string Key { get; }
     }
+
     public class SortKeyItem : ISortKeyItem
     {
         public SortKeyItem(string key, string displayName)
@@ -29,7 +32,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
             DisplayName = displayName;
             Key = key;
         }
-
         public string DisplayName { get; }
         public string Key { get; }
     }
