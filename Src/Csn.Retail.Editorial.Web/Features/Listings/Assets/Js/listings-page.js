@@ -22,8 +22,14 @@ window.store = configureStore(); //Init store
     if (d.querySelector('#iNavBreadcrumbs')) {
         require('iNavBreadCrumbs/iNavBreadCrumbs');
     }
+    if (d.querySelector('#iNavSorting')) {
+        require('iNavSorting/iNavSorting');
+    }
     if (d.querySelector('#iNavSearchResults')) {
         require('iNavSearchResults/iNavSearchResults');
+    }
+    if (d.querySelector('#iNavPagination')) {
+        require('iNavPagination/iNavPagination');
     }
 
 

@@ -73,6 +73,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public string FacetDisplay { get; set; }
         public string RemoveAction { get; set; }
         public List<BreadCrumbDto> Children { get; set; }
+        public string Type { get; set; }
+        public string Term { get; set; }
+        public bool IsFacetBreadCrumb => Type == "FacetBreadCrumb";
+        public bool IsKeywordBreadCrumb => Type == "KeywordBreadCrumb";
     }
 
     public class SearchResultDto

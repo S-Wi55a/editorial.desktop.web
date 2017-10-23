@@ -5,6 +5,7 @@ import { Actions, ActionTypes, Thunks } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
 import { State } from 'iNav/Types'
 
+
 if (!SERVER) {
     require('iNav/Css/iNav.ConfirmCancelBar')  
   }
@@ -20,8 +21,8 @@ interface IINavConfirmCancelBar {
 //TODO: how to get hardcoded words data driven?
 const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({count, onClick, pendingQuery, cancel}) => (
     <div className='iNav-category__confirmCancelBar confirmCancelBar'>
-        <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel}>Cancel</div>
-        <div className='confirmCancelBar__button confirmCancelBar__button--show' onClick={()=>onClick(pendingQuery)}>Show {count} Articles</div>
+        <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel}>Cancel</div>        
+        <a className='confirmCancelBar__button confirmCancelBar__button--show' href={iNav.home(pendingQuery)} >Show {count} Articles</a>
     </div>
 )
 
