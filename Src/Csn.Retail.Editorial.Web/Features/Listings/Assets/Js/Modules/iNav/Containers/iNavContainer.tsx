@@ -9,8 +9,12 @@ import UI from 'ReactReduxUI'
 import KeywordSearch from 'iNav/Components/iNavKeywordSearch'
 import {reset} from 'redux-form';
 
+//TODO: can move the scroll magic init to listings page
+let ScrollMagic: any = null
+
 if (!SERVER) {
-  require('iNav/Css/iNav.scss')  
+  require('iNav/Css/iNav.scss')
+  ScrollMagic = require('ScrollMagic')  
 }
 
 interface IINavNodes {
@@ -23,9 +27,36 @@ interface IINavNodes {
 //Wrapper component
 class INav extends React.Component<IINavNodes> {
 
+  private _scene: any
+
+  constructor() {
+    super()
+  }
+
   //TODO: add sticky Nav
-  componentDidMount(){}
-  componentWillUnmount(){}
+  componentDidMount(){
+
+    if (!SERVER) {
+      //Scroll Magic Controller
+      (window as any).scrollMogicController = (window as any).scrollMogicController || new ScrollMagic.Controller();
+      
+      this._scene = new ScrollMagic.Scene({
+              triggerElement: document.querySelector('.iNav'),
+              triggerHook: 0,
+              offset: -1 * (document as any).querySelector('.site-nav-wrapper').offsetHeight
+          })
+          .setPin(document.querySelector('.iNav'), {spacerClass: 'scrollmagic-pin-spacer--iNav'})
+          .addTo((window as any).scrollMogicController);
+    }     
+  }
+  componentWillUnmount(){
+
+    if (!SERVER) {
+      this._scene.destroy(true)
+      this._scene = null    
+    }
+
+  }
 
   render(){
     return (
