@@ -36,36 +36,36 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
 
             //Assert
             Assert.AreNotEqual(updatedQuery, string.Empty);
-            Assert.AreEqual(updatedQuery.Contains("keyword((honda_))"), true);
+            Assert.AreEqual(updatedQuery.Contains("keyword(honda)"), true);
         }
 
         [Test]
         public void KeywordRemovedTest()
         {
             //Arrange
-            var query = "Service.CarSales.";
+            var query = "(And.Service.CarSales._.Keywords.keyword(honda).)";
 
             //Act
             var updatedQuery = testSubject.AppendOrUpdate(query, string.Empty);
 
             //Assert
             Assert.AreNotEqual(updatedQuery, string.Empty);
-            Assert.AreEqual(updatedQuery.Contains("keyword((honda_))"), false);
+            Assert.AreEqual(updatedQuery.Contains("keyword(honda)"), false);
         }
 
         [Test]
         public void KeywordUpdatedTest()
         {
             //Arrange
-            var query = "(And.Service.CarSales._.Keywords.keyword((honda_)).)";
+            var query = "(And.Service.CarSales._.Keywords.keyword(honda).)";
 
             //Act
             var updatedQuery = testSubject.AppendOrUpdate(query, "BMW");
 
             //Assert
             Assert.AreNotEqual(updatedQuery, string.Empty);
-            Assert.AreEqual(updatedQuery.Contains("keyword((BMW_))"), true);
-            Assert.AreEqual(updatedQuery.Contains("honda"), false);
+            Assert.AreEqual(updatedQuery.Contains("keyword(BMW)"), true);
+            Assert.AreEqual(updatedQuery.Contains("keyword(honda)"), false);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Expresso.Expressions;
+using Expresso.Expressions.Visitors;
 using Expresso.Syntax;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
@@ -25,31 +26,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
         public string AppendOrUpdate(string query, string keyword)
         {
             var currentExpression = _parser.Parse(query);
-            var currentKeywordExpression = Expression.Create();
+            var newExpression = string.IsNullOrEmpty(keyword) ? Expression.Create() : new KeywordExpression("Keywords", keyword);
 
-            if (currentExpression != EmptyExpression.Instance && currentExpression is BranchExpression)
-            {
-                currentKeywordExpression = ((BranchExpression)currentExpression).Expressions.FirstOrDefault(a => a is KeywordExpression);
-            }
+            var visitor = ReplacingVisitorBuilder
+                .Find(e => e is KeywordExpression)
+                .Substitution(e => newExpression)
+                .WhenNotFound(e => e & newExpression)
+                .Build();
 
-            if (!keyword.IsNullOrEmpty())
-            {
-                var keywordexpression = new KeywordExpression("Keywords", $"({keyword})");
-                if (currentKeywordExpression != null && currentKeywordExpression != EmptyExpression.Instance)
-                {
-                    ((BranchExpression)currentExpression).Expressions.Remove(currentKeywordExpression);
-                }
-
-                return _expressionFormatter.Format(currentExpression & keywordexpression);
-            }
-
-            if (currentKeywordExpression != null && currentKeywordExpression != EmptyExpression.Instance)
-            {
-                ((BranchExpression)currentExpression).Expressions.Remove(currentKeywordExpression);
-                return _expressionFormatter.Format(currentExpression);
-            }
-
-            return query;
+            return _expressionFormatter.Format(visitor.ReplaceIn(currentExpression));
         }
     }
 }
