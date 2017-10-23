@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Web.Http;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
@@ -19,16 +20,13 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         }
 
-        [Route("editorial/beta-results/")]
+        [System.Web.Mvc.Route("editorial/beta-results/")]
         [RedirectAttributeFilter]
-        public async Task<ActionResult> Index(string q = null)
+        public async Task<ActionResult> Index(GetListingsQuery query)
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new ListingsPageRequestEvent());
 
-            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetListingsQuery, GetListingsResponse>(new GetListingsQuery()
-            {
-                Query = q
-            });
+            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetListingsQuery, GetListingsResponse>(query);
 
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);
 

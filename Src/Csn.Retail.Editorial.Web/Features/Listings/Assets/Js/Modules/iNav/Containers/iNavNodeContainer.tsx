@@ -107,8 +107,8 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
 // Connect
 const mapStateToProps = (state: any, ownProps: IINavNodeContainer) => {
   return {
-      pendingQuery: state.iNav.pendingQuery,
-      currentRefinement: state.iNav.currentRefinement,
+      pendingQuery: state.store.listings.navResults.pendingQuery,
+      currentRefinement: state.store.listings.navResults.currentRefinement,
       refinementId: state[`ui/iNavNodeContainer${ownProps.name}`] ?  state[`ui/iNavNodeContainer${ownProps.name}`].refinementId : null
   }
 }

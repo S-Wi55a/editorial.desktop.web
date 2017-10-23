@@ -1,7 +1,7 @@
 ﻿import {iNavParentReducer} from 'iNav/Reducers'
 
 const Reducers = {
-    iNav: iNavParentReducer
+    listings: iNavParentReducer
 }
 
 export default Reducers

@@ -23,7 +23,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
                         new BreadCrumbDto()
                         {
                             Aspect = "Make",
-                            Facet = "Honda"
+                            Facet = "Honda",
+                            Type = "FacetBreadCrumb"
                         }
                     }
                 }
@@ -50,12 +51,14 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
                         {
                             Aspect = "Make",
                             Facet = "Honda",
+                            Type = "FacetBreadCrumb",
                             Children = new List<BreadCrumbDto>()
                             {
                                 new BreadCrumbDto()
                                 {
                                     Aspect = "Model",
-                                    Facet = "Civic"
+                                    Facet = "Civic",
+                                    Type = "FacetBreadCrumb"
                                 }
                             }
                         }
@@ -85,18 +88,21 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
                         {
                             Aspect = "Make",
                             Facet = "BMW",
+                            Type = "FacetBreadCrumb",
                             Children = new List<BreadCrumbDto>()
                             {
                                 new BreadCrumbDto()
                                 {
                                     Aspect = "MarketingGroup",
                                     Facet = "3 Series",
+                                    Type = "FacetBreadCrumb",
                                     Children = new List<BreadCrumbDto>()
                                     {
                                         new BreadCrumbDto()
                                         {
                                             Aspect = "Model",
-                                            Facet = "318i"
+                                            Facet = "318i",
+                                            Type = "FacetBreadCrumb"
                                         }
                                     }
                                 }
@@ -128,18 +134,21 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
                         {
                             Aspect = "Make",
                             Facet = "BMW",
+                            Type = "FacetBreadCrumb",
                             Children = new List<BreadCrumbDto>()
                             {
                                 new BreadCrumbDto()
                                 {
                                     Aspect = "MarketingGroup",
                                     Facet = "3 Series",
+                                    Type = "FacetBreadCrumb",
                                     Children = new List<BreadCrumbDto>()
                                     {
                                         new BreadCrumbDto()
                                         {
                                             Aspect = "Model",
-                                            Facet = "318i"
+                                            Facet = "318i",
+                                            Type = "FacetBreadCrumb",
                                         }
                                     }
                                 }
@@ -149,24 +158,33 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
                         {
                             Aspect = "Make",
                             Facet = "Holden",
+                            Type = "FacetBreadCrumb",
                             Children = new List<BreadCrumbDto>()
                             {
                                 new BreadCrumbDto()
                                 {
                                     Aspect = "Model",
-                                    Facet = "Commodore"
+                                    Facet = "Commodore",
+                                    Type = "FacetBreadCrumb"
                                 }
                             }
                         },
                         new BreadCrumbDto()
                         {
                             Aspect = "Type",
-                            Facet = "Review"
+                            Facet = "Review",
+                            Type = "FacetBreadCrumb"
                         },
                         new BreadCrumbDto()
                         {
                             Aspect = "Type",
-                            Facet = "News"
+                            Facet = "News",
+                            Type = "FacetBreadCrumb"
+                        },
+                        new BreadCrumbDto()
+                        {
+                            Term = "(honda)",
+                            Type = "KeywordBreadCrumb"
                         }
                     }
                 }
@@ -174,10 +192,11 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var result = builder.BuildTags(navResult).ToList();
 
-            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual(4, result.Count);
             Assert.AreEqual("bmw", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Make).Values.First());
             Assert.AreEqual("318i", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Model).Values.First());
             Assert.AreEqual("review", result.First(t => t.Name == SasAdTags.SasAdTagKeys.ArticleType).Values.First());
+            Assert.AreEqual("honda", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Keyword).Values.First());
         }
     }
 }

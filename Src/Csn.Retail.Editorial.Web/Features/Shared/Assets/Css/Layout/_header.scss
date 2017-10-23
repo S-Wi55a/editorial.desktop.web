@@ -2,6 +2,9 @@
     padding-top: 15px;
     padding-bottom: 15px;
     min-height: 120px;
+    position: relative;
+    z-index: 2;
+    background-color: $cs-white;
     /*@include breakpoint($screen-lg) {
         padding-top: 30px;
         padding-bottom: 30px;

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using AutoMapper;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
+﻿using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping;
@@ -37,7 +35,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.NoResultsMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultMessage(src.Count)))
                 .ForMember(dest => dest.NoResultsInstructionMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)));
 
-            cfg.CreateMap<BreadCrumbDto, BreadCrumb>();
+            cfg.CreateMap<BreadCrumbDto, BreadCrumb>()
+                .ForMember(dest => dest.Term, opt => opt.Ignore());
 
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
                 .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)));
@@ -56,11 +55,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
             cfg.CreateMap<RyvussNavNodeDto, RefinementResult>()
                 .ForMember(dest => dest.Count, opt => opt.Ignore())
-                .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<RefinementNavNode>(src.GetRefinements())));
+                .ForMember(dest => dest.Refinements, opt => opt.ResolveUsing<RefinementsNavNodeResolver>());
 
             cfg.CreateMap<FacetNodeDto, FacetNode>()
                 .ForMember(dest => dest.IsRefineable, opt => opt.MapFrom(src => src.IsRefineable()))
                 .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetRefinement()))
+                .ForMember(dest => dest.Action, opt => opt.ResolveUsing<FacetNodeActionResolver>())
                 .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<NavNode>(src.GetRefinements())));
 
             cfg.CreateMap<SearchResultDto, SearchResult>()
@@ -71,4 +71,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
         }
     }
+
 }

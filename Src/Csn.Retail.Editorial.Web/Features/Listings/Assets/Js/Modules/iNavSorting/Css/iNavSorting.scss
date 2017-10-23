@@ -1,0 +1,52 @@
+﻿@import "css/_globals.scss";
+@import "iNav/Css/iNav.variables";
+
+.iNavSorting__container {
+    font-size: 14px;
+    display: inline-block;
+    font-weight: $font-weight-600;
+    color: $cs-dark-grey-2;
+    position: absolute;
+    right: $grid-gutter-width/2;
+    top: 30px;
+    border: solid 1px $cs-grey;
+    border-radius: $iNav-border-radius;
+    cursor: pointer;
+
+    @include breakpoint($screen-lg) {
+        top: 45px;  
+        right: $grid-gutter-width;
+        
+    }    
+    
+    &::after {
+        position: absolute;
+        text-align: center;
+        right: 0;
+        top: 0;
+        content: $icon-chevron-down-lg;
+        font-family: $font-family-icons;
+        display: block;
+        height: $iNav-sort-height;
+        width: 40px;
+        line-height:  $iNav-sort-height;
+        float: right;
+        color: $cs-light-grey-1;
+        font-weight: 900;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+        backface-visibility: hidden;
+        transition: transform .3s;
+    }
+}
+
+.iNavSorting {
+    appearance: none;
+    border: none;  
+    width: $iNav-sort-width;
+    height: $iNav-sort-height;
+    background-color: transparent;
+    padding-left: 15px;
+    padding-right: 40px;
+    cursor: pointer;    
+}

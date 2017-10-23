@@ -36,7 +36,7 @@ function findIsSelected(facets: iNavTypes.IFacet[]) {
 // Redux Connect
 const mapStateToProps = (state: State, ownProps: IINavMenuHeaderItemComponent) => {
   return {
-    count: findIsSelected(state.iNav.iNav.nodes[ownProps.index].facets)
+    count: findIsSelected(state.store.listings.navResults.iNav.nodes[ownProps.index].facets)
   }
 }
 
