@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         {
             if (context.Items.TryGetValue("sortOrder", out var sortOrder))
             {
-                return $"?q={source.Action}{UrlParamsFormatter.GetSortParam(sortOrder.ToString())}";
+                return $"?q={source.Action}{UrlParamsFormatter.GetSortParam(sortOrder?.ToString())}";
             }
             return "?q=" + source.Action;
         }

@@ -16,10 +16,10 @@ export const fetchINav: fetchINav = (query?: string) =>  (dispatch: any, getStat
                           getState().form.keywordSearch.values.keyword : ''
         
         // TODO: REMOVE FOR PHASE 2
-        return window.location.replace(`${q}${queryString.stringify({keyword})}`)
+        return window.location.replace(`${q}&${queryString.stringify({keyword})}`)
 
 
-        // return fetch(`${iNav.api}?${queryString.stringify({q,keyword})}`)
+        // return fetch(`${iNav.api}${q}&${queryString.stringify({keyword})}``)
         //     .then(
         //     response => response.json(),
         //     error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
