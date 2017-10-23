@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
         isVisible: !!state.store.listings.navResults.count,
         sorting: state.store.listings.sorting,
         initialValues: {
-            sortOrder: state.store.listings.sorting.sortListItems.find(el=>el.selected === true).value
+            sortOrder: state.store.listings.sorting.sortListItems.find(el=>el.selected === true).url
           }
     }
 }
