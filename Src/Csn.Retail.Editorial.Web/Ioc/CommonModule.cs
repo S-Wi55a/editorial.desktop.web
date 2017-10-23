@@ -3,6 +3,7 @@ using Autofac;
 using Csn.Cars.Cache.Builder;
 using Csn.Logging;
 using Csn.Logging.NLog3;
+using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
@@ -14,6 +15,10 @@ using Csn.SimpleCqrs;
 using Csn.WebMetrics.Editorial.Interfaces;
 using Csn.WebMetrics.Editorial.Ioc;
 using Csn.WebMetrics.Ext.Interfaces;
+using Expresso.Parser;
+using Expresso.Sanitisation;
+using Expresso.Syntax;
+using Expresso.Syntax.Rose;
 using Ingress.Autofac;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -33,6 +38,10 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.Register(x => VideosApiSettings.Instance).As<VideosApiSettings>().SingleInstance();
             builder.RegisterType<Serializer>().As<ISerializer>().SingleInstance();
             builder.RegisterType<SettingsProvider>().As<ISettingsProvider>().SingleInstance();
+
+            builder.RegisterType<RoseTreeSanitiser>().AsSelf().SingleInstance();
+            builder.RegisterType<RoseTreeFormatter>().As<IExpressionFormatter>().SingleInstance();
+            builder.RegisterType<RoseTreeParser>().As<IExpressionParser>().SingleInstance();
 
             // Tracking
             builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialDetailsTrackingContainerProvider>()).As<IEditorialDetailsTrackingContainerProvider>();
@@ -60,6 +69,13 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 var loggerFactory = c.Resolve<ILoggerFactory>();
                 return loggerFactory.For<UrlNotFoundLogger>();
             }).As<IUrlNotFoundLogger>().SingleInstance();
+
+            // set up separate logger for this class so we can log separately
+            builder.RegisterType<DetailsRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
+            {
+                var loggerFactory = c.Resolve<ILoggerFactory>();
+                return loggerFactory.For<DetailsRedirectLogger>();
+            }).As<IDetailsRedirectLogger>().SingleInstance();
         }
     }
 

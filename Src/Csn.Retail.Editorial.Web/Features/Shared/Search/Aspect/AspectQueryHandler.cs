@@ -27,9 +27,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect
 
         public async Task<AspectResult> HandleAsync(AspectQuery query)
         {
-            // TODO: Add validation filters for the query
-
-
             var ryvussResult = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {
                 Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
@@ -42,7 +39,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect
 
             if (resultData?.INav?.Nodes == null || !resultData.INav.Nodes.Any()) return null;
 
-            var result = _mapper.Map<AspectResult>(resultData.INav.Nodes.First());
+            var result = _mapper.Map<AspectResult>(resultData.INav.Nodes.First(), opt => { opt.Items["sortOrder"] = query.SortOrder; });
 
             result.Count = resultData.Count;
 

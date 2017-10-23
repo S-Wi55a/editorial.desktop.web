@@ -10,6 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Headline { get; set; }
         public string SubHeading { get; set; }
         public string Summary { get; set; }
+        public string Slug { get; set; } // strictly this is not used in the view
         public string ArticleType { get; set; }
         public bool IsSponsoredArticle { get; set; }
         public string SubType { get; set; }

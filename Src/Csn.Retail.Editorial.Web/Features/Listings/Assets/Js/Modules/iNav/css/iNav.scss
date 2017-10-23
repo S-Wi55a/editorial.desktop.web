@@ -7,6 +7,11 @@
     z-index: 1;
 }
 
+.scrollmagic-pin-spacer--iNav {
+    min-height: 0 !important;
+    height: $iNav-header-height + 5px !important;
+}
+
 .iNav {
     background-color: $iNav-background-color;
     border-bottom: 1px solid $cs-light-grey-2;   
@@ -35,19 +40,6 @@
             right: 0;
             z-index: -1;
         }
-
-        .iNav__container {
-
-            &::before {
-                content: '';
-                position: fixed;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                z-index: 0;
-            }
-        }
     }
 
     // Category container
@@ -56,6 +48,27 @@
         height: $iNav-header-height;
         display: flex;
         align-items: center;
-        justify-content: center;  
+        justify-content: center;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: $grid-gutter-width/2;
+        padding-right: $grid-gutter-width/2;
+        @include breakpoint($screen-md) {
+            width: calc(#{$screen-md});
+        }
+        @include breakpoint($screen-lg) {
+            width: calc(#{$screen-lg});
+        } 
     }
+
+    // &__categories {
+
+    //     overflow: hidden;
+    //     transition: width 0.333s; 
+    //     width: 100%;
+
+    //     &--isShrunk{
+    //         width: 0;
+    //     }
+    // }
 }

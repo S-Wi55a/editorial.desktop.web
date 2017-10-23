@@ -36,24 +36,28 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
                 new BreadCrumbDto {
                     Aspect = "Aspect1",
                     RemoveAction = "Some Action",
+                    Type = "FacetBreadCrumb",
                     Children = new List<BreadCrumbDto>()
                     {
                         new BreadCrumbDto()
                         {
                             Aspect = "TestAspect1",
-                            Facet = "TestFacet1"
+                            Facet = "TestFacet1",
+                            Type = "FacetBreadCrumb"
                         }
                     }
                 },
                 new BreadCrumbDto {
                     Aspect = "Aspect2",
                     RemoveAction = "Some Action",
+                    Type = "FacetBreadCrumb",
                     Children = new List<BreadCrumbDto>()
                     {
                         new BreadCrumbDto()
                         {
                             Aspect = "TestAspect2",
-                            Facet = "TestFacet2"
+                            Facet = "TestFacet2",
+                            Type = "FacetBreadCrumb",
                         }
                     }
                 }

@@ -1,6 +1,7 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Listings.Models
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Newtonsoft.Json
 @using React.Web.Mvc
 @model ListingsViewModel
 
@@ -23,17 +24,18 @@
 }
 <div class="listing-page">
     @{ Html.RenderPartial("Partials/_Header"); }
-    @Html.React("global.Components.INav", new {state = Model.NavResults}, containerId: "iNav")
+    @Html.React("global.Components.INav", new {state = Model}, containerId: "iNav")
 
     <div class="container">
 
         <div class="main">
-            @Html.React("global.Components.INavArticleCount", new {state = Model.NavResults}, containerId: "iNavArticleCount")
-            @*//State is required b/c there is no guarentee that it will be available for other components*@
-            @Html.React("global.Components.INavBreadCrumbs", new {state = Model.NavResults}, containerId: "iNavBreadcrumbs")
-            @Html.React("global.Components.INavSearchResults", new {state = Model.NavResults}, containerId: "iNavSearchResults")
+            @Html.React("global.Components.INavArticleCount", new {state = Model}, containerId: "iNavArticleCount")
+            @Html.React("global.Components.INavSorting", new { state = Model}, containerId: "iNavSorting")
+            @Html.React("global.Components.INavBreadCrumbs", new {state = Model}, containerId: "iNavBreadcrumbs")
+            @Html.React("global.Components.INavSearchResults", new {state = Model}, containerId: "iNavSearchResults")
 
             @{ Html.RenderPartial("_Disclaimer"); }
+
         </div>
         @{Html.RenderPartial("Partials/_Aside");}
     </div>
@@ -41,6 +43,6 @@
 
 @section BottomScripts
 {
-    @Html.React("global.Components.INavPreloadedState", new { state = Model.NavResults }, containerId: "INavPreloadedState")
+    @Html.React("global.Components.INavPreloadedState", new { state = Model }, containerId: "INavPreloadedState")
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux"); }
 }
