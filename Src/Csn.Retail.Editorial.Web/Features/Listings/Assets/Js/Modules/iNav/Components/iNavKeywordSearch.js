@@ -13,7 +13,7 @@ let KeywordSearchComponent = (props) => {
     <div className={`iNav__keywordSearch`}>
       <div className={`iNav__keywordSearch-container ${props.keywordSearchIsActive ? 'iNav__keywordSearch-container--isActive' : ''}`} >
         {/* When in focus update class*/}
-        <form onSubmit={props.fetchSearchResult} className={`iNav__keywordSearch-form`} >
+        <form onSubmit={(e)=>{e.preventDefault();props.fetchSearchResults(props.currentQuery)}} className={`iNav__keywordSearch-form`} >
           <Field 
             name="keyword" 
             component="input" 
@@ -24,7 +24,7 @@ let KeywordSearchComponent = (props) => {
           />
         </form>
         {/* button needs to hav click which triggers keyword api call*/}
-        <button className="iNav__keywordSearch-button iNav__keywordSearch-button--search" type="submit" onClick={props.fetchSearchResults}></button>
+        <button className="iNav__keywordSearch-button iNav__keywordSearch-button--search" type="submit" onClick={(e)=>{e.preventDefault();props.fetchSearchResults(props.currentQuery)}}></button>
         <button className="iNav__keywordSearch-button iNav__keywordSearch-button--clear" onClick={props.clear}></button>
       </div>
     </div>
@@ -33,6 +33,7 @@ let KeywordSearchComponent = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    currentQuery: state.store.listings.currentQuery,
     initialValues: {
       keyword: state.store.listings.keyword
     }
@@ -41,9 +42,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchSearchResults: (e)=>{
-        e.preventDefault()
-        dispatch(Thunks.fetchINav())
+      fetchSearchResults: (query)=>{
+        dispatch(Thunks.fetchINav(query))
       },
       clear: ()=>dispatch(change('keywordSearch', 'keyword', ''))
   }

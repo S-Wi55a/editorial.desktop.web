@@ -29,8 +29,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             var contextStore = Substitute.For<IContextStore>();
             var paginationHelper = Substitute.For<IPaginationHelper>();
             var sortingHelper = Substitute.For<ISortingHelper>();
-            var parser = Substitute.For<IExpressionParser>();
-            var expressionSyntax = Substitute.For<IExpressionSyntax>();
+            
+            var keywordExpressionHelper = Substitute.For<IKeywordExpressionHelper>();
 
             tenantProvider.Current().Returns(new TenantInfo()
             {
@@ -49,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             mapper.Map<NavResult>(Arg.Any<RyvussNavResultDto>(), Arg.Any<Action<IMappingOperationOptions>>()).Returns(new NavResult());
 
             var queryHandler = new GetListingsQueryHandler(ryvussProxy, tenantProvider, mapper, paginationHelper,
-                sortingHelper, parser, expressionSyntax, contextStore);
+                sortingHelper, contextStore, keywordExpressionHelper);
 
             await queryHandler.HandleAsync(new GetListingsQuery());
 

@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
             var keywordBreadCrumb = source.FirstOrDefault(a => a.IsKeywordBreadCrumb);
             if (keywordBreadCrumb != null)
             {
-                results.Insert(0, new BreadCrumb { RemoveAction = keywordBreadCrumb.RemoveAction, FacetDisplay = keywordBreadCrumb.Term.Trim('(', ')') });
+                results.Insert(0, new BreadCrumb { RemoveAction = keywordBreadCrumb.RemoveAction, FacetDisplay = keywordBreadCrumb.Term.Trim('(', ')'), Type = "KeywordBreadCrumb" });
             }
             results.Add(new BreadCrumb { RemoveAction = string.Empty, FacetDisplay = "Clear All" });
 
