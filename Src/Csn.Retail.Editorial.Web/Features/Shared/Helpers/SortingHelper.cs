@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                     Selected = x.Key.Equals(currrentSort, StringComparison.InvariantCultureIgnoreCase),
                     Label = x.Value.DisplayName,
                     Value = x.Value.Key,
-                    Url = $"?q={query}{UrlParamsFormatter.GetSortParam(x.Value.Key)}{UrlParamsFormatter.GetKeywordParam(keyword)}"
+                    Url = $"?q={query}{UrlParamsFormatter.GetSortParam(x.Value.Key)}"
                 }).ToList()
             };
         }

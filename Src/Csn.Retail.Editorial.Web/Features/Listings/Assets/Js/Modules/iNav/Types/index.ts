@@ -1,7 +1,16 @@
 
 //NOTE: This State should sit else where
 export interface State {
-    iNav: IINavResponse
+    store: IStore
+}
+
+export interface IStore {
+    listings: INavResults
+    history: { listings: INavResults }
+}
+
+export interface INavResults {
+    navResults: IINavResponse
 }
 
 export interface IINavResponse{

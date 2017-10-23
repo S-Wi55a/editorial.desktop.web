@@ -77,15 +77,15 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                         NavResults = navResults,
                         Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
                         Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
-                        CurrentQuery = GetFormatterQuery(query),
+                        CurrentQuery = GetFormattedQuery(query),
                         Keyword = query.Keyword
                     }
                 };
         }
 
-        private static string GetFormatterQuery(GetListingsQuery query)
+        private static string GetFormattedQuery(GetListingsQuery query)
         {
-            return string.IsNullOrEmpty(query.Q) ? string.Empty : $"?q={query.Q}{UrlParamsFormatter.GetKeywordParam(query.Keyword)}{UrlParamsFormatter.GetSortParam(query.SortOrder)}";
+            return string.IsNullOrEmpty(query.Q) ? string.Empty : $"?q={query.Q}{UrlParamsFormatter.GetSortParam(query.SortOrder)}";
         }
     }
 }

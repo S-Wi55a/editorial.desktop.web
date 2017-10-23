@@ -22,7 +22,7 @@ const INavSearchResults = ({ searchResults }) => (
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        searchResults: state.iNav.searchResults        
+        searchResults: state.store.listings.navResults.searchResults        
     }
 }
 
