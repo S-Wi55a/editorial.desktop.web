@@ -10,7 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public int Offset { get; set; }
         public string SortOder
         {
-            get => _sortOrder == string.Empty ? EditorialSortKeyValues.ListingPageDefaultSort : _sortOrder;
+            get => string.IsNullOrEmpty(_sortOrder) ? EditorialSortKeyValues.ListingPageDefaultSort : _sortOrder;
             set => _sortOrder = EditorialSortKeyValues.Items.TryGetValue(value, out var sortOrder)
                 ? sortOrder.Key
                 : EditorialSortKeyValues.ListingPageDefaultSort;

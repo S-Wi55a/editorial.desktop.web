@@ -25,6 +25,11 @@
         vertical-align: baseline;
     }
 
+    &--KeywordBreadCrumb {
+        &::before {
+        }
+    }
+
     &:visited {
         color: $cs-primary;
         text-decoration: none;

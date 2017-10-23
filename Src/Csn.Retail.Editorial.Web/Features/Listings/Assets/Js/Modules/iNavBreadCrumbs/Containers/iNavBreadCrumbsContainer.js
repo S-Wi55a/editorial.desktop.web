@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Thunks } from 'iNav/Actions/actions'
 
-const INavBreadCrumb = ({facetDisplay, removeAction, fetchINav}) => (
-    <a className="iNavBreadCrumb" href={`?q=${removeAction}`} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction);}}>{facetDisplay}</a>    
+const INavBreadCrumb = ({facetDisplay, removeAction, fetchINav, type}) => (
+    <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={`?q=${removeAction}`} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction);}}>{facetDisplay}</a>    
 )
 
 const INavBreadCrumbs = ({ breadCrumbs, fetchINav }) => (

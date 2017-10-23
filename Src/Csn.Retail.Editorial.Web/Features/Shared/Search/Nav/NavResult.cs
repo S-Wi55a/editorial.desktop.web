@@ -48,6 +48,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public string FacetDisplay { get; set; }
         public string RemoveAction { get; set; }
         public string Term { get; set; }
+        public string Type {get; set;}
     }
 
     public class SearchResult
