@@ -7,6 +7,11 @@
     z-index: 1;
 }
 
+.scrollmagic-pin-spacer--iNav {
+    min-height: 0 !important;
+    height: $iNav-header-height + 5px !important;
+}
+
 .iNav {
     background-color: $iNav-background-color;
     border-bottom: 1px solid $cs-light-grey-2;   
@@ -34,19 +39,6 @@
             left: 0;
             right: 0;
             z-index: -1;
-        }
-
-        .iNav__container {
-
-            // &::before {
-            //     content: '';
-            //     position: fixed;
-            //     top: 0;
-            //     bottom: 0;
-            //     left: 0;
-            //     right: 0;
-            //     z-index: 0;
-            // }
         }
     }
 
