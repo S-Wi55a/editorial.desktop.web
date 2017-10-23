@@ -19,7 +19,7 @@ export const fetchINav: fetchINav = (query?: string) =>  (dispatch: any, getStat
         return window.location.replace(`${q}&${queryString.stringify({keyword})}`)
 
 
-        // return fetch(`${iNav.api}${q}&${queryString.stringify({keyword})}``)
+        // return fetch(`${iNav.api}${q}&${queryString.stringify({keyword})}`)
         //     .then(
         //     response => response.json(),
         //     error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
