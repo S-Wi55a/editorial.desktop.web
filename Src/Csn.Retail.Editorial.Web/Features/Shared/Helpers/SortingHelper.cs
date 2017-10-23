@@ -18,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
     {
         public SortingViewModel GenerateSortByViewModel(IDictionary<string, ISortKeyItem> sortKeys, string currrentSort, string query, string keyword)
         {
-            var model = new SortingViewModel
+            return new SortingViewModel
             {
                 SortListItems = sortKeys.Select(x => new SortingItemViewModel
                 {
@@ -28,7 +28,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                     Url = $"?q={query}{UrlParamsFormatter.GetSortParam(x.Value.Key)}{UrlParamsFormatter.GetKeywordParam(keyword)}"
                 }).ToList()
             };
-            return model;
         }
     }
 }

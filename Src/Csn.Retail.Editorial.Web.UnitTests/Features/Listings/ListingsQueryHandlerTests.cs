@@ -9,6 +9,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
+using Expresso.Expressions;
 using Expresso.Syntax;
 using Ingress.ServiceClient.Abstracts;
 using NSubstitute;
@@ -23,14 +24,15 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
         [Test]
         public async Task EnsureSearchResultsStoredInContextCache()
         {
+            //Arrange
             var ryvussProxy = Substitute.For<IEditorialRyvussApiProxy>();
             var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
             var mapper = Substitute.For<IMapper>();
             var contextStore = Substitute.For<IContextStore>();
             var paginationHelper = Substitute.For<IPaginationHelper>();
             var sortingHelper = Substitute.For<ISortingHelper>();
-            
-            var keywordExpressionHelper = Substitute.For<IKeywordExpressionHelper>();
+            var expressionParser = Substitute.For<IExpressionParser>();
+            var expressionFormatter = Substitute.For<IExpressionFormatter>();
 
             tenantProvider.Current().Returns(new TenantInfo()
             {
@@ -49,10 +51,16 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             mapper.Map<NavResult>(Arg.Any<RyvussNavResultDto>(), Arg.Any<Action<IMappingOperationOptions>>()).Returns(new NavResult());
 
             var queryHandler = new GetListingsQueryHandler(ryvussProxy, tenantProvider, mapper, paginationHelper,
-                sortingHelper, contextStore, keywordExpressionHelper);
+                sortingHelper, contextStore, expressionParser, expressionFormatter);
+            var expression = new FacetExpression("Service", "Carsales").And(new KeywordExpression("Keyword", "honda"));
+            expressionParser.Parse(Arg.Any<string>()).Returns(expression);
+            expressionFormatter.Format(Arg.Any<Expression>()).Returns("Service.CarSales.");
+            
 
-            await queryHandler.HandleAsync(new GetListingsQuery());
+            //Act
+            await queryHandler.HandleAsync(new GetListingsQuery {Keyword = "honda"});
 
+            //Assert
             contextStore.Received().Set(Arg.Any<string>(), Arg.Any<object>());
         }
     }

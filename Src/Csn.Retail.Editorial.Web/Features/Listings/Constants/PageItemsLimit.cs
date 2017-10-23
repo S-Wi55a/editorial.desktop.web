@@ -1,4 +1,4 @@
-﻿namespace Csn.Retail.Editorial.Web.Infrastructure.Constants
+﻿namespace Csn.Retail.Editorial.Web.Features.Listings.Constants
 {
     public static class PageItemsLimit
     {

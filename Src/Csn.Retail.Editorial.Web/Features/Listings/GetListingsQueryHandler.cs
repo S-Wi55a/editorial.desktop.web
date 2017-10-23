@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
@@ -11,7 +12,10 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
+using Expresso.Helpers;
+using Expresso.Syntax;
 using IContextStore = Ingress.ContextStores.IContextStore;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
@@ -26,26 +30,27 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IPaginationHelper _paginationHelper;
         private readonly ISortingHelper _sortingHelper;
         private readonly IContextStore _contextStore;
-        private readonly IKeywordExpressionHelper _keywordExpressionHelper;
+        private readonly IExpressionParser _parser;
+        private readonly IExpressionFormatter _expressionFormatter;
 
         public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
-            ISortingHelper sortingHelper, IContextStore contextStore, IKeywordExpressionHelper keywordExpressionHelper)
+            ISortingHelper sortingHelper, IContextStore contextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
             _mapper = mapper;
             _paginationHelper = paginationHelper;
             _sortingHelper = sortingHelper;
-            
             _contextStore = contextStore;
-            _keywordExpressionHelper = keywordExpressionHelper;
+            _parser = parser;
+            _expressionFormatter = expressionFormatter;
         }
 
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
             query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
 
-            query.Q = _keywordExpressionHelper.AppendOrUpdate(query.Q, query.Keyword);
+            query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeyword(query.Keyword));
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {

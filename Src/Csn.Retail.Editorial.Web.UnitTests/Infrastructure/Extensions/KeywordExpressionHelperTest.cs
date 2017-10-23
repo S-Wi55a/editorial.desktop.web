@@ -1,28 +1,27 @@
-﻿using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
+﻿using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Expresso.Parser;
 using Expresso.Sanitisation;
 using Expresso.Syntax;
 using Expresso.Syntax.Rose;
 using NUnit.Framework;
 
-namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
+namespace Csn.Retail.Editorial.Web.UnitTests.Infrastructure.Extensions
 {
     /// <summary>
-    /// Test for <seealso cref="KeywordExpressionHelper"/>
+    /// Test for <seealso cref="ExpressoExtensions"/>
     /// </summary>
     [TestFixture]
-    public class KeywordExpressionHelperTest
+    public class KeywordExpressionExtentionTest
     {
         private IExpressionParser _parser;
         private IExpressionFormatter _expressionFormatter;
-        private KeywordExpressionHelper testSubject;
+        
 
         [SetUp]
         public void Setup()
         {
             _parser = new RoseTreeParser(new RoseTreeSanitiser());
             _expressionFormatter = new RoseTreeFormatter(new RoseTreeSanitiser());
-            testSubject = new KeywordExpressionHelper(_parser, _expressionFormatter);
         }
 
         [Test]
@@ -30,13 +29,14 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
         {
             //Arrange
             var query = "Service.CarSales.";
-            
+            var expression = _parser.Parse(query);
+
             //Act
-            var updatedQuery = testSubject.AppendOrUpdate(query, "honda");
+            var updatedQuery = expression.AppendOrUpdateKeyword("honda");
 
             //Assert
             Assert.AreNotEqual(updatedQuery, string.Empty);
-            Assert.AreEqual(updatedQuery.Contains("keyword(honda)"), true);
+            Assert.AreEqual(_expressionFormatter.Format(updatedQuery).Contains("keyword(honda)"), true);
         }
 
         [Test]
@@ -44,13 +44,14 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
         {
             //Arrange
             var query = "(And.Service.CarSales._.Keywords.keyword(honda).)";
+            var expression = _parser.Parse(query);
 
             //Act
-            var updatedQuery = testSubject.AppendOrUpdate(query, string.Empty);
+            var updatedQuery = expression.AppendOrUpdateKeyword(string.Empty);
 
             //Assert
             Assert.AreNotEqual(updatedQuery, string.Empty);
-            Assert.AreEqual(updatedQuery.Contains("keyword(honda)"), false);
+            Assert.AreEqual(_expressionFormatter.Format(updatedQuery).Contains("keyword(honda)"), false);
         }
 
         [Test]
@@ -58,14 +59,15 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
         {
             //Arrange
             var query = "(And.Service.CarSales._.Keywords.keyword(honda).)";
+            var expression = _parser.Parse(query);
 
             //Act
-            var updatedQuery = testSubject.AppendOrUpdate(query, "BMW");
+            var updatedQuery = expression.AppendOrUpdateKeyword("BMW");
 
             //Assert
             Assert.AreNotEqual(updatedQuery, string.Empty);
-            Assert.AreEqual(updatedQuery.Contains("keyword(BMW)"), true);
-            Assert.AreEqual(updatedQuery.Contains("keyword(honda)"), false);
+            Assert.AreEqual(_expressionFormatter.Format(updatedQuery).Contains("keyword(BMW)"), true);
+            Assert.AreEqual(_expressionFormatter.Format(updatedQuery).Contains("keyword(honda)"), false);
         }
     }
 }
