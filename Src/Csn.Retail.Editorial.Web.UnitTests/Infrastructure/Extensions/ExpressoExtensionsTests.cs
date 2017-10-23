@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Infrastructure.Extensions
     /// Test for <seealso cref="ExpressoExtensions"/>
     /// </summary>
     [TestFixture]
-    public class KeywordExpressionExtentionTest
+    public class ExpressoExtensionsTests
     {
         private IExpressionParser _parser;
         private IExpressionFormatter _expressionFormatter;
