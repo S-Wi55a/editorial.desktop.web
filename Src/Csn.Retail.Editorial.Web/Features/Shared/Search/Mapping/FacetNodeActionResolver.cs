@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
@@ -10,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         {
             if (context.Items.TryGetValue("sortOrder", out var sortOrder))
             {
-                return "?q=" + source.Action + "&sortOrder=" + sortOrder;
+                return $"?q={source.Action}{UrlParamsFormatter.GetSortParam(sortOrder.ToString())}";
             }
             return "?q=" + source.Action;
         }

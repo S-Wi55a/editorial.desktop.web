@@ -8,7 +8,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
-using Csn.Retail.Editorial.Web.Infrastructure.Utils;
 using Csn.Serializers;
 using Csn.Serializers.Json;
 using Csn.SimpleCqrs;
