@@ -453,6 +453,7 @@
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
+    <Compile Include="Features\Details\DetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
     <Compile Include="Features\Details\Mappings\BrightcoveIFrameBuilder.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
@@ -482,7 +483,9 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
+    <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
+    <Compile Include="Features\Shared\Formatters\UrlParamsFormatter.cs" />
     <Compile Include="Features\Shared\Helpers\KeywordExpressionHelper.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
@@ -505,6 +508,9 @@
     <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\MediaMotiveTag.cs" />
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
+    <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
+    <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
+    <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
     <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
@@ -558,6 +564,7 @@
     <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsViewModel.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
+    <Compile Include="Infrastructure\Constants\PageItemsLimit.cs" />
     <Compile Include="Infrastructure\Constants\TenantNames.cs" />
     <Compile Include="Infrastructure\ContextStores\ContextStoreKeys.cs" />
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
