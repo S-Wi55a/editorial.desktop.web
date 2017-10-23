@@ -3,8 +3,14 @@ import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Thunks } from 'iNav/Actions/actions'
 
+// TODO: use enum in TS for this
+const FacetBreadCrumb = {
+    keyword: "KeywordBreadCrumb",
+    facet: "FacetBreadCrumb"
+}
+
 const INavBreadCrumb = ({facetDisplay, removeAction, fetchINav, type}) => (
-    <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={`?q=${removeAction}`} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction);}}>{facetDisplay}</a>    
+    <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={`?q=${removeAction}`} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>    
 )
 
 const INavBreadCrumbs = ({ breadCrumbs, fetchINav }) => (
