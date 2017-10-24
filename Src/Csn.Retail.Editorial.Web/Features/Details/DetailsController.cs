@@ -38,16 +38,16 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             var response = dispatchedQuery.Result;
 
-            // redirect any article request with slug which does not match the published slug
-            if (response.ArticleViewModel.Slug != articleIdentifier.PageName)
-            {
-                _redirectLogger.Log(HttpContext.Request.Url?.ToString());
-
-                return new RedirectResult($"/editorial/details/{response.ArticleViewModel.Slug}/{Request.RequestContext.HttpContext.Request.Url?.Query}", true);
-            }
-
             if (response.ArticleViewModel != null)
             {
+                // redirect any article request with slug which does not match the published slug
+                if (response.ArticleViewModel.Slug != articleIdentifier.PageName)
+                {
+                    _redirectLogger.Log(HttpContext.Request.Url?.ToString());
+
+                    return new RedirectResult($"/editorial/details/{response.ArticleViewModel.Slug}/{Request.RequestContext.HttpContext.Request.Url?.Query}", true);
+                }
+
                 return View("DefaultTemplate", response.ArticleViewModel);
             }
 
