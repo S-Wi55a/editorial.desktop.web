@@ -39,12 +39,12 @@
             backface-visibility: hidden;
             transition: transform .3s;
         }
-        &:not(.isActive):hover {
+        &:not(&--isActive):hover {
             &::before {
                 animation-name: fadeInDown;
             }
         }
-        &.isActive {
+        &--isActive {
             color: $cs-primary;
             font-weight: $font-weight-600;
             background-color: $cs-light-grey-7;
