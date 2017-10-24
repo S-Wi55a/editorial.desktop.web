@@ -46,7 +46,7 @@
             transition: left .3s;
 
             .iNav-category__list {
-                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px;                
+                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height;                
             }
 
             &--1 {

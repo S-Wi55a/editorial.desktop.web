@@ -13,13 +13,13 @@ export const fetchINav: fetchINav = (query?: string) =>  (dispatch: any, getStat
         const keyword = typeof getState().form.keywordSearch !== 'undefined' && 
                           typeof getState().form.keywordSearch.values !== 'undefined' &&
                           typeof getState().form.keywordSearch.values.keyword !== 'undefined' ? 
-                          getState().form.keywordSearch.values.keyword : ''
+                          getState().form.keywordSearch.values.keyword : undefined
         
         // TODO: REMOVE FOR PHASE 2
-        return window.location.replace(`${q}&${queryString.stringify({keyword})}`)
+        return window.location.replace(`${q ? q : '?'}${keyword ? '&'+queryString.stringify({keyword}) : ''}`)
 
 
-        // return fetch(`${iNav.api}${q}&${queryString.stringify({keyword})}`)
+        // return fetch(`${iNav.api}${q ? q : '?'}${keyword ? '&'+queryString.stringify({keyword}) : ''}`)
         //     .then(
         //     response => response.json(),
         //     error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })

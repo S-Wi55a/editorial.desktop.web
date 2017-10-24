@@ -70,22 +70,24 @@
         width: $iNav-header-item-height;
         float: right;
         padding: 0;
+        color: $cs-primary;
 
         &::before {
             display: block;
             font-family: $font-family-icons;  
+            transition: color .3s;
         }
 
 
         &:hover::before {
-            color: $cs-primary;
+            color: $cs-dark-grey-1;
         }
 
         &--search {
             border-top-right-radius: $iNav-border-radius;
             border-bottom-right-radius: $iNav-border-radius;
             border: solid 1px $cs-grey;
-
+                        
             &::before {
                 content: $icon-magnifying-lg;
                 font-size: 23px;     
@@ -99,7 +101,6 @@
             border-bottom: solid 1px $cs-grey;
             position: relative;
             z-index: 1;
-
 
             &::before {
                 opacity: 0;                
