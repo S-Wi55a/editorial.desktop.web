@@ -70,7 +70,9 @@ export interface IRefinement {
 export interface ISearchResults {
     imageUrl: string
     headline: string
+    subHeading: string
     dateAvailable: string
     articleDetailsUrl: string
-    label: string 
+    label: string
+    type: string
 }

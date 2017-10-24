@@ -18,10 +18,11 @@
     }
 
     &__keywordSearch-container {
-        width: calc(100% - 5px);
+        width: calc(100% - 10px);
         background-color: $cs-white; 
         position: absolute;
         top: 0;
+        right: 0;
         transition: width 0.333s;
 
         @include breakpoint($screen-lg) {
