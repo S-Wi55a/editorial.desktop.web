@@ -99,7 +99,7 @@
   <ItemGroup>
     <Compile Include="Features\Details\GetArticleQueryCacheStoreTests.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandlerTests.cs" />
-    <Compile Include="Features\Shared\Helpers\KeywordExpressionHelperTest.cs" />
+    <Compile Include="Infrastructure\Extensions\ExpressoExtensionsTests.cs" />
     <Compile Include="Features\Shared\Helpers\PaginationHelperTest.cs" />
     <Compile Include="Features\Listings\ListingsQueryHandlerTests.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandlerTests.cs" />
