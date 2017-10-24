@@ -85,7 +85,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         private static string GetFormattedQuery(GetListingsQuery query)
         {
-            return string.IsNullOrEmpty(query.Q) ? string.Empty : $"?q={query.Q}{UrlParamsFormatter.GetSortParam(query.SortOrder)}";
+            return string.IsNullOrEmpty(query.Q) ? string.Empty : $"{UrlParamsFormatter.GetQueryParam(query.Q)}{UrlParamsFormatter.GetSortParam(query.SortOrder)}";
         }
     }
 }
