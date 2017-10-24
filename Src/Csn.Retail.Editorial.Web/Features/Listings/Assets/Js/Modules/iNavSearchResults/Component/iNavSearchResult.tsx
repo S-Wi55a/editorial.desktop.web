@@ -13,8 +13,14 @@ const INavSearchResult = (props: ISearchResults) => (
                 {props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${props.label}`}>{props.label}</div> : ''}
             </div>
             <div className="iNavSearchResult__content-wrapper">
+                <div className={`iNavSearchResult__type iNavSearchResult__type--${props.type.toLowerCase()}`}>
+                    {props.type.toUpperCase()}
+                </div>
                 <div className="iNavSearchResult__heading">
-                    {props.headline}
+                    <h2>{props.headline}</h2>
+                </div>
+                <div className="iNavSearchResult__sub-heading">
+                    <span>{props.subHeading}</span>
                 </div>
                 <div className="iNavSearchResult__date">
                     {props.dateAvailable}

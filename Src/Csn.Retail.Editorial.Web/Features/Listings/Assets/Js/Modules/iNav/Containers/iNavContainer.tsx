@@ -33,7 +33,6 @@ class INav extends React.Component<IINavNodes> {
     super()
   }
 
-  //TODO: add sticky Nav
   componentDidMount(){
 
     if (!SERVER) {
@@ -60,14 +59,14 @@ class INav extends React.Component<IINavNodes> {
 
   render(){
     return (
-      <div className={['iNav', this.props.activeItemId !== null || this.props.keywordSearchIsActive ? 'isActive' : ''].join(' ')} onClick={()=>{if(this.props.activeItemId !== null || this.props.keywordSearchIsActive){this.props.cancel()}}}>
+      <div className={['iNav', this.props.activeItemId !== null || this.props.keywordSearchIsActive ? `iNav--isActive` : ''].join(' ')} onClick={()=>{if(this.props.activeItemId !== null || this.props.keywordSearchIsActive){this.props.cancel()}}}>
         <div className="iNav__container" onClick={(e)=>{e.stopPropagation()}}>
-          <KeywordSearch keywordSearchIsActive={this.props.keywordSearchIsActive}/>
           {/* This click handler is to prevent the click event propigating and triggering the cancel fn */}
           <div>
             <INavMenuHeader nodes={this.props.nodes} />
             <INavNodesContainer nodes={this.props.nodes} activeItemId={this.props.activeItemId} />
           </div>
+          <KeywordSearch keywordSearchIsActive={this.props.keywordSearchIsActive}/>
         </div> 
       </div>
     )

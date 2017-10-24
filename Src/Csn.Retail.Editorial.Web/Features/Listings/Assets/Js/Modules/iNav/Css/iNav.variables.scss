@@ -1,14 +1,17 @@
+@import "css/globals";
+
 // Vars
-$iNav-header-height: 75px;
+$iNav-header-height: 92px;
 $category-container-width: 350px;
 $category-container-height: 500px;
 $spacing: 20px;
-$iNav-background-color: #eeeeee;
+$iNav-background-color: $cs-white;
 $iNav-width: 100%;
 $cancel-bar-height: 65px;
 $category-header-height: 35px;
 $iNav-top-border-height: 5px;
 $iNav-header-item-height: 52px;
+$iNav-header-item-width: 218px;
 $iNav-border-radius: 4px;
 $iNav-sort-width: 170px;
 $iNav-sort-height: 40px;

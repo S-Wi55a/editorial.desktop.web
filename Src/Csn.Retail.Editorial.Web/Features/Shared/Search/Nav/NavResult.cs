@@ -54,10 +54,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
     public class SearchResult
     {
         public string Headline { get; set; }
+        public string SubHeading {get; set;}
+
         public string ImageUrl { get; set; }
         public string DateAvailable { get; set; }
         public string ArticleDetailsUrl { get; set; }        
         public string Label { get; set; }
+        public string Type {get; set;}
+
 
     }
 }
