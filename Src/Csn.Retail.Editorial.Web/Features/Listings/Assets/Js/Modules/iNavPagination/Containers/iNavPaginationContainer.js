@@ -1,15 +1,14 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import { Thunks } from 'iNav/Actions/actions'
-import { iNav } from 'Endpoints/endpoints'
 
 if (!SERVER) {
     require('iNavPagination/Css/iNavPagination.scss')  
 }
 
-const INavPageNavigator = ({ text, query, show, offset, direction, sortOrder }) => {
-    if(!!show){
-        return <a className={`iNavPageItem iNavPageItem--${direction}`} href={iNav.home(!!query? query:'', offset, sortOrder.value)}>
+const INavPageNavigator = ({ text, url, show, direction, fetchQuery }) => {
+    if(show){
+        return <a className={`iNavPageItem iNavPageItem--${direction}`} href={url} onClick={(e)=>{e.preventDefault();fetchQuery(url);}}>
             {text}
         </a>
     }
@@ -24,49 +23,54 @@ const INavPageSeparator = ({ initial, trailing, totalPageCount, currentPageNo, t
     }
     return null;
 }
-const INavPage = ({ pageNo, currentPage, query, offset, sortOrder }) => {
+const INavPage = ({ pageNo, currentPage, url, fetchQuery }) => {
 
-    if (pageNo === currentPage) {
-        return <div className='iNavPageItem iNavPageItem--current'> {pageNo} </div>
-    } else if(typeof(pageNo) !== 'undefined') {        
-        return <a className='iNavPageItem' href={iNav.home(!!query? query:'', offset, sortOrder.value)}>
+    if(typeof(pageNo) !== 'undefined') {        
+        return <a className={`iNavPageItem ${pageNo === currentPage ? 'iNavPageItem--current' : '' }`} href={url} onClick={(e)=>{e.preventDefault();fetchQuery(url);}}>
             {pageNo}
         </a>
     }
     return null;
 }
 
-const INavPagination = ({ paging, sortOrder }) =>  {    
+const INavPagination = ({ paging, fetchQuery }) =>  {    
      return <div className='iNavPagination'>
                 <div className='iNavPagination__container'>
-                    <INavPageNavigator { ...paging.previous } show={paging.previous} direction={'previous'} sortOrder={sortOrder}/>
-                    <INavPage { ...paging.first } currentPage={paging.currentPageNo} sortOrder={sortOrder}/> 
+                    <INavPageNavigator { ...paging.previous } show={paging.previous} direction={'previous'} fetchQuery={fetchQuery}/>
+                    <INavPage { ...paging.first } currentPage={paging.currentPageNo} fetchQuery={fetchQuery}/> 
                     <INavPageSeparator {...paging} text='...' initial={true}/>
                     {paging.pages.map((page) => {
-                        return <INavPage  key={page.pageNo} { ...page } currentPage={paging.currentPageNo} sortOrder={sortOrder}/>
+                        return <INavPage  key={page.pageNo} { ...page } currentPage={paging.currentPageNo} fetchQuery={fetchQuery}/>
                     })}
                     <INavPageSeparator {...paging} text='...' trailing={true}/>                    
-                    <INavPage  { ...paging.last } currentPage={paging.currentPageNo} sortOrder={sortOrder}/>
-                    <INavPageNavigator { ...paging.next } show={paging.next}  direction={'next'} sortOrder={sortOrder}/>
-             {sortOrder.value}
+                    <INavPage  { ...paging.last } currentPage={paging.currentPageNo} fetchQuery={fetchQuery}/>
+                    <INavPageNavigator { ...paging.next } show={paging.next}  direction={'next'} fetchQuery={fetchQuery}/>
                 </div>
                 <div className='iNavPagination__info'> { paging.displayText }</div>
             </div>
 }
 
+
+
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        paging: state.iNav.paging,
-        sortOrder: state.iNav.sorting.sortListItems.filter((sortOrder) => {
-            return sortOrder.selected === true;
-        })[0]
+        paging: state.store.listings.paging
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchQuery: (query) => {
+            dispatch(Thunks.fetchINav(query))
+        }
     }
 }
 
 // Connect the Component to the store
 const INavPaginationContainer = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(INavPagination)
 
 export default INavPaginationContainer
