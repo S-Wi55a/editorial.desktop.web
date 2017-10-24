@@ -18,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
             Response.StatusCode = (int)HttpStatusCode.NotFound;
             Response.TrySkipIisCustomErrors = true;
 
-            _urlNotFoundLogger.Log(HttpContext.Request.Url.ToString());
+            _urlNotFoundLogger.Log(HttpContext.Request.Url?.ToString());
 
             return View("~/Features/Errors/Views/Error404.cshtml");
         }
@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
             Response.StatusCode = (int)HttpStatusCode.NotFound;
             Response.TrySkipIisCustomErrors = true;
 
-            _urlNotFoundLogger.Log(HttpContext.Request.Url.ToString());
+            _urlNotFoundLogger.Log(HttpContext.Request.Url?.ToString());
 
             return View("~/Features/Errors/Views/ErrorGeneric.cshtml");
         }
