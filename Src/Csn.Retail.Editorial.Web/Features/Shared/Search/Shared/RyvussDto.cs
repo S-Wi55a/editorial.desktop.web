@@ -77,6 +77,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public string Term { get; set; }
         public bool IsFacetBreadCrumb => Type == "FacetBreadCrumb";
         public bool IsKeywordBreadCrumb => Type == "KeywordBreadCrumb";
+        public bool IsClearAllBreadCrumb => Type == "ClearAllBreadCrumb";
+
     }
 
     public class SearchResultDto

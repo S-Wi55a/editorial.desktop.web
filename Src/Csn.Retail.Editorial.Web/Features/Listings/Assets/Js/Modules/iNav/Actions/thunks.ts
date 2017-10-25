@@ -3,9 +3,9 @@ import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
 import queryString from 'query-string'
 
-type fetchINav = (q?: string) => (d: Dispatch<any>, getState: any) => any
+type fetchINav = (q?: string, f?: boolean) => (d: Dispatch<any>, getState: any) => any
 
-export const fetchINav: fetchINav = (query?: string) =>  (dispatch: any, getState: any) => {
+export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (dispatch: any, getState: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
 
@@ -14,9 +14,9 @@ export const fetchINav: fetchINav = (query?: string) =>  (dispatch: any, getStat
                           typeof getState().form.keywordSearch.values !== 'undefined' &&
                           typeof getState().form.keywordSearch.values.keyword !== 'undefined' ? 
                           getState().form.keywordSearch.values.keyword : undefined
-        
+
         // TODO: REMOVE FOR PHASE 2
-        return window.location.replace(`${q ? q : '?'}${keyword ? '&'+queryString.stringify({keyword}) : ''}`)
+        return window.location.assign(forceEmpty ? window.location.pathname : `${q ? q : '?'}${keyword ? '&'+queryString.stringify({keyword}) : ''}`)
 
 
         // return fetch(`${iNav.api}${q ? q : '?'}${keyword ? '&'+queryString.stringify({keyword}) : ''}`)
