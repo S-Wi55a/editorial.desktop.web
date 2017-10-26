@@ -80,7 +80,6 @@ let updateList = (el, data) => {
 
 // Update Content
 let updateContent = function (frame, el, container, cb) {
-    const moreArticlesPath = proxy;
     const query = el ? el.getAttribute('data-more-articles-query') : null;
     let lock = !!el.getAttribute('data-disabled')
 
@@ -90,7 +89,7 @@ let updateContent = function (frame, el, container, cb) {
         Ajax.get(query, (json) => {
             json = JSON.parse(json)
             if (json.nextQuery) {
-                updateButton(el, 'data-more-articles-query', moreArticlesPath + json.nextQuery)
+                updateButton(el, 'data-more-articles-query', proxy + json.nextQuery)
             } else {
                 //disabled next
                 updateButton(el, 'data-more-articles-query', '')
