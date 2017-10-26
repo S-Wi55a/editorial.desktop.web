@@ -10,11 +10,9 @@ using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
-using Expresso.Helpers;
 using Expresso.Syntax;
 using IContextStore = Ingress.ContextStores.IContextStore;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
@@ -77,15 +75,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                         NavResults = navResults,
                         Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
                         Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
-                        CurrentQuery = GetFormattedQuery(query),
+                        CurrentQuery = UrlParamsFormatter.GetParams(query.Q, 0, query.SortOrder, query.Keyword),
                         Keyword = query.Keyword
                     }
                 };
-        }
-
-        private static string GetFormattedQuery(GetListingsQuery query)
-        {
-            return string.IsNullOrEmpty(query.Q) ? string.Empty : $"{UrlParamsFormatter.GetQueryParam(query.Q)}{UrlParamsFormatter.GetSortParam(query.SortOrder)}";
         }
     }
 }
