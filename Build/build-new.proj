@@ -120,7 +120,7 @@
 
 	<Target Name="TaskNpmRestore">
 			<Message Text="Restoring front end build..." Importance="high"/>
-			<Exec Command="npm install" WorkingDirectory="$(TargetProjectDir)"/>
+			<Exec Command="npm install --verbose" WorkingDirectory="$(TargetProjectDir)"/>
 	</Target>
 
 	<Target Name="TaskBackupNpmPackages">
