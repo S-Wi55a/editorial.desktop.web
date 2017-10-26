@@ -6,8 +6,8 @@ if (!SERVER) {
 }
 
 const INavSearchResult = (props: ISearchResults) => (
-    <div className="iNavSearchResult">
-        <a href={props.articleDetailsUrl}>
+
+        <a href={props.articleDetailsUrl} className="iNavSearchResult">
             <div className="iNavSearchResult__image-frame">
                 <img className="iNavSearchResult__image" src={props.imageUrl} />
                 {props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${props.label}`}>{props.label}</div> : ''}
@@ -27,7 +27,7 @@ const INavSearchResult = (props: ISearchResults) => (
                 </div>
             </div>
         </a>
-    </div>
+
 );
 
 export default INavSearchResult;

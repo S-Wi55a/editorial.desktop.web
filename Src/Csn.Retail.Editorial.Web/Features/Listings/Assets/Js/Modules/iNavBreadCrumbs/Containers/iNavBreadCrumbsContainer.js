@@ -5,13 +5,19 @@ import { Thunks } from 'iNav/Actions/actions'
 
 // TODO: use enum in TS for this
 const FacetBreadCrumb = {
-    keyword: "KeywordBreadCrumb",
-    facet: "FacetBreadCrumb"
+    keyword: 'KeywordBreadCrumb',
+    facet: 'FacetBreadCrumb',
+    clearAll: 'ClearAllBreadCrumb'
 }
 
-const INavBreadCrumb = ({facetDisplay, removeAction, fetchINav, type}) => (
-    <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={`?q=${removeAction}`} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>    
-)
+const INavBreadCrumb = ({facetDisplay, removeAction, fetchINav, type}) => {
+
+    if(type === FacetBreadCrumb.clearAll || type === FacetBreadCrumb.keyword){
+        return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction, true);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>
+    }
+    return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>    
+    
+}
 
 const INavBreadCrumbs = ({ breadCrumbs, fetchINav }) => (
         <div className="iNavBreadCrumbs">
@@ -35,7 +41,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchINav: (query)=>dispatch(Thunks.fetchINav(query))
+        fetchINav: (query, clear)=>dispatch(Thunks.fetchINav(query, clear))
     }
   }
 
