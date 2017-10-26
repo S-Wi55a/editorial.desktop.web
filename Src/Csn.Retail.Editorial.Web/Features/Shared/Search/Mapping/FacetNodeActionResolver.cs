@@ -9,7 +9,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
     {
         public string Resolve(FacetNodeDto source, FacetNode destination, string destMember, ResolutionContext context)
         {
-            return UrlParamsFormatter.GetParams(source.Action, 0, context.Items.TryGetValue("sortOrder", out var sortOrder) ? sortOrder?.ToString() : string.Empty, string.Empty);
+            return UrlParamsFormatter.GetParams(source.Action, sortOrder: context.Items.TryGetValue("sortOrder", out var sortOrder) ? sortOrder?.ToString() : string.Empty);
         }
     }
 }

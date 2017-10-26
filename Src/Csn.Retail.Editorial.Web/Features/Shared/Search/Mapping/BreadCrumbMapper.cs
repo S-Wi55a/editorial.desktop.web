@@ -35,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
             var keywordBreadCrumb = source.FirstOrDefault(a => a.IsKeywordBreadCrumb);
             if (keywordBreadCrumb != null)
             {
-                results.Insert(0, new BreadCrumb { RemoveAction = UrlParamsFormatter.GetParams(keywordBreadCrumb.RemoveAction, 0, string.Empty, string.Empty),
+                results.Insert(0, new BreadCrumb { RemoveAction = UrlParamsFormatter.GetParams(keywordBreadCrumb.RemoveAction),
                     FacetDisplay = keywordBreadCrumb.Term.Trim('(', ')'), Type = "KeywordBreadCrumb" });
             }
             results.Add(new BreadCrumb { RemoveAction = string.Empty, FacetDisplay = "Clear All", Type = "ClearAllBreadCrumb" });
@@ -47,7 +47,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         {
             return string.IsNullOrEmpty(source.RemoveAction)
                 ? string.Empty
-                : UrlParamsFormatter.GetParams(source.RemoveAction, 0, string.Empty, string.Empty);
+                : UrlParamsFormatter.GetParams(source.RemoveAction);
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
+﻿using System.Web;
+
+namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
 {
     public static class UrlParamsFormatter
     {
-        public static string GetParams(string q, long offset = 0, string sortOrder = "", string keyword = "")
+        public static string GetParams(string q = "", long offset = 0, string sortOrder = "", string keyword = "")
         {
-            var queryParams = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            var queryParams = HttpUtility.ParseQueryString(string.Empty);
 
             if (!string.IsNullOrEmpty(q)) queryParams["q"] = q;
             if (!string.IsNullOrEmpty(sortOrder)) queryParams["sortOrder"] = sortOrder;
