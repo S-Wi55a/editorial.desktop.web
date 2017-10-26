@@ -1,31 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Listings;
-using Csn.Retail.Editorial.Web.Features.Listings.Constants;
-using Csn.Retail.Editorial.Web.Features.Listings.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
+﻿using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
-using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
-using Expresso.Expressions;
-using Expresso.Parser;
 using Expresso.Sanitisation;
 using Expresso.Syntax;
 using Expresso.Syntax.Binary;
 using Expresso.Syntax.Rose;
-using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
 {
+    public class EditorialMetadataDto
+    {
+        public Metadata Metadata { get; set; }
+    }
+
+    public class Metadata
+    {
+        // ReSharper disable once InconsistentNaming - needed for Ryvus response parsing
+        public string query { get; set; }
+
+        public string Seo { get; set; }
+    }
+
     [AutoBind]
     public class LegacyUrlRedirectStrategy : IRedirectStrategy
     {
@@ -64,23 +61,20 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
             var query = filterContext.HttpContext.Request?.QueryString["q"] ??
                         filterContext.HttpContext.Request?.QueryString.ToString();
 
-            if (!query.IsNullOrEmpty())
+            var response = _editorialRyvussApiProxy.Get<EditorialMetadataDto>(query);
+            if (response.IsSucceed && response.Data.Metadata != null)
             {
-                var response = _editorialRyvussApiProxy.GetMetadata(query);
-                if (response.IsSucceed && response.Data.Metadata != null)
+                var url = GetRedirectionSlug(filterContext, response.Data.Metadata);
+                if (!url.IsNullOrEmpty())
                 {
-                    var url = GetRedirectionSlug(filterContext, response.Data.Metadata);
-                    if (!url.IsNullOrEmpty())
+                    _redirectLogger.Log(
+                        $"{filterContext.HttpContext.Request?.QueryString.ToString()} redirected to {url}");
+                    return new RedirectInstruction
                     {
-                        _redirectLogger.Log(
-                            $"{filterContext.HttpContext.Request?.QueryString.ToString()} redirected to {url}");
-                        return new RedirectInstruction
-                        {
-                            Url =
-                                url, //Does double rediect: To be checked with merged code $"editorial/beta-results/{url}",
-                            IsPermanent = true
-                        };
-                    }
+                        Url =
+                            url, //Does double rediect: To be checked with merged code $"editorial/beta-results/{url}",
+                        IsPermanent = true
+                    };
                 }
             }
 
@@ -134,16 +128,12 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
                        (sortOrder.IsNullOrEmpty() ? "" : $"&sortOrder={sortOrder}") +
                        (keyword.IsNullOrEmpty() ? "" : $"&keyword={keyword}");
             }
-            else
-            {
-                var seoSlug = (!offset.IsNullOrEmpty() || !sortOrder.IsNullOrEmpty() ? "?" : "") +
-                              (offset.IsNullOrEmpty() ? "" : $"offset={offset}");
-                if (sortOrder != "")
-                    seoSlug = seoSlug + (offset.IsNullOrEmpty() ? "" : "&") + $"sortOrder={sortOrder}";
+            var seoSlug = (!offset.IsNullOrEmpty() || !sortOrder.IsNullOrEmpty() ? "?" : "") +
+                          (offset.IsNullOrEmpty() ? "" : $"offset={offset}");
+            if (sortOrder != "")
+                seoSlug = seoSlug + (offset.IsNullOrEmpty() ? "" : "&") + $"sortOrder={sortOrder}";
 
-                return seoSlug;
-            }
-            return "";
+            return seoSlug;
         }
 
         #endregion"Internal functions"  

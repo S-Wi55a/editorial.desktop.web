@@ -10,7 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
     public interface IEditorialRyvussApiProxy
     {
         Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInput input);
-        SmartServiceResponse<EditorialMetadataDto> GetMetadata(string query);
+        SmartServiceResponse<T> Get<T>(string query);
     }
 
     [AutoBind]
@@ -32,7 +32,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
 
             if (!string.IsNullOrEmpty(input.NavigationName))
             {
-                var nav = input.PostProcessors == null || !input.PostProcessors.Any() ? input.NavigationName : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
+                var nav = input.PostProcessors == null || !input.PostProcessors.Any()
+                    ? input.NavigationName
+                    : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
                 client = client.QueryString("inav", nav);
             }
 
@@ -50,29 +52,18 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
         }
 
 
-        public SmartServiceResponse<EditorialMetadataDto> GetMetadata(string query)
+        public SmartServiceResponse<T> Get<T>(string query)
         {
-            var response = _smartClient.Service(ServiceName)
+            return _smartClient.Service(ServiceName)
                 .Path("v4/editoriallistingretail")
                 .QueryString("q", query)
                 .QueryString("metadata", "")
-                .Get<EditorialMetadataDto>();
-
-            return response;
+                .Get<T>();
         }
     }
 
-    public class EditorialMetadataDto
-    {
-        public Metadata Metadata { get; set; }
-    }
+   
 
-    public class Metadata
-    {
-        // ReSharper disable once InconsistentNaming - needed for Ryvus response parsing
-        public string query { get; set; }
-        public string Seo { get; set; }
-    }
     public class EditorialRyvussInput
     {
         public string Query { get; set; }
