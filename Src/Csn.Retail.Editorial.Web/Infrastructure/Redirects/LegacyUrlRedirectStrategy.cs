@@ -43,9 +43,10 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
 
         public RedirectInstruction Apply(ActionExecutingContext filterContext)
         {
-            var originalQuery = filterContext.HttpContext.Request?.QueryString["q"];
+            var originalQuery = filterContext.HttpContext.Request?.QueryString["q"] ??
+                                filterContext.HttpContext.Request?.QueryString?.ToString();
 
-            if (originalQuery != null && filterContext.RequestContext?.HttpContext?.Request?.Url != null &&
+            if (filterContext.RequestContext?.HttpContext?.Request?.Url != null &&
                 IsRyvussBinaryTreeSyntax(originalQuery))
             {
                 return GetRedirectionInstructions(filterContext);
@@ -60,24 +61,29 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
 
         public RedirectInstruction GetRedirectionInstructions(ActionExecutingContext filterContext)
         {
-            var query = filterContext.HttpContext.Request?.QueryString["q"];
+            var query = filterContext.HttpContext.Request?.QueryString["q"] ??
+                        filterContext.HttpContext.Request?.QueryString.ToString();
 
-            var response = _editorialRyvussApiProxy.GetMetadata(query);
-            if (response.IsSucceed && response.Data.Metadata != null)
+            if (!query.IsNullOrEmpty())
             {
-                var url = GetRedirectionSlug(filterContext, response.Data.Metadata);
-                if (!url.IsNullOrEmpty())
+                var response = _editorialRyvussApiProxy.GetMetadata(query);
+                if (response.IsSucceed && response.Data.Metadata != null)
                 {
-                    _redirectLogger.Log(
-                        $"{filterContext.HttpContext.Request?.QueryString.ToString()} redirected to {url}");
-                    return new RedirectInstruction
+                    var url = GetRedirectionSlug(filterContext, response.Data.Metadata);
+                    if (!url.IsNullOrEmpty())
                     {
-                        Url =
-                            url, //Does double rediect: To be checked with merged code $"editorial/beta-results/{url}",
-                        IsPermanent = true
-                    };
+                        _redirectLogger.Log(
+                            $"{filterContext.HttpContext.Request?.QueryString.ToString()} redirected to {url}");
+                        return new RedirectInstruction
+                        {
+                            Url =
+                                url, //Does double rediect: To be checked with merged code $"editorial/beta-results/{url}",
+                            IsPermanent = true
+                        };
+                    }
                 }
             }
+
             return RedirectInstruction.None;
         }
 
