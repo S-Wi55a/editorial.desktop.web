@@ -10,6 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
     public interface IEditorialRyvussApiProxy
     {
         Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInput input);
+        SmartServiceResponse<EditorialMetadataDto> GetMetadata(string query);
     }
 
     [AutoBind]
@@ -47,8 +48,31 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
 
             return client.GetAsync<T>();
         }
+
+
+        public SmartServiceResponse<EditorialMetadataDto> GetMetadata(string query)
+        {
+            var response = _smartClient.Service(ServiceName)
+                .Path("v4/editoriallistingretail")
+                .QueryString("q", query)
+                .QueryString("metadata", "")
+                .Get<EditorialMetadataDto>();
+
+            return response;
+        }
     }
 
+    public class EditorialMetadataDto
+    {
+        public Metadata Metadata { get; set; }
+    }
+
+    public class Metadata
+    {
+        // ReSharper disable once InconsistentNaming - needed for Ryvus response parsing
+        public string query { get; set; }
+        public string Seo { get; set; }
+    }
     public class EditorialRyvussInput
     {
         public string Query { get; set; }

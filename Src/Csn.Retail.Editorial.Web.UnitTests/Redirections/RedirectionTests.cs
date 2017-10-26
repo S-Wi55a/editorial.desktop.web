@@ -22,23 +22,60 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Redirections
 {
     public class RedirectionTests
     {
-        
-        [TestCase("Make.bmw.", RyvussSyntax.V4)]
-        [TestCase("(And.Service.Bikesales._.(Or.Make.Kawasaki._.Make.Suzuki.))", RyvussSyntax.V4)]
-        [TestCase("((Make=[Digga]&Service=[ConstructionSales])&Author=[Carene Chong])", RyvussSyntax.V2)]
-        public void CheckIfBinarySyntaxConversionsWork(string url, RyvussSyntax syntax)
+        private ISmartServiceClient _client;
+        private IEditorialRyvussApiProxy _ryvussProxy;
+        private IDetailsRedirectLogger _logger;
+        private IExpressionFormatter _expressionFormatter;
+        private LegacyUrlRedirectStrategy _legacyUrlRedirectStrategy;
+
+        [SetUp]
+        public void Setup()
         {
-            //Arrange
-            var ryvussProxy = Substitute.For<IEditorialRyvussApiProxy>();
-            var client = Substitute.For<ISmartServiceClient>();
-            var logger = Substitute.For<IDetailsRedirectLogger>();
-            var expressionFormatter = Substitute.For<IExpressionFormatter>();
+            _ryvussProxy = Substitute.For<IEditorialRyvussApiProxy>();
+            _client = Substitute.For<ISmartServiceClient>();
+            _logger = Substitute.For<IDetailsRedirectLogger>();
+            _expressionFormatter = Substitute.For<IExpressionFormatter>();
 
-            var legacyUrlRedirectStrategy = new LegacyUrlRedirectStrategy(client, logger);
+            _legacyUrlRedirectStrategy = new LegacyUrlRedirectStrategy(_logger, _ryvussProxy);
+        }
 
-            var binarySyntx = legacyUrlRedirectStrategy.GetRyvussSyntax(url);
+        [TestCase("Make.bmw.", false)]
+        [TestCase("(And.Service.Bikesales._.(Or.Make.Kawasaki._.Make.Suzuki.))", false)]
+        [TestCase("((Make=[Digga]&Service=[ConstructionSales])&Author=[Carene Chong])", true)]
+        [TestCase(
+            "((Make=[Digga]&Service=[ConstructionSales])&Author=[Carene Chong])&sort=Latest&SearchAction=Refinement",
+            true)]
+        public void CheckIfBinarySyntaxConversionsWork(string url, bool isBinarySyntax)
+        {
+            var binarySyntx = _legacyUrlRedirectStrategy.IsRyvussBinaryTreeSyntax(url);
 
-            Assert.That(binarySyntx, Is.EqualTo(syntax));
+            Assert.That(binarySyntx, Is.EqualTo(isBinarySyntax));
+        }
+
+
+        /*
+         [TestCase("((Make=[Digga]&Service=[ConstructionSales])&Author=[Carene Chong])",
+             "zxzccz", "expectedResult")]
+         public void TestBinarySyntaxToRoseTree(string query, string keywords, string result)
+         {
+ 
+             var proxy = new EditorialRyvussApiProxy(_client);
+            var v4 = proxy.GetMetadata(query);
+             Assert.That(v4, Is.EqualTo(result));
+         }*/
+
+        [TestCase(true, "abc", "30", "latest", "?offset=30&sortOrder=latest")]
+        [TestCase(true, "abc", "", "", "")]
+        [TestCase(true, "abc", "30", "", "?offset=30")]
+        [TestCase(false, "abc", "30", "latest", "&offset=30&sortOrder=latest&keyword=abc")]
+        [TestCase(false, "abc", "", "", "&keyword=abc")]
+        [TestCase(false, "abc", "30", "", "&offset=30&keyword=abc")]
+        [TestCase(false, "", "", "", "")]
+        public void TestGetQueryParametersForSlug(bool isSeo, string keyword, string offset, string sortOrder,
+            string expectedResult)
+        {
+            var slug = _legacyUrlRedirectStrategy.GetQueryParametersForSlug(isSeo, keyword, offset, sortOrder);
+            Assert.That(slug, Is.EqualTo(expectedResult));
         }
     }
 }

@@ -16,62 +16,29 @@ using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
+using Expresso.Expressions;
 using Expresso.Parser;
 using Expresso.Sanitisation;
 using Expresso.Syntax;
 using Expresso.Syntax.Binary;
+using Expresso.Syntax.Rose;
 using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
 {
-    public class EditorialMetadataDto
-    {
-        public Metadata Metadata { get; set; }
-    }
-
-    public class Metadata
-    {
-        // ReSharper disable once InconsistentNaming - needed for Ryvus response parsing
-        public string query { get; set; }
-
-        public string Seo { get; set; }
-        public string Title { get; set; }
-    }
-
-
-    public class RedirectionDto
-    {
-        public RedirectInstruction RedirectInstructions { get; set; }
-
-        public bool Redirect { get; set; }
-    }
-
-    public class ParserDto
-    {
-        public IExpressionParser Parser { get; set; }
-
-        public RyvussSyntax Syntax { get; set; }
-    }
-
-    public enum RyvussSyntax
-    {
-        V2,
-        V4,
-        Seo,
-        NotSure = 99
-    }
-
     [AutoBind]
     public class LegacyUrlRedirectStrategy : IRedirectStrategy
     {
-        private readonly ISmartServiceClient _client;
-        private const string ServiceName = "api-search-editorials";
         private readonly IDetailsRedirectLogger _redirectLogger;
+        private readonly IExpressionFormatter _formatter;
+        private readonly IEditorialRyvussApiProxy _editorialRyvussApiProxy;
 
-        public LegacyUrlRedirectStrategy(ISmartServiceClient client, IDetailsRedirectLogger redirectLogger)
+        public LegacyUrlRedirectStrategy(IDetailsRedirectLogger redirectLogger,
+            IEditorialRyvussApiProxy editorialRyvussApiProxy)
         {
-            _client = client;
             _redirectLogger = redirectLogger;
+            _formatter = new RoseTreeFormatter(new RoseTreeSanitiser());
+            _editorialRyvussApiProxy = editorialRyvussApiProxy;
         }
 
         public RedirectInstruction Apply(ActionExecutingContext filterContext)
@@ -79,13 +46,9 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
             var originalQuery = filterContext.HttpContext.Request?.QueryString["q"];
 
             if (originalQuery != null && filterContext.RequestContext?.HttpContext?.Request?.Url != null &&
-                IsBinary(originalQuery))
+                IsRyvussBinaryTreeSyntax(originalQuery))
             {
-                return new RedirectInstruction
-                {
-                    Url = GetRedirectUrl(originalQuery),
-                    IsPermanent = true
-                };
+                return GetRedirectionInstructions(filterContext);
             }
 
             return RedirectInstruction.None;
@@ -93,35 +56,32 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
 
         public int Order => 1;
 
-        public RyvussSyntax GetRyvussSyntax(string query)
-        {
-            var availableParsers = new ParserDto[]
-            {
-                new ParserDto()
-                {
-                    Syntax = RyvussSyntax.V2,
-                    Parser = new FlatBinaryTreeParser(new BinaryTreeSanitiser())
-                },
-                new ParserDto() {Syntax = RyvussSyntax.V4, Parser = new RoseTreeParser(new RoseTreeSanitiser())},
-            };
+        #region"Internal functions"  
 
-            foreach (var parserDto in availableParsers)
+        public RedirectInstruction GetRedirectionInstructions(ActionExecutingContext filterContext)
+        {
+            var query = filterContext.HttpContext.Request?.QueryString["q"];
+
+            var response = _editorialRyvussApiProxy.GetMetadata(query);
+            if (response.IsSucceed && response.Data.Metadata != null)
             {
-                try
+                var url = GetRedirectionSlug(filterContext, response.Data.Metadata);
+                if (!url.IsNullOrEmpty())
                 {
-                    var parsed = parserDto.Parser.Parse(query);
-                    return parserDto.Syntax;
-                }
-                catch (Exception ex)
-                {
-                    //Try next
+                    _redirectLogger.Log(
+                        $"{filterContext.HttpContext.Request?.QueryString.ToString()} redirected to {url}");
+                    return new RedirectInstruction
+                    {
+                        Url =
+                            url, //Does double rediect: To be checked with merged code $"editorial/beta-results/{url}",
+                        IsPermanent = true
+                    };
                 }
             }
-            return RyvussSyntax.NotSure;
+            return RedirectInstruction.None;
         }
 
-
-        public bool IsBinary(string query)
+        public bool IsRyvussBinaryTreeSyntax(string query)
         {
             var parser = new FlatBinaryTreeParser(new BinaryTreeSanitiser());
             try
@@ -136,63 +96,50 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
             return false;
         }
 
-        public string GetRedirectUrl(string query)
+        public string GetRedirectionSlug(ActionExecutingContext filterContext, Metadata queryMetaData)
         {
-            return "";
+            var offset = filterContext.HttpContext.Request?.QueryString["offset"] ?? "";
+            var sortOrder = filterContext.HttpContext.Request?.QueryString["sort"] ?? "";
+            var keyword = filterContext.HttpContext.Request?.QueryString["Keywords"] ?? "";
+            var url = "";
+            var isSeo = false;
+
+            if (!queryMetaData.Seo.IsNullOrEmpty() && keyword.IsNullOrEmpty())
+            {
+                isSeo = true;
+                url = $"{queryMetaData.Seo}";
+            }
+            else if (!queryMetaData.query.IsNullOrEmpty())
+            {
+                url = $"?Q={queryMetaData.query}";
+            }
+
+            if (!url.IsNullOrEmpty())
+                url = url + GetQueryParametersForSlug(isSeo, keyword, offset, sortOrder);
+
+            return url;
         }
 
-        /*public RedirectionDto GetRedirectionInstructions(ActionExecutingContext filterContext, string query)
+        public string GetQueryParametersForSlug(bool isSeo, string keyword, string offset, string sortOrder)
         {
-            var redirectionInstructions = new RedirectionDto() {Redirect = false};
-
-            var response = _client.Service(ServiceName)
-                .Path("v4/editoriallisting")
-                .QueryString("q", query)
-                .QueryString("metadata", "")
-                .Get<EditorialMetadataDto>();
-
-            if (response.IsSucceed)
+            if (!isSeo)
             {
-                if (response.Data.Metadata.Seo.IsNullOrEmpty())
-                {
-                    //Create URL with Seo
-                    _redirectLogger.Log($"{query} redirected to {response.Data.Metadata.Seo}");
-                    return new RedirectionDto()
-                        {
-                            Redirect = true,
-                            RedirectInstructions = new RedirectInstruction
-                            {
-                                Url = response.Data.Metadata.Seo,
-                                IsPermanent = true
-                            }
-                        }
-                        ;
-                }
-                else if (response.Data.Metadata.query.IsNullOrEmpty())
-                {
-                    //Create URL with Metadata
-                    _redirectLogger.Log($"{query} redirected to {response.Data.Metadata.query}");
-                    return new RedirectionDto()
-                        {
-                            Redirect = true,
-                            RedirectInstructions = new RedirectInstruction
-                            {
-                                Url = filterContext.RequestContext?.HttpContext?.Request?.Url?.PathAndQuery.Replace(
-                                    query,
-                                    response.Data.Metadata.query),
-                                IsPermanent = true
-                            }
-                        }
-                        ;
-                }
+                return (offset.IsNullOrEmpty() ? "" : $"&offset={offset}") +
+                       (sortOrder.IsNullOrEmpty() ? "" : $"&sortOrder={sortOrder}") +
+                       (keyword.IsNullOrEmpty() ? "" : $"&keyword={keyword}");
             }
             else
             {
-                //TODO: ??
+                var seoSlug = (!offset.IsNullOrEmpty() || !sortOrder.IsNullOrEmpty() ? "?" : "") +
+                              (offset.IsNullOrEmpty() ? "" : $"offset={offset}");
+                if (sortOrder != "")
+                    seoSlug = seoSlug + (offset.IsNullOrEmpty() ? "" : "&") + $"sortOrder={sortOrder}";
+
+                return seoSlug;
             }
+            return "";
+        }
 
-
-            return redirectionInstructions;
-        }*/
+        #endregion"Internal functions"  
     }
 }
