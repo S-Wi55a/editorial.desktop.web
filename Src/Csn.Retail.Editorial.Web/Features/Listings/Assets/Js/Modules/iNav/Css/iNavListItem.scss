@@ -21,7 +21,7 @@
         &::before {
             content: $icon-tick-md;
             font-family: $font-family-icons;
-            font-size: 14px;
+            font-size: 10px;
             font-weight: 600;
             color: $cs-white;
             background-color: $cs-primary;
@@ -74,7 +74,7 @@
         color: $cs-white;
         background-color: $cs-primary;
         border-radius: 9999px;
-        display: inline-block;
+        display: none;
         font-size: $font-size-h6;
         text-align: center;
         padding: 0 6.5px;
@@ -91,6 +91,7 @@
         display: inline-block;
         vertical-align: middle;
         margin-left: 10px;
+        margin-right: 15px;
         position: relative;
                 
         &::before {

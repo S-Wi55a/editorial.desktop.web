@@ -1,0 +1,123 @@
+﻿@import "css/_globals.scss";
+
+
+.iNavPagination {
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    &__container {
+        @include clearfix();
+        margin-bottom: 25px;
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+.iNavPageItem {
+    $itemSize: 44px;
+    $padding: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: $font-weight-600;
+    min-height: $itemSize;
+    min-width: $itemSize;
+    line-height: $itemSize;
+    border-radius: 9999px;
+    display: inline-block;
+    text-align: center;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    vertical-align: middle;
+    padding-right: $padding;
+    padding-left: $padding;
+    position: relative;
+    
+
+    &:hover, &:focus {
+        text-decoration: none;
+
+        &::after {
+            position: absolute;
+            bottom: 5px;
+            content: '';
+            display: block;
+            background-color: $cs-primary;
+            height: 1px;
+            width: calc(100% - (2 * #{$padding}));
+        }
+    }
+
+    &--current {
+        display: inline-block;
+        background-color: $cs-primary;
+        color: $cs-white;
+        text-decoration: none;
+        cursor: default;
+
+        &:hover {
+            color: $cs-white;            
+        }
+    }
+
+    &--previous,
+    &--next {
+        font-size: 17px;
+        border: solid 1px $cs-primary;
+        height: $itemSize;
+        width: $itemSize;
+        padding-right: 0;
+        padding-left: 0;
+
+        &::before {
+            position: relative;
+            font-family: $font-family-icons;
+        }
+
+        &:hover, &:focus {
+            text-decoration: none;
+
+            &::after {
+                height: 0;
+            }
+        }
+    }
+
+    &--previous {
+        &::before {
+            right: 2px;
+            content: $icon-chevron-left-lg;
+        }
+    }
+
+    &--next {
+        &::before {
+            left: 2px;
+            content: $icon-chevron-right-lg;
+        }
+    }
+
+    &--separator {
+        border: none;
+        cursor: default;
+        bottom: 5px;
+        color: $cs-light-grey-8;
+        &:hover {
+            text-decoration: none;
+            &::after {
+                height: 0;
+            }
+        }
+    }
+}
+
+.iNavPagination {
+
+    &__info {
+        font-size: 18px;
+        font-weight: $font-weight-400;
+        margin-bottom: 25px;
+        margin-top: 20px;
+        text-align: center;
+        color: $cs-light-grey-8;
+    }
+}

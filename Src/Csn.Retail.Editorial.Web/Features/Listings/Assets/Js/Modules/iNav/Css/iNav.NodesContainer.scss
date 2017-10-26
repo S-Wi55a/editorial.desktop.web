@@ -7,9 +7,11 @@
     position: absolute;
     top: $iNav-header-height + 5px + 10px;
 
+
     &__container {
         @include fadeInDown(-25%);
         
+        border-radius: 4px;
         max-height: $category-container-height;
         padding: $spacing;
         width:  $category-container-width;
@@ -26,9 +28,15 @@
         overflow: hidden;
         font-size: 0;
 
-        &.isActive {
+        &--isActive {
             display: inline-block;
             animation-name: fadeInDown;                    
+        }
+        &--1 {
+            margin-left: $iNav-header-item-width;            
+        }
+        &--2 {
+            margin-left: $iNav-header-item-width * 2;             
         }
         &-page {
             position: relative;
@@ -38,7 +46,7 @@
             transition: left .3s;
 
             .iNav-category__list {
-                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px;                
+                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height;                
             }
 
             &--1 {

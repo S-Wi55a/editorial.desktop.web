@@ -6,7 +6,8 @@
 // Page - Listings
 
 .listing-page {
-
+    background-color: $cs-light-grey-7;
+    
     .container {
         font-size: 0;
         
@@ -15,6 +16,7 @@
             display: inline-block;
             $width: $screen-sm - ($aside-width + $grid-gutter-width);
             width: calc(#{#{$width}});
+            position: relative;
 
             @include breakpoint($screen-md) {
                 $width: $screen-md - ($aside-width + $grid-gutter-width);
@@ -29,16 +31,32 @@
     }
 }
 
+#page-footer {
+    background-color: $cs-light-grey-7; 
+}
+
 
 // Module - Aside
-
 .wrapper--aside {
     display: inline-block;
-    vertical-align: top;    
+    vertical-align: top; 
+    padding-top: 30px;
+    margin-top: -30px;
+    @include breakpoint($screen-lg) {
+        margin-top: -45px;
+        padding-top: 45px;
+        
+    }
+    
+    .aside{
+        width: 300px;
+        padding-top: 30px;
+
+        @include breakpoint($screen-lg) {
+            padding-top: 45px;
+        }
+    }
 }
 
-.aside {
-    width: 300px;
-}
 
 @import "Css/Modules/ArticleDisclaimer/disclaimer";

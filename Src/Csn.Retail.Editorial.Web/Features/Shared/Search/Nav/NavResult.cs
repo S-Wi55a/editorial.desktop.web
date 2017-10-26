@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
@@ -47,15 +47,21 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public string Facet { get; set; }
         public string FacetDisplay { get; set; }
         public string RemoveAction { get; set; }
+        public string Term { get; set; }
+        public string Type {get; set;}
     }
 
     public class SearchResult
     {
         public string Headline { get; set; }
+        public string SubHeading {get; set;}
+
         public string ImageUrl { get; set; }
         public string DateAvailable { get; set; }
         public string ArticleDetailsUrl { get; set; }        
         public string Label { get; set; }
+        public string Type {get; set;}
+
 
     }
 }

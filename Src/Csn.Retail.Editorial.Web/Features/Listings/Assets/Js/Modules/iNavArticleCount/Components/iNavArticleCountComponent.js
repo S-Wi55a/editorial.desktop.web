@@ -19,9 +19,9 @@ const INavArticleCount = ({ count, noResultsMessage, noResultsInstructionMessage
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        count: state.iNav.count,
-        noResultsMessage: state.iNav.noResultsMessage,
-        noResultsInstructionMessage: state.iNav.noResultsInstructionMessage
+        count: state.store.listings.navResults.count,
+        noResultsMessage: state.store.listings.navResults.noResultsMessage,
+        noResultsInstructionMessage: state.store.listings.navResults.noResultsInstructionMessage
     }
 }
 

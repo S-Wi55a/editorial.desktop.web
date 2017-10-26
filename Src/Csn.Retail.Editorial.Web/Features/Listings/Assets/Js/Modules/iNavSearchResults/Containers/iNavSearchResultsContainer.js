@@ -15,14 +15,13 @@ const INavSearchResults = ({ searchResults }) => (
                 })
             }
         </ReactCSSTransitionGroup>
-        <div>{JSON.stringify(searchResults)}</div>
     </div>
 );
 
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        searchResults: state.iNav.searchResults        
+        searchResults: state.store.listings.navResults.searchResults        
     }
 }
 

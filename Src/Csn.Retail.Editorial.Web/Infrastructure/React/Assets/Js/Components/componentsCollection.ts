@@ -8,15 +8,19 @@ import PreloadedState from './preloadedState'
 import INav from 'iNav/Containers/iNavContainer'
 import INavArticleCountComponent from 'iNavArticleCount/Components/iNavArticleCountComponent'
 import INavBreadCrumbsContainer from 'iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
+import INavSortingContainer from 'iNavSorting/Containers/iNavSortingContainer'
 import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchResultsContainer'
+import INavPaginationContainer from 'iNavPagination/Containers/iNavPaginationContainer'
 
 //All Components are called and loaded into memorey
 export const Components = {
-    INavPreloadedState: ReactServerConnect(PreloadedState)('iNav', Reducers['iNav'], true),
-    INavArticleCount: ReactServerConnect(INavArticleCountComponent)('iNav', Reducers["iNav"]),
-    INavSearchResults: ReactServerConnect(INavSearchResultsContainer)('iNav', Reducers['iNav']),
-    INavBreadCrumbs: ReactServerConnect(INavBreadCrumbsContainer)('iNav', Reducers['iNav']),
-    INav: ReactServerConnect(INav)('iNav', Reducers['iNav'])
+    INavPreloadedState: ReactServerConnect(PreloadedState)('store', Reducers['listings'], true),
+    INavArticleCount: ReactServerConnect(INavArticleCountComponent)('store', Reducers['listings']),
+    INavPagination: ReactServerConnect(INavPaginationContainer)('store', Reducers['listings']),
+    INavSorting: ReactServerConnect(INavSortingContainer)('store', Reducers['listings']),
+    INavSearchResults: ReactServerConnect(INavSearchResultsContainer)('store', Reducers['listings']),
+    INavBreadCrumbs: ReactServerConnect(INavBreadCrumbsContainer)('store', Reducers['listings']),
+    INav: ReactServerConnect(INav)('store', Reducers['listings'])
 }
 
 

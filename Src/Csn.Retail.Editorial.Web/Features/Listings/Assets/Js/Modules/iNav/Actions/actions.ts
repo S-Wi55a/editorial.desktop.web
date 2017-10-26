@@ -69,6 +69,24 @@ interface IUpdatePreviousState extends Action {
     }
 }
 
+interface IFocus extends Action {
+    type: ActionTypes.UI.FOCUS
+    payload: {}
+    meta: {
+        form: string,
+        field: string     
+    }
+}
+
+interface IBlur extends Action {
+    type: ActionTypes.UI.BLUR
+    payload: {}    
+    meta: {
+        form: string,
+        field: string     
+    }
+}
+
 interface ISwitchPage extends Action {
     type: ActionTypes.UI.SWITCH_PAGE_FORWARD | ActionTypes.UI.SWITCH_PAGE_BACK
     payload? : any
@@ -80,6 +98,8 @@ type UIActions = IToggleIsActive
     | IDecrement
     | ICloseINav
     | ISwitchPage
+    | IBlur
+    | IFocus
 
 type APIActions = IFetchQueryRequest | IFetchQuerySuccess | IFetchQueryError
 
