@@ -2,7 +2,7 @@
 import Swiper from 'swiper'
 import * as Ajax from 'Ajax/ajax.js'
 import * as View from 'MoreArticles/moreArticles-view.js'
-
+import { proxy } from 'Endpoints/endpoints';
 import ScrollMagic from 'ScrollMagic'
 
 let showText = csn_editorial.moreArticles.showText;
@@ -79,18 +79,17 @@ let updateList = (el, data) => {
 }
 
 // Update Content
-let updateContent = function(frame, el, container, cb) {
+let updateContent = function (frame, el, container, cb) {
     const query = el ? el.getAttribute('data-more-articles-query') : null;
-    const url = el ? el.getAttribute('data-more-articles-path') + query : null;
     let lock = !!el.getAttribute('data-disabled')
 
     if (!lock && query) {
         updateButton(el, 'data-disabled', 1) //Prevent multiple requests
         frame.classList.add('loading')
-        Ajax.get(url, (json) => {
+        Ajax.get(query, (json) => {
             json = JSON.parse(json)
             if (json.nextQuery) {
-                updateButton(el, 'data-more-articles-query', json.nextQuery)
+                updateButton(el, 'data-more-articles-query', proxy + json.nextQuery)
             } else {
                 //disabled next
                 updateButton(el, 'data-more-articles-query', '')
