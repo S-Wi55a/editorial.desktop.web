@@ -106,17 +106,17 @@
 	  <!-- END: Tests -->
 
 
-			<Target Name="TaskImportNpmPackages">
-				<MakeDir Directories="$(PackageDir)\node_modules"/>
-				<RoboCopy
-						SourceFolder="$(PackageDir)\node_modules"
-						DestinationFolder="$(TargetProjectDir)\node_modules"
-						Subdirectories="true"
-						ExcludeFolders="__none"
-						ExcludeFiles=".log"
-						Options="/s /MT:10 /LOG:robocopy-result.log"
-						/>
-			</Target>
+	<Target Name="TaskImportNpmPackages">
+		<MakeDir Directories="$(PackageDir)\node_modules"/>
+		<RoboCopy
+				SourceFolder="$(PackageDir)\node_modules"
+				DestinationFolder="$(TargetProjectDir)\node_modules"
+				Subdirectories="true"
+				ExcludeFolders="__none"
+				ExcludeFiles=".log"
+				Options="/s /MT:10 /LOG:robocopy-result.log"
+				/>
+	</Target>
 
 	<Target Name="TaskBackupNpmPackages">
 		<RoboCopy
@@ -127,11 +127,6 @@
 				ExcludeFiles=".log"
 				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
 				/>
-	</Target>
-
-	<Target Name="FrontEndBuild">
-		<Message Text="Running Webpack build..." Importance="high"/>
-		<Exec Command="npm run build-release" WorkingDirectory="$(TargetProjectDir)"/>
 	</Target>
 
 	<Target Name="TaskGenerateVersionInfo" Condition="$(BUILD_NUMBER) != ''">
