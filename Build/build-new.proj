@@ -118,11 +118,6 @@
 						/>
 			</Target>
 
-	<Target Name="TaskNpmRestore">
-			<Message Text="Restoring front end build..." Importance="high"/>
-			<Exec Command="npm install --verbose" WorkingDirectory="$(TargetProjectDir)"/>
-	</Target>
-
 	<Target Name="TaskBackupNpmPackages">
 		<RoboCopy
 				SourceFolder="$(TargetProjectDir)\node_modules"
@@ -134,7 +129,7 @@
 				/>
 	</Target>
 
-	<Target Name="FrontEndBuild" DependsOnTargets="TaskNpmRestore">
+	<Target Name="FrontEndBuild">
 		<Message Text="Running Webpack build..." Importance="high"/>
 		<Exec Command="npm run build-release" WorkingDirectory="$(TargetProjectDir)"/>
 	</Target>
