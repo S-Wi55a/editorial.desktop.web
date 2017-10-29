@@ -1,23 +1,17 @@
-﻿using System;
-using System.Net;
-using System.Threading.Tasks;
-using AutoMapper;
-using Csn.MultiTenant;
-using Csn.Retail.Editorial.Web.Features.Details;
-using Csn.Retail.Editorial.Web.Features.Listings;
-using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
+﻿using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
-using Expresso.Expressions;
 using Expresso.Syntax;
 using Ingress.ServiceClient.Abstracts;
 using NSubstitute;
 using NUnit.Framework;
-
-
+/*using System.Web.Mvc;
+using Moq;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Http;
+using System.Web;
+*/
 namespace Csn.Retail.Editorial.Web.UnitTests.Redirections
 {
     public class RedirectionTests
@@ -51,8 +45,28 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Redirections
         {
 
             var metadata = new EditorialMetadataDto();
-            var slug = metadata.GetQueryParametersForSlug(keyword, offset, sortOrder);
+            var slug = metadata.GetQueryParameters(keyword, offset, sortOrder);
             Assert.That(slug, Is.EqualTo(expectedResult));
         }
+
+
+       /* [TestCase("?q=(Service=[ConstructionSales]&(Make=[Caron]|Make=[Caterpillar]))&sort=Latest&SearchAction=Refinement", "?offset=30&sortOrder=latest")]
+        public void IntegratedTest_LegacyUrlRedirectStrategy(string url, string expectedResult)
+        {
+            // Mock out the context to run the action filter.
+            var request = new Mock<HttpRequestBase>();
+            var httpContext = new Mock<HttpContextBase>();
+            httpContext.SetupGet(c => c.Request).Returns(request.Object);
+            httpContext.Object.Request.QueryString.Set("q", url);
+
+            var actionExecutedContext = new ActionExecutingContext
+            {
+                HttpContext = httpContext.Object
+            };
+
+            var redirection = _legacyUrlRedirectStrategy.GetRedirectionInstructions(actionExecutedContext);
+
+        }*/
+
     }
 }
