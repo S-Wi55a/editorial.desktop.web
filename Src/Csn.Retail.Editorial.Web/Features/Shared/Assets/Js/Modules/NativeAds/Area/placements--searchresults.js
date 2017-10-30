@@ -1,4 +1,6 @@
-﻿// details page - related articles
+﻿import moment from 'moment';
+
+// details page - related articles
 const placements = [];
 const events = ['csn_editorial.listings.fetchNativeAds'];
 const templates = {};
@@ -10,8 +12,9 @@ const store = window.store || console.warn("No Redux store available")
 
 templates['search-result'] = (location) => (Handlebars, depth0, helpers, partials, data) => { 
     
-    var date = new Date(depth0.pubDate);
-    var options = { year: 'numeric', month: 'long' };
+    var pubDate = new Date(depth0.pubDate);
+    var now = new Date();
+    var date = (pubDate.getFullYear() === now.getFullYear()) ? moment(pubDate).format('MMMM Do') : moment(pubDate).format('MMMM YYYY')
 
     function closestImageBasedOnRes(num, arr) {
         var curr = arr[0];
@@ -32,9 +35,11 @@ templates['search-result'] = (location) => (Handlebars, depth0, helpers, partial
              payload: {
                 imageUrl: closestImageBasedOnRes(480, depth0.image.instances),
                 headline: depth0.title,
-                dateAvailable: date.toLocaleDateString('en-AU', options),
+                subHeading: depth0.summary,
+                dateAvailable: date,
                 articleDetailsUrl: depth0.link,
                 label: depth0.custom.PlacementType,
+                type: 'Promoted',
                 location
              }
          }

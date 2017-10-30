@@ -17,8 +17,8 @@ class INavSearchResult extends React.Component<ISearchResults> {
                             {this.props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${this.props.label}`}>{this.props.label}</div> : ''}
                         </div>
                         <div className="iNavSearchResult__content-wrapper">
-                            <div className={`iNavSearchResult__type iNavSearchResult__type--${this.props.type.toLowerCase()}`}>
-                                {this.props.type.toUpperCase()}
+                            <div className={`iNavSearchResult__type iNavSearchResult__type--${typeof this.props.type !== 'undefined' ? this.props.type.toLowerCase() : ''}`}>
+                                {typeof this.props.type !== 'undefined' ? this.props.type.toUpperCase() : ''}
                             </div>
                             <div className="iNavSearchResult__heading">
                                 <h2>{this.props.headline}</h2>

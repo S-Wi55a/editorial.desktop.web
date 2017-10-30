@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
 
         public PolarNativeAdsData Map(IList<BreadCrumbDto> source)
         {
-            if (!_tenantProvider.Current().DisplayPolarAds || !source.Any())
+            if (!_tenantProvider.Current().DisplayPolarAds)
             {
                 return null;
             }
