@@ -19,8 +19,8 @@ interface IINavMenuHeaderItemComponent {
 
 const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ isActive, node, toggleIsSelected, index, count }) => {
   return (
-    <div className={['iNav__menu-header-item', isActive ? 'isActive' : ''].join(' ')} onClick={() => toggleIsSelected(index, isActive)}>
-      {node.displayName} {count ? `(${count})` : ''}
+    <div className={['iNav__menu-header-item', isActive ? 'iNav__menu-header-item--isActive' : ''].join(' ')} onClick={() => toggleIsSelected(index, isActive)}>
+      {node.displayName}{count ? <span className="iNav__menu-header-item-count">{count}</span> : ''}
     </div>
   )
 }
@@ -36,7 +36,7 @@ function findIsSelected(facets: iNavTypes.IFacet[]) {
 // Redux Connect
 const mapStateToProps = (state: State, ownProps: IINavMenuHeaderItemComponent) => {
   return {
-    count: findIsSelected(state.csn_search.iNav.iNav.nodes[ownProps.index].facets)
+    count: findIsSelected(state.store.listings.navResults.iNav.nodes[ownProps.index].facets)
   }
 }
 

@@ -7,9 +7,11 @@
     display: inline-block;
     vertical-align: top;
     margin-bottom: $spacing;
+    border-radius: 4px;
     
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
     position: relative;
+    cursor: pointer;
 
 
     &:nth-of-type(odd) {
@@ -31,7 +33,7 @@
     &::before {
         content: '';
         position: absolute;
-        z-index: -1;
+        z-index: 0;
         width: 100%;
         height: 100%;
         opacity: 0;
@@ -52,6 +54,9 @@
         padding-top: percentage((2/3));
         position: relative;
         overflow: hidden;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        
     }
 
     &__image-label {
@@ -102,24 +107,135 @@
     }
 
     &__content-wrapper {
-        background-color: $cs-light-grey-3;
+        background-color: $cs-white;
         padding: 15px;
-        color: $cs-dark-grey-1;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
     }
 
     &__heading {
-        font-size: $font-size-p; //18px
-        font-weight: $font-weight-400;
-        letter-spacing: 0;
-        line-height: 1.6;
-        color: $cs-dark-grey-1;
-        height: 3.2em;
+        $heading-line-height: 1.3;
+        $heading-height: $heading-line-height * 2;
+
+        font-size: 20px;
+        font-weight: $font-weight-600;
+        line-height: $heading-line-height;
+        color: $cs-dark-grey-2;
+        height: $heading-height * 1em;
         overflow: hidden;
+        margin-bottom: 10px;
+
+        & > *:first-child {
+            float: right;
+            width: 100%;
+            margin-left: -5px;
+            line-height: $heading-line-height;
+            font-weight: $font-weight-600;
+            
+        }
+
+        &::before {
+            content: "";
+            float: left;
+            width: 5px;
+            height: $heading-height * 1em;
+        }
+
+        &::after {
+            content: "\02026";
+            box-sizing: content-box;
+            float: right;
+            position: relative;
+            top: -1*$heading-line-height * 1em;
+            left: 100%;
+            width: 25%;
+            margin-left: -25%;
+            padding-right: 0px;
+            padding-left: 5px;
+            text-align: left;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), white 5%, white);            
+        }
+    }
+
+    &__sub-heading {
+        $subheading-line-height: 1.43;
+        $subheading-height: $subheading-line-height * 2;
+
+
+        font-size: 14px;
+        font-weight: $font-weight-400;
+        line-height: $subheading-line-height;
+        color: $cs-light-grey-8;
+        height: $subheading-height * 1em;
+        overflow: hidden;
+
+        & > *:first-child {
+            float: right;
+            width: 100%;
+            margin-left: -5px;
+            line-height: $subheading-line-height;
+        }
+
+        &::before {
+            content: "";
+            float: left;
+            width: 5px;
+            height: $subheading-height * 1em;
+        }
+
+        &::after {
+            content: "\02026";
+            box-sizing: content-box;
+            float: right;
+            position: relative;
+            top: -1*$subheading-line-height * 1em;
+            left: 100%;
+            width: 15%;
+            margin-left: -15%;
+            padding-right: 0px;
+            padding-left: 5px;
+            text-align: left;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), white 10%, white);            
+        }
     }
 
     &__date {
         @include tiny-text();
         margin-top: 15px;
+        color: $cs-light-grey-8;
+    }
+
+    &__type {
+        font-size: 12px;
+        font-weight: $font-weight-600;       
+        margin-top: 5px;
+        margin-bottom: 10px;
+
+        &--review {
+            color: $cs-light-blue;
+        }
+        &--sponsored {
+            color: $cs-sponsored-green;
+        }
+        &--car-advice,
+        &--riding-advice {
+            color: $cs-accent-green;
+        }
+        &--video {
+            color: $cs-orange;
+        }
+        &--news {
+            color: $cs-red;
+        }
+        &--comparison {
+            color: $cs-purple;
+        }
+        &--feature {
+            color: $cs-pink;
+        }
+        &--motoracing {
+            color: $cs-dark-grey-1;
+        }
     }
     //Transition
 

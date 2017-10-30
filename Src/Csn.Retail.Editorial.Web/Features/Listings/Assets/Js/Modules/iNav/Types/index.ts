@@ -1,12 +1,16 @@
 
 //NOTE: This State should sit else where
 export interface State {
-    csn_search: {
-        iNav: IINavResponse
-        history: {
-            iNav: IINavResponse
-        }
-    }  
+    store: IStore
+}
+
+export interface IStore {
+    listings: INavResults
+    history: { listings: INavResults }
+}
+
+export interface INavResults {
+    navResults: IINavResponse
 }
 
 export interface IINavResponse{
@@ -66,7 +70,9 @@ export interface IRefinement {
 export interface ISearchResults {
     imageUrl: string
     headline: string
+    subHeading: string
     dateAvailable: string
     articleDetailsUrl: string
-    label: string 
+    label: string
+    type: string
 }

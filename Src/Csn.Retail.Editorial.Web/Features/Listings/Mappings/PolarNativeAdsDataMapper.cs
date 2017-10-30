@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
@@ -8,7 +9,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
 {
     public interface IPolarNativeAdsDataMapper
     {
-        PolarNativeAdsData Map(RyvussNavResultDto source);
+        PolarNativeAdsData Map(IList<BreadCrumbDto> source);
     }
 
     [AutoBind]
@@ -21,27 +22,30 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             _tenantProvider = tenantProvider;
         }
 
-        public PolarNativeAdsData Map(RyvussNavResultDto source)
+        public PolarNativeAdsData Map(IList<BreadCrumbDto> source)
         {
-            if (!_tenantProvider.Current().DisplayPolarAds)
+            if (!_tenantProvider.Current().DisplayPolarAds || !source.Any())
             {
                 return null;
             }
 
-            var data = new PolarNativeAdsData
+            string makeInSource = null;
+            if (source.Any(a => a.Aspect == "Make"))
+            {
+                makeInSource = source.First(a => a.Aspect == "Make").Facet;
+            }
+            string modelInSource = null;
+
+            if (source.Any(a => a.Aspect == "Model"))
+            {
+                modelInSource = source.First(a => a.Aspect == "Model").Facet;
+            }
+
+            return new PolarNativeAdsData
             {
                 AreaName = "searchresults",
-                MakeModel = ""
+                MakeModel = $"{makeInSource}{(string.IsNullOrEmpty(modelInSource) ? "" : modelInSource)}".Replace("-", "").Replace(" ", "")
             };
-
-            //if (source.Items != null && source.Items.Any())
-            //{
-            //    var item = source.Items.First();
-
-            //    data.MakeModel = $"{item.Make}{(string.IsNullOrEmpty(item.Model) ? "" : item.Model)}".Replace("-", "").Replace(" ", "");
-            //}
-
-            return data;
         }
     }
 }

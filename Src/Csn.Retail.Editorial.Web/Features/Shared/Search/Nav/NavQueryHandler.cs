@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 
@@ -29,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {
                 Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
-                Limit = 20,
+                Limit = PageItemsLimit.ListingPageItemsLimit,
                 Offset = 0,
                 SortOrder = "Latest",
                 IncludeCount = true,

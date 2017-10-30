@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+﻿namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 {
     public static class SasAdTags
     {
@@ -15,6 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
             public const string Tile = "tile";
             public const string Random = "random";
             public const string ViewId = "viewid";
+            public const string Method = "method";
 
             public const string Car = "car";
             public const string Make = "make";

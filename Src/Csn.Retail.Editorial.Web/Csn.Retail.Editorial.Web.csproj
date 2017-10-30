@@ -158,6 +158,21 @@
     <Reference Include="Csn.WebMetrics.Ext, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.WebMetrics.Editorial.1.0.478.0\lib\net40\Csn.WebMetrics.Ext.dll</HintPath>
     </Reference>
+    <Reference Include="Expresso, Version=42.0.330.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expresso.42.0.330\lib\net46\Expresso.dll</HintPath>
+    </Reference>
+    <Reference Include="Expresso.Parser, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expresso.Parser.42.0.313\lib\net46\Expresso.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="FParsec, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40ccfc0a09edbb5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\FParsec.1.0.2\lib\net40-client\FParsec.dll</HintPath>
+    </Reference>
+    <Reference Include="FParsecCS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40ccfc0a09edbb5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\FParsec.1.0.2\lib\net40-client\FParsecCS.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Core.4.0.0.1\lib\net40\FSharp.Core.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
@@ -378,6 +393,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -437,7 +453,9 @@
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
+    <Compile Include="Features\Details\DetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
+    <Compile Include="Features\Details\Mappings\BrightcoveIFrameBuilder.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseMapper.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
@@ -456,23 +474,43 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\iNavArticleCount.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Containers\iNavBreadCrumbsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\iNavBreadCrumbs.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Containers\iNavPaginationContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\iNavPagination.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Containers\iNavSearchResultsContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\iNavSearchResults.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Containers\iNavSortingContainer.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\iNavSorting.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
+    <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
+    <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
+    <Compile Include="Features\Shared\Formatters\UrlParamsFormatter.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
-    <Compile Include="Features\Listings\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Listings\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
+    <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdsController.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSetting.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSettings.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\CommonTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsBreadCrumbTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsTagBuilder.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\MediaMotiveTag.cs" />
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
+    <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
+    <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
+    <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
     <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
@@ -502,7 +540,9 @@
     <Compile Include="Features\Shared\Search\Aspect\AspectResult.cs" />
     <Compile Include="Features\Shared\Search\Extensions\MapperExtensions.cs" />
     <Compile Include="Features\Shared\Search\Mapping\DateAvailableMapper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\FacetNodeActionResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\RefinementsNavNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ResultsMessageMapper.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
@@ -524,8 +564,11 @@
     <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsViewModel.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
+    <Compile Include="Features\Listings\Constants\PageItemsLimit.cs" />
     <Compile Include="Infrastructure\Constants\TenantNames.cs" />
+    <Compile Include="Infrastructure\ContextStores\ContextStoreKeys.cs" />
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\ExpressoExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />
     <Compile Include="Infrastructure\Filters\RedirectAttributeFilter.cs" />
@@ -557,6 +600,7 @@
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
     <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
+    <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />
     <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
     <Compile Include="Infrastructure\Redirects\HttpRequestContextWrapper.cs" />
@@ -566,7 +610,6 @@
     <Compile Include="Infrastructure\Redirects\RedirectStrategy.cs" />
     <Compile Include="Infrastructure\RequestWrapper\IRequestWrapper.cs" />
     <Compile Include="Infrastructure\RequestWrapper\RequestWrapperExtensions.cs" />
-    <Compile Include="Infrastructure\Serializers\JsonSerializer.cs" />
     <Compile Include="Infrastructure\StartUpTasks\IStartUpTask.cs" />
     <Compile Include="Infrastructure\UserContext\IUserContext.cs" />
     <Compile Include="Infrastructure\UserContext\UserContext.cs" />
@@ -664,9 +707,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
+    <Folder Include="Features\Listings\Helpers\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
+    <Folder Include="Views\DetailsRedirect\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
@@ -693,7 +738,7 @@
     <Content Include="Features\Shared\Assets\Css\Variables\_variables.scss" />
     <Content Include="Features\Shared\Assets\Css\Base\_base.scss" />
     <Content Include="Features\Shared\Views\_LayoutBasic.cshtml" />
-    <Content Include="Features\Shared\Views\_Header.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Layout\_header.scss" />
     <Content Include="Features\Details\Views\DefaultTemplate.cshtml" />
     <Content Include="Features\Details\Views\Partials\Hero\_SingleImage.cshtml" />
@@ -753,12 +798,12 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\EditorRatings\_procon.scss" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Mrec.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_SponsoredTextLinks.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Teads.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tile15.cshtml" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_Tracking.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_SponsoredTextLinks.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Teads.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tile15.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mediamotive.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
@@ -869,6 +914,13 @@
     <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
     <Content Include="Features\Listings\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Css\iNavSorting.scss" />
+    <Content Include="Features\MediaMotiveAds\Views\_Leaderboard.cshtml" />
+    <Content Include="Features\MediaMotiveAds\Views\_Mrec.cshtml" />
+    <Content Include="Features\MediaMotiveAds\Views\DetailsAd.cshtml" />
+    <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -918,17 +970,20 @@
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\iNav.ts" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
-    <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\preloadedState.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorials_details.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Fade\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Timer\index.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.js" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--searchresults.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.tsx" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.keywordSearch.scss" />
+    <Content Include="Features\Listings\Assets\css\listings-page.scss" />
+    <Content Include="Features\Details\Assets\Css\Details-page.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

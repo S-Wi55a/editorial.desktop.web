@@ -5,7 +5,6 @@ import { Fade } from 'ReactAnimations/Fade'
 import INavSearchResult from 'iNavSearchResults/Component/iNavSearchResult'
 import UI from 'ReactReduxUI'
 import { ActionTypes } from 'iNav/Actions/actions'
-import update from 'immutability-helper'
 
 if (!SERVER) {
     require('iNavSearchResults/Css/iNavSearchResults.scss')
@@ -40,8 +39,8 @@ class INavSearchResults extends React.Component {
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        searchResults: state.csn_search.iNav.searchResults,
-        isInsert: state['ui/INavSearchResultsContainer'] ? state['ui/INavSearchResultsContainer'].isInsert : false      
+        searchResults: state.store.listings.navResults.searchResults,
+        isInsert: state['ui/INavSearchResultsContainer'] ? state['ui/INavSearchResultsContainer'].isInsert : false              
     }
 }
 

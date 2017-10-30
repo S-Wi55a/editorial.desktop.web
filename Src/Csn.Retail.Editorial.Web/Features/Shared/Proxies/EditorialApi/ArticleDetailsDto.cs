@@ -12,6 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public HeroSection HeroSection { get; set; }
         public string Headline { get; set; }
         public string Subheading { get; set; }
+        public string Slug { get; set; }
         public string Summary { get; set; }
         public string SubType { get; set; }
         public string ReviewLocation { get; set; }

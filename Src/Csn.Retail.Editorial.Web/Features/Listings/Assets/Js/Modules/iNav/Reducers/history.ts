@@ -7,7 +7,7 @@ export const iNavHistoryReducer = (state: any, action: Actions) => {
                 case ActionTypes.INAV.UPDATE_PREVIOUS_STATE:
                     return {
                         ...state,
-                        iNav: { ...action.payload.data }
+                        listings: { ...action.payload.data }                        
                     }
                 case ActionTypes.INAV.ADD_PROMOTED_ARTICLE:
                     return promotedReducer(state, action)
@@ -21,13 +21,15 @@ function promotedReducer(state: IINavResponse, action: Actions) {
     try {
         const newState = update(state,
             {
-                iNav: {
-                    searchResults: {
-                        [action.payload.location]: {
-                            $set : action.payload
+                listings: {
+                    navResults: {
+                        searchResults: {
+                            [action.payload.location]: {
+                                $set : action.payload
+                            }
                         }
-                    } 
-                }           
+                    }
+                }
             })
         return newState
     } catch (e) {

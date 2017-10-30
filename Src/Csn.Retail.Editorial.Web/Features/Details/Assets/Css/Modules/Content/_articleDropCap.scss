@@ -9,6 +9,14 @@
         }
     }
 
+    &.sponsored {
+        .drop-cap {
+            & > p:first-child:first-letter {
+                color: $cs-sponsored-green;
+            }
+        }
+    }
+
     &.car-advice, &.riding-advice {
         .drop-cap {
             & > p:first-child:first-letter {
@@ -45,6 +53,14 @@
         .drop-cap {
             & > p:first-child:first-letter {
                 color: $cs-pink;
+            }
+        }
+    }
+
+    &.motoracing {
+        .drop-cap {
+            & > p:first-child:first-letter {
+                color: $cs-dark-grey-1;
             }
         }
     }

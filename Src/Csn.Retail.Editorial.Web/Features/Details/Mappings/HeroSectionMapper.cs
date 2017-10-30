@@ -13,6 +13,13 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     [AutoBind]
     public class HeroSectionMapper : IHeroSectionMapper
     {
+        private readonly IBrightcoveIFrameBuilder _brightcoveIFrameBuilder;
+
+        public HeroSectionMapper(IBrightcoveIFrameBuilder brightcoveIFrameBuilder)
+        {
+            _brightcoveIFrameBuilder = brightcoveIFrameBuilder;
+        }
+
         public HeroSection Map(ArticleDetailsDto article)
         {
             if (article.HeroSection == null) return null;
@@ -23,7 +30,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 Images = article.HeroSection.Images,
                 BrightcovePlayerId = GetBrightcovePlayerId(article.HeroSection.BrightcoveVideo),
                 BrightcoveVideoId = GetBrightcoveVideoId(article.HeroSection.BrightcoveVideo),
-                BrightcoveVideoIFrameUrl = GetBrightcoveVideoIFrameUrl(article.HeroSection.BrightcoveVideo),
+                BrightcoveVideoIFrameUrl = _brightcoveIFrameBuilder.Build(article.HeroSection.BrightcoveVideo, article.NetworkId),
                 BrightcoveVideoEncodingUrl = GetBrightcoveVideoEncodingUrl(article.HeroSection.BrightcoveVideo),
                 Headline = article.Headline,
                 SubHeading = article.Subheading,
@@ -44,11 +51,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
         private string GetBrightcoveVideoEncodingUrl(BrightcoveVideo video)
         {
             return video == null || video.EncodingUrl.IsNullOrEmpty() ? null : video.EncodingUrl;
-        }
-
-        private string GetBrightcoveVideoIFrameUrl(BrightcoveVideo video)
-        {
-            return video == null ? null : $"https://players.brightcove.net/674523943001/{video.PlayerId}_default/index.html?videoId={video.VideoId}";
         }
     }
 }

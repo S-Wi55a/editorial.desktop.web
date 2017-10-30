@@ -10,6 +10,7 @@ using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.SimpleCqrs;
 using Csn.WebMetrics.Core.Model;
 using Csn.WebMetrics.Editorial.Interfaces;
+using ArticleType = Csn.WebMetrics.Core.Model.ArticleType;
 using IContextStore = Csn.Retail.Editorial.Web.Infrastructure.ContextStores.IContextStore;
 
 namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer

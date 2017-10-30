@@ -1,0 +1,6 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@{
+    var logoText = Html.CurrentTenant().SiteLogoText;
+}
+
+<a href="~/" class="page-header__logo" data-webm-clickvalue="site-icon" title="@logoText">@logoText</a>

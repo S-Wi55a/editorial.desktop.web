@@ -44,7 +44,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
 
             var firstNode = resultData.INav.Nodes.First();
 
-            var result = _mapper.Map<RefinementResult>(firstNode);
+            var result = AutoMapper.Mapper.Map<RefinementResult>(firstNode, opt => {
+                opt.Items["sortOrder"] = query.SortOrder;
+            });
 
             result.Count = resultData.Count;
 

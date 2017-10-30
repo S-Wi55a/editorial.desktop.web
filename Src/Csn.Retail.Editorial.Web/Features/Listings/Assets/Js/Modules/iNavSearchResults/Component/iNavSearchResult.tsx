@@ -1,8 +1,6 @@
 ﻿import * as React from "react"
 import { ISearchResults } from 'iNav/Types'
 import Img from 'react-image'
-import { CSSTransition }  from 'react-transition-group'
-
 
 if (!SERVER) {
     require('iNavSearchResults/Css/iNavSearchResult.scss')
@@ -19,8 +17,14 @@ class INavSearchResult extends React.Component<ISearchResults> {
                             {this.props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${this.props.label}`}>{this.props.label}</div> : ''}
                         </div>
                         <div className="iNavSearchResult__content-wrapper">
+                            <div className={`iNavSearchResult__type iNavSearchResult__type--${this.props.type.toLowerCase()}`}>
+                                {this.props.type.toUpperCase()}
+                            </div>
                             <div className="iNavSearchResult__heading">
-                                {this.props.headline}
+                                <h2>{this.props.headline}</h2>
+                            </div>
+                            <div className="iNavSearchResult__sub-heading">
+                                <span>{this.props.subHeading}</span>
                             </div>
                             <div className="iNavSearchResult__date">
                                 {this.props.dateAvailable}

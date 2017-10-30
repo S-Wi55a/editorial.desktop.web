@@ -5,48 +5,41 @@
     width: $iNav-width;
     position: relative;
     z-index: 1;
+    top: -15px;
+}
+
+.scrollmagic-pin-spacer--iNav {
+    min-height: $iNav-header-height !important;
+    height: $iNav-header-height !important;
 }
 
 .iNav {
     background-color: $iNav-background-color;
     border-bottom: 1px solid $cs-light-grey-2;   
     position: relative;
-    box-shadow: 0 0 0px 1000vh rgba(0,0,0,0); 
-    transition: box-shadow .3s;
+    box-shadow: 0 2px 3px 0 rgba(166, 166, 166, 0.36);
 
-    &::before {
+    &::after {
         content: '';
-        display: block;
-        width: 100%;
-        background-color: $cs-primary;
-        height: 5px;
+        opacity: 0;
+        background-color: rgba(255,255,255,0.6); 
+        transition: opacity .3s;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: - 1;
+        pointer-events: none;
     }
 
-    &.isActive {
-        opacity: 1;
-        box-shadow: 0 0 0px 1000vh rgba(0,0,0,0.75); 
+    &--isActive {
+        box-shadow: 0 0 0px 0 rgba(0,0,0,0); 
 
         &::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: -1;
-        }
-
-        .iNav__container {
-
-            &::before {
-                content: '';
-                position: fixed;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                z-index: 0;
-            }
+            opacity: 1; 
+            pointer-events: auto;
+            
         }
     }
 
@@ -56,6 +49,18 @@
         height: $iNav-header-height;
         display: flex;
         align-items: center;
-        justify-content: center;  
+        justify-content: center;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: $grid-gutter-width/2;
+        padding-right: $grid-gutter-width/2;
+        
+        @include breakpoint($screen-md) {
+            width: calc(#{$screen-md});
+        }
+        @include breakpoint($screen-lg) {
+            width: calc(#{$screen-lg});
+        } 
     }
+
 }
