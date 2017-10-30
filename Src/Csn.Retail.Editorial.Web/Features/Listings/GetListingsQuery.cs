@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public string SortOrder
         {
             get => string.IsNullOrEmpty(_sortOrder) ? EditorialSortKeyValues.ListingPageDefaultSort : _sortOrder;
-            set => _sortOrder = EditorialSortKeyValues.Items.TryGetValue(value, out var sortOrder)
+            set => _sortOrder = value != null && EditorialSortKeyValues.Items.TryGetValue(value, out var sortOrder)
                 ? sortOrder.Key
                 : EditorialSortKeyValues.ListingPageDefaultSort;
         }

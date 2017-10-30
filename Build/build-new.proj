@@ -106,21 +106,16 @@
 	  <!-- END: Tests -->
 
 
-			<Target Name="TaskImportNpmPackages">
-				<MakeDir Directories="$(PackageDir)\node_modules"/>
-				<RoboCopy
-						SourceFolder="$(PackageDir)\node_modules"
-						DestinationFolder="$(TargetProjectDir)\node_modules"
-						Subdirectories="true"
-						ExcludeFolders="__none"
-						ExcludeFiles=".log"
-						Options="/s /MT:10 /LOG:robocopy-result.log"
-						/>
-			</Target>
-
-	<Target Name="TaskNpmRestore">
-			<Message Text="Restoring front end build..." Importance="high"/>
-			<Exec Command="npm install" WorkingDirectory="$(TargetProjectDir)"/>
+	<Target Name="TaskImportNpmPackages">
+		<MakeDir Directories="$(PackageDir)\node_modules"/>
+		<RoboCopy
+				SourceFolder="$(PackageDir)\node_modules"
+				DestinationFolder="$(TargetProjectDir)\node_modules"
+				Subdirectories="true"
+				ExcludeFolders="__none"
+				ExcludeFiles=".log"
+				Options="/s /MT:10 /LOG:robocopy-result.log"
+				/>
 	</Target>
 
 	<Target Name="TaskBackupNpmPackages">
@@ -132,11 +127,6 @@
 				ExcludeFiles=".log"
 				Options="/s /purge /MT:10 /LOG:robocopy-result.log"
 				/>
-	</Target>
-
-	<Target Name="FrontEndBuild" DependsOnTargets="TaskNpmRestore">
-		<Message Text="Running Webpack build..." Importance="high"/>
-		<Exec Command="npm run build-release" WorkingDirectory="$(TargetProjectDir)"/>
 	</Target>
 
 	<Target Name="TaskGenerateVersionInfo" Condition="$(BUILD_NUMBER) != ''">
@@ -228,7 +218,7 @@
 				<Message Text="Make the repo dev ready..." Importance="high"/>
 	</Target>
 
-	<Target Name="Artifact" DependsOnTargets="NugetRestore;CompileBuild;UnitTests;FrontEndBuild;CopySourceToOutputNoTransform"/>
+	<Target Name="Artifact" DependsOnTargets="NugetRestore;CompileBuild;UnitTests;CopySourceToOutputNoTransform"/>
 
 	<!-- LOAD CUSTOM TASKS -->
 	<Target Name="Compile" Condition="$(Configuration) != 'Feature'">
