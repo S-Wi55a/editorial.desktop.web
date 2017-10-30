@@ -74,7 +74,7 @@ class INavSearchResults extends React.Component {
 const mapStateToProps = (state) => {
     return {
         searchResults: state.store.listings.navResults.searchResults,
-        shortname: typeof csn_editorial !== 'undefined' ? csn_editorial.tenant : '' //TODO:     
+        shortname: state.store.listings.disqusSource 
     }
 }
 

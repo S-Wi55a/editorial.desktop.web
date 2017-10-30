@@ -28,5 +28,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 
         public string SiteLogoText { get; set; }
         #endregion
+
+        #region Disqus
+
+        public string DisqusSource { get; set; }
+        #endregion
     }
 }
