@@ -89,6 +89,7 @@
     }
 
     &__content-wrapper {
+        @include clearfix;        
         background-color: $cs-white;
         padding: 15px;
         border-bottom-left-radius: 4px;
@@ -182,9 +183,23 @@
     }
 
     &__date {
-        @include tiny-text();
+        font-size: 12px;
         margin-top: 15px;
         color: $cs-light-grey-8;
+        float: left;
+    }
+
+    &__comment-count {
+        font-size: 12px;
+        margin-top: 15px;
+        color: $cs-light-grey-8;
+        float: right;
+
+        &::before {
+            content: $icon-speech-lg;
+            font-family: $font-family-icons;
+            margin-right: 5px;
+        }
     }
 
     &__type {

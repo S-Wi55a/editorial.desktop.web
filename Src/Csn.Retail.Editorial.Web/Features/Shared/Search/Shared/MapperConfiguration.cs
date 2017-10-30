@@ -68,7 +68,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => _imageMapper.MapImageUrl(src)))
                 .ForMember(dest => dest.DateAvailable, opt => opt.MapFrom(src => src.MapDateAvailable()))
                 .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => _articleUrlMapper.MapDetailsUrl(src)))     
-                .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.GetSponsoredLabel()));
+                .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.GetSponsoredLabel()))
+                .ForMember(dest => dest.DisqusArticleId, opt => opt.MapFrom(src => src.GetDisqusArticleId()));
+
 
         }
     }
