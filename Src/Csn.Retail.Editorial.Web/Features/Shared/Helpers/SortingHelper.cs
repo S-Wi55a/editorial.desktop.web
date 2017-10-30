@@ -5,18 +5,21 @@ using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Utils;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
     public interface ISortingHelper
     {
-        SortingViewModel GenerateSortByViewModel(IDictionary<string, ISortKeyItem> sortKeys, string currrentSort, string query, string keyword);
+        SortingViewModel GenerateSortByViewModel(IDictionary<string, ISortKeyItem> sortKeys, string currrentSort,
+            string query, string keyword);
     }
 
     [AutoBind]
     public class SortingHelper : ISortingHelper
     {
-        public SortingViewModel GenerateSortByViewModel(IDictionary<string, ISortKeyItem> sortKeys, string currrentSort, string query, string keyword)
+        public SortingViewModel GenerateSortByViewModel(IDictionary<string, ISortKeyItem> sortKeys, string currrentSort,
+            string query, string keyword)
         {
             return new SortingViewModel
             {
@@ -25,7 +28,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                     Selected = x.Key.Equals(currrentSort, StringComparison.InvariantCultureIgnoreCase),
                     Label = x.Value.DisplayName,
                     Value = x.Value.Key,
-                    Url = $"?q={query}{UrlParamsFormatter.GetSortParam(x.Value.Key)}"
+                    Url =
+                        ListingsUrlBuilder.Build(query, "", 0,
+                            x.Value.Key) //ToDo Check: $"?q={query}{UrlParamsFormatter.GetSortParam(x.Value.Key)}"
                 }).ToList()
             };
         }

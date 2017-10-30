@@ -9,6 +9,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 using Csn.Serializers;
 using Csn.Serializers.Json;
 using Csn.SimpleCqrs;
@@ -76,6 +77,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 var loggerFactory = c.Resolve<ILoggerFactory>();
                 return loggerFactory.For<DetailsRedirectLogger>();
             }).As<IDetailsRedirectLogger>().SingleInstance();
+            builder.RegisterType<LegacyListingsRedirectHelper>().As<LegacyListingsRedirectHelper>().SingleInstance();
         }
     }
 

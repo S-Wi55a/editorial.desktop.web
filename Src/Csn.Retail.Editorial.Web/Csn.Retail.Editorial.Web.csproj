@@ -605,8 +605,10 @@
     <Compile Include="Features\Shared\Models\EditorialMetadataDto.cs" />
     <Compile Include="Infrastructure\Redirects\HttpRequestContextWrapper.cs" />
     <Compile Include="Infrastructure\Redirects\IMobiDetailsUrlBuilder.cs" />
+    <Compile Include="Infrastructure\Redirects\LegacyListingsRedirectHelper.cs" />
+    <Compile Include="Infrastructure\Utils\ListingsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\MobiRedirectStrategy.cs" />
-    <Compile Include="Infrastructure\Redirects\LegacyUrlRedirectStrategy.cs" />
+    <Compile Include="Infrastructure\Redirects\LegacyListingsUrlRedirectStrategy.cs" />
     <Compile Include="Infrastructure\Redirects\RedirectInstruction.cs" />
     <Compile Include="Infrastructure\Redirects\RedirectStrategy.cs" />
     <Compile Include="Infrastructure\RequestWrapper\IRequestWrapper.cs" />
