@@ -2,6 +2,8 @@ declare module 'Endpoints/endpoints'
 declare module 'ReactReduxUI'
 declare module 'iNav/Components/iNavMenuHeader'
 declare module 'global-object'
+declare module 'react-image'
+declare module 'custom-event'
 declare module 'ScrollMagic'
 declare module 'query-string'
 

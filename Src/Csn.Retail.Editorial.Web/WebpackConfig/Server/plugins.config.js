@@ -21,7 +21,8 @@ export const plugins = (tenant = 'sever') => {
         new webpack.EnvironmentPlugin({
             NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
             DEBUG: false
-        })             
+        }),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)           
     ]
 
     if (IS_PROD) {

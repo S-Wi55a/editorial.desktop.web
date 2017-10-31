@@ -1,6 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { FadeIn } from 'ReactAnimations/Fade'
+import Timer from 'ReactAnimations/Timer'
 import { Thunks } from 'iNav/Actions/actions'
 
 // TODO: use enum in TS for this
@@ -21,14 +22,13 @@ const INavBreadCrumb = ({facetDisplay, removeAction, fetchINav, type}) => {
 
 const INavBreadCrumbs = ({ breadCrumbs, fetchINav }) => (
         <div className="iNavBreadCrumbs">
-            <ReactCSSTransitionGroup
-                transitionName="iNavBreadCrumbTransition"
-                transitionEnterTimeout={300}
-                transitionLeaveTimeout={300}>
-                {breadCrumbs.map((breadCrumb) => {
-                    return <INavBreadCrumb key={breadCrumb.facetDisplay} {...breadCrumb} fetchINav={fetchINav}/>
-                })}
-            </ReactCSSTransitionGroup>
+            {breadCrumbs.map((breadCrumb) => {
+                return  <Timer key={`${breadCrumb.facetDisplay}${Math.random()}`}>
+                            <FadeIn duration={300} startingOpacity={0} className="d-inline-block">
+                                <INavBreadCrumb  {...breadCrumb} fetchINav={fetchINav}/>
+                            </FadeIn>
+                        </Timer>
+            })}
         </div>
     )
 

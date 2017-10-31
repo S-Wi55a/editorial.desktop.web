@@ -22,6 +22,7 @@
     @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
     @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
 }
+
 <div class="listing-page">
     @{ Html.RenderPartial("Partials/_Header"); }
     @Html.React("global.Components.INav", new {state = Model}, containerId: "iNav")
@@ -44,6 +45,10 @@
 
 @section BottomScripts
 {
-    @Html.React("global.Components.INavPreloadedState", new { state = Model }, containerId: "INavPreloadedState")
-    @{ Html.RenderPartial("Partials/MediaMotive/_Krux"); }
+    @Html.React("global.Components.INavPreloadedState", new {state = Model}, containerId: "INavPreloadedState")
+    @if (Model.PolarNativeAdsData != null)
+    {
+        Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
+    }
+    @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
 }

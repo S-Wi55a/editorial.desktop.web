@@ -489,6 +489,7 @@
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
+    <Compile Include="Features\Listings\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdController.cs" />
@@ -685,7 +686,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actionsTypes.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\immutableJSHelper.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
     <Content Include="Features\Shared\Assets\Js\csn.vendor.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Utils\optimizedResize.js" />
@@ -970,14 +970,19 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorials_details.js" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Fade\index.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Timer\index.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--searchresults.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.tsx" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.keywordSearch.scss" />
     <Content Include="Features\Listings\Assets\css\listings-page.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

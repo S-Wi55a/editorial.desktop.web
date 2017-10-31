@@ -54,7 +54,9 @@
         text-decoration: none;
         cursor: default;
 
-        &:hover {
+        &:hover,
+        &:visited,
+        &:focus, {
             color: $cs-white;            
         }
     }
