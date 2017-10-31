@@ -142,6 +142,7 @@
         "react": "^16.0.0",
         "react-addons-css-transition-group": "^15.6.0",
         "react-dev-utils": "^4.0.1",
+        "react-dom": "^16.0.0",
         "react-hot-loader": "^3.0.0-beta.7",
         "react-image": "^1.0.1",
         "react-prop-types": "^0.4.0",
