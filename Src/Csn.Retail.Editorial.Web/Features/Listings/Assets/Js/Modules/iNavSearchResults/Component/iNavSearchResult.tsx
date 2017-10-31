@@ -25,6 +25,12 @@ const INavSearchResult = (props: ISearchResults) => (
                 <div className="iNavSearchResult__date">
                     {props.dateAvailable}
                 </div>
+                <div
+                    className="disqus-comment-count iNavSearchResult__comment-count"
+                    data-disqus-identifier={props.disqusArticleId}
+                    data-disqus-url={props.articleDetailsUrl}
+                >
+                </div>
             </div>
         </a>
 

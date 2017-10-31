@@ -8,6 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
         public PagingViewModel Paging { get; set; }
         public SortingViewModel Sorting { get; set; }
         public string CurrentQuery { get; set; }
-        public string Keyword { get; set; }        
+        public string Keyword { get; set; }    
+        public string DisqusSource { get; set; }
     }
 }

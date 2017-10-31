@@ -76,7 +76,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                         Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
                         Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
                         CurrentQuery = UrlParamsFormatter.GetParams(query.Q, sortOrder: query.SortOrder, keyword: query.Keyword),
-                        Keyword = query.Keyword
+                        Keyword = query.Keyword,
+                        DisqusSource = _tenantProvider.Current().DisqusSource
+
                     }
                 };
         }
