@@ -80,6 +80,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
                     CurrentQuery = UrlParamsFormatter.GetParams(query.Q, sortOrder: query.SortOrder, keyword: query.Keyword),
                     Keyword = query.Keyword,
+                    DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs)
                 }
             };

@@ -7,8 +7,8 @@ declare module 'custom-event'
 declare module 'ScrollMagic'
 declare module 'query-string'
 
-
 declare var SERVER: boolean
+declare var DISQUSWIDGETS: any
 
 // Server Declarations
 declare module 'Util/ReactServerConnect'
@@ -19,3 +19,4 @@ declare module 'iNavSearchResults/Containers/iNavSearchResultsContainer'
 declare module 'iNavPagination/Containers/iNavPaginationContainer'
 declare module 'iNavSorting/Containers/iNavSortingContainer'
 declare module 'iNav/Components/iNavKeywordSearch'
+
