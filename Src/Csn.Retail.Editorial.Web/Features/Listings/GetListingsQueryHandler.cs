@@ -10,11 +10,9 @@ using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
-using Expresso.Helpers;
 using Expresso.Syntax;
 using IContextStore = Ingress.ContextStores.IContextStore;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
@@ -33,8 +31,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IExpressionParser _parser;
         private readonly IExpressionFormatter _expressionFormatter;
 
-        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
-            ISortingHelper sortingHelper, IContextStore contextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter)
+        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider,
+            IMapper mapper, IPaginationHelper paginationHelper,
+            ISortingHelper sortingHelper, IContextStore contextStore, IExpressionParser parser,
+            IExpressionFormatter expressionFormatter)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
@@ -69,23 +69,24 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
             var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.SortOrder; });
-            
-            return resultData == null ? null : new GetListingsResponse
+
+            return resultData == null
+                ? null
+                : new GetListingsResponse
                 {
                     ListingsViewModel = new ListingsViewModel
                     {
                         NavResults = navResults,
-                        Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
-                        Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
-                        CurrentQuery = GetFormattedQuery(query),
+                        Paging = _paginationHelper.GetPaginationData(navResults.Count,
+                            PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q,
+                            query.Keyword),
+                        Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder,
+                            query.Q, query.Keyword),
+                        CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.SortOrder, offset: 0,
+                            keyword: query.Keyword),
                         Keyword = query.Keyword
                     }
                 };
-        }
-
-        private static string GetFormattedQuery(GetListingsQuery query)
-        {
-            return string.IsNullOrEmpty(query.Q) ? string.Empty : $"?q={query.Q}{UrlParamsFormatter.GetSortParam(query.SortOrder)}";
         }
     }
 }

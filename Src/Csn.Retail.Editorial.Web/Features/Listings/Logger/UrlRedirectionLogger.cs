@@ -1,17 +1,18 @@
 ﻿using Csn.Logging;
+using Csn.Retail.Editorial.Web.Features.Errors;
 
-namespace Csn.Retail.Editorial.Web.Features.Errors
+namespace Csn.Retail.Editorial.Web.Features.Listings.Logger
 {
-    public interface IUrlNotFoundLogger
+    public interface IUrlRedirectionLogger
     {
         void Log(string requestUrl);
     }
 
-    public class UrlNotFoundLogger : IUrlNotFoundLogger
+    public class UrlRedirectionLogger : IUrlRedirectionLogger
     {
         private readonly ILogger _logger;
 
-        public UrlNotFoundLogger(ILogger logger)
+        public UrlRedirectionLogger(ILogger logger)
         {
             _logger = logger;
         }
@@ -21,5 +22,4 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
             _logger.Trace(requestUrl);
         }
     }
-   
 }

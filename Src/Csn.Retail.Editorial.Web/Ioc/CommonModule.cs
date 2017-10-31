@@ -5,6 +5,7 @@ using Csn.Logging;
 using Csn.Logging.NLog3;
 using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Errors;
+using Csn.Retail.Editorial.Web.Features.Listings.Logger;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
@@ -77,7 +78,16 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 var loggerFactory = c.Resolve<ILoggerFactory>();
                 return loggerFactory.For<DetailsRedirectLogger>();
             }).As<IDetailsRedirectLogger>().SingleInstance();
-            builder.RegisterType<LegacyListingsRedirectHelper>().As<LegacyListingsRedirectHelper>().SingleInstance();
+
+            //Handling legacy URLs
+            builder.RegisterType<LegacyListingsRedirectHelper>().As<ILegacyListingsRedirectHelper>().SingleInstance();
+            // set up separate logger for this class so we can log separately
+            builder.RegisterType<UrlRedirectionLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
+            {
+                var loggerFactory = c.Resolve<ILoggerFactory>();
+                return loggerFactory.For<UrlRedirectionLogger>();
+            }).As<IUrlRedirectionLogger>().SingleInstance();
+
         }
     }
 

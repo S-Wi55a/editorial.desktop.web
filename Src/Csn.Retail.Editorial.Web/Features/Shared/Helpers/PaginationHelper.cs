@@ -42,7 +42,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                 Pages = GeneratePageLinks(currentPageNumber, limit, totalPages, query, sortOrder, keyword).ToList(), // Only if more than 2 pages
                 DisplayText = GetDisplayText(count, totalPages, offset, currentPageNumber, limit)
             };
-        }        
+        }
+
+        #region Private Methods
 
         private string GetDisplayText(int count, int totalPages, int offset, int currentPageNumber, int limit)
         {
@@ -98,8 +100,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             return result < MinPageNo ? MinPageNo : result;
         }
 
-        #region Private Methods
-
         private PagingItemViewModel GeneratePageLink(long pageNo, int limit, string query, string sortOrder, string keyword)
         {
             var offset = (pageNo - MinPageNo) * limit;
@@ -107,9 +107,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             return new PagingItemViewModel
             {
                 PageNo = pageNo,
-                Url = $"?q={query}{UrlParamsFormatter.GetOffsetParam(offset)}{UrlParamsFormatter.GetSortParam(sortOrder)}{UrlParamsFormatter.GetKeywordParam(keyword)}"
+                Url = ListingsUrlFormatter.GetQueryString(query, offset, sortOrder, keyword)
             };        
         }
+
         #endregion
     }
 }

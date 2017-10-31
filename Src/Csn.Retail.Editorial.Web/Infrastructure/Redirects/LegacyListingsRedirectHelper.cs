@@ -51,9 +51,9 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
         private string GetRedirectionUrl(EditorialSeoDto seoDto, string keyword, long offset, string sortOrder)
         {
             if (seoDto.HasSeo())
-                return ListingsUrlBuilder.Build(seoDto.Metadata.Seo, offset, sortOrder);
+                return ListingsUrlFormatter.GetQueryString(seoDto.Metadata.Seo, offset, sortOrder);
 
-            return ListingsUrlBuilder.Build(seoDto.Metadata.query, keyword, offset, sortOrder);
+            return ListingsUrlFormatter.GetQueryString(seoDto.Metadata.query,offset, sortOrder, keyword);
         }
     }
 }

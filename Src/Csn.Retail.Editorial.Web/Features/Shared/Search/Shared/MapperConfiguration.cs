@@ -36,7 +36,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.NoResultsInstructionMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)));
 
             cfg.CreateMap<BreadCrumbDto, BreadCrumb>()
-                .ForMember(dest => dest.Term, opt => opt.Ignore());
+                .ForMember(dest => dest.Term, opt => opt.Ignore())
+                .ForMember(dest => dest.RemoveAction, opt => opt.MapFrom(src => _breadCrumbMapper.GetRemoveActionUrl(src)));
 
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
                 .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)));

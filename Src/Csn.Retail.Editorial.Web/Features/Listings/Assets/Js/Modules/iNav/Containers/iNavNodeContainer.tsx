@@ -59,8 +59,8 @@ interface IINavNodeContainer extends INode, ICategory {
 
 // This is separated for displaying sub lists
 const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) => {
-//debugger
-  return <div className={['iNav-category__container', props.activeItemId === props.index ? 'isActive' : ''].join(' ')}>
+
+  return <div className={['iNav-category__container', props.activeItemId === props.index ? `iNav-category__container--isActive iNav-category__container--${props.activeItemId}` : ''].join(' ')}>
     <div className='iNav-category__header'>{props.displayName}</div>
     <div className={['iNav-category__container-page', `iNav-category__container-page--${props.activePage}`].join(' ')}>
       {/* First Level*/}
@@ -107,7 +107,7 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
 // Connect
 const mapStateToProps = (state: any, ownProps: IINavNodeContainer) => {
   return {
-      pendingQuery: state.store.listings.navResults.pendingQuery,
+      pendingQuery: state.store.listings.pendingQuery,
       currentRefinement: state.store.listings.navResults.currentRefinement,
       refinementId: state[`ui/iNavNodeContainer${ownProps.name}`] ?  state[`ui/iNavNodeContainer${ownProps.name}`].refinementId : null
   }

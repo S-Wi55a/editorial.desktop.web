@@ -12,7 +12,7 @@
     
     &-item {
         border: solid 1px $cs-grey;
-        min-width: 170px;
+        min-width: $iNav-header-item-width;
         padding: 0 15px;
         line-height: $item-height;
         background-color: $cs-white;
@@ -39,18 +39,35 @@
             backface-visibility: hidden;
             transition: transform .3s;
         }
-        &:not(.isActive):hover {
+        &:not(&--isActive):hover {
             &::before {
                 animation-name: fadeInDown;
             }
         }
-        &.isActive {
+        &--isActive {
             color: $cs-primary;
             font-weight: $font-weight-600;
+            background-color: $cs-light-grey-7;
             &::before {
                 content: $icon-chevron-up-lg;
                 animation-name: fadeInUp;
             }
         }
+    }
+
+    &-item-count {
+        background-color: $cs-primary;
+        color: $cs-white;
+        border-radius: 9999px;
+        width: 23px;
+        height: 23px;
+        display: inline-block;
+        line-height: 23px;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: $font-weight-600;
+        font-size: 12px;
+        margin-left: 15px;
+        margin-right: 15px;
     }
 }

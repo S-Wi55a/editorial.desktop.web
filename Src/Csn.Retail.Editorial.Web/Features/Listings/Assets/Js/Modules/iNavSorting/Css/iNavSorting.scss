@@ -12,6 +12,7 @@
     border: solid 1px $cs-grey;
     border-radius: $iNav-border-radius;
     cursor: pointer;
+    background-color: $cs-white;
 
     @include breakpoint($screen-lg) {
         top: 45px;  

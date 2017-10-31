@@ -1,15 +1,20 @@
 ﻿@import "css/_globals.scss";
 
 
-.iNavPagination__container {
-    @include clearfix();
-    margin-bottom: 25px;
-    margin-top: 20px;
-    text-align: center;
+.iNavPagination {
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    &__container {
+        @include clearfix();
+        margin-bottom: 25px;
+        margin-top: 20px;
+        text-align: center;
+    }
 }
 
 .iNavPageItem {
-    $itemSize: 45px;
+    $itemSize: 44px;
     $padding: 15px;
     cursor: pointer;
     font-size: 20px;
@@ -48,10 +53,15 @@
         color: $cs-white;
         text-decoration: none;
         cursor: default;
+
+        &:hover {
+            color: $cs-white;            
+        }
     }
 
     &--previous,
     &--next {
+        font-size: 17px;
         border: solid 1px $cs-primary;
         height: $itemSize;
         width: $itemSize;
@@ -90,6 +100,7 @@
         border: none;
         cursor: default;
         bottom: 5px;
+        color: $cs-light-grey-8;
         &:hover {
             text-decoration: none;
             &::after {
@@ -102,11 +113,11 @@
 .iNavPagination {
 
     &__info {
-        font-size: 14px;
-        font-weight: $font-weight-600;
+        font-size: 18px;
+        font-weight: $font-weight-400;
         margin-bottom: 25px;
         margin-top: 20px;
         text-align: center;
-        color: $cs-grey;
+        color: $cs-light-grey-8;
     }
 }

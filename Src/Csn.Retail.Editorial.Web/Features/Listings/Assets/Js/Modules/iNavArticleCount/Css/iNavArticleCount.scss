@@ -2,7 +2,7 @@
 @import "iNav/Css/iNav.variables";
 
 .iNavArticleCount {
-    @include h4();
+    @include h3();
     line-height: $iNav-sort-height;
     margin-top: 30px;
     margin-bottom: 35px;
@@ -20,7 +20,7 @@
     $spacing: 20px;
     
     &__message {
-        @include h4();
+        @include h3();
         line-height: $spacing;
         margin-top: 40px;
         margin-bottom: $spacing;
