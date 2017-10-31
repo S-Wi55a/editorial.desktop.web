@@ -46,8 +46,4 @@
 {
     @Html.React("global.Components.INavPreloadedState", new { state = Model }, containerId: "INavPreloadedState")
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux"); }
-    <script>
-        var csn_editorial = csn_editorial || {};
-        csn_editorial.tenant = '@tenantName';
-    </script>
 }
