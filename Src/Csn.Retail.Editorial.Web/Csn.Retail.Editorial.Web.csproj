@@ -686,7 +686,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actionsTypes.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\immutableJSHelper.js" />
-    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\Details\placements--editorials_details.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\nativeAds.js" />
     <Content Include="Features\Shared\Assets\Js\csn.vendor.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Utils\optimizedResize.js" />

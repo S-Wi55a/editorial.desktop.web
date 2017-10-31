@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import Timer from 'ReactAnimations/Timer'
-import { Fade } from 'ReactAnimations/Fade'
+import { FadeIn } from 'ReactAnimations/Fade'
 import INavSearchResult from 'iNavSearchResults/Component/iNavSearchResult'
 import UI from 'ReactReduxUI'
 import { ActionTypes } from 'iNav/Actions/actions'
@@ -19,13 +19,13 @@ class INavSearchResults extends React.Component {
 
                   //TODO: add Teads component
 
-                    let animationDuration = SERVER ? 0 : 75
+                    let animationDuration = SERVER ? 0 : 150
                     let delay = (i % 2 === 0) ? animationDuration*i : animationDuration*(i-1) 
                     return  (
                         <Timer key={`${searchResult.headline}${Math.random()}`} delay={delay}>
-                            <Fade duration={animationDuration} startingOpacity={this.props.isInsert ? 1 : 0}>                            
+                            <FadeIn duration={animationDuration} startingOpacity={this.props.isInsert ? 1 : 0}>                            
                                 <INavSearchResult {...searchResult} />
-                            </Fade>
+                            </FadeIn>
                         </Timer>
                     )
                 })

@@ -10,13 +10,14 @@ export const iNavReducer = (state: any, action: Actions) => {
         case ActionTypes.INAV.UPDATE_PENDING_QUERY: {
             return {
                 ...state,
-                ...{ pendingQuery: action.payload.query }
+                pendingQuery: action.payload.query
             }
         }
         case ActionTypes.API.INAV.FETCH_QUERY_SUCCESS:
             return {
                 ...state,
-                ...action.payload.data
+                navResults: action.payload.data
+                
             }
         case ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS:
             return aspectReducer(state, action)

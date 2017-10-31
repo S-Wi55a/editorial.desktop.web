@@ -32,7 +32,7 @@
         <div class="main">
             @Html.React("global.Components.INavArticleCount", new {state = Model}, containerId: "iNavArticleCount")
             @Html.React("global.Components.INavSorting", new { state = Model}, containerId: "iNavSorting")
-            <!-- @* @Html.React("global.Components.INavBreadCrumbs", new {state = Model}, containerId: "iNavBreadcrumbs") *@  TODO: Fix animation which is break this -->
+            @Html.React("global.Components.INavBreadCrumbs", new {state = Model}, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSearchResults", new {state = Model}, containerId: "iNavSearchResults")
             @Html.React("global.Components.INavPagination", new {state = Model}, containerId: "iNavPagination")
 
