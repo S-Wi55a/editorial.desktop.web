@@ -1,20 +1,20 @@
-﻿namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
+﻿using System.Web;
+
+namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
 {
     public static class UrlParamsFormatter
     {
-        public static string GetSortParam(string sortOrder)
+        public static string GetParams(string q = "", long offset = 0, string sortOrder = "", string keyword = "")
         {
-            return string.IsNullOrEmpty(sortOrder) ? string.Empty : $"&sortOrder={sortOrder}";
-        }
+            var queryParams = HttpUtility.ParseQueryString(string.Empty);
 
-        public static string GetKeywordParam(string keyword)
-        {
-            return string.IsNullOrEmpty(keyword) ? string.Empty : $"&keyword={keyword}";
-        }
+            if (!string.IsNullOrEmpty(q)) queryParams["q"] = q;
+            if (!string.IsNullOrEmpty(sortOrder)) queryParams["sortOrder"] = sortOrder;
+            if (!string.IsNullOrEmpty(keyword)) queryParams["keyword"] = keyword;
+            if (offset != 0) queryParams["offset"] = offset.ToString();
 
-        public static string GetQueryParam(string q)
-        {
-            return string.IsNullOrEmpty(q) ? string.Empty : $"?q={q}";
+            var query = queryParams.ToString();
+            return string.IsNullOrEmpty(query) ? string.Empty : "?" + query;
         }
     }
 }
