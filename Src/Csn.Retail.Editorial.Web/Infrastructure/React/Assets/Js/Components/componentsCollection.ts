@@ -23,4 +23,3 @@ export const Components = {
     INav: ReactServerConnect(INav)('store', Reducers['listings'])
 }
 
-

@@ -18,7 +18,6 @@ export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (
         // TODO: REMOVE FOR PHASE 2
         return window.location.assign(forceEmpty ? window.location.pathname : `${q ? q : '?'}${keyword ? '&'+queryString.stringify({keyword}) : ''}`)
 
-
         // return fetch(`${iNav.api}${q ? q : '?'}${keyword ? '&'+queryString.stringify({keyword}) : ''}`)
         //     .then(
         //     response => response.json(),
@@ -28,7 +27,8 @@ export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (
         //     .then(data =>
         //         dispatch([
         //             { type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS, payload: { data } },
-        //             { type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE,  payload: { data } }
+        //             { type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE,  payload: { data } },
+        //             { type: ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT, payload: {event: 'csn_editorial.listings.fetchNativeAds'}}     //TODO: this can come from the action               
         //         ])
         //     )
     }

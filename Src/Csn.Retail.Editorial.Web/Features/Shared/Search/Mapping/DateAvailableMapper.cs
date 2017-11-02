@@ -13,7 +13,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
             {
                 return source.DateAvailable.ToString("MMMM yyyy");
             }
-            return $"{source.DateAvailable:MMMM dd}{source.DateAvailable.Day.GetOrdinalSuffix()}";
+            return $"{source.DateAvailable:MMMM d}{source.DateAvailable.Day.GetOrdinalSuffix()}";
         }
         private static string GetOrdinalSuffix(this int num)
         {

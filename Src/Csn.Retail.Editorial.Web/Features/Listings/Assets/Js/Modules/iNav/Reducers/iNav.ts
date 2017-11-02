@@ -10,18 +10,26 @@ export const iNavReducer = (state: any, action: Actions) => {
         case ActionTypes.INAV.UPDATE_PENDING_QUERY: {
             return {
                 ...state,
-                ...{ pendingQuery: action.payload.query }
+                pendingQuery: action.payload.query
             }
         }
         case ActionTypes.API.INAV.FETCH_QUERY_SUCCESS:
             return {
                 ...state,
-                ...action.payload.data
+                navResults: action.payload.data
+                
             }
         case ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS:
             return aspectReducer(state, action)
         case ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS:
             return refinementReducer(state, action)
+        case ActionTypes.INAV.ADD_PROMOTED_ARTICLE:
+            return promotedReducer(state, action)
+        case ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT:
+            // This is a side effect
+            const e = new CustomEvent(action.payload.event);
+            if(typeof window !== 'undefined'){dispatchEvent(e)}  
+            return state
         default:
             return state
     }
@@ -75,4 +83,24 @@ function refinementReducer(state: INavResults, action: Actions): INavResults {
         console.log(e)        
         return state
     }
+}
+
+function promotedReducer(state: IINavResponse, action: Actions) {
+    
+    try {
+        const newState = update(state,
+            {
+                navResults: {
+                    searchResults: {
+                        [action.payload.location]: {
+                            $set : action.payload
+                        }
+                    }
+                }
+            })
+        return newState
+    } catch (e) {
+        console.log(e)        
+        return state
+    }       
 }

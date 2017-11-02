@@ -1,15 +1,17 @@
 @import "css/globals";
 @import "iNav/Css/iNav.variables";
 
+.iNav__category-wrapper {
+    z-index: 1;    
+}
+
 //Search category
 .iNav-category {
     font-size: 0;
     position: absolute;
-    top: $iNav-header-height + 5px + 10px;
-
+    top: $iNav-header-height - 10px;
 
     &__container {
-        @include fadeInDown(-25%);
         
         border-radius: 4px;
         max-height: $category-container-height;
@@ -18,19 +20,16 @@
         font-size: $font-size-body;
         vertical-align: top;
         background-color: $cs-white;
-        border: 1px solid $cs-grey;
+        border: 1px solid $cs-grey-1;
         box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.21);
         display: none;
         position: relative;
         z-index: 1;
-        animation-duration: .333s;
-        animation-fill-mode: forwards;
         overflow: hidden;
         font-size: 0;
 
         &--isActive {
             display: inline-block;
-            animation-name: fadeInDown;                    
         }
         &--1 {
             margin-left: $iNav-header-item-width;            
@@ -77,7 +76,6 @@
         vertical-align: top;
         width: $category-container-width;
         padding: 0 $spacing;
-        //display: none;
 
         &:nth-of-type(n+2) {
             display: none;

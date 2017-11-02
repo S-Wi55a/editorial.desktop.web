@@ -1,33 +1,43 @@
 ﻿import * as React from "react"
 import { ISearchResults } from 'iNav/Types'
+import Img from 'react-image'
 
 if (!SERVER) {
     require('iNavSearchResults/Css/iNavSearchResult.scss')
 }
 
-const INavSearchResult = (props: ISearchResults) => (
+const Preloader = () => <div className="iNavSearchResult__image-loader"></div>
 
-        <a href={props.articleDetailsUrl} className="iNavSearchResult">
-            <div className="iNavSearchResult__image-frame">
-                <img className="iNavSearchResult__image" src={props.imageUrl} />
-                {props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${props.label}`}>{props.label}</div> : ''}
-            </div>
-            <div className="iNavSearchResult__content-wrapper">
-                <div className={`iNavSearchResult__type iNavSearchResult__type--${props.type.toLowerCase()}`}>
-                    {props.type.toUpperCase()}
+class INavSearchResult extends React.Component<ISearchResults> {
+    render() {
+        return <div className="iNavSearchResult">
+                    <a href={this.props.articleDetailsUrl}>
+                        <div className="iNavSearchResult__image-frame">
+                            <Img className="iNavSearchResult__image" src={this.props.imageUrl} loader={<Preloader/>}/>
+                            {this.props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${this.props.label}`}>{this.props.label}</div> : ''}
+                        </div>
+                        <div className="iNavSearchResult__content-wrapper">
+                            <div className={`iNavSearchResult__type iNavSearchResult__type--${typeof this.props.type !== 'undefined' ? this.props.type.toLowerCase() : ''}`}>
+                                {typeof this.props.type !== 'undefined' ? this.props.type.toUpperCase() : ''}
+                            </div>
+                            <div className="iNavSearchResult__heading">
+                                <h2>{this.props.headline}</h2>
+                            </div>
+                            <div className="iNavSearchResult__sub-heading">
+                                <span>{this.props.subHeading}</span>
+                            </div>
+                            <div className="iNavSearchResult__date">
+                                {this.props.dateAvailable}
+                            </div>
+                            <div className="disqus-comment-count iNavSearchResult__comment-count"
+                                 data-disqus-identifier={this.props.disqusArticleId}
+                                 data-disqus-url={this.props.articleDetailsUrl}
+                            >0
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div className="iNavSearchResult__heading">
-                    <h2>{props.headline}</h2>
-                </div>
-                <div className="iNavSearchResult__sub-heading">
-                    <span>{props.subHeading}</span>
-                </div>
-                <div className="iNavSearchResult__date">
-                    {props.dateAvailable}
-                </div>
-            </div>
-        </a>
-
-);
+    }
+}
 
 export default INavSearchResult;
