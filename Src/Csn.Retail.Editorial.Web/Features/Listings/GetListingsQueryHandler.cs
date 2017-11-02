@@ -4,7 +4,6 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
 using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
@@ -34,9 +33,11 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IExpressionParser _parser;
         private readonly IExpressionFormatter _expressionFormatter;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
+        private readonly ISponsoredLinksDataMapper _sponsoredLinksDataMapper;
 
         public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
-            ISortingHelper sortingHelper, IContextStore contextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper)
+            ISortingHelper sortingHelper, IContextStore contextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
+            ISponsoredLinksDataMapper sponsoredLinksDataMapper)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
@@ -47,6 +48,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _parser = parser;
             _expressionFormatter = expressionFormatter;
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
+            _sponsoredLinksDataMapper = sponsoredLinksDataMapper;
         }
 
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
@@ -84,7 +86,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     Keyword = query.Keyword,
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
-                    SponsoredLinksData = SponsoredLinksDataMapper.Map(_tenantProvider.Current().AdUnits)
+                    ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks()
                 }
             };
         }

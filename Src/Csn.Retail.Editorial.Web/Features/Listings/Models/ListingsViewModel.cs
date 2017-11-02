@@ -1,5 +1,4 @@
-﻿using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
+﻿using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.Models
@@ -14,6 +13,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
         public string CurrentQuery { get; set; }
         public string Keyword { get; set; }    
         public string DisqusSource { get; set; }
-        public SponsoredLinksModel SponsoredLinksData { get; set; }
+        public bool ShowSponsoredLinks { get; set; }
     }
 }

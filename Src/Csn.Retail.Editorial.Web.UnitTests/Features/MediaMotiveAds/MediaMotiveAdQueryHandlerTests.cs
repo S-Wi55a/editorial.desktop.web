@@ -18,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
             tenantProvider.Current().Returns(new TenantInfo()
             {
                 Name = "carsales",
-                AdUnits = new List<string> { "tile3" }
+                AdUnits = new List<string> { "Tile3" }
             });
             var tagBuilders = new List<IMediaMotiveTagBuilder>()
             {

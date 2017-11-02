@@ -1,23 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Ingress.Core.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers
 {
-    public static class SponsoredLinksDataMapper
+    public interface ISponsoredLinksDataMapper
     {
+        bool ShowSponsoredLinks();
+    }
 
-        public static SponsoredLinksModel Map(List<string> adUnits)
+    [AutoBind]
+    public class SponsoredLinksDataMapper : ISponsoredLinksDataMapper
+    {
+        private readonly ITenantProvider<TenantInfo> _tenantProvider;
+
+        public SponsoredLinksDataMapper(ITenantProvider<TenantInfo> _tenantProvider)
         {
+            this._tenantProvider = _tenantProvider;
+        }
 
-            return new SponsoredLinksModel()
-            {
-                ShowSponsoredLinks = adUnits.Any(au => SposoredLinkedTiles.Tiles.Contains(au))
-            };
-
+        public bool ShowSponsoredLinks()
+        {
+            return _tenantProvider.Current().AdUnits.Any(au => SposoredLinkedTiles.Tiles.Contains(au));
         }
     }
 }

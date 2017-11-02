@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
@@ -35,9 +37,11 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             var expressionParser = Substitute.For<IExpressionParser>();
             var expressionFormatter = Substitute.For<IExpressionFormatter>();
             var polarNativeAdd = Substitute.For<IPolarNativeAdsDataMapper>();
+            var sponsoredLinksDataMapper = Substitute.For<ISponsoredLinksDataMapper>();
             tenantProvider.Current().Returns(new TenantInfo()
             {
-                Name = "carsales"
+                Name = "carsales",
+                AdUnits = new List<string> { "Title3" }
             });
 
             ryvussProxy.GetAsync<RyvussNavResultDto>(Arg.Any<EditorialRyvussInput>()).Returns(Task.FromResult(
@@ -52,7 +56,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             mapper.Map<NavResult>(Arg.Any<RyvussNavResultDto>(), Arg.Any<Action<IMappingOperationOptions>>()).Returns(new NavResult());
 
             var queryHandler = new GetListingsQueryHandler(ryvussProxy, tenantProvider, mapper, paginationHelper,
-                sortingHelper, contextStore, expressionParser, expressionFormatter, polarNativeAdd);
+                sortingHelper, contextStore, expressionParser, expressionFormatter, polarNativeAdd, sponsoredLinksDataMapper);
             var expression = new FacetExpression("Service", "Carsales").And(new KeywordExpression("Keyword", "honda"));
             expressionParser.Parse(Arg.Any<string>()).Returns(expression);
             expressionFormatter.Format(Arg.Any<Expression>()).Returns("Service.CarSales.");

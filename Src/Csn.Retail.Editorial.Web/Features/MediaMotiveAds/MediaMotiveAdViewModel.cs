@@ -13,9 +13,4 @@
 
         public bool DataKruxRequired { get; set; }
     }
-
-    public class SponsoredLinksModel
-    {
-        public bool ShowSponsoredLinks { get; set; }
-    }
 }
