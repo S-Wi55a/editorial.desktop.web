@@ -13,14 +13,13 @@
     cursor: pointer;
     text-decoration: none;
 
-    &:hover,
-    &:visited,
-    &:focus {
-        text-decoration: none;
-    }
-
     &>a {
         position: relative;
+        &:hover,
+        &:visited,
+        &:focus {
+            text-decoration: none;
+        }
     }
 
 
@@ -54,10 +53,6 @@
 
     &:hover::before {
         opacity: 1;
-    }
-
-    a:hover {
-        text-decoration: none;
     }
 
     &__image-frame {
@@ -107,7 +102,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            z-index: 2;
+            z-index: 1;
             background-color: rgba($cs-white, 0.7);
             background-image: url($spinner--dark);
             background-size: 200px 200px;
