@@ -4,6 +4,8 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
 using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -81,7 +83,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     CurrentQuery = UrlParamsFormatter.GetParams(query.Q, sortOrder: query.SortOrder, keyword: query.Keyword),
                     Keyword = query.Keyword,
                     DisqusSource = _tenantProvider.Current().DisqusSource,
-                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs)
+                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
+                    SponsoredLinksData = SponsoredLinksDataMapper.Map(_tenantProvider.Current().AdUnits)
                 }
             };
         }

@@ -1,13 +1,18 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+@model SponsoredLinksModel
 
-<div class="sponsored-text-links">
-    <div class="sponsored-text-links__title">Sponsored Links</div>
-    <div class="sponsored-text-links__ads">
-        @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile9" }); }
-        @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile10" }); }
-        @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile11" }); }
-        @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile12" }); }
-        @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile13" }); }
-    </div>
-</div>
+@if (Model.ShowSponsoredLinks)
+{
+    <div class="sponsored-text-links">
+        <div class="sponsored-text-links__title">Sponsored Links</div>
+        <div class="sponsored-text-links__ads">
+            @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile9" }); }
+            @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile10" }); }
+            @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile11" }); }
+            @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile12" }); }
+            @{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { TileId = "Tile13" }); }
+        </div>
+    </div> 
+}
+
