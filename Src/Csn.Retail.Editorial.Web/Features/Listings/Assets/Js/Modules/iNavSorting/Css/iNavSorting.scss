@@ -4,12 +4,10 @@
 .iNavSorting__container {
     font-size: 14px;
     display: inline-block;
-    font-weight: $font-weight-600;
-    color: $cs-dark-grey-2;
     position: absolute;
     right: $grid-gutter-width/2;
     top: 30px;
-    border: solid 1px $cs-grey;
+    border: solid 1px $cs-grey-1;
     border-radius: $iNav-border-radius;
     cursor: pointer;
     background-color: $cs-white;
@@ -47,4 +45,6 @@
     padding-left: 15px;
     padding-right: 40px;
     cursor: pointer;
+    color: $cs-light-grey-8;
+    font-weight: $font-weight-600; 
 }

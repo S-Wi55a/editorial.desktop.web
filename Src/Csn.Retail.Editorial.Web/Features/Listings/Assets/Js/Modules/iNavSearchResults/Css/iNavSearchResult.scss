@@ -9,15 +9,17 @@
     margin-bottom: $spacing;
     border-radius: 4px;
     
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
     position: relative;
     cursor: pointer;
     text-decoration: none;
 
-    &:hover,
-    &:visited,
-    &:focus {
-        text-decoration: none;
+    &>a {
+        position: relative;
+        &:hover,
+        &:visited,
+        &:focus {
+            text-decoration: none;
+        }
     }
 
 
@@ -40,21 +42,17 @@
     &::before {
         content: '';
         position: absolute;
-        z-index: 0;
+        z-index: -1;
         width: 100%;
         height: 100%;
         opacity: 0;
         border-radius: 5px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 0 5px rgba(194, 194, 194, 0.5);
         transition: opacity 0.3s ease-in-out;
     }
 
     &:hover::before {
         opacity: 1;
-    }
-
-    a:hover {
-        text-decoration: none;
     }
 
     &__image-frame {
@@ -104,7 +102,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            z-index: 2;
+            z-index: 1;
             background-color: rgba($cs-white, 0.7);
             background-image: url($spinner--dark);
             background-size: 200px 200px;
