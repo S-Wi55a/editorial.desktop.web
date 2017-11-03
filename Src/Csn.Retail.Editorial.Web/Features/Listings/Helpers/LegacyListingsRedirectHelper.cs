@@ -2,12 +2,11 @@
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
-using Csn.Retail.Editorial.Web.Infrastructure.Utils;
 using Expresso.Sanitisation;
 using Expresso.Syntax;
 using Expresso.Syntax.Binary;
 
-namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
+namespace Csn.Retail.Editorial.Web.Features.Listings.Helpers
 {
     public interface ILegacyListingsRedirectHelper
     {
@@ -51,7 +50,7 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Redirects
         private string GetRedirectionUrl(EditorialSeoDto seoDto, string keyword, long offset, string sortOrder)
         {
             if (seoDto.HasSeo())
-                return ListingsUrlFormatter.GetQueryString(seoDto.Metadata.Seo, offset, sortOrder);
+                return ListingsUrlFormatter.GetSeoUrl(seoDto.Metadata.Seo, offset, sortOrder);
 
             return ListingsUrlFormatter.GetQueryString(seoDto.Metadata.query,offset, sortOrder, keyword);
         }

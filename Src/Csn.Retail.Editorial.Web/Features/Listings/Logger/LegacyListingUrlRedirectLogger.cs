@@ -1,18 +1,20 @@
 ﻿using Csn.Logging;
 using Csn.Retail.Editorial.Web.Features.Errors;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.Logger
 {
-    public interface IUrlRedirectionLogger
+    public interface ILegacyListingUrlRedirectLogger
     {
         void Log(string requestUrl);
     }
 
-    public class UrlRedirectionLogger : IUrlRedirectionLogger
+    [AutoBind]
+    public class LegacyListingUrlRedirectLogger : ILegacyListingUrlRedirectLogger
     {
         private readonly ILogger _logger;
 
-        public UrlRedirectionLogger(ILogger logger)
+        public LegacyListingUrlRedirectLogger(ILogger logger)
         {
             _logger = logger;
         }

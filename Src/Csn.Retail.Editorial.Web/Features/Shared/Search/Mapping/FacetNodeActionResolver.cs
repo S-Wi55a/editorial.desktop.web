@@ -9,7 +9,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
     {
         public string Resolve(FacetNodeDto source, FacetNode destination, string destMember, ResolutionContext context)
         {
-            return ListingsUrlFormatter.GetQueryString(source.Action, 0,
+            return ListingsUrlFormatter.GetSeoUrl(source.Action, 0,
                 sortOrder: context.Items.TryGetValue("sortOrder", out var sortOrder)
                     ? sortOrder?.ToString()
                     : string.Empty);

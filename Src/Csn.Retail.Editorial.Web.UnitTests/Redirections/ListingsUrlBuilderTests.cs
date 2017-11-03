@@ -43,7 +43,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Redirections
         {
             var metadata = new EditorialSeoDto();
             var url = isSeo
-                ? ListingsUrlFormatter.GetQueryString(query, offset, sortOrder)
+                ? ListingsUrlFormatter.GetSeoUrl(query, offset, sortOrder)
                 : ListingsUrlFormatter.GetQueryString(query, offset, sortOrder, keyword);
             Assert.That(url, Is.EqualTo(expectedResult));
         }
