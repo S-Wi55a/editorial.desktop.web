@@ -29,10 +29,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 .Path("/v4/editoriallistingretail")
                 .QueryString("q", input.Query);
 
-            if (!string.IsNullOrEmpty(input.NavigationName))
+            if (input.IncludeCount)
             {
-                var nav = input.PostProcessors == null || !input.PostProcessors.Any() ? input.NavigationName : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
-                client = client.QueryString("inav", nav);
+                client = client.QueryString("count", "true");
             }
 
             if (input.IncludeSearchResults)
@@ -40,9 +39,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 client = client.QueryString("sr", $"|{input.SortOrder}|{input.Offset}|{input.Limit}");
             }
 
-            if (input.IncludeCount)
+            if (!string.IsNullOrEmpty(input.NavigationName))
             {
-                client = client.QueryString("count", "true");
+                var nav = input.PostProcessors == null || !input.PostProcessors.Any() ? input.NavigationName : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
+                client = client.QueryString("inav", nav);
             }
 
             return client.GetAsync<T>();
