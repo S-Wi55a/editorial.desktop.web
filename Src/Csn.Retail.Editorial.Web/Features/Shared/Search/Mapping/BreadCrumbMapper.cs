@@ -39,7 +39,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
             {
                 results.Insert(0, new BreadCrumb
                 {
-                    RemoveAction = ListingsUrlFormatter.GetQueryString(keywordBreadCrumb.RemoveAction, 0, "", ""),
+                    RemoveAction = ListingsUrlFormatter.GetQueryString(keywordBreadCrumb.RemoveAction),
                     FacetDisplay = keywordBreadCrumb.Term.Trim('(', ')'),
                     Type = "KeywordBreadCrumb"
                 });
@@ -58,7 +58,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         {
             return string.IsNullOrEmpty(source.RemoveAction)
                 ? string.Empty
-                : ListingsUrlFormatter.GetQueryString(source.RemoveAction, 0, "", "");
+                : ListingsUrlFormatter.GetQueryString(source.RemoveAction);
         }
     }
 }

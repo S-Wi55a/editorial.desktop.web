@@ -15,8 +15,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (filterContext.IsChildAction) return;
-
-            var redirectLogger = DependencyResolver.Current.GetService(typeof(ILegacyListingUrlRedirectLogger)) as LegacyListingUrlRedirectLogger;
+            
             /*This also handles ?Make={make} and ?Type={type} pages since these can be converted to binary expressions*/
             var originalQuery = GetQueryString(filterContext);
 
@@ -25,6 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Filters
                 var url = GetRedirectionUrl(filterContext, originalQuery);
                 if (!url.IsNullOrEmpty())
                 {
+                    var redirectLogger = DependencyResolver.Current.GetService(typeof(ILegacyListingUrlRedirectLogger)) as LegacyListingUrlRedirectLogger;
                     redirectLogger?.Log(filterContext.HttpContext.Request.Url?.ToString());
                     filterContext.Result = new RedirectResult(url, true);
                 }
