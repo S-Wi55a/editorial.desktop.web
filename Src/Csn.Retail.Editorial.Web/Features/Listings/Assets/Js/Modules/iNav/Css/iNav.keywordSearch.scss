@@ -8,6 +8,8 @@
         line-height: $iNav-header-item-height;
         position: relative;
         z-index: 1;
+        height: $iNav-header-item-height + 2px; // + border
+        
 
         &::before {
             content: ".";
@@ -58,6 +60,7 @@
         min-width: 170px;
         padding: 0 15px;
         line-height: $iNav-header-item-height;
+        height: $iNav-header-item-height + 2px;
         border: none;
         border-top-left-radius: $iNav-border-radius;
         border-bottom-left-radius: $iNav-border-radius;        

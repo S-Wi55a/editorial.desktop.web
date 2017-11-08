@@ -34,6 +34,10 @@
         font-weight: 900;
         pointer-events: none;
     }
+
+    select::-ms-expand {
+        display: none;
+    }
 }
 
 .iNavSorting {
