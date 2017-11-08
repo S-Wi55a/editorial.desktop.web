@@ -820,6 +820,7 @@
     <Content Include="Features\Details\Views\Partials\Tracking\_CsnInsights.cshtml" />
     <Content Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\StockForSale\_stockForSale.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_topNav.scss" />
@@ -920,6 +921,7 @@
     <Content Include="Features\MediaMotiveAds\Views\DetailsAd.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
+    <Content Include="Features\Details\Views\Boatsales\_Disclaimer.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
