@@ -34,17 +34,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 client = client.QueryString("count", "true");
             }
 
-            if (!string.IsNullOrEmpty(input.NavigationName))
-            {
-                var nav = input.PostProcessors == null || !input.PostProcessors.Any() ? input.NavigationName : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
-                client = client.QueryString("inav", nav);
-            }
-
             if (input.IncludeSearchResults)
             {
                 client = client.QueryString("sr", $"|{input.SortOrder}|{input.Offset}|{input.Limit}");
             }
 
+            if (!string.IsNullOrEmpty(input.NavigationName))
+            {
+                var nav = input.PostProcessors == null || !input.PostProcessors.Any() ? input.NavigationName : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
+                client = client.QueryString("inav", nav);
+            }
 
             return client.GetAsync<T>();
         }
