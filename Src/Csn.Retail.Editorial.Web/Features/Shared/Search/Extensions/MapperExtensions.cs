@@ -52,5 +52,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         {
             return source.ArticleTypes?.FirstOrDefault(x => x.Equals(ArticleType.Sponsored.ToString()));
         }
+
+        public static string GetDisqusArticleId(this SearchResultDto source)
+        {
+            return $"EDITORIAL-{source.Id?.Substring(7)}";
+        }
     }
 }

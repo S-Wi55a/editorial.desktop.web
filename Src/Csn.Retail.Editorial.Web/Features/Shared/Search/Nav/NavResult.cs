@@ -53,6 +53,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
 
     public class SearchResult
     {
+        public string DisqusArticleId { get; set; }
+
         public string Headline { get; set; }
         public string SubHeading {get; set;}
 

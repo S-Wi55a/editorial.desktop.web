@@ -2,21 +2,21 @@
 @import "iNav/Css/iNav.variables";
 
 .iNav__menu-header {
-    $item-height: 52px;
-    @include fadeInDown(-25%);
-    @include fadeInUp(25%);
     display: flex;
     position: relative;
     cursor: pointer;
 
     
     &-item {
-        border: solid 1px $cs-grey;
+        border: solid 1px $cs-grey-1;
         min-width: $iNav-header-item-width;
         padding: 0 15px;
-        line-height: $item-height;
+        line-height: $iNav-header-item-height;
         background-color: $cs-white;
         border-left-width: 0;
+        font-weight: $font-weight-600;
+        color: $cs-light-grey-8;
+        
         &:first-of-type {
             border-top-left-radius: $iNav-border-radius;
             border-bottom-left-radius: $iNav-border-radius;
@@ -30,27 +30,23 @@
             content: $icon-chevron-down-lg;
             font-family: $font-family-icons;
             display: block;
-            height: $item-height;
+            height: $iNav-header-item-height;
             float: right;
             color: $cs-primary;
             font-weight: 900;
-            animation-duration: .5s;
-            animation-fill-mode: forwards;
             backface-visibility: hidden;
             transition: transform .3s;
         }
         &:not(&--isActive):hover {
             &::before {
-                animation-name: fadeInDown;
+                color: $cs-light-grey-1;
             }
         }
         &--isActive {
             color: $cs-primary;
-            font-weight: $font-weight-600;
             background-color: $cs-light-grey-7;
             &::before {
                 content: $icon-chevron-up-lg;
-                animation-name: fadeInUp;
             }
         }
     }

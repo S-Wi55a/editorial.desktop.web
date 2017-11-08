@@ -8,7 +8,7 @@ const setPropertyID = csn_editorial.nativeAds.setPropertyID
 
 // Dynamic import but relies on promise to excetue  
 function loadPlacements() {
-    import('NativeAds/Area/Details/placements--' + areaName)
+    import('NativeAds/Area/placements--' + areaName)
         .then(function (detailsPageNativeAds) {
             nativeAds(jQuery, detailsPageNativeAds.placements, detailsPageNativeAds.events)
         }).catch(function (err) {
@@ -53,6 +53,7 @@ function nativeAds($, placements, registeredEvents) {
 
             // loop through each of the placements and check whether we need to push onto this page
             placements.forEach(function (placement) {
+                
                 // If tile is already applied, skip
                 if (placement.active) {
                     return
@@ -83,7 +84,7 @@ function nativeAds($, placements, registeredEvents) {
                         //console.log('onRender: ', $element)
                     },
                     onFill: function (data) {
-                        //console.dir(data);
+                        //console.dir('Fill: ', data);
                     },
                     onError: function (error) {
                         //console.log('Error: ', error)

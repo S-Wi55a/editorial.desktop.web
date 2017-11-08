@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings.Constants;
+using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
@@ -30,11 +31,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IContextStore _contextStore;
         private readonly IExpressionParser _parser;
         private readonly IExpressionFormatter _expressionFormatter;
+        private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
 
-        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider,
-            IMapper mapper, IPaginationHelper paginationHelper,
-            ISortingHelper sortingHelper, IContextStore contextStore, IExpressionParser parser,
-            IExpressionFormatter expressionFormatter)
+        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
+            ISortingHelper sortingHelper, IContextStore contextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
@@ -44,6 +44,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _contextStore = contextStore;
             _parser = parser;
             _expressionFormatter = expressionFormatter;
+            _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
         }
 
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
@@ -73,20 +74,18 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             return resultData == null
                 ? null
                 : new GetListingsResponse
+            {
+                ListingsViewModel = new ListingsViewModel
                 {
-                    ListingsViewModel = new ListingsViewModel
-                    {
-                        NavResults = navResults,
-                        Paging = _paginationHelper.GetPaginationData(navResults.Count,
-                            PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q,
-                            query.Keyword),
-                        Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder,
-                            query.Q, query.Keyword),
-                        CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.SortOrder, offset: 0,
-                            keyword: query.Keyword),
-                        Keyword = query.Keyword
-                    }
-                };
+                    NavResults = navResults,
+                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
+                    Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
+                    CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, 0, query.SortOrder, query.Keyword),
+                    Keyword = query.Keyword,
+                    DisqusSource = _tenantProvider.Current().DisqusSource,
+                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs)
+                }
+            };
         }
     }
 }

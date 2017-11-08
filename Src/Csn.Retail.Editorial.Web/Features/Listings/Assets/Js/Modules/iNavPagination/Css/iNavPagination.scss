@@ -54,7 +54,9 @@
         text-decoration: none;
         cursor: default;
 
-        &:hover {
+        &:hover,
+        &:visited,
+        &:focus, {
             color: $cs-white;            
         }
     }
@@ -75,6 +77,8 @@
 
         &:hover, &:focus {
             text-decoration: none;
+            background-color: $cs-primary;
+            color: $cs-white;            
 
             &::after {
                 height: 0;

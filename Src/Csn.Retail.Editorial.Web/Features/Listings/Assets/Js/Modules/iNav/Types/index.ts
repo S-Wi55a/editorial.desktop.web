@@ -75,4 +75,5 @@ export interface ISearchResults {
     articleDetailsUrl: string
     label: string
     type: string
+    disqusArticleId: string | number
 }
