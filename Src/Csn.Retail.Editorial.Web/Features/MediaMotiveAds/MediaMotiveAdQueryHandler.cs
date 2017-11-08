@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Bolt.Common.Extensions;
+using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
@@ -12,14 +15,23 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
     public class MediaMotiveAdQueryHandler : IQueryHandler<MediaMotiveAdQuery, MediaMotiveAdViewModel>
     {
         private readonly IEnumerable<IMediaMotiveTagBuilder> _tagBuilders;
+        private readonly ITenantProvider<TenantInfo> _tenantProvider;
 
-        public MediaMotiveAdQueryHandler(IEnumerable<IMediaMotiveTagBuilder> tagBuilders)
+
+        public MediaMotiveAdQueryHandler(IEnumerable<IMediaMotiveTagBuilder> tagBuilders, ITenantProvider<TenantInfo> tenantProvider)
         {
             _tagBuilders = tagBuilders;
+            _tenantProvider = tenantProvider;
         }
 
         public MediaMotiveAdViewModel Handle(MediaMotiveAdQuery query)
         {
+
+            if (!_tenantProvider.Current().AdUnits.Contains(query.TileId))
+            {
+                return null;
+            }
+
             var tags = _tagBuilders
                 .Where(builder => builder.IsApplicable(query))
                 .SelectMany(x => x.Build(query))

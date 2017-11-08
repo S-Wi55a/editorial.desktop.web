@@ -1,4 +1,5 @@
-﻿using Csn.MultiTenant;
+﻿using System.Collections.Generic;
+using Csn.MultiTenant;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 {
@@ -22,6 +23,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string MediaMotiveAccountId { get; set; }
         public string MediaMotiveUrl { get; set; }
         public string KruxId { get; set; }
+        public List<string> AdUnits { get; set; }
+
         #endregion
 
         #region Content
