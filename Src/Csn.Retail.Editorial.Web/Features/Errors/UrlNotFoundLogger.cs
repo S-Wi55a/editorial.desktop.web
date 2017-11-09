@@ -21,4 +21,5 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
             _logger.Trace(requestUrl);
         }
     }
+   
 }

@@ -223,6 +223,13 @@
             font-family: $font-family-icons;
             margin-right: 5px;
         }
+
+        &:hover,
+        &:visited,
+        &:focus {
+            color: $cs-light-grey-8;            
+            text-decoration: none;
+        }
     }
 
     &__type {

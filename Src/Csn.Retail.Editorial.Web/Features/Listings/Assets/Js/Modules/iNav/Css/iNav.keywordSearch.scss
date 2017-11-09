@@ -56,19 +56,21 @@
 
     &__keywordSearch-input {
     
-        width: calc(100% - #{$iNav-header-item-height*2});
+        width: 100%;
+        position: absolute;
         min-width: 170px;
         padding: 0 15px;
         line-height: $iNav-header-item-height;
         height: $iNav-header-item-height + 2px;
         border: none;
-        border-top-left-radius: $iNav-border-radius;
-        border-bottom-left-radius: $iNav-border-radius;        
-        border-top: solid 1px $cs-grey-1;
-        border-left: solid 1px $cs-grey-1;
-        border-bottom: solid 1px $cs-grey-1;
+        border-radius: $iNav-border-radius;
+        border: solid 1px $cs-grey-1;
         color: $cs-light-grey-8;
         font-weight: $font-weight-600; 
+
+        &::-ms-clear {
+            display: none;
+        }
     }
 
     &__keywordSearch-button {
@@ -76,6 +78,7 @@
         float: right;
         padding: 0;
         color: $cs-primary;
+        position: relative;
 
         &::before {
             display: block;
