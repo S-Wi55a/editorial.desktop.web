@@ -1,6 +1,7 @@
 // Polyfills
-import "babel-polyfill";
-import 'picturefill';
+import "babel-polyfill"
+import 'whatwg-fetch'
+import 'picturefill'
 
 // Vendor
 window.React = require('react')

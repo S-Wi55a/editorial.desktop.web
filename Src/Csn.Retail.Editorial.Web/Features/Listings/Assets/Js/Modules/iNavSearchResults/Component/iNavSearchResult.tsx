@@ -29,12 +29,13 @@ class INavSearchResult extends React.Component<ISearchResults> {
                             <div className="iNavSearchResult__date">
                                 {this.props.dateAvailable}
                             </div>
-                            <div className="disqus-comment-count iNavSearchResult__comment-count"
+                            <a className="disqus-comment-count iNavSearchResult__comment-count"
                                  data-disqus-identifier={this.props.disqusArticleId}
                                  data-disqus-url={this.props.articleDetailsUrl}
                                  data-webm-clickvalue="comments"
+                                 href={`${this.props.articleDetailsUrl}#disqus_thread`}
                             >0
-                            </div>
+                            </a>
                         </div>
                     </a>
                 </div>
