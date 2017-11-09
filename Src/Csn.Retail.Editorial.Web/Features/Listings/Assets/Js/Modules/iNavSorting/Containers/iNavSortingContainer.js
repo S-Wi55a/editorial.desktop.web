@@ -8,9 +8,9 @@ if (!SERVER) {
 }
 
 const INavSorting = ({ sorting, isVisible, fetchQuery }) =>  {    
-     return <div className={`iNavSorting__container ${isVisible ? '' : 'hide' }`}>
+     return <div className={`iNavSorting__container ${isVisible ? '' : 'hide' }`} data-webm-section={`sort`}>
                 <Field name="sortOrder" component="select" className='iNavSorting' onChange={(event, newValue)=>fetchQuery(event, newValue)}>
-                    {sorting.sortListItems.map((sortItem) => <option key={sortItem.value} value={sortItem.url}>{sortItem.label}</option>)}   
+                    {sorting.sortListItems.map((sortItem) => <option key={sortItem.value} value={sortItem.url} data-webm-clickvalue={sortItem.label}>{sortItem.label}</option>)}   
                 </Field>            
             </div>
 }

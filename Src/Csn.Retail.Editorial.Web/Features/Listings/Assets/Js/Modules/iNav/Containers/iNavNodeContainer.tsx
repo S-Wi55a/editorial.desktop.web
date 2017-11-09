@@ -60,7 +60,10 @@ interface IINavNodeContainer extends INode, ICategory {
 // This is separated for displaying sub lists
 const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) => {
 
-  return <div className={['iNav-category__container', props.activeItemId === props.index ? `iNav-category__container--isActive iNav-category__container--${props.activeItemId}` : ''].join(' ')}>
+  return <div 
+          className={['iNav-category__container', props.activeItemId === props.index ? `iNav-category__container--isActive iNav-category__container--${props.activeItemId}` : ''].join(' ')}
+          data-webm-section={props.displayName}
+          >
     <div className='iNav-category__header'>{props.displayName}</div>
     <div className={['iNav-category__container-page', `iNav-category__container-page--${props.activePage}`].join(' ')}>
       {/* First Level*/}

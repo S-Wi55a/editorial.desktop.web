@@ -26,7 +26,7 @@ const INavPageSeparator = ({ initial, trailing, totalPageCount, currentPageNo, t
 const INavPage = ({ pageNo, currentPage, url, fetchQuery }) => {
 
     if(typeof(pageNo) !== 'undefined') {        
-        return <a className={`iNavPageItem ${pageNo === currentPage ? 'iNavPageItem--current' : '' }`} href={url} onClick={(e)=>{e.preventDefault();fetchQuery(url);}}>
+        return <a className={`iNavPageItem ${pageNo === currentPage ? 'iNavPageItem--current' : '' }`} href={url} onClick={(e)=>{e.preventDefault();fetchQuery(url);}} data-webm-clickvalue={`${pageNo}`}>
             {pageNo}
         </a>
     }
@@ -34,17 +34,17 @@ const INavPage = ({ pageNo, currentPage, url, fetchQuery }) => {
 }
 
 const INavPagination = ({ paging, fetchQuery }) =>  {    
-     return <div className='iNavPagination'>
+     return <div className='iNavPagination' data-webm-section="pagination">
                 <div className='iNavPagination__container'>
-                    <INavPageNavigator { ...paging.previous } show={paging.previous} direction={'previous'} fetchQuery={fetchQuery}/>
-                    <INavPage { ...paging.first } currentPage={paging.currentPageNo} fetchQuery={fetchQuery}/> 
+                    <INavPageNavigator { ...paging.previous } show={paging.previous} direction={'previous'} fetchQuery={fetchQuery} data-webm-clickvalue="previous"/>
+                    <INavPage { ...paging.first } currentPage={paging.currentPageNo} fetchQuery={fetchQuery} data-webm-clickvalue="first"/> 
                     <INavPageSeparator {...paging} text='...' initial={true}/>
                     {paging.pages.map((page) => {
                         return <INavPage  key={page.pageNo} { ...page } currentPage={paging.currentPageNo} fetchQuery={fetchQuery}/>
                     })}
                     <INavPageSeparator {...paging} text='...' trailing={true}/>                    
-                    <INavPage  { ...paging.last } currentPage={paging.currentPageNo} fetchQuery={fetchQuery}/>
-                    <INavPageNavigator { ...paging.next } show={paging.next}  direction={'next'} fetchQuery={fetchQuery}/>
+                    <INavPage  { ...paging.last } currentPage={paging.currentPageNo} fetchQuery={fetchQuery} data-webm-clickvalue="last"/>
+                    <INavPageNavigator { ...paging.next } show={paging.next}  direction={'next'} fetchQuery={fetchQuery} data-webm-clickvalue="next"/>
                 </div>
                 <div className='iNavPagination__info'> { paging.displayText }</div>
             </div>

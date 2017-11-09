@@ -21,7 +21,9 @@ interface IINavfacet extends IFacet {
 
 const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
   return (
-    <li className={`iNav-category-item ${props.isSelected ? 'isSelected' : ''} ${props.count ? '' : 'iNav-category-item--noResults'}`} onClick={
+    <li className={`iNav-category-item ${props.isSelected ? 'isSelected' : ''} ${props.count ? '' : 'iNav-category-item--noResults'}`}
+    data-webm-clickvalue={props.displayValue}
+    onClick={
       () => {
         if (props.isRefinement) {
           props.count > 0 && props.fetchRefinementAndUpdatePendingQuery(
@@ -52,7 +54,9 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
                 props.id
               )
             }
-          }></span> : ''
+          }
+          data-webm-clickvalue={`refinement`}
+          ></span> : ''
         }
       </span>
     </li>

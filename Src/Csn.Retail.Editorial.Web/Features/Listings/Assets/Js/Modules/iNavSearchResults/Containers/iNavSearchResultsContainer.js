@@ -61,12 +61,11 @@ class INavSearchResults extends React.Component {
     }
 
     render() {
-        return <div className="iNavSearchResults">        
+        return <div className="iNavSearchResults" data-webm-section="search-results">        
                 {
                     this.props.searchResults.map((searchResult,i) => {
 
                       //TODO: add Teads component
-
                         let animationDuration = SERVER ? 0 : 150
                         let delay = (i % 2 === 0) ? animationDuration*i : animationDuration*(i-1) 
                         return  (

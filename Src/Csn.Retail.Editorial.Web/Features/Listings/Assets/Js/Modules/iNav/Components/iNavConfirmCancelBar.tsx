@@ -21,8 +21,8 @@ interface IINavConfirmCancelBar {
 //TODO: how to get hardcoded words data driven?
 const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({count, fetchINav, pendingQuery, cancel}) => (
     <div className='iNav-category__confirmCancelBar confirmCancelBar'>
-        <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel}>Cancel</div>
-        <a className='confirmCancelBar__button confirmCancelBar__button--show' href={pendingQuery} 
+        <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel} data-webm-clickvalue={`cancel`}>Cancel</div>
+        <a className='confirmCancelBar__button confirmCancelBar__button--show' href={pendingQuery} data-webm-clickvalue={`show`}
             onClick={(e)=>{
                 e.preventDefault()
                 fetchINav()

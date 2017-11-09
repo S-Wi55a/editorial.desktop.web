@@ -59,7 +59,11 @@ class INav extends React.Component<IINavNodes> {
 
   render(){
     return (
-      <div className={['iNav', this.props.activeItemId !== null || this.props.keywordSearchIsActive ? `iNav--isActive` : ''].join(' ')} onClick={()=>{if(this.props.activeItemId !== null || this.props.keywordSearchIsActive){this.props.cancel()}}}>
+      <div 
+        className={['iNav', this.props.activeItemId !== null || this.props.keywordSearchIsActive ? `iNav--isActive` : ''].join(' ')} 
+        onClick={()=>{if(this.props.activeItemId !== null || this.props.keywordSearchIsActive){this.props.cancel()}}}
+        data-webm-section="searchbar"
+      >
         <div className="iNav__container" onClick={(e)=>{e.stopPropagation()}}>
           {/* This click handler is to prevent the click event propigating and triggering the cancel fn */}
           <div className="iNav__category-wrapper">

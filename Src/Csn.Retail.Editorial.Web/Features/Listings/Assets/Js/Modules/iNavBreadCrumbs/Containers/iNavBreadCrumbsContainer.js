@@ -14,14 +14,28 @@ const FacetBreadCrumb = {
 const INavBreadCrumb = ({facetDisplay, removeAction, fetchINav, type}) => {
 
     if(type === FacetBreadCrumb.clearAll || type === FacetBreadCrumb.keyword){
-        return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction, true);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>
+        return <a 
+                className={`iNavBreadCrumb iNavBreadCrumb--${type}`} 
+                href={removeAction} 
+                onClick={(e)=>{e.preventDefault(); fetchINav(removeAction, true);}}
+                data-webm-clickvalue={`tag-${type}`}                
+                >
+                    {type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}
+                </a>
     }
-    return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>    
+    return <a 
+            className={`iNavBreadCrumb iNavBreadCrumb--${type}`} 
+            href={removeAction} 
+            onClick={(e)=>{e.preventDefault(); fetchINav(removeAction);}}
+            data-webm-clickvalue={`tag`}
+            >
+                {type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}
+            </a>    
     
 }
 
 const INavBreadCrumbs = ({ breadCrumbs, fetchINav }) => (
-        <div className="iNavBreadCrumbs">
+        <div className="iNavBreadCrumbs" data-webm-section="tags">
             {breadCrumbs.map((breadCrumb) => {
                 return  <Timer key={`${breadCrumb.facetDisplay}${Math.random()}`}>
                             <FadeIn duration={300} startingOpacity={0} className="d-inline-block">
