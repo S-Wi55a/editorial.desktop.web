@@ -66,7 +66,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 IncludeCount = true,
                 IncludeSearchResults = true,
                 NavigationName = "RetailNav",
-                PostProcessors = new List<string> {"Retail", "FacetSort", "ShowZero"}
+                PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero" }
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
@@ -74,7 +74,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
             var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.SortOrder; });
-            
+
             return resultData == null ? null : new GetListingsResponse
             {
                 ListingsViewModel = new ListingsViewModel
@@ -82,7 +82,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     NavResults = navResults,
                     Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
                     Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
-                    CurrentQuery = UrlParamsFormatter.GetParams(query.Q, sortOrder: query.SortOrder, keyword: query.Keyword),
+                    CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.SortOrder, keyword: query.Keyword),
                     Keyword = query.Keyword,
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
