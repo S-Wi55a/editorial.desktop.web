@@ -31,11 +31,13 @@
     padding-right: $padding;
     padding-left: $padding;
     position: relative;
+    color: $cs-primary;
     
 
-    &:hover, &:focus {
+    &:hover, &:focus, &:visited {
         text-decoration: none;
-
+        color: $cs-primary;
+        
         &::after {
             position: absolute;
             bottom: 5px;
