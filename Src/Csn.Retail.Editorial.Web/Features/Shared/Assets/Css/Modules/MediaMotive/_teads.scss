@@ -1,0 +1,7 @@
+﻿.teads-inread {
+    margin: auto !important;
+
+    & + iframe {
+        display: none;
+    }
+}

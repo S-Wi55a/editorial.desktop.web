@@ -488,6 +488,7 @@
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
+    <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
     <Compile Include="Features\Shared\Formatters\ListingsUrlFormatter.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
@@ -602,6 +603,7 @@
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestRequestHeaderInterceptor.cs" />
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
+    <Compile Include="Infrastructure\MultiTenant\TenantDataMapper.cs" />
     <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />
     <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
@@ -923,6 +925,11 @@
     <Content Include="Features\MediaMotiveAds\Views\DetailsAd.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
+    <Content Include="Features\MediaMotiveAds\Views\_SponsoredLink.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_sponsored-text-links.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mrec.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_leaderboard.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_teads.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
