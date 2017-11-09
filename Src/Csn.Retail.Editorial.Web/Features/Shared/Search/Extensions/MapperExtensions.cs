@@ -57,5 +57,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         {
             return $"EDITORIAL-{source.Id?.Substring(7)}";
         }
+        public static string GetDisplayName(this RyvussNavNodeDto source)
+        {
+            return source.DisplayName == "Make" ? "Make/Model" : source.DisplayName;
+        }
     }
 }
