@@ -36,7 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
                 SortOrder = "Latest",
                 IncludeCount = true,
                 IncludeSearchResults = true,
-                NavigationName = _tenantProvider.Current().SiteNavName,
+                NavigationName = _tenantProvider.Current().RyvusNavName,
                 PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero"}
             });
 

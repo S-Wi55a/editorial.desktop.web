@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool AllowSeoIndexOfDetails { get; set; }
         public bool AllowSeoIndexOfListing { get; set; }
         public string MobiSiteUrl { get; set; }
-        public string SiteNavName { get; set; }
+        public string RyvusNavName { get; set; }
 
         #region Polar Native Ads
         public bool DisplayPolarAds { get; set; }

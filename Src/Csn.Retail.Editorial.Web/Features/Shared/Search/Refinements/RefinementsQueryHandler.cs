@@ -31,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
             {
                 Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
                 IncludeCount = true,
-                NavigationName = _tenantProvider.Current().SiteNavName,
+                NavigationName = _tenantProvider.Current().RyvusNavName,
                 PostProcessors = new List<string> { "Retail", "FacetSort", $"RetailAspect({query.Aspect})", $"RetailAspectRefinements({query.AspectRefinement},{query.ParentExpression})", "ShowZero" }
             });
 
