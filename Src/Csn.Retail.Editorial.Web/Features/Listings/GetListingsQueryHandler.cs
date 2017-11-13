@@ -65,7 +65,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 SortOrder = query.SortOrder,
                 IncludeCount = true,
                 IncludeSearchResults = true,
-                NavigationName = "RetailNav",
+                NavigationName = _tenantProvider.Current().RyvusNavName,
                 PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero" }
             });
 
