@@ -3,7 +3,6 @@ using System.Linq;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
-using Ingress.ContextStores;
 using NSubstitute;
 using NUnit.Framework;
 using ContextStore = Ingress.Web.Common.Abstracts;

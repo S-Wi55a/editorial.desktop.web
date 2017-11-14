@@ -10,8 +10,10 @@ using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.SimpleCqrs;
 using Csn.WebMetrics.Core.Model;
 using Csn.WebMetrics.Editorial.Interfaces;
+using Ingress.Web.Common.Abstracts;
+using ContextStore = Ingress.Web.Common.Abstracts;
 using ArticleType = Csn.WebMetrics.Core.Model.ArticleType;
-using ContextStore = Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
+
 
 
 namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer

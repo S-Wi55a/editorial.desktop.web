@@ -67,9 +67,6 @@
     <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.10.0\lib\net452\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ContextStores, Version=10.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ContextStores.10.0.1\lib\net452\Ingress.ContextStores.dll</HintPath>
-    </Reference>
     <Reference Include="Ingress.Core, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Core.14.10.0\lib\net452\Ingress.Core.dll</HintPath>
     </Reference>
