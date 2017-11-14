@@ -44,6 +44,8 @@
     </div>
 </div>
 
+@{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Tracking.cshtml"); }
+
 @section BottomScripts
 {
     @Html.React("global.Components.INavPreloadedState", new {state = Model}, containerId: "INavPreloadedState")
