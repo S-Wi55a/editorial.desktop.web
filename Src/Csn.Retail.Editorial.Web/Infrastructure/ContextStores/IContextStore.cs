@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.Web;
-using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-
-namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
+﻿namespace Csn.Retail.Editorial.Web.Infrastructure.ContextStores
 {
     public interface IContextStore<T>
     {
