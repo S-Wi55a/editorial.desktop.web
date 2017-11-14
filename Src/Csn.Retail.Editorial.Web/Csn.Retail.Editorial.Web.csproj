@@ -72,7 +72,6 @@
     </Reference>
     <Reference Include="Bearded.Monads, Version=1.0.20.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bearded.Monads.1.1.5\lib\net451\Bearded.Monads.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Bolt.Common.Extensions, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bolt.Common.Extensions.1.0.4.0\lib\net45\Bolt.Common.Extensions.dll</HintPath>
@@ -87,7 +86,6 @@
     </Reference>
     <Reference Include="Csn.Hystrix, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Hystrix.2.4.0.0\lib\net451\Csn.Hystrix.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Csn.Hystrix.RestClient, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Hystrix.RestClient.3.2.1.0\lib\net45\Csn.Hystrix.RestClient.dll</HintPath>
@@ -95,7 +93,6 @@
     </Reference>
     <Reference Include="Csn.Logging, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Logging.5.2.0\lib\net46\Csn.Logging.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Csn.Logging.NLog3, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Logging.NLog3.5.2.0\lib\net46\Csn.Logging.NLog3.dll</HintPath>
@@ -115,7 +112,6 @@
     </Reference>
     <Reference Include="Csn.Puddle, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Puddle.1.1.1.2\lib\net451\Csn.Puddle.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Csn.RestClient, Version=6.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.RestClient.6.1.0.0\lib\net45\Csn.RestClient.dll</HintPath>
@@ -199,17 +195,14 @@
     <Reference Include="Ingress.Cache.UsageReporters.Redis, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.14.10.2\lib\net452\Ingress.Cache.UsageReporters.Redis.dll</HintPath>
     </Reference>
+    <Reference Include="Ingress.Cache.UsageReporters.Redis.Settings, Version=14.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.Settings-Net452.14.10.3\lib\net452\Ingress.Cache.UsageReporters.Redis.Settings.dll</HintPath>
+    </Reference>
     <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.10.0\lib\net452\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.CircuitBreaker.Hystrix, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.CircuitBreaker.Hystrix.1.0.0\lib\net452\Ingress.CircuitBreaker.Hystrix.dll</HintPath>
-    </Reference>
-    <Reference Include="Ingress.ContextStores, Version=10.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ContextStores.10.0.1\lib\net452\Ingress.ContextStores.dll</HintPath>
-    </Reference>
-    <Reference Include="Ingress.ContextStores.HttpContextStore, Version=10.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ContextStores.HttpContextStore.10.1.2\lib\net452\Ingress.ContextStores.HttpContextStore.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.Core, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Core.14.10.0\lib\net452\Ingress.Core.dll</HintPath>
@@ -316,7 +309,6 @@
     </Reference>
     <Reference Include="NLog, Version=3.2.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.3.2.1\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="NLog.Extended, Version=3.2.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.Extended.3.2.1\lib\net45-full\NLog.Extended.dll</HintPath>
@@ -380,8 +372,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.4.1.0\lib\net46\System.Net.Http.dll</HintPath>
+    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.1\lib\net46\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -399,20 +391,20 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.2.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.0.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.0.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.1.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Text.Encodings.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -685,7 +677,6 @@
     <Compile Include="Infrastructure\AssetMappers\AssetMapProvider.cs" />
     <Compile Include="Infrastructure\AssetMappers\InitAssetMapStartUpTask.cs" />
     <Compile Include="Infrastructure\Attributes\AutoBindAttribute.cs" />
-    <Compile Include="Infrastructure\ContextStores\ContextStoreExtensions.cs" />
     <Compile Include="Infrastructure\ContextStores\IContextStore.cs" />
     <Compile Include="Infrastructure\Extensions\GuidExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SerializerExtensions.cs" />

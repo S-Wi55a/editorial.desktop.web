@@ -3,17 +3,17 @@ using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
-using IContextStore = Ingress.ContextStores.IContextStore;
+using ContextStore = Ingress.Web.Common.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 {
     [AutoBind]
     public class ListingsTagBuilder : IMediaMotiveTagBuilder
     {
-        private readonly IContextStore _contextStore;
+        private readonly Ingress.Web.Common.Abstracts.IContextStore _contextStore;
         private readonly IListingsBreadCrumbTagBuilder _breadCrumbTagBuilder;
 
-        public ListingsTagBuilder(IContextStore contextStore, IListingsBreadCrumbTagBuilder breadCrumbTagBuilder)
+        public ListingsTagBuilder(ContextStore.IContextStore contextStore, IListingsBreadCrumbTagBuilder breadCrumbTagBuilder)
         {
             _contextStore = contextStore;
             _breadCrumbTagBuilder = breadCrumbTagBuilder;
