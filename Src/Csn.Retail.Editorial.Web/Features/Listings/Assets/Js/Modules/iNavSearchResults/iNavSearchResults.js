@@ -9,7 +9,7 @@ import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchR
 const store = window.store
 
 const render = (WrappedComponent) => {
-    ReactDOM.render(
+    ReactDOM.hydrate(
         <AppContainer iNavSearchResults>
             <Provider store={store}>
                 <WrappedComponent />

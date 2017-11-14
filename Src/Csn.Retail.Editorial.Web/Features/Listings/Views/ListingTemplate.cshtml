@@ -34,6 +34,7 @@
             @Html.React("global.Components.INavSorting", new { state = Model}, containerId: "iNavSorting")
             @Html.React("global.Components.INavBreadCrumbs", new {state = Model}, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSearchResults", new {state = Model}, containerId: "iNavSearchResults")
+            @{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_TeAds.cshtml"); }
             @Html.React("global.Components.INavPagination", new {state = Model}, containerId: "iNavPagination")
 
             @{ Html.RenderPartial("_Disclaimer"); }
