@@ -662,6 +662,7 @@
     <Compile Include="Infrastructure\Extensions\ExpressoExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />
+    <Compile Include="Infrastructure\Extensions\UrlExtensions.cs" />
     <Compile Include="Infrastructure\Filters\RedirectAttributeFilter.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckSummary.cs" />
