@@ -17,7 +17,7 @@ export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (
         
         // Parse Query
         q = queryString.parse(q)
-        q.keyword = keyword
+        q.keywords = keyword
         q = queryString.stringify(q)
 
         // TODO: REMOVE FOR PHASE 2
