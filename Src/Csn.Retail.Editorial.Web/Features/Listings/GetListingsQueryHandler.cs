@@ -57,12 +57,15 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeyword(query.Keyword));
 
+            var sortOrder = !string.IsNullOrEmpty(query.SortOrder) && EditorialSortKeyValues.Items.TryGetValue(query.SortOrder, out var sortOrderLookupResult) 
+                                ? sortOrderLookupResult.Key : EditorialSortKeyValues.ListingPageDefaultSort;
+
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {
                 Query = query.Q,
                 Offset = query.Offset,
                 Limit = PageItemsLimit.ListingPageItemsLimit,
-                SortOrder = query.SortOrder,
+                SortOrder = sortOrder,
                 IncludeCount = true,
                 IncludeSearchResults = true,
                 NavigationName = _tenantProvider.Current().RyvusNavName,
@@ -80,8 +83,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 ListingsViewModel = new ListingsViewModel
                 {
                     NavResults = navResults,
-                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
-                    Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
+                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, query.Q, query.Keyword),
+                    Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, query.Q, query.Keyword),
                     CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.SortOrder, keyword: query.Keyword),
                     Keyword = query.Keyword,
                     DisqusSource = _tenantProvider.Current().DisqusSource,
