@@ -922,6 +922,7 @@
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <Content Include="Features\Details\Views\Boatsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Boatpoint\_Disclaimer.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
