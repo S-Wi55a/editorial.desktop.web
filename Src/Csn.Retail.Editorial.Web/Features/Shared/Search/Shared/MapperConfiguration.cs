@@ -19,7 +19,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         private readonly IResultsMessageMapper _resultsMessageMapper;
         private readonly IArticleUrlMapper _articleUrlMapper;
 
-
         public MappingSetupTask(IMapper mapper, IImageMapper imageMapper, IBreadCrumbMapper breadCrumbMapper,
             IResultsMessageMapper resultsMessageMapper, IArticleUrlMapper articleUrlMapper)
         {
@@ -29,6 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
             _resultsMessageMapper = resultsMessageMapper;
             _articleUrlMapper = articleUrlMapper;
         }
+
         public void Run(IMapperConfigurationExpression cfg)
         {
             cfg.CreateMap<RyvussNavResultDto, NavResult>()
@@ -42,7 +42,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
                 .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)));
 
-            cfg.CreateMap<RyvussNavNodeDto, NavNode>();
+            cfg.CreateMap<RyvussNavNodeDto, NavNode>()
+                .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
 
             cfg.CreateMap<RefinementsNodeDto, NavNode>()
                 .ForMember(dest => dest.MultiSelectMode, opt => opt.Ignore());
@@ -52,11 +53,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetParentExpression()));
 
             cfg.CreateMap<RyvussNavNodeDto, AspectResult>()
-                .ForMember(dest => dest.Count, opt => opt.Ignore());
+                .ForMember(dest => dest.Count, opt => opt.Ignore())
+                .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
 
             cfg.CreateMap<RyvussNavNodeDto, RefinementResult>()
                 .ForMember(dest => dest.Count, opt => opt.Ignore())
-                .ForMember(dest => dest.Refinements, opt => opt.ResolveUsing<RefinementsNavNodeResolver>());
+                .ForMember(dest => dest.Refinements, opt => opt.ResolveUsing<RefinementsNavNodeResolver>())
+                .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
 
             cfg.CreateMap<FacetNodeDto, FacetNode>()
                 .ForMember(dest => dest.IsRefineable, opt => opt.MapFrom(src => src.IsRefineable()))
@@ -70,9 +73,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => _articleUrlMapper.MapDetailsUrl(src)))     
                 .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.GetSponsoredLabel()))
                 .ForMember(dest => dest.DisqusArticleId, opt => opt.MapFrom(src => src.GetDisqusArticleId()));
-
-
         }
     }
-
 }

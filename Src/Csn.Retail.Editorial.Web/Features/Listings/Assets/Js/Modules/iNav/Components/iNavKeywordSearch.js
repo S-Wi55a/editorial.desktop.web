@@ -58,4 +58,4 @@ const KeywordSearch = connect(
   enableReinitialize: true
 })(KeywordSearchComponent))
 
-export default KeywordSearch;
+export default KeywordSearch

@@ -16,7 +16,7 @@ using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
 using Expresso.Syntax;
-using IContextStore = Ingress.ContextStores.IContextStore;
+using ContextStore= Ingress.Web.Common.Abstracts;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
@@ -29,14 +29,14 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IMapper _mapper;
         private readonly IPaginationHelper _paginationHelper;
         private readonly ISortingHelper _sortingHelper;
-        private readonly IContextStore _contextStore;
+        private readonly ContextStore.IContextStore _contextStore;
         private readonly IExpressionParser _parser;
         private readonly IExpressionFormatter _expressionFormatter;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
         private readonly ISponsoredLinksDataMapper _sponsoredLinksDataMapper;
 
         public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
-            ISortingHelper sortingHelper, IContextStore contextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
+            ISortingHelper sortingHelper, ContextStore.IContextStore contextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
             ISponsoredLinksDataMapper sponsoredLinksDataMapper)
         {
             _ryvussProxy = ryvussProxy;
@@ -65,8 +65,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 SortOrder = query.SortOrder,
                 IncludeCount = true,
                 IncludeSearchResults = true,
-                NavigationName = "RetailNav",
-                PostProcessors = new List<string> {"Retail", "FacetSort", "ShowZero"}
+                NavigationName = _tenantProvider.Current().RyvusNavName,
+                PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero" }
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
@@ -74,7 +74,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
             var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.SortOrder; });
-            
+
             return resultData == null ? null : new GetListingsResponse
             {
                 ListingsViewModel = new ListingsViewModel
@@ -82,7 +82,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     NavResults = navResults,
                     Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.SortOrder, query.Q, query.Keyword),
                     Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.SortOrder, query.Q, query.Keyword),
-                    CurrentQuery = UrlParamsFormatter.GetParams(query.Q, sortOrder: query.SortOrder, keyword: query.Keyword),
+                    CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.SortOrder, keyword: query.Keyword),
                     Keyword = query.Keyword,
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),

@@ -6,7 +6,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 
@@ -36,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
                 SortOrder = "Latest",
                 IncludeCount = true,
                 IncludeSearchResults = true,
-                NavigationName = "RetailNav",
+                NavigationName = _tenantProvider.Current().RyvusNavName,
                 PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero"}
             });
 

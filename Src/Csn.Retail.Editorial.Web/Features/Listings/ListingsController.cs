@@ -2,7 +2,11 @@
 using System.Web.Http;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
+using Csn.Retail.Editorial.Web.Features.Listings.Filters;
+using Csn.Retail.Editorial.Web.Features.Listings.Helpers;
+using Csn.Retail.Editorial.Web.Features.Listings.Logger;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
 
@@ -13,15 +17,16 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IEventDispatcher _eventDispatcher;
 
+
         public ListingsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher)
         {
             _queryDispatcher = queryDispatcher;
             _eventDispatcher = eventDispatcher;
-
         }
 
         [System.Web.Mvc.Route("editorial/beta-results/")]
         [RedirectAttributeFilter]
+        [LegacyListingsUrlRedirectFilter]
         public async Task<ActionResult> Index(GetListingsQuery query)
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new ListingsPageRequestEvent());

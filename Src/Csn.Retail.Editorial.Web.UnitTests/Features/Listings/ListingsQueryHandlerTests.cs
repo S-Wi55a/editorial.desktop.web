@@ -17,7 +17,7 @@ using Expresso.Syntax;
 using Ingress.ServiceClient.Abstracts;
 using NSubstitute;
 using NUnit.Framework;
-using IContextStore = Ingress.ContextStores.IContextStore;
+using ContextStore = Ingress.Web.Common.Abstracts;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
@@ -31,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             var ryvussProxy = Substitute.For<IEditorialRyvussApiProxy>();
             var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
             var mapper = Substitute.For<IMapper>();
-            var contextStore = Substitute.For<IContextStore>();
+            var contextStore = Substitute.For<ContextStore.IContextStore>();
             var paginationHelper = Substitute.For<IPaginationHelper>();
             var sortingHelper = Substitute.For<ISortingHelper>();
             var expressionParser = Substitute.For<IExpressionParser>();
