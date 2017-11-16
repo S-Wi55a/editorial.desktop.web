@@ -6,19 +6,22 @@ import queryString from 'query-string'
 type fetchINav = (q?: string, f?: boolean) => (d: Dispatch<any>, getState: any) => any
 
 export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (dispatch: any, getState: any) => {
-    
-        dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
 
-        let q = typeof query !== 'undefined' ? query : getState().store.listings.pendingQuery
-        const keyword = typeof getState().form.keywordSearch !== 'undefined' && 
-                          typeof getState().form.keywordSearch.values !== 'undefined' &&
-                          typeof getState().form.keywordSearch.values.keyword !== 'undefined' ? 
-                          getState().form.keywordSearch.values.keyword : undefined
+        dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
+
+        let q = typeof query !== 'undefined' ? query : getState().store.listings.pendingQuery;
+            const keyword = typeof getState().form.keywordSearch !== 'undefined' && 
+                              typeof getState().form.keywordSearch.values !== 'undefined' &&
+                              typeof getState().form.keywordSearch.values.keyword !== 'undefined' ? 
+                              getState().form.keywordSearch.values.keyword : undefined;
         
-        // Parse Query
-        q = queryString.parse(q)
-        q.keyword = keyword
-        q = queryString.stringify(q)
+        q = queryString.parse(q);
+
+        if (keyword) {
+            q.keyword = keyword;
+        }
+
+        q = queryString.stringify(q);
 
         // TODO: REMOVE FOR PHASE 2
         return window.location.assign(forceEmpty ? window.location.pathname : `?${q}`)
