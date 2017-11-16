@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -47,9 +47,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.4.0\lib\net45\Autofac.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc5.4.0.0\lib\net451\Autofac.Integration.Mvc.dll</HintPath>
@@ -73,7 +72,6 @@
     </Reference>
     <Reference Include="Bearded.Monads, Version=1.0.20.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bearded.Monads.1.1.5\lib\net451\Bearded.Monads.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Bolt.Common.Extensions, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bolt.Common.Extensions.1.0.4.0\lib\net45\Bolt.Common.Extensions.dll</HintPath>
@@ -88,7 +86,6 @@
     </Reference>
     <Reference Include="Csn.Hystrix, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Hystrix.2.4.0.0\lib\net451\Csn.Hystrix.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Csn.Hystrix.RestClient, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Hystrix.RestClient.3.2.1.0\lib\net45\Csn.Hystrix.RestClient.dll</HintPath>
@@ -96,7 +93,6 @@
     </Reference>
     <Reference Include="Csn.Logging, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Logging.5.2.0\lib\net46\Csn.Logging.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Csn.Logging.NLog3, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Logging.NLog3.5.2.0\lib\net46\Csn.Logging.NLog3.dll</HintPath>
@@ -116,15 +112,13 @@
     </Reference>
     <Reference Include="Csn.Puddle, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Puddle.1.1.1.2\lib\net451\Csn.Puddle.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Csn.RestClient, Version=6.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.RestClient.6.1.0.0\lib\net45\Csn.RestClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Csn.Retail.AppShellClient-Net45, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.Retail.AppShellClient-Net45.1.1.1\lib\net452\Csn.Retail.AppShellClient-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Csn.Retail.AppShellClient, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Retail.AppShellClient.1.1.0\lib\net452\Csn.Retail.AppShellClient.dll</HintPath>
     </Reference>
     <Reference Include="Csn.Serializers, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Serializers.2.0.0.0\lib\net45\Csn.Serializers.dll</HintPath>
@@ -145,6 +139,15 @@
     <Reference Include="Csn.SimpleCqrs.Extended, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.SimpleCqrs.Extended.4.1.0.0\lib\net451\Csn.SimpleCqrs.Extended.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Csn.Tracking.Scripts, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Tracking.Scripts.5.1.0\lib\net452\Csn.Tracking.Scripts.dll</HintPath>
+    </Reference>
+    <Reference Include="Csn.Tracking.Scripts.Ryvus42, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Tracking.Scripts.Ryvus42.1.1.2\lib\net461\Csn.Tracking.Scripts.Ryvus42.dll</HintPath>
+    </Reference>
+    <Reference Include="Csn.TrackingServices.Dto, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.TrackingServices.Dto.1.0.3\lib\net452\Csn.TrackingServices.Dto.dll</HintPath>
     </Reference>
     <Reference Include="Csn.WebMetrics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.WebMetrics.1.0.480.0\lib\net40\Csn.WebMetrics.dll</HintPath>
@@ -177,81 +180,86 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.Autofac-Net45, Version=1.4.16.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Autofac-Net45.1.4.16\lib\net452\Ingress.Autofac-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Autofac, Version=14.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Autofac.14.7.0\lib\net452\Ingress.Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Cache-Net45, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache-Net45.1.2.6.0\lib\net452\Ingress.Cache-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Cache, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.14.10.0\lib\net452\Ingress.Cache.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Cache.Redis-Net45, Version=1.1.15.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.Redis-Net45.1.1.15.0\lib\net452\Ingress.Cache.Redis-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Cache.InMemory, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.InMemory.14.10.0\lib\net452\Ingress.Cache.InMemory.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ContextStores-Net45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ContextStores-Net45.1.0.0.0\lib\net452\Ingress.ContextStores-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Cache.Redis, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.Redis.14.10.2\lib\net452\Ingress.Cache.Redis.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ContextStores.HttpContextStore-Net45, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ContextStores.HttpContextStore-Net45.1.2.4.0\lib\net452\Ingress.ContextStores.HttpContextStore-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Cache.UsageReporters.Redis, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.14.10.2\lib\net452\Ingress.Cache.UsageReporters.Redis.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Core-Net45, Version=1.1.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Core-Net45.1.1.9.0\lib\net452\Ingress.Core-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Cache.UsageReporters.Redis.Settings, Version=14.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.Settings-Net452.14.10.3\lib\net452\Ingress.Cache.UsageReporters.Redis.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient-Net45, Version=1.3.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient-Net45.1.3.14.0\lib\net452\Ingress.HttpClient-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.10.0\lib\net452\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix-Net45, Version=1.3.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix-Net45.1.3.7.0\lib\net452\Ingress.HttpClient.Hystrix-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.CircuitBreaker.Hystrix, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CircuitBreaker.Hystrix.1.0.0\lib\net452\Ingress.CircuitBreaker.Hystrix.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix.Abstracts-Net45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix.Abstracts-Net45.1.0.0\lib\net452\Ingress.HttpClient.Hystrix.Abstracts-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Core, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core.14.10.0\lib\net452\Ingress.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix.RedisReporter-Net45, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix.RedisReporter-Net45.1.3.6.0\lib\net452\Ingress.HttpClient.Hystrix.RedisReporter-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Core.Logger.Nlog, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core.Logger.Nlog.14.10.0\lib\net452\Ingress.Core.Logger.Nlog.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Mvc.ComponentsHost-Net45, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Mvc.ComponentsHost-Net45.1.3.4.0\lib\net452\Ingress.Mvc.ComponentsHost-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Core.Settings, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core.Settings.14.10.0\lib\net452\Ingress.Core.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.PageComposers-Net45, Version=1.3.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.PageComposers-Net45.1.3.7.0\lib\net452\Ingress.PageComposers-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.HttpClient, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.14.10.1\lib\net452\Ingress.HttpClient.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.RedisHelpers-Net45, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.RedisHelpers-Net45.1.2.3.0\lib\net452\Ingress.RedisHelpers-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.HttpClient.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Abstracts.14.10.0\lib\net452\Ingress.HttpClient.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Serializers-Net45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Serializers-Net45.1.0.0.0\lib\net452\Ingress.Serializers-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.HttpClient.Hystrix, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.14.10.1\lib\net452\Ingress.HttpClient.Hystrix.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Serializers.Json-Net45, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Serializers.Json-Net45.1.1.5.0\lib\net452\Ingress.Serializers.Json-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.HttpClient.Hystrix.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.Abstracts.14.10.0\lib\net452\Ingress.HttpClient.Hystrix.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient-Net45, Version=1.6.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient-Net45.1.6.10.0\lib\net452\Ingress.ServiceClient-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.HttpClient.Hystrix.RedisReporter, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.RedisReporter.14.10.2\lib\net452\Ingress.HttpClient.Hystrix.RedisReporter.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient.Abstracts-Net45, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient.Abstracts-Net45.1.0.5\lib\net452\Ingress.ServiceClient.Abstracts-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.PageComposers, Version=14.10.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.PageComposers.14.10.4\lib\net452\Ingress.PageComposers.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceRegistry-Net45, Version=1.3.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceRegistry-Net45.1.3.13.0\lib\net452\Ingress.ServiceRegistry-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.RedisHelpers, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.RedisHelpers.14.10.2\lib\net452\Ingress.RedisHelpers.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceRegistry.Abstracts-Net45, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceRegistry.Abstracts-Net45.1.0.1\lib\net452\Ingress.ServiceRegistry.Abstracts-Net45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ingress.Serializers, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Serializers.14.10.0\lib\net452\Ingress.Serializers.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.Serializers.Json, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Serializers.Json.14.10.0\lib\net452\Ingress.Serializers.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.ServiceClient, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.14.10.2\lib\net452\Ingress.ServiceClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.ServiceClient.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.Abstracts.14.10.0\lib\net452\Ingress.ServiceClient.Abstracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.ServiceRegistry, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry.14.10.2\lib\net452\Ingress.ServiceRegistry.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.ServiceRegistry.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry.Abstracts.14.10.0\lib\net452\Ingress.ServiceRegistry.Abstracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.ServiceRegistry.LocalFilterSettings, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry.LocalFilterSettings.14.10.2\lib\net452\Ingress.ServiceRegistry.LocalFilterSettings.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.Web.Common, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common-Net452.14.10.1\lib\net452\Ingress.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.Web.Common.Abstracts, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.10.2\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
     </Reference>
     <Reference Include="JavaScriptEngineSwitcher.ChakraCore, Version=2.3.2.0, Culture=neutral, PublicKeyToken=c608b2a8cc9e4472, processorArchitecture=MSIL">
       <HintPath>..\packages\JavaScriptEngineSwitcher.ChakraCore.2.3.2\lib\net45\JavaScriptEngineSwitcher.ChakraCore.dll</HintPath>
@@ -268,21 +276,39 @@
     <Reference Include="JSPool, Version=2.0.1.0, Culture=neutral, PublicKeyToken=2fc7775f73072640, processorArchitecture=MSIL">
       <HintPath>..\packages\JSPool.2.0.1\lib\net451\JSPool.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.1.0.2\lib\net451\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=1.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.1.0.2\lib\net451\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.2\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=1.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.1.0.2\lib\netstandard1.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=1.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.1.0.1\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MsieJavaScriptEngine, Version=2.1.2.0, Culture=neutral, PublicKeyToken=a3a2846a37ac0d3e, processorArchitecture=MSIL">
       <HintPath>..\packages\MsieJavaScriptEngine.2.1.2\lib\net45\MsieJavaScriptEngine.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=3.2.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.3.2.1\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="NLog.Extended, Version=3.2.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.Extended.3.2.1\lib\net45-full\NLog.Extended.dll</HintPath>
@@ -297,9 +323,8 @@
     <Reference Include="React.Web.Mvc4, Version=3.0.1.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
       <HintPath>..\packages\React.Web.Mvc4.3.0.1\lib\net40\React.Web.Mvc4.dll</HintPath>
     </Reference>
-    <Reference Include="StackExchange.Redis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StackExchange.Redis.1.2.1\lib\net46\StackExchange.Redis.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.6\lib\net46\StackExchange.Redis.dll</HintPath>
     </Reference>
     <Reference Include="SumoLogic.Logging.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6b03a58229215ab3, processorArchitecture=MSIL">
       <HintPath>..\packages\SumoLogic.Logging.NLog.1.0.0.2\lib\net40\SumoLogic.Logging.Common.dll</HintPath>
@@ -310,19 +335,81 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.1.0\lib\net46\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.0.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Globalization.Calendars, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.0.1\lib\net46\System.Globalization.Calendars.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.IO.Compression.4.1.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.0.1\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.IO.FileSystem.4.0.1\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.1\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.1.0\lib\net46\System.Net.Sockets.dll</HintPath>
+    </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.0.0\lib\netstandard1.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -466,6 +553,9 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
+    <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
+    <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
+    <Compile Include="Features\Listings\Logger\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Content Include="Features\Details\Assets\Js\details.vendor.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />
@@ -485,7 +575,8 @@
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
-    <Compile Include="Features\Shared\Formatters\UrlParamsFormatter.cs" />
+    <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
+    <Compile Include="Features\Shared\Formatters\ListingsUrlFormatter.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
@@ -586,7 +677,6 @@
     <Compile Include="Infrastructure\AssetMappers\AssetMapProvider.cs" />
     <Compile Include="Infrastructure\AssetMappers\InitAssetMapStartUpTask.cs" />
     <Compile Include="Infrastructure\Attributes\AutoBindAttribute.cs" />
-    <Compile Include="Infrastructure\ContextStores\ContextStoreExtensions.cs" />
     <Compile Include="Infrastructure\ContextStores\IContextStore.cs" />
     <Compile Include="Infrastructure\Extensions\GuidExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SerializerExtensions.cs" />
@@ -599,10 +689,12 @@
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestRequestHeaderInterceptor.cs" />
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
+    <Compile Include="Infrastructure\MultiTenant\TenantDataMapper.cs" />
     <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />
     <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
+    <Compile Include="Features\Shared\Models\EditorialMetadataDto.cs" />
     <Compile Include="Infrastructure\Redirects\HttpRequestContextWrapper.cs" />
     <Compile Include="Infrastructure\Redirects\IMobiDetailsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\MobiRedirectStrategy.cs" />
@@ -706,7 +798,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
-    <Folder Include="Features\Listings\Helpers\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
@@ -923,6 +1014,11 @@
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <Content Include="Features\Details\Views\Boatsales\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Boatpoint\_Disclaimer.cshtml" />
+    <Content Include="Features\MediaMotiveAds\Views\_SponsoredLink.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_sponsored-text-links.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mrec.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_leaderboard.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_teads.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1048,7 +1144,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

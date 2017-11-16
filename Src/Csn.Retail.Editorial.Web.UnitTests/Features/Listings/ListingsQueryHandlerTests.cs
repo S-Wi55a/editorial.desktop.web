@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
@@ -15,7 +17,7 @@ using Expresso.Syntax;
 using Ingress.ServiceClient.Abstracts;
 using NSubstitute;
 using NUnit.Framework;
-using IContextStore = Ingress.ContextStores.IContextStore;
+using ContextStore = Ingress.Web.Common.Abstracts;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
@@ -29,15 +31,17 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             var ryvussProxy = Substitute.For<IEditorialRyvussApiProxy>();
             var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
             var mapper = Substitute.For<IMapper>();
-            var contextStore = Substitute.For<IContextStore>();
+            var contextStore = Substitute.For<ContextStore.IContextStore>();
             var paginationHelper = Substitute.For<IPaginationHelper>();
             var sortingHelper = Substitute.For<ISortingHelper>();
             var expressionParser = Substitute.For<IExpressionParser>();
             var expressionFormatter = Substitute.For<IExpressionFormatter>();
             var polarNativeAdd = Substitute.For<IPolarNativeAdsDataMapper>();
+            var sponsoredLinksDataMapper = Substitute.For<ISponsoredLinksDataMapper>();
             tenantProvider.Current().Returns(new TenantInfo()
             {
-                Name = "carsales"
+                Name = "carsales",
+                AdUnits = new List<string> { "Title3" }
             });
 
             ryvussProxy.GetAsync<RyvussNavResultDto>(Arg.Any<EditorialRyvussInput>()).Returns(Task.FromResult(
@@ -52,7 +56,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             mapper.Map<NavResult>(Arg.Any<RyvussNavResultDto>(), Arg.Any<Action<IMappingOperationOptions>>()).Returns(new NavResult());
 
             var queryHandler = new GetListingsQueryHandler(ryvussProxy, tenantProvider, mapper, paginationHelper,
-                sortingHelper, contextStore, expressionParser, expressionFormatter, polarNativeAdd);
+                sortingHelper, contextStore, expressionParser, expressionFormatter, polarNativeAdd, sponsoredLinksDataMapper);
             var expression = new FacetExpression("Service", "Carsales").And(new KeywordExpression("Keyword", "honda"));
             expressionParser.Parse(Arg.Any<string>()).Returns(expression);
             expressionFormatter.Format(Arg.Any<Expression>()).Returns("Service.CarSales.");

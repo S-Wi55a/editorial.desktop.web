@@ -100,4 +100,16 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
                 };
         }
     }
+
+    public static class SposoredLinkedTiles
+    {
+        public static IList<string> Tiles => new List<string>
+        {
+            "Tile9",
+            "Tile10",
+            "Tile11",
+            "Tile12",
+            "Tile13"
+        };
+    }
 }

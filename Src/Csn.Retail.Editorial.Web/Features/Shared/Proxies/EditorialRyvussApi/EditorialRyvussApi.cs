@@ -10,6 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
     public interface IEditorialRyvussApiProxy
     {
         Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInput input);
+        SmartServiceResponse<T> Get<T>(EditorialRyvussInput input);
     }
 
     [AutoBind]
@@ -29,10 +30,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 .Path("/v4/editoriallistingretail")
                 .QueryString("q", input.Query);
 
-            if (!string.IsNullOrEmpty(input.NavigationName))
+            if (input.IncludeCount)
             {
-                var nav = input.PostProcessors == null || !input.PostProcessors.Any() ? input.NavigationName : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
-                client = client.QueryString("inav", nav);
+                client = client.QueryString("count", "true");
             }
 
             if (input.IncludeSearchResults)
@@ -40,14 +40,55 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 client = client.QueryString("sr", $"|{input.SortOrder}|{input.Offset}|{input.Limit}");
             }
 
+            if (!string.IsNullOrEmpty(input.NavigationName))
+            {
+                var nav = input.PostProcessors == null || !input.PostProcessors.Any() ? input.NavigationName : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
+                client = client.QueryString("inav", nav);
+            }
+
+            if (input.IncludeMetaData)
+            {
+                client = client.QueryString("metadata", "");
+            }
+
+            return client.GetAsync<T>();
+        }
+
+        //ToDo - Input from string to EditorialRyvussInput
+        public SmartServiceResponse<T> Get<T>(EditorialRyvussInput input)
+        {
+            var client = _smartClient.Service(ServiceName)
+                .Path("/v4/editoriallistingretail")
+                .QueryString("q", input.Query);
+
             if (input.IncludeCount)
             {
                 client = client.QueryString("count", "true");
             }
 
-            return client.GetAsync<T>();
+            if (input.IncludeSearchResults)
+            {
+                client = client.QueryString("sr", $"|{input.SortOrder}|{input.Offset}|{input.Limit}");
+            }
+
+            if (!string.IsNullOrEmpty(input.NavigationName))
+            {
+                var nav = input.PostProcessors == null || !input.PostProcessors.Any()
+                    ? input.NavigationName
+                    : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
+                client = client.QueryString("inav", nav);
+            }
+            
+            if (input.IncludeMetaData)
+            {
+                client = client.QueryString("metadata", "");
+            }
+
+            return client.Get<T>();
         }
     }
+
+   
 
     public class EditorialRyvussInput
     {
@@ -56,6 +97,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
         public List<string> PostProcessors { get; set; }
         public bool IncludeCount { get; set; }
         public bool IncludeSearchResults { get; set; }
+        public bool IncludeMetaData { get; set; }
         public int Limit { get; set; }
         public int Offset { get; set; }
         public string SortOrder { get; set; }

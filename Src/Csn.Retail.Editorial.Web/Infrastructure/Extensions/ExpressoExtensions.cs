@@ -1,5 +1,7 @@
 ﻿using Expresso.Expressions;
 using Expresso.Expressions.Visitors;
+using Expresso.Sanitisation;
+using Expresso.Syntax.Binary;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
 {
@@ -16,6 +18,23 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
                 .Build();
 
             return visitor.ReplaceIn(source);
+        }
+
+        public static bool IsRyvussBinaryTreeSyntax(this string query)
+        {
+            var parser = new FlatBinaryTreeParser(new BinaryTreeSanitiser());
+
+            try
+            {
+                var parsed = parser.Parse(query);
+                return true;
+            }
+            catch
+            {
+                //An exception shows it isn't parsed by binary - therefore is V4
+            }
+
+            return false;
         }
     }
 }
