@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
+using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
 {
@@ -21,10 +22,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
         {
             var queryParams = new Dictionary<string, string>();
 
-            if (!string.IsNullOrEmpty(q)) queryParams["q"] = q;
-            if (!string.IsNullOrEmpty(sortOrder)) queryParams["sortOrder"] = sortOrder;
-            if (!string.IsNullOrEmpty(keyword)) queryParams["keyword"] = keyword;
-            if (offset != 0) queryParams["offset"] = offset.ToString();
+            if (!string.IsNullOrEmpty(q)) queryParams[ListingsQueryStringParams.Query] = q;
+            if (!string.IsNullOrEmpty(sortOrder)) queryParams[ListingsQueryStringParams.Sort] = sortOrder;
+            if (!string.IsNullOrEmpty(keyword)) queryParams[ListingsQueryStringParams.Keywords] = keyword;
+            if (offset != 0) queryParams[ListingsQueryStringParams.Offset] = offset.ToString();
 
             return queryParams.ToQueryString();
         }

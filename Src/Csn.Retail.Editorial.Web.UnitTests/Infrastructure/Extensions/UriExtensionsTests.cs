@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Infrastructure.Extensions
 {
-    class UrlExtensionsTests
+    class UriExtensionsTests
     {
         [Test]
         public void QueryParamsWithSpecialChars()

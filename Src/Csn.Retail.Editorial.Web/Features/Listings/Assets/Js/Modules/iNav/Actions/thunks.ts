@@ -10,7 +10,7 @@ export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
 
         let q = typeof query !== 'undefined' ? query : getState().store.listings.pendingQuery;
-            const keyword = typeof getState().form.keywordSearch !== 'undefined' && 
+        const keyword = typeof getState().form.keywordSearch !== 'undefined' && 
                               typeof getState().form.keywordSearch.values !== 'undefined' &&
                               typeof getState().form.keywordSearch.values.keyword !== 'undefined' ? 
                               getState().form.keywordSearch.values.keyword : undefined;
@@ -18,13 +18,12 @@ export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (
         q = queryString.parse(q);
 
         if (keyword) {
-            q.keyword = keyword;
+            q.keywords = keyword;
         }
-
         q = queryString.stringify(q);
 
         // TODO: REMOVE FOR PHASE 2
-        return window.location.assign(forceEmpty ? window.location.pathname : `?${q}`)
+        return window.location.assign(forceEmpty ? window.location.pathname : `?${q}`);
 
         // return fetch(`${iNav.api}?${q}`)
         //     .then(
@@ -39,7 +38,7 @@ export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (
         //             { type: ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT, payload: {event: 'csn_editorial.listings.fetchNativeAds'}}     //TODO: this can come from the action               
         //         ])
         //     )
-    }
+}
 
 type fetchINavAspect = (a: string, q: string) => (d: Dispatch<any>) => Promise<any>
     

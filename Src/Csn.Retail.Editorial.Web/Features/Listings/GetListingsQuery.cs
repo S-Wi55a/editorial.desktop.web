@@ -7,7 +7,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
     {
         public string Q { get; set; }
         public int Offset { get; set; }
-        public string SortOrder { get; set; }
-        public string Keyword { get; set; }
+        public string Sort { get; set; }
+        public string Keywords { get; set; }
     }
 }
