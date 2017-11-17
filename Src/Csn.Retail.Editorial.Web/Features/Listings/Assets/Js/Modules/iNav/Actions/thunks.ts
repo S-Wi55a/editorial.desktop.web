@@ -3,9 +3,28 @@ import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
 import queryString from 'query-string'
 
-type fetchINav = (q?: string, f?: boolean) => (d: Dispatch<any>, getState: any) => any
+type fetchINav = (q?: string) => (d: Dispatch<any>) => Promise<any>
 
-export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (dispatch: any, getState: any) => {
+export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>) => {
+
+    dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
+
+    return fetch(`${iNav.nav}${query}`)
+        .then(
+            response => response.json(),
+            error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
+        )
+        .then(data =>
+            dispatch(
+                { type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS, payload: { data } }
+                //{ type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE,  payload: { data } },      
+            )
+        );
+}
+
+type fetchINavAndResults = (q?: string, f?: boolean) => (d: Dispatch<any>, getState: any) => any
+
+export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEmpty?: boolean) =>  (dispatch: any, getState: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
 
@@ -75,4 +94,4 @@ export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinem
             })
     }
 
-export type Types = fetchINav & fetchINavAspect & fetchINavRefinement
+export type Types = fetchINav & fetchINavAndResults & fetchINavAspect & fetchINavRefinement

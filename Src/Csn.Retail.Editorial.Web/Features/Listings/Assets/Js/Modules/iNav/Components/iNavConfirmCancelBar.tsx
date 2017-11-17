@@ -15,17 +15,17 @@ interface IINavConfirmCancelBar {
     index?: number
     count?: number
     pendingQuery?: string
-    fetchINav?: (q?: string)=>void
+    fetchINavAndResults?: (q?: string)=>void
     cancel?: ()=>void
 }
 //TODO: how to get hardcoded words data driven?
-const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({count, fetchINav, pendingQuery, cancel}) => (
+const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({ count, fetchINavAndResults, pendingQuery, cancel}) => (
     <div className='iNav-category__confirmCancelBar confirmCancelBar'>
         <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel}>Cancel</div>
         <a className='confirmCancelBar__button confirmCancelBar__button--show' href={pendingQuery} 
             onClick={(e)=>{
                 e.preventDefault()
-                fetchINav()
+                fetchINavAndResults()
             }
         }>Show {count} Articles</a>      
     </div>
@@ -33,15 +33,15 @@ const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({
 
 const mapStateToProps = (state: any, ownProps: IINavConfirmCancelBar) => {
     return {
-        count: typeof state.store.listings.navResults.iNav.nodes[ownProps.index].count !== 'undefined' ? state.store.listings.navResults.iNav.nodes[ownProps.index].count : state.store.listings.navResults.count,
+        count: typeof state.store.listings.navResults.iNav.pendingQueryCount !== 'undefined' ? state.store.listings.navResults.iNav.pendingQueryCount : state.store.listings.navResults.count,
         pendingQuery: typeof state.store.listings.pendingQuery !== 'undefined' ? state.store.listings.pendingQuery : '' 
     }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        fetchINav: (query?: string)=>dispatch([
-            Thunks.fetchINav(query),
+        fetchINavAndResults: (query?: string)=>dispatch([
+            Thunks.fetchINavAndResults(query),
             {type:ActionTypes.UI.CLOSE_INAV}
         ]),
         cancel: ()=>{
