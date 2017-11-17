@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Csn.Retail.Editorial.Web.Features.Listings.Constants;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Tracking.Scripts.Core;
@@ -28,20 +30,19 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
         public Dictionary<string, string> Map(string query, string sort)
         {            
             var expression = _expressionParser.Parse(query);
-            var dimentions = GetTags(expression);
+            var dimensions = GetTags(expression);
 
-            dimentions.Add(TrackingScriptTags.ContentGroup1, TrackingScriptContentGroups.NewsAndReviews);
-            dimentions.Add(TrackingScriptTags.ContentGroup2, TrackingScriptPageTypes.Listing);
-            dimentions.Add(TrackingScriptTags.Action, GetPageType());
-            dimentions.Add(TrackingScriptTags.SortBy, sort);
+            dimensions.Add(TrackingScriptTags.ContentGroup1, TrackingScriptContentGroups.NewsAndReviews);
+            dimensions.Add(TrackingScriptTags.ContentGroup2, TrackingScriptPageTypes.Listing);
+            dimensions.Add(TrackingScriptTags.Action, GetPageType());
+            dimensions.Add(TrackingScriptTags.SortBy, sort);
 
-            return dimentions;
+            return dimensions;
         }
 
         private Dictionary<string, string> GetTags(Expression expression)
         {
-            var visitor = new TrackingScriptTagVisitor();
-            return expression.Accept(visitor, new List<TrackingScriptTag>()).ToDictionary(tag => tag.Name, tag => tag.Value);
+            return expression.Accept(new TrackingScriptTagVisitor(), new List<TrackingScriptTag>()).ToDictionary(tag => tag.Name, tag => tag.Value);
         }
         private string GetPageType()
         {
@@ -49,20 +50,19 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             var uriReferrer = HttpContext.Current.Request.UrlReferrer;
 
             // If it is a listing url...
-            if (uriReferrer != null && uriReferrer.AbsolutePath.Contains("/results") && uriReferrer.AbsolutePath.Contains("/beta-results"))
+            if (uriReferrer != null && (uriReferrer.AbsolutePath.Contains("/results") || uriReferrer.AbsolutePath.Contains("/beta-results")))
             {
                 // Check if it's sorting
-                var curSort = uri.GetQueryParameter("sort");
-                var prvSort = uriReferrer.GetQueryParameter("sort");
-                if ((curSort != null && curSort != prvSort) &&
-                    (curSort != "Latest" || prvSort != null))
+                var curSort = uri.GetQueryParameter(ListingsQueryStringParams.Sort);
+                var prvSort = uriReferrer.GetQueryParameter(ListingsQueryStringParams.Sort);
+                if (curSort != null && curSort.ToLowerInvariant() != prvSort.ToLowerInvariant())
                 {
                     return TrackingScriptPageTypes.Sort;
                 }
 
                 // Check if it's paging                
-                var curOffset = uri.GetQueryParameter("offset"); 
-                var prvOffset = uriReferrer.GetQueryParameter("offset");
+                var curOffset = uri.GetQueryParameter(ListingsQueryStringParams.Offset); 
+                var prvOffset = uriReferrer.GetQueryParameter(ListingsQueryStringParams.Offset);
                 if ((curOffset != null && curOffset != prvOffset) && (curOffset != "0" || prvOffset != null))
                 {
                     return TrackingScriptPageTypes.Pagination;

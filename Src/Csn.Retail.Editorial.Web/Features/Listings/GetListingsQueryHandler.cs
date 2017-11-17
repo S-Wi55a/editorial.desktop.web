@@ -15,6 +15,7 @@ using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
+using Expresso.Expressions;
 using Expresso.Syntax;
 using ContextStore= Ingress.Web.Common.Abstracts;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
@@ -56,7 +57,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
             query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
-
             query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeyword(query.Keywords));
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
@@ -72,8 +72,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
-            var currentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.Sort, keyword: query.Keywords);
-
             _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
             var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.Sort; });
@@ -85,7 +83,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     NavResults = navResults,
                     Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.Sort, query.Q, query.Keywords),
                     Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.Sort, query.Q, query.Keywords),
-                    CurrentQuery = currentQuery,
+                    CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.Sort, keyword: query.Keywords),
                     Keyword = query.Keywords,
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
