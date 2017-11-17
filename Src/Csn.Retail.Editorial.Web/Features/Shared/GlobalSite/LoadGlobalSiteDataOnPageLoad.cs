@@ -18,29 +18,19 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
 {
     public class LoadGlobalSiteDataOnPageLoad<T> : IAsyncEventHandler<T> where T : IEvent
     {
-        private const string CacheProfileNameAnonymous = "GlobalSite.Anonymous";
-        private const string CacheProfileNameMember = "GlobalSite.Member";
-        private const string CacheKey = "GlobalSiteProvider:Get:{0}:{1}";
-        private const string ServiceName = "cmp-retail-appshell";
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
-        private readonly ISmartServiceClient _smartClient;
-        private readonly ICacheStore _cacheStore;
         private readonly IUserContext _userContext;
         private readonly IContextStore<AppShellData> _contextStore;
         private readonly IAppShellClient _proxy;
         private readonly ILogger _logger;
 
         public LoadGlobalSiteDataOnPageLoad(ITenantProvider<TenantInfo> tenantProvider,
-            ISmartServiceClient smartClient,
-            ICacheStore cacheStore,
             IUserContext userContext,
             IContextStore<AppShellData> contextStore,
             IAppShellClient proxy,
             ILogger logger)
         {
             _tenantProvider = tenantProvider;
-            _smartClient = smartClient;
-            _cacheStore = cacheStore;
             _userContext = userContext;
             _contextStore = contextStore;
             _proxy = proxy;
@@ -51,13 +41,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
         {
             if (!(eEvent is IRequireGlobalSiteNav)) return;
 
-            //var response = await _cacheStore
-            //    .Profile(currentUserId.HasValue() ? CacheProfileNameMember : CacheProfileNameAnonymous)
-            //        .FetchAsync(async () => await FetchFromApi())
-            //        .CacheIf(x => x != null && x.TopNav.HasValue())
-            //        .GetAsync(CacheKey.FormatWith(_tenantProvider.Current().Name, currentUserId));
-
-            //_contextStore.Set(response);
             try
             {
                 var response = _proxy.Get(new AppShellRequest

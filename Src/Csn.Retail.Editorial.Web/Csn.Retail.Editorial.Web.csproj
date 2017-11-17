@@ -553,6 +553,7 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
+    <Compile Include="Features\Listings\Constants\ListingsQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
     <Compile Include="Features\Listings\Logger\LegacyListingUrlRedirectLogger.cs" />
@@ -647,6 +648,7 @@
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
     <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
+    <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
@@ -662,6 +664,7 @@
     <Compile Include="Infrastructure\Extensions\ExpressoExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />
+    <Compile Include="Infrastructure\Extensions\UriExtensions.cs" />
     <Compile Include="Infrastructure\Filters\RedirectAttributeFilter.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckSummary.cs" />
@@ -908,7 +911,6 @@
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_hero.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroSlider.scss" />
     <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Tracking\_CsnInsights.cshtml" />
     <Content Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -1019,6 +1021,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mrec.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_teads.scss" />
+    <Content Include="Features\Shared\Views\Partials\Tracking\_CsnInsights.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

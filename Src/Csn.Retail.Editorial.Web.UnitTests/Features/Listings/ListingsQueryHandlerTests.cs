@@ -38,6 +38,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             var expressionFormatter = Substitute.For<IExpressionFormatter>();
             var polarNativeAdd = Substitute.For<IPolarNativeAdsDataMapper>();
             var sponsoredLinksDataMapper = Substitute.For<ISponsoredLinksDataMapper>();
+            var listingInsightsDataMapper = Substitute.For<IListingInsightsDataMapper>();
             tenantProvider.Current().Returns(new TenantInfo()
             {
                 Name = "carsales",
@@ -56,14 +57,14 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             mapper.Map<NavResult>(Arg.Any<RyvussNavResultDto>(), Arg.Any<Action<IMappingOperationOptions>>()).Returns(new NavResult());
 
             var queryHandler = new GetListingsQueryHandler(ryvussProxy, tenantProvider, mapper, paginationHelper,
-                sortingHelper, contextStore, expressionParser, expressionFormatter, polarNativeAdd, sponsoredLinksDataMapper);
+                sortingHelper, contextStore, expressionParser, expressionFormatter, polarNativeAdd, sponsoredLinksDataMapper, listingInsightsDataMapper);
             var expression = new FacetExpression("Service", "Carsales").And(new KeywordExpression("Keyword", "honda"));
             expressionParser.Parse(Arg.Any<string>()).Returns(expression);
             expressionFormatter.Format(Arg.Any<Expression>()).Returns("Service.CarSales.");
             
 
             //Act
-            await queryHandler.HandleAsync(new GetListingsQuery {Keyword = "honda"});
+            await queryHandler.HandleAsync(new GetListingsQuery {Keywords = "honda"});
 
             //Assert
             contextStore.Received().Set(Arg.Any<string>(), Arg.Any<object>());
