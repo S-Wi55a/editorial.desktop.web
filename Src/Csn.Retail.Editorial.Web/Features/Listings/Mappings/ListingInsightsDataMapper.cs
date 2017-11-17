@@ -55,7 +55,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
                 // Check if it's sorting
                 var curSort = uri.GetQueryParameter(ListingsQueryStringParams.Sort);
                 var prvSort = uriReferrer.GetQueryParameter(ListingsQueryStringParams.Sort);
-                if (curSort != null && curSort.ToLowerInvariant() != prvSort.ToLowerInvariant())
+                if (curSort != null && curSort != prvSort && (curSort != EditorialSortKeyValues.ListingPageDefaultSort || prvSort != null))
                 {
                     return TrackingScriptPageTypes.Sort;
                 }
