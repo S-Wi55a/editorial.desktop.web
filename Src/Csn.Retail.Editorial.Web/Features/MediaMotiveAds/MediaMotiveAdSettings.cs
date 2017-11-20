@@ -29,6 +29,13 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
                 }
             },
             {
+                "Tile8",
+                new MediaMotiveAdSetting() {
+                    Id = "8", Description = MediaMotiveAdType.TEADS, AdSize = AdSize.Block550X309, DataKruxRequired = false,
+                    NotSupportedArticleTypes = new List<string>{ArticleType.Sponsored.ToString(), ArticleType.Video.ToString()}
+                }
+            },
+            {
                 "Tile9",
                 new MediaMotiveAdSetting() {
                     Id = "9", Description = MediaMotiveAdType.SponsoredLink, AdSize = AdSize.SponsoredLink, DataKruxRequired = false,

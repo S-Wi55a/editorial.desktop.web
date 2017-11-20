@@ -13,7 +13,7 @@ if (!SERVER) {
 const store = window.store
 
 const render = (WrappedComponent) => {
-    ReactDOM.render(
+    ReactDOM.hydrate(
         <AppContainer iNavBreadcrumbs>
             <Provider store={store}>
                 <WrappedComponent />

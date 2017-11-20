@@ -9,7 +9,7 @@ import INavSortingContainer from 'iNavSorting/Containers/iNavSortingContainer'
 const store = window.store
 
 const render = (WrappedComponent) => {
-    ReactDOM.render(
+    ReactDOM.hydrate(
         <AppContainer iNavSorting>
             <Provider store={store}>
                 <WrappedComponent />

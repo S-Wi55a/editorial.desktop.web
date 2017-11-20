@@ -20,6 +20,7 @@ class INavSearchResults extends React.Component {
     componentDidMount () {
         this._addDisqusScript()
         this._resetComments()
+        this._injectTeads()
       }
     
     componentDidUpdate () {
@@ -60,25 +61,38 @@ class INavSearchResults extends React.Component {
         this.scriptAdded = true
     }
 
+    _injectTeads () {
+        if (SERVER) {
+            return
+        }
+        const tile = document.querySelector('#Tile8')
+        if (tile) {
+            let el = document.querySelectorAll('.iNavSearchResults > span');
+            el = (el.length >= 6) ? el[5] : undefined;
+            if(el){
+                document.querySelector('#teads-video-container').appendChild(tile)
+            }        
+        }
+    }
+
     render() {
-        return <div className="iNavSearchResults">        
-                {
-                    this.props.searchResults.map((searchResult,i) => {
 
-                      //TODO: add Teads component
+        const length = this.props.searchResults.length
 
-                        let animationDuration = SERVER ? 0 : 150
-                        let delay = (i % 2 === 0) ? animationDuration*i : animationDuration*(i-1) 
-                        return  (
-                            <Timer key={`${searchResult.headline}${Math.random()}`} delay={delay}>
-                                <FadeIn duration={animationDuration} startingOpacity={this.props.isInsert ? 1 : 0}>                            
-                                    <INavSearchResult {...searchResult} />
-                                </FadeIn>
-                            </Timer>
-                        )
-                    })
-                }
-                </div>
+        let r = this.props.searchResults.map((searchResult,i) => {
+            let animationDuration = SERVER ? 0 : 150
+            let delay = (i % 2 === 0) ? animationDuration*i : animationDuration*(i-1) 
+            return <Timer key={`${searchResult.headline}${Math.random()}`} delay={delay}>
+                        <FadeIn duration={animationDuration} startingOpacity={this.props.isInsert ? 1 : 0}>                            
+                            <INavSearchResult {...searchResult} />
+                        </FadeIn>
+                    </Timer>
+        })  
+        const t = <div key="teads" id="teads-video-container" style={{clear:'both'}}></div>
+
+        if(length >= 6){r.splice(6,0, t )}
+
+        return <div className="iNavSearchResults">{r}</div>
     }
 } 
 // Redux Connect
