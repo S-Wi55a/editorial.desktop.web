@@ -67,14 +67,6 @@ const mapDispatchToProps: any = (dispatch: any, ownProps: IINavfacet) => {
         { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query } },
         Thunks.fetchINav(query)
     ]),
-    fetchINavAndResults: (query: string) => dispatch([
-        { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query } },
-        Thunks.fetchINavAndResults(query)
-    ]),
-    fetchAspect: (aspect: string, query: string) => dispatch([
-      { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query } },
-      Thunks.fetchINavAspect(aspect, query)
-    ]),
     fetchRefinementAndUpdatePendingQuery: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string) => {
       return dispatch([
         { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query: pendingQuery } },        
