@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
+using Bolt.Common.Extensions;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
 {
@@ -10,6 +13,11 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
             var queryParams = HttpUtility.ParseQueryString(uri.Query);
 
             return queryParams[parameterName];
+        }
+
+        public static string ToQueryString(this Dictionary<string, string> queryParams)
+        {
+            return queryParams.Select(kvp => $"{kvp.Key}={Uri.EscapeDataString(kvp.Value)}").Join("&");
         }
     }
 }
