@@ -11,21 +11,21 @@ const FacetBreadCrumb = {
     clearAll: 'ClearAllBreadCrumb'
 }
 
-const INavBreadCrumb = ({facetDisplay, removeAction, fetchINav, type}) => {
+const INavBreadCrumb = ({ facetDisplay, removeAction, fetchINavAndResults, type}) => {
 
     if(type === FacetBreadCrumb.clearAll || type === FacetBreadCrumb.keyword){
-        return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction, true);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>
+        return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction, true);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>
     }
-    return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINav(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>    
+    return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>    
     
 }
 
-const INavBreadCrumbs = ({ breadCrumbs, fetchINav }) => (
+const INavBreadCrumbs = ({ breadCrumbs, fetchINavAndResults }) => (
         <div className="iNavBreadCrumbs">
             {breadCrumbs.map((breadCrumb) => {
                 return  <Timer key={`${breadCrumb.facetDisplay}${Math.random()}`}>
                             <FadeIn duration={300} startingOpacity={0} className="d-inline-block">
-                                <INavBreadCrumb  {...breadCrumb} fetchINav={fetchINav}/>
+                        <INavBreadCrumb  {...breadCrumb} fetchINavAndResults={fetchINavAndResults}/>
                             </FadeIn>
                         </Timer>
             })}
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchINav: (query, clear)=>dispatch(Thunks.fetchINav(query, clear))
+        fetchINavAndResults: (query, clear) => dispatch(Thunks.fetchINavAndResults(query, clear))
     }
   }
 

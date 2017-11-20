@@ -3,27 +3,44 @@ import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
 import queryString from 'query-string'
 
-type fetchINav = (q?: string, f?: boolean) => (d: Dispatch<any>, getState: any) => any
+type fetchINav = (q?: string) => (d: Dispatch<any>) => Promise<any>
 
-export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (dispatch: any, getState: any) => {
+export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>) => {
 
-        dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
+    dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
 
-        let q = typeof query !== 'undefined' ? query : getState().store.listings.pendingQuery;
+    return fetch(`${iNav.nav}${query}`)
+        .then(
+            response => response.json(),
+            error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
+        )
+        .then(data =>
+            dispatch(
+                { type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS, payload: { data } }
+                //{ type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE,  payload: { data } },      
+            )
+        );
+}
+
+type fetchINavAndResults = (q?: string, f?: boolean) => (d: Dispatch<any>, getState: any) => any
+
+export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEmpty?: boolean) =>  (dispatch: any, getState: any) => {
+    
+        dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
+
+        let q = typeof query !== 'undefined' ? query : getState().store.listings.pendingQuery
         const keyword = typeof getState().form.keywordSearch !== 'undefined' && 
-                              typeof getState().form.keywordSearch.values !== 'undefined' &&
-                              typeof getState().form.keywordSearch.values.keyword !== 'undefined' ? 
-                              getState().form.keywordSearch.values.keyword : undefined;
+                          typeof getState().form.keywordSearch.values !== 'undefined' &&
+                          typeof getState().form.keywordSearch.values.keyword !== 'undefined' ? 
+                          getState().form.keywordSearch.values.keyword : undefined
         
-        q = queryString.parse(q);
-
-        if (keyword) {
-            q.keywords = keyword;
-        }
-        q = queryString.stringify(q);
+        // Parse Query
+        q = queryString.parse(q)
+        q.keywords = keyword
+        q = queryString.stringify(q)
 
         // TODO: REMOVE FOR PHASE 2
-        return window.location.assign(forceEmpty ? window.location.pathname : `?${q}`);
+        return window.location.assign(forceEmpty ? window.location.pathname : `?${q}`)
 
         // return fetch(`${iNav.api}?${q}`)
         //     .then(
@@ -38,7 +55,7 @@ export const fetchINav: fetchINav = (query?: string, forceEmpty?: boolean) =>  (
         //             { type: ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT, payload: {event: 'csn_editorial.listings.fetchNativeAds'}}     //TODO: this can come from the action               
         //         ])
         //     )
-}
+    }
 
 type fetchINavAspect = (a: string, q: string) => (d: Dispatch<any>) => Promise<any>
     
@@ -77,4 +94,4 @@ export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinem
             })
     }
 
-export type Types = fetchINav & fetchINavAspect & fetchINavRefinement
+export type Types = fetchINav & fetchINavAndResults & fetchINavAspect & fetchINavRefinement
