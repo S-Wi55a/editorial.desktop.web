@@ -1,11 +1,6 @@
 using System.Linq;
-using System.Collections.Generic;
-using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
-using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
-using NLog.LogReceiverService;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 {
@@ -21,10 +16,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 
         public static Refinement GetRefinement(this FacetNodeDto source)
         {
-            if (source.MetaData?.Refinement == null || !source.MetaData.Refinement.Any())
+            if (source.MetaData?.RefineableAspects == null || !source.MetaData.RefineableAspects.Any())
                 return null;
 
-            return source.MetaData.Refinement.First();
+            var refineableAspect = source.MetaData.RefineableAspects.First();
+
+            return new Refinement()
+            {
+                Aspect = refineableAspect.Name,
+                ParentExpression = source.Expression
+            };
         }
 
         public static RefinementsNodeDto GetRefinements(this RyvussNavNodeDto source)
@@ -56,6 +57,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         public static string GetDisqusArticleId(this SearchResultDto source)
         {
             return $"EDITORIAL-{source.Id?.Substring(7)}";
+        }
+        public static string GetDisplayName(this RyvussNavNodeDto source)
+        {
+            return source.DisplayName == "Make" ? "Make/Model" : source.DisplayName;
         }
     }
 }

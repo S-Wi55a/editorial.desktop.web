@@ -34,6 +34,7 @@
             @Html.React("global.Components.INavSorting", new { state = Model}, containerId: "iNavSorting")
             @Html.React("global.Components.INavBreadCrumbs", new {state = Model}, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSearchResults", new {state = Model}, containerId: "iNavSearchResults")
+            @{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_TeAds.cshtml"); }
             @Html.React("global.Components.INavPagination", new {state = Model}, containerId: "iNavPagination")
 
             @{ Html.RenderPartial("_Disclaimer"); }
@@ -43,12 +44,18 @@
     </div>
 </div>
 
+@{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Tracking.cshtml"); }
+
 @section BottomScripts
 {
     @Html.React("global.Components.INavPreloadedState", new {state = Model}, containerId: "INavPreloadedState")
     @if (Model.PolarNativeAdsData != null)
     {
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
+    }
+    @if (Model.InsightsData.Any())
+    {
+        Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
     @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
 }

@@ -51,8 +51,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchSearchResults: (query)=>{
-        dispatch(Thunks.fetchINav(query))
+      fetchSearchResults: (query)=> {
+          dispatch(Thunks.fetchINavAndResults(query));
       },
       clear: ()=>dispatch(change('keywordSearch', 'keyword', ''))
   }

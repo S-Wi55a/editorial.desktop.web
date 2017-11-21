@@ -1,4 +1,5 @@
-﻿using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
+﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.Models
@@ -14,5 +15,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
         public string Keyword { get; set; }    
         public string DisqusSource { get; set; }
         public bool ShowSponsoredLinks { get; set; }
+        public Dictionary<string, string> InsightsData { get; set; }
     }
 }

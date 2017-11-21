@@ -11,7 +11,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
-using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 using Csn.Serializers;
 using Csn.Serializers.Json;
 using Csn.SimpleCqrs;
@@ -36,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterType<AutoMappedMapper>().As<IMapper>().SingleInstance();
             builder.Register(x => GetLogger.For<MvcApplication>()).As<ILogger>().SingleInstance();
             builder.RegisterType<NLogLoggerFactory>().As<ILoggerFactory>().SingleInstance();
-            builder.Register(x => CacheStoreBuilder.New().Build()).As<Csn.Cars.Cache.ICacheStore>().SingleInstance();
+            builder.Register(x => CacheStoreBuilder.New().Build()).As<Cars.Cache.ICacheStore>().SingleInstance();
             builder.Register(x => EditorialSettings.Instance).As<EditorialSettings>().SingleInstance();
             builder.Register(x => VideosApiSettings.Instance).As<VideosApiSettings>().SingleInstance();
             builder.RegisterType<Serializer>().As<ISerializer>().SingleInstance();
@@ -81,7 +80,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             }).As<IDetailsRedirectLogger>().SingleInstance();
 
             //Handling legacy URLs
-            builder.RegisterType<LegacyListingsRedirectHelper>().As<ILegacyListingsRedirectHelper>().SingleInstance();
+            builder.RegisterType<LegacyListingsRedirectHelper>().As<ILegacyListingsRedirectHelper>();
             // set up separate logger for this class so we can log separately
             builder.RegisterType<LegacyListingUrlRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
             {

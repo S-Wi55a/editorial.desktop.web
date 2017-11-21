@@ -6,7 +6,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
@@ -16,13 +15,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
     {
         private readonly IEditorialRyvussApiProxy _ryvussProxy;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
-        private readonly IMapper _mapper;
 
-        public RefinementsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper)
+        public RefinementsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
-            _mapper = mapper;
         }
 
         public async Task<RefinementResult> HandleAsync(RefinementsQuery query)
@@ -34,8 +31,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
             {
                 Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
                 IncludeCount = true,
-                NavigationName = "RetailNav",
-                PostProcessors = new List<string> { "Retail", "FacetSort", $"RetailAspect({query.Aspect})", $"RetailAspectRefinements({query.AspectRefinement},{query.ParentExpression})", "ShowZero" }
+                NavigationName = _tenantProvider.Current().RyvusNavName,
+                PostProcessors = new List<string> { "FacetSort", $"RetailAspect({query.Aspect})", $"RetailAspectRefinements({query.AspectRefinement},{query.ParentExpression})", "ShowZero" }
             });
 
             var resultData = !ryvussResult.IsSucceed ? null : ryvussResult.Data;

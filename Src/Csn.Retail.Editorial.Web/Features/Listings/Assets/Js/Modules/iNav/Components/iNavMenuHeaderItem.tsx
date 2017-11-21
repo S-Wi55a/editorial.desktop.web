@@ -48,15 +48,15 @@ const mapStateToProps = (state: State, ownProps: IINavMenuHeaderItemComponent) =
 const mapDispatchToProps = (dispatch: any) => {
   return {
     toggleIsSelected: (id: number, isActive: boolean) => {
-      dispatch([
-        {type: ActionTypes.UI.CANCEL},
-        { type: ActionTypes.UI.TOGGLE_IS_ACTIVE,
-          payload: {
-            id,
-            isActive: !isActive
-          }
-        }
-      ])
+        dispatch([
+            {
+                type: ActionTypes.UI.TOGGLE_IS_ACTIVE,
+                payload: {
+                    id,
+                    isActive: !isActive
+                }
+            }
+        ]);
     }
   }
 }

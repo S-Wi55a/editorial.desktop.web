@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Csn.MultiTenant;
-using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 
@@ -31,18 +29,21 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {
                 Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
-                Limit = PageItemsLimit.ListingPageItemsLimit,
-                Offset = 0,
-                SortOrder = "Latest",
                 IncludeCount = true,
-                IncludeSearchResults = true,
-                NavigationName = "RetailNav",
+                IncludeSearchResults = false,
+                NavigationName = _tenantProvider.Current().RyvusNavName,
                 PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero"}
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
 
-            return resultData == null ? null : _mapper.Map<NavResult>(resultData);
+            if (resultData == null) return null;
+
+            return new NavResult()
+            {
+                Count = resultData.Count,
+                INav = _mapper.Map<Nav>(resultData.INav)
+            };
         }
     }
 }

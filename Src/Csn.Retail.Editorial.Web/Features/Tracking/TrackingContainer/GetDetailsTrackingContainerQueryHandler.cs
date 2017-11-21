@@ -10,8 +10,11 @@ using Csn.Retail.Editorial.Web.Infrastructure.Constants;
 using Csn.SimpleCqrs;
 using Csn.WebMetrics.Core.Model;
 using Csn.WebMetrics.Editorial.Interfaces;
+using Ingress.Web.Common.Abstracts;
+using ContextStore = Ingress.Web.Common.Abstracts;
 using ArticleType = Csn.WebMetrics.Core.Model.ArticleType;
-using IContextStore = Csn.Retail.Editorial.Web.Infrastructure.ContextStores.IContextStore;
+
+
 
 namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
 {
@@ -21,11 +24,11 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
         private const string Key = "Tracking.Editorial";
 
         private readonly IEditorialDetailsTrackingContainerProvider _provider;
-        private readonly IContextStore _contextStore;
+        private readonly ContextStore.IContextStore _contextStore;
         private readonly HttpContextBase _httpContext;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
 
-        public GetDetailsTrackingContainerQueryHandler(IEditorialDetailsTrackingContainerProvider provider, IContextStore contextStore, HttpContextBase httpContextBase, ITenantProvider<TenantInfo> tenantProvider)
+        public GetDetailsTrackingContainerQueryHandler(IEditorialDetailsTrackingContainerProvider provider, ContextStore.IContextStore contextStore, HttpContextBase httpContextBase, ITenantProvider<TenantInfo> tenantProvider)
         {
             _provider = provider;
             _contextStore = contextStore;

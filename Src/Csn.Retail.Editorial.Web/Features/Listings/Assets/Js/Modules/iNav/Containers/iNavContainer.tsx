@@ -19,9 +19,9 @@ if (!SERVER) {
 
 interface IINavNodes {
   nodes: INode[], 
-  activeItemId: number | null
-  keywordSearchIsActive: boolean
-  cancel: ()=>Dispatch<Actions>
+  activeItemId: number | null,
+  keywordSearchIsActive: boolean,
+  cancel: (id: number) => Dispatch<Actions>;
 }
 
 //Wrapper component
@@ -59,11 +59,7 @@ class INav extends React.Component<IINavNodes> {
 
   render(){
     return (
-      <div 
-        className={['iNav', this.props.activeItemId !== null || this.props.keywordSearchIsActive ? `iNav--isActive` : ''].join(' ')} 
-        onClick={()=>{if(this.props.activeItemId !== null || this.props.keywordSearchIsActive){this.props.cancel()}}}
-        data-webm-section="searchbar"
-      >
+        <div className={['iNav', this.props.activeItemId !== null || this.props.keywordSearchIsActive ? `iNav--isActive` : ''].join(' ')} onClick={() => { if (this.props.activeItemId !== null || this.props.keywordSearchIsActive) { this.props.cancel(this.props.activeItemId)}}}>
         <div className="iNav__container" onClick={(e)=>{e.stopPropagation()}}>
           {/* This click handler is to prevent the click event propigating and triggering the cancel fn */}
           <div className="iNav__category-wrapper">
@@ -85,11 +81,17 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    cancel: ()=>{
-      dispatch([
-        {type: ActionTypes.UI.CANCEL},
-        reset('keywordSearch')
-      ])
+    cancel: (id: number)=> {
+        dispatch([
+            {
+                type: ActionTypes.UI.TOGGLE_IS_ACTIVE,
+                payload: {
+                    id,
+                    isActive: false
+                }
+            },
+            reset('keywordSearch')
+        ]);
     }
   }
 }

@@ -140,19 +140,21 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
         ...state,
         activePage: state.activePage > 1 ? state.activePage - 1 : 1
       }
-    // Reset the page back to start when menu is cancel/closed
+    // Reset the page back to start when menu is cancelled
     case ActionTypes.UI.CANCEL:
-    case ActionTypes.UI.CLOSE_INAV:
       return {
         ...state,
         activePage: 1
-      }
+        }
+    case ActionTypes.API.INAV.FETCH_QUERY_REQUEST:
     case ActionTypes.API.ASPECT.FETCH_QUERY_REQUEST:
     case ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST:
       return {
         ...state,
         isLoading: true
-      }
+        }
+    case ActionTypes.API.INAV.FETCH_QUERY_SUCCESS:
+    case ActionTypes.API.INAV.FETCH_QUERY_FAILURE:
     case ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS:
     case ActionTypes.API.ASPECT.FETCH_QUERY_FAILURE:
     case ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS:

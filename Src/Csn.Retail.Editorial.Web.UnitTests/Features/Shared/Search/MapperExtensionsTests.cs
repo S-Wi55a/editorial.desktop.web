@@ -90,5 +90,28 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
             Assert.AreEqual(result.DisplayName, dto.MetaData.Refinements.First().DisplayName);
             Assert.AreEqual(resultWithEmptySource, null);
         }
+
+        [Test]
+        public void GetDisplayNameTest()
+        {
+            //Arrange
+            var dtoWithoutMake = new RyvussNavNodeDto
+            {
+                DisplayName = "Article Type"
+            };
+            var dtoWithMake = new RyvussNavNodeDto
+            {
+                DisplayName = "Make"
+            };
+
+            //Act
+            var resultWithoutMake = dtoWithoutMake.GetDisplayName();
+            var resultWithMake = dtoWithMake.GetDisplayName();
+
+            //Assert
+            Assert.IsNotNull(resultWithoutMake);
+            Assert.AreEqual(resultWithMake, "Make/Model");
+            Assert.AreEqual(resultWithoutMake, "Article Type");
+        }
     }
 }

@@ -3,9 +3,9 @@ using System.Linq;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
-using Ingress.ContextStores;
 using NSubstitute;
 using NUnit.Framework;
+using ContextStore = Ingress.Web.Common.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 {
@@ -14,7 +14,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void NoBreadCrumbs()
         {
-            var contextStore = Substitute.For<IContextStore>();
+            var contextStore = Substitute.For<ContextStore.IContextStore>();
 
             contextStore.Get(Arg.Any<string>()).Returns(new RyvussNavResultDto());
 
@@ -36,7 +36,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void MakeButNoModelBreadCrumbs()
         {
-            var contextStore = Substitute.For<IContextStore>();
+            var contextStore = Substitute.For<ContextStore.IContextStore>();
 
             contextStore.Get(Arg.Any<string>()).Returns(new RyvussNavResultDto());
 
@@ -63,7 +63,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void MakeAndModelBreadCrumbs()
         {
-            var contextStore = Substitute.For<IContextStore>();
+            var contextStore = Substitute.For<ContextStore.IContextStore>();
 
             contextStore.Get(Arg.Any<string>()).Returns(new RyvussNavResultDto());
 

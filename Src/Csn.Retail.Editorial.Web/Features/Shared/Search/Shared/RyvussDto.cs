@@ -63,6 +63,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public List<Refinement> Refinement { get; set; }
 
         public List<RefinementsNodeDto> Refinements { get; set; }
+        public List<RefineableAspectsDto> RefineableAspects { get; set; }
+    }
+
+    public class RefineableAspectsDto
+    {
+        public string Name { get; set; }
     }
 
     public class BreadCrumbDto

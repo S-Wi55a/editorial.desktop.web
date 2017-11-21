@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchQuery: (event, newValue) => {
-            dispatch(Thunks.fetchINav(newValue))
+            dispatch(Thunks.fetchINavAndResults(newValue));
         }
     }
 }
