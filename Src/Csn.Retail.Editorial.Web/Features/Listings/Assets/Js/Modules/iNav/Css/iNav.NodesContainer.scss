@@ -10,6 +10,7 @@
     font-size: 0;
     position: absolute;
     top: $iNav-header-height - 10px;
+    height: 0;
 
     &__container {
         
@@ -32,11 +33,18 @@
             display: inline-block;
         }
         &--1 {
-            margin-left: $iNav-header-item-width;            
+            left: $iNav-header-item-width;            
         }
         &--2 {
-            margin-left: $iNav-header-item-width * 2;             
+            left: $iNav-header-item-width * 2;             
         }
+        &--3 {
+            left: $iNav-header-item-width * 3;             
+        }
+        &--4 {
+            left: $iNav-header-item-width * 4;             
+        }
+
         &-page {
             position: relative;
             white-space: nowrap;
