@@ -19,7 +19,12 @@ interface IINavMenuHeaderItemComponent {
 
 const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ isActive, node, toggleIsSelected, index, count }) => {
   return (
-    <div className={['iNav__menu-header-item', isActive ? 'iNav__menu-header-item--isActive' : ''].join(' ')} onClick={() => toggleIsSelected(index, isActive)}>
+    <div 
+      className={['iNav__menu-header-item', isActive ? 'iNav__menu-header-item--isActive' : ''].join(' ')} 
+      onClick={() => toggleIsSelected(index, isActive)}
+      data-webm-section={node.displayName}
+      data-webm-clickvalue={node.displayName}
+      >
       {node.displayName}{count ? <span className="iNav__menu-header-item-count">{count}</span> : ''}
     </div>
   )
