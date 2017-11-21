@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Csn.Retail.Editorial.Web.Features.Listings.Constants;
@@ -35,7 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             dimensions.Add(TrackingScriptTags.ContentGroup1, TrackingScriptContentGroups.NewsAndReviews);
             dimensions.Add(TrackingScriptTags.ContentGroup2, TrackingScriptPageTypes.Listing);
             dimensions.Add(TrackingScriptTags.Action, GetPageType());
-            dimensions.Add(TrackingScriptTags.SortBy, sort);
+            dimensions.Add(TrackingScriptTags.SortBy, string.IsNullOrEmpty(sort) ? string.Empty : sort);
 
             return dimensions;
         }

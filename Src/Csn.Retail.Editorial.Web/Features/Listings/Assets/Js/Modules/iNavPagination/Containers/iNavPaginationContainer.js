@@ -40,7 +40,7 @@ const INavPagination = ({ paging, fetchQuery }) =>  {
                     <INavPage { ...paging.first } currentPage={paging.currentPageNo} fetchQuery={fetchQuery} data-webm-clickvalue="first"/> 
                     <INavPageSeparator {...paging} text='...' initial={true}/>
                     {paging.pages.map((page) => {
-                        return <INavPage  key={page.pageNo} { ...page } currentPage={paging.currentPageNo} fetchQuery={fetchQuery}/>
+                        return <INavPage  key={page.pageNo} { ...page } currentPage={paging.currentPageNo} fetchQuery={fetchQuery} data-webm-clickvalue={`page_number_${page.pageNo}`}/>
                     })}
                     <INavPageSeparator {...paging} text='...' trailing={true}/>                    
                     <INavPage  { ...paging.last } currentPage={paging.currentPageNo} fetchQuery={fetchQuery} data-webm-clickvalue="last"/>
