@@ -24,6 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public string Name { get; set; }
         public string DisplayName { get; set; }
         public RefinementsMetaDataDto MetaData { get; set; }
+        public string QueryWithPlaceholder { get; set; }
     }
 
     public class RefinementsMetaDataDto

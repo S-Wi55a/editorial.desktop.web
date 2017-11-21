@@ -57,7 +57,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
             query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
-            query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeyword(query.Keywords));
+            if (!string.IsNullOrEmpty(query.Keywords))
+            {
+                query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeywords(query.Keywords));
+            }
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
@@ -84,7 +87,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.Sort, query.Q, query.Keywords),
                     Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.Sort, query.Q, query.Keywords),
                     CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.Sort, keyword: query.Keywords),
-                    Keyword = query.Keywords,
+                    Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(query.Q).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
                     ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),

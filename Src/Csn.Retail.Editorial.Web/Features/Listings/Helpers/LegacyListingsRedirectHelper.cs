@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Helpers
             if (!string.IsNullOrEmpty(keyword))
             {
                 var parser = new FlatBinaryTreeParser(new BinaryTreeSanitiser());
-                formattedQuery = _expressionFormatter.Format(parser.Parse(query).AppendOrUpdateKeyword(keyword));
+                formattedQuery = _expressionFormatter.Format(parser.Parse(query).AppendOrUpdateKeywords(keyword));
             }
 
             var response = _editorialRyvussApiProxy.Get<EditorialSeoDto>(new EditorialRyvussInput()
