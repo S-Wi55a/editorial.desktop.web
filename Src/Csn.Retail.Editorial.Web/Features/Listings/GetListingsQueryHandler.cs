@@ -55,7 +55,11 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
-            query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
+            if (!_tenantProvider.Current().SupportsSeoFriendlyListings)
+            {
+                query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
+            }
+            
             query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeyword(query.Keywords));
 
             var sortOrder = !string.IsNullOrEmpty(query.Sort) && EditorialSortKeyValues.Items.TryGetValue(query.Sort, out var sortOrderLookupResult)
@@ -63,14 +67,16 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
-                Query = query.Q,
+                Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Q : query.SeoFragment,
                 Offset = query.Offset,
                 Limit = PageItemsLimit.ListingPageItemsLimit,
                 SortOrder = sortOrder,
                 IncludeCount = true,
                 IncludeSearchResults = true,
+                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
+                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero" }
+                PostProcessors = new List<string> { "Seo", "Retail", "FacetSort", "ShowZero" }
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;

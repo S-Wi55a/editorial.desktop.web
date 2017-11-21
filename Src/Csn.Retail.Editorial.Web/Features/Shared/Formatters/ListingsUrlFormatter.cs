@@ -15,7 +15,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
         public static string GetSeoUrl(string seofragment, long offset = 0, string sortOrder = null)
         {
             var query = GetQueryStringParameters("", offset, sortOrder, "");
-            return string.IsNullOrEmpty(query) ? seofragment : $"{seofragment}?{query}";
+            var pathAndQuery = string.IsNullOrEmpty(query) ? seofragment : $"{seofragment}?{query}";
+
+            return $"/editorial/results{pathAndQuery}";
         }
 
         private static string GetQueryStringParameters(string q, long offset, string sortOrder, string keyword)

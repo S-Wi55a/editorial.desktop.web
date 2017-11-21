@@ -9,7 +9,7 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
 
     dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
 
-    return fetch(`${iNav.nav}${query}`)
+    return fetch(`${iNav.nav}?q=${query}`)
         .then(
             response => response.json(),
             error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })

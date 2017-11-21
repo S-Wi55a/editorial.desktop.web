@@ -633,6 +633,7 @@
     <Compile Include="Features\Shared\Search\Extensions\MapperExtensions.cs" />
     <Compile Include="Features\Shared\Search\Mapping\DateAvailableMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\FacetNodeActionResolver.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\FacetNodeUrlResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\RefinementsNavNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ResultsMessageMapper.cs" />

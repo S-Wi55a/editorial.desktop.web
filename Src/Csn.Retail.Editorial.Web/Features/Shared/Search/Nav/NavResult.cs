@@ -33,6 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public string Value { get; set; }
         public string DisplayValue { get; set; }
         public string Action { get; set; }
+        public string Url { get; set; }
         public int Count { get; set; }
         public string Expression { get; set; }
         public bool IsRefineable { get; set; }

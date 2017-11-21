@@ -26,13 +26,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
 
         public async Task<NavResult> HandleAsync(NavQuery query)
         {
-            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
+            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
-                Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
+                Query = query.Query,
                 IncludeCount = true,
                 IncludeSearchResults = false,
+                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
+                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero"}
+                PostProcessors = new List<string> { "Seo", "Retail", "FacetSort", "ShowZero" }
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;

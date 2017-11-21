@@ -65,6 +65,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.IsRefineable, opt => opt.MapFrom(src => src.IsRefineable()))
                 .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetRefinement()))
                 .ForMember(dest => dest.Action, opt => opt.ResolveUsing<FacetNodeActionResolver>())
+                .ForMember(dest => dest.Url, opt => opt.ResolveUsing<FacetNodeUrlResolver>())
                 .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<NavNode>(src.GetRefinements())));
 
             cfg.CreateMap<SearchResultDto, SearchResult>()

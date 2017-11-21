@@ -20,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _eventDispatcher = eventDispatcher;
         }
 
-        [Route("editorial/beta-results/")]
+        [Route("editorial/beta-results/{*seoFragment:regex(^[\\w-/]*)?}")]
         [RedirectAttributeFilter]
         [LegacyListingsUrlRedirectFilter]
         public async Task<ActionResult> Index(GetListingsQuery query)

@@ -39,7 +39,7 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
       }
     } >
       <input className="iNav-category-item__checkbox" type="checkbox" checked={props.isSelected} readOnly={true} />
-      <a className="iNav-category-item__link" href={`${props.action}`} onClick={e => e.preventDefault()}>{props.displayValue}</a>
+      <a className="iNav-category-item__link" href={`${props.url}`} onClick={e => e.preventDefault()}>{props.displayValue}</a>
       <span className="iNav-category-item__meta-container">
         <span className="iNav-category-item__count">{props.count}</span>
         {
