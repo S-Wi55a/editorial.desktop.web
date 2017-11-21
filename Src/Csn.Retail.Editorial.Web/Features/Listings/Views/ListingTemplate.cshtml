@@ -50,5 +50,9 @@
     {
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
     }
+    @if (Model.InsightsData.Any())
+    {
+        Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
+    }
     @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
 }

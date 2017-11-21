@@ -5,16 +5,16 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 {
     public class GetListingsQuery : IQuery
     {
-        private string _sortOrder;
+        private string _sort;
         public string Q { get; set; }
         public int Offset { get; set; }
-        public string SortOrder
+        public string Sort
         {
-            get => string.IsNullOrEmpty(_sortOrder) ? EditorialSortKeyValues.ListingPageDefaultSort : _sortOrder;
-            set => _sortOrder = value != null && EditorialSortKeyValues.Items.TryGetValue(value, out var sortOrder)
-                ? sortOrder.Key
+            get => string.IsNullOrEmpty(_sort) ? EditorialSortKeyValues.ListingPageDefaultSort : _sort;
+            set => _sort = value != null && EditorialSortKeyValues.Items.TryGetValue(value, out var sort)
+                ? sort.Key
                 : EditorialSortKeyValues.ListingPageDefaultSort;
         }
-        public string Keyword { get; set; }
+        public string Keywords { get; set; }
     }
 }
