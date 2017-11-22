@@ -24,11 +24,11 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
 
 type fetchINavAndResults = (q?: string, f?: boolean, p?:boolean) => (d: Dispatch<any>, getState: any) => any
 
-export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEmpty?: boolean, useplaceholder?: boolean) =>  (dispatch: any, getState: any) => {
+export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEmpty?: boolean, keywordChanged?: boolean) =>  (dispatch: any, getState: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
         let q: any = '';
-        if (useplaceholder) {
+        if (keywordChanged) {
             const keyword = typeof getState().form.keywordSearch !== 'undefined' &&
                 typeof getState().form.keywordSearch.values !== 'undefined' &&
                 typeof getState().form.keywordSearch.values.keyword !== 'undefined' ?
