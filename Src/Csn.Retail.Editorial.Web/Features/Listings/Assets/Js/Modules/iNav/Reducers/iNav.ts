@@ -42,6 +42,9 @@ function navReducer(state: INavResults, action: Actions): INavResults {
                         },
                         pendingQueryCount: {
                             $set: action.payload.data.count
+                        },
+                        keywordsPlaceholder: {
+                            $set: action.payload.data.iNav.keywordsPlaceholder
                         }
                     }
                 },
@@ -67,7 +70,7 @@ function aspectReducer(state: INavResults, action: Actions): INavResults {
                             [nodeIndex]: {
                                 $set : action.payload.data
                             }
-                        },
+                        }
                     }
                 }
             })
@@ -90,7 +93,7 @@ function refinementReducer(state: INavResults, action: Actions): INavResults {
                             [nodeIndex]: {
                                 $set : action.payload.data
                             }
-                        },
+                        }
                     }
                 }
             })

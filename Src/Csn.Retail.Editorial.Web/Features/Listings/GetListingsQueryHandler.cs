@@ -60,7 +60,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
             }
             
-            query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeyword(query.Keywords));
+            if (!string.IsNullOrEmpty(query.Keywords))
+            {
+                query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeywords(query.Keywords));
+            }
 
             var sortOrder = !string.IsNullOrEmpty(query.Sort) && EditorialSortKeyValues.Items.TryGetValue(query.Sort, out var sortOrderLookupResult)
                 ? sortOrderLookupResult.Key : EditorialSortKeyValues.ListingPageDefaultSort;
@@ -92,7 +95,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, query.Q, query.Keywords),
                     Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, query.Q, query.Keywords),
                     CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.Sort, keyword: query.Keywords),
-                    Keyword = query.Keywords,
+                    Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(query.Q).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
                     ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
