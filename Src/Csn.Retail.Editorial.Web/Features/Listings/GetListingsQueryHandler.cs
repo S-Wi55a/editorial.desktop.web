@@ -93,7 +93,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     NavResults = navResults,
                     Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, query.Q, query.Keywords),
                     Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, query.Q, query.Keywords),
-                    CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.Sort, keyword: query.Keywords),
+                    CurrentQuery = ListingsUrlFormatter.GetPathAndQueryString(query.Q, sortOrder: query.Sort, keyword: query.Keywords),
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(query.Q).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),

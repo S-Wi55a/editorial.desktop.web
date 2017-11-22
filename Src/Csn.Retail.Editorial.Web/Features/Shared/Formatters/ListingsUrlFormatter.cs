@@ -8,7 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
     {
         private static string ListingsBasePath = "/editorial/beta-results";
 
-        public static string GetQueryString(string q = null, long offset = 0, string sortOrder = null, string keyword = null)
+        public static string GetPathAndQueryString(string q = null, long offset = 0, string sortOrder = null, string keyword = null)
         {
             var queryParams = GetQueryStringParameters(q, offset, sortOrder, keyword);
             var queryString = string.IsNullOrEmpty(queryParams) ? string.Empty : "?" + queryParams;

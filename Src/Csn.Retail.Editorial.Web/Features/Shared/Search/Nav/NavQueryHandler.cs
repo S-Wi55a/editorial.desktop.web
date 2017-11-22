@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         {
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
-                Query = query.Query,
+                Query = query.Q,
                 IncludeCount = true,
                 IncludeSearchResults = false,
                 ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",

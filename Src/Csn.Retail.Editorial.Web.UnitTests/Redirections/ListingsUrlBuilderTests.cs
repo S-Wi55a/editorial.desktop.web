@@ -19,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Redirections
             var metadata = new EditorialSeoDto();
             var url = isSeo
                 ? ListingsUrlFormatter.GetSeoUrl(query, offset, sortOrder)
-                : ListingsUrlFormatter.GetQueryString(query, offset, sortOrder, keyword);
+                : ListingsUrlFormatter.GetPathAndQueryString(query, offset, sortOrder, keyword);
             Assert.AreEqual(expectedResult, url);
         }
     }

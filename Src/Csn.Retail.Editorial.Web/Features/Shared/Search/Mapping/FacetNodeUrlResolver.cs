@@ -19,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
                 return ListingsUrlFormatter.GetSeoUrl(source.MetaData.Seo.First(), sortOrder: sortOrder);
             }
 
-            return ListingsUrlFormatter.GetQueryString(source.Action, sortOrder: sortOrder);
+            return ListingsUrlFormatter.GetPathAndQueryString(source.Action, sortOrder: sortOrder);
         }
     }
 }
