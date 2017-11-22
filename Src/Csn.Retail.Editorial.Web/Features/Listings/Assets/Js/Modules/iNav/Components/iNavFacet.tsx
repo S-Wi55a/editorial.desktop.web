@@ -9,14 +9,16 @@ if (!SERVER) {
 }
 
 interface IINavfacet extends IFacet {
-  aspect: string  
-  id: number  
-  refinement?: IRefinement
-  fetchAspect?: Thunks.Types
-  fetchRefinementAndUpdatePendingQuery?: Thunks.Types
-  fetchRefinementAndSwitchPage?: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number)=>Actions  
-  pendingQuery?: string
-  isRefinement?: boolean
+  aspect: string;
+  id: number;
+  refinement?: IRefinement;
+  fetchINav?: Thunks.Types;
+  fetchINavAndResults?: Thunks.Types;
+  fetchAspect?: Thunks.Types;
+  fetchRefinementAndUpdatePendingQuery?: Thunks.Types;
+  fetchRefinementAndSwitchPage?: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number)=>Actions;
+  pendingQuery?: string;
+  isRefinement?: boolean;
 }
 
 const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
@@ -32,7 +34,7 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
           )
         }
         else {
-          props.count > 0 && props.fetchAspect(props.aspect, props.action)
+            props.count > 0 && props.fetchINav(props.action);
         }
       }
     } >
@@ -60,10 +62,10 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
 }
 
 const mapDispatchToProps: any = (dispatch: any, ownProps: IINavfacet) => {
-  return {
-    fetchAspect: (aspect: string, query: string) => dispatch([
-      { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query } },
-      Thunks.fetchINavAspect(aspect, query)
+    return {
+    fetchINav: (query: string) => dispatch([
+        { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query } },
+        Thunks.fetchINav(query)
     ]),
     fetchRefinementAndUpdatePendingQuery: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string) => {
       return dispatch([

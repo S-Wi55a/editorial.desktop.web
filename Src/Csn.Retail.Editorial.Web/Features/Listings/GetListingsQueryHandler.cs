@@ -15,7 +15,6 @@ using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
-using Expresso.Expressions;
 using Expresso.Syntax;
 using ContextStore= Ingress.Web.Common.Abstracts;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
@@ -62,12 +61,15 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeywords(query.Keywords));
             }
 
+            var sortOrder = !string.IsNullOrEmpty(query.Sort) && EditorialSortKeyValues.Items.TryGetValue(query.Sort, out var sortOrderLookupResult)
+                ? sortOrderLookupResult.Key : EditorialSortKeyValues.ListingPageDefaultSort;
+
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
                 Query = query.Q,
                 Offset = query.Offset,
                 Limit = PageItemsLimit.ListingPageItemsLimit,
-                SortOrder = query.Sort,
+                SortOrder = sortOrder,
                 IncludeCount = true,
                 IncludeSearchResults = true,
                 NavigationName = _tenantProvider.Current().RyvusNavName,
@@ -84,8 +86,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 ListingsViewModel = new ListingsViewModel
                 {
                     NavResults = navResults,
-                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, query.Sort, query.Q, query.Keywords),
-                    Sorting = _sortingHelper.GenerateSortByViewModel(EditorialSortKeyValues.Items, query.Sort, query.Q, query.Keywords),
+                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, query.Q, query.Keywords),
+                    Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, query.Q, query.Keywords),
                     CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.Sort, keyword: query.Keywords),
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(query.Q).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,

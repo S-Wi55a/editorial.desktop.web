@@ -9,7 +9,7 @@ import INavPaginationContainer from 'iNavPagination/Containers/iNavPaginationCon
 const store = window.store
 
 const render = (WrappedComponent) => {
-    ReactDOM.render(
+    ReactDOM.hydrate(
         <AppContainer iNavPagination>
             <Provider store={store}>
                 <WrappedComponent />

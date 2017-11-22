@@ -10,7 +10,7 @@ const store = window.store
 
 // TODO: extract this out
 const render = (WrappedComponent) => {
-    ReactDOM.render(
+    ReactDOM.hydrate(
         <AppContainer iNav>
             <Provider store={store}>
                 <WrappedComponent />

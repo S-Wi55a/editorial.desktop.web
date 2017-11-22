@@ -14,24 +14,44 @@ export const iNavReducer = (state: any, action: Actions) => {
             }
         }
         case ActionTypes.API.INAV.FETCH_QUERY_SUCCESS:
-            return {
-                ...state,
-                navResults: action.payload.data
-                
-            }
+            return navReducer(state, action);
         case ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS:
-            return aspectReducer(state, action)
+            return aspectReducer(state, action);
         case ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS:
-            return refinementReducer(state, action)
+            return refinementReducer(state, action);
         case ActionTypes.INAV.ADD_PROMOTED_ARTICLE:
-            return promotedReducer(state, action)
+            return promotedReducer(state, action);
         case ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT:
             // This is a side effect
             const e = new CustomEvent(action.payload.event);
-            if(typeof window !== 'undefined'){dispatchEvent(e)}  
-            return state
+            if(typeof window !== 'undefined'){dispatchEvent(e)}
+            return state;
         default:
-            return state
+            return state;
+    }
+}
+
+function navReducer(state: INavResults, action: Actions): INavResults {
+    try {
+        return update(state,
+            {
+                navResults: {
+                    iNav: {
+                        nodes: {
+                            $set: action.payload.data.iNav.nodes
+                        },
+                        pendingQueryCount: {
+                            $set: action.payload.data.count
+                        },
+                        keywordsPlaceholder: {
+                            $set: action.payload.data.iNav.keywordsPlaceholder
+                        }
+                    }
+                },
+            });
+    } catch (e) {
+        console.log(e);
+        return state;
     }
 }
 
@@ -50,7 +70,7 @@ function aspectReducer(state: INavResults, action: Actions): INavResults {
                             [nodeIndex]: {
                                 $set : action.payload.data
                             }
-                        },
+                        }
                     }
                 }
             })
@@ -73,7 +93,7 @@ function refinementReducer(state: INavResults, action: Actions): INavResults {
                             [nodeIndex]: {
                                 $set : action.payload.data
                             }
-                        },
+                        }
                     }
                 }
             })

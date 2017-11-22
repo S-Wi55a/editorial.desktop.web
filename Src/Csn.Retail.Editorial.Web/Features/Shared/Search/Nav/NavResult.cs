@@ -11,13 +11,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public List<SearchResult> SearchResults { get; set; }
         public string NoResultsMessage { get; set; }
         public string NoResultsInstructionMessage { get; set; }
-        public string KeywordsPlaceholder { get; set; }
     }
 
     public class Nav
     {
         public List<NavNode> Nodes { get; set; }
         public List<BreadCrumb> BreadCrumbs { get; set; }
+        public string KeywordsPlaceholder { get; set; }
     }
 
     public class NavNode

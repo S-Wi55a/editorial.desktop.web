@@ -62,7 +62,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchQuery: (query) => {
-            dispatch(Thunks.fetchINav(query))
+            dispatch(Thunks.fetchINavAndResults(query));
         }
     }
 }

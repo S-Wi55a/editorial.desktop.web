@@ -16,7 +16,9 @@ export const iNavParentReducer = (initState: any = null) => {
     ) => {
         switch (action.type) {
             case ActionTypes.UI.CANCEL:
+                {
                 return iNavMenuReducer(state, action)
+            }
             default:
                 return {
                     listings: iNavReducer(state.listings, action),
@@ -30,19 +32,18 @@ export const iNavParentReducer = (initState: any = null) => {
 function iNavMenuReducer(state: any, action: Actions) {
     
     try {
-        const newState = update(state,
+        return update(state,
             {
                 listings: {
                     navResults: {
                         iNav: {
-                            $set : state.history.listings.navResults.iNav
+                            $set: state.history.listings.navResults.iNav
                         }
                     }
                 }
-            })
-        return newState
+            });
     } catch (e) {
-        console.log(e)        
-        return state
+        console.log(e);
+        return state;
     }       
 }
