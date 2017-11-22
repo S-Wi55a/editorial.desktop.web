@@ -3,7 +3,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
@@ -39,7 +38,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.NoResultsInstructionMessage,
                     opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)));
                 
-
             cfg.CreateMap<BreadCrumbDto, BreadCrumb>()
                 .ForMember(dest => dest.Term, opt => opt.Ignore())
                 .ForMember(dest => dest.RemoveAction, opt => opt.MapFrom(src => _breadCrumbMapper.GetRemoveActionUrl(src)));
@@ -47,7 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
                 .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)))
                 .ForMember(dest => dest.Nodes, opt => opt.MapFrom(src => _navNodeMapper.GetNavNode(src.Nodes)))
-                .ForMember(dest => dest.KeywordsPlaceholder, opt => opt.ResolveUsing<KeywordsPlaceholderResolver>());
+                .ForMember(dest => dest.KeywordsPlaceholder, opt => opt.ResolveUsing<KeywordsPlaceholderResolver<Nav.Nav>>());
 
             cfg.CreateMap<RyvussNavNodeDto, NavNode>()
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
@@ -55,17 +53,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
             cfg.CreateMap<RefinementsNodeDto, NavNode>()
                 .ForMember(dest => dest.MultiSelectMode, opt => opt.Ignore());
 
-            cfg.CreateMap<RefinementsNodeDto, RefinementNavNode>()
-                .ForMember(dest => dest.MultiSelectMode, opt => opt.Ignore())
-                .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetParentExpression()));
+            //cfg.CreateMap<RefinementsNodeDto, RefinementNavNode>()
+            //    .ForMember(dest => dest.MultiSelectMode, opt => opt.Ignore())
+            //    .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetParentExpression()));
 
             cfg.CreateMap<RyvussNavNodeDto, AspectResult>()
                 .ForMember(dest => dest.Count, opt => opt.Ignore())
-                .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
-
-            cfg.CreateMap<RyvussNavNodeDto, RefinementResult>()
-                .ForMember(dest => dest.Count, opt => opt.Ignore())
-                .ForMember(dest => dest.Refinements, opt => opt.ResolveUsing<RefinementsNavNodeResolver>())
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
 
             cfg.CreateMap<FacetNodeDto, FacetNode>()

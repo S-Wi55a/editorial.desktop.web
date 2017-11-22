@@ -26,6 +26,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
 
         public async Task<NavResult> HandleAsync(NavQuery query)
         {
+            var postProcessors = new List<string>();
+
+            if (_tenantProvider.Current().SupportsSeoFriendlyListings)
+            {
+                postProcessors.Add("Seo");
+            }
+
+            postProcessors.AddRange(new[] { "Retail", "FacetSort", "ShowZero" });
+
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
                 Query = query.Q,
@@ -34,7 +43,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
                 ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
                 ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = new List<string> { "Seo", "Retail", "FacetSort", "ShowZero" }
+                PostProcessors = postProcessors
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
