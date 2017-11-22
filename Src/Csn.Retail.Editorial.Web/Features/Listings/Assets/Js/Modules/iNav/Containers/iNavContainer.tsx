@@ -29,8 +29,8 @@ class INav extends React.Component<IINavNodes> {
 
   private _scene: any
 
-  constructor() {
-    super()
+  constructor(props: any) {
+    super(props)
   }
 
   componentDidMount(){

@@ -10,22 +10,31 @@ if (!SERVER) {
 let KeywordSearchComponent = (props) => {
 
   return (
-    <div className={`iNav__keywordSearch`}>
+    <div className={`iNav__keywordSearch`} data-webm-section="keyword">
       <div className={`iNav__keywordSearch-container ${props.keywordSearchIsActive ? 'iNav__keywordSearch-container--isActive' : ''}`} >
         {/* When in focus update class*/}
-        <form onSubmit={(e)=>{e.preventDefault();props.fetchSearchResults(props.currentQuery)}} className={`iNav__keywordSearch-form`} >
+        <form onSubmit={(e)=>{e.preventDefault();props.fetchSearchResults(props.currentQuery)}} className={`iNav__keywordSearch-form`} data-webm-clickvalue={`input`}>
           <Field 
             name="keyword" 
             component="input" 
             type="text"
             className={`iNav__keywordSearch-input`} 
             placeholder={'Keyword search'}
-            autoComplete="on"
+            autoComplete="on"            
           />
         </form>
         {/* button needs to hav click which triggers keyword api call*/}
-        <button className="iNav__keywordSearch-button iNav__keywordSearch-button--search" type="submit" onClick={(e)=>{e.preventDefault();props.fetchSearchResults(props.currentQuery)}}></button>
-        <button className="iNav__keywordSearch-button iNav__keywordSearch-button--clear" onClick={props.clear}></button>
+        <button 
+          className="iNav__keywordSearch-button iNav__keywordSearch-button--search" 
+          type="submit" 
+          onClick={(e)=>{e.preventDefault();props.fetchSearchResults(props.currentQuery)}}
+          data-webm-clickvalue={`search`}
+        ></button>
+        <button 
+          className="iNav__keywordSearch-button iNav__keywordSearch-button--clear" 
+          onClick={props.clear}
+          data-webm-clickvalue={`clear`}
+        ></button>
       </div>
     </div>
   )

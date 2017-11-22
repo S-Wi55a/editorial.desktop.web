@@ -10,7 +10,7 @@ const Preloader = () => <div className="iNavSearchResult__image-loader"></div>
 
 class INavSearchResult extends React.Component<ISearchResults> {
     render() {
-        return <div className="iNavSearchResult">
+        return <div className="iNavSearchResult" data-webm-clickvalue="search-result">
                     <a href={this.props.articleDetailsUrl}>
                         <div className="iNavSearchResult__image-frame">
                             <Img className="iNavSearchResult__image" src={this.props.imageUrl} loader={<Preloader/>}/>
@@ -35,6 +35,7 @@ class INavSearchResult extends React.Component<ISearchResults> {
                             <a className="disqus-comment-count iNavSearchResult__comment-count"
                                  data-disqus-identifier={this.props.disqusArticleId}
                                  data-disqus-url={this.props.articleDetailsUrl}
+                                 data-webm-clickvalue="comments"
                                  href={`${this.props.articleDetailsUrl}#disqus_thread`}
                             >0
                             </a>
