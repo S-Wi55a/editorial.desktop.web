@@ -44,7 +44,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
             return new NavResult()
             {
                 Count = resultData.Count,
-                INav = _mapper.Map<Nav>(resultData.INav)
+                INav = _mapper.Map<Nav>(resultData.INav, opt => { opt.Items["sortOrder"] = query.Sort; })
             };
         }
     }

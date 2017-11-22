@@ -12,7 +12,7 @@ interface IINavfacet extends IFacet {
   aspect: string;
   id: number;
   refinement?: IRefinement;
-  fetchINav?: Thunks.Types;
+  fetchINavAndUpdatePendingQuery?: Thunks.Types;
   fetchINavAndResults?: Thunks.Types;
   fetchAspect?: Thunks.Types;
   fetchRefinementAndUpdatePendingQuery?: Thunks.Types;
@@ -28,15 +28,16 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
     onClick={
       () => {
         if (props.isRefinement) {
-          props.count > 0 && props.fetchRefinementAndUpdatePendingQuery(
-            props.aspect,
-            props.refinement.aspect,
-            props.refinement.parentExpression,
-            props.action
-          )
+            props.count > 0 &&
+                props.fetchRefinementAndUpdatePendingQuery(
+                    props.aspect,
+                    props.refinement.aspect,
+                    props.refinement.parentExpression,
+                    props.action
+                );
         }
         else {
-            props.count > 0 && props.fetchINav(props.action);
+            props.count > 0 && props.fetchINavAndUpdatePendingQuery(props.action, props.url);
         }
       }
     } >
@@ -67,22 +68,22 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
 
 const mapDispatchToProps: any = (dispatch: any, ownProps: IINavfacet) => {
     return {
-    fetchINav: (query: string) => dispatch([
-        { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query } },
-        Thunks.fetchINav(query)
-    ]),
-    fetchRefinementAndUpdatePendingQuery: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string) => {
-      return dispatch([
-        { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query: pendingQuery } },        
-        Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, pendingQuery)
-      ])
-    },
-    fetchRefinementAndSwitchPage: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number) => {
-      return dispatch([
-        Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, pendingQuery, { type: ActionTypes.UI.SWITCH_PAGE_FORWARD, payload: {refinementId}}),
-      ])
+        fetchINavAndUpdatePendingQuery: (query: string, url: string) =>
+            dispatch([
+                { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query: url } },
+                Thunks.fetchINav(query)
+            ]),
+        fetchRefinementAndUpdatePendingQuery: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string) => 
+            dispatch([
+                { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query: pendingQuery } },        
+                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, pendingQuery)
+            ]),
+        fetchRefinementAndSwitchPage: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number) =>
+            dispatch([
+                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, pendingQuery,
+                { type: ActionTypes.UI.SWITCH_PAGE_FORWARD, payload: { refinementId } })
+            ])
     }
-  }
 }
 
 export default connect(

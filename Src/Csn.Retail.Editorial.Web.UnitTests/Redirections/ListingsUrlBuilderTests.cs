@@ -6,13 +6,13 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Redirections
 {
     public class ListingsUrlBuilderTests
     {
-        [TestCase(true, "q",  "abc", 30, "latest", "q?sort=latest&offset=30")]
-        [TestCase(true, "q", "abc", 0, "", "q")]
-        [TestCase(true, "q", "abc", 30, "", "q?offset=30")]
-        [TestCase(false, "q", "abc", 30, "latest", "?q=q&sort=latest&keywords=abc&offset=30")]
-        [TestCase(false, "q", "abc", 0, "", "?q=q&keywords=abc")]
-        [TestCase(false, "q", "abc", 30, "", "?q=q&keywords=abc&offset=30")]
-        [TestCase(false, "q",  "", 0, "", "?q=q")]
+        [TestCase(true, "/query/",  "abc", 30, "latest", "/editorial/beta-results/query/?sort=latest&offset=30")]
+        [TestCase(true, "/query/", "abc", 0, "", "/editorial/beta-results/query/")]
+        [TestCase(true, "/query/", "abc", 30, "", "/editorial/beta-results/query/?offset=30")]
+        [TestCase(false, "query", "abc", 30, "latest", "/editorial/beta-results/?q=query&sort=latest&keywords=abc&offset=30")]
+        [TestCase(false, "query", "abc", 0, "", "/editorial/beta-results/?q=query&keywords=abc")]
+        [TestCase(false, "query", "abc", 30, "", "/editorial/beta-results/?q=query&keywords=abc&offset=30")]
+        [TestCase(false, "query",  "", 0, "", "/editorial/beta-results/?q=query")]
         public void TestGetQueryParametersForSlug(bool isSeo, string query, string keyword, long offset, string sortOrder,
             string expectedResult)
         {
@@ -20,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Redirections
             var url = isSeo
                 ? ListingsUrlFormatter.GetSeoUrl(query, offset, sortOrder)
                 : ListingsUrlFormatter.GetQueryString(query, offset, sortOrder, keyword);
-            Assert.That(url, Is.EqualTo(expectedResult));
+            Assert.AreEqual(expectedResult, url);
         }
     }
 }

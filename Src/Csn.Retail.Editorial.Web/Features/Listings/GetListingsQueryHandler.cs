@@ -65,12 +65,11 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeywords(query.Keywords));
             }
 
-            var sortOrder = !string.IsNullOrEmpty(query.Sort) && EditorialSortKeyValues.Items.TryGetValue(query.Sort, out var sortOrderLookupResult)
-                ? sortOrderLookupResult.Key : EditorialSortKeyValues.ListingPageDefaultSort;
+            var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sort) ? query.Sort : EditorialSortKeyValues.ListingPageDefaultSort;
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
-                Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Q : query.SeoFragment,
+                Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Q : $"/{query.SeoFragment}",
                 Offset = query.Offset,
                 Limit = PageItemsLimit.ListingPageItemsLimit,
                 SortOrder = sortOrder,
