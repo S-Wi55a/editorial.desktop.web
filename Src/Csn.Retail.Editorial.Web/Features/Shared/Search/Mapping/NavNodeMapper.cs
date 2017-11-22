@@ -23,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         }
         public IList<NavNode> GetNavNode(IList<RyvussNavNodeDto> source)
         {
-            return _mapper.Map<IList<NavNode>>(source.Where(n => n.Name == "Aspect"));
+            return _mapper.Map<IList<NavNode>>(source.Where(n => n.Type == "Aspect"));
         }
     }
 }
