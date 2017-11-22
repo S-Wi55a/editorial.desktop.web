@@ -18,29 +18,36 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         private readonly IBreadCrumbMapper _breadCrumbMapper;
         private readonly IResultsMessageMapper _resultsMessageMapper;
         private readonly IArticleUrlMapper _articleUrlMapper;
+        private readonly INavNodeMapper _navNodeMapper;
 
         public MappingSetupTask(IMapper mapper, IImageMapper imageMapper, IBreadCrumbMapper breadCrumbMapper,
-            IResultsMessageMapper resultsMessageMapper, IArticleUrlMapper articleUrlMapper)
+            IResultsMessageMapper resultsMessageMapper, IArticleUrlMapper articleUrlMapper, INavNodeMapper navNodeMapper)
         {
             _mapper = mapper;
             _imageMapper = imageMapper;
             _breadCrumbMapper = breadCrumbMapper;
             _resultsMessageMapper = resultsMessageMapper;
             _articleUrlMapper = articleUrlMapper;
+            _navNodeMapper = navNodeMapper;
         }
 
         public void Run(IMapperConfigurationExpression cfg)
         {
             cfg.CreateMap<RyvussNavResultDto, NavResult>()
-                .ForMember(dest => dest.NoResultsMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultMessage(src.Count)))
-                .ForMember(dest => dest.NoResultsInstructionMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)));
+                .ForMember(dest => dest.NoResultsMessage,
+                    opt => opt.MapFrom(src => _resultsMessageMapper.MapResultMessage(src.Count)))
+                .ForMember(dest => dest.NoResultsInstructionMessage,
+                    opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)));
+                
 
             cfg.CreateMap<BreadCrumbDto, BreadCrumb>()
                 .ForMember(dest => dest.Term, opt => opt.Ignore())
                 .ForMember(dest => dest.RemoveAction, opt => opt.MapFrom(src => _breadCrumbMapper.GetRemoveActionUrl(src)));
 
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
-                .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)));
+                .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)))
+                .ForMember(dest => dest.Nodes, opt => opt.MapFrom(src => _navNodeMapper.GetNavNode(src.Nodes)))
+                .ForMember(dest => dest.KeywordsPlaceholder, opt => opt.ResolveUsing<KeywordsPlaceholderResolver>());
 
             cfg.CreateMap<RyvussNavNodeDto, NavNode>()
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));

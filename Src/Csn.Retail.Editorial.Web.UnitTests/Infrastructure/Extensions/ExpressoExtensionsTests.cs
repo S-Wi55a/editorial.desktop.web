@@ -32,7 +32,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Infrastructure.Extensions
             var expression = _parser.Parse(query);
 
             //Act
-            var updatedQuery = expression.AppendOrUpdateKeyword("honda");
+            var updatedQuery = expression.AppendOrUpdateKeywords("honda");
 
             //Assert
             Assert.AreNotEqual(updatedQuery, string.Empty);
@@ -47,11 +47,12 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Infrastructure.Extensions
             var expression = _parser.Parse(query);
 
             //Act
-            var updatedQuery = expression.AppendOrUpdateKeyword(string.Empty);
+            var updatedQuery = expression.AppendOrUpdateKeywords(string.Empty);
 
             //Assert
             Assert.AreNotEqual(updatedQuery, string.Empty);
             Assert.AreEqual(_expressionFormatter.Format(updatedQuery).Contains("keyword(honda)"), false);
+            Assert.AreEqual(_expressionFormatter.Format(updatedQuery).Contains("keyword"), false);
         }
 
         [Test]
@@ -62,12 +63,26 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Infrastructure.Extensions
             var expression = _parser.Parse(query);
 
             //Act
-            var updatedQuery = expression.AppendOrUpdateKeyword("BMW");
+            var updatedQuery = expression.AppendOrUpdateKeywords("BMW");
 
             //Assert
             Assert.AreNotEqual(updatedQuery, string.Empty);
             Assert.AreEqual(_expressionFormatter.Format(updatedQuery).Contains("keyword(BMW)"), true);
             Assert.AreEqual(_expressionFormatter.Format(updatedQuery).Contains("keyword(honda)"), false);
+        }
+
+        [Test]
+        public void GetKeywordsTest()
+        {
+            //Arrange
+            var query = "(And.Service.CarSales._.Keywords.keyword(honda).)";
+            var expression = _parser.Parse(query);
+
+            //Act
+            var results = expression.GetKeywords();
+
+            //Assert
+            Assert.AreEqual(results, "honda");
         }
     }
 }

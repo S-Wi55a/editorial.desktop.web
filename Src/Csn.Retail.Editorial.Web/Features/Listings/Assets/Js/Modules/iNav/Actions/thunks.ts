@@ -22,25 +22,27 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
         );
 }
 
-type fetchINavAndResults = (q?: string, f?: boolean) => (d: Dispatch<any>, getState: any) => any
+type fetchINavAndResults = (q?: string, f?: boolean, p?:boolean) => (d: Dispatch<any>, getState: any) => any
 
-export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEmpty?: boolean) =>  (dispatch: any, getState: any) => {
+export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEmpty?: boolean, keywordChanged?: boolean) =>  (dispatch: any, getState: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
-
-        let q = typeof query !== 'undefined' ? query : getState().store.listings.pendingQuery
-        const keyword = typeof getState().form.keywordSearch !== 'undefined' && 
-                          typeof getState().form.keywordSearch.values !== 'undefined' &&
-                          typeof getState().form.keywordSearch.values.keyword !== 'undefined' ? 
-                          getState().form.keywordSearch.values.keyword : undefined
-        
-        // Parse Query
-        q = queryString.parse(q)
-        q.keywords = keyword
-        q = queryString.stringify(q)
+        let q: any = '';
+        if (keywordChanged) {
+            const keyword = typeof getState().form.keywordSearch !== 'undefined' &&
+                typeof getState().form.keywordSearch.values !== 'undefined' &&
+                typeof getState().form.keywordSearch.values.keyword !== 'undefined' ?
+                getState().form.keywordSearch.values.keyword : undefined
+            const searchParams = queryString.parse(getState().store.listings.navResults.iNav.keywordsPlaceholder)
+            searchParams.q = searchParams.q ? searchParams.q.replace('<!>', keyword): ''
+            q = '?' + queryString.stringify(searchParams);
+        } else
+        {
+            q = typeof query !== 'undefined' ? query : getState().store.listings.pendingQuery ? getState().store.listings.pendingQuery : getState().store.listings.currentQuery
+        }
 
         // TODO: REMOVE FOR PHASE 2
-        return window.location.assign(forceEmpty ? window.location.pathname : `?${q}`)
+        return window.location.assign(forceEmpty ? window.location.pathname : `${q}`)
 
         // return fetch(`${iNav.api}?${q}`)
         //     .then(

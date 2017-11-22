@@ -13,7 +13,7 @@ const FacetBreadCrumb = {
 
 const INavBreadCrumb = ({ facetDisplay, removeAction, fetchINavAndResults, type}) => {
 
-    if(type === FacetBreadCrumb.clearAll || type === FacetBreadCrumb.keyword){
+    if(type === FacetBreadCrumb.clearAll){
         return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction, true);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>
     }
     return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>    
