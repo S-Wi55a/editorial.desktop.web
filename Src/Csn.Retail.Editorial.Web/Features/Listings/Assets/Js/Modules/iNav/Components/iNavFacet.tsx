@@ -33,8 +33,8 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
                     props.aspect,
                     props.refinement.aspect,
                     props.refinement.parentExpression,
-                    props.url,
-                    props.action
+                    props.action,
+                    props.url
                 );
         }
         else {
