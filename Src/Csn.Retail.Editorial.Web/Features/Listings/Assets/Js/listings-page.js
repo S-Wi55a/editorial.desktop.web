@@ -3,6 +3,8 @@
 import { configureStore } from 'Redux/Global/Store/store.client.js'
 import { loaded } from 'document-promises/document-promises.js'
 import { reducer as formReducer } from 'redux-form'
+import * as isMobile from 'ismobilejs'
+if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 //Enable Redux store globally
 window.store = configureStore(); //Init store
@@ -63,3 +65,13 @@ loaded.then(() => {
         }
     })();
 });
+
+//Sticky Sidebar
+if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
+    const aside = document.querySelector('.aside')
+    loaded.then(function() {     
+        if (aside) {
+            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside, '.main', 30, 137 )
+        }
+    })
+}

@@ -746,8 +746,6 @@
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\ArticlePricing\articlePricing.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal--view.js" />
@@ -758,7 +756,6 @@
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SponsoredArticles\sponsoredArticles.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
@@ -1091,6 +1088,9 @@
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\MediaMotiveAds\Views\_TeAds.cshtml" />
+    <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
