@@ -66,6 +66,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
         public List<RefinementsNodeDto> Refinements { get; set; }
         public List<RefineableAspectsDto> RefineableAspects { get; set; }
+        public List<string> Seo { get; set; }
     }
 
     public class RefineableAspectsDto

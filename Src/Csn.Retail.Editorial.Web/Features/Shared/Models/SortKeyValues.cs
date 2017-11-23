@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 {
-    public class EditorialSortKeyValues
+    public static class EditorialSortKeyValues
     {
         private const string LatestKey = "Latest";
         private const string LatestName = "Latest Articles";
@@ -17,6 +17,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         };
 
         public static string ListingPageDefaultSort => Items[LatestKey].Key;
+
+        public static bool IsValidSort(string sort)
+        {
+            return !string.IsNullOrEmpty(sort) && Items.ContainsKey(sort);
+        }
     }
 
     public interface ISortKeyItem

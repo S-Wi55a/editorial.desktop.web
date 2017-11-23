@@ -142,6 +142,8 @@ const componentRootReducer = (initUIState: any) => (state = initUIState, action:
       }
     // Reset the page back to start when menu is cancelled
     case ActionTypes.UI.CANCEL:
+    case ActionTypes.UI.TOGGLE_IS_ACTIVE:
+    case ActionTypes.UI.CLOSE_INAV:            
       return {
         ...state,
         activePage: 1

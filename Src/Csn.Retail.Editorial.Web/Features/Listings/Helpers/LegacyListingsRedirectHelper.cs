@@ -52,7 +52,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Helpers
             if (seoDto.HasSeo())
                 return ListingsUrlFormatter.GetSeoUrl(seoDto.Metadata.Seo, offset, sortOrder);
 
-            return ListingsUrlFormatter.GetQueryString(seoDto.Metadata.query,offset, sortOrder, keyword);
+            return ListingsUrlFormatter.GetPathAndQueryString(seoDto.Metadata.query,offset, sortOrder, keyword);
         }
     }
 }

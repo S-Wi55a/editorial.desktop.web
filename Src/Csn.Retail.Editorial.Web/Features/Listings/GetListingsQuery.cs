@@ -9,5 +9,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public int Offset { get; set; }
         public string Sort { get; set; }
         public string Keywords { get; set; }
+        public string SeoFragment { get; set; }
     }
 }

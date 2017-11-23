@@ -55,25 +55,39 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
-            query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
+            if (!_tenantProvider.Current().SupportsSeoFriendlyListings)
+            {
+                query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
+            }
+            
             if (!string.IsNullOrEmpty(query.Keywords))
             {
                 query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeywords(query.Keywords));
             }
 
-            var sortOrder = !string.IsNullOrEmpty(query.Sort) && EditorialSortKeyValues.Items.TryGetValue(query.Sort, out var sortOrderLookupResult)
-                ? sortOrderLookupResult.Key : EditorialSortKeyValues.ListingPageDefaultSort;
+            var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sort) ? query.Sort : EditorialSortKeyValues.ListingPageDefaultSort;
+
+            var postProcessors = new List<string>();
+
+            if (_tenantProvider.Current().SupportsSeoFriendlyListings)
+            {
+                postProcessors.Add("Seo");
+            }
+
+            postProcessors.AddRange(new []{"Retail", "FacetSort", "ShowZero"});
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
-                Query = query.Q,
+                Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Q : $"/{query.SeoFragment}",
                 Offset = query.Offset,
                 Limit = PageItemsLimit.ListingPageItemsLimit,
                 SortOrder = sortOrder,
                 IncludeCount = true,
                 IncludeSearchResults = true,
+                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
+                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero" }
+                PostProcessors = postProcessors
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
@@ -88,7 +102,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     NavResults = navResults,
                     Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, query.Q, query.Keywords),
                     Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, query.Q, query.Keywords),
-                    CurrentQuery = ListingsUrlFormatter.GetQueryString(query.Q, sortOrder: query.Sort, keyword: query.Keywords),
+                    CurrentQuery = ListingsUrlFormatter.GetPathAndQueryString(query.Q, sortOrder: query.Sort, keyword: query.Keywords),
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(query.Q).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),

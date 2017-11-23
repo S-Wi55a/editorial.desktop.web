@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -26,49 +27,57 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
 
         public Task<SmartServiceResponse<T>> GetAsync<T>(EditorialRyvussInput input)
         {
-            var client = _smartClient.Service(ServiceName)
-                .Path("/v4/editoriallistingretail")
-                .QueryString("q", input.Query);
-
-            if (input.IncludeCount)
-            {
-                client = client.QueryString("count", "true");
-            }
-
-            if (input.IncludeSearchResults)
-            {
-                client = client.QueryString("sr", $"|{input.SortOrder}|{input.Offset}|{input.Limit}");
-            }
-
-            if (!string.IsNullOrEmpty(input.NavigationName))
-            {
-                var nav = input.PostProcessors == null || !input.PostProcessors.Any() ? input.NavigationName : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
-                client = client.QueryString("inav", nav);
-            }
-
-            if (input.IncludeMetaData)
-            {
-                client = client.QueryString("metadata", "");
-            }
-
-            return client.GetAsync<T>();
+            return _smartClient.Service(ServiceName)
+                .Path(GetPath(input))
+                .QueryString(GetQueryParams(input))
+                .GetAsync<T>();
         }
 
         //ToDo - Input from string to EditorialRyvussInput
         public SmartServiceResponse<T> Get<T>(EditorialRyvussInput input)
         {
-            var client = _smartClient.Service(ServiceName)
-                .Path("/v4/editoriallistingretail")
-                .QueryString("q", input.Query);
+            return _smartClient.Service(ServiceName)
+                .Path(GetPath(input))
+                .QueryString(GetQueryParams(input))
+                .Get<T>();
+        }
+
+        private string GetPath(EditorialRyvussInput input)
+        {
+            var path = new StringBuilder("/v4");
+
+            if (!string.IsNullOrEmpty(input.ControllerName))
+            {
+                path.Append($"/{input.ControllerName}");
+            }
+
+            path.Append("/editoriallistingretail");
+
+            if (!string.IsNullOrEmpty(input.ServiceProjectionName))
+            {
+                path.Append($"/{input.ServiceProjectionName}");
+            }
+
+            return path.ToString();
+        }
+
+        private Dictionary<string, string> GetQueryParams(EditorialRyvussInput input)
+        {
+            var queryParams = new Dictionary<string, string>();
+
+            if (!string.IsNullOrEmpty(input.Query))
+            {
+                queryParams.Add("q", input.Query);
+            }
 
             if (input.IncludeCount)
             {
-                client = client.QueryString("count", "true");
+                queryParams.Add("count", "true");
             }
 
             if (input.IncludeSearchResults)
             {
-                client = client.QueryString("sr", $"|{input.SortOrder}|{input.Offset}|{input.Limit}");
+                queryParams.Add("sr", $"|{input.SortOrder}|{input.Offset}|{input.Limit}");
             }
 
             if (!string.IsNullOrEmpty(input.NavigationName))
@@ -76,15 +85,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
                 var nav = input.PostProcessors == null || !input.PostProcessors.Any()
                     ? input.NavigationName
                     : string.Join("|", input.PostProcessors.Prepend(input.NavigationName));
-                client = client.QueryString("inav", nav);
-            }
-            
-            if (input.IncludeMetaData)
-            {
-                client = client.QueryString("metadata", "");
+                queryParams.Add("inav", nav);
             }
 
-            return client.Get<T>();
+            if (input.IncludeMetaData)
+            {
+                queryParams.Add("metadata", "");
+            }
+
+            return queryParams;
         }
     }
 
@@ -94,6 +103,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi
     {
         public string Query { get; set; }
         public string NavigationName { get; set; }
+        public string ControllerName { get; set; }
+        public string ServiceProjectionName { get; set; }
+
         public List<string> PostProcessors { get; set; }
         public bool IncludeCount { get; set; }
         public bool IncludeSearchResults { get; set; }
