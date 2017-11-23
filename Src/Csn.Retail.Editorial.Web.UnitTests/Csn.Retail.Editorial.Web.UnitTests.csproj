@@ -82,8 +82,8 @@
     <Reference Include="Ingress.Serializers, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Serializers.14.10.0\lib\net452\Ingress.Serializers.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient.14.10.2\lib\net452\Ingress.ServiceClient.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient, Version=14.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.14.10.3\lib\net452\Ingress.ServiceClient.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.ServiceClient.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ServiceClient.Abstracts.14.10.0\lib\net452\Ingress.ServiceClient.Abstracts.dll</HintPath>

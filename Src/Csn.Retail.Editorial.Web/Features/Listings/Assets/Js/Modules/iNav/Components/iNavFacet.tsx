@@ -55,7 +55,7 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
                 props.aspect,
                 props.refinement.aspect,
                 props.refinement.parentExpression,
-                props.pendingQuery,
+                props.action,
                 props.id
               )
             }
