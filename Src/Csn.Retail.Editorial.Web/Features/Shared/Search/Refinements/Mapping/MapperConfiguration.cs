@@ -28,6 +28,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements.Mapping
             cfg.CreateMap<RyvussNavNodeDto, RefinementNavNode>()
                 .ForMember(dest => dest.Refinements, opt => opt.ResolveUsing<RefinementsNavNodeResolver>())
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
+
+            cfg.CreateMap<RefinementsNodeDto, RefinementNavNode2>()
+                .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetParentExpression()))
+                .ForMember(dest => dest.MultiSelectMode, opt => opt.Ignore());
         }
     }
 }

@@ -83,7 +83,7 @@ export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinem
 
         dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
 
-        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query))
+        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query ? `?q=${query}` : ''))
             .then(
                 response => response.json(),
                 error => dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { error } })

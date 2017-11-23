@@ -33,7 +33,8 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
                     props.aspect,
                     props.refinement.aspect,
                     props.refinement.parentExpression,
-                    props.action
+                    props.action,
+                    props.url
                 );
         }
         else {
@@ -73,9 +74,9 @@ const mapDispatchToProps: any = (dispatch: any, ownProps: IINavfacet) => {
                 { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query: url } },
                 Thunks.fetchINav(query)
             ]),
-        fetchRefinementAndUpdatePendingQuery: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string) => 
+        fetchRefinementAndUpdatePendingQuery: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, url: string) => 
             dispatch([
-                { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query: pendingQuery } },        
+                { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query: url } },        
                 Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, pendingQuery)
             ]),
         fetchRefinementAndSwitchPage: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number) =>

@@ -84,15 +84,18 @@ function aspectReducer(state: INavResults, action: Actions): INavResults {
 function refinementReducer(state: INavResults, action: Actions): INavResults {
     
     try {
-        const nodeIndex = state.navResults.iNav.nodes.findIndex((node: INode) => node.name === action.payload.name)
         const newState = update(state,
             {
                 navResults: {
                     iNav: {
                         nodes: {
-                            [nodeIndex]: {
-                                $set : action.payload.data
-                            }
+                            $set: action.payload.data.nav.nodes
+                        },
+                        pendingQueryCount: {
+                            $set: action.payload.data.count
+                        },
+                        keywordsPlaceholder: {
+                            $set: action.payload.data.nav.keywordsPlaceholder
                         }
                     }
                 }

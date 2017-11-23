@@ -6,11 +6,11 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
 {
-    public class RefinementsNavNodeResolver : IValueResolver<RyvussNavNodeDto, RefinementNavNode, NavNode>
+    public class RefinementsNavNodeResolver : IValueResolver<RyvussNavNodeDto, RefinementNavNode, RefinementNavNode2>
     {
-        public NavNode Resolve(RyvussNavNodeDto source, RefinementNavNode destination, NavNode destMember, ResolutionContext context)
+        public RefinementNavNode2 Resolve(RyvussNavNodeDto source, RefinementNavNode destination, RefinementNavNode2 destMember, ResolutionContext context)
         {
-            return Mapper.Map<NavNode>(source.GetRefinements(), opt =>
+            return Mapper.Map<RefinementNavNode2>(source.GetRefinements(), opt =>
             {
                 if (context.Items.TryGetValue("sortOrder", out var sortOrder))
                 {

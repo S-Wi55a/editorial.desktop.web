@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
 {
@@ -17,6 +18,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
 
     public class RefinementNavNode : NavNode
     {
-        public NavNode Refinements { get; set; }
+        public RefinementNavNode2 Refinements { get; set; }
+    }
+
+    public class RefinementNavNode2 : NavNode
+    {
+        public Refinement Refinement { get; set; }
     }
 }
