@@ -27,6 +27,10 @@
                 $width: $screen-lg - ($aside-width + $grid-gutter-width);
                 width: calc(#{#{$width}});
             }
+
+            .teads-inread {
+                margin: auto auto 30px !important; 
+            }
         }
     }
 }
@@ -42,6 +46,8 @@
     vertical-align: top; 
     padding-top: 30px;
     margin-top: -30px;
+    position: relative;
+    
     @include breakpoint($screen-lg) {
         margin-top: -45px;
         padding-top: 45px;

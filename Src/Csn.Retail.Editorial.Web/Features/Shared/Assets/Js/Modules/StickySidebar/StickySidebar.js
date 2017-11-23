@@ -4,7 +4,9 @@ import { scrollingUp, scrollingDown, scrollingSimple } from 'StickySidebar/stick
 
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
-export function init(d, w, aside, baseReference) {
+export function init(d, w, aside, selector, baseReference, topReference) {
+
+    
 
     if (typeof d === 'undefined' ||  typeof w === 'undefined' ||  typeof aside === 'undefined' ||  typeof baseReference === 'undefined') {
         console.error('Please check if you are passing the correct arguments to init')
@@ -13,17 +15,16 @@ export function init(d, w, aside, baseReference) {
 
     // Cache Footer
     const pageFooter = d.querySelector('#page-footer')
-    const siteNavHeight = d.querySelector('.site-nav-wrapper')
+    const siteNavHeight = topReference || d.querySelector('.site-nav-wrapper').offsetHeight
     const wrapper = d.querySelector('.wrapper--aside')
-    
     
     //Module Vars
     const references = {
         wrapper,
         startingCoordinatesTop : wrapper.getBoundingClientRect().top,
-        siteNavHeight: siteNavHeight.offsetHeight,
+        siteNavHeight: siteNavHeight,
         footerCoordinatesTop : () => { return d.querySelector('#page-footer').getBoundingClientRect().top - wrapper.getBoundingClientRect().top },
-        triggerHookUp: ()=> 1 - (w.innerHeight - d.querySelector('.site-nav-wrapper').offsetHeight) / w.innerHeight,
+        triggerHookUp: ()=> 1 - (w.innerHeight - siteNavHeight) / w.innerHeight,
         triggerHookDown : (w.innerHeight - baseReference) / w.innerHeight,
         pageFooter,
         baseReference
@@ -57,7 +58,7 @@ export function init(d, w, aside, baseReference) {
 
     //Check ScreenSize
     function screenSizeCheck() {
-        if(aside.offsetHeight > (document.querySelector('article .article') ? document.querySelector('article .article').offsetHeight : 0)){
+        if(aside.offsetHeight > (document.querySelector(selector) ? document.querySelector(selector).offsetHeight : 0)){           
             sceneDown.off('update', boundScrollingDown) 
             sceneUp.off('update', boundScrollingUp) 
             sceneSimple.off('update', boundScrollingSimple)
