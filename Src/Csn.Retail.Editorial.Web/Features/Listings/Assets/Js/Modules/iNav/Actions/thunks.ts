@@ -77,23 +77,39 @@ export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) 
     }
 
 
-type fetchINavRefinement = (a: string, r: string, p: string, q: string, action?: Actions) => (d: any) => Promise<any>
+type fetchINavRefinement = (a: string, r: string, p: string, q: string, u?: string, action?: Actions) => (d: any) => Promise<any>;
     
-export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, action?: Actions) => (dispatch: any ) => {
+export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, url?: string, action?: Actions) => (dispatch: any ) => {
 
         dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
 
         return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query ? `?q=${query}` : ''))
+           // Try to parse the response
+            .then(response =>
+                response.json().then(json => ({
+                status: response.status,
+                json
+                })
+            ))
             .then(
-                response => response.json(),
-                error => dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { error } })
-            )
-            .then(data => {
-                dispatch([
-                    { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data, name: aspect, parentExpression }},
-                    action
-                ])
-            })
+                // Both fetching and parsing succeeded!
+                ({ status, json }) => {
+                  if (status >= 400) {
+                    // Status looks bad
+                    dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { error: `server status ${status}` } })
+                  } else {
+                    // Status looks good
+                    dispatch([
+                        { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data: json, name: aspect, parentExpression }},
+                        action
+                    ])
+                  }
+                },
+                // Either fetching or parsing failed!
+                err => {
+                    dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { err } })
+                }
+              )
     }
 
-export type Types = fetchINav & fetchINavAndResults & fetchINavAspect & fetchINavRefinement
+export type Types = fetchINav & fetchINavAndResults & fetchINavAspect & fetchINavRefinement;

@@ -33,8 +33,8 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
                     props.aspect,
                     props.refinement.aspect,
                     props.refinement.parentExpression,
-                    props.action,
-                    props.url
+                    props.url,
+                    props.action
                 );
         }
         else {
@@ -81,7 +81,7 @@ const mapDispatchToProps: any = (dispatch: any, ownProps: IINavfacet) => {
             ]),
         fetchRefinementAndSwitchPage: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number) =>
             dispatch([
-                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, pendingQuery,
+                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, pendingQuery, null, 
                 { type: ActionTypes.UI.SWITCH_PAGE_FORWARD, payload: { refinementId } })
             ])
     }
