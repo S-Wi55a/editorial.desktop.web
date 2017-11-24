@@ -45,14 +45,39 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
             //Arrange
             var dto = new FacetNodeDto
             {
-                MetaData = new FacetNodeMetaDataDto
+                IsSelected = true,
+                Refinements = new RyvussNavDto
                 {
-                    Refinements = new List<RefinementsNodeDto> { new RefinementsNodeDto {  DisplayName = "Review" } }
-                }
+                    Nodes = new List<RyvussNavNodeDto>
+                    {
+                        new RyvussNavNodeDto
+                        {
+                            Facets = new List<FacetNodeDto>
+                            {
+                                new FacetNodeDto
+                                {
+                                    Action = "(And.Service.CarSales._.(Or.Make.BMW._.Make.Abarth.))",
+                                    Value = "Abarth"
+                                }
+                            }
+                        },
+                        new RyvussNavNodeDto
+                        {
+                            Facets = new List<FacetNodeDto>
+                            {
+                                new FacetNodeDto
+                                {
+                                    Action = "(And.Service.CarSales._.Type.Review.)",
+                                    Value = "Teview"
+                                }
+                            }
+                        }
+                    }
+                }                
             };
             var dtoWithNoRefinements = new FacetNodeDto
             {
-                MetaData = new FacetNodeMetaDataDto()                
+                IsSelected = false
             };
 
             //Act
@@ -61,7 +86,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.DisplayName, dto.MetaData.Refinements.First().DisplayName);            
+            Assert.AreEqual(result.Facets.Count, 2);
             Assert.AreEqual(resultWithEmptySource, null);
         }
 
