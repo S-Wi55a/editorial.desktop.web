@@ -11,13 +11,13 @@ export interface IStore {
 
 export interface INavResults {
     navResults: IINavResponse
+    pendingQuery?: string
+    currentRefinement?: string
 }
 
 export interface IINavResponse{
     iNav: IINav
     count?: number
-    pendingQuery?: string
-    currentRefinement?: string
     searchResults: ISearchResults[]
 }
 
