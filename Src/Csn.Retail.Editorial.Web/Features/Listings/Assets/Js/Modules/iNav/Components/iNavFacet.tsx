@@ -63,7 +63,13 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
           ></span> : ''
         }
       </span>
-    </li>
+      {props.isSelected ? props.refinements.facets.map((node, index) => {
+              return <a className="iNav-category-item__hiddenlink" href={`${node.url}`} key={`${index}`}>
+                  {node.displayValue}
+              </a>
+      }) : ''}
+      </li>
+
   )
 }
 

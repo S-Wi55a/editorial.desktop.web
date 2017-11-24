@@ -8,7 +8,7 @@
 
     margin-top: 9px;
     cursor: pointer;
-    
+
     &:nth-of-type(1) {
         margin-top: 0;
     }
@@ -53,13 +53,17 @@
         color: $cs-dark-grey-1;
         width: calc(100% - 40px - #{$count-container-width}); // 100% - checkmark width+margin - $count-container-width
         text-decoration: none;
-        
+
         &:hover,
         &:visited,
-        &:focus{
+        &:focus {
             text-decoration: none;
             color: $cs-dark-grey-1;
         }
+    }
+
+    &__hiddenlink {
+        display: none;
     }
 
     &__meta-container {
@@ -93,7 +97,7 @@
         margin-left: 10px;
         margin-right: 15px;
         position: relative;
-                
+
         &::before {
             content: $icon-circle-right-lg;
             font-family: $font-family-icons;
@@ -101,28 +105,30 @@
             display: block;
             position: absolute;
             font-size: 21px;
-        }   
-        
+        }
     }
 
     &--noResults {
         opacity: 0.5;
         cursor: not-allowed;
-        
-        &.iNav-category-item {            
+
+        &.iNav-category-item {
             &.isSelected {
                 &::before {
                     background-color: $cs-grey;
                 }
             }
         }
+
         .iNav-category-item {
             &__count {
-                background-color: $cs-grey;                  
+                background-color: $cs-grey;
             }
+
             &__link {
                 cursor: not-allowed;
             }
+
             &__refinement {
                 &::before {
                     color: $cs-grey;
