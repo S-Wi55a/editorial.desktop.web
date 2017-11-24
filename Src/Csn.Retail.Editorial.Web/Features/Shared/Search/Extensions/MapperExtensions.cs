@@ -39,7 +39,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
             {
                 return new RefinementsNodeDto
                 {
-                    Facets = source.Refinements.Nodes.SelectMany(s => s.Facets).ToList()
+                    Facets = source.Refinements.Nodes.FirstOrDefault()?.Facets
                 };
             }
             return null;

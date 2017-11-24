@@ -57,9 +57,10 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
                                 new FacetNodeDto
                                 {
                                     Action = "(And.Service.CarSales._.(Or.Make.BMW._.Make.Abarth.))",
-                                    Value = "Abarth"
+                                    DisplayValue = "Series 1"
                                 }
-                            }
+                            },
+                            Name = "MarketingGroup"
                         },
                         new RyvussNavNodeDto
                         {
@@ -68,7 +69,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
                                 new FacetNodeDto
                                 {
                                     Action = "(And.Service.CarSales._.Type.Review.)",
-                                    Value = "Teview"
+                                    DisplayValue = "Nested-Review"
                                 }
                             }
                         }
@@ -86,7 +87,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.Facets.Count, 2);
+            Assert.AreEqual(result.Facets.Count, 1);
+            Assert.AreEqual(result.Facets.First().DisplayValue, "Series 1");
             Assert.AreEqual(resultWithEmptySource, null);
         }
 
