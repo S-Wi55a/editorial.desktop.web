@@ -6,7 +6,7 @@ using Csn.Logging.NLog3;
 using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Listings.Helpers;
-using Csn.Retail.Editorial.Web.Features.Listings.Logger;
+using Csn.Retail.Editorial.Web.Features.Listings.Loggers;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
@@ -64,31 +64,6 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 StringEscapeHandling = StringEscapeHandling.EscapeHtml
             };
-
-            // set up separate logger for this class so we can log separately
-            builder.RegisterType<UrlNotFoundLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
-            {
-                var loggerFactory = c.Resolve<ILoggerFactory>();
-                return loggerFactory.For<UrlNotFoundLogger>();
-            }).As<IUrlNotFoundLogger>().SingleInstance();
-
-            // set up separate logger for this class so we can log separately
-            builder.RegisterType<DetailsRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
-            {
-                var loggerFactory = c.Resolve<ILoggerFactory>();
-                return loggerFactory.For<DetailsRedirectLogger>();
-            }).As<IDetailsRedirectLogger>().SingleInstance();
-
-            //Handling legacy URLs
-            builder.RegisterType<LegacyListingsRedirectHelper>().As<ILegacyListingsRedirectHelper>();
-            // set up separate logger for this class so we can log separately
-            builder.RegisterType<LegacyListingUrlRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
-            {
-                var loggerFactory = c.Resolve<ILoggerFactory>();
-                return loggerFactory.For<LegacyListingUrlRedirectLogger>();
-            }).As<ILegacyListingUrlRedirectLogger>().SingleInstance();
-
-
         }
     }
 
