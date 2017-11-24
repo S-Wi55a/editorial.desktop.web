@@ -21,6 +21,16 @@ interface IINavfacet extends IFacet {
   isRefinement?: boolean;
 }
 
+const Refinements: React.StatelessComponent<any> = (props) => (
+  <div className="iNav-category-item__refinements--hidden">
+    {
+      props.isSelected && props.refinements ? props.refinements.facets.map((node, index) => {
+        return <a href={`${node.url}`} key={`${index}`}>{node.displayValue}</a>
+    }) : ''
+    }
+  </div>
+)
+
 const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
   return (
     <li className={`iNav-category-item ${props.isSelected ? 'isSelected' : ''} ${props.count ? '' : 'iNav-category-item--noResults'}`}
@@ -63,11 +73,7 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
           ></span> : ''
         }
       </span>
-      {props.isSelected ? props.refinements.facets.map((node, index) => {
-              return <a className="iNav-category-item__hiddenlink" href={`${node.url}`} key={`${index}`}>
-                  {node.displayValue}
-              </a>
-      }) : ''}
+      <Refinements {...props} />
       </li>
 
   )

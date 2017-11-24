@@ -1,5 +1,5 @@
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
-import { INode, IINavResponse } from 'iNav/Types'
+import { IStore } from 'iNav/Types'
 import update from 'immutability-helper'
 
 export const iNavHistoryReducer = (state: any, action: Actions) => {
@@ -16,22 +16,25 @@ export const iNavHistoryReducer = (state: any, action: Actions) => {
             }
         }
     
-function promotedReducer(state: IINavResponse, action: Actions) {
+function promotedReducer(state: IStore, action: Actions) {
     
     try {
-        const newState = update(state,
-            {
-                listings: {
-                    navResults: {
-                        searchResults: {
-                            [action.payload.location]: {
-                                $set : action.payload
+        if(state.listings.navResults.count > action.payload.location) {      
+            const newState = update(state,
+                {
+                    listings: {
+                        navResults: {
+                            searchResults: {
+                                [action.payload.location]: {
+                                    $set : action.payload
+                                }
                             }
                         }
                     }
-                }
-            })
-        return newState
+                })
+            return newState
+        }
+        return state
     } catch (e) {
         console.log(e)        
         return state

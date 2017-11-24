@@ -62,8 +62,10 @@
         }
     }
 
-    &__hiddenlink {
-        display: none;
+    &__refinements {
+        &--hidden {
+            display: none;
+        }
     }
 
     &__meta-container {
