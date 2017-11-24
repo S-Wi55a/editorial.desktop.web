@@ -8,6 +8,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public int Count { get; set; }
         public RyvussNavDto INav { get; set; }
         public List<SearchResultDto> SearchResults { get; set; }
+        public PageLevelSeoMetaDataDto Metadata { get; set; }
+    }
+
+    public class PageLevelSeoMetaDataDto
+    {
+        public string Seo { get; set; }
     }
 
     public class RyvussNavDto

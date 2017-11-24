@@ -1,6 +1,7 @@
 ﻿using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Expresso.Sanitisation;
 using Expresso.Syntax;
@@ -12,7 +13,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Helpers
     {
         string GetRedirectionUrl(string query, long offset, string sortOrder, string keyword);
     }
-
+    
+    [AutoBind]
     public class LegacyListingsRedirectHelper : ILegacyListingsRedirectHelper
     {
         private readonly IEditorialRyvussApiProxy _editorialRyvussApiProxy;
@@ -23,7 +25,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Helpers
         {
             _editorialRyvussApiProxy = editorialRyvussApiProxy;
             _expressionFormatter = expressionFormatter;
-           
         }
 
         public string GetRedirectionUrl(string query, long offset, string sortOrder, string keyword)

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Listings.Helpers;
-using Csn.Retail.Editorial.Web.Features.Listings.Logger;
+using Csn.Retail.Editorial.Web.Features.Listings.Loggers;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.Filters

@@ -78,7 +78,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
-                Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Q : $"/{query.SeoFragment}",
+                Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Q : query.SeoFragment,
                 Offset = query.Offset,
                 Limit = PageItemsLimit.ListingPageItemsLimit,
                 SortOrder = sortOrder,
@@ -87,16 +87,31 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
                 ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = postProcessors
+                PostProcessors = postProcessors,
+                IncludeMetaData = true
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
+
+            if (resultData == null) return null;
+
+            // check in case there is an equivalent SEO URL that we can redirect to
+            if (_tenantProvider.Current().SupportsSeoFriendlyListings && !string.IsNullOrEmpty(resultData.Metadata?.Seo) && resultData.Metadata.Seo != query.SeoFragment)
+            {
+                return new GetListingsResponse()
+                {
+                    RedirectRequired = true,
+                    RedirectUrl = ListingsUrlFormatter.GetSeoUrl(resultData.Metadata.Seo, query.Offset, query.Sort)
+                };
+            }
+
             _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
             var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.Sort; });
 
-            return resultData == null ? null : new GetListingsResponse
+            return new GetListingsResponse
             {
+                RedirectRequired = false,
                 ListingsViewModel = new ListingsViewModel
                 {
                     NavResults = navResults,
