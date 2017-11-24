@@ -13,7 +13,7 @@ let KeywordSearchComponent = (props) => {
     <div className={`iNav__keywordSearch`} data-webm-section="keyword">
       <div className={`iNav__keywordSearch-container ${props.keywordSearchIsActive ? 'iNav__keywordSearch-container--isActive' : ''}`} >
         {/* When in focus update class*/}
-        <form onSubmit={(e)=>{e.preventDefault();props.fetchSearchResults(props.currentQuery)}} className={`iNav__keywordSearch-form`} data-webm-clickvalue={`input`}>
+        <form onSubmit={(e)=>{e.preventDefault();props.fetchSearchResults(props.keywordQuery)}} className={`iNav__keywordSearch-form`} data-webm-clickvalue={`input`}>
           <Field 
             name="keyword" 
             component="input" 
@@ -27,7 +27,7 @@ let KeywordSearchComponent = (props) => {
         <button 
           className="iNav__keywordSearch-button iNav__keywordSearch-button--search" 
           type="submit" 
-          onClick={(e)=>{e.preventDefault();props.fetchSearchResults(props.currentQuery)}}
+          onClick={(e)=>{e.preventDefault();props.fetchSearchResults(props.keywordQuery)}}
           data-webm-clickvalue={`search`}
         ></button>
         <button 
@@ -42,7 +42,7 @@ let KeywordSearchComponent = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    currentQuery: state.store.listings.currentQuery,
+    keywordQuery: state.store.listings.navResults.iNav.keywordsPlaceholder,
     initialValues: {
       keyword: state.store.listings.keyword
     }
@@ -52,7 +52,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
       fetchSearchResults: (query)=> {
-          dispatch(Thunks.fetchINavAndResults(query, false, true));
+          dispatch(Thunks.fetchINavAndResults(query, false));
       },
       clear: ()=>dispatch(change('keywordSearch', 'keyword', ''))
   }
