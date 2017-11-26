@@ -22,14 +22,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements.Mapping
         public void Run(IMapperConfigurationExpression cfg)
         {
             cfg.CreateMap<RyvussNavDto, RefinementNav>()
-                .ForMember(dest => dest.Nodes, opt => opt.MapFrom(src => src.Nodes.Where(n => n.Type == "Aspect").Select(n => _mapper.Map<RefinementNavNode>(n))))
+                .ForMember(dest => dest.Nodes, opt => opt.MapFrom(src => src.Nodes.Where(n => n.Type == "Aspect").Select(n => _mapper.Map<NavNodeWithRefinements>(n))))
                 .ForMember(dest => dest.KeywordsPlaceholder, opt => opt.ResolveUsing<KeywordsPlaceholderResolver<RefinementNav>>());
 
-            cfg.CreateMap<RyvussNavNodeDto, RefinementNavNode>()
+            cfg.CreateMap<RyvussNavNodeDto, NavNodeWithRefinements>()
                 .ForMember(dest => dest.Refinements, opt => opt.ResolveUsing<RefinementsNavNodeResolver>())
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
 
-            cfg.CreateMap<RefinementsNodeDto, RefinementNavNode2>()
+            cfg.CreateMap<RefinementsNodeDto, RefinementsNavNode>()
                 .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetParentExpression()))
                 .ForMember(dest => dest.MultiSelectMode, opt => opt.Ignore());
         }

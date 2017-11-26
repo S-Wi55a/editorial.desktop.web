@@ -12,16 +12,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
 
     public class RefinementNav
     {
-        public List<RefinementNavNode> Nodes { get; set; }
+        public List<NavNodeWithRefinements> Nodes { get; set; }
         public string KeywordsPlaceholder { get; set; }
     }
 
-    public class RefinementNavNode : NavNode
+    public class NavNodeWithRefinements : NavNode
     {
-        public RefinementNavNode2 Refinements { get; set; }
+        public RefinementsNavNode Refinements { get; set; }
     }
 
-    public class RefinementNavNode2 : NavNode
+    public class RefinementsNavNode : NavNode
     {
         public Refinement Refinement { get; set; }
     }
