@@ -36,7 +36,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 
         public static RefinementsNodeDto GetRefinements(this FacetNodeDto source)
         {
-            return source.MetaData?.Refinements?.FirstOrDefault();
+            if (source.IsSelected)
+            {
+                return new RefinementsNodeDto
+                {
+                    Facets = source.Refinements.Nodes.FirstOrDefault()?.Facets
+                };
+            }
+            return null;
         }
         public static Refinement GetParentExpression(this RefinementsNodeDto source)
         {
