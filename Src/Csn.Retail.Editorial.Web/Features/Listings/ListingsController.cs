@@ -23,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _seoListingUrlRedirectLogger = seoListingUrlRedirectLogger;
         }
 
-        [Route("editorial/beta-results/{*seoFragment:regex(^[\\w-/]*)?}")]
+        [Route("editorial/{resultsPath:regex(^(results|beta-results))}/{*seoFragment:regex(^[\\w-/]*)?}")]
         [RedirectAttributeFilter]
         [LegacyListingsUrlRedirectFilter]
         public async Task<ActionResult> Index(GetListingsQuery query)
@@ -36,22 +36,22 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             var response = dispatchedQuery.Result;
 
-            if (response != null)
+            if (response == null)
             {
-                if (response.RedirectRequired)
-                {
-                    _seoListingUrlRedirectLogger.Log(HttpContext.Request.Url?.ToString());
+                var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
+                errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
 
-                    return new RedirectResult(response.RedirectUrl, true);
-                }
-
-                return View("ListingTemplate", response.ListingsViewModel);
+                return await errorsController.ErrorGeneric();
             }
 
-            var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
-            errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
+            if (response.RedirectRequired)
+            {
+                _seoListingUrlRedirectLogger.Log(HttpContext.Request.Url?.ToString());
 
-            return await errorsController.ErrorGeneric();
+                return new RedirectResult(response.RedirectUrl, true);
+            }
+
+            return View("ListingTemplate", response.ListingsViewModel);
         }
     }
 
