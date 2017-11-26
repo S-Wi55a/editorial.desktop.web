@@ -45,6 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
             }
             return null;
         }
+
         public static Refinement GetParentExpression(this RefinementsNodeDto source)
         {
             if(source.Metadata?.ParentExpression != null){
@@ -57,6 +58,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 
             return new Refinement();
         }
+
         public static string GetSponsoredLabel(this SearchResultDto source)
         {
             return source.ArticleTypes?.FirstOrDefault(x => x.Equals(ArticleType.Sponsored.ToString()));
@@ -66,16 +68,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         {
             return $"EDITORIAL-{source.Id?.Substring(7)}";
         }
+
         public static string GetDisplayName(this RyvussNavNodeDto source)
         {
             return source.DisplayName == "Make" ? "Make/Model" : source.DisplayName;
-        }
-
-        public static string GetRemoveActionUrl(this BreadCrumbDto source)
-        {
-            return string.IsNullOrEmpty(source.RemoveAction)
-                ? string.Empty
-                : ListingsUrlFormatter.GetPathAndQueryString(source.RemoveAction);
         }
     }
 }
