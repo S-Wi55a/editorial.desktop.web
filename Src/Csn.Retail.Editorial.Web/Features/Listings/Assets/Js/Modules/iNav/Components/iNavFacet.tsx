@@ -24,7 +24,7 @@ interface IINavfacet extends IFacet {
 const Refinements: React.StatelessComponent<any> = (props) => (
   <div className="iNav-category-item__refinements--hidden">
     {
-      props.isSelected && props.refinements ? props.refinements.facets.map((node, index) => {
+      props.isSelected && props.refinements ? props.refinements.facets.map((node: any, index: any) => {
         return <a href={`${node.url}`} key={`${index}`}>{node.displayValue}</a>
     }) : ''
     }
