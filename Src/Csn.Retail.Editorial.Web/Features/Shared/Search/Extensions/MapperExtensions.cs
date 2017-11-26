@@ -1,4 +1,5 @@
 using System.Linq;
+using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
@@ -61,6 +62,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         public static string GetDisplayName(this RyvussNavNodeDto source)
         {
             return source.DisplayName == "Make" ? "Make/Model" : source.DisplayName;
+        }
+
+        public static string GetRemoveActionUrl(this BreadCrumbDto source)
+        {
+            return string.IsNullOrEmpty(source.RemoveAction)
+                ? string.Empty
+                : ListingsUrlFormatter.GetPathAndQueryString(source.RemoveAction);
         }
     }
 }

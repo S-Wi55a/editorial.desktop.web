@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
-namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
+namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements.Mapping
 {
     public class RefinementsNavNodeResolver : IValueResolver<RyvussNavNodeDto, RefinementNavNode, RefinementNavNode2>
     {
