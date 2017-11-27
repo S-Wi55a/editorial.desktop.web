@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using Csn.MultiTenant;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Models
@@ -14,6 +15,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string MobiSiteUrl { get; set; }
         public string RyvusNavName { get; set; }
         public bool SupportsSeoFriendlyListings { get; set; }
+        public CultureInfo Culture { get; set; }
+
 
         #region Polar Native Ads
         public bool DisplayPolarAds { get; set; }
