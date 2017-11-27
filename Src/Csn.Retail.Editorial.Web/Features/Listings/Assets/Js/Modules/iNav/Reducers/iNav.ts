@@ -35,10 +35,8 @@ function navReducer(state: INavResults, action: Actions): INavResults {
                         nodes: {
                             $set: action.payload.data.iNav.nodes
                         },
-                        pending: {
-                            $merge: {
-                                queryCount: action.payload.data.count
-                            }
+                        pendingQueryCount: {
+                            $set: action.payload.data.count
                         },
                         keywordsPlaceholder: {
                             $set: action.payload.data.iNav.keywordsPlaceholder
@@ -87,10 +85,8 @@ function refinementReducer(state: INavResults, action: Actions): INavResults {
                         nodes: {
                             $set: action.payload.data.nav.nodes
                         },
-                        pending: {
-                            $merge: {
-                                queryCount: action.payload.data.count
-                            }
+                        pendingQueryCount: {
+                            $set: action.payload.data.count
                         },
                         keywordsPlaceholder: {
                             $set: action.payload.data.nav.keywordsPlaceholder
@@ -98,6 +94,7 @@ function refinementReducer(state: INavResults, action: Actions): INavResults {
                     }
                 }
             })
+
         return newState
 
     } catch (e) {
@@ -136,11 +133,11 @@ function updatePendingQuery (state: INavResults, action: Actions): INavResults {
             {
                 navResults: {
                     iNav: {
-                        $merge: {
-                            pending: {
-                                    action: action.payload.action,
-                                    url:action.payload.url
-                            }
+                        pendingAction: {
+                            $set: action.payload.action
+                        },
+                        pendingUrl: { 
+                            $set:action.payload.url
                         }
                     }
                 }

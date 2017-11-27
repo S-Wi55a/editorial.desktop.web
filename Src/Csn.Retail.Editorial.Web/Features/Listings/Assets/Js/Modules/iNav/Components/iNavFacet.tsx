@@ -82,7 +82,7 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
 
 const mapStateToProps = (state: any) => {
   return {
-      pendingAction: typeof state.store.listings.navResults.iNav.pending !== 'undefined' ? state.store.listings.navResults.iNav.pending.action : state.store.listings.navResults.iNav.currentAction,
+      pendingAction: typeof state.store.listings.navResults.iNav.pendingAction !== 'undefined' ? state.store.listings.navResults.iNav.pendingAction : state.store.listings.navResults.iNav.currentAction,
   }
 }
 

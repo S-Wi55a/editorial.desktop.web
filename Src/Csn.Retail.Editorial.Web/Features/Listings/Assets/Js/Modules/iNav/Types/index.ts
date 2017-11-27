@@ -25,6 +25,7 @@ export interface IINav {
     nodes: INode[]
     breadCrumbs: Array<any>
     metadata: INavMetadata
+    pending?: string
 }
 
 export interface INavMetadata {
