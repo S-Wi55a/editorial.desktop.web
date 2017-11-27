@@ -2,18 +2,21 @@
 import { connect } from 'react-redux'
 
 if (!SERVER) {
-    require('iNavArticleCount/Css/iNavArticleCount.scss')
+    require('iNavArticleCount/Css/iNavArticleCount.scss');
 }
 
-const INavArticleCount = ({ count, resultsMessage, noResultsMessage, noResultsInstructionMessage }) => {
-    if (count > 0) {
-        return <h1 className="iNavArticleCount">{resultsMessage}</h1>
-    } else {
-        return <div className="noResults">
-                    <div className="noResults__message">{noResultsMessage}</div>
-                    <div className="noResults__instructionMessage">{noResultsInstructionMessage}</div>
-                </div>
+const INavArticleCount = ({ count, resultsMessage, noResultsInstructionMessage }) => {
+    var noResultsMsg;
+
+    if (count < 1) {
+        noResultsMsg = <div className="iNavArticleCount__instructionMessage">{noResultsInstructionMessage}</div>;
     }
+
+    return (
+        <div className="iNavArticleCount">
+            <h1 className="iNavArticleCount__count">{resultsMessage}</h1>
+            {noResultsMsg}
+        </div>);
 };
 
 // Redux Connect
@@ -21,7 +24,6 @@ const mapStateToProps = (state) => {
     return {
         count: state.store.listings.navResults.count,
         resultsMessage: state.store.listings.navResults.resultsMessage,
-        noResultsMessage: state.store.listings.navResults.noResultsMessage,
         noResultsInstructionMessage: state.store.listings.navResults.noResultsInstructionMessage
     }
 }

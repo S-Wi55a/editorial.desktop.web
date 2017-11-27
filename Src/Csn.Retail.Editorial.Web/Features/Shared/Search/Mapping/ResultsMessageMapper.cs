@@ -6,7 +6,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
     public interface IResultsMessageMapper
     {
         string MapResultMessage(RyvussNavResultDto source);
-        string MapNoResultMessage(int count);
         string MapNoResultInstructionMessage(int count);
     }
 
@@ -20,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
                 return source.Metadata.H1;
             }
 
-            if (source.Count < 1) return null;
+            if (source.Count < 1) return "0 Articles found. Unfortunately we can't find any articles that suit your refinement.";
 
             return source.Count > 1 ? $"{source.Count} Articles found" : "1 Article found";
         }
@@ -28,11 +27,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         public string MapNoResultInstructionMessage(int count)
         {
             return count < 1 ? "Please refine your search by removing a breadcrumb." : string.Empty;
-        }
-
-        public string MapNoResultMessage(int count)
-        {
-            return count < 1 ? "0 Articles found. Unfortunately we can't find any articles that suit your refinement." : string.Empty;
         }
     }
 }

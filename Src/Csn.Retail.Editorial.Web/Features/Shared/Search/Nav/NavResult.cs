@@ -9,7 +9,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public Nav INav { get; set; }
         public List<SearchResult> SearchResults { get; set; }
         public string ResultsMessage { get; set; }
-        public string NoResultsMessage { get; set; }
         public string NoResultsInstructionMessage { get; set; }
     }
 
