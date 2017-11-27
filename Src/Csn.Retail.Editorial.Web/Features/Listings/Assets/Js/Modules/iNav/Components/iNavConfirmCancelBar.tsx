@@ -27,7 +27,7 @@ const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({
                 e.preventDefault()
                 fetchINavAndResults()
             }
-        }>Show {count.toLocaleString()} Articles</a>      
+        }>Show {count.toLocaleString()} Article{count > 1 ? 's' : ''}</a>      
     </div>
 )
 
