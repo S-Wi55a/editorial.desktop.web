@@ -16,5 +16,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
         public string DisqusSource { get; set; }
         public bool ShowSponsoredLinks { get; set; }
         public Dictionary<string, string> InsightsData { get; set; }
+        public SeoData SeoData { get; set; }
     }
 }

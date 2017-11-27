@@ -6,7 +6,7 @@
 @model ListingsViewModel
 
 @section Head{
-    <meta name="robots" content="noindex">
+    @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
 }
 
 @{
