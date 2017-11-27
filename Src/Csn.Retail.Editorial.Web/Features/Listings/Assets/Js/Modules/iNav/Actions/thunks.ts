@@ -22,9 +22,9 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
         );
 }
 
-type fetchINavAndResults = (q?: string, f?: boolean, p?:boolean) => (d: Dispatch<any>, getState: any) => any
+type fetchINavAndResults = (q?: string) => (d: Dispatch<any>, getState: any) => any
 
-export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEmpty?: boolean) =>  (dispatch: any, getState: any) => {
+export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (dispatch: any, getState: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
 
@@ -40,7 +40,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEm
             getState().store.listings.pendingQuery ? getState().store.listings.pendingQuery : getState().store.listings.currentQuery
         
         // TODO: REMOVE FOR PHASE 2
-        return window.location.assign(forceEmpty ? window.location.pathname : `${q}`)
+        return window.location.assign(`${q}`)
 
         // return fetch(`${iNav.api}?${q}`)
         //     .then(
