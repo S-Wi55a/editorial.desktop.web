@@ -37,7 +37,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEm
         const q = 
             typeof query !== 'undefined' ? 
             decodeURI(query).replace('<!>', keyword) : //Will stil use query even if no match in replace
-            getState().store.listings.pendingQuery ? getState().store.listings.pendingQuery : getState().store.listings.currentQuery
+            getState().store.listings.navResults.iNav.pending ? getState().store.listings.navResults.iNav.pending.url : getState().store.listings.navResults.iNav.currentQuery
         
         // TODO: REMOVE FOR PHASE 2
         return window.location.assign(forceEmpty ? window.location.pathname : `${q}`)
@@ -77,7 +77,7 @@ export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) 
 
 type fetchINavRefinement = (a: string, r: string, p: string, q: string, u?: string, action?: Actions) => (d: any) => Promise<any>;
     
-export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, url?: string, action?: Actions) => (dispatch: any ) => {
+export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, url?: string, reduxAction?: Actions) => (dispatch: any ) => {
 
         dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
 
@@ -99,7 +99,7 @@ export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinem
                     // Status looks good
                     dispatch([
                         { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data: json, name: aspect, parentExpression }},
-                        action
+                        reduxAction
                     ])
                   }
                 },

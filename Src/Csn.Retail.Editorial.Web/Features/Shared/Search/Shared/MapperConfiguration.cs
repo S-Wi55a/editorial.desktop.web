@@ -45,7 +45,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
                 .ForMember(dest => dest.BreadCrumbs, opt => opt.MapFrom(src => _breadCrumbMapper.GetAggregatedBreadCrumbs(src.BreadCrumbs)))
                 .ForMember(dest => dest.Nodes, opt => opt.MapFrom(src => _navNodeMapper.GetNavNode(src.Nodes)))
-                .ForMember(dest => dest.KeywordsPlaceholder, opt => opt.ResolveUsing<KeywordsPlaceholderResolver<Nav.Nav>>());
+                .ForMember(dest => dest.KeywordsPlaceholder, opt => opt.ResolveUsing<KeywordsPlaceholderResolver<Nav.Nav>>())
+                .ForMember(dest => dest.CurrentAction, opt => opt.Ignore());
 
             cfg.CreateMap<RyvussNavNodeDto, NavNode>()
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));

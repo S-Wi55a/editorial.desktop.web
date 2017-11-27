@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Migrations.Infrastructure;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
@@ -17,6 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public List<NavNode> Nodes { get; set; }
         public List<BreadCrumb> BreadCrumbs { get; set; }
         public string KeywordsPlaceholder { get; set; }
+        public string CurrentAction { get; set; }
     }
 
     public class NavNode
@@ -67,4 +69,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
 
 
     }
+
 }
