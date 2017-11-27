@@ -40,7 +40,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
             getState().store.listings.pendingQuery ? getState().store.listings.pendingQuery : getState().store.listings.currentQuery
         
         // TODO: REMOVE FOR PHASE 2
-        return window.location.assign(`${q}`)
+        return window.location.assign(q)
 
         // return fetch(`${iNav.api}?${q}`)
         //     .then(
