@@ -1,4 +1,5 @@
 using System.Linq;
+using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
@@ -44,6 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
             }
             return null;
         }
+
         public static Refinement GetParentExpression(this RefinementsNodeDto source)
         {
             if(source.Metadata?.ParentExpression != null){
@@ -56,6 +58,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 
             return new Refinement();
         }
+
         public static string GetSponsoredLabel(this SearchResultDto source)
         {
             return source.ArticleTypes?.FirstOrDefault(x => x.Equals(ArticleType.Sponsored.ToString()));
@@ -65,6 +68,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         {
             return $"EDITORIAL-{source.Id?.Substring(7)}";
         }
+
         public static string GetDisplayName(this RyvussNavNodeDto source)
         {
             return source.DisplayName == "Make" ? "Make/Model" : source.DisplayName;
