@@ -9,7 +9,7 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
 
     dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
 
-    return fetch(`${iNav.nav}?q=${query}`)
+    return fetch(`${iNav.nav}${query}`)
         .then(
             response => response.json(),
             error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
@@ -81,7 +81,7 @@ export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinem
 
         dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
 
-        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query ? `?q=${query}` : ''))
+        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query ? `${query}` : ''))
            // Try to parse the response
             .then(response =>
                 response.json().then(json => ({

@@ -108,7 +108,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
 
             var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.Sort; });
-            navResults.INav.CurrentAction = string.IsNullOrEmpty(query.SeoFragment) ? query.Q : query.SeoFragment;
+            navResults.INav.CurrentAction = ListingsUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Q, query.Sort);
 
             return new GetListingsResponse
             {
@@ -116,13 +116,13 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 ListingsViewModel = new ListingsViewModel
                 {
                     NavResults = navResults,
-                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, query.Q, query.Keywords),
-                    Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, query.Q, query.Keywords),
+                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Q, query.Keywords),
+                    Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Q, query.Keywords),
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(query.Q).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
                     ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
-                    InsightsData = _listingInsightsDataMapper.Map(query.Q, query.Sort)
+                    InsightsData = _listingInsightsDataMapper.Map(query.Q, query.Sort) //how to build tags with seo fragments
                 }
             };
         }

@@ -633,7 +633,7 @@
     <Compile Include="Features\Shared\Search\Mapping\FacetNodeUrlResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\KeywordsPlaceholderResolver.cs" />
-    <Compile Include="Features\Shared\Search\Mapping\NavNodeMapper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\NavNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Refinements\Mapping\MapperConfiguration.cs" />
     <Compile Include="Features\Shared\Search\Refinements\Mapping\RefinementsNavNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ResultsMessageMapper.cs" />
