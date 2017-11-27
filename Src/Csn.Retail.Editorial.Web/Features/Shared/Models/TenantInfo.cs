@@ -10,13 +10,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string SiteNavPath { get; set; }
         public string GoogleAnalyticsApp { get; set; }
         public string HotjarTracking { get; set; }
-        public bool AllowSeoIndexOfDetails { get; set; }
-        public bool AllowSeoIndexOfListing { get; set; }
         public string MobiSiteUrl { get; set; }
         public string RyvusNavName { get; set; }
-        public bool SupportsSeoFriendlyListings { get; set; }
         public CultureInfo Culture { get; set; }
 
+        #region Seo
+        public bool AllowSeoIndexOfDetails { get; set; }
+        public bool AllowSeoIndexOfListing { get; set; }
+        public bool SupportsSeoFriendlyListings { get; set; }
+        public string DefaultPageTitle { get; set; }
+        #endregion
 
         #region Polar Native Ads
         public bool DisplayPolarAds { get; set; }

@@ -39,6 +39,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             var polarNativeAdd = Substitute.For<IPolarNativeAdsDataMapper>();
             var sponsoredLinksDataMapper = Substitute.For<ISponsoredLinksDataMapper>();
             var listingInsightsDataMapper = Substitute.For<IListingInsightsDataMapper>();
+            var seoDataMapper = Substitute.For<ISeoDataMapper>();
+
             tenantProvider.Current().Returns(new TenantInfo()
             {
                 Name = "carsales",
@@ -57,7 +59,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             mapper.Map<NavResult>(Arg.Any<RyvussNavResultDto>(), Arg.Any<Action<IMappingOperationOptions>>()).Returns(new NavResult());
 
             var queryHandler = new GetListingsQueryHandler(ryvussProxy, tenantProvider, mapper, paginationHelper,
-                sortingHelper, contextStore, expressionParser, expressionFormatter, polarNativeAdd, sponsoredLinksDataMapper, listingInsightsDataMapper);
+                sortingHelper, contextStore, expressionParser, expressionFormatter, polarNativeAdd, sponsoredLinksDataMapper, listingInsightsDataMapper, seoDataMapper);
             var expression = new FacetExpression("Service", "Carsales").And(new KeywordExpression("Keyword", "honda"));
             expressionParser.Parse(Arg.Any<string>()).Returns(expression);
             expressionFormatter.Format(Arg.Any<Expression>()).Returns("Service.CarSales.");

@@ -14,6 +14,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
     public class PageLevelSeoMetaDataDto
     {
         public string Seo { get; set; }
+        public string Title { get; set; }
+        public string H1 { get; set; }
     }
 
     public class RyvussNavDto

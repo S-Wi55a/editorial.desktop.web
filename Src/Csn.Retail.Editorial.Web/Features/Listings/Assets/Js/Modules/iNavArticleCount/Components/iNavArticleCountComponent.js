@@ -5,9 +5,9 @@ if (!SERVER) {
     require('iNavArticleCount/Css/iNavArticleCount.scss')
 }
 
-const INavArticleCount = ({ count, noResultsMessage, noResultsInstructionMessage }) => {
+const INavArticleCount = ({ count, resultsMessage, noResultsMessage, noResultsInstructionMessage }) => {
     if (count > 0) {
-        return <div className="iNavArticleCount">{count.toLocaleString()} Article{count > 1 ? 's' : ''} found </div>
+        return <h1 className="iNavArticleCount">{resultsMessage}</h1>
     } else {
         return <div className="noResults">
                     <div className="noResults__message">{noResultsMessage}</div>
@@ -20,6 +20,7 @@ const INavArticleCount = ({ count, noResultsMessage, noResultsInstructionMessage
 const mapStateToProps = (state) => {
     return {
         count: state.store.listings.navResults.count,
+        resultsMessage: state.store.listings.navResults.resultsMessage,
         noResultsMessage: state.store.listings.navResults.noResultsMessage,
         noResultsInstructionMessage: state.store.listings.navResults.noResultsInstructionMessage
     }

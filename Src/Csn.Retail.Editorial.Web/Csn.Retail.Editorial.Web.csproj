@@ -572,6 +572,7 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
     <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
+    <Compile Include="Features\Listings\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
@@ -905,7 +906,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
     <Content Include="Features\Home\Views\Index.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Head\_BasicSeoData.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\Head\_BasicSeoData.cshtml" />
     <Content Include="Features\Tracking\Views\WebMetricsScripts.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticle.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticles.scss" />
