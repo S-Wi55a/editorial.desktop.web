@@ -603,7 +603,7 @@
     <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
-    <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapperResolver.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleData.cs" />
     <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />
     <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
@@ -630,7 +630,6 @@
     <Compile Include="Features\Shared\Search\Aspect\AspectResult.cs" />
     <Compile Include="Features\Shared\Search\Extensions\MapperExtensions.cs" />
     <Compile Include="Features\Shared\Search\Mapping\DateAvailableMapper.cs" />
-    <Compile Include="Features\Shared\Search\Mapping\FacetNodeActionResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\FacetNodeUrlResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\KeywordsPlaceholderResolver.cs" />

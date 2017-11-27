@@ -7,7 +7,7 @@ if (!SERVER) {
 
 const INavArticleCount = ({ count, noResultsMessage, noResultsInstructionMessage }) => {
     if (count > 0) {
-        return <div className="iNavArticleCount">{count} Articles found </div>
+        return <div className="iNavArticleCount">{count} Article{count > 1 ? 's' : ''} found </div>
     } else {
         return <div className="noResults">
                     <div className="noResults__message">{noResultsMessage}</div>
