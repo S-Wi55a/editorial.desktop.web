@@ -25,10 +25,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             _tenantProvider = tenantProvider;
         }
 
-        public PaginationHelper()
-        {
-        }
-
         public PagingViewModel GetPaginationData(int count, int limit, int offset, string sortOrder, string query, string keyword)
         {
             if (count < 1)
