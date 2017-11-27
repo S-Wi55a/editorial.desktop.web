@@ -1,4 +1,9 @@
-﻿using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
@@ -14,7 +19,13 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
         public void GetPagingDataTest()
         {
             //Arrange
-            var testSubject = new PaginationHelper();
+            var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
+            var testSubject = new PaginationHelper(tenantProvider);
+            tenantProvider.Current().Returns(new TenantInfo()
+            {
+                Name = "carsales",
+                Culture = new CultureInfo("en-us")
+            });
 
             //Act
             var result = testSubject.GetPaginationData(314, 20, 120, "Sort", "test_query", "keyword");
@@ -46,7 +57,13 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
         public void GetEdgeCasesPagingDataTest()
         {
             //Arrange
-            var testSubject = new PaginationHelper();
+            var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
+            var testSubject = new PaginationHelper(tenantProvider);
+            tenantProvider.Current().Returns(new TenantInfo()
+            {
+                Name = "carsales",
+                Culture = new CultureInfo("en-us")
+            });
 
             //Act
             var result = testSubject.GetPaginationData(0, 20, 0, "Sort", "test_query", "keyword");
