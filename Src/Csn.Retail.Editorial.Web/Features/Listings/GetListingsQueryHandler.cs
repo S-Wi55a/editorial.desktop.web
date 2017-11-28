@@ -35,10 +35,11 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
         private readonly ISponsoredLinksDataMapper _sponsoredLinksDataMapper;
         private readonly IListingInsightsDataMapper _listingInsightsDataMapper;
+        private readonly ISeoDataMapper _seoDataMapper;
 
         public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
             ISortingHelper sortingHelper, ContextStore.IContextStore contextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
-            ISponsoredLinksDataMapper sponsoredLinksDataMapper, IListingInsightsDataMapper listingInsightsDataMapper)
+            ISponsoredLinksDataMapper sponsoredLinksDataMapper, IListingInsightsDataMapper listingInsightsDataMapper, ISeoDataMapper seoDataMapper)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
@@ -51,6 +52,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
             _sponsoredLinksDataMapper = sponsoredLinksDataMapper;
             _listingInsightsDataMapper = listingInsightsDataMapper;
+            _seoDataMapper = seoDataMapper;
         }
 
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
@@ -123,6 +125,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
                     ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
                     InsightsData = _listingInsightsDataMapper.Map(query.Q, query.Sort) //how to build tags with seo fragments
+                    SeoData = _seoDataMapper.Map(resultData)
                 }
             };
         }

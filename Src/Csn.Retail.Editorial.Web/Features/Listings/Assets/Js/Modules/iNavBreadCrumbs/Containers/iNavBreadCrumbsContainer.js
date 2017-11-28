@@ -12,12 +12,7 @@ const FacetBreadCrumb = {
 }
 
 const INavBreadCrumb = ({ facetDisplay, removeAction, fetchINavAndResults, type}) => {
-
-    if(type === FacetBreadCrumb.clearAll){
-        return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction, true);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>
-    }
-    return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>    
-    
+    return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>
 }
 
 const INavBreadCrumbs = ({ breadCrumbs, fetchINavAndResults }) => (
@@ -25,7 +20,7 @@ const INavBreadCrumbs = ({ breadCrumbs, fetchINavAndResults }) => (
             {breadCrumbs.map((breadCrumb) => {
                 return  <Timer key={`${breadCrumb.facetDisplay}${Math.random()}`}>
                             <FadeIn duration={300} startingOpacity={0} className="d-inline-block">
-                        <INavBreadCrumb  {...breadCrumb} fetchINavAndResults={fetchINavAndResults}/>
+                                <INavBreadCrumb  {...breadCrumb} fetchINavAndResults={fetchINavAndResults}/>
                             </FadeIn>
                         </Timer>
             })}
@@ -41,7 +36,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchINavAndResults: (query, clear) => dispatch(Thunks.fetchINavAndResults(query, clear))
+        fetchINavAndResults: (query) => dispatch(Thunks.fetchINavAndResults(query))
     }
   }
 

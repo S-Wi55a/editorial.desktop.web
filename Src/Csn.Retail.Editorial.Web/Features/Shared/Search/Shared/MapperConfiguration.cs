@@ -29,10 +29,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public void Run(IMapperConfigurationExpression cfg)
         {
             cfg.CreateMap<RyvussNavResultDto, NavResult>()
-                .ForMember(dest => dest.NoResultsMessage,
-                    opt => opt.MapFrom(src => _resultsMessageMapper.MapResultMessage(src.Count)))
-                .ForMember(dest => dest.NoResultsInstructionMessage,
-                    opt => opt.MapFrom(src => _resultsMessageMapper.MapResultInstructionMessage(src.Count)));
+                .ForMember(dest => dest.NoResultsInstructionMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapNoResultInstructionMessage(src.Count)))
+                .ForMember(dest => dest.ResultsMessage, opt => opt.MapFrom(src => _resultsMessageMapper.MapResultMessage(src)));
                 
             cfg.CreateMap<BreadCrumbDto, BreadCrumb>()
                 .ForMember(dest => dest.Term, opt => opt.Ignore())
