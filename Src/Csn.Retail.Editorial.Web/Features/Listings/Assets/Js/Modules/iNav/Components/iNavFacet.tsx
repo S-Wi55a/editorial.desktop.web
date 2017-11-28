@@ -12,12 +12,13 @@ interface IINavfacet extends IFacet {
   aspect: string;
   id: number;
   refinement?: IRefinement;
-  fetchINavAndUpdatePendingQuery?: Thunks.Types;
+  fetchINavAndUpdatePendingRequest?: Thunks.Types;
   fetchINavAndResults?: Thunks.Types;
   fetchAspect?: Thunks.Types;
-  fetchRefinementAndUpdatePendingQuery?: Thunks.Types;
+  fetchRefinementAndUpdatePendingRequest?: Thunks.Types;
   fetchRefinementAndSwitchPage?: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number)=>Actions;
   pendingQuery?: string;
+  pendingAction?: string
   isRefinement?: boolean;
 }
 
@@ -39,7 +40,7 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
       () => {
         if (props.isRefinement) {
             props.count > 0 &&
-                props.fetchRefinementAndUpdatePendingQuery(
+                props.fetchRefinementAndUpdatePendingRequest(
                     props.aspect,
                     props.refinement.aspect,
                     props.refinement.parentExpression,
@@ -48,12 +49,19 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
                 );
         }
         else {
-            props.count > 0 && props.fetchINavAndUpdatePendingQuery(props.action, props.url);
+            props.count > 0 && props.fetchINavAndUpdatePendingRequest(props.action, props.url);
         }
       }
     } >
       <input className="iNav-category-item__checkbox" type="checkbox" checked={props.isSelected} readOnly={true} />
-      <a className="iNav-category-item__link" href={`${props.url}`} onClick={e => e.preventDefault()}>{props.displayValue}</a>
+      {
+        props.count === 0 ?
+        <div className="iNav-category-item__link">{props.displayValue}</div>
+        :
+        <a className="iNav-category-item__link" href={`${props.url}`} onClick={e => e.preventDefault()}>{props.displayValue}</a>        
+      }
+      
+
       <span className="iNav-category-item__meta-container">
         <span className="iNav-category-item__count">{props.count}</span>
         {
@@ -64,7 +72,7 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
                 props.aspect,
                 props.refinement.aspect,
                 props.refinement.parentExpression,
-                props.action,
+                props.pendingAction,
                 props.id
               )
             }
@@ -79,27 +87,33 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
   )
 }
 
+const mapStateToProps = (state: any) => {
+  return {
+      pendingAction: typeof state.store.listings.navResults.iNav.pendingAction !== 'undefined' ? state.store.listings.navResults.iNav.pendingAction : state.store.listings.navResults.iNav.currentAction,
+  }
+}
+
 const mapDispatchToProps: any = (dispatch: any, ownProps: IINavfacet) => {
     return {
-        fetchINavAndUpdatePendingQuery: (query: string, url: string) =>
+        fetchINavAndUpdatePendingRequest: (action: string, url: string) =>
             dispatch([
-                { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query: url } },
-                Thunks.fetchINav(query)
+                { type: ActionTypes.INAV.UPDATE_PENDING_ACTION, payload: { url, action } },
+                Thunks.fetchINav(action)
             ]),
-        fetchRefinementAndUpdatePendingQuery: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, url: string) => 
+        fetchRefinementAndUpdatePendingRequest: (aspect: string, refinementAspect: string, refinementParentExpression: string, action: string, url: string) => 
             dispatch([
-                { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { query: url } },        
-                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, pendingQuery)
+                { type: ActionTypes.INAV.UPDATE_PENDING_ACTION, payload: { url, action } },
+                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, action)
             ]),
-        fetchRefinementAndSwitchPage: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number) =>
+        fetchRefinementAndSwitchPage: (aspect: string, refinementAspect: string, refinementParentExpression: string, action: string, refinementId: number) =>
             dispatch([
-                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, pendingQuery, null, 
+                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, action, null, 
                 { type: ActionTypes.UI.SWITCH_PAGE_FORWARD, payload: { refinementId } })
             ])
     }
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(INavfacet)

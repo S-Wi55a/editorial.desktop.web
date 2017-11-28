@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Csn.Retail.Editorial.Web.Features.Listings.Constants;
@@ -35,7 +34,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
 
             dimensions.Add(TrackingScriptTags.ContentGroup1, TrackingScriptContentGroups.NewsAndReviews);
             dimensions.Add(TrackingScriptTags.ContentGroup2, TrackingScriptPageTypes.Listing);
-            dimensions.Add(TrackingScriptTags.Action, GetPageType());
+            dimensions.Add(TrackingScriptTags.Action, GetActionType());
             dimensions.Add(TrackingScriptTags.SortBy, string.IsNullOrEmpty(sort) ? string.Empty : sort);
 
             return dimensions;
@@ -45,7 +44,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
         {
             return expression.Accept(new TrackingScriptTagVisitor(), new List<TrackingScriptTag>()).ToDictionary(tag => tag.Name, tag => tag.Value);
         }
-        private string GetPageType()
+        private string GetActionType()
         {
             var uri = HttpContext.Current.Request.Url;
             var uriReferrer = HttpContext.Current.Request.UrlReferrer;

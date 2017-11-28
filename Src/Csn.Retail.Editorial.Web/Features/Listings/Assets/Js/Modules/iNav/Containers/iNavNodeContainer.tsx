@@ -12,7 +12,6 @@ if (!SERVER) {
 }
 
 interface ICategory {
-  pendingQuery?: string
   currentRefinement?: string
   switchPageBack?: (a: any)=>any
   refinementId?: number
@@ -75,7 +74,6 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
           name={props.name}
           isRefinement={true}
           switchPageBack={props.switchPageBack}
-          pendingQuery={props.pendingQuery}
           currentRefinement={props.currentRefinement}
           isLoading={props.isLoading}
           />
@@ -91,7 +89,6 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
               refinementId={props.refinementId}
               isRefinement={true}
               switchPageBack={props.switchPageBack}
-              pendingQuery={props.pendingQuery}
               currentRefinement={props.currentRefinement}
               id={index}
               isLoading={props.isLoading}
@@ -110,7 +107,6 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
 // Connect
 const mapStateToProps = (state: any, ownProps: IINavNodeContainer) => {
   return {
-      pendingQuery: state.store.listings.pendingQuery,
       currentRefinement: state.store.listings.navResults.currentRefinement,
       refinementId: state[`ui/iNavNodeContainer${ownProps.name}`] ?  state[`ui/iNavNodeContainer${ownProps.name}`].refinementId : null
   }
