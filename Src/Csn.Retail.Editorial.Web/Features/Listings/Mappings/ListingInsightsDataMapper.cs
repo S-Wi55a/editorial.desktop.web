@@ -61,7 +61,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
                 }
 
                 // Check if it's paging                
-                var curOffset = uri.GetQueryParameter(ListingsQueryStringParams.Offset); 
+                var curOffset = uri.GetQueryParameter(ListingsQueryStringParams.Offset);
                 var prvOffset = uriReferrer.GetQueryParameter(ListingsQueryStringParams.Offset);
                 if ((curOffset != null && curOffset != prvOffset) && (curOffset != "0" || prvOffset != null))
                 {
