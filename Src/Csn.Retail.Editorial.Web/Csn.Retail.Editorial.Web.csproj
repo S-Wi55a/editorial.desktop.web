@@ -553,7 +553,6 @@
     <Compile Include="Features\Listings\Constants\ListingsQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
-    <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Content Include="Features\Details\Assets\Js\details.vendor.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />
@@ -571,6 +570,7 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
+    <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
@@ -634,7 +634,7 @@
     <Compile Include="Features\Shared\Search\Mapping\FacetNodeUrlResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\KeywordsPlaceholderResolver.cs" />
-    <Compile Include="Features\Shared\Search\Mapping\NavNodeMapper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\NavNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Refinements\Mapping\MapperConfiguration.cs" />
     <Compile Include="Features\Shared\Search\Refinements\Mapping\RefinementsNavNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ResultsMessageMapper.cs" />
@@ -1095,6 +1095,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Parse\parse.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

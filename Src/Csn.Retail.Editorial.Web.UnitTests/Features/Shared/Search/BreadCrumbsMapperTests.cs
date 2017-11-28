@@ -15,7 +15,6 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
         private IImageMapper _imageMapper;
         private IResultsMessageMapper _resultsMessageMapper;
         private IArticleUrlMapper _articleUrlMapper;
-        private INavNodeMapper _navNodeMapper;
         [SetUp]
         public void Setup()
         {
@@ -23,8 +22,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
             _imageMapper = Substitute.For<IImageMapper>();
             _resultsMessageMapper = Substitute.For<IResultsMessageMapper>();
             _articleUrlMapper = Substitute.For<IArticleUrlMapper>();
-            _navNodeMapper = Substitute.For<INavNodeMapper>();
-            Mapper.Initialize(cfg => new MappingSetupTask(iMapper, _imageMapper, _resultsMessageMapper, _articleUrlMapper, _navNodeMapper).Run(cfg));
+            Mapper.Initialize(cfg => new MappingSetupTask(iMapper, _imageMapper, _resultsMessageMapper, _articleUrlMapper).Run(cfg));
         }
 
         [Test]

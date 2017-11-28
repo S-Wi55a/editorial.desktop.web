@@ -16,16 +16,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         private readonly IImageMapper _imageMapper;
         private readonly IResultsMessageMapper _resultsMessageMapper;
         private readonly IArticleUrlMapper _articleUrlMapper;
-        private readonly INavNodeMapper _navNodeMapper;
 
         public MappingSetupTask(IMapper mapper, IImageMapper imageMapper,
-            IResultsMessageMapper resultsMessageMapper, IArticleUrlMapper articleUrlMapper, INavNodeMapper navNodeMapper)
+            IResultsMessageMapper resultsMessageMapper, IArticleUrlMapper articleUrlMapper)
         {
             _mapper = mapper;
             _imageMapper = imageMapper;
             _resultsMessageMapper = resultsMessageMapper;
             _articleUrlMapper = articleUrlMapper;
-            _navNodeMapper = navNodeMapper;
         }
 
         public void Run(IMapperConfigurationExpression cfg)
@@ -40,8 +38,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
             cfg.CreateMap<RyvussNavDto, Nav.Nav>()
                 .ForMember(dest => dest.BreadCrumbs, opt => opt.ResolveUsing<BreadCrumbMapperResolver>())
-                .ForMember(dest => dest.Nodes, opt => opt.MapFrom(src => _navNodeMapper.GetNavNode(src.Nodes)))
-                .ForMember(dest => dest.KeywordsPlaceholder, opt => opt.ResolveUsing<KeywordsPlaceholderResolver<Nav.Nav>>());
+                .ForMember(dest => dest.Nodes, opt => opt.ResolveUsing<NavNodeResolver>())
+                .ForMember(dest => dest.KeywordsPlaceholder, opt => opt.ResolveUsing<KeywordsPlaceholderResolver<Nav.Nav>>())
+                .ForMember(dest => dest.CurrentAction, opt => opt.Ignore())
+                .ForMember(dest => dest.CurrentUrl, opt => opt.Ignore());
 
             cfg.CreateMap<RyvussNavNodeDto, NavNode>()
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
@@ -57,6 +57,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.IsRefineable, opt => opt.MapFrom(src => src.IsRefineable()))
                 .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetRefinement()))
                 .ForMember(dest => dest.Url, opt => opt.ResolveUsing<FacetNodeUrlResolver>())
+                .ForMember(dest => dest.Action, opt => opt.ResolveUsing<FacetNodeActionResolver>())
                 .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<NavNode>(src.GetRefinements())));
 
             cfg.CreateMap<SearchResultDto, SearchResult>()

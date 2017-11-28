@@ -50,13 +50,13 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             ryvussProxy.GetAsync<RyvussNavResultDto>(Arg.Any<EditorialRyvussInput>()).Returns(Task.FromResult(
                 new SmartServiceResponse<RyvussNavResultDto>()
                 {
-                    Data = new RyvussNavResultDto()
+                    Data = new RyvussNavResultDto
                     {
                         INav = new RyvussNavDto()
                     },
                     HttpStatusCode = HttpStatusCode.OK
                 }));
-            mapper.Map<NavResult>(Arg.Any<RyvussNavResultDto>(), Arg.Any<Action<IMappingOperationOptions>>()).Returns(new NavResult());
+            mapper.Map<NavResult>(Arg.Any<RyvussNavResultDto>(), Arg.Any<Action<IMappingOperationOptions>>()).Returns(new NavResult { INav = new Nav()});
 
             var queryHandler = new GetListingsQueryHandler(ryvussProxy, tenantProvider, mapper, paginationHelper,
                 sortingHelper, contextStore, expressionParser, expressionFormatter, polarNativeAdd, sponsoredLinksDataMapper, listingInsightsDataMapper, seoDataMapper);

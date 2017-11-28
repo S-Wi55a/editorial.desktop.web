@@ -1,7 +1,6 @@
 import { Dispatch } from 'redux';
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
-import queryString from 'query-string'
 
 type fetchINav = (q?: string) => (d: Dispatch<any>) => Promise<any>
 
@@ -9,7 +8,7 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
 
     dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
 
-    return fetch(`${iNav.nav}?q=${query}`)
+    return fetch(`${iNav.nav}${query}`)
         .then(
             response => response.json(),
             error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
@@ -37,7 +36,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
         const q = 
             typeof query !== 'undefined' ? 
             decodeURI(query).replace('<!>', keyword) : //Will stil use query even if no match in replace
-            getState().store.listings.pendingQuery ? getState().store.listings.pendingQuery : getState().store.listings.currentQuery
+            getState().store.listings.navResults.iNav.pendingUrl ? getState().store.listings.navResults.iNav.pendingUrl : getState().store.listings.navResults.iNav.currentUrl
         
         // TODO: REMOVE FOR PHASE 2
         return window.location.assign(q)
@@ -77,11 +76,11 @@ export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) 
 
 type fetchINavRefinement = (a: string, r: string, p: string, q: string, u?: string, action?: Actions) => (d: any) => Promise<any>;
     
-export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, url?: string, action?: Actions) => (dispatch: any ) => {
+export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, url?: string, reduxAction?: Actions) => (dispatch: any ) => {
 
         dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
 
-        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query ? `?q=${query}` : ''))
+        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query ? `${query}` : ''))
            // Try to parse the response
             .then(response =>
                 response.json().then(json => ({
@@ -99,7 +98,7 @@ export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinem
                     // Status looks good
                     dispatch([
                         { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data: json, name: aspect, parentExpression }},
-                        action
+                        reduxAction
                     ])
                   }
                 },

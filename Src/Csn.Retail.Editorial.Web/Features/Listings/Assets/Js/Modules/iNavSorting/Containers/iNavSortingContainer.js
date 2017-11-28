@@ -2,6 +2,7 @@
 import { connect } from 'react-redux'
 import { Thunks } from 'iNav/Actions/actions'
 import { Field, reduxForm } from 'redux-form'
+import { getParameterByName } from 'Parse/parse'
 
 if (!SERVER) {
     require('iNavSorting/Css/iNavSorting.scss')
@@ -9,8 +10,13 @@ if (!SERVER) {
 
 const INavSorting = ({ sorting, isVisible, fetchQuery }) =>  {    
      return <div className={`iNavSorting__container ${isVisible ? '' : 'hide' }`} data-webm-section={`sort`}>
-                <Field name="sortOrder" component="select" className='iNavSorting' onChange={(event, newValue)=>fetchQuery(event, newValue)}>
-                    {sorting.sortListItems.map((sortItem) => <option key={sortItem.value} value={sortItem.url} data-webm-clickvalue={sortItem.label}>{sortItem.label}</option>)}   
+                <Field name="sortOrder" component="select" className='iNavSorting' 
+                    onChange={(event, newValue)=>{
+                        const sortValue = getParameterByName('sort', newValue)
+                        typeof CsnInsightsEventTracker !== 'undefined' ? CsnInsightsEventTracker.sendClick(undefined,'sort', sortValue, undefined,undefined) : false
+                        fetchQuery(event, newValue)
+                    }}>
+                    {sorting.sortListItems.map((sortItem) => <option key={sortItem.value} value={sortItem.url}>{sortItem.label}</option>)}   
                 </Field>            
             </div>
 }
