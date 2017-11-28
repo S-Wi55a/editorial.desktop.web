@@ -12,11 +12,18 @@ const FacetBreadCrumb = {
 }
 
 const INavBreadCrumb = ({ facetDisplay, removeAction, fetchINavAndResults, type}) => {
-    return <a className={`iNavBreadCrumb iNavBreadCrumb--${type}`} href={removeAction} onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction);}}>{type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}</a>
+    return <a 
+        className={`iNavBreadCrumb iNavBreadCrumb--${type}`} 
+        href={removeAction} 
+        onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction);}}
+        data-webm-clickvalue={facetDisplay}
+        >
+            {type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}
+        </a>
 }
 
 const INavBreadCrumbs = ({ breadCrumbs, fetchINavAndResults }) => (
-        <div className="iNavBreadCrumbs">
+        <div className="iNavBreadCrumbs" data-webm-section="tags">
             {breadCrumbs.map((breadCrumb) => {
                 return  <Timer key={`${breadCrumb.facetDisplay}${Math.random()}`}>
                             <FadeIn duration={300} startingOpacity={0} className="d-inline-block">
