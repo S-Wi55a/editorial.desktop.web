@@ -45,10 +45,6 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterType<RoseTreeFormatter>().As<IExpressionFormatter>().SingleInstance();
             builder.RegisterType<RoseTreeParser>().As<IExpressionParser>().SingleInstance();
 
-            // Tracking
-            builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialDetailsTrackingContainerProvider>()).As<IEditorialDetailsTrackingContainerProvider>();
-            builder.Register(x => ObjectFactory.Instance.Resolve<IWebMetricsTrackingScriptBuilder>()).As<IWebMetricsTrackingScriptBuilder>();
-
             builder.AddIngress(new IngressSetupOptions
             {
                 AssembliesToScanAndRegister = new[]

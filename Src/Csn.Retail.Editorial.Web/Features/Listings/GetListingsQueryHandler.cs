@@ -5,6 +5,7 @@ using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -12,11 +13,9 @@ using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
 using Expresso.Syntax;
-using ContextStore= Ingress.Web.Common.Abstracts;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
@@ -29,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IMapper _mapper;
         private readonly IPaginationHelper _paginationHelper;
         private readonly ISortingHelper _sortingHelper;
-        private readonly ContextStore.IContextStore _contextStore;
+        private readonly ISearchResultContextStore _searchResultContextStore;
         private readonly IExpressionParser _parser;
         private readonly IExpressionFormatter _expressionFormatter;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
@@ -38,7 +37,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly ISeoDataMapper _seoDataMapper;
 
         public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
-            ISortingHelper sortingHelper, ContextStore.IContextStore contextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
+            ISortingHelper sortingHelper, ISearchResultContextStore searchResultContextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
             ISponsoredLinksDataMapper sponsoredLinksDataMapper, IListingInsightsDataMapper listingInsightsDataMapper, ISeoDataMapper seoDataMapper)
         {
             _ryvussProxy = ryvussProxy;
@@ -46,7 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _mapper = mapper;
             _paginationHelper = paginationHelper;
             _sortingHelper = sortingHelper;
-            _contextStore = contextStore;
+            _searchResultContextStore = searchResultContextStore;
             _parser = parser;
             _expressionFormatter = expressionFormatter;
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
@@ -108,7 +107,17 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 };
             }
 
-            _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), resultData);
+            _searchResultContextStore.Set(new RyvussSearch()
+            {
+                RyvussNavResult = resultData,
+                SearchContext = new SearchContext()
+                {
+                    Query = query.Q,
+                    Offset = query.Offset,
+                    Sort = sortOrder,
+                    SeoFragment = query.SeoFragment
+                }
+            });
 
             var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.Sort; });
             navResults.INav.CurrentAction = ListingsUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Q, query.Sort);
