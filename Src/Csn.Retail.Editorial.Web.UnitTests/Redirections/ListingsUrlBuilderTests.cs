@@ -6,13 +6,13 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Redirections
 {
     public class ListingsUrlBuilderTests
     {
-        [TestCase(true, "/query/",  "abc", 30, "latest", "/editorial/beta-results/query/?sort=latest&offset=30")]
-        [TestCase(true, "/query/", "abc", 0, "", "/editorial/beta-results/query/")]
-        [TestCase(true, "/query/", "abc", 30, "", "/editorial/beta-results/query/?offset=30")]
-        [TestCase(false, "query", "abc", 30, "latest", "/editorial/beta-results/?q=query&sort=latest&keywords=abc&offset=30")]
-        [TestCase(false, "query", "abc", 0, "", "/editorial/beta-results/?q=query&keywords=abc")]
-        [TestCase(false, "query", "abc", 30, "", "/editorial/beta-results/?q=query&keywords=abc&offset=30")]
-        [TestCase(false, "query",  "", 0, "", "/editorial/beta-results/?q=query")]
+        [TestCase(true, "/query/",  "abc", 30, "latest", "/editorial/results/query/?sort=latest&offset=30")]
+        [TestCase(true, "/query/", "abc", 0, "", "/editorial/results/query/")]
+        [TestCase(true, "/query/", "abc", 30, "", "/editorial/results/query/?offset=30")]
+        [TestCase(false, "query", "abc", 30, "latest", "/editorial/results/?q=query&sort=latest&keywords=abc&offset=30")]
+        [TestCase(false, "query", "abc", 0, "", "/editorial/results/?q=query&keywords=abc")]
+        [TestCase(false, "query", "abc", 30, "", "/editorial/results/?q=query&keywords=abc&offset=30")]
+        [TestCase(false, "query",  "", 0, "", "/editorial/results/?q=query")]
         public void TestGetQueryParametersForSlug(bool isSeo, string query, string keyword, long offset, string sortOrder,
             string expectedResult)
         {
