@@ -19,6 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public List<BreadCrumb> BreadCrumbs { get; set; }
         public string KeywordsPlaceholder { get; set; }
         public string CurrentAction { get; set; }
+        public string CurrentUrl { get; set; }
     }
 
     public class NavNode

@@ -37,7 +37,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
         const q = 
             typeof query !== 'undefined' ? 
             decodeURI(query).replace('<!>', keyword) : //Will stil use query even if no match in replace
-            getState().store.listings.navResults.iNav.pendingUrl ? getState().store.listings.navResults.iNav.pendingUrl : getState().store.listings.navResults.iNav.currentAction
+            getState().store.listings.navResults.iNav.pendingUrl ? getState().store.listings.navResults.iNav.pendingUrl : getState().store.listings.navResults.iNav.currentUrl
         
         // TODO: REMOVE FOR PHASE 2
         return window.location.assign(q)

@@ -55,6 +55,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _seoDataMapper = seoDataMapper;
         }
 
+        
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
             if (!_tenantProvider.Current().SupportsSeoFriendlyListings)
@@ -111,6 +112,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.Sort; });
             navResults.INav.CurrentAction = ListingsUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Q, query.Sort);
+            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingsUrlFormatter.GetSeoUrl(query.SeoFragment, query.Offset, query.Sort):
+                ListingsUrlFormatter.GetPathAndQueryString(query.Q, query.Offset, query.Sort);
 
             return new GetListingsResponse
             {
@@ -124,7 +127,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
                     ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
-                    InsightsData = _listingInsightsDataMapper.Map(query.Q, query.Sort) //how to build tags with seo fragments
+                    InsightsData = _listingInsightsDataMapper.Map(query.Q, query.Sort), //how to build tags with seo fragments
                     SeoData = _seoDataMapper.Map(resultData)
                 }
             };
