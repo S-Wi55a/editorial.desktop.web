@@ -7,12 +7,8 @@ import { INode, IINavResponse, INavResults } from 'iNav/Types'
 //We wrap the reducer to pass init data to it for it to work in ReactJS.NET
 export const iNavReducer = (state: any, action: Actions) => {
     switch (action.type) {
-        case ActionTypes.INAV.UPDATE_PENDING_QUERY: {
-            return {
-                ...state,
-                pendingQuery: action.payload.query
-            }
-        }
+        case ActionTypes.INAV.UPDATE_PENDING_ACTION:
+            return updatePendingAction(state, action)
         case ActionTypes.API.INAV.FETCH_QUERY_SUCCESS:
             return navReducer(state, action);
         case ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS:
@@ -22,7 +18,6 @@ export const iNavReducer = (state: any, action: Actions) => {
         case ActionTypes.INAV.ADD_PROMOTED_ARTICLE:
             return promotedReducer(state, action);
         case ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT:
-            // This is a side effect
             const e = new CustomEvent(action.payload.event);
             if(typeof window !== 'undefined'){dispatchEvent(e)}
             return state;
@@ -99,6 +94,7 @@ function refinementReducer(state: INavResults, action: Actions): INavResults {
                     }
                 }
             })
+
         return newState
 
     } catch (e) {
@@ -107,7 +103,7 @@ function refinementReducer(state: INavResults, action: Actions): INavResults {
     }
 }
 
-function promotedReducer(state: INavResults, action: Actions) {
+function promotedReducer(state: INavResults, action: Actions): INavResults {
     
     try {
        if(state.navResults.count > action.payload.location) {
@@ -128,4 +124,28 @@ function promotedReducer(state: INavResults, action: Actions) {
         console.log(e)        
         return state
     }       
+}
+
+function updatePendingAction (state: INavResults, action: Actions): INavResults {
+    
+    try {
+        const newState = update(state,
+            {
+                navResults: {
+                    iNav: {
+                        pendingAction: {
+                            $set: action.payload.action
+                        },
+                        pendingUrl: { 
+                            $set:action.payload.url
+                        }
+                    }
+                }
+            })
+        return newState
+
+    } catch (e) {
+        console.log(e)        
+        return state
+    }
 }

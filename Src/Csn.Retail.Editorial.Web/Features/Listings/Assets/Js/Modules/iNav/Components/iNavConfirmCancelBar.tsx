@@ -14,15 +14,15 @@ if (!SERVER) {
 interface IINavConfirmCancelBar {
     index?: number
     count?: number
-    pendingQuery?: string
+    pendingAction?: string
     fetchINavAndResults?: (q?: string)=>void
     cancel?: ()=>void
 }
 //TODO: how to get hardcoded words data driven?
-const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({ count, fetchINavAndResults, pendingQuery, cancel}) => (
+const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({ count, fetchINavAndResults, pendingAction, cancel}) => (
     <div className='iNav-category__confirmCancelBar confirmCancelBar'>
         <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel} data-webm-clickvalue={`cancel`}>Cancel</div>
-        <a className='confirmCancelBar__button confirmCancelBar__button--show' href={pendingQuery} data-webm-clickvalue={`show`}
+        <a className='confirmCancelBar__button confirmCancelBar__button--show' href={pendingAction} data-webm-clickvalue={`show`}
             onClick={(e)=>{
                 e.preventDefault()
                 fetchINavAndResults()
@@ -34,7 +34,7 @@ const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({
 const mapStateToProps = (state: any, ownProps: IINavConfirmCancelBar) => {
     return {
         count: typeof state.store.listings.navResults.iNav.pendingQueryCount !== 'undefined' ? state.store.listings.navResults.iNav.pendingQueryCount : state.store.listings.navResults.count,
-        pendingQuery: typeof state.store.listings.pendingQuery !== 'undefined' ? state.store.listings.pendingQuery : '' 
+        pendingAction: typeof state.store.listings.navResults.iNav.pendingUrl !== 'undefined' ? state.store.listings.navResults.iNav.pendingUrl : state.store.listings.navResults.iNav.currentAction,
     }
 }
 

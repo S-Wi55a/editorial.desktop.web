@@ -55,8 +55,8 @@ interface IFetchQuerySuccess extends Action {
     }
 }
 
-interface IUpdatePendingQuery extends Action {
-    type: ActionTypes.INAV.UPDATE_PENDING_QUERY
+interface IUpdatePendingAction extends Action {
+    type: ActionTypes.INAV.UPDATE_PENDING_ACTION
     payload: {
         query: string
     }
@@ -122,7 +122,7 @@ type UIActions = IToggleIsActive
 
 type APIActions = IFetchQueryRequest | IFetchQuerySuccess | IFetchQueryError
 
-type INavActions = IUpdatePendingQuery 
+type INavActions = IUpdatePendingAction 
     | IUpdatePreviousState
     | IAddPromotedArticle
     | IFetchNativeAds

@@ -16,6 +16,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
             return $"{ListingsBasePath}/{queryString}";
         }
 
+        public static string GetQueryString(string action, string sort)
+        {
+            var queryParams = GetQueryStringParameters(action, 0, sort, string.Empty);
+            return string.IsNullOrEmpty(queryParams) ? string.Empty : "?" + queryParams;
+        }
+
         public static string GetSeoUrl(string seofragment, long offset = 0, string sortOrder = null)
         {
             var query = GetQueryStringParameters("", offset, sortOrder, "");
