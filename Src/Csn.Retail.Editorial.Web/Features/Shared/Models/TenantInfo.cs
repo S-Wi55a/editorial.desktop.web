@@ -38,11 +38,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         #region Content
 
         public string SiteLogoText { get; set; }
+        public string Favicon { get; set; }
         #endregion
 
         #region Disqus
 
         public string DisqusSource { get; set; }
         #endregion
+        
     }
 }

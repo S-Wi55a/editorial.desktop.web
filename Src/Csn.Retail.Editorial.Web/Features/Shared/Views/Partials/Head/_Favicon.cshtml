@@ -1,0 +1,7 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+
+@{
+    var favicon = Html.CurrentTenant().Favicon.ToLower();
+}
+
+<link rel="shortcut icon" href="@favicon">
