@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.MultiTenant;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
@@ -16,6 +18,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
     public class PaginationHelper : IPaginationHelper
     {        
         private const int MinPageNo = 1;
+        private readonly ITenantProvider<TenantInfo> _tenantProvider;
+
+        public PaginationHelper(ITenantProvider<TenantInfo> tenantProvider)
+        {
+            _tenantProvider = tenantProvider;
+        }
 
         public PagingViewModel GetPaginationData(int count, int limit, int offset, string sortOrder, string query, string keyword)
         {
@@ -49,7 +57,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
         private string GetDisplayText(int count, int totalPages, int offset, int currentPageNumber, int limit)
         {
             if (count < 1) return string.Empty;
-            return offset + 1 + " - " + (currentPageNumber != totalPages ? offset + limit : count) + " of " + count + " Article(s)";
+            else if (count == 1)
+            {
+                return count + " Article";
+
+            }
+            return offset + 1 + " - " + (currentPageNumber != totalPages ? offset + limit : count) + " of " + string.Format(_tenantProvider.Current().Culture, "{0:N0}", count) + " Articles";
         }
 
         private IEnumerable<PagingItemViewModel> GeneratePageLinks(long currentPageNo, int itemsPerPage, int totalPages, string query, string sortOrder, string keyword)
@@ -107,7 +120,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             return new PagingItemViewModel
             {
                 PageNo = pageNo,
-                Url = ListingsUrlFormatter.GetQueryString(query, offset, sortOrder, keyword)
+                Url = ListingsUrlFormatter.GetPathAndQueryString(query, offset, sortOrder, keyword)
             };        
         }
 

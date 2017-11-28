@@ -8,6 +8,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public int Count { get; set; }
         public RyvussNavDto INav { get; set; }
         public List<SearchResultDto> SearchResults { get; set; }
+        public PageLevelSeoMetaDataDto Metadata { get; set; }
+    }
+
+    public class PageLevelSeoMetaDataDto
+    {
+        public string Seo { get; set; }
+        public string Title { get; set; }
+        public string H1 { get; set; }
     }
 
     public class RyvussNavDto
@@ -57,6 +65,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public int Count { get; set; }
         public string Expression { get; set; }
         public FacetNodeMetaDataDto MetaData { get; set; }
+        public RyvussNavDto Refinements { get; set; }
     }
 
     public class FacetNodeMetaDataDto
@@ -66,6 +75,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
         public List<RefinementsNodeDto> Refinements { get; set; }
         public List<RefineableAspectsDto> RefineableAspects { get; set; }
+        public List<string> Seo { get; set; }
     }
 
     public class RefineableAspectsDto

@@ -9,7 +9,7 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
 
     dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
 
-    return fetch(`${iNav.nav}${query}`)
+    return fetch(`${iNav.nav}?q=${query}`)
         .then(
             response => response.json(),
             error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
@@ -22,27 +22,25 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
         );
 }
 
-type fetchINavAndResults = (q?: string, f?: boolean, p?:boolean) => (d: Dispatch<any>, getState: any) => any
+type fetchINavAndResults = (q?: string) => (d: Dispatch<any>, getState: any) => any
 
-export const fetchINavAndResults: fetchINavAndResults = (query?: string, forceEmpty?: boolean, keywordChanged?: boolean) =>  (dispatch: any, getState: any) => {
+export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (dispatch: any, getState: any) => {
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
-        let q: any = '';
-        if (keywordChanged) {
-            const keyword = typeof getState().form.keywordSearch !== 'undefined' &&
-                typeof getState().form.keywordSearch.values !== 'undefined' &&
-                typeof getState().form.keywordSearch.values.keyword !== 'undefined' ?
-                getState().form.keywordSearch.values.keyword : undefined
-            const searchParams = queryString.parse(getState().store.listings.navResults.iNav.keywordsPlaceholder)
-            searchParams.q = searchParams.q ? searchParams.q.replace('<!>', keyword): ''
-            q = '?' + queryString.stringify(searchParams);
-        } else
-        {
-            q = typeof query !== 'undefined' ? query : getState().store.listings.pendingQuery ? getState().store.listings.pendingQuery : getState().store.listings.currentQuery
-        }
 
+        const keyword = 
+            typeof getState().form.keywordSearch !== 'undefined' &&
+            typeof getState().form.keywordSearch.values !== 'undefined' &&
+            typeof getState().form.keywordSearch.values.keyword !== 'undefined' ?
+                   getState().form.keywordSearch.values.keyword : undefined
+
+        const q = 
+            typeof query !== 'undefined' ? 
+            decodeURI(query).replace('<!>', keyword) : //Will stil use query even if no match in replace
+            getState().store.listings.pendingQuery ? getState().store.listings.pendingQuery : getState().store.listings.currentQuery
+        
         // TODO: REMOVE FOR PHASE 2
-        return window.location.assign(forceEmpty ? window.location.pathname : `${q}`)
+        return window.location.assign(q)
 
         // return fetch(`${iNav.api}?${q}`)
         //     .then(
@@ -77,23 +75,39 @@ export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) 
     }
 
 
-type fetchINavRefinement = (a: string, r: string, p: string, q: string, action?: Actions) => (d: any) => Promise<any>
+type fetchINavRefinement = (a: string, r: string, p: string, q: string, u?: string, action?: Actions) => (d: any) => Promise<any>;
     
-export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, action?: Actions) => (dispatch: any ) => {
+export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, url?: string, action?: Actions) => (dispatch: any ) => {
 
         dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
 
-        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query))
+        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query ? `?q=${query}` : ''))
+           // Try to parse the response
+            .then(response =>
+                response.json().then(json => ({
+                status: response.status,
+                json
+                })
+            ))
             .then(
-                response => response.json(),
-                error => dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { error } })
-            )
-            .then(data => {
-                dispatch([
-                    { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data, name: aspect, parentExpression }},
-                    action
-                ])
-            })
+                // Both fetching and parsing succeeded!
+                ({ status, json }) => {
+                  if (status >= 400) {
+                    // Status looks bad
+                    dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { error: `server status ${status}` } })
+                  } else {
+                    // Status looks good
+                    dispatch([
+                        { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data: json, name: aspect, parentExpression }},
+                        action
+                    ])
+                  }
+                },
+                // Either fetching or parsing failed!
+                err => {
+                    dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { err } })
+                }
+              )
     }
 
-export type Types = fetchINav & fetchINavAndResults & fetchINavAspect & fetchINavRefinement
+export type Types = fetchINav & fetchINavAndResults & fetchINavAspect & fetchINavRefinement;

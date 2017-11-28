@@ -4,8 +4,10 @@ using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
@@ -15,39 +17,46 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
     {
         private readonly IEditorialRyvussApiProxy _ryvussProxy;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
+        private readonly IMapper _mapper;
 
-        public RefinementsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider)
+        public RefinementsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper)
         {
             _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
+            _mapper = mapper;
         }
 
         public async Task<RefinementResult> HandleAsync(RefinementsQuery query)
         {
-            // TODO: Add validation filters for the query
+            var postProcessors = new List<string>();
 
-
-            var ryvussResult = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
+            if (_tenantProvider.Current().SupportsSeoFriendlyListings)
             {
-                Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
+                postProcessors.Add("Seo");
+            }
+
+            postProcessors.AddRange(new[] { "FacetSort", $"RetailAspectRefinements({query.RefinementAspect},{query.ParentExpression})", "ShowZero" });
+
+            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
+            {
+                Query = query.Q, 
                 IncludeCount = true,
+                IncludeSearchResults = false,
+                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
+                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = new List<string> { "FacetSort", $"RetailAspect({query.Aspect})", $"RetailAspectRefinements({query.AspectRefinement},{query.ParentExpression})", "ShowZero" }
+                PostProcessors = postProcessors
             });
 
-            var resultData = !ryvussResult.IsSucceed ? null : ryvussResult.Data;
+            var resultData = !result.IsSucceed ? null : result.Data;
 
-            if (resultData?.INav?.Nodes == null || !resultData.INav.Nodes.Any()) return null;
+            if (resultData == null) return null;
 
-            var firstNode = resultData.INav.Nodes.First();
-
-            var result = AutoMapper.Mapper.Map<RefinementResult>(firstNode, opt => {
-                opt.Items["sortOrder"] = query.SortOrder;
-            });
-
-            result.Count = resultData.Count;
-
-            return result;
+            return new RefinementResult()
+            {
+                Count = resultData.Count,
+                Nav = _mapper.Map<RefinementNav>(resultData.INav, opt => { opt.Items["sortOrder"] = query.Sort; })
+            };
         }
     }
 }

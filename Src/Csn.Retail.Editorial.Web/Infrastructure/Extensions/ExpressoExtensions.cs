@@ -28,11 +28,13 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
 
         public static bool IsRyvussBinaryTreeSyntax(this string query)
         {
+            if (string.IsNullOrEmpty(query)) return false;
+
             var parser = new FlatBinaryTreeParser(new BinaryTreeSanitiser());
 
             try
             {
-                var parsed = parser.Parse(query);
+                parser.Parse(query);
                 return true;
             }
             catch

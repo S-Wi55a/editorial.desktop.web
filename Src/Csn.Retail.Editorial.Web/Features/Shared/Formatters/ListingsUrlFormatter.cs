@@ -6,16 +6,22 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
 {
     public static class ListingsUrlFormatter
     {
-        public static string GetQueryString(string q = null, long offset = 0, string sortOrder = null, string keyword = null)
+        private static string ListingsBasePath = "/editorial/beta-results";
+
+        public static string GetPathAndQueryString(string q = null, long offset = 0, string sortOrder = null, string keyword = null)
         {
             var queryParams = GetQueryStringParameters(q, offset, sortOrder, keyword);
-            return string.IsNullOrEmpty(queryParams) ? string.Empty : "?" + queryParams;
+            var queryString = string.IsNullOrEmpty(queryParams) ? string.Empty : "?" + queryParams;
+
+            return $"{ListingsBasePath}/{queryString}";
         }
 
         public static string GetSeoUrl(string seofragment, long offset = 0, string sortOrder = null)
         {
             var query = GetQueryStringParameters("", offset, sortOrder, "");
-            return string.IsNullOrEmpty(query) ? seofragment : $"{seofragment}?{query}";
+            var pathAndQuery = string.IsNullOrEmpty(query) ? seofragment : $"{seofragment}?{query}";
+
+            return $"{ListingsBasePath}{pathAndQuery}";
         }
 
         private static string GetQueryStringParameters(string q, long offset, string sortOrder, string keyword)

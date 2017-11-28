@@ -26,13 +26,24 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
 
         public async Task<NavResult> HandleAsync(NavQuery query)
         {
-            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
+            var postProcessors = new List<string>();
+
+            if (_tenantProvider.Current().SupportsSeoFriendlyListings)
             {
-                Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query,
+                postProcessors.Add("Seo");
+            }
+
+            postProcessors.AddRange(new[] { "Retail", "FacetSort", "ShowZero" });
+
+            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
+            {
+                Query = query.Q,
                 IncludeCount = true,
                 IncludeSearchResults = false,
+                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
+                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = new List<string> { "Retail", "FacetSort", "ShowZero"}
+                PostProcessors = postProcessors
             });
 
             var resultData = !result.IsSucceed ? null : result.Data;
@@ -42,7 +53,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
             return new NavResult()
             {
                 Count = resultData.Count,
-                INav = _mapper.Map<Nav>(resultData.INav)
+                INav = _mapper.Map<Nav>(resultData.INav, opt => { opt.Items["sortOrder"] = query.Sort; })
             };
         }
     }

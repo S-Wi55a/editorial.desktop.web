@@ -45,14 +45,40 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
             //Arrange
             var dto = new FacetNodeDto
             {
-                MetaData = new FacetNodeMetaDataDto
+                IsSelected = true,
+                Refinements = new RyvussNavDto
                 {
-                    Refinements = new List<RefinementsNodeDto> { new RefinementsNodeDto {  DisplayName = "Review" } }
-                }
+                    Nodes = new List<RyvussNavNodeDto>
+                    {
+                        new RyvussNavNodeDto
+                        {
+                            Facets = new List<FacetNodeDto>
+                            {
+                                new FacetNodeDto
+                                {
+                                    Action = "(And.Service.CarSales._.(Or.Make.BMW._.Make.Abarth.))",
+                                    DisplayValue = "Series 1"
+                                }
+                            },
+                            Name = "MarketingGroup"
+                        },
+                        new RyvussNavNodeDto
+                        {
+                            Facets = new List<FacetNodeDto>
+                            {
+                                new FacetNodeDto
+                                {
+                                    Action = "(And.Service.CarSales._.Type.Review.)",
+                                    DisplayValue = "Nested-Review"
+                                }
+                            }
+                        }
+                    }
+                }                
             };
             var dtoWithNoRefinements = new FacetNodeDto
             {
-                MetaData = new FacetNodeMetaDataDto()                
+                IsSelected = false
             };
 
             //Act
@@ -61,7 +87,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.DisplayName, dto.MetaData.Refinements.First().DisplayName);            
+            Assert.AreEqual(result.Facets.Count, 1);
+            Assert.AreEqual(result.Facets.First().DisplayValue, "Series 1");
             Assert.AreEqual(resultWithEmptySource, null);
         }
 

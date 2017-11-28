@@ -180,8 +180,8 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ingress.Autofac, Version=14.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Autofac.14.7.0\lib\net452\Ingress.Autofac.dll</HintPath>
+    <Reference Include="Ingress.Autofac, Version=14.7.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Autofac.14.7.13\lib\net452\Ingress.Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.Cache, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Cache.14.10.0\lib\net452\Ingress.Cache.dll</HintPath>
@@ -189,20 +189,14 @@
     <Reference Include="Ingress.Cache.InMemory, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Cache.InMemory.14.10.0\lib\net452\Ingress.Cache.InMemory.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Cache.Redis, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.Redis.14.10.2\lib\net452\Ingress.Cache.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="Ingress.Cache.UsageReporters.Redis, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.14.10.2\lib\net452\Ingress.Cache.UsageReporters.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="Ingress.Cache.UsageReporters.Redis.Settings, Version=14.10.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.Settings-Net452.14.10.3\lib\net452\Ingress.Cache.UsageReporters.Redis.Settings.dll</HintPath>
+    <Reference Include="Ingress.Cache.Redis, Version=14.10.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.Redis.14.10.9\lib\net452\Ingress.Cache.Redis.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.10.0\lib\net452\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.CircuitBreaker.Hystrix, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.CircuitBreaker.Hystrix.1.0.0\lib\net452\Ingress.CircuitBreaker.Hystrix.dll</HintPath>
+    <Reference Include="Ingress.CircuitBreaker.Hystrix, Version=1.0.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CircuitBreaker.Hystrix.1.0.11\lib\net452\Ingress.CircuitBreaker.Hystrix.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.Core, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Core.14.10.0\lib\net452\Ingress.Core.dll</HintPath>
@@ -219,20 +213,23 @@
     <Reference Include="Ingress.HttpClient.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.HttpClient.Abstracts.14.10.0\lib\net452\Ingress.HttpClient.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix.14.10.1\lib\net452\Ingress.HttpClient.Hystrix.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Hystrix, Version=14.10.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.14.10.4\lib\net452\Ingress.HttpClient.Hystrix.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.HttpClient.Hystrix.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.HttpClient.Hystrix.Abstracts.14.10.0\lib\net452\Ingress.HttpClient.Hystrix.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix.RedisReporter, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix.RedisReporter.14.10.2\lib\net452\Ingress.HttpClient.Hystrix.RedisReporter.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Hystrix.RedisReporter, Version=14.10.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.RedisReporter.14.10.8\lib\net452\Ingress.HttpClient.Hystrix.RedisReporter.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.PageComposers, Version=14.10.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.PageComposers.14.10.4\lib\net452\Ingress.PageComposers.dll</HintPath>
+    <Reference Include="Ingress.PageComposers, Version=14.10.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.PageComposers.14.10.5\lib\net452\Ingress.PageComposers.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.RedisHelpers, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.RedisHelpers.14.10.2\lib\net452\Ingress.RedisHelpers.dll</HintPath>
+    <Reference Include="Ingress.RedisHelpers, Version=14.10.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.RedisHelpers.14.10.12\lib\net452\Ingress.RedisHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.RedisHelpers.Abstracts, Version=1.1.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.RedisHelpers.Abstracts.1.1.6\lib\net452\Ingress.RedisHelpers.Abstracts.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.Serializers, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Serializers.14.10.0\lib\net452\Ingress.Serializers.dll</HintPath>
@@ -240,20 +237,20 @@
     <Reference Include="Ingress.Serializers.Json, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Serializers.Json.14.10.0\lib\net452\Ingress.Serializers.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient.14.10.2\lib\net452\Ingress.ServiceClient.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient, Version=14.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.14.10.3\lib\net452\Ingress.ServiceClient.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.ServiceClient.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ServiceClient.Abstracts.14.10.0\lib\net452\Ingress.ServiceClient.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceRegistry, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceRegistry.14.10.2\lib\net452\Ingress.ServiceRegistry.dll</HintPath>
+    <Reference Include="Ingress.ServiceRegistry, Version=14.10.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry.14.10.10\lib\net452\Ingress.ServiceRegistry.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.ServiceRegistry.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ServiceRegistry.Abstracts.14.10.0\lib\net452\Ingress.ServiceRegistry.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceRegistry.LocalFilterSettings, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceRegistry.LocalFilterSettings.14.10.2\lib\net452\Ingress.ServiceRegistry.LocalFilterSettings.dll</HintPath>
+    <Reference Include="Ingress.ServiceRegistry.LocalFilterSettings, Version=14.10.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry.LocalFilterSettings.14.10.6\lib\net452\Ingress.ServiceRegistry.LocalFilterSettings.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.Web.Common, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Web.Common-Net452.14.10.1\lib\net452\Ingress.Web.Common.dll</HintPath>
@@ -556,7 +553,7 @@
     <Compile Include="Features\Listings\Constants\ListingsQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
-    <Compile Include="Features\Listings\Logger\LegacyListingUrlRedirectLogger.cs" />
+    <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Content Include="Features\Details\Assets\Js\details.vendor.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />
@@ -574,6 +571,8 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
+    <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
+    <Compile Include="Features\Listings\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
@@ -605,7 +604,7 @@
     <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
-    <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapper.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapperResolver.cs" />
     <Compile Include="Features\Shared\Models\MoreArticleData.cs" />
     <Compile Include="Features\Shared\Models\PolarNativeAdData.cs" />
     <Compile Include="Features\Shared\Models\ErrorViewModel.cs" />
@@ -632,11 +631,12 @@
     <Compile Include="Features\Shared\Search\Aspect\AspectResult.cs" />
     <Compile Include="Features\Shared\Search\Extensions\MapperExtensions.cs" />
     <Compile Include="Features\Shared\Search\Mapping\DateAvailableMapper.cs" />
-    <Compile Include="Features\Shared\Search\Mapping\FacetNodeActionResolver.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\FacetNodeUrlResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\KeywordsPlaceholderResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\NavNodeMapper.cs" />
-    <Compile Include="Features\Shared\Search\Mapping\RefinementsNavNodeResolver.cs" />
+    <Compile Include="Features\Shared\Search\Refinements\Mapping\MapperConfiguration.cs" />
+    <Compile Include="Features\Shared\Search\Refinements\Mapping\RefinementsNavNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ResultsMessageMapper.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
@@ -711,6 +711,7 @@
     <Compile Include="Infrastructure\UserContext\IUserContext.cs" />
     <Compile Include="Infrastructure\UserContext\UserContext.cs" />
     <Compile Include="Infrastructure\Utils\RandomNumberGenerator.cs" />
+    <Compile Include="Ioc\LoggingModule.cs" />
     <Compile Include="Ioc\RestClientModule.cs" />
     <Compile Include="Ioc\CommonModule.cs" />
     <Compile Include="Ioc\ConventionsModule.cs" />
@@ -744,8 +745,6 @@
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\AlsoConsider\alsoConsider-view.js" />
     <Content Include="Features\Details\Assets\Js\Modules\ArticlePricing\articlePricing.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.js" />
     <Content Include="Features\Details\Assets\Js\Modules\EditorsRatings\editorsRating-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-modal--view.js" />
@@ -756,7 +755,6 @@
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule--container.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SpecModule\specModule.js" />
     <Content Include="Features\Details\Assets\Js\Modules\SponsoredArticles\sponsoredArticles.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-component.js" />
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
@@ -815,15 +813,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NLog.config" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="NLog.Release.config">
       <DependentUpon>NLog.config</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="NLog.Staging.config">
       <DependentUpon>NLog.config</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="NLog.Test.config">
       <DependentUpon>NLog.config</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Features\Shared\Views\_LayoutEmpty.cshtml" />
     <Content Include="Features\_ViewStart.cshtml" />
@@ -903,7 +906,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
     <Content Include="Features\Home\Views\Index.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Head\_BasicSeoData.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\Head\_BasicSeoData.cshtml" />
     <Content Include="Features\Tracking\Views\WebMetricsScripts.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticle.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticles.scss" />
@@ -1089,6 +1092,9 @@
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\MediaMotiveAds\Views\_TeAds.cshtml" />
+    <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

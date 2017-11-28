@@ -1,12 +1,7 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using Csn.Logging;
+﻿using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Listings.Helpers;
-using Csn.Retail.Editorial.Web.Features.Listings.Logger;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
-using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Features.Listings.Loggers;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
-using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.Filters
 {

@@ -11,13 +11,13 @@ export interface IStore {
 
 export interface INavResults {
     navResults: IINavResponse
+    pendingQuery?: string
+    currentRefinement?: string
 }
 
 export interface IINavResponse{
     iNav: IINav
     count?: number
-    pendingQuery?: string
-    currentRefinement?: string
     searchResults: ISearchResults[]
 }
 
@@ -50,16 +50,16 @@ export interface INodeMetadata {
 }
 
 export interface IFacet {
-    isSelected: boolean
-    value: string
-    displayValue: string
-    action: string
-    count: number
-    expression: string
-    isRefineable: boolean
-    refinement?: IRefinement
-    refinements?: IRefinements
-    
+    isSelected: boolean;
+    value: string;
+    displayValue: string;
+    action: string;
+    url: string;
+    count: number;
+    expression: string;
+    isRefineable: boolean;
+    refinement?: IRefinement;
+    refinements?: IRefinements;
 }
 
 export interface IRefinement {

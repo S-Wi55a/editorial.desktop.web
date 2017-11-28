@@ -55,7 +55,6 @@ function navReducer(state: INavResults, action: Actions): INavResults {
     }
 }
 
-
 // We use update from 'immutability-helper' because the item we are selecting is deply nested
 // This ensures that we return a new obj and nto mutate the state
 function aspectReducer(state: INavResults, action: Actions): INavResults {
@@ -84,15 +83,18 @@ function aspectReducer(state: INavResults, action: Actions): INavResults {
 function refinementReducer(state: INavResults, action: Actions): INavResults {
     
     try {
-        const nodeIndex = state.navResults.iNav.nodes.findIndex((node: INode) => node.name === action.payload.name)
         const newState = update(state,
             {
                 navResults: {
                     iNav: {
                         nodes: {
-                            [nodeIndex]: {
-                                $set : action.payload.data
-                            }
+                            $set: action.payload.data.nav.nodes
+                        },
+                        pendingQueryCount: {
+                            $set: action.payload.data.count
+                        },
+                        keywordsPlaceholder: {
+                            $set: action.payload.data.nav.keywordsPlaceholder
                         }
                     }
                 }
@@ -105,20 +107,23 @@ function refinementReducer(state: INavResults, action: Actions): INavResults {
     }
 }
 
-function promotedReducer(state: IINavResponse, action: Actions) {
+function promotedReducer(state: INavResults, action: Actions) {
     
     try {
-        const newState = update(state,
-            {
-                navResults: {
-                    searchResults: {
-                        [action.payload.location]: {
-                            $set : action.payload
+       if(state.navResults.count > action.payload.location) {
+            const newState: any = update(state,
+                {
+                    navResults: {
+                        searchResults: {
+                            [action.payload.location]: {
+                                $set : action.payload
+                            }
                         }
                     }
-                }
-            })
-        return newState
+                })
+            return newState
+        }
+        return state
     } catch (e) {
         console.log(e)        
         return state

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
@@ -9,7 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public int Count { get; set; }
         public Nav INav { get; set; }
         public List<SearchResult> SearchResults { get; set; }
-        public string NoResultsMessage { get; set; }
+        public string ResultsMessage { get; set; }
         public string NoResultsInstructionMessage { get; set; }
     }
 
@@ -34,6 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public string Value { get; set; }
         public string DisplayValue { get; set; }
         public string Action { get; set; }
+        public string Url { get; set; }
         public int Count { get; set; }
         public string Expression { get; set; }
         public bool IsRefineable { get; set; }
