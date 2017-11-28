@@ -7,8 +7,8 @@ import { INode, IINavResponse, INavResults } from 'iNav/Types'
 //We wrap the reducer to pass init data to it for it to work in ReactJS.NET
 export const iNavReducer = (state: any, action: Actions) => {
     switch (action.type) {
-        case ActionTypes.INAV.UPDATE_PENDING_QUERY:
-            return updatePendingQuery(state, action)
+        case ActionTypes.INAV.UPDATE_PENDING_ACTION:
+            return updatePendingAction(state, action)
         case ActionTypes.API.INAV.FETCH_QUERY_SUCCESS:
             return navReducer(state, action);
         case ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS:
@@ -126,7 +126,7 @@ function promotedReducer(state: INavResults, action: Actions): INavResults {
     }       
 }
 
-function updatePendingQuery (state: INavResults, action: Actions): INavResults {
+function updatePendingAction (state: INavResults, action: Actions): INavResults {
     
     try {
         const newState = update(state,

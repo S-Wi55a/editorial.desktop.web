@@ -18,11 +18,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
 
         public static string GetQueryString(string action, string sort)
         {
-            var queryParams = new Dictionary<string, string>();
-            if (!string.IsNullOrEmpty(action)) queryParams[ListingsQueryStringParams.Query] = action;
-            if (!string.IsNullOrEmpty(sort)) queryParams[ListingsQueryStringParams.Sort] = sort;
-
-            return queryParams.Count > 0 ? "?" + queryParams.ToQueryString() : string.Empty;
+            var queryParams = GetQueryStringParameters(action, 0, sort, string.Empty);
+            return string.IsNullOrEmpty(queryParams) ? string.Empty : "?" + queryParams;
         }
 
         public static string GetSeoUrl(string seofragment, long offset = 0, string sortOrder = null)

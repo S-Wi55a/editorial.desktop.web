@@ -110,7 +110,7 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
 // Connect
 const mapStateToProps = (state: any, ownProps: IINavNodeContainer) => {
   return {
-      pendingQuery: typeof state.store.listings.navResults.iNav.pending !== 'undefined' ? state.store.listings.navResults.iNav.pending.url : '',
+      pendingQuery: typeof state.store.listings.navResults.iNav.pendingUrl !== 'undefined' ? state.store.listings.navResults.iNav.pendingUrl : '',
       currentRefinement: state.store.listings.navResults.currentRefinement,
       refinementId: state[`ui/iNavNodeContainer${ownProps.name}`] ?  state[`ui/iNavNodeContainer${ownProps.name}`].refinementId : null
   }

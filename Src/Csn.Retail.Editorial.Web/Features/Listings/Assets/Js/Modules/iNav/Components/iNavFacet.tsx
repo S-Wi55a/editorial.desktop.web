@@ -90,12 +90,12 @@ const mapDispatchToProps: any = (dispatch: any, ownProps: IINavfacet) => {
     return {
         fetchINavAndUpdatePendingRequest: (action: string, url: string) =>
             dispatch([
-                { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { url, action } },
+                { type: ActionTypes.INAV.UPDATE_PENDING_ACTION, payload: { url, action } },
                 Thunks.fetchINav(action)
             ]),
         fetchRefinementAndUpdatePendingRequest: (aspect: string, refinementAspect: string, refinementParentExpression: string, action: string, url: string) => 
             dispatch([
-                { type: ActionTypes.INAV.UPDATE_PENDING_QUERY, payload: { url, action } },
+                { type: ActionTypes.INAV.UPDATE_PENDING_ACTION, payload: { url, action } },
                 Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, action)
             ]),
         fetchRefinementAndSwitchPage: (aspect: string, refinementAspect: string, refinementParentExpression: string, action: string, refinementId: number) =>
