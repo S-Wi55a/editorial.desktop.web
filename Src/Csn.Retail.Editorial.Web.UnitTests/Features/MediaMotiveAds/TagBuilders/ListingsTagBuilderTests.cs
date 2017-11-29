@@ -2,6 +2,7 @@
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using NSubstitute;
 using NUnit.Framework;
@@ -14,9 +15,12 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void NoBreadCrumbs()
         {
-            var contextStore = Substitute.For<ContextStore.IContextStore>();
+            var contextStore = Substitute.For<ISearchResultContextStore>();
 
-            contextStore.Get(Arg.Any<string>()).Returns(new RyvussNavResultDto());
+            contextStore.Get().Returns(new SearchContext()
+            {
+                RyvussNavResult = new RyvussNavResultDto()
+            });
 
             var breadCrumbTagBuilder = Substitute.For<IListingsBreadCrumbTagBuilder>();
 
@@ -36,9 +40,12 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void MakeButNoModelBreadCrumbs()
         {
-            var contextStore = Substitute.For<ContextStore.IContextStore>();
+            var contextStore = Substitute.For<ISearchResultContextStore>();
 
-            contextStore.Get(Arg.Any<string>()).Returns(new RyvussNavResultDto());
+            contextStore.Get().Returns(new SearchContext()
+            {
+                RyvussNavResult = new RyvussNavResultDto()
+            });
 
             var breadCrumbTagBuilder = Substitute.For<IListingsBreadCrumbTagBuilder>();
 
@@ -63,9 +70,12 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void MakeAndModelBreadCrumbs()
         {
-            var contextStore = Substitute.For<ContextStore.IContextStore>();
+            var contextStore = Substitute.For<ISearchResultContextStore>();
 
-            contextStore.Get(Arg.Any<string>()).Returns(new RyvussNavResultDto());
+            contextStore.Get().Returns(new SearchContext()
+            {
+                RyvussNavResult = new RyvussNavResultDto()
+            });
 
             var breadCrumbTagBuilder = Substitute.For<IListingsBreadCrumbTagBuilder>();
 

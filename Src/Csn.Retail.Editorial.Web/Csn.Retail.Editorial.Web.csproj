@@ -573,9 +573,13 @@
     <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Mappings\SeoDataMapper.cs" />
+    <Compile Include="Features\Listings\ModelBinders\GetListingsQueryModelBinder.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
+    <Compile Include="Features\Shared\Extensions\SearchActionExtensions.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
+    <Compile Include="Features\Shared\ContextStores\SearchResultContextStore.cs" />
+    <Compile Include="Features\Shared\Extensions\SearchResultDtoExtensions.cs" />
     <Compile Include="Features\Shared\Formatters\ListingsUrlFormatter.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
@@ -651,8 +655,14 @@
     <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
+    <Compile Include="Features\Tracking\Mapping\ItemsListingMapper.cs" />
+    <Compile Include="Features\Tracking\Mapping\MapperConfiguration.cs" />
+    <Compile Include="Features\Tracking\Mapping\SearchFilterMapper.cs" />
+    <Compile Include="Features\Tracking\Mapping\TrackingPropertiesBuilder.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
+    <Compile Include="Features\Tracking\TrackingContainer\GetListingTrackingContainerQuery.cs" />
+    <Compile Include="Features\Tracking\TrackingContainer\GetListingTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingController.cs" />
     <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsQuery.cs" />
     <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsQueryHandler.cs" />
@@ -665,6 +675,7 @@
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\ExpressoExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\ModelBinderExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />
     <Compile Include="Infrastructure\Extensions\UriExtensions.cs" />
     <Compile Include="Infrastructure\Filters\RedirectAttributeFilter.cs" />
@@ -716,6 +727,7 @@
     <Compile Include="Ioc\CommonModule.cs" />
     <Compile Include="Ioc\ConventionsModule.cs" />
     <Compile Include="Ioc\MultiTenantModule.cs" />
+    <Compile Include="Ioc\TrackingModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />

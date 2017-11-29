@@ -7,6 +7,7 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
@@ -17,7 +18,6 @@ using Expresso.Syntax;
 using Ingress.ServiceClient.Abstracts;
 using NSubstitute;
 using NUnit.Framework;
-using ContextStore = Ingress.Web.Common.Abstracts;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
@@ -31,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             var ryvussProxy = Substitute.For<IEditorialRyvussApiProxy>();
             var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
             var mapper = Substitute.For<IMapper>();
-            var contextStore = Substitute.For<ContextStore.IContextStore>();
+            var contextStore = Substitute.For<ISearchResultContextStore>();
             var paginationHelper = Substitute.For<IPaginationHelper>();
             var sortingHelper = Substitute.For<ISortingHelper>();
             var expressionParser = Substitute.For<IExpressionParser>();
@@ -69,7 +69,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             await queryHandler.HandleAsync(new GetListingsQuery {Keywords = "honda"});
 
             //Assert
-            contextStore.Received().Set(Arg.Any<string>(), Arg.Any<object>());
+            contextStore.Received().Set(Arg.Any<SearchContext>());
         }
     }
 }

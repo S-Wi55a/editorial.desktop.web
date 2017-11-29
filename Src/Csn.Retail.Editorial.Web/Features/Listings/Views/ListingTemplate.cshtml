@@ -58,4 +58,5 @@
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
     @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
+    @{ Html.RenderAction("HtmlTrackingListing", "Tracking"); }
 }

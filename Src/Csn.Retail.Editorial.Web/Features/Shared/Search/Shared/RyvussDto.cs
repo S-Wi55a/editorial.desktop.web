@@ -111,5 +111,18 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public string PhotoPath { get; set; }
         public List<string> ArticleTypes { get; set; }
         public string Type {get; set;}
+        public List<string> Categories { get; set; }
+        public List<string> Lifestyles { get; set; }
+        public List<EditorialListingItemDto> Items { get; set; }
+    }
+
+    public class EditorialListingItemDto
+    {
+        public int Year { get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public string MarketingGroup { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
     }
 }

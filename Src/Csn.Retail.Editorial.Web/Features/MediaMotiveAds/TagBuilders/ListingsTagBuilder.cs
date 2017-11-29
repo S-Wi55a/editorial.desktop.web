@@ -1,34 +1,33 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
-using ContextStore = Ingress.Web.Common.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 {
     [AutoBind]
     public class ListingsTagBuilder : IMediaMotiveTagBuilder
     {
-        private readonly Ingress.Web.Common.Abstracts.IContextStore _contextStore;
+        private readonly ISearchResultContextStore _searchContextStore;
         private readonly IListingsBreadCrumbTagBuilder _breadCrumbTagBuilder;
 
-        public ListingsTagBuilder(ContextStore.IContextStore contextStore, IListingsBreadCrumbTagBuilder breadCrumbTagBuilder)
+        public ListingsTagBuilder(ISearchResultContextStore searchContextStore, IListingsBreadCrumbTagBuilder breadCrumbTagBuilder)
         {
-            _contextStore = contextStore;
+            _searchContextStore = searchContextStore;
             _breadCrumbTagBuilder = breadCrumbTagBuilder;
         }
 
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query)
         {
-            var searchContext = _contextStore.Get(ContextStoreKeys.CurrentSearchResult.ToString()) as RyvussNavResultDto;
+            var searchContext = _searchContextStore.Get();
 
-            return BuildTags(searchContext);
+            return BuildTags(searchContext?.RyvussNavResult);
         }
 
         public bool IsApplicable(MediaMotiveAdQuery query)
         {
-            return _contextStore.Exists(ContextStoreKeys.CurrentSearchResult.ToString());
+            return _searchContextStore.Exists();
         }
 
         private IEnumerable<MediaMotiveTag> BuildTags(RyvussNavResultDto navResult)
