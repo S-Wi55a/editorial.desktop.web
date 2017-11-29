@@ -62,11 +62,11 @@
         padding: 0 15px;
         line-height: $iNav-header-item-height;
         height: $iNav-header-item-height + 2px;
-        border: none;
         border-radius: $iNav-border-radius;
         border: solid 1px $cs-grey-1;
         color: $cs-light-grey-8;
         font-weight: $font-weight-600; 
+        appearance: none;
 
         &::-ms-clear {
             display: none;
@@ -79,6 +79,7 @@
         padding: 0;
         color: $cs-primary;
         position: relative;
+        margin: 0;
 
         &::before {
             display: block;

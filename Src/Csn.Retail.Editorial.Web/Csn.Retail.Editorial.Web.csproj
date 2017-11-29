@@ -1042,6 +1042,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_teads.scss" />
     <Content Include="Features\Shared\Views\Partials\Tracking\_CsnInsights.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\_Tracking.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\Head\_Favicon.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1109,6 +1110,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Parse\parse.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
