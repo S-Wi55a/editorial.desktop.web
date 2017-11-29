@@ -1,12 +1,9 @@
-﻿using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Listings.ModelBinders;
-using Csn.SimpleCqrs;
+﻿using Csn.SimpleCqrs;
 using Csn.WebMetrics.Core.Model;
 using Expresso.Expressions;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
 {
-    [ModelBinder(typeof(GetListingsQueryModelBinder))]
     public class GetListingsQuery : IQuery
     {
         public string Query { get; set; }
