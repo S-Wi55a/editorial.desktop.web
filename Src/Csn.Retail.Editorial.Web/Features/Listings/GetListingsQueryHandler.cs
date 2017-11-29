@@ -59,12 +59,12 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         {
             if (!_tenantProvider.Current().SupportsSeoFriendlyListings)
             {
-                query.Q = string.IsNullOrEmpty(query.Q) ? $"Service.{_tenantProvider.Current().Name}." : query.Q;
+                query.Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query;
             }
             
             if (!string.IsNullOrEmpty(query.Keywords))
             {
-                query.Q = _expressionFormatter.Format(_parser.Parse(query.Q).AppendOrUpdateKeywords(query.Keywords));
+                query.Query = _expressionFormatter.Format(query.QueryExpression?.AppendOrUpdateKeywords(query.Keywords));
             }
 
             var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sort) ? query.Sort : EditorialSortKeyValues.ListingPageDefaultSort;
@@ -80,7 +80,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
-                Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Q : query.SeoFragment,
+                Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Query : query.SeoFragment,
                 Offset = query.Offset,
                 Limit = PageItemsLimit.ListingPageItemsLimit,
                 SortOrder = sortOrder,
@@ -107,22 +107,22 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 };
             }
 
-            _searchResultContextStore.Set(new RyvussSearch()
+            var searchContext = new SearchContext()
             {
                 RyvussNavResult = resultData,
-                SearchContext = new SearchContext()
-                {
-                    Query = query.Q,
-                    Offset = query.Offset,
-                    Sort = sortOrder,
-                    SeoFragment = query.SeoFragment
-                }
-            });
+                Query = string.IsNullOrEmpty(query.Query) ? resultData.Metadata?.Query : query.Query,
+                Offset = query.Offset,
+                Sort = sortOrder,
+                SeoFragment = query.SeoFragment,
+                SearchEventType = query.SearchEventType
+            };
+
+            _searchResultContextStore.Set(searchContext);
 
             var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.Sort; });
-            navResults.INav.CurrentAction = ListingsUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Q, query.Sort);
+            navResults.INav.CurrentAction = ListingsUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Sort);
             navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingsUrlFormatter.GetSeoUrl(query.SeoFragment, query.Offset, query.Sort):
-                ListingsUrlFormatter.GetPathAndQueryString(query.Q, query.Offset, query.Sort);
+                ListingsUrlFormatter.GetPathAndQueryString(query.Query, query.Offset, query.Sort);
 
             return new GetListingsResponse
             {
@@ -130,13 +130,13 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 ListingsViewModel = new ListingsViewModel
                 {
                     NavResults = navResults,
-                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Q, query.Keywords),
-                    Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Q, query.Keywords),
+                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Keywords),
+                    Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Keywords),
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(resultData.Metadata?.Query).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
                     ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
-                    InsightsData = _listingInsightsDataMapper.Map(resultData.Metadata?.Query, query.Sort),
+                    InsightsData = _listingInsightsDataMapper.Map(searchContext),
                     SeoData = _seoDataMapper.Map(resultData)
                 }
             };

@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using Autofac.Integration.Mvc;
 
 namespace Csn.Retail.Editorial.Web.Features.Details
 {
-    public class ArticleIdentifierModelBinder : DefaultModelBinder //, IFilteredModelBinder
+    [ModelBinderType(typeof(ArticleIdentifier))]
+    public class ArticleIdentifierModelBinder : DefaultModelBinder
     {
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
@@ -14,9 +14,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (pageName == null) return base.BindModel(controllerContext, bindingContext);
 
-            var record = base.BindModel(controllerContext, bindingContext) as ArticleIdentifier;
-
-            if (record == null) return null;
+            if (!(base.BindModel(controllerContext, bindingContext) is ArticleIdentifier record)) return null;
 
             var id = pageName.RawValue?.ToString().Split('-').Last() ?? string.Empty;
 

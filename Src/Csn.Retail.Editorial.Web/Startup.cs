@@ -27,6 +27,8 @@ namespace Csn.Retail.Editorial.Web
             builder.RegisterApiControllers(mvcAssembly);
             builder.RegisterHttpRequestMessage(config);
             builder.RegisterWebApiFilterProvider(config);
+            builder.RegisterModelBinders(mvcAssembly);
+            builder.RegisterModelBinderProvider();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);

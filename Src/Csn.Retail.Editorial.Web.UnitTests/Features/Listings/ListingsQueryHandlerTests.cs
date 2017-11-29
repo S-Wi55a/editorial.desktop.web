@@ -18,7 +18,6 @@ using Expresso.Syntax;
 using Ingress.ServiceClient.Abstracts;
 using NSubstitute;
 using NUnit.Framework;
-using ContextStore = Ingress.Web.Common.Abstracts;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
@@ -70,7 +69,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             await queryHandler.HandleAsync(new GetListingsQuery {Keywords = "honda"});
 
             //Assert
-            contextStore.Received().Set(Arg.Any<RyvussSearch>());
+            contextStore.Received().Set(Arg.Any<SearchContext>());
         }
     }
 }

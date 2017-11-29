@@ -1,26 +1,22 @@
-﻿using Csn.SimpleCqrs;
+﻿using System.Web.Mvc;
+using Csn.Retail.Editorial.Web.Features.Listings.ModelBinders;
+using Csn.SimpleCqrs;
+using Csn.WebMetrics.Core.Model;
+using Expresso.Expressions;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
 {
+    [ModelBinder(typeof(GetListingsQueryModelBinder))]
     public class GetListingsQuery : IQuery
     {
-        private string _seoFragment = string.Empty;
-
-        public string Q { get; set; }
+        public string Query { get; set; }
+        public Expression QueryExpression { get; set; }
         public int Offset { get; set; }
         public string Sort { get; set; }
         public string Keywords { get; set; }
 
-        public string SeoFragment
-        {
-            get => _seoFragment;
+        public string SeoFragment { get; set; }
 
-            set {
-                if (string.IsNullOrEmpty(_seoFragment))
-                {
-                    _seoFragment = $"/{value}";
-                }
-            }
-        }
+        public SearchEventType SearchEventType { get; set; }
     }
 }

@@ -573,7 +573,9 @@
     <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Mappings\SeoDataMapper.cs" />
+    <Compile Include="Features\Listings\ModelBinders\GetListingsQueryModelBinder.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
+    <Compile Include="Features\Shared\Extensions\SearchActionExtensions.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
     <Compile Include="Features\Shared\ContextStores\SearchResultContextStore.cs" />
@@ -673,6 +675,7 @@
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\ExpressoExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\ModelBinderExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />
     <Compile Include="Infrastructure\Extensions\UriExtensions.cs" />
     <Compile Include="Infrastructure\Filters\RedirectAttributeFilter.cs" />
@@ -702,6 +705,8 @@
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestRequestHeaderInterceptor.cs" />
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
+    <Compile Include="Infrastructure\ModelBinding\IFilteredModelBinder.cs" />
+    <Compile Include="Infrastructure\ModelBinding\SmartModelBinder.cs" />
     <Compile Include="Infrastructure\MultiTenant\TenantDataMapper.cs" />
     <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />

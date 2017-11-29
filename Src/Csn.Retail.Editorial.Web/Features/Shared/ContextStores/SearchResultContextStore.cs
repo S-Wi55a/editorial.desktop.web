@@ -1,28 +1,25 @@
 ﻿using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
+using Csn.WebMetrics.Core.Model;
 using Ingress.Web.Common.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
 {
-    public class RyvussSearch
-    {
-        public RyvussNavResultDto RyvussNavResult { get; set; }
-        public SearchContext SearchContext { get; set; }
-    }
-
     public class SearchContext
     {
+        public RyvussNavResultDto RyvussNavResult { get; set; }
         public string Query { get; set; }
         public int Offset { get; set; }
         public string Sort { get; set; }
         public string SeoFragment { get; set; }
+        public SearchEventType SearchEventType { get; set; }
     }
 
     public interface ISearchResultContextStore
     {
-        RyvussSearch Get();
-        void Set(RyvussSearch searchResult);
+        SearchContext Get();
+        void Set(SearchContext searchResult);
         bool Exists();
     }
 
@@ -36,14 +33,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
             _contextStore = contextStore;
         }
 
-        public RyvussSearch Get()
+        public SearchContext Get()
         {
             var result = _contextStore.Get(ContextStoreKeys.CurrentSearchResult.ToString());
 
-            return result as RyvussSearch;
+            return result as SearchContext;
         }
 
-        public void Set(RyvussSearch search)
+        public void Set(SearchContext search)
         {
             _contextStore.Set(ContextStoreKeys.CurrentSearchResult.ToString(), search);
         }

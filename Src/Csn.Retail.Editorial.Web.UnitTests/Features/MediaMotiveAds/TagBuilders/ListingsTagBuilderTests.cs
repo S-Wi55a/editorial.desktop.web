@@ -17,7 +17,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         {
             var contextStore = Substitute.For<ISearchResultContextStore>();
 
-            contextStore.Get().Returns(new RyvussSearch()
+            contextStore.Get().Returns(new SearchContext()
             {
                 RyvussNavResult = new RyvussNavResultDto()
             });
@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         {
             var contextStore = Substitute.For<ISearchResultContextStore>();
 
-            contextStore.Get().Returns(new RyvussSearch()
+            contextStore.Get().Returns(new SearchContext()
             {
                 RyvussNavResult = new RyvussNavResultDto()
             });
@@ -72,7 +72,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         {
             var contextStore = Substitute.For<ISearchResultContextStore>();
 
-            contextStore.Get().Returns(new RyvussSearch()
+            contextStore.Get().Returns(new SearchContext()
             {
                 RyvussNavResult = new RyvussNavResultDto()
             });
