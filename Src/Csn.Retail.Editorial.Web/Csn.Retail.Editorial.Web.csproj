@@ -705,8 +705,6 @@
     <Compile Include="Infrastructure\HystrixRestClientUtils\HystrixRestRequestHeaderInterceptor.cs" />
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
-    <Compile Include="Infrastructure\ModelBinding\IFilteredModelBinder.cs" />
-    <Compile Include="Infrastructure\ModelBinding\SmartModelBinder.cs" />
     <Compile Include="Infrastructure\MultiTenant\TenantDataMapper.cs" />
     <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />
