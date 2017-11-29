@@ -67,7 +67,7 @@ loaded.then(() => {
 });
 
 //Sticky Sidebar
-if(!document.querySelector('body').classList.contains('ie') || !isMobile.tablet || !isMobile.phone){
+if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet && !isMobile.phone){
     const aside = document.querySelector('.aside')
     loaded.then(function() {     
         if (aside) {

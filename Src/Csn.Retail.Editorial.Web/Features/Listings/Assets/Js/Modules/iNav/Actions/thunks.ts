@@ -1,7 +1,6 @@
 import { Dispatch } from 'redux';
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { iNav } from 'Endpoints/endpoints'
-import queryString from 'query-string'
 
 type fetchINav = (q?: string) => (d: Dispatch<any>) => Promise<any>
 
