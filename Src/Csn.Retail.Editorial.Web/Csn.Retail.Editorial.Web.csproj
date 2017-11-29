@@ -550,6 +550,11 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
+    <Compile Include="Features\Landing\GetLandingQuery.cs" />
+    <Compile Include="Features\Landing\GetLandingQueryHandler.cs" />
+    <Compile Include="Features\Landing\GetLandingResponse.cs" />
+    <Compile Include="Features\Landing\LandingController.cs" />
+    <Compile Include="Features\Landing\Models\LandingViewModel.cs" />
     <Compile Include="Features\Listings\Constants\ListingsQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
@@ -801,6 +806,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
+    <Folder Include="Features\Landing\Assets\Css\" />
+    <Folder Include="Features\Landing\Assets\Js\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
@@ -1029,6 +1036,7 @@
     <Content Include="Features\Shared\Views\Partials\Tracking\_CsnInsights.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\_Tracking.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Head\_Favicon.cshtml" />
+    <Content Include="Features\Landing\Views\LandingTemplate.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

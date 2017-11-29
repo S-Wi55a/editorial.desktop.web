@@ -1,0 +1,33 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Landing.Models
+@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Newtonsoft.Json
+@using React.Web.Mvc
+
+@section Head{
+}
+
+@{
+    var tenantName = Html.CurrentTenant().Name.ToLower();
+}
+
+@section Styles {
+    @Html.AssetCss("listings-page--" + tenantName)
+}
+
+@section TopScripts {
+    @Html.AssetJs("listings.vendor", LoadType.Defer)
+    @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
+}
+
+<div class="listing-page">
+    @{ Html.RenderPartial("Partials/_Header"); }
+</div>
+
+@{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Tracking.cshtml"); }
+
+@section BottomScripts
+{
+    @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
+}
