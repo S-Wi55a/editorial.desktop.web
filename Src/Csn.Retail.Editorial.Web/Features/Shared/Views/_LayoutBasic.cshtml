@@ -1,5 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Shared.Settings
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 
@@ -13,6 +14,8 @@
 
 @section Head{
     @RenderSection("Head", false)
+    @{ Html.RenderPartial("Partials/Head/_Favicon"); }
+
 }
 
 @section Styles{
