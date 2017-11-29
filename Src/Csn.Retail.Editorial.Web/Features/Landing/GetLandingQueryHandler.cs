@@ -15,7 +15,10 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
-            return new GetLandingResponse();
+            return new GetLandingResponse
+            {
+                LandingViewModel = new LandingViewModel()
+            };
         }
 
     }
