@@ -24,8 +24,8 @@ namespace Csn.Retail.Editorial.Web
 		    ReactSiteConfiguration.Configuration
 		        .SetStartEngines(10)
 		        .SetMaxEngines(25)
-                .SetUseDebugReact(true)
-		        .SetReuseJavaScriptEngines(false) //TODO: remove in Prod
+                .SetUseDebugReact(false)
+		        .SetReuseJavaScriptEngines(true) //TODO: remove in Prod
                 .SetLoadBabel(false)
                 .SetLoadReact(false)
                 .AddScriptWithoutTransform("/dist--server/react-server-components.js")
