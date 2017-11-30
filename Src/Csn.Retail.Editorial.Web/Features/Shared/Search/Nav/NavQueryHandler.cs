@@ -28,12 +28,17 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         {
             var postProcessors = new List<string>();
 
+            postProcessors.AddRange(new[] { "Retail", "FacetSort" });
+
             if (_tenantProvider.Current().SupportsSeoFriendlyListings)
             {
                 postProcessors.Add("Seo");
+                postProcessors.Add("HideAspect(Service)");
             }
-
-            postProcessors.AddRange(new[] { "Retail", "FacetSort", "ShowZero" });
+            else
+            {
+                postProcessors.Add("ShowZero");
+            }
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {

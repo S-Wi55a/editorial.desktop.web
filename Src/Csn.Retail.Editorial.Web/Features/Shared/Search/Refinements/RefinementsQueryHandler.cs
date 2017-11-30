@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
@@ -30,12 +28,17 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
         {
             var postProcessors = new List<string>();
 
+            postProcessors.AddRange(new[] { "FacetSort", $"RetailAspectRefinements({query.RefinementAspect},{query.ParentExpression})" });
+
             if (_tenantProvider.Current().SupportsSeoFriendlyListings)
             {
                 postProcessors.Add("Seo");
+                postProcessors.Add("HideAspect(Service)");
             }
-
-            postProcessors.AddRange(new[] { "FacetSort", $"RetailAspectRefinements({query.RefinementAspect},{query.ParentExpression})", "ShowZero" });
+            else
+            {
+                postProcessors.Add("ShowZero");
+            }            
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {
@@ -55,7 +58,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
             return new RefinementResult()
             {
                 Count = resultData.Count,
-                Nav = _mapper.Map<RefinementNav>(resultData.INav, opt => { opt.Items["sortOrder"] = query.Sort; })
+                Nav = _mapper.Map<RefinementNav>(resultData.INav, opt => {opt.Items["sortOrder"] = query.Sort; })
             };
         }
     }
