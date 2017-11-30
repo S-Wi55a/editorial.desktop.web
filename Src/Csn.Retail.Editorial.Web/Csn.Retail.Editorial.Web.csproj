@@ -563,6 +563,7 @@
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
+    <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\iNavArticleCount.js" />
@@ -808,7 +809,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
-    <Folder Include="Features\Landing\Assets\Css\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
@@ -1038,6 +1038,8 @@
     <Content Include="Features\Shared\Views\Partials\Head\_Favicon.cshtml" />
     <Content Include="Features\Landing\Views\LandingTemplate.cshtml" />
     <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
+    <Content Include="Features\Landing\Assets\Css\landing-page.scss" />
+    <Content Include="Features\Landing\Views\Partials\_Carousel.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
