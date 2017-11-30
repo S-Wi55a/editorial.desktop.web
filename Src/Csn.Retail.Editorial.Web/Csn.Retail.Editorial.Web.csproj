@@ -1041,6 +1041,7 @@
     <Content Include="Features\Shared\Views\Partials\Tracking\_CsnInsights.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\_Tracking.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Head\_Favicon.cshtml" />
+    <Content Include="Features\Details\Views\Caravancampingsales\_Disclaimer.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -10,7 +10,7 @@ export const listofTenants = [
     'boatsales',
     'boatpoint',
     //'trucksales',
-    //'caravancampingsales',
+    'caravancampingsales',
     'farmmachinerysales',
 ];
 
