@@ -6,7 +6,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
 {
     public static class ListingsUrlFormatter
     {
-        private static string ListingsBasePath = "/editorial/beta-results";
+        private static string ListingsBasePath = "/editorial/results";
 
         public static string GetPathAndQueryString(string q = null, long offset = 0, string sortOrder = null, string keyword = null)
         {

@@ -27,9 +27,20 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking
         public ActionResult HtmlTrackingDetails(GetDetailsTrackingContainerQuery query)
         {
             var container = _queryDispatcher.Dispatch<GetDetailsTrackingContainerQuery, IAnalyticsTrackingContainer>(query);
+
             if (container == null) return null;
+
             return PartialView("HtmlTracking", model: container.GenericHtmlTracking);
         }
 
+        [ChildActionOnly]
+        public ActionResult HtmlTrackingListing(GetListingTrackingContainerQuery containerQuery)
+        {
+            var container = _queryDispatcher.Dispatch<GetListingTrackingContainerQuery, IAnalyticsTrackingContainer>(containerQuery);
+
+            if (container == null) return null;
+
+            return PartialView("HtmlTracking", model: container.GenericHtmlTracking);
+        }
     }
 }

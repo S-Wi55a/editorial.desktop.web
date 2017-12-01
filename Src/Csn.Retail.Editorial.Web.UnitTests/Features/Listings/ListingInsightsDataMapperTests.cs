@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Web;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Expresso.Expressions;
 using Expresso.Syntax;
 using NSubstitute;
@@ -21,8 +22,14 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             expressionParser.Parse(Arg.Any<string>()).Returns(expression);
             var testSubject = new ListingInsightsDataMapper(expressionParser);
 
+            var searchContext = new SearchContext()
+            {
+                Query = "(And.Service.CarSales._.Type.News.)",
+                Sort = "Latest"
+            };
+
             //Act
-            var result = testSubject.Map("(And.Service.CarSales._.Type.News.)", "Latest");
+            var result = testSubject.Map(searchContext);
 
             //Assert
             Assert.IsNotNull(result);

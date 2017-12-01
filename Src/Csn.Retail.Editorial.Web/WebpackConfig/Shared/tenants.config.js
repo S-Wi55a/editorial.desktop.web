@@ -9,8 +9,8 @@ export const listofTenants = [
     //'carpoint',
     'boatsales',
     'boatpoint',
-    //'trucksales',
-    //'caravancampingsales',
+    'trucksales',
+    'caravancampingsales',
     'farmmachinerysales',
 ];
 

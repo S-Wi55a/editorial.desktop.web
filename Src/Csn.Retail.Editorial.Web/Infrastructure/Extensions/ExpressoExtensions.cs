@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Expresso.Expressions;
 using Expresso.Expressions.Visitors;
 using Expresso.Sanitisation;
+using Expresso.Syntax;
 using Expresso.Syntax.Binary;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
@@ -43,6 +45,20 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
             }
 
             return false;
+        }
+
+        public static Expression TryParse(this IExpressionParser parser, string input)
+        {
+            try
+            {
+                return parser.Parse(input);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            return null;
         }
     }
 }
