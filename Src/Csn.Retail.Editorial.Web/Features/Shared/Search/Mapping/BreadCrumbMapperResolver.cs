@@ -53,10 +53,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
     {
         public string Resolve(BreadCrumbDto source, BreadCrumb destination, string destMember, ResolutionContext context)
         {
-            return ListingsUrlFormatter.GetPathAndQueryString(string.IsNullOrEmpty(source.RemoveAction)
-                ? string.Empty: source.RemoveAction, sortOrder: context.Items.TryGetValue("sortOrder", out var sort)
-                ? sort?.ToString()
-                : string.Empty);
+            var sortOrder = context.Items.TryGetValue("sortOrder", out var sort) ? sort?.ToString() : string.Empty;
+            return source.HasSeoLinks ? ListingsUrlFormatter.GetSeoUrl(source.Metadata.Seo.First(), sortOrder: sortOrder) :
+                ListingsUrlFormatter.GetPathAndQueryString(string.IsNullOrEmpty(source.RemoveAction) ? string.Empty: source.RemoveAction, sortOrder: sortOrder);
         }
     }
 }
