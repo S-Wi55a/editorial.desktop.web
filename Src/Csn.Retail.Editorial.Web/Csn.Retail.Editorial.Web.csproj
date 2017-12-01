@@ -550,12 +550,20 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
+    <Compile Include="Features\Landing\GetLandingQuery.cs" />
+    <Compile Include="Features\Landing\GetLandingQueryHandler.cs" />
+    <Compile Include="Features\Landing\GetLandingResponse.cs" />
+    <Compile Include="Features\Landing\LandingController.cs" />
+    <Compile Include="Features\Landing\Models\LandingViewModel.cs" />
     <Compile Include="Features\Listings\Constants\ListingsQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Content Include="Features\Details\Assets\Js\details.vendor.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />
+    <Content Include="Features\Landing\Assets\Js\landing-page.js" />
+    <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
+    <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\iNavArticleCount.js" />
@@ -1021,7 +1029,6 @@
     <Content Include="Features\Shared\Assets\Css\Modules\ArticleDisclaimer\disclaimer.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.variables.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_articleDropCap.scss" />
-    <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
     <Content Include="Features\Listings\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
@@ -1043,12 +1050,17 @@
     <Content Include="Features\Shared\Views\Partials\Head\_Favicon.cshtml" />
     <Content Include="Features\Details\Views\Caravancampingsales\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Trucksales\_Disclaimer.cshtml" />
+    <Content Include="Features\Landing\Views\LandingTemplate.cshtml" />
+    <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
+    <Content Include="Features\Landing\Assets\Css\landing-page.scss" />
+    <Content Include="Features\Landing\Views\Partials\_Carousel.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="WebpackConfig\Shared\devServer.config.js" />
     <Content Include="WebpackConfig\Shared\env.config.js" />
     <Content Include="WebpackConfig\Client\plugins.config.js" />
+    <Content Include="WebpackConfig\Shared\loaders.config.js" />
     <Content Include="WebpackConfig\Shared\paths.config.js" />
     <Content Include="WebpackConfig\Shared\resolve.config.js" />
     <Content Include="WebpackConfig\Shared\stats.config.js" />
@@ -1103,7 +1115,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--searchresults.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.tsx" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.keywordSearch.scss" />
-    <Content Include="Features\Listings\Assets\css\listings-page.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\MediaMotiveAds\Views\_TeAds.cshtml" />

@@ -1,0 +1,46 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Landing.Models
+@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@using Newtonsoft.Json
+@using React.Web.Mvc
+
+@section Head{
+}
+
+@{
+    var tenantName = Html.CurrentTenant().Name.ToLower();
+}
+
+@section Styles {
+    @Html.AssetCss("landing-page--" + tenantName)
+}
+
+@section TopScripts {
+    @Html.AssetJs("landing.vendor", LoadType.Defer)
+    @Html.AssetJs("landing-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
+}
+
+<div class="landing-page">
+    
+    <div class="csn-carousel"></div>
+</div>
+<script>
+       
+    
+    var __PRELOADED_STATE__store = {
+        landing : {
+            featured: [
+                {
+                    title: 'apple'
+                }] 
+        }
+    }
+
+</script>
+
+@section BottomScripts
+{
+    
+
+}

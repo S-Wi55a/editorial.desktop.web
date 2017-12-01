@@ -1,6 +1,5 @@
 ﻿import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import update from 'immutability-helper'
-import { State } from 'iNav/Types'
 import { iNavReducer } from 'iNav/Reducers/iNav'
 import { iNavHistoryReducer } from 'iNav/Reducers/history'
 

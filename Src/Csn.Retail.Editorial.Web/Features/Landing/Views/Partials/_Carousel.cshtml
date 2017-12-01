@@ -1,0 +1,20 @@
+﻿@{
+
+    var type = "featured";
+    var hasMrec = false;
+
+}
+
+
+
+<div class="csn-carousel csn-carousel--@type">
+    
+    @*//Render React Carousel*@
+    
+    <div></div>
+
+    @if (hasMrec)
+    {
+        Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Mrec.cshtml");
+    }
+</div>
