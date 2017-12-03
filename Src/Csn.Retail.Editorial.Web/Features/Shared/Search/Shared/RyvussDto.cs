@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 {
@@ -67,6 +68,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public string Expression { get; set; }
         public FacetNodeMetaDataDto MetaData { get; set; }
         public RyvussNavDto Refinements { get; set; }
+        public bool HasSeoLinks => MetaData?.Seo != null && MetaData.Seo.Any();
     }
 
     public class FacetNodeMetaDataDto
@@ -94,10 +96,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public List<BreadCrumbDto> Children { get; set; }
         public string Type { get; set; }
         public string Term { get; set; }
+        public BreadCrumbMetadata Metadata { get; set; }
         public bool IsFacetBreadCrumb => Type == "FacetBreadCrumb";
         public bool IsKeywordBreadCrumb => Type == "KeywordBreadCrumb";
         public bool IsClearAllBreadCrumb => Type == "ClearAllBreadCrumb";
+        public bool HasSeoLinks => Metadata?.Seo != null && Metadata.Seo.Any();
+    }
 
+    public class BreadCrumbMetadata
+    {
+        public List<string> Seo { get; set; }
     }
 
     public class SearchResultDto

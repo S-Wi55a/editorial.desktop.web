@@ -30,7 +30,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
                 Query = query,
                 SeoFragment = !string.IsNullOrEmpty(seoFragment) ? $"/{seoFragment}" : string.Empty,
                 Offset = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Offset, 0),
-                Sort = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Sort, EditorialSortKeyValues.ListingPageDefaultSort),
+                Sort = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Sort, string.Empty),
                 SearchEventType = GetActionType(),
                 QueryExpression = string.IsNullOrEmpty(query) ? null : _parser.TryParse(query)
             };
