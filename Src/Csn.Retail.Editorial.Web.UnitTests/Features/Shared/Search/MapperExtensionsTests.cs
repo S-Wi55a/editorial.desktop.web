@@ -100,7 +100,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
             {                
                 MetaData = new RefinementsMetaDataDto
                 {
-                    Refinements = new List<RefinementsNodeDto> { new RefinementsNodeDto { DisplayName = "Review" } }
+                    Refinements = new List<RyvussNavNodeDto> { new RyvussNavNodeDto { DisplayName = "Review" } }
                 }
             };
             var dtoWithNoRefinements = new RyvussNavNodeDto

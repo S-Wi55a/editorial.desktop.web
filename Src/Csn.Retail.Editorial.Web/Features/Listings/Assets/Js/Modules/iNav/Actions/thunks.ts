@@ -56,31 +56,14 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
         //     )
     }
 
-type fetchINavAspect = (a: string, q: string) => (d: Dispatch<any>) => Promise<any>
+
+type fetchINavRefinement = (r: string, p: string, q: string, u?: string, action?: Actions) => (d: any) => Promise<any>;
     
-export const fetchINavAspect: fetchINavAspect = (aspect: string, query: string) => (dispatch: Dispatch<any>) => {
-
-        dispatch({ type: ActionTypes.API.ASPECT.FETCH_QUERY_REQUEST })
-
-        return fetch(`${iNav.aspect}${aspect}${query}`)
-            .then(
-            response => response.json(),
-            error => dispatch({ type: ActionTypes.API.ASPECT.FETCH_QUERY_FAILURE, payload: { error } })
-
-            )
-            .then(data =>
-                dispatch({ type: ActionTypes.API.ASPECT.FETCH_QUERY_SUCCESS, payload: { data, name: aspect } })
-            )
-    }
-
-
-type fetchINavRefinement = (a: string, r: string, p: string, q: string, u?: string, action?: Actions) => (d: any) => Promise<any>;
-    
-export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinementAspect: string, parentExpression: string, query: string, url?: string, reduxAction?: Actions) => (dispatch: any ) => {
+export const fetchINavRefinement: fetchINavRefinement = (refinementAspect: string, parentExpression: string, query: string, url?: string, reduxAction?: Actions) => (dispatch: any ) => {
 
         dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
 
-        return fetch(iNav.refinement(aspect, refinementAspect, parentExpression, query ? `${query}` : ''))
+        return fetch(iNav.refinement(refinementAspect, parentExpression, query ? `${query}` : ''))
            // Try to parse the response
             .then(response =>
                 response.json().then(json => ({
@@ -97,7 +80,7 @@ export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinem
                   } else {
                     // Status looks good
                     dispatch([
-                        { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data: json, name: aspect, parentExpression }},
+                        { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data: json, parentExpression }},
                         reduxAction
                     ])
                   }
@@ -109,4 +92,4 @@ export const fetchINavRefinement: fetchINavRefinement = (aspect: string, refinem
               )
     }
 
-export type Types = fetchINav & fetchINavAndResults & fetchINavAspect & fetchINavRefinement;
+export type Types = fetchINav & fetchINavAndResults & fetchINavRefinement;

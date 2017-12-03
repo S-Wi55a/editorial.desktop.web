@@ -630,9 +630,6 @@
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiDto.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\TrackingApi\TrackingApiProxy.cs" />
-    <Compile Include="Features\Shared\Search\Aspect\AspectQuery.cs" />
-    <Compile Include="Features\Shared\Search\Aspect\AspectQueryHandler.cs" />
-    <Compile Include="Features\Shared\Search\Aspect\AspectResult.cs" />
     <Compile Include="Features\Shared\Search\Extensions\MapperExtensions.cs" />
     <Compile Include="Features\Shared\Search\Mapping\DateAvailableMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\FacetNodeUrlResolver.cs" />
@@ -644,6 +641,7 @@
     <Compile Include="Features\Shared\Search\Mapping\ResultsMessageMapper.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
+    <Compile Include="Features\Shared\Search\Shared\FacetNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\MapperConfiguration.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavResult.cs" />
     <Compile Include="Features\Shared\Search\Refinements\RefinementResult.cs" />
@@ -651,6 +649,7 @@
     <Compile Include="Features\Shared\Search\Refinements\RefinementsQueryHandler.cs" />
     <Compile Include="Features\Shared\Search\SearchController.cs" />
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
+    <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
     <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />

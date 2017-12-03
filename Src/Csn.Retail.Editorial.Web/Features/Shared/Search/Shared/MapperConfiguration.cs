@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Aspect;
+﻿using System.Linq;
+using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
@@ -16,14 +16,19 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         private readonly IImageMapper _imageMapper;
         private readonly IResultsMessageMapper _resultsMessageMapper;
         private readonly IArticleUrlMapper _articleUrlMapper;
+        private readonly IFacetNodeMapper _facetNodeMapper;
 
-        public MappingSetupTask(IMapper mapper, IImageMapper imageMapper,
-            IResultsMessageMapper resultsMessageMapper, IArticleUrlMapper articleUrlMapper)
+        public MappingSetupTask(IMapper mapper, 
+                                IImageMapper imageMapper,
+                                IResultsMessageMapper resultsMessageMapper, 
+                                IArticleUrlMapper articleUrlMapper,
+                                IFacetNodeMapper facetNodeMapper)
         {
             _mapper = mapper;
             _imageMapper = imageMapper;
             _resultsMessageMapper = resultsMessageMapper;
             _articleUrlMapper = articleUrlMapper;
+            _facetNodeMapper = facetNodeMapper;
         }
 
         public void Run(IMapperConfigurationExpression cfg)
@@ -44,18 +49,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.CurrentUrl, opt => opt.Ignore());
 
             cfg.CreateMap<RyvussNavNodeDto, NavNode>()
-                .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
-
-            cfg.CreateMap<RefinementsNodeDto, NavNode>()
-                .ForMember(dest => dest.MultiSelectMode, opt => opt.Ignore());
-            
-            cfg.CreateMap<RyvussNavNodeDto, AspectResult>()
-                .ForMember(dest => dest.Count, opt => opt.Ignore())
-                .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()));
+                .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()))
+                .ForMember(dest => dest.Facets, opt => opt.MapFrom(src => src.Facets.Select(f => _facetNodeMapper.Map(f, src.Name))));
 
             cfg.CreateMap<FacetNodeDto, FacetNode>()
                 .ForMember(dest => dest.IsRefineable, opt => opt.MapFrom(src => src.IsRefineable()))
-                .ForMember(dest => dest.Refinement, opt => opt.MapFrom(src => src.GetRefinement()))
+                .ForMember(dest => dest.Refinement, opt => opt.Ignore())
                 .ForMember(dest => dest.Url, opt => opt.ResolveUsing<FacetNodeUrlResolver>())
                 .ForMember(dest => dest.Action, opt => opt.ResolveUsing<FacetNodeActionResolver>())
                 .ForMember(dest => dest.Refinements, opt => opt.MapFrom(src => _mapper.Map<NavNode>(src.GetRefinements())));
