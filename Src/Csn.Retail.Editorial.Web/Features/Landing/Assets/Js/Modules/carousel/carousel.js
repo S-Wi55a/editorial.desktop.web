@@ -19,9 +19,7 @@ const render = (WrappedComponent) => (container) => {
     );
 };
 
-const component = render(Carousel)
-
-export default component
+export default render(Carousel)
 
 //If store exists
 //if (store) {

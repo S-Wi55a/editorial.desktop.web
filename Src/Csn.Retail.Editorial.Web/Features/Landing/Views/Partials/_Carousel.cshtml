@@ -1,18 +1,15 @@
-﻿@{
+﻿@model Csn.Retail.Editorial.Web.Features.Landing.Models.Category
 
-    var type = "featured";
+@{
+
     var hasMrec = false;
 
 }
 
 
-
-<div class="csn-carousel csn-carousel--@type">
-    
-    @*//Render React Carousel*@
-    
-    <div></div>
-
+<div>
+    <h2>@Model.Title</h2>
+    <div class="csn-carousel csn-carousel--"></div>
     @if (hasMrec)
     {
         Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Mrec.cshtml");

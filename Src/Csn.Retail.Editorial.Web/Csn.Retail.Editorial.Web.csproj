@@ -28,6 +28,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -564,6 +565,8 @@
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
+    <Content Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.js" />
+    <Content Include="Features\Landing\Assets\Js\Modules\carousel\Reducers\index.js" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\iNavArticleCount.js" />
@@ -1054,6 +1057,7 @@
     <Content Include="Features\Listings\Assets\Css\listings-page.scss" />
     <Content Include="Features\Landing\Assets\Css\landing-page.scss" />
     <Content Include="Features\Landing\Views\Partials\_Carousel.cshtml" />
+    <Content Include="Features\Shared\Assets\Js\Modules\Components\SearchResultCard\searchResultCard.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1078,6 +1082,7 @@
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actionTypes.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeaderItem.tsx" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Components\SearchResultCard\searchResultCard.tsx" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\componentsCollection.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Reducers\registeredServerReducerCollection.ts" />
@@ -1155,6 +1160,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />-->
   <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />-->
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
