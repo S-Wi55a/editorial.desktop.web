@@ -641,7 +641,7 @@
     <Compile Include="Features\Shared\Search\Mapping\ResultsMessageMapper.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQuery.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavQueryHandler.cs" />
-    <Compile Include="Features\Shared\Search\Shared\FacetNodeMapper.cs" />
+    <Compile Include="Features\Shared\Search\Shared\FacetNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Shared\MapperConfiguration.cs" />
     <Compile Include="Features\Shared\Search\Nav\NavResult.cs" />
     <Compile Include="Features\Shared\Search\Refinements\RefinementResult.cs" />
