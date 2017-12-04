@@ -1,0 +1,37 @@
+﻿@import "css/_globals.scss";
+
+.csn-carousel {
+
+
+    &__info-bar {
+        position: relative;
+    }
+
+    &__title {
+        font-family: $font-family-default;
+        font-size: 32px;
+        font-weight: $font-weight-600;
+        color: $cs-dark-grey-2;
+        margin-bottom: 20px;
+
+        & > a {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
+
+    &__link {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        text-align: right;
+        text-decoration: none;
+        margin-right: 20px;
+
+        &:hover,
+        &:visited,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+}

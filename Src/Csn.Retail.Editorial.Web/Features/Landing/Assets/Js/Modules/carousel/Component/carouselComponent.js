@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import SearchResultCard from 'Components/SearchResultCard/searchResultCard'
 import Slider from 'react-slick'
 
-
+if (!SERVER) {
+    require('Carousel/Css/carousel')
+}
 
 class SimpleSlider extends React.Component {
 
@@ -13,15 +15,15 @@ class SimpleSlider extends React.Component {
 
     render() {
         const settings = {
-            dots: true,
-            infinite: true,
+            infinite: false,
             speed: 500,
-            slidesToShow: 7,
+            slidesToShow: 6,
             slidesToScroll: 1,
             arrows: true,
             responsive: [ 
-                { breakpoint: 768, settings: { slidesToShow: 3 } }, 
-                { breakpoint: 1024, settings: { slidesToShow: 5 } }, 
+                { breakpoint: 1200, settings: { slidesToShow: 3 } },
+                { breakpoint: 1600, settings: { slidesToShow: 4 } },
+                { breakpoint: 2000, settings: { slidesToShow: 5 } }, 
             ]
         }
         return (
