@@ -1,31 +1,38 @@
-﻿using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
-using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using AutoMapper;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 {
-    public interface IFacetNodeMapper
+    public class FacetNodeResolver : IValueResolver<RyvussNavNodeDto, NavNode, List<FacetNode>>
     {
-        FacetNode Map(FacetNodeDto source, string aspectName);
-    }
+        private static IRefinementMapper _refinementMapper;
 
-    [AutoBindAsSingleton]
-    public class FacetNodeMapper : IFacetNodeMapper
-    {
-        private readonly IMapper _mapper;
-        private readonly IRefinementMapper _refinementMapper;
-
-        public FacetNodeMapper(IMapper mapper, IRefinementMapper refinementMapper)
+        public List<FacetNode> Resolve(RyvussNavNodeDto source, NavNode destination, List<FacetNode> destMember, ResolutionContext context)
         {
-            _mapper = mapper;
-            _refinementMapper = refinementMapper;
+            if (_refinementMapper == null)
+            {
+                // I love implementing anti-patterns!!
+                // ....do this for now until we figure out how to do dependency injection properly :-)
+                _refinementMapper = DependencyResolver.Current.GetService(typeof(IRefinementMapper)) as IRefinementMapper;
+            }
+
+            return source.Facets.Select(f => MapFacetNode(f, source.Name, context)).ToList();
         }
 
-        public FacetNode Map(FacetNodeDto source, string aspectName)
+        private FacetNode MapFacetNode(FacetNodeDto facetNodeDto, string aspectName, ResolutionContext context)
         {
-            var facetNode = _mapper.Map<FacetNode>(source);
+            var facetNode = Mapper.Map<FacetNode>(facetNodeDto, opt =>
+            {
+                if (context.Items.TryGetValue("sortOrder", out var sortOrder))
+                {
+                    opt.Items["sortOrder"] = sortOrder;
+                }
+            });
 
-            facetNode.Refinement = _refinementMapper.Map(source, aspectName);
+            facetNode.Refinement = _refinementMapper.Map(facetNodeDto, aspectName);
 
             return facetNode;
         }

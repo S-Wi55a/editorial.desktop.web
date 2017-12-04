@@ -16,19 +16,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         private readonly IImageMapper _imageMapper;
         private readonly IResultsMessageMapper _resultsMessageMapper;
         private readonly IArticleUrlMapper _articleUrlMapper;
-        private readonly IFacetNodeMapper _facetNodeMapper;
 
         public MappingSetupTask(IMapper mapper, 
                                 IImageMapper imageMapper,
                                 IResultsMessageMapper resultsMessageMapper, 
-                                IArticleUrlMapper articleUrlMapper,
-                                IFacetNodeMapper facetNodeMapper)
+                                IArticleUrlMapper articleUrlMapper)
         {
             _mapper = mapper;
             _imageMapper = imageMapper;
             _resultsMessageMapper = resultsMessageMapper;
             _articleUrlMapper = articleUrlMapper;
-            _facetNodeMapper = facetNodeMapper;
         }
 
         public void Run(IMapperConfigurationExpression cfg)
@@ -50,7 +47,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
             cfg.CreateMap<RyvussNavNodeDto, NavNode>()
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.GetDisplayName()))
-                .ForMember(dest => dest.Facets, opt => opt.MapFrom(src => src.Facets.Select(f => _facetNodeMapper.Map(f, src.Name))));
+                .ForMember(dest => dest.Facets, opt => opt.ResolveUsing<FacetNodeResolver>());
 
             cfg.CreateMap<FacetNodeDto, FacetNode>()
                 .ForMember(dest => dest.IsRefineable, opt => opt.MapFrom(src => src.IsRefineable()))
