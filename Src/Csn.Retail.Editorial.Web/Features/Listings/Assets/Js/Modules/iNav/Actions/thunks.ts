@@ -60,7 +60,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
 type fetchINavRefinement = (r: string, p: string, q: string, u?: string, action?: Actions) => (d: any) => Promise<any>;
     
 export const fetchINavRefinement: fetchINavRefinement = (refinementAspect: string, parentExpression: string, query: string, url?: string, reduxAction?: Actions) => (dispatch: any ) => {
-
+        parentExpression = encodeURIComponent(parentExpression);
         dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
 
         return fetch(iNav.refinement(refinementAspect, parentExpression, query ? `${query}` : ''))
