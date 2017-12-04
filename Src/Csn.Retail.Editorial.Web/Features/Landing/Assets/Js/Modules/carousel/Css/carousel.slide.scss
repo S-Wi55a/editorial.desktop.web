@@ -1,0 +1,27 @@
+﻿@import "css/_globals.scss";
+
+.csn-carousel--featured {
+    
+    .iNavSearchResult__content-wrapper {
+        background-color: $cs-dark-grey-2;
+    }
+
+    .iNavSearchResult__heading,
+    .iNavSearchResult__sub-heading {
+        color: $cs-white;
+    }
+
+    .iNavSearchResult__date {
+        color: $cs-grey-2;
+    }
+
+    .iNavSearchResult__comment-count {
+        color: $cs-grey-2;
+    }
+
+    .iNavSearchResult__comment-count:hover,
+    .iNavSearchResult__comment-count:visited,
+    .iNavSearchResult__comment-count:focus {
+        color: $cs-white;
+    }
+}
