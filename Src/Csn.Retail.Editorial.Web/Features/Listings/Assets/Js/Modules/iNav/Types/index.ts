@@ -44,6 +44,7 @@ export interface INode {
 export interface IRefinements {
     facets: IFacet[]
     displayName: string
+    refinement?: IRefinement
 }
 
 export interface INodeMetadata {
