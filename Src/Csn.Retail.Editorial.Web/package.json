@@ -147,6 +147,7 @@
         "react-image": "^1.0.1",
         "react-prop-types": "^0.4.0",
         "react-redux": "^5.0.6",
+        "react-slick": "^0.15.4",
         "react-transition-group": "^2.2.1",
         "redux": "^3.7.2",
         "redux-async-reducer": "0.0.5",
