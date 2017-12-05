@@ -21,7 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
         public RefinementsNavNode Refinements { get; set; }
     }
 
-    public class RefinementsNavNode : NavNode
+    public class RefinementsNavNode : NavNodeWithRefinements
     {
         public Refinement Refinement { get; set; }
     }

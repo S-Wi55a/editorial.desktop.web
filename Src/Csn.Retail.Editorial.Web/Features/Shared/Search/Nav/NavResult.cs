@@ -67,8 +67,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public string ArticleDetailsUrl { get; set; }        
         public string Label { get; set; }
         public string Type {get; set;}
-
-
     }
-
 }

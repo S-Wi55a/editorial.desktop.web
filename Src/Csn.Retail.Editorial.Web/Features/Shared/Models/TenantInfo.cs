@@ -13,6 +13,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string MobiSiteUrl { get; set; }
         public string RyvusNavName { get; set; }
         public CultureInfo Culture { get; set; }
+        public string SiteDomain { get; set; }
+        public string UrlProtocol { get; set; }
 
         #region Seo
         public bool AllowSeoIndexOfDetails { get; set; }

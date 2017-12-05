@@ -12,11 +12,11 @@ interface IINavfacet extends IFacet {
   aspect: string;
   id: number;
   refinement?: IRefinement;
-  fetchINavAndUpdatePendingRequest?: Thunks.Types;
+  fetchINavAndUpdatePendingRequest?: (action: string, url: string) => Actions;
   fetchINavAndResults?: Thunks.Types;
   fetchAspect?: Thunks.Types;
   fetchRefinementAndUpdatePendingRequest?: Thunks.Types;
-  fetchRefinementAndSwitchPage?: (aspect: string, refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number)=>Actions;
+  fetchRefinementAndSwitchPage?: (refinementAspect: string, refinementParentExpression: string, pendingQuery: string, refinementId: number)=>Actions;
   pendingQuery?: string;
   pendingAction?: string
   isRefinement?: boolean;
@@ -41,7 +41,6 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
         if (props.isRefinement) {
             props.count > 0 &&
                 props.fetchRefinementAndUpdatePendingRequest(
-                    props.aspect,
                     props.refinement.aspect,
                     props.refinement.parentExpression,
                     props.action,
@@ -69,7 +68,6 @@ const INavfacet: React.StatelessComponent<IINavfacet> = (props) => {
             (e) => {
               e.stopPropagation()
               props.fetchRefinementAndSwitchPage(
-                props.aspect,
                 props.refinement.aspect,
                 props.refinement.parentExpression,
                 props.pendingAction,
@@ -100,14 +98,14 @@ const mapDispatchToProps: any = (dispatch: any, ownProps: IINavfacet) => {
                 { type: ActionTypes.INAV.UPDATE_PENDING_ACTION, payload: { url, action } },
                 Thunks.fetchINav(action)
             ]),
-        fetchRefinementAndUpdatePendingRequest: (aspect: string, refinementAspect: string, refinementParentExpression: string, action: string, url: string) => 
+        fetchRefinementAndUpdatePendingRequest: (refinementAspect: string, refinementParentExpression: string, action: string, url: string) => 
             dispatch([
                 { type: ActionTypes.INAV.UPDATE_PENDING_ACTION, payload: { url, action } },
-                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, action)
+                Thunks.fetchINavRefinement(refinementAspect, refinementParentExpression, action)
             ]),
-        fetchRefinementAndSwitchPage: (aspect: string, refinementAspect: string, refinementParentExpression: string, action: string, refinementId: number) =>
+        fetchRefinementAndSwitchPage: (refinementAspect: string, refinementParentExpression: string, action: string, refinementId: number) =>
             dispatch([
-                Thunks.fetchINavRefinement(aspect, refinementAspect, refinementParentExpression, action, null, 
+                Thunks.fetchINavRefinement(refinementAspect, refinementParentExpression, action, null, 
                 { type: ActionTypes.UI.SWITCH_PAGE_FORWARD, payload: { refinementId } })
             ])
     }
