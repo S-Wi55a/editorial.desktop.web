@@ -26,6 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                         {
                             Title = "Featured",
                             Link = "#",
+                            HasMrec = true,
                             CategoryItems = new List<SearchResult>
                             {
                                 new SearchResult()

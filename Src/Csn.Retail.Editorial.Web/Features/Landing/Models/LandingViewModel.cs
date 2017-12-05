@@ -16,5 +16,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public string Title { get; set; }
         public List<SearchResult> CategoryItems { get; set; }
         public string Link { get; set; }
+        public bool HasMrec { get; set; }
     }
 }
