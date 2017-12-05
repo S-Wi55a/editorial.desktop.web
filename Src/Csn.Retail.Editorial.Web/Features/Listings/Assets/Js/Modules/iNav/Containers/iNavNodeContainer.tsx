@@ -2,7 +2,7 @@
 import { connect } from 'react-redux'
 import INavfacet from 'iNav/Components/iNavFacet'
 import INavConfirmCancelBar from 'iNav/Components/iNavConfirmCancelBar'
-import { State, INode, IFacet } from 'iNav/Types'
+import { State, INode, IFacet, IRefinement } from 'iNav/Types'
 import UI from 'ReactReduxUI'
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import { Dispatch } from 'redux';
@@ -20,33 +20,36 @@ interface ICategory {
 }
 
 interface IINavList extends ICategory {
-  facets: IFacet[]
-  name?: string
-  displayName: string
-  isRefinement?: boolean
+    facets: IFacet[],
+    name?: string,
+    displayName: string,
+    isRefinement?: boolean,
+    refinement?: IRefinement
 }
 
 const INavList: React.StatelessComponent<IINavList> = (props) => (
-  <div className={[
-      'iNav-category__list-wrapper',
-      (props.refinementId === props.id) ? 'iNav-category__list-wrapper--isVisible' : '',
-      (props.isLoading) ? 'iNav-category__list-wrapper--isLoading' : ''
-      ].join(' ') }>
-    {/* Show back button if level 2 or 3 */}
-    {props.isRefinement && <div className='iNav-category__back-button' onClick={props.switchPageBack}>{props.displayName}</div>}
-    <ul className='iNav-category__list'>
-      {props.facets.map((facet, index) => {
-        return <INavfacet
-          key={facet.displayValue}
-          {...props}
-          {...facet}
-          aspect={props.name}
-          id={index}
-          />
-      })}
-    </ul>
-  </div>
-)
+    <div className={[
+        'iNav-category__list-wrapper',
+        (props.refinementId === props.id) ? 'iNav-category__list-wrapper--isVisible' : '',
+        (props.isLoading) ? 'iNav-category__list-wrapper--isLoading' : ''
+    ].join(' ') }>
+        { /* Show back button if level 2 or 3 */
+        }
+        {props.isRefinement &&
+            <div className='iNav-category__back-button' onClick={props.switchPageBack}>{props.displayName}</div>}
+        <ul className='iNav-category__list'>
+            {props.facets.map((facet, index) => {
+                return <INavfacet
+                           key={facet.displayValue}
+                           {...props}
+                           {...facet}
+                           aspect={props.name}
+                           id={index}
+                           refinement={props.isRefinement ? props.refinement : facet.refinement}/>;
+            })}
+        </ul>
+    </div>
+);
 
 interface IINavNodeContainer extends INode, ICategory {
   index: number
@@ -76,29 +79,27 @@ const INavNodeContainer: React.StatelessComponent<IINavNodeContainer> = (props) 
           switchPageBack={props.switchPageBack}
           currentRefinement={props.currentRefinement}
           isLoading={props.isLoading}
+          refinement={props.refinements.refinement}
           />
       }
       {/* Third Level*/}
       { props.refinements && props.refinements.facets && props.refinements.facets.map((facet, index)=>{
-          if(facet.isRefineable){
-            return <INavList
-              key={facet.displayValue}
-              {...props.refinements}
-              {...facet.refinements}
-              name={props.name}
-              refinementId={props.refinementId}
-              isRefinement={true}
-              switchPageBack={props.switchPageBack}
-              currentRefinement={props.currentRefinement}
-              id={index}
-              isLoading={props.isLoading}
-              />
+          if(facet.isRefineable) {
+              return <INavList
+                         key={facet.displayValue}
+                         {...props.refinements}
+                         {...facet.refinements}
+                         name={props.name}
+                         refinementId={props.refinementId}
+                         isRefinement={true}
+                         switchPageBack={props.switchPageBack}
+                         currentRefinement={props.currentRefinement}
+                         id={index}
+                         isLoading={props.isLoading}
+                         refinement={props.refinements.refinement}/>;
           }
         })
       }
-
-
-
     </div>
     <INavConfirmCancelBar index={props.index}/>
   </div>

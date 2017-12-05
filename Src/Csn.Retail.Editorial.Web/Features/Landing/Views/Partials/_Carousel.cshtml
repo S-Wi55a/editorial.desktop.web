@@ -1,12 +1,5 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Landing.Models.Category
 
-@{
-
-    var hasMrec = false;
-
-}
-
-
 <div class="csn-carousel">
     <div class="csn-carousel__info-bar">
         @if (Model.Link != null)
@@ -23,7 +16,7 @@
     </div>
     <div class="csn-carousel__placeholder csn-carousel--@Model.Title.ToLower()"></div>
 
-    @if (hasMrec)
+    @if (Model.HasMrec)
     {
         Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Mrec.cshtml");
     }

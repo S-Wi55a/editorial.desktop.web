@@ -40,19 +40,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
     public class RefinementsMetaDataDto
     {
-        public List<RefinementsNodeDto> Refinements { get; set; }
-    }
-
-    public class RefinementsNodeDto
-    {
-        public string DisplayName { get; set; }
-        public List<FacetNodeDto> Facets { get; set; }
-        public string Name { get; set; }
-        public RefinementMetadataDto Metadata { get; set; }
-    }
-
-    public class RefinementMetadataDto
-    {
+        public List<RyvussNavNodeDto> Refinements { get; set; }
         public List<string> ParentExpression { get; set; }
     }
 
@@ -75,8 +63,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
     {
         public List<bool> IsRefineable { get; set; }
         public List<Refinement> Refinement { get; set; }
-
-        public List<RefinementsNodeDto> Refinements { get; set; }
+        public List<RyvussNavNodeDto> Refinements { get; set; }
         public List<RefineableAspectsDto> RefineableAspects { get; set; }
         public List<string> Seo { get; set; }
     }
