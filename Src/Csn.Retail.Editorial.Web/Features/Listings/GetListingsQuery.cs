@@ -15,5 +15,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public string SeoFragment { get; set; }
 
         public SearchEventType SearchEventType { get; set; }
+        public bool IsLandingPage { get; set; }
     }
 }

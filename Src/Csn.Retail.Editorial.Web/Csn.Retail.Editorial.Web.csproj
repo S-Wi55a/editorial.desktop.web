@@ -537,11 +537,10 @@
     <Compile Include="Features\Details\ActionAttributes\RedirectToNewVersionAttribute.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
-    <Compile Include="Features\Details\ArticleTypeRouteConstraint.cs" />
+    <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\DetailsRedirectLogger.cs" />
-    <Compile Include="Features\Details\EditorialArticleTypes.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
     <Compile Include="Features\Details\Mappings\BrightcoveIFrameBuilder.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
@@ -554,6 +553,8 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
+    <Compile Include="Features\Listings\ArticleTypeListingQuery.cs" />
+    <Compile Include="Features\Listings\ArticleTypeListingQueryHandler.cs" />
     <Compile Include="Features\Landing\GetLandingQuery.cs" />
     <Compile Include="Features\Landing\GetLandingQueryHandler.cs" />
     <Compile Include="Features\Landing\GetLandingResponse.cs" />
@@ -587,6 +588,8 @@
     <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Mappings\SeoDataMapper.cs" />
+    <Compile Include="Features\Listings\ModelBinders\ArticleTypeListingQueryModelBinder.cs" />
+    <Compile Include="Features\Listings\ModelBinders\ArticleTypeLookup.cs" />
     <Compile Include="Features\Listings\ModelBinders\GetListingsQueryModelBinder.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Shared\Extensions\SearchActionExtensions.cs" />
