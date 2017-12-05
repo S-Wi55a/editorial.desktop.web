@@ -22,7 +22,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                 {
                     Carousels = new List<CarouselViewModel>
                     {
-                        new CarouselViewModel()
+                        new CarouselViewModel
                         {
                             Title = "Featured",
                             Link = "#",
@@ -43,10 +43,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
            
                             }
                         },
-                        new Category
+                        new CarouselViewModel
                         {
                             Title = "Review",
                             Link = "#",
+                            HasMrec = false,
                             CategoryItems = new List<SearchResult>
                             {
                                 new SearchResult()
