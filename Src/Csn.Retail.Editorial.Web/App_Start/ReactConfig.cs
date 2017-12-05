@@ -22,10 +22,10 @@ namespace Csn.Retail.Editorial.Web
             //	.AddScriptWithoutTransform("~/Scripts/bundle.server.js")
 
 		    ReactSiteConfiguration.Configuration
-		        .SetStartEngines(25)
-		        .SetMaxEngines(50)
-                .SetUseDebugReact(false)
-		        .SetReuseJavaScriptEngines(true) //TODO: remove in Prod
+		        .SetStartEngines(1)
+		        .SetMaxEngines(1)
+                .SetUseDebugReact(true)
+		        .SetReuseJavaScriptEngines(false) //TODO: remove in Prod
                 .SetLoadBabel(false)
                 .SetLoadReact(false)
                 .AddScriptWithoutTransform("/dist--server/react-server-components.js")

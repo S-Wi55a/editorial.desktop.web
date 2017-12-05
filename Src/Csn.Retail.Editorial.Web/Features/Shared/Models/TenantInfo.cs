@@ -10,7 +10,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string SiteNavPath { get; set; }
         public string GoogleAnalyticsApp { get; set; }
         public string HotjarTracking { get; set; }
-        public string MobiSiteUrl { get; set; }
         public string RyvusNavName { get; set; }
         public CultureInfo Culture { get; set; }
         public string SiteDomain { get; set; }
