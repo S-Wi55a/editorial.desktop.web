@@ -1057,6 +1057,8 @@
     <Content Include="Features\Landing\Assets\Css\landing-page.scss" />
     <Content Include="Features\Landing\Views\Partials\_Carousel.cshtml" />
     <Content Include="Features\Shared\Assets\Js\Modules\Components\SearchResultCard\searchResultCard.scss" />
+    <Content Include="Features\Landing\Assets\Js\Modules\carousel\Css\carousel.scss" />
+    <Content Include="Features\Landing\Assets\Css\Partials\_carousel.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

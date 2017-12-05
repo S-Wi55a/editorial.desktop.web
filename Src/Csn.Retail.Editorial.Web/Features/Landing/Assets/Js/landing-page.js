@@ -14,8 +14,8 @@ window.store = configureStore(); //Init store
 
     window.store.addReducer('store', require('carousel/Reducers').carouselParentReducer(initState));
         
-    if (d.querySelector('.csn-carousel')) {
-        const carousels = [...document.querySelectorAll('.csn-carousel')]
+    if (d.querySelector('.csn-carousel__placeholder')) {
+        const carousels = [...document.querySelectorAll('.csn-carousel__placeholder')]
         carousels.forEach((el) => require('carousel/carousel').default(el))
     }
 
