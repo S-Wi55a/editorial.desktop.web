@@ -718,12 +718,10 @@
     <Compile Include="Infrastructure\MultiTenant\TenantDataMapper.cs" />
     <Compile Include="Infrastructure\React\Models\ReduxStoreModel.cs" />
     <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />
-    <Compile Include="Infrastructure\Redirects\CarMobiDetailsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
     <Compile Include="Features\Shared\Models\EditorialMetadataDto.cs" />
     <Compile Include="Infrastructure\Redirects\HttpRequestContextWrapper.cs" />
     <Compile Include="Infrastructure\Redirects\IMobiDetailsUrlBuilder.cs" />
-    <Compile Include="Infrastructure\Redirects\MobiRedirectStrategy.cs" />
     <Compile Include="Infrastructure\Redirects\RedirectInstruction.cs" />
     <Compile Include="Infrastructure\Redirects\RedirectStrategy.cs" />
     <Compile Include="Infrastructure\RequestWrapper\IRequestWrapper.cs" />
