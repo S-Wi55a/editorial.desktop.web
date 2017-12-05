@@ -1,0 +1,10 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Landing.Models.Category
+
+<div>
+    <h2>@Model.Title</h2>
+    <div class="csn-carousel csn-carousel--"></div>
+    @if (Model.HasMrec)
+    {
+        Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Mrec.cshtml");
+    }
+</div>
