@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Csn.Retail.Editorial.Web.Features.Details.ActionAttributes;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
@@ -22,6 +23,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         }
 
         [Route("editorial/details/{pageName:regex(^.*-\\d+/?$)}")]
+        [Route("editorial/{articletype:article-types}/{*slug:regex(^.*-\\d+/?$)}")]
+        [RedirectToNewVersion]
         [RedirectAttributeFilter]
         // GET: Details
         public async Task<ActionResult> Index(ArticleIdentifier articleIdentifier, bool __preview = false)
