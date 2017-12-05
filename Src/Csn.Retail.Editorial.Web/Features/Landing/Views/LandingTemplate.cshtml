@@ -25,7 +25,7 @@
 
 <div class="landing-page">
     @*Header*@
-    <div class="main">
+    <div class="main container-fluid">
         @foreach (var carousel in Model.Carousels)
         {
             Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", carousel);

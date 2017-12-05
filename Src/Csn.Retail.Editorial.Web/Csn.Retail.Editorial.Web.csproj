@@ -1060,6 +1060,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Components\SearchResultCard\searchResultCard.scss" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\Css\carousel.scss" />
     <Content Include="Features\Landing\Assets\Css\Partials\_carousel.scss" />
+    <Content Include="Features\Landing\Assets\Js\Modules\carousel\Css\carousel.slide.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1120,7 +1121,6 @@
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--searchresults.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.tsx" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.keywordSearch.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />

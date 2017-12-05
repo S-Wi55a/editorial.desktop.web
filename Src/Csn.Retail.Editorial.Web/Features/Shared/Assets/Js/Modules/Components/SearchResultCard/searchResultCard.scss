@@ -56,7 +56,7 @@
     }
 
     &__image-frame {
-        padding-top: percentage((2/3));
+        padding-top: percentage((2/3)) - 1; // HAck becasue a 1 pixel line is showing b/c there may difference b/w aspect ratio from the browser and image
         position: relative;
         overflow: hidden;
         border-top-left-radius: 4px;
@@ -89,7 +89,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate3d(-50%, -50%, 0);
+        transform: translate(-50%, -50%);
     }
     
     &__image-loader {
@@ -268,33 +268,4 @@
             color: $cs-dark-grey-1;
         }
     }
-    //Transition
-
-    // &.iNavSearchResultsTransition-appear {
-    //     opacity: 0.01;
-    //   }
-      
-    // &.iNavSearchResultsTransition-appear.iNavSearchResultsTransition-appear-active {
-    //     opacity: 1;
-    //     transition: opacity 500ms;
-    //   }
 }
-
-
-// .iNavSearchResultsTransition-enter {
-//     opacity: 0.01;
-// }
-
-// .iNavSearchResultsTransition-enter.iNavSearchResultsTransition-enter-active {
-//     opacity: 1;
-//     transition: opacity 500ms;
-// }
-
-// .iNavSearchResultsTransition-exit {
-//     opacity: 1;
-// }
-
-// .iNavSearchResultsTransition-exit.iNavSearchResultsTransition-exit-active {
-//     opacity: 0.01;
-//     transition: opacity 300ms;
-// }
