@@ -23,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _seoListingUrlRedirectLogger = seoListingUrlRedirectLogger;
         }
 
-        [Route("editorial/{articleSlug:regex(^(news|reviews|videos|advice))}")]
+        [Route("editorial/{articleSlug:article-types}")]
         [RedirectAttributeFilter]
         public async Task<ActionResult> ArticleTypeListing(ArticleTypeListingQuery query)
         {
