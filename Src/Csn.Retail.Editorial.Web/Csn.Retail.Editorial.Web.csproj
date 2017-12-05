@@ -550,6 +550,8 @@
     <Compile Include="Features\Details\Mappings\MappingSetupTask.cs" />
     <Compile Include="Features\Errors\ErrorsController.cs" />
     <Compile Include="Features\Errors\UrlNotFoundLogger.cs" />
+    <Compile Include="Features\Listings\ArticleTypeListingQuery.cs" />
+    <Compile Include="Features\Listings\ArticleTypeListingQueryHandler.cs" />
     <Compile Include="Features\Listings\Constants\ListingsQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
@@ -573,6 +575,8 @@
     <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Mappings\SeoDataMapper.cs" />
+    <Compile Include="Features\Listings\ModelBinders\ArticleTypeListingQueryModelBinder.cs" />
+    <Compile Include="Features\Listings\ModelBinders\ArticleTypeLookup.cs" />
     <Compile Include="Features\Listings\ModelBinders\GetListingsQueryModelBinder.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Shared\Extensions\SearchActionExtensions.cs" />

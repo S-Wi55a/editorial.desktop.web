@@ -62,6 +62,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 query.Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query;
             }
             
+            // TODO: replace this with a redirect to the rose tree syntax query with keyword in the ryvuss query
             if (!string.IsNullOrEmpty(query.Keywords))
             {
                 query.Query = _expressionFormatter.Format(query.QueryExpression?.AppendOrUpdateKeywords(query.Keywords));
@@ -102,7 +103,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             if (resultData == null) return null;
 
             // check in case there is an equivalent SEO URL that we can redirect to
-            if (_tenantProvider.Current().SupportsSeoFriendlyListings && !string.IsNullOrEmpty(resultData.Metadata?.Seo) && resultData.Metadata.Seo != query.SeoFragment)
+            if (_tenantProvider.Current().SupportsSeoFriendlyListings 
+                && !query.IsLandingPage
+                && !string.IsNullOrEmpty(resultData.Metadata?.Seo) 
+                && resultData.Metadata.Seo != query.SeoFragment)
             {
                 return new GetListingsResponse()
                 {
