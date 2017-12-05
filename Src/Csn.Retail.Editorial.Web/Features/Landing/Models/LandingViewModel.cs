@@ -8,10 +8,10 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
 {
     public class LandingViewModel
     {
-        public List<Category> Categories { get; set; }
+        public List<CarouselViewModel> Carousels { get; set; }
     }
 
-    public class Category
+    public class CarouselViewModel
     {
         public string Title { get; set; }
         public List<SearchResult> CategoryItems { get; set; }

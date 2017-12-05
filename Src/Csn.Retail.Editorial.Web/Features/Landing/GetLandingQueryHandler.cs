@@ -20,9 +20,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             {
                 LandingViewModel = new LandingViewModel
                 {
-                    Categories = new List<Category>
+                    Carousels = new List<CarouselViewModel>
                     {
-                        new Category
+                        new CarouselViewModel()
                         {
                             Title = "Featured",
                             Link = "#",
