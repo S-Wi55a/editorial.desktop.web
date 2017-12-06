@@ -3,7 +3,6 @@ using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
-using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
 {
@@ -11,16 +10,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
     {
         public string Resolve(FacetNodeDto source, FacetNode destination, string destMember, ResolutionContext context)
         {
-            var sortOrder = context.Items.TryGetValue("sortOrder", out var result)
-                ? result?.ToString()
-                : string.Empty;
+            var sortOrder = context.Items.TryGetValue("sortOrder", out var result) ? result?.ToString() : string.Empty;
 
-            if (source.MetaData?.Seo != null && source.MetaData.Seo.Any())
-            {
-                return ListingsUrlFormatter.GetSeoUrl(source.MetaData.Seo.First(), sortOrder: sortOrder);
-            }
-
-            return ListingsUrlFormatter.GetPathAndQueryString(source.Action, sortOrder: sortOrder);
+            return source.HasSeoLinks ? ListingsUrlFormatter.GetSeoUrl(source.MetaData.Seo.First(), sortOrder: sortOrder) : ListingsUrlFormatter.GetPathAndQueryString(source.Action, sortOrder: sortOrder);
         }
     }
     
@@ -28,10 +20,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
     {
         public string Resolve(FacetNodeDto source, FacetNode destination, string destMember, ResolutionContext context)
         {
-            var sortOrder = context.Items.TryGetValue("sortOrder", out var result)
-                ? result?.ToString()
-                : string.Empty;            
-            return ListingsUrlFormatter.GetQueryString(source.Action, sortOrder);
+            var sortOrder = context.Items.TryGetValue("sortOrder", out var result) ? result?.ToString() : string.Empty;
+
+            return  ListingsUrlFormatter.GetQueryString(source.HasSeoLinks ? source.MetaData.Seo.First(): source.Action, sortOrder);
         }
     }
 }

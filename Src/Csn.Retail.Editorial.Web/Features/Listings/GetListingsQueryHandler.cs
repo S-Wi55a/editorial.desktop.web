@@ -62,28 +62,33 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 query.Query = string.IsNullOrEmpty(query.Query) ? $"Service.{_tenantProvider.Current().Name}." : query.Query;
             }
             
+            // TODO: replace this with a redirect to the rose tree syntax query with keyword in the ryvuss query
             if (!string.IsNullOrEmpty(query.Keywords))
             {
                 query.Query = _expressionFormatter.Format(query.QueryExpression?.AppendOrUpdateKeywords(query.Keywords));
             }
 
-            var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sort) ? query.Sort : EditorialSortKeyValues.ListingPageDefaultSort;
+            var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sort) ? query.Sort : string.Empty;
 
             var postProcessors = new List<string>();
+            postProcessors.AddRange(new[] { "Retail", "FacetSort" });
 
             if (_tenantProvider.Current().SupportsSeoFriendlyListings)
             {
                 postProcessors.Add("Seo");
+                postProcessors.Add("HideAspect(Service)");
             }
-
-            postProcessors.AddRange(new []{"Retail", "FacetSort", "ShowZero"});
+            else
+            {
+                postProcessors.Add("ShowZero");
+            }
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {
                 Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Query : query.SeoFragment,
                 Offset = query.Offset,
                 Limit = PageItemsLimit.ListingPageItemsLimit,
-                SortOrder = sortOrder,
+                SortOrder = string.IsNullOrEmpty(sortOrder) ? EditorialSortKeyValues.ListingPageDefaultSort : sortOrder,
                 IncludeCount = true,
                 IncludeSearchResults = true,
                 ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
@@ -98,16 +103,19 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             if (resultData == null) return null;
 
             // check in case there is an equivalent SEO URL that we can redirect to
-            if (_tenantProvider.Current().SupportsSeoFriendlyListings && !string.IsNullOrEmpty(resultData.Metadata?.Seo) && resultData.Metadata.Seo != query.SeoFragment)
+            if (_tenantProvider.Current().SupportsSeoFriendlyListings 
+                && !query.IsLandingPage
+                && !string.IsNullOrEmpty(resultData.Metadata?.Seo) 
+                && resultData.Metadata.Seo != query.SeoFragment)
             {
                 return new GetListingsResponse()
                 {
                     RedirectRequired = true,
-                    RedirectUrl = ListingsUrlFormatter.GetSeoUrl(resultData.Metadata.Seo, query.Offset, query.Sort)
+                    RedirectUrl = ListingsUrlFormatter.GetSeoUrl(resultData.Metadata.Seo, query.Offset, sortOrder)
                 };
             }
 
-            var searchContext = new SearchContext()
+            var searchContext = new SearchContext
             {
                 RyvussNavResult = resultData,
                 Query = string.IsNullOrEmpty(query.Query) ? resultData.Metadata?.Query : query.Query,
@@ -119,10 +127,16 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             _searchResultContextStore.Set(searchContext);
 
-            var navResults = _mapper.Map<NavResult>(resultData, opt => { opt.Items["sortOrder"] = query.Sort; });
-            navResults.INav.CurrentAction = ListingsUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Sort);
-            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingsUrlFormatter.GetSeoUrl(query.SeoFragment, query.Offset, query.Sort):
-                ListingsUrlFormatter.GetPathAndQueryString(query.Query, query.Offset, query.Sort);
+            var navResults = _mapper.Map<NavResult>(resultData, opt =>
+            {
+                if (!string.IsNullOrEmpty(sortOrder))
+                {
+                    opt.Items["sortOrder"] = sortOrder;
+                }
+            });
+            navResults.INav.CurrentAction = ListingsUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, sortOrder);
+            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingsUrlFormatter.GetSeoUrl(query.SeoFragment, query.Offset, sortOrder) :
+                ListingsUrlFormatter.GetPathAndQueryString(query.Query, query.Offset, sortOrder);
 
             return new GetListingsResponse
             {
@@ -131,7 +145,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 {
                     NavResults = navResults,
                     Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Keywords),
-                    Sorting = _sortingHelper.GenerateSortByViewModel(sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Keywords),
+                    Sorting = _sortingHelper.GenerateSortByViewModel(string.IsNullOrEmpty(sortOrder) ? EditorialSortKeyValues.ListingPageDefaultSort : sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Keywords),
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(resultData.Metadata?.Query).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),

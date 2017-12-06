@@ -3,20 +3,12 @@ using Autofac;
 using Csn.Cars.Cache.Builder;
 using Csn.Logging;
 using Csn.Logging.NLog3;
-using Csn.Retail.Editorial.Web.Features.Details;
-using Csn.Retail.Editorial.Web.Features.Errors;
-using Csn.Retail.Editorial.Web.Features.Listings.Helpers;
-using Csn.Retail.Editorial.Web.Features.Listings.Loggers;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
-using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.Serializers;
 using Csn.Serializers.Json;
 using Csn.SimpleCqrs;
-using Csn.WebMetrics.Editorial.Interfaces;
-using Csn.WebMetrics.Editorial.Ioc;
-using Csn.WebMetrics.Ext.Interfaces;
 using Expresso.Parser;
 using Expresso.Sanitisation;
 using Expresso.Syntax;
@@ -36,8 +28,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.Register(x => GetLogger.For<MvcApplication>()).As<ILogger>().SingleInstance();
             builder.RegisterType<NLogLoggerFactory>().As<ILoggerFactory>().SingleInstance();
             builder.Register(x => CacheStoreBuilder.New().Build()).As<Cars.Cache.ICacheStore>().SingleInstance();
-            builder.Register(x => EditorialSettings.Instance).As<EditorialSettings>().SingleInstance();
-            builder.Register(x => VideosApiSettings.Instance).As<VideosApiSettings>().SingleInstance();
+            
             builder.RegisterType<Serializer>().As<ISerializer>().SingleInstance();
             builder.RegisterType<SettingsProvider>().As<ISettingsProvider>().SingleInstance();
 

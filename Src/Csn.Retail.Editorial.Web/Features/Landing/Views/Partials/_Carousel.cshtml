@@ -1,0 +1,23 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Landing.Models.CarouselViewModel
+
+<div class="csn-carousel">
+    <div class="csn-carousel__info-bar">
+        @if (Model.Link != null)
+        {
+            
+            <h2 class="csn-carousel__title"><a href="@Model.Link">@Model.Title</a></h2>
+            
+            <a href="@Model.Link" class="csn-carousel__link">View all @Model.Title</a>
+        }
+        else
+        {
+            <h2 class="csn-carousel__title">@Model.Title</h2>
+        }
+    </div>
+    <div class="csn-carousel__placeholder csn-carousel--@Model.Title.ToLower()"></div>
+
+    @if (Model.HasMrec)
+    {
+        Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Mrec.cshtml");
+    }
+</div>

@@ -1,5 +1,7 @@
 using System.Web.Mvc;
+using System.Web.Mvc.Routing;
 using System.Web.Routing;
+using Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.StartUpTasks;
 
@@ -28,7 +30,10 @@ namespace Csn.Retail.Editorial.Web
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapMvcAttributeRoutes();
+            var constraintResolver = new DefaultInlineConstraintResolver();
+            constraintResolver.ConstraintMap.Add("article-types", typeof(ArticleTypeRouteConstraint));
+
+            routes.MapMvcAttributeRoutes(constraintResolver);
 
             routes.MapRoute(
                 name: "Default",

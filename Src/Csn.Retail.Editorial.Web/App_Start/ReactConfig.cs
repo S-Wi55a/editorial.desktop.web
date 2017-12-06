@@ -1,12 +1,12 @@
+using Autofac;
+using Csn.Retail.Editorial.Web.Infrastructure.Settings;
 using React;
-
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Csn.Retail.Editorial.Web.ReactConfig), "Configure")]
 
 namespace Csn.Retail.Editorial.Web
 {
 	public static class ReactConfig
 	{
-		public static void Configure()
+		public static void Configure(IContainer container)
 		{
             // If you want to use server-side rendering of React components, 
             // add all the necessary JavaScript files here. This includes 
@@ -21,18 +21,18 @@ namespace Csn.Retail.Editorial.Web
             //	.SetLoadBabel(false)
             //	.AddScriptWithoutTransform("~/Scripts/bundle.server.js")
 
+		    var settings = container.Resolve<ReactNetSettings>();
+
 		    ReactSiteConfiguration.Configuration
-		        .SetStartEngines(25)
-		        .SetMaxEngines(50)
-                .SetUseDebugReact(false)
-		        .SetReuseJavaScriptEngines(true) //TODO: remove in Prod
+		        .SetStartEngines(settings.StartEngines)
+		        .SetMaxEngines(settings.MaxEngines)
+                .SetUseDebugReact(settings.UseDebugReact)
+		        .SetReuseJavaScriptEngines(settings.ReuseJavaScriptEngines)
                 .SetLoadBabel(false)
                 .SetLoadReact(false)
                 .AddScriptWithoutTransform("/dist--server/react-server-components.js")
                 //.DisableServerSideRendering()
                 ;
-
-
 		}
     }
 }

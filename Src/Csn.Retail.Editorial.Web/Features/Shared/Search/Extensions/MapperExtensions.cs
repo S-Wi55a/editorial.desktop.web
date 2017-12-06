@@ -1,5 +1,4 @@
 using System.Linq;
-using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
@@ -15,43 +14,34 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
             return source.MetaData.IsRefineable.First();
         }
 
-        public static Refinement GetRefinement(this FacetNodeDto source)
+        public static RyvussNavNodeDto GetRefinements(this RyvussNavNodeDto source)
         {
-            if (source.MetaData?.RefineableAspects == null || !source.MetaData.RefineableAspects.Any())
-                return null;
-
-            var refineableAspect = source.MetaData.RefineableAspects.First();
-
-            return new Refinement()
-            {
-                Aspect = refineableAspect.Name,
-                ParentExpression = source.Expression
-            };
+            return source.MetaData?.Refinements?.FirstOrDefault();          
         }
 
-        public static RefinementsNodeDto GetRefinements(this RyvussNavNodeDto source)
+        public static RyvussNavNodeDto GetRefinements(this FacetNodeDto source)
         {
-            return source.MetaData?.Refinements?.FirstOrDefault();            
-        }
+            var refinements = source.MetaData?.Refinements?.FirstOrDefault();
 
-        public static RefinementsNodeDto GetRefinements(this FacetNodeDto source)
-        {
+            if (refinements != null) return refinements;
+
             if (source.IsSelected)
             {
-                return new RefinementsNodeDto
+                return new RyvussNavNodeDto
                 {
                     Facets = source.Refinements.Nodes.FirstOrDefault()?.Facets
                 };
             }
+
             return null;
         }
 
-        public static Refinement GetParentExpression(this RefinementsNodeDto source)
+        public static Refinement GetParentExpression(this RyvussNavNodeDto source)
         {
-            if(source.Metadata?.ParentExpression != null){
-                
-                return new Refinement {
-                    ParentExpression =  source.Metadata.ParentExpression.FirstOrDefault(),
+            if(source.MetaData?.ParentExpression != null){
+                return new Refinement
+                {
+                    ParentExpression = source.MetaData.ParentExpression.FirstOrDefault(),
                     Aspect = source.Name
                 };
             }

@@ -5,7 +5,6 @@ using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.WebMetrics.Core.Model;
-using Expresso.Expressions;
 using Expresso.Syntax;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
@@ -30,9 +29,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
                 Query = query,
                 SeoFragment = !string.IsNullOrEmpty(seoFragment) ? $"/{seoFragment}" : string.Empty,
                 Offset = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Offset, 0),
-                Sort = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Sort, EditorialSortKeyValues.ListingPageDefaultSort),
+                Sort = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Sort, string.Empty),
                 SearchEventType = GetActionType(),
-                QueryExpression = string.IsNullOrEmpty(query) ? null : _parser.TryParse(query)
+                QueryExpression = string.IsNullOrEmpty(query) ? null : _parser.TryParse(query),
+                IsLandingPage = false
             };
         }
 

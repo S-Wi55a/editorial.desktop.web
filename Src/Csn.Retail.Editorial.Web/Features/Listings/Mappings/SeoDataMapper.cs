@@ -25,7 +25,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             return new SeoData()
             {
                 AllowSeoIndexing = _tenantProvider.Current().AllowSeoIndexOfListing,
-                Title = ryvussNavResult.Metadata == null ? _tenantProvider.Current().DefaultPageTitle : ryvussNavResult.Metadata.Title
+                Title = ryvussNavResult.Metadata == null ? _tenantProvider.Current().DefaultPageTitle : ryvussNavResult.Metadata.Title,
+                CanonicalUrl = $"{_tenantProvider.Current().UrlProtocol}://{_tenantProvider.Current().SiteDomain}/editorial/results{(string.IsNullOrEmpty(ryvussNavResult.Metadata.Seo) ? "/" : ryvussNavResult.Metadata.Seo)}"
             };
         }
     }

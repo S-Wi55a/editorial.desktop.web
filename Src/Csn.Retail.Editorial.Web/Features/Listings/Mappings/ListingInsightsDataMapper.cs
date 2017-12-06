@@ -2,6 +2,7 @@
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Extensions;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Tracking.Scripts.Core;
 using Csn.Tracking.Scripts.Ryvus42;
@@ -33,7 +34,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             dimensions.Add(TrackingScriptTags.ContentGroup1, TrackingScriptContentGroups.NewsAndReviews);
             dimensions.Add(TrackingScriptTags.ContentGroup2, TrackingScriptPageTypes.Listing);
             dimensions.Add(TrackingScriptTags.Action, searchContext.SearchEventType.ToTrackingScriptPageType());
-            dimensions.Add(TrackingScriptTags.SortBy, string.IsNullOrEmpty(searchContext.Sort) ? string.Empty : searchContext.Sort);
+            dimensions.Add(TrackingScriptTags.SortBy, string.IsNullOrEmpty(searchContext.Sort) ? EditorialSortKeyValues.ListingPageDefaultSort : searchContext.Sort);
 
             return dimensions;
         }
