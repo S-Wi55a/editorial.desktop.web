@@ -11,6 +11,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
         {
             builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialDetailsTrackingContainerProvider>()).As<IEditorialDetailsTrackingContainerProvider>();
             builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialListingTrackingContainerProvider>()).As<IEditorialListingTrackingContainerProvider>();
+            builder.Register(x => ObjectFactory.Instance.Resolve<IEditorialLandingTrackingContainerProvider>()).As<IEditorialLandingTrackingContainerProvider>();
             builder.Register(x => ObjectFactory.Instance.Resolve<IWebMetricsTrackingScriptBuilder>()).As<IWebMetricsTrackingScriptBuilder>();
         }
     }

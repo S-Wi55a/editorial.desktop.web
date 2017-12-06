@@ -26,7 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
 
         public string MapNoResultInstructionMessage(int count)
         {
-            return count < 1 ? "Please refine your search by removing a breadcrumb." : string.Empty;
+            return count < 1 ? "Please refine your search by removing a selection." : string.Empty;
         }
     }
 }

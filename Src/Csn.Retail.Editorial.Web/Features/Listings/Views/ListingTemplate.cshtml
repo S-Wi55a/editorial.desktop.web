@@ -1,5 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Listings.Models
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Shared.Models
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Newtonsoft.Json
 @using React.Web.Mvc
@@ -58,5 +59,8 @@
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
     @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
-    @{ Html.RenderAction("HtmlTrackingListing", "Tracking"); }
+
+    @{
+        Html.RenderAction(Model.EditorialPageType == EditorialPageTypes.Landing ? "HtmlTracking" : "HtmlTrackingListing", "Tracking");
+    }
 }
