@@ -20,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
         [Route("editorial/api/v1/search/nav")]
         public async Task<IHttpActionResult> GetNav([FromUri]NavQuery query)
         {
-            var result = await _queryDispatcher.DispatchAsync<NavQuery, NavResult>(query);
+            var result = await _queryDispatcher.DispatchAsync<NavQuery, NavResult>(query ?? new NavQuery());
 
             if (result != null) return Ok(result);
 
