@@ -735,6 +735,7 @@
     <Compile Include="Infrastructure\Redirects\RedirectStrategy.cs" />
     <Compile Include="Infrastructure\RequestWrapper\IRequestWrapper.cs" />
     <Compile Include="Infrastructure\RequestWrapper\RequestWrapperExtensions.cs" />
+    <Compile Include="Infrastructure\Settings\ReactNetSettings.cs" />
     <Compile Include="Infrastructure\StartUpTasks\IStartUpTask.cs" />
     <Compile Include="Infrastructure\UserContext\IUserContext.cs" />
     <Compile Include="Infrastructure\UserContext\UserContext.cs" />
@@ -744,6 +745,7 @@
     <Compile Include="Ioc\CommonModule.cs" />
     <Compile Include="Ioc\ConventionsModule.cs" />
     <Compile Include="Ioc\MultiTenantModule.cs" />
+    <Compile Include="Ioc\SettingsModule.cs" />
     <Compile Include="Ioc\TrackingModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
