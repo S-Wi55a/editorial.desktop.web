@@ -30,7 +30,7 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking
 
             if (container == null) return null;
 
-            return PartialView("HtmlTracking", model: container.GenericHtmlTracking);
+            return PartialView("HtmlTracking", container.GenericHtmlTracking);
         }
 
         [ChildActionOnly]
@@ -40,7 +40,14 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking
 
             if (container == null) return null;
 
-            return PartialView("HtmlTracking", model: container.GenericHtmlTracking);
+            return PartialView("HtmlTracking", container.GenericHtmlTracking);
+        }
+
+        [ChildActionOnly]
+        public ActionResult HtmlTracking(GetPageTrackingContainerQuery containerQuery)
+        {
+            var container = _queryDispatcher.Dispatch<GetPageTrackingContainerQuery, IAnalyticsTrackingContainer>(containerQuery);
+            return PartialView("HtmlTracking", container.GenericHtmlTracking);
         }
     }
 }

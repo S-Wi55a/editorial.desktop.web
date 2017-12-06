@@ -104,7 +104,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             // check in case there is an equivalent SEO URL that we can redirect to
             if (_tenantProvider.Current().SupportsSeoFriendlyListings 
-                && !query.IsLandingPage
+                && query.EditorialPageType == EditorialPageTypes.Listing
                 && !string.IsNullOrEmpty(resultData.Metadata?.Seo) 
                 && resultData.Metadata.Seo != query.SeoFragment)
             {
@@ -122,7 +122,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 Offset = query.Offset,
                 Sort = sortOrder,
                 SeoFragment = query.SeoFragment,
-                SearchEventType = query.SearchEventType
+                SearchEventType = query.SearchEventType,
+                EditorialPageType = query.EditorialPageType
             };
 
             _searchResultContextStore.Set(searchContext);
@@ -151,7 +152,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs),
                     ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
                     InsightsData = _listingInsightsDataMapper.Map(searchContext),
-                    SeoData = _seoDataMapper.Map(resultData)
+                    SeoData = _seoDataMapper.Map(resultData),
+                    EditorialPageType = query.EditorialPageType
                 }
             };
         }

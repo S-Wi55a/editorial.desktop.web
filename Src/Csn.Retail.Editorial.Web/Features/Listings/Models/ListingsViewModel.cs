@@ -8,7 +8,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
     {
         public NavResult NavResults { get; set; }
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
-
         public PagingViewModel Paging { get; set; }
         public SortingViewModel Sorting { get; set; }
         public string Keyword { get; set; }    
@@ -16,5 +15,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
         public bool ShowSponsoredLinks { get; set; }
         public Dictionary<string, string> InsightsData { get; set; }
         public SeoData SeoData { get; set; }
+        public EditorialPageTypes EditorialPageType { get; set; }
     }
 }
