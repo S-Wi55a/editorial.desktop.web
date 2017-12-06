@@ -12,6 +12,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
 
         public List<FacetNode> Resolve(RyvussNavNodeDto source, NavNode destination, List<FacetNode> destMember, ResolutionContext context)
         {
+            if (source?.Facets == null || !source.Facets.Any()) return null;
+
             if (_refinementMapper == null)
             {
                 // I love implementing anti-patterns!!
