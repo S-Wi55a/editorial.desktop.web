@@ -6,6 +6,8 @@
     padding: 30px 30px 5px;
     margin-bottom: 35px;
     background-color: $cs-white;
+    position: relative;
+    z-index: 0;
 
     &__title {
         padding-bottom: 10px;
