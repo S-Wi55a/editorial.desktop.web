@@ -1125,7 +1125,6 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Fade\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Timer\index.js" />
-    <Content Include="Features\Details\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--searchresults.js" />

@@ -168,7 +168,7 @@ export function scrollingSimple(el, ref, e) {
         FORWARD: e.target.controller().info('scrollDirection') === 'FORWARD',
         REVERSE: e.target.controller().info('scrollDirection') === 'REVERSE',
         REACHED_TOP: e.scrollPos + ref.siteNavHeight <= Math.abs(document.querySelector('body').getBoundingClientRect().top - ref.wrapper.getBoundingClientRect().top),
-        REACHED_BOTTOM: e.scrollPos + el.offsetHeight >= Math.abs(document.querySelector('body').getBoundingClientRect().top - document.querySelector('#page-footer').getBoundingClientRect().top)     
+        REACHED_BOTTOM: e.scrollPos + el.offsetHeight + ref.siteNavHeight >= Math.abs(document.querySelector('body').getBoundingClientRect().top - document.querySelector('#page-footer').getBoundingClientRect().top)     
     }
 
     if (state.FORWARD) {
@@ -183,7 +183,7 @@ export function scrollingSimple(el, ref, e) {
 
         //Reached footer
         if (state.REACHED_BOTTOM && !lock.down.HAS_REACHED_BOTTOM) {
-            if (process.env.DEBUG) { console.log('simple Down 1') }
+            if (process.env.DEBUG) { console.log('Simple Down 1') }
                
             const css = {  
                 top: ref.footerCoordinatesTop() - el.offsetHeight  + 'px',
