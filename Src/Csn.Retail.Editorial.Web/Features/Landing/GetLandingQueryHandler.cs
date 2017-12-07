@@ -45,7 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                         },
                         new CarouselViewModel
                         {
-                            Title = "Review",
+                            Title = "Reviews",
                             Link = "#",
                             HasMrec = false,
                             CategoryItems = new List<SearchResult>
