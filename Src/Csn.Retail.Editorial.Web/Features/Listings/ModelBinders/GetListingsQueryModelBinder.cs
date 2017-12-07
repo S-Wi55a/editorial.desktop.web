@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
             var query = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Query, string.Empty);
             var seoFragment = bindingContext.ValueProvider.TryGetValueOrDefault("seoFragment", "");
 
-            return new GetListingsQuery()
+            return new GetListingsQuery
             {
                 Query = query,
                 SeoFragment = !string.IsNullOrEmpty(seoFragment) ? $"/{seoFragment}" : string.Empty,
@@ -32,7 +32,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
                 Sort = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Sort, string.Empty),
                 SearchEventType = GetActionType(),
                 QueryExpression = string.IsNullOrEmpty(query) ? null : _parser.TryParse(query),
-                IsLandingPage = false
+                EditorialPageType = EditorialPageTypes.Listing
             };
         }
 

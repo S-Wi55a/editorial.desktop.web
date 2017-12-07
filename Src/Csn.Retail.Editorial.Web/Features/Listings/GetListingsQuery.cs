@@ -1,4 +1,5 @@
-﻿using Csn.SimpleCqrs;
+﻿using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.SimpleCqrs;
 using Csn.WebMetrics.Core.Model;
 using Expresso.Expressions;
 
@@ -15,6 +16,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public string SeoFragment { get; set; }
 
         public SearchEventType SearchEventType { get; set; }
-        public bool IsLandingPage { get; set; }
+        public EditorialPageTypes EditorialPageType { get; set; }
     }
 }

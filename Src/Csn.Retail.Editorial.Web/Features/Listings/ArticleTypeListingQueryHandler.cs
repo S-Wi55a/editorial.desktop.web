@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Csn.Retail.Editorial.Web.Features.Listings.ModelBinders;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.SimpleCqrs;
 using Expresso.Expressions;
@@ -25,11 +26,11 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             var expression = string.IsNullOrEmpty(facetName) ? Expression.Create() : new FacetExpression("Type", facetName);
 
-            return new GetListingsQuery()
+            return new GetListingsQuery
             {
                 Query = _expressionFormatter.Format(expression),
                 QueryExpression = expression,
-                IsLandingPage = true
+                EditorialPageType = EditorialPageTypes.Landing
             };
         }
     }
