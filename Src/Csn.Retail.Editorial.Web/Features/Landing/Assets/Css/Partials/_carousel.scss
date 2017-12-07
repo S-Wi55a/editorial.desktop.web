@@ -1,7 +1,7 @@
 ﻿@import "css/_globals.scss";
 
 .csn-carousel {
-
+    position: relative;
 
     &__info-bar {
         position: relative;
@@ -35,4 +35,23 @@
             text-decoration: none;
         }
     }
+
+    &--mrec {
+        .csn-carousel__placeholder {
+            width: calc(100% - 370px);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .mediamotive-mrec {
+            display: inline-block;
+            vertical-align: middle;
+            margin: auto 15px auto;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0,-50%);
+        }
+    }
 }
+

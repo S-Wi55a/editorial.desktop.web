@@ -12,7 +12,7 @@ const render = (WrappedComponent) => (container) => {
     ReactDOM.hydrate(
         <AppContainer carousel={container.id} >
             <Provider store={store}>
-                <WrappedComponent />
+                <WrappedComponent category={container.id}/>
             </Provider>
         </AppContainer>,
         container
