@@ -32,9 +32,13 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             var dimensions = GetTags(expression);
 
             dimensions.Add(TrackingScriptTags.ContentGroup1, TrackingScriptContentGroups.NewsAndReviews);
-            dimensions.Add(TrackingScriptTags.ContentGroup2, searchContext.EditorialPageType == EditorialPageTypes.Homepage ? TrackingScriptPageTypes.Homepage : TrackingScriptPageTypes.Listing);
-            dimensions.Add(TrackingScriptTags.Action, searchContext.SearchEventType.ToTrackingScriptPageType());
-            dimensions.Add(TrackingScriptTags.SortBy, string.IsNullOrEmpty(searchContext.Sort) ? EditorialSortKeyValues.ListingPageDefaultSort : searchContext.Sort);
+
+            if (searchContext.EditorialPageType != EditorialPageTypes.Homepage)
+            {
+                dimensions.Add(TrackingScriptTags.ContentGroup2, TrackingScriptPageTypes.Listing);
+                dimensions.Add(TrackingScriptTags.Action, searchContext.SearchEventType.ToTrackingScriptPageType());
+                dimensions.Add(TrackingScriptTags.SortBy, string.IsNullOrEmpty(searchContext.Sort) ? EditorialSortKeyValues.ListingPageDefaultSort : searchContext.Sort);
+            }
 
             return dimensions;
         }
