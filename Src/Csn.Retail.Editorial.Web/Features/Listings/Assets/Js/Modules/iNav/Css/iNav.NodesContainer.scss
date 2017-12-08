@@ -55,8 +55,8 @@
             .iNav-category__list {
                 max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height;     
                 
-                @media screen and (max-height: 700px) { 
-                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height)});            
+                @media screen and (max-height: 730px) { 
+                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px)});            
                  } 
             }
 
@@ -83,14 +83,14 @@
     }
 
     &__list-wrapper {
-        max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px;
+        max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px;
         display: inline-block;
         vertical-align: top;
         width: $category-container-width;
         padding: 0 $spacing;
 
-        @media screen and (max-height: 700px) { 
-            max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px)});            
+        @media screen and (max-height: 730px) { 
+            max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px)});            
          } 
 
 
@@ -99,8 +99,8 @@
             .iNav-category__list {
                 max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px - 40px;
                 
-                @media screen and (max-height: 700px) {
-                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height)});
+                @media screen and (max-height: 730px) {
+                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height + 15px)});
                 }
             }
         }
