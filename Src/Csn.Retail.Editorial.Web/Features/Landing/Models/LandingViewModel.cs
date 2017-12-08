@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing.Models
@@ -9,6 +6,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
     public class LandingViewModel
     {
         public List<CarouselViewModel> Carousels { get; set; }
+        public NavResult Nav { get; set; }
     }
 
     public class CarouselViewModel
