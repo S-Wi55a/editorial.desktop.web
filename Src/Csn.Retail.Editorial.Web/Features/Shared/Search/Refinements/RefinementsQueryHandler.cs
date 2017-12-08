@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
         {
             var postProcessors = new List<string>();
 
-            postProcessors.AddRange(new[] { "FacetSort", $"RetailAspectRefinements({query.RefinementAspect},{query.ParentExpression})" });
+            postProcessors.AddRange(new[] { "FacetSort", $"RetailAspectRefinements({query.RefinementAspect},{query.ParentExpression})", "RenderRefinements" });
 
             if (_tenantProvider.Current().SupportsSeoFriendlyListings)
             {
@@ -38,7 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
             else
             {
                 postProcessors.Add("ShowZero");
-            }            
+            }
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
             {

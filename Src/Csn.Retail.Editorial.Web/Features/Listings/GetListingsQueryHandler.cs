@@ -71,7 +71,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sort) ? query.Sort : string.Empty;
 
             var postProcessors = new List<string>();
-            postProcessors.AddRange(new[] { "Retail", "FacetSort" });
+            postProcessors.AddRange(new[] { "Retail", "FacetSort", "RenderRefinements" });
 
             if (_tenantProvider.Current().SupportsSeoFriendlyListings)
             {

@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         {
             var postProcessors = new List<string>();
 
-            postProcessors.AddRange(new[] { "Retail", "FacetSort" });
+            postProcessors.AddRange(new[] { "Retail", "FacetSort", "RenderRefinements" });
 
             if (_tenantProvider.Current().SupportsSeoFriendlyListings)
             {
