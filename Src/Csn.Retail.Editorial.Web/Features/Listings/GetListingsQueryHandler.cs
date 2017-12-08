@@ -71,7 +71,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sort) ? query.Sort : string.Empty;
 
             var postProcessors = new List<string>();
-            postProcessors.AddRange(new[] { "Retail", "FacetSort", "RenderRefinements" });
+            postProcessors.AddRange(new[] { "Retail", "FacetSort" });
 
             if (_tenantProvider.Current().SupportsSeoFriendlyListings)
             {
@@ -82,6 +82,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             {
                 postProcessors.Add("ShowZero");
             }
+
+            postProcessors.Add("RenderRefinements");
 
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
             {

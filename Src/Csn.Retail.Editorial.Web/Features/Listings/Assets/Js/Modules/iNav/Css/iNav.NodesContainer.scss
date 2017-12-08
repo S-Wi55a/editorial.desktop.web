@@ -97,7 +97,11 @@
         &:nth-of-type(n+2) {
             display: none;
             .iNav-category__list {
-                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px - 40px;                
+                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px - 40px;
+                
+                @media screen and (max-height: 700px) {
+                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height)});
+                }
             }
         }
 
