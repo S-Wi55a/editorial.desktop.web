@@ -98,9 +98,9 @@ class INavSearchResults extends React.Component {
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        searchResults: state.store.listings.navResults.searchResults,
+        searchResults: state.store.nav.navResults.searchResults,
         isInsert: state['ui/INavSearchResultsContainer'] ? state['ui/INavSearchResultsContainer'].isInsert : false,            
-        shortname: state.store.listings.disqusSource 
+        shortname: state.store.nav.disqusSource 
     }
 }
 

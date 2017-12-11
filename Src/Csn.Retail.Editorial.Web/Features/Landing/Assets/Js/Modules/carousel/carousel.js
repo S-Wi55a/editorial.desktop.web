@@ -8,11 +8,11 @@ import Carousel from 'carousel/Component/carouselComponent'
 //Check for Store
 const store = window.store
 
-const render = (WrappedComponent) => (container) => {
+const render = (WrappedComponent) => (container, i) => {
     ReactDOM.hydrate(
         <AppContainer carousel={container.id} >
             <Provider store={store}>
-                <WrappedComponent category={container.id}/>
+                <WrappedComponent category={container.id} index={i}/>
             </Provider>
         </AppContainer>,
         container
@@ -20,16 +20,5 @@ const render = (WrappedComponent) => (container) => {
 };
 
 export default render(Carousel)
-
-//If store exists
-//if (store) {
-    
-//    //Render Carousel Components
-//    render(Carousel)
-
-//    if (module.hot) {
-//        module.hot.accept('iNav/Containers/iNavContainer', () => render(INav));
-//    }
-//}
 
 

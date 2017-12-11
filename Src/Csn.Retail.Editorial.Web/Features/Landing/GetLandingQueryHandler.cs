@@ -32,7 +32,10 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             {
                 LandingViewModel = new LandingViewModel
                 {
-                    Nav = await GetNav(),
+                    Nav = new Models.Nav()
+                    {
+                        NavResults = await GetNav()
+                    },
                     Carousels = new List<CarouselViewModel>
                     {
                         new CarouselViewModel
@@ -52,8 +55,63 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                                     ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
                                     Label = null,
                                     Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
                                 }
-           
+
                             }
                         },
                         new CarouselViewModel
@@ -63,6 +121,83 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                             HasMrec = false,
                             CategoryItems = new List<SearchResult>
                             {
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
+                                new SearchResult()
+                                {
+                                    DisqusArticleId=  "EDITORIAL-110025",
+                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
+                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
+                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
+                                    DateAvailable = "November 30th",
+                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
+                                    Label = null,
+                                    Type = "News"
+                                },
                                 new SearchResult()
                                 {
                                     DisqusArticleId=  "EDITORIAL-110025",

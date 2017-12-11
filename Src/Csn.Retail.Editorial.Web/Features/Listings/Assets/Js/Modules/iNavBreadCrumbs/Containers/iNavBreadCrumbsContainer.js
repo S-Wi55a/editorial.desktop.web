@@ -37,7 +37,7 @@ const INavBreadCrumbs = ({ breadCrumbs, fetchINavAndResults }) => (
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        breadCrumbs: state.store.listings.navResults.iNav.breadCrumbs ? state.store.listings.navResults.iNav.breadCrumbs : []
+        breadCrumbs: state.store.nav.navResults.iNav.breadCrumbs ? state.store.nav.navResults.iNav.breadCrumbs : []
     }
 }
 

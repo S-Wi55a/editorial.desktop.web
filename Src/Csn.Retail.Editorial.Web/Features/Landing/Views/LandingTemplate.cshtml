@@ -25,6 +25,8 @@
 
 <div class="landing-page">
     @*Header*@
+    @Html.React("global.Components.INav", new {state = Model.Nav}, containerId: "iNav")
+
     <div class="main container-fluid">
         @foreach (var carousel in Model.Carousels)
         {
@@ -473,6 +475,6 @@
 
 @section BottomScripts
 {
-    
-
+    @Html.React("global.Components.INavPreloadedState", new {state = Model.Nav}, containerId: "INavPreloadedState")
+    @Html.React("global.Components.CarouselPreloadedState", new { state = Model.Carousels }, containerId: "CarouselPreloadedState")
 }

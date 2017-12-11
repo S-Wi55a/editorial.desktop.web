@@ -8,8 +8,8 @@ export const iNavParentReducer = (initState: any = null) => {
 
     return (
         state = {
-            listings: initState,
-            history: { listings: initState }
+            nav: initState,
+            history: { nav: initState }
         },
         action: Actions
     ) => {
@@ -20,7 +20,7 @@ export const iNavParentReducer = (initState: any = null) => {
             }
             default:
                 return {
-                    listings: iNavReducer(state.listings, action),
+                    nav: iNavReducer(state.nav, action),
                     history: iNavHistoryReducer(state.history, action)
                 }
 
@@ -33,10 +33,10 @@ function iNavMenuReducer(state: any, action: Actions) {
     try {
         return update(state,
             {
-                listings: {
+                nav: {
                     navResults: {
                         iNav: {
-                            $set: state.history.listings.navResults.iNav
+                            $set: state.history.nav.navResults.iNav
                         }
                     }
                 }

@@ -7,7 +7,7 @@ export const iNavHistoryReducer = (state: any, action: Actions) => {
                 case ActionTypes.INAV.UPDATE_PREVIOUS_STATE:
                     return {
                         ...state,
-                        listings: { ...action.payload.data }                        
+                        nav: { ...action.payload.data }                        
                     }
                 case ActionTypes.INAV.ADD_PROMOTED_ARTICLE:
                     return promotedReducer(state, action)
@@ -19,10 +19,10 @@ export const iNavHistoryReducer = (state: any, action: Actions) => {
 function promotedReducer(state: IStore, action: Actions) {
     
     try {
-        if(state.listings.navResults.count > action.payload.location) {      
+        if(state.nav.navResults.count > action.payload.location) {      
             const newState = update(state,
                 {
-                    listings: {
+                    nav: {
                         navResults: {
                             searchResults: {
                                 [action.payload.location]: {

@@ -6,7 +6,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
     public class LandingViewModel
     {
         public List<CarouselViewModel> Carousels { get; set; }
-        public NavResult Nav { get; set; }
+        public Nav Nav { get; set; }
     }
 
     public class CarouselViewModel
@@ -15,5 +15,10 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public List<SearchResult> CategoryItems { get; set; }
         public string Link { get; set; }
         public bool HasMrec { get; set; }
+    }
+
+    public class Nav
+    { 
+        public NavResult NavResults { get; set; }
     }
 }

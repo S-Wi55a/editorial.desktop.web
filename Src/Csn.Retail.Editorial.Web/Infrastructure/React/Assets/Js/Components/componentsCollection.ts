@@ -20,6 +20,10 @@ export const Components = {
     INavSorting: ReactServerConnect(INavSortingContainer)('store', Reducers['listings']),
     INavSearchResults: ReactServerConnect(INavSearchResultsContainer)('store', Reducers['listings']),
     INavBreadCrumbs: ReactServerConnect(INavBreadCrumbsContainer)('store', Reducers['listings']),
-    INav: ReactServerConnect(INav)('store', Reducers['listings'])
+    INav: ReactServerConnect(INav)('store', Reducers['listings']),
+
+    //Carousel
+    CarouselPreloadedState: ReactServerConnect(PreloadedState)('carousels', Reducers['carousels'], true),
+
 }
 

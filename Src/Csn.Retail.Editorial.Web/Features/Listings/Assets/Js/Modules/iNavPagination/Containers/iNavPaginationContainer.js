@@ -55,7 +55,7 @@ const INavPagination = ({ paging, fetchQuery }) =>  {
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        paging: state.store.listings.paging
+        paging: state.store.nav.paging
     }
 }
 

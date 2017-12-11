@@ -36,6 +36,10 @@
         }
     }
 
+    &__container {
+        position: relative;
+    }
+
     &--mrec {
         .csn-carousel__placeholder {
             width: calc(100% - 370px);
