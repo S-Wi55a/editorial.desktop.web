@@ -33,8 +33,8 @@ const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({
 
 const mapStateToProps = (state: any, ownProps: IINavConfirmCancelBar) => {
     return {
-        count: typeof state.store.listings.navResults.iNav.pendingQueryCount !== 'undefined' ? state.store.listings.navResults.iNav.pendingQueryCount : state.store.listings.navResults.count,
-        pendingAction: typeof state.store.listings.navResults.iNav.pendingUrl !== 'undefined' ? state.store.listings.navResults.iNav.pendingUrl : state.store.listings.navResults.iNav.currentUrl,
+        count: typeof state.store.nav.navResults.iNav.pendingQueryCount !== 'undefined' ? state.store.nav.navResults.iNav.pendingQueryCount : state.store.nav.navResults.count,
+        pendingAction: typeof state.store.nav.navResults.iNav.pendingUrl !== 'undefined' ? state.store.nav.navResults.iNav.pendingUrl : state.store.nav.navResults.iNav.currentUrl,
     }
 }
 

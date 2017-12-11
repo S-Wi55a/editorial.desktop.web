@@ -36,7 +36,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
         const q = 
             typeof query !== 'undefined' ? 
             decodeURI(query).replace('<!>', keyword) : //Will stil use query even if no match in replace
-            getState().store.listings.navResults.iNav.pendingUrl ? getState().store.listings.navResults.iNav.pendingUrl : getState().store.listings.navResults.iNav.currentUrl
+            getState().store.nav.navResults.iNav.pendingUrl ? getState().store.nav.navResults.iNav.pendingUrl : getState().store.nav.navResults.iNav.currentUrl
         
         // TODO: REMOVE FOR PHASE 2
         return window.location.assign(q)
@@ -51,7 +51,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
         //         dispatch([
         //             { type: ActionTypes.API.INAV.FETCH_QUERY_SUCCESS, payload: { data } },
         //             { type: ActionTypes.INAV.UPDATE_PREVIOUS_STATE,  payload: { data } },
-        //             { type: ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT, payload: {event: 'csn_editorial.listings.fetchNativeAds'}}     //TODO: this can come from the action               
+        //             { type: ActionTypes.INAV.EMIT_NATIVE_ADS_EVENT, payload: {event: 'csn_editorial.nav.fetchNativeAds'}}     //TODO: this can come from the action               
         //         ])
         //     )
     }

@@ -571,7 +571,7 @@
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.js" />
-    <Content Include="Features\Landing\Assets\Js\Modules\carousel\Reducers\index.js" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Reducers\index.ts" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\iNavArticleCount.js" />
