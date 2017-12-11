@@ -1,0 +1,8 @@
+﻿@using React.Web.Mvc
+@model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
+
+
+<div class="hero" style="height: 450px; background-color: #000000; position: relative;">
+    <h1>Search All News & Reviews</h1>
+    @Html.React("global.Components.INav", new {state = Model.Nav}, containerId: "iNav", containerClass: "iNav--v2")
+</div>

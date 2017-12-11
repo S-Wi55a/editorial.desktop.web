@@ -25,7 +25,7 @@
 
 <div class="landing-page">
     @*Header*@
-    @Html.React("global.Components.INav", new {state = Model.Nav}, containerId: "iNav")
+    @{ Html.RenderPartial("~/Features/Landing/Views/Partials/_Hero.cshtml", Model); }
 
     <div class="main container-fluid">
         @foreach (var carousel in Model.Carousels)
