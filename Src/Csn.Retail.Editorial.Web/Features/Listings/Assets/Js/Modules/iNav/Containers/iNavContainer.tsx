@@ -42,7 +42,7 @@ class INav extends React.Component<IINavNodes> {
       this._scene = new ScrollMagic.Scene({
               triggerElement: document.querySelector('.iNav'),
               triggerHook: 0,
-              offset: -1 * (document as any).querySelector('.site-nav-wrapper').offsetHeight
+              offset: -1 * (document as any).querySelector('.site-nav-wrapper') ? (document as any).querySelector('.site-nav-wrapper').offsetHeight : 40
           })
           .setPin(document.querySelector('.iNav'), {spacerClass: 'scrollmagic-pin-spacer--iNav'})
           .addTo((window as any).scrollMogicController);
