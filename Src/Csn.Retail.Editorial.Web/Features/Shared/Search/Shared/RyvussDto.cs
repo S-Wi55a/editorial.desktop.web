@@ -18,6 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public string Title { get; set; }
         public string H1 { get; set; }
         public string Query { get; set; }
+        public string Description { get; set; }
     }
 
     public class RyvussNavDto

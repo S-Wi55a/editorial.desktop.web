@@ -31,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
                 AllowSeoIndexing = _tenantProvider.Current().AllowSeoIndexOfListing,
                 Title = ryvussNavResult.Metadata == null ? _tenantProvider.Current().DefaultPageTitle : ryvussNavResult.Metadata.Title,
                 CanonicalUrl = $"{protocolAndDomain}{_requestContext.Url.AbsolutePath}",
-                AlternateUrl = $"{protocolAndDomain}{_tenantProvider.Current().AlternateUrl}",
+                AlternateUrl = $"{protocolAndDomain}{_tenantProvider.Current().ListingsAlternateUrl}",
                 Description = ryvussNavResult.Metadata == null ? string.Empty : ryvussNavResult.Metadata.Description
             };
         }
