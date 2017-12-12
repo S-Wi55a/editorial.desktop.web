@@ -9,6 +9,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
+using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
 {
@@ -18,23 +19,33 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly IEditorialRyvussApiProxy _ryvussProxy;
         private readonly IMapper _mapper;
+        private ISmartServiceClient _restClient;
 
-        public GetLandingQueryHandler(ITenantProvider<TenantInfo> tenantProvider, IEditorialRyvussApiProxy ryvussProxy, IMapper mapper)
+        public GetLandingQueryHandler(ITenantProvider<TenantInfo> tenantProvider, IEditorialRyvussApiProxy ryvussProxy, IMapper mapper, ISmartServiceClient restClient)
         {
             _tenantProvider = tenantProvider;
             _ryvussProxy = ryvussProxy;
             _mapper = mapper;
+            _restClient = restClient;
         }
 
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
+
+            var navResults = GetNav();
+
+            var campaignAd = GetAdUnit();
+
+            await Task.WhenAll(navResults, campaignAd);
+
             return new GetLandingResponse
             {
                 LandingViewModel = new LandingViewModel
                 {
+                    Title = "Search All News & Reviews",
                     Nav = new Models.Nav()
                     {
-                        NavResults = await GetNav()
+                        NavResults = navResults.Result
                     },
                     Carousels = new List<CarouselViewModel>
                     {
@@ -212,7 +223,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
                             }
                         }
-                    }
+                    },
+                    CampaignAd = campaignAd.Result
+
                 }
             };
         }
@@ -255,5 +268,16 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             return _mapper.Map<NavResult>(resultData);
         }
+
+        private async Task<CampaignAdResult> GetAdUnit()
+        {
+            return await _restClient.Service("api-retail-homepage")
+                .Path("v2/carsales")
+                .GetAsync<HomePageModel>()
+                //.WithDefaultData(new HeroAdUnit())
+                .ContinueWith(x => x.Result.Data.CampaignAd);
+        }
+
+
     }
 }

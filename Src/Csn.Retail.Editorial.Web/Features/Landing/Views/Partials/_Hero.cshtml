@@ -2,7 +2,62 @@
 @model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
 
 
-<div class="hero" style="height: 450px; background-color: #000000; position: relative;">
-    <h1>Search All News & Reviews</h1>
+@if (Model.CampaignAd.ImageUrl != null)
+{
+    <style>
+        .hero-image {
+            background-image: url("@(Model.CampaignAd.ImageUrl)&aspect=centered&width=1920&height=520");
+        }
+    </style>
+}
+
+
+<div class="hero hero-image">
+    
+    @{ Html.RenderPartial("~/Features/Landing/Views/Partials/_Header.cshtml"); }
+    
+    <h1 class="hero__title">@Model.Title</h1>
+    
     @Html.React("global.Components.INav", new {state = Model.Nav}, containerId: "iNav", containerClass: "iNav--v2")
+    
+    <div class="component component--hero-image-content" data-webm-section="Home-BannerAd">
+
+        <div class="main-text__left">
+            <p class="main-text__link">
+                @if (Model.CampaignAd.LeftSection.IsShown)
+                {
+                    if (Model.CampaignAd.LeftSection.IsLinked)
+                    {
+                        <a class="link-transition" href="@Model.CampaignAd.LeftSection.LinkUrl" target="_blank">@Model.CampaignAd.LeftSection.LinkText</a>
+                    }
+                    else
+                    {
+                        @Model.CampaignAd.LeftSection.LinkText
+                    }
+                }
+                else
+                {
+                    <text>&nbsp;</text>
+                }
+            </p>
+        </div>
+
+        @if (Model.CampaignAd.RightSection.IsShown)
+        {
+            <div class="main-text__right">
+                <p class="main-text__title">@Model.CampaignAd.RightSection.Title</p>
+                @if (!string.IsNullOrWhiteSpace(Model.CampaignAd.RightSection.LinkUrl))
+                {
+                    <p class="main-text__link">
+                        <a class="link-transition" href="@Model.CampaignAd.RightSection.LinkUrl" target="@Model.CampaignAd.RightSection.LinkTarget" data-webm-clickvalue="Home-BannerAd-Link">@Model.CampaignAd.RightSection.LinkText</a>
+                    </p>
+                }
+            </div>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.CampaignAd.ImpressionTrackerUrl))
+        {
+            <img width="1" height="1" border="0" src="@Model.CampaignAd.ImpressionTrackerUrl/site=allpoints/area=impressiontracker/size=1x1/viewid=@Model.CampaignAd.TrackerRandomNumber/random=@Model.CampaignAd.TrackerRandomNumber" />
+        }
+    </div>
 </div>
