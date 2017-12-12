@@ -27,19 +27,29 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
     
         dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST })
 
-        const keyword = 
-            typeof getState().form.keywordSearch !== 'undefined' &&
-            typeof getState().form.keywordSearch.values !== 'undefined' &&
-            typeof getState().form.keywordSearch.values.keyword !== 'undefined' ?
-                   getState().form.keywordSearch.values.keyword : undefined
+        const state = getState()
 
-        const q = 
-            typeof query !== 'undefined' ? 
-            decodeURI(query).replace('<!>', keyword) : //Will stil use query even if no match in replace
-            getState().store.nav.navResults.iNav.pendingUrl ? getState().store.nav.navResults.iNav.pendingUrl : getState().store.nav.navResults.iNav.currentUrl
+        const keyword = state.form.keywordSearch.values.keyword
         
+        // If a keyword query is passed
+        if (typeof query !== 'undefined') {
+            if (keyword !== '') {
+                query = decodeURI(query).replace('<!>', keyword)
+            } else {
+                query = state.store.nav.navResults.iNav.breadCrumbs.length > 0
+                    ? state.store.nav.navResults.iNav.breadCrumbs[0].removeAction
+                    : state.store.nav.navResults.iNav.currentUrl
+            }
+        } else {
+            if (typeof state.store.nav.navResults.iNav.pendingUrl !== 'undefined') {
+                query = state.store.nav.navResults.iNav.pendingUrl
+            } else {
+                query = state.store.nav.navResults.iNav.currentUrl
+            }
+        }
+
         // TODO: REMOVE FOR PHASE 2
-        return window.location.assign(q)
+        return window.location.assign(query)
 
         // return fetch(`${iNav.api}?${q}`)
         //     .then(
