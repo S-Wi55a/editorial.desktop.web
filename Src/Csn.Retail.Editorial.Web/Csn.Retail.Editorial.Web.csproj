@@ -583,8 +583,6 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\iNavSearchResults.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Containers\iNavSortingContainer.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\iNavSorting.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\iNav.js" />
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
     <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
@@ -749,6 +747,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\Components\iNavMenuHeader.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\iNav.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\kruxSasHelper.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotive.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotiveLoader.js" />
@@ -1009,7 +1010,6 @@
     <Content Include="Features\Details\Assets\Css\Modules\SponsoredArticles\_sponsoredArticles.scss" />
     <Content Include="Features\Details\Views\Partials\Content\_SponsoredArticleTab.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Css\iNavBreadCrumbs.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResult.scss" />
     <Content Include="Features\Listings\Views\ListingTemplate.cshtml" />
@@ -1029,15 +1029,12 @@
     <Content Include="Features\Details\Views\Partials\Hero\_WideVideo.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_specModule.scss" />
     <Content Include="tsconfig.json" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.MenuHeader.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNavListItem.scss" />
     <Content Include="Features\Listings\Views\Carsales\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Partials\Content\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Bikesales\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Constructionsales\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Farmmachinerysales\_Disclaimer.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\ArticleDisclaimer\disclaimer.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.variables.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_articleDropCap.scss" />
     <Content Include="Features\Listings\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
@@ -1070,6 +1067,14 @@
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\Css\carousel.slide.scss" />
     <Content Include="Features\Landing\Views\Partials\_Hero.cshtml" />
     <Content Include="Features\Landing\Assets\Css\Partials\_hero.scss" />
+    <Content Include="Features\Landing\Views\Partials\_Header.cshtml" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNav.ConfirmCancelBar.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNav.keywordSearch.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNav.MenuHeader.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNav.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNav.variables.scss" />
+    <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNavListItem.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1090,48 +1095,39 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Component\iNavSearchResult.tsx" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actions.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actionTypes.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeaderItem.tsx" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.tsx" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Components\SearchResultCard\searchResultCard.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Actions\actions.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Actions\ActionTypes\api.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Actions\ActionTypes\iNav.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Actions\ActionTypes\index.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Actions\ActionTypes\ui.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Actions\thunks.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Components\iNavConfirmCancelBar.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Components\iNavFacet.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Components\iNavMenuHeaderItem.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Containers\iNavContainer.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Containers\iNavNodeContainer.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Reducers\history.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Reducers\index.ts" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\iNav\Types\index.ts" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Components\componentsCollection.ts" />
     <TypeScriptCompile Include="Infrastructure\React\Assets\Js\Reducers\registeredServerReducerCollection.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.ConfirmCancelBar.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavConfirmCancelBar.tsx" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.variables.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodeContainer.tsx" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavContainer.tsx" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactReduxUI\index.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actions.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\thunks.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\index.ts" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Types\index.ts" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavFacet.tsx" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\api.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\ui.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\index.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\iNav.ts" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorials_details.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Fade\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Timer\index.js" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--searchresults.js" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.keywordSearch.scss" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
-    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\MediaMotiveAds\Views\_TeAds.cshtml" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
@@ -1170,6 +1166,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />-->
   <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />-->
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
