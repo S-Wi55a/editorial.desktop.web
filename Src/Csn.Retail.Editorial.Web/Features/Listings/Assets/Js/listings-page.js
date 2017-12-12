@@ -13,7 +13,7 @@ window.store = configureStore(); //Init store
 (function redux(d) {
 
     // Check if there is a preloaded state from iNav
-    const initState = window.__PRELOADED_STATE__store.listings
+    const initState = window.__PRELOADED_STATE__store.nav
 
     window.store.addReducer('store', require('iNav/Reducers').iNavParentReducer(initState));
     window.store.addReducer('form', formReducer);

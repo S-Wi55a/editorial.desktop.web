@@ -24,10 +24,10 @@ const INavSorting = ({ sorting, isVisible, fetchQuery }) =>  {
 // Redux Connect
 const mapStateToProps = (state) => {
     return {
-        isVisible: !!state.store.listings.navResults.count,
-        sorting: state.store.listings.sorting,
+        isVisible: !!state.store.nav.navResults.count,
+        sorting: state.store.nav.sorting,
         initialValues: {
-            sortOrder: state.store.listings.sorting.sortListItems.find(el=>el.selected === true).url
+            sortOrder: state.store.nav.sorting.sortListItems.find(el=>el.selected === true).url
           }
     }
 }

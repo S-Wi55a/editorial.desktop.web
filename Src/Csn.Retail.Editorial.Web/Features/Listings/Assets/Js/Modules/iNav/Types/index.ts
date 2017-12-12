@@ -5,8 +5,8 @@ export interface State {
 }
 
 export interface IStore {
-    listings: INavResults
-    history: { listings: INavResults }
+    nav: INavResults
+    history: { nav: INavResults }
 }
 
 export interface INavResults {

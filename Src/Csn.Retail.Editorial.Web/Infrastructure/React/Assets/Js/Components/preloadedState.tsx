@@ -7,7 +7,10 @@ import { connect } from 'react-redux'
 function createMarkup(preloadedState: any, key: any) {
     
     //The key should be a top level part of the state tree
-    const state = preloadedState ? `window.__PRELOADED_STATE__${key} = ${JSON.stringify(preloadedState[key]).replace(/</g, '\\u003c')}` : ''
+    const state = preloadedState ? `
+        window.__PRELOADED_STATE__ = window.__PRELOADED_STATE__ || {}
+        window.__PRELOADED_STATE__${key} = ${JSON.stringify(preloadedState[key]).replace(/</g, '\\u003c')}
+        ` : ''
     return state
 }
 

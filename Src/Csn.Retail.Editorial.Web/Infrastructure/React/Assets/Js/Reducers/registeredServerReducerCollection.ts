@@ -1,7 +1,9 @@
-﻿import {iNavParentReducer} from 'iNav/Reducers'
+﻿import {iNavParentReducer} from "iNav/Reducers";
+import {carouselParentReducer} from "carousel/Reducers";
 
-const Reducers = {
-    listings: iNavParentReducer
-}
+const Reducers: any = {
+    listings: iNavParentReducer,
+    carousels: carouselParentReducer
+};
 
-export default Reducers
+export default Reducers;

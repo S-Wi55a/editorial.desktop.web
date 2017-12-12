@@ -16,9 +16,10 @@
         "Features/Shared/Assets/Js/Modules/*",
         "Features/Details/Assets/Js/Modules/*",
         "Features/Listings/Assets/Js/Modules/*",
+        "Features/Landing/Assets/Js/Modules/*",
         "Features/SiteNav/Assets/Js/Modules/*",
         "Features/Errors/Assets/Js/Modules/*",
-        "Infrastructure/React/Assets/Js/*"        
+        "Infrastructure/React/Assets/Js/*"
       ]
     }
   },

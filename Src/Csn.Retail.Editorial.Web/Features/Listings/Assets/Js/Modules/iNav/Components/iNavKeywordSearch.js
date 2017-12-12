@@ -42,9 +42,9 @@ let KeywordSearchComponent = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    keywordQuery: state.store.listings.navResults.iNav.keywordsPlaceholder,
+    keywordQuery: state.store.nav.navResults.iNav.keywordsPlaceholder,
     initialValues: {
-      keyword: state.store.listings.keyword
+      keyword: state.store.nav.keyword
     }
   }
 }
