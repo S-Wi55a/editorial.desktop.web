@@ -1,11 +1,28 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Shared.Models.SeoData
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@model Csn.Retail.Editorial.Web.Features.Shared.Models.SeoData
 
 <title>@Model.Title</title>
-<meta name="description" content="@Model.Description" />
-<meta name="keywords" content="@Model.Keywords"/>
+@if(!Model.Description.IsNullOrEmpty())
+{
+    <meta name="description" content="@Model.Description" />
+}
+
+@if (!Model.Keywords.IsNullOrEmpty())
+{
+    <meta name="keywords" content="@Model.Keywords"/>    
+}
+
 @if(!Model.AllowSeoIndexing)
 {
-<meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content="noindex, nofollow" />
 }
-<link rel="canonical" href="@Model.CanonicalUrl"/>
-<link rel="alternate" media="only screen and (max-width: 640px)" href="@Model.AlternateUrl"/>
+
+@if (!Model.CanonicalUrl.IsNullOrEmpty())
+{
+    <link rel="canonical" href="@Model.CanonicalUrl"/>    
+}
+
+@if(!Model.AlternateUrl.IsNullOrEmpty())
+{
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="@Model.AlternateUrl" />
+}
