@@ -6,14 +6,13 @@
     display: inline-block;
     position: absolute;
     right: $grid-gutter-width/2;
-    top: 30px;
+    top: 15px;
     border: solid 1px $cs-grey-1;
     border-radius: $iNav-border-radius;
     cursor: pointer;
     background-color: $cs-white;
 
     @include breakpoint($screen-lg) {
-        top: 45px;  
         right: $grid-gutter-width;
         
     }    
