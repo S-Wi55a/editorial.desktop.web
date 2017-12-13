@@ -36,7 +36,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
             if (keyword !== '') {
                 query = decodeURI(query).replace('<!>', keyword)
             } else {
-                query = state.store.nav.navResults.iNav.breadCrumbs.length > 0
+                query = state.store.nav.navResults.iNav.breadCrumbs.length > 0 && state.store.nav.navResults.iNav.breadCrumbs[0].type === 'KeywordBreadCrumb'
                     ? state.store.nav.navResults.iNav.breadCrumbs[0].removeAction
                     : state.store.nav.navResults.iNav.currentUrl
             }
