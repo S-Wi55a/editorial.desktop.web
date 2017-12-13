@@ -114,7 +114,10 @@
             @include h1();
         }
         &>h2 {
-            @include h2();
+            font-size:26px;
+            font-weight: 500;
+            letter-spacing: 0;
+            line-height:1.2;
         }
         &>h3 {
             @include h3();
