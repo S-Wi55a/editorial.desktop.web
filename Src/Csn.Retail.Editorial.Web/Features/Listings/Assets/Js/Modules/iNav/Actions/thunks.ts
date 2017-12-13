@@ -38,7 +38,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
             } else {
                 query = state.store.nav.navResults.iNav.breadCrumbs.length > 0 && state.store.nav.navResults.iNav.breadCrumbs[0].type === 'KeywordBreadCrumb'
                     ? state.store.nav.navResults.iNav.breadCrumbs[0].removeAction
-                    : state.store.nav.navResults.iNav.currentUrl
+                    : query
             }
         } else {
             if (typeof state.store.nav.navResults.iNav.pendingUrl !== 'undefined') {

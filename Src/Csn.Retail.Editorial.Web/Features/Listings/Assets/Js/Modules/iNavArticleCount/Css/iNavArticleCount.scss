@@ -6,14 +6,12 @@
         @include h3();
         color: $cs-dark-grey-2;
         line-height: $iNav-sort-height;
-        margin-top: 30px;
-        margin-bottom: 35px;
+        margin-top: 15px;
+        margin-bottom: 25px;
         display: inline-block;
         max-width: calc(100% - #{$iNav-sort-width} - #{$grid-gutter-width});
 
         @include breakpoint($screen-lg) {
-            margin-top: 45px;
-            margin-bottom: 45px;
             line-height: $iNav-sort-height;
             font-weight: $font-weight-400;
             font-size: 24px;
