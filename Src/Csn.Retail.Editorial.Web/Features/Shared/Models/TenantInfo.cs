@@ -14,6 +14,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public CultureInfo Culture { get; set; }
         public string SiteDomain { get; set; }
         public string UrlProtocol { get; set; }
+        public string ListingsAlternateUrl { get; set; }
 
         #region Seo
         public bool AllowSeoIndexOfDetails { get; set; }
