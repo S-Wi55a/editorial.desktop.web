@@ -33,12 +33,14 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
         
         // If a keyword query is passed
         if (typeof query !== 'undefined') {
-            if (keyword !== '') {
-                query = decodeURI(query).replace('<!>', keyword)
-            } else {
-                query = state.store.nav.navResults.iNav.breadCrumbs.length > 0 && state.store.nav.navResults.iNav.breadCrumbs[0].type === 'KeywordBreadCrumb'
-                    ? state.store.nav.navResults.iNav.breadCrumbs[0].removeAction
-                    : (typeof state.store.nav.navResults.iNav.pendingUrl !== 'undefined' ? state.store.nav.navResults.iNav.pendingUrl : state.store.nav.navResults.iNav.currentUrl)
+            if (decodeURI(query).includes('<!>')) {
+                if (keyword !== '') {
+                    query = decodeURI(query).replace('<!>', keyword)
+                } else {
+                    query = state.store.nav.navResults.iNav.breadCrumbs.length > 0 && state.store.nav.navResults.iNav.breadCrumbs[0].type === 'KeywordBreadCrumb'
+                        ? state.store.nav.navResults.iNav.breadCrumbs[0].removeAction
+                        : (typeof state.store.nav.navResults.iNav.pendingUrl !== 'undefined' ? state.store.nav.navResults.iNav.pendingUrl : state.store.nav.navResults.iNav.currentUrl)
+                }
             }
         } else {
             if (typeof state.store.nav.navResults.iNav.pendingUrl !== 'undefined') {
