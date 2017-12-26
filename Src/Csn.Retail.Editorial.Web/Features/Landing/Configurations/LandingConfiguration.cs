@@ -1,0 +1,24 @@
+﻿using System.Collections.Generic;
+
+namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
+{
+    public class LandingConfig
+    {
+        public List<LandingConfigurationSet> Configs { get; set; }
+    }
+
+    public class LandingConfigurationSet
+    {
+        public string Type { get; set; }
+        public List<LandingArticleSet> ArticleSets { get; set; }
+    }
+
+    public class LandingArticleSet
+    {
+        public string Title { get; set; }
+        public bool DisplayMrec { get; set; }
+        public string Aspect { get; set; }
+        public string Value { get; set; }
+        public string Sort { get; set; }
+    }
+}

@@ -1,0 +1,76 @@
+﻿{
+  "configs": [
+    {
+      "type": "default",
+      "articleSets": [
+        {
+          "title": "Featured",
+          "displayMrec": true,
+          "aspect": "Type",
+          "value": "Feature",
+          "sort":  "Latest" 
+        },
+        {
+          "title": "Reviews",
+          "displayMrec": false,
+          "aspect": "Type",
+          "value": "Review",
+          "sort": "Latest"
+        },
+        {
+          "title": "News",
+          "displayMrec": false,
+          "aspect": "Type",
+          "value": "News",
+          "sort": "Latest"
+        },
+        {
+          "title": "Videos",
+          "containsEMRC": false,
+          "aspect": "Type",
+          "value": "Video",
+          "sort": "Latest"
+        },
+        {
+          "title": "Advice",
+          "containsEMRC": false,
+          "aspect": "Type",
+          "value": "Advice",
+          "sort": "Latest"
+        }
+      ]
+    }
+    //,
+    //{
+    //  "type": "BMW",
+    //  "articleSets": [
+    //    {
+    //      "name": "Feature",
+    //      "title": "Featured",
+    //      "displayMrec": true
+    //    },
+    //    {
+    //      "name": "Review",
+    //      "title": "Reviews",
+    //      "displayMrec": false
+    //    },
+    //    {
+    //      "name": "News",
+    //      "title": "News",
+    //      "displayMrec": false
+
+    //    },
+    //    {
+    //      "name": "Video",
+    //      "title": "Videos",
+    //      "containsEMRC": false
+    //    },
+    //    {
+    //      "name": "Advice",
+    //      "title": "Advice",
+    //      "containsEMRC": false
+    //    }
+    //  ]
+    //}
+  ]
+}

@@ -120,7 +120,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             return new PagingItemViewModel
             {
                 PageNo = pageNo,
-                Url = ListingsUrlFormatter.GetPathAndQueryString(query, offset, sortOrder, keyword)
+                Url = EditorialUrlFormatter.GetPathAndQueryString(query, offset, sortOrder, keyword)
             };        
         }
 

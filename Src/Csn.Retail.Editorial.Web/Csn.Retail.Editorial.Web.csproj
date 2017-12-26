@@ -537,7 +537,12 @@
     <Compile Include="Features\Details\ActionAttributes\RedirectToNewVersionAttribute.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
+    <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
+    <Compile Include="Features\Landing\Carousel\CarouselQueryHandler.cs" />
+    <Compile Include="Features\Landing\Carousel\CarouselQueryResponse.cs" />
+    <Compile Include="Features\Landing\Configurations\LandingConfiguration.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
+    <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
@@ -561,7 +566,7 @@
     <Compile Include="Features\Landing\GetLandingResponse.cs" />
     <Compile Include="Features\Landing\LandingController.cs" />
     <Compile Include="Features\Landing\Models\LandingViewModel.cs" />
-    <Compile Include="Features\Listings\Constants\ListingsQueryStringParams.cs" />
+    <Compile Include="Features\Shared\Constants\EditorialQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
@@ -598,7 +603,7 @@
     <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
     <Compile Include="Features\Shared\ContextStores\SearchResultContextStore.cs" />
     <Compile Include="Features\Shared\Extensions\SearchResultDtoExtensions.cs" />
-    <Compile Include="Features\Shared\Formatters\ListingsUrlFormatter.cs" />
+    <Compile Include="Features\Shared\Formatters\EditorialUrlFormatter.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
@@ -1069,6 +1074,7 @@
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\Css\carousel.scss" />
     <Content Include="Features\Landing\Assets\Css\Partials\_carousel.scss" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\Css\carousel.slide.scss" />
+    <Content Include="Features\Landing\Configurations\constructionsales.landingconfig.json" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
+using Csn.Retail.Editorial.Web.Features.Landing.Carousel;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements;
 using Csn.SimpleCqrs;
@@ -31,8 +32,18 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
         [Route("editorial/api/v1/search/nav/refinements")]
         public async Task<IHttpActionResult> GetRefinements([FromUri]RefinementsQuery query)
         {
-            // to be replaced with refinements query handler
             var result = await _queryDispatcher.DispatchAsync<RefinementsQuery, RefinementResult>(query);
+
+            if (result != null) return Ok(result);
+
+            return NotFound();
+        }
+
+        [HttpGet]
+        [Route("editorial/api/v1/carousel/")]
+        public async Task<IHttpActionResult> GetCarousel([FromUri]CarouselQuery query)
+        {
+            var result = await _queryDispatcher.DispatchAsync<CarouselQuery, CarouselQueryResponse>(query);
 
             if (result != null) return Ok(result);
 
