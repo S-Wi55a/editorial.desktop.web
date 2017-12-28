@@ -1075,6 +1075,12 @@
     <Content Include="Features\Landing\Assets\Css\Partials\_carousel.scss" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\Css\carousel.slide.scss" />
     <Content Include="Features\Landing\Configurations\constructionsales.landingconfig.json" />
+    <Content Include="Features\Landing\Configurations\carsales.landingconfig.json" />
+    <Content Include="Features\Landing\Configurations\bikesales.landingconfig.json" />
+    <Content Include="Features\Landing\Configurations\boatsales.landingconfig.json" />
+    <Content Include="Features\Landing\Configurations\farmmachinerysales.landingconfig.json" />
+    <Content Include="Features\Landing\Configurations\caravancampingsales.landingconfig.json" />
+    <Content Include="Features\Landing\Configurations\trucksales.landingconfig.json" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
