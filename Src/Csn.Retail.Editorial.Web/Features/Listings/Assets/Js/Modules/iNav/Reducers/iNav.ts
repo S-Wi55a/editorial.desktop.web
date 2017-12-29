@@ -1,6 +1,6 @@
 import { Actions, ActionTypes } from 'iNav/Actions/actions'
 import update from 'immutability-helper'
-import { INode, IINavResponse, INavResults } from 'iNav/Types'
+import { INode, INavResults } from 'iNav/Types'
 
 // This is the entry Reducer and should be loaded with component
 

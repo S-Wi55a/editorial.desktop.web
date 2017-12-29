@@ -75,9 +75,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                 ArticleSetItems = landingResults.SearchResults,
                 Title = articleSet.Title,
                 ViewAllLink = $"/editorial/{articleSet.Value}/", //specific to article type
-                NextQuery = landingResults.Count > 7
-                    ? $"/editorial/api/v1/carousel/?{EditorialUrlFormatter.GetQueryParam(query, 0, articleSet.Sort, 7)}"
-                    : string.Empty
+                NextQuery = $"/editorial/api/v1/carousel/?{EditorialUrlFormatter.GetQueryParam(query, 0, articleSet.Sort, 7)}"
+
             };
         }
     }

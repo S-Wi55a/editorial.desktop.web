@@ -28,7 +28,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
-    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -576,6 +576,10 @@
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.js" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\actions.ts" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\api.ts" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\index.ts" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\thunks.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Reducers\index.ts" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
@@ -1102,7 +1106,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Component\iNavSearchResult.tsx" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actions.ts" />
-    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actionTypes.ts" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeaderItem.tsx" />
     <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.tsx" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Components\SearchResultCard\searchResultCard.tsx" />
@@ -1181,6 +1184,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />-->
   <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />-->
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

@@ -2,6 +2,8 @@
 import { connect } from 'react-redux'
 import SearchResultCard from 'Components/SearchResultCard/searchResultCard'
 import Slider from 'react-slick'
+import { Actions, ActionTypes, Thunks } from 'carousel/Actions/actions'
+
 
 if (!SERVER) {
     require('Carousel/Css/carousel')
@@ -14,28 +16,28 @@ class SimpleSlider extends React.Component {
     }
 
     render() {
-        const settings = this.props.hasMrec ? {
+        const props = this.props 
+        const settings = {
             infinite: false,
             speed: 500,
-            slidesToShow: 5,
+            slidesToShow: this.props.hasMrec ? 5 : 6,
             slidesToScroll: 1,
             arrows: true,
             responsive: [ 
-                { breakpoint: 1200, settings: { slidesToShow: 2 } },
-                { breakpoint: 1600, settings: { slidesToShow: 3 } },
-                { breakpoint: 2000, settings: { slidesToShow: 4 } }, 
-            ]
-        } : {
-            infinite: false,
-            speed: 500,
-            slidesToShow: 6,
-            slidesToScroll: 1,
-            arrows: true,
-            responsive: [ 
-                { breakpoint: 1200, settings: { slidesToShow: 3 } },
-                { breakpoint: 1600, settings: { slidesToShow: 4 } },
-                { breakpoint: 2000, settings: { slidesToShow: 5 } }, 
-            ]
+                { breakpoint: 1200, settings: { slidesToShow: this.props.hasMrec ? 2 : 3 } },
+                { breakpoint: 1600, settings: { slidesToShow: this.props.hasMrec ? 3 : 4 } },
+                { breakpoint: 2000, settings: { slidesToShow: this.props.hasMrec ? 4 : 5 } }, 
+            ],
+            beforeChange: function (oldIndex, newIndex) {                
+                // Check if moving forward
+                if (newIndex > oldIndex) {
+                    // Check if we are near the end 
+                    if (newIndex >= props.searchResults.length - this.slidesToShow) {
+                        //dispatch action
+                        props.fetch(props.nextQuery, props.index)
+                    }
+                }
+            }
         }
         return (
             <Slider {...settings}>
@@ -49,11 +51,23 @@ class SimpleSlider extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {    
         searchResults: state.carousels[ownProps.index] ? state.carousels[ownProps.index].articleSetItems : [],
-        hasMrec: state.carousels[ownProps.index] ? state.carousels[ownProps.index].hasMrec : false
+        hasMrec: state.carousels[ownProps.index] ? state.carousels[ownProps.index].hasMrec : false,
+        nextQuery: state.carousels[ownProps.index] ? state.carousels[ownProps.index].nextQuery : ''
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetch: (query, index)=> {
+            dispatch([
+                Thunks.fetchCarouselResults(query, index)
+            ]);
+        }
     }
 }
 
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(SimpleSlider)

@@ -1,6 +1,5 @@
 ﻿import React from 'react'
-import { State, IFacet, IRefinement } from 'iNav/Types'
-import { iNav } from 'Endpoints/endpoints'
+import { IFacet, IRefinement } from 'iNav/Types'
 import { connect } from 'react-redux'
 import { Actions, ActionTypes, Thunks } from 'iNav/Actions/actions'
 
