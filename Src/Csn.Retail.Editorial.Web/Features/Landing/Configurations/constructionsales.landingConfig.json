@@ -34,14 +34,6 @@
           "value": "Video",
           "sort": "Latest",
           "viewAll": "/videos/"
-        },
-        {
-          "title": "Advice",
-          "displayMrec": false,
-          "aspect": "Type",
-          "value": "Advice",
-          "sort": "Latest",
-          "viewAll": "/advice/"
         }
       ]
     }
