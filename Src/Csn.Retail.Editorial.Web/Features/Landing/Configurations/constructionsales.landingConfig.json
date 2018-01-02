@@ -2,75 +2,48 @@
   "configs": [
     {
       "type": "default",
-      "articleSets": [
+      "carousels": [
         {
           "title": "Featured",
           "displayMrec": true,
           "aspect": "Type",
           "value": "Feature",
-          "sort":  "Latest" 
+          "sort": "Latest",
+          "viewAll": "/features/"
         },
         {
           "title": "Reviews",
           "displayMrec": false,
           "aspect": "Type",
           "value": "Review",
-          "sort": "Latest"
+          "sort": "Latest",
+          "viewAll": "/reviews/"
         },
         {
           "title": "News",
           "displayMrec": false,
           "aspect": "Type",
           "value": "News",
-          "sort": "Latest"
+          "sort": "Latest",
+          "viewAll": "/news/"
         },
         {
           "title": "Videos",
-          "containsEMRC": false,
+          "displayMrec": false,
           "aspect": "Type",
           "value": "Video",
-          "sort": "Latest"
+          "sort": "Latest",
+          "viewAll": "/videos/"
         },
         {
           "title": "Advice",
-          "containsEMRC": false,
+          "displayMrec": false,
           "aspect": "Type",
           "value": "Advice",
-          "sort": "Latest"
+          "sort": "Latest",
+          "viewAll": "/advice/"
         }
       ]
     }
-    //,
-    //{
-    //  "type": "BMW",
-    //  "articleSets": [
-    //    {
-    //      "name": "Feature",
-    //      "title": "Featured",
-    //      "displayMrec": true
-    //    },
-    //    {
-    //      "name": "Review",
-    //      "title": "Reviews",
-    //      "displayMrec": false
-    //    },
-    //    {
-    //      "name": "News",
-    //      "title": "News",
-    //      "displayMrec": false
-
-    //    },
-    //    {
-    //      "name": "Video",
-    //      "title": "Videos",
-    //      "containsEMRC": false
-    //    },
-    //    {
-    //      "name": "Advice",
-    //      "title": "Advice",
-    //      "containsEMRC": false
-    //    }
-    //  ]
-    //}
   ]
 }

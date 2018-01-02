@@ -32,8 +32,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Carousel
             {
                 CarouselViewModel = new CarouselViewModel
                 {
-                    ArticleSetItems = carouselResults.SearchResults,
-                    NextQuery = carouselResults.Count > (query.Offset + 7) ? $"/editorial/api/v1/carousel/{EditorialUrlFormatter.GetQueryParam(query.Q, query.Offset + 7, query.Sort, 7)}" : String.Empty
+                    CarouselItems = carouselResults.SearchResults,
+                    NextQuery = carouselResults.Count > (query.Offset + 7) ? $"/editorial/api/v1/carousel/{EditorialUrlFormatter.GetQueryParam(query.Q, query.Offset + 7, query.Sort)}" : String.Empty
                 }
             };
         }

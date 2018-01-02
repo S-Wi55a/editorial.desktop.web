@@ -48,7 +48,7 @@ class SimpleSlider extends React.Component {
 // Redux Connect
 const mapStateToProps = (state, ownProps) => {
     return {    
-        searchResults: state.carousels[ownProps.index] ? state.carousels[ownProps.index].articleSetItems : [],
+        searchResults: state.carousels[ownProps.index] ? state.carousels[ownProps.index].carouselItems : [],
         hasMrec: state.carousels[ownProps.index] ? state.carousels[ownProps.index].hasMrec : false
     }
 }
