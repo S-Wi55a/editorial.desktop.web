@@ -4,14 +4,12 @@ using System.Threading.Tasks;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
+using Csn.Retail.Editorial.Web.Features.Landing.Services;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
-using Expresso.Expressions;
-using Expresso.Syntax;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
 {
@@ -21,14 +19,14 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly IRyvussDataService _ryvussDataService;
         private readonly IMapper _mapper;
         private readonly ILandingConfigProvider _landingConfigProvider;
-        private readonly IExpressionFormatter _expressionFormatter;
+        private readonly ICarouselDataService _carouselDataService;
 
-        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, IExpressionFormatter expressionFormatter)
+        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
             _landingConfigProvider = landingConfigProvider;
-            _expressionFormatter = expressionFormatter;
+            _carouselDataService = carouselDataService;
         }
 
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
@@ -37,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
 
-            var searchResults = GetArticleSets(configResults);
+            var searchResults = GetCarousels(configResults);
 
             await Task.WhenAll(navResults, searchResults);
 
@@ -54,30 +52,13 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             };
         }
 
-        private async Task<List<CarouselViewModel>> GetArticleSets(LandingConfigurationSet landingArticleSet)
+        private async Task<List<CarouselViewModel>> GetCarousels(LandingConfigurationSet landingCarousel)
         {
-            var getArticleSetTasks = landingArticleSet.ArticleSets.Select(GetArticleSet).ToList();
+            var getCarouselTasks = landingCarousel.Carousels.Select(carouselConfig => _carouselDataService.GetCarouselData(carouselConfig)).ToList();
 
-            await Task.WhenAll(getArticleSetTasks);
+            await Task.WhenAll(getCarouselTasks);
 
-            return getArticleSetTasks.Select(listofTask => listofTask.Result).ToList();
-        }
-
-        private async Task<CarouselViewModel> GetArticleSet(LandingArticleSet articleSet)
-        {
-            var query = _expressionFormatter.Format(new FacetExpression(articleSet.Aspect, articleSet.Value));
-            var result = await _ryvussDataService.GetResults(query, 0, articleSet.Sort);
-            if (result == null) return null;
-            var landingResults = _mapper.Map<NavResult>(result);
-            return new CarouselViewModel
-            {
-                HasMrec = articleSet.DisplayMrec,
-                ArticleSetItems = landingResults.SearchResults,
-                Title = articleSet.Title,
-                ViewAllLink = $"/editorial/{articleSet.Value}/", //specific to article type
-                NextQuery = $"/editorial/api/v1/carousel/?{EditorialUrlFormatter.GetQueryParam(query, 0, articleSet.Sort, 7)}"
-
-            };
+            return getCarouselTasks.Select(listofTask => listofTask.Result).ToList();
         }
     }
 }

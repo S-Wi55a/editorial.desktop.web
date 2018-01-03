@@ -30,12 +30,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
             return $"{ListingsBasePath}{pathAndQuery}";
         }
 
-        public static string GetQueryParam(string q, long offset, string sortOrder, int limit)
+        public static string GetQueryParam(string q, long offset, string sortOrder)
         {
-            return GetQueryStringParameters(q, offset, sortOrder, string.Empty, limit);            
+            return GetQueryStringParameters(q, offset, sortOrder, string.Empty);            
         }
 
-        private static string GetQueryStringParameters(string q, long offset, string sortOrder, string keyword, int? limit = 0)
+        private static string GetQueryStringParameters(string q, long offset, string sortOrder, string keyword)
         {
             var queryParams = new Dictionary<string, string>();
 
@@ -43,7 +43,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
             if (!string.IsNullOrEmpty(sortOrder)) queryParams[EditorialQueryStringParams.Sort] = sortOrder;
             if (!string.IsNullOrEmpty(keyword)) queryParams[EditorialQueryStringParams.Keywords] = keyword;
             if (offset != 0) queryParams[EditorialQueryStringParams.Offset] = offset.ToString();
-            if (limit != 0) queryParams[EditorialQueryStringParams.Limit] = limit.ToString();
 
             return queryParams.ToQueryString();
         }

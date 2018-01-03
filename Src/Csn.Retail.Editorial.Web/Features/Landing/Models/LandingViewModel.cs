@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
     public class CarouselViewModel
     {
         public string Title { get; set; }
-        public List<SearchResult> ArticleSetItems { get; set; }
+        public List<SearchResult> CarouselItems { get; set; }
         public string ViewAllLink { get; set; }
         public bool HasMrec { get; set; }
         public string NextQuery { get; set; }

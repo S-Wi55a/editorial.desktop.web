@@ -45,7 +45,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Services
                 IncludeSearchResults = true,
                 Offset = offset,
                 Limit = 7,
-                SortOrder = sort
+                SortOrder = sort,
+                IncludeCount = true
             });
 
             return !result.IsSucceed ? null : result.Data;
