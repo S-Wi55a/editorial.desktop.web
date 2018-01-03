@@ -14,6 +14,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Services
     {
         Task<RyvussNavResultDto> GetRefinements(RefinementsQuery query);
         Task<RyvussNavResultDto> GetNavAndResults(string query, bool includeResults, string sort = "", int offset = 0);
+        Task<RyvussNavResultDto> GetResults(string query, int offset, string sort);
     }
 
     [AutoBind]
@@ -35,6 +36,22 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Services
 
             return await GetRyvusProxyResults(query, postProcessors, includeResults, sort);
         }
+
+        public async Task<RyvussNavResultDto> GetResults(string query, int offset, string sort)
+        {
+            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
+            {
+                Query = query,
+                IncludeSearchResults = true,
+                Offset = offset,
+                Limit = 7,
+                SortOrder = sort,
+                IncludeCount = true
+            });
+
+            return !result.IsSucceed ? null : result.Data;
+        }
+
         public async Task<RyvussNavResultDto> GetRefinements(RefinementsQuery query)
         {
             var postProcessors = new List<string> { "FacetSort", $"RetailAspectRefinements({query.RefinementAspect},{query.ParentExpression})" };

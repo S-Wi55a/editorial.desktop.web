@@ -82,7 +82,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 return new GetListingsResponse
                 {
                     RedirectRequired = true,
-                    RedirectUrl = ListingsUrlFormatter.GetSeoUrl(resultData.Metadata.Seo, query.Offset, sortOrder)
+                    RedirectUrl = EditorialUrlFormatter.GetSeoUrl(resultData.Metadata.Seo, query.Offset, sortOrder)
                 };
             }
 
@@ -106,9 +106,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     opt.Items["sortOrder"] = sortOrder;
                 }
             });
-            navResults.INav.CurrentAction = ListingsUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, sortOrder);
-            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingsUrlFormatter.GetSeoUrl(query.SeoFragment, query.Offset, sortOrder) :
-                ListingsUrlFormatter.GetPathAndQueryString(query.Query, query.Offset, sortOrder);
+            navResults.INav.CurrentAction = EditorialUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, sortOrder);
+            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? EditorialUrlFormatter.GetSeoUrl(query.SeoFragment, query.Offset, sortOrder) :
+                EditorialUrlFormatter.GetPathAndQueryString(query.Query, query.Offset, sortOrder);
 
             return new GetListingsResponse
             {
