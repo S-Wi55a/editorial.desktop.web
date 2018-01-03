@@ -10,10 +10,10 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
     public class LandingConfigurationSet
     {
         public string Type { get; set; }
-        public List<LandingCarousel> Carousels { get; set; }
+        public List<LandingCarouselConfiguration> CarouselConfigurations { get; set; }
     }
 
-    public class LandingCarousel
+    public class LandingCarouselConfiguration
     {
         public string Title { get; set; }
         public bool DisplayMrec { get; set; }

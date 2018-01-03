@@ -13,7 +13,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
     public interface ICarouselDataService
     {
         Task<CarouselViewModel> GetCarouselData(CarouselQuery query);
-        Task<CarouselViewModel> GetCarouselData(LandingCarousel carousel);
+        Task<CarouselViewModel> GetCarouselData(LandingCarouselConfiguration carouselConfiguration);
     }
 
     [AutoBind]
@@ -33,15 +33,15 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             return await CarouselDataResult(query.Q, query.Sort, query.Offset);
         }
 
-        public async Task<CarouselViewModel> GetCarouselData(LandingCarousel carousel)
+        public async Task<CarouselViewModel> GetCarouselData(LandingCarouselConfiguration carouselConfiguration)
         {
-            var carouselViewModel = await CarouselDataResult(carousel.Query, carousel.Sort, 0);
+            var carouselViewModel = await CarouselDataResult(carouselConfiguration.Query, carouselConfiguration.Sort, 0);
 
             if (carouselViewModel == null) return null;
 
-            carouselViewModel.HasMrec = carousel.DisplayMrec;
-            carouselViewModel.Title = carousel.Title;
-            carouselViewModel.ViewAllLink = $"/editorial{carousel.ViewAll}";
+            carouselViewModel.HasMrec = carouselConfiguration.DisplayMrec;
+            carouselViewModel.Title = carouselConfiguration.Title;
+            carouselViewModel.ViewAllLink = $"/editorial{carouselConfiguration.ViewAll}";
             return carouselViewModel;
         }
 

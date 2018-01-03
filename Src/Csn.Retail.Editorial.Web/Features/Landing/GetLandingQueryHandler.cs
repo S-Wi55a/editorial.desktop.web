@@ -54,7 +54,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
         private async Task<List<CarouselViewModel>> GetCarousels(LandingConfigurationSet landingCarousel)
         {
-            var getCarouselTasks = landingCarousel.Carousels.Select(carouselConfig => _carouselDataService.GetCarouselData(carouselConfig)).ToList();
+            var getCarouselTasks = landingCarousel.CarouselConfigurations.Select(carouselConfig => _carouselDataService.GetCarouselData(carouselConfig)).ToList();
 
             await Task.WhenAll(getCarouselTasks);
 
