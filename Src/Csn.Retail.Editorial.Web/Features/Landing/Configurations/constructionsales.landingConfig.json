@@ -2,7 +2,7 @@
   "configs": [
     {
       "type": "default",
-      "carousels": [
+      "carouselConfigurations": [
         {
           "title": "Featured",
           "displayMrec": true,
