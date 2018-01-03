@@ -17,8 +17,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
     {
         public string Title { get; set; }
         public bool DisplayMrec { get; set; }
-        public string Aspect { get; set; }
-        public string Value { get; set; }
+        public string Query { get; set; }
         public string Sort { get; set; }
         public string ViewAll { get; set; }
     }

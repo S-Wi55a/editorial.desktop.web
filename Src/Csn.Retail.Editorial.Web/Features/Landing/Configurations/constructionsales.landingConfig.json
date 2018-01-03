@@ -6,32 +6,28 @@
         {
           "title": "Featured",
           "displayMrec": true,
-          "aspect": "Type",
-          "value": "Feature",
+          "query": "(And.Type.Feature._.Service.ConstructionSales.)",
           "sort": "Latest",
           "viewAll": "/features/"
         },
         {
           "title": "Reviews",
           "displayMrec": false,
-          "aspect": "Type",
-          "value": "Review",
+          "query": "(And.Type.Review._.Service.ConstructionSales.)",
           "sort": "Latest",
           "viewAll": "/reviews/"
         },
         {
           "title": "News",
           "displayMrec": false,
-          "aspect": "Type",
-          "value": "News",
+          "query": "(And.Type.News._.Service.ConstructionSales.)",
           "sort": "Latest",
           "viewAll": "/news/"
         },
         {
           "title": "Videos",
           "displayMrec": false,
-          "aspect": "Type",
-          "value": "Video",
+          "query": "(And.Type.Video._.Service.ConstructionSales.)",
           "sort": "Latest",
           "viewAll": "/videos/"
         }
