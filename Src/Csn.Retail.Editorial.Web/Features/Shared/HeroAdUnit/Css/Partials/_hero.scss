@@ -1,9 +1,5 @@
 ﻿@import "css/globals";
 
-.hero #iNav {
-    top: 215px;
-}
-
 .hero {
 
     @include fadeIn();
@@ -60,19 +56,6 @@
         .main-text__link {
             font-weight: 800;
             text-transform: uppercase;
-        }
-    }
-
-    .page-header {
-        padding: 0;
-        .container {
-            width: 100% !important;
-            padding: 30px 45px 0;
-        }
-
-        &__logo {
-            width: 130px;
-            height: 54px;
         }
     }
 }

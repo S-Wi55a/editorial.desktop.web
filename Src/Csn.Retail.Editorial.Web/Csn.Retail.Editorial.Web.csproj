@@ -543,6 +543,7 @@
     <Compile Include="Features\Landing\Carousel\CarouselQueryResponse.cs" />
     <Compile Include="Features\Landing\Configurations\LandingConfiguration.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
+    <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
@@ -1091,6 +1092,7 @@
     <Content Include="Features\Landing\Configurations\caravancampingsales.landingConfig.json" />
     <Content Include="Features\Landing\Configurations\trucksales.landingConfig.json" />
     <Content Include="Features\Landing\Configurations\constructionsales.landingConfig.json" />
+    <Content Include="Features\Shared\HeroAdUnit\Views\_HeroAdUnit.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -23,12 +23,17 @@
     @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
 }
 
-<div class="landing-page">
-    <h1 class="hero__title">@Model.Title</h1>
+<div class="landing-page @(Model.CampaignAd != null ? "landing-page--hasHeroAdUnit" : "")">
+    <h1 style="display: none;">@Model.Title</h1>
+        
     @if (Model.CampaignAd != null)
     {
-        Html.RenderPartial("~/Features/Landing/Views/Partials/_Hero.cshtml", Model);
+        Html.RenderPartial("~/Features/Shared/HeroAdUnit/Views/_HeroAdUnit.cshtml", Model.CampaignAd);
     }
+
+    @{ Html.RenderPartial("~/Features/Landing/Views/Partials/_Header.cshtml"); }
+    @Html.React("global.Components.INav", new {state = Model.Nav}, containerId: "iNav", containerClass: "iNav--v2")          
+
     <div class="main container-fluid">
         @foreach (var carousel in Model.Carousels)
         {
