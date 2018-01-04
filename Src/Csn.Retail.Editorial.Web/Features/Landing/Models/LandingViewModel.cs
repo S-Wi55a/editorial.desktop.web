@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Newtonsoft.Json;
 
@@ -33,24 +34,22 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         {
             LeftSection = new CampaignSection();
             RightSection = new CampaignSection();
+            Images = new CampaignImages();
         }
 
         public string Name { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
 
         public bool IsDefaultCampaign { get; set; }
 
         public CampaignSection LeftSection { get; set; }
         public CampaignSection RightSection { get; set; }
 
-        public string ImageUrl { get; set; }
+        public CampaignImages Images { get; set; }
+    }
 
-        public string ImpressionTrackerUrl { get; set; }
-        public string ClickTrackerUrl { get; set; }
-
-        [JsonIgnore]
-        public int TrackerRandomNumber { get; set; }
+    public class CampaignImages
+    {
+        public string Desktop { get; set; }
     }
 
     public class CampaignSection
@@ -78,7 +77,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public bool IsLinked => !string.IsNullOrWhiteSpace(LinkUrl);
     }
 
-    public class HomePageModel
+    public class HeroAdViewModel
     {
         public CampaignAdResult CampaignAd { get; set; }
     }

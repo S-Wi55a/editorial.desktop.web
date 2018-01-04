@@ -24,7 +24,11 @@
 }
 
 <div class="landing-page">
-    @{ Html.RenderPartial("~/Features/Landing/Views/Partials/_Hero.cshtml", Model); }
+    <h1 class="hero__title">@Model.Title</h1>
+    @if (Model.CampaignAd != null)
+    {
+        Html.RenderPartial("~/Features/Landing/Views/Partials/_Hero.cshtml", Model);
+    }
     <div class="main container-fluid">
         @foreach (var carousel in Model.Carousels)
         {

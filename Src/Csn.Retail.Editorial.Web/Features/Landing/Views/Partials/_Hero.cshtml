@@ -1,12 +1,11 @@
 ﻿@using React.Web.Mvc
 @model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
 
-
-@if (Model.CampaignAd.ImageUrl != null)
+@if (Model.CampaignAd.Images != null)
 {
     <style>
         .hero-image {
-            background-image: url("@(Model.CampaignAd.ImageUrl)&aspect=centered&width=1920&height=520");
+            background-image: url("@(Model.CampaignAd.Images.Desktop)?aspect=centered&width=1920&height=520");
         }
     </style>
 }
@@ -15,9 +14,7 @@
 <div class="hero hero-image">
     
     @{ Html.RenderPartial("~/Features/Landing/Views/Partials/_Header.cshtml"); }
-    
-    <h1 class="hero__title">@Model.Title</h1>
-    
+        
     @Html.React("global.Components.INav", new {state = Model.Nav}, containerId: "iNav", containerClass: "iNav--v2")
     
     <div class="component component--hero-image-content" data-webm-section="Home-BannerAd">
@@ -53,11 +50,6 @@
                     </p>
                 }
             </div>
-        }
-
-        @if (!string.IsNullOrWhiteSpace(Model.CampaignAd.ImpressionTrackerUrl))
-        {
-            <img width="1" height="1" border="0" src="@Model.CampaignAd.ImpressionTrackerUrl/site=allpoints/area=impressiontracker/size=1x1/viewid=@Model.CampaignAd.TrackerRandomNumber/random=@Model.CampaignAd.TrackerRandomNumber" />
         }
     </div>
 </div>

@@ -2,6 +2,7 @@
   "configs": [
     {
       "type": "default",
+      "HasHeroAddUnit": true,
       "carouselConfigurations": [
         {
           "title": "Featured",

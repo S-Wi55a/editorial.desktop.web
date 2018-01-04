@@ -21,24 +21,28 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly IMapper _mapper;
         private readonly ILandingConfigProvider _landingConfigProvider;
         private readonly ICarouselDataService _carouselDataService;
+        private ISmartServiceClient _restClient;
 
-        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider)
+
+        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, ISmartServiceClient restClient)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
             _landingConfigProvider = landingConfigProvider;
+            _restClient = restClient;
             _carouselDataService = carouselDataService;
-        }
 
-        public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
+    }
+
+    public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
-            var navResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
-
             var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
 
+            var navResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
             var searchResults = GetCarousels(configResults);
-
-            await Task.WhenAll(navResults, searchResults);
+            var campaignAd = configResults.HasHeroAddUnit ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
+     
+            await Task.WhenAll(navResults, searchResults, campaignAd);
 
             return new GetLandingResponse
             {
@@ -48,7 +52,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     {
                         NavResults = _mapper.Map<NavResult>(navResults.Result)
                     },
-                    Carousels = searchResults.Result
+                    Carousels = searchResults.Result,
+                    CampaignAd = campaignAd.Result
                 }
             };
         }
@@ -64,13 +69,10 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
         private async Task<CampaignAdResult> GetAdUnit()
         {
-            return await _restClient.Service("api-retail-homepage")
-                .Path("v2/carsales")
-                .GetAsync<HomePageModel>()
-                //.WithDefaultData(new HeroAdUnit())
-                .ContinueWith(x => x.Result.Data.CampaignAd);
+            return await _restClient.Service("api-showroom-promotions")
+                .Path("/v1/promotions/carsales-homepage/campaign")
+                .GetAsync<CampaignAdResult>()
+                .ContinueWith(x => x.Result.Data);
         }
-
-
     }
 }
