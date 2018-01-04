@@ -2,75 +2,36 @@
   "configs": [
     {
       "type": "default",
-      "articleSets": [
+      "carouselConfigurations": [
         {
           "title": "Featured",
           "displayMrec": true,
-          "aspect": "Type",
-          "value": "Feature",
-          "sort":  "Latest" 
+          "query": "(And.Type.Feature._.Service.BoatSales.)",
+          "sort": "Latest",
+          "viewAll": "/features/"
         },
         {
           "title": "Reviews",
           "displayMrec": false,
-          "aspect": "Type",
-          "value": "Review",
-          "sort": "Latest"
+          "query": "(And.Type.Review._.Service.BoatSales.)",
+          "sort": "Latest",
+          "viewAll": "/reviews/"
         },
         {
           "title": "News",
           "displayMrec": false,
-          "aspect": "Type",
-          "value": "News",
-          "sort": "Latest"
+          "query": "(And.Type.News._.Service.BoatSales.)",
+          "sort": "Latest",
+          "viewAll": "/news/"
         },
         {
           "title": "Videos",
           "displayMrec": false,
-          "aspect": "Type",
-          "value": "Video",
-          "sort": "Latest"
-        },
-        {
-          "title": "Advice",
-          "displayMrec": false,
-          "aspect": "Type",
-          "value": "Advice",
-          "sort": "Latest"
+          "query": "(And.Type.Video._.Service.BoatSales.)",
+          "sort": "Latest",
+          "viewAll": "/videos/"
         }
       ]
     }
-    //,
-    //{
-    //  "type": "BMW",
-    //  "articleSets": [
-    //    {
-    //      "name": "Feature",
-    //      "title": "Featured",
-    //      "displayMrec": true
-    //    },
-    //    {
-    //      "name": "Review",
-    //      "title": "Reviews",
-    //      "displayMrec": false
-    //    },
-    //    {
-    //      "name": "News",
-    //      "title": "News",
-    //      "displayMrec": false
-
-    //    },
-    //    {
-    //      "name": "Video",
-    //      "title": "Videos",
-    //      "containsEMRC": false
-    //    },
-    //    {
-    //      "name": "Advice",
-    //      "title": "Advice",
-    //      "containsEMRC": false
-    //    }
-    //  ]
-    //}
   ]
 }
