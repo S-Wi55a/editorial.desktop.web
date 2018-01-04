@@ -1,0 +1,37 @@
+﻿{
+  "configs": [
+    {
+      "type": "default",
+      "carouselConfigurations": [
+        {
+          "title": "Featured",
+          "displayMrec": true,
+          "query": "(And.Type.Feature._.Service.TruckSales.)",
+          "sort": "Latest",
+          "viewAll": "/features/"
+        },
+        {
+          "title": "Reviews",
+          "displayMrec": false,
+          "query": "(And.Type.Review._.Service.TruckSales.)",
+          "sort": "Latest",
+          "viewAll": "/reviews/"
+        },
+        {
+          "title": "News",
+          "displayMrec": false,
+          "query": "(And.Type.News._.Service.TruckSales.)",
+          "sort": "Latest",
+          "viewAll": "/news/"
+        },
+        {
+          "title": "Videos",
+          "displayMrec": false,
+          "query": "(And.Type.Video._.Service.TruckSales.)",
+          "sort": "Latest",
+          "viewAll": "/videos/"
+        }
+      ]
+    }
+  ]
+}

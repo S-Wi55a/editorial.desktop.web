@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
@@ -9,9 +8,8 @@ using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
+using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
@@ -23,7 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
     [AutoBind]
     public class GetListingsQueryHandler : IAsyncQueryHandler<GetListingsQuery, GetListingsResponse>
     {
-        private readonly IEditorialRyvussApiProxy _ryvussProxy;
+        
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly IMapper _mapper;
         private readonly IPaginationHelper _paginationHelper;
@@ -35,12 +33,12 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly ISponsoredLinksDataMapper _sponsoredLinksDataMapper;
         private readonly IListingInsightsDataMapper _listingInsightsDataMapper;
         private readonly ISeoDataMapper _seoDataMapper;
+        private readonly IRyvussDataService _ryvussDataService;
 
-        public GetListingsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
+        public GetListingsQueryHandler(ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
             ISortingHelper sortingHelper, ISearchResultContextStore searchResultContextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
-            ISponsoredLinksDataMapper sponsoredLinksDataMapper, IListingInsightsDataMapper listingInsightsDataMapper, ISeoDataMapper seoDataMapper)
+            ISponsoredLinksDataMapper sponsoredLinksDataMapper, IListingInsightsDataMapper listingInsightsDataMapper, ISeoDataMapper seoDataMapper, IRyvussDataService ryvussDataService)
         {
-            _ryvussProxy = ryvussProxy;
             _tenantProvider = tenantProvider;
             _mapper = mapper;
             _paginationHelper = paginationHelper;
@@ -52,6 +50,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _sponsoredLinksDataMapper = sponsoredLinksDataMapper;
             _listingInsightsDataMapper = listingInsightsDataMapper;
             _seoDataMapper = seoDataMapper;
+            _ryvussDataService = ryvussDataService;
         }
 
         
@@ -70,37 +69,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sort) ? query.Sort : string.Empty;
 
-            var postProcessors = new List<string>();
-            postProcessors.AddRange(new[] { "Retail", "FacetSort" });
-
-            if (_tenantProvider.Current().SupportsSeoFriendlyListings)
-            {
-                postProcessors.Add("Seo");
-                postProcessors.Add("HideAspect(Service)");
-            }
-            else
-            {
-                postProcessors.Add("ShowZero");
-            }
-
-            postProcessors.Add("RenderRefinements");
-
-            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
-            {
-                Query = string.IsNullOrEmpty(query.SeoFragment) ? query.Query : query.SeoFragment,
-                Offset = query.Offset,
-                Limit = PageItemsLimit.ListingPageItemsLimit,
-                SortOrder = string.IsNullOrEmpty(sortOrder) ? EditorialSortKeyValues.ListingPageDefaultSort : sortOrder,
-                IncludeCount = true,
-                IncludeSearchResults = true,
-                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
-                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
-                NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = postProcessors,
-                IncludeMetaData = true
-            });
-
-            var resultData = !result.IsSucceed ? null : result.Data;
+            var resultData = await _ryvussDataService.GetNavAndResults(string.IsNullOrEmpty(query.SeoFragment) ? query.Query : query.SeoFragment, true, sortOrder, query.Offset);
 
             if (resultData == null) return null;
 
@@ -110,10 +79,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 && !string.IsNullOrEmpty(resultData.Metadata?.Seo) 
                 && resultData.Metadata.Seo != query.SeoFragment)
             {
-                return new GetListingsResponse()
+                return new GetListingsResponse
                 {
                     RedirectRequired = true,
-                    RedirectUrl = ListingsUrlFormatter.GetSeoUrl(resultData.Metadata.Seo, query.Offset, sortOrder)
+                    RedirectUrl = EditorialUrlFormatter.GetSeoUrl(resultData.Metadata.Seo, query.Offset, sortOrder)
                 };
             }
 
@@ -137,9 +106,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     opt.Items["sortOrder"] = sortOrder;
                 }
             });
-            navResults.INav.CurrentAction = ListingsUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, sortOrder);
-            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingsUrlFormatter.GetSeoUrl(query.SeoFragment, query.Offset, sortOrder) :
-                ListingsUrlFormatter.GetPathAndQueryString(query.Query, query.Offset, sortOrder);
+            navResults.INav.CurrentAction = EditorialUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, sortOrder);
+            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? EditorialUrlFormatter.GetSeoUrl(query.SeoFragment, query.Offset, sortOrder) :
+                EditorialUrlFormatter.GetPathAndQueryString(query.Query, query.Offset, sortOrder);
 
             return new GetListingsResponse
             {

@@ -6,6 +6,7 @@ declare module 'react-image'
 declare module 'custom-event'
 declare module 'ScrollMagic'
 declare module 'query-string'
+declare module 'react-slick'
 
 declare var SERVER: boolean
 declare var DISQUSWIDGETS: any

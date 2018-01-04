@@ -1,4 +1,5 @@
 ﻿export const devServer = (tenant) => ( {
+    port: 8080,
     stats: {
         // Add asset Information
         assets: true,

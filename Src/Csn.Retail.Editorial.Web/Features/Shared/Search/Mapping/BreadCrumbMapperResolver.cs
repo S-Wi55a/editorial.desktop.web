@@ -29,7 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
             {
                 results.Insert(0, new BreadCrumb
                 {
-                    RemoveAction = ListingsUrlFormatter.GetPathAndQueryString(keywordBreadCrumb.RemoveAction, sortOrder: context.Items.TryGetValue("sortOrder", out var sortOrder)
+                    RemoveAction = EditorialUrlFormatter.GetPathAndQueryString(keywordBreadCrumb.RemoveAction, sortOrder: context.Items.TryGetValue("sortOrder", out var sortOrder)
                         ? sortOrder?.ToString()
                         : string.Empty),
                     FacetDisplay = keywordBreadCrumb.Term.Trim('(', ')'),
@@ -38,7 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
             }
             results.Add(new BreadCrumb
             {
-                RemoveAction = ListingsUrlFormatter.GetPathAndQueryString(sortOrder: context.Items.TryGetValue("sortOrder", out var sort)
+                RemoveAction = EditorialUrlFormatter.GetPathAndQueryString(sortOrder: context.Items.TryGetValue("sortOrder", out var sort)
                     ? sort?.ToString()
                     : string.Empty),
                 FacetDisplay = "Clear All",
@@ -54,8 +54,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         public string Resolve(BreadCrumbDto source, BreadCrumb destination, string destMember, ResolutionContext context)
         {
             var sortOrder = context.Items.TryGetValue("sortOrder", out var sort) ? sort?.ToString() : string.Empty;
-            return source.HasSeoLinks ? ListingsUrlFormatter.GetSeoUrl(source.Metadata.Seo.First(), sortOrder: sortOrder) :
-                ListingsUrlFormatter.GetPathAndQueryString(string.IsNullOrEmpty(source.RemoveAction) ? string.Empty: source.RemoveAction, sortOrder: sortOrder);
+            return source.HasSeoLinks ? EditorialUrlFormatter.GetSeoUrl(source.Metadata.Seo.First(), sortOrder: sortOrder) :
+                EditorialUrlFormatter.GetPathAndQueryString(string.IsNullOrEmpty(source.RemoveAction) ? string.Empty: source.RemoveAction, sortOrder: sortOrder);
         }
     }
 }

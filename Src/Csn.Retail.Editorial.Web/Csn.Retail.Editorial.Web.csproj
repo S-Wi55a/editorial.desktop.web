@@ -28,7 +28,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
-    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -537,7 +537,14 @@
     <Compile Include="Features\Details\ActionAttributes\RedirectToNewVersionAttribute.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
+    <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
+    <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
+    <Compile Include="Features\Landing\Carousel\CarouselQueryHandler.cs" />
+    <Compile Include="Features\Landing\Carousel\CarouselQueryResponse.cs" />
+    <Compile Include="Features\Landing\Configurations\LandingConfiguration.cs" />
+    <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
+    <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
@@ -561,7 +568,7 @@
     <Compile Include="Features\Landing\GetLandingResponse.cs" />
     <Compile Include="Features\Landing\LandingController.cs" />
     <Compile Include="Features\Landing\Models\LandingViewModel.cs" />
-    <Compile Include="Features\Listings\Constants\ListingsQueryStringParams.cs" />
+    <Compile Include="Features\Shared\Constants\EditorialQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
@@ -570,8 +577,7 @@
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
-    <Content Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.js" />
-    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Reducers\index.ts" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\iNavArticleCount.js" />
@@ -596,7 +602,7 @@
     <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
     <Compile Include="Features\Shared\ContextStores\SearchResultContextStore.cs" />
     <Compile Include="Features\Shared\Extensions\SearchResultDtoExtensions.cs" />
-    <Compile Include="Features\Shared\Formatters\ListingsUrlFormatter.cs" />
+    <Compile Include="Features\Shared\Formatters\EditorialUrlFormatter.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
@@ -667,6 +673,7 @@
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
+    <Compile Include="Features\Shared\Services\RyvussDataService.cs" />
     <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
@@ -769,6 +776,8 @@
     <Content Include="WebpackConfig\Server\loaders.config.js" />
     <Content Include="WebpackConfig\Server\plugins.config.js" />
     <Content Include="WebpackConfig\Server\webpack.server.config.js" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Containers\iNavNodesContainer.tsx" />
+    <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -1075,6 +1084,13 @@
     <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNav.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNav.variables.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\iNav\Css\iNavListItem.scss" />
+    <Content Include="Features\Landing\Configurations\carsales.landingConfig.json" />
+    <Content Include="Features\Landing\Configurations\bikesales.landingConfig.json" />
+    <Content Include="Features\Landing\Configurations\boatsales.landingConfig.json" />
+    <Content Include="Features\Landing\Configurations\farmmachinerysales.landingConfig.json" />
+    <Content Include="Features\Landing\Configurations\caravancampingsales.landingConfig.json" />
+    <Content Include="Features\Landing\Configurations\trucksales.landingConfig.json" />
+    <Content Include="Features\Landing\Configurations\constructionsales.landingConfig.json" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1121,6 +1137,9 @@
     <Content Include="Features\Shared\Assets\Js\Modules\ReactReduxUI\index.js" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\Redux\Global\Types\index.ts" />
     <TypeScriptCompile Include="Features\Shared\Assets\Js\Modules\global.d.ts" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Css\iNav.NodesContainer.scss" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavFacet.tsx" />
+    <Content Include="Features\Listings\Assets\Js\Modules\iNav\css\iNav.scss" />
     <Content Include="Infrastructure\React\Assets\Js\Components\preloadedState.tsx" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorials_details.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
@@ -1133,6 +1152,25 @@
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Parse\parse.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\actions.ts" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\api.ts" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\index.ts" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\thunks.ts" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Reducers\index.ts" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Types\index.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\actions.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\api.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\iNav.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\index.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\ActionTypes\ui.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Actions\thunks.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Components\iNavMenuHeaderItem.tsx" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\history.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\iNav.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Reducers\index.ts" />
+    <TypeScriptCompile Include="Features\Listings\Assets\Js\Modules\iNav\Types\index.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

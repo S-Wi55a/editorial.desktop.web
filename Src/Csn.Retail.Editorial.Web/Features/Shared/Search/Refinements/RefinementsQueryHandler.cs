@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Csn.MultiTenant;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
+﻿using System.Threading.Tasks;
+using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
@@ -13,46 +9,18 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements
     [AutoBind]
     public class RefinementsQueryHandler : IAsyncQueryHandler<RefinementsQuery, RefinementResult>
     {
-        private readonly IEditorialRyvussApiProxy _ryvussProxy;
-        private readonly ITenantProvider<TenantInfo> _tenantProvider;
+        private readonly IRyvussDataService _ryvussDataService;
         private readonly IMapper _mapper;
 
-        public RefinementsQueryHandler(IEditorialRyvussApiProxy ryvussProxy, ITenantProvider<TenantInfo> tenantProvider, IMapper mapper)
+        public RefinementsQueryHandler(IRyvussDataService ryvussDataService, IMapper mapper)
         {
-            _ryvussProxy = ryvussProxy;
-            _tenantProvider = tenantProvider;
+            _ryvussDataService = ryvussDataService;
             _mapper = mapper;
         }
 
         public async Task<RefinementResult> HandleAsync(RefinementsQuery query)
         {
-            var postProcessors = new List<string>();
-
-            postProcessors.AddRange(new[] { "FacetSort", $"RetailAspectRefinements({query.RefinementAspect},{query.ParentExpression})" });
-
-            if (_tenantProvider.Current().SupportsSeoFriendlyListings)
-            {
-                postProcessors.Add("Seo");
-                postProcessors.Add("HideAspect(Service)");
-            }
-            else
-            {
-                postProcessors.Add("ShowZero");
-            }
-            postProcessors.Add("RenderRefinements");
-
-            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput()
-            {
-                Query = query.Q, 
-                IncludeCount = true,
-                IncludeSearchResults = false,
-                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
-                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
-                NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = postProcessors
-            });
-
-            var resultData = !result.IsSucceed ? null : result.Data;
+            var resultData = await _ryvussDataService.GetRefinements(query);
 
             if (resultData == null) return null;
 

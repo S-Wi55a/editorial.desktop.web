@@ -2,12 +2,12 @@
 
 <div class="csn-carousel @(Model.HasMrec ? "csn-carousel--mrec" : "" )">
     <div class="csn-carousel__info-bar">
-        @if (Model.Link != null)
+        @if (Model.ViewAllLink != null)
         {
             
-            <h2 class="csn-carousel__title"><a href="@Model.Link">@Model.Title</a></h2>
+            <h2 class="csn-carousel__title"><a href="@Model.ViewAllLink">@Model.Title</a></h2>
             
-            <a href="@Model.Link" class="csn-carousel__link">View all @Model.Title</a>
+            <a href="@Model.ViewAllLink" class="csn-carousel__link">View all @Model.Title</a>
         }
         else
         {
