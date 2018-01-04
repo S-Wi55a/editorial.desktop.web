@@ -39,7 +39,7 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
                 // Check if moving forward
                 if (newIndex > oldIndex) {
                     // Check if we are near the end 
-                    if (newIndex >= props.carouselItems.length - this.slidesToShow) {
+                    if (newIndex >= props.carouselItems.length - this.slidesToShow - 2) {
                         //dispatch action
                         props.fetch(props.nextQuery, props.index)
                     }
