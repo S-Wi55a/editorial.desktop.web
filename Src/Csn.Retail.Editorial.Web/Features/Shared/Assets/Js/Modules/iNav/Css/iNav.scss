@@ -5,7 +5,7 @@
     width: $iNav-width;
     position: relative;
     z-index: 2;
-    top: -15px;
+
 }
 
 .scrollmagic-pin-spacer--iNav {
@@ -13,16 +13,50 @@
     height: $iNav-header-height !important;
 }
 
+
+.iNav--v1 {
+    top: -15px;
+
+    .iNav {
+        background-color: $iNav-background-color;
+        border-bottom: 1px solid $cs-light-grey-2;
+        position: relative;
+        box-shadow: 0 2px 3px 0 rgba(166, 166, 166, 0.36);
+    }
+}
+
+.iNav--v2 {
+    .iNav {
+        .iNav__container {
+            transition: background-color 0.333s;
+            background-color: rgba($iNav-background-color, 0.1);
+            border-radius: 4px;
+        }
+    }
+
+    .scrollmagic-pin-spacer--iNav {
+        &.isActive {
+            .iNav {
+                background-color: $iNav-background-color;
+                border-bottom: 1px solid $cs-light-grey-2;
+                position: relative;
+                box-shadow: 0 2px 3px 0 rgba(166, 166, 166, 0.36);
+
+                .iNav__container {
+                    background-color: rgba($iNav-background-color, 0);
+                }
+            }
+        }
+    }
+}
+
 .iNav {
-    background-color: $iNav-background-color;
-    border-bottom: 1px solid $cs-light-grey-2;   
-    position: relative;
-    box-shadow: 0 2px 3px 0 rgba(166, 166, 166, 0.36);
+    transition: background-color 0.333s;
 
     &::after {
         content: '';
         opacity: 0;
-        background-color: rgba(255,255,255,0.6); 
+        background-color: rgba(255,255,255,0.6);
         transition: opacity .3s;
         position: fixed;
         top: 0;
@@ -35,15 +69,12 @@
     &--isActive {
 
         &::after {
-            opacity: 1; 
+            opacity: 1;
             pointer-events: auto;
-            
         }
     }
-
     // Category container
     &__container {
-
         height: $iNav-header-height;
         display: flex;
         align-items: center;
@@ -52,13 +83,13 @@
         margin-left: auto;
         padding-left: $grid-gutter-width/2;
         padding-right: $grid-gutter-width/2;
-        
+
         @include breakpoint($screen-md) {
             width: calc(#{$screen-md});
         }
+
         @include breakpoint($screen-lg) {
             width: calc(#{$screen-lg});
-        } 
+        }
     }
-
 }

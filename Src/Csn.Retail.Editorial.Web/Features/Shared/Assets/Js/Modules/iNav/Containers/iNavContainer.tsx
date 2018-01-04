@@ -45,6 +45,7 @@ class INav extends React.Component<IINavNodes> {
               offset: -1 * ((document as any).querySelector('.site-nav-wrapper') ? (document as any).querySelector('.site-nav-wrapper').offsetHeight : 40)
           })
           .setPin(document.querySelector('.iNav'), {spacerClass: 'scrollmagic-pin-spacer--iNav'})
+          .setClassToggle('.scrollmagic-pin-spacer--iNav', 'isActive')
           .addTo((window as any).scrollMogicController);
     }     
   }

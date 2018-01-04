@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
+using Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
+using Newtonsoft.Json;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing.Models
 {
@@ -7,6 +11,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
     {
         public List<CarouselViewModel> Carousels { get; set; }
         public Nav Nav { get; set; }
+        public CampaignAdResult CampaignAd { get; set; }
+        public string Title { get; set; }
     }
 
     public class CarouselViewModel
@@ -22,4 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
     { 
         public NavResult NavResults { get; set; }
     }
+
+    
+
 }

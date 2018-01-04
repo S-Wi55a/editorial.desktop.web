@@ -41,6 +41,10 @@
     }
 
     &--mrec {
+        .csn-carousel__link {
+            right: 370px;
+        }
+
         .csn-carousel__placeholder {
             width: calc(100% - 370px);
             display: inline-block;

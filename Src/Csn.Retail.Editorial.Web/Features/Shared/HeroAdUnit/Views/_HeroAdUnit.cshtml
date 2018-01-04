@@ -1,0 +1,51 @@
+﻿@using React.Web.Mvc
+@model Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models.CampaignAdResult
+
+@if (Model.Images != null)
+{
+    <style>
+        .hero-image {
+            background-image: url("@(Model.Images.Desktop)?aspect=centered&width=1920&height=520");
+        }
+    </style>
+}
+
+
+<div class="hero hero-image">
+
+    <div class="component component--hero-image-content" data-webm-section="Home-BannerAd">
+
+        <div class="main-text__left">
+            <p class="main-text__link">
+                @if (Model.LeftSection.IsShown)
+                {
+                    if (Model.LeftSection.IsLinked)
+                    {
+                        <a class="link-transition" href="@Model.LeftSection.LinkUrl" target="_blank">@Model.LeftSection.LinkText</a>
+                    }
+                    else
+                    {
+                        @Model.LeftSection.LinkText
+                    }
+                }
+                else
+                {
+                    <text>&nbsp;</text>
+                }
+            </p>
+        </div>
+
+        @if (Model.RightSection.IsShown)
+        {
+            <div class="main-text__right">
+                <p class="main-text__title">@Model.RightSection.Title</p>
+                @if (!string.IsNullOrWhiteSpace(Model.RightSection.LinkUrl))
+                {
+                    <p class="main-text__link">
+                        <a class="link-transition" href="@Model.RightSection.LinkUrl" target="@Model.RightSection.LinkTarget" data-webm-clickvalue="Home-BannerAd-Link">@Model.RightSection.LinkText</a>
+                    </p>
+                }
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@import "css/globals";
+
+.hero {
+
+    @include fadeIn();
+    position: relative;
+    height: 450px;
+    background: #262626;
+
+
+    &-image {
+        background: #262626;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        animation: fadeIn 1s ease-in;
+        -webkit-animation: fadeIn 1s ease-in;
+        width: 100%;
+    }
+
+    &__title {
+        font-size: 51px;
+        text-align: center;
+        color: $cs-white;
+        position: absolute;
+        top: 110px;
+        width: 100%;
+    }
+
+    .main-text__left,
+    .main-text__right {
+        position: absolute;
+        bottom: 25px;
+        color: $cs-white;
+        font-size: 18px;
+        font-weight: 300;
+
+        a,
+        a:visited,
+        a:hover,
+        a:focus,
+        a:active {
+            color: $cs-white;
+            text-decoration: none;
+        }
+    }
+
+    .main-text__left {
+        left: 45px;
+    }
+
+    .main-text__right {
+        right: 45px;
+        text-align: right;
+
+        .main-text__link {
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+    }
+}

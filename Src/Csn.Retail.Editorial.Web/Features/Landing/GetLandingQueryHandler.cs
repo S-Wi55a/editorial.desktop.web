@@ -5,11 +5,13 @@ using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
 using Csn.Retail.Editorial.Web.Features.Landing.Services;
+using Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
+using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
 {
@@ -20,24 +22,28 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly IMapper _mapper;
         private readonly ILandingConfigProvider _landingConfigProvider;
         private readonly ICarouselDataService _carouselDataService;
+        private ISmartServiceClient _restClient;
 
-        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider)
+
+        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, ISmartServiceClient restClient)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
             _landingConfigProvider = landingConfigProvider;
+            _restClient = restClient;
             _carouselDataService = carouselDataService;
-        }
 
-        public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
+    }
+
+    public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
-            var navResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
-
             var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
 
+            var navResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
             var searchResults = GetCarousels(configResults);
-
-            await Task.WhenAll(navResults, searchResults);
+            var campaignAd = configResults.HasHeroAddUnit ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
+     
+            await Task.WhenAll(navResults, searchResults, campaignAd);
 
             return new GetLandingResponse
             {
@@ -47,7 +53,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     {
                         NavResults = _mapper.Map<NavResult>(navResults.Result)
                     },
-                    Carousels = searchResults.Result
+                    Carousels = searchResults.Result,
+                    CampaignAd = campaignAd.Result
                 }
             };
         }
@@ -59,6 +66,14 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             await Task.WhenAll(getCarouselTasks);
 
             return getCarouselTasks.Select(listofTask => listofTask.Result).ToList();
+        }
+
+        private async Task<CampaignAdResult> GetAdUnit()
+        {
+            return await _restClient.Service("api-showroom-promotions")
+                .Path("/v1/promotions/carsales-homepage/campaign")
+                .GetAsync<CampaignAdResult>()
+                .ContinueWith(x => x.Result.Data);
         }
     }
 }
