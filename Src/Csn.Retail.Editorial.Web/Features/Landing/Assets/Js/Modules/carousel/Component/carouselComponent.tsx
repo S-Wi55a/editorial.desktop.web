@@ -15,6 +15,7 @@ interface ISimpleSlider {
     nextQuery: string
     index: number
     fetch: (q:string, i:number) => any
+    test: number
 }
 class SimpleSlider extends React.Component<ISimpleSlider> {
 
@@ -56,7 +57,7 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
 
 // Redux Connect
 const mapStateToProps = (state: IState, ownProps: any) => {
-    return {    
+    return {
         carouselItems: state.carousels[ownProps.index] ? state.carousels[ownProps.index].carouselItems : [],
         hasMrec: state.carousels[ownProps.index] ? state.carousels[ownProps.index].hasMrec : false,
         nextQuery: state.carousels[ownProps.index] ? state.carousels[ownProps.index].nextQuery : ''
