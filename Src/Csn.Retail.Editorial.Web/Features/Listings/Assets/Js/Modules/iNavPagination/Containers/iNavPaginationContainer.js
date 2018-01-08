@@ -43,7 +43,6 @@ const INavPagination = ({ paging, fetchQuery }) =>  {
                         return <INavPage  key={page.pageNo} { ...page } currentPage={paging.currentPageNo} fetchQuery={fetchQuery}/>
                     })}
                     <INavPageSeparator {...paging} text='...' trailing={true}/>                    
-                    <INavPage  { ...paging.last } currentPage={paging.currentPageNo} fetchQuery={fetchQuery} data-webm-clickvalue="last"/>
                     <INavPageNavigator { ...paging.next } show={paging.next}  direction={'next'} fetchQuery={fetchQuery} trackingValue="next"/>
                 </div>
                 <div className='iNavPagination__info'> { paging.displayText }</div>
