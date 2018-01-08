@@ -34,7 +34,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Services
             var postProcessors = new List<string> { "Retail", "FacetSort" };
             AddPostprocessors(postProcessors);
 
-            return await GetRyvusProxyResults(query, postProcessors, includeResults, sort);
+            return await GetRyvusProxyResults(query, postProcessors, includeResults, sort, offset);
         }
 
         public async Task<RyvussNavResultDto> GetResults(string query, int offset, string sort)
