@@ -11,6 +11,8 @@ const carouselReducer: any = (state: IState, action: Actions) => {
     switch (action.type) {
     case ActionTypes.API.CAROUSEL.FETCH_QUERY_SUCCESS:
         return appendCarouselData(state, action)
+    case ActionTypes.CAROUSELS.ADD_PROMOTED_ARTICLE:
+        return promotedReducer(state, action);
     default:
         return state;
     }
@@ -35,4 +37,27 @@ function appendCarouselData (state: IState, action: any) {
         console.log(e)        
         return state
     }
+}
+
+function promotedReducer(state: IState, action: Actions): IState {
+    
+    try {
+        //if(state.carousels .count > action.payload.location) {
+        //    const newState: any = update(state,
+        //        {
+        //            navResults: {
+        //                searchResults: {
+        //                    [action.payload.location]: {
+        //                        $set : action.payload
+        //                    }
+        //                }
+        //            }
+        //        })
+        //    return newState
+        //}
+        return state
+    } catch (e) {
+        console.log(e)        
+        return state
+    }       
 }

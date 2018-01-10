@@ -579,6 +579,7 @@
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
@@ -762,6 +763,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\kruxSasHelper.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotive.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotiveLoader.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--homepage.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\UIHelpers.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\middleware.js" />

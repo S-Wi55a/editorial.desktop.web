@@ -25,6 +25,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public string ViewAllLink { get; set; }
         public bool HasMrec { get; set; }
         public string NextQuery { get; set; }
+        public bool HasPolar { get; set; }
     }
 
     public class Nav

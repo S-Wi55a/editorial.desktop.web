@@ -2,7 +2,7 @@
 
 // details page - related articles
 const placements = [];
-const events = ['csn_editorial.listings.fetchNativeAds'];
+const events = ['csn_editorial.landing.fetchNativeAds'];
 const templates = {};
 
 const store = window.store || console.warn("No Redux store available")
@@ -10,7 +10,7 @@ const store = window.store || console.warn("No Redux store available")
 // Templates
 // We are highjacking the template function and using it to pass data to our Redux Store
 
-templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpers, partials, data) => { 
+templates['homepage'] = (location) => (event) => (Handlebars, depth0, helpers, partials, data) => { 
     
     var pubDate = new Date(depth0.pubDate);
     var now = new Date();
@@ -40,7 +40,8 @@ templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpe
                 articleDetailsUrl: depth0.link,
                 label: depth0.custom.PlacementType,
                 type: 'Promoted',
-                location
+                location,
+                carouselId: event.detail
              }
          }
        )
@@ -58,21 +59,21 @@ templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpe
 
 placements.push({
     location: 'body', // We need to location to always be true
-    name: 'listings-page-1',
-    placementId: '30',
-    template: templates['search-result'](4) // Set the placement location 
-})
-placements.push({
-    location: 'body', // We need to location to always be true
-    name: 'listings-page-2',
+    name: 'landing-page-1',
     placementId: '31',
-    template: templates['search-result'](9) // Set the placement location 
+    template: templates['homepage'](4) // Set the placement location 
 })
 placements.push({
     location: 'body', // We need to location to always be true
-    name: 'listings-page-3',
+    name: 'landing-page-2',
     placementId: '32',
-    template: templates['search-result'](14) // Set the placement location 
+    template: templates['homepage'](9) // Set the placement location 
+})
+placements.push({
+    location: 'body', // We need to location to always be true
+    name: 'landing-page-3',
+    placementId: '33',
+    template: templates['homepage'](14) // Set the placement location 
 })
 
 

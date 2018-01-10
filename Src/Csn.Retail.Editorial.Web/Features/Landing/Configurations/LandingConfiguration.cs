@@ -21,5 +21,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public string Query { get; set; }
         public string Sort { get; set; }
         public string ViewAll { get; set; }
+        public bool DisplayPolar { get; set; }
     }
 }
