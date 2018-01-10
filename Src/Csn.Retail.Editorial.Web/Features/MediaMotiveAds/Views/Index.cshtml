@@ -1,6 +1,6 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.MediaMotiveAds.MediaMotiveAdViewModel
 
-<div id="@Model.TileId" 
+<div id="Tile@(Model.TileId)" 
      class="mediamotive-block mediamotive-@Model.Description.ToLower() mediamotive-block--loading" 
      data-krux-required="@Model.DataKruxRequired.ToString().ToLower()" 
      data-media-motive-url="@Model.ScriptUrl">

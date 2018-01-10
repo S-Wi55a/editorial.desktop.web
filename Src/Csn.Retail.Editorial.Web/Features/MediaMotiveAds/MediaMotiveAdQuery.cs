@@ -4,6 +4,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 {
     public class MediaMotiveAdQuery : IQuery
     {
-        public string TileId { get; set; }
+        public int TileId { get; set; }
+        public AdSize AdSize { get; set; }
     }
 }

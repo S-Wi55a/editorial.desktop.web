@@ -30,7 +30,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
             //Act
             var result = queryHandler.Handle(new MediaMotiveAdQuery()
             {
-                TileId = "Tile3"
+                TileId = 3
             });
 
             Assert.AreEqual("//mm.carsales.com.au/carsales/jserver/make=honda/model=civic/make=bmw", result.ScriptUrl);

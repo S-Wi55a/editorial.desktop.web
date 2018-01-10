@@ -27,11 +27,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         public MediaMotiveAdViewModel Handle(MediaMotiveAdQuery query)
         {
 
-            if (!_tenantProvider.Current().AdUnits.Contains(query.TileId))
-            {
-                return null;
-            }
-
             var tags = _tagBuilders
                 .Where(builder => builder.IsApplicable(query))
                 .SelectMany(x => x.Build(query))
@@ -41,7 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
             var urlargs = string.Join("/", tags);
 
             // lookup the ad settings for this tile
-            if (!MediaMotiveAdSettings.AdTypes.TryGetValue(query.TileId, out MediaMotiveAdSetting adSetting))
+            if (!MediaMotiveAdSettings.AdTypes.TryGetValue(query.AdSize, out MediaMotiveAdSetting adSetting))
             {
                 return null;
             }
@@ -50,7 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 
             return new MediaMotiveAdViewModel()
             {
-                TileId = query.TileId,
+                TileId = query.TileId.ToString(),
                 Description = adSetting.Description.ToString(),
                 Height = dimensions.Height,
                 Width = dimensions.Width,
