@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 
         public string GetImageUrl(string photoPath)
         {
-            return _settings.ImageServerUrlTemplate.FormatWith(_tenantProvider.Current().Name, photoPath.Trim('/'));
+            return _settings.ImageServerUrlTemplate.FormatWith(_tenantProvider.Current().ServiceProjection, photoPath.Trim('/'));
         }
     }
 }

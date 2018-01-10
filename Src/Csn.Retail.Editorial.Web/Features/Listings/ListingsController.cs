@@ -39,8 +39,16 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         [RedirectAttributeFilter]
         public async Task<ActionResult> ArticleTypeListing(ArticleTypeListingQuery query)
         {
-            // temporary solution until we build proper landing pages
             var listingsQuery = await _queryDispatcher.DispatchAsync<ArticleTypeListingQuery, GetListingsQuery>(query);
+
+            return await Listing(listingsQuery);
+        }
+
+        [Route("editorial/{redbookvertical:redbook-vertical}/{*resultsPath:regex(^(results|beta-results))?}")]
+        [RedirectAttributeFilter]
+        public async Task<ActionResult> RedbookListing(RedbookListingQuery query)
+        {
+            var listingsQuery = await _queryDispatcher.DispatchAsync<RedbookListingQuery, GetListingsQuery>(query);
 
             return await Listing(listingsQuery);
         }

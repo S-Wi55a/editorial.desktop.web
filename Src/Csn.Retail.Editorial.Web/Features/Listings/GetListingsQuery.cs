@@ -18,4 +18,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public SearchEventType SearchEventType { get; set; }
         public EditorialPageTypes EditorialPageType { get; set; }
     }
+
+    public class RedbookListingQuery : GetListingsQuery
+    {
+        public RedbookVertical Vertical { get; set; }
+    }
 }

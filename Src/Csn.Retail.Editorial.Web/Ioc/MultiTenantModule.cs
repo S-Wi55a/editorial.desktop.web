@@ -1,4 +1,8 @@
+using System;
+using System.Linq;
+using System.Web;
 using Autofac;
+using Bolt.Common.Extensions;
 using Csn.MultiTenant;
 using Csn.MultiTenant.Mvc5;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -12,7 +16,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
         {
             builder.RegisterType<NullLogger>().As<ILogger>();
 
-            builder.Register(x => TenantProviderBuilder<TenantInfo>.New()
+            builder.Register(x => TenantProviderBuilder<TenantInfo>.New().WithCurrentTenantNamePicker(new TenantNamePicker())
                     .WithTenantDataMapper(x.Resolve<ITenantDataMapper<TenantInfo>>())
                     .WithLogger(new NullLogger())
                     .Build())
@@ -28,4 +32,18 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterType<TenantDataMapper<TenantInfo>>().As<ITenantDataMapper<TenantInfo>>().SingleInstance();
         }
     }
+
+    public class TenantNamePicker : ICurrentTenantNamePicker
+    {
+        public string Get()
+        {
+            var host = HttpContext.Current.Request.Url.Host.Replace("www.", string.Empty).Split('.').FirstOrDefault();
+
+            if (!host.IsSame("redbook")) return host;
+            var parts = HttpContext.Current.Request.Url.AbsolutePath.Split(new[] { "/editorial/" }, StringSplitOptions.None)[1].Split('/').FirstOrDefault();
+
+            return $"redbook-{parts}";
+        }
+    }
+
 }

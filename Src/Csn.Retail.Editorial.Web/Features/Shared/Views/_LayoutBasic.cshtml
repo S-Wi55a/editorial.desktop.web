@@ -7,7 +7,7 @@
 @{
     Layout = "_LayoutEmpty.cshtml";
     var globalSiteData = Html.GlobalSiteData();
-    var tenantName = Html.CurrentTenant().Name.ToLower();
+    var tenantName = !Html.CurrentTenant().AvailableOnRedbook ? Html.CurrentTenant().Name.ToLower() : "redbook";
     var googleAnalyticTracking = Html.GoogleAnalyticsScript();
 
 }

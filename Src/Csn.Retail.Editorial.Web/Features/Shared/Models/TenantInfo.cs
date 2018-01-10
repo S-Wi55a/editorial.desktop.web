@@ -46,7 +46,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         #region Disqus
 
         public string DisqusSource { get; set; }
-        #endregion
         
+        #endregion
+
+        #region Redbook
+        public bool AvailableOnRedbook { get; set; }
+        public string ServiceProjection { get; set; }
+        #endregion
     }
 }

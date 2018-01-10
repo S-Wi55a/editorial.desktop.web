@@ -12,6 +12,7 @@ export const listofTenants = [
     'trucksales',
     'caravancampingsales',
     'farmmachinerysales',
+    'redbook'
 ];
 
 
