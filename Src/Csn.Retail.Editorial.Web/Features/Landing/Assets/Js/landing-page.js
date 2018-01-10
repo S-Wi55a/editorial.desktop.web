@@ -1,6 +1,8 @@
 ﻿require('Css/landing-page.scss');
 
 import { configureStore } from 'Redux/Global/Store/store.client.js'
+import { loaded } from 'document-promises/document-promises.js'
+
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 //Enable Redux store globally
@@ -26,3 +28,18 @@ window.store = configureStore(); //Init store
     }
 
 })(document);
+
+//Lazy Native Ads
+loaded.then(() => {
+    (function nativeAds() {
+        if (typeof csn_editorial !== 'undefined' && typeof csn_editorial.nativeAds !== 'undefined') {
+            (function nativeAds() {
+                import
+                    (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
+                        .catch(function(err) {
+                            console.log('Failed to load nativeAds', err);
+                        });
+            })();
+        }
+    })();
+});

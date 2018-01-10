@@ -12,6 +12,9 @@ import INavSortingContainer from 'iNavSorting/Containers/iNavSortingContainer'
 import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchResultsContainer'
 import INavPaginationContainer from 'iNavPagination/Containers/iNavPaginationContainer'
 
+// Carousels
+import Carousel from 'carousel/Component/carouselComponent'
+
 //All Components are called and loaded into memorey
 export const Components = {
     INavPreloadedState: ReactServerConnect(PreloadedState)('store', Reducers['listings'], true),
@@ -24,6 +27,8 @@ export const Components = {
 
     //Carousel
     CarouselPreloadedState: ReactServerConnect(PreloadedState)('carousels', Reducers['carousels'], true),
+    Carousel: ReactServerConnect(Carousel)('carousels', Reducers['carousels']),
+
 
 }
 

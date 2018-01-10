@@ -6,7 +6,7 @@ if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 export function init(d, w, aside, selector, baseReference, topReference) {
 
-    
+    debugger
 
     if (typeof d === 'undefined' ||  typeof w === 'undefined' ||  typeof aside === 'undefined' ||  typeof baseReference === 'undefined') {
         console.error('Please check if you are passing the correct arguments to init')
@@ -15,7 +15,7 @@ export function init(d, w, aside, selector, baseReference, topReference) {
 
     // Cache Footer
     const pageFooter = d.querySelector('#page-footer')
-    const siteNavHeight = topReference || d.querySelector('.site-nav-wrapper') ? d.querySelector('.site-nav-wrapper').offsetHeight : 40
+    const siteNavHeight = topReference ? topReference : d.querySelector('.site-nav-wrapper') ? d.querySelector('.site-nav-wrapper').offsetHeight : 40
     const wrapper = d.querySelector('.wrapper--aside')
     
     //Module Vars

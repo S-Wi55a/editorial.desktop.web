@@ -25,7 +25,7 @@
 
 <div class="landing-page @(Model.CampaignAd != null ? "landing-page--hasHeroAdUnit" : "")">
     <h1 style="display: none;">@Model.Title</h1>
-        
+
     @if (Model.CampaignAd != null)
     {
         Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
@@ -36,18 +36,23 @@
         Html.RenderPartial("Partials/_Header");
     }
 
-    @Html.React("global.Components.INav", new {state = Model.Nav}, containerId: "iNav", containerClass: Model.CampaignAd != null ? "iNav--v2" : "iNav--v1")          
+    @Html.React("global.Components.INav", new { state = Model.Nav }, containerId: "iNav", containerClass: Model.CampaignAd != null ? "iNav--v2" : "iNav--v1")
 
     <div class="main container-fluid">
-        @foreach (var carousel in Model.Carousels)
+        @for(var i = 0; i < Model.Carousels.Count; i++)
         {
-            Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", carousel);
+            Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", Model, new ViewDataDictionary(ViewData) { { "index", i } });
         }
     </div>
 </div>
 
 @section BottomScripts
 {
-    @Html.React("global.Components.INavPreloadedState", new {state = Model.Nav}, containerId: "INavPreloadedState")
+    @Html.React("global.Components.INavPreloadedState", new { state = Model.Nav }, containerId: "INavPreloadedState")
     @Html.React("global.Components.CarouselPreloadedState", new { state = Model.Carousels }, containerId: "CarouselPreloadedState")
+    @if (Model.PolarNativeAdsData != null)
+    {
+        Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
+    }
+    @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
 }

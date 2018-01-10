@@ -16,7 +16,8 @@
           "displayMrec": false,
           "query": "(And.Type.Review._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/reviews/"
+          "viewAll": "/reviews/",
+          "displayPolar": true
         },
         {
           "title": "News",

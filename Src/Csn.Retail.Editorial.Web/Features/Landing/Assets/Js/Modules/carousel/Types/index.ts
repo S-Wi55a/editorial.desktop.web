@@ -7,6 +7,7 @@ export interface ICarouselViewModel {
     viewAllLink: string
     hasMrec: boolean
     nextQuery: string
+    hasPolar: boolean
 }
 export interface ICarouselItems {
     imageUrl: string

@@ -11,6 +11,8 @@ function loadPlacements() {
     import('NativeAds/Area/placements--' + areaName)
         .then(function (detailsPageNativeAds) {
             nativeAds(jQuery, detailsPageNativeAds.placements, detailsPageNativeAds.events)
+            const e = new CustomEvent('csn_editorial.nativeAds.ready');
+            window.dispatchEvent(e)
         }).catch(function (err) {
             console.log('Failed to load placements', err);
         });
@@ -79,15 +81,15 @@ function nativeAds($, placements, registeredEvents) {
                         }
                     },
                     location: placement.location,
-                    template: placement.template,
+                    template: placement.template(e),
                     onRender: function ($element) {
-                        //console.log('onRender: ', $element)
+                        console.log('onRender: ', $element)
                     },
                     onFill: function (data) {
-                        //console.dir('Fill: ', data);
+                        console.dir('Fill: ', data);
                     },
                     onError: function (error) {
-                        //console.log('Error: ', error)
+                        console.log('Error: ', error)
                     }
                 }]);
             });
