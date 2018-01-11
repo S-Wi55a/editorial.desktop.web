@@ -17,7 +17,10 @@
           "query": "(And.Type.Review._.Service.CarSales.)",
           "sort": "Latest",
           "viewAll": "/reviews/",
-          "displayPolar": true
+          "polarAds": {
+            "display": true,
+            "placementId":  31 
+          } 
         },
         {
           "title": "News",
@@ -31,7 +34,11 @@
           "displayMrec": false,
           "query": "(And.Type.Video._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/videos/"
+          "viewAll": "/videos/",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
         }
       ]
     }
