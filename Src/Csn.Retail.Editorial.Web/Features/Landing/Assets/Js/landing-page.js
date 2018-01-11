@@ -23,8 +23,22 @@ window.store = configureStore(); //Init store
     }
 
     if (d.querySelector('.csn-carousel__placeholder')) {
+
+        const carouselsComponent = require('carousel/carousel')
+        
         const carousels = [...document.querySelectorAll('.csn-carousel__placeholder')]
-        carousels.forEach((el, i) => require('carousel/carousel').default(el, i))
+
+        for (let i = 0; i < carousels.length; i++) {
+            
+            if (carousels[i].classList.contains('csn-carousel__placeholder--article')) {
+                carouselsComponent.carousel(carousels[i], i)
+                console.log('1')
+            }
+            if (carousels[i].classList.contains('csn-carousel__placeholder--driver')) {
+                carouselsComponent.driverCarousel(carousels[i], i)
+                console.log('2')
+            }
+        }
     }
 
 })(document);

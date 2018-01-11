@@ -9,7 +9,8 @@
           "displayMrec": true,
           "query": "(And.Type.Feature._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/features/"
+          "viewAll": "/features/",
+          "carouselType": "article"
         },
         {
           "title": "Reviews",
@@ -17,21 +18,59 @@
           "query": "(And.Type.Review._.Service.CarSales.)",
           "sort": "Latest",
           "viewAll": "/reviews/",
-          "displayPolar": true
+          "displayPolar": true,
+          "carouselType": "article"
+        },
+        {
+          "title": "Driver",
+          "carouselType": "driver",
+          "displayMrec": false,
+          "carouselItems": [
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/ed-itm-110483/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/mazda-cx-8-confirmed-for-oz-110480/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/ces-2018-kia-niro-ev-concept-110479/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/peugeot-releases-tennis-specials-110469/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/ces-2018-hyundai-nexo-hydrogen-car-revealed-110461/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/ces-2018-toyota-reveals-autonomous-electric-vehicle-project-110470/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/new-mercedes-benz-g-class-leaked-110471/"
+            }
+          ]
         },
         {
           "title": "News",
           "displayMrec": false,
           "query": "(And.Type.News._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/news/"
+          "viewAll": "/news/",
+          "carouselType": "article"
         },
         {
           "title": "Videos",
           "displayMrec": false,
           "query": "(And.Type.Video._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/videos/"
+          "viewAll": "/videos/",
+          "carouselType": "article"
         }
       ]
     }

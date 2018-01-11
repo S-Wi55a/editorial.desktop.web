@@ -1,0 +1,15 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Landing.Configurations
+@using Csn.Retail.Editorial.Web.Features.Landing.Models
+@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+@using React.Web.Mvc
+@model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
+
+@{ var index = (int) ViewData["index"]; }
+
+<div class="csn-carousel @(Model.Carousels[index].CarouselType == CarouselTypes.Driver ? "csn-carousel--driver" : "")">
+    <div class="csn-carousel__container">
+        @Html.React("global.Components.CarouselDriver", new { state = Model.Carousels, index }, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
+    </div>
+
+</div>

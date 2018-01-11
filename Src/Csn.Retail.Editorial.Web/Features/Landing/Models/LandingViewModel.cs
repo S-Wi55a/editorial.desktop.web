@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -26,6 +27,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public bool HasMrec { get; set; }
         public string NextQuery { get; set; }
         public bool HasPolar { get; set; }
+        public CarouselTypes CarouselType { get; set; }
     }
 
     public class Nav

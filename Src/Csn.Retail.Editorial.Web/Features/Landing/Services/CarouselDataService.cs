@@ -49,6 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             carouselViewModel.Title = carouselConfiguration.Title;
             carouselViewModel.ViewAllLink = $"/editorial{carouselConfiguration.ViewAll}";
             carouselViewModel.HasPolar = carouselConfiguration.DisplayPolar;
+            carouselViewModel.CarouselType = carouselConfiguration.CarouselType;
             return carouselViewModel;
         }
 
@@ -72,8 +73,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
                 CarouselItems = carouselConfiguration.CarouselItems.Select(a => _mapper.Map<SearchResult>(a)).ToList(),
                 Title = carouselConfiguration.Title,
                 HasMrec = carouselConfiguration.DisplayMrec,
-                HasPolar = carouselConfiguration.DisplayPolar
-            };
+                HasPolar = carouselConfiguration.DisplayPolar,
+                CarouselType = carouselConfiguration.CarouselType
+        };
         }
     }
 }

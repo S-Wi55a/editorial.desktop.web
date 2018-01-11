@@ -14,6 +14,8 @@ import INavPaginationContainer from 'iNavPagination/Containers/iNavPaginationCon
 
 // Carousels
 import Carousel from 'carousel/Component/carouselComponent'
+import CarouselDriver from 'carousel/Component/carouselComponent--driver'
+
 
 //All Components are called and loaded into memorey
 export const Components = {
@@ -28,6 +30,8 @@ export const Components = {
     //Carousel
     CarouselPreloadedState: ReactServerConnect(PreloadedState)('carousels', Reducers['carousels'], true),
     Carousel: ReactServerConnect(Carousel)('carousels', Reducers['carousels']),
+    CarouselDriver: ReactServerConnect(CarouselDriver)('carousels', Reducers['carousels']),
+
 
 
 }
