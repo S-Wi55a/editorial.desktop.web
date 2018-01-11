@@ -544,6 +544,7 @@
     <Compile Include="Features\Landing\Configurations\LandingConfiguration.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />
+    <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
@@ -578,6 +579,7 @@
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
+    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Components\iNavArticleCountComponent.js" />
@@ -607,7 +609,6 @@
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
-    <Compile Include="Features\Listings\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdController.cs" />
@@ -761,6 +762,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\kruxSasHelper.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotive.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\MediaMotive\mediaMotiveLoader.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--homepage.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Actions\actions.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Helpers\UIHelpers.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Redux\Global\Middleware\middleware.js" />
@@ -1050,7 +1052,6 @@
     <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Css\iNavSorting.scss" />
     <Content Include="Features\MediaMotiveAds\Views\_Leaderboard.cshtml" />
-    <Content Include="Features\MediaMotiveAds\Views\_Mrec.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\DetailsAd.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />

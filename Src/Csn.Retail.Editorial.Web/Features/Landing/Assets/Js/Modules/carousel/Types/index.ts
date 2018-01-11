@@ -7,6 +7,11 @@ export interface ICarouselViewModel {
     viewAllLink: string
     hasMrec: boolean
     nextQuery: string
+    polarAds: IPolarAds
+}
+export interface IPolarAds {
+    display: boolean
+    placementId: number
 }
 export interface ICarouselItems {
     imageUrl: string

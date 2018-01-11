@@ -5,11 +5,11 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
-namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
+namespace Csn.Retail.Editorial.Web.Features.Shared.Mappers
 {
     public interface IPolarNativeAdsDataMapper
     {
-        PolarNativeAdsData Map(IList<BreadCrumbDto> source);
+        PolarNativeAdsData Map(IList<BreadCrumbDto> source, string areaName);
     }
 
     [AutoBind]
@@ -22,7 +22,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             _tenantProvider = tenantProvider;
         }
 
-        public PolarNativeAdsData Map(IList<BreadCrumbDto> source)
+        public PolarNativeAdsData Map(IList<BreadCrumbDto> source, string areaName)
         {
             if (!_tenantProvider.Current().DisplayPolarAds)
             {
@@ -43,7 +43,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
 
             return new PolarNativeAdsData
             {
-                AreaName = "searchresults",
+                AreaName = areaName,
                 MakeModel = $"{makeInSource}{(string.IsNullOrEmpty(modelInSource) ? "" : modelInSource)}".Replace("-", "").Replace(" ", "")
             };
         }

@@ -42,6 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             carouselViewModel.HasMrec = carouselConfiguration.DisplayMrec;
             carouselViewModel.Title = carouselConfiguration.Title;
             carouselViewModel.ViewAllLink = $"/editorial{carouselConfiguration.ViewAll}";
+            carouselViewModel.PolarAds = carouselConfiguration.PolarAds;
             return carouselViewModel;
         }
 

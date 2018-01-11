@@ -1,6 +1,5 @@
 declare module 'Endpoints/endpoints'
 declare module 'ReactReduxUI'
-declare module 'iNav/Components/iNavMenuHeader'
 declare module 'global-object'
 declare module 'react-image'
 declare module 'custom-event'
@@ -20,4 +19,6 @@ declare module 'iNavSearchResults/Containers/iNavSearchResultsContainer'
 declare module 'iNavPagination/Containers/iNavPaginationContainer'
 declare module 'iNavSorting/Containers/iNavSortingContainer'
 declare module 'iNav/Components/iNavKeywordSearch'
+declare module 'iNav/Components/iNavMenuHeader'
+
 

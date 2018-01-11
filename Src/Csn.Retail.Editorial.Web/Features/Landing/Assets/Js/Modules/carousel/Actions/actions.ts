@@ -23,8 +23,22 @@ interface IFetchQuerySuccess extends Action {
     }
 }
 
+interface IAddPromotedArticle extends Action {
+    type: ActionTypes.CAROUSELS.ADD_PROMOTED_ARTICLE
+    payload: {
+        imageUrl: string,
+        headline: string,
+        dateAvailable: string,
+        articleDetailsUrl: string,
+        label: string,
+        location: number
+    }
+}
+
 type APIActions = IFetchQueryRequest | IFetchQuerySuccess | IFetchQueryError
 
-export type Actions = APIActions
+type ICarouselActions = IAddPromotedArticle
+
+export type Actions = APIActions | ICarouselActions
 
 export { ActionTypes, Thunks }

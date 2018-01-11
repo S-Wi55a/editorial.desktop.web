@@ -1,9 +1,10 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { IState, ICarouselItems } from 'carousel/Types'
+import { IState, ICarouselItems, IPolarAds } from 'carousel/Types'
 import SearchResultCard from 'Components/SearchResultCard/searchResultCard'
 import Slider from 'react-slick'
 import { Thunks } from 'carousel/Actions/actions'
+import CustomEvent from 'custom-event'
 
 if (!SERVER) {
     require('Carousel/Css/carousel')
@@ -15,11 +16,30 @@ interface ISimpleSlider {
     nextQuery: string
     index: number
     fetch: (q:string, i:number) => any
+    polarAds: IPolarAds
 }
 class SimpleSlider extends React.Component<ISimpleSlider> {
 
     constructor(props: any) {
         super(props)
+    }
+
+    componentDidMount(): void {
+        window.addEventListener('csn_editorial.nativeAds.ready', this.fetchNativeAds);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('csn_editorial.nativeAds.ready', this.fetchNativeAds);
+    }
+
+    fetchNativeAds = () => {
+        if (this.props.polarAds !== null && !SERVER) {
+            const customEvent = new CustomEvent('csn_editorial.landing.fetchNativeAds', { detail: {
+                carouselId: this.props.index,
+                placementId: this.props.polarAds.placementId
+            } });
+            window.dispatchEvent(customEvent);
+        }
     }
 
     render() {
@@ -56,9 +76,10 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
 
 // Redux Connect
 const mapStateToProps = (state: IState, ownProps: any) => {
-    return {    
+    return {
         carouselItems: state.carousels[ownProps.index] ? state.carousels[ownProps.index].carouselItems : [],
         hasMrec: state.carousels[ownProps.index] ? state.carousels[ownProps.index].hasMrec : false,
+        polarAds: state.carousels[ownProps.index] ? state.carousels[ownProps.index].polarAds : null,
         nextQuery: state.carousels[ownProps.index] ? state.carousels[ownProps.index].nextQuery : ''
     }
 }
