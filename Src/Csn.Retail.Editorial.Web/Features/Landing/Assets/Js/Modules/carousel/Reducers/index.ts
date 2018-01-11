@@ -1,5 +1,5 @@
 ﻿import { Actions, ActionTypes } from 'carousel/Actions/actions'
-import { IState, ICarouselViewModel } from 'carousel/Types'
+import { IState } from 'carousel/Types'
 import update from 'immutability-helper'
 
 // we wrap the reducer to pass init data to it for it to work in ReactJS.NET
@@ -39,23 +39,18 @@ function appendCarouselData (state: IState, action: any) {
     }
 }
 
-function promotedReducer(state: IState, action: Actions): IState {
+function promotedReducer(state: IState, action: any): IState {
     
     try {
-        //if(state.carousels .count > action.payload.location) {
-        //    const newState: any = update(state,
-        //        {
-        //            navResults: {
-        //                searchResults: {
-        //                    [action.payload.location]: {
-        //                        $set : action.payload
-        //                    }
-        //                }
-        //            }
-        //        })
-        //    return newState
-        //}
-        return state
+        const newState = update(state,
+            {
+                [action.payload.carouselId]: {
+                    carouselItems: {
+                        $splice: [[action.payload.location, 0, action.payload]]
+                    }
+                }
+            })
+        return newState
     } catch (e) {
         console.log(e)        
         return state

@@ -6,8 +6,6 @@ if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 export function init(d, w, aside, selector, baseReference, topReference) {
 
-    debugger
-
     if (typeof d === 'undefined' ||  typeof w === 'undefined' ||  typeof aside === 'undefined' ||  typeof baseReference === 'undefined') {
         console.error('Please check if you are passing the correct arguments to init')
         return
