@@ -2,6 +2,7 @@
 
 namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
 {
+
     public class LandingConfig
     {
         public List<LandingConfigurationSet> Configs { get; set; }
@@ -22,5 +23,19 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public string Sort { get; set; }
         public string ViewAll { get; set; }
         public bool DisplayPolar { get; set; }
+        public CarouselTypes CarouselType { get; set; }
+        public List<CarouselItem> CarouselItems { get; set; }
+    }
+
+    public class CarouselItem
+    {
+        public string ImageUrl { get; set; }
+        public string ItemUrl { get; set; }
+    }
+
+    public enum CarouselTypes
+    {
+        Article,
+        Driver
     }
 }

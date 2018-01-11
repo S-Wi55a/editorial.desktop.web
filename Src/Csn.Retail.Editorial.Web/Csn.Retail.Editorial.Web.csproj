@@ -542,6 +542,7 @@
     <Compile Include="Features\Landing\Carousel\CarouselQueryHandler.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQueryResponse.cs" />
     <Compile Include="Features\Landing\Configurations\LandingConfiguration.cs" />
+    <Compile Include="Features\Landing\Mappings\MapperConfiguration.cs" />
     <Compile Include="Features\Landing\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />

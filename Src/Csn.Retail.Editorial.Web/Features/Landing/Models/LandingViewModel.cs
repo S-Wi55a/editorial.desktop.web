@@ -32,7 +32,4 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
     { 
         public NavResult NavResults { get; set; }
     }
-
-    
-
 }
