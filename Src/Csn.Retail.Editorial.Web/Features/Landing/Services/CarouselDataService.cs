@@ -73,7 +73,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
                 CarouselItems = carouselConfiguration.CarouselItems.Select(a => _mapper.Map<SearchResult>(a)).ToList(),
                 Title = carouselConfiguration.Title,
                 HasMrec = carouselConfiguration.DisplayMrec,
-                HasPolar = carouselConfiguration.DisplayPolar,
+                PolarAds = carouselConfiguration.PolarAds,
                 CarouselType = carouselConfiguration.CarouselType
         };
         }
