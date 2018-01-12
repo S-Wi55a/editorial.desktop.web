@@ -22,7 +22,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public string Query { get; set; }
         public string Sort { get; set; }
         public string ViewAll { get; set; }
-        public bool DisplayPolar { get; set; }
+        public PolarAds PolarAds { get; set; }
         public CarouselTypes CarouselType { get; set; }
         public List<CarouselItem> CarouselItems { get; set; }
     }
@@ -37,5 +37,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
     {
         Article,
         Driver
+    }
+
+    public class PolarAds
+    {
+        public bool Display { get; set; }
+        public int PlacementId { get; set; }
     }
 }

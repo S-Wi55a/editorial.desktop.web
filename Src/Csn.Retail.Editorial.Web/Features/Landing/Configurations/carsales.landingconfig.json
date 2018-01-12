@@ -19,7 +19,11 @@
           "sort": "Latest",
           "viewAll": "/reviews/",
           "displayPolar": true,
-          "carouselType": "article"
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 31
+          }
         },
         {
           "title": "Driver",
@@ -70,7 +74,11 @@
           "query": "(And.Type.Video._.Service.CarSales.)",
           "sort": "Latest",
           "viewAll": "/videos/",
-          "carouselType": "article"
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
         }
       ]
     }
