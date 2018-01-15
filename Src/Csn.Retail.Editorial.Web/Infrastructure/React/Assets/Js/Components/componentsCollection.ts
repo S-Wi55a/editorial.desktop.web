@@ -5,7 +5,7 @@ import Reducers from '../Reducers/registeredServerReducerCollection'
 import PreloadedState from './preloadedState'
 
 // Search Bar component
-import INav from 'iNav/Containers/iNavContainer'
+import INav from 'ReactComponents/iNav/Containers/iNavContainer'
 import INavArticleCountComponent from 'iNavArticleCount/Components/iNavArticleCountComponent'
 import INavBreadCrumbsContainer from 'iNavBreadCrumbs/Containers/iNavBreadCrumbsContainer'
 import INavSortingContainer from 'iNavSorting/Containers/iNavSortingContainer'

@@ -1,4 +1,4 @@
-﻿import {iNavParentReducer} from "iNav/Reducers";
+﻿import {iNavParentReducer} from "ReactComponents/iNav/Reducers";
 import {carouselParentReducer} from "carousel/Reducers";
 
 const Reducers: any = {

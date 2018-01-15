@@ -16,10 +16,10 @@ window.store = configureStore(); //Init store
     const navInitState = window.__PRELOADED_STATE__store.nav
 
     window.store.addReducer('carousels', require('carousel/Reducers').carouselParentReducer(initState));
-    window.store.addReducer('store', require('iNav/Reducers').iNavParentReducer(navInitState));
+    window.store.addReducer('store', require('ReactComponents/iNav/Reducers').iNavParentReducer(navInitState));
 
     if (d.querySelector('#iNav')) {
-        require('iNav/iNav');
+        require('ReactComponents/iNav/iNav');
     }
 
     if (d.querySelector('.csn-carousel__placeholder')) {

@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
 import { IState, ICarouselItems, IPolarAds } from 'carousel/Types'
-import SearchResultCard from 'Components/SearchResultCard/searchResultCard'
+import SearchResultCard from 'ReactComponents/SearchResultCard/searchResultCard'
 import Slider from 'react-slick'
 import { Thunks } from 'carousel/Actions/actions'
 import CustomEvent from 'custom-event'

@@ -7,12 +7,11 @@
 
 .listing-page {
     background-color: $cs-light-grey-7;
-    
+
     .container {
         font-size: 0;
-        
-        .main {
 
+        .main {
             display: inline-block;
             $width: $screen-sm - ($aside-width + $grid-gutter-width);
             width: calc(#{#{$width}});
@@ -29,7 +28,28 @@
             }
 
             .teads-inread {
-                margin: auto auto 30px !important; 
+                margin: auto auto 30px !important;
+            }
+        }
+    }
+
+    .iNavSearchResult {
+        $spacing: 15px;
+
+        width: calc(50% - #{($spacing)});
+
+        &:nth-of-type(odd) {
+            margin-right: $spacing;
+        }
+
+        @include breakpoint($screen-lg) {
+            $spacing: 30px;
+
+            width: calc(50% - #{($spacing)});
+            margin-bottom: $spacing;
+
+            &:nth-of-type(odd) {
+                margin-right: $spacing;
             }
         }
     }
