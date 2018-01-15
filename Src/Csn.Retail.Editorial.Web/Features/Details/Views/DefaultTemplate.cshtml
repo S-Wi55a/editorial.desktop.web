@@ -26,10 +26,8 @@
 }
 
 <div class="page-container">
-    @if (!Html.CurrentTenant().AvailableOnRedbook)
-    {
-        Html.RenderPartial("Partials/_Header", Model);
-    }
+        @{Html.RenderPartial("Partials/_Header", Model);}
+    
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
