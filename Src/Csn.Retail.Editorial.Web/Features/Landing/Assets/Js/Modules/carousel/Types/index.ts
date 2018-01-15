@@ -21,9 +21,16 @@ export interface ICarouselItems {
     articleDetailsUrl: string
     label: string
     type: string
-    disqusArticleId: string | number 
+    disqusArticleId: string | number
+    itemUrl?: string
 }
-export interface ICarouselDriverItems {
-    imageUrl: string
-    itemUrl: string
+
+export interface ISimpleSlider {
+    carouselItems: ICarouselItems[]
+    hasMrec: boolean
+    nextQuery: string
+    index: number
+    fetch: (q:string, i:number) => any
+    polarAds: IPolarAds
+    title: string
 }
