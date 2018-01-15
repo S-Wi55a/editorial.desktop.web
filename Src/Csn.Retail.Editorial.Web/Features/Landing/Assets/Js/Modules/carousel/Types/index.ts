@@ -23,3 +23,7 @@ export interface ICarouselItems {
     type: string
     disqusArticleId: string | number 
 }
+export interface ICarouselDriverItems {
+    imageUrl: string
+    itemUrl: string
+}

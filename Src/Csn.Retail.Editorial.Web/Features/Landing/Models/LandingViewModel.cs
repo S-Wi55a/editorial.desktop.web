@@ -26,6 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public string ViewAllLink { get; set; }
         public bool HasMrec { get; set; }
         public string NextQuery { get; set; }
+        public CarouselTypes CarouselType { get; set; }
         public PolarAds PolarAds { get; set; }
     }
 

@@ -1,4 +1,5 @@
 ﻿@using System.ComponentModel
+@using Csn.Retail.Editorial.Web.Features.Landing.Configurations
 @using Csn.Retail.Editorial.Web.Features.Landing.Models
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
@@ -45,7 +46,15 @@
     <div class="main container-fluid">
         @for (var i = 0; i < Model.Carousels.Count; i++)
         {
-            Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", Model, new ViewDataDictionary(ViewData) { { "index", i } });
+            switch (Model.Carousels[i].CarouselType)
+            {
+                case CarouselTypes.Article:
+                    Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", Model, new ViewDataDictionary(ViewData) { { "index", i } });
+                    break;
+                case CarouselTypes.Driver:
+                    Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel--Driver.cshtml", Model, new ViewDataDictionary(ViewData) { { "index", i } });
+                    break;
+            }
         }
     </div>
 </div>

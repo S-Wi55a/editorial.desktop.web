@@ -8,28 +8,69 @@
           "displayMrec": true,
           "query": "(And.Type.Feature._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "viewAll": "/features/"
+          "viewAll": "/features/",
+          "carouselType": "article"
         },
         {
           "title": "Reviews",
           "displayMrec": false,
           "query": "(And.Type.Review._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "viewAll": "/reviews/"
+          "viewAll": "/reviews/",
+          "carouselType": "article"
         },
+        {
+          "title": "Driver",
+          "carouselType": "driver",
+          "displayMrec": false,
+          "carouselItems": [
+            {
+              "ImageUrl": "/general/editorial/bowe-hall-of-fame.jpg",
+              "ItemUrl": "/editorial/details/ed-itm-110483/"
+            },
+            {
+              "ImageUrl": "/general/editorial/mazda-cx-8_1.jpg",
+              "ItemUrl": "/editorial/details/mazda-cx-8-confirmed-for-oz-110480/"
+            },
+            {
+              "ImageUrl": "/general/editorial/kia-niro-006.jpg",
+              "ItemUrl": "/editorial/details/ces-2018-kia-niro-ev-concept-110479/"
+            },
+            {
+              "ImageUrl": "/general/editorial/peugeot-3008-suv-advantage-edition.jpg",
+              "ItemUrl": "/editorial/details/peugeot-releases-tennis-specials-110469/"
+            },
+            {
+              "ImageUrl": "/general/editorial/nexo-008.jpg",
+              "ItemUrl": "/editorial/details/ces-2018-hyundai-nexo-hydrogen-car-revealed-110461/"
+            },
+            {
+              "ImageUrl": "/general/editorial/toyota-e_palette_concepts-101.jpg",
+              "ItemUrl": "/editorial/details/ces-2018-toyota-reveals-autonomous-electric-vehicle-project-110470/"
+            },
+            {
+              "ImageUrl": "/general/editorial/mercedes-benz-g-class-leak-hero.jpg",
+              "ItemUrl": "/editorial/details/new-mercedes-benz-g-class-leaked-110471/"
+            }
+          ]
+        },
+
         {
           "title": "News",
           "displayMrec": false,
           "query": "(And.Type.News._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "viewAll": "/news/"
+          "viewAll": "/news/",
+          "carouselType": "article"
+
         },
         {
           "title": "Videos",
           "displayMrec": false,
           "query": "(And.Type.Video._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "viewAll": "/videos/"
+          "viewAll": "/videos/",
+          "carouselType": "article"
         }
       ]
     }
