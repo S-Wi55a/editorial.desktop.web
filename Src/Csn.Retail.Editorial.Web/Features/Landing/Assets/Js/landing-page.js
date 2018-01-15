@@ -2,6 +2,7 @@
 
 import { configureStore } from 'Redux/Global/Store/store.client.js'
 import { loaded } from 'document-promises/document-promises.js'
+import { reducer as formReducer } from 'redux-form'
 
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
@@ -17,6 +18,7 @@ window.store = configureStore(); //Init store
 
     window.store.addReducer('carousels', require('carousel/Reducers').carouselParentReducer(initState));
     window.store.addReducer('store', require('iNav/Reducers').iNavParentReducer(navInitState));
+    window.store.addReducer('form', formReducer);
 
     if (d.querySelector('#iNav')) {
         require('iNav/iNav');
