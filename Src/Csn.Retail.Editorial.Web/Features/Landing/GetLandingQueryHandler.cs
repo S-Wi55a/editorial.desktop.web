@@ -57,6 +57,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     {
                         NavResults = _mapper.Map<NavResult>(navResults.Result)
                     },
+                    Title = "Search All News & Reviews", // TODO: Dynamically set if not homepage
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(navResults.Result.INav.BreadCrumbs, "homepage"),
