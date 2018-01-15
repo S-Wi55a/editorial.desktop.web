@@ -32,11 +32,9 @@ window.store = configureStore(); //Init store
             
             if (carousels[i].classList.contains('csn-carousel__placeholder--article')) {
                 carouselsComponent.carousel(carousels[i], i)
-                console.log('1')
             }
             if (carousels[i].classList.contains('csn-carousel__placeholder--driver')) {
                 carouselsComponent.driverCarousel(carousels[i], i)
-                console.log('2')
             }
         }
     }
