@@ -9,7 +9,6 @@
           "displayMrec": true,
           "query": "(And.Type.Feature._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/features/",
           "carouselType": "article"
         },
         {
