@@ -52,6 +52,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         #region Redbook
         public bool AvailableOnRedbook { get; set; }
         public string ServiceProjection { get; set; }
+        public string Vertical { get; set; }
         #endregion
     }
 }

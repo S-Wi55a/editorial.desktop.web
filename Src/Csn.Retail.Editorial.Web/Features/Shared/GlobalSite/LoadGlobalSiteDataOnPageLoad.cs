@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Bolt.Common.Extensions;
-using Csn.Cars.Cache;
-using Csn.Cars.Cache.Extensions;
 using Csn.MultiTenant;
 using Csn.Retail.AppShellClient;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
-using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.UserContext;
 using Csn.SimpleCqrs;
-using Ingress.ServiceClient.Abstracts;
 using Csn.Logging;
 using ILogger = Csn.Logging.ILogger;
 
@@ -46,7 +41,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
                 var response = _proxy.Get(new AppShellRequest
                 {
                     CurrentUserId = _userContext.CurrentUserId?.ToString(),
-                    SiteName = _tenantProvider.Current().Name
+                    SiteName = !_tenantProvider.Current().AvailableOnRedbook ? _tenantProvider.Current().Name : "redbook"
                 });
 
                 if (response.IsSucceed)

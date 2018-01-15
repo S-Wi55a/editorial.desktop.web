@@ -17,7 +17,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.RegisterType<NullLogger>().As<ILogger>();
 
             builder.Register(x => TenantProviderBuilder<TenantInfo>.New().WithCurrentTenantNamePicker(new TenantNamePicker())
-                    .WithTenantDataMapper(x.Resolve<ITenantDataMapper<TenantInfo>>())
+                    .WithTenantDataMapper(x.Resolve<ITenantDataMapper<TenantInfo>>()).WithCurrentTenantNamePicker(new TenantNamePicker())
                     .WithLogger(new NullLogger())
                     .Build())
                 .As<ITenantProvider<TenantInfo>>()
@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
 
             builder.Register(x =>
                 MultiTenantViewEngineBuilder<TenantInfo>.New()
-                    .TenantProvider(x.Resolve<ITenantProvider<TenantInfo>>())
+                    .TenantProvider( x.Resolve<ITenantProvider<TenantInfo>>())
                     .Build())
                 .As<MultiTenantViewEngine<TenantInfo>>().SingleInstance();
 
@@ -40,9 +40,9 @@ namespace Csn.Retail.Editorial.Web.Ioc
             var host = HttpContext.Current.Request.Url.Host.Replace("www.", string.Empty).Split('.').FirstOrDefault();
 
             if (!host.IsSame("redbook")) return host;
-            var parts = HttpContext.Current.Request.Url.AbsolutePath.Split(new[] { "/editorial/" }, StringSplitOptions.None)[1].Split('/').FirstOrDefault();
+            var vertical = HttpContext.Current.Request.Url.AbsolutePath.Split(new[] { "/editorial/" }, StringSplitOptions.None)[1].Split('/').FirstOrDefault();
 
-            return $"redbook-{parts}";
+            return Enum.TryParse<RedbookVertical>(vertical, true, out var redbookVertical) ? $"redbook-{redbookVertical.ToString().ToLower()}" : "redbook-cars";
         }
     }
 

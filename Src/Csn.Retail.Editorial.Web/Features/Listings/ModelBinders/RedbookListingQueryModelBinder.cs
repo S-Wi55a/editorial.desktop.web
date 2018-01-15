@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Autofac.Integration.Mvc;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;

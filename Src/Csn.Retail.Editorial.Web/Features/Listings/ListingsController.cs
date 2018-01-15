@@ -27,6 +27,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         [Route("editorial/")]
         [RedirectAttributeFilter]
+        [RedbookDefaultVerticalAttributeFilter]
         public async Task<ActionResult> Homepage()
         {
             return await Listing(new GetListingsQuery

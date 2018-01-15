@@ -543,6 +543,7 @@
     <Compile Include="Features\Landing\Carousel\CarouselQueryResponse.cs" />
     <Compile Include="Features\Landing\Configurations\LandingConfiguration.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
+    <Compile Include="Features\Listings\Filters\RedbookDefaultVerticalAttributeFilter.cs" />
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
     <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />
@@ -1102,6 +1103,9 @@
     <Content Include="Features\Listings\Views\Partials\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Redbook-cars\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Redbook-boats\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Redbook-bikes\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Redbook-boats\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Redbook-cars\_Disclaimer.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
