@@ -4,6 +4,7 @@
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Shared.Models
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Newtonsoft.Json
 @using React.Web.Mvc
@@ -69,5 +70,9 @@
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
     }
     @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
+    
+    @{
+        Html.RenderAction( "HtmlTracking", "Tracking");
+    }
 
 }
