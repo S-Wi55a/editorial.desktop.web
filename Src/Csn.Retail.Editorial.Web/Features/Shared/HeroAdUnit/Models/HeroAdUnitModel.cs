@@ -16,9 +16,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models
         }
 
         public string Name { get; set; }
-
         public bool IsDefaultCampaign { get; set; }
-
         public CampaignSection LeftSection { get; set; }
         public CampaignSection RightSection { get; set; }
 

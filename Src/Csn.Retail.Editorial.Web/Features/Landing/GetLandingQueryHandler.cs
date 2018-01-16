@@ -66,7 +66,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(navResults.Result.INav.BreadCrumbs, TrackingScriptPageTypes.Homepage),
-                    InsightsData = LandingInsightsDataMapper.Map()
+                    InsightsData = LandingInsightsDataMapper.Map(),
+                    HeroTitle = "Search All News & Reviews"
                 }
             };
         }
