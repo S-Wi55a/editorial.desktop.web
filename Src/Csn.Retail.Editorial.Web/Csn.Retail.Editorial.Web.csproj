@@ -1095,6 +1095,7 @@
     <Content Include="Features\Shared\HeroAdUnit\Views\_HeroAdUnit.cshtml" />
     <Content Include="Features\Shared\HeroAdUnit\Css\Partials\_hero.scss" />
     <Content Include="Features\Landing\Views\Partials\_Carousel--Driver.cshtml" />
+    <Content Include="Features\Details\Views\Partials\MediaMotive\_PolarNativeAdsTracking.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
