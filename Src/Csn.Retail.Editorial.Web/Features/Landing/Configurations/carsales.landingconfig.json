@@ -7,7 +7,7 @@
         {
           "title": "Featured",
           "displayMrec": true,
-          "query": "(And.Type.Feature._.Service.CarSales.)",
+          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
           "sort": "Latest",
           "carouselType": "article"
         },
