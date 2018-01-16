@@ -17,7 +17,7 @@ window.store = configureStore(); //Init store
     const navInitState = window.__PRELOADED_STATE__store.nav
 
     window.store.addReducer('carousels', require('carousel/Reducers').carouselParentReducer(initState));
-    window.store.addReducer('store', require('ReactComponents/iNav/Reducers').iNavParentReducer(initState));
+    window.store.addReducer('store', require('ReactComponents/iNav/Reducers').iNavParentReducer(navInitState));
     window.store.addReducer('form', formReducer);
 
     if (d.querySelector('#iNav')) {
