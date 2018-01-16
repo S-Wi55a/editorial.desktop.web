@@ -1,17 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
+using Csn.Retail.Editorial.Web.Features.Landing.Mappings;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
 using Csn.Retail.Editorial.Web.Features.Landing.Services;
 using Csn.Retail.Editorial.Web.Features.Shared.Mappers;
 using Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
+using Csn.Tracking.Scripts.Core;
 using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
@@ -25,16 +29,17 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly ICarouselDataService _carouselDataService;
         private readonly ISmartServiceClient _restClient;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
+        private readonly ITenantProvider<TenantInfo> _tenantProvider;
 
 
-
-        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper)
+        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
             _landingConfigProvider = landingConfigProvider;
             _restClient = restClient;
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
+            _tenantProvider = tenantProvider;
             _carouselDataService = carouselDataService;
 
     }
@@ -57,10 +62,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     {
                         NavResults = _mapper.Map<NavResult>(navResults.Result)
                     },
-                    Title = "Search All News & Reviews", // TODO: Dynamically set if not homepage
+                    Title = _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
-                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(navResults.Result.INav.BreadCrumbs, "homepage"),
+                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(navResults.Result.INav.BreadCrumbs, TrackingScriptPageTypes.Homepage),
+                    InsightsData = LandingInsightsDataMapper.Map()
                 }
             };
         }

@@ -542,6 +542,7 @@
     <Compile Include="Features\Landing\Carousel\CarouselQueryHandler.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQueryResponse.cs" />
     <Compile Include="Features\Landing\Configurations\LandingConfiguration.cs" />
+    <Compile Include="Features\Landing\Mappings\ListingInsightsDataMapper.cs" />
     <Compile Include="Features\Landing\Mappings\MapperConfiguration.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />
@@ -1193,8 +1194,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
-  <!-- <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" /> -->
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
