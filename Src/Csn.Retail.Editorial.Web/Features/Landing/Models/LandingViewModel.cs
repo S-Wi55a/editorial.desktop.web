@@ -16,6 +16,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public string Title { get; set; }
         public CampaignAdResult CampaignAd { get; set; }
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
+        public Dictionary<string, string> InsightsData { get; set; }
+
 
     }
 
