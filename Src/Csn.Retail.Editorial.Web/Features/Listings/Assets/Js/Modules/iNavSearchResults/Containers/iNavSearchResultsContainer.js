@@ -2,9 +2,9 @@
 import { connect } from 'react-redux'
 import Timer from 'ReactAnimations/Timer'
 import { FadeIn } from 'ReactAnimations/Fade'
-import INavSearchResult from 'iNavSearchResults/Component/iNavSearchResult'
+import INavSearchResult from 'ReactComponents/SearchResultCard/searchResultCard'
 import UI from 'ReactReduxUI'
-import { ActionTypes } from 'iNav/Actions/actions'
+import { ActionTypes } from 'ReactComponents/iNav/Actions/actions'
 
 if (!SERVER) {
     require('iNavSearchResults/Css/iNavSearchResults.scss')

@@ -13,7 +13,7 @@
 
 <div class="hero hero-image">
 
-    <div class="component component--hero-image-content" data-webm-section="Home-BannerAd">
+    <div class="component component--hero-image-content" data-webm-section="hero">
 
         <div class="main-text__left">
             <p class="main-text__link">
@@ -21,7 +21,7 @@
                 {
                     if (Model.LeftSection.IsLinked)
                     {
-                        <a class="link-transition" href="@Model.LeftSection.LinkUrl" target="_blank">@Model.LeftSection.LinkText</a>
+                        <a class="link-transition" href="@Model.LeftSection.LinkUrl" target="_blank" data-webm-clickvalue="view-website">@Model.LeftSection.LinkText</a>
                     }
                     else
                     {
@@ -42,7 +42,7 @@
                 @if (!string.IsNullOrWhiteSpace(Model.RightSection.LinkUrl))
                 {
                     <p class="main-text__link">
-                        <a class="link-transition" href="@Model.RightSection.LinkUrl" target="@Model.RightSection.LinkTarget" data-webm-clickvalue="Home-BannerAd-Link">@Model.RightSection.LinkText</a>
+                        <a class="link-transition" href="@Model.RightSection.LinkUrl" target="@Model.RightSection.LinkTarget" data-webm-clickvalue="discover-more">@Model.RightSection.LinkText</a>
                     </p>
                 }
             </div>

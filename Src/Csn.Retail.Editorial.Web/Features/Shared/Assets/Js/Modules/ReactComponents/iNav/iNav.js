@@ -3,19 +3,20 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
-import INavSearchResultsContainer from 'iNavSearchResults/Containers/iNavSearchResultsContainer'
+import INav from './Containers/iNavContainer'
 
 //Check for Store
 const store = window.store
 
+// TODO: extract this out
 const render = (WrappedComponent) => {
     ReactDOM.hydrate(
-        <AppContainer iNavSearchResults>
+        <AppContainer iNav>
             <Provider store={store}>
                 <WrappedComponent />
             </Provider>
         </AppContainer>,
-        document.getElementById('iNavSearchResults')
+        document.getElementById('iNav')
     );
 };
 
@@ -24,9 +25,9 @@ const render = (WrappedComponent) => {
 if (store) {
     
     //Render Searchbar Component
-    render(INavSearchResultsContainer);
+    render(INav);
 
     if (module.hot) {
-        module.hot.accept('iNavSearchResults/Containers/iNavSearchResultsContainer', () => render(INavSearchResultsContainer));
+        module.hot.accept('./Containers/iNavContainer', () => render(INav));
     }
 }

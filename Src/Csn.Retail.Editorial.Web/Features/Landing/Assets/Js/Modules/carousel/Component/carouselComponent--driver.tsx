@@ -1,15 +1,13 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { IState, ICarouselDriverItems } from 'carousel/Types'
+import { IState, ISimpleSlider } from 'carousel/Types'
 import Slider from 'react-slick'
+import NavButton from 'carousel/Component/carouselComponentArrows'
 
 if (!SERVER) {
     require('Carousel/Css/carousel')
 }
 
-interface ISimpleSlider {
-    carouselItems: ICarouselDriverItems[]
-}
 class SimpleSlider extends React.Component<ISimpleSlider> {
 
     constructor(props: any) {
@@ -27,13 +25,15 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
                 { breakpoint: 1200, settings: { slidesToShow: 3 } },
                 { breakpoint: 1600, settings: { slidesToShow: 4 } },
                 { breakpoint: 2000, settings: { slidesToShow: 5 } }, 
-            ]
+            ],
+            nextArrow: <NavButton text="Next" />,
+            prevArrow: <NavButton text="Prev" />
         }
         return (
             <Slider {...settings}>
                 {this.props.carouselItems.map((item, index) => 
                     <div key={index} className="">
-                        <a href={item.itemUrl}>
+                        <a href={item.itemUrl} data-webm-clickvalue={`item`}>
                             <img src={item.imageUrl}/>
                         </a>
                    </div>)}            

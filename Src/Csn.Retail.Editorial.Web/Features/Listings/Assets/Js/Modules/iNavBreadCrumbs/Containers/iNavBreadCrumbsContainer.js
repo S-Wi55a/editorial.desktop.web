@@ -2,7 +2,7 @@
 import { connect } from 'react-redux'
 import { FadeIn } from 'ReactAnimations/Fade'
 import Timer from 'ReactAnimations/Timer'
-import { Thunks } from 'iNav/Actions/actions'
+import { Thunks } from 'ReactComponents/iNav/Actions/actions'
 
 // TODO: use enum in TS for this
 const FacetBreadCrumb = {

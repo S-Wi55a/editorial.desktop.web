@@ -5,28 +5,27 @@
 
 @{ var index = (int) ViewData["index"]; }
 
-<div class="csn-carousel @(Model.Carousels[index].HasMrec ? "csn-carousel--mrec" : "")">
-<div class="csn-carousel__info-bar">
-    @if (Model.Carousels[index].ViewAllLink != null)
-    {
+<div class="csn-carousel @(Model.Carousels[index].HasMrec ? "csn-carousel--mrec" : "")" data-webm-section="carousel-@(Model.Carousels[index].Title)">
+    <div class="csn-carousel__info-bar">
+        @if (Model.Carousels[index].ViewAllLink != null)
+        {
 
-        <h2 class="csn-carousel__title"><a href="@Model.Carousels[index].ViewAllLink">@Model.Carousels[index].Title</a>
-        </h2>
+            <h2 class="csn-carousel__title"><a href="@Model.Carousels[index].ViewAllLink" data-webm-clickvalue="carousel-@(Model.Carousels[index].Title)-title-link">@Model.Carousels[index].Title</a>
+            </h2>
 
-        <a href="@Model.Carousels[index].ViewAllLink" class="csn-carousel__link">View all @Model.Carousels[index].Title</a>
-    }
-    else
-    {
-        <h2 class="csn-carousel__title">@Model.Carousels[index].Title</h2>
-    }
-</div>
-<div class="csn-carousel__container">
-@Html.React("global.Components.Carousel", new {state = Model.Carousels, index}, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
+            <a href="@Model.Carousels[index].ViewAllLink" class="csn-carousel__link" data-webm-clickvalue="carousel-@(Model.Carousels[index].Title)-view-all">View all @Model.Carousels[index].Title</a>
+        }
+        else
+        {
+            <h2 class="csn-carousel__title">@Model.Carousels[index].Title</h2>
+        }
+    </div>
+    <div class="csn-carousel__container">
+    @Html.React("global.Components.Carousel", new {state = Model.Carousels, index}, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
 
         @if (Model.Carousels[index].HasMrec)
         {
             Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() {AdSize = AdSize.MediumRectangle, TileId = 3});
         }
     </div>
-
 </div>

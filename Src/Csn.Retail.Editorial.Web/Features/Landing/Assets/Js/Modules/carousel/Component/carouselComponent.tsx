@@ -1,23 +1,16 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { IState, ICarouselItems, IPolarAds } from 'carousel/Types'
-import SearchResultCard from 'Components/SearchResultCard/searchResultCard'
+import { IState, ISimpleSlider } from 'carousel/Types'
+import SearchResultCard from 'ReactComponents/SearchResultCard/searchResultCard'
 import Slider from 'react-slick'
 import { Thunks } from 'carousel/Actions/actions'
 import CustomEvent from 'custom-event'
+import NavButton from 'carousel/Component/carouselComponentArrows'
 
 if (!SERVER) {
     require('Carousel/Css/carousel')
 }
 
-interface ISimpleSlider {
-    carouselItems: ICarouselItems[]
-    hasMrec: boolean
-    nextQuery: string
-    index: number
-    fetch: (q:string, i:number) => any
-    polarAds: IPolarAds
-}
 class SimpleSlider extends React.Component<ISimpleSlider> {
 
     constructor(props: any) {
@@ -64,7 +57,10 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
                         props.fetch(props.nextQuery, props.index)
                     }
                 }
-            }
+            },
+            nextArrow: <NavButton text="Next" />,
+            prevArrow: <NavButton text="Prev" />
+
         }
         return (
             <Slider {...settings}>
