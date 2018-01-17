@@ -36,7 +36,8 @@
             left: $iNav-header-item-width;
 
             @include breakpoint($screen-lg) {
-                min-width: ($iNav-header-item-width + 60px);
+                left: $iNav-header-item-width + 60px;
+                min-width: ($iNav-header-item-width);
             }
         }
 
@@ -44,7 +45,8 @@
             left: $iNav-header-item-width * 2;
 
             @include breakpoint($screen-lg) {
-                min-width: ($iNav-header-item-width + 60px) * 2;
+                left: ($iNav-header-item-width + 60px) * 2;
+                min-width: ($iNav-header-item-width);
             }
         }
 
@@ -52,7 +54,8 @@
             left: $iNav-header-item-width * 3;
 
             @include breakpoint($screen-lg) {
-                min-width: ($iNav-header-item-width + 60px) * 3;
+                left: ($iNav-header-item-width + 60px) * 3;
+                min-width: ($iNav-header-item-width);
             }
         }
 
@@ -60,7 +63,8 @@
             left: $iNav-header-item-width * 4;
 
             @include breakpoint($screen-lg) {
-                min-width: ($iNav-header-item-width + 60px) * 4;
+                left: ($iNav-header-item-width + 60px) * 4;
+                min-width: ($iNav-header-item-width);
             }
         }
 
