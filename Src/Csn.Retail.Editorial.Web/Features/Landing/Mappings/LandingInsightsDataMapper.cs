@@ -10,7 +10,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Mappings
             return new Dictionary<string, string>
             {
                 {TrackingScriptTags.ContentGroup1, TrackingScriptContentGroups.NewsAndReviews},
-                {TrackingScriptTags.ContentGroup2, TrackingScriptPageTypes.Homepage}
             };
         }
     }
