@@ -17,12 +17,39 @@
           "query": "(And.Type.Review._.Service.CarSales.)",
           "sort": "Latest",
           "viewAll": "/reviews/",
-          "displayPolar": true,
           "carouselType": "article",
           "polarAds": {
             "display": true,
             "placementId": 31
           }
+        },
+        {
+          "title": "News",
+          "displayMrec": false,
+          "query": "(And.Type.News._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/news/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Videos",
+          "displayMrec": false,
+          "query": "(And.Type.Video._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/videos/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
+        },
+        {
+          "title": "Car Advice",
+          "displayMrec": false,
+          "query": "(And.Type.Car Advice._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/car advice/",
+          "carouselType": "article"
         },
         {
           "title": "Driver",
@@ -60,24 +87,24 @@
           ]
         },
         {
-          "title": "News",
+          "title": "Comparisons",
           "displayMrec": false,
-          "query": "(And.Type.News._.Service.CarSales.)",
+          "query": "(And.Category.Comparison._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/news/",
-          "carouselType": "article"
-        },
-        {
-          "title": "Videos",
-          "displayMrec": false,
-          "query": "(And.Type.Video._.Service.CarSales.)",
-          "sort": "Latest",
-          "viewAll": "/videos/",
+          "viewAll": "/results/?q=Category.Comparison.",
           "carouselType": "article",
           "polarAds": {
             "display": true,
-            "placementId": 32
+            "placementId": 33
           }
+        },
+        {
+          "title": "Feature",
+          "displayMrec": false,
+          "query": "(And.Type.Feature._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/feature/",
+          "carouselType": "article"
         }
       ]
     }

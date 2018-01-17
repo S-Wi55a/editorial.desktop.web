@@ -2,34 +2,58 @@
   "configs": [
     {
       "type": "default",
+      "HasHeroAddUnit": false,
       "carouselConfigurations": [
         {
           "title": "Featured",
           "displayMrec": true,
-          "query": "(And.Type.Feature._.Service.BikeSales.)",
+          "query": "(And.ArticleSet.Redbook_Bikes._.Service.BikeSales.)",
           "sort": "Latest",
-          "viewAll": "/features/"
+          "carouselType": "article"
         },
         {
           "title": "Reviews",
           "displayMrec": false,
           "query": "(And.Type.Review._.Service.BikeSales.)",
           "sort": "Latest",
-          "viewAll": "/reviews/"
+          "viewAll": "/reviews/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 31
+          }
         },
         {
           "title": "News",
           "displayMrec": false,
           "query": "(And.Type.News._.Service.BikeSales.)",
           "sort": "Latest",
-          "viewAll": "/news/"
+          "viewAll": "/news/",
+          "carouselType": "article"
         },
         {
           "title": "Videos",
           "displayMrec": false,
           "query": "(And.Type.Video._.Service.BikeSales.)",
           "sort": "Latest",
-          "viewAll": "/videos/"
+          "viewAll": "/videos/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
+        },
+        {
+          "title": "Car Advice",
+          "displayMrec": false,
+          "query": "(And.Type.Riding Advice._.Service.BikeSales.)",
+          "sort": "Latest",
+          "viewAll": "/riding-advice/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 33
+          }
         }
       ]
     }

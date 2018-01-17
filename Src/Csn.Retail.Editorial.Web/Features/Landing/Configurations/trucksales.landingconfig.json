@@ -2,34 +2,58 @@
   "configs": [
     {
       "type": "default",
+      "HasHeroAddUnit": false,
       "carouselConfigurations": [
         {
           "title": "Featured",
           "displayMrec": true,
-          "query": "(And.Type.Feature._.Service.TruckSales.)",
+          "query": "(And.ArticleSet.TruckSales_home._.Service.TruckSales.)",
           "sort": "Latest",
-          "viewAll": "/features/"
+          "carouselType": "article"
         },
         {
           "title": "Reviews",
           "displayMrec": false,
           "query": "(And.Type.Review._.Service.TruckSales.)",
           "sort": "Latest",
-          "viewAll": "/reviews/"
+          "viewAll": "/reviews/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 31
+          }
         },
         {
           "title": "News",
           "displayMrec": false,
           "query": "(And.Type.News._.Service.TruckSales.)",
           "sort": "Latest",
-          "viewAll": "/news/"
+          "viewAll": "/news/",
+          "carouselType": "article"
         },
         {
-          "title": "Videos",
+          "title": "Advice",
           "displayMrec": false,
-          "query": "(And.Type.Video._.Service.TruckSales.)",
+          "query": "(And.Type.Products._.Service.TruckSales.)",
           "sort": "Latest",
-          "viewAll": "/videos/"
+          "viewAll": "/advice/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
+        },
+        {
+          "title": "Feature",
+          "displayMrec": false,
+          "query": "(And.Type.Feature._.Service.TruckSales.)",
+          "sort": "Latest",
+          "viewAll": "/feature/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 33
+          }
         }
       ]
     }
