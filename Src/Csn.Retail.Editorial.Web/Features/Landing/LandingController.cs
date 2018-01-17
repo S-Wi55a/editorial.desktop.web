@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
@@ -18,7 +19,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _eventDispatcher = eventDispatcher;
         }
 
-        [Route("editorial/landing/")]
+        [Route("editorial/")]
+        [RedirectAttributeFilter]
         public async Task<ActionResult> Index(GetLandingQuery query)
         {
 
