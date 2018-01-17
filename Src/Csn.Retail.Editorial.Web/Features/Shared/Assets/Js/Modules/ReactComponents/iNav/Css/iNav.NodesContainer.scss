@@ -13,11 +13,10 @@
     height: 0;
 
     &__container {
-        
         border-radius: 4px;
         max-height: $category-container-height;
         padding: $spacing;
-        width:  $category-container-width;
+        width: $category-container-width;
         font-size: $font-size-body;
         vertical-align: top;
         background-color: $cs-white;
@@ -32,17 +31,37 @@
         &--isActive {
             display: inline-block;
         }
+
         &--1 {
-            left: $iNav-header-item-width;            
+            left: $iNav-header-item-width;
+
+            @include breakpoint($screen-lg) {
+                min-width: ($iNav-header-item-width + 60px);
+            }
         }
+
         &--2 {
-            left: $iNav-header-item-width * 2;             
+            left: $iNav-header-item-width * 2;
+
+            @include breakpoint($screen-lg) {
+                min-width: ($iNav-header-item-width + 60px) * 2;
+            }
         }
+
         &--3 {
-            left: $iNav-header-item-width * 3;             
+            left: $iNav-header-item-width * 3;
+
+            @include breakpoint($screen-lg) {
+                min-width: ($iNav-header-item-width + 60px) * 3;
+            }
         }
+
         &--4 {
-            left: $iNav-header-item-width * 4;             
+            left: $iNav-header-item-width * 4;
+
+            @include breakpoint($screen-lg) {
+                min-width: ($iNav-header-item-width + 60px) * 4;
+            }
         }
 
         &-page {
@@ -53,21 +72,23 @@
             transition: left .3s;
 
             .iNav-category__list {
-                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height;     
-                
-                @media screen and (max-height: 730px) { 
-                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px)});            
-                 } 
+                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height;
+
+                @media screen and (max-height: 730px) {
+                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px)});
+                }
             }
 
             &--1 {
                 left: -1 * ($spacing);
             }
+
             &--2 {
                 left: -1 * ($spacing + ($category-container-width));
             }
+
             &--3 {
-                left: -1 * ($spacing + ($category-container-width * 2));           
+                left: -1 * ($spacing + ($category-container-width * 2));
             }
         }
     }
@@ -89,16 +110,17 @@
         width: $category-container-width;
         padding: 0 $spacing;
 
-        @media screen and (max-height: 730px) { 
-            max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px)});            
-         } 
+        @media screen and (max-height: 730px) {
+            max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px)});
+        }
 
 
         &:nth-of-type(n+2) {
             display: none;
+
             .iNav-category__list {
                 max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px - 40px;
-                
+
                 @media screen and (max-height: 730px) {
                     max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height + 15px)});
                 }
@@ -108,8 +130,10 @@
         &--isVisible {
             display: inline-block !important;
         }
+
         &--isLoading {
             position: relative;
+
             &::before {
                 content: '';
                 display: block;
@@ -140,7 +164,7 @@
         color: $cs-primary;
         margin-bottom: 15px;
         cursor: pointer;
-                
+
         &::before {
             content: $icon-circle-left-lg;
             font-family: $font-family-icons;
@@ -149,6 +173,6 @@
             font-size: 21px;
             vertical-align: middle;
             margin-right: 20px;
-        }  
+        }
     }
 }

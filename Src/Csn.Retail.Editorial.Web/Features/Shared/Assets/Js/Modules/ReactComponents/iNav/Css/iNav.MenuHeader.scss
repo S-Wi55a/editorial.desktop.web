@@ -18,6 +18,10 @@
         color: $cs-light-grey-8;
         transition: background-color 333ms;
 
+        @include breakpoint($screen-lg) {
+            min-width: $iNav-header-item-width + 60px;
+        }
+
         &:first-of-type {
             border-top-left-radius: $iNav-border-radius;
             border-bottom-left-radius: $iNav-border-radius;
@@ -42,9 +46,8 @@
         }
 
         &:not(&--isActive):hover {
-            
             background-color: $cs-light-grey-7;
-            
+
             &::before {
                 color: $cs-primary;
             }
