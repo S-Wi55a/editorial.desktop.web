@@ -42,4 +42,13 @@
 
 .slick-slide .iNavSearchResult {
     margin-right: 20px;
+    max-width: 385px;
+
+    @include breakpoint(1200px) {
+        max-width: 390px;
+    }
+
+    @include breakpoint(1600px) {
+        max-width: 395px;
+    }
 }
