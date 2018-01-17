@@ -48,15 +48,15 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
                 { breakpoint: 1600, settings: { slidesToShow: this.props.hasMrec ? 3 : 4 } },
                 { breakpoint: 2000, settings: { slidesToShow: this.props.hasMrec ? 4 : 5 } }, 
             ],
-            beforeChange: function (oldIndex: number, newIndex: number) {                
+            afterChange: function (newIndex: number) {                
                 // Check if moving forward
-                if (newIndex > oldIndex) {
+                //if (newIndex > oldIndex) {
                     // Check if we are near the end 
-                    if (newIndex >= props.carouselItems.length - this.slidesToShow - 2) {
+                    if (newIndex >= props.carouselItems.length - this.slidesToShow - 2 && props.nextQuery !== null) {
                         //dispatch action
                         props.fetch(props.nextQuery, props.index)
                     }
-                }
+                //}
             },
             nextArrow: <NavButton text="Next" />,
             prevArrow: <NavButton text="Prev" />

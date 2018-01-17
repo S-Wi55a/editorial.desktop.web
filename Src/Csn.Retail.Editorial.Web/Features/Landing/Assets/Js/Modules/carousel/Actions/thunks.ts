@@ -3,7 +3,6 @@ import { ActionTypes } from 'carousel/Actions/actions'
 
 type fetchCarouselResults = (q: string, i: number) => (d: Dispatch<any>, getState: any) => any
 
-//TDO: add endpoitn argumens
 export const fetchCarouselResults: fetchCarouselResults = (query: string, index: number) => (dispatch: Dispatch<any>) => {
 
     dispatch({ type: ActionTypes.API.CAROUSEL.FETCH_QUERY_REQUEST });
