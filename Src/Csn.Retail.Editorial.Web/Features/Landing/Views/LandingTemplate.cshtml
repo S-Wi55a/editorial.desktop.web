@@ -61,6 +61,8 @@
     </div>
 </div>
 
+@{ Html.RenderNativeAd(); } @*TODO: Placement needs to be adjusted*@
+
 @section BottomScripts
 {
     @Html.React("global.Components.INavPreloadedState", new {state = Model.Nav}, containerId: "INavPreloadedState")
