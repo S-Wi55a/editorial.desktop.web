@@ -61,7 +61,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             return new CarouselViewModel
             {
                 CarouselItems = landingResults.SearchResults,
-                NextQuery = offset + landingResults.Count > 7 ? $"/editorial/api/v1/carousel/?{EditorialUrlFormatter.GetQueryParam(query, offset + 7, sort)}"
+                NextQuery = landingResults.Count - offset > 7 ? $"/editorial/api/v1/carousel/?{EditorialUrlFormatter.GetQueryParam(query, offset + 7, sort)}"
                     : string.Empty
             };
         }
