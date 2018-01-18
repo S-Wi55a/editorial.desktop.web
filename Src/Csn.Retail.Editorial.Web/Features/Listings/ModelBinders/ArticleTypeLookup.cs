@@ -69,7 +69,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
 
         public string GetFacetNameFromArticleType(ArticleType articleType)
         {
-            if (articleType == ArticleType.Advice && _tenantProvider.Current().Name == "carsales")
+            if (articleType == ArticleType.CarAdvice && _tenantProvider.Current().Name == "carsales")
             {
                 return "Car Advice";
             }
