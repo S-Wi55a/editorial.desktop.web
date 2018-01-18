@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader';
 import Carousel from 'carousel/Component/carouselComponent'
-import DriverCarousel from 'carousel/Component/carouselComponent--driver'
-
 
 //Check for Store
 const store = window.store
@@ -22,6 +20,3 @@ const render = (WrappedComponent) => (container, i) => {
 };
 
 export const carousel = render(Carousel)
-
-export const driverCarousel = render(DriverCarousel)
-

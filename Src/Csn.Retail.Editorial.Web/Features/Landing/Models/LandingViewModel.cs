@@ -29,6 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public string NextQuery { get; set; }
         public CarouselTypes CarouselType { get; set; }
         public PolarAds PolarAds { get; set; }
+        public bool HasNativeAd { get; set; }
     }
 
     public class Nav

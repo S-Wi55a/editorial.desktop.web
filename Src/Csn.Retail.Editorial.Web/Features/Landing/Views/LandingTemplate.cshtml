@@ -50,6 +50,7 @@
         {
             switch (Model.Carousels[i].CarouselType)
             {
+                case CarouselTypes.Featured:
                 case CarouselTypes.Article:
                     Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", Model, new ViewDataDictionary(ViewData) { { "index", i } });
                     break;
@@ -60,8 +61,6 @@
         }
     </div>
 </div>
-
-@{ Html.RenderNativeAd(); } @*TODO: Placement needs to be adjusted*@
 
 @section BottomScripts
 {

@@ -40,7 +40,8 @@
         position: relative;
     }
 
-    &--mrec {
+    &--mrec,
+    &--nativeAd {
         .csn-carousel__link {
             right: 370px;
         }
@@ -59,6 +60,17 @@
             right: 0;
             top: 50%;
             transform: translate(0,-50%);
+        }
+
+        .nativeAd {
+            display: inline-block;
+            vertical-align: middle;
+            margin: auto 15px auto;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0,-50%);
+            margin-top: 40px;
         }
     }
 }

@@ -7,9 +7,16 @@
 
 @{ var index = (int) ViewData["index"]; }
 
-<div class="csn-carousel @(Model.Carousels[index].CarouselType == CarouselTypes.Driver ? "csn-carousel--driver" : "")">
+<div class="csn-carousel
+     @(Model.Carousels[index].CarouselType == CarouselTypes.Driver ? "csn-carousel--driver" : "")
+     @(Model.Carousels[index].HasNativeAd ? "csn-carousel--nativeAd" : "")">
     <div class="csn-carousel__container">
-        @Html.React("global.Components.CarouselDriver", new { state = Model.Carousels, index }, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
-    </div>
+        @Html.React("global.Components.Carousel", new {state = Model.Carousels, index}, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
+    
+        @if (Model.Carousels[index].HasNativeAd)
+        {
+            <div class="nativeAd">@{ Html.RenderNativeAd(); }</div>
 
+        }
+    </div>
 </div>

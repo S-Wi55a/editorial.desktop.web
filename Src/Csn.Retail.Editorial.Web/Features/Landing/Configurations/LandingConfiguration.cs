@@ -19,6 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
     {
         public string Title { get; set; }
         public bool DisplayMrec { get; set; }
+        public bool DisplayNativeAd { get; set; } // Different to PolarAds, this is COTW, BOTM
         public string Query { get; set; }
         public string Sort { get; set; }
         public string ViewAll { get; set; }
@@ -36,7 +37,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
     public enum CarouselTypes
     {
         Article,
-        Driver
+        Driver,
+        Featured
     }
 
     public class PolarAds
