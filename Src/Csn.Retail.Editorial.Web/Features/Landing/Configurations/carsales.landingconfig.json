@@ -9,7 +9,7 @@
           "displayMrec": true,
           "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
           "sort": "Latest",
-          "carouselType": "article"
+          "carouselType": "featured"
         },
         {
           "title": "Reviews",
@@ -54,7 +54,7 @@
         {
           "title": "Driver",
           "carouselType": "driver",
-          "displayMrec": false,
+          "displayNativeAd": true,
           "carouselItems": [
             {
               "ImageUrl": "http://via.placeholder.com/350x430",

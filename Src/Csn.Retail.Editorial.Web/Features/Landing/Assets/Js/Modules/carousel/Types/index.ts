@@ -8,6 +8,8 @@ export interface ICarouselViewModel {
     hasMrec: boolean
     nextQuery: string
     polarAds: IPolarAds
+    hasNativeAd: boolean
+    carouselType: CarouselTypes
 }
 export interface IPolarAds {
     display: boolean
@@ -33,4 +35,13 @@ export interface ISimpleSlider {
     fetch: (q:string, i:number) => any
     polarAds: IPolarAds
     title: string
+    hasNativeAd: boolean
+    carouselType: CarouselTypes
 }
+
+export enum CarouselTypes
+{
+    Article,
+    Driver,
+    Featured
+} 

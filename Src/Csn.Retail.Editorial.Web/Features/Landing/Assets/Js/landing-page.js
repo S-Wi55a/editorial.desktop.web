@@ -30,15 +30,9 @@ window.store = configureStore(); //Init store
         
         const carousels = [...document.querySelectorAll('.csn-carousel__placeholder')]
 
-        for (let i = 0; i < carousels.length; i++) {
-            
-            if (carousels[i].classList.contains('csn-carousel__placeholder--article')) {
-                carouselsComponent.carousel(carousels[i], i)
-            }
-            if (carousels[i].classList.contains('csn-carousel__placeholder--driver')) {
-                carouselsComponent.driverCarousel(carousels[i], i)
-            }
-        }
+        carousels.forEach((carousel, i) => carouselsComponent.carousel(carousel, i))
+             
+        
     }
 
 })(document);
