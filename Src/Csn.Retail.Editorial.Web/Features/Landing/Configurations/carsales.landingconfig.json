@@ -9,7 +9,7 @@
           "displayMrec": true,
           "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
           "sort": "Latest",
-          "carouselType": "article"
+          "carouselType": "featured"
         },
         {
           "title": "Reviews",
@@ -48,13 +48,13 @@
           "displayMrec": false,
           "query": "(And.Type.Car Advice._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/car advice/",
+          "viewAll": "/advice/",
           "carouselType": "article"
         },
         {
           "title": "Driver",
           "carouselType": "driver",
-          "displayMrec": false,
+          "displayNativeAd": true,
           "carouselItems": [
             {
               "ImageUrl": "http://via.placeholder.com/350x430",
@@ -89,9 +89,9 @@
         {
           "title": "Comparisons",
           "displayMrec": false,
-          "query": "(And.Category.Comparison._.Service.CarSales.)",
+          "query": "(And.ArticleTypes.Comparison._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/results/?q=Category.Comparison.",
+          "viewAll": "/results/?q=ArticleTypes.Comparison.",
           "carouselType": "article",
           "polarAds": {
             "display": true,
@@ -103,7 +103,7 @@
           "displayMrec": false,
           "query": "(And.Type.Feature._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/feature/",
+          "viewAll": "/features/",
           "carouselType": "article"
         }
       ]

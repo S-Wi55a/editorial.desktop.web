@@ -50,8 +50,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             carouselViewModel.ViewAllLink = carouselConfiguration.ViewAll != null ? $"/editorial{carouselConfiguration.ViewAll}": null;
             carouselViewModel.CarouselType = carouselConfiguration.CarouselType;
             carouselViewModel.PolarAds = carouselConfiguration.PolarAds;
+            carouselViewModel.HasNativeAd = carouselConfiguration.DisplayNativeAd;
             return carouselViewModel;
-        }
+        }   
 
         private async Task<CarouselViewModel> CarouselDataResult(string query, string sort, int offset)
         {
@@ -74,7 +75,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
                 Title = carouselConfiguration.Title,
                 HasMrec = carouselConfiguration.DisplayMrec,
                 PolarAds = carouselConfiguration.PolarAds,
-                CarouselType = carouselConfiguration.CarouselType
+                CarouselType = carouselConfiguration.CarouselType,
+                HasNativeAd = carouselConfiguration.DisplayNativeAd
         };
         }
     }

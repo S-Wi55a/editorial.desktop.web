@@ -545,6 +545,10 @@
     <Compile Include="Features\Landing\Mappings\LandingInsightsDataMapper.cs" />
     <Compile Include="Features\Landing\Mappings\MapperConfiguration.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
+    <Compile Include="Features\MediaMotiveAds\HtmlHelpers\NativeAdHelper.cs" />
+    <Compile Include="Features\MediaMotiveAds\Models\NativeAdResponse.cs" />
+    <Compile Include="Features\MediaMotiveAds\NativeAdController.cs" />
+    <Compile Include="Features\MediaMotiveAds\Services\NativeAdService.cs" />
     <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
@@ -582,7 +586,6 @@
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
-    <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent--driver.tsx" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponentArrows.tsx" />
     <Content Include="Features\Listings\Assets\Js\listings.vendor.js" />
