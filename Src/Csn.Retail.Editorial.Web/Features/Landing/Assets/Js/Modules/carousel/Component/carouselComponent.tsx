@@ -1,11 +1,14 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { IState, ISimpleSlider, CarouselTypes } from 'carousel/Types'
+import { IState, ISimpleSlider, CarouselTypes, ICarouselViewModel } from 'carousel/Types'
 import SearchResultCard from 'ReactComponents/SearchResultCard/searchResultCard'
 import Slider from 'react-slick'
 import { Thunks } from 'carousel/Actions/actions'
 import CustomEvent from 'custom-event'
 import NavButton from 'carousel/Component/carouselComponentArrows'
+import UI from 'ReactReduxUI'
+import { Actions, ActionTypes } from 'carousel/Actions/actions'
+
 
 if (!SERVER) {
     require('Carousel/Css/carousel')
@@ -53,22 +56,22 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
                 { breakpoint: 1600, settings: { slidesToShow: isShort ? 3 : 4 } },
                 { breakpoint: 2000, settings: { slidesToShow: isShort ? 4 : 5 } }, 
             ],
-            beforeChange: function (oldIndex: number, newIndex: number) {                
+            afterChange: function (newIndex: number) {                
                 // Check if moving forward
-                if (newIndex > oldIndex) {
+                //if (newIndex > oldIndex) {
                     // Check if we are near the end 
-                    if (newIndex >= props.carouselItems.length - this.slidesToShow - 2) {
+                    if (newIndex >= props.carouselItems.length - this.slidesToShow - 2 && props.nextQuery !== "") {
                         //dispatch action
                         props.fetch(props.nextQuery, props.index)
                     }
-                }
+                //}
             },
             nextArrow: <NavButton text="Next" />,
             prevArrow: <NavButton text="Prev" />
 
         }
         return (
-            <Slider {...settings}>
+            <Slider {...settings} className={this.props.isLoading ? 'isLoading' : ''}>
                 {this.props.carouselItems.map((item, index) => (
                     <div key={index}>
                         {this.props.carouselType !== CarouselTypes.Driver ? <SearchResultCard {...item}/> : <DriverCard {...item}/>}
@@ -100,7 +103,40 @@ const mapDispatchToProps = (dispatch: any) => {
     }
 }
 
+const componentRootReducer = (initUIState: any) => (state: any = initUIState, action: Actions): any => {
+    switch (action.type) {
+        case ActionTypes.API.CAROUSEL.FETCH_QUERY_REQUEST:
+            if (action.payload.index === state.id) {
+                return {
+                    ...state,
+                    isLoading: true
+                }
+            } else {
+                return state
+            }
+    case ActionTypes.API.CAROUSEL.FETCH_QUERY_SUCCESS:
+    case ActionTypes.API.CAROUSEL.FETCH_QUERY_FAILURE:
+        if (action.payload.index === state.id) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        } else {
+            return state
+        }
+    default:
+        return state
+    }
+}
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(SimpleSlider)
+)(UI({
+    key: (props: ICarouselViewModel)=>`ui/carousel_${props.category}`,
+    reducer: componentRootReducer,
+    state: (props: ICarouselViewModel)=>({
+        id: props.index,
+        isLoading: false
+    })
+})(SimpleSlider))

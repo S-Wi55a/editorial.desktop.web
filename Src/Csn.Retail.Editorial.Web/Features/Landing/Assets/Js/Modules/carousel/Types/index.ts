@@ -10,6 +10,8 @@ export interface ICarouselViewModel {
     polarAds: IPolarAds
     hasNativeAd: boolean
     carouselType: CarouselTypes
+    category: string
+    index: number
 }
 export interface IPolarAds {
     display: boolean
@@ -37,6 +39,7 @@ export interface ISimpleSlider {
     title: string
     hasNativeAd: boolean
     carouselType: CarouselTypes
+    isLoading: boolean
 }
 
 export enum CarouselTypes
