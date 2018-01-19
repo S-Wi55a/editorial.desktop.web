@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { Thunks } from 'iNav/Actions/actions'
+import { Thunks } from 'ReactComponents/iNav/Actions/actions'
 
 if (!SERVER) {
     require('iNavPagination/Css/iNavPagination.scss')  

@@ -4,7 +4,6 @@ using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Listings.Filters;
 using Csn.Retail.Editorial.Web.Features.Listings.Loggers;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
 
@@ -24,18 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _seoListingUrlRedirectLogger = seoListingUrlRedirectLogger;
         }
 
-
-        [Route("editorial/")]
-        [RedirectAttributeFilter]
         [RedbookDefaultVerticalAttributeFilter]
-        public async Task<ActionResult> Homepage()
-        {
-            return await Listing(new GetListingsQuery
-            {
-                EditorialPageType = EditorialPageTypes.Homepage
-            });
-        }
-
         [Route("editorial/{articleSlug:article-types}")]
         [RedirectAttributeFilter]
         public async Task<ActionResult> ArticleTypeListing(ArticleTypeListingQuery query)

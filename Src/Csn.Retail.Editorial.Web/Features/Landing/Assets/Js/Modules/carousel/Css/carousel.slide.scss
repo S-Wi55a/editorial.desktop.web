@@ -1,6 +1,6 @@
 ﻿@import "css/_globals.scss";
 
-.csn-carousel--featured {
+.csn-carousel__placeholder--featured {
 
     .iNavSearchResult__content-wrapper {
         background-color: $cs-dark-grey-2;
@@ -25,10 +25,30 @@
         color: $cs-white;
     }
 
-    .iNavSearchResult__heading, 
+    .iNavSearchResult__heading,
     .iNavSearchResult__sub-heading {
         &::after {
             background: linear-gradient(to right, rgba(255, 255, 255, 0), $cs-dark-grey-2 5%, $cs-dark-grey-2);
         }
+    }
+}
+
+.csn-carousel--driver {
+    .slick-slide a {
+        display: block;
+        margin-right: 20px;
+    }
+}
+
+.slick-slide .iNavSearchResult {
+    margin-right: 20px;
+    max-width: 385px;
+
+    @include breakpoint(1200px) {
+        max-width: 390px;
+    }
+
+    @include breakpoint(1600px) {
+        max-width: 395px;
     }
 }

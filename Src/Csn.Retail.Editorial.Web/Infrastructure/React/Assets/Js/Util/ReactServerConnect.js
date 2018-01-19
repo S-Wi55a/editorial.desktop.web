@@ -6,9 +6,7 @@ import { configureStore } from 'Redux/Global/Store/store.server.js'
 
 
 function storesFactory() {
-
     return configureStore()  
-
 }
 
 const ReactServerConnect = WrappedComponent => (reducerKey, reducer, addReducerKey = false) => {

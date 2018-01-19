@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using AutoMapper;
+using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
@@ -62,6 +63,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
                 .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => _articleUrlMapper.MapDetailsUrl(src)))     
                 .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.GetSponsoredLabel()))
                 .ForMember(dest => dest.DisqusArticleId, opt => opt.MapFrom(src => src.GetDisqusArticleId()));
+
         }
     }
 }

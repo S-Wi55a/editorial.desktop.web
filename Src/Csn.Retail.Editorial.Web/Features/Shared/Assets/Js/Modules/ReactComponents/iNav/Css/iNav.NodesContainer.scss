@@ -1,0 +1,182 @@
+@import "css/globals";
+@import "./iNav.variables";
+
+.iNav__category-wrapper {
+    z-index: 1;    
+}
+
+//Search category
+.iNav-category {
+    font-size: 0;
+    position: absolute;
+    top: $iNav-header-height - 10px;
+    height: 0;
+
+    &__container {
+        border-radius: 4px;
+        max-height: $category-container-height;
+        padding: $spacing;
+        width: $category-container-width;
+        font-size: $font-size-body;
+        vertical-align: top;
+        background-color: $cs-white;
+        border: 1px solid $cs-grey-1;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.21);
+        display: none;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        font-size: 0;
+
+        &--isActive {
+            display: inline-block;
+        }
+
+        &--1 {
+            left: $iNav-header-item-width;
+
+            @include breakpoint($screen-lg) {
+                left: $iNav-header-item-width + 60px;
+                min-width: ($iNav-header-item-width);
+            }
+        }
+
+        &--2 {
+            left: $iNav-header-item-width * 2;
+
+            @include breakpoint($screen-lg) {
+                left: ($iNav-header-item-width + 60px) * 2;
+                min-width: ($iNav-header-item-width);
+            }
+        }
+
+        &--3 {
+            left: $iNav-header-item-width * 3;
+
+            @include breakpoint($screen-lg) {
+                left: ($iNav-header-item-width + 60px) * 3;
+                min-width: ($iNav-header-item-width);
+            }
+        }
+
+        &--4 {
+            left: $iNav-header-item-width * 4;
+
+            @include breakpoint($screen-lg) {
+                left: ($iNav-header-item-width + 60px) * 4;
+                min-width: ($iNav-header-item-width);
+            }
+        }
+
+        &-page {
+            position: relative;
+            white-space: nowrap;
+            position: relative;
+            left: -1 * $spacing;
+            transition: left .3s;
+
+            .iNav-category__list {
+                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height;
+
+                @media screen and (max-height: 730px) {
+                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px)});
+                }
+            }
+
+            &--1 {
+                left: -1 * ($spacing);
+            }
+
+            &--2 {
+                left: -1 * ($spacing + ($category-container-width));
+            }
+
+            &--3 {
+                left: -1 * ($spacing + ($category-container-width * 2));
+            }
+        }
+    }
+
+    &__header {
+        font-family: $font-family-default;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: $font-weight-600;
+        text-align: left;
+        color: $cs-dark-grey-2;
+        margin-bottom: 15px;
+    }
+
+    &__list-wrapper {
+        max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px;
+        display: inline-block;
+        vertical-align: top;
+        width: $category-container-width;
+        padding: 0 $spacing;
+
+        @media screen and (max-height: 730px) {
+            max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px)});
+        }
+
+
+        &:nth-of-type(n+2) {
+            display: none;
+
+            .iNav-category__list {
+                max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px - 40px;
+
+                @media screen and (max-height: 730px) {
+                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height + 15px)});
+                }
+            }
+        }
+
+        &--isVisible {
+            display: inline-block !important;
+        }
+
+        &--isLoading {
+            position: relative;
+
+            &::before {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                background-color: rgba($cs-white, 0.7);
+                background-image: url($spinner--dark);
+                background-size: 200px 200px;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+    &__list {
+        overflow-y: auto;
+        position: relative;
+        font-size: $font-size-base;
+    }
+
+    &__back-button {
+        font-size: $font-size-base;
+        line-height: 21px;
+        color: $cs-primary;
+        margin-bottom: 15px;
+        cursor: pointer;
+
+        &::before {
+            content: $icon-circle-left-lg;
+            font-family: $font-family-icons;
+            color: $cs-primary;
+            display: inline-block;
+            font-size: 21px;
+            vertical-align: middle;
+            margin-right: 20px;
+        }
+    }
+}

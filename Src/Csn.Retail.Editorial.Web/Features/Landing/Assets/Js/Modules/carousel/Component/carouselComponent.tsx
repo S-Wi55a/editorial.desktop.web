@@ -1,54 +1,81 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { IState, ICarouselItems } from 'carousel/Types'
-import SearchResultCard from 'Components/SearchResultCard/searchResultCard'
+import { IState, ISimpleSlider, CarouselTypes, ICarouselViewModel } from 'carousel/Types'
+import SearchResultCard from 'ReactComponents/SearchResultCard/searchResultCard'
 import Slider from 'react-slick'
 import { Thunks } from 'carousel/Actions/actions'
+import CustomEvent from 'custom-event'
+import NavButton from 'carousel/Component/carouselComponentArrows'
+import UI from 'ReactReduxUI'
+import { Actions, ActionTypes } from 'carousel/Actions/actions'
+
 
 if (!SERVER) {
     require('Carousel/Css/carousel')
 }
 
-interface ISimpleSlider {
-    carouselItems: ICarouselItems[]
-    hasMrec: boolean
-    nextQuery: string
-    index: number
-    fetch: (q:string, i:number) => any
-}
+const DriverCard = (props: any) => <a href={props.itemUrl} data-webm-clickvalue={`item`}>
+                                       <img src={props.imageUrl}/>
+                                   </a>
+                                 
 class SimpleSlider extends React.Component<ISimpleSlider> {
 
     constructor(props: any) {
         super(props)
     }
 
+    componentDidMount(): void {
+        window.addEventListener('csn_editorial.nativeAds.ready', this.fetchNativeAds);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('csn_editorial.nativeAds.ready', this.fetchNativeAds);
+    }
+
+    fetchNativeAds = () => {
+        if (this.props.polarAds !== null && !SERVER) {
+            const customEvent = new CustomEvent('csn_editorial.landing.fetchNativeAds', { detail: {
+                carouselId: this.props.index,
+                placementId: this.props.polarAds.placementId
+            } });
+            window.dispatchEvent(customEvent);
+        }
+    }
+
     render() {
-        const props = this.props 
+        const props = this.props
+        const isShort = this.props.hasMrec || this.props.hasNativeAd 
         const settings = {
             infinite: false,
             speed: 500,
-            slidesToShow: this.props.hasMrec ? 5 : 6,
+            slidesToShow: isShort ? 5 : 6,
             slidesToScroll: 1,
             arrows: true,
             responsive: [ 
-                { breakpoint: 1200, settings: { slidesToShow: this.props.hasMrec ? 2 : 3 } },
-                { breakpoint: 1600, settings: { slidesToShow: this.props.hasMrec ? 3 : 4 } },
-                { breakpoint: 2000, settings: { slidesToShow: this.props.hasMrec ? 4 : 5 } }, 
+                { breakpoint: 1200, settings: { slidesToShow: isShort ? 2 : 3 } },
+                { breakpoint: 1600, settings: { slidesToShow: isShort ? 3 : 4 } },
+                { breakpoint: 2000, settings: { slidesToShow: isShort ? 4 : 5 } }, 
             ],
-            beforeChange: function (oldIndex: number, newIndex: number) {                
+            afterChange: function (newIndex: number) {                
                 // Check if moving forward
-                if (newIndex > oldIndex) {
+                //if (newIndex > oldIndex) {
                     // Check if we are near the end 
-                    if (newIndex >= props.carouselItems.length - this.slidesToShow - 2) {
+                    if (newIndex >= props.carouselItems.length - this.slidesToShow - 2 && props.nextQuery !== "") {
                         //dispatch action
                         props.fetch(props.nextQuery, props.index)
                     }
-                }
-            }
+                //}
+            },
+            nextArrow: <NavButton text="Next" />,
+            prevArrow: <NavButton text="Prev" />
+
         }
         return (
-            <Slider {...settings}>
-                {this.props.carouselItems.map((item, index) => <div key={index}><SearchResultCard {...item}/></div>)}            
+            <Slider {...settings} className={this.props.isLoading ? 'isLoading' : ''}>
+                {this.props.carouselItems.map((item, index) => (
+                    <div key={index}>
+                        {this.props.carouselType !== CarouselTypes.Driver ? <SearchResultCard {...item}/> : <DriverCard {...item}/>}
+                    </div>))}            
             </Slider>
         );
     }
@@ -56,10 +83,13 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
 
 // Redux Connect
 const mapStateToProps = (state: IState, ownProps: any) => {
-    return {    
+    return {
         carouselItems: state.carousels[ownProps.index] ? state.carousels[ownProps.index].carouselItems : [],
         hasMrec: state.carousels[ownProps.index] ? state.carousels[ownProps.index].hasMrec : false,
-        nextQuery: state.carousels[ownProps.index] ? state.carousels[ownProps.index].nextQuery : ''
+        hasNativeAd: state.carousels[ownProps.index] ? state.carousels[ownProps.index].hasNativeAd : false,
+        polarAds: state.carousels[ownProps.index] ? state.carousels[ownProps.index].polarAds : null,
+        nextQuery: state.carousels[ownProps.index] ? state.carousels[ownProps.index].nextQuery : '',
+        carouselType: state.carousels[ownProps.index] ? state.carousels[ownProps.index].carouselType : CarouselTypes.Article
     }
 }
 
@@ -73,7 +103,40 @@ const mapDispatchToProps = (dispatch: any) => {
     }
 }
 
+const componentRootReducer = (initUIState: any) => (state: any = initUIState, action: Actions): any => {
+    switch (action.type) {
+        case ActionTypes.API.CAROUSEL.FETCH_QUERY_REQUEST:
+            if (action.payload.index === state.id) {
+                return {
+                    ...state,
+                    isLoading: true
+                }
+            } else {
+                return state
+            }
+    case ActionTypes.API.CAROUSEL.FETCH_QUERY_SUCCESS:
+    case ActionTypes.API.CAROUSEL.FETCH_QUERY_FAILURE:
+        if (action.payload.index === state.id) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        } else {
+            return state
+        }
+    default:
+        return state
+    }
+}
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(SimpleSlider)
+)(UI({
+    key: (props: ICarouselViewModel)=>`ui/carousel_${props.category}`,
+    reducer: componentRootReducer,
+    state: (props: ICarouselViewModel)=>({
+        id: props.index,
+        isLoading: false
+    })
+})(SimpleSlider))

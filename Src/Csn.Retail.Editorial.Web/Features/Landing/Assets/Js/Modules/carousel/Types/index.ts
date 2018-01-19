@@ -7,6 +7,15 @@ export interface ICarouselViewModel {
     viewAllLink: string
     hasMrec: boolean
     nextQuery: string
+    polarAds: IPolarAds
+    hasNativeAd: boolean
+    carouselType: CarouselTypes
+    category: string
+    index: number
+}
+export interface IPolarAds {
+    display: boolean
+    placementId: number
 }
 export interface ICarouselItems {
     imageUrl: string
@@ -16,5 +25,26 @@ export interface ICarouselItems {
     articleDetailsUrl: string
     label: string
     type: string
-    disqusArticleId: string | number 
+    disqusArticleId: string | number
+    itemUrl?: string
 }
+
+export interface ISimpleSlider {
+    carouselItems: ICarouselItems[]
+    hasMrec: boolean
+    nextQuery: string
+    index: number
+    fetch: (q:string, i:number) => any
+    polarAds: IPolarAds
+    title: string
+    hasNativeAd: boolean
+    carouselType: CarouselTypes
+    isLoading: boolean
+}
+
+export enum CarouselTypes
+{
+    Article,
+    Driver,
+    Featured
+} 

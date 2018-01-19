@@ -15,11 +15,11 @@ window.store = configureStore(); //Init store
     // Check if there is a preloaded state from iNav
     const initState = window.__PRELOADED_STATE__store.nav
 
-    window.store.addReducer('store', require('iNav/Reducers').iNavParentReducer(initState));
+    window.store.addReducer('store', require('ReactComponents/iNav/Reducers').iNavParentReducer(initState));
     window.store.addReducer('form', formReducer);
         
     if (d.querySelector('#iNav')) {
-        require('iNav/iNav');
+        require('ReactComponents/iNav/iNav');
     }
     if (d.querySelector('#iNavArticleCount')) {
         require('iNavArticleCount/iNavArticleCount');
@@ -40,9 +40,9 @@ window.store = configureStore(); //Init store
 
     if (module.hot) {
         // Enable Webpack hot module replacement for reducers
-        module.hot.accept('iNav/Reducers',
+        module.hot.accept('ReactComponents/iNav/Reducers',
             () => {
-                window.store.addReducer('store', require('iNav/Reducers').iNavParentReducer)
+                window.store.addReducer('store', require('ReactComponents/iNav/Reducers').iNavParentReducer)
             })
         module.hot.accept(formReducer,
             () => {

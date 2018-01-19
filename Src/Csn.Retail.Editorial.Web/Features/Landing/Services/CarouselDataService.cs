@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Csn.Retail.Editorial.Web.Features.Landing.Carousel;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
@@ -35,15 +37,22 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
 
         public async Task<CarouselViewModel> GetCarouselData(LandingCarouselConfiguration carouselConfiguration)
         {
+            if (carouselConfiguration.CarouselType == CarouselTypes.Driver)
+            {
+                return GetDriverCarouselData(carouselConfiguration);
+            }
             var carouselViewModel = await CarouselDataResult(carouselConfiguration.Query, carouselConfiguration.Sort, 0);
 
             if (carouselViewModel == null) return null;
 
             carouselViewModel.HasMrec = carouselConfiguration.DisplayMrec;
             carouselViewModel.Title = carouselConfiguration.Title;
-            carouselViewModel.ViewAllLink = $"/editorial{carouselConfiguration.ViewAll}";
+            carouselViewModel.ViewAllLink = carouselConfiguration.ViewAll != null ? $"/editorial{carouselConfiguration.ViewAll}": null;
+            carouselViewModel.CarouselType = carouselConfiguration.CarouselType;
+            carouselViewModel.PolarAds = carouselConfiguration.PolarAds;
+            carouselViewModel.HasNativeAd = carouselConfiguration.DisplayNativeAd;
             return carouselViewModel;
-        }
+        }   
 
         private async Task<CarouselViewModel> CarouselDataResult(string query, string sort, int offset)
         {
@@ -53,9 +62,22 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             return new CarouselViewModel
             {
                 CarouselItems = landingResults.SearchResults,
-                NextQuery = offset + landingResults.Count > 7 ? $"/editorial/api/v1/carousel/?{EditorialUrlFormatter.GetQueryParam(query, offset + 7, sort)}"
+                NextQuery = landingResults.Count - offset > 7 && offset < 20? $"/editorial/api/v1/carousel/?{EditorialUrlFormatter.GetQueryParam(query, offset + 7, sort)}"
                     : string.Empty
             };
+        }
+
+        private CarouselViewModel GetDriverCarouselData(LandingCarouselConfiguration carouselConfiguration)
+        {
+            return new CarouselViewModel
+            {
+                CarouselItems = carouselConfiguration.CarouselItems.Select(a => _mapper.Map<SearchResult>(a)).ToList(),
+                Title = carouselConfiguration.Title,
+                HasMrec = carouselConfiguration.DisplayMrec,
+                PolarAds = carouselConfiguration.PolarAds,
+                CarouselType = carouselConfiguration.CarouselType,
+                HasNativeAd = carouselConfiguration.DisplayNativeAd
+        };
         }
     }
 }

@@ -24,7 +24,7 @@
     @RenderSection("Styles", false)
 
     <noscript id="deferred-styles">
-        <link rel="stylesheet" href="https://resource.csnstatic.com/carsales/globals/css/fonts-V1.base64.min.css">    
+        <link rel="stylesheet" href="https://resource.csnstatic.com/carsales/globals/css/fonts-V1.base64.min.css">
     </noscript>
 
 }
@@ -46,14 +46,13 @@
 </footer>
 
 @section BottomScripts{
-    <script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
     @RenderSection("BottomScripts", false)
 
     <script>
-        var loadDeferredStyles = function() {
+        var loadDeferredStyles = function () {
             var addStylesNode = document.getElementById("deferred-styles");
             var replacement = document.createElement("div");
             replacement.innerHTML = addStylesNode.textContent;
@@ -62,10 +61,12 @@
         };
         var raf = requestAnimationFrame || mozRequestAnimationFrame ||
             webkitRequestAnimationFrame || msRequestAnimationFrame;
-        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+        if (raf) raf(function () { window.setTimeout(loadDeferredStyles, 0); });
         else window.addEventListener('load', loadDeferredStyles);
     </script>
 
     @globalSiteData.Script.ToMvcHtmlString()
     @googleAnalyticTracking.TrackingScript.ToMvcHtmlString()
+    @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
+
 }

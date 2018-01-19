@@ -2,34 +2,58 @@
   "configs": [
     {
       "type": "default",
+      "HasHeroAddUnit": false,
       "carouselConfigurations": [
         {
           "title": "Featured",
           "displayMrec": true,
-          "query": "(And.Type.Feature._.Service.ConstructionSales.)",
+          "query": "(And.ArticleSet.Construction_home._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "viewAll": "/features/"
+          "carouselType": "article"
         },
         {
           "title": "Reviews",
           "displayMrec": false,
           "query": "(And.Type.Review._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "viewAll": "/reviews/"
+          "viewAll": "/reviews/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 31
+          }
         },
         {
           "title": "News",
           "displayMrec": false,
           "query": "(And.Type.News._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "viewAll": "/news/"
+          "viewAll": "/news/",
+          "carouselType": "article"
         },
         {
           "title": "Videos",
           "displayMrec": false,
           "query": "(And.Type.Video._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "viewAll": "/videos/"
+          "viewAll": "/videos/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
+        },
+        {
+          "title": "Feature",
+          "displayMrec": false,
+          "query": "(And.Type.Feature._.Service.ConstructionSales.)",
+          "sort": "Latest",
+          "viewAll": "/feature/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 33
+          }
         }
       ]
     }

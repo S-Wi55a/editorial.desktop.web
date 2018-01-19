@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { Thunks } from 'iNav/Actions/actions'
+import { Thunks } from 'ReactComponents/iNav/Actions/actions'
 import { Field, reduxForm } from 'redux-form'
 import { getParameterByName } from 'Parse/parse'
 

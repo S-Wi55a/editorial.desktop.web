@@ -1,6 +1,10 @@
 ﻿@using System.ComponentModel
+@using Csn.Retail.Editorial.Web.Features.Landing.Configurations
 @using Csn.Retail.Editorial.Web.Features.Landing.Models
+@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Shared.Models
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Newtonsoft.Json
 @using React.Web.Mvc
@@ -24,24 +28,36 @@
 }
 
 <div class="landing-page @(Model.CampaignAd != null ? "landing-page--hasHeroAdUnit" : "")">
-    <h1 style="display: none;">@Model.Title</h1>
-        
+    <h1 class="page-title" style="display: none;">@Model.Title</h1>
+
     @if (Model.CampaignAd != null)
     {
         Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
+        <h2 class="page-title">@Model.HeroTitle</h2>
         Html.RenderPartial("~/Features/Shared/HeroAdUnit/Views/_HeroAdUnit.cshtml", Model.CampaignAd);
+        Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.Block1200X100, TileId = 1 });
+
     }
     else
     {
         Html.RenderPartial("Partials/_Header");
     }
 
-    @Html.React("global.Components.INav", new {state = Model.Nav}, containerId: "iNav", containerClass: Model.CampaignAd != null ? "iNav--v2" : "iNav--v1")          
+    @Html.React("global.Components.INav", new { state = Model.Nav }, containerId: "iNav", containerClass: Model.CampaignAd != null ? "iNav--v2" : "iNav--v1")
 
     <div class="main container-fluid">
-        @foreach (var carousel in Model.Carousels)
+        @for (var i = 0; i < Model.Carousels.Count; i++)
         {
-            Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", carousel);
+            switch (Model.Carousels[i].CarouselType)
+            {
+                case CarouselTypes.Featured:
+                case CarouselTypes.Article:
+                    Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", Model, new ViewDataDictionary(ViewData) { { "index", i } });
+                    break;
+                case CarouselTypes.Driver:
+                    Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel--Driver.cshtml", Model, new ViewDataDictionary(ViewData) { { "index", i } });
+                    break;
+            }
         }
     </div>
 </div>
@@ -50,4 +66,19 @@
 {
     @Html.React("global.Components.INavPreloadedState", new {state = Model.Nav}, containerId: "INavPreloadedState")
     @Html.React("global.Components.CarouselPreloadedState", new { state = Model.Carousels }, containerId: "CarouselPreloadedState")
+
+    @if (Model.PolarNativeAdsData != null)
+    {
+        Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
+    }
+    @if (Model.InsightsData.Any())
+    {
+        Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
+    }
+    @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
+    
+    @{
+        Html.RenderAction( "HtmlTracking", "Tracking");
+    }
+
 }
