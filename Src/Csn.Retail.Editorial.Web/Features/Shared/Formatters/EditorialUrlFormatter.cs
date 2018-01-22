@@ -16,7 +16,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
             {
                 var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
                 return
-                    $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical}")}/results";
+                    $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}/results";
             }
         }
 

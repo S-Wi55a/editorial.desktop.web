@@ -23,9 +23,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _seoListingUrlRedirectLogger = seoListingUrlRedirectLogger;
         }
 
-        [RedbookDefaultVerticalAttributeFilter]
         [Route("editorial/{articleSlug:article-types}")]
         [RedirectAttributeFilter]
+        [RedbookDefaultVerticalAttributeFilter]
         public async Task<ActionResult> ArticleTypeListing(ArticleTypeListingQuery query)
         {
             var listingsQuery = await _queryDispatcher.DispatchAsync<ArticleTypeListingQuery, GetListingsQuery>(query);
@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             return await Listing(listingsQuery);
         }
 
-        [Route("editorial/{redbookvertical:redbook-vertical}/{*resultsPath:regex(^(results|beta-results))?}")]
+        [Route("editorial/{redbookvertical:redbook-vertical}/{results?}/")]
         [RedirectAttributeFilter]
         public async Task<ActionResult> RedbookListing(RedbookListingQuery query)
         {
@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             return await Listing(listingsQuery);
         }
 
-        [Route("editorial/{resultsPath:regex(^(results|beta-results))}/{*seoFragment:regex(^[\\w-/]*)?}")]
+        [Route("editorial/{results}/{*seoFragment:regex(^[\\w-/]*)?}")]
         [RedirectAttributeFilter]
         [LegacyListingsUrlRedirectFilter]
         public async Task<ActionResult> Listing(GetListingsQuery query)

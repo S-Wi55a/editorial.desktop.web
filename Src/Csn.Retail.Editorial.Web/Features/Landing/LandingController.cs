@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
+using Csn.Retail.Editorial.Web.Features.Listings.Filters;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
@@ -21,6 +22,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
         [Route("editorial/")]
         [RedirectAttributeFilter]
+        [RedbookDefaultVerticalAttributeFilter]
         public async Task<ActionResult> Index(GetLandingQuery query)
         {
 

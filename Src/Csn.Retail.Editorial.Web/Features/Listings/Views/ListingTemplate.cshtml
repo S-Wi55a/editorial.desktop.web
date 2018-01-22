@@ -25,7 +25,12 @@
 }
 
 <div class="listing-page">
-    @{Html.RenderPartial("Partials/_Header");}
+    @{
+        if (!Html.CurrentTenant().AvailableOnRedbook)
+        {
+            Html.RenderPartial("Partials/_Header");
+        }
+    }
     @Html.React("global.Components.INav", new {state = Model}, containerId: "iNav", containerClass: "iNav--v1")
 
     <div class="container">
