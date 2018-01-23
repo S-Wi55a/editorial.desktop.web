@@ -5,7 +5,7 @@
       "HasHeroAddUnit": false,
       "carouselConfigurations": [
         {
-          "title": "Featured",
+          "title": "Editor's Choice",
           "displayMrec": true,
           "query": "(And.ArticleSet.Redbook_Boats._.Service.BoatSales.)",
           "sort": "Latest",
@@ -44,7 +44,7 @@
           }
         },
         {
-          "title": "Car Advice",
+          "title": "Advice",
           "displayMrec": false,
           "query": "(And.Type.Advice._.Service.BoatSales.)",
           "sort": "Latest",
@@ -56,7 +56,7 @@
           "displayMrec": false,
           "query": "(And.Type.Feature._.Service.BoatSales.)",
           "sort": "Latest",
-          "viewAll": "/feature/",
+          "viewAll": "/features/",
           "carouselType": "article",
           "polarAds": {
             "display": true,
