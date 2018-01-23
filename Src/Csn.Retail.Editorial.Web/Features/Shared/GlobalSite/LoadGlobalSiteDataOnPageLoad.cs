@@ -41,7 +41,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
                 var response = _proxy.Get(new AppShellRequest
                 {
                     CurrentUserId = _userContext.CurrentUserId?.ToString(),
-                    SiteName = !_tenantProvider.Current().AvailableOnRedbook ? _tenantProvider.Current().Name : "redbook"
+                    SiteName = _tenantProvider.Current().TenantName
                 });
 
                 if (response.IsSucceed)

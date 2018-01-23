@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,7 +14,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Filters
         {
             if (filterContext.IsChildAction) return;
 
-            if (DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>().Current().AvailableOnRedbook)
+            if (DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>().Current().TenantName == "redbook")
             {
                 var vertical = HttpContext.Current.Request.Url.AbsolutePath.Split(new[] { "/editorial/" }, StringSplitOptions.None)[1].Split('/').FirstOrDefault();
                 if (!Enum.TryParse<RedbookVertical>(vertical, true, out var _))
@@ -23,7 +22,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Filters
                     filterContext.Result = new RedirectResult("/editorial/cars/", true);
                 }
             }
-
             base.OnActionExecuting(filterContext);
         }
     }

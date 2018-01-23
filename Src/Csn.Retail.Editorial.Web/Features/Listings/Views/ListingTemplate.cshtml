@@ -11,7 +11,7 @@
 }
 
 @{
-    var tenantName = !Html.CurrentTenant().AvailableOnRedbook? Html.CurrentTenant().Name.ToLower() : "redbook";
+    var tenantName = Html.CurrentTenant().TenantName;
 }
 
 @section Styles {
@@ -26,7 +26,7 @@
 
 <div class="listing-page">
     @{
-        if (!Html.CurrentTenant().AvailableOnRedbook)
+        if (Html.CurrentTenant().TenantName != "redbook")
         {
             Html.RenderPartial("Partials/_Header");
         }

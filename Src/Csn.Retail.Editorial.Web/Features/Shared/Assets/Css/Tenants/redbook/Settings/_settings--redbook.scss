@@ -2,14 +2,14 @@
 
 
 // Colors - Vertical
-$cs-primary: #D33126; //TODO: to be confirmed
+$cs-primary: #D33126;
 
 
 // Logo
 $logo-header : 'Images/Redbook/logo-redbook.svg';
-$logo-header-width: 225px;
-$logo-header-height: 110px; // hieght limits width b/c aspect ratio
+$logo-header-width: 0;
+$logo-header-height: 0; // hieght limits width b/c aspect ratio
 
-$logo-header--transparent: 'Images/Redbook/logo-redbook.svg';
-$logo-header-width--transparent: 225px;
-$logo-header-height--transparent: 110px;
+$logo-header--transparent: '';
+$logo-header-width--transparent: 0;
+$logo-header-height--transparent: 0;

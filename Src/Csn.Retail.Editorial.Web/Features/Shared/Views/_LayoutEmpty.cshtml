@@ -1,6 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @{
-    var tenantName = !Html.CurrentTenant().AvailableOnRedbook ? Html.CurrentTenant().Name.ToLower() : "redbook";
+    var tenantName = Html.CurrentTenant().TenantName;
 }
 <!DOCTYPE html>
 

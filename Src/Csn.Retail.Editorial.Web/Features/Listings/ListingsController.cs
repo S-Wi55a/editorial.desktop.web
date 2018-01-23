@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             return await Listing(listingsQuery);
         }
 
-        [Route("editorial/{redbookvertical:redbook-vertical}/{results?}/")]
+        [Route("editorial/{redbookvertical:redbook-vertical}/{results?}")]
         [RedirectAttributeFilter]
         public async Task<ActionResult> RedbookListing(RedbookListingQuery query)
         {
@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             return await Listing(listingsQuery);
         }
 
-        [Route("editorial/{results}/{*seoFragment:regex(^[\\w-/]*)?}")]
+        [Route("editorial/results/{*seoFragment:regex(^[\\w-/]*)?}")]
         [RedirectAttributeFilter]
         [LegacyListingsUrlRedirectFilter]
         public async Task<ActionResult> Listing(GetListingsQuery query)
