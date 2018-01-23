@@ -1,10 +1,6 @@
 ﻿.pros-and-cons {
     font-size: $font-size-body;
     
-    &__pro {
-        border-top: 1px solid $cs-light-grey-2;
-    }
-
     &__con {
         border-top: 1px solid $cs-light-grey-2;
         margin-top: 15px;
@@ -12,7 +8,6 @@
 
     &__pro-heading {
         color: $cs-accent-green;
-        margin-top: 10px;
     }
 
     &__con-heading {
@@ -57,6 +52,18 @@
             border-radius: 9999px;
             background-color: $cs-red;
             vertical-align: middle;
+        }
+    }
+}
+
+.expert-ratings + .pros-and-cons {
+    .pros-and-cons {
+        &__pro {
+            border-top: 1px solid $cs-light-grey-2;
+        }
+
+        &__pro-heading {
+            margin-top: 10px;
         }
     }
 }

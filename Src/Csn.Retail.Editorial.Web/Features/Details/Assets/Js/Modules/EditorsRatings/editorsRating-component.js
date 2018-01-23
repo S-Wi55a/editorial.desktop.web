@@ -102,4 +102,7 @@ let init = (d, w, scope) => {
     }
 
 }
-init(document, window, editorsRatings);
+
+if (expertRatingMeters) {
+    init(document, window, editorsRatings); 
+}
