@@ -5,7 +5,7 @@
       "HasHeroAddUnit": true,
       "carouselConfigurations": [
         {
-          "title": "Featured",
+          "title": "Editor's Choice",
           "displayMrec": true,
           "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
           "sort": "Latest",
@@ -44,7 +44,7 @@
           }
         },
         {
-          "title": "Car Advice",
+          "title": "Advice",
           "displayMrec": false,
           "query": "(And.Type.Car Advice._.Service.CarSales.)",
           "sort": "Latest",

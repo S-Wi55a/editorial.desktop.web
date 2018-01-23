@@ -5,7 +5,7 @@
       "HasHeroAddUnit": false,
       "carouselConfigurations": [
         {
-          "title": "Featured",
+          "title": "Editor's Choice",
           "displayMrec": true,
           "query": "(And.ArticleSet.Redbook_Bikes._.Service.BikeSales.)",
           "sort": "Latest",
@@ -44,7 +44,7 @@
           }
         },
         {
-          "title": "Car Advice",
+          "title": "Advice",
           "displayMrec": false,
           "query": "(And.Type.Riding Advice._.Service.BikeSales.)",
           "sort": "Latest",
