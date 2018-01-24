@@ -21,6 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool AllowSeoIndexOfListing { get; set; }
         public bool SupportsSeoFriendlyListings { get; set; }
         public string DefaultPageTitle { get; set; }
+        public bool AllowSeoIndexOfLanding { get; set; }
         #endregion
 
         #region Polar Native Ads

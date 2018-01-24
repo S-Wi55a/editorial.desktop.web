@@ -552,6 +552,7 @@
     <Compile Include="Features\MediaMotiveAds\Services\NativeAdService.cs" />
     <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
+    <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
@@ -603,7 +604,6 @@
     <Compile Include="Features\Listings\GetListingsResponse.cs" />
     <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
-    <Compile Include="Features\Listings\Mappings\SeoDataMapper.cs" />
     <Compile Include="Features\Listings\ModelBinders\ArticleTypeListingQueryModelBinder.cs" />
     <Compile Include="Features\Listings\ModelBinders\ArticleTypeLookup.cs" />
     <Compile Include="Features\Listings\ModelBinders\GetListingsQueryModelBinder.cs" />
