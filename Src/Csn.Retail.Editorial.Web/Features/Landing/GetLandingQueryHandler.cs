@@ -15,7 +15,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
-using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 using Csn.SimpleCqrs;
 using Csn.Tracking.Scripts.Core;
 using Ingress.ServiceClient.Abstracts;
@@ -33,12 +32,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly ISeoDataMapper _seoDataMapper;
-        private readonly IRequestContextWrapper _requestContext;
 
 
         public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
             ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider,
-            ISeoDataMapper seoDataMapper, IRequestContextWrapper requestContext)
+            ISeoDataMapper seoDataMapper)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
@@ -47,7 +45,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
             _tenantProvider = tenantProvider;
             _seoDataMapper = seoDataMapper;
-            _requestContext = requestContext;
             _carouselDataService = carouselDataService;
 
     }
