@@ -5,7 +5,7 @@
       "HasHeroAddUnit": false,
       "carouselConfigurations": [
         {
-          "title": "Featured",
+          "title": "Editor's Choice",
           "displayMrec": true,
           "query": "(And.ArticleSet.TruckSales_home._.Service.TruckSales.)",
           "sort": "Latest",
@@ -48,7 +48,7 @@
           "displayMrec": false,
           "query": "(And.Type.Feature._.Service.TruckSales.)",
           "sort": "Latest",
-          "viewAll": "/feature/",
+          "viewAll": "/features/",
           "carouselType": "article",
           "polarAds": {
             "display": true,
