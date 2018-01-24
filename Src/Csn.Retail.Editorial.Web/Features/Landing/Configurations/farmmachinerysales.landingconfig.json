@@ -9,7 +9,7 @@
           "displayMrec": true,
           "query": "(And.ArticleSet.Farm_home._.Service.FarmMachinerySales.)",
           "sort": "Latest",
-          "carouselType": "article"
+          "carouselType": "featured"
         },
         {
           "title": "Reviews",

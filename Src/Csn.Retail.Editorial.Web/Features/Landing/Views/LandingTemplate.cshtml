@@ -11,6 +11,7 @@
 @model LandingViewModel
 
 @section Head{
+    @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
 }
 
 @{

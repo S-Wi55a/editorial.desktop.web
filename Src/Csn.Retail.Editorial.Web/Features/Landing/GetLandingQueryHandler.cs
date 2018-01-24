@@ -14,6 +14,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 using Csn.SimpleCqrs;
 using Csn.Tracking.Scripts.Core;
 using Ingress.ServiceClient.Abstracts;
@@ -30,9 +31,13 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly ISmartServiceClient _restClient;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
+        private readonly ISeoDataMapper _seoDataMapper;
+        private readonly IRequestContextWrapper _requestContext;
 
 
-        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider)
+        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
+            ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider,
+            ISeoDataMapper seoDataMapper, IRequestContextWrapper requestContext)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
@@ -40,6 +45,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _restClient = restClient;
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
             _tenantProvider = tenantProvider;
+            _seoDataMapper = seoDataMapper;
+            _requestContext = requestContext;
             _carouselDataService = carouselDataService;
 
     }
@@ -48,11 +55,20 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         {
             var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
 
-            var navResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
+            var ryvussResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
             var searchResults = GetCarousels(configResults);
             var campaignAd = configResults.HasHeroAddUnit ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
      
-            await Task.WhenAll(navResults, searchResults, campaignAd);
+            await Task.WhenAll(ryvussResults, searchResults, campaignAd);
+
+            if (ryvussResults.Result == null || searchResults.Result == null) return null;
+
+            var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
+
+            if (_requestContext.Url != null)
+            {
+                navResults.INav.CurrentUrl = _requestContext.Url.AbsolutePath;
+            }
 
             return new GetLandingResponse
             {
@@ -60,13 +76,14 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                 {
                     Nav = new Models.Nav
                     {
-                        NavResults = _mapper.Map<NavResult>(navResults.Result)
+                        NavResults = navResults
                     },
                     Title = _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
-                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(navResults.Result.INav.BreadCrumbs, TrackingScriptPageTypes.Homepage),
+                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, TrackingScriptPageTypes.Homepage),
                     InsightsData = LandingInsightsDataMapper.Map(),
+                    SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = "Search All News & Reviews"
                 }
             };
@@ -78,7 +95,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             await Task.WhenAll(getCarouselTasks);
 
-            return getCarouselTasks.Select(listofTask => listofTask.Result).ToList();
+            return getCarouselTasks.Where(tasks => tasks.Result != null).Select(listofTask => listofTask.Result).ToList();
         }
 
         private async Task<CampaignAdResult> GetAdUnit()
