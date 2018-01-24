@@ -7,6 +7,7 @@ using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
 using Csn.Retail.Editorial.Web.Features.Landing.Mappings;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
 using Csn.Retail.Editorial.Web.Features.Landing.Services;
+using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Mappers;
 using Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -65,10 +66,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
 
-            if (_requestContext.Url != null)
-            {
-                navResults.INav.CurrentUrl = _requestContext.Url.AbsolutePath;
-            }
+            navResults.INav.CurrentUrl = EditorialUrlFormatter.GetSeoUrl(string.Empty);
 
             return new GetLandingResponse
             {
