@@ -9,7 +9,7 @@
           "displayMrec": true,
           "query": "(And.ArticleSet.Redbook_Boats._.Service.BoatSales.)",
           "sort": "Latest",
-          "carouselType": "article"
+          "carouselType": "featured"
         },
         {
           "title": "Reviews",

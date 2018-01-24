@@ -9,7 +9,7 @@
           "displayMrec": true,
           "query": "(And.ArticleSet.TruckSales_home._.Service.TruckSales.)",
           "sort": "Latest",
-          "carouselType": "article"
+          "carouselType": "featured"
         },
         {
           "title": "Reviews",

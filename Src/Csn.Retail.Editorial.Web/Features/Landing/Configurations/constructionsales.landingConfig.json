@@ -9,7 +9,7 @@
           "displayMrec": true,
           "query": "(And.ArticleSet.Construction_home._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "carouselType": "article"
+          "carouselType": "featured"
         },
         {
           "title": "Reviews",

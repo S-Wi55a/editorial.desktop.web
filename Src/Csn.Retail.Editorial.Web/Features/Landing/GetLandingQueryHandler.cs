@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
@@ -15,6 +14,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 using Csn.SimpleCqrs;
 using Csn.Tracking.Scripts.Core;
 using Ingress.ServiceClient.Abstracts;
@@ -32,12 +32,12 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly ISeoDataMapper _seoDataMapper;
-        private readonly HttpContextBase _httpContextBase;
+        private readonly IRequestContextWrapper _requestContext;
 
 
         public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
             ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider,
-            ISeoDataMapper seoDataMapper, HttpContextBase httpContextBase)
+            ISeoDataMapper seoDataMapper, IRequestContextWrapper requestContext)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
@@ -46,7 +46,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
             _tenantProvider = tenantProvider;
             _seoDataMapper = seoDataMapper;
-            _httpContextBase = httpContextBase;
+            _requestContext = requestContext;
             _carouselDataService = carouselDataService;
 
     }
@@ -65,9 +65,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
 
-            if (_httpContextBase.Request.Url != null)
+            if (_requestContext.Url != null)
             {
-                navResults.INav.CurrentUrl = _httpContextBase.Request.Url.AbsolutePath;
+                navResults.INav.CurrentUrl = _requestContext.Url.AbsolutePath;
             }
 
             return new GetLandingResponse
@@ -83,7 +83,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     CampaignAd = campaignAd.Result,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, TrackingScriptPageTypes.Homepage),
                     InsightsData = LandingInsightsDataMapper.Map(),
-                    SeoData = _seoDataMapper.MapLandingSetData(ryvussResults.Result),
+                    SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = "Search All News & Reviews"
                 }
             };

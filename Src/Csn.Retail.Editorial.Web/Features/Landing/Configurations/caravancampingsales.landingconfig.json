@@ -9,7 +9,7 @@
           "displayMrec": true,
           "query": "(And.ArticleSet.Caravan_Camping._.Service.CaravanCampingSales.)",
           "sort": "Latest",
-          "carouselType": "article"
+          "carouselType": "featured"
         },
         {
           "title": "Reviews",
