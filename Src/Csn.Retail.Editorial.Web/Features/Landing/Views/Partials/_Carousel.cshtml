@@ -1,26 +1,31 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Landing.Models.CarouselViewModel
+﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+@using React.Web.Mvc
+@model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
 
-<div class="csn-carousel @(Model.HasMrec ? "csn-carousel--mrec" : "" )">
+@{ var index = (int) ViewData["index"]; }
+
+<div class="csn-carousel @(Model.Carousels[index].HasMrec ? "csn-carousel--mrec" : "")" data-webm-section="carousel-@(Model.Carousels[index].Title)">
     <div class="csn-carousel__info-bar">
-        @if (Model.Link != null)
+        @if (Model.Carousels[index].ViewAllLink != null)
         {
-            
-            <h2 class="csn-carousel__title"><a href="@Model.Link">@Model.Title</a></h2>
-            
-            <a href="@Model.Link" class="csn-carousel__link">View all @Model.Title</a>
+
+            <h2 class="csn-carousel__title"><a href="@Model.Carousels[index].ViewAllLink" data-webm-clickvalue="carousel-@(Model.Carousels[index].Title)-title-link">@Model.Carousels[index].Title</a>
+            </h2>
+
+            <a href="@Model.Carousels[index].ViewAllLink" class="csn-carousel__link" data-webm-clickvalue="carousel-@(Model.Carousels[index].Title)-view-all">View all @Model.Carousels[index].Title</a>
         }
         else
         {
-            <h2 class="csn-carousel__title">@Model.Title</h2>
+            <h2 class="csn-carousel__title">@Model.Carousels[index].Title</h2>
         }
     </div>
     <div class="csn-carousel__container">
-        <div id="@Model.Title.ToLower()" class="csn-carousel__placeholder csn-carousel--@Model.Title.ToLower()"></div>
+    @Html.React("global.Components.Carousel", new {state = Model.Carousels, index}, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
 
-        @if (Model.HasMrec)
+        @if (Model.Carousels[index].HasMrec)
         {
-            Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Mrec.cshtml");
-        }       
+            Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() {AdSize = AdSize.MediumRectangle, TileId = 3});
+        }
     </div>
-
 </div>

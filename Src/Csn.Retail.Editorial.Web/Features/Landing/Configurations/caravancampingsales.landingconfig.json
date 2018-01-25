@@ -1,0 +1,69 @@
+﻿{
+  "configs": [
+    {
+      "type": "default",
+      "HasHeroAddUnit": false,
+      "carouselConfigurations": [
+        {
+          "title": "Editor's Choice",
+          "displayMrec": true,
+          "query": "(And.ArticleSet.Caravan_Camping._.Service.CaravanCampingSales.)",
+          "sort": "Latest",
+          "carouselType": "featured"
+        },
+        {
+          "title": "Reviews",
+          "displayMrec": false,
+          "query": "(And.Type.Review._.Service.CaravanCampingSales.)",
+          "sort": "Latest",
+          "viewAll": "/reviews/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 31
+          }
+        },
+        {
+          "title": "News",
+          "displayMrec": false,
+          "query": "(And.Type.News._.Service.CaravanCampingSales.)",
+          "sort": "Latest",
+          "viewAll": "/news/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Videos",
+          "displayMrec": false,
+          "query": "(And.Type.Video._.Service.CaravanCampingSales.)",
+          "sort": "Latest",
+          "viewAll": "/videos/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
+        },
+        {
+          "title": "Advice",
+          "displayMrec": false,
+          "query": "(And.Type.Advice._.Service.CaravanCampingSales.)",
+          "sort": "Latest",
+          "viewAll": "/advice/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Feature",
+          "displayMrec": false,
+          "query": "(And.Type.Feature._.Service.CaravanCampingSales.)",
+          "sort": "Latest",
+          "viewAll": "/features/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 33
+          }
+        }
+      ]
+    }
+  ]
+}

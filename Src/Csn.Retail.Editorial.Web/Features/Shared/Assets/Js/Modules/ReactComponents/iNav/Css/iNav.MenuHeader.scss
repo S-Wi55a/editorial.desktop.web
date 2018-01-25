@@ -1,0 +1,81 @@
+@import "css/globals";
+@import "./iNav.variables";
+
+.iNav__menu-header {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+
+
+    &-item {
+        border: solid 1px $cs-grey-1;
+        min-width: $iNav-header-item-width;
+        padding: 0 15px;
+        line-height: $iNav-header-item-height;
+        background-color: $cs-white;
+        border-left-width: 0;
+        font-weight: $font-weight-600;
+        color: $cs-light-grey-8;
+        transition: background-color 333ms;
+
+        @include breakpoint($screen-lg) {
+            min-width: $iNav-header-item-width + 60px;
+        }
+
+        &:first-of-type {
+            border-top-left-radius: $iNav-border-radius;
+            border-bottom-left-radius: $iNav-border-radius;
+            border-left-width: 1px;
+        }
+
+        &:last-of-type {
+            border-top-right-radius: $iNav-border-radius;
+            border-bottom-right-radius: $iNav-border-radius;
+        }
+
+        &::before {
+            content: $icon-chevron-down-lg;
+            font-family: $font-family-icons;
+            display: block;
+            height: $iNav-header-item-height;
+            float: right;
+            color: $cs-primary;
+            font-weight: 900;
+            backface-visibility: hidden;
+            transition: transform .3s;
+        }
+
+        &:not(&--isActive):hover {
+            background-color: $cs-light-grey-7;
+
+            &::before {
+                color: $cs-primary;
+            }
+        }
+
+        &--isActive {
+            color: $cs-primary;
+            background-color: $cs-light-grey-7;
+
+            &::before {
+                content: $icon-chevron-up-lg;
+            }
+        }
+    }
+
+    &-item-count {
+        background-color: $cs-primary;
+        color: $cs-white;
+        border-radius: 9999px;
+        width: 23px;
+        height: 23px;
+        display: inline-block;
+        line-height: 23px;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: $font-weight-600;
+        font-size: 12px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}

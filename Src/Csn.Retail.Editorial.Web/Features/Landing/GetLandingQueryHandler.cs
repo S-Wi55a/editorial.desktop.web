@@ -1,259 +1,104 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
+using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
+using Csn.Retail.Editorial.Web.Features.Landing.Mappings;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
+using Csn.Retail.Editorial.Web.Features.Landing.Services;
+using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
+using Csn.Retail.Editorial.Web.Features.Shared.Mappers;
+using Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
+using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
+using Csn.Tracking.Scripts.Core;
+using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
 {
     [AutoBind]
     public class GetLandingQueryHandler : IAsyncQueryHandler<GetLandingQuery, GetLandingResponse>
     {
-        private readonly ITenantProvider<TenantInfo> _tenantProvider;
-        private readonly IEditorialRyvussApiProxy _ryvussProxy;
+        private readonly IRyvussDataService _ryvussDataService;
         private readonly IMapper _mapper;
+        private readonly ILandingConfigProvider _landingConfigProvider;
+        private readonly ICarouselDataService _carouselDataService;
+        private readonly ISmartServiceClient _restClient;
+        private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
+        private readonly ITenantProvider<TenantInfo> _tenantProvider;
+        private readonly ISeoDataMapper _seoDataMapper;
 
-        public GetLandingQueryHandler(ITenantProvider<TenantInfo> tenantProvider, IEditorialRyvussApiProxy ryvussProxy, IMapper mapper)
+
+        public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
+            ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider,
+            ISeoDataMapper seoDataMapper)
         {
-            _tenantProvider = tenantProvider;
-            _ryvussProxy = ryvussProxy;
+            _ryvussDataService = ryvussDataService;
             _mapper = mapper;
-        }
+            _landingConfigProvider = landingConfigProvider;
+            _restClient = restClient;
+            _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
+            _tenantProvider = tenantProvider;
+            _seoDataMapper = seoDataMapper;
+            _carouselDataService = carouselDataService;
 
-        public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
+    }
+
+    public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
+            var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
+
+            var ryvussResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
+            var searchResults = GetCarousels(configResults);
+            var campaignAd = configResults.HasHeroAddUnit ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
+     
+            await Task.WhenAll(ryvussResults, searchResults, campaignAd);
+
+            if (ryvussResults.Result == null || searchResults.Result == null) return null;
+
+            var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
+
+            navResults.INav.CurrentUrl = EditorialUrlFormatter.GetSeoUrl(string.Empty);
+
             return new GetLandingResponse
             {
                 LandingViewModel = new LandingViewModel
                 {
-                    Nav = new Models.Nav()
+                    Nav = new Models.Nav
                     {
-                        NavResults = await GetNav()
+                        NavResults = navResults
                     },
-                    Carousels = new List<CarouselViewModel>
-                    {
-                        new CarouselViewModel
-                        {
-                            Title = "Featured",
-                            Link = "#",
-                            HasMrec = true,
-                            CategoryItems = new List<SearchResult>
-                            {
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                }
-
-                            }
-                        },
-                        new CarouselViewModel
-                        {
-                            Title = "Reviews",
-                            Link = "#",
-                            HasMrec = false,
-                            CategoryItems = new List<SearchResult>
-                            {
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                },
-                                new SearchResult()
-                                {
-                                    DisqusArticleId=  "EDITORIAL-110025",
-                                    Headline = "LA MOTOR SHOW: Chevrolet drops Corvette ZR1\'s top",
-                                    SubHeading = "First Corvette ZR1 convertible since 1970 revealed; could come Down Under",
-                                    ImageUrl = "https://carsales.pxcrush.net/general/editorial/LA17-Chevrolet-Corvette-ZR1-1.jpg",
-                                    DateAvailable = "November 30th",
-                                    ArticleDetailsUrl = "/editorial/details/la-motor-show-chevrolet-drops-corvette-zr1s-top-110025/",
-                                    Label = null,
-                                    Type = "News"
-                                }
-
-                            }
-                        }
-                    }
+                    Title = _tenantProvider.Current().DefaultPageTitle,
+                    Carousels = searchResults.Result,
+                    CampaignAd = campaignAd.Result,
+                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, TrackingScriptPageTypes.Homepage),
+                    InsightsData = LandingInsightsDataMapper.Map(),
+                    SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
+                    HeroTitle = "Search All News & Reviews"
                 }
             };
         }
 
-        /// <summary>
-        /// This is just a temp solution until we properly architect this part out
-        /// </summary>
-        /// <returns></returns>
-        private async Task<NavResult> GetNav()
+        private async Task<List<CarouselViewModel>> GetCarousels(LandingConfigurationSet landingCarousel)
         {
-            var queryString = _tenantProvider.Current().SupportsSeoFriendlyListings ? string.Empty : $"Service.{_tenantProvider.Current().Name}.";
+            var getCarouselTasks = landingCarousel.CarouselConfigurations.Select(carouselConfig => _carouselDataService.GetCarouselData(carouselConfig)).ToList();
 
-            var postProcessors = new List<string>();
-            postProcessors.AddRange(new[] { "Retail", "FacetSort", "RenderRefinements" });
+            await Task.WhenAll(getCarouselTasks);
 
-            if (_tenantProvider.Current().SupportsSeoFriendlyListings)
-            {
-                postProcessors.Add("Seo");
-                postProcessors.Add("HideAspect(Service)");
-            }
-            else
-            {
-                postProcessors.Add("ShowZero");
-            }
+            return getCarouselTasks.Where(tasks => tasks.Result != null).Select(listofTask => listofTask.Result).ToList();
+        }
 
-            var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput
-            {
-                Query = queryString,
-                IncludeCount = true,
-                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
-                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
-                NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = postProcessors,
-                IncludeMetaData = true
-            });
-
-            var resultData = !result.IsSucceed ? null : result.Data;
-
-            if (resultData == null) return null;
-
-            return _mapper.Map<NavResult>(resultData);
+        private async Task<CampaignAdResult> GetAdUnit()
+        {
+            return await _restClient.Service("api-showroom-promotions")
+                .Path("/v1/promotions/carsales-homepage/campaign")
+                .GetAsync<CampaignAdResult>()
+                .ContinueWith(x => x.Result.Data);
         }
     }
 }

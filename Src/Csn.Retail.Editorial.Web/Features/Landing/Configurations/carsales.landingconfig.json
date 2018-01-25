@@ -1,0 +1,112 @@
+﻿{
+  "configs": [
+    {
+      "type": "default",
+      "HasHeroAddUnit": true,
+      "carouselConfigurations": [
+        {
+          "title": "Editor's Choice",
+          "displayMrec": true,
+          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
+          "sort": "Latest",
+          "carouselType": "featured"
+        },
+        {
+          "title": "Reviews",
+          "displayMrec": false,
+          "query": "(And.Type.Review._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/reviews/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 31
+          }
+        },
+        {
+          "title": "News",
+          "displayMrec": false,
+          "query": "(And.Type.News._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/news/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Videos",
+          "displayMrec": false,
+          "query": "(And.Type.Video._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/videos/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
+        },
+        {
+          "title": "Advice",
+          "displayMrec": false,
+          "query": "(And.Type.Car Advice._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/advice/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Driver",
+          "carouselType": "driver",
+          "displayNativeAd": true,
+          "carouselItems": [
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/ed-itm-110483/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/mazda-cx-8-confirmed-for-oz-110480/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/ces-2018-kia-niro-ev-concept-110479/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/peugeot-releases-tennis-specials-110469/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/ces-2018-hyundai-nexo-hydrogen-car-revealed-110461/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/ces-2018-toyota-reveals-autonomous-electric-vehicle-project-110470/"
+            },
+            {
+              "ImageUrl": "http://via.placeholder.com/350x430",
+              "ItemUrl": "/editorial/details/new-mercedes-benz-g-class-leaked-110471/"
+            }
+          ]
+        },
+        {
+          "title": "Comparisons",
+          "displayMrec": false,
+          "query": "(And.ArticleTypes.Comparison._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/results/?q=ArticleTypes.Comparison.",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 33
+          }
+        },
+        {
+          "title": "Feature",
+          "displayMrec": false,
+          "query": "(And.Type.Feature._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/features/",
+          "carouselType": "article"
+        }
+      ]
+    }
+  ]
+}

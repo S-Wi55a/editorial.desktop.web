@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux'
-import { Thunks } from 'iNav/Actions/actions'
+import { Thunks } from 'ReactComponents/iNav/Actions/actions'
 
 if (!SERVER) {
     require('iNavPagination/Css/iNavPagination.scss')  
@@ -24,13 +24,21 @@ const INavPageSeparator = ({ initial, trailing, totalPageCount, currentPageNo, t
     return null;
 }
 const INavPage = ({ pageNo, currentPage, url, fetchQuery }) => {
-
     if(typeof(pageNo) !== 'undefined') {        
         return <a className={`iNavPageItem ${pageNo === currentPage ? 'iNavPageItem--current' : '' }`} href={url} onClick={(e)=>{e.preventDefault();fetchQuery(url);}} data-webm-clickvalue={`page_number_${pageNo}`}>
             {pageNo}
         </a>
     }
     return null;
+}
+
+const INavLastPage = ({ pageNo, currentPage,totalPageCount, url, fetchQuery }) => {
+    if (typeof (pageNo) !== 'undefined' && currentPage >= (totalPageCount -2)) {
+        return <a className={`iNavPageItem ${pageNo === currentPage ? 'iNavPageItem--current' : ''}`} href={url} onClick={(e) => { e.preventDefault(); fetchQuery(url); }} data-webm-clickvalue={`page_number_${pageNo}`}>
+            {pageNo}
+        </a>
+}
+return null;
 }
 
 const INavPagination = ({ paging, fetchQuery }) =>  {    
@@ -42,15 +50,13 @@ const INavPagination = ({ paging, fetchQuery }) =>  {
                     {paging.pages.map((page) => {
                         return <INavPage  key={page.pageNo} { ...page } currentPage={paging.currentPageNo} fetchQuery={fetchQuery}/>
                     })}
-                    <INavPageSeparator {...paging} text='...' trailing={true}/>                    
-                    <INavPage  { ...paging.last } currentPage={paging.currentPageNo} fetchQuery={fetchQuery} data-webm-clickvalue="last"/>
+                    <INavPageSeparator {...paging} text='...' trailing={true} />
+                    <INavLastPage { ...paging.last } currentPage={paging.currentPageNo} totalPageCount={paging.totalPageCount} fetchQuery={fetchQuery} data-webm-clickvalue="last" /> 
                     <INavPageNavigator { ...paging.next } show={paging.next}  direction={'next'} fetchQuery={fetchQuery} trackingValue="next"/>
                 </div>
                 <div className='iNavPagination__info'> { paging.displayText }</div>
             </div>
 }
-
-
 
 // Redux Connect
 const mapStateToProps = (state) => {

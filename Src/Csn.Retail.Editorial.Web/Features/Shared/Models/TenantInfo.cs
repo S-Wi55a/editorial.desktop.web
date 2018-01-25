@@ -21,6 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool AllowSeoIndexOfListing { get; set; }
         public bool SupportsSeoFriendlyListings { get; set; }
         public string DefaultPageTitle { get; set; }
+        public bool AllowSeoIndexOfLanding { get; set; }
         #endregion
 
         #region Polar Native Ads
@@ -34,6 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string MediaMotiveUrl { get; set; }
         public string KruxId { get; set; }
         public List<string> AdUnits { get; set; }
+        public string NativeAdPlacement { get; set; }
 
         #endregion
 

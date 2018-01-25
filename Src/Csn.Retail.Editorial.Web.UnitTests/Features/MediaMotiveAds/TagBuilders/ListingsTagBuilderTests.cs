@@ -30,7 +30,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var result = tagBuilder.Build(new MediaMotiveAdQuery()
             {
-                TileId = "Tile3"
+                TileId = 3
             }).ToList();
 
             Assert.AreEqual(1, result.Count);
@@ -58,7 +58,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var result = tagBuilder.Build(new MediaMotiveAdQuery()
             {
-                TileId = "Tile3"
+                TileId = 3
             }).ToList();
 
             Assert.AreEqual(3, result.Count);
@@ -89,7 +89,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var result = tagBuilder.Build(new MediaMotiveAdQuery()
             {
-                TileId = "Tile3"
+                TileId = 3
             }).ToList();
 
             Assert.AreEqual(4, result.Count);

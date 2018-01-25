@@ -1,0 +1,61 @@
+﻿{
+  "configs": [
+    {
+      "type": "default",
+      "HasHeroAddUnit": false,
+      "carouselConfigurations": [
+        {
+          "title": "Editor's Choice",
+          "displayMrec": true,
+          "query": "(And.ArticleSet.Redbook_Bikes._.Service.BikeSales.)",
+          "sort": "Latest",
+          "carouselType": "featured"
+        },
+        {
+          "title": "Reviews",
+          "displayMrec": false,
+          "query": "(And.Type.Review._.Service.BikeSales.)",
+          "sort": "Latest",
+          "viewAll": "/reviews/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 31
+          }
+        },
+        {
+          "title": "News",
+          "displayMrec": false,
+          "query": "(And.Type.News._.Service.BikeSales.)",
+          "sort": "Latest",
+          "viewAll": "/news/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Videos",
+          "displayMrec": false,
+          "query": "(And.Type.Video._.Service.BikeSales.)",
+          "sort": "Latest",
+          "viewAll": "/videos/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
+        },
+        {
+          "title": "Advice",
+          "displayMrec": false,
+          "query": "(And.Type.Riding Advice._.Service.BikeSales.)",
+          "sort": "Latest",
+          "viewAll": "/riding-advice/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 33
+          }
+        }
+      ]
+    }
+  ]
+}

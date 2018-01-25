@@ -6,7 +6,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 {
     public class MediaMotiveAdSetting
     {
-        public string Id { get; set; }
         public MediaMotiveAdType Description { get; set; }
         public bool DataKruxRequired { get; set; }
         public AdSize AdSize { get; set; }
@@ -19,7 +18,8 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         MREC,
         TEADS,
         SponsoredLink,
-        Tracking
+        Tracking,
+        Banner
     }
 
     public enum AdSize
@@ -56,7 +56,9 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         [Dimension(350, 1115)]
         Gutter,
         [Dimension(628, 150)]
-        BodyFullWidth150Height
+        BodyFullWidth150Height,
+        [Dimension(1200, 100)]
+        Block1200X100
     }
 
     public class Dimension

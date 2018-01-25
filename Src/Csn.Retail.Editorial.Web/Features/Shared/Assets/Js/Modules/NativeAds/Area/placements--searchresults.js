@@ -10,7 +10,7 @@ const store = window.store || console.warn("No Redux store available")
 // Templates
 // We are highjacking the template function and using it to pass data to our Redux Store
 
-templates['search-result'] = (location) => (Handlebars, depth0, helpers, partials, data) => { 
+templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpers, partials, data) => { 
     
     var pubDate = new Date(depth0.pubDate);
     var now = new Date();
@@ -58,19 +58,19 @@ templates['search-result'] = (location) => (Handlebars, depth0, helpers, partial
 
 placements.push({
     location: 'body', // We need to location to always be true
-    name: 'details-page-more-articles-1',
+    name: 'listings-page-1',
     placementId: '30',
     template: templates['search-result'](4) // Set the placement location 
 })
 placements.push({
     location: 'body', // We need to location to always be true
-    name: 'details-page-related-articles-2',
+    name: 'listings-page-2',
     placementId: '31',
     template: templates['search-result'](9) // Set the placement location 
 })
 placements.push({
     location: 'body', // We need to location to always be true
-    name: 'details-page-more-articles-3',
+    name: 'listings-page-3',
     placementId: '32',
     template: templates['search-result'](14) // Set the placement location 
 })

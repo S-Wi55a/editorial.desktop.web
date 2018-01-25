@@ -1,6 +1,9 @@
 ﻿require('Css/landing-page.scss');
 
 import { configureStore } from 'Redux/Global/Store/store.client.js'
+import { loaded } from 'document-promises/document-promises.js'
+import { reducer as formReducer } from 'redux-form'
+
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 //Enable Redux store globally
@@ -14,15 +17,37 @@ window.store = configureStore(); //Init store
     const navInitState = window.__PRELOADED_STATE__store.nav
 
     window.store.addReducer('carousels', require('carousel/Reducers').carouselParentReducer(initState));
-    window.store.addReducer('store', require('iNav/Reducers').iNavParentReducer(navInitState));
+    window.store.addReducer('store', require('ReactComponents/iNav/Reducers').iNavParentReducer(navInitState));
+    window.store.addReducer('form', formReducer);
 
     if (d.querySelector('#iNav')) {
-        require('iNav/iNav');
+        require('ReactComponents/iNav/iNav');
     }
 
     if (d.querySelector('.csn-carousel__placeholder')) {
+
+        const carouselsComponent = require('carousel/carousel')
+        
         const carousels = [...document.querySelectorAll('.csn-carousel__placeholder')]
-        carousels.forEach((el, i) => require('carousel/carousel').default(el, i))
+
+        carousels.forEach((carousel, i) => carouselsComponent.carousel(carousel, i))
+             
+        
     }
 
 })(document);
+
+//Lazy Native Ads
+loaded.then(() => {
+    (function nativeAds() {
+        if (typeof csn_editorial !== 'undefined' && typeof csn_editorial.nativeAds !== 'undefined') {
+            (function nativeAds() {
+                import
+                    (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
+                        .catch(function(err) {
+                            console.log('Failed to load nativeAds', err);
+                        });
+            })();
+        }
+    })();
+});

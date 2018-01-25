@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using Autofac.Integration.Mvc;
-using Csn.Retail.Editorial.Web.Features.Listings.Constants;
+using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.WebMetrics.Core.Model;
@@ -21,15 +21,15 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
 
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            var query = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Query, string.Empty);
+            var query = bindingContext.ValueProvider.TryGetValueOrDefault(EditorialQueryStringParams.Query, string.Empty);
             var seoFragment = bindingContext.ValueProvider.TryGetValueOrDefault("seoFragment", "");
 
             return new GetListingsQuery
             {
                 Query = query,
                 SeoFragment = !string.IsNullOrEmpty(seoFragment) ? $"/{seoFragment}" : string.Empty,
-                Offset = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Offset, 0),
-                Sort = bindingContext.ValueProvider.TryGetValueOrDefault(ListingsQueryStringParams.Sort, string.Empty),
+                Offset = bindingContext.ValueProvider.TryGetValueOrDefault(EditorialQueryStringParams.Offset, 0),
+                Sort = bindingContext.ValueProvider.TryGetValueOrDefault(EditorialQueryStringParams.Sort, string.Empty),
                 SearchEventType = GetActionType(),
                 QueryExpression = string.IsNullOrEmpty(query) ? null : _parser.TryParse(query),
                 EditorialPageType = EditorialPageTypes.Listing
@@ -46,16 +46,16 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
                 return SearchEventType.Search;
 
             // Check if it's sorting
-            var curSort = uri.GetQueryParameter(ListingsQueryStringParams.Sort);
-            var prvSort = uriReferrer.GetQueryParameter(ListingsQueryStringParams.Sort);
+            var curSort = uri.GetQueryParameter(EditorialQueryStringParams.Sort);
+            var prvSort = uriReferrer.GetQueryParameter(EditorialQueryStringParams.Sort);
             if (curSort != null && curSort != prvSort && (curSort != EditorialSortKeyValues.ListingPageDefaultSort || prvSort != null))
             {
                 return SearchEventType.Sort;
             }
 
             // Check if it's paging                
-            var curOffset = uri.GetQueryParameter(ListingsQueryStringParams.Offset);
-            var prvOffset = uriReferrer.GetQueryParameter(ListingsQueryStringParams.Offset);
+            var curOffset = uri.GetQueryParameter(EditorialQueryStringParams.Offset);
+            var prvOffset = uriReferrer.GetQueryParameter(EditorialQueryStringParams.Offset);
             if ((curOffset != null && curOffset != prvOffset) && (curOffset != "0" || prvOffset != null))
             {
                 return SearchEventType.Pagination;

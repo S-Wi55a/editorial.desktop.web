@@ -19,6 +19,4 @@ const render = (WrappedComponent) => (container, i) => {
     );
 };
 
-export default render(Carousel)
-
-
+export const carousel = render(Carousel)
