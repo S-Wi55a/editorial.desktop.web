@@ -96,7 +96,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private async Task<CampaignAdResult> GetAdUnit()
         {
             return await _restClient.Service("api-showroom-promotions")
-                .Path("/v1/promotions/carsales-homepage/campaign")
+                .Path($"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current()}")
                 .GetAsync<CampaignAdResult>()
                 .ContinueWith(x => x.Result.Data);
         }
