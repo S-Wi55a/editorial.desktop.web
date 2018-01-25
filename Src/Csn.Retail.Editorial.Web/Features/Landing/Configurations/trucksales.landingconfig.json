@@ -44,7 +44,7 @@
           }
         },
         {
-          "title": "Feature",
+          "title": "Features",
           "displayMrec": false,
           "query": "(And.Type.Feature._.Service.TruckSales.)",
           "sort": "Latest",

@@ -26,8 +26,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
         private readonly string _landingConfigPath = System.Configuration.ConfigurationManager.AppSettings["LandingConfigPath"];
         private readonly string _cacheKey = "editorial:desk:{0}:{1}:landingconfig";
         private readonly string _buildVersion = System.Configuration.ConfigurationManager.AppSettings["BuildVersion"];
-        private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 5, 0);
-        private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 30, 0);
+        private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 60, 0);
+        private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 0, 0);
 
 
         public LandingLandingConfigProvider(ISerializer serializer, ITenantProvider<TenantInfo> tenantProvider, ICacheStore cacheStore)

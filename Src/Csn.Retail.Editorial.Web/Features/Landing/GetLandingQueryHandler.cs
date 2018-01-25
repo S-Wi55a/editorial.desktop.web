@@ -63,7 +63,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
 
-            navResults.INav.CurrentUrl = EditorialUrlFormatter.GetSeoUrl(string.Empty);
+            navResults.INav.CurrentUrl = EditorialUrlFormatter.GetPathAndQueryString();
 
             return new GetLandingResponse
             {

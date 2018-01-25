@@ -52,7 +52,7 @@
           "carouselType": "article"
         },
         {
-          "title": "Feature",
+          "title": "Features",
           "displayMrec": false,
           "query": "(And.Type.Feature._.Service.CaravanCampingSales.)",
           "sort": "Latest",
