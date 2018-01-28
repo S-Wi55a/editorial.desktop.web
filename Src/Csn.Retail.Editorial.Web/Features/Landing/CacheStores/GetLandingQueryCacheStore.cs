@@ -18,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.CacheStores
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly string _cacheKey = "editorial:desk:{0}:{1}:landing";
         private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 5, 0);
-        private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 30, 0);
+        private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 10, 0);
         private readonly string _buildVersion = System.Configuration.ConfigurationManager.AppSettings["BuildVersion"];
 
         public GetLandingQueryCacheStore(ICacheStore cacheStore, ITenantProvider<TenantInfo> tenantProvider)
