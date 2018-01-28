@@ -551,6 +551,7 @@
     <Compile Include="Features\MediaMotiveAds\NativeAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\Services\NativeAdService.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\LandingTagBuilder.cs" />
+    <Compile Include="Features\Shared\Constants\MediaMotiveScriptAdTypes.cs" />
     <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />

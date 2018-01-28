@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -34,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             var tagList = new List<MediaMotiveTag>()
             {
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, "editorialresults")
+                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, MediaMotiveScriptAdTypes.EditorialResultsPage)
             };
 
             if (navResult == null) return tagList;
