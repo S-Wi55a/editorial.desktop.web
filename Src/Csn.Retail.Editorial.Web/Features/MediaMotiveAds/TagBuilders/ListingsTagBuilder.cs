@@ -34,7 +34,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             var tagList = new List<MediaMotiveTag>()
             {
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, "searchresults")
+                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, "editorialresults")
             };
 
             if (navResult == null) return tagList;
