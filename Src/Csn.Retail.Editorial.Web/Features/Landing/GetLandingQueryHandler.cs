@@ -76,7 +76,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     Title = _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
-                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, TrackingScriptPageTypes.Homepage),
+                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, "editorialsearchpage"),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = "Search All News & Reviews"

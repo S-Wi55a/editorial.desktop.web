@@ -19,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             return new List<MediaMotiveTag>()
             {
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, "homepage")
+                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, "editorialsearchpage")
             };
         }
 
