@@ -24,5 +24,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models
         public string ExternalLinkText { get; set; }
         public string ExternalLinkUrl { get; set; }
         public string DesktopImageUrl { get; set; }
+        public string Opacity { get; set; }
     }
 }

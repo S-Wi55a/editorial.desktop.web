@@ -48,9 +48,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _seoDataMapper = seoDataMapper;
             _carouselDataService = carouselDataService;
 
-    }
+        }
 
-    public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
+        public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
             var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
 
@@ -97,7 +97,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private async Task<CampaignAdResult> GetAdUnit()
         {
             return await _restClient.Service("api-showroom-promotions")
-                .Path($"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current()}")
+                .Path($"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}")
                 .GetAsync<CampaignAdResult>()
                 .ContinueWith(x => x.Result.Data);
         }
