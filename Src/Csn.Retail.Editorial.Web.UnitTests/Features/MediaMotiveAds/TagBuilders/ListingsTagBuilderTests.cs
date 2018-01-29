@@ -2,6 +2,7 @@
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using NSubstitute;
@@ -34,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
             }).ToList();
 
             Assert.AreEqual(1, result.Count);
-            Assert.AreEqual("searchresults", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
+            Assert.AreEqual(MediaMotiveScriptAdTypes.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
         }
 
         [Test]
@@ -62,7 +63,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
             }).ToList();
 
             Assert.AreEqual(3, result.Count);
-            Assert.AreEqual("searchresults", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
+            Assert.AreEqual(MediaMotiveScriptAdTypes.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
             Assert.AreEqual("honda", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Make).Values.First());
             Assert.AreEqual("honda", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Car).Values.First());
         }
@@ -93,7 +94,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
             }).ToList();
 
             Assert.AreEqual(4, result.Count);
-            Assert.AreEqual("searchresults", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
+            Assert.AreEqual(MediaMotiveScriptAdTypes.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
             Assert.AreEqual("honda", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Make).Values.First());
             Assert.AreEqual("civic", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Model).Values.First());
             Assert.AreEqual("hondacivic", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Car).Values.First());

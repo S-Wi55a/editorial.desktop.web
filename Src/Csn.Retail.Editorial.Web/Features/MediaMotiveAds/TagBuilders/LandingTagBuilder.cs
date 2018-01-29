@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Bolt.Common.Extensions;
+using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 
@@ -19,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             return new List<MediaMotiveTag>()
             {
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, "editorialsearchpage")
+                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, MediaMotiveScriptAdTypes.EditorialHomePage)
             };
         }
 
