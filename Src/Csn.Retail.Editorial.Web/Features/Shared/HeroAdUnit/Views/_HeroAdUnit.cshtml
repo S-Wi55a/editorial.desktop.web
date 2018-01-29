@@ -1,11 +1,11 @@
 ﻿@using React.Web.Mvc
 @model Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models.CampaignAdResult
 
-@if (Model.Images != null)
+@if (!string.IsNullOrWhiteSpace(Model.Data.DesktopImageUrl))
 {
     <style>
         .hero-image {
-            background-image: url("@(Model.Images.Desktop)?aspect=centered&width=1920&height=520");
+            background-image: url("@(Model.Data.DesktopImageUrl)?aspect=centered&width=1920&height=520");
         }
     </style>
 }
@@ -14,38 +14,37 @@
 <div class="hero hero-image">
 
     <div class="component component--hero-image-content" data-webm-section="hero">
-
-        <div class="main-text__left">
-            <p class="main-text__link">
-                @if (Model.LeftSection.IsShown)
-                {
-                    if (Model.LeftSection.IsLinked)
+        
+        @if (!string.IsNullOrWhiteSpace(Model.Data.ExternalLinkText))
+        {
+            <div class="main-text__left">
+                <p class="main-text__link">
+                
+                    @if (!string.IsNullOrWhiteSpace(Model.Data.ExternalLinkUrl))
                     {
-                        <a class="link-transition" href="@Model.LeftSection.LinkUrl" target="_blank" data-webm-clickvalue="view-website">@Model.LeftSection.LinkText</a>
+                        <a class="link-transition" href="@Model.Data.ExternalLinkUrl" target="_blank" data-webm-clickvalue="view-website">@Model.Data.ExternalLinkText</a>
                     }
                     else
                     {
-                        @Model.LeftSection.LinkText
+                        @Model.Data.ExternalLinkText
                     }
-                }
-                else
-                {
-                    <text>&nbsp;</text>
-                }
-            </p>
-        </div>
-
-        @if (Model.RightSection.IsShown)
-        {
-            <div class="main-text__right">
-                <p class="main-text__title">@Model.RightSection.Title</p>
-                @if (!string.IsNullOrWhiteSpace(Model.RightSection.LinkUrl))
-                {
-                    <p class="main-text__link">
-                        <a class="link-transition" href="@Model.RightSection.LinkUrl" target="@Model.RightSection.LinkTarget" data-webm-clickvalue="discover-more">@Model.RightSection.LinkText</a>
-                    </p>
-                }
+                </p>
             </div>
         }
+
+        @if (!string.IsNullOrWhiteSpace(Model.Data.Title))
+        {
+            <div class="main-text__right">
+                <p class="main-text__title">@Model.Data.Title</p>
+                @if (!string.IsNullOrWhiteSpace(Model.Data.LinkUrl))
+                {
+                    <p class="main-text__link">
+                        <a class="link-transition" href="@Model.Data.LinkUrl" target="_blank" data-webm-clickvalue="discover-more">@Model.Data.LinkText</a>
+                    </p>
+                }
+            </div>  
+        }
+
+        
     </div>
 </div>
