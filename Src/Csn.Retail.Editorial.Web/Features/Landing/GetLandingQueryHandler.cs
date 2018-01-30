@@ -72,7 +72,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                 {
                     Nav = new Models.Nav
                     {
-                        NavResults = navResults
+                        NavResults = navResults,
+                        DisqusSource = _tenantProvider.Current().DisqusSource,
                     },
                     Title = _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
@@ -80,7 +81,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveScriptAdTypes.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
-                    HeroTitle = "Search All News & Reviews"
+                    HeroTitle = "Search All News & Reviews",
                 }
             };
         }
