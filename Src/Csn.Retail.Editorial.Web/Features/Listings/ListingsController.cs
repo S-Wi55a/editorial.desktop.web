@@ -32,8 +32,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
             return await Listing(listingsQuery);
         }
-
-        [Route("editorial/{resultsPath:regex(^(results|beta-results))}/{*seoFragment:regex(^[\\w-/]*)?}")]
+        [Route("editorial/{*seoFragment:regex(^[\\w-/]*)}")]
+        [Route("editorial/{results}/{*seoFragment:regex(^[\\w-/]*)?}")]
         [RedirectAttributeFilter]
         [LegacyListingsUrlRedirectFilter]
         public async Task<ActionResult> Listing(GetListingsQuery query)
