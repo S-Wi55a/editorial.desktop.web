@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
             var uriReferrer = HttpContext.Current.Request.UrlReferrer;
 
             // If it is a listing url...
-            if (uriReferrer == null || (!uriReferrer.AbsolutePath.Contains("/results") && !uriReferrer.AbsolutePath.Contains("/beta-results")))
+            if (uriReferrer == null || !uriReferrer.AbsolutePath.Contains("/results"))
                 return SearchEventType.Search;
 
             // Check if it's sorting

@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public async Task<ActionResult> ArticleTypeListing(ArticleTypeListingQuery query)
         {
             // temporary solution until we build proper landing pages
-            var listingsQuery = await _queryDispatcher.DispatchAsync<ArticleTypeListingQuery, GetListingsQuery>(query);
+            var listingsQuery = _queryDispatcher.Dispatch<ArticleTypeListingQuery, GetListingsQuery>(query);
 
             return await Listing(listingsQuery);
         }
