@@ -13,6 +13,7 @@ export interface INavResults {
     navResults: IINavResponse
     pendingQuery?: string
     currentRefinement?: string
+    disqusSource: string
 }
 
 export interface IINavResponse{
