@@ -81,7 +81,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveScriptAdTypes.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
-                    HeroTitle = "Search All News & Reviews",
+                    HeroTitle = "Find everything you need to know about <br/> your next car and more",
                 }
             };
         }
