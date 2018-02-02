@@ -35,18 +35,6 @@
           "carouselType": "article"
         },
         {
-          "title": "Videos",
-          "displayMrec": false,
-          "query": "(And.Type.Video._.Service.CaravanCampingSales.)",
-          "sort": "Latest",
-          "viewAll": "/videos/",
-          "carouselType": "article",
-          "polarAds": {
-            "display": true,
-            "placementId": 32
-          }
-        },
-        {
           "title": "Advice",
           "displayMrec": false,
           "query": "(And.Type.Advice._.Service.CaravanCampingSales.)",

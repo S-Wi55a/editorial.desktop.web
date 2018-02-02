@@ -33,7 +33,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly ISeoDataMapper _seoDataMapper;
 
-
         public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
             ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider,
             ISeoDataMapper seoDataMapper)
@@ -46,7 +45,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _tenantProvider = tenantProvider;
             _seoDataMapper = seoDataMapper;
             _carouselDataService = carouselDataService;
-
         }
 
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
@@ -81,7 +79,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = configResults.HeroAdSettings.HeroTitle
-                }
+                },
+                CacheViewModel = (searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };
         }
 

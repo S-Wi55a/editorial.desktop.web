@@ -43,14 +43,6 @@
           "carouselType": "article"
         },
         {
-          "title": "Advice",
-          "displayMrec": false,
-          "query": "(And.Type.Advice._.Service.BoatPoint.)",
-          "sort": "Latest",
-          "viewAll": "/advice/",
-          "carouselType": "article"
-        },
-        {
           "title": "Features",
           "displayMrec": false,
           "query": "(And.Type.Feature._.Service.BoatPoint.)",
