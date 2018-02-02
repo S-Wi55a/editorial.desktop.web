@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
     {
         public string Type { get; set; }
         public List<LandingCarouselConfiguration> CarouselConfigurations { get; set; }
-        public bool HasHeroAddUnit { get; set; }
+        public HeroAdSettings HeroAdSettings { get; set; }
     }
 
     public class LandingCarouselConfiguration
@@ -45,5 +45,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
     {
         public bool Display { get; set; }
         public int PlacementId { get; set; }
+    }
+
+    public class HeroAdSettings
+    {
+        public bool HasHeroAd { get; set; }
+        public string HeroTitle { get; set; }
     }
 }
