@@ -5,5 +5,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
     public class GetLandingResponse
     {
         public LandingViewModel LandingViewModel { get; set; }
+
+        public bool CacheViewModel { get; set; }
     }
 }

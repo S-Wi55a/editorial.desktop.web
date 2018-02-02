@@ -45,7 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.CacheStores
             var result = await fetchAsync.Invoke(query);
 
             // store the result in cache if required
-            if (result?.LandingViewModel != null && result.LandingViewModel.CacheViewModel)
+            if (result?.LandingViewModel != null && result.CacheViewModel)
             {
                 await _cacheStore.SetAsync(cacheKey, result.LandingViewModel, new CacheExpiredIn(_localCacheDuration, _distributedCacheDuration));
             }

@@ -32,8 +32,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly ISeoDataMapper _seoDataMapper;
-        private bool _cacheViewModel = true;
-
 
         public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
             ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider,
@@ -47,7 +45,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _tenantProvider = tenantProvider;
             _seoDataMapper = seoDataMapper;
             _carouselDataService = carouselDataService;
-
         }
 
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
@@ -59,11 +56,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             var campaignAd = configResults.HasHeroAddUnit ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
      
             await Task.WhenAll(ryvussResults, searchResults, campaignAd);
-
-            if (searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HasHeroAddUnit && campaignAd.Result == null) || ryvussResults.Result == null) // if any ryvuss call resulted in a failure, don't cache the viewmodel
-            {
-                _cacheViewModel = false;
-            }
 
             if (ryvussResults.Result == null || searchResults.Result == null) return null;
 
@@ -86,9 +78,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveScriptAdTypes.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
-                    HeroTitle = "Search All News & Reviews",
-                    CacheViewModel = _cacheViewModel
-                }
+                    HeroTitle = "Search All News & Reviews"
+                },
+                CacheViewModel = (searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HasHeroAddUnit && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };
         }
 
