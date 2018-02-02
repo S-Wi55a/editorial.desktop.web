@@ -2,7 +2,10 @@
   "configs": [
     {
       "type": "default",
-      "HasHeroAddUnit": true,
+      "heroAdSettings": {
+        "hasHeroAd": true,
+        "heroTitle": "Find everything you need to know about <br/> your next car and more"
+      },
       "carouselConfigurations": [
         {
           "title": "Editor's Choice",

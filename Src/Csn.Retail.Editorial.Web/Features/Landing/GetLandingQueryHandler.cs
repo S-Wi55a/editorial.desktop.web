@@ -17,7 +17,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
-using Csn.Tracking.Scripts.Core;
 using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
@@ -56,7 +55,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             var ryvussResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
             var searchResults = GetCarousels(configResults);
-            var campaignAd = configResults.HasHeroAddUnit ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
+            var campaignAd = configResults.HeroAdSettings.HasHeroAd ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
      
             await Task.WhenAll(ryvussResults, searchResults, campaignAd);
 
@@ -81,7 +80,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveScriptAdTypes.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
-                    HeroTitle = "Search All News & Reviews",
+                    HeroTitle = configResults.HeroAdSettings.HeroTitle
                 }
             };
         }
