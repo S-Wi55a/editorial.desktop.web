@@ -17,7 +17,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
-using Csn.Tracking.Scripts.Core;
 using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
@@ -33,6 +32,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly ISeoDataMapper _seoDataMapper;
+        private bool _cacheViewModel = true;
 
 
         public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
@@ -60,6 +60,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
      
             await Task.WhenAll(ryvussResults, searchResults, campaignAd);
 
+            if (searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HasHeroAddUnit && campaignAd.Result == null) || ryvussResults.Result == null) // if any ryvuss call resulted in a failure, don't cache the viewmodel
+            {
+                _cacheViewModel = false;
+            }
+
             if (ryvussResults.Result == null || searchResults.Result == null) return null;
 
             var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
@@ -82,6 +87,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = "Search All News & Reviews",
+                    CacheViewModel = _cacheViewModel
                 }
             };
         }
