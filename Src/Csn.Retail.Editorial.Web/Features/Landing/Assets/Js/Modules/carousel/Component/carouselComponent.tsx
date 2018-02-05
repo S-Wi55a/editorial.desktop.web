@@ -20,16 +20,25 @@ const DriverCard = (props: any) => <a href={props.itemUrl} data-webm-clickvalue=
                                  
 class SimpleSlider extends React.Component<ISimpleSlider> {
 
+    private disqusId: string
+
     constructor(props: any) {
         super(props)
+        this.disqusId = 'dsq-count-scr'
     }
 
     componentDidMount(): void {
         window.addEventListener('csn_editorial.nativeAds.ready', this.fetchNativeAds);
+        this._addDisqusScript()
+        this._resetComments()
     }
 
     componentWillUnmount() {
         window.removeEventListener('csn_editorial.nativeAds.ready', this.fetchNativeAds);
+    }
+
+    componentDidUpdate () {
+        this._resetComments()
     }
 
     fetchNativeAds = () => {
@@ -40,6 +49,28 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
             } });
             window.dispatchEvent(customEvent);
         }
+    }
+
+    _resetComments () {        
+        if (typeof DISQUSWIDGETS !== 'undefined') {
+            DISQUSWIDGETS.getCount({ reset: true })
+        }
+    }
+
+    _addDisqusScript () {
+        if (SERVER || document.getElementById(this.disqusId)) {
+            return
+        }
+
+        const parent = document.getElementsByTagName('body')[0]
+
+        const script = document.createElement('script')
+        script.async = true
+        script.id = this.disqusId
+        script.type = 'text/javascript'
+        script.src = '//' + this.props.shortname + '.disqus.com/count.js'
+        parent.appendChild(script)
+
     }
 
     render() {
@@ -89,7 +120,8 @@ const mapStateToProps = (state: IState, ownProps: any) => {
         hasNativeAd: state.carousels[ownProps.index] ? state.carousels[ownProps.index].hasNativeAd : false,
         polarAds: state.carousels[ownProps.index] ? state.carousels[ownProps.index].polarAds : null,
         nextQuery: state.carousels[ownProps.index] ? state.carousels[ownProps.index].nextQuery : '',
-        carouselType: state.carousels[ownProps.index] ? state.carousels[ownProps.index].carouselType : CarouselTypes.Article
+        carouselType: state.carousels[ownProps.index] ? state.carousels[ownProps.index].carouselType : CarouselTypes.Article,
+        shortname: typeof state.store !== 'undefined' ? state.store.nav.disqusSource : ''
     }
 }
 

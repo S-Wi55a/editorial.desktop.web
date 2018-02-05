@@ -2,7 +2,10 @@
   "configs": [
     {
       "type": "default",
-      "HasHeroAddUnit": false,
+      "heroAdSettings": {
+        "hasHeroAd": false,
+        "heroTitle": "Find everything you need to know about <br/> your next caravan and more"
+      },
       "carouselConfigurations": [
         {
           "title": "Editor's Choice",
@@ -30,18 +33,6 @@
           "sort": "Latest",
           "viewAll": "/news/",
           "carouselType": "article"
-        },
-        {
-          "title": "Videos",
-          "displayMrec": false,
-          "query": "(And.Type.Video._.Service.CaravanCampingSales.)",
-          "sort": "Latest",
-          "viewAll": "/videos/",
-          "carouselType": "article",
-          "polarAds": {
-            "display": true,
-            "placementId": 32
-          }
         },
         {
           "title": "Advice",

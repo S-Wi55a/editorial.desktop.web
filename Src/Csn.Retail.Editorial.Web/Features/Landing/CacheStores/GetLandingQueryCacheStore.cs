@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Threading.Tasks;
 using Bolt.Common.Extensions;
 using Csn.MultiTenant;
@@ -16,7 +15,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.CacheStores
     {
         private readonly ICacheStore _cacheStore;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
-        private readonly string _cacheKey = "editorial:desk:{0}:{1}:landing";
+        private readonly string _cacheKey = "editorial:desk:{0}:{1}:landingViewModel";
         private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 5, 0);
         private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 10, 0);
         private readonly string _buildVersion = System.Configuration.ConfigurationManager.AppSettings["BuildVersion"];
@@ -36,10 +35,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.CacheStores
 
             if (cachedViewModel.HasValue)
             {
-                return new GetLandingResponse()
+                return new GetLandingResponse
                 {
-                    LandingViewModel = cachedViewModel.Value,
-                    HttpStatusCode = HttpStatusCode.OK
+                    LandingViewModel = cachedViewModel.Value
                 };
             }
 
@@ -47,7 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.CacheStores
             var result = await fetchAsync.Invoke(query);
 
             // store the result in cache if required
-            if (result?.LandingViewModel != null)
+            if (result?.LandingViewModel != null && result.CacheViewModel)
             {
                 await _cacheStore.SetAsync(cacheKey, result.LandingViewModel, new CacheExpiredIn(_localCacheDuration, _distributedCacheDuration));
             }

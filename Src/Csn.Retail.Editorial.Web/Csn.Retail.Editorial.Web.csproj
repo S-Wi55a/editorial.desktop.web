@@ -1105,6 +1105,11 @@
     <Content Include="Features\Landing\Views\Partials\_Carousel--Driver.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_PolarNativeAdsTracking.cshtml" />
+    <Content Include="Features\Landing\Configurations\boatpoint.landingConfig.json" />
+    <Content Include="Features\Listings\Views\Boatsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Caravancampingsales\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Trucksales\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Boatpoint\_Disclaimer.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

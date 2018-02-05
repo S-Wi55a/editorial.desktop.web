@@ -36,5 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
     public class Nav
     { 
         public NavResult NavResults { get; set; }
+        public string DisqusSource { get; set; }
+
     }
 }

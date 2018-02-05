@@ -2,7 +2,10 @@
   "configs": [
     {
       "type": "default",
-      "HasHeroAddUnit": false,
+      "heroAdSettings": {
+        "hasHeroAd": false,
+        "heroTitle": "Find everything you need to know about <br/> your next boat and more"
+      },
       "carouselConfigurations": [
         {
           "title": "Editor's Choice",
@@ -42,14 +45,6 @@
             "display": true,
             "placementId": 32
           }
-        },
-        {
-          "title": "Advice",
-          "displayMrec": false,
-          "query": "(And.Type.Advice._.Service.BoatSales.)",
-          "sort": "Latest",
-          "viewAll": "/advice/",
-          "carouselType": "article"
         },
         {
           "title": "Features",

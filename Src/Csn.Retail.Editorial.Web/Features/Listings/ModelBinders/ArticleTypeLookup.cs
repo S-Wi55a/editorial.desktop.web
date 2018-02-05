@@ -28,7 +28,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
             { "products", ArticleType.Products },
             { "tips", ArticleType.Tips },
             { "tow-tests", ArticleType.TowTests },
-            { "motoracing", ArticleType.Motoracing }
+            { "motoracing", ArticleType.Motoracing },
+            { "sponsored", ArticleType.Sponsored }
         };
 
         private static readonly Dictionary<ArticleType, string> _articleFacetNameLookup = new Dictionary<ArticleType, string>
@@ -44,7 +45,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
             { ArticleType.Products, "Products" },
             { ArticleType.Tips, "Tips" },
             { ArticleType.TowTests, "Tow Test" },
-            { ArticleType.Motoracing, "MotoRacing" }
+            { ArticleType.Motoracing, "MotoRacing" },
+            { ArticleType.Sponsored, "Sponsored" }
         };
 
         public ArticleTypeLookup(ITenantProvider<TenantInfo> tenantProvider)

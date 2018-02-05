@@ -28,12 +28,12 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         public async Task<ActionResult> ArticleTypeListing(ArticleTypeListingQuery query)
         {
             // temporary solution until we build proper landing pages
-            var listingsQuery = await _queryDispatcher.DispatchAsync<ArticleTypeListingQuery, GetListingsQuery>(query);
+            var listingsQuery = _queryDispatcher.Dispatch<ArticleTypeListingQuery, GetListingsQuery>(query);
 
             return await Listing(listingsQuery);
         }
-
-        [Route("editorial/{resultsPath:regex(^(results|beta-results))}/{*seoFragment:regex(^[\\w-/]*)?}")]
+        
+        [Route("editorial/results/{*seoFragment:regex(^[\\w-/]*)?}")]
         [RedirectAttributeFilter]
         [LegacyListingsUrlRedirectFilter]
         public async Task<ActionResult> Listing(GetListingsQuery query)

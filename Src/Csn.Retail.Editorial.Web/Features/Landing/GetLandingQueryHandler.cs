@@ -17,7 +17,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
-using Csn.Tracking.Scripts.Core;
 using Ingress.ServiceClient.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
@@ -34,7 +33,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly ISeoDataMapper _seoDataMapper;
 
-
         public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
             ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider,
             ISeoDataMapper seoDataMapper)
@@ -47,16 +45,15 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _tenantProvider = tenantProvider;
             _seoDataMapper = seoDataMapper;
             _carouselDataService = carouselDataService;
+        }
 
-    }
-
-    public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
+        public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
             var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
 
             var ryvussResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
             var searchResults = GetCarousels(configResults);
-            var campaignAd = configResults.HasHeroAddUnit ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
+            var campaignAd = configResults.HeroAdSettings.HasHeroAd ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
      
             await Task.WhenAll(ryvussResults, searchResults, campaignAd);
 
@@ -72,7 +69,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                 {
                     Nav = new Models.Nav
                     {
-                        NavResults = navResults
+                        NavResults = navResults,
+                        DisqusSource = _tenantProvider.Current().DisqusSource,
                     },
                     Title = _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
@@ -80,8 +78,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveScriptAdTypes.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
-                    HeroTitle = "Search All News & Reviews"
-                }
+                    HeroTitle = configResults.HeroAdSettings.HeroTitle
+                },
+                CacheViewModel = !(searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };
         }
 
@@ -97,7 +96,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private async Task<CampaignAdResult> GetAdUnit()
         {
             return await _restClient.Service("api-showroom-promotions")
-                .Path($"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current()}")
+                .Path($"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}")
                 .GetAsync<CampaignAdResult>()
                 .ContinueWith(x => x.Result.Data);
         }
