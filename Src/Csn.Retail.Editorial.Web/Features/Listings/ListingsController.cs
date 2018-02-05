@@ -28,11 +28,11 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         [RedbookDefaultVerticalAttributeFilter]
         public async Task<ActionResult> ArticleTypeListing(ArticleTypeListingQuery query)
         {
-            var listingsQuery = await _queryDispatcher.DispatchAsync<ArticleTypeListingQuery, GetListingsQuery>(query);
+            var listingsQuery = _queryDispatcher.Dispatch<ArticleTypeListingQuery, GetListingsQuery>(query);
 
             return await Listing(listingsQuery);
         }
-
+        
         [Route("editorial/{redbookvertical:redbook-vertical}/{results?}")]
         [RedirectAttributeFilter]
         public async Task<ActionResult> RedbookListing(RedbookListingQuery query)

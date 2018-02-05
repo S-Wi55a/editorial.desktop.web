@@ -1,5 +1,8 @@
-﻿export interface IState {
+﻿import {IStore} from 'ReactComponents/iNav/Types'
+
+export interface IState {
     carousels: ICarouselViewModel[]
+    store: IStore
 }
 export interface ICarouselViewModel {
     title: string
@@ -40,6 +43,7 @@ export interface ISimpleSlider {
     hasNativeAd: boolean
     carouselType: CarouselTypes
     isLoading: boolean
+    shortname: string
 }
 
 export enum CarouselTypes

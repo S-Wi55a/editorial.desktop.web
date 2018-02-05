@@ -2,10 +2,13 @@
   "configs": [
     {
       "type": "default",
-      "HasHeroAddUnit": true,
+      "heroAdSettings": {
+        "hasHeroAd": true,
+        "heroTitle": "Find everything you need to know about <br/> your next car and more"
+      },
       "carouselConfigurations": [
         {
-          "title": "Featured",
+          "title": "Editor's Choice",
           "displayMrec": true,
           "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
           "sort": "Latest",
@@ -44,48 +47,48 @@
           }
         },
         {
-          "title": "Car Advice",
+          "title": "Advice",
           "displayMrec": false,
           "query": "(And.Type.Car Advice._.Service.CarSales.)",
           "sort": "Latest",
           "viewAll": "/advice/",
           "carouselType": "article"
         },
-        {
-          "title": "Driver",
-          "carouselType": "driver",
-          "displayNativeAd": true,
-          "carouselItems": [
-            {
-              "ImageUrl": "http://via.placeholder.com/350x430",
-              "ItemUrl": "/editorial/details/ed-itm-110483/"
-            },
-            {
-              "ImageUrl": "http://via.placeholder.com/350x430",
-              "ItemUrl": "/editorial/details/mazda-cx-8-confirmed-for-oz-110480/"
-            },
-            {
-              "ImageUrl": "http://via.placeholder.com/350x430",
-              "ItemUrl": "/editorial/details/ces-2018-kia-niro-ev-concept-110479/"
-            },
-            {
-              "ImageUrl": "http://via.placeholder.com/350x430",
-              "ItemUrl": "/editorial/details/peugeot-releases-tennis-specials-110469/"
-            },
-            {
-              "ImageUrl": "http://via.placeholder.com/350x430",
-              "ItemUrl": "/editorial/details/ces-2018-hyundai-nexo-hydrogen-car-revealed-110461/"
-            },
-            {
-              "ImageUrl": "http://via.placeholder.com/350x430",
-              "ItemUrl": "/editorial/details/ces-2018-toyota-reveals-autonomous-electric-vehicle-project-110470/"
-            },
-            {
-              "ImageUrl": "http://via.placeholder.com/350x430",
-              "ItemUrl": "/editorial/details/new-mercedes-benz-g-class-leaked-110471/"
-            }
-          ]
-        },
+        //{
+        //  "title": "Driver",
+        //  "carouselType": "driver",
+        //  "displayNativeAd": true,
+        //  "carouselItems": [
+        //    {
+        //      "ImageUrl": "http://via.placeholder.com/350x430",
+        //      "ItemUrl": "/editorial/details/ed-itm-110483/"
+        //    },
+        //    {
+        //      "ImageUrl": "http://via.placeholder.com/350x430",
+        //      "ItemUrl": "/editorial/details/mazda-cx-8-confirmed-for-oz-110480/"
+        //    },
+        //    {
+        //      "ImageUrl": "http://via.placeholder.com/350x430",
+        //      "ItemUrl": "/editorial/details/ces-2018-kia-niro-ev-concept-110479/"
+        //    },
+        //    {
+        //      "ImageUrl": "http://via.placeholder.com/350x430",
+        //      "ItemUrl": "/editorial/details/peugeot-releases-tennis-specials-110469/"
+        //    },
+        //    {
+        //      "ImageUrl": "http://via.placeholder.com/350x430",
+        //      "ItemUrl": "/editorial/details/ces-2018-hyundai-nexo-hydrogen-car-revealed-110461/"
+        //    },
+        //    {
+        //      "ImageUrl": "http://via.placeholder.com/350x430",
+        //      "ItemUrl": "/editorial/details/ces-2018-toyota-reveals-autonomous-electric-vehicle-project-110470/"
+        //    },
+        //    {
+        //      "ImageUrl": "http://via.placeholder.com/350x430",
+        //      "ItemUrl": "/editorial/details/new-mercedes-benz-g-class-leaked-110471/"
+        //    }
+        //  ]
+        //},
         {
           "title": "Comparisons",
           "displayMrec": false,
@@ -99,7 +102,7 @@
           }
         },
         {
-          "title": "Feature",
+          "title": "Features",
           "displayMrec": false,
           "query": "(And.Type.Feature._.Service.CarSales.)",
           "sort": "Latest",

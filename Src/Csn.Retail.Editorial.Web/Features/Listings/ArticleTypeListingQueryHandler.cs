@@ -9,7 +9,7 @@ using Expresso.Syntax;
 namespace Csn.Retail.Editorial.Web.Features.Listings
 {
     [AutoBind]
-    public class ArticleTypeListingQueryHandler : IAsyncQueryHandler<ArticleTypeListingQuery, GetListingsQuery>
+    public class ArticleTypeListingQueryHandler : IQueryHandler<ArticleTypeListingQuery, GetListingsQuery>
     {
         private readonly IExpressionFormatter _expressionFormatter;
         private readonly IArticleTypeLookup _articleTypeLookup;
@@ -20,11 +20,13 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _articleTypeLookup = articleTypeLookup;
         }
 
-        public async Task<GetListingsQuery> HandleAsync(ArticleTypeListingQuery query)
+        public GetListingsQuery Handle(ArticleTypeListingQuery query)
         {
             var facetName = _articleTypeLookup.GetFacetNameFromArticleType(query.ArticleType);
 
-            var expression = string.IsNullOrEmpty(facetName) ? Expression.Create() : new FacetExpression("Type", facetName);
+            var aspectName = query.ArticleType == ArticleType.Sponsored ? "ArticleTypes" : "Type";
+
+            var expression = string.IsNullOrEmpty(facetName) ? Expression.Create() : new FacetExpression(aspectName, facetName);
 
             return new GetListingsQuery
             {

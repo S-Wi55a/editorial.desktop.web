@@ -2,14 +2,17 @@
   "configs": [
     {
       "type": "default",
-      "HasHeroAddUnit": false,
+      "heroAdSettings": {
+        "hasHeroAd": false,
+        "heroTitle": "Find everything you need to know about <br/> your next bike and more"
+      },
       "carouselConfigurations": [
         {
-          "title": "Featured",
+          "title": "Editor's Choice",
           "displayMrec": true,
           "query": "(And.ArticleSet.Redbook_Bikes._.Service.BikeSales.)",
           "sort": "Latest",
-          "carouselType": "article"
+          "carouselType": "featured"
         },
         {
           "title": "Reviews",
@@ -44,7 +47,7 @@
           }
         },
         {
-          "title": "Car Advice",
+          "title": "Advice",
           "displayMrec": false,
           "query": "(And.Type.Riding Advice._.Service.BikeSales.)",
           "sort": "Latest",

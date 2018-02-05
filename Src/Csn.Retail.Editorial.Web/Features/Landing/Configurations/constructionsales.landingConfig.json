@@ -2,14 +2,17 @@
   "configs": [
     {
       "type": "default",
-      "HasHeroAddUnit": false,
+      "heroAdSettings": {
+        "hasHeroAd": false,
+        "heroTitle": "Find everything you need to know about <br/> your next equipment and more"
+      },
       "carouselConfigurations": [
         {
-          "title": "Featured",
+          "title": "Editor's Choice",
           "displayMrec": true,
           "query": "(And.ArticleSet.Construction_home._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "carouselType": "article"
+          "carouselType": "featured"
         },
         {
           "title": "Reviews",
@@ -44,11 +47,11 @@
           }
         },
         {
-          "title": "Feature",
+          "title": "Features",
           "displayMrec": false,
           "query": "(And.Type.Feature._.Service.ConstructionSales.)",
           "sort": "Latest",
-          "viewAll": "/feature/",
+          "viewAll": "/features/",
           "carouselType": "article",
           "polarAds": {
             "display": true,

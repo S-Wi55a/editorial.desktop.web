@@ -13,7 +13,6 @@ class INavSearchResults extends React.Component {
 
     constructor() {
         super()
-        this.scriptAdded = false
         this.disqusId = 'dsq-count-scr'
     }
 
@@ -45,7 +44,7 @@ class INavSearchResults extends React.Component {
     }
 
     _addDisqusScript () {
-        if (SERVER || this.scriptAdded) {
+        if (SERVER || document.getElementById(this.disqusId)) {
             return
         }
 
@@ -58,7 +57,6 @@ class INavSearchResults extends React.Component {
         script.src = '//' + this.props.shortname + '.disqus.com/count.js'
         parent.appendChild(script)
 
-        this.scriptAdded = true
     }
 
     _injectTeads () {

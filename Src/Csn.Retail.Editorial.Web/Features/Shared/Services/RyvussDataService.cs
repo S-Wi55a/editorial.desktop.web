@@ -72,12 +72,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Services
                 ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : null,
                 ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().ServiceProjection : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
-                PostProcessors = postProcessors
+                PostProcessors = postProcessors,
+                IncludeMetaData = true
             };
 
             if (includeResults)
             {
-                ryvusInput.IncludeMetaData = true;
                 ryvusInput.Offset = offset;
                 ryvusInput.Limit = PageItemsLimit.ListingPageItemsLimit;
                 ryvusInput.SortOrder = EditorialSortKeyValues.IsValidSort(sort) ? sort : EditorialSortKeyValues.ListingPageDefaultSort;
@@ -101,7 +101,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Services
             }
             postProcessors.Add("RenderRefinements");
         }
-
         #endregion
     }
 }
