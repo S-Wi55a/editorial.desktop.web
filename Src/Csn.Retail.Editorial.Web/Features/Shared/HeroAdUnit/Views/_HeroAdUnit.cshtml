@@ -5,7 +5,7 @@
 {
     <style>
         .hero-image {
-            background-image: url("@(Model.Data.DesktopImageUrl)?aspect=centered&width=1920&height=520");
+            background-image: url("@(Model.Data.DesktopImageUrl)&aspect=centered&width=1920&height=520");
         }
     </style>
 }
@@ -45,7 +45,7 @@
                 @if (!string.IsNullOrWhiteSpace(Model.Data.LinkUrl))
                 {
                     <p class="main-text__link">
-                        <a class="link-transition" href="@Model.Data.LinkUrl" target="_blank" data-webm-clickvalue="discover-more">@Model.Data.LinkText</a>
+                        <a class="link-transition" href="@Model.Data.LinkUrl" target="_self" data-webm-clickvalue="discover-more">@Model.Data.LinkText</a>
                     </p>
                 }
             </div>  
