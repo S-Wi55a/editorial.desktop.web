@@ -47,12 +47,12 @@
           }
         },
         {
-          "title": "Advice",
-          "displayMrec": false,
-          "query": "(And.Type.Car Advice._.Service.CarSales.)",
-          "sort": "Latest",
-          "viewAll": "/advice/",
-          "carouselType": "article"
+            "title": "Advice",
+            "displayMrec": false,
+            "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales.)",
+            "sort": "Latest",
+            "viewAll": "/advice/",
+            "carouselType": "article"
         },
         //{
         //  "title": "Driver",
