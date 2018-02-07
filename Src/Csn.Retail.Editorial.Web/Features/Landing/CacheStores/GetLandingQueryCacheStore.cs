@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.CacheStores
             // check the cache
             var cachedViewModel = await _cacheStore.GetAsync<LandingViewModel>(cacheKey);
 
-            if (cachedViewModel.HasValue)
+            if (cachedViewModel.HasValue && !query.PromotionId.HasValue)
             {
                 return new GetLandingResponse
                 {
