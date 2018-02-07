@@ -9,7 +9,7 @@
    
         public Data Data { get; set; }
 
-        public CampaingImpressionTracking Tracking { get; set; }
+        public CampaignImpressionTracking Tracking { get; set; }
     }
 
     public class Data
@@ -21,10 +21,9 @@
         public string ExternalLinkUrl { get; set; }
         public string DesktopImageUrl { get; set; }
         public string Opacity { get; set; }
-        
     }
 
-    public class CampaingImpressionTracking
+    public class CampaignImpressionTracking
     {
         public string[] ViewDesktop  { get; set; }
     }
