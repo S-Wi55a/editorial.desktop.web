@@ -53,7 +53,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             var ryvussResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
             var searchResults = GetCarousels(configResults);
-            var campaignAd = configResults.HeroAdSettings.HasHeroAd ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
+            var campaignAd = configResults.HeroAdSettings.HasHeroAd ? GetAdUnit(query) : Task.FromResult<CampaignAdResult>(null);
      
             await Task.WhenAll(ryvussResults, searchResults, campaignAd);
 
@@ -93,10 +93,10 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             return getCarouselTasks.Where(tasks => tasks.Result != null).Select(listofTask => listofTask.Result).ToList();
         }
 
-        private async Task<CampaignAdResult> GetAdUnit()
+        private async Task<CampaignAdResult> GetAdUnit(GetLandingQuery query)
         {
             return await _restClient.Service("api-showroom-promotions")
-                .Path($"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}")
+                .Path(query.PromotionId.HasValue ? $"/v1/promotions/campaign/{query.PromotionId.Value}" : $"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}")
                 .GetAsync<CampaignAdResult>()
                 .ContinueWith(x => x.Result.Data);
         }

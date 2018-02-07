@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Newtonsoft.Json;
-
-namespace Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models
+﻿namespace Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models
 {
     public class CampaignAdResult
     {
@@ -14,6 +8,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models
         }
    
         public Data Data { get; set; }
+
+        public CampaingImpressionTracking Tracking { get; set; }
     }
 
     public class Data
@@ -25,5 +21,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models
         public string ExternalLinkUrl { get; set; }
         public string DesktopImageUrl { get; set; }
         public string Opacity { get; set; }
+        
+    }
+
+    public class CampaingImpressionTracking
+    {
+        public string[] ViewDesktop  { get; set; }
     }
 }

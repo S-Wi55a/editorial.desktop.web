@@ -34,7 +34,7 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
         // If a keyword query is passed
         if (typeof query !== 'undefined') {
             if (decodeURI(query).includes('<!>')) {
-                if (keyword !== '') {
+                if (keyword !== '' && keyword !== undefined && keyword !== null) {
                     query = decodeURI(query).replace('<!>', keyword)
                 } else {
                     query = state.store.nav.navResults.iNav.breadCrumbs.length > 0 && state.store.nav.navResults.iNav.breadCrumbs[0].type === 'KeywordBreadCrumb'
