@@ -9,6 +9,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+using NewRelic.Api.Agent;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing.Services
 {
@@ -35,6 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             return await CarouselDataResult(query.Q, query.Sort, query.Offset);
         }
 
+        [Trace]
         public async Task<CarouselViewModel> GetCarouselData(LandingCarouselConfiguration carouselConfiguration)
         {
             if (carouselConfiguration.CarouselType == CarouselTypes.Driver)
