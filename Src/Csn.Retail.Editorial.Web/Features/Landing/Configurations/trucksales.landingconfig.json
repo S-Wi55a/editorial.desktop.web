@@ -37,7 +37,7 @@
         {
           "title": "Advice",
           "displayMrec": false,
-          "query": "(And.Type.Products._.Service.TruckSales.)",
+          "query": "(And.Type.Advice._.Service.TruckSales.)",
           "sort": "Latest",
           "viewAll": "/advice/",
           "carouselType": "article",
