@@ -18,6 +18,7 @@ using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 using Ingress.ServiceClient.Abstracts;
+using NewRelic.Api.Agent;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
 {
@@ -47,6 +48,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _carouselDataService = carouselDataService;
         }
 
+        [Transaction]
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
             var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
@@ -84,6 +86,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             };
         }
 
+        [Trace]
         private async Task<List<CarouselViewModel>> GetCarousels(LandingConfigurationSet landingCarousel)
         {
             var getCarouselTasks = landingCarousel.CarouselConfigurations.Select(carouselConfig => _carouselDataService.GetCarouselData(carouselConfig)).ToList();
@@ -93,6 +96,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             return getCarouselTasks.Where(tasks => tasks.Result != null).Select(listofTask => listofTask.Result).ToList();
         }
 
+        [Trace]
         private async Task<CampaignAdResult> GetAdUnit(GetLandingQuery query)
         {
             return await _restClient.Service("api-showroom-promotions")
