@@ -16,6 +16,7 @@ using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
 using Expresso.Syntax;
+using NewRelic.Api.Agent;
 using IMapper = Csn.Retail.Editorial.Web.Infrastructure.Mappers.IMapper;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
@@ -55,7 +56,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _ryvussDataService = ryvussDataService;
         }
 
-        
+        [Transaction]
         public async Task<GetListingsResponse> HandleAsync(GetListingsQuery query)
         {
             if (!_tenantProvider.Current().SupportsSeoFriendlyListings)
