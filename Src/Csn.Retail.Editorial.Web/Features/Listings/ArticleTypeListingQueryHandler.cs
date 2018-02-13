@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Csn.Retail.Editorial.Web.Features.Listings.ModelBinders;
+﻿using Csn.Retail.Editorial.Web.Features.Listings.ModelBinders;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.SimpleCqrs;
