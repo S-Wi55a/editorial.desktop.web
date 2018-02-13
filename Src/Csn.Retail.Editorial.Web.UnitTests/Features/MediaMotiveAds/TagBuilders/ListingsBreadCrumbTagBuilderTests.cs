@@ -114,9 +114,10 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var result = builder.BuildTags(navResult).ToList();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.AreEqual(3, result.Count);
             Assert.AreEqual("bmw", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Make).Values.First());
             Assert.AreEqual("318i", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Model).Values.First());
+            Assert.AreEqual("3series", result.First(t => t.Name == SasAdTags.SasAdTagKeys.MarketingGroup).Values.First());
         }
 
         [Test]
@@ -192,11 +193,12 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var result = builder.BuildTags(navResult).ToList();
 
-            Assert.AreEqual(4, result.Count);
+            Assert.AreEqual(5, result.Count);
             Assert.AreEqual("bmw", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Make).Values.First());
             Assert.AreEqual("318i", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Model).Values.First());
             Assert.AreEqual("review", result.First(t => t.Name == SasAdTags.SasAdTagKeys.ArticleType).Values.First());
             Assert.AreEqual("honda", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Keyword).Values.First());
+            Assert.AreEqual("3series", result.First(t => t.Name == SasAdTags.SasAdTagKeys.MarketingGroup).Values.First());
         }
     }
 }
