@@ -557,6 +557,7 @@
     <Compile Include="Features\MediaMotiveAds\TagBuilders\LandingTagBuilder.cs" />
     <Compile Include="Features\Shared\Constants\MediaMotiveScriptAdTypes.cs" />
     <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />
+    <Compile Include="Features\Shared\HtmlHelpers\BrightcoveVideoHtmlHelpers.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
@@ -697,6 +698,7 @@
     <Compile Include="Features\Tracking\Mapping\MapperConfiguration.cs" />
     <Compile Include="Features\Tracking\Mapping\SearchFilterMapper.cs" />
     <Compile Include="Features\Tracking\Mapping\TrackingPropertiesBuilder.cs" />
+    <Compile Include="Features\Tracking\Providers\TrackingTagsProvider.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetListingTrackingContainerQuery.cs" />
