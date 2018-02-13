@@ -1,9 +1,10 @@
+@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
 <div class="clearfix hero hero--imageAndVideo" data-webm-section="image-gallery">
     <div class="brightcove">
         <div class="brightcove__iframe-wrapper">
-            <iframe src="@Model.BrightcoveVideoIFrameUrl" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+            <iframe src="@Html.GetBrightcoveIFrameUrl(Model.BrightcoveVideo, Model.NetworkId)" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
         </div>
     </div>
     <div class="slideshow slideshow--hero slideshow--image-video">
