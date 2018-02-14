@@ -20,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<string> Lifestyles { get; set; }
         public HeroSection HeroSection { get; set; }
         public List<Contributor> Contributors { get; set; }
-        public List<ContentSection> ContentSections { get; set; }
+        public List<ContentSectionViewModel> ContentSections { get; set; }
         public SocialMetaData SocialMetaData { get; set; }
         public List<EditorialItem> Items { get; set; }
         public PriceModel Price { get; set; }
@@ -39,6 +39,31 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string SpecDataGetVariantsUrl { get; set; }
 
+    }
+
+    public class ContentSectionViewModel
+    {
+        public ContentSectionViewModel()
+        {
+        }
+
+        public ContentSectionViewModel(ContentSection contentSection, string networkId)
+        {
+            SectionType = contentSection.SectionType;
+            Content = contentSection.Content;
+            BrightcoveVideo = contentSection.BrightcoveVideo;
+            Image = contentSection.Image;
+            NetworkId = networkId;
+        }
+
+        public ContentSectionType SectionType { get; set; }
+
+        public string Content { get; set; }
+
+        public BrightcoveVideo BrightcoveVideo { get; set; }
+
+        public Image Image { get; set; }
+        public string NetworkId { get; set; }
     }
 
     public class HeroSection
