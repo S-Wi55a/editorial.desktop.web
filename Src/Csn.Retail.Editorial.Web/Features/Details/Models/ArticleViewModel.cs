@@ -20,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public List<string> Lifestyles { get; set; }
         public HeroSection HeroSection { get; set; }
         public List<Contributor> Contributors { get; set; }
-        public List<ContentSection> ContentSections { get; set; }
+        public List<ContentSectionViewModel> ContentSections { get; set; }
         public SocialMetaData SocialMetaData { get; set; }
         public List<EditorialItem> Items { get; set; }
         public PriceModel Price { get; set; }
@@ -41,14 +41,36 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
 
     }
 
+    public class ContentSectionViewModel
+    {
+        public ContentSectionViewModel()
+        {
+        }
+
+        public ContentSectionViewModel(ContentSection contentSection, string networkId)
+        {
+            SectionType = contentSection.SectionType;
+            Content = contentSection.Content;
+            BrightcoveVideo = contentSection.BrightcoveVideo;
+            Image = contentSection.Image;
+            NetworkId = networkId;
+        }
+
+        public ContentSectionType SectionType { get; set; }
+
+        public string Content { get; set; }
+
+        public BrightcoveVideo BrightcoveVideo { get; set; }
+
+        public Image Image { get; set; }
+        public string NetworkId { get; set; }
+    }
+
     public class HeroSection
     {
         public HeroType Type { get; set; }
         public List<Image> Images { get; set; }
-        public string BrightcovePlayerId { get; set; }
-        public string BrightcoveVideoId { get; set; }
-        public string BrightcoveVideoIFrameUrl { get; set; }
-        public string BrightcoveVideoEncodingUrl { get; set; }
+        public BrightcoveVideo BrightcoveVideo { get; set; }
         public string Headline { get; set; }
         public string SubHeading { get; set; }
         public string NetworkId { get; set; }

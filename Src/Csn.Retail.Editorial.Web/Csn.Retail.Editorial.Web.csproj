@@ -557,6 +557,7 @@
     <Compile Include="Features\MediaMotiveAds\TagBuilders\LandingTagBuilder.cs" />
     <Compile Include="Features\Shared\Constants\MediaMotiveScriptAdTypes.cs" />
     <Compile Include="Features\Shared\HeroAdUnit\Models\HeroAdUnitModel.cs" />
+    <Compile Include="Features\Shared\HtmlHelpers\BrightcoveVideoHtmlHelpers.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
@@ -697,6 +698,7 @@
     <Compile Include="Features\Tracking\Mapping\MapperConfiguration.cs" />
     <Compile Include="Features\Tracking\Mapping\SearchFilterMapper.cs" />
     <Compile Include="Features\Tracking\Mapping\TrackingPropertiesBuilder.cs" />
+    <Compile Include="Features\Tracking\Providers\TrackingTagsProvider.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
     <Compile Include="Features\Tracking\TrackingContainer\GetListingTrackingContainerQuery.cs" />
@@ -925,7 +927,7 @@
     <Content Include="Features\Shared\Assets\Js\Modules\Modal\modal.scss" />
     <Content Include="Features\Shared\Assets\Css\Utilities\_utilities.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Settings\_variables-settings.scss" />
-    <Content Include="Features\Details\Views\Partials\ContentSections\_Pricing.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Content\_Pricing.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_author.scss" />
     <Content Include="Features\Shared\Assets\Css\Buttons\_buttons.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\_share-social.scss" />

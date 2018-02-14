@@ -44,11 +44,11 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 
             var makeTag = tagList.FirstOrDefault(t => t.Name == SasAdTags.SasAdTagKeys.Make);
 
-            if (makeTag != null)
+            if (makeTag == null) return tagList;
             {
                 var modelTag = tagList.FirstOrDefault(t => t.Name == SasAdTags.SasAdTagKeys.Model);
-
-                tagList.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Car, makeTag.Values.FirstOrDefault() + (modelTag != null ? modelTag.Values.FirstOrDefault() : string.Empty)));
+                var marketingTag = tagList.FirstOrDefault(t => t.Name == SasAdTags.SasAdTagKeys.MarketingGroup);
+                tagList.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Car, makeTag.Values.FirstOrDefault() + (modelTag != null ? modelTag.Values.FirstOrDefault() : string.Empty) + (marketingTag != null ? marketingTag.Values.FirstOrDefault() : string.Empty)));
             }
 
             return tagList;

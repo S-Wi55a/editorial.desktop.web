@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -32,7 +33,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 .ForMember(dest => dest.UseDropCase, opt => opt.MapFrom(src => _useDropCaseMapper.Map(src)))
                 .ForMember(dest => dest.SeoData, opt => opt.MapFrom(src => _seoDataMapper.Map(src.SeoData)))
                 .ForMember(dest => dest.PolarNativeAdsData, opt => opt.MapFrom(src => _polarNativeAdsMapper.Map(src)))
-                .ForMember(dest => dest.MoreArticleData, opt => opt.MapFrom(src => src.MoreArticleData));
+                .ForMember(dest => dest.MoreArticleData, opt => opt.MapFrom(src => src.MoreArticleData))
+                .ForMember(dest => dest.ContentSections, opt => opt.MapFrom(src => src.ContentSections.Select(c => new ContentSectionViewModel(c, src.NetworkId))));
 
             // Social Meta Data
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();

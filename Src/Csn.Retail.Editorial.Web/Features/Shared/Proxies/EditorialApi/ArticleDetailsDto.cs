@@ -204,7 +204,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 
         public string Content { get; set; }
 
-        public string IFrameUrl { get; set; }
+        public BrightcoveVideo BrightcoveVideo { get; set; }
 
         public Image Image { get; set; }
     }
