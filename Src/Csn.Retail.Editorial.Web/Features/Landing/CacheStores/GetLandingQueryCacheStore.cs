@@ -30,22 +30,25 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.CacheStores
         {
             var cacheKey = _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name);
 
-            // check the cache
-            var cachedViewModel = await _cacheStore.GetAsync<LandingViewModel>(cacheKey);
-
-            if (cachedViewModel.HasValue)
+            if (!query.PromotionId.HasValue)
             {
-                return new GetLandingResponse
+                // check the cache
+                var cachedViewModel = await _cacheStore.GetAsync<LandingViewModel>(cacheKey);
+
+                if (cachedViewModel.HasValue)
                 {
-                    LandingViewModel = cachedViewModel.Value
-                };
+                    return new GetLandingResponse
+                    {
+                        LandingViewModel = cachedViewModel.Value
+                    };
+                }
             }
 
             // otherwise fetch the data
             var result = await fetchAsync.Invoke(query);
 
             // store the result in cache if required
-            if (result?.LandingViewModel != null && result.CacheViewModel)
+            if (result?.LandingViewModel != null && result.CacheViewModel && !query.PromotionId.HasValue)
             {
                 await _cacheStore.SetAsync(cacheKey, result.LandingViewModel, new CacheExpiredIn(_localCacheDuration, _distributedCacheDuration));
             }

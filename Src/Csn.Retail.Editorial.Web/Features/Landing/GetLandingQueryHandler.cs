@@ -18,6 +18,7 @@ using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 using Ingress.ServiceClient.Abstracts;
+using NewRelic.Api.Agent;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing
 {
@@ -47,13 +48,14 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _carouselDataService = carouselDataService;
         }
 
+        [Transaction]
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
             var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
 
             var ryvussResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
             var searchResults = GetCarousels(configResults);
-            var campaignAd = configResults.HeroAdSettings.HasHeroAd ? GetAdUnit() : Task.FromResult<CampaignAdResult>(null);
+            var campaignAd = configResults.HeroAdSettings.HasHeroAd ? GetAdUnit(query) : Task.FromResult<CampaignAdResult>(null);
      
             await Task.WhenAll(ryvussResults, searchResults, campaignAd);
 
@@ -84,6 +86,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             };
         }
 
+        [Trace]
         private async Task<List<CarouselViewModel>> GetCarousels(LandingConfigurationSet landingCarousel)
         {
             var getCarouselTasks = landingCarousel.CarouselConfigurations.Select(carouselConfig => _carouselDataService.GetCarouselData(carouselConfig)).ToList();
@@ -93,10 +96,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             return getCarouselTasks.Where(tasks => tasks.Result != null).Select(listofTask => listofTask.Result).ToList();
         }
 
-        private async Task<CampaignAdResult> GetAdUnit()
+        [Trace]
+        private async Task<CampaignAdResult> GetAdUnit(GetLandingQuery query)
         {
             return await _restClient.Service("api-showroom-promotions")
-                .Path($"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}")
+                .Path(query.PromotionId.HasValue ? $"/v1/promotions/campaign/{query.PromotionId.Value}" : $"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}")
                 .GetAsync<CampaignAdResult>()
                 .ContinueWith(x => x.Result.Data);
         }

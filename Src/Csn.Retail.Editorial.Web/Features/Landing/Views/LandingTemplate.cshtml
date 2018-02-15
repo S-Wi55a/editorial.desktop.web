@@ -34,10 +34,9 @@
     @if (Model.CampaignAd != null)
     {
         Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
-        <h2 class="page-title">@Html.Raw(Model.HeroTitle)</h2>
+        <h2 class="page-title">@Model.HeroTitle</h2>
         Html.RenderPartial("~/Features/Shared/HeroAdUnit/Views/_HeroAdUnit.cshtml", Model.CampaignAd);
         Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.Block1200X100, TileId = 1 });
-
     }
     else
     {
@@ -63,9 +62,11 @@
     </div>
 </div>
 
+@{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Tracking.cshtml"); }
+
 @section BottomScripts
 {
-    @Html.React("global.Components.INavPreloadedState", new {state = Model.Nav}, containerId: "INavPreloadedState")
+    @Html.React("global.Components.INavPreloadedState", new { state = Model.Nav }, containerId: "INavPreloadedState")
     @Html.React("global.Components.CarouselPreloadedState", new { state = Model.Carousels }, containerId: "CarouselPreloadedState")
 
     @if (Model.PolarNativeAdsData != null)
@@ -77,9 +78,8 @@
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
     @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
-    
-    @{
-        Html.RenderAction( "HtmlTracking", "Tracking");
-    }
 
+    @{
+        Html.RenderAction("HtmlTracking", "Tracking");
+    }
 }

@@ -1,11 +1,14 @@
-﻿@using React.Web.Mvc
+﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+@using Csn.Retail.Editorial.Web.Features.Shared.Constants
+@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Infrastructure.Utils
 @model Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models.CampaignAdResult
 
 @if (!string.IsNullOrWhiteSpace(Model.Data.DesktopImageUrl))
 {
     <style>
         .hero-image {
-            background-image: url("@(Model.Data.DesktopImageUrl)?aspect=centered&width=1920&height=520");
+            background-image: url("@(Model.Data.DesktopImageUrl)&aspect=centered&width=1920&height=520");
         }
     </style>
 }
@@ -45,12 +48,15 @@
                 @if (!string.IsNullOrWhiteSpace(Model.Data.LinkUrl))
                 {
                     <p class="main-text__link">
-                        <a class="link-transition" href="@Model.Data.LinkUrl" target="_blank" data-webm-clickvalue="discover-more">@Model.Data.LinkText</a>
+                        <a class="link-transition" href="@Model.Data.LinkUrl" target="_self" data-webm-clickvalue="discover-more">@Model.Data.LinkText</a>
                     </p>
                 }
             </div>  
         }
-
-        
     </div>
 </div>
+
+@if (Model.Tracking?.ViewDesktop?.Length > 0 && !string.IsNullOrEmpty(Model.Tracking.ViewDesktop[0]))
+{
+    <img width="1" height="1" border="0" src=@($"{Model.Tracking?.ViewDesktop[0]}/area={MediaMotiveScriptAdTypes.EditorialHomePage}/size=1x1/site={Html.CurrentTenant().MediaMotiveAccountId}/{SasAdTags.SasAdTagKeys.Random}={RandomNumberGenerator.Generate()}/{SasAdTags.SasAdTagKeys.ViewId}={RandomNumberGenerator.Generate()}") style="position: fixed; visibility: hidden"/>
+}

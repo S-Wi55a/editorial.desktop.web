@@ -7,6 +7,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Refinements;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using NewRelic.Api.Agent;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Services
 {
@@ -37,6 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Services
             return await GetRyvusProxyResults(query, postProcessors, includeResults, sort, offset);
         }
 
+        [Trace]
         public async Task<RyvussNavResultDto> GetResults(string query, int offset, string sort)
         {
             var result = await _ryvussProxy.GetAsync<RyvussNavResultDto>(new EditorialRyvussInput

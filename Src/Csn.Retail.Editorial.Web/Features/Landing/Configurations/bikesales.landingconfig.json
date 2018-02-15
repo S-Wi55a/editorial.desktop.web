@@ -4,7 +4,7 @@
       "type": "default",
       "heroAdSettings": {
         "hasHeroAd": false,
-        "heroTitle": "Find everything you need to know about <br/> your next bike and more"
+        "heroTitle": "Reviews, advice, news & more"
       },
       "carouselConfigurations": [
         {
@@ -49,9 +49,9 @@
         {
           "title": "Advice",
           "displayMrec": false,
-          "query": "(And.Type.Riding Advice._.Service.BikeSales.)",
+          "query": "(And.Type.Advice._.Service.BikeSales.)",
           "sort": "Latest",
-          "viewAll": "/riding-advice/",
+          "viewAll": "/advice/",
           "carouselType": "article",
           "polarAds": {
             "display": true,
