@@ -53,7 +53,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 
         #region Redbook
         public string TenantName { get; set; }
-        public string ServiceProjection { get; set; }
+        public string RyvusServiceProjection { get; set; }
         public string Vertical { get; set; }
         #endregion
     }
