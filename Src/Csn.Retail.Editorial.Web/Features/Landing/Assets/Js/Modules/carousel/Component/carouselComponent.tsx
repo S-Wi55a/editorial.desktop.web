@@ -14,7 +14,7 @@ if (!SERVER) {
     require('Carousel/Css/carousel')
 }
 
-const DriverCard = (props: any) => <a href={props.itemUrl} data-webm-clickvalue={`item`}>
+const DriverCard = (props: any) => <a href={props.articleDetailsUrl} data-webm-clickvalue={`item`}>
                                        <img src={props.imageUrl}/>
                                    </a>
                                  
