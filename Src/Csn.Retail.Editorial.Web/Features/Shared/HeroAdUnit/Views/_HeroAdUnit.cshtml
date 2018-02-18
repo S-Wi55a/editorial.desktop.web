@@ -58,5 +58,5 @@
 
 @if (Model.Tracking?.ViewDesktop?.Length > 0 && !string.IsNullOrEmpty(Model.Tracking.ViewDesktop[0]))
 {
-    <img width="1" height="1" border="0" src=@($"{Model.Tracking?.ViewDesktop[0]}/area={MediaMotiveScriptAdTypes.EditorialHomePage}/size=1x1/site={Html.CurrentTenant().MediaMotiveAccountId}/{SasAdTags.SasAdTagKeys.Random}={RandomNumberGenerator.Generate()}/{SasAdTags.SasAdTagKeys.ViewId}={RandomNumberGenerator.Generate()}") style="position: fixed; visibility: hidden"/>
+    <img width="1" height="1" border="0" src=@($"{Model.Tracking?.ViewDesktop[0]}/area={MediaMotiveAreaNames.EditorialHomePage}/size=1x1/site={Html.CurrentTenant().MediaMotiveAccountId}/{SasAdTags.SasAdTagKeys.Random}={RandomNumberGenerator.Generate()}/{SasAdTags.SasAdTagKeys.ViewId}={RandomNumberGenerator.Generate()}") style="position: fixed; visibility: hidden"/>
 }

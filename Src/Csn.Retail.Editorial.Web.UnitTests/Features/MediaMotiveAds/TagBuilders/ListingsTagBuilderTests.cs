@@ -35,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
             }).ToList();
 
             Assert.AreEqual(1, result.Count);
-            Assert.AreEqual(MediaMotiveScriptAdTypes.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
+            Assert.AreEqual(MediaMotiveAreaNames.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
         }
 
         [Test]
@@ -63,7 +63,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
             }).ToList();
 
             Assert.AreEqual(3, result.Count);
-            Assert.AreEqual(MediaMotiveScriptAdTypes.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
+            Assert.AreEqual(MediaMotiveAreaNames.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
             Assert.AreEqual("honda", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Make).Values.First());
             Assert.AreEqual("honda", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Car).Values.First());
         }
@@ -94,7 +94,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
             }).ToList();
 
             Assert.AreEqual(4, result.Count);
-            Assert.AreEqual(MediaMotiveScriptAdTypes.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
+            Assert.AreEqual(MediaMotiveAreaNames.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
             Assert.AreEqual("honda", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Make).Values.First());
             Assert.AreEqual("civic", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Model).Values.First());
             Assert.AreEqual("hondacivic", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Car).Values.First());
@@ -127,7 +127,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
             }).ToList();
 
             Assert.AreEqual(4, result.Count);
-            Assert.AreEqual(MediaMotiveScriptAdTypes.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
+            Assert.AreEqual(MediaMotiveAreaNames.EditorialResultsPage, result.First(t => t.Name == SasAdTags.SasAdTagKeys.Area).Values.First());
             Assert.AreEqual("mercedez", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Make).Values.First());
             Assert.AreEqual("mercedezvclass", result.First(t => t.Name == SasAdTags.SasAdTagKeys.Car).Values.First());
         }
