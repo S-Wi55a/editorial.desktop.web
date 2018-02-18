@@ -2,4 +2,9 @@
 
 .tenant-redbook{
     padding-top: 90px;
+
+    .article-type--video,
+    .article-type--singleimage{
+        padding-top:15px;
+    }
 }
