@@ -39,7 +39,7 @@ templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpe
                 dateAvailable: date,
                 articleDetailsUrl: depth0.link,
                 label: depth0.custom.PlacementType,
-                type: 'Promoted',
+                type: depth0.custom.PlacementType,
                 location
              }
          }

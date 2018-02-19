@@ -41,7 +41,7 @@ templates['homepage'] = (location, placementId) => (event) => (Handlebars, depth
                     dateAvailable: date,
                     articleDetailsUrl: depth0.link,
                     label: depth0.custom.PlacementType,
-                    type: 'Promoted',
+                    type: depth0.custom.PlacementType,
                     location,
                     carouselId: event.detail.carouselId
                 }
