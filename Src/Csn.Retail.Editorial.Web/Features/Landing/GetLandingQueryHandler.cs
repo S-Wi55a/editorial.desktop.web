@@ -77,7 +77,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     Title = _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
-                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveScriptAdTypes.EditorialHomePage),
+                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveAreaNames.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = configResults.HeroAdSettings.HeroTitle

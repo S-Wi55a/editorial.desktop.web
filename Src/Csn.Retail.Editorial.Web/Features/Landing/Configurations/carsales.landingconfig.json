@@ -54,41 +54,33 @@
             "viewAll": "/advice/",
             "carouselType": "article"
         },
-        //{
-        //  "title": "Driver",
-        //  "carouselType": "driver",
-        //  "displayNativeAd": true,
-        //  "carouselItems": [
-        //    {
-        //      "ImageUrl": "http://via.placeholder.com/350x430",
-        //      "ItemUrl": "/editorial/details/ed-itm-110483/"
-        //    },
-        //    {
-        //      "ImageUrl": "http://via.placeholder.com/350x430",
-        //      "ItemUrl": "/editorial/details/mazda-cx-8-confirmed-for-oz-110480/"
-        //    },
-        //    {
-        //      "ImageUrl": "http://via.placeholder.com/350x430",
-        //      "ItemUrl": "/editorial/details/ces-2018-kia-niro-ev-concept-110479/"
-        //    },
-        //    {
-        //      "ImageUrl": "http://via.placeholder.com/350x430",
-        //      "ItemUrl": "/editorial/details/peugeot-releases-tennis-specials-110469/"
-        //    },
-        //    {
-        //      "ImageUrl": "http://via.placeholder.com/350x430",
-        //      "ItemUrl": "/editorial/details/ces-2018-hyundai-nexo-hydrogen-car-revealed-110461/"
-        //    },
-        //    {
-        //      "ImageUrl": "http://via.placeholder.com/350x430",
-        //      "ItemUrl": "/editorial/details/ces-2018-toyota-reveals-autonomous-electric-vehicle-project-110470/"
-        //    },
-        //    {
-        //      "ImageUrl": "http://via.placeholder.com/350x430",
-        //      "ItemUrl": "/editorial/details/new-mercedes-benz-g-class-leaked-110471/"
-        //    }
-        //  ]
-        //},
+        {
+          "title": "Driver",
+          "carouselType": "driver",
+          "displayNativeAd": true,
+          "carouselItems": [
+            {
+              "ImageUrl": "https://editorial.csnstatic.com/carsales/drivers/newcarcalendar.png",
+              "ItemUrl": "/editorial/details/new-car-calendar-11034/"
+            },
+            {
+              "ImageUrl": "https://editorial.csnstatic.com/carsales/drivers/carpool.png",
+              "ItemUrl": "https://carpool.carsales.com.au/"
+            },
+            {
+              "ImageUrl": "https://editorial.csnstatic.com/carsales/drivers/caroftheyear.png",
+              "ItemUrl": "/car-of-the-year-2017/"
+            },
+            {
+              "ImageUrl": "https://editorial.csnstatic.com/carsales/drivers/ownerreviews.png",
+              "ItemUrl": "http://owner-reviews.carsales.com.au/"
+            },
+            {
+              "ImageUrl": "https://editorial.csnstatic.com/carsales/drivers/newcarshowroom.png",
+              "ItemUrl": "/new-cars/"
+            }
+          ]
+        },
         {
           "title": "Comparisons",
           "displayMrec": false,

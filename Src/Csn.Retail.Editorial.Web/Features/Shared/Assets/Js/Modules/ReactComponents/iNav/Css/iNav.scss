@@ -31,6 +31,18 @@
             transition: background-color 0.333s;
             background-color: rgba($iNav-background-color, 0.1);
             border-radius: 4px;
+
+            .iNav-category__list-wrapper {
+                @media screen and (max-height: 860px) {
+                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px + $iNav-hero-additional-height)});
+                }
+
+                .iNav-category__list {
+                    @media screen and (max-height: 860px) {
+                        max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px + $iNav-hero-additional-height)});
+                    }
+                }
+            }
         }
     }
 
