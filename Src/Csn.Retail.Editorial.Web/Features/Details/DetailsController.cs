@@ -41,17 +41,19 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             var response = dispatchedQuery.Result;
 
+            if (!string.IsNullOrEmpty(response.RedirectUrl))
+            {
+                return PermanentRedirect($"{response.RedirectUrl}{Request.RequestContext.HttpContext.Request.Url?.Query}");
+            }
+
             if (response.ArticleViewModel != null)
             {
                 // redirect any article request with slug which does not match the published slug
                 if (response.ArticleViewModel.Slug != articleIdentifier.PageName)
                 {
-                    _redirectLogger.Log(HttpContext.Request.Url?.ToString());
-
-                    return new RedirectResult(
-                        $"/editorial/details/{response.ArticleViewModel.Slug}/{Request.RequestContext.HttpContext.Request.Url?.Query}",
-                        true);
+                    return PermanentRedirect($"/editorial/details/{response.ArticleViewModel.Slug}/{Request.RequestContext.HttpContext.Request.Url?.Query}");
                 }
+
                 return View("DefaultTemplate", response.ArticleViewModel);
             }
 
@@ -59,6 +61,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
 
             return await (response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404() : errorsController.ErrorGeneric());
+        }
+
+        private ActionResult PermanentRedirect(string redirectUrl)
+        {
+            // log the url which is being redirected
+            _redirectLogger.Log(HttpContext.Request.Url?.ToString());
+
+            return new RedirectResult(redirectUrl, true);
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -38,6 +39,15 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                 return new GetArticleResponse()
                 {
                     HttpStatusCode = result.HttpStatusCode
+                };
+            }
+
+            if (!string.IsNullOrEmpty(result.Data.RedirectUrl))
+            {
+                return new GetArticleResponse()
+                {
+                    HttpStatusCode = HttpStatusCode.MovedPermanently,
+                    RedirectUrl = result.Data.RedirectUrl
                 };
             }
 

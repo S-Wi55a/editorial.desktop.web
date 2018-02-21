@@ -6,6 +6,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public class ArticleDetailsDto
     {
         public string NetworkId { get; set; }
+        public string RedirectUrl { get; set; }
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string ArticleType { get; set; }
         public bool IsSponsoredArticle { get; set; }
