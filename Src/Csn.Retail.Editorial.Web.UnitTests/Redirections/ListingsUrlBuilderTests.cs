@@ -1,4 +1,4 @@
-﻿using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
+﻿using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using NUnit.Framework;
 
@@ -18,8 +18,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Redirections
         {
             var metadata = new EditorialSeoDto();
             var url = isSeo
-                ? EditorialUrlFormatter.GetSeoUrl(query, offset, sortOrder)
-                : EditorialUrlFormatter.GetPathAndQueryString(query, offset, sortOrder, keyword);
+                ? ListingUrlHelper.GetSeoUrl(query, offset, sortOrder)
+                : ListingUrlHelper.GetPathAndQueryString(query, offset, sortOrder, keyword);
             Assert.AreEqual(expectedResult, url);
         }
     }

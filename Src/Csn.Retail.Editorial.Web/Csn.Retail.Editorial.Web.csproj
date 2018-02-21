@@ -555,7 +555,7 @@
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\NativeAdHelper.cs" />
     <Compile Include="Features\MediaMotiveAds\Models\NativeAdResponse.cs" />
-    <Compile Include="Features\MediaMotiveAds\NativeAdController.cs" />  
+    <Compile Include="Features\MediaMotiveAds\NativeAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\Services\NativeAdService.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\LandingTagBuilder.cs" />
     <Compile Include="Features\Shared\Constants\MediaMotiveAreaNames.cs" />
@@ -624,7 +624,7 @@
     <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
     <Compile Include="Features\Shared\ContextStores\SearchResultContextStore.cs" />
     <Compile Include="Features\Shared\Extensions\SearchResultDtoExtensions.cs" />
-    <Compile Include="Features\Shared\Formatters\EditorialUrlFormatter.cs" />
+    <Compile Include="Features\Shared\Helpers\ListingUrlHelper.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />

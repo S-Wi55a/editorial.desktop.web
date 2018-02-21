@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Csn.MultiTenant;
-using Csn.MultiTenant.Impl;
-using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
-namespace Csn.Retail.Editorial.Web.Features.Shared.Formatters
+namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
-    public static class EditorialUrlFormatter
+    public static class ListingUrlHelper
     {
         private static string ListingsBasePath
         {
             get
             {
+                // slap on the wrist! We are using service locator because of difficulty getting dependency injection on automapper resolvers
+                // to work without massive code refactor
                 var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
                 return
                     $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}/results";

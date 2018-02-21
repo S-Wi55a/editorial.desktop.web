@@ -8,7 +8,7 @@ using Csn.Retail.Editorial.Web.Features.Landing.Mappings;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
 using Csn.Retail.Editorial.Web.Features.Landing.Services;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
-using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
+using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Mappers;
 using Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -63,7 +63,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
 
-            navResults.INav.CurrentUrl = EditorialUrlFormatter.GetPathAndQueryString();
+            navResults.INav.CurrentUrl = ListingUrlHelper.GetPathAndQueryString();
 
             return new GetLandingResponse
             {
