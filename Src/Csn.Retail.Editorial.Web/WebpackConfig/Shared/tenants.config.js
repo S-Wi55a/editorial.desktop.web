@@ -11,8 +11,8 @@ export const listofTenants = [
     'boatpoint',
     'trucksales',
     'caravancampingsales',
-    'farmmachinerysales',
-    'redbook'
+    'farmmachinerysales'
+    //'redbook'
 ];
 
 
