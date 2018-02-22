@@ -6,13 +6,12 @@ export const listofTenants = [
     'carsales',
     'constructionsales',
     'bikesales',
-    //'carpoint',
     'boatsales',
     'boatpoint',
     'trucksales',
     'caravancampingsales',
-    'farmmachinerysales'
-    //'redbook'
+    'farmmachinerysales',
+    'redbook'
 ];
 
 
