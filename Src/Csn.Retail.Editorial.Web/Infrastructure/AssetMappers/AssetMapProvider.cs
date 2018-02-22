@@ -17,13 +17,11 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
     [AutoBindAsSingleton]
     public class AssetMapProvider : IAssetMapProvider
     {
-        private readonly ILogger _logger;
         private const string KeyAssetDomain = "AssetDomain";
         private readonly Lazy<IDictionary<string, AssetData>> source;
 
-        public AssetMapProvider(IAssetDataReader assetDataReader, ILogger logger)
+        public AssetMapProvider(IAssetDataReader assetDataReader)
         {
-            _logger = logger;
             source = new Lazy<IDictionary<string, AssetData>>(() => Load(assetDataReader));
         }
 
@@ -51,25 +49,11 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 
         public string Css(string name)
         {
-            var css = source.Value.GetValueOrDefault(name)?.Css;
-
-            if (string.IsNullOrEmpty(css))
-            {
-                _logger.Error("Unable to load css file for {0}", name);
-            }
-
             return source.Value.GetValueOrDefault(name)?.Css;
         }
 
         public string Js(string name)
         {
-            var js = source.Value.GetValueOrDefault(name)?.Js;
-
-            if (string.IsNullOrEmpty(js))
-            {
-                _logger.Error("Unable to load js file for {0}", name);
-            }
-
             return source.Value.GetValueOrDefault(name)?.Js;
         }
 
