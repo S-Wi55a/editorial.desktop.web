@@ -20,37 +20,40 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _expressionParser = expressionParser;
         }
 
-        public async Task<GetListingsQuery> HandleAsync(RedbookListingQuery verticalQuery)
+        public async Task<GetListingsQuery> HandleAsync(RedbookListingQuery listingQuery)
         {
-
-            if (string.IsNullOrEmpty(verticalQuery.Query))
+            if (string.IsNullOrEmpty(listingQuery.Query))
             {
-                var expression = new FacetExpression("Service", "Redbook") & new FacetExpression("Vertical", RedbookVerticals.Items[verticalQuery.Vertical]);
+                var expression = new FacetExpression("Service", "Redbook") & new FacetExpression("Vertical", RedbookVerticals.Items[listingQuery.Vertical]);
                 return new GetListingsQuery
                 {
                     Query = _expressionFormatter.Format(expression),
                     QueryExpression = expression,
-                    EditorialPageType = EditorialPageTypes.Landing
+                    EditorialPageType = listingQuery.EditorialPageType
                 };
             }
-            var exp = _expressionParser.Parse(verticalQuery.Query);
+
+            var exp = _expressionParser.Parse(listingQuery.Query);
             var service = Expression.Create();
             var vertical = Expression.Create();
 
             if (exp is BranchExpression verticalExp && !verticalExp.Expressions.Any(b => b is FacetExpression fe && fe.Left == "Vertical"))
             {
-                vertical = new FacetExpression("Vertical", RedbookVerticals.Items[verticalQuery.Vertical]);
+                vertical = new FacetExpression("Vertical", RedbookVerticals.Items[listingQuery.Vertical]);
             }
+
             if (exp is BranchExpression serviceExp && !serviceExp.Expressions.Any(b => b is FacetExpression fe && fe.Left == "Service"))
             {
                 service = new FacetExpression("Service", "Redbook");
             }
+
             exp = exp & service & vertical;
+
             return new GetListingsQuery
             {
                 Query = _expressionFormatter.Format(exp),
                 QueryExpression = exp,
-                EditorialPageType = EditorialPageTypes.Landing
+                EditorialPageType = EditorialPageTypes.Listing
             };
         }
     }

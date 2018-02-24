@@ -17,7 +17,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Filters
             if (DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>().Current().TenantName == "redbook")
             {
                 var vertical = HttpContext.Current.Request.Url.AbsolutePath.Split(new[] { "/editorial/" }, StringSplitOptions.None)[1].Split('/').FirstOrDefault();
-                if (!Enum.TryParse<RedbookVertical>(vertical, true, out var _))
+                if (!Enum.TryParse<Vertical>(vertical, true, out var _))
                 {
                     filterContext.Result = new RedirectResult("/editorial/cars/", true);
                 }

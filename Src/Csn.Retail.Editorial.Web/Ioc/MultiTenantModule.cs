@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             if (!host.IsSame("redbook")) return host;
             var vertical = HttpContext.Current.Request.Url.AbsolutePath.Split(new[] { "/editorial/" }, StringSplitOptions.None)[1].Split('/').FirstOrDefault();
 
-            return Enum.TryParse<RedbookVertical>(vertical, true, out var redbookVertical) ? $"redbook-{redbookVertical.ToString().ToLower()}" : "redbook-cars";
+            return Enum.TryParse<Vertical>(vertical, true, out var redbookVertical) ? $"redbook-{redbookVertical.ToString().ToLower()}" : "redbook-cars";
         }
     }
 

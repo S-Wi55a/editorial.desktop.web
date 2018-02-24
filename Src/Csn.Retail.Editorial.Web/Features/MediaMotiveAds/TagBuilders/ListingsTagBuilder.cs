@@ -2,6 +2,7 @@
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
@@ -23,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             var searchContext = _searchContextStore.Get();
 
-            return BuildTags(searchContext?.RyvussNavResult);
+            return BuildTags(searchContext);
         }
 
         public bool IsApplicable(MediaMotiveAdQuery query)
@@ -31,12 +32,16 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             return _searchContextStore.Exists();
         }
 
-        private IEnumerable<MediaMotiveTag> BuildTags(RyvussNavResultDto navResult)
+        private IEnumerable<MediaMotiveTag> BuildTags(SearchContext searchContext)
         {
-            var tagList = new List<MediaMotiveTag>()
-            {
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, MediaMotiveAreaNames.EditorialResultsPage)
-            };
+            var tagList = new List<MediaMotiveTag>();
+
+            if (searchContext == null) return tagList;
+
+            tagList.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area,
+                searchContext.EditorialPageType == EditorialPageTypes.Homepage ? MediaMotiveAreaNames.EditorialHomePage : MediaMotiveAreaNames.EditorialResultsPage));
+
+            var navResult = searchContext.RyvussNavResult;
 
             if (navResult == null) return tagList;
 
