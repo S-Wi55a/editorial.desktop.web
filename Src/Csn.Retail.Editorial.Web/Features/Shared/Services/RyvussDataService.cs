@@ -71,8 +71,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Services
                 Query = query,
                 IncludeCount = true,
                 IncludeSearchResults = includeResults,
-                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : "",
-                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().Name : "",
+                ControllerName = _tenantProvider.Current().SupportsSeoFriendlyListings ? $"seo-{_tenantProvider.Current().Name}" : null,
+                ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().RyvusServiceProjection : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
                 PostProcessors = postProcessors,
                 IncludeMetaData = true

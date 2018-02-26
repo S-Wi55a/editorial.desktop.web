@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Bolt.Common.Extensions;
+using Csn.Logging;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 {

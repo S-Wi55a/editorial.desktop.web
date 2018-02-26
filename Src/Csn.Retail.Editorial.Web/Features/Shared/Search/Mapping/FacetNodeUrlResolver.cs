@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using AutoMapper;
-using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
+using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         {
             var sortOrder = context.Items.TryGetValue("sortOrder", out var result) ? result?.ToString() : string.Empty;
 
-            return source.HasSeoLinks ? EditorialUrlFormatter.GetSeoUrl(source.MetaData.Seo.First(), sortOrder: sortOrder) : EditorialUrlFormatter.GetPathAndQueryString(source.Action, sortOrder: sortOrder);
+            return source.HasSeoLinks ? ListingUrlHelper.GetSeoUrl(source.MetaData.Seo.First(), sortOrder: sortOrder) : ListingUrlHelper.GetPathAndQueryString(source.Action, sortOrder: sortOrder);
         }
     }
     
@@ -22,7 +22,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         {
             var sortOrder = context.Items.TryGetValue("sortOrder", out var result) ? result?.ToString() : string.Empty;
 
-            return  EditorialUrlFormatter.GetQueryString(source.HasSeoLinks ? source.MetaData.Seo.First(): source.Action, sortOrder);
+            return  ListingUrlHelper.GetQueryString(source.HasSeoLinks ? source.MetaData.Seo.First(): source.Action, sortOrder);
         }
     }
 }

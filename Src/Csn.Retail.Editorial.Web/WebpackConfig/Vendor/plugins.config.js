@@ -9,6 +9,7 @@ const assetsPluginInstance = new AssetsPlugin({
     path: path.resolve('./'),
     prettyPrint: true,
     fullPath: false,
+    update:true
 });
 
 export const plugins = () => {

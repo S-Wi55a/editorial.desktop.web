@@ -4,8 +4,8 @@
 
 @{
     Layout = "~/Features/Shared/Views/_LayoutBasic.cshtml";
-    var tenantName = Html.CurrentTenant().Name.ToLower();
-    var title = string.Format("{0} - www.{0}.com.au", Html.CurrentTenant().Name);
+    var tenantName = Html.CurrentTenant().TenantName;
+    var title = string.Format("{0} - www.{0}.com.au", Html.CurrentTenant().TenantName);
 }
 
 @section Head {

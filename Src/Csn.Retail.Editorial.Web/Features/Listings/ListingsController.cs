@@ -25,14 +25,32 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         [Route("editorial/{articleSlug:article-types}")]
         [RedirectAttributeFilter]
+        [RedbookDefaultVerticalAttributeFilter]
         public async Task<ActionResult> ArticleTypeListing(ArticleTypeListingQuery query)
         {
-            // temporary solution until we build proper landing pages
             var listingsQuery = _queryDispatcher.Dispatch<ArticleTypeListingQuery, GetListingsQuery>(query);
 
             return await Listing(listingsQuery);
         }
-        
+
+        [Route("editorial/{vertical:vertical}/results")]
+        [RedirectAttributeFilter]
+        public async Task<ActionResult> RedbookListing(RedbookListingQuery query)
+        {
+            var listingsQuery = await _queryDispatcher.DispatchAsync<RedbookListingQuery, GetListingsQuery>(query);
+
+            return await Listing(listingsQuery);
+        }
+
+        [Route("editorial/{vertical:vertical}")]
+        [RedirectAttributeFilter]
+        public async Task<ActionResult> RedbookHomepage(RedbookHomepageQuery query)
+        {
+            var listingsQuery = await _queryDispatcher.DispatchAsync<RedbookHomepageQuery, GetListingsQuery>(query);
+
+            return await Listing(listingsQuery);
+        }
+
         [Route("editorial/results/{*seoFragment:regex(^[\\w-/]*)?}")]
         [RedirectAttributeFilter]
         [LegacyListingsUrlRedirectFilter]

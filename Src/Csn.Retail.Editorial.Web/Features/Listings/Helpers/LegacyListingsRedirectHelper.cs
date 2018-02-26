@@ -1,4 +1,4 @@
-﻿using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
+﻿using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -51,9 +51,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Helpers
         private string GetRedirectionUrl(EditorialSeoDto seoDto, string keyword, long offset, string sortOrder)
         {
             if (seoDto.HasSeo())
-                return EditorialUrlFormatter.GetSeoUrl(seoDto.Metadata.Seo, offset, sortOrder);
+                return ListingUrlHelper.GetSeoUrl(seoDto.Metadata.Seo, offset, sortOrder);
 
-            return EditorialUrlFormatter.GetPathAndQueryString(seoDto.Metadata.query,offset, sortOrder, keyword);
+            return ListingUrlHelper.GetPathAndQueryString(seoDto.Metadata.query,offset, sortOrder, keyword);
         }
     }
 }
