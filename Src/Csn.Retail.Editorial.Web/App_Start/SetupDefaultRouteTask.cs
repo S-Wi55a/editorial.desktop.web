@@ -47,7 +47,7 @@ namespace Csn.Retail.Editorial.Web
             routes.MapRoute(
                 "UnknownRoute",
                 "{*url}",
-                new { controller = "Errors", action = "Error404" }
+                new { controller = "Errors", action = "Error404CatchAll" }
             );
         }
     }
