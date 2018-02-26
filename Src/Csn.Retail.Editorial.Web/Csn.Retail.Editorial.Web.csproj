@@ -552,6 +552,7 @@
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Listings\Filters\RedbookDefaultVerticalAttributeFilter.cs" />
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
+    <Compile Include="Features\Listings\RedbookHomepageQueryHandler.cs" />
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\NativeAdHelper.cs" />
     <Compile Include="Features\MediaMotiveAds\Models\NativeAdResponse.cs" />
@@ -565,7 +566,7 @@
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
-    <Compile Include="Features\Shared\Models\RedbookVertical.cs" />
+    <Compile Include="Features\Shared\Models\Vertical.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
@@ -649,7 +650,7 @@
     <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
     <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
     <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
-    <Compile Include="Features\Shared\RouteConstraints\RedbookRouteConstraint.cs" />
+    <Compile Include="Features\Shared\RouteConstraints\VerticalRouteConstraint.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
     <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapperResolver.cs" />

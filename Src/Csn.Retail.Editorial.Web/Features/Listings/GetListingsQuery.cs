@@ -21,6 +21,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
     public class RedbookListingQuery : GetListingsQuery
     {
-        public RedbookVertical Vertical { get; set; }
+        public Vertical Vertical { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace Csn.Retail.Editorial.Web
 
             var constraintResolver = new DefaultInlineConstraintResolver();
             constraintResolver.ConstraintMap.Add("article-types", typeof(ArticleTypeRouteConstraint));
-            constraintResolver.ConstraintMap.Add("redbook-vertical", typeof(RedbookRouteConstraint));
+            constraintResolver.ConstraintMap.Add("vertical", typeof(VerticalRouteConstraint));
 
             routes.MapMvcAttributeRoutes(constraintResolver);
 
