@@ -53,7 +53,12 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             {
                 Query = _expressionFormatter.Format(exp),
                 QueryExpression = exp,
-                EditorialPageType = EditorialPageTypes.Listing
+                EditorialPageType = EditorialPageTypes.Listing,
+                Offset = listingQuery.Offset,
+                Sort = listingQuery.Sort,
+                Keywords = listingQuery.Keywords,
+                SearchEventType = listingQuery.SearchEventType,
+                SeoFragment = listingQuery.SeoFragment
             };
         }
     }
