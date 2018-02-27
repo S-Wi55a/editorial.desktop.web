@@ -32,6 +32,7 @@ namespace Csn.Retail.Editorial.Web
 
             var constraintResolver = new DefaultInlineConstraintResolver();
             constraintResolver.ConstraintMap.Add("article-types", typeof(ArticleTypeRouteConstraint));
+            constraintResolver.ConstraintMap.Add("vertical", typeof(VerticalRouteConstraint));
 
             routes.MapMvcAttributeRoutes(constraintResolver);
 
@@ -46,7 +47,7 @@ namespace Csn.Retail.Editorial.Web
             routes.MapRoute(
                 "UnknownRoute",
                 "{*url}",
-                new { controller = "Errors", action = "Error404" }
+                new { controller = "Errors", action = "Error404CatchAll" }
             );
         }
     }

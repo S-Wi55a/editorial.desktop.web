@@ -550,6 +550,10 @@
     <Compile Include="Features\Landing\Mappings\LandingInsightsDataMapper.cs" />
     <Compile Include="Features\Landing\Mappings\MapperConfiguration.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
+    <Compile Include="Features\Listings\Filters\RedbookDefaultVerticalAttributeFilter.cs" />
+    <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
+    <Compile Include="Features\Listings\RedbookHomepageQueryHandler.cs" />
+    <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\NativeAdHelper.cs" />
     <Compile Include="Features\MediaMotiveAds\Models\NativeAdResponse.cs" />
     <Compile Include="Features\MediaMotiveAds\NativeAdController.cs" />
@@ -562,6 +566,7 @@
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
+    <Compile Include="Features\Shared\Models\Vertical.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
     <Compile Include="Features\Details\DetailsController.cs" />
@@ -620,7 +625,7 @@
     <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
     <Compile Include="Features\Shared\ContextStores\SearchResultContextStore.cs" />
     <Compile Include="Features\Shared\Extensions\SearchResultDtoExtensions.cs" />
-    <Compile Include="Features\Shared\Formatters\EditorialUrlFormatter.cs" />
+    <Compile Include="Features\Shared\Helpers\ListingUrlHelper.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
@@ -645,6 +650,7 @@
     <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
     <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
     <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
+    <Compile Include="Features\Shared\RouteConstraints\VerticalRouteConstraint.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />
     <Compile Include="Features\Shared\Search\Mapping\BreadCrumbMapperResolver.cs" />
@@ -772,6 +778,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
+    <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\iNav.js" />
@@ -1107,6 +1114,9 @@
     <Content Include="Features\Landing\Configurations\constructionsales.landingConfig.json" />
     <Content Include="Features\Shared\HeroAdUnit\Views\_HeroAdUnit.cshtml" />
     <Content Include="Features\Shared\HeroAdUnit\Css\Partials\_hero.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Redbook\redbook.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Redbook\Settings\_settings--redbook.scss" />
+    <Content Include="Features\Listings\Views\Redbook-bikes\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Views\Partials\_Carousel--Driver.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_PolarNativeAdsTracking.cshtml" />
@@ -1115,6 +1125,12 @@
     <Content Include="Features\Listings\Views\Caravancampingsales\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Trucksales\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Boatpoint\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Partials\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Redbook-cars\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Redbook-boats\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Redbook-bikes\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Redbook-boats\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Redbook-cars\_Disclaimer.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

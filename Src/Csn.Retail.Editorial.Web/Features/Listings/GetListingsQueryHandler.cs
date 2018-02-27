@@ -6,7 +6,6 @@ using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
-using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Mappers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -85,7 +84,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 return new GetListingsResponse
                 {
                     RedirectRequired = true,
-                    RedirectUrl = EditorialUrlFormatter.GetSeoUrl(resultData.Metadata.Seo, query.Offset, sortOrder)
+                    RedirectUrl = ListingUrlHelper.GetSeoUrl(resultData.Metadata.Seo, query.Offset, sortOrder)
                 };
             }
 
@@ -109,9 +108,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     opt.Items["sortOrder"] = sortOrder;
                 }
             });
-            navResults.INav.CurrentAction = EditorialUrlFormatter.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, sortOrder);
-            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? EditorialUrlFormatter.GetSeoUrl(query.SeoFragment, query.Offset, sortOrder) :
-                EditorialUrlFormatter.GetPathAndQueryString(query.Query, query.Offset, sortOrder);
+            navResults.INav.CurrentAction = ListingUrlHelper.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, sortOrder);
+            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingUrlHelper.GetSeoUrl(query.SeoFragment, query.Offset, sortOrder) :
+                ListingUrlHelper.GetPathAndQueryString(query.Query, query.Offset, sortOrder);
 
             return new GetListingsResponse
             {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.MultiTenant;
@@ -120,7 +119,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             return new PagingItemViewModel
             {
                 PageNo = pageNo,
-                Url = EditorialUrlFormatter.GetPathAndQueryString(query, offset, sortOrder, keyword)
+                Url = ListingUrlHelper.GetPathAndQueryString(query, offset, sortOrder, keyword)
             };        
         }
 

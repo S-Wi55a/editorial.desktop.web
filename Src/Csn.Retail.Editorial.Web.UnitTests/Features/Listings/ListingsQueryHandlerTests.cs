@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using AutoMapper;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings;
@@ -39,11 +40,18 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             var listingInsightsDataMapper = Substitute.For<IListingInsightsDataMapper>();
             var seoDataMapper = Substitute.For<ISeoDataMapper>();
             var ryvussDataService = Substitute.For<IRyvussDataService>();
+
             tenantProvider.Current().Returns(new TenantInfo()
             {
                 Name = "carsales",
                 AdUnits = new List<string> { "Title3" }
             });
+
+            // this bit is required because we have some static classes that use service locator pattern
+            var dependencyResolver = Substitute.For<IDependencyResolver>();
+            dependencyResolver.GetService<ITenantProvider<TenantInfo>>().Returns(tenantProvider);
+
+            DependencyResolver.SetResolver(dependencyResolver);
 
             ryvussDataService.GetNavAndResults(Arg.Any<string>(), Arg.Any<bool>()).Returns(Task.FromResult(
                 new RyvussNavResultDto

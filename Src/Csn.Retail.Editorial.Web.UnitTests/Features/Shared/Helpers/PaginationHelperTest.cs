@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
+using System.Web.Mvc;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -14,6 +14,25 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
     [TestFixture]
     public class PaginationHelperTest
     {
+        private ITenantProvider<TenantInfo> _tenantProvider;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
+
+            _tenantProvider.Current().Returns(new TenantInfo()
+            {
+                Name = "carsales",
+                Culture = new CultureInfo("en-us")
+            });
+
+            var dependencyResolver = Substitute.For<IDependencyResolver>();
+            dependencyResolver.GetService<ITenantProvider<TenantInfo>>().Returns(_tenantProvider);
+
+            DependencyResolver.SetResolver(dependencyResolver);
+        }
+
         
         [Test]
         public void GetPagingDataTest()
@@ -21,6 +40,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             //Arrange
             var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
             var testSubject = new PaginationHelper(tenantProvider);
+
             tenantProvider.Current().Returns(new TenantInfo()
             {
                 Name = "carsales",

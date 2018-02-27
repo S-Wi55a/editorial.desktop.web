@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
+using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
@@ -29,7 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
             {
                 results.Insert(0, new BreadCrumb
                 {
-                    RemoveAction = EditorialUrlFormatter.GetPathAndQueryString(keywordBreadCrumb.RemoveAction, sortOrder: context.Items.TryGetValue("sortOrder", out var sortOrder)
+                    RemoveAction = ListingUrlHelper.GetPathAndQueryString(keywordBreadCrumb.RemoveAction, sortOrder: context.Items.TryGetValue("sortOrder", out var sortOrder)
                         ? sortOrder?.ToString()
                         : string.Empty),
                     FacetDisplay = keywordBreadCrumb.Term.Trim('(', ')'),
@@ -38,7 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
             }
             results.Add(new BreadCrumb
             {
-                RemoveAction = EditorialUrlFormatter.GetPathAndQueryString(sortOrder: context.Items.TryGetValue("sortOrder", out var sort)
+                RemoveAction = ListingUrlHelper.GetPathAndQueryString(sortOrder: context.Items.TryGetValue("sortOrder", out var sort)
                     ? sort?.ToString()
                     : string.Empty),
                 FacetDisplay = "Clear All",
@@ -54,8 +54,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         public string Resolve(BreadCrumbDto source, BreadCrumb destination, string destMember, ResolutionContext context)
         {
             var sortOrder = context.Items.TryGetValue("sortOrder", out var sort) ? sort?.ToString() : string.Empty;
-            return source.HasSeoLinks ? EditorialUrlFormatter.GetSeoUrl(source.Metadata.Seo.First(), sortOrder: sortOrder) :
-                EditorialUrlFormatter.GetPathAndQueryString(string.IsNullOrEmpty(source.RemoveAction) ? string.Empty: source.RemoveAction, sortOrder: sortOrder);
+            return source.HasSeoLinks ? ListingUrlHelper.GetSeoUrl(source.Metadata.Seo.First(), sortOrder: sortOrder) :
+                ListingUrlHelper.GetPathAndQueryString(string.IsNullOrEmpty(source.RemoveAction) ? string.Empty: source.RemoveAction, sortOrder: sortOrder);
         }
     }
 }

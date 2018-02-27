@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Csn.Retail.Editorial.Web.Features.Landing.Carousel;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Formatters;
+using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -64,7 +64,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             return new CarouselViewModel
             {
                 CarouselItems = landingResults.SearchResults,
-                NextQuery = landingResults.Count - offset > 7 && offset < 20? $"/editorial/api/v1/carousel/?{EditorialUrlFormatter.GetQueryParam(query, offset + 7, sort)}"
+                NextQuery = landingResults.Count - offset > 7 && offset < 20? $"/editorial/api/v1/carousel/?{ListingUrlHelper.GetQueryParam(query, offset + 7, sort)}"
                     : string.Empty
             };
         }

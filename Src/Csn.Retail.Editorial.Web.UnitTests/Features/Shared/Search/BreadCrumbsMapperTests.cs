@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using AutoMapper;
+using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
@@ -23,6 +26,16 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
             _imageMapper = Substitute.For<IImageMapper>();
             _resultsMessageMapper = Substitute.For<IResultsMessageMapper>();
             _articleUrlMapper = Substitute.For<IArticleUrlMapper>();
+            var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
+
+            tenantProvider.Current().Returns(new TenantInfo());
+
+            var dependencyResolver = Substitute.For<IDependencyResolver>();
+            dependencyResolver.GetService<ITenantProvider<TenantInfo>>().Returns(tenantProvider);
+
+            //_originalDependencyResolver = DependencyResolver.Current;
+
+            DependencyResolver.SetResolver(dependencyResolver);
 
             Mapper.Initialize(cfg => new MappingSetupTask(iMapper, _imageMapper, _resultsMessageMapper, _articleUrlMapper).Run(cfg));
         }

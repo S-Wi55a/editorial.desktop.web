@@ -4,9 +4,8 @@
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
 @{
-    var tenantName = Html.CurrentTenant().Name.ToLower();
+    var tenantName = Html.CurrentTenant().TenantName;
     var isWide = Model.ArticleTemplateType == ArticleTemplateType.Wide ? true : false;
-
 }
 
 @section Head {
@@ -25,8 +24,13 @@
 }
 
 <div class="page-container">
+    @{
+        if (Html.CurrentTenant().TenantName != "redbook")
+        {
+            Html.RenderPartial("Partials/_Header");
+        }
+    }
     
-    @{ Html.RenderPartial("Partials/_Header", Model); }
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }

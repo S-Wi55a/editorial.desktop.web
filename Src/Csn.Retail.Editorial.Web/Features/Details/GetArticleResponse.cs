@@ -7,5 +7,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     {
         public ArticleViewModel ArticleViewModel { get; set; }
         public HttpStatusCode HttpStatusCode { get; set; }
+        public string RedirectUrl { get; set; }
     }
 }
