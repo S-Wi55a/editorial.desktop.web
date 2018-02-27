@@ -29,7 +29,12 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 {
                     Query = _expressionFormatter.Format(expression),
                     QueryExpression = expression,
-                    EditorialPageType = listingQuery.EditorialPageType
+                    EditorialPageType = listingQuery.EditorialPageType,
+                    Offset = listingQuery.Offset,
+                    Sort = listingQuery.Sort,
+                    Keywords = listingQuery.Keywords,
+                    SearchEventType = listingQuery.SearchEventType,
+                    SeoFragment = listingQuery.SeoFragment
                 };
             }
 
