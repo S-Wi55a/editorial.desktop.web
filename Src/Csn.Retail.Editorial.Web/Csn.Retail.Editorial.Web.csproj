@@ -1119,7 +1119,6 @@
     <Content Include="Features\Listings\Views\Redbook-bikes\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Views\Partials\_Carousel--Driver.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_PolarNativeAdsTracking.cshtml" />
     <Content Include="Features\Landing\Configurations\boatpoint.landingConfig.json" />
     <Content Include="Features\Listings\Views\Boatsales\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Caravancampingsales\_Disclaimer.cshtml" />
