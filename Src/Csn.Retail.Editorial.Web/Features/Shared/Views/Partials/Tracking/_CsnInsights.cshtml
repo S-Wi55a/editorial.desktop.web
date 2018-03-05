@@ -7,6 +7,12 @@
 <script>
     window.CsnInsights = window.CsnInsights || {};
     CsnInsights.metaData = @Html.Raw(JsonConvert.SerializeObject(Model));
+
+    @if (Model.ContainsKey("contentGroup2") && Model["contentGroup2"] == "details")
+    {
+        <text>CsnInsights.EnableScrollTracker = true;</text>
+    }
+
     @if (!string.IsNullOrEmpty(trackingId))
     {
     <text>CsnInsights.memberTrackingId = "@trackingId";</text>
