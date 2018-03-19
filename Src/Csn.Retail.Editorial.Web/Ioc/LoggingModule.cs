@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Csn.Logging;
-using Csn.Retail.Editorial.Web.Features.Details;
+using Csn.Retail.Editorial.Web.Features.Details.Loggers;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Listings.Loggers;
 
@@ -22,6 +22,12 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 var loggerFactory = c.Resolve<ILoggerFactory>();
                 return loggerFactory.For<DetailsRedirectLogger>();
             }).As<IDetailsRedirectLogger>().SingleInstance();
+
+            builder.RegisterType<LegacyDetailsRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
+            {
+                var loggerFactory = c.Resolve<ILoggerFactory>();
+                return loggerFactory.For<LegacyDetailsRedirectLogger>();
+            }).As<ILegacyDetailsRedirectLogger>().SingleInstance();
 
             builder.RegisterType<SeoListingUrlRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
             {
