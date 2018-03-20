@@ -51,7 +51,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         [Transaction]
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
-            var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
+            var configResults = query.Configuration ?? await _landingConfigProvider.LoadConfig("default");
 
             var ryvussResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
             var searchResults = GetCarousels(configResults);
