@@ -1,6 +1,6 @@
 ﻿using Csn.Logging;
 
-namespace Csn.Retail.Editorial.Web.Features.Details
+namespace Csn.Retail.Editorial.Web.Features.Details.Loggers
 {
     public interface IDetailsRedirectLogger
     {
