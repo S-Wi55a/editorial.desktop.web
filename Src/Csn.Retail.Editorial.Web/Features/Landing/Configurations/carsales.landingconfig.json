@@ -107,7 +107,8 @@
       "type": "bmw",
       "heroAdSettings": {
         "hasHeroAd": true,
-        "heroTitle": "BMW Reviews, advice, news & more"
+        "heroTitle": "BMW Reviews, advice, news & more",
+        "heroMake": "bmw" 
       },
       "carouselConfigurations": [
         {
@@ -175,6 +176,160 @@
           "query": "(And.Type.Feature._.Service.CarSales._.Make.bmw.)",
           "sort": "Latest",
           "viewAll": "/results/bmw/feature-article-type/",
+          "carouselType": "article"
+        }
+      ]
+    },
+    {
+      "type": "nissan",
+      "heroAdSettings": {
+        "hasHeroAd": true,
+        "heroTitle": "Nissan Reviews, advice, news & more",
+        "heroMake": "nissan"
+      },
+      "carouselConfigurations": [
+        {
+          "title": "Editor's Choice",
+          "displayMrec": true,
+          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
+          "sort": "Latest",
+          "carouselType": "featured"
+        },
+        {
+          "title": "Reviews",
+          "displayMrec": false,
+          "query": "(And.Type.Review._.Service.CarSales._.Make.nissan.)",
+          "sort": "Latest",
+          "viewAll": "/results/nissan/review-article-type/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 31
+          }
+        },
+        {
+          "title": "News",
+          "displayMrec": false,
+          "query": "(And.Type.News._.Service.CarSales._.Make.nissan.)",
+          "sort": "Latest",
+          "viewAll": "/results/nissan/news-article-type/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Videos",
+          "displayMrec": false,
+          "query": "(And.Type.Video._.Service.CarSales._.Make.nissan.)",
+          "sort": "Latest",
+          "viewAll": "/results/nissan/video-article-type/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
+        },
+        {
+          "title": "Advice",
+          "displayMrec": false,
+          "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales._.Make.nissan.)",
+          "sort": "Latest",
+          "viewAll": "/results/nissan/advice-article-type/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Comparisons",
+          "displayMrec": false,
+          "query": "(And.ArticleTypes.Comparison._.Service.CarSales._.Make.nissan.)",
+          "sort": "Latest",
+          "viewAll": "/results/nissan/?q=ArticleTypes.Comparison.",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 33
+          }
+        },
+        {
+          "title": "Features",
+          "displayMrec": false,
+          "query": "(And.Type.Feature._.Service.CarSales._.Make.nissan.)",
+          "sort": "Latest",
+          "viewAll": "/results/nissan/feature-article-type/",
+          "carouselType": "article"
+        }
+      ]
+    },
+    {
+      "type": "toyota",
+      "heroAdSettings": {
+        "hasHeroAd": true,
+        "heroTitle": "Toyota Reviews, advice, news & more",
+        "heroMake": "toyota"
+      },
+      "carouselConfigurations": [
+        {
+          "title": "Editor's Choice",
+          "displayMrec": true,
+          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
+          "sort": "Latest",
+          "carouselType": "featured"
+        },
+        {
+          "title": "Reviews",
+          "displayMrec": false,
+          "query": "(And.Type.Review._.Service.CarSales._.Make.toyota.)",
+          "sort": "Latest",
+          "viewAll": "/results/toyota/review-article-type/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 31
+          }
+        },
+        {
+          "title": "News",
+          "displayMrec": false,
+          "query": "(And.Type.News._.Service.CarSales._.Make.toyota.)",
+          "sort": "Latest",
+          "viewAll": "/results/toyota/news-article-type/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Videos",
+          "displayMrec": false,
+          "query": "(And.Type.Video._.Service.CarSales._.Make.toyota.)",
+          "sort": "Latest",
+          "viewAll": "/results/toyota/video-article-type/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 32
+          }
+        },
+        {
+          "title": "Advice",
+          "displayMrec": false,
+          "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales._.Make.toyota.)",
+          "sort": "Latest",
+          "viewAll": "/results/toyota/advice-article-type/",
+          "carouselType": "article"
+        },
+        {
+          "title": "Comparisons",
+          "displayMrec": false,
+          "query": "(And.ArticleTypes.Comparison._.Service.CarSales._.Make.toyota.)",
+          "sort": "Latest",
+          "viewAll": "/results/toyota/?q=ArticleTypes.Comparison.",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 33
+          }
+        },
+        {
+          "title": "Features",
+          "displayMrec": false,
+          "query": "(And.Type.Feature._.Service.CarSales._.Make.toyota.)",
+          "sort": "Latest",
+          "viewAll": "/results/toyota/feature-article-type/",
           "carouselType": "article"
         }
       ]

@@ -80,7 +80,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveAreaNames.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
-                    HeroTitle = configResults.HeroAdSettings.HeroTitle
+                    HeroTitle = configResults.HeroAdSettings.HeroTitle,
+                    Make = configResults.HeroAdSettings.HeroMake
                 },
                 CacheViewModel = !(searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };
@@ -99,8 +100,22 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         [Trace]
         private async Task<CampaignAdResult> GetAdUnit(GetLandingQuery query)
         {
+            string campaignTag;
+
+            if (query.PromotionId != null)
+            {
+                campaignTag = $"{query.PromotionId.Value}";
+            }
+            else
+            {
+                campaignTag = $"?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}";
+
+                if (query.Configuration.HeroAdSettings.HeroMake != null)
+                    campaignTag += $"&Make={query.Configuration.HeroAdSettings.HeroMake}";
+            }
+
             return await _restClient.Service("api-showroom-promotions")
-                .Path(query.PromotionId.HasValue ? $"/v1/promotions/campaign/{query.PromotionId.Value}" : $"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}")
+                .Path($"/v1/promotions/campaign/{campaignTag}")
                 .GetAsync<CampaignAdResult>()
                 .ContinueWith(x => x.Result.Data);
         }

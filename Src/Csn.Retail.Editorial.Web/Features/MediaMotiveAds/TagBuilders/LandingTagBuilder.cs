@@ -18,15 +18,22 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query)
         {
-            return new List<MediaMotiveTag>()
-            {
+            var mediaMotiveTag = new List<MediaMotiveTag> { 
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, MediaMotiveAreaNames.EditorialHomePage)
             };
+
+            if (query.Make == null) return mediaMotiveTag;
+            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Make, query.Make));
+            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Car, query.Make)); // TO DO when we have a model, we need to include model as part of car tag
+
+            return mediaMotiveTag;
         }
 
         public bool IsApplicable(MediaMotiveAdQuery query)
         {
-            return _requestContextWrapper.Url.AbsolutePath.IsSame("/editorial/");
+            var path = "/editorial/" + (query.Make != null ? query.Make + "/" : "");
+
+            return _requestContextWrapper.Url.AbsolutePath.IsSame(path);
         }
     }
 }

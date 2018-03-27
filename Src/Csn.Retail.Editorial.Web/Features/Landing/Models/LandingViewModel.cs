@@ -19,6 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public Dictionary<string, string> InsightsData { get; set; }
         public string HeroTitle { get; set; }
         public SeoData SeoData { get; set; }
+        public string Make { get; set; }
     }
 
     public class CarouselViewModel
