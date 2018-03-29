@@ -112,15 +112,8 @@
       },
       "carouselConfigurations": [
         {
-          "title": "Editor's Choice",
-          "displayMrec": true,
-          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
-          "sort": "Latest",
-          "carouselType": "featured"
-        },
-        {
           "title": "Reviews",
-          "displayMrec": false,
+          "displayMrec": true,
           "query": "(And.Type.Review._.Service.CarSales._.Make.bmw.)",
           "sort": "Latest",
           "viewAll": "/results/bmw/review-article-type/",
@@ -189,15 +182,8 @@
       },
       "carouselConfigurations": [
         {
-          "title": "Editor's Choice",
-          "displayMrec": true,
-          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
-          "sort": "Latest",
-          "carouselType": "featured"
-        },
-        {
           "title": "Reviews",
-          "displayMrec": false,
+          "displayMrec": true,
           "query": "(And.Type.Review._.Service.CarSales._.Make.nissan.)",
           "sort": "Latest",
           "viewAll": "/results/nissan/review-article-type/",
@@ -266,15 +252,8 @@
       },
       "carouselConfigurations": [
         {
-          "title": "Editor's Choice",
-          "displayMrec": true,
-          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
-          "sort": "Latest",
-          "carouselType": "featured"
-        },
-        {
           "title": "Reviews",
-          "displayMrec": false,
+          "displayMrec": true,
           "query": "(And.Type.Review._.Service.CarSales._.Make.toyota.)",
           "sort": "Latest",
           "viewAll": "/results/toyota/review-article-type/",
