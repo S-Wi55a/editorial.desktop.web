@@ -15,6 +15,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 using Ingress.ServiceClient.Abstracts;
@@ -110,7 +111,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             {
                 campaignTag = $"?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}";
 
-                if (query.Configuration.HeroAdSettings.HeroMake != null)
+                if (query.Configuration != null && !query.Configuration.HeroAdSettings.HeroMake.IsNullOrEmpty())
                     campaignTag += $"&Make={query.Configuration.HeroAdSettings.HeroMake}";
             }
 
