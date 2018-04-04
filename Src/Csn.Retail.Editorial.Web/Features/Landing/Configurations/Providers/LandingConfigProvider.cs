@@ -57,6 +57,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
             var content = File.ReadAllText(fullpath);
             var landingConfig = _serializer.Deserialize<LandingConfig>(content);
 
+            MakeConfigProvider.SetConfiguredMakes(_tenantProvider.Current().Name, landingConfig.Configs.Where(a =>a.Type != "default" && a.CarouselConfigurations != null && a.CarouselConfigurations.Any()).Select(a => a.Type).ToList());
+
             await _cacheStore.SetAsync(cacheKey, landingConfig, new CacheExpiredIn(_localCacheDuration, _distributedCacheDuration));
 
             return landingConfig.Configs.FirstOrDefault(a => a.Type == configSet);

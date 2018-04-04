@@ -11,7 +11,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
         {
             if (!values.TryGetValue(parameterName, out var parameterValue)) return false;
             var vertical = parameterValue.ToString();
-            return Enum.TryParse<Vertical>(vertical, true, out var _);
+
+            return vertical.Length > 1 && Enum.IsDefined(typeof(Vertical) , vertical);
         }
     }
 }
