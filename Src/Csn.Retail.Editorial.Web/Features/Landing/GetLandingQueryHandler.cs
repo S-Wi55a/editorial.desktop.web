@@ -7,6 +7,7 @@ using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
 using Csn.Retail.Editorial.Web.Features.Landing.Mappings;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
 using Csn.Retail.Editorial.Web.Features.Landing.Services;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Mappers;
@@ -78,11 +79,16 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     Title = _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
-                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveAreaNames.EditorialHomePage),
+                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs,
+                            !string.IsNullOrEmpty(configResults.HeroAdSettings?.HeroMake) ?
+                                MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = configResults.HeroAdSettings.HeroTitle,
-                    Make = configResults.HeroAdSettings.HeroMake
+                    MediaMotiveModel = new MediaMotiveModel
+                    {
+                        Make = !string.IsNullOrEmpty(configResults.HeroAdSettings?.HeroMake) ? configResults.HeroAdSettings.HeroMake : string.Empty
+                    }
                 },
                 CacheViewModel = !(searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };
@@ -109,16 +115,27 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             }
             else
             {
-                campaignTag = $"?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}";
+                campaignTag = $"?Tenant={_tenantProvider.Current().Name}";
 
                 if (query.Configuration != null && !query.Configuration.HeroAdSettings.HeroMake.IsNullOrEmpty())
-                    campaignTag += $"&Make={query.Configuration.HeroAdSettings.HeroMake}";
+                    campaignTag += $"&PromotionType=EditorialMakePage&Make={query.Configuration.HeroAdSettings.HeroMake.ToUpper()}";
+                else
+                    campaignTag += "&PromotionType=EditorialHomePage"; 
             }
 
-            return await _restClient.Service("api-showroom-promotions")
+            var results = await _restClient.Service("api-showroom-promotions")
                 .Path($"/v1/promotions/campaign/{campaignTag}")
                 .GetAsync<CampaignAdResult>()
                 .ContinueWith(x => x.Result.Data);
+
+            if (results != null)
+            {
+                results.Make = !string.IsNullOrEmpty(query.Configuration?.HeroAdSettings?.HeroMake)
+                    ? query.Configuration.HeroAdSettings.HeroMake
+                    : string.Empty;
+            }
+
+            return results;
         }
     }
 }

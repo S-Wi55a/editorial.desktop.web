@@ -559,6 +559,7 @@
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\NativeAdHelper.cs" />
     <Compile Include="Features\MediaMotiveAds\Models\NativeAdResponse.cs" />
+    <Compile Include="Features\MediaMotiveAds\Models\MediaMotiveModel.cs" />
     <Compile Include="Features\MediaMotiveAds\NativeAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\Services\NativeAdService.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\LandingTagBuilder.cs" />

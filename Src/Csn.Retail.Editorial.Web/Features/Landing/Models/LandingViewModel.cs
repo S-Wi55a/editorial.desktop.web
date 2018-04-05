@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -19,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public Dictionary<string, string> InsightsData { get; set; }
         public string HeroTitle { get; set; }
         public SeoData SeoData { get; set; }
-        public string Make { get; set; }
+        public MediaMotiveModel MediaMotiveModel { get; set; }
     }
 
     public class CarouselViewModel

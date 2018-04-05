@@ -19,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query)
         {
             var mediaMotiveTag = new List<MediaMotiveTag> { 
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, MediaMotiveAreaNames.EditorialHomePage)
+                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, !string.IsNullOrEmpty(query.Make) ? MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage)
             };
 
             if (query.Make == null) return mediaMotiveTag;
