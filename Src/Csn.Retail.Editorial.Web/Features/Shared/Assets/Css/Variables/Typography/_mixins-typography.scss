@@ -41,13 +41,12 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body); //31.25px
 // H3
 @mixin h3() {
     font-size: emtopx(typeScale(1.2,2), $font-size-body); //23.04px
-    font-weight: $font-weight-400;
+    font-weight: $font-weight-600;
     letter-spacing: 0;
     line-height: 1.3;
 
     @include breakpoint($screen-lg) {
         font-size: emtopx(typeScale(1.25,2), $font-size-body); //25px
-        font-weight: $font-weight-300;
         letter-spacing: 0;
         line-height: 1.3;
     }
@@ -56,13 +55,12 @@ $font-size-quote: emtopx(typeScale(1.25,3), $font-size-body); //31.25px
 // H4, H5, H6
 @mixin h4() {
     font-size: emtopx(typeScale(1.2,1), $font-size-body); //19.2px
-    font-weight: $font-weight-400;
+    font-weight: $font-weight-600;
     letter-spacing: .005em;
     line-height: 1.3;
 
     @include breakpoint($screen-lg) {
         font-size: emtopx(typeScale(1.25,1), $font-size-body); //20px
-        font-weight: $font-weight-400;
         letter-spacing: .005em;
         line-height: 1.3;
     }
