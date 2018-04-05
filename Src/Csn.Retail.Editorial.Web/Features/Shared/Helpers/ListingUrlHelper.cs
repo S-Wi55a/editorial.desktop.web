@@ -13,15 +13,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
     {
         private static string ListingsBasePath(string seoFragment = "")
         {
-                // slap on the wrist! We are using service locator because of difficulty getting dependency injection on automapper resolvers
-                // to work without massive code refactor
-                var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
+            // slap on the wrist! We are using service locator because of difficulty getting dependency injection on automapper resolvers
+            // to work without massive code refactor
+            var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
 
             if (!string.IsNullOrEmpty(seoFragment) && MakeConfigProvider.GetConfiguredMakes(tenantProvider.Current().Name).Any(a => seoFragment.Trim('/') == a))
-            {
                 return $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}";
-            }
-                return $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}/results";
+
+            return $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}/results";
             
         }
 
