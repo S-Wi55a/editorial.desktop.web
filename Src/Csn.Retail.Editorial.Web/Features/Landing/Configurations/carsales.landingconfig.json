@@ -108,7 +108,7 @@
       "heroAdSettings": {
         "hasHeroAd": true,
         "heroTitle": "BMW Reviews, advice, news & more",
-        "heroMake": "BMW" 
+        "heroMake": "bmw"
       },
       "carouselConfigurations": [
         {
@@ -178,7 +178,7 @@
       "heroAdSettings": {
         "hasHeroAd": true,
         "heroTitle": "Nissan Reviews, advice, news & more",
-        "heroMake": "Nissan"
+        "heroMake": "nissan"
       },
       "carouselConfigurations": [
         {
@@ -224,7 +224,7 @@
       "heroAdSettings": {
         "hasHeroAd": true,
         "heroTitle": "Toyota Reviews, advice, news & more",
-        "heroMake": "Toyota"
+        "heroMake": "toyota"
       },
       "carouselConfigurations": [
         {
