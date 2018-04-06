@@ -118,7 +118,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                 campaignTag = $"?Tenant={_tenantProvider.Current().Name}";
 
                 if (query.Configuration != null && !query.Configuration.HeroAdSettings.HeroMake.IsNullOrEmpty())
-                    campaignTag += $"&PromotionType=EditorialMakePage&Make={query.Configuration.HeroAdSettings.HeroMake.ToUpper()}";
+                    campaignTag += $"&PromotionType=EditorialMakePage&Make={query.Configuration.HeroAdSettings.HeroMake}";
                 else
                     campaignTag += "&PromotionType=EditorialHomePage"; 
             }

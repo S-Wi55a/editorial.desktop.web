@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
 {
@@ -6,7 +7,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
     {
         private static Dictionary<string, List<string>> _configuredMakes;
 
-        public static IList<string> GetConfiguredMakes(string tenantName) => _configuredMakes[tenantName];
+        public static IList<string> GetConfiguredMakes(string tenantName) => _configuredMakes != null? _configuredMakes[tenantName] : new List<string>();
 
         public static void SetConfiguredMakes(string tenantName, List<string> configuredMakes)
         {

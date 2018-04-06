@@ -4,6 +4,7 @@ using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
@@ -126,7 +127,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
                     InsightsData = _listingInsightsDataMapper.Map(searchContext),
                     SeoData = _seoDataMapper.Map(resultData),
-                    EditorialPageType = query.EditorialPageType
+                    EditorialPageType = query.EditorialPageType,
+                    MediaMotiveModel = new MediaMotiveModel()
                 }
             };
         }

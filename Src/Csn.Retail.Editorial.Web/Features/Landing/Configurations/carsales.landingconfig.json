@@ -108,15 +108,15 @@
       "heroAdSettings": {
         "hasHeroAd": true,
         "heroTitle": "BMW Reviews, advice, news & more",
-        "heroMake": "bmw" 
+        "heroMake": "BMW" 
       },
       "carouselConfigurations": [
         {
-          "title": "Reviews",
+          "title": "Latest",
           "displayMrec": true,
-          "query": "(And.Type.Review._.Service.CarSales._.Make.bmw._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Make.bmw._.Sentiment.Positive.)",
           "sort": "Latest",
-          "viewAll": "/results/bmw/review-article-type/",
+          "viewAll": "/results/bmw",
           "carouselType": "article",
           "polarAds": {
             "display": true,
@@ -124,19 +124,19 @@
           }
         },
         {
-          "title": "News",
+          "title": "5 Series",
           "displayMrec": false,
-          "query": "(And.Type.News._.Service.CarSales._.Make.bmw._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.5 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/news-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.5 Series.))",
           "carouselType": "article"
         },
         {
-          "title": "Videos",
+          "title": "4 Series",
           "displayMrec": false,
-          "query": "(And.Type.Video._.Service.CarSales._.Make.bmw._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.4 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/video-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.4 Series.))",
           "carouselType": "article",
           "polarAds": {
             "display": true,
@@ -144,19 +144,19 @@
           }
         },
         {
-          "title": "Advice",
+          "title": "3 Series",
           "displayMrec": false,
-          "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales._.Make.bmw._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.3 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/advice-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.3 Series.))",
           "carouselType": "article"
         },
         {
-          "title": "Comparisons",
+          "title": "2 Series",
           "displayMrec": false,
-          "query": "(And.ArticleTypes.Comparison._.Service.CarSales._.Make.bmw._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.2 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/?q=ArticleTypes.Comparison.",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.2 Series.))",
           "carouselType": "article",
           "polarAds": {
             "display": true,
@@ -164,11 +164,11 @@
           }
         },
         {
-          "title": "Features",
+          "title": "1 Series",
           "displayMrec": false,
-          "query": "(And.Type.Feature._.Service.CarSales._.Make.bmw._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.1 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/feature-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.bmw._.MarketingGroup.1 Series.))",
           "carouselType": "article"
         }
       ]
@@ -178,15 +178,15 @@
       "heroAdSettings": {
         "hasHeroAd": true,
         "heroTitle": "Nissan Reviews, advice, news & more",
-        "heroMake": "nissan"
+        "heroMake": "Nissan"
       },
       "carouselConfigurations": [
         {
-          "title": "Reviews",
+          "title": "Latest",
           "displayMrec": true,
-          "query": "(And.Type.Review._.Service.CarSales._.Make.nissan._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Make.nissan._.Sentiment.Positive.)",
           "sort": "Latest",
-          "viewAll": "/results/nissan/review-article-type/",
+          "viewAll": "/results/nissan",
           "carouselType": "article",
           "polarAds": {
             "display": true,
@@ -194,51 +194,27 @@
           }
         },
         {
-          "title": "News",
+          "title": "Qashqai",
           "displayMrec": false,
-          "query": "(And.Type.News._.Service.CarSales._.Make.nissan._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Nissan._.Model.Qashqai.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/news-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Nissan._.Model.Qashqai.))",
           "carouselType": "article"
         },
         {
-          "title": "Videos",
+          "title": "Pulsar",
           "displayMrec": false,
-          "query": "(And.Type.Video._.Service.CarSales._.Make.nissan._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Nissan._.Model.Pulsar.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/video-article-type/",
-          "carouselType": "article",
-          "polarAds": {
-            "display": true,
-            "placementId": 32
-          }
-        },
-        {
-          "title": "Advice",
-          "displayMrec": false,
-          "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales._.Make.nissan._.Sentiment.Positive.)",
-          "sort": "Latest",
-          "viewAll": "/results/nissan/advice-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Nissan._.Model.Pulsar.))",
           "carouselType": "article"
         },
         {
-          "title": "Comparisons",
+          "title": "Pathfinder",
           "displayMrec": false,
-          "query": "(And.ArticleTypes.Comparison._.Service.CarSales._.Make.nissan._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Nissan._.Model.Pathfinder.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/?q=ArticleTypes.Comparison.",
-          "carouselType": "article",
-          "polarAds": {
-            "display": true,
-            "placementId": 33
-          }
-        },
-        {
-          "title": "Features",
-          "displayMrec": false,
-          "query": "(And.Type.Feature._.Service.CarSales._.Make.nissan._.Sentiment.Positive.)",
-          "sort": "Latest",
-          "viewAll": "/results/nissan/feature-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Nissan._.Model.Pathfinder.))",
           "carouselType": "article"
         }
       ]
@@ -248,15 +224,15 @@
       "heroAdSettings": {
         "hasHeroAd": true,
         "heroTitle": "Toyota Reviews, advice, news & more",
-        "heroMake": "toyota"
+        "heroMake": "Toyota"
       },
       "carouselConfigurations": [
         {
-          "title": "Reviews",
+          "title": "Latest",
           "displayMrec": true,
-          "query": "(And.Type.Review._.Service.CarSales._.Make.toyota._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Make.Toyota._.Sentiment.Positive.)",
           "sort": "Latest",
-          "viewAll": "/results/toyota/review-article-type/",
+          "viewAll": "/results/toyota",
           "carouselType": "article",
           "polarAds": {
             "display": true,
@@ -264,51 +240,27 @@
           }
         },
         {
-          "title": "News",
+          "title": "86",
           "displayMrec": false,
-          "query": "(And.Type.News._.Service.CarSales._.Make.toyota._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Toyota._.Model.86.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/news-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Toyota._.Model.86.))",
           "carouselType": "article"
         },
         {
-          "title": "Videos",
+          "title": "Corolla",
           "displayMrec": false,
-          "query": "(And.Type.Video._.Service.CarSales._.Make.toyota._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Toyota._.Model.Corolla.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/video-article-type/",
-          "carouselType": "article",
-          "polarAds": {
-            "display": true,
-            "placementId": 32
-          }
-        },
-        {
-          "title": "Advice",
-          "displayMrec": false,
-          "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales._.Make.toyota._.Sentiment.Positive.)",
-          "sort": "Latest",
-          "viewAll": "/results/toyota/advice-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Toyota._.Model.Corolla.))",
           "carouselType": "article"
         },
         {
-          "title": "Comparisons",
+          "title": "Kluger",
           "displayMrec": false,
-          "query": "(And.ArticleTypes.Comparison._.Service.CarSales._.Make.toyota._.Sentiment.Positive.)",
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Toyota._.Model.Kluger.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/?q=ArticleTypes.Comparison.",
-          "carouselType": "article",
-          "polarAds": {
-            "display": true,
-            "placementId": 33
-          }
-        },
-        {
-          "title": "Features",
-          "displayMrec": false,
-          "query": "(And.Type.Feature._.Service.CarSales._.Make.toyota._.Sentiment.Positive.)",
-          "sort": "Latest",
-          "viewAll": "/results/toyota/feature-article-type/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Toyota._.Model.Kluger.))",
           "carouselType": "article"
         }
       ]
