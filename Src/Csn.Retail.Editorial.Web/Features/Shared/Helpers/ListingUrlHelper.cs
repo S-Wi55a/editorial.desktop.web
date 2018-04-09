@@ -11,13 +11,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
     public static class ListingUrlHelper
     {
-        private static string ListingsBasePath(string seoFragment = "")
+        private static string ListingsBasePath(string seoFragment = "", string query = "")
         {
             // slap on the wrist! We are using service locator because of difficulty getting dependency injection on automapper resolvers
             // to work without massive code refactor
             var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
 
-            if (!string.IsNullOrEmpty(seoFragment) && MakeConfigProvider.GetConfiguredMakes(tenantProvider.Current().Name).Any(a => seoFragment.Trim('/') == a))
+            if (string.IsNullOrEmpty(query) && !string.IsNullOrEmpty(seoFragment) && MakeConfigProvider.GetConfiguredMakes(tenantProvider.Current().Name).Any(a => seoFragment.Trim('/') == a))
                 return $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}";
 
             return $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}/results";
@@ -35,15 +35,27 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
         public static string GetQueryString(string action, string sort)
         {
             var queryParams = GetQueryStringParameters(action, 0, sort, string.Empty);
-            return string.IsNullOrEmpty(queryParams) ? string.Empty : "?" + queryParams;
+            return string.IsNullOrEmpty(queryParams) ? "/" : "?" + queryParams;
         }
 
         public static string GetSeoUrl(string seofragment, long offset = 0, string sortOrder = null)
         {
             var query = GetQueryStringParameters("", offset, sortOrder, "");
-            var pathAndQuery = string.IsNullOrEmpty(query) ? seofragment : $"{seofragment}?{query}";
 
-            return $"{ListingsBasePath(seofragment)}{pathAndQuery}";
+            var pathAndQuery = string.IsNullOrEmpty(seofragment) 
+                ? (string.IsNullOrEmpty(query) ? "" : "?" + query)
+                : $"{seofragment}{(string.IsNullOrEmpty(query) ? "" : "?" + query)}";
+            return $"{ListingsBasePath(seofragment, query)}{pathAndQuery}";
+        }
+
+        public static string GetPageAndSortPathAndQuery(string q = null, long offset = 0, string sortOrder = null, string keyword = null, string seoFragment = "")
+        {
+            var queryParams = GetQueryStringParameters(string.IsNullOrEmpty(seoFragment) ? q : null , offset, sortOrder, keyword);
+            var queryString = string.IsNullOrEmpty(seoFragment)
+                ? (string.IsNullOrEmpty(queryParams) ? "" : "?" + queryParams)
+                : $"{seoFragment.Trim('/')}{(string.IsNullOrEmpty(queryParams) ? "" : "?" + queryParams)}";
+
+            return $"{ListingsBasePath(seoFragment, queryParams)}/{queryString}";
         }
 
         public static string GetQueryParam(string q, long offset, string sortOrder)
