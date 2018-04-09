@@ -561,7 +561,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.1 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/1-series/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.1 Series.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -572,7 +572,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.2 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/2-series/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.2 Series.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -583,7 +583,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.3 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/3-series/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.3 Series.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -594,7 +594,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.4 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/4-series/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.4 Series.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -605,7 +605,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.5 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/5-series/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.5 Series.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -616,7 +616,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.7 Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/7-series/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.7 Series.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -627,7 +627,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.i Series.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/i-series/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.i Series.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -638,7 +638,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.M Models.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/m-models/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.M Models.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -649,7 +649,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.X Models.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/x-models/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.X Models.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -660,7 +660,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.BMW._.MarketingGroup.Z Models.))",
           "sort": "Latest",
-          "viewAll": "/results/bmw/z-models/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.BMW._.MarketingGroup.Z Models.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1920,7 +1920,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lexus._.MarketingGroup.GS.))",
           "sort": "Latest",
-          "viewAll": "/results/lexus/gs/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.MarketingGroup.GS.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1931,7 +1931,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lexus._.MarketingGroup.IS.))",
           "sort": "Latest",
-          "viewAll": "/results/lexus/is/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.MarketingGroup.IS.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1942,7 +1942,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lexus._.MarketingGroup.LC.))",
           "sort": "Latest",
-          "viewAll": "/results/lexus/lc/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.MarketingGroup.LC.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1953,7 +1953,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lexus._.MarketingGroup.LS.))",
           "sort": "Latest",
-          "viewAll": "/results/lexus/ls/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.MarketingGroup.LS.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1964,7 +1964,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lexus._.MarketingGroup.LX.))",
           "sort": "Latest",
-          "viewAll": "/results/lexus/lx/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.MarketingGroup.LX.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1975,7 +1975,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lexus._.MarketingGroup.RX.))",
           "sort": "Latest",
-          "viewAll": "/results/lexus/rx/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.MarketingGroup.RX.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2278,7 +2278,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.A Class.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/a-class/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.A Class.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2289,7 +2289,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.AMG GT.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/amg-gt/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.AMG GT.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2300,7 +2300,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.C Class.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/c-class/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.C Class.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2311,7 +2311,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.CLS Class.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/cls-class/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.CLS Class.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2322,7 +2322,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.E Class.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/e-class/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.E Class.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2333,7 +2333,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.G Class.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/g-class/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.G Class.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2344,7 +2344,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.GLC Class.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/glc-class/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.GLC Class.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2355,7 +2355,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.Maybach.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/maybach/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.Maybach.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2366,7 +2366,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.S Class.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/s-class/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.S Class.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2377,7 +2377,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.SL Class.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/sl-class/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.SL Class.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2388,7 +2388,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mercedes-Benz._.MarketingGroup.Vans.))",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/vans/",
+          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Mercedes-Benz._.MarketingGroup.Vans.))",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
