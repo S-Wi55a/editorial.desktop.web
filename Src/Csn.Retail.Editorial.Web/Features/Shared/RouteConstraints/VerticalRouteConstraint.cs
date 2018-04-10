@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
             if (!values.TryGetValue(parameterName, out var parameterValue)) return false;
             var vertical = parameterValue.ToString();
 
-            return vertical.Length > 1 && Enum.IsDefined(typeof(Vertical) , vertical);
+            return vertical.Length > 1 && Enum.TryParse(vertical, true, out Vertical _);
         }
     }
 }

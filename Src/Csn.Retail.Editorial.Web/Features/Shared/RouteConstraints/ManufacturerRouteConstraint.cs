@@ -20,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
             {
                 var articleType = parameterValue.ToString();
                 var type = _articleTypeLookup.LoadConfig(articleType);
-                return type.Result != null;
+                return !string.IsNullOrEmpty(type.Result?.Type);
             }
 
             return false;
