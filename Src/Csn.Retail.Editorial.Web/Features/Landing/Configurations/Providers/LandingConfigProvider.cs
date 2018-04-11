@@ -37,8 +37,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
             _cacheStore = cacheStore;
         }
 
-        public async Task<LandingConfigurationSet> LoadConfig(string configSet) 
+        public async Task<LandingConfigurationSet> LoadConfig(string configSet)
         {
+            if (_tenantProvider.Current().TenantName == "redbook") return null;
+
+
             var cacheKey = _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name);
 
             var cachedConfig = await _cacheStore.GetAsync<LandingConfig>(cacheKey);
