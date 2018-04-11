@@ -35,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
         public static string GetQueryString(string action, string sort)
         {
             var queryParams = GetQueryStringParameters(action, 0, sort, string.Empty);
-            return string.IsNullOrEmpty(queryParams) ? "/" : "?" + queryParams;
+            return string.IsNullOrEmpty(queryParams) ? string.Empty : "?" + queryParams;
         }
 
         public static string GetSeoUrl(string seofragment, long offset = 0, string sortOrder = null)
