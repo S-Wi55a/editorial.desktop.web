@@ -31,6 +31,7 @@ namespace Csn.Retail.Editorial.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             var constraintResolver = new DefaultInlineConstraintResolver();
+            constraintResolver.ConstraintMap.Add("manufacturer", typeof(ManufacturerRouteConstraint));
             constraintResolver.ConstraintMap.Add("article-types", typeof(ArticleTypeRouteConstraint));
             constraintResolver.ConstraintMap.Add("vertical", typeof(VerticalRouteConstraint));
 

@@ -37,8 +37,10 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
             _cacheStore = cacheStore;
         }
 
-        public async Task<LandingConfigurationSet> LoadConfig(string configSet) 
+        public async Task<LandingConfigurationSet> LoadConfig(string configSet)
         {
+            if (!_tenantProvider.Current().HasLandingPageConfiguration) return null;
+
             var cacheKey = _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name);
 
             var cachedConfig = await _cacheStore.GetAsync<LandingConfig>(cacheKey);
@@ -56,6 +58,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
 
             var content = File.ReadAllText(fullpath);
             var landingConfig = _serializer.Deserialize<LandingConfig>(content);
+
+            MakeConfigProvider.SetConfiguredMakes(_tenantProvider.Current().Name, landingConfig.Configs.Where(a =>a.Type != "default" && a.CarouselConfigurations != null && a.CarouselConfigurations.Any()).Select(a => a.Type).ToList());
 
             await _cacheStore.SetAsync(cacheKey, landingConfig, new CacheExpiredIn(_localCacheDuration, _distributedCacheDuration));
 

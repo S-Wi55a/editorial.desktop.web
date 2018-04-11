@@ -48,7 +48,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             });
 
             //Act
-            var result = testSubject.GetPaginationData(314, 20, 120, "Sort", "test_query", "keyword");
+            var result = testSubject.GetPaginationData(314, 20, 120, "Sort", string.Empty, "/bmw/", "keyword");
 
 
             //Assert
@@ -60,13 +60,13 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             //Assert previous page is valid
             Assert.IsNotNull(result.Previous);            
             Assert.AreEqual(result.Previous.PageNo, 6);
-            Assert.AreEqual(result.Previous.Url.Contains("test_query"), true);
+            Assert.AreEqual(result.Previous.Url.Contains("bmw"), true);
             Assert.AreEqual(result.Previous.Url.Contains("keyword"), true);
 
             //Assert last page is valid
             Assert.IsNotNull(result.Next);
             Assert.AreEqual(result.Next.PageNo, 8);
-            Assert.AreEqual(result.Next.Url.Contains("test_query"), true);
+            Assert.AreEqual(result.Next.Url.Contains("bmw"), true);
             Assert.AreEqual(result.Next.Url.Contains("keyword"), true);
 
             //Total Page count is valid
@@ -86,7 +86,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             });
 
             //Act
-            var result = testSubject.GetPaginationData(0, 20, 0, "Sort", "test_query", "keyword");
+            var result = testSubject.GetPaginationData(0, 20, 0, "Sort", "test_query", "bmw", "keyword");
 
             //Assert
             Assert.IsNotNull(result);

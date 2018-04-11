@@ -4,6 +4,7 @@ using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
@@ -118,15 +119,16 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 ListingsViewModel = new ListingsViewModel
                 {
                     NavResults = navResults,
-                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Keywords),
-                    Sorting = _sortingHelper.GenerateSortByViewModel(string.IsNullOrEmpty(sortOrder) ? EditorialSortKeyValues.ListingPageDefaultSort : sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Keywords),
+                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, query.Query, resultData.Metadata?.Seo, query.Keywords),
+                    Sorting = _sortingHelper.GenerateSortByViewModel(string.IsNullOrEmpty(sortOrder) ? EditorialSortKeyValues.ListingPageDefaultSort : sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Keywords, query.SeoFragment),
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(resultData.Metadata?.Query).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs, MediaMotiveAreaNames.EditorialResultsPage),
                     ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
                     InsightsData = _listingInsightsDataMapper.Map(searchContext),
                     SeoData = _seoDataMapper.Map(resultData),
-                    EditorialPageType = query.EditorialPageType
+                    EditorialPageType = query.EditorialPageType,
+                    MediaMotiveModel = new MediaMotiveModel()
                 }
             };
         }

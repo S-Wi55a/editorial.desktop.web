@@ -55,6 +55,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string TenantName { get; set; }
         public string RyvusServiceProjection { get; set; }
         public string Vertical { get; set; }
+        public bool HasLandingPageConfiguration { get; set; }
         #endregion
     }
 }

@@ -10,6 +10,7 @@
         public Data Data { get; set; }
 
         public CampaignImpressionTracking Tracking { get; set; }
+        public string Make { get; set; }
     }
 
     public class Data

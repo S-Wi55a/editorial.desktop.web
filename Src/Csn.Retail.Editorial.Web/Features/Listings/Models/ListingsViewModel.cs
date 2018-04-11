@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
@@ -16,5 +17,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
         public Dictionary<string, string> InsightsData { get; set; }
         public SeoData SeoData { get; set; }
         public EditorialPageTypes EditorialPageType { get; set; }
+        public MediaMotiveModel MediaMotiveModel { get; set; }
     }
 }
