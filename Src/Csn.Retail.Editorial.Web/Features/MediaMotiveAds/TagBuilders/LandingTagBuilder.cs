@@ -32,7 +32,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 
         public bool IsApplicable(MediaMotiveAdQuery query)
         {
-            var path = "/editorial/" + (query.Make != null ? query.Make.MakeUrlFriendly() + "/" : "");
+            var path = "/editorial/" + (query.Make != null ? query.Make.MakeUrlFriendly().ToLower() + "/" : "");
 
             return _requestContextWrapper.Url.AbsolutePath.IsSame(path);
         }
