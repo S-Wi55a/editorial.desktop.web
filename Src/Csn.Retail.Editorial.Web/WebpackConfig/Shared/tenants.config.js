@@ -7,7 +7,6 @@ export const listofTenants = [
     'constructionsales',
     'bikesales',
     'boatsales',
-    'boatpoint',
     'trucksales',
     'caravancampingsales',
     'farmmachinerysales',
