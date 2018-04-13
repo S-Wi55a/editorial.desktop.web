@@ -831,7 +831,6 @@
     <Content Include="Features\Shared\Assets\csn.common.js" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
     <Content Include="Features\Shared\Assets\Images\Bikesales\logo-bikesales.svg" />
-    <Content Include="Features\Shared\Assets\Images\Boatpoint\logo-boatpoint.svg" />
     <Content Include="Features\Shared\Assets\Images\Boatsales\logo-boatsales.svg" />
     <Content Include="Features\Shared\Assets\Images\Caravancampingsales\logo-caravancampingsales.svg" />
     <Content Include="Features\Shared\Assets\Images\Carpoint\logo-carpoint.svg" />
@@ -1021,8 +1020,6 @@
     <Content Include="Features\Shared\Assets\Css\Tenants\Carpoint\Settings\_settings--carpoint.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Boatsales\boatsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Boatsales\Settings\_settings--boatsales.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tenants\Boatpoint\boatpoint.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tenants\Boatpoint\Settings\_settings--boatpoint.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Trucksales\trucksales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Trucksales\Settings\_settings--trucksales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Caravancampingsales\caravancampingsales.scss" />
@@ -1083,7 +1080,6 @@
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <Content Include="Features\Details\Views\Boatsales\_Disclaimer.cshtml" />
-    <Content Include="Features\Details\Views\Boatpoint\_Disclaimer.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\_SponsoredLink.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_sponsored-text-links.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mrec.scss" />
@@ -1124,11 +1120,9 @@
     <Content Include="Features\Listings\Views\Redbook-bikes\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Views\Partials\_Carousel--Driver.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSearchResults\Css\iNavSearchResults.scss" />
-    <Content Include="Features\Landing\Configurations\boatpoint.landingConfig.json" />
     <Content Include="Features\Listings\Views\Boatsales\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Caravancampingsales\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Trucksales\_Disclaimer.cshtml" />
-    <Content Include="Features\Listings\Views\Boatpoint\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Partials\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Redbook-cars\_Disclaimer.cshtml" />
     <Content Include="Features\Listings\Views\Redbook-boats\_Disclaimer.cshtml" />
