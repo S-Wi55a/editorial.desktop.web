@@ -8,6 +8,7 @@
         Sponsored,
         Advice,
         Features,
-        Reviews
+        Reviews,
+        Carpool
     }
 }

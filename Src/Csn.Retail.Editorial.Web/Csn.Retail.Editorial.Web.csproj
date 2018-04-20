@@ -542,6 +542,8 @@
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\Loggers\LegacyDetailsRedirectLogger.cs" />
+    <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
+    <Compile Include="Features\Details\Mappings\ArticleTypeLabelMapper.cs" />
     <Compile Include="Features\Landing\CacheStores\GetLandingQueryCacheStore.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
@@ -1044,7 +1046,6 @@
     <Content Include="Features\Details\Views\Partials\SearchBar\_searchBar.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Redux\_ReduxStore.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\SponsoredArticles\_sponsoredArticles.scss" />
-    <Content Include="Features\Details\Views\Partials\Content\_SponsoredArticleTab.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Miscellaneous\_miscellaneous.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavBreadCrumbs\Css\iNavBreadCrumbs.scss" />
     <Content Include="Features\Listings\Views\ListingTemplate.cshtml" />
