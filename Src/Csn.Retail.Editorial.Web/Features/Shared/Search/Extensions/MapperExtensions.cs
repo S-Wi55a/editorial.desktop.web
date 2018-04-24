@@ -49,9 +49,21 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
             return new Refinement();
         }
 
-        public static string GetSponsoredLabel(this SearchResultDto source)
+        public static string GetLabel(this SearchResultDto source)
         {
-            return source.ArticleTypes?.FirstOrDefault(x => x.Equals(ArticleType.Sponsored.ToString()));
+            if (source.ArticleTypes == null) return null;
+
+            if (source.ArticleTypes.Any(x => x.Equals(ArticleType.Sponsored.ToString())))
+            {
+                return ArticleType.Sponsored.ToString();
+            }
+
+            if (source.ArticleTypes.Any(x => x.Equals(ArticleType.Carpool.ToString())))
+            {
+                return ArticleType.Carpool.ToString();
+            }
+
+            return null;
         }
 
         public static string GetDisqusArticleId(this SearchResultDto source)

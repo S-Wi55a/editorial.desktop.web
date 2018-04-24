@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Summary { get; set; }
         public string Slug { get; set; } // strictly this is not used in the view
         public string ArticleType { get; set; }
-        public bool IsSponsoredArticle { get; set; }
+        public ArticleTypeLabel ArticleTypeLabel { get; set; }
         public string SubType { get; set; }
         public string ReviewLocation { get; set; }
         public string MakeModelHeading { get; set; }
@@ -126,5 +126,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Identifier { get; set; }
         public string ArticleUrl { get; set; }
         public string Title { get; set; }
+    }
+
+    public class ArticleTypeLabel
+    {
+        public string ArticleTypeText { get; set; }
+        public string InfoHtml { get; set; }
     }
 }

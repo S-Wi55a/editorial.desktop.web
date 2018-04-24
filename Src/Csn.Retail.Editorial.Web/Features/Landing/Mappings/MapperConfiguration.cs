@@ -19,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Mappings
                 .ForMember(dest => dest.Label, opt => opt.Ignore())
                 .ForMember(dest => dest.SubHeading, opt => opt.Ignore())
                 .ForMember(dest => dest.Headline, opt => opt.Ignore())
-                .ForMember(dest => dest.Type, opt => opt.Ignore()); ;
+                .ForMember(dest => dest.Type, opt => opt.Ignore());
         }
     }
 }
