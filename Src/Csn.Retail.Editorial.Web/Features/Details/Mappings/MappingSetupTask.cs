@@ -15,16 +15,19 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
         private readonly ISeoDataMapper _seoDataMapper;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsMapper;
         private readonly IUseDropCaseMapper _useDropCaseMapper;
+        private readonly IArticleTypeLabelMapper _articleTypeLabelMapper;
 
         public MappingSetupTask(IHeroSectionMapper heroSectionMapper,
                                 ISeoDataMapper seoDataMapper,
                                 IPolarNativeAdsDataMapper polarNativeAdsMapper,
-                                IUseDropCaseMapper useDropCaseMapper)
+                                IUseDropCaseMapper useDropCaseMapper,
+                                IArticleTypeLabelMapper articleTypeLabelMapper)
         {
             _heroSectionMapper = heroSectionMapper;
             _seoDataMapper = seoDataMapper;
             _polarNativeAdsMapper = polarNativeAdsMapper;
             _useDropCaseMapper = useDropCaseMapper;
+            _articleTypeLabelMapper = articleTypeLabelMapper;
         }
         public void Run(IMapperConfigurationExpression cfg)
         {
@@ -34,6 +37,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 .ForMember(dest => dest.SeoData, opt => opt.MapFrom(src => _seoDataMapper.Map(src.SeoData)))
                 .ForMember(dest => dest.PolarNativeAdsData, opt => opt.MapFrom(src => _polarNativeAdsMapper.Map(src)))
                 .ForMember(dest => dest.MoreArticleData, opt => opt.MapFrom(src => src.MoreArticleData))
+                .ForMember(dest => dest.ArticleTypeLabel, opt => opt.MapFrom(src => _articleTypeLabelMapper.Map(src)))
                 .ForMember(dest => dest.ContentSections, opt => opt.MapFrom(src => src.ContentSections.Select(c => new ContentSectionViewModel(c, src.NetworkId))));
 
             // Social Meta Data
