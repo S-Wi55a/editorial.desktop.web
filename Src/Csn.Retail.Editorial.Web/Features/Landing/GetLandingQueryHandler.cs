@@ -7,6 +7,7 @@ using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
 using Csn.Retail.Editorial.Web.Features.Landing.Mappings;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
 using Csn.Retail.Editorial.Web.Features.Landing.Services;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Mappers;
@@ -15,6 +16,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Csn.SimpleCqrs;
 using Ingress.ServiceClient.Abstracts;
@@ -51,7 +53,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         [Transaction]
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
-            var configResults = await _landingConfigProvider.LoadConfig("default"); //Need to setup types of filter on landing page e.g. Based on Make/Model/Year etc
+            var configResults = query.Configuration ?? await _landingConfigProvider.LoadConfig("default");
 
             var ryvussResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
             var searchResults = GetCarousels(configResults);
@@ -77,10 +79,16 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     Title = _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
-                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs, MediaMotiveAreaNames.EditorialHomePage),
+                    PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs,
+                            !string.IsNullOrEmpty(configResults.HeroAdSettings?.HeroMake) ?
+                                MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
-                    HeroTitle = configResults.HeroAdSettings.HeroTitle
+                    HeroTitle = configResults.HeroAdSettings.HeroTitle,
+                    MediaMotiveModel = new MediaMotiveModel
+                    {
+                        Make = !string.IsNullOrEmpty(configResults.HeroAdSettings?.HeroMake) ? configResults.HeroAdSettings.HeroMake : string.Empty
+                    }
                 },
                 CacheViewModel = !(searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };
@@ -99,10 +107,35 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         [Trace]
         private async Task<CampaignAdResult> GetAdUnit(GetLandingQuery query)
         {
-            return await _restClient.Service("api-showroom-promotions")
-                .Path(query.PromotionId.HasValue ? $"/v1/promotions/campaign/{query.PromotionId.Value}" : $"/v1/promotions/campaign?PromotionType=EditorialHomePage&Vertical={_tenantProvider.Current().Name}")
+            string campaignTag;
+
+            if (query.PromotionId != null)
+            {
+                campaignTag = $"{query.PromotionId.Value}";
+            }
+            else
+            {
+                campaignTag = $"?Tenant={_tenantProvider.Current().Name}";
+
+                if (query.Configuration != null && !query.Configuration.HeroAdSettings.HeroMake.IsNullOrEmpty())
+                    campaignTag += $"&PromotionType=EditorialMakePage&Make={query.Configuration.HeroAdSettings.HeroMake}";
+                else
+                    campaignTag += "&PromotionType=EditorialHomePage"; 
+            }
+
+            var results = await _restClient.Service("api-showroom-promotions")
+                .Path($"/v1/promotions/campaign/{campaignTag}")
                 .GetAsync<CampaignAdResult>()
                 .ContinueWith(x => x.Result.Data);
+
+            if (results != null)
+            {
+                results.Make = !string.IsNullOrEmpty(query.Configuration?.HeroAdSettings?.HeroMake)
+                    ? query.Configuration.HeroAdSettings.HeroMake
+                    : string.Empty;
+            }
+
+            return results;
         }
     }
 }

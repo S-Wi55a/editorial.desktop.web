@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
@@ -9,16 +11,17 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
     public static class ListingUrlHelper
     {
-        private static string ListingsBasePath
+        private static string ListingsBasePath(string seoFragment = "", string query = "")
         {
-            get
-            {
-                // slap on the wrist! We are using service locator because of difficulty getting dependency injection on automapper resolvers
-                // to work without massive code refactor
-                var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
-                return
-                    $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}/results";
-            }
+            // slap on the wrist! We are using service locator because of difficulty getting dependency injection on automapper resolvers
+            // to work without massive code refactor
+            var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
+
+            if (string.IsNullOrEmpty(query) && !string.IsNullOrEmpty(seoFragment) && MakeConfigProvider.GetConfiguredMakes(tenantProvider.Current().Name).Any(a => seoFragment.Trim('/') == a))
+                return $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}";
+
+            return $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}/results";
+            
         }
 
         public static string GetPathAndQueryString(string q = null, long offset = 0, string sortOrder = null, string keyword = null)
@@ -26,7 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             var queryParams = GetQueryStringParameters(q, offset, sortOrder, keyword);
             var queryString = string.IsNullOrEmpty(queryParams) ? string.Empty : "?" + queryParams;
 
-            return $"{ListingsBasePath}/{queryString}";
+            return $"{ListingsBasePath()}/{queryString}";
         }
 
         public static string GetQueryString(string action, string sort)
@@ -38,9 +41,21 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
         public static string GetSeoUrl(string seofragment, long offset = 0, string sortOrder = null)
         {
             var query = GetQueryStringParameters("", offset, sortOrder, "");
-            var pathAndQuery = string.IsNullOrEmpty(query) ? seofragment : $"{seofragment}?{query}";
 
-            return $"{ListingsBasePath}{pathAndQuery}";
+            var pathAndQuery = string.IsNullOrEmpty(seofragment) 
+                ? (string.IsNullOrEmpty(query) ? "" : "?" + query)
+                : $"{seofragment}{(string.IsNullOrEmpty(query) ? "" : "?" + query)}";
+            return $"{ListingsBasePath(seofragment, query)}{pathAndQuery}";
+        }
+
+        public static string GetPageAndSortPathAndQuery(string q = null, long offset = 0, string sortOrder = null, string keyword = null, string seoFragment = "")
+        {
+            var queryParams = GetQueryStringParameters(string.IsNullOrEmpty(seoFragment) ? q : null , offset, sortOrder, keyword);
+            var queryString = string.IsNullOrEmpty(seoFragment)
+                ? (string.IsNullOrEmpty(queryParams) ? "" : "?" + queryParams)
+                : $"{seoFragment.Trim('/')}{(string.IsNullOrEmpty(queryParams) ? "" : "?" + queryParams)}";
+
+            return $"{ListingsBasePath(seoFragment, queryParams)}/{queryString}";
         }
 
         public static string GetQueryParam(string q, long offset, string sortOrder)

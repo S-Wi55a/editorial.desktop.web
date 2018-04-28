@@ -1,4 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@model Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models.MediaMotiveModel
 
-@{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.Hidden, TileId = 20 }); }
+@{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.Hidden, TileId = 20, Make = Model != null && !Model.Make.IsNullOrEmpty() ? Model.Make : string.Empty }); }
