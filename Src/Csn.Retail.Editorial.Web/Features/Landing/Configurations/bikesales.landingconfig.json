@@ -47,6 +47,34 @@
           }
         },
         {
+          "title": "Driver",
+          "displayMrec": false,
+          "displayNativeAd": true,
+          "query": null,
+          "sort": null,
+          "viewAll": null,
+          "polarAds": null,
+          "carouselType": "driver",
+          "carouselItems": [
+            {
+              "imageUrl": "https://editorial.csnstatic.com/bikesales/drivers/thinkingofsellingbike.png",
+              "itemUrl": "https://help.bikesales.com.au/hc/en-gb/categories/201741106-Help-for-Sellers/"
+            },
+            {
+              "imageUrl": "https://editorial.csnstatic.com/bikesales/drivers/newbikecalendar.png",
+              "itemUrl": "/editorial/details/2017-new-bike-release-calendar-106029/"
+            },
+            {
+              "imageUrl": "https://editorial.csnstatic.com/bikesales/drivers/bikeoftheyear.png",
+              "itemUrl": "/editorial/details/2017-bikesales-bike-of-the-year-awards-in-summary-109912/"
+            },
+            {
+              "imageUrl": "https://editorial.csnstatic.com/bikesales/drivers/newbikeshowroom.png",
+              "itemUrl": "/showroom/"
+            }
+          ]
+        },
+        {
           "title": "Advice",
           "displayMrec": false,
           "query": "(And.Type.Advice._.Service.BikeSales.)",
