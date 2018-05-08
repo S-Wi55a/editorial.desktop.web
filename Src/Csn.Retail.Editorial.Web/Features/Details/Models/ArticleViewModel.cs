@@ -53,6 +53,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
             Content = contentSection.Content;
             BrightcoveVideo = contentSection.BrightcoveVideo;
             Image = contentSection.Image;
+            Id = contentSection.Id;
+            Type = contentSection.Type;
             NetworkId = networkId;
         }
 
@@ -63,6 +65,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public BrightcoveVideo BrightcoveVideo { get; set; }
 
         public Image Image { get; set; }
+
+        public string Id { get; set; }
+
+        public string Type { get; set; }
+
         public string NetworkId { get; set; }
     }
 
