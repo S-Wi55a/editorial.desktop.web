@@ -1,0 +1,8 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ContentSectionViewModel
+
+@if (!string.IsNullOrEmpty(Model.Id))
+{
+    <div class="embed embed-youtube">
+        <iframe src="https://www.youtube.com/embed/@Model.Id?rel=0&hd=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe>
+    </div>
+}
