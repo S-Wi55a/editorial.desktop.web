@@ -1,0 +1,8 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ContentSectionViewModel
+
+@if (!string.IsNullOrEmpty(Model.Content))
+{
+    <div class="embed embed-instagram">
+        @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+    </div>
+}

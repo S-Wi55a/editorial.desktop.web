@@ -209,6 +209,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public BrightcoveVideo BrightcoveVideo { get; set; }
 
         public Image Image { get; set; }
+
+        public string Id { get; set; }
+        public string Type { get; set; }
     }
 
     public enum ContentSectionType
@@ -216,7 +219,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         Html,
         SingleImage,
         BrightcoveVideo,
-        Quote
+        Quote,
+        EmbeddedContent
     }
 
     public class StockListingData

@@ -1,0 +1,8 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ContentSectionViewModel
+
+@if (!string.IsNullOrEmpty(Model.Id))
+{
+    <div class="embed embed-facebook">
+        <div class="fb-post" data-href="@Model.Id" data-width="500"></div>
+    </div>
+}
