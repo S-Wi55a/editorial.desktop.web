@@ -16,12 +16,12 @@
     padding: 20px 30px 0;
 }
 
-.landing-page--hasHeroAdUnit #iNav {
+.landing-page--hasHeroImage #iNav {
     top: 215px;
     position: absolute;
 }
 
-.landing-page--hasHeroAdUnit .page-header {
+.landing-page--hasHeroImage .page-header {
 
     top: 0;
     padding: 0;
@@ -36,7 +36,7 @@
     }
 }
 
-.landing-page--hasHeroAdUnit .page-title {
+.landing-page--hasHeroImage .page-title {
     font-size: 51px;
     font-weight: normal;
     font-style: normal;
@@ -52,4 +52,4 @@
 }
 
 @import "partials/carousel";
-@import "../../../shared/heroadunit/css/partials/hero";
+@import "../../../shared/hero/css/partials/hero";

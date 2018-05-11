@@ -1,0 +1,16 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
+    
+@if (!string.IsNullOrWhiteSpace(Model.HeroImage))
+{
+    <style>
+        .hero-image {
+            background-image: url("@(Model.HeroImage)");
+        }
+    </style>
+}
+
+<div class="hero hero-image">
+    <div class="hero-image__overlay"
+         style="background-color: #000000; position: absolute; width: 100%; height: 100%; background-color: #000; opacity: 0.17;">
+    </div>
+</div>

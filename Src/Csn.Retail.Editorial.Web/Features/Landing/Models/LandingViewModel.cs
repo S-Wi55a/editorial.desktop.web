@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Hero.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 
@@ -16,6 +16,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
         public Dictionary<string, string> InsightsData { get; set; }
         public string HeroTitle { get; set; }
+        public string HeroImage { get; set; }
         public SeoData SeoData { get; set; }
         public MediaMotiveModel MediaMotiveModel { get; set; }
     }

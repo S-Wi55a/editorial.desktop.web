@@ -1,4 +1,4 @@
-﻿namespace Csn.Retail.Editorial.Web.Features.Shared.HeroAdUnit.Models
+﻿namespace Csn.Retail.Editorial.Web.Features.Shared.Hero.Models
 {
     public class CampaignAdResult
     {

@@ -52,5 +52,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public bool HasHeroAd { get; set; }
         public string HeroTitle { get; set; }
         public string HeroMake { get; set; }
+        public string HeroImage { get; set; }
     }
 }
