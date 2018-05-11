@@ -16,6 +16,7 @@
 
 @{
     var tenantName = Html.CurrentTenant().Name.ToLower();
+    var showHero = Model.CampaignAd != null || !string.IsNullOrEmpty(Model.HeroImage);
 }
 
 @section Styles {
@@ -28,20 +29,20 @@
     @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
 }
 
-<div class="landing-page @(Model.CampaignAd != null || !string.IsNullOrEmpty(Model.HeroImage) ? "landing-page--hasHeroImage" : "")">
+<div class="landing-page @(showHero ? "landing-page--hasHeroImage" : "")">
     <h1 class="page-title" style="display: none;">@Model.Title</h1>
 
     @if (Model.CampaignAd != null)
     {
         Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
-        <h2 class="page-title">@Model.HeroTitle</h2>
+        Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroTitle.cshtml", Model);
         Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroAdUnit.cshtml", Model.CampaignAd);
         Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.Block1200X100, TileId = 1, Make = Model.MediaMotiveModel.Make });
     }
     else if (!string.IsNullOrEmpty(Model.HeroImage))
     {
         Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
-        <h2 class="page-title">@Model.HeroTitle</h2>
+        Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroTitle.cshtml", Model);
         Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroImage.cshtml", Model);
         Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.Block1200X100, TileId = 1 });
     }
@@ -50,7 +51,7 @@
         Html.RenderPartial("Partials/_Header");
     }
 
-    @Html.React("global.Components.INav", new { state = Model.Nav }, containerId: "iNav", containerClass: Model.CampaignAd != null || !string.IsNullOrEmpty(Model.HeroImage) ? "iNav--v2" : "iNav--v1")
+    @Html.React("global.Components.INav", new { state = Model.Nav }, containerId: "iNav", containerClass: showHero ? "iNav--v2" : "iNav--v1")
 
     <div class="main container-fluid">
         @for (var i = 0; i < Model.Carousels.Count; i++)
