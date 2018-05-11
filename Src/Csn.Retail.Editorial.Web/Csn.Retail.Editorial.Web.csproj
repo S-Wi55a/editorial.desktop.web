@@ -1131,6 +1131,12 @@
     <Content Include="Features\Details\Views\Redbook-boats\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Redbook-cars\_Disclaimer.cshtml" />
     <Content Include="Features\Shared\Hero\Views\_HeroImage.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\_EmbeddedContent.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\EmbeddedContent\_Facebook.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\EmbeddedContent\_Youtube.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\EmbeddedContent\_Twitter.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\EmbeddedContent\_Instagram.cshtml" />
+    <Content Include="Features\Details\Views\Partials\ContentSections\EmbeddedContent\_Vimeo.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
