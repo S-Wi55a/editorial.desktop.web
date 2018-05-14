@@ -30,11 +30,7 @@
 }
 
 <div class="landing-page @(showHero ? "landing-page--hasHeroImage" : "")">
-    <h1 class="page-title" style="display: none;">@Model.Title</h1>
-    
     @{ Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroSection.cshtml", Model); }
-
-    @Html.React("global.Components.INav", new { state = Model.Nav }, containerId: "iNav", containerClass: showHero ? "iNav--v2" : "iNav--v1")
 
     <div class="main container-fluid">
         @for (var i = 0; i < Model.Carousels.Count; i++)

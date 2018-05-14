@@ -1,7 +1,14 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+@using React.Web.Mvc
 @model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
-    
+
+@{
+ var showHero = Model.CampaignAd != null || !string.IsNullOrEmpty(Model.HeroImage);
+}
+
+<h1 class="page-title" style="display: none;">@Model.Title</h1>
+
 @if (Model.CampaignAd != null)
 {
     Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
@@ -20,3 +27,5 @@ else
 {
     Html.RenderPartial("Partials/_Header");
 }
+
+@Html.React("global.Components.INav", new { state = Model.Nav }, containerId: "iNav", containerClass: showHero ? "iNav--v2" : "iNav--v1")
