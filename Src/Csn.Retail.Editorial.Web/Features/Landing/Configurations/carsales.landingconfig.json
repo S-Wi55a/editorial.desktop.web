@@ -129,6 +129,39 @@
       }
     },
     {
+      "type": "carpool",
+      "carouselConfigurations": [
+        {
+          "title": "Editor's Choice",
+          "displayMrec": true,
+          "displayNativeAd": false,
+          "query": "(And.ArticleSet.Carpool_home._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": null,
+          "polarAds": null,
+          "carouselType": "featured",
+          "carouselItems": null
+        },
+        {
+          "title": "Feature",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.ArticleTypes.Carpool._.Type.Feature.)",
+          "sort": "Latest",
+          "viewAll": "/results/?q=(And.ArticleTypes.Carpool._.Type.Feature.)",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        }
+      ],
+      "heroAdSettings": {
+        "hasHeroAd": false,
+        "heroTitle": "",
+        "heroMake": "",
+        "heroImage": "https://editorial.csnstatic.com/carpool/hero/carpool-header-01.jpg"
+      }
+    },
+    {
       "type": "abarth",
       "carouselConfigurations": [
         {
