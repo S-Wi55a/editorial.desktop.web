@@ -1,5 +1,4 @@
 ﻿using Csn.Logging;
-using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.Loggers
 {
