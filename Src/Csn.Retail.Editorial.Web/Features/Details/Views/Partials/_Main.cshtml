@@ -1,9 +1,22 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+﻿@using Bolt.Common.Extensions
+@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
 
-<div class="article @Model.ArticleType.ToLower()">
-    @{ Html.RenderPartial("Partials/Content/_ArticleTypeAndSocialIcons", Model); }
+@{
+    var articleTypeLabel = Model.ArticleTypeLabel != null && !Model.ArticleTypeLabel.ArticleTypeText.IsSame(Model.ArticleType) ? Model.ArticleTypeLabel.ArticleTypeText.ToLower() : string.Empty;
+}
 
-    @{ Html.RenderPartial("Partials/Content/_ArticleHeader", Model); }
+<div class="article @Model.ArticleType.ToLower() @articleTypeLabel">
+    @if (articleTypeLabel.IsSame("carpool"))
+    {
+        // There should be a better way to do this, we will revisit this for International approach
+        Html.RenderPartial("Carsales/Carpool/_CarpoolHeader", Model);
+    }
+    else
+    {
+        Html.RenderPartial("Partials/Content/_ArticleTypeAndSocialIcons", Model);
+        Html.RenderPartial("Partials/Content/_ArticleHeader", Model);
+    }
+
 
     @{ Html.RenderPartial("Partials/Content/_ArticleSummary", Model); }
 
