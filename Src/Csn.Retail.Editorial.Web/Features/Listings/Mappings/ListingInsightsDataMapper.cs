@@ -38,6 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
                 dimensions.Add(TrackingScriptTags.ContentGroup2, TrackingScriptPageTypes.Listing);
                 dimensions.Add(TrackingScriptTags.Action, searchContext.SearchEventType.ToTrackingScriptPageType());
                 dimensions.Add(TrackingScriptTags.SortBy, string.IsNullOrEmpty(searchContext.Sort) ? EditorialSortKeyValues.ListingPageDefaultSort : searchContext.Sort);
+                dimensions.Add(TrackingScriptTags.ListingResultCount, searchContext.RyvussNavResult.Count.ToString());
             }
 
             return dimensions;
