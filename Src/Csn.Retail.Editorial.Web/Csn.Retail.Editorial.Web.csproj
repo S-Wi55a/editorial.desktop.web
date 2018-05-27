@@ -1139,7 +1139,7 @@
     <Content Include="Features\Details\Views\Partials\ContentSections\EmbeddedContent\_Instagram.cshtml" />
     <Content Include="Features\Details\Views\Partials\ContentSections\EmbeddedContent\_Vimeo.cshtml" />
     <Content Include="Features\Shared\Hero\Views\_HeroSection.cshtml" />
-    <Content Include="Features\Details\Views\Carsales\Carpool\_CarpoolHeader.cshtml" />
+    <Content Include="Features\Details\Views\Partials\Head\_NarrowHeader.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

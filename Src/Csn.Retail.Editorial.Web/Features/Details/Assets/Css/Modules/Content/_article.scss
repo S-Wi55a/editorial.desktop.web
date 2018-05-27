@@ -11,7 +11,7 @@
         left: 50%;
         margin-left: -1*($screen-sm - ($aside-width + $grid-gutter-width))/2;
 
-        &.carpool {
+        &.narrow {
             margin-left: -1*($screen-sm - ($aside-width + $grid-gutter-width))/2.5;
 
             & .container {
@@ -83,7 +83,7 @@
     &__heading {
         @include h1();
 
-        &.carpool {
+        &.narrow {
             font-family: 'Roboto Slab', serif;
             font-weight: bold;
             font-size: 38px;
@@ -96,7 +96,7 @@
         @include h2();
         margin-top: 0.5em;
 
-        &.carpool {
+        &.narrow {
             clear: both;
             margin-top: 3em;
         }
@@ -358,7 +358,7 @@
 
     &__share {
         &--top {
-            &.carpool {
+            &.narrow {
                 float: left;
                 margin-top: 30px;
             }

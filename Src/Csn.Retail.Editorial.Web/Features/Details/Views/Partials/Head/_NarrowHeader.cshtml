@@ -11,12 +11,12 @@
 
 <div class="container" >
     <header>
-        <h1 class="article__heading carpool">@Model.Headline</h1>
+        <h1 class="article__heading narrow">@Model.Headline</h1>
 
-        <div class="article__share article__share--top carpool" data-webm-section="social-sharing-top">
+        <div class="article__share article__share--top narrow" data-webm-section="social-sharing-top">
             @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
         </div>
 
-        <h2 class="article__subheading carpool">@Model.SubHeading</h2>
+        <h2 class="article__subheading narrow">@Model.SubHeading</h2>
     </header>
 </div>
