@@ -6,7 +6,6 @@
 @{
     var tenantName = Html.CurrentTenant().TenantName;
     var isWide = Model.ArticleTemplateType == ArticleTemplateType.Wide;
-    var isNarrow = Model.ArticleTemplateType == ArticleTemplateType.Narrow;
 }
 
 @section Head {
@@ -15,15 +14,10 @@
 }
 
 @section Styles {
-    
-    <noscript id="deferred-styles">
-        <link rel="stylesheet" href="https://resource.csnstatic.com/carsales/globals/css/fonts-V1.base64.min.css">
-        
-        @if (isNarrow)
-        {
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-        }
-    </noscript>
+    @if (Model.ArticleTemplateType == ArticleTemplateType.Narrow)
+    {
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+    }
 
     @Html.AssetCss("details-page--" + tenantName)
 }
@@ -73,5 +67,5 @@
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
     }
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
-    
+
 }
