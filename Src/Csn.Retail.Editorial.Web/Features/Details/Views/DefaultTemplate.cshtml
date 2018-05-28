@@ -5,7 +5,7 @@
 
 @{
     var tenantName = Html.CurrentTenant().TenantName;
-    var isWide = Model.ArticleTemplateType == ArticleTemplateType.Wide ? true : false;
+    var isWide = Model.ArticleTemplateType == ArticleTemplateType.Wide;
 }
 
 @section Head {
@@ -14,6 +14,11 @@
 }
 
 @section Styles {
+    @if (Model.ArticleTemplateType == ArticleTemplateType.Narrow)
+    {
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+    }
+
     @Html.AssetCss("details-page--" + tenantName)
 }
 
@@ -62,5 +67,5 @@
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
     }
     @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
-    
+
 }
