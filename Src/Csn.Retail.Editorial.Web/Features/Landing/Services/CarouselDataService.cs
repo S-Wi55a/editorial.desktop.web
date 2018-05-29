@@ -43,7 +43,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             {
                 return GetDriverCarouselData(carouselConfiguration);
             }
-            var carouselViewModel = await CarouselDataResult(carouselConfiguration.Query, carouselConfiguration.Sort, 0);
+            var carouselViewModel = await CarouselDataResult(carouselConfiguration.Query, carouselConfiguration.Sort, carouselConfiguration.Offset ?? 0);
 
             if (carouselViewModel == null) return null;
 
