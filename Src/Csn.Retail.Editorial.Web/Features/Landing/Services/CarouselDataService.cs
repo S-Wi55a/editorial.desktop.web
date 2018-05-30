@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
 
         public async Task<CarouselViewModel> GetCarouselData(CarouselQuery query)
         {
-            return await CarouselDataResult(query.Q, query.Sort, query.Offset);
+            return await CarouselDataResult(query.Q, query.Sort, query.Offset, query.Limit);
         }
 
         [Trace]
@@ -43,7 +43,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             {
                 return GetDriverCarouselData(carouselConfiguration);
             }
-            var carouselViewModel = await CarouselDataResult(carouselConfiguration.Query, carouselConfiguration.Sort, 0);
+            var carouselViewModel = await CarouselDataResult(carouselConfiguration.Query, carouselConfiguration.Sort, carouselConfiguration.Offset ?? 0, carouselConfiguration.Limit ?? 20);
 
             if (carouselViewModel == null) return null;
 
@@ -56,7 +56,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             return carouselViewModel;
         }   
 
-        private async Task<CarouselViewModel> CarouselDataResult(string query, string sort, int offset)
+        private async Task<CarouselViewModel> CarouselDataResult(string query, string sort, int offset, int limit)
         {
             var result = await _ryvussDataService.GetResults(query, offset, sort);
             if (result == null) return null;
@@ -64,7 +64,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             return new CarouselViewModel
             {
                 CarouselItems = landingResults.SearchResults,
-                NextQuery = landingResults.Count - offset > 7 && offset < 20? $"/editorial/api/v1/carousel/?{ListingUrlHelper.GetQueryParam(query, offset + 7, sort)}"
+                NextQuery = landingResults.Count - offset > 7 && offset < limit ? $"/editorial/api/v1/carousel/?{ListingUrlHelper.GetQueryParam(query, offset + 7, sort)}&limit={limit}"
                     : string.Empty
             };
         }
