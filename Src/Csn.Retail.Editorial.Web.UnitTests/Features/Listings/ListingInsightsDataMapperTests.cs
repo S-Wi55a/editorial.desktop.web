@@ -2,6 +2,7 @@
 using System.Web;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Expresso.Expressions;
 using Expresso.Syntax;
 using NSubstitute;
@@ -25,7 +26,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             var searchContext = new SearchContext()
             {
                 Query = "(And.Service.CarSales._.Type.News.)",
-                Sort = "Latest"
+                Sort = "Latest",
+                RyvussNavResult = new RyvussNavResultDto { Count = 7 }
             };
 
             //Act
@@ -33,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.Count, 6);
+            Assert.AreEqual(result.Count, 7);
             Assert.AreEqual(result["type"], "news");
             Assert.AreEqual(result["service"], "carsales");
             Assert.AreEqual(result["contentgroup1"], "news and reviews");

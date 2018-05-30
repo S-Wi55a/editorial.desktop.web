@@ -165,6 +165,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 
     public enum ArticleTemplateType
     {
+        Narrow,
         Standard,
         Wide
     }

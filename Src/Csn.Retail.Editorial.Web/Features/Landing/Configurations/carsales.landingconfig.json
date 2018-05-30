@@ -143,12 +143,40 @@
           "carouselItems": null
         },
         {
-          "title": "Feature",
+          "title": "Latest",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.ArticleTypes.Carpool._.Type.Feature.)",
+          "query": "(And.ArticleTypes.Carpool._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/results/?q=(And.ArticleTypes.Carpool._.Type.Feature.)",
+          "Offset": 0,
+          "Limit": 7, 
+          "viewAll": "/results/?q=(And.ArticleTypes.Carpool._.Service.CarSales.)",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        },
+        {
+          "title": "",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.ArticleTypes.Carpool._.Service.CarSales.)",
+          "sort": "Latest",
+          "Offset": 14,
+          "Limit": 21,
+          "viewAll": null,
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        },
+        {
+          "title": "",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.ArticleTypes.Carpool._.Service.CarSales.)",
+          "sort": "Latest",
+          "Offset": 28,
+          "Limit": 35,
+          "viewAll": null,
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -156,7 +184,7 @@
       ],
       "heroAdSettings": {
         "hasHeroAd": false,
-        "heroTitle": "",
+        "heroTitle": "Carpool features, advice, news & more",
         "heroMake": "",
         "heroImage": "https://editorial.csnstatic.com/carpool/hero/carpool-header-01.jpg"
       }

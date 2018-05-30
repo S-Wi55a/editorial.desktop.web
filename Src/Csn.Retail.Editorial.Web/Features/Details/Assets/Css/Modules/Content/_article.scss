@@ -10,16 +10,27 @@
         position: relative;
         left: 50%;
         margin-left: -1*($screen-sm - ($aside-width + $grid-gutter-width))/2;
+
+        &.narrow {
+            margin-left: -1*($screen-sm - ($aside-width + $grid-gutter-width))/2.5;
+
+            & .container {
+                width: 500px;
+            }
+        }
+
         @include breakpoint($screen-md) {
             margin-left: -1*($screen-md - ($aside-width + $grid-gutter-width))/2;
         }
         @include breakpoint($screen-lg) {
             margin-left: -1*($screen-lg - ($aside-width + $grid-gutter-width))/2;
         }
+
         & .container {
             $width: $screen-sm - ($aside-width + $grid-gutter-width);
             position: relative;
             left: calc(-1*(#{$screen-sm - $width})/2);
+
             width: calc(#{#{$width}});
             @include breakpoint($screen-md) {
                 $width: $screen-md - ($aside-width + $grid-gutter-width);
@@ -71,12 +82,24 @@
 
     &__heading {
         @include h1();
+
+        &.narrow {
+            font-family: 'Roboto Slab', serif;
+            font-weight: bold;
+            font-size: 38px;
+        }
+
         color: $cs-black;
     }
 
     &__subheading {
         @include h2();
         margin-top: 0.5em;
+
+        &.narrow {
+            clear: both;
+            margin-top: 3em;
+        }
 
         @include breakpoint($screen-lg) {
             margin-top: 1em;
@@ -93,6 +116,18 @@
 
         & > div {
             margin: 0;
+        }
+    }
+
+    &__copy.narrow .container {
+        & > h1,
+        & > h2,
+        & > h3,
+        & > h4,
+        & > h5,
+        & > h6 {
+            font-family: 'Roboto Slab', serif;
+            font-weight: bold;
         }
     }
 
@@ -335,6 +370,11 @@
 
     &__share {
         &--top {
+            &.narrow {
+                float: left;
+                margin-top: 30px;
+            }
+
             float: right;
             margin-bottom: 5px;
 

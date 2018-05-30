@@ -22,6 +22,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public bool DisplayNativeAd { get; set; } // Different to PolarAds, this is COTW, BOTM
         public string Query { get; set; }
         public string Sort { get; set; }
+        public int? Offset { get; set; }
+        public int? Limit { get; set; }
         public string ViewAll { get; set; }
         public PolarAds PolarAds { get; set; }
         public CarouselTypes CarouselType { get; set; }
