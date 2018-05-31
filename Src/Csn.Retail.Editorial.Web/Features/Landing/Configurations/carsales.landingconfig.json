@@ -42,7 +42,6 @@
         {
           "title": "Videos",
           "displayMrec": false,
-          "displayNativeAd": false,
           "query": "(And.Type.Video._.Service.CarSales.)",
           "sort": "Latest",
           "viewAll": "/videos/",
@@ -149,7 +148,7 @@
           "query": "(And.ArticleTypes.Carpool._.Service.CarSales.)",
           "sort": "Latest",
           "Offset": 0,
-          "Limit": 7, 
+          "Limit": 7,
           "viewAll": "/results/?q=(And.ArticleTypes.Carpool._.Service.CarSales.)",
           "polarAds": null,
           "carouselType": "Article",
@@ -893,6 +892,60 @@
         "hasHeroAd": true,
         "heroTitle": "Ferrari reviews, advice, news & more",
         "heroMake": "Ferrari"
+      }
+    },
+    {
+      "type": "fiat",
+      "carouselConfigurations": [
+        {
+          "title": "Latest",
+          "displayMrec": true,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2015._.YearPublished.2017._.YearPublished.2018.)_.Make.Fiat.)",
+          "sort": "Latest",
+          "viewAll": "/results/fiat/",
+          "polarAds": null,
+          "carouselType": "Featured",
+          "carouselItems": null
+        },
+        {
+          "title": "124",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2015._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Fiat._.Model.124.))",
+          "sort": "Latest",
+          "viewAll": "/results/fiat/124/",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        },
+        {
+          "title": "500",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2015._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Fiat._.Model.500.))",
+          "sort": "Latest",
+          "viewAll": "/results/fiat/500/",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        },
+        {
+          "title": "500X",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2015._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Fiat._.Model.500X.))",
+          "sort": "Latest",
+          "viewAll": "/results/fiat/500x/",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        }
+      ],
+      "heroAdSettings": {
+        "hasHeroAd": true,
+        "heroTitle": "Fiat reviews, advice, news & more",
+        "heroMake": "Fiat"
       }
     },
     {
