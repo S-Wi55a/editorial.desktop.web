@@ -1,18 +1,2 @@
 ﻿@import "settings/settings--redbook";
-
-.tenant-redbook {
-    padding-top: 90px;
-
-    .article-type--video,
-    .article-type--singleimage {
-        padding-top: 15px;
-    }
-
-    .container {
-        padding-top: 15px;
-    }
-
-    #page-footer{
-        padding-top: 20px;
-    }
-}
+$tenant-redbook-container: true;
