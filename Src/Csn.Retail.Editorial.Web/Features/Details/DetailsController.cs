@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         }
 
         [Route("editorial/details/{pageName:regex(^.*-\\d+/?$)}")]
-        [Route("editorial/{*slug:regex(^.*-\\d+/?$)}")]
+        //[Route("editorial/{*slug:regex(^.*-\\d+/?$)}")] TODO: removed legacy routes 
         [RedirectToNewVersion]
         [RedirectAttributeFilter]
         // GET: Details
