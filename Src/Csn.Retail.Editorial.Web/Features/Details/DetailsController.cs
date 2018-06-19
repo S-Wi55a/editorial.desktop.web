@@ -24,7 +24,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         }
 
         [Route("editorial/details/{pageName:regex(^.*-\\d+/?$)}")]
-        //[Route("editorial/{*slug:regex(^.*-\\d+/?$)}")]
         [Route("editorial/{*slug:regex((reviews|news|advice|videos|products)(/.*-\\d+/?$))}")]
         [RedirectToNewVersion]
         [RedirectAttributeFilter]
