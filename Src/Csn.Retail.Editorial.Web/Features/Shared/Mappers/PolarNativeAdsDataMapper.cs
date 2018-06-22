@@ -29,18 +29,23 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Mappers
                 return null;
             }
 
-            string makeInSource = null;
-            if (source.Any(a => a.Aspect == "Make"))
-            {
-                makeInSource = source.First(a => a.Aspect == "Make").Facet;
-            }
-            string modelInSource = null;
+            var makeInSource = string.Empty;
+            var modelInSource = string.Empty;
 
-            if (source.Any(a => a.Aspect == "Model"))
-            {
-                modelInSource = source.First(a => a.Aspect == "Model").Facet;
-            }
+            var makeAspect = source.FirstOrDefault(a => a.Aspect == "Make");
 
+            if (makeAspect != null)
+            {
+                makeInSource = makeAspect.Facet;
+
+                var modelAspect = makeAspect.Children.FirstOrDefault(a => a.Aspect == "Model");
+
+                if(modelAspect != null)
+                {
+                    modelInSource = modelAspect.Facet;
+                }
+            }
+            
             return new PolarNativeAdsData
             {
                 AreaName = areaName,
