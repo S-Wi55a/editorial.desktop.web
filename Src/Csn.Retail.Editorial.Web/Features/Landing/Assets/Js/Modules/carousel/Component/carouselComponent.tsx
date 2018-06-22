@@ -105,11 +105,11 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
             <Slider {...settings} className={this.props.isLoading ? 'isLoading' : ''}>
                 {this.props.carouselItems.map((item, index) => (
                     <div key={index}>
-                        {this.props.carouselType !== CarouselTypes.Driver ? <SearchResultCard {...item}/> : <DriverCard {...item}/>}
-                    </div>))}            
+                        {this.props.carouselType !== CarouselTypes.Driver ? <SearchResultCard imageResize={true} imageUrlParams= '?width=405&height=270' {...item}/> : <DriverCard {...item}/>}
+                    </div>))}
             </Slider>
-        );
-    }
+);
+}
 }
 
 // Redux Connect
@@ -170,5 +170,5 @@ export default connect(
     state: (props: ICarouselViewModel)=>({
         id: props.index,
         isLoading: false
-    })
+})
 })(SimpleSlider))
