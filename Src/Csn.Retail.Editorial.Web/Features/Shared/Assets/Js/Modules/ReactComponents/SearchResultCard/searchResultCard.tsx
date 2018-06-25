@@ -10,20 +10,10 @@ const Preloader = () => <div className="iNavSearchResult__image-loader"></div>
 
 class INavSearchResult extends React.Component<ISearchResults> {
     render() {
-        const imageUrlParamsObj = this.props.imageUrlParams || {};
-        const imageUrlParamsArray: String[]  = [];
-        for (const prop in imageUrlParamsObj) {
-            if (imageUrlParamsObj.hasOwnProperty(prop)) {
-                imageUrlParamsArray.push(prop + "=" + imageUrlParamsObj[prop]);
-            }
-        }
-        const imageUrlParams = imageUrlParamsArray.join("&");
-        const imageUrl = this.props.imageUrl + (imageUrlParams ? `?${imageUrlParams}` : "");
-
         return <div className="iNavSearchResult" data-webm-clickvalue="search-result">
                     <a href={this.props.articleDetailsUrl}>
                         <div className="iNavSearchResult__image-frame">
-                            <Img className="iNavSearchResult__image" src={imageUrl} loader={<Preloader/>}/>
+                            <Img className="iNavSearchResult__image" src={this.props.hasImageUrlParams ? this.props.imageUrl + '?width=405&height=270' : this.props.imageUrl} loader={<Preloader/>}/>
                             {this.props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${this.props.label}`}>{this.props.label}</div> : ''}
                         </div>
                     </a>

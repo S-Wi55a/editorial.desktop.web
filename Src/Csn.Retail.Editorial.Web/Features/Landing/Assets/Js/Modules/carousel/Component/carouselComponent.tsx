@@ -101,15 +101,11 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
             prevArrow: <NavButton text="Prev" />
 
         }
-        const imageUrlParams = {
-            width: 405,
-            height: 270
-        };
         return (
             <Slider {...settings} className={this.props.isLoading ? 'isLoading' : ''}>
                 {this.props.carouselItems.map((item, index) => (
                     <div key={index}>
-                        {this.props.carouselType !== CarouselTypes.Driver ? <SearchResultCard imageUrlParams={imageUrlParams} {...item}/> : <DriverCard {...item}/>}
+                        {this.props.carouselType !== CarouselTypes.Driver ? <SearchResultCard hasImageUrlParams={true} {...item}/> : <DriverCard {...item}/>}
                     </div>))}
             </Slider>
 );
