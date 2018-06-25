@@ -80,9 +80,13 @@ class INavSearchResults extends React.Component {
         let r = this.props.searchResults.map((searchResult,i) => {
             let animationDuration = SERVER ? 0 : 150
             let delay = (i % 2 === 0) ? animationDuration*i : animationDuration*(i-1) 
+            const imageUrlParams = {
+                width: 405,
+                height: 270
+            };
             return <Timer key={`${searchResult.headline}${Math.random()}`} delay={delay}>
                         <FadeIn duration={animationDuration} startingOpacity={this.props.isInsert ? 1 : 0}>                            
-                            <INavSearchResult imageWidth={405} height={270} {...searchResult} />
+                            <INavSearchResult imageUrlParams={imageUrlParams} {...searchResult} />
                         </FadeIn>
                     </Timer>
         })  

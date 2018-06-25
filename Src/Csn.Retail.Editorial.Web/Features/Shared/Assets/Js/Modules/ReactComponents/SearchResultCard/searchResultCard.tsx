@@ -10,8 +10,15 @@ const Preloader = () => <div className="iNavSearchResult__image-loader"></div>
 
 class INavSearchResult extends React.Component<ISearchResults> {
     render() {
-        const imageUrlParams = (this.props.imageWidth ? `width=${this.props.imageWidth}&` : '') + (this.props.imageHeight ? `height=${this.props.imageHeight}` : '');
-        const imageUrl = this.props.imageUrl + (imageUrlParams ? `?${imageUrlParams}` : '');
+        const imageUrlParamsObj = this.props.imageUrlParams || {};
+        const imageUrlParamsArray: String[]  = [];
+        for (const prop in imageUrlParamsObj) {
+            if (imageUrlParamsObj.hasOwnProperty(prop)) {
+                imageUrlParamsArray.push(prop + "=" + imageUrlParamsObj[prop]);
+            }
+        }
+        const imageUrlParams = imageUrlParamsArray.join("&");
+        const imageUrl = this.props.imageUrl + (imageUrlParams ? `?${imageUrlParams}` : "");
 
         return <div className="iNavSearchResult" data-webm-clickvalue="search-result">
                     <a href={this.props.articleDetailsUrl}>

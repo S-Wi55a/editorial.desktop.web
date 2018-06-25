@@ -71,8 +71,7 @@ export interface IRefinement {
 }
 
 export interface ISearchResults {
-    imageWidth?: number
-    imageHeight?: number
+    imageUrlParams: IImageUrlParams
     imageUrl: string
     headline: string
     subHeading: string
@@ -81,4 +80,10 @@ export interface ISearchResults {
     label: string
     type: string
     disqusArticleId: string | number
+}
+
+export interface IImageUrlParams {
+    width?: number
+    height?: number
+    [key: string]: number | string
 }
