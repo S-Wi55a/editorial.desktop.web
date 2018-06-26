@@ -3,7 +3,7 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
+//using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
@@ -33,14 +33,14 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IExpressionParser _parser;
         private readonly IExpressionFormatter _expressionFormatter;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
-        private readonly ISponsoredLinksDataMapper _sponsoredLinksDataMapper;
+        //private readonly ISponsoredLinksDataMapper _sponsoredLinksDataMapper;
         private readonly IListingInsightsDataMapper _listingInsightsDataMapper;
         private readonly ISeoDataMapper _seoDataMapper;
         private readonly IRyvussDataService _ryvussDataService;
 
         public GetListingsQueryHandler(ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
             ISortingHelper sortingHelper, ISearchResultContextStore searchResultContextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
-            ISponsoredLinksDataMapper sponsoredLinksDataMapper, IListingInsightsDataMapper listingInsightsDataMapper, ISeoDataMapper seoDataMapper, IRyvussDataService ryvussDataService)
+            /*ISponsoredLinksDataMapper sponsoredLinksDataMapper,*/ IListingInsightsDataMapper listingInsightsDataMapper, ISeoDataMapper seoDataMapper, IRyvussDataService ryvussDataService)
         {
             _tenantProvider = tenantProvider;
             _mapper = mapper;
@@ -50,7 +50,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _parser = parser;
             _expressionFormatter = expressionFormatter;
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
-            _sponsoredLinksDataMapper = sponsoredLinksDataMapper;
+            //_sponsoredLinksDataMapper = sponsoredLinksDataMapper;
             _listingInsightsDataMapper = listingInsightsDataMapper;
             _seoDataMapper = seoDataMapper;
             _ryvussDataService = ryvussDataService;
