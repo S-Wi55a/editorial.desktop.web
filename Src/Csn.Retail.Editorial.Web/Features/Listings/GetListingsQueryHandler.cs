@@ -3,7 +3,6 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
-//using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Mappers;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
@@ -33,14 +32,13 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IExpressionParser _parser;
         private readonly IExpressionFormatter _expressionFormatter;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
-        //private readonly ISponsoredLinksDataMapper _sponsoredLinksDataMapper;
         private readonly IListingInsightsDataMapper _listingInsightsDataMapper;
         private readonly ISeoDataMapper _seoDataMapper;
         private readonly IRyvussDataService _ryvussDataService;
 
         public GetListingsQueryHandler(ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
             ISortingHelper sortingHelper, ISearchResultContextStore searchResultContextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
-            /*ISponsoredLinksDataMapper sponsoredLinksDataMapper,*/ IListingInsightsDataMapper listingInsightsDataMapper, ISeoDataMapper seoDataMapper, IRyvussDataService ryvussDataService)
+            IListingInsightsDataMapper listingInsightsDataMapper, ISeoDataMapper seoDataMapper, IRyvussDataService ryvussDataService)
         {
             _tenantProvider = tenantProvider;
             _mapper = mapper;
@@ -50,7 +48,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _parser = parser;
             _expressionFormatter = expressionFormatter;
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
-            //_sponsoredLinksDataMapper = sponsoredLinksDataMapper;
             _listingInsightsDataMapper = listingInsightsDataMapper;
             _seoDataMapper = seoDataMapper;
             _ryvussDataService = ryvussDataService;
@@ -124,7 +121,6 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(resultData.Metadata?.Query).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs, MediaMotiveAreaNames.EditorialResultsPage),
-                    //ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
                     InsightsData = _listingInsightsDataMapper.Map(searchContext),
                     SeoData = _seoDataMapper.Map(resultData),
                     EditorialPageType = query.EditorialPageType,
