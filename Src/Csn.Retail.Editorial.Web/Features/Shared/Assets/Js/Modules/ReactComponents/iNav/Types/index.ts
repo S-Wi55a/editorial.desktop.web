@@ -71,7 +71,6 @@ export interface IRefinement {
 }
 
 export interface ISearchResults {
-    hasImageUrlParams: boolean
     imageUrl: string
     headline: string
     subHeading: string
