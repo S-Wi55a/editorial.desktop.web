@@ -13,7 +13,7 @@ class INavSearchResult extends React.Component<ISearchResults> {
         return <div className="iNavSearchResult" data-webm-clickvalue="search-result">
                     <a href={this.props.articleDetailsUrl}>
                         <div className="iNavSearchResult__image-frame">
-                            <Img className="iNavSearchResult__image" src={this.props.imageUrl} loader={<Preloader/>}/>
+                            <Img className="iNavSearchResult__image" src={this.props.imageUrl + '?width=405&height=270'} loader={<Preloader/>}/>
                             {this.props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${this.props.label}`}>{this.props.label}</div> : ''}
                         </div>
                     </a>
