@@ -124,7 +124,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(resultData.Metadata?.Query).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs, MediaMotiveAreaNames.EditorialResultsPage),
-                    ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
+                    //ShowSponsoredLinks = _sponsoredLinksDataMapper.ShowSponsoredLinks(),
                     InsightsData = _listingInsightsDataMapper.Map(searchContext),
                     SeoData = _seoDataMapper.Map(resultData),
                     EditorialPageType = query.EditorialPageType,

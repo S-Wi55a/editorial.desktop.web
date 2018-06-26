@@ -17,7 +17,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         Leaderboard,
         MREC,
         TEADS,
-        SponsoredLink,
+        //SponsoredLink,
         Tracking,
         Banner
     }
@@ -39,8 +39,8 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         SmallRectangle,
         [Dimension(550, 90)]
         Block550X90,
-        [Dimension(180, 20)]
-        SponsoredLink,
+        //[Dimension(180, 20)]
+        //SponsoredLink,
         [Dimension(1, 1)]
         Hidden,
         [Dimension(550, 309)]
@@ -103,6 +103,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         }
     }
 
+    /*
     public static class SposoredLinkedTiles
     {
         public static IList<string> Tiles => new List<string>
@@ -114,4 +115,5 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
             "Tile13"
         };
     }
+    */
 }

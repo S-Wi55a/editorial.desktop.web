@@ -9,6 +9,6 @@
             // MREC
             Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.MediumOrLargeRectangle, TileId = 3 });
         }
-        @{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_SponsoredLink.cshtml", Model); }
+        @{ /* Html.RenderPartial("~/Features/MediaMotiveAds/Views/_SponsoredLink.cshtml", Model); */} <!-- Do not include SponsoredText partial. -->
     </div>
 </div>
