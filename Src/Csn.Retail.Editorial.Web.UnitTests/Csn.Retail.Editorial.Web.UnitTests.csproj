@@ -210,6 +210,7 @@
     <Compile Include="Features\Details\GetArticleQueryCacheStoreTests.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandlerTests.cs" />
     <Compile Include="Features\Listings\ListingInsightsDataMapperTests.cs" />
+    <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapperTests.cs" />
     <Compile Include="Features\Tracking\Mapping\ItemsListingMapperTests.cs" />
     <Compile Include="Features\Tracking\Mapping\SearchFilterMapperTests.cs" />
     <Compile Include="Features\Tracking\Mapping\TrackingPropertiesMapperTests.cs" />

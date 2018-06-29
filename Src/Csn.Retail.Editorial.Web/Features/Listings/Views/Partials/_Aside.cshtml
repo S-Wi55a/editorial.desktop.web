@@ -1,6 +1,5 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
-@model Csn.Retail.Editorial.Web.Features.Listings.Models.ListingsViewModel
 
 <div class="wrapper--aside">
     <div class="aside ">
@@ -9,6 +8,5 @@
             // MREC
             Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.MediumOrLargeRectangle, TileId = 3 });
         }
-        @{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_SponsoredLink.cshtml", Model); }
     </div>
 </div>

@@ -21,7 +21,8 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
         /// Handles valid/known routes but unknown url fragments or not found articles
         /// </summary>
         /// <returns></returns>
-        public async Task<ActionResult> Error404()
+        [ChildActionOnly]
+        public async Task<ActionResult> Error404Child()
         {
             Response.StatusCode = (int)HttpStatusCode.NotFound;
             Response.TrySkipIisCustomErrors = true;
@@ -47,14 +48,23 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
             return View("~/Features/Errors/Views/Error404.cshtml");
         }
 
-        public async Task<ActionResult> ErrorGeneric()
+        [ChildActionOnly]
+        public async Task<ActionResult> ErrorGenericChild()
         {
-            Response.StatusCode = (int)HttpStatusCode.NotFound;
+            Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             Response.TrySkipIisCustomErrors = true;
 
             _urlNotFoundLogger.Log(HttpContext.Request.Url?.ToString());
 
             return View("~/Features/Errors/Views/ErrorGeneric.cshtml");
+        }
+
+        [Route("editorial/error")]
+        public async Task<ActionResult> ErrorGeneric()
+        {
+            await _eventDispatcher.DispatchAsync(new ErrorPageRequestEvent());
+
+            return await ErrorGenericChild();
         }
     }
 
