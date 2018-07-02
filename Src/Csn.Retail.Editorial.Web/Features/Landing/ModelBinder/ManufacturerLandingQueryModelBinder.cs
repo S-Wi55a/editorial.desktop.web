@@ -26,7 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.ModelBinder
                 PromotionId = GetPromotionId(bindingContext)
             };
 
-            var manufacturer = _landingConfigProvider.LoadConfig(manufacturerRouteKey.AttemptedValue);
+            var manufacturer = _landingConfigProvider.LoadConfig(manufacturerRouteKey.AttemptedValue.Trim('/'));
 
             if (manufacturer.Result == null) return new GetLandingQuery
             {

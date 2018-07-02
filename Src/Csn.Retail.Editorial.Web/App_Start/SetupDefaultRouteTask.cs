@@ -19,29 +19,105 @@ namespace Csn.Retail.Editorial.Web
 
             routes.IgnoreRoute("nshc/{*pathInfo}"); // This is important for production haproxy and netscalar setup
             routes.IgnoreRoute("compare/dist/{*pathInfo}");
-            routes.IgnoreRoute("{*allgif}", new { allgif = @".*\.gif(/.*)?" });
-            routes.IgnoreRoute("{*alljpg}", new { alljpg = @".*\.jpg(/.*)?" });
-            routes.IgnoreRoute("{*allpng}", new { allpng = @".*\.png(/.*)?" });
-            routes.IgnoreRoute("{*allIcons}", new { allIcons = @".*\.ico(/.*)?" });
-            routes.IgnoreRoute("{*allCss}", new { allCss = @".*\.css(/.*)?" });
-            routes.IgnoreRoute("{*allJs}", new { allJs = @".*\.js(/.*)?" });
+            routes.IgnoreRoute("{*allgif}", new {allgif = @".*\.gif(/.*)?"});
+            routes.IgnoreRoute("{*alljpg}", new {alljpg = @".*\.jpg(/.*)?"});
+            routes.IgnoreRoute("{*allpng}", new {allpng = @".*\.png(/.*)?"});
+            routes.IgnoreRoute("{*allIcons}", new {allIcons = @".*\.ico(/.*)?"});
+            routes.IgnoreRoute("{*allCss}", new {allCss = @".*\.css(/.*)?"});
+            routes.IgnoreRoute("{*allJs}", new {allJs = @".*\.js(/.*)?"});
             routes.IgnoreRoute("{file}.css");
             routes.IgnoreRoute("{file}.js");
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             var constraintResolver = new DefaultInlineConstraintResolver();
-            constraintResolver.ConstraintMap.Add("manufacturer", typeof(ManufacturerRouteConstraint));
-            constraintResolver.ConstraintMap.Add("article-types", typeof(ArticleTypeRouteConstraint));
-            constraintResolver.ConstraintMap.Add("vertical", typeof(VerticalRouteConstraint));
-
             routes.MapMvcAttributeRoutes(constraintResolver);
 
             routes.MapRoute(
-                name: "Default",
-                url: "editorial/{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                constraints: new { controller = @"(Tracking|Home)" }
+                name: "TrackingRoute",
+                url: "editorial/Tracking",
+                defaults: new { controller = "Tracking" }
+            );
+
+            routes.MapRoute(
+                name: "NativeAdRoute",
+                url: "editorial/NativeAd",
+                defaults: new { controller = "NativeAd" }
+            );
+
+            routes.MapRoute(
+                name: "MediaMotiveDetailsAdRoute",
+                url: "editorial/MediaMotiveDetailsAd",
+                defaults: new { controller = "MediaMotiveDetailsAd" }
+            );
+
+            routes.MapRoute(
+                name: "MediaMotiveAdRoute",
+                url: "editorial/MediaMotiveAd",
+                defaults: new { controller = "MediaMotiveAd" }
+            );
+
+            routes.MapRoute(
+                name: "LandingHome",
+                url: "editorial/",
+                defaults: new { controller = "Landing", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "LandingManufacturer",
+                url: "editorial/{*manufacturer}",
+                defaults: new { controller = "Landing", action = "Index" }, 
+                constraints: new { manufacturer = new ManufacturerRouteConstraint() }
+            );
+
+            routes.MapRoute(
+                name: "Details",
+                url: "editorial/details/{slug}",
+                defaults: new { controller = "Details", action = "Index" },
+                constraints: new { slug = "^.*-\\d+/?$" }
+            );
+
+//TODO: to be removed once legacy url structures are no longer needed
+            routes.MapRoute(
+                name: "DetailsLegacyUrls",
+                url: "editorial/{*detailsSegments}",
+                defaults: new { controller = "Details", action = "Index" },
+                constraints: new { detailsSegments = new DetailsPageRouteConstraint() }
+            );
+
+            routes.MapRoute(
+                name: "ArticleType",
+                url: "editorial/{*articleType}",
+                defaults: new { controller = "Listings", action = "ArticleTypeListing" },
+                constraints: new { articleType = new ArticleTypeRouteConstraint() }
+            );
+
+            routes.MapRoute(
+                name: "RedbookHome",
+                url: "editorial/{*redbookVertical}",
+                defaults: new { controller = "Listings", action = "RedbookListing" },
+                constraints: new { redbookVertical = new VerticalRouteConstraint() }
+            );
+
+            routes.MapRoute(
+                name: "RedbookResults",
+                url: "editorial/{redbookVertical}/results",
+                defaults: new { controller = "Listings", action = "RedbookListing" },
+                constraints: new { redbookVertical = new VerticalRouteConstraint() }
+            );
+
+            routes.MapRoute(
+                name: "ListingPage-pre-international",
+                url: "editorial/results/{*seoFragment}",
+                defaults: new { controller = "Listings", action = "Listing" },
+                constraints: new { seoFragment = "(^[\\w-/]*)?" }
+            );
+
+            routes.MapRoute(
+                name: "ListingPage",
+                url: "editorial/{*seoFragment}",
+                defaults: new { controller = "Listings", action = "Listing" },
+                constraints: new { seoFragment = "(^[\\w-/]*)?" }
             );
 
             // catch all route....used to catch bad urls. Warning....this will literally capture everything

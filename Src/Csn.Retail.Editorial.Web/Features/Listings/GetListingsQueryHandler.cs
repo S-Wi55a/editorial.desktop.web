@@ -80,7 +80,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             if (_tenantProvider.Current().SupportsSeoFriendlyListings 
                 && query.EditorialPageType == EditorialPageTypes.Listing
                 && !string.IsNullOrEmpty(resultData.Metadata?.Seo) 
-                && resultData.Metadata.Seo != query.SeoFragment)
+                && resultData.Metadata.Seo.Trim('/') != query.SeoFragment.Trim('/'))
             {
                 return new GetListingsResponse
                 {
@@ -111,7 +111,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             });
             navResults.INav.CurrentAction = ListingUrlHelper.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, sortOrder);
             navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingUrlHelper.GetSeoUrl(query.SeoFragment, query.Offset, sortOrder) :
-                ListingUrlHelper.GetPathAndQueryString(query.Query, query.Offset, sortOrder);
+                ListingUrlHelper.GetPathAndQueryString(query.Query, query.Offset, sortOrder, includeResultsSegment: true);
 
             return new GetListingsResponse
             {

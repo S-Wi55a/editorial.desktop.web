@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace Csn.Retail.Editorial.Web
 {
@@ -10,11 +7,28 @@ namespace Csn.Retail.Editorial.Web
         public static void Register(HttpConfiguration config)
         {
             config.MapHttpAttributeRoutes();
+            config.Routes.MapHttpRoute(
+                name: "ApiProxy",
+                routeTemplate: "editorial/api/v1/proxy",
+                defaults: new { Controller = "ApiProxy", action = "Get" }
+            );
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                name: "ApiCarousel",
+                routeTemplate: "editorial/api/v1/carousel/",
+                defaults: new { Controller = "Carousel", action = "Get" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "GetNav",
+                routeTemplate: "editorial/api/v1/search/nav",
+                defaults: new { Controller = "Nav", action = "GetNav" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "GetNavRefinements",
+                routeTemplate: "editorial/api/v1/search/nav/refinements",
+                defaults: new { Controller = "Nav", action = "GetRefinements" }
             );
         }
     }

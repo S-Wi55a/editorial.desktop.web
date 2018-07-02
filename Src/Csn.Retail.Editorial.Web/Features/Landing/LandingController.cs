@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Listings.Filters;
@@ -21,16 +20,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _eventDispatcher = eventDispatcher;
         }
 
-        [Route("editorial/{manufacturer:manufacturer}")]
-        [RedirectAttributeFilter]
-        [RedbookDefaultVerticalAttributeFilter]
-        public async Task<ActionResult> Home(GetLandingQuery query)
-        {
-            return await Index(query);
-        }
-
-
-        [Route("editorial/")]
         [RedirectAttributeFilter]
         [RedbookDefaultVerticalAttributeFilter]
         public async Task<ActionResult> Index(GetLandingQuery query)

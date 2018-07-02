@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.SimpleCqrs;
@@ -9,7 +8,7 @@ using Expresso.Syntax;
 namespace Csn.Retail.Editorial.Web.Features.Listings
 {
     [AutoBind]
-    public class RedbookListingQueryHandler : IAsyncQueryHandler<RedbookListingQuery, GetListingsQuery>
+    public class RedbookListingQueryHandler : IQueryHandler<RedbookListingQuery, GetListingsQuery>
     {
         private readonly IExpressionFormatter _expressionFormatter;
         private readonly IExpressionParser _expressionParser;
@@ -20,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _expressionParser = expressionParser;
         }
 
-        public async Task<GetListingsQuery> HandleAsync(RedbookListingQuery listingQuery)
+        public GetListingsQuery Handle(RedbookListingQuery listingQuery)
         {
             if (string.IsNullOrEmpty(listingQuery.Query))
             {

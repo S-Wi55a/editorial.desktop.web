@@ -13,9 +13,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Carousel
             _queryDispatcher = queryDispatcher;
         }
 
-        [HttpGet]
-        [Route("editorial/api/v1/carousel/")]
-        public async Task<IHttpActionResult> GetCarousel([FromUri]CarouselQuery query)
+        public async Task<IHttpActionResult> Get([FromUri]CarouselQuery query)
         {
             var result = await _queryDispatcher.DispatchAsync<CarouselQuery, CarouselQueryResponse>(query);
 

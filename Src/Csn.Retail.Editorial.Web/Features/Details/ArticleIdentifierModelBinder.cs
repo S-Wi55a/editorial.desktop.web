@@ -10,13 +10,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     {
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            var pageName = bindingContext.ValueProvider.GetValue("pageName");
+            var articleSlug = bindingContext.ValueProvider.GetValue("slug");
 
-            if (pageName == null) return base.BindModel(controllerContext, bindingContext);
+
+            if (articleSlug == null) return base.BindModel(controllerContext, bindingContext);
 
             if (!(base.BindModel(controllerContext, bindingContext) is ArticleIdentifier record)) return null;
 
-            var id = pageName.RawValue?.ToString().Split('-').Last() ?? string.Empty;
+            var id = articleSlug.RawValue?.ToString().Trim('/').Split('-').Last() ?? string.Empty;
 
             if (!string.IsNullOrEmpty(id))
             {
