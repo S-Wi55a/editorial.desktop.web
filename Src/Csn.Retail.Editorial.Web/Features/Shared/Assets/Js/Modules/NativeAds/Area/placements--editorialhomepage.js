@@ -35,6 +35,7 @@ templates['homepage'] = (location, placementId) => (event) => (Handlebars, depth
             {
                 type: "CAROUSELS/ADD_PROMOTED_ARTICLE",
                 payload: {
+                    isNativeAd: true,
                     imageUrl: closestImageBasedOnRes(480, depth0.image.instances),
                     headline: depth0.title,
                     subHeading: depth0.summary,
