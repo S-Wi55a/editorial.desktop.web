@@ -1157,6 +1157,7 @@
     <Content Include="Features\Shared\Assets\Css\Tenants\Soloautos\soloautos.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Soloautos\Settings\_settings--soloautos.scss" />
     <Content Include="Features\Landing\Configurations\soloautos.landingConfig.json" />
+    <Content Include="Features\Listings\Views\Soloautos\_Disclaimer.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
