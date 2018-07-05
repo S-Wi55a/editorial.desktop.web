@@ -645,7 +645,6 @@
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Shared\Extensions\SearchActionExtensions.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
-    <Compile Include="Features\MediaMotiveAds\Mappers\SponsoredLinksDataMapper.cs" />
     <Compile Include="Features\Shared\ContextStores\SearchResultContextStore.cs" />
     <Compile Include="Features\Shared\Extensions\SearchResultDtoExtensions.cs" />
     <Compile Include="Features\Shared\Helpers\ListingUrlHelper.cs" />
@@ -892,6 +891,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
+    <Folder Include="Features\MediaMotiveAds\Mappers\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
@@ -989,7 +989,6 @@
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_SponsoredTextLinks.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Teads.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Tile15.cshtml" />
     <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
@@ -1030,7 +1029,6 @@
     <Content Include="Features\Details\Views\Partials\Content\_Location_Type_Model.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_ltm.scss" />
     <Content Include="Features\Shared\Views\Partials\Hotjar\_hotjarTracking.cshtml" />
-    <Content Include="Features\Details\Views\Partials\Content\_articlePromotion.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Bikesales\Settings\_settings--bikesales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Carsales\Settings\_settings--carsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Constructionsales\Settings\_settings--constructionsales.scss" />
@@ -1047,7 +1045,6 @@
     <Content Include="Features\Shared\Assets\Css\Tenants\Caravancampingsales\Settings\_settings--caravancampingsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Farmmachinerysales\farmmachinerysales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Farmmachinerysales\Settings\_settings--farmmachinerysales.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tenants\Carsales\ArticlePromotedImage\articlePromotedImage.scss" />
     <Content Include="Features\Details\Views\Partials\Widgets\AlsoConsider\_AlsoConsider.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\AlsoConsider\_alsoConsider.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\MediaMotive\_mediaMotive.scss" />
@@ -1100,8 +1097,6 @@
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <Content Include="Features\Details\Views\Boatsales\_Disclaimer.cshtml" />
-    <Content Include="Features\MediaMotiveAds\Views\_SponsoredLink.cshtml" />
-    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_sponsored-text-links.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mrec.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_teads.scss" />

@@ -106,10 +106,10 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
                 {this.props.carouselItems.map((item, index) => (
                     <div key={index}>
                         {this.props.carouselType !== CarouselTypes.Driver ? <SearchResultCard {...item}/> : <DriverCard {...item}/>}
-                    </div>))}            
+                    </div>))}
             </Slider>
-        );
-    }
+);
+}
 }
 
 // Redux Connect
@@ -170,5 +170,5 @@ export default connect(
     state: (props: ICarouselViewModel)=>({
         id: props.index,
         isLoading: false
-    })
+})
 })(SimpleSlider))

@@ -29,13 +29,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
                 }
             },
             {
-                AdSize.SponsoredLink,
-                new MediaMotiveAdSetting() {
-                    Description = MediaMotiveAdType.SponsoredLink, AdSize = AdSize.SponsoredLink, DataKruxRequired = false,
-                    NotSupportedArticleTypes = new List<string>{ArticleType.Sponsored.ToString()}
-                }
-            },
-            {
                 AdSize.Hidden,
                 new MediaMotiveAdSetting() {
                     Description = MediaMotiveAdType.Tracking, AdSize = AdSize.Hidden, DataKruxRequired = false,
