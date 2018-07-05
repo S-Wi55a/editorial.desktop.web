@@ -10,10 +10,11 @@ const Preloader = () => <div className="iNavSearchResult__image-loader"></div>
 
 class INavSearchResult extends React.Component<ISearchResults> {
     render() {
+        const imageUrl = this.props.isNativeAd ? this.props.imageUrl : this.props.imageUrl + '?width=480&height=320';
         return <div className="iNavSearchResult" data-webm-clickvalue="search-result">
                     <a href={this.props.articleDetailsUrl}>
                         <div className="iNavSearchResult__image-frame">
-                            <Img className="iNavSearchResult__image" src={this.props.imageUrl + '?width=480&height=320'} loader={<Preloader/>}/>
+                            <Img className="iNavSearchResult__image" src={imageUrl} loader={<Preloader/>}/>
                             {this.props.label ? <div className={`iNavSearchResult__image-label iNavSearchResult__image-label--${this.props.label}`}>{this.props.label}</div> : ''}
                         </div>
                     </a>

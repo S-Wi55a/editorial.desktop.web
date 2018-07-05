@@ -34,7 +34,8 @@ interface IAddPromotedArticle extends Action {
         dateAvailable: string,
         articleDetailsUrl: string,
         label: string,
-        location: number
+        location: number,
+        isNativeAd: boolean
     }
 }
 
