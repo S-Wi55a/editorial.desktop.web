@@ -892,6 +892,7 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\MediaMotiveAds\Mappers\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
+    <Folder Include="Features\Shared\Assets\Images\Soloautos\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
     <Folder Include="Views\DetailsRedirect\" />
@@ -1153,6 +1154,9 @@
     <Content Include="Features\Details\Views\Partials\ContentSections\EmbeddedContent\_Vimeo.cshtml" />
     <Content Include="Features\Shared\Hero\Views\_HeroSection.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_NarrowHeader.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Soloautos\soloautos.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Soloautos\Settings\_settings--soloautos.scss" />
+    <Content Include="Features\Landing\Configurations\soloautos.landingConfig.json" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
