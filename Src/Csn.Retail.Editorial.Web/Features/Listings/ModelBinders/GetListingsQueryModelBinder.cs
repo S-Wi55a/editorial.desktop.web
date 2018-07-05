@@ -28,8 +28,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
             {
                 Query = query,
                 SeoFragment = !string.IsNullOrEmpty(seoFragment) ? $"/{seoFragment}" : string.Empty,
-                Offset = bindingContext.ValueProvider.TryGetValueOrDefault(EditorialQueryStringParams.Offset, 0),
-                Sort = bindingContext.ValueProvider.TryGetValueOrDefault(EditorialQueryStringParams.Sort, string.Empty),
+                Pg = bindingContext.ValueProvider.TryGetValueOrDefault(EditorialQueryStringParams.Offset, 0),
+                Sb = bindingContext.ValueProvider.TryGetValueOrDefault(EditorialQueryStringParams.Sort, string.Empty),
                 SearchEventType = GetActionType(),
                 QueryExpression = string.IsNullOrEmpty(query) ? null : _parser.TryParse(query),
                 EditorialPageType = EditorialPageTypes.Listing

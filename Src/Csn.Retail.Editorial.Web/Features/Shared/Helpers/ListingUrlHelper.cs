@@ -50,9 +50,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             var queryParams = GetQueryStringParameters(string.IsNullOrEmpty(seoFragment) ? q : null , offset, sortOrder, keyword);
             var queryString = string.IsNullOrEmpty(seoFragment)
                 ? (string.IsNullOrEmpty(queryParams) ? "" : "?" + queryParams)
-                : $"{seoFragment.Trim('/')}{(string.IsNullOrEmpty(queryParams) ? "" : "?" + queryParams)}";
+                : $"{seoFragment}{(string.IsNullOrEmpty(queryParams) ? "" : "?" + queryParams)}";
 
-            return $"{ListingsBasePath(queryParams)}/{queryString}";
+            return $"{ListingsBasePath(queryParams)}{queryString}";
         }
 
         public static string GetQueryParam(string q, long offset, string sortOrder)

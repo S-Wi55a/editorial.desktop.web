@@ -29,8 +29,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     Query = _expressionFormatter.Format(expression),
                     QueryExpression = expression,
                     EditorialPageType = listingQuery.EditorialPageType,
-                    Offset = listingQuery.Offset,
-                    Sort = listingQuery.Sort,
+                    Pg = listingQuery.Pg,
+                    Sb = listingQuery.Sb,
                     Keywords = listingQuery.Keywords,
                     SearchEventType = listingQuery.SearchEventType,
                     SeoFragment = listingQuery.SeoFragment
@@ -58,8 +58,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 Query = _expressionFormatter.Format(exp),
                 QueryExpression = exp,
                 EditorialPageType = EditorialPageTypes.Listing,
-                Offset = listingQuery.Offset,
-                Sort = listingQuery.Sort,
+                Pg = listingQuery.Pg,
+                Sb = listingQuery.Sb,
                 Keywords = listingQuery.Keywords,
                 SearchEventType = listingQuery.SearchEventType,
                 SeoFragment = listingQuery.SeoFragment

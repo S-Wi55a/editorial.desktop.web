@@ -40,9 +40,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             return await Listing(listingsQuery);
         }
 
-        //[Route("editorial/results/{*seoFragment:regex(^[\\w-/]*)?}")]
         [RedirectAttributeFilter]
         [LegacyListingsUrlRedirectFilter]
+        [SeoFriendlyRoutesRedirectFilter]
         public async Task<ActionResult> Listing(GetListingsQuery query)
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new ListingsPageRequestEvent());

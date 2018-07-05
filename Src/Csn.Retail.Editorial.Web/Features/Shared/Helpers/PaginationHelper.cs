@@ -5,12 +5,13 @@ using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
     public interface IPaginationHelper
     {        
-        PagingViewModel GetPaginationData(int count, int limit, int offset, string sortOrder, string query, string seoFragment, string keyword);
+        PagingViewModel GetPaginationData(int count, int offset, string sortOrder, string query, string seoFragment, string keyword);
     }
 
     [AutoBind]
@@ -24,18 +25,21 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             _tenantProvider = tenantProvider;
         }
 
-        public PagingViewModel GetPaginationData(int count, int limit, int offset, string sortOrder, string query, string seoFragment, string keyword)
+        public PagingViewModel GetPaginationData(int count, int pg, string sortOrder, string query, string seoFragment, string keyword)
         {
             if (count < 1)
             {
                 return new PagingViewModel();
             }
-            var currentPageNumber = GetCurrentPageNo(offset, limit);
-            var totalPages = limit != 0 ? (int)Math.Ceiling((double)count / limit)  : 0;
-            var fistPageLink = count > 0 ? GeneratePageLink(1, limit, query, seoFragment, sortOrder, keyword) : null; // Only if there's at leaset one record
-            var lastPageLink = totalPages >= 2 ? GeneratePageLink(totalPages, limit, query, seoFragment, sortOrder, keyword) : null; // Only if more 1 page
-            var previousPageLink = totalPages >= 2 && currentPageNumber > 1 ? GeneratePageLink(currentPageNumber -1, limit, query, seoFragment, sortOrder, keyword) : null; //Only there's room to nevigate to previous page
-            var nextPageLink = totalPages >= 2 && currentPageNumber < totalPages ? GeneratePageLink(currentPageNumber + 1, limit, query, seoFragment, sortOrder, keyword) : null; //Only there's room to nevigate to next page
+
+            //int limit = ;
+            int offset = pg == 0 ? 0 :(pg * PageItemsLimit.ListingPageItemsLimit) - PageItemsLimit.ListingPageItemsLimit;
+            var currentPageNumber = GetCurrentPageNo(offset, PageItemsLimit.ListingPageItemsLimit);
+            var totalPages = (int)Math.Ceiling((double)count / PageItemsLimit.ListingPageItemsLimit);
+            var fistPageLink = count > 0 ? GeneratePageLink(1, PageItemsLimit.ListingPageItemsLimit, query, seoFragment, sortOrder, keyword) : null; // Only if there's at leaset one record
+            var lastPageLink = totalPages >= 2 ? GeneratePageLink(totalPages, PageItemsLimit.ListingPageItemsLimit, query, seoFragment, sortOrder, keyword) : null; // Only if more 1 page
+            var previousPageLink = totalPages >= 2 && currentPageNumber > 1 ? GeneratePageLink(currentPageNumber -1, PageItemsLimit.ListingPageItemsLimit, query, seoFragment, sortOrder, keyword) : null; //Only there's room to nevigate to previous page
+            var nextPageLink = totalPages >= 2 && currentPageNumber < totalPages ? GeneratePageLink(currentPageNumber + 1, PageItemsLimit.ListingPageItemsLimit, query, seoFragment, sortOrder, keyword) : null; //Only there's room to nevigate to next page
 
             return new PagingViewModel
             {
@@ -46,8 +50,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                 Last = lastPageLink,
                 Previous = previousPageLink,
                 Next = nextPageLink,
-                Pages = GeneratePageLinks(currentPageNumber, limit, totalPages, query, seoFragment, sortOrder, keyword).ToList(), // Only if more than 2 pages
-                DisplayText = GetDisplayText(count, totalPages, offset, currentPageNumber, limit)
+                Pages = GeneratePageLinks(currentPageNumber, PageItemsLimit.ListingPageItemsLimit, totalPages, query, seoFragment, sortOrder, keyword).ToList(), // Only if more than 2 pages
+                DisplayText = GetDisplayText(count, totalPages, offset, currentPageNumber, PageItemsLimit.ListingPageItemsLimit)
             };
         }
 
@@ -114,12 +118,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 
         private PagingItemViewModel GeneratePageLink(long pageNo, int limit, string query, string seoFragment, string sortOrder, string keyword)
         {
-            var offset = (pageNo - MinPageNo) * limit;
+           // var offset = (pageNo - MinPageNo) * limit;
 
             return new PagingItemViewModel
             {
                 PageNo = pageNo,
-                Url = ListingUrlHelper.GetPageAndSortPathAndQuery(query, offset, sortOrder, keyword, seoFragment)
+                Url = ListingUrlHelper.GetPageAndSortPathAndQuery(query, pageNo, sortOrder, keyword, seoFragment)
             };        
         }
 

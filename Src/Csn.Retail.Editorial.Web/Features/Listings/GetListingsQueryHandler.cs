@@ -70,9 +70,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 query.Query = _expressionFormatter.Format(query.QueryExpression?.AppendOrUpdateKeywords(query.Keywords));
             }
 
-            var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sort) ? query.Sort : string.Empty;
+            var sortOrder = EditorialSortKeyValues.IsValidSort(query.Sb) ? query.Sb : string.Empty;
 
-            var resultData = await _ryvussDataService.GetNavAndResults(string.IsNullOrEmpty(query.SeoFragment) ? query.Query : query.SeoFragment, true, sortOrder, query.Offset);
+            var resultData = await _ryvussDataService.GetNavAndResults(string.IsNullOrEmpty(query.SeoFragment) ? query.Query : query.SeoFragment, true, sortOrder, query.Pg);
 
             if (resultData == null) return null;
 
@@ -85,7 +85,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 return new GetListingsResponse
                 {
                     RedirectRequired = true,
-                    RedirectUrl = ListingUrlHelper.GetSeoUrl(resultData.Metadata.Seo, query.Offset, sortOrder)
+                    RedirectUrl = ListingUrlHelper.GetSeoUrl(resultData.Metadata.Seo, query.Pg, sortOrder)
                 };
             }
 
@@ -93,7 +93,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             {
                 RyvussNavResult = resultData,
                 Query = string.IsNullOrEmpty(query.Query) ? resultData.Metadata?.Query : query.Query,
-                Offset = query.Offset,
+                Offset = query.Pg,
                 Sort = sortOrder,
                 SeoFragment = query.SeoFragment,
                 SearchEventType = query.SearchEventType,
@@ -110,8 +110,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 }
             });
             navResults.INav.CurrentAction = ListingUrlHelper.GetQueryString(!string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, sortOrder);
-            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingUrlHelper.GetSeoUrl(query.SeoFragment, query.Offset, sortOrder) :
-                ListingUrlHelper.GetPathAndQueryString(query.Query, query.Offset, sortOrder, includeResultsSegment: true);
+            navResults.INav.CurrentUrl = !string.IsNullOrEmpty(query.SeoFragment) ? ListingUrlHelper.GetSeoUrl(query.SeoFragment, query.Pg, sortOrder) :
+                ListingUrlHelper.GetPathAndQueryString(query.Query, query.Pg, sortOrder, includeResultsSegment: true);
 
             return new GetListingsResponse
             {
@@ -119,7 +119,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 ListingsViewModel = new ListingsViewModel
                 {
                     NavResults = navResults,
-                    Paging = _paginationHelper.GetPaginationData(navResults.Count, PageItemsLimit.ListingPageItemsLimit, query.Offset, sortOrder, query.Query, resultData.Metadata?.Seo, query.Keywords),
+                    Paging = _paginationHelper.GetPaginationData(navResults.Count, query.Pg, sortOrder, query.Query, resultData.Metadata?.Seo, query.Keywords),
                     Sorting = _sortingHelper.GenerateSortByViewModel(string.IsNullOrEmpty(sortOrder) ? EditorialSortKeyValues.ListingPageDefaultSort : sortOrder, !string.IsNullOrEmpty(query.SeoFragment) ? query.SeoFragment : query.Query, query.Keywords, query.SeoFragment),
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(resultData.Metadata?.Query).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,

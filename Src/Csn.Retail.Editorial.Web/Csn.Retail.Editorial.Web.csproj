@@ -780,6 +780,7 @@
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
     <Compile Include="Infrastructure\MultiTenant\TenantDataMapper.cs" />
+    <Compile Include="Infrastructure\Filters\SeoFriendlyRoutesRedirectFilter.cs" />
     <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
     <Compile Include="Features\Shared\Models\EditorialMetadataDto.cs" />
