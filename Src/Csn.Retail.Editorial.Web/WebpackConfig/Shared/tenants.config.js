@@ -26,7 +26,8 @@ export const AUTenants = [
 ];
 
 export const LATAMTenants = [
-    'soloautos'
+    'soloautos',
+    'demotores'
 ];
 
 const getTenants = (tenant) => {
