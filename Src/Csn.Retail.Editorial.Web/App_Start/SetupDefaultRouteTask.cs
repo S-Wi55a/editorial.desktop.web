@@ -64,17 +64,17 @@ namespace Csn.Retail.Editorial.Web
             );
 
             routes.MapRoute(
-                name: "LandingManufacturer",
-                url: "editorial/{*manufacturer}",
-                defaults: new { controller = "Landing", action = "Index" }, 
-                constraints: new { manufacturer = new ManufacturerRouteConstraint() }
-            );
-
-            routes.MapRoute(
                 name: "Details",
                 url: "editorial/details/{slug}",
                 defaults: new { controller = "Details", action = "Index" },
                 constraints: new { slug = "^.*-\\d+/?$" }
+            );
+
+            routes.MapRoute(
+                name: "LandingManufacturer",
+                url: "editorial/{*manufacturer}",
+                defaults: new { controller = "Landing", action = "Index" }, 
+                constraints: new { manufacturer = new ManufacturerRouteConstraint() }
             );
 
 //TODO: to be removed once legacy url structures are no longer needed

@@ -7,7 +7,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
     {
         public static void RenderNativeAd(this HtmlHelper html)
         {
-            html.Action("Index", "NativeAd");
+            html.RenderAction("Index", "NativeAd");
         }
     }
 }
