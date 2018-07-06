@@ -197,7 +197,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Abarth.)",
           "sort": "Latest",
-          "viewAll": "/results/abarth/",
+          "viewAll": "/abarth/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -208,7 +208,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Abarth._.Model.124.))",
           "sort": "Latest",
-          "viewAll": "/results/abarth/124/",
+          "viewAll": "/abarth/124/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -219,7 +219,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Abarth._.Model.595.))",
           "sort": "Latest",
-          "viewAll": "/results/abarth/595/",
+          "viewAll": "/abarth/595/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -240,7 +240,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Alfa Romeo.)",
           "sort": "Latest",
-          "viewAll": "/results/alfa-romeo/",
+          "viewAll": "/alfa-romeo/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -251,7 +251,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Alfa Romeo._.Model.Giulia.))",
           "sort": "Latest",
-          "viewAll": "/results/alfa-romeo/giulia/",
+          "viewAll": "/alfa-romeo/giulia/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -262,7 +262,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Alfa Romeo._.Model.Giulietta.))",
           "sort": "Latest",
-          "viewAll": "/results/alfa-romeo/giulietta/",
+          "viewAll": "/alfa-romeo/giulietta/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -273,7 +273,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Alfa Romeo._.Model.Stelvio.))",
           "sort": "Latest",
-          "viewAll": "/results/alfa-romeo/stelvio/",
+          "viewAll": "/alfa-romeo/stelvio/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -294,7 +294,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Aston Martin.)",
           "sort": "Latest",
-          "viewAll": "/results/aston-martin/",
+          "viewAll": "/aston-martin/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -305,7 +305,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Aston Martin._.Model.DB11.))",
           "sort": "Latest",
-          "viewAll": "/results/aston-martin/db11/",
+          "viewAll": "/aston-martin/db11/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -316,7 +316,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Aston Martin._.Model.Rapide.))",
           "sort": "Latest",
-          "viewAll": "/results/aston-martin/rapide/",
+          "viewAll": "/aston-martin/rapide/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -327,7 +327,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Aston Martin._.Model.Vanquish.))",
           "sort": "Latest",
-          "viewAll": "/results/aston-martin/vanquish/",
+          "viewAll": "/aston-martin/vanquish/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -338,7 +338,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Aston Martin._.Model.Vantage.))",
           "sort": "Latest",
-          "viewAll": "/results/aston-martin/vantage/",
+          "viewAll": "/aston-martin/vantage/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -359,7 +359,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Audi.)",
           "sort": "Latest",
-          "viewAll": "/results/audi/",
+          "viewAll": "/audi/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -370,7 +370,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.A3.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/a3/",
+          "viewAll": "/audi/a3/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -381,7 +381,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.A4.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/a4/",
+          "viewAll": "/audi/a4/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -392,7 +392,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.A5.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/a5/",
+          "viewAll": "/audi/a5/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -403,7 +403,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.A6.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/a6/",
+          "viewAll": "/audi/a6/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -414,7 +414,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.A8.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/a8/",
+          "viewAll": "/audi/a8/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -425,7 +425,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.Q2.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/q2/",
+          "viewAll": "/audi/q2/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -436,7 +436,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.Q5.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/q5/",
+          "viewAll": "/audi/q5/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -447,7 +447,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.Q7.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/q7/",
+          "viewAll": "/audi/q7/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -458,7 +458,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.R8.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/r8/",
+          "viewAll": "/audi/r8/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -469,7 +469,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.RS3.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/rs3/",
+          "viewAll": "/audi/rs3/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -480,7 +480,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.RS4.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/rs4/",
+          "viewAll": "/audi/rs4/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -491,7 +491,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.RS5.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/rs5/",
+          "viewAll": "/audi/rs5/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -502,7 +502,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.S5.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/s5/",
+          "viewAll": "/audi/s5/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -513,7 +513,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.SQ5.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/sq5/",
+          "viewAll": "/audi/sq5/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -524,7 +524,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.SQ7.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/sq7/",
+          "viewAll": "/audi/sq7/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -535,7 +535,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Audi._.Model.TT.))",
           "sort": "Latest",
-          "viewAll": "/results/audi/tt/",
+          "viewAll": "/audi/tt/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -556,7 +556,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Bentley.)",
           "sort": "Latest",
-          "viewAll": "/results/bentley/",
+          "viewAll": "/bentley/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -567,7 +567,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Bentley._.Model.Bentayga.))",
           "sort": "Latest",
-          "viewAll": "/results/bentley/bentayga/",
+          "viewAll": "/bentley/bentayga/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -578,7 +578,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Bentley._.Model.Continental.))",
           "sort": "Latest",
-          "viewAll": "/results/bentley/continental/",
+          "viewAll": "/bentley/continental/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -589,7 +589,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Bentley._.Model.Mulsanne.))",
           "sort": "Latest",
-          "viewAll": "/results/bentley/mulsanne/",
+          "viewAll": "/bentley/mulsanne/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -610,7 +610,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.BMW.)",
           "sort": "Latest",
-          "viewAll": "/results/bmw/",
+          "viewAll": "/bmw/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -741,7 +741,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Chevrolet.)",
           "sort": "Latest",
-          "viewAll": "/results/chevrolet/",
+          "viewAll": "/chevrolet/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -752,7 +752,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Chevrolet._.Model.Camaro.))",
           "sort": "Latest",
-          "viewAll": "/results/chevrolet/camaro/",
+          "viewAll": "/chevrolet/camaro/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -763,7 +763,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Chevrolet._.Model.Corvette.))",
           "sort": "Latest",
-          "viewAll": "/results/chevrolet/corvette/",
+          "viewAll": "/chevrolet/corvette/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -774,7 +774,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Chevrolet._.Model.Silverado.))",
           "sort": "Latest",
-          "viewAll": "/results/chevrolet/silverado/",
+          "viewAll": "/chevrolet/silverado/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -795,7 +795,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Citroen.)",
           "sort": "Latest",
-          "viewAll": "/results/citroen/",
+          "viewAll": "/citroen/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -806,7 +806,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Citroen._.Model.C3.))",
           "sort": "Latest",
-          "viewAll": "/results/citroen/c3/",
+          "viewAll": "/citroen/c3/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -817,7 +817,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Citroen._.Model.C4 Cactus.))",
           "sort": "Latest",
-          "viewAll": "/results/citroen/c4-cactus/",
+          "viewAll": "/citroen/c4-cactus/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -838,7 +838,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Ferrari.)",
           "sort": "Latest",
-          "viewAll": "/results/ferrari/",
+          "viewAll": "/ferrari/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -849,7 +849,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ferrari._.Model.488 GTB.))",
           "sort": "Latest",
-          "viewAll": "/results/ferrari/488-gtb/",
+          "viewAll": "/ferrari/488-gtb/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -860,7 +860,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ferrari._.Model.California.))",
           "sort": "Latest",
-          "viewAll": "/results/ferrari/california/",
+          "viewAll": "/ferrari/california/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -871,7 +871,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ferrari._.Model.GTC4Lusso.))",
           "sort": "Latest",
-          "viewAll": "/results/ferrari/gtc4lusso/",
+          "viewAll": "/ferrari/gtc4lusso/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -882,7 +882,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ferrari._.Model.LaFerrari.))",
           "sort": "Latest",
-          "viewAll": "/results/ferrari/laferrari/",
+          "viewAll": "/ferrari/laferrari/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -903,7 +903,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2015._.YearPublished.2017._.YearPublished.2018.)_.Make.Fiat.)",
           "sort": "Latest",
-          "viewAll": "/results/fiat/",
+          "viewAll": "/fiat/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -914,7 +914,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2015._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Fiat._.Model.124.))",
           "sort": "Latest",
-          "viewAll": "/results/fiat/124/",
+          "viewAll": "/fiat/124/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -925,7 +925,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2015._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Fiat._.Model.500.))",
           "sort": "Latest",
-          "viewAll": "/results/fiat/500/",
+          "viewAll": "/fiat/500/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -936,7 +936,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2015._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Fiat._.Model.500X.))",
           "sort": "Latest",
-          "viewAll": "/results/fiat/500x/",
+          "viewAll": "/fiat/500x/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -957,7 +957,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Ford.)",
           "sort": "Latest",
-          "viewAll": "/results/ford/",
+          "viewAll": "/ford/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -968,7 +968,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.EcoSport.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/ecosport/",
+          "viewAll": "/ford/ecosport/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -979,7 +979,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Escape.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/escape/",
+          "viewAll": "/ford/escape/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -990,7 +990,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Everest.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/everest/",
+          "viewAll": "/ford/everest/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1001,7 +1001,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.F150.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/f150/",
+          "viewAll": "/ford/f150/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1012,7 +1012,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Falcon.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/falcon/",
+          "viewAll": "/ford/falcon/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1023,7 +1023,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Fiesta.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/fiesta/",
+          "viewAll": "/ford/fiesta/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1034,7 +1034,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Focus.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/focus/",
+          "viewAll": "/ford/focus/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1045,7 +1045,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.GT.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/gt/",
+          "viewAll": "/ford/gt/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1056,7 +1056,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Kuga.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/kuga/",
+          "viewAll": "/ford/kuga/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1067,7 +1067,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Mondeo.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/mondeo/",
+          "viewAll": "/ford/mondeo/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1078,7 +1078,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Mustang.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/mustang/",
+          "viewAll": "/ford/mustang/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1089,7 +1089,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Ranger.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/ranger/",
+          "viewAll": "/ford/ranger/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1100,7 +1100,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Territory.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/territory/",
+          "viewAll": "/ford/territory/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1111,7 +1111,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Transit.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/transit/",
+          "viewAll": "/ford/transit/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1122,7 +1122,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Ford._.Model.Transit Custom.))",
           "sort": "Latest",
-          "viewAll": "/results/ford/transit-custom/",
+          "viewAll": "/ford/transit-custom/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1143,7 +1143,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Haval.)",
           "sort": "Latest",
-          "viewAll": "/results/haval/",
+          "viewAll": "/haval/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1154,7 +1154,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Haval._.Model.H2.))",
           "sort": "Latest",
-          "viewAll": "/results/haval/h2/",
+          "viewAll": "/haval/h2/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1165,7 +1165,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Haval._.Model.H6.))",
           "sort": "Latest",
-          "viewAll": "/results/haval/h6/",
+          "viewAll": "/haval/h6/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1176,7 +1176,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Haval._.Model.H9.))",
           "sort": "Latest",
-          "viewAll": "/results/haval/h9/",
+          "viewAll": "/haval/h9/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1197,7 +1197,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Holden.)",
           "sort": "Latest",
-          "viewAll": "/results/holden/",
+          "viewAll": "/holden/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1208,7 +1208,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden._.Model.Astra.))",
           "sort": "Latest",
-          "viewAll": "/results/holden/astra/",
+          "viewAll": "/holden/astra/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1219,7 +1219,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden._.Model.Calais.))",
           "sort": "Latest",
-          "viewAll": "/results/holden/calais/",
+          "viewAll": "/holden/calais/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1230,7 +1230,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden._.Model.Colorado.))",
           "sort": "Latest",
-          "viewAll": "/results/holden/colorado/",
+          "viewAll": "/holden/colorado/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1241,7 +1241,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden._.Model.Colorado 7.))",
           "sort": "Latest",
-          "viewAll": "/results/holden/colorado-7/",
+          "viewAll": "/holden/colorado-7/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1252,7 +1252,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden._.Model.Commodore.))",
           "sort": "Latest",
-          "viewAll": "/results/holden/commodore/",
+          "viewAll": "/holden/commodore/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1263,7 +1263,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden._.Model.Equinox.))",
           "sort": "Latest",
-          "viewAll": "/results/holden/equinox/",
+          "viewAll": "/holden/equinox/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1274,7 +1274,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden._.Model.Spark.))",
           "sort": "Latest",
-          "viewAll": "/results/holden/spark/",
+          "viewAll": "/holden/spark/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1285,7 +1285,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden._.Model.Trailblazer.))",
           "sort": "Latest",
-          "viewAll": "/results/holden/trailblazer/",
+          "viewAll": "/holden/trailblazer/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1296,7 +1296,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden._.Model.Trax.))",
           "sort": "Latest",
-          "viewAll": "/results/holden/trax/",
+          "viewAll": "/holden/trax/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1317,7 +1317,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Holden Special Vehicles.)",
           "sort": "Latest",
-          "viewAll": "/results/holden-special-vehicles/",
+          "viewAll": "/holden-special-vehicles/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1328,7 +1328,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden Special Vehicles._.Model.Clubsport.))",
           "sort": "Latest",
-          "viewAll": "/results/holden-special-vehicles/clubsport/",
+          "viewAll": "/holden-special-vehicles/clubsport/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1339,7 +1339,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Holden Special Vehicles._.Model.GTS.))",
           "sort": "Latest",
-          "viewAll": "/results/holden-special-vehicles/gts/",
+          "viewAll": "/holden-special-vehicles/gts/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1360,7 +1360,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Honda.)",
           "sort": "Latest",
-          "viewAll": "/results/honda/",
+          "viewAll": "/honda/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1371,7 +1371,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Honda._.Model.Accord.))",
           "sort": "Latest",
-          "viewAll": "/results/honda/accord/",
+          "viewAll": "/honda/accord/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1382,7 +1382,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Honda._.Model.Civic.))",
           "sort": "Latest",
-          "viewAll": "/results/honda/civic/",
+          "viewAll": "/honda/civic/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1393,7 +1393,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Honda._.Model.CR-V.))",
           "sort": "Latest",
-          "viewAll": "/results/honda/cr-v/",
+          "viewAll": "/honda/cr-v/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1404,7 +1404,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Honda._.Model.HR-V.))",
           "sort": "Latest",
-          "viewAll": "/results/honda/hr-v/",
+          "viewAll": "/honda/hr-v/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1415,7 +1415,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Honda._.Model.NSX.))",
           "sort": "Latest",
-          "viewAll": "/results/honda/nsx/",
+          "viewAll": "/honda/nsx/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1436,7 +1436,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Hyundai.)",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/",
+          "viewAll": "/hyundai/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1447,7 +1447,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Hyundai._.Model.Elantra.))",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/elantra/",
+          "viewAll": "/hyundai/elantra/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1458,7 +1458,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Hyundai._.Model.Genesis.))",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/genesis/",
+          "viewAll": "/hyundai/genesis/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1469,7 +1469,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Hyundai._.Model.i30.))",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/i30/",
+          "viewAll": "/hyundai/i30/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1480,7 +1480,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Hyundai._.Model.Ioniq.))",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/ioniq/",
+          "viewAll": "/hyundai/ioniq/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1491,7 +1491,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Hyundai._.Model.Kona.))",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/kona/",
+          "viewAll": "/hyundai/kona/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1502,7 +1502,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Hyundai._.Model.Santa Fe.))",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/santa-fe/",
+          "viewAll": "/hyundai/santa-fe/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1513,7 +1513,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Hyundai._.Model.Sonata.))",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/sonata/",
+          "viewAll": "/hyundai/sonata/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1524,7 +1524,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Hyundai._.Model.Tucson.))",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/tucson/",
+          "viewAll": "/hyundai/tucson/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1535,7 +1535,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Hyundai._.Model.Veloster.))",
           "sort": "Latest",
-          "viewAll": "/results/hyundai/veloster/",
+          "viewAll": "/hyundai/veloster/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1556,7 +1556,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Isuzu.)",
           "sort": "Latest",
-          "viewAll": "/results/isuzu/",
+          "viewAll": "/isuzu/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1567,7 +1567,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Isuzu._.Model.D-Max.))",
           "sort": "Latest",
-          "viewAll": "/results/isuzu/d-max/",
+          "viewAll": "/isuzu/d-max/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1578,7 +1578,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Isuzu._.Model.MU-X.))",
           "sort": "Latest",
-          "viewAll": "/results/isuzu/mu-x/",
+          "viewAll": "/isuzu/mu-x/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1599,7 +1599,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Jaguar.)",
           "sort": "Latest",
-          "viewAll": "/results/jaguar/",
+          "viewAll": "/jaguar/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1610,7 +1610,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jaguar._.Model.E Type.))",
           "sort": "Latest",
-          "viewAll": "/results/jaguar/e-type/",
+          "viewAll": "/jaguar/e-type/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1621,7 +1621,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jaguar._.Model.E-Pace.))",
           "sort": "Latest",
-          "viewAll": "/results/jaguar/e-pace/",
+          "viewAll": "/jaguar/e-pace/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1632,7 +1632,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jaguar._.Model.F-Pace.))",
           "sort": "Latest",
-          "viewAll": "/results/jaguar/f-pace/",
+          "viewAll": "/jaguar/f-pace/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1643,7 +1643,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jaguar._.Model.F-TYPE.))",
           "sort": "Latest",
-          "viewAll": "/results/jaguar/f-type/",
+          "viewAll": "/jaguar/f-type/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1654,7 +1654,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jaguar._.Model.I-PACE.))",
           "sort": "Latest",
-          "viewAll": "/results/jaguar/i-pace/",
+          "viewAll": "/jaguar/i-pace/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1665,7 +1665,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jaguar._.Model.Xe.))",
           "sort": "Latest",
-          "viewAll": "/results/jaguar/xe/",
+          "viewAll": "/jaguar/xe/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1676,7 +1676,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jaguar._.Model.XF.))",
           "sort": "Latest",
-          "viewAll": "/results/jaguar/xf/",
+          "viewAll": "/jaguar/xf/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1697,7 +1697,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Jeep.)",
           "sort": "Latest",
-          "viewAll": "/results/jeep/",
+          "viewAll": "/jeep/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1708,7 +1708,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jeep._.Model.Cherokee.))",
           "sort": "Latest",
-          "viewAll": "/results/jeep/cherokee/",
+          "viewAll": "/jeep/cherokee/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1719,7 +1719,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jeep._.Model.Compass.))",
           "sort": "Latest",
-          "viewAll": "/results/jeep/compass/",
+          "viewAll": "/jeep/compass/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1730,7 +1730,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jeep._.Model.Grand Cherokee.))",
           "sort": "Latest",
-          "viewAll": "/results/jeep/grand-cherokee/",
+          "viewAll": "/jeep/grand-cherokee/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1741,7 +1741,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jeep._.Model.Renegade.))",
           "sort": "Latest",
-          "viewAll": "/results/jeep/renegade/",
+          "viewAll": "/jeep/renegade/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1752,7 +1752,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Jeep._.Model.Wrangler.))",
           "sort": "Latest",
-          "viewAll": "/results/jeep/wrangler/",
+          "viewAll": "/jeep/wrangler/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1773,7 +1773,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Kia.)",
           "sort": "Latest",
-          "viewAll": "/results/kia/",
+          "viewAll": "/kia/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1784,7 +1784,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Kia._.Model.Cerato.))",
           "sort": "Latest",
-          "viewAll": "/results/kia/cerato/",
+          "viewAll": "/kia/cerato/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1795,7 +1795,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Kia._.Model.Optima.))",
           "sort": "Latest",
-          "viewAll": "/results/kia/optima/",
+          "viewAll": "/kia/optima/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1806,7 +1806,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Kia._.Model.Picanto.))",
           "sort": "Latest",
-          "viewAll": "/results/kia/picanto/",
+          "viewAll": "/kia/picanto/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1817,7 +1817,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Kia._.Model.Rio.))",
           "sort": "Latest",
-          "viewAll": "/results/kia/rio/",
+          "viewAll": "/kia/rio/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1828,7 +1828,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Kia._.Model.Sorento.))",
           "sort": "Latest",
-          "viewAll": "/results/kia/sorento/",
+          "viewAll": "/kia/sorento/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1839,7 +1839,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Kia._.Model.Sportage.))",
           "sort": "Latest",
-          "viewAll": "/results/kia/sportage/",
+          "viewAll": "/kia/sportage/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1850,7 +1850,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Kia._.Model.Stinger.))",
           "sort": "Latest",
-          "viewAll": "/results/kia/stinger/",
+          "viewAll": "/kia/stinger/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1861,7 +1861,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Kia._.Model.Stinger GT.))",
           "sort": "Latest",
-          "viewAll": "/results/kia/stinger-gt/",
+          "viewAll": "/kia/stinger-gt/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1882,7 +1882,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Lamborghini.)",
           "sort": "Latest",
-          "viewAll": "/results/lamborghini/",
+          "viewAll": "/lamborghini/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1893,7 +1893,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lamborghini._.Model.Aventador.))",
           "sort": "Latest",
-          "viewAll": "/results/lamborghini/aventador/",
+          "viewAll": "/lamborghini/aventador/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1904,7 +1904,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lamborghini._.Model.Huracan.))",
           "sort": "Latest",
-          "viewAll": "/results/lamborghini/huracan/",
+          "viewAll": "/lamborghini/huracan/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1925,7 +1925,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Land Rover.)",
           "sort": "Latest",
-          "viewAll": "/results/land-rover/",
+          "viewAll": "/land-rover/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -1936,7 +1936,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Land Rover._.Model.Defender.))",
           "sort": "Latest",
-          "viewAll": "/results/land-rover/defender/",
+          "viewAll": "/land-rover/defender/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1947,7 +1947,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Land Rover._.Model.Discovery.))",
           "sort": "Latest",
-          "viewAll": "/results/land-rover/discovery/",
+          "viewAll": "/land-rover/discovery/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1958,7 +1958,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Land Rover._.Model.Discovery Sport.))",
           "sort": "Latest",
-          "viewAll": "/results/land-rover/discovery-sport/",
+          "viewAll": "/land-rover/discovery-sport/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1969,7 +1969,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Land Rover._.Model.Range Rover.))",
           "sort": "Latest",
-          "viewAll": "/results/land-rover/range-rover/",
+          "viewAll": "/land-rover/range-rover/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1980,7 +1980,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Land Rover._.Model.Range Rover Evoque.))",
           "sort": "Latest",
-          "viewAll": "/results/land-rover/range-rover-evoque/",
+          "viewAll": "/land-rover/range-rover-evoque/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -1991,7 +1991,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Land Rover._.Model.Range Rover Sport.))",
           "sort": "Latest",
-          "viewAll": "/results/land-rover/range-rover-sport/",
+          "viewAll": "/land-rover/range-rover-sport/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2002,7 +2002,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Land Rover._.Model.Range Rover Velar.))",
           "sort": "Latest",
-          "viewAll": "/results/land-rover/range-rover-velar/",
+          "viewAll": "/land-rover/range-rover-velar/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2023,7 +2023,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Lexus.)",
           "sort": "Latest",
-          "viewAll": "/results/lexus/",
+          "viewAll": "/lexus/",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2110,7 +2110,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Lotus.)",
           "sort": "Latest",
-          "viewAll": "/results/lotus/",
+          "viewAll": "/lotus/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2121,7 +2121,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lotus._.Model.Elise.))",
           "sort": "Latest",
-          "viewAll": "/results/lotus/elise/",
+          "viewAll": "/lotus/elise/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2132,7 +2132,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Lotus._.Model.Evora.))",
           "sort": "Latest",
-          "viewAll": "/results/lotus/evora/",
+          "viewAll": "/lotus/evora/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2153,7 +2153,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Maserati.)",
           "sort": "Latest",
-          "viewAll": "/results/maserati/",
+          "viewAll": "/maserati/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2164,7 +2164,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Maserati._.Model.Ghibli.))",
           "sort": "Latest",
-          "viewAll": "/results/maserati/ghibli/",
+          "viewAll": "/maserati/ghibli/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2175,7 +2175,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Maserati._.Model.Levante.))",
           "sort": "Latest",
-          "viewAll": "/results/maserati/levante/",
+          "viewAll": "/maserati/levante/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2186,7 +2186,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Maserati._.Model.Quattroporte.))",
           "sort": "Latest",
-          "viewAll": "/results/maserati/quattroporte/",
+          "viewAll": "/maserati/quattroporte/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2207,7 +2207,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Mazda.)",
           "sort": "Latest",
-          "viewAll": "/results/mazda/",
+          "viewAll": "/mazda/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2218,7 +2218,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mazda._.Model.2.))",
           "sort": "Latest",
-          "viewAll": "/results/mazda/2/",
+          "viewAll": "/mazda/2/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2229,7 +2229,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mazda._.Model.3.))",
           "sort": "Latest",
-          "viewAll": "/results/mazda/3/",
+          "viewAll": "/mazda/3/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2240,7 +2240,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mazda._.Model.6.))",
           "sort": "Latest",
-          "viewAll": "/results/mazda/6/",
+          "viewAll": "/mazda/6/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2251,7 +2251,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mazda._.Model.BT-50.))",
           "sort": "Latest",
-          "viewAll": "/results/mazda/bt-50/",
+          "viewAll": "/mazda/bt-50/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2262,7 +2262,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mazda._.Model.CX-3.))",
           "sort": "Latest",
-          "viewAll": "/results/mazda/cx-3/",
+          "viewAll": "/mazda/cx-3/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2273,7 +2273,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mazda._.Model.CX-5.))",
           "sort": "Latest",
-          "viewAll": "/results/mazda/cx-5/",
+          "viewAll": "/mazda/cx-5/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2284,7 +2284,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mazda._.Model.CX-9.))",
           "sort": "Latest",
-          "viewAll": "/results/mazda/cx-9/",
+          "viewAll": "/mazda/cx-9/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2295,7 +2295,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mazda._.Model.MX-5.))",
           "sort": "Latest",
-          "viewAll": "/results/mazda/mx-5/",
+          "viewAll": "/mazda/mx-5/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2316,7 +2316,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.McLaren.)",
           "sort": "Latest",
-          "viewAll": "/results/mclaren/",
+          "viewAll": "/mclaren/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2327,7 +2327,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.McLaren._.Model.570GT.))",
           "sort": "Latest",
-          "viewAll": "/results/mclaren/570gt/",
+          "viewAll": "/mclaren/570gt/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2338,7 +2338,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.McLaren._.Model.570S.))",
           "sort": "Latest",
-          "viewAll": "/results/mclaren/570s/",
+          "viewAll": "/mclaren/570s/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2349,7 +2349,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.McLaren._.Model.675LT.))",
           "sort": "Latest",
-          "viewAll": "/results/mclaren/675lt/",
+          "viewAll": "/mclaren/675lt/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2360,7 +2360,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.McLaren._.Model.720S.))",
           "sort": "Latest",
-          "viewAll": "/results/mclaren/720s/",
+          "viewAll": "/mclaren/720s/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2381,7 +2381,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Mercedes-Benz.)",
           "sort": "Latest",
-          "viewAll": "/results/mercedes-benz/",
+          "viewAll": "/mercedes-benz/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2523,7 +2523,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Mini.)",
           "sort": "Latest",
-          "viewAll": "/results/mini/",
+          "viewAll": "/mini/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2534,7 +2534,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mini._.Model.Clubman.))",
           "sort": "Latest",
-          "viewAll": "/results/mini/clubman/",
+          "viewAll": "/mini/clubman/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2545,7 +2545,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mini._.Model.Convertible.))",
           "sort": "Latest",
-          "viewAll": "/results/mini/convertible/",
+          "viewAll": "/mini/convertible/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2556,7 +2556,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mini._.Model.Countryman.))",
           "sort": "Latest",
-          "viewAll": "/results/mini/countryman/",
+          "viewAll": "/mini/countryman/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2567,7 +2567,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mini._.Model.Hatch.))",
           "sort": "Latest",
-          "viewAll": "/results/mini/hatch/",
+          "viewAll": "/mini/hatch/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2588,7 +2588,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Mitsubishi.)",
           "sort": "Latest",
-          "viewAll": "/results/mitsubishi/",
+          "viewAll": "/mitsubishi/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2599,7 +2599,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mitsubishi._.Model.Asx.))",
           "sort": "Latest",
-          "viewAll": "/results/mitsubishi/asx/",
+          "viewAll": "/mitsubishi/asx/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2610,7 +2610,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mitsubishi._.Model.Eclipse Cross.))",
           "sort": "Latest",
-          "viewAll": "/results/mitsubishi/eclipse-cross/",
+          "viewAll": "/mitsubishi/eclipse-cross/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2621,7 +2621,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mitsubishi._.Model.Lancer.))",
           "sort": "Latest",
-          "viewAll": "/results/mitsubishi/lancer/",
+          "viewAll": "/mitsubishi/lancer/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2632,7 +2632,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mitsubishi._.Model.Outlander.))",
           "sort": "Latest",
-          "viewAll": "/results/mitsubishi/outlander/",
+          "viewAll": "/mitsubishi/outlander/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2643,7 +2643,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mitsubishi._.Model.Pajero.))",
           "sort": "Latest",
-          "viewAll": "/results/mitsubishi/pajero/",
+          "viewAll": "/mitsubishi/pajero/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2654,7 +2654,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mitsubishi._.Model.Pajero Sport.))",
           "sort": "Latest",
-          "viewAll": "/results/mitsubishi/pajero-sport/",
+          "viewAll": "/mitsubishi/pajero-sport/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2665,7 +2665,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mitsubishi._.Model.Triton.))",
           "sort": "Latest",
-          "viewAll": "/results/mitsubishi/triton/",
+          "viewAll": "/mitsubishi/triton/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2686,7 +2686,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Nissan.)",
           "sort": "Latest",
-          "viewAll": "/results/nissan/",
+          "viewAll": "/nissan/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2697,7 +2697,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Nissan._.Model.370Z.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/370z/",
+          "viewAll": "/nissan/370z/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2708,7 +2708,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Nissan._.Model.Altima.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/altima/",
+          "viewAll": "/nissan/altima/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2719,7 +2719,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Nissan._.Model.GT-R.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/gt-r/",
+          "viewAll": "/nissan/gt-r/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2730,7 +2730,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Nissan._.Model.Leaf.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/leaf/",
+          "viewAll": "/nissan/leaf/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2741,7 +2741,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Nissan._.Model.Navara.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/navara/",
+          "viewAll": "/nissan/navara/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2752,7 +2752,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Nissan._.Model.Patrol.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/patrol/",
+          "viewAll": "/nissan/patrol/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2763,7 +2763,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Nissan._.Model.QASHQAI.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/qashqai/",
+          "viewAll": "/nissan/qashqai/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2774,7 +2774,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Nissan._.Model.X-Trail.))",
           "sort": "Latest",
-          "viewAll": "/results/nissan/x-trail/",
+          "viewAll": "/nissan/x-trail/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2795,7 +2795,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Peugeot.)",
           "sort": "Latest",
-          "viewAll": "/results/peugeot/",
+          "viewAll": "/peugeot/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2806,7 +2806,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Peugeot._.Model.2008.))",
           "sort": "Latest",
-          "viewAll": "/results/peugeot/2008/",
+          "viewAll": "/peugeot/2008/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2817,7 +2817,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Peugeot._.Model.208.))",
           "sort": "Latest",
-          "viewAll": "/results/peugeot/208/",
+          "viewAll": "/peugeot/208/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2828,7 +2828,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Peugeot._.Model.3008.))",
           "sort": "Latest",
-          "viewAll": "/results/peugeot/3008/",
+          "viewAll": "/peugeot/3008/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2839,7 +2839,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Peugeot._.Model.308.))",
           "sort": "Latest",
-          "viewAll": "/results/peugeot/308/",
+          "viewAll": "/peugeot/308/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2850,7 +2850,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Peugeot._.Model.5008.))",
           "sort": "Latest",
-          "viewAll": "/results/peugeot/5008/",
+          "viewAll": "/peugeot/5008/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2871,7 +2871,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Porsche.)",
           "sort": "Latest",
-          "viewAll": "/results/porsche/",
+          "viewAll": "/porsche/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2882,7 +2882,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Porsche._.Model.911.))",
           "sort": "Latest",
-          "viewAll": "/results/porsche/911/",
+          "viewAll": "/porsche/911/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2893,7 +2893,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Porsche._.Model.Boxster.))",
           "sort": "Latest",
-          "viewAll": "/results/porsche/boxster/",
+          "viewAll": "/porsche/boxster/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2904,7 +2904,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Porsche._.Model.Cayenne.))",
           "sort": "Latest",
-          "viewAll": "/results/porsche/cayenne/",
+          "viewAll": "/porsche/cayenne/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2915,7 +2915,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Porsche._.Model.Cayman.))",
           "sort": "Latest",
-          "viewAll": "/results/porsche/cayman/",
+          "viewAll": "/porsche/cayman/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2926,7 +2926,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Porsche._.Model.Macan.))",
           "sort": "Latest",
-          "viewAll": "/results/porsche/macan/",
+          "viewAll": "/porsche/macan/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2937,7 +2937,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Porsche._.Model.Panamera.))",
           "sort": "Latest",
-          "viewAll": "/results/porsche/panamera/",
+          "viewAll": "/porsche/panamera/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2958,7 +2958,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Renault.)",
           "sort": "Latest",
-          "viewAll": "/results/renault/",
+          "viewAll": "/renault/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -2969,7 +2969,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Renault._.Model.Captur.))",
           "sort": "Latest",
-          "viewAll": "/results/renault/captur/",
+          "viewAll": "/renault/captur/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2980,7 +2980,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Renault._.Model.Clio.))",
           "sort": "Latest",
-          "viewAll": "/results/renault/clio/",
+          "viewAll": "/renault/clio/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2991,7 +2991,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Renault._.Model.Kangoo.))",
           "sort": "Latest",
-          "viewAll": "/results/renault/kangoo/",
+          "viewAll": "/renault/kangoo/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3002,7 +3002,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Renault._.Model.Koleos.))",
           "sort": "Latest",
-          "viewAll": "/results/renault/koleos/",
+          "viewAll": "/renault/koleos/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3013,7 +3013,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Renault._.Model.Megane.))",
           "sort": "Latest",
-          "viewAll": "/results/renault/megane/",
+          "viewAll": "/renault/megane/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3024,7 +3024,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Renault._.Model.Trafic.))",
           "sort": "Latest",
-          "viewAll": "/results/renault/trafic/",
+          "viewAll": "/renault/trafic/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3045,7 +3045,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Skoda.)",
           "sort": "Latest",
-          "viewAll": "/results/skoda/",
+          "viewAll": "/skoda/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -3056,7 +3056,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Skoda._.Model.Fabia.))",
           "sort": "Latest",
-          "viewAll": "/results/skoda/fabia/",
+          "viewAll": "/skoda/fabia/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3067,7 +3067,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Skoda._.Model.Kodiaq.))",
           "sort": "Latest",
-          "viewAll": "/results/skoda/kodiaq/",
+          "viewAll": "/skoda/kodiaq/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3078,7 +3078,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Skoda._.Model.Octavia.))",
           "sort": "Latest",
-          "viewAll": "/results/skoda/octavia/",
+          "viewAll": "/skoda/octavia/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3089,7 +3089,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Skoda._.Model.Superb.))",
           "sort": "Latest",
-          "viewAll": "/results/skoda/superb/",
+          "viewAll": "/skoda/superb/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3110,7 +3110,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Subaru.)",
           "sort": "Latest",
-          "viewAll": "/results/subaru/",
+          "viewAll": "/subaru/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -3121,7 +3121,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Subaru._.Model.BRZ.))",
           "sort": "Latest",
-          "viewAll": "/results/subaru/brz/",
+          "viewAll": "/subaru/brz/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3132,7 +3132,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Subaru._.Model.Forester.))",
           "sort": "Latest",
-          "viewAll": "/results/subaru/forester/",
+          "viewAll": "/subaru/forester/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3143,7 +3143,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Subaru._.Model.Impreza.))",
           "sort": "Latest",
-          "viewAll": "/results/subaru/impreza/",
+          "viewAll": "/subaru/impreza/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3154,7 +3154,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Subaru._.Model.Levorg.))",
           "sort": "Latest",
-          "viewAll": "/results/subaru/levorg/",
+          "viewAll": "/subaru/levorg/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3165,7 +3165,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Subaru._.Model.Liberty.))",
           "sort": "Latest",
-          "viewAll": "/results/subaru/liberty/",
+          "viewAll": "/subaru/liberty/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3176,7 +3176,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Subaru._.Model.Outback.))",
           "sort": "Latest",
-          "viewAll": "/results/subaru/outback/",
+          "viewAll": "/subaru/outback/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3187,7 +3187,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Subaru._.Model.WRX.))",
           "sort": "Latest",
-          "viewAll": "/results/subaru/wrx/",
+          "viewAll": "/subaru/wrx/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3198,7 +3198,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Subaru._.Model.Xv.))",
           "sort": "Latest",
-          "viewAll": "/results/subaru/xv/",
+          "viewAll": "/subaru/xv/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3219,7 +3219,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Suzuki.)",
           "sort": "Latest",
-          "viewAll": "/results/suzuki/",
+          "viewAll": "/suzuki/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -3230,7 +3230,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Suzuki._.Model.Baleno.))",
           "sort": "Latest",
-          "viewAll": "/results/suzuki/baleno/",
+          "viewAll": "/suzuki/baleno/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3241,7 +3241,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Suzuki._.Model.Ignis.))",
           "sort": "Latest",
-          "viewAll": "/results/suzuki/ignis/",
+          "viewAll": "/suzuki/ignis/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3252,7 +3252,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Suzuki._.Model.Swift.))",
           "sort": "Latest",
-          "viewAll": "/results/suzuki/swift/",
+          "viewAll": "/suzuki/swift/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3263,7 +3263,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Suzuki._.Model.Vitara.))",
           "sort": "Latest",
-          "viewAll": "/results/suzuki/vitara/",
+          "viewAll": "/suzuki/vitara/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3284,7 +3284,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Tesla.)",
           "sort": "Latest",
-          "viewAll": "/results/tesla/",
+          "viewAll": "/tesla/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -3295,7 +3295,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Tesla._.Model.Model S.))",
           "sort": "Latest",
-          "viewAll": "/results/tesla/model-s/",
+          "viewAll": "/tesla/model-s/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3306,7 +3306,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Tesla._.Model.Model X.))",
           "sort": "Latest",
-          "viewAll": "/results/tesla/model-x/",
+          "viewAll": "/tesla/model-x/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3327,7 +3327,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Toyota.)",
           "sort": "Latest",
-          "viewAll": "/results/toyota/",
+          "viewAll": "/toyota/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -3338,7 +3338,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.86.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/86/",
+          "viewAll": "/toyota/86/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3349,7 +3349,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Camry.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/camry/",
+          "viewAll": "/toyota/camry/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3360,7 +3360,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.CH-R.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/ch-r/",
+          "viewAll": "/toyota/ch-r/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3371,7 +3371,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.C-HR.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/c-hr/",
+          "viewAll": "/toyota/c-hr/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3382,7 +3382,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Corolla.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/corolla/",
+          "viewAll": "/toyota/corolla/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3393,7 +3393,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Fortuner.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/fortuner/",
+          "viewAll": "/toyota/fortuner/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3404,7 +3404,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Hilux.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/hilux/",
+          "viewAll": "/toyota/hilux/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3415,7 +3415,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Kluger.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/kluger/",
+          "viewAll": "/toyota/kluger/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3426,7 +3426,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Landcruiser.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/landcruiser/",
+          "viewAll": "/toyota/landcruiser/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3437,7 +3437,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Landcruiser Prado.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/landcruiser-prado/",
+          "viewAll": "/toyota/landcruiser-prado/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3448,7 +3448,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Prius.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/prius/",
+          "viewAll": "/toyota/prius/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3459,7 +3459,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.RAV4.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/rav4/",
+          "viewAll": "/toyota/rav4/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3470,7 +3470,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Supra.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/supra/",
+          "viewAll": "/toyota/supra/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3481,7 +3481,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Toyota._.Model.Yaris.))",
           "sort": "Latest",
-          "viewAll": "/results/toyota/yaris/",
+          "viewAll": "/toyota/yaris/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3502,7 +3502,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Volkswagen.)",
           "sort": "Latest",
-          "viewAll": "/results/volkswagen/",
+          "viewAll": "/volkswagen/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -3513,7 +3513,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volkswagen._.Model.AMAROK.))",
           "sort": "Latest",
-          "viewAll": "/results/volkswagen/amarok/",
+          "viewAll": "/volkswagen/amarok/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3524,7 +3524,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volkswagen._.Model.Crafter.))",
           "sort": "Latest",
-          "viewAll": "/results/volkswagen/crafter/",
+          "viewAll": "/volkswagen/crafter/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3535,7 +3535,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volkswagen._.Model.Golf.))",
           "sort": "Latest",
-          "viewAll": "/results/volkswagen/golf/",
+          "viewAll": "/volkswagen/golf/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3546,7 +3546,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volkswagen._.Model.Passat.))",
           "sort": "Latest",
-          "viewAll": "/results/volkswagen/passat/",
+          "viewAll": "/volkswagen/passat/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3557,7 +3557,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volkswagen._.Model.Polo.))",
           "sort": "Latest",
-          "viewAll": "/results/volkswagen/polo/",
+          "viewAll": "/volkswagen/polo/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3568,7 +3568,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volkswagen._.Model.Tiguan.))",
           "sort": "Latest",
-          "viewAll": "/results/volkswagen/tiguan/",
+          "viewAll": "/volkswagen/tiguan/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3579,7 +3579,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volkswagen._.Model.Touareg.))",
           "sort": "Latest",
-          "viewAll": "/results/volkswagen/touareg/",
+          "viewAll": "/volkswagen/touareg/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3600,7 +3600,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.Make.Volvo.)",
           "sort": "Latest",
-          "viewAll": "/results/volvo/",
+          "viewAll": "/volvo/?pg=1",
           "polarAds": null,
           "carouselType": "Featured",
           "carouselItems": null
@@ -3611,7 +3611,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volvo._.Model.S60.))",
           "sort": "Latest",
-          "viewAll": "/results/volvo/s60/",
+          "viewAll": "/volvo/s60/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3622,7 +3622,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volvo._.Model.S90.))",
           "sort": "Latest",
-          "viewAll": "/results/volvo/s90/",
+          "viewAll": "/volvo/s90/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3633,7 +3633,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volvo._.Model.V90.))",
           "sort": "Latest",
-          "viewAll": "/results/volvo/v90/",
+          "viewAll": "/volvo/v90/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3644,7 +3644,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volvo._.Model.XC60.))",
           "sort": "Latest",
-          "viewAll": "/results/volvo/xc60/",
+          "viewAll": "/volvo/xc60/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -3655,7 +3655,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Volvo._.Model.XC90.))",
           "sort": "Latest",
-          "viewAll": "/results/volvo/xc90/",
+          "viewAll": "/volvo/xc90/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
