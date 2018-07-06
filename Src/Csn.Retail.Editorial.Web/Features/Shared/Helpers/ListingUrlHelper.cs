@@ -7,6 +7,7 @@ using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
+    //TODO: Refactoring and cleanup required for this class
     public static class ListingUrlHelper
     {
         private static string ListingsBasePath(string query = "", bool includeResultsSegment = false)
@@ -24,9 +25,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
         public static string GetPathAndQueryString(string q = null, long offset = 0, string sortOrder = null, string keyword = null, bool includeResultsSegment = false)
         {
             var queryParams = GetQueryStringParameters(q, offset, sortOrder, keyword);
-            var queryString = string.IsNullOrEmpty(queryParams) ? string.Empty : "?" + queryParams;
+            var queryString = string.IsNullOrEmpty(queryParams) ? "/" : "/?" + queryParams;
 
-            return $"{ListingsBasePath(queryString, includeResultsSegment)}/{queryString}";
+            return $"{ListingsBasePath(queryString, includeResultsSegment)}{queryString}";
         }
 
         public static string GetQueryString(string action, string sort)
@@ -42,17 +43,18 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             var pathAndQuery = string.IsNullOrEmpty(seofragment) 
                 ? (string.IsNullOrEmpty(query) ? "" : "?" + query)
                 : $"{seofragment}{(string.IsNullOrEmpty(query) ? "" : "?" + query)}";
-            return $"{ListingsBasePath(query)}{pathAndQuery}";
+            return $"{ListingsBasePath()}{pathAndQuery}";
         }
 
         public static string GetPageAndSortPathAndQuery(string q = null, long offset = 0, string sortOrder = null, string keyword = null, string seoFragment = "")
         {
             var queryParams = GetQueryStringParameters(string.IsNullOrEmpty(seoFragment) ? q : null , offset, sortOrder, keyword);
             var queryString = string.IsNullOrEmpty(seoFragment)
-                ? (string.IsNullOrEmpty(queryParams) ? "" : "?" + queryParams)
-                : $"{seoFragment}{(string.IsNullOrEmpty(queryParams) ? "" : "?" + queryParams)}";
-
-            return $"{ListingsBasePath(queryParams)}{queryString}";
+                ? (string.IsNullOrEmpty(queryParams) ? "/" : "/?" + queryParams)
+                : $"{seoFragment}{(string.IsNullOrEmpty(queryParams) ? "/" : "?" + queryParams)}";
+            var includeResultsSegment =
+                string.IsNullOrEmpty(seoFragment) && string.IsNullOrEmpty(q) || !string.IsNullOrEmpty(q);
+            return $"{ListingsBasePath(includeResultsSegment: includeResultsSegment)}{queryString}";
         }
 
         public static string GetQueryParam(string q, long offset, string sortOrder)

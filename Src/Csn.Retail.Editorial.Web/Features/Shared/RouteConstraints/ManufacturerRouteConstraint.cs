@@ -18,7 +18,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
 
             if (values.TryGetValue(parameterName, out var parameterValue))
             {
-                if (parameterValue == null || string.IsNullOrEmpty(parameterValue.ToString())) return false; // 'LandingHome' to Handle /editorial/ route
+                if (parameterValue == null || string.IsNullOrEmpty(parameterValue.ToString()) || 
+                    httpContext.Request.Params["pg"] != null || httpContext.Request.Params["sb"] != null) return false; // 'LandingHome' to Handle /editorial/ route
                 var manufacturer = parameterValue.ToString().Trim('/');
                 var landingConfigSet = _landingConfigProvider.LoadConfig(manufacturer);
                 return !string.IsNullOrEmpty(landingConfigSet.Result?.Type);

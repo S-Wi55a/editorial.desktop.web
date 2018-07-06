@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
 {
-    public class DetailsPageRouteConstraint : IRouteConstraint
+    public class LegacyDetailsPageRouteConstraint : IRouteConstraint
     {
 
         public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)

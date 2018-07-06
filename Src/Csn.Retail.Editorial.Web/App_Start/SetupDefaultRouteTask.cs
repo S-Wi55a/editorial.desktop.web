@@ -82,7 +82,7 @@ namespace Csn.Retail.Editorial.Web
                 name: "DetailsLegacyUrls",
                 url: "editorial/{*detailsSegments}",
                 defaults: new { controller = "Details", action = "Index" },
-                constraints: new { detailsSegments = new DetailsPageRouteConstraint() }
+                constraints: new { detailsSegments = new LegacyDetailsPageRouteConstraint() }
             );
 
             routes.MapRoute(

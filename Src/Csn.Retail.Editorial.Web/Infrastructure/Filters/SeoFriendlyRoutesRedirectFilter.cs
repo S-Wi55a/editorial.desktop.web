@@ -20,9 +20,9 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Filters
 
             if (seoFragments.All(seo => seo.ToLower() != "results")) return;
 
-            var requestedQuery = filterContext.RequestContext.HttpContext.Request.Url?.Query;//filterContext.HttpContext.Request?.QueryString["q"];
+            var requestedQuery = filterContext.HttpContext.Request.QueryString["q"];
 
-            if (seoFragments.Length < 3 || !string.IsNullOrEmpty(requestedQuery)) return;
+            if (seoFragments.Length <= 2 || !string.IsNullOrEmpty(requestedQuery)) return;
 
             var redirectedPath = path.Replace("/results", "");
             filterContext.Result = new RedirectResult($"{redirectedPath}/{filterContext.RequestContext.HttpContext.Request.Url?.Query}", true);
