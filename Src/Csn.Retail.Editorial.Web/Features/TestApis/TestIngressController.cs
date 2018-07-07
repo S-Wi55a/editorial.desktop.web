@@ -17,13 +17,13 @@ using Newtonsoft.Json;
 
 namespace Csn.Retail.Editorial.Web.Features.TestApis
 {
-    public class TestController : ApiController
+    public class TestIngressController : ApiController
     {
         private readonly ISmartServiceClient _restClient;
         private readonly IRyvussDataService _ryvussDataService;
         private readonly IMapper _mapper;
 
-        public TestController(ISmartServiceClient restClient,
+        public TestIngressController(ISmartServiceClient restClient,
                                 IRyvussDataService ryvussDataService,
                                 IMapper mapper)
         {
@@ -33,27 +33,20 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
         }
 
         [HttpGet]
-        [Route("editorial/api/test-ingress")]
-        public async Task<IHttpActionResult> GetIngress([FromUri]string make)
+        [Route("editorial/api/test/ingress/promotion")]
+        public async Task<IHttpActionResult> GetPromotion([FromUri]string make)
         {
-            return Ok(await GetDataUsingIngress(make));
+            return Ok(await GetPromotionData(make));
         }
 
         [HttpGet]
-        [Route("editorial/api/test-ingress-carousels")]
-        public async Task<IHttpActionResult> GetIngressWithCarousels([FromUri]string make)
+        [Route("editorial/api/test/ingress/carousels")]
+        public async Task<IHttpActionResult> GetCarousels([FromUri]string make, [FromUri]int count = 5)
         {
-            return Ok(await GetCarouselsWithIngress(make));
+            return Ok(await GetCarouselsData(make, count));
         }
 
-        [HttpGet]
-        [Route("editorial/api/test-no-ingress")]
-        public async Task<IHttpActionResult> GetWithoutIngress([FromUri]string make)
-        {
-            return Ok(await GetDataWithoutIngress(make));
-        }
-
-        private async Task<TimingWrappedResult<CampaignAdResult>> GetDataUsingIngress(string make)
+        private async Task<TimingWrappedResult<CampaignAdResult>> GetPromotionData(string make)
         {
             var campaignTag = $"?Tenant=carsales";
 
@@ -79,50 +72,23 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
             };
         }
 
-        private async Task<TimingWrappedResult<CampaignAdResult>> GetDataWithoutIngress(string make)
+        private async Task<TimingWrappedResult<List<object>>> GetCarouselsData(string make, int count)
         {
-            var campaignTag = $"?Tenant=carsales";
-
-            if (!string.IsNullOrEmpty(make))
-                campaignTag += $"&PromotionType=EditorialMakePage&Make={make}";
-            else
-                campaignTag += "&PromotionType=EditorialHomePage";
-
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri("http://showroom-promotions-api.aws.csprd.com.au")
-            };
-
-            var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/promotions/campaign/{campaignTag}");
-
             var watch = new Stopwatch();
             watch.Start();
 
-            var response = await client.SendAsync(request);
-
-            var result = await response.Content.ReadAsStringAsync();
-
-            watch.Stop();
-
-            return new TimingWrappedResult<CampaignAdResult>
-            {
-                Data = JsonConvert.DeserializeObject<CampaignAdResult>(result),
-                TotalDuration = watch.ElapsedMilliseconds
-            };
-        }
-
-        private async Task<List<object>> GetCarouselsWithIngress(string make)
-        {
             // build up the list of ryvuss queries...each one can be just latest search results
-            var carouselTask = GetCarousels();
+            var carouselTask = GetCarousels(count);
 
             // make nav call
             var navTask = GetNavResults();
 
             // make promotion api call
-            var adTask = GetDataUsingIngress(make);
+            var adTask = GetPromotionData(make);
 
             await Task.WhenAll(carouselTask, navTask, adTask);
+
+            watch.Stop();
 
             var stats = new List<Stats>
             {
@@ -140,7 +106,11 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
 
             stats.AddRange(carouselTask.Result.Select(i => new Stats(){ Name = "CarouselData", TotalDuration = i.TotalDuration}));
 
-            return new List<object>{ stats, carouselTask.Result, navTask.Result, adTask.Result};
+            return new TimingWrappedResult<List<object>>
+            {
+                Data = new List<object> { stats, carouselTask.Result, navTask.Result, adTask.Result },
+                TotalDuration = watch.ElapsedMilliseconds
+            };
         }
 
         private async Task<TimingWrappedResult<RyvussNavResultDto>> GetNavResults()
@@ -177,25 +147,13 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
             };
         }
 
-        private async Task<List<TimingWrappedResult<List<SearchResult>>>> GetCarousels()
+        private async Task<List<TimingWrappedResult<List<SearchResult>>>> GetCarousels(int count)
         {
-            var tasks = new List<int>{1, 2, 3, 4, 5}.Select(x => GetCarouselData()).ToList();
+            var tasks = new int[count].Select(x => GetCarouselData()).ToList();
 
             await Task.WhenAll(tasks);
 
             return tasks.Where(t => t.Result != null).Select(t => t.Result).ToList();
         }
-    }
-
-    public class TimingWrappedResult<T>
-    {
-        public T Data { get; set; }
-        public long TotalDuration { get; set; }
-    }
-
-    public class Stats
-    {
-        public string Name { get; set; }
-        public long TotalDuration { get; set; }
     }
 }
