@@ -184,7 +184,9 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
                 BaseAddress = new Uri("http://editorial.ryvuss.csprd.com.au")
             };
 
-            var request = new HttpRequestMessage(HttpMethod.Get, $"{GetPath(input)}?{GetQueryParams(input)}");
+            var queryString = string.Join("&", GetQueryParams(input).Select(kvp => $"{kvp.Key}={kvp.Value}"));
+
+            var request = new HttpRequestMessage(HttpMethod.Get, $"{GetPath(input)}?{queryString}");
 
             var response = await client.SendAsync(request);
 
