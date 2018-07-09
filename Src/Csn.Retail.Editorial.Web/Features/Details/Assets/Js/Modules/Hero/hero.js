@@ -20,6 +20,8 @@ export default function () {
 
         const scope = document.querySelector('.hero');
 
+        if (!scope) return;
+
         window.csn_modal = window.csn_modal || new Modal()
 
         //Add event listeners to hero content
