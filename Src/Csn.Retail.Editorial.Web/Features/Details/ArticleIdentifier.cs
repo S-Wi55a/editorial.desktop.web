@@ -6,6 +6,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     public class ArticleIdentifier
     {
         public string Id { get; set; }
-        public string PageName { get; set; }
+        public string Slug { get; set; }
     }
 }

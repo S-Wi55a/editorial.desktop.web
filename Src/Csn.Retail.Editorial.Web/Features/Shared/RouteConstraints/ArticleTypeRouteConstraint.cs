@@ -18,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
             
             if (values.TryGetValue(parameterName, out var parameterValue))
             {
-                var articleType = parameterValue.ToString();
+                var articleType = parameterValue.ToString().Trim('/');
                 var type = _articleTypeLookup.GetArticleTypeFromSlug(articleType);
                 return type.HasValue;
             }

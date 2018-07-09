@@ -48,7 +48,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             });
 
             //Act
-            var result = testSubject.GetPaginationData(314, 20, 120, "Sort", string.Empty, "/bmw/", "keyword");
+            var result = testSubject.GetPaginationData(314, 7, "Sort", string.Empty, "/bmw/", "keyword");
 
 
             //Assert
@@ -86,7 +86,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
             });
 
             //Act
-            var result = testSubject.GetPaginationData(0, 20, 0, "Sort", "test_query", "bmw", "keyword");
+            var result = testSubject.GetPaginationData(0, 0, "Sort", "test_query", "bmw", "keyword");
 
             //Assert
             Assert.IsNotNull(result);

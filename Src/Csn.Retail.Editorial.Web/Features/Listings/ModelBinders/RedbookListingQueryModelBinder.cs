@@ -11,21 +11,21 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
     {
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            var routeValue = bindingContext.ValueProvider.GetValue("vertical");
+            var routeValue = bindingContext.ValueProvider.GetValue("redbookVertical");
 
             if (!(base.BindModel(controllerContext, bindingContext) is GetListingsQuery record)) return null;
 
             if (routeValue == null) return null;
 
-            if (Enum.TryParse<Vertical>(routeValue.AttemptedValue, true, out var vertical))
+            if (Enum.TryParse<Vertical>(routeValue.AttemptedValue.Trim('/'), true, out var vertical))
             {
                 return new RedbookListingQuery
                 {
                     Vertical = vertical,
                     Query = record.Query,
                     Keywords = record.Keywords,
-                    Sort = record.Sort,
-                    Offset = record.Offset,
+                    Sb = record.Sb,
+                    Pg = record.Pg,
                     EditorialPageType = record.EditorialPageType,
                     QueryExpression = record.QueryExpression,
                     SearchEventType = record.SearchEventType,

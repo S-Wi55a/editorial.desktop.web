@@ -13,7 +13,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         }
 
         [ChildActionOnly]
-        [Route("NativeAd")]
         public ActionResult Index()
         {
             

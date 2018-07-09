@@ -20,16 +20,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _eventDispatcher = eventDispatcher;
         }
 
-        [Route("editorial/{manufacturer:manufacturer}")]
-        [RedirectAttributeFilter]
-        [RedbookDefaultVerticalAttributeFilter]
-        public async Task<ActionResult> Home(GetLandingQuery query)
-        {
-            return await Index(query);
-        }
-
-
-        [Route("editorial/")]
         [RedirectAttributeFilter]
         [RedbookDefaultVerticalAttributeFilter]
         public async Task<ActionResult> Index(GetLandingQuery query)
