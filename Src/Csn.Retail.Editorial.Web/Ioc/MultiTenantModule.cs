@@ -40,7 +40,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             var host = HttpContext.Current.Request.Url.Host.Replace("www.", string.Empty).Split('.').FirstOrDefault();
 
             if (!host.IsSame("redbook")) return host;
-            var vertical = HttpContext.Current.Request.Url.AbsolutePath.Split(new[] { "/editorial/" }, StringSplitOptions.None)[1].Split('/').FirstOrDefault();
+            var vertical = HttpContext.Current.Request.Url.AbsolutePath.Split(new[] { "/editorial" }, StringSplitOptions.None)[1].Split('/').FirstOrDefault();
 
             return Enum.TryParse<Vertical>(vertical, true, out var redbookVertical) ? $"redbook-{redbookVertical.ToString().ToLower()}" : "redbook-cars";
         }

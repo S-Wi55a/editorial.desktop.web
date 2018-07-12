@@ -13,7 +13,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         }
 
         [ChildActionOnly]
-        [Route("MediaMotiveAd")]
         public ActionResult Index(MediaMotiveAdQuery query)
         {
             var viewData = _queryDispatcher.Dispatch<MediaMotiveAdQuery, MediaMotiveAdViewModel>(query);

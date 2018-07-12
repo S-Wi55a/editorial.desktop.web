@@ -65,7 +65,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
 
-            navResults.INav.CurrentUrl = ListingUrlHelper.GetPathAndQueryString();
+            navResults.INav.CurrentUrl = ListingUrlHelper.GetPathAndQueryString(includeResultsSegment: true);
 
             return new GetLandingResponse
             {

@@ -617,7 +617,6 @@
     <Compile Include="Features\Shared\Constants\EditorialQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
-    <Compile Include="Features\Home\HomeController.cs" />
     <Content Include="Features\Details\Assets\Js\details.vendor.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
@@ -673,6 +672,7 @@
     <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
     <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
     <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
+    <Compile Include="Features\Shared\RouteConstraints\LegacyDetailsPageRouteConstraint.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ManufacturerRouteConstraint.cs" />
     <Compile Include="Features\Shared\RouteConstraints\VerticalRouteConstraint.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
@@ -716,7 +716,7 @@
     <Compile Include="Features\Shared\Search\Refinements\RefinementResult.cs" />
     <Compile Include="Features\Shared\Search\Refinements\RefinementsQuery.cs" />
     <Compile Include="Features\Shared\Search\Refinements\RefinementsQueryHandler.cs" />
-    <Compile Include="Features\Shared\Search\SearchController.cs" />
+    <Compile Include="Features\Shared\Search\NavController.cs" />
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
@@ -782,6 +782,7 @@
     <Compile Include="Infrastructure\Mappers\AutoMappedMapper.cs" />
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
     <Compile Include="Infrastructure\MultiTenant\TenantDataMapper.cs" />
+    <Compile Include="Infrastructure\Filters\SeoFriendlyRoutesRedirectFilter.cs" />
     <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
     <Compile Include="Features\Shared\Models\EditorialMetadataDto.cs" />
@@ -997,7 +998,6 @@
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mediamotive.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
-    <Content Include="Features\Home\Views\Index.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Head\_BasicSeoData.cshtml" />
     <Content Include="Features\Tracking\Views\WebMetricsScripts.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticle.scss" />

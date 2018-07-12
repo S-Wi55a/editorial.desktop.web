@@ -15,11 +15,11 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
 
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            var articleSlugRouteValue = bindingContext.ValueProvider.GetValue("articleSlug");
+            var articleTypeRouteValue = bindingContext.ValueProvider.GetValue("articleType");
 
-            if (articleSlugRouteValue == null) return null;
+            if (articleTypeRouteValue == null) return null;
 
-            var articleType = _articleTypeLookup.GetArticleTypeFromSlug(articleSlugRouteValue.AttemptedValue);
+            var articleType = _articleTypeLookup.GetArticleTypeFromSlug(articleTypeRouteValue.AttemptedValue.Trim('/'));
 
             if (!articleType.HasValue) return null;
 
