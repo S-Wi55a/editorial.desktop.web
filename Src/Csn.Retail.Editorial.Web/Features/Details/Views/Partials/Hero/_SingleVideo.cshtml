@@ -4,8 +4,9 @@
 <div class="hero hero--singleVideo">
     <div class="container">
         <div class="brightcove">
-            <div class="brightcove__iframe-wrapper">
+            <div class="brightcove__video-wrapper">
                 <video 
+                    src="http://players.brightcove.net/@Model.BrightcoveVideo.PlayerId?_default/index.html?videoId=@Model.BrightcoveVideo.VideoId"
                     data-video-id="@Model.BrightcoveVideo.VideoId"
                     data-csn-article-id="@Model.NetworkId"
                     data-csn-mute="false"
@@ -14,8 +15,7 @@
                     data-player="@Model.BrightcoveVideo.PlayerId"
                     data-embed="default"
                     class="video-js hero-single-video"
-                    controls
-                    style="height:100%; width:100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;">
+                    controls>
                 </video>
             </div>
         </div>

@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="brightcove">
-        <div class="brightcove__iframe-wrapper">
+        <div class="brightcove__video-wrapper">
             <video 
                 data-video-id="@Model.BrightcoveVideo.VideoId"
                 data-csn-article-id="@Model.NetworkId"
@@ -13,8 +13,7 @@
                 data-player="@Model.BrightcoveVideo.PlayerId"
                 data-embed="default"
                 class="video-js inline-video"
-                controls
-                style="height: 100%; width: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;">
+                controls>
             </video>
         </div>
     </div>
