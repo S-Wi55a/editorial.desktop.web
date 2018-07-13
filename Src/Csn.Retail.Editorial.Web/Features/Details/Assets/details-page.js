@@ -159,6 +159,33 @@ if (document.querySelector('.article-type--widevideo')) {
     require('Js/Modules/Hero/hero-wide-video.js');
 }
 
+// add hero-video
+if (document.querySelector('.hero-video')) {
+    const inlineVideo = document.querySelector('.hero-video');
+    const playerId = inlineVideo.getAttribute('data-player');
+    const s = document.createElement('script');
+    s.src = `https://players.brightcove.net/674523943001/${playerId}_default/index.js`;
+    document.body.appendChild(s);
+}
+
+// add hero-single-video
+if (document.querySelector('.hero-single-video')) {
+    const inlineVideo = document.querySelector('.hero-single-video');
+    const playerId = inlineVideo.getAttribute('data-player');
+    const s = document.createElement('script');
+    s.src = `https://players.brightcove.net/674523943001/${playerId}_default/index.js`;
+    document.body.appendChild(s);
+}
+
+// add inline-video
+if (document.querySelector('.inline-video')) {
+    const inlineVideo = document.querySelector('.inline-video');
+    const playerId = inlineVideo.getAttribute('data-player');
+    const s = document.createElement('script');
+    s.src = `https://players.brightcove.net/674523943001/${playerId}_default/index.js`;
+    document.body.appendChild(s);
+}
+
 //Parallax
 loaded.then(function () {
     if (document.querySelector('.csn-parallax')) {

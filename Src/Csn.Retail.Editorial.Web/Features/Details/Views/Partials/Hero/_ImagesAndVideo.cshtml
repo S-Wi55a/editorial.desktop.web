@@ -4,7 +4,18 @@
 <div class="clearfix hero hero--imageAndVideo" data-webm-section="image-gallery">
     <div class="brightcove">
         <div class="brightcove__iframe-wrapper">
-            <iframe src="@Html.GetBrightcoveIFrameUrl(Model.BrightcoveVideo, Model.NetworkId)" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+            <video 
+                data-video-id="@Model.BrightcoveVideo.VideoId"
+                data-csn-article-id="@Model.NetworkId"
+                data-csn-mute="false"
+                data-csn-service="motoring"
+                data-account="674523943001"
+                data-player="@Model.BrightcoveVideo.PlayerId"
+                data-embed="default"
+                class="video-js hero-video"
+                controls
+                style="height: 100%; width: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;">
+            </video>
         </div>
     </div>
     <div class="slideshow slideshow--hero slideshow--image-video">
