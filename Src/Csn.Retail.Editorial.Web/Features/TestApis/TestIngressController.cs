@@ -41,12 +41,12 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
 
         [HttpGet]
         [Route("editorial/api/test/ingress/carousels")]
-        public async Task<IHttpActionResult> GetCarousels([FromUri]string make, [FromUri]int count = 5)
+        public async Task<IHttpActionResult> GetCarousels([FromUri]string make, [FromUri]bool includePromotion = true, [FromUri]int count = 5)
         {
-            return Ok(await GetCarouselsData(make, count));
+            return Ok(await GetCarouselsData(make, count, includePromotion));
         }
 
-        private async Task<TimingWrappedResult<CampaignAdResult>> GetPromotionData(string make)
+        private async Task<List<TimingWrappedResult>> GetPromotionData(string make)
         {
             var campaignTag = $"?Tenant=carsales";
 
@@ -65,55 +65,56 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
 
             watch.Stop();
 
-            return new TimingWrappedResult<CampaignAdResult>
+            return new List<TimingWrappedResult>
             {
-                Data = result,
-                TotalDuration = watch.ElapsedMilliseconds
+                new TimingWrappedResult()
+                {
+                    Name = "promotion",
+                    TotalDuration = watch.ElapsedMilliseconds
+                }
             };
         }
 
-        private async Task<TimingWrappedResult<List<object>>> GetCarouselsData(string make, int count)
+        private async Task<TotalTiming> GetCarouselsData(string make, int count, bool includePromotionData)
         {
             var watch = new Stopwatch();
             watch.Start();
 
+            var tasks = new List<Task<List<TimingWrappedResult>>>();
+
             // build up the list of ryvuss queries...each one can be just latest search results
-            var carouselTask = GetCarousels(count);
+            tasks.Add(GetCarousels(count));
 
             // make nav call
-            var navTask = GetNavResults();
+            tasks.Add(GetNavResults());
 
             // make promotion api call
-            var adTask = GetPromotionData(make);
+            if (includePromotionData)
+            {
+                tasks.Add(GetPromotionData(make));
+            }
 
-            await Task.WhenAll(carouselTask, navTask, adTask);
+            await Task.WhenAll(tasks);
 
             watch.Stop();
 
-            var stats = new List<Stats>
-            {
-                new Stats()
-                {
-                    Name = "Promotion",
-                    TotalDuration = adTask.Result.TotalDuration
-                },
-                new Stats()
-                {
-                    Name = "Nav",
-                    TotalDuration = navTask.Result.TotalDuration
-                }
-            };
+            var results = tasks.Select(t => t.Result).ToList();
 
-            stats.AddRange(carouselTask.Result.Select(i => new Stats(){ Name = "CarouselData", TotalDuration = i.TotalDuration}));
+            var timingResults = new List<TimingWrappedResult>();
 
-            return new TimingWrappedResult<List<object>>
+            foreach (var result in results)
             {
-                Data = new List<object> { stats, carouselTask.Result, navTask.Result, adTask.Result },
-                TotalDuration = watch.ElapsedMilliseconds
+                timingResults.AddRange(result);
+            }
+
+            return new TotalTiming()
+            {
+                TotalDuration = watch.ElapsedMilliseconds,
+                Timings = timingResults
             };
         }
 
-        private async Task<TimingWrappedResult<RyvussNavResultDto>> GetNavResults()
+        private async Task<List<TimingWrappedResult>> GetNavResults()
         {
             var watch = new Stopwatch();
             watch.Start();
@@ -122,14 +123,17 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
 
             watch.Stop();
 
-            return new TimingWrappedResult<RyvussNavResultDto>
+            return new List<TimingWrappedResult>
             {
-                Data = ryvussResults,
-                TotalDuration = watch.ElapsedMilliseconds
+                new TimingWrappedResult()
+                {
+                    Name = "Nav",
+                    TotalDuration = watch.ElapsedMilliseconds
+                }
             };
         }
 
-        private async Task<TimingWrappedResult<List<SearchResult>>> GetCarouselData()
+        private async Task<TimingWrappedResult> GetCarouselData()
         {
             var watch = new Stopwatch();
             watch.Start();
@@ -140,14 +144,15 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
 
             var landingResults = _mapper.Map<NavResult>(result);
 
-            return new TimingWrappedResult<List<SearchResult>>
+            return new TimingWrappedResult()
             {
-                Data = landingResults.SearchResults,
+                //Data = landingResults.SearchResults,
+                Name = "Carousel",
                 TotalDuration = watch.ElapsedMilliseconds
             };
         }
 
-        private async Task<List<TimingWrappedResult<List<SearchResult>>>> GetCarousels(int count)
+        private async Task<List<TimingWrappedResult>> GetCarousels(int count)
         {
             var tasks = new int[count].Select(x => GetCarouselData()).ToList();
 
@@ -155,5 +160,11 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
 
             return tasks.Where(t => t.Result != null).Select(t => t.Result).ToList();
         }
+    }
+
+    public class TotalTiming
+    {
+        public long TotalDuration { get; set; }
+        public List<TimingWrappedResult> Timings { get; set; }
     }
 }
