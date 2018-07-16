@@ -7,6 +7,7 @@
 
     .brightcove__video-wrapper {
         padding-top: percentage(9/16); // 16:9
+
         .hero-single-video,
         .hero-video,
         .inline-video {
@@ -19,9 +20,7 @@
             left: 0px;
         }
 
-        video.video-js.hero-single-video,
-        video.video-js.hero-video,
-        video.video-js.inline-video {
+        video.video-js {
             visibility: hidden;
         }
     }

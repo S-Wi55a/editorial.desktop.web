@@ -161,8 +161,9 @@ if (document.querySelector('.article-type--widevideo')) {
 
 // add hero-video
 if (document.querySelector('.hero-video')) {
-    const inlineVideo = document.querySelector('.hero-video');
-    const playerId = inlineVideo.getAttribute('data-player');
+    const heroVideo = document.querySelector('.hero-video');
+    heroVideo.removeAttribute("style");
+    const playerId = heroVideo.getAttribute('data-player');
     const s = document.createElement('script');
     s.src = `https://players.brightcove.net/674523943001/${playerId}_default/index.js`;
     document.body.appendChild(s);
@@ -170,8 +171,9 @@ if (document.querySelector('.hero-video')) {
 
 // add hero-single-video
 if (document.querySelector('.hero-single-video')) {
-    const inlineVideo = document.querySelector('.hero-single-video');
-    const playerId = inlineVideo.getAttribute('data-player');
+    const heroSingleVideo = document.querySelector('.hero-single-video');
+    heroSingleVideo.removeAttribute("style");
+    const playerId = heroSingleVideo.getAttribute('data-player');
     const s = document.createElement('script');
     s.src = `https://players.brightcove.net/674523943001/${playerId}_default/index.js`;
     document.body.appendChild(s);
@@ -179,8 +181,11 @@ if (document.querySelector('.hero-single-video')) {
 
 // add inline-video
 if (document.querySelector('.inline-video')) {
-    const inlineVideo = document.querySelector('.inline-video');
-    const playerId = inlineVideo.getAttribute('data-player');
+    const inlineVideos = document.querySelectorAll(".inline-video");
+    for (let i = 0; i < inlineVideos.length; i++) {
+        inlineVideos[i].removeAttribute("style");
+    }
+    const playerId = inlineVideos[0].getAttribute('data-player');
     const s = document.createElement('script');
     s.src = `https://players.brightcove.net/674523943001/${playerId}_default/index.js`;
     document.body.appendChild(s);
