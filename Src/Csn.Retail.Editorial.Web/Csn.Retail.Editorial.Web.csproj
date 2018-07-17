@@ -585,7 +585,6 @@
     <Compile Include="Features\MediaMotiveAds\TagBuilders\LandingTagBuilder.cs" />
     <Compile Include="Features\Shared\Constants\MediaMotiveAreaNames.cs" />
     <Compile Include="Features\Shared\Hero\Models\HeroAdUnitModel.cs" />
-    <Compile Include="Features\Shared\HtmlHelpers\BrightcoveVideoHtmlHelpers.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
@@ -596,7 +595,6 @@
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\Loggers\DetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
-    <Compile Include="Features\Details\Mappings\BrightcoveIFrameBuilder.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseMapper.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />
