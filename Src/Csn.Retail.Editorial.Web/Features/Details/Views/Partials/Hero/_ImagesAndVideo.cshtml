@@ -8,13 +8,14 @@
                 data-video-id="@Model.BrightcoveVideo.VideoId"
                 data-csn-article-id="@Model.NetworkId"
                 data-csn-mute="false"
-                data-csn-service="motoring"
+                data-csn-service="@Html.CurrentTenant().TenantName"
                 data-account="674523943001"
                 data-player="@Model.BrightcoveVideo.PlayerId"
                 data-embed="default"
                 class="video-js hero-video"
                 controls>
             </video>
+            <script src="https://players.brightcove.net/674523943001/@(Model.BrightcoveVideo.PlayerId)_default/index.js" async></script>
         </div>
     </div>
     <div class="slideshow slideshow--hero slideshow--image-video">

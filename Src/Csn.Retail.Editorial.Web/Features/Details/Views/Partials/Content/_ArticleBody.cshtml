@@ -5,6 +5,7 @@
 @{
     var dropCap = Model.UseDropCase ? "drop-cap" : "";
     var narrowCap = Model.ArticleTemplateType == ArticleTemplateType.Narrow ? "narrow" : string.Empty;
+    var loadBrightcove = false;
 }
 
 <div class="article__copy @dropCap @narrowCap">
@@ -12,5 +13,11 @@
     {
         // use convention based mapping for determining the view (based on section type)
         Html.RenderPartial($"Partials/ContentSections/_{contentSection.SectionType}", contentSection);
+        
+        if (!loadBrightcove && $"{contentSection.SectionType}" == "BrightcoveVideo")
+        {
+            loadBrightcove = true;
+            <script src="https://players.brightcove.net/674523943001/@(contentSection.BrightcoveVideo.PlayerId)_default/index.js" async></script>
+        }
     }
 </div>

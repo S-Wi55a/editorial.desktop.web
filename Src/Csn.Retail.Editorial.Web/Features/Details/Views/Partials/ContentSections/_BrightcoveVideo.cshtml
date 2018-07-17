@@ -8,7 +8,7 @@
                 data-video-id="@Model.BrightcoveVideo.VideoId"
                 data-csn-article-id="@Model.NetworkId"
                 data-csn-mute="false"
-                data-csn-service="motoring"
+                data-csn-service="@Html.CurrentTenant().TenantName"
                 data-account="674523943001"
                 data-player="@Model.BrightcoveVideo.PlayerId"
                 data-embed="default"
