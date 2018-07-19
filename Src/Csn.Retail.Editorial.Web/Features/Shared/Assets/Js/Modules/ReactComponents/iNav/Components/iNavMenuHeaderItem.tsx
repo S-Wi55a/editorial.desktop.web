@@ -16,10 +16,16 @@ interface IINavMenuHeaderItemComponent {
 }
 
 const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ isActive, node, toggleIsSelected, index, count }) => {
+  const handleItemClick = () => {
+    const iNav = document.getElementsByClassName('iNav')[0];
+    iNav.scrollIntoView({ behavior: 'smooth', block: "start", inline: 'start' });
+    toggleIsSelected(index, isActive);
+  }
+
   return (
     <div 
       className={['iNav__menu-header-item', isActive ? 'iNav__menu-header-item--isActive' : ''].join(' ')} 
-      onClick={() => toggleIsSelected(index, isActive)}
+      onClick={handleItemClick}
       data-webm-section={node.displayName}
       data-webm-clickvalue={node.displayName}
       >
