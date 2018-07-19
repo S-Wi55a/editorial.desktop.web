@@ -3,14 +3,14 @@
 // Make sure associated '_settings--tenant.scss' file is added to Features\Shared\Assets\Css\Settings\
 
 export const listofTenants = [
-    'carsales',
-    'constructionsales',
-    'bikesales',
-    'boatsales',
-    'trucksales',
-    'caravancampingsales',
-    'farmmachinerysales',
-    'redbook'
+    'carsales'
+    //'constructionsales',
+    //'bikesales',
+    //'boatsales',
+    //'trucksales',
+    //'caravancampingsales',
+    //'farmmachinerysales',
+    //'redbook'
 ];
 
 
