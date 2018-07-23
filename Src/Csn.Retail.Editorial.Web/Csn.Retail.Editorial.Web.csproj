@@ -726,6 +726,8 @@
     <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
+    <Compile Include="Features\TestApis\TestDto.cs" />
+    <Compile Include="Features\TestApis\TestIngressController.cs" />
     <Compile Include="Features\Tracking\Mapping\ItemsListingMapper.cs" />
     <Compile Include="Features\Tracking\Mapping\MapperConfiguration.cs" />
     <Compile Include="Features\Tracking\Mapping\SearchFilterMapper.cs" />

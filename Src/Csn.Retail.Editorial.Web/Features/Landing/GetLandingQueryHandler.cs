@@ -59,7 +59,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             var searchResults = GetCarousels(configResults);
             var campaignAd = string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HasHeroAd ? GetAdUnit(query) : Task.FromResult<CampaignAdResult>(null) : Task.FromResult<CampaignAdResult>(null);
      
-            await Task.WhenAll(ryvussResults, searchResults, campaignAd);
+            await Task.WhenAll(campaignAd, ryvussResults, searchResults);
 
             if (ryvussResults.Result == null || searchResults.Result == null) return null;
 
