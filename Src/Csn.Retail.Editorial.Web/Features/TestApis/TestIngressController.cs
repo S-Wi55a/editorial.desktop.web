@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net.Http;
-using System.Security.Permissions;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Mvc.Html;
 using Csn.Retail.Editorial.Web.Features.Shared.Hero.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using Ingress.ServiceClient.Abstracts;
-using Newtonsoft.Json;
 
 namespace Csn.Retail.Editorial.Web.Features.TestApis
 {
