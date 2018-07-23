@@ -33,13 +33,33 @@
             border-radius: 4px;
 
             .iNav-category__list-wrapper {
-                @media screen and (max-height: 860px) {
+                @media screen and (max-height: 730px) {
+                    max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px;
+                }
+
+                @media screen and (max-height: 610px) {
                     max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px + $iNav-hero-additional-height)});
                 }
 
                 .iNav-category__list {
-                    @media screen and (max-height: 860px) {
+                    @media screen and (max-height: 730px) {
+                        max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height;
+                    }
+
+                    @media screen and (max-height: 610px) {
                         max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px + $iNav-hero-additional-height)});
+                    }
+                }
+
+                &:nth-of-type(n+2) {
+                    .iNav-category__list {
+                        @media screen and (max-height: 730px) {
+                            max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px - 40px;
+                        }
+
+                        @media screen and (max-height: 610px) {
+                            max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height + 15px + $iNav-hero-additional-height)});
+                        }
                     }
                 }
             }

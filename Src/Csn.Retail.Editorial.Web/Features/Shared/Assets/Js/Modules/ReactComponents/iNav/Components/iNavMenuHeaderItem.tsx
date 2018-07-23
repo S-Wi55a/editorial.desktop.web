@@ -17,7 +17,7 @@ interface IINavMenuHeaderItemComponent {
 
 const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ isActive, node, toggleIsSelected, index, count }) => {
   const handleItemClick = () => {
-    scrollNavToTop();
+    scrollNavToTop(isActive);
     toggleIsSelected(index, isActive);
   }
 
@@ -33,8 +33,8 @@ const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemC
   )
 }
 
-const scrollNavToTop = () => {
-  if(document.querySelector('.landing-page.landing-page--hasHeroImage')) { // Only when its landing page with hero image
+const scrollNavToTop = (isActive: boolean) => {
+  if(document.querySelector('.landing-page.landing-page--hasHeroImage') && !isActive) { // Only when its landing page with hero image
     const iNav: HTMLElement = document.querySelector('.iNav');
     if(iNav.offsetTop == 0) {
       const scrollToTop = () => {
