@@ -335,7 +335,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Polly, Version=6.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Polly.6.0.1\lib\netstandard2.0\Polly.dll</HintPath>
+      <HintPath>..\packages\Polly.6.0.1\lib\netstandard1.1\Polly.dll</HintPath>
     </Reference>
     <Reference Include="React.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
       <HintPath>..\packages\React.Core.3.2.0\lib\net40\React.Core.dll</HintPath>
@@ -397,6 +397,7 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.1\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -588,7 +589,6 @@
     <Compile Include="Features\MediaMotiveAds\TagBuilders\LandingTagBuilder.cs" />
     <Compile Include="Features\Shared\Constants\MediaMotiveAreaNames.cs" />
     <Compile Include="Features\Shared\Hero\Models\HeroAdUnitModel.cs" />
-    <Compile Include="Features\Shared\HtmlHelpers\BrightcoveVideoHtmlHelpers.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
@@ -599,7 +599,6 @@
     <Compile Include="Features\Details\DetailsController.cs" />
     <Compile Include="Features\Details\Loggers\DetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\GetArticleResponse.cs" />
-    <Compile Include="Features\Details\Mappings\BrightcoveIFrameBuilder.cs" />
     <Compile Include="Features\Details\Mappings\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Details\Mappings\UseDropCaseMapper.cs" />
     <Compile Include="Features\Details\Mappings\SeoDataMapper.cs" />

@@ -1,22 +1,27 @@
 ﻿// Brightcove Video Player
 
-.brightcove{
-    display:block;
-    position:relative;
+.brightcove {
+    display: block;
+    position: relative;
     background-color: $cs-dark-grey-3;
 
-    .brightcove__iframe-wrapper{
+    .brightcove__video-wrapper {
         padding-top: percentage(9/16); // 16:9
 
-        iframe{
-            width: 100%;
+        .hero-single-video,
+        .hero-video,
+        .inline-video {
             height: 100%;
+            width: 100%;
             position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            border: none;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            left: 0px;
+        }
+
+        video.video-js {
+            visibility: hidden;
         }
     }
 }

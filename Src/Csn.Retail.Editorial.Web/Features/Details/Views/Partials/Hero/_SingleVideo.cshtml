@@ -4,8 +4,19 @@
 <div class="hero hero--singleVideo">
     <div class="container">
         <div class="brightcove">
-            <div class="brightcove__iframe-wrapper">
-                <iframe src="@Html.GetBrightcoveIFrameUrl(Model.BrightcoveVideo, Model.NetworkId)" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+            <div class="brightcove__video-wrapper">
+                <video
+                    data-video-id="@Model.BrightcoveVideo.VideoId"
+                    data-csn-article-id="@Model.NetworkId"
+                    data-csn-mute="false"
+                    data-csn-service="@Html.CurrentTenant().TenantName"
+                    data-account="674523943001"
+                    data-player="@Model.BrightcoveVideo.PlayerId"
+                    data-embed="default"
+                    class="video-js hero-single-video"
+                    controls>
+                </video>
+                <script src="https://players.brightcove.net/674523943001/@(Model.BrightcoveVideo.PlayerId)_default/index.js" async></script>
             </div>
         </div>
     </div>

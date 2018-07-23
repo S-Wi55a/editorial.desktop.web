@@ -57,10 +57,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             return $"{ListingsBasePath(includeResultsSegment: includeResultsSegment)}{queryString}";
         }
 
-        public static string GetQueryParam(string q, long offset, string sortOrder)
-        {
-            return GetQueryStringParameters(q, offset, sortOrder, string.Empty);            
-        }
 
         private static string GetQueryStringParameters(string q, long offset, string sortOrder, string keyword)
         {
