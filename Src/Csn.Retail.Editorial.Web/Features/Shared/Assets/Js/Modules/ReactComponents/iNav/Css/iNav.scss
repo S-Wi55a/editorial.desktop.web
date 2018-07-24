@@ -38,7 +38,7 @@
                 }
 
                 @media screen and (max-height: 610px) {
-                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px + $iNav-hero-additional-height)});
+                    max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px - $iNav-hero-additional-height)});
                 }
 
                 .iNav-category__list {
@@ -47,7 +47,7 @@
                     }
 
                     @media screen and (max-height: 610px) {
-                        max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px + $iNav-hero-additional-height)});
+                        max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px - $iNav-hero-additional-height)});
                     }
                 }
 
@@ -58,7 +58,7 @@
                         }
 
                         @media screen and (max-height: 610px) {
-                            max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height + 15px + $iNav-hero-additional-height)});
+                            max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height + 15px - $iNav-hero-additional-height)});
                         }
                     }
                 }
