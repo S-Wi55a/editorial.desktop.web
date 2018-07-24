@@ -101,6 +101,7 @@
 
     &__list-wrapper {
         max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 10px;
+        min-height: $category-list-min-height;
         display: inline-block;
         vertical-align: top;
         width: $category-container-width;
@@ -112,6 +113,7 @@
 
         .iNav-category__list {
             max-height: $category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height;
+            min-height: $category-list-min-height;
 
             @media screen and (max-height: 730px) {
                 max-height: calc(100vh - #{($category-container-height - ($spacing*2) - $cancel-bar-height - $category-header-height + 15px)});
