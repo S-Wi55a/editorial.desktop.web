@@ -67,7 +67,7 @@ class INav extends React.Component<IINavNodes> {
             <INavMenuHeader nodes={this.props.nodes} />
             <INavNodesContainer nodes={this.props.nodes} activeItemId={this.props.activeItemId} />
           </div>
-          <KeywordSearch keywordSearchIsActive={this.props.keywordSearchIsActive}/>
+          <KeywordSearch keywordSearchIsActive={this.props.keywordSearchIsActive} cancelKeywordSearch={this.props.cancel}/>
         </div> 
       </div>
     )
