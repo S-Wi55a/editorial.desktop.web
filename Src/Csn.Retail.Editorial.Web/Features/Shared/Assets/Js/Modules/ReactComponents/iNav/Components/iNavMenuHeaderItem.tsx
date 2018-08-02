@@ -16,16 +16,38 @@ interface IINavMenuHeaderItemComponent {
 }
 
 const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ isActive, node, toggleIsSelected, index, count }) => {
+  const handleItemClick = () => {
+    scrollNavToTop(isActive);
+    toggleIsSelected(index, isActive);
+  }
+
   return (
     <div 
       className={['iNav__menu-header-item', isActive ? 'iNav__menu-header-item--isActive' : ''].join(' ')} 
-      onClick={() => toggleIsSelected(index, isActive)}
+      onClick={handleItemClick}
       data-webm-section={node.displayName}
       data-webm-clickvalue={node.displayName}
       >
       {node.displayName}{count ? <span className="iNav__menu-header-item-count">{count}</span> : ''}
     </div>
   )
+}
+
+const scrollNavToTop = (isActive: boolean) => {
+  if(document.querySelector('.landing-page.landing-page--hasHeroImage') && !isActive) { // Only when its landing page with hero image
+    const iNav: HTMLElement = document.querySelector('.iNav');
+    if(iNav.offsetTop == 0) {
+      const scrollToTop = () => {
+        var i = 21.5;
+        var int = setInterval(function() {
+          window.scrollTo(0, i);
+          i += 21.5;
+          if (i > 215) clearInterval(int);
+        }, 20);
+      }
+      scrollToTop();
+    }
+  }
 }
 
 function findIsSelected(facets: iNavTypes.IFacet[]) {
