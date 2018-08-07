@@ -4,7 +4,6 @@
 	<PropertyGroup>
     	<Version Condition="$(BUILD_NUMBER) == ''">1.0.0</Version>
 		<Version Condition="$(BUILD_NUMBER) != ''">1.0.$(BUILD_NUMBER)</Version>
-		<Version Condition="$(bamboo_buildNumber) != ''" >$(bamboo_buildNumber).0.0-$(bamboo_planRepository_branchName)</Version>
 		<AssemblyVersion>1.0.$(Version)</AssemblyVersion>
 
 		<RootDir>$(MSBuildProjectDirectory)\..</RootDir>
@@ -15,7 +14,7 @@
 		<OutputDir>$(MSBuildProjectDirectory)\Output</OutputDir>
 		<PublicAssetsFolderRelativePath>\Research\Public</PublicAssetsFolderRelativePath>
 		<PackageDir>C:\Temp\$(TargetProjectName)\Packages</PackageDir>
-		<PackageDir Condition="$(bamboo_buildNumber) != ''">E:\Temp\Packages</PackageDir>
+		<PackageDir Condition="$(BUILD_NUMBER) != ''">E:\Temp\Packages</PackageDir>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -300,9 +299,9 @@
 	<Target Name="DeployFromArtifacts" DependsOnTargets="TransformConfig;GenerateVersionFile;AppendGitDetailsInVersionFile;CopyOutputToDeploy"/>
 
 	<Target Name="UpdateBuildVersion">
-	    <Message Text="Updating Web.config with build version $(bamboo_buildNumber)" />
+	    <Message Text="Updating Web.config with build version $(BUILD_NUMBER)" />
 	    <XmlPoke XmlInputPath="$(SrcDir)\$(TargetProjectName)\web.config"
 	             Query="//configuration/appSettings/add[@key='BuildVersion']/@value"
-	             Value="$(bamboo_buildNumber)"/>
+	             Value="$(BUILD_NUMBER)"/>
 	  </Target>
 </Project>
