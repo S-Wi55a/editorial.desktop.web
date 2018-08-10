@@ -53,6 +53,14 @@
             "display": true,
             "placementId": 33
           }
+        },
+        {
+          "title": "Videos",
+          "displayMrec": false,
+          "query": "(And.Type.Video._.Service.CaravanCampingSales.)",
+          "sort": "Latest",
+          "viewAll": "/videos/",
+          "carouselType": "article"
         }
       ]
     }
