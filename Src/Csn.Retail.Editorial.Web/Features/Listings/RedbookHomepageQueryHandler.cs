@@ -22,17 +22,17 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             _expressionFormatter = expressionFormatter;
         }
 
-        public async Task<GetListingsQuery> HandleAsync(RedbookHomepageQuery query)
+        public Task<GetListingsQuery> HandleAsync(RedbookHomepageQuery query)
         {
             var expression = new FacetExpression("Service", "Redbook") &
                                 new FacetExpression("Vertical", RedbookVerticals.Items[query.Vertical]);
 
-            return new GetListingsQuery
+            return Task.FromResult(new GetListingsQuery
             {
                 Query = _expressionFormatter.Format(expression),
                 QueryExpression = expression,
                 EditorialPageType = EditorialPageTypes.Homepage
-            };
+            });
         }
     }
 }
