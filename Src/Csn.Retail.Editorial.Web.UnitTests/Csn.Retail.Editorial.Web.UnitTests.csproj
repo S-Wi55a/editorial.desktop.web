@@ -87,8 +87,8 @@
     <Reference Include="Ingress.Core.IocAttributes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Core.IocAttributes.1.0.0\lib\net452\Ingress.Core.IocAttributes.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient, Version=14.20.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.14.20.2\lib\net461\Ingress.HttpClient.dll</HintPath>
+    <Reference Include="Ingress.HttpClient, Version=14.20.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.14.20.3\lib\net461\Ingress.HttpClient.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.HttpClient.Abstracts, Version=14.11.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.HttpClient.Abstracts.14.11.2\lib\net452\Ingress.HttpClient.Abstracts.dll</HintPath>
@@ -99,8 +99,8 @@
     <Reference Include="Ingress.Serializers, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Serializers.14.10.1\lib\net452\Ingress.Serializers.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient, Version=14.20.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient.14.20.2\lib\net461\Ingress.ServiceClient.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient, Version=14.20.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.14.20.3\lib\net461\Ingress.ServiceClient.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.ServiceClient.Abstracts, Version=14.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ServiceClient.Abstracts.14.20.0\lib\net461\Ingress.ServiceClient.Abstracts.dll</HintPath>
@@ -108,8 +108,8 @@
     <Reference Include="Ingress.ServiceRegistry.Abstracts, Version=14.11.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ServiceRegistry.Abstracts.14.11.3\lib\net452\Ingress.ServiceRegistry.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Web.Common, Version=14.11.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Web.Common-Net452.14.11.0\lib\net452\Ingress.Web.Common.dll</HintPath>
+    <Reference Include="Ingress.Web.Common, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common-Net452.14.11.1\lib\net452\Ingress.Web.Common.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.Web.Common.Abstracts, Version=14.10.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.10.5\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>

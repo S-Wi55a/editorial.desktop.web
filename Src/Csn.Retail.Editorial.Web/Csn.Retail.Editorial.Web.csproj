@@ -185,8 +185,8 @@
     <Reference Include="Ingress.ApplicationStore, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ApplicationStore.1.0.3\lib\net452\Ingress.ApplicationStore.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Autofac, Version=14.20.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Autofac.14.20.0\lib\net461\Ingress.Autofac.dll</HintPath>
+    <Reference Include="Ingress.Autofac, Version=14.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Autofac.14.20.1\lib\net461\Ingress.Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.Cache, Version=14.12.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Cache.14.12.2\lib\net452\Ingress.Cache.dll</HintPath>
@@ -233,8 +233,8 @@
     <Reference Include="Ingress.Core.Settings, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Core.Settings.14.10.1\lib\net452\Ingress.Core.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient, Version=14.20.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.14.20.2\lib\net461\Ingress.HttpClient.dll</HintPath>
+    <Reference Include="Ingress.HttpClient, Version=14.20.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.14.20.3\lib\net461\Ingress.HttpClient.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.HttpClient.Abstracts, Version=14.11.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.HttpClient.Abstracts.14.11.2\lib\net452\Ingress.HttpClient.Abstracts.dll</HintPath>
@@ -266,8 +266,8 @@
     <Reference Include="Ingress.Serializers.Json, Version=14.10.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Serializers.Json.14.10.3\lib\net461\Ingress.Serializers.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient, Version=14.20.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient.14.20.2\lib\net461\Ingress.ServiceClient.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient, Version=14.20.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.14.20.3\lib\net461\Ingress.ServiceClient.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.ServiceClient.Abstracts, Version=14.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ServiceClient.Abstracts.14.20.0\lib\net461\Ingress.ServiceClient.Abstracts.dll</HintPath>
@@ -281,8 +281,8 @@
     <Reference Include="Ingress.ServiceRegistry.LocalFilterSettings, Version=14.11.12.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ServiceRegistry.LocalFilterSettings.14.11.12\lib\net452\Ingress.ServiceRegistry.LocalFilterSettings.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Web.Common, Version=14.11.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Web.Common-Net452.14.11.0\lib\net452\Ingress.Web.Common.dll</HintPath>
+    <Reference Include="Ingress.Web.Common, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common-Net452.14.11.1\lib\net452\Ingress.Web.Common.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.Web.Common.Abstracts, Version=14.10.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.10.5\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
