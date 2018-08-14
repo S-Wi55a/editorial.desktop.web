@@ -197,12 +197,6 @@
     <Reference Include="Ingress.Cache.Redis, Version=14.10.17.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Cache.Redis.14.10.17\lib\net452\Ingress.Cache.Redis.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Cache.UsageReporters.Redis, Version=14.10.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.14.10.14\lib\net452\Ingress.Cache.UsageReporters.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="Ingress.Cache.UsageReporters.Redis.Settings, Version=14.10.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.Settings-Net452.14.10.13\lib\net452\Ingress.Cache.UsageReporters.Redis.Settings.dll</HintPath>
-    </Reference>
     <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.12.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.12.1\lib\net461\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
     </Reference>
