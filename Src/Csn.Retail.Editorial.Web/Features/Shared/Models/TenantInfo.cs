@@ -31,6 +31,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         #endregion
 
         #region Mediamotive
+        public string AdSource { get; set; }
         public string MediaMotiveAccountId { get; set; }
         public string MediaMotiveUrl { get; set; }
         public string KruxId { get; set; }

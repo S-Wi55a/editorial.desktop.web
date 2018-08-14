@@ -1,5 +1,5 @@
 import { IS_PROD } from '../Shared/env.config'
-import { TENANTS } from '../Shared/tenants.config'
+import { TENANTS, AUTenants } from '../Shared/tenants.config'
 import { stats } from '../Shared/stats.config'
 import { devServer } from '../Shared/devServer.config'
 import { resolve } from '../Shared/resolve.config'
@@ -22,8 +22,11 @@ module.exports = () => {
 
         // That is why these entries are added after
         entries[`csn.common--${tenant}`] = ['./Features/Shared/Assets/csn.common.js'];
-        entries[`csn.mediaMotive--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
-        
+
+        if (AUTenants.indexOf(tenant) >= 0) {
+            entries[`csn.mediaMotive--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
+        }
+
         moduleExportArr.push({
             target: 'web',
             name: tenant,

@@ -1,20 +1,32 @@
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 
 @{
-    var kruxId = Html.CurrentTenant().KruxId;
+    var adSource = Html.CurrentTenant().AdSource;
 }
 
-<script class="kxct" data-id="@kruxId" data-timing="async" data-version="1.9" type="text/javascript">
-    window.Krux || ((Krux = function () { Krux.q.push(arguments) }).q = []);
+@if(adSource == "MediaMotive") {
+    var kruxId = Html.CurrentTenant().KruxId;
+    <script class="kxct" data-id="@kruxId" data-timing="async" data-version="1.9" type="text/javascript">
+        window.Krux || ((Krux = function () { Krux.q.push(arguments) }).q = []);
 
-    function csnKruxLoader() {
-        var k = document.createElement('script');
-        k.type = 'text/javascript';
-        k.async = true;
-        var m, src = (m = location.href.match(/\bkxsrc=([^&]+)/)) && decodeURIComponent(m[1]);
-        k.src = /^https?:\/\/([^\/]+\.)?krxd\.net(:\d{1,5})?\//i.test(src) ? src : src === "disable" ? "" :
-        (location.protocol === "https:" ? "https:" : "http:") + "//cdn.krxd.net/controltag?confid=@kruxId";
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(k, s);
-    };
-</script>
+        function csnKruxLoader() {
+            var k = document.createElement('script');
+            k.type = 'text/javascript';
+            k.async = true;
+            var m, src = (m = location.href.match(/\bkxsrc=([^&]+)/)) && decodeURIComponent(m[1]);
+            k.src = /^https?:\/\/([^\/]+\.)?krxd\.net(:\d{1,5})?\//i.test(src) ? src : src === "disable" ? "" :
+            (location.protocol === "https:" ? "https:" : "http:") + "//cdn.krxd.net/controltag?confid=@kruxId";
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(k, s);
+        };
+    </script>
+}
+
+@if (adSource == "GoogleAd")
+{
+    <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+}
