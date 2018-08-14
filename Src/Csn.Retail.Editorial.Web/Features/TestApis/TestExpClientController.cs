@@ -29,11 +29,11 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
     {
         private readonly IRyvussServiceExpHttpClient _ryvussDataService;
         private readonly IMapper _mapper;
-        private readonly IHttpClient _httpClient;
+        private readonly IServiceClient _httpClient;
 
         public TestExpHttpClientController(IRyvussServiceExpHttpClient ryvussDataService,
                                 IMapper mapper,
-                                IHttpClient httpClient)
+                                IServiceClient httpClient)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
@@ -61,9 +61,15 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
             var watch = new Stopwatch();
             watch.Start();
 
-            var response = await _httpClient.SendAsync(new HttpClientInput { Request = request, RetryCount = 0, Timeout = TimeSpan.FromSeconds(3)  });
+            var response = await _httpClient.SendAsync(new ServiceRequest {
+                ServiceName = "api-showroom-promotions",
+                Method = HttpMethod.Get,
+                Path = $"v1/promotions/campaign/{campaignTag}",
+                RetryCount = 0,
+                Timeout = TimeSpan.FromSeconds(5)
+            });
 
-            var contents = await response.Content.ReadAsStringAsync();
+            var contents = await response.Result.Content.ReadAsStringAsync();
 
             watch.Stop();
 
@@ -174,9 +180,9 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
     [AutoBind]
     public class RyvussExpHttpClientProxy : IRyvussExpHttpClientProxy
     {
-        private readonly IHttpClient _httpClient;
+        private readonly IServiceClient _httpClient;
 
-        public RyvussExpHttpClientProxy(IHttpClient httpClient)
+        public RyvussExpHttpClientProxy(IServiceClient httpClient)
         {
             _httpClient = httpClient;
         }
@@ -187,9 +193,15 @@ namespace Csn.Retail.Editorial.Web.Features.TestApis
 
             var request = new HttpRequestMessage(HttpMethod.Get, $"http://editorial.ryvuss.csprd.com.au/{GetPath(input)}?{queryparams}");
 
-            var response = await _httpClient.SendAsync(new HttpClientInput { Request = request, Timeout = TimeSpan.FromSeconds(3), RetryCount = 0 });
+            var response = await _httpClient.SendAsync(new ServiceRequest {
+                ServiceName = "api-search-editorials",
+                Path = $"{GetPath(input)}?{queryparams}",
+                Method = HttpMethod.Get,
+                RetryCount = 0,
+                Timeout = TimeSpan.FromSeconds(3)
+            });
 
-            var contents = await response.Content.ReadAsStringAsync();
+            var contents = await response.Result.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<T>(contents);
         }
