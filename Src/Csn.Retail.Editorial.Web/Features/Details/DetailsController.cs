@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.ActionAttributes;
@@ -23,11 +24,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             _redirectLogger = redirectLogger;
         }
 
-        [Route("editorial/details/{pageName:regex(^.*-\\d+/?$)}")]
-        [Route("editorial/{*slug:regex((features|riding-advice|tips|tow-tests|motoracing|engine-reviews|reviews|news|advice|videos|products)(/.*-\\d+/?$))}")]
         [RedirectToNewVersion]
         [RedirectAttributeFilter]
-        // GET: Details
+        // ReSharper disable once InconsistentNaming
         public async Task<ActionResult> Index(ArticleIdentifier articleIdentifier, bool __preview = false)
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsPageRequestEvent());
@@ -50,9 +49,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             if (response.ArticleViewModel != null)
             {
                 // redirect any article request with slug which does not match the published slug
-                if (response.ArticleViewModel.Slug != articleIdentifier.PageName)
+                if (!articleIdentifier.Slug.Trim('/').Equals(response.ArticleViewModel.Slug, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    return PermanentRedirect($"/editorial/details/{response.ArticleViewModel.Slug}/{Request.RequestContext.HttpContext.Request.Url?.Query}");
+                    return PermanentRedirect($"/editorial/details/{response.ArticleViewModel.Slug.Trim('/')}/{Request.RequestContext.HttpContext.Request.Url?.Query}");
                 }
 
                 return View("DefaultTemplate", response.ArticleViewModel);
@@ -61,7 +60,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
             errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
 
-            return await (response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404Child() : errorsController.ErrorGenericChild());
+            return (response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404Child() : errorsController.ErrorGenericChild());
         }
 
         private ActionResult PermanentRedirect(string redirectUrl)

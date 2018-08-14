@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.ActionAttributes
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var rawSlug = (string)filterContext.RequestContext.RouteData.Values["slug"];
+            var rawSlug = (string)filterContext.RequestContext.RouteData.Values["detailsSegments"];
 
             if (rawSlug.IsNullOrEmpty()) return;
             

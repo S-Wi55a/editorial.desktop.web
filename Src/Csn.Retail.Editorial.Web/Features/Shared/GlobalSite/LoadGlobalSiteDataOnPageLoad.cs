@@ -38,7 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
 
             try
             {
-                var response = _proxy.Get(new AppShellRequest
+                var response = await _proxy.GetAsync(new AppShellRequest
                 {
                     CurrentUserId = _userContext.CurrentUserId?.ToString(),
                     SiteName = _tenantProvider.Current().TenantName

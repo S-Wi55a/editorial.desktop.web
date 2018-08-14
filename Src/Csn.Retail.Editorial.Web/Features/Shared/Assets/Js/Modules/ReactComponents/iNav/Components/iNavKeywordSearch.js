@@ -32,7 +32,7 @@ let KeywordSearchComponent = (props) => {
         ></button>
         <button 
           className="iNav__keywordSearch-button iNav__keywordSearch-button--clear" 
-          onClick={props.clear}
+          onClick={props.cancelKeywordSearch}
           data-webm-clickvalue={`clear`}
         ></button>
       </div>
@@ -53,8 +53,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
       fetchSearchResults: (query)=> {
           dispatch(Thunks.fetchINavAndResults(query));
-      },
-      clear: ()=>dispatch(change('keywordSearch', 'keyword', ''))
+      }
   }
 }
 

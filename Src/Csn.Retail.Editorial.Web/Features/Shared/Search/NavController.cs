@@ -6,17 +6,15 @@ using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search
 {
-    public class SearchController : ApiController
+    public class NavController : ApiController
     {
         private readonly IQueryDispatcher _queryDispatcher;
 
-        public SearchController(IQueryDispatcher queryDispatcher)
+        public NavController(IQueryDispatcher queryDispatcher)
         {
             _queryDispatcher = queryDispatcher;
         }
 
-        [HttpGet]
-        [Route("editorial/api/v1/search/nav")]
         public async Task<IHttpActionResult> GetNav([FromUri]NavQuery query)
         {
             var result = await _queryDispatcher.DispatchAsync<NavQuery, NavResult>(query ?? new NavQuery());
@@ -26,8 +24,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search
             return NotFound();
         }
 
-        [HttpGet]
-        [Route("editorial/api/v1/search/nav/refinements")]
         public async Task<IHttpActionResult> GetRefinements([FromUri]RefinementsQuery query)
         {
             var result = await _queryDispatcher.DispatchAsync<RefinementsQuery, RefinementResult>(query);

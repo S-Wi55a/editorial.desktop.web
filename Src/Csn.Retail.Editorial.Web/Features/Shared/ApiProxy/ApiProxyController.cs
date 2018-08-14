@@ -13,8 +13,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.ApiProxy
             _queryDispatcher = queryDispatcher;
         }
 
-        [HttpGet]
-        [Route("editorial/api/v1/proxy")]
         public async Task<IHttpActionResult> Get([FromUri]ApiProxyQuery query)
         {
             var result = await _queryDispatcher.DispatchAsync<ApiProxyQuery, object>(query);

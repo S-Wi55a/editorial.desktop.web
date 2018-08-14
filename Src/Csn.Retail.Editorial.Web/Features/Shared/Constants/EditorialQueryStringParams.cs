@@ -3,8 +3,8 @@
     public static class EditorialQueryStringParams
     {
         public static string Query => "q";
-        public static string Sort => "sort";
-        public static string Offset => "offset";
+        public static string Sort => "sb";
+        public static string Offset => "pg";
         public static string Keywords => "keywords";
         public static string Limit => "limit";
     }

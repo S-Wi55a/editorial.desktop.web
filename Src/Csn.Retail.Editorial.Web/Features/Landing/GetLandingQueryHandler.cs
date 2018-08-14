@@ -59,13 +59,13 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             var searchResults = GetCarousels(configResults);
             var campaignAd = string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HasHeroAd ? GetAdUnit(query) : Task.FromResult<CampaignAdResult>(null) : Task.FromResult<CampaignAdResult>(null);
      
-            await Task.WhenAll(ryvussResults, searchResults, campaignAd);
+            await Task.WhenAll(campaignAd, ryvussResults, searchResults);
 
             if (ryvussResults.Result == null || searchResults.Result == null) return null;
 
             var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
 
-            navResults.INav.CurrentUrl = ListingUrlHelper.GetPathAndQueryString();
+            navResults.INav.CurrentUrl = ListingUrlHelper.GetPathAndQueryString(includeResultsSegment: true);
 
             return new GetLandingResponse
             {

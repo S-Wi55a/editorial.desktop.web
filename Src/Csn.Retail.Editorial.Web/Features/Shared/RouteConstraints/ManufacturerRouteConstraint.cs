@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
+using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
 {
@@ -18,8 +19,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
 
             if (values.TryGetValue(parameterName, out var parameterValue))
             {
-                var articleType = parameterValue.ToString();
-                var landingConfigSet = _landingConfigProvider.LoadConfig(articleType);
+                if (parameterValue == null || string.IsNullOrEmpty(parameterValue.ToString()) || 
+                    httpContext.Request.Params[EditorialQueryStringParams.Offset] != null || httpContext.Request.Params[EditorialQueryStringParams.Sort] != null) return false; // 'LandingHome' to Handle /editorial/ route
+                var manufacturer = parameterValue.ToString().Trim('/');
+                var landingConfigSet = _landingConfigProvider.LoadConfig(manufacturer);
                 return !string.IsNullOrEmpty(landingConfigSet.Result?.Type);
             }
 
