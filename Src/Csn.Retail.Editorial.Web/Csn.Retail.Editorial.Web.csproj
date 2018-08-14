@@ -730,6 +730,7 @@
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
     <Compile Include="Features\TestApis\TestDto.cs" />
+    <Compile Include="Features\TestApis\TestExpClientController.cs" />
     <Compile Include="Features\TestApis\TestHttpClientController.cs" />
     <Compile Include="Features\TestApis\TestIngressController.cs" />
     <Compile Include="Features\Tracking\Mapping\ItemsListingMapper.cs" />
