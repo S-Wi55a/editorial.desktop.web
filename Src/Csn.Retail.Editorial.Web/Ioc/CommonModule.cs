@@ -38,6 +38,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
 
             builder.AddIngress(new IngressSetupOptions
             {
+                CircuitBreakerProvider = CircuitBreakerProviderType.Polly,
                 AssembliesToScanAndRegister = new[]
                 {
                     typeof(AppShellClient.AppShellClient).Assembly

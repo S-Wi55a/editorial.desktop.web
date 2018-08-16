@@ -197,12 +197,6 @@
     <Reference Include="Ingress.Cache.Redis, Version=14.10.17.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Cache.Redis.14.10.17\lib\net452\Ingress.Cache.Redis.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Cache.UsageReporters.Redis, Version=14.10.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.14.10.14\lib\net452\Ingress.Cache.UsageReporters.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="Ingress.Cache.UsageReporters.Redis.Settings, Version=14.10.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.UsageReporters.Redis.Settings-Net452.14.10.13\lib\net452\Ingress.Cache.UsageReporters.Redis.Settings.dll</HintPath>
-    </Reference>
     <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.12.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.12.1\lib\net461\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
     </Reference>
@@ -343,8 +337,8 @@
       <HintPath>..\packages\NLog.Extended.3.2.1\lib\net45-full\NLog.Extended.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Polly, Version=6.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Polly.6.0.1\lib\netstandard1.1\Polly.dll</HintPath>
+    <Reference Include="Polly, Version=5.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly.5.9.0\lib\net45\Polly.dll</HintPath>
     </Reference>
     <Reference Include="React.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
       <HintPath>..\packages\React.Core.3.2.0\lib\net40\React.Core.dll</HintPath>
@@ -736,6 +730,7 @@
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
     <Compile Include="Features\TestApis\TestDto.cs" />
+    <Compile Include="Features\TestApis\TestExpClientController.cs" />
     <Compile Include="Features\TestApis\TestHttpClientController.cs" />
     <Compile Include="Features\TestApis\TestIngressController.cs" />
     <Compile Include="Features\Tracking\Mapping\ItemsListingMapper.cs" />
