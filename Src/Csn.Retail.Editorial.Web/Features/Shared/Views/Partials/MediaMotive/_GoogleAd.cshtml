@@ -1,0 +1,22 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+
+@{
+    var adSource = Html.CurrentTenant().AdSource;
+    if (adSource == "GoogleAd")
+    {
+        <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+        <script>
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+        </script>
+        <script>
+            googletag.cmd.push(function() {
+                googletag.defineSlot("/5276053/SA_Homepage_728x90_M3_Top", [728, 90], "div-gpt-ad-1468849624568-5")
+                    .addService(googletag.pubads());
+                googletag.defineSlot("/5276053/SA_Homepage_300x250_M4", [300, 250], "div-gpt-ad-1468849624568-2").
+                    addService(googletag.pubads());
+                googletag.enableServices();
+            })
+        </script>
+    }
+}

@@ -1,5 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using React.Web.Mvc
 @model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
 
@@ -25,7 +26,20 @@
 
         @if (Model.Carousels[index].HasMrec)
         {
-            Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() {AdSize = AdSize.MediumRectangle, TileId = 3, Make = Model.MediaMotiveModel.Make});
+            if(Html.CurrentTenant().AdSource == "MediaMotive") {
+                Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.MediumRectangle, TileId = 3, Make = Model.MediaMotiveModel.Make });
+            }
+
+            if (Html.CurrentTenant().AdSource == "GoogleAd")
+            {
+                <div id="div-gpt-ad-1468849624568-2" class="mediamotive-block mediamotive-mrec">
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1468849624568-2');
+                        });
+                    </script>
+                </div>
+            }
         }
     </div>
 </div>

@@ -1,4 +1,21 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 
-@{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() {AdSize = AdSize.Leaderboard, TileId = 1 }); }
+
+@if(Html.CurrentTenant().AdSource == "MediaMotive") {
+    Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() {AdSize = AdSize.Leaderboard, TileId = 1 });
+}
+
+@if (Html.CurrentTenant().AdSource == "GoogleAd")
+{
+    <div id="Tile1" class="mediamotive-block mediamotive-leaderboard">
+        <div id="div-gpt-ad-1468849624568-5">
+            <script>
+                googletag.cmd.push(function() {
+                    googletag.display('div-gpt-ad-1468849624568-5');
+                });
+            </script>
+        </div>
+    </div>
+}
