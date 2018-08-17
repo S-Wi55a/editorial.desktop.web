@@ -22,7 +22,7 @@
         }
     </div>
     <div class="csn-carousel__container">
-    @Html.React("global.Components.Carousel", new {state = Model.Carousels, index}, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
+        @Html.React("global.Components.Carousel", new {state = Model.Carousels, index}, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
 
         @if (Model.Carousels[index].HasMrec)
         {
@@ -32,13 +32,7 @@
 
             if (Html.CurrentTenant().AdSource == "GoogleAd")
             {
-                <div id="div-gpt-ad-1468849624568-2" class="mediamotive-block mediamotive-mrec">
-                    <script>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1468849624568-2');
-                        });
-                    </script>
-                </div>
+                <div id="div-gpt-ad-1468849624568-2" class="mediamotive-block mediamotive-mrec"></div>
             }
         }
     </div>

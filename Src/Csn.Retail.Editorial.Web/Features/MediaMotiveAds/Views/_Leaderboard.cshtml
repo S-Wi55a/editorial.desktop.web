@@ -9,13 +9,10 @@
 
 @if (Html.CurrentTenant().AdSource == "GoogleAd")
 {
-    <div id="Tile1" class="mediamotive-block mediamotive-leaderboard">
-        <div id="div-gpt-ad-1468849624568-5">
-            <script>
-                googletag.cmd.push(function() {
-                    googletag.display('div-gpt-ad-1468849624568-5');
-                });
-            </script>
-        </div>
-    </div>
+    <div id="div-gpt-ad-1468849624568-5" class="mediamotive-block mediamotive-leaderboard"/>
+    <script>
+        googletag.cmd.push(function() {
+            googletag.display('div-gpt-ad-1468849624568-5');
+        });
+    </script>
 }

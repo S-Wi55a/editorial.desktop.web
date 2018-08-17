@@ -1174,6 +1174,7 @@
     <Content Include="Features\Listings\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Configurations\demotores.landingConfig.json" />
+    <Content Include="Features\Shared\Views\Partials\MediaMotive\_GoogleAd.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

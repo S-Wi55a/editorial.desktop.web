@@ -8,6 +8,7 @@
 
 @section Head{
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
+    @{ Html.RenderPartial("Partials/MediaMotive/_GoogleAd");}
 }
 
 @{
@@ -31,17 +32,17 @@
             Html.RenderPartial("Partials/_Header");
         }
     }
-    @Html.React("global.Components.INav", new {state = Model}, containerId: "iNav", containerClass: "iNav--v1")
+    @Html.React("global.Components.INav", new { state = Model }, containerId: "iNav", containerClass: "iNav--v1")
 
     <div class="container">
 
         <div class="main">
-            @Html.React("global.Components.INavArticleCount", new {state = Model}, containerId: "iNavArticleCount")
-            @Html.React("global.Components.INavSorting", new { state = Model}, containerId: "iNavSorting")
-            @Html.React("global.Components.INavBreadCrumbs", new {state = Model}, containerId: "iNavBreadcrumbs")
-            @Html.React("global.Components.INavSearchResults", new {state = Model}, containerId: "iNavSearchResults")
+            @Html.React("global.Components.INavArticleCount", new { state = Model }, containerId: "iNavArticleCount")
+            @Html.React("global.Components.INavSorting", new { state = Model }, containerId: "iNavSorting")
+            @Html.React("global.Components.INavBreadCrumbs", new { state = Model }, containerId: "iNavBreadcrumbs")
+            @Html.React("global.Components.INavSearchResults", new { state = Model }, containerId: "iNavSearchResults")
             @{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_TeAds.cshtml"); }
-            @Html.React("global.Components.INavPagination", new {state = Model}, containerId: "iNavPagination")
+            @Html.React("global.Components.INavPagination", new { state = Model }, containerId: "iNavPagination")
 
             @{ Html.RenderPartial("_Disclaimer"); }
 
@@ -54,7 +55,7 @@
 
 @section BottomScripts
 {
-    @Html.React("global.Components.INavPreloadedState", new {state = Model}, containerId: "INavPreloadedState")
+    @Html.React("global.Components.INavPreloadedState", new { state = Model }, containerId: "INavPreloadedState")
     @if (Model.PolarNativeAdsData != null)
     {
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
