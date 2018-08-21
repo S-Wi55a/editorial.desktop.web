@@ -569,6 +569,11 @@
     <Compile Include="Features\Details\Loggers\LegacyDetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
     <Compile Include="Features\Details\Mappings\ArticleTypeLabelMapper.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsController.cs" />
+    <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsQuery.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsQueryHandler.cs" />
+    <Compile Include="Features\DisplayAds\Models\GoogleAdsModel.cs" />
     <Compile Include="Features\Landing\CacheStores\GetLandingQueryCacheStore.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
@@ -596,6 +601,7 @@
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
+    <Compile Include="Features\Shared\Models\IDisplayAdsModel.cs" />
     <Compile Include="Features\Shared\Models\Vertical.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
@@ -1175,6 +1181,7 @@
     <Content Include="Features\Details\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Configurations\demotores.landingConfig.json" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_GoogleAd.cshtml" />
+    <Content Include="Features\DisplayAds\Views\Index.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

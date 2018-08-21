@@ -1,0 +1,16 @@
+﻿@model Csn.Retail.Editorial.Web.Features.MediaMotiveAds.MediaMotiveAdViewModel
+
+<div id="Tile@(Model.TileId)" 
+     class="mediamotive-block mediamotive-@Model.Description.ToLower() mediamotive-block--loading" 
+     data-krux-required="@Model.DataKruxRequired.ToString().ToLower()" 
+     data-media-motive-url="@Model.ScriptUrl">
+    @if (!string.IsNullOrEmpty(Model.NoScriptImageUrl))
+    {
+        <span class="loader"></span>
+        <noscript>
+            <a target="_blank" href="@Model.NoScriptUrl">
+                <img src="@Model.NoScriptImageUrl" width="@Model.Width" height="@Model.Height" border="0" alt="Advertisement" />
+            </a>
+        </noscript>
+    }
+</div>
