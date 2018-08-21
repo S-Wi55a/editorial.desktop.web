@@ -62,7 +62,7 @@
 				/>
 	</Target>
 
-	<Target Name="NugetRestore" DependsOnTargets="TaskImportNugetPackages;TaskNugetRestore;TaskBackupNugetPackages">
+	<Target Name="NugetRestore" DependsOnTargets="TaskImportNugetPackages;TaskBackupNugetPackages">
 	</Target>
 
 	<Target Name="CleanBuild">
