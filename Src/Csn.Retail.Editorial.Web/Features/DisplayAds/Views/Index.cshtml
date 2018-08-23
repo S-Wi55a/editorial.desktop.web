@@ -1,16 +1,31 @@
-﻿@model Csn.Retail.Editorial.Web.Features.MediaMotiveAds.MediaMotiveAdViewModel
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds.Models
+@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+@using Csn.Retail.Editorial.Web.Features.Shared.Models
+@model Csn.Retail.Editorial.Web.Features.Shared.Models.IDisplayAdsModel
 
-<div id="Tile@(Model.TileId)" 
-     class="mediamotive-block mediamotive-@Model.Description.ToLower() mediamotive-block--loading" 
-     data-krux-required="@Model.DataKruxRequired.ToString().ToLower()" 
-     data-media-motive-url="@Model.ScriptUrl">
-    @if (!string.IsNullOrEmpty(Model.NoScriptImageUrl))
-    {
-        <span class="loader"></span>
-        <noscript>
-            <a target="_blank" href="@Model.NoScriptUrl">
-                <img src="@Model.NoScriptImageUrl" width="@Model.Width" height="@Model.Height" border="0" alt="Advertisement" />
-            </a>
-        </noscript>
-    }
-</div>
+@if (Model.DisplayAdsSource == DisplayAdsSource.MediaMotive)
+{
+    var mmModel = (MediaMotiveAdViewModel) Model;
+
+    <div id="Tile@(mmModel.TileId)"
+         class="mediamotive-block mediamotive-@mmModel.Description.ToLower() mediamotive-block--loading"
+         data-krux-required="@mmModel.DataKruxRequired.ToString().ToLower()"
+         data-media-motive-url="@mmModel.ScriptUrl">
+        @if (!string.IsNullOrEmpty(mmModel.NoScriptImageUrl))
+        {
+            <span class="loader"></span>
+            <noscript>
+                <a target="_blank" href="@mmModel.NoScriptUrl">
+                    <img src="@mmModel.NoScriptImageUrl" width="@mmModel.Width" height="@mmModel.Height" border="0" alt="Advertisement" />
+                </a>
+            </noscript>
+        }
+    </div>
+}
+
+@if (Model.DisplayAdsSource == DisplayAdsSource.GoogleAds)
+{
+    var gaModel = (GoogleAdsViewModel)Model;
+
+    <div id="div-gpt-ad-@(gaModel.SlotId)" class="mediamotive-block mediamotive-@gaModel.Description.ToLower()"></div>
+}

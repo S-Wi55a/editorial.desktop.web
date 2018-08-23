@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
+    [AutoBind]
     public class DisplayAdsController : Controller
     {
         private readonly IQueryDispatcher _queryDispatcher;
@@ -19,8 +21,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
             var viewData = _queryDispatcher.Dispatch<DisplayAdsQuery, IDisplayAdsModel>(query);
 
             if (viewData == null) return Content(String.Empty);
-
-            //return PartialView("~/Features/MediaMotiveAds/Views/Index.cshtml", viewData);
+            
+            return PartialView("~/Features/DisplayAds/Views/Index.cshtml", viewData);
         }
     }
 }

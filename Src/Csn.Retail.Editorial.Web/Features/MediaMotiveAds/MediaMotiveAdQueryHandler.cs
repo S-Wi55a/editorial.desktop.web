@@ -52,7 +52,8 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
                 DataKruxRequired = adSetting.DataKruxRequired,
                 ScriptUrl = $"//mm.carsales.com.au/carsales/jserver/{urlargs}",
                 NoScriptUrl = $"//mm.carsales.com.au/carsales/adclick/{urlargs}",
-                NoScriptImageUrl = $"//mm.carsales.com.au/carsales/iserver/{urlargs}"
+                NoScriptImageUrl = $"//mm.carsales.com.au/carsales/iserver/{urlargs}",
+                DisplayAdsSource = DisplayAdsSource.MediaMotive
             };
         }
     }

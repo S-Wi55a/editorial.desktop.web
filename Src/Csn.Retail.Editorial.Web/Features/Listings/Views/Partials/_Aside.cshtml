@@ -1,19 +1,10 @@
-﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
-@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
 
 <div class="wrapper--aside">
     <div class="aside ">
         <!-- Aside Section -->
-        
-        @if(Html.CurrentTenant().AdSource == "MediaMotive") {
-            // MREC
-            Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.MediumOrLargeRectangle, TileId = 3 });
-        }
-
-        @if (Html.CurrentTenant().AdSource == "GoogleAd")
-        {
-            <div id="div-gpt-ad-1468849624568-8" class="mediamotive-block mediamotive-mrec"></div>
+        @{
+            Html.RenderAction("Index", "DisplayAds", new DisplayAdsQuery() { AdType = DisplayAdsTypes.Aside } );
         }
     </div>
 </div>

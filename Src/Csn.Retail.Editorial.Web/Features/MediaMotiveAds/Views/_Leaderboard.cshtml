@@ -1,18 +1,5 @@
-﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
-@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
 
-
-@if(Html.CurrentTenant().AdSource == "MediaMotive") {
-    Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() {AdSize = AdSize.Leaderboard, TileId = 1 });
-}
-
-@if (Html.CurrentTenant().AdSource == "GoogleAd")
-{
-    <div id="div-gpt-ad-1468849624568-5" class="mediamotive-block mediamotive-leaderboard"/>
-    <script>
-        googletag.cmd.push(function() {
-            googletag.display('div-gpt-ad-1468849624568-5');
-        });
-    </script>
+@{
+    Html.RenderAction("Index", "DisplayAds", new DisplayAdsQuery() { AdType = DisplayAdsTypes.LeaderBoard });
 }

@@ -14,5 +14,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         public int Width { get; set; }
 
         public bool DataKruxRequired { get; set; }
+        public DisplayAdsSource DisplayAdsSource { get; set; }
     }
 }

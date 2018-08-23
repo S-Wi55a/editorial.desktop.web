@@ -1,4 +1,5 @@
-﻿using Csn.SimpleCqrs;
+﻿using System.Collections.Generic;
+using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
@@ -7,12 +8,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         Aside,
         Banner,
         LeaderBoard,
-        Mrec
-    }
-
-    public class AdTypesDict
-    {
-
+        Mrec,
+        MediaMotive
     }
 
     public class DisplayAdsQuery : IQuery

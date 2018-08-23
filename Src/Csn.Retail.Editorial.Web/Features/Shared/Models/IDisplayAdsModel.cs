@@ -1,12 +1,12 @@
 ﻿namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 {
-    public enum DisplayAdsTypes
+    public enum DisplayAdsSource
     {
         MediaMotive,
         GoogleAds
     }
     public interface IDisplayAdsModel
     {
-        DisplayAdsTypes DisplayAdsType { get; set; }
+        DisplayAdsSource DisplayAdsSource { get; set; }
     }
 }

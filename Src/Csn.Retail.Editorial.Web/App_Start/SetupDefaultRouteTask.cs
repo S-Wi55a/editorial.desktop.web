@@ -40,6 +40,12 @@ namespace Csn.Retail.Editorial.Web
             );
 
             routes.MapRoute(
+                name: "DisplayAdsRoute",
+                url: "editorial/DisplayAds",
+                defaults: new { controller = "DisplayAds" }
+            );
+
+            routes.MapRoute(
                 name: "NativeAdRoute",
                 url: "editorial/NativeAd",
                 defaults: new { controller = "NativeAd" }

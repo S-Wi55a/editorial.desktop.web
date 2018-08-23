@@ -573,7 +573,7 @@
     <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQuery.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQueryHandler.cs" />
-    <Compile Include="Features\DisplayAds\Models\GoogleAdsModel.cs" />
+    <Compile Include="Features\DisplayAds\Models\GoogleAdsViewModel.cs" />
     <Compile Include="Features\Landing\CacheStores\GetLandingQueryCacheStore.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
