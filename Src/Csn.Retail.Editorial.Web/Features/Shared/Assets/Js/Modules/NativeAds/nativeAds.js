@@ -96,16 +96,9 @@ function nativeAds($, placements, registeredEvents) {
         })
     });
 
-    // Need to run once
-    registeredEvents.forEach((event) => {
-        const e = new CustomEvent(event);
-        window.dispatchEvent(e)
-    })
-
     function getRandomArbitrary() {
         return Math.floor(Math.random() * (9999999 - 999999)) + 999999;
     }
-
 };
 
 (function (d, s, id) {
