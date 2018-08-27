@@ -11,7 +11,7 @@ export const listofTenants = [
     'caravancampingsales',
     'farmmachinerysales',
     'redbook',
-    'soloautos'
+    //'soloautos' // Comment out soloautos till its ready
 ];
 
 export const AUTenants = [
