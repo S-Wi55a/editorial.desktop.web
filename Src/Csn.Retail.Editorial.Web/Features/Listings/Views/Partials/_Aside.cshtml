@@ -1,10 +1,11 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 
 <div class="wrapper--aside">
     <div class="aside ">
         <!-- Aside Section -->
         @{
-            Html.RenderAction("Index", "DisplayAds", new DisplayAdsQuery() { AdType = DisplayAdsTypes.Aside } );
+            Html.RenderDisplayAds( new DisplayAdsQuery() { AdType = DisplayAdsTypes.Aside } );
         }
     </div>
 </div>

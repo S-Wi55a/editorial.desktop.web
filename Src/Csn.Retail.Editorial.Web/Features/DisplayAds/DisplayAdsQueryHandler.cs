@@ -102,7 +102,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
             },
             {
                 DisplayAdsTypes.Mrec,
-                new MediaMotiveAdQuery() { AdSize = AdSize.MediumOrLargeRectangle, TileId = 3 }
+                new MediaMotiveAdQuery() { AdSize = AdSize.MediumRectangle, TileId = 3 }
             }
         };
 

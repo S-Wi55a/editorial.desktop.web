@@ -1,5 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 
 @{
-    Html.RenderAction("Index", "DisplayAds", new DisplayAdsQuery() { AdType = DisplayAdsTypes.LeaderBoard });
+    Html.RenderDisplayAds( new DisplayAdsQuery() { AdType = DisplayAdsTypes.LeaderBoard });
 }

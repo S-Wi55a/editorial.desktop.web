@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web.Mvc;
+using System.Web.Mvc.Html;
 
-namespace Csn.Retail.Editorial.Web.Features.DisplayAds
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 {
-    public class DisplayAdsHtmlHelper
+    public static class DisplayAdsHtmlHelper
     {
+        public static void RenderDisplayAds(this HtmlHelper html, DisplayAdsQuery query)
+        {
+            html.RenderAction("Index", "DisplayAds", query);
+        }
     }
 }
