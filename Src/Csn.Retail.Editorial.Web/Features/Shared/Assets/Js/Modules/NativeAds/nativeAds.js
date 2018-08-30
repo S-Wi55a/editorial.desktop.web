@@ -88,13 +88,13 @@ function nativeAds($, placements, registeredEvents) {
                     location: placement.location,
                     template: placement.template(e),
                     onRender: function ($element) {
-                        console.log('onRender: ', $element)
+                        //console.log('onRender: ', $element)
                     },
                     onFill: function (data) {
-                        console.dir('Fill: ', data);
+                        //console.dir('Fill: ', data);
                     },
                     onError: function (error) {
-                        console.log('Error: ', error)
+                        //console.log('Error: ', error)
                     }
                 }]);
             });

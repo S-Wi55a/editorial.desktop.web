@@ -30,9 +30,9 @@ templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpe
     }
 
     store.dispatch(
-         {
-             type: "ADD_PROMOTED_ARTICLE",
-             payload: {
+        {
+            type: "ADD_PROMOTED_ARTICLE",
+            payload: {
                 isNativeAd: true,
                 imageUrl: closestImageBasedOnRes(480, depth0.image.instances),
                 headline: depth0.title,
@@ -42,10 +42,10 @@ templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpe
                 label: depth0.custom.PlacementType,
                 type: depth0.custom.PlacementType,
                 location
-             }
-         }
-       )
-    }
+            }
+        }
+    )
+}
     
 
 // Placement Objects
