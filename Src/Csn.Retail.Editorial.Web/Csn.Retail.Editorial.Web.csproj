@@ -819,6 +819,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
+    <None Include="Features\Shared\Assets\Css\Modules\GoogleAds\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAds\googleAds.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
@@ -1183,6 +1184,8 @@
     <Content Include="Features\Landing\Configurations\demotores.landingConfig.json" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_GoogleAd.cshtml" />
     <Content Include="Features\DisplayAds\Views\Index.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAds\_googleads.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAds\_mrec.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

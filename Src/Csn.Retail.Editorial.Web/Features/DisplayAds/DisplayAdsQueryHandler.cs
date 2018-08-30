@@ -78,6 +78,11 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
                 {
                     return null;
                 }
+                
+                if (!_typeToGoogleAdDimensions.TryGetValue(query.AdType, out string AdDimensions))
+                {
+                    return null;
+                }
                 //////////////////////////////////////////////////////////////////////////
 
                 return new GoogleAdsViewModel()
@@ -85,6 +90,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
                     AdNetworkId = "5276053",
                     AdUnitId = adUnitId,
                     AdSlotId = adSlotId,
+                    AdDimensions = AdDimensions,
                     Description = query.AdType.ToString(),
                     DisplayAdsSource = DisplayAdsSource.GoogleAds
                 };
@@ -150,6 +156,26 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
             {
                 DisplayAdsTypes.Mrec,
                 "SA_Homepage_300x250_M4"
+            }
+        };
+
+        private readonly Dictionary<DisplayAdsTypes, string> _typeToGoogleAdDimensions = new Dictionary<DisplayAdsTypes, string>()
+        {
+            {
+                DisplayAdsTypes.Aside,
+                ""
+            },
+            {
+                DisplayAdsTypes.Banner,
+                ""
+            },
+            {
+                DisplayAdsTypes.LeaderBoard,
+                ""
+            },
+            {
+                DisplayAdsTypes.Mrec,
+                ""
             }
         };
     }
