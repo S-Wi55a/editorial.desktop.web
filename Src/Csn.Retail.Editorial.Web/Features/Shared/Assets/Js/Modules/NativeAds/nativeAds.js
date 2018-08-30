@@ -61,6 +61,11 @@ function nativeAds($, placements, registeredEvents) {
                     return
                 }
 
+                // If its landing page, skip if placementId does not match
+                if (e.detail !== null && e.detail.carouselId !== null && e.detail.placementId.toString() !== placement.placementId) {
+                    return 
+                }
+
                 // no need to check whether placement exists...polar just ignores
                 q().push(["insertPreview", {
                     label: placement.name,
@@ -83,13 +88,13 @@ function nativeAds($, placements, registeredEvents) {
                     location: placement.location,
                     template: placement.template(e),
                     onRender: function ($element) {
-                        //console.log('onRender: ', $element)
+                        console.log('onRender: ', $element)
                     },
                     onFill: function (data) {
-                        //console.dir('Fill: ', data);
+                        console.dir('Fill: ', data);
                     },
                     onError: function (error) {
-                        //console.log('Error: ', error)
+                        console.log('Error: ', error)
                     }
                 }]);
             });
