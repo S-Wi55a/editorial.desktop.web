@@ -820,6 +820,7 @@
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
+    <Content Include="Features\Shared\Assets\Js\Modules\GoogleAds\googleAds.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\iNav.js" />

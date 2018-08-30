@@ -1,7 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds.Models
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.Shared.Models
-@model Csn.Retail.Editorial.Web.Features.Shared.Models.IDisplayAdsModel
 
 @if (Model.DisplayAdsSource == DisplayAdsSource.MediaMotive)
 {
@@ -27,5 +26,9 @@
 {
     var gaModel = (GoogleAdsViewModel)Model;
 
-    <div id="div-gpt-ad-@(gaModel.SlotId)" class="mediamotive-block mediamotive-@gaModel.Description.ToLower()"></div>
+    <div id="@gaModel.AdSlotId"
+         data-ad-network-id="@gaModel.AdNetworkId"
+         data-ad-unit-id="@gaModel.AdUnitId"
+         class="googlead-block googlead-@gaModel.Description.ToLower()">
+    </div>
 }

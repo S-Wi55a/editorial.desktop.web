@@ -75,19 +75,3 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
         }
     })
 }
-
-(function loadGoogleAd() {
-    if (googletag !== 'undefined' && googletag.cmd !== 'undefined') {
-        googletag.cmd.push(function() {
-            googletag.defineSlot("/5276053/SA_Homepage_728x90_M3_Top", [728, 90], "div-gpt-ad-1468849624568-5")
-                .addService(googletag.pubads());
-            googletag.defineSlot("/5276053/SA_Results_300x250_300x600_R4", [[300, 250], [300, 600]], "div-gpt-ad-1468849624568-8")
-                .addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
-
-            googletag.display('div-gpt-ad-1468849624568-5');
-            googletag.display('div-gpt-ad-1468849624568-8');
-        });
-    }
-})();

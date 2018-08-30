@@ -43,4 +43,33 @@ const getTenants = (tenant) => {
 }
 
 export const TENANTS = process.env.TENANT ? getTenants(process.env.TENANT.trim().toLowerCase()) : listofTenants;
-//export const TENANTS = process.env.TENANT ? [process.env.TENANT.trim().toLowerCase()] : listofTenants;
+
+export const tenantSetting = {
+    carsales: {
+        adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+    },
+    constructionsales: {
+        adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+    },
+    bikesales: {
+        adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+    },
+    boatsales: {
+        adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+    },
+    trucksales: {
+        adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+    },
+    caravancampingsales: {
+        adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+    },
+    farmmachinerysales: {
+        adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+    },
+    redbook: {
+        adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+    },
+    soloautos: {
+        adSource: ['./Features/Shared/Assets/Js/Modules/GoogleAds/googleAds.js']
+    }
+}

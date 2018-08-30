@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using Bolt.Common.Extensions;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.Models;
@@ -71,13 +68,23 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
             }
             if (_tenantProvider.Current().AdSource == "GoogleAds")
             {
-                if (!_typeToGoogleAdSlotId.TryGetValue(query.AdType, out string _slotId))
+                // This will be replaced by data requested from API //////////////////////
+                if (!_typeToGoogleAdUnitId.TryGetValue(query.AdType, out string adUnitId))
                 {
                     return null;
                 }
+
+                if (!_typeToGoogleAdSlotId.TryGetValue(query.AdType, out string adSlotId))
+                {
+                    return null;
+                }
+                //////////////////////////////////////////////////////////////////////////
+
                 return new GoogleAdsViewModel()
                 {
-                    SlotId = _slotId,
+                    AdNetworkId = "5276053",
+                    AdUnitId = adUnitId,
+                    AdSlotId = adSlotId,
                     Description = query.AdType.ToString(),
                     DisplayAdsSource = DisplayAdsSource.GoogleAds
                 };
@@ -110,19 +117,39 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         {
             {
                 DisplayAdsTypes.Aside,
-                "1468849624568-8"
+                "div-gpt-ad-1468849624568-8"
             },
             {
                 DisplayAdsTypes.Banner,
-                "1468849624568-5"
+                "div-gpt-ad-1468849624568-5" // Use leaderboard size for now
             },
             {
                 DisplayAdsTypes.LeaderBoard,
-                "1468849624568-5"
+                "div-gpt-ad-1468849624568-5"
             },
             {
                 DisplayAdsTypes.Mrec,
-                "1468849624568-2"
+                "div-gpt-ad-1468849624568-2"
+            }
+        };
+
+        private readonly Dictionary<DisplayAdsTypes, string> _typeToGoogleAdUnitId = new Dictionary<DisplayAdsTypes, string>()
+        {
+            {
+                DisplayAdsTypes.Aside,
+                "SA_Results_300x250_300x600_R4"
+            },
+            {
+                DisplayAdsTypes.Banner,
+                "SA_Homepage_728x90_M3_Top" // Use leaderboard unit for now
+            },
+            {
+                DisplayAdsTypes.LeaderBoard,
+                "SA_Homepage_728x90_M3_Top"
+            },
+            {
+                DisplayAdsTypes.Mrec,
+                "SA_Homepage_300x250_M4"
             }
         };
     }
