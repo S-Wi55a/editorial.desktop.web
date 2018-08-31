@@ -10,17 +10,17 @@ const store = window.store || console.warn("No Redux store available")
 // Templates
 // We are highjacking the template function and using it to pass data to our Redux Store
 
-templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpers, partials, data) => { 
-    
+templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpers, partials, data) => {
+
     var pubDate = new Date(depth0.pubDate);
     var now = new Date();
     var date = (pubDate.getFullYear() === now.getFullYear()) ? moment(pubDate).format('MMMM Do') : moment(pubDate).format('MMMM YYYY')
 
     function closestImageBasedOnRes(num, arr) {
         var curr = arr[0];
-        var diff = Math.abs (num - curr.sourceWidth);
+        var diff = Math.abs(num - curr.sourceWidth);
         for (var val = 0; val < arr.length; val++) {
-            var newdiff = Math.abs (num - arr[val].sourceWidth);
+            var newdiff = Math.abs(num - arr[val].sourceWidth);
             if (newdiff < diff) {
                 diff = newdiff;
                 curr = arr[val];
@@ -46,7 +46,7 @@ templates['search-result'] = (location) => (event) => (Handlebars, depth0, helpe
         }
     )
 }
-    
+
 
 // Placement Objects
 
