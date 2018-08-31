@@ -1,4 +1,5 @@
 ﻿import { loaded } from 'document-promises/document-promises.js'
+require('css/modules/GoogleAds/_googleads.scss');
 
 loaded.then(() => {
     (function loadGoogleAd($, w) {
