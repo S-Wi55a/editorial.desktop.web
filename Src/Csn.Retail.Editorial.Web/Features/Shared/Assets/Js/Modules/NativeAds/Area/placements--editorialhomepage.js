@@ -29,26 +29,23 @@ templates['homepage'] = (location, placementId) => (event) => (Handlebars, depth
         return curr.href;
     }
     
-    // Check if carousel id is present which is passed in event detail
-    if (event.detail.carouselId !== null && event.detail.placementId === placementId) {
-        store.dispatch(
-            {
-                type: "CAROUSELS/ADD_PROMOTED_ARTICLE",
-                payload: {
-                    isNativeAd: true,
-                    imageUrl: closestImageBasedOnRes(480, depth0.image.instances),
-                    headline: depth0.title,
-                    subHeading: depth0.summary,
-                    dateAvailable: date,
-                    articleDetailsUrl: depth0.link,
-                    label: depth0.custom.PlacementType,
-                    type: depth0.custom.PlacementType,
-                    location,
-                    carouselId: event.detail.carouselId
-                }
+    store.dispatch(
+        {
+            type: "CAROUSELS/ADD_PROMOTED_ARTICLE",
+            payload: {
+                isNativeAd: true,
+                imageUrl: closestImageBasedOnRes(480, depth0.image.instances),
+                headline: depth0.title,
+                subHeading: depth0.summary,
+                dateAvailable: date,
+                articleDetailsUrl: depth0.link,
+                label: depth0.custom.PlacementType,
+                type: depth0.custom.PlacementType,
+                location,
+                carouselId: event.detail.carouselId
             }
-        )
-    }
+        }
+    )
 }
     
 
