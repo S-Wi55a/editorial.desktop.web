@@ -1,15 +1,5 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
-@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @model Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.MediaMotiveData
-
-
-@if (Html.CurrentTenant().AdSource == "MediaMotive")
-{
-    Html.RenderMediaMotiveDetailsAd(new MediaMotiveDetailsAdQuery() { TileId = "Tile1", MediaMotiveData = Model });
-}
-
-@if (Html.CurrentTenant().AdSource == "GoogleAd")
-{
-    <div id="div-gpt-ad-1468849624568-5" class="mediamotive-block mediamotive-leaderboard"></div>
-}
+    
+@{ Html.RenderMediaMotiveDetailsAd(new MediaMotiveDetailsAdQuery() { TileId = "Tile1", MediaMotiveData = Model }); }

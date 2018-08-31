@@ -11,7 +11,6 @@
 @section Head {
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
     @{ Html.RenderPartial("Partials/Head/_SocialMetaData", Model.SocialMetaData); }
-    @{ Html.RenderPartial("Partials/MediaMotive/_GoogleAd");}
 }
 
 @section Styles {
@@ -36,7 +35,7 @@
             Html.RenderPartial("Partials/_Header");
         }
     }
-
+    
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
