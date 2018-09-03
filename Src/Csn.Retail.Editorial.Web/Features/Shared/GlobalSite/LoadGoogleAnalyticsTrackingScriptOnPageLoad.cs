@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
             var cacheKey = _cacheKey.FormatWith(_tenantProvider.Current().GoogleAnalyticsApp);
 
             var response = await _cacheStore.OnCacheMiss(GetGaTracking)
-                        .CacheIf(x => !string.IsNullOrWhiteSpace(x.TrackingScript))
+                        .CacheIf(x => !string.IsNullOrWhiteSpace(x?.TrackingScript))
                         .Duration(_localCacheDuration, _distributedCacheDuration)
                         .GetAsync(cacheKey);
 
