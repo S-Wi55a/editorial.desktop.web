@@ -22,6 +22,8 @@
         "build": "npm run transform-webpack && cross-env NODE_ENV=development cross-env TENANT=&& npm run webpack -- --color --config  TempWebpackConfig/webpack.isomorphic.config.js ",
         "build-custom": "npm run transform-webpack && cross-env NODE_ENV=development npm run webpack -- --color --config  TempWebpackConfig/webpack.isomorphic.config.js ",
         "build-release": "npm run transform-webpack && cross-env NODE_ENV=production cross-env TENANT= npm run parallel-webpack -- --max-retries=3 --no-stats -p --color --config  TempWebpackConfig/webpack.isomorphic.config.js",
+        "build-release-au": "npm run transform-webpack && cross-env NODE_ENV=production cross-env TENANT=au npm run parallel-webpack -- --max-retries=3 --no-stats -p --color --config  TempWebpackConfig/webpack.isomorphic.config.js",
+        "build-release-latam": "npm run transform-webpack && cross-env NODE_ENV=production cross-env TENANT=latam npm run parallel-webpack -- --max-retries=3 --no-stats -p --color --config  TempWebpackConfig/webpack.isomorphic.config.js",
         "build-release-custom": "npm run transform-webpack && cross-env NODE_ENV=production npm run parallel-webpack -- --max-retries=3 --color -p --config TempWebpackConfig/webpack.isomorphic.config.js",
         "dev-watch": "npm run transform-webpack && cross-env NODE_ENV=development npm run webpack -- --progress --colors --watch --config  TempWebpackConfig/webpack.isomorphic.config.js ",
         "dev-watch-client": "cross-env NODE_ENV=development && npm run webpack -- --colors --watch --config  TempWebpackConfig/Client/webpack.client.config.js ",

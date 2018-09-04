@@ -75,3 +75,13 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
         }
     })
 }
+
+//Dispatch fetchNativeAds when nativeAds is ready
+window.addEventListener('csn_editorial.nativeAds.ready', function fetchNativeAds() {
+    // Need to run once
+    var events = require('NativeAds/Area/placements--' + csn_editorial.nativeAds.areaName).events;
+    events.forEach((event) => {
+        const e = new CustomEvent(event);
+        window.dispatchEvent(e);
+    })
+});

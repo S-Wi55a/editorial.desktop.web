@@ -61,6 +61,11 @@ function nativeAds($, placements, registeredEvents) {
                     return
                 }
 
+                // If its landing page, skip if placementId does not match
+                if (e.detail !== null && e.detail.carouselId !== null && e.detail.placementId.toString() !== placement.placementId) {
+                    return 
+                }
+
                 // no need to check whether placement exists...polar just ignores
                 q().push(["insertPreview", {
                     label: placement.name,
@@ -96,16 +101,9 @@ function nativeAds($, placements, registeredEvents) {
         })
     });
 
-    // Need to run once
-    registeredEvents.forEach((event) => {
-        const e = new CustomEvent(event);
-        window.dispatchEvent(e)
-    })
-
     function getRandomArbitrary() {
         return Math.floor(Math.random() * (9999999 - 999999)) + 999999;
     }
-
 };
 
 (function (d, s, id) {
