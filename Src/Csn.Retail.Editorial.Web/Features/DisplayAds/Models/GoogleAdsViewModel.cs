@@ -1,14 +1,17 @@
-﻿using Csn.Retail.Editorial.Web.Features.Shared.Models;
+﻿using System;
+using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds.Models
 {
     public class GoogleAdsViewModel : IDisplayAdsModel
     {
-        public string AdNetworkId;
+        public string Description { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
+        public string AdNetworkCode;
         public string AdUnitId;
         public string AdSlotId;
-        public string AdDimensions;
-        public string Description { get; set; }
         public DisplayAdsSource DisplayAdsSource { get; set; }
     }
 }

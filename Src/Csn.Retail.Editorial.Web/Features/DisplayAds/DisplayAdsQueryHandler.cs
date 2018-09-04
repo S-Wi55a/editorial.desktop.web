@@ -23,19 +23,22 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
             _tenantProvider = tenantProvider;
             _tagBuilders = tagBuilders;
         }
-        public IDisplayAdsModel Handle(DisplayAdsQuery query)
+        public IDisplayAdsModel Handle(DisplayAdsQuery displayAdsQuery)
         {
             if (_tenantProvider.Current().AdSource == "MediaMotive")
             {
-                if (!_typeToMediaMotiveAdQuery.TryGetValue(query.AdType, out MediaMotiveAdQuery mediaMotiveAdQuery))
+                // lookup the ad settings for this type
+                if (!DisplayAdsSettings.MemdiaMotiveAdTypes.TryGetValue(displayAdsQuery.AdType, out var adSetting))
                 {
                     return null;
                 }
 
-                if (!query.Make.IsNullOrEmpty())
+                var mediaMotiveAdQuery = new MediaMotiveAdQuery
                 {
-                    mediaMotiveAdQuery.Make = query.Make;
-                }
+                    TileId = adSetting.TileId,
+                    AdSize = adSetting.AdSize,
+                    Make = displayAdsQuery.Make
+                };
 
                 var tags = _tagBuilders
                     .Where(builder => builder.IsApplicable(mediaMotiveAdQuery))
@@ -45,17 +48,11 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 
                 var urlargs = string.Join("/", tags);
 
-                // lookup the ad settings for this tile
-                if (!MediaMotiveAdSettings.AdTypes.TryGetValue(mediaMotiveAdQuery.AdSize, out MediaMotiveAdSetting adSetting))
-                {
-                    return null;
-                }
-
                 var dimensions = adSetting.AdSize.Dimensions().First();
 
                 return new MediaMotiveAdViewModel()
                 {
-                    TileId = mediaMotiveAdQuery.TileId.ToString(),
+                    TileId = adSetting.TileId.ToString(),
                     Description = adSetting.Description.ToString(),
                     Height = dimensions.Height,
                     Width = dimensions.Width,
@@ -66,117 +63,29 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
                     DisplayAdsSource = DisplayAdsSource.MediaMotive
                 };
             }
+
             if (_tenantProvider.Current().AdSource == "GoogleAds")
             {
-                // This will be replaced by data requested from API //////////////////////
-                if (!_typeToGoogleAdUnitId.TryGetValue(query.AdType, out string adUnitId))
+                if(!DisplayAdsSettings.GoogleAdTypes.TryGetValue(displayAdsQuery.AdType, out var adSetting))
                 {
                     return null;
                 }
 
-                if (!_typeToGoogleAdSlotId.TryGetValue(query.AdType, out string adSlotId))
-                {
-                    return null;
-                }
-                
-                if (!_typeToGoogleAdDimensions.TryGetValue(query.AdType, out string AdDimensions))
-                {
-                    return null;
-                }
-                //////////////////////////////////////////////////////////////////////////
+                var dimensions = adSetting.AdSize.Dimensions().First();//.Select(x => $"[{x.Width}, {x.Height}]");
 
                 return new GoogleAdsViewModel()
                 {
-                    AdNetworkId = "5276053",
-                    AdUnitId = adUnitId,
-                    AdSlotId = adSlotId,
-                    AdDimensions = AdDimensions,
-                    Description = query.AdType.ToString(),
+                    Description = displayAdsQuery.AdType.ToString(),
+                    Height = dimensions.Height,
+                    Width = dimensions.Width,
+                    AdNetworkCode = _tenantProvider.Current().GoogleAdsNetworkCode,
+                    AdUnitId = adSetting.UnitId,
+                    AdSlotId = adSetting.SlotId,
                     DisplayAdsSource = DisplayAdsSource.GoogleAds
                 };
             }
 
             return null;
         }
-        
-        private readonly Dictionary<DisplayAdsTypes, MediaMotiveAdQuery> _typeToMediaMotiveAdQuery = new Dictionary<DisplayAdsTypes, MediaMotiveAdQuery>()
-        {
-            {
-                DisplayAdsTypes.Aside,
-                new MediaMotiveAdQuery() { AdSize = AdSize.MediumOrLargeRectangle, TileId = 3 }
-            },
-            {
-                DisplayAdsTypes.Banner,
-                new MediaMotiveAdQuery() { AdSize = AdSize.Block1200X100, TileId = 1 }
-            },
-            {
-                DisplayAdsTypes.LeaderBoard,
-                new MediaMotiveAdQuery() { AdSize = AdSize.Leaderboard, TileId = 1 }
-            },
-            {
-                DisplayAdsTypes.Mrec,
-                new MediaMotiveAdQuery() { AdSize = AdSize.MediumRectangle, TileId = 3 }
-            }
-        };
-
-        private readonly Dictionary<DisplayAdsTypes, string> _typeToGoogleAdSlotId = new Dictionary<DisplayAdsTypes, string>()
-        {
-            {
-                DisplayAdsTypes.Aside,
-                "div-gpt-ad-1468849624568-8"
-            },
-            {
-                DisplayAdsTypes.Banner,
-                "div-gpt-ad-1468849624568-5" // Use leaderboard size for now
-            },
-            {
-                DisplayAdsTypes.LeaderBoard,
-                "div-gpt-ad-1468849624568-5"
-            },
-            {
-                DisplayAdsTypes.Mrec,
-                "div-gpt-ad-1468849624568-2"
-            }
-        };
-
-        private readonly Dictionary<DisplayAdsTypes, string> _typeToGoogleAdUnitId = new Dictionary<DisplayAdsTypes, string>()
-        {
-            {
-                DisplayAdsTypes.Aside,
-                "SA_Results_300x250_300x600_R4"
-            },
-            {
-                DisplayAdsTypes.Banner,
-                "SA_Homepage_728x90_M3_Top" // Use leaderboard unit for now
-            },
-            {
-                DisplayAdsTypes.LeaderBoard,
-                "SA_Homepage_728x90_M3_Top"
-            },
-            {
-                DisplayAdsTypes.Mrec,
-                "SA_Homepage_300x250_M4"
-            }
-        };
-
-        private readonly Dictionary<DisplayAdsTypes, string> _typeToGoogleAdDimensions = new Dictionary<DisplayAdsTypes, string>()
-        {
-            {
-                DisplayAdsTypes.Aside,
-                ""
-            },
-            {
-                DisplayAdsTypes.Banner,
-                ""
-            },
-            {
-                DisplayAdsTypes.LeaderBoard,
-                ""
-            },
-            {
-                DisplayAdsTypes.Mrec,
-                ""
-            }
-        };
     }
 }

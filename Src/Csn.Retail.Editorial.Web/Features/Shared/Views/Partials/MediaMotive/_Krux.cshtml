@@ -1,8 +1,7 @@
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 
 @{
-    var adSource = Html.CurrentTenant().AdSource;
-    if (adSource == "MediaMotive")
+    if (Html.CurrentTenant().AdSource == "MediaMotive")
     {
         var kruxId = Html.CurrentTenant().KruxId;
         <script class="kxct" data-id="@kruxId" data-timing="async" data-version="1.9" type="text/javascript">

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Utils;
@@ -18,12 +19,12 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         }
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query)
         {
-            if (!MediaMotiveAdSettings.AdTypes.TryGetValue(query.AdSize, out MediaMotiveAdSetting adSetting))
-            {
-                return new List<MediaMotiveTag>();
-            }
+            //if (!DisplayAdsSettings.MemdiaMotiveAdTypes.TryGetValue(query.AdSize, out MediaMotiveAdSetting adSetting))
+            //{
+            //    return new List<MediaMotiveTag>();
+            //}
 
-            var dimensions = adSetting.AdSize.Dimensions().ToList();
+            var dimensions = query.AdSize.Dimensions().ToList();
 
             return new List<MediaMotiveTag>()
             {

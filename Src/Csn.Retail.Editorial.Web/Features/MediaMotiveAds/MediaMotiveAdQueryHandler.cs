@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Bolt.Common.Extensions;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -36,7 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
             var urlargs = string.Join("/", tags);
 
             // lookup the ad settings for this tile
-            if (!MediaMotiveAdSettings.AdTypes.TryGetValue(query.AdSize, out MediaMotiveAdSetting adSetting))
+            if (!DisplayAdsSettings.MemdiaMotiveAdTypesOld.TryGetValue(query.AdSize, out MediaMotiveAdSetting adSetting))
             {
                 return null;
             }

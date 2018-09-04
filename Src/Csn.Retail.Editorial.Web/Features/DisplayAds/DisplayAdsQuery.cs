@@ -7,17 +7,15 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
     {
         Aside,
         Banner,
-        LeaderBoard,
+        Leaderboard,
         Mrec,
-        MediaMotive
+        TEADS,
+        Tracking
     }
 
     public class DisplayAdsQuery : IQuery
     {
         public DisplayAdsTypes AdType { get; set; }
-        /// <summary>
-        /// Needed on Brand Page e.g. for Carouse & Hero sections on Landing page
-        /// </summary>
         public string Make { get; set; }
     }
 }

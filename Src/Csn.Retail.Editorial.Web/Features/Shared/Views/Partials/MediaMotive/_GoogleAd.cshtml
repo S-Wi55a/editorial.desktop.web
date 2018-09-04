@@ -1,8 +1,7 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 
 @{
-    var adSource = Html.CurrentTenant().AdSource;
-    if (adSource == "GoogleAds")
+    if (Html.CurrentTenant().AdSource == "GoogleAds")
     {
         <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
         <script>

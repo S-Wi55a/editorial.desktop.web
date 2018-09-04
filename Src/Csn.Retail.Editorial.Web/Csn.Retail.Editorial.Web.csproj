@@ -570,6 +570,8 @@
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
     <Compile Include="Features\Details\Mappings\ArticleTypeLabelMapper.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsController.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsSetting.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsSettings.cs" />
     <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQuery.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQueryHandler.cs" />
@@ -667,8 +669,6 @@
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSetting.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSettings.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />

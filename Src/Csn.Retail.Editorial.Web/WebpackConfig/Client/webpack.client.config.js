@@ -5,7 +5,7 @@ import { devServer } from '../Shared/devServer.config'
 import { resolve } from '../Shared/resolve.config'
 
 // From Client/
-import { config, getEntryFiles } from './entries.config';
+import { config, getEntryFiles, getTenantEntryFiles } from './entries.config';
 import { plugins } from './plugins.config';
 import { modules } from './loaders.config'
 
@@ -22,14 +22,16 @@ module.exports = () => {
 
         // That is why these entries are added after
         entries[`csn.common--${tenant}`] = ['./Features/Shared/Assets/csn.common.js'];
-        entries[`csn.mediaMotive--${tenant}`] = tenantSetting[tenant].adSource;
+
+        // const { entry, filePath } = getTenantEntryFiles(tenant);
+        // entries[`csn.mediaMotive--${tenant}`] = tenantSetting[tenant].adSource;
 
         // Use a config to switch ad source when needed
-        //if (AUTenants.indexOf(tenant) >= 0) {
-        //    entries[`csn.mediaMotive--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
-        //} else {
-        //    entries[`csn.googleAd--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/GoogleAds/googleAds.js'];
-        //}
+        if (AUTenants.indexOf(tenant) >= 0) {
+            entries[`csn.mediaMotive--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
+        } else {
+            entries[`csn.googleAd--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/GoogleAds/googleAds.js'];
+        }
 
         moduleExportArr.push({
             target: 'web',

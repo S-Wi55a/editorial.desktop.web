@@ -27,9 +27,10 @@
     var gaModel = (GoogleAdsViewModel)Model;
 
     <div id="@gaModel.AdSlotId"
-         data-ad-network-id="@gaModel.AdNetworkId"
+         data-ad-network-code="@gaModel.AdNetworkCode"
          data-ad-unit-id="@gaModel.AdUnitId"
-         data-ad-dimension="@gaModel.AdDimensions"
+         data-ad-width="@gaModel.Width"
+         data-ad-height="@gaModel.Height"
          class="googleads-block googleads-@gaModel.Description.ToLower()">
     </div>
 }

@@ -28,3 +28,35 @@ export function getEntryFiles(tenant) {
     return entries;
 }
 
+// TODO: Make this configurable.
+export function getTenantEntryFiles(tenant, entries) {
+    let tenantEntries = {
+        carsales: {
+            'csn.mediaMotive--' : ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+        },
+        constructionsales: {
+            adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+        },
+        bikesales: {
+            adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+        },
+        boatsales: {
+            adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+        },
+        trucksales: {
+            adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+        },
+        caravancampingsales: {
+            adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+        },
+        farmmachinerysales: {
+            adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+        },
+        redbook: {
+            adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+        },
+        soloautos: {
+            adSource: ['./Features/Shared/Assets/Js/Modules/GoogleAds/googleAds.js']
+        }
+    };
+}
