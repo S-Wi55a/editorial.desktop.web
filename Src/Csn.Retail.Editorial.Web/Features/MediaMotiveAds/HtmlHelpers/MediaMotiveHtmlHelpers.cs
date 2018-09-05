@@ -9,10 +9,5 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
         {
             html.RenderAction("Index", "MediaMotiveDetailsAd", query);
         }
-
-        public static void RenderMediaMotiveAd(this HtmlHelper html, MediaMotiveAdQuery query)
-        {
-            html.RenderAction("Index", "MediaMotiveAd", query);
-        }
     }
 }

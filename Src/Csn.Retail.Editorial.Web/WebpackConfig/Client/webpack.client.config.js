@@ -28,9 +28,9 @@ module.exports = () => {
 
         // Use a config to switch ad source when needed
         if (AUTenants.indexOf(tenant) >= 0) {
-            entries[`csn.mediaMotive--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
+            entries[`csn.displayAds--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
         } else {
-            entries[`csn.googleAd--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/GoogleAds/googleAds.js'];
+            entries[`csn.displayAds--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/GoogleAds/googleAds.js'];
         }
 
         moduleExportArr.push({

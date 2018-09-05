@@ -2,13 +2,12 @@
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Shared.Models
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
-@using Newtonsoft.Json
 @using React.Web.Mvc
 @model ListingsViewModel
 
 @section Head{
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
-    @{ Html.RenderPartial("Partials/MediaMotive/_GoogleAd");}
+    @{ Html.RenderPartial("Partials/GoogleAds/_GoogleAds");}
 }
 
 @{
@@ -22,7 +21,7 @@
 @section TopScripts {
     @Html.AssetJs("listings.vendor", LoadType.Defer)
     @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
-    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.displayAds--" + tenantName, LoadType.Defer)
 }
 
 <div class="listing-page">

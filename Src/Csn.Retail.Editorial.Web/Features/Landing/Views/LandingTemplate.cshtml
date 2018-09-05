@@ -12,7 +12,7 @@
 
 @section Head{
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
-    @{ Html.RenderPartial("Partials/MediaMotive/_GoogleAd");}
+    @{ Html.RenderPartial("Partials/GoogleAds/_GoogleAds");}
 }
 
 @{
@@ -27,7 +27,7 @@
 @section TopScripts {
     @Html.AssetJs("landing.vendor", LoadType.Defer)
     @Html.AssetJs("landing-page--" + tenantName, LoadType.Defer)
-    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.displayAds--" + tenantName, LoadType.Defer)
 }
 
 <div class="landing-page @(showHero ? "landing-page--hasHeroImage" : "")">

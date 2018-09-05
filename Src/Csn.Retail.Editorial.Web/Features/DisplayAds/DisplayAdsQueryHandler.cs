@@ -9,6 +9,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
+using Newtonsoft.Json;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
@@ -18,10 +19,10 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly IEnumerable<IMediaMotiveTagBuilder> _tagBuilders;
 
-        public DisplayAdsQueryHandler(ITenantProvider<TenantInfo> tenantProvider, IEnumerable<IMediaMotiveTagBuilder> tagBuilders)
+        public DisplayAdsQueryHandler(IEnumerable<IMediaMotiveTagBuilder> tagBuilders, ITenantProvider<TenantInfo> tenantProvider)
         {
-            _tenantProvider = tenantProvider;
             _tagBuilders = tagBuilders;
+            _tenantProvider = tenantProvider;
         }
         public IDisplayAdsModel Handle(DisplayAdsQuery displayAdsQuery)
         {
@@ -71,13 +72,10 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
                     return null;
                 }
 
-                var dimensions = adSetting.AdSize.Dimensions().First();//.Select(x => $"[{x.Width}, {x.Height}]");
-
                 return new GoogleAdsViewModel()
                 {
                     Description = displayAdsQuery.AdType.ToString(),
-                    Height = dimensions.Height,
-                    Width = dimensions.Width,
+                    Dimensions = JsonConvert.SerializeObject(adSetting.AdSize.Dimensions()),
                     AdNetworkCode = _tenantProvider.Current().GoogleAdsNetworkCode,
                     AdUnitId = adSetting.UnitId,
                     AdSlotId = adSetting.SlotId,

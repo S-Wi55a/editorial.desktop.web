@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Csn.SimpleCqrs;
+﻿using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {

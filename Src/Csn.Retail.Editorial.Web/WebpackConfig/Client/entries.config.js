@@ -32,7 +32,7 @@ export function getEntryFiles(tenant) {
 export function getTenantEntryFiles(tenant, entries) {
     let tenantEntries = {
         carsales: {
-            'csn.mediaMotive--' : ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
+            'csn.displayAds--' : ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']
         },
         constructionsales: {
             adSource: ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js']

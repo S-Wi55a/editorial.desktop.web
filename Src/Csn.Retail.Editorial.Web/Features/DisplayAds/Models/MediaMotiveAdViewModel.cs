@@ -1,6 +1,6 @@
 ﻿using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds.Models
 {
     public class MediaMotiveAdViewModel : IDisplayAdsModel
     {

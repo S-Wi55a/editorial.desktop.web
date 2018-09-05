@@ -118,51 +118,5 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 
             }
         };
-
-        public static Dictionary<AdSize, MediaMotiveAdSetting> MemdiaMotiveAdTypesOld = new Dictionary<AdSize, MediaMotiveAdSetting>
-        {
-            {
-                AdSize.Leaderboard,
-                new MediaMotiveAdSetting() {
-                    Description = DisplayAdsTypes.Leaderboard, AdSize = AdSize.Leaderboard, DataKruxRequired = true,
-                    NotSupportedArticleTypes = new List<string>{}
-                }
-            },
-            {
-                AdSize.MediumOrLargeRectangle,
-                new MediaMotiveAdSetting() {
-                    Description = DisplayAdsTypes.Mrec, AdSize = AdSize.MediumOrLargeRectangle, DataKruxRequired = true,
-                    NotSupportedArticleTypes = new List<string>{}
-                }
-            },
-            {
-                AdSize.Block550X309,
-                new MediaMotiveAdSetting() {
-                    Description = DisplayAdsTypes.TEADS, AdSize = AdSize.Block550X309, DataKruxRequired = false,
-                    NotSupportedArticleTypes = new List<string>{ArticleType.Sponsored.ToString(), ArticleType.Video.ToString()}
-                }
-            },
-            {
-                AdSize.Hidden,
-                new MediaMotiveAdSetting() {
-                    Description = DisplayAdsTypes.Tracking, AdSize = AdSize.Hidden, DataKruxRequired = false,
-                    NotSupportedArticleTypes = new List<string>{ArticleType.Sponsored.ToString()}
-                }
-            },
-            {
-                AdSize.MediumRectangle,
-                new MediaMotiveAdSetting() {
-                    Description = DisplayAdsTypes.Mrec, AdSize = AdSize.MediumRectangle, DataKruxRequired = true,
-                    NotSupportedArticleTypes = new List<string>{}
-                }
-            },
-            {
-                AdSize.Block1200X100,
-                new MediaMotiveAdSetting() {
-                    Description = DisplayAdsTypes.Banner, AdSize = AdSize.Block1200X100, DataKruxRequired = false,
-                    NotSupportedArticleTypes = new List<string>{}
-                }
-            }
-        };
     }
 }

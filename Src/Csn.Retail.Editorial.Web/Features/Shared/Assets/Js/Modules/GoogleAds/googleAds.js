@@ -8,13 +8,12 @@ loaded.then(() => {
                 $(".googleads-block").each(function (index) {
                     var item = $(this);
                     var adSlotId = item.attr('id');
-                    var adNetworkCode = item.attr('data-ad-network-code');
-                    var adUnitId = item.attr('data-ad-unit-id');
-                    var adWidth = item.attr('data-ad-width');
-                    var adHeight = item.attr('data-ad-height');
+                    var adNetworkCode = item.data('ad-network-code');
+                    var adUnitId = item.data('ad-unit-id');
+                    var adDimensions = item.data('ad-dimensions').map((dimension) => [dimension.width, dimension.height]);
 
                     w.googletag.cmd.push(function() {
-                        w.googletag.defineSlot("/" + adNetworkCode + "/" + adUnitId, [parseInt(adWidth), parseInt(adHeight)], adSlotId)
+                        w.googletag.defineSlot("/" + adNetworkCode + "/" + adUnitId, adDimensions, adSlotId)
                             .addService(googletag.pubads());
                     });
                 });

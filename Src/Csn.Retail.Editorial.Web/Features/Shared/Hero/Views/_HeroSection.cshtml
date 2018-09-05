@@ -1,4 +1,5 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 @using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
 @using React.Web.Mvc
@@ -15,14 +16,14 @@
     Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
     <h2 class="page-title">@Model.HeroTitle</h2>
     Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroAdUnit.cshtml", Model.CampaignAd);
-    Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.Block1200X100, TileId = 1, Make = Model.MediaMotiveModel.Make });
+    Html.RenderDisplayAds(new DisplayAdsQuery() { AdType = DisplayAdsTypes.Banner, Make = Model.MediaMotiveModel.Make });
 }
 else if (!string.IsNullOrEmpty(Model.HeroImage))
 {
     Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
     <h2 class="page-title">@Model.HeroTitle</h2>
     Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroImage.cshtml", Model);
-    Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.Block1200X100, TileId = 1 });
+    Html.RenderDisplayAds(new DisplayAdsQuery() { AdType = DisplayAdsTypes.Banner });
 }
 else
 {

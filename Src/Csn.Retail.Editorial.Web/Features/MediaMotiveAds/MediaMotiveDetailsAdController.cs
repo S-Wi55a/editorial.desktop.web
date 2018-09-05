@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.Models;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds

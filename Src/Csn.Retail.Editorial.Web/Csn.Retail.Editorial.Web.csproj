@@ -575,6 +575,8 @@
     <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQuery.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQueryHandler.cs" />
+    <Compile Include="Features\DisplayAds\Models\IDisplayAdsModel.cs" />
+    <Compile Include="Features\DisplayAds\Models\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\DisplayAds\Models\GoogleAdsViewModel.cs" />
     <Compile Include="Features\Landing\CacheStores\GetLandingQueryCacheStore.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
@@ -603,7 +605,6 @@
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
-    <Compile Include="Features\Shared\Models\IDisplayAdsModel.cs" />
     <Compile Include="Features\Shared\Models\Vertical.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
@@ -666,13 +667,10 @@
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\CommonTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
@@ -1094,7 +1092,6 @@
     <Content Include="Features\Details\Views\Farmmachinerysales\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleSummary.cshtml" />
-    <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleShare--Bottom.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Css\iNavArticleCount.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_WideVideo.cshtml" />
@@ -1182,10 +1179,10 @@
     <Content Include="Features\Listings\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Configurations\demotores.landingConfig.json" />
-    <Content Include="Features\Shared\Views\Partials\MediaMotive\_GoogleAd.cshtml" />
     <Content Include="Features\DisplayAds\Views\Index.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAds\_googleads.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAds\_mrec.scss" />
+    <Content Include="Features\Shared\Views\Partials\GoogleAds\_GoogleAds.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

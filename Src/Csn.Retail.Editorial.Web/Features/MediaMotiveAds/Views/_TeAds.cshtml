@@ -1,5 +1,4 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 
-@{ Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.Block550X309, TileId = 7 }); }
+@{ Html.RenderDisplayAds(new DisplayAdsQuery() { AdType = DisplayAdsTypes.TEADS }); }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.SimpleCqrs;
 
