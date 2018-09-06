@@ -5,7 +5,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
     public static class DisplayAdsSettings
     {
-        public static Dictionary<DisplayAdsTypes, MediaMotiveAdSetting> MemdiaMotiveAdTypes = new Dictionary<DisplayAdsTypes, MediaMotiveAdSetting>
+        public static Dictionary<DisplayAdsTypes, MediaMotiveAdSetting> MediaMotiveAdTypes = new Dictionary<DisplayAdsTypes, MediaMotiveAdSetting>
         {
             {
                 DisplayAdsTypes.Leaderboard,

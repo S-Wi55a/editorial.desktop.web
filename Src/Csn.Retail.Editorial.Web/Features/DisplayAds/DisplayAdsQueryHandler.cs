@@ -37,7 +37,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         private IDisplayAdsModel GetMediaMotiveModel(DisplayAdsQuery displayAdsQuery)
         {
             // lookup the ad settings for this type
-            if (!DisplayAdsSettings.MemdiaMotiveAdTypes.TryGetValue(displayAdsQuery.AdType, out var adSetting))
+            if (!DisplayAdsSettings.MediaMotiveAdTypes.TryGetValue(displayAdsQuery.AdType, out var adSetting))
             {
                 return null;
             }
