@@ -1,8 +1,0 @@
-﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
-@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
-@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
-@model Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models.MediaMotiveModel
-
-@{ Html.RenderDisplayAds(new DisplayAdsQuery() { AdType = DisplayAdsTypes.Tracking, Make = Model != null && !Model.Make.IsNullOrEmpty() ? Model.Make : string.Empty }); }

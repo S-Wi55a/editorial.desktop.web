@@ -57,5 +57,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string Vertical { get; set; }
         public bool HasLandingPageConfiguration { get; set; }
         #endregion
+
+        public bool HasMediaMotive => AdSource == "MediaMotive";
+        public bool HasGoogleAds => AdSource == "GoogleAds";
     }
 }

@@ -14,6 +14,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.DisplayAds
         [Test]
         public void MultipleTagsWithDuplicates()
         {
+            
             var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
             tenantProvider.Current().Returns(new TenantInfo()
             {
