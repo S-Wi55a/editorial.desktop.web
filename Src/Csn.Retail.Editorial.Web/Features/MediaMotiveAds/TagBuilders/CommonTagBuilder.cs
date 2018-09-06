@@ -17,7 +17,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             _tenantProvider = tenantProvider;
         }
-        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersQuery query)
+        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams query)
         {
             var dimensions = query.AdSize.Dimensions().ToList();
 
@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             };
         }
 
-        public bool IsApplicable(MediaMotiveTagBuildersQuery query)
+        public bool IsApplicable(MediaMotiveTagBuildersParams query)
         {
             // apply this every time
             return true;

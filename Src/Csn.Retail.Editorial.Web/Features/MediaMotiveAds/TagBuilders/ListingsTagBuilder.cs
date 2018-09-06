@@ -19,14 +19,14 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             _breadCrumbTagBuilder = breadCrumbTagBuilder;
         }
 
-        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersQuery query)
+        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams query)
         {
             var searchContext = _searchContextStore.Get();
 
             return BuildTags(searchContext);
         }
 
-        public bool IsApplicable(MediaMotiveTagBuildersQuery query)
+        public bool IsApplicable(MediaMotiveTagBuildersParams query)
         {
             return _searchContextStore.Exists();
         }

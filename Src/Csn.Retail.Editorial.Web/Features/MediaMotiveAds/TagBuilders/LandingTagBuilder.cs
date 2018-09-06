@@ -17,7 +17,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             _requestContextWrapper = requestContextWrapper;
         }
 
-        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersQuery query)
+        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams query)
         {
             var mediaMotiveTag = new List<MediaMotiveTag> { 
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, !string.IsNullOrEmpty(query.Make) ? MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage)
@@ -30,7 +30,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             return mediaMotiveTag;
         }
 
-        public bool IsApplicable(MediaMotiveTagBuildersQuery query)
+        public bool IsApplicable(MediaMotiveTagBuildersParams query)
         {
             var path = "/editorial/" + (query.Make != null ? query.Make.MakeUrlFriendly().ToLower() + "/" : "");
 

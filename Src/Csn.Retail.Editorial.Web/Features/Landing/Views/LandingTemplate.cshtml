@@ -8,7 +8,10 @@
 
 @section Head{
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
-    @{ Html.RenderPartial("Partials/GoogleAds/_GoogleAds");}
+    @if (Html.CurrentTenant().HasGoogleAds)
+    {
+        Html.RenderPartial("Partials/GoogleAds/_GoogleAds");
+    }
 }
 
 @{
@@ -46,8 +49,6 @@
     </div>
 </div>
 
-@{ Html.RenderTrackingAds(Model.MediaMotiveModel); }
-
 @section BottomScripts
 {
     @Html.React("global.Components.INavPreloadedState", new { state = Model.Nav }, containerId: "INavPreloadedState")
@@ -63,7 +64,9 @@
     }
     @if (Html.CurrentTenant().HasMediaMotive)
     {
+        Html.RenderAdsTracking(Model.MediaMotiveModel);
         Html.RenderPartial("Partials/MediaMotive/_Krux");
+
     }
     @{
         Html.RenderAction("HtmlTracking", "Tracking");

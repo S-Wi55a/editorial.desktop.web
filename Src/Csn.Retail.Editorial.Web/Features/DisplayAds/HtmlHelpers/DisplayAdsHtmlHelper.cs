@@ -8,7 +8,6 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 {
     public static class DisplayAdsHtmlHelper
     {
-        
         public static void RenderDisplayAds(this HtmlHelper html, DisplayAdsQuery query)
         {
             if (html.CurrentTenant().HasMediaMotive)
@@ -20,7 +19,6 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
             {
                 html.RenderAction("GoogleAds", "DisplayAds", query);
             }
-            
         }
 
         public static void RenderTeAds(this HtmlHelper html)
@@ -31,7 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
             }
         }
 
-        public static void RenderTrackingAds(this HtmlHelper html, MediaMotiveModel model)
+        public static void RenderAdsTracking(this HtmlHelper html, MediaMotiveModel model)
         {
             if (html.CurrentTenant().HasMediaMotive)
             {

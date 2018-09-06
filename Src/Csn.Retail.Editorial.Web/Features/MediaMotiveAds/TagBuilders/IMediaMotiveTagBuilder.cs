@@ -4,8 +4,8 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 {
     public interface IMediaMotiveTagBuilder
     {
-        IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersQuery query);
+        IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams query);
 
-        bool IsApplicable(MediaMotiveTagBuildersQuery query);
+        bool IsApplicable(MediaMotiveTagBuildersParams query);
     }
 }

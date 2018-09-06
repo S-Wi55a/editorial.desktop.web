@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
                 return null;
             }
 
-            var mediaMotiveAdQuery = new MediaMotiveTagBuildersQuery
+            var mediaMotiveTagBuildersParams = new MediaMotiveTagBuildersParams
             {
                 TileId = adSetting.TileId,
                 AdSize = adSetting.AdSize,
@@ -50,8 +50,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
             };
 
             var tags = _tagBuilders
-                .Where(builder => builder.IsApplicable(mediaMotiveAdQuery))
-                .SelectMany(x => x.Build(mediaMotiveAdQuery))
+                .Where(builder => builder.IsApplicable(mediaMotiveTagBuildersParams))
+                .SelectMany(x => x.Build(mediaMotiveTagBuildersParams))
                 .Where(x => !x.Name.IsNullOrEmpty())
                 .Select(x => $"{x.Name}={string.Join(",", x.Values.NullSafe().Select(v => v.NullSafe()))}").Distinct().ToList();
 

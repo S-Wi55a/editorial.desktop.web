@@ -29,7 +29,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var tagBuilder = new ListingsTagBuilder(contextStore, breadCrumbTagBuilder);
 
-            var result = tagBuilder.Build(new MediaMotiveTagBuildersQuery()
+            var result = tagBuilder.Build(new MediaMotiveTagBuildersParams()
             {
                 TileId = 3
             }).ToList();
@@ -57,7 +57,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var tagBuilder = new ListingsTagBuilder(contextStore, breadCrumbTagBuilder);
 
-            var result = tagBuilder.Build(new MediaMotiveTagBuildersQuery()
+            var result = tagBuilder.Build(new MediaMotiveTagBuildersParams()
             {
                 TileId = 3
             }).ToList();
@@ -88,7 +88,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var tagBuilder = new ListingsTagBuilder(contextStore, breadCrumbTagBuilder);
 
-            var result = tagBuilder.Build(new MediaMotiveTagBuildersQuery()
+            var result = tagBuilder.Build(new MediaMotiveTagBuildersParams()
             {
                 TileId = 3
             }).ToList();
@@ -121,7 +121,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 
             var tagBuilder = new ListingsTagBuilder(contextStore, breadCrumbTagBuilder);
 
-            var result = tagBuilder.Build(new MediaMotiveTagBuildersQuery()
+            var result = tagBuilder.Build(new MediaMotiveTagBuildersParams()
             {
                 TileId = 3
             }).ToList();

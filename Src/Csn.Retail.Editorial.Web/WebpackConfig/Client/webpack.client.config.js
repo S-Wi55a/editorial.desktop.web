@@ -23,9 +23,6 @@ module.exports = () => {
         // That is why these entries are added after
         entries[`csn.common--${tenant}`] = ['./Features/Shared/Assets/csn.common.js'];
 
-        // const { entry, filePath } = getTenantEntryFiles(tenant);
-        // entries[`csn.mediaMotive--${tenant}`] = tenantSetting[tenant].adSource;
-
         // Use a config to switch ad source when needed
         if (AUTenants.indexOf(tenant) >= 0) {
             entries[`csn.displayAds--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];

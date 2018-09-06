@@ -2,7 +2,7 @@
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
 {
-    public class MediaMotiveTagBuildersQuery
+    public class MediaMotiveTagBuildersParams
     {
         public int TileId { get; set; }
         public AdSize AdSize { get; set; }

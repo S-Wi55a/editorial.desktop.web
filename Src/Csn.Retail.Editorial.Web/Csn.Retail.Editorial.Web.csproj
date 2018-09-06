@@ -667,7 +667,7 @@
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveTagBuildersQuery.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveTagBuildersParams.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />

@@ -1,12 +1,5 @@
-﻿@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
-
-@{
-    if (Html.CurrentTenant().HasGoogleAds)
-    {
-        <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
-        <script>
-            var googletag = googletag || {};
-            googletag.cmd = googletag.cmd || [];
-        </script>
-    }
-}
+﻿<script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+<script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+</script>
