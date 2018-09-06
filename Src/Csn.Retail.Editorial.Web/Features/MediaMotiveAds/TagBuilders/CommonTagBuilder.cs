@@ -17,13 +17,8 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             _tenantProvider = tenantProvider;
         }
-        public IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query)
+        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersQuery query)
         {
-            //if (!DisplayAdsSettings.MemdiaMotiveAdTypes.TryGetValue(query.AdSize, out MediaMotiveAdSetting adSetting))
-            //{
-            //    return new List<MediaMotiveTag>();
-            //}
-
             var dimensions = query.AdSize.Dimensions().ToList();
 
             return new List<MediaMotiveTag>()
@@ -38,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             };
         }
 
-        public bool IsApplicable(MediaMotiveAdQuery query)
+        public bool IsApplicable(MediaMotiveTagBuildersQuery query)
         {
             // apply this every time
             return true;

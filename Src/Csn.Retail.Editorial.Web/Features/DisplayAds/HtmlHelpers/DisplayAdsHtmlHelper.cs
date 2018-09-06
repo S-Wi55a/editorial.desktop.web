@@ -11,14 +11,23 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
         
         public static void RenderDisplayAds(this HtmlHelper html, DisplayAdsQuery query)
         {
-            html.RenderAction("Index", "DisplayAds", query);
+            if (html.CurrentTenant().HasMediaMotive)
+            {
+                html.RenderAction("MediaMotive", "DisplayAds", query);
+            }
+
+            if (html.CurrentTenant().HasGoogleAds)
+            {
+                html.RenderAction("GoogleAds", "DisplayAds", query);
+            }
+            
         }
 
         public static void RenderTeAds(this HtmlHelper html)
         {
             if (html.CurrentTenant().HasMediaMotive)
             {
-                html.RenderAction("Index", "DisplayAds", new DisplayAdsQuery() { AdType = DisplayAdsTypes.TEADS });
+                html.RenderAction("MediaMotive", "DisplayAds", new DisplayAdsQuery() { AdType = DisplayAdsTypes.TEADS });
             }
         }
 
@@ -26,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
         {
             if (html.CurrentTenant().HasMediaMotive)
             {
-                html.RenderAction("Index", "DisplayAds",
+                html.RenderAction("MediaMotive", "DisplayAds",
                     new DisplayAdsQuery()
                     {
                         AdType = DisplayAdsTypes.Tracking,

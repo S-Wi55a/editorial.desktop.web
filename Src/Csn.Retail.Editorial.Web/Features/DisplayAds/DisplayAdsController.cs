@@ -16,13 +16,23 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         }
 
         [ChildActionOnly]
-        public ActionResult Index(DisplayAdsQuery query)
+        public ActionResult MediaMotive(DisplayAdsQuery query)
         {
             var viewData = _queryDispatcher.Dispatch<DisplayAdsQuery, IDisplayAdsModel>(query);
 
             if (viewData == null) return Content(String.Empty);
             
-            return PartialView("~/Features/DisplayAds/Views/Index.cshtml", viewData);
+            return PartialView("~/Features/DisplayAds/Views/MediaMotive.cshtml", (MediaMotiveAdViewModel)viewData);
+        }
+
+        [ChildActionOnly]
+        public ActionResult GoogleAds(DisplayAdsQuery query)
+        {
+            var viewData = _queryDispatcher.Dispatch<DisplayAdsQuery, IDisplayAdsModel>(query);
+
+            if (viewData == null) return Content(String.Empty);
+            
+            return PartialView("~/Features/DisplayAds/Views/GoogleAds.cshtml", (GoogleAdsViewModel)viewData);
         }
     }
 }

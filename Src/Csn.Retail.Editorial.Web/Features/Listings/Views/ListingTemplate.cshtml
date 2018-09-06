@@ -64,8 +64,10 @@
     {
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
-    @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
-
+    @if (Html.CurrentTenant().HasMediaMotive)
+    {
+        Html.RenderPartial("Partials/MediaMotive/_Krux");
+    }
     @{
         Html.RenderAction(Model.EditorialPageType == EditorialPageTypes.Landing ? "HtmlTracking" : "HtmlTrackingListing", "Tracking");
     }

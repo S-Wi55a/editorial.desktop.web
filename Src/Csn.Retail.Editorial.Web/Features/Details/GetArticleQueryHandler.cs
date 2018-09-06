@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         {
             var result = await _editorialApiProxy.GetArticleAsync(new EditorialApiInput()
             {
-                ServiceName = _tenantProvider.Current().TenantName,
+                ServiceName = _tenantProvider.Current().TenantName, // TODO: Use RyvusServiceProjection instead of TenantName for soloautos till soloautos ryvus is ready.
                 ViewType = "desktop",
                 Id = query.Id,
                 IsPreview = query.IsPreview
