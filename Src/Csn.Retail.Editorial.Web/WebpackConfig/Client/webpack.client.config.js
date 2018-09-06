@@ -1,11 +1,11 @@
 import { IS_PROD } from '../Shared/env.config'
-import { TENANTS, AUTenants, tenantSetting } from '../Shared/tenants.config'
+import { TENANTS, AUTenants } from '../Shared/tenants.config'
 import { stats } from '../Shared/stats.config'
 import { devServer } from '../Shared/devServer.config'
 import { resolve } from '../Shared/resolve.config'
 
 // From Client/
-import { config, getEntryFiles, getTenantEntryFiles } from './entries.config';
+import { config, getEntryFiles } from './entries.config';
 import { plugins } from './plugins.config';
 import { modules } from './loaders.config'
 
