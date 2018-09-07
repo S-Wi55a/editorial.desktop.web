@@ -21,7 +21,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
             {
                 Name = "carsales",
                 AdUnits = new List<string> { "Tile3" },
-                AdSource = "MediaMotive"
+                DisplayAdSource = DisplayAdSource.MediaMotive
             });
 
             var tagBuilders = new List<IMediaMotiveTagBuilder>()

@@ -572,6 +572,7 @@
     <Compile Include="Features\DisplayAds\DisplayAdsController.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsSetting.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsSettings.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsSource.cs" />
     <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQuery.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQueryHandler.cs" />

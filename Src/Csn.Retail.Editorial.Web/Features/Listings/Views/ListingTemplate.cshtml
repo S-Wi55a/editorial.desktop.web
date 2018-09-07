@@ -1,4 +1,5 @@
-﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Listings.Models
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Shared.Models
@@ -8,7 +9,7 @@
 
 @section Head{
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
-    @{ Html.RenderPartial("Partials/GoogleAds/_GoogleAds");}
+    @{ Html.RenderDisplayAdsHeader();}
 }
 
 @{
@@ -41,7 +42,7 @@
             @Html.React("global.Components.INavSorting", new { state = Model }, containerId: "iNavSorting")
             @Html.React("global.Components.INavBreadCrumbs", new { state = Model }, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSearchResults", new { state = Model }, containerId: "iNavSearchResults")
-            @{ Html.RenderTeAds(); }
+            @{ Html.RenderDisplayAd(new DisplayAdsQuery() {AdType = DisplayAdsTypes.TEADS}); }
             @Html.React("global.Components.INavPagination", new { state = Model }, containerId: "iNavPagination")
 
             @{ Html.RenderPartial("_Disclaimer"); }
@@ -62,9 +63,7 @@
     {
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
-    @if (Html.CurrentTenant().HasMediaMotive)
-    {
-        Html.RenderAdsTracking(Model.MediaMotiveModel);
+        @{ Html.RenderAdsTracking(Model.MediaMotiveModel); }
         Html.RenderPartial("Partials/MediaMotive/_Krux");
     }
     @{

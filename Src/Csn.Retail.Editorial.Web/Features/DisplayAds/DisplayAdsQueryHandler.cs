@@ -26,12 +26,12 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         }
         public IDisplayAdsModel Handle(DisplayAdsQuery displayAdsQuery)
         {
-            if (_tenantProvider.Current().HasMediaMotive)
+            if (_tenantProvider.Current().UseMediaMotive)
             {
                 return GetMediaMotiveModel(displayAdsQuery);
             }
 
-            return _tenantProvider.Current().HasGoogleAds ? GetGoogleAdsModel(displayAdsQuery) : null;
+            return _tenantProvider.Current().UseGoogleAds ? GetGoogleAdsModel(displayAdsQuery) : null;
         }
 
         private IDisplayAdsModel GetMediaMotiveModel(DisplayAdsQuery displayAdsQuery)

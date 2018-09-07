@@ -19,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.DisplayAds
             tenantProvider.Current().Returns(new TenantInfo()
             {
                 Name = "soloautos",
-                AdSource = "GoogleAds"
+                DisplayAdSource = DisplayAdSource.GoogleAds
             });
 
             var tagBuilders = new List<IMediaMotiveTagBuilder>();

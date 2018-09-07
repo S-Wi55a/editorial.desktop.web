@@ -8,7 +8,7 @@
 
 @section Head{
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
-    @if (Html.CurrentTenant().HasGoogleAds)
+    @if (Html.CurrentTenant().UseGoogleAds)
     {
         Html.RenderPartial("Partials/GoogleAds/_GoogleAds");
     }
@@ -62,7 +62,7 @@
     {
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
-    @if (Html.CurrentTenant().HasMediaMotive)
+    @if (Html.CurrentTenant().UseMediaMotive)
     {
         Html.RenderAdsTracking(Model.MediaMotiveModel);
         Html.RenderPartial("Partials/MediaMotive/_Krux");

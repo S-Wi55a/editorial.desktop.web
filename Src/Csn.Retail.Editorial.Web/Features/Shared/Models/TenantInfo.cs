@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 {
@@ -30,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         #endregion
 
         #region Display Ads (Media Motive & Google Ads)
-        public string AdSource { get; set; }
+        public DisplayAdSource DisplayAdSource { get; set; }
         public string MediaMotiveAccountId { get; set; }
         public string MediaMotiveUrl { get; set; }
         public string KruxId { get; set; }
@@ -58,7 +59,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool HasLandingPageConfiguration { get; set; }
         #endregion
 
-        public bool HasMediaMotive => AdSource == "MediaMotive";
-        public bool HasGoogleAds => AdSource == "GoogleAds";
+        public bool UseMediaMotive => DisplayAdSource == DisplayAdSource.MediaMotive;
+        public bool UseGoogleAds => DisplayAdSource == DisplayAdSource.GoogleAds;
     }
 }

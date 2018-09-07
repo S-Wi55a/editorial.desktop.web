@@ -16,14 +16,14 @@
     Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
     <h2 class="page-title">@Model.HeroTitle</h2>
     Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroAdUnit.cshtml", Model.CampaignAd);
-    Html.RenderDisplayAds(new DisplayAdsQuery() { AdType = DisplayAdsTypes.Banner, Make = Model.MediaMotiveModel.Make });
+    Html.RenderDisplayAd(new DisplayAdsQuery() { AdType = DisplayAdsTypes.Banner, Make = Model.MediaMotiveModel.Make });
 }
 else if (!string.IsNullOrEmpty(Model.HeroImage))
 {
     Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
     <h2 class="page-title">@Model.HeroTitle</h2>
     Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroImage.cshtml", Model);
-    Html.RenderDisplayAds(new DisplayAdsQuery() { AdType = DisplayAdsTypes.Banner });
+    Html.RenderDisplayAd(new DisplayAdsQuery() { AdType = DisplayAdsTypes.Banner });
 }
 else
 {

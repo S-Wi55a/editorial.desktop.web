@@ -1,45 +1,38 @@
 ﻿using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 {
     public static class DisplayAdsHtmlHelper
     {
-        public static void RenderDisplayAds(this HtmlHelper html, DisplayAdsQuery query)
+        public static void RenderDisplayAd(this HtmlHelper html, DisplayAdsQuery query)
         {
-            if (html.CurrentTenant().HasMediaMotive)
-            {
-                html.RenderAction("MediaMotive", "DisplayAds", query);
-            }
-
-            if (html.CurrentTenant().HasGoogleAds)
-            {
-                html.RenderAction("GoogleAds", "DisplayAds", query);
-            }
+            html.RenderAction("DisplayAds", "DisplayAds", query);
         }
 
-        public static void RenderTeAds(this HtmlHelper html)
+        // call this from the master template! Should not be called from any other pages!
+        public static void RenderDisplayAdsHeader(this HtmlHelper html)
         {
-            if (html.CurrentTenant().HasMediaMotive)
-            {
-                html.RenderAction("MediaMotive", "DisplayAds", new DisplayAdsQuery() { AdType = DisplayAdsTypes.TEADS });
-            }
+            html.RenderAction("RenderHeader", "DisplayAds");
+        }
+
+        // call this from the master template! Should not be called from any other pages!
+        public static void RenderDisplayAdsFooter(this HtmlHelper html)
+        {
+            // TODO: call krux partial view from here and add the html helper call to the master template (remove it from individual pages)
+            html.RenderAction("RenderFooter", "DisplayAds");
         }
 
         public static void RenderAdsTracking(this HtmlHelper html, MediaMotiveModel model)
         {
-            if (html.CurrentTenant().HasMediaMotive)
-            {
-                html.RenderAction("MediaMotive", "DisplayAds",
-                    new DisplayAdsQuery()
-                    {
-                        AdType = DisplayAdsTypes.Tracking,
-                        Make = model != null && !model.Make.IsNullOrEmpty() ? model.Make : string.Empty
-                    });
-            }
+            html.RenderAction("DisplayAds", "DisplayAds",
+                new DisplayAdsQuery()
+                {
+                    AdType = DisplayAdsTypes.Tracking,
+                    Make = model != null && !model.Make.IsNullOrEmpty() ? model.Make : string.Empty
+                });
         }
     }
 }
