@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.DisplayAds;
-using Csn.Retail.Editorial.Web.Features.DisplayAds.Models;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -21,7 +21,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
             {
                 Name = "carsales",
                 AdUnits = new List<string> { "Tile3" },
-                DisplayAdSource = DisplayAdSource.MediaMotive
+                DisplayAdsSource = DisplayAdsSource.MediaMotive
             });
 
             var tagBuilders = new List<IMediaMotiveTagBuilder>()

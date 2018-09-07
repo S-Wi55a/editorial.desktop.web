@@ -1,4 +1,4 @@
-﻿using Csn.Retail.Editorial.Web.Features.DisplayAds.Models;
+﻿using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.SimpleCqrs;

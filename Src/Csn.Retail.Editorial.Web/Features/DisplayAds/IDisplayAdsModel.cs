@@ -1,9 +1,9 @@
-﻿namespace Csn.Retail.Editorial.Web.Features.DisplayAds.Models
+﻿namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
     public enum DisplayAdsSource
     {
         MediaMotive,
-        GoogleAds
+        GoogleAd
     }
     public interface IDisplayAdsModel
     {

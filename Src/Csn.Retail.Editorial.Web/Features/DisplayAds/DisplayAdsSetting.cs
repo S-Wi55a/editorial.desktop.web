@@ -4,22 +4,6 @@ using System.Linq;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
-    public class MediaMotiveAdSetting
-    {
-        public int TileId { get; set; }
-        public DisplayAdsTypes Description { get; set; }
-        public bool DataKruxRequired { get; set; }
-        public AdSize AdSize { get; set; }
-        public List<string> NotSupportedArticleTypes { get; set; }
-    }
-    
-    public class GoogleAdsSetting
-    {
-        public string SlotId { get; set; }
-        public string UnitId { get; set; }
-        public AdSize AdSize { get; set; }
-    }
-
     public enum AdSize
     {
         [Dimension(728, 90)]

@@ -571,14 +571,16 @@
     <Compile Include="Features\Details\Mappings\ArticleTypeLabelMapper.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsController.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsSetting.cs" />
-    <Compile Include="Features\DisplayAds\DisplayAdsSettings.cs" />
-    <Compile Include="Features\DisplayAds\DisplayAdsSource.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdSetting.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdSettings.cs" />
     <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQuery.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsQueryHandler.cs" />
-    <Compile Include="Features\DisplayAds\Models\IDisplayAdsModel.cs" />
-    <Compile Include="Features\DisplayAds\Models\MediaMotiveAdViewModel.cs" />
-    <Compile Include="Features\DisplayAds\Models\GoogleAdsViewModel.cs" />
+    <Compile Include="Features\DisplayAds\IDisplayAdsModel.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSetting.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSettings.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\Models\MediaMotiveAdViewModel.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\Models\GoogleAdViewModel.cs" />
     <Compile Include="Features\Landing\CacheStores\GetLandingQueryCacheStore.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
@@ -818,11 +820,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
-    <Content Include="Features\DisplayAds\Views\GoogleAds.cshtml" />
-    <Content Include="Features\DisplayAds\Views\MediaMotive.cshtml" />
-    <None Include="Features\Shared\Assets\Css\Modules\GoogleAds\_leaderboard.scss" />
+    <Content Include="Features\DisplayAds\GoogleAd\Views\Index.cshtml" />
+    <Content Include="Features\DisplayAds\MediaMotive\Views\Index.cshtml" />
+    <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
-    <Content Include="Features\Shared\Assets\Js\Modules\GoogleAds\googleAds.js" />
+    <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\iNav.js" />
@@ -1180,9 +1182,9 @@
     <Content Include="Features\Listings\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Configurations\demotores.landingConfig.json" />
-    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAds\_googleads.scss" />
-    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAds\_mrec.scss" />
-    <Content Include="Features\Shared\Views\Partials\GoogleAds\_GoogleAds.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_googlead.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_mrec.scss" />
+    <Content Include="Features\Shared\Views\Partials\GoogleAd\_GoogleAd.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -31,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         #endregion
 
         #region Display Ads (Media Motive & Google Ads)
-        public DisplayAdSource DisplayAdSource { get; set; }
+        public DisplayAdsSource DisplayAdsSource { get; set; }
         public string MediaMotiveAccountId { get; set; }
         public string MediaMotiveUrl { get; set; }
         public string KruxId { get; set; }
@@ -59,7 +59,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool HasLandingPageConfiguration { get; set; }
         #endregion
 
-        public bool UseMediaMotive => DisplayAdSource == DisplayAdSource.MediaMotive;
-        public bool UseGoogleAds => DisplayAdSource == DisplayAdSource.GoogleAds;
+        public bool UseMediaMotive => DisplayAdsSource == DisplayAdsSource.MediaMotive;
+        public bool UseGoogleAds => DisplayAdsSource == DisplayAdsSource.GoogleAd;
     }
 }

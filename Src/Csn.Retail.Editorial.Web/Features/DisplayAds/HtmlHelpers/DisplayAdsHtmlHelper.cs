@@ -11,21 +11,18 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
         {
             html.RenderAction("DisplayAds", "DisplayAds", query);
         }
-
-        // call this from the master template! Should not be called from any other pages!
+        
         public static void RenderDisplayAdsHeader(this HtmlHelper html)
         {
-            html.RenderAction("RenderHeader", "DisplayAds");
+            html.RenderAction("RenderDisplayAdsHeader", "DisplayAds");
         }
-
-        // call this from the master template! Should not be called from any other pages!
+        
         public static void RenderDisplayAdsFooter(this HtmlHelper html)
         {
-            // TODO: call krux partial view from here and add the html helper call to the master template (remove it from individual pages)
-            html.RenderAction("RenderFooter", "DisplayAds");
+            html.RenderAction("RenderDisplayAdsFooter", "DisplayAds");
         }
 
-        public static void RenderAdsTracking(this HtmlHelper html, MediaMotiveModel model)
+        public static void RenderDisplayAdsTracking(this HtmlHelper html, MediaMotiveModel model)
         {
             html.RenderAction("DisplayAds", "DisplayAds",
                 new DisplayAdsQuery()

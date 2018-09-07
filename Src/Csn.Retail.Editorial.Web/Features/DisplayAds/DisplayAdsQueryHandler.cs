@@ -2,7 +2,10 @@
 using System.Linq;
 using Bolt.Common.Extensions;
 using Csn.MultiTenant;
-using Csn.Retail.Editorial.Web.Features.DisplayAds.Models;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd.Models;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -31,13 +34,13 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
                 return GetMediaMotiveModel(displayAdsQuery);
             }
 
-            return _tenantProvider.Current().UseGoogleAds ? GetGoogleAdsModel(displayAdsQuery) : null;
+            return _tenantProvider.Current().UseGoogleAds ? GetGoogleAdModel(displayAdsQuery) : null;
         }
 
         private IDisplayAdsModel GetMediaMotiveModel(DisplayAdsQuery displayAdsQuery)
         {
             // lookup the ad settings for this type
-            if (!DisplayAdsSettings.MediaMotiveAdTypes.TryGetValue(displayAdsQuery.AdType, out var adSetting))
+            if (!MediaMotiveAdSettings.MediaMotiveAdTypes.TryGetValue(displayAdsQuery.AdType, out var adSetting))
             {
                 return null;
             }
@@ -73,21 +76,21 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
             };
         }
 
-        private IDisplayAdsModel GetGoogleAdsModel(DisplayAdsQuery displayAdsQuery)
+        private IDisplayAdsModel GetGoogleAdModel(DisplayAdsQuery displayAdsQuery)
         {
-            if (!DisplayAdsSettings.GoogleAdTypes.TryGetValue(displayAdsQuery.AdType, out var adSetting))
+            if (!GoogleAdSettings.GoogleAdTypes.TryGetValue(displayAdsQuery.AdType, out var adSetting))
             {
                 return null;
             }
 
-            return new GoogleAdsViewModel()
+            return new GoogleAdViewModel()
             {
                 Description = displayAdsQuery.AdType.ToString(),
                 Dimensions = JsonConvert.SerializeObject(adSetting.AdSize.Dimensions()),
                 AdNetworkCode = _tenantProvider.Current().GoogleAdsNetworkCode,
                 AdUnitId = adSetting.UnitId,
                 AdSlotId = adSetting.SlotId,
-                DisplayAdsSource = DisplayAdsSource.GoogleAds
+                DisplayAdsSource = DisplayAdsSource.GoogleAd
             };
         }
     }

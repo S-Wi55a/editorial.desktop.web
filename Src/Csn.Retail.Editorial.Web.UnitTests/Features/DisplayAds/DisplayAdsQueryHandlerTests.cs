@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.DisplayAds;
-using Csn.Retail.Editorial.Web.Features.DisplayAds.Models;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd.Models;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using NSubstitute;
@@ -19,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.DisplayAds
             tenantProvider.Current().Returns(new TenantInfo()
             {
                 Name = "soloautos",
-                DisplayAdSource = DisplayAdSource.GoogleAds
+                DisplayAdsSource = DisplayAdsSource.GoogleAd
             });
 
             var tagBuilders = new List<IMediaMotiveTagBuilder>();
@@ -27,7 +27,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.DisplayAds
             var queryHandler = new DisplayAdsQueryHandler(tagBuilders, tenantProvider);
 
             //Act
-            var result = (GoogleAdsViewModel) queryHandler.Handle(new DisplayAdsQuery()
+            var result = (GoogleAdViewModel) queryHandler.Handle(new DisplayAdsQuery()
             {
                 AdType = DisplayAdsTypes.Aside
             });

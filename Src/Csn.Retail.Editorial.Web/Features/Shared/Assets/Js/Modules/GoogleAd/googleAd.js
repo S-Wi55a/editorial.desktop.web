@@ -1,11 +1,11 @@
 ﻿import { loaded } from 'document-promises/document-promises.js'
-require('css/modules/GoogleAds/_googleads.scss');
+require('css/modules/GoogleAd/_googlead.scss');
 
 loaded.then(() => {
     (function loadGoogleAd($, w) {
         if (w.googletag !== 'undefined' && w.googletag.cmd !== 'undefined') {
-            if ($(".googleads-block").length > 0) {
-                $(".googleads-block").each(function (index) {
+            if ($(".googlead-block").length > 0) {
+                $(".googlead-block").each(function (index) {
                     var item = $(this);
                     var adSlotId = item.attr('id');
                     var adNetworkCode = item.data('ad-network-code');
@@ -23,7 +23,7 @@ loaded.then(() => {
                     w.googletag.enableServices();
                 });
 
-                $(".googleads-block").each(function(index) {
+                $(".googlead-block").each(function(index) {
                     var item = $(this);
                     var adSlotId = item.attr('id');
                     w.googletag.cmd.push(function() {

@@ -9,7 +9,6 @@
 
 @section Head{
     @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
-    @{ Html.RenderDisplayAdsHeader();}
 }
 
 @{
@@ -36,13 +35,12 @@
     @Html.React("global.Components.INav", new { state = Model }, containerId: "iNav", containerClass: "iNav--v1")
 
     <div class="container">
-
         <div class="main">
             @Html.React("global.Components.INavArticleCount", new { state = Model }, containerId: "iNavArticleCount")
             @Html.React("global.Components.INavSorting", new { state = Model }, containerId: "iNavSorting")
             @Html.React("global.Components.INavBreadCrumbs", new { state = Model }, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSearchResults", new { state = Model }, containerId: "iNavSearchResults")
-            @{ Html.RenderDisplayAd(new DisplayAdsQuery() {AdType = DisplayAdsTypes.TEADS}); }
+            @{ Html.RenderDisplayAd(new DisplayAdsQuery() { AdType = DisplayAdsTypes.TEADS }); }
             @Html.React("global.Components.INavPagination", new { state = Model }, containerId: "iNavPagination")
 
             @{ Html.RenderPartial("_Disclaimer"); }
@@ -51,6 +49,8 @@
         @{Html.RenderPartial("Partials/_Aside");}
     </div>
 </div>
+
+@{ Html.RenderDisplayAdsTracking(Model.MediaMotiveModel); }
 
 @section BottomScripts
 {
@@ -63,10 +63,5 @@
     {
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
-        @{ Html.RenderAdsTracking(Model.MediaMotiveModel); }
-        Html.RenderPartial("Partials/MediaMotive/_Krux");
-    }
-    @{
-        Html.RenderAction(Model.EditorialPageType == EditorialPageTypes.Landing ? "HtmlTracking" : "HtmlTrackingListing", "Tracking");
-    }
+    @{ Html.RenderAction(Model.EditorialPageType == EditorialPageTypes.Landing ? "HtmlTracking" : "HtmlTrackingListing", "Tracking"); }
 }
