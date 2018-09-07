@@ -40,7 +40,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         {
             if (_tenantProvider.Current().UseGoogleAds)
             {
-                return PartialView($"~/Features/Shared/Views/Partials/_GoogleAds");
+                return PartialView($"~/Features/Shared/Views/Partials/_GoogleAds.cshtml");
             }
 
             return Content(String.Empty);
@@ -52,7 +52,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
             if (_tenantProvider.Current().UseMediaMotive)
             {
                 // NOTE: if there are other partials required then just create a parent partial to contain them all
-                return PartialView($"~/Features/Shared/Views/Partials/Mediamotive/Krux");
+                return PartialView($"~/Features/Shared/Views/Partials/Mediamotive/Krux.cshtml");
             }
 
             return Content(String.Empty);
