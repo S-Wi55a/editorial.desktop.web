@@ -26,18 +26,12 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 
             if (viewData == null) return Content(string.Empty);
 
-            //if (viewData.DisplayAdsSource == DisplayAdsSource.MediaMotive)
-            //{
-                return PartialView($"~/Features/DisplayAds/{viewData.DisplayAdsSource}/Views/Index.cshtml", viewData);
-            //}
-
-            //return PartialView("~/Features/DisplayAds/GoogleAd/Views/GoogleAd.cshtml", (GoogleAdViewModel)viewData);
+            return PartialView($"~/Features/DisplayAds/{viewData.DisplayAdsSource}/Views/Index.cshtml", viewData);
         }
 
         [ChildActionOnly]
         public ActionResult RenderDisplayAdsHeader()
         {
-            // NOTE: if there are other partials required then just create a parent partial to contain them all
             if(_tenantProvider.Current().UseGoogleAds)
                 return PartialView("Partials/GoogleAd/_GoogleAd");
             else
@@ -47,7 +41,6 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         [ChildActionOnly]
         public ActionResult RenderDisplayAdsFooter()
         {
-            // NOTE: if there are other partials required then just create a parent partial to contain them all
             if (_tenantProvider != null && _tenantProvider.Current().UseMediaMotive)
                 return PartialView("Partials/Mediamotive/_Krux");
             else
