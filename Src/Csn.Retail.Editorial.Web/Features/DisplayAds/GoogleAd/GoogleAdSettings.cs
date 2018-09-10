@@ -4,43 +4,43 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
 {
     public class GoogleAdSettings
     {
-        public static Dictionary<DisplayAdsTypes, GoogleAdsSetting> GoogleAdTypes = new Dictionary<DisplayAdsTypes, GoogleAdsSetting>
+        public static Dictionary<DisplayAdPlacements, GoogleAdsSetting> GoogleAdTypes = new Dictionary<DisplayAdPlacements, GoogleAdsSetting>
         {
             {
-                DisplayAdsTypes.Aside,
+                DisplayAdPlacements.Aside,
                 new GoogleAdsSetting
                 {
                     SlotId = "div-gpt-ad-1468849624568-8",
                     UnitId = "SA_Results_300x250_300x600_R4",
-                    AdSize = AdSize.MediumOrLargeRectangle
+                    DisplayAdsAdSize = DisplayAdsAdSize.MediumOrLargeRectangle
                 }
             },
             {
-                DisplayAdsTypes.Banner,
+                DisplayAdPlacements.Banner,
                 new GoogleAdsSetting
                 {
                     // TODO:  Use leaderboard slot ad unit for now
                     SlotId = "div-gpt-ad-1468849624568-5",
                     UnitId = "SA_Homepage_728x90_M3_Top",
-                    AdSize = AdSize.Block1200X100
+                    DisplayAdsAdSize = DisplayAdsAdSize.Block1200X100
                 }
             },
             {
-                DisplayAdsTypes.Leaderboard,
+                DisplayAdPlacements.Leaderboard,
                 new GoogleAdsSetting
                 {
                     SlotId = "div-gpt-ad-1468849624568-5",
                     UnitId = "SA_Homepage_728x90_M3_Top",
-                    AdSize = AdSize.Leaderboard
+                    DisplayAdsAdSize = DisplayAdsAdSize.Leaderboard
                 }
             },
             {
-                DisplayAdsTypes.Mrec,
+                DisplayAdPlacements.Carousel,
                 new GoogleAdsSetting
                 {
                     SlotId = "div-gpt-ad-1468849624568-2",
                     UnitId = "SA_Homepage_300x250_M4",
-                    AdSize = AdSize.MediumRectangle
+                    DisplayAdsAdSize = DisplayAdsAdSize.MediumRectangle
                 }
 
             }

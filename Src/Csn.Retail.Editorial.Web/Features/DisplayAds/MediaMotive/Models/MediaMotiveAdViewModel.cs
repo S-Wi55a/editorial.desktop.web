@@ -1,6 +1,6 @@
 ﻿namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models
 {
-    public class MediaMotiveAdViewModel : IDisplayAdsModel
+    public class MediaMotiveAdViewModel
     {
         public string TileId { get; set; }
         public string Description { get; set; }

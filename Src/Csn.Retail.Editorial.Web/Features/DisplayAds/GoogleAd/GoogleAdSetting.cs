@@ -4,6 +4,6 @@
     {
         public string SlotId { get; set; }
         public string UnitId { get; set; }
-        public AdSize AdSize { get; set; }
+        public DisplayAdsAdSize DisplayAdsAdSize { get; set; }
     }
 }

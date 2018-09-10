@@ -4,7 +4,13 @@ using System.Linq;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
-    public enum AdSize
+    public enum DisplayAdsSource
+    {
+        MediaMotive,
+        GoogleAd
+    }
+
+    public enum DisplayAdsAdSize
     {
         [Dimension(728, 90)]
         Leaderboard,

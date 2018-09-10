@@ -571,12 +571,13 @@
     <Compile Include="Features\Details\Mappings\ArticleTypeLabelMapper.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsController.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsSetting.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdQueryHandler.cs" />
     <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdSetting.cs" />
     <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdSettings.cs" />
     <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
-    <Compile Include="Features\DisplayAds\DisplayAdsQuery.cs" />
-    <Compile Include="Features\DisplayAds\DisplayAdsQueryHandler.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdQuery.cs" />
     <Compile Include="Features\DisplayAds\IDisplayAdsModel.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdQueryHandler.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSetting.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSettings.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\Models\MediaMotiveAdViewModel.cs" />
@@ -822,6 +823,7 @@
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
     <Content Include="Features\DisplayAds\GoogleAd\Views\Index.cshtml" />
     <Content Include="Features\DisplayAds\MediaMotive\Views\Index.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_aside.scss" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
@@ -1185,6 +1187,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_googlead.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_mrec.scss" />
     <Content Include="Features\Shared\Views\Partials\GoogleAd\_GoogleAd.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_aside.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

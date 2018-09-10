@@ -2,19 +2,19 @@
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
-    public enum DisplayAdsTypes
+    public enum DisplayAdPlacements
     {
         Aside,
         Banner,
         Leaderboard,
-        Mrec,
+        Carousel,
         TEADS,
         Tracking
     }
 
-    public class DisplayAdsQuery : IQuery
+    public class DisplayAdQuery : IQuery
     {
-        public DisplayAdsTypes AdType { get; set; }
+        public DisplayAdPlacements AdPlacement { get; set; }
         public string Make { get; set; }
     }
 }

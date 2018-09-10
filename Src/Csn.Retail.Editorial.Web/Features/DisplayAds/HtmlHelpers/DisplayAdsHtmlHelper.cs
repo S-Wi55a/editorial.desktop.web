@@ -7,9 +7,25 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 {
     public static class DisplayAdsHtmlHelper
     {
-        public static void RenderDisplayAd(this HtmlHelper html, DisplayAdsQuery query)
+        public static void RenderDisplayAd(this HtmlHelper html, DisplayAdPlacements displayAdPlacement)
         {
-            html.RenderAction("DisplayAds", "DisplayAds", query);
+            html.RenderDisplayAd(new DisplayAdQuery() { AdPlacement = displayAdPlacement });
+        }
+
+        public static void RenderDisplayAd(this HtmlHelper html, DisplayAdQuery query)
+        {
+            html.RenderAction("RenderDisplayAd", "DisplayAds", query);
+        }
+
+        public static void RenderDisplayAdTracking(this HtmlHelper html, MediaMotiveModel model)
+        {
+            html.RenderDisplayAd(
+                new DisplayAdQuery()
+                {
+                    AdPlacement = DisplayAdPlacements.Tracking,
+                    Make = model != null && !model.Make.IsNullOrEmpty() ? model.Make : string.Empty
+                }
+            );
         }
         
         public static void RenderDisplayAdsHeader(this HtmlHelper html)
@@ -20,16 +36,6 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
         public static void RenderDisplayAdsFooter(this HtmlHelper html)
         {
             html.RenderAction("RenderDisplayAdsFooter", "DisplayAds");
-        }
-
-        public static void RenderDisplayAdsTracking(this HtmlHelper html, MediaMotiveModel model)
-        {
-            html.RenderAction("DisplayAds", "DisplayAds",
-                new DisplayAdsQuery()
-                {
-                    AdType = DisplayAdsTypes.Tracking,
-                    Make = model != null && !model.Make.IsNullOrEmpty() ? model.Make : string.Empty
-                });
         }
     }
 }

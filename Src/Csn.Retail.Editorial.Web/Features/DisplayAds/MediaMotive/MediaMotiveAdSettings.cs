@@ -5,71 +5,71 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
 {
     public class MediaMotiveAdSettings
     {
-        public static Dictionary<DisplayAdsTypes, MediaMotiveAdSetting> MediaMotiveAdTypes = new Dictionary<DisplayAdsTypes, MediaMotiveAdSetting>
+        public static Dictionary<DisplayAdPlacements, MediaMotiveAdSetting> MediaMotiveAdTypes = new Dictionary<DisplayAdPlacements, MediaMotiveAdSetting>
         {
             {
-                DisplayAdsTypes.Leaderboard,
+                DisplayAdPlacements.Leaderboard,
                 new MediaMotiveAdSetting()
                 {
                     TileId = 1,
-                    Description = DisplayAdsTypes.Leaderboard,
-                    AdSize = AdSize.Leaderboard,
+                    Description = DisplayAdPlacements.Leaderboard,
+                    DisplayAdsAdSize = DisplayAdsAdSize.Leaderboard,
                     DataKruxRequired = true,
                     NotSupportedArticleTypes = new List<string>()
                 }
             },
             {
-                DisplayAdsTypes.Aside,
+                DisplayAdPlacements.Aside,
                 new MediaMotiveAdSetting()
                 {
                     TileId = 3,
-                    Description = DisplayAdsTypes.Aside,
-                    AdSize = AdSize.MediumOrLargeRectangle,
+                    Description = DisplayAdPlacements.Aside,
+                    DisplayAdsAdSize = DisplayAdsAdSize.MediumOrLargeRectangle,
                     DataKruxRequired = true,
                     NotSupportedArticleTypes = new List<string>()
                 }
             },
             {
-                DisplayAdsTypes.TEADS,
+                DisplayAdPlacements.TEADS,
                 new MediaMotiveAdSetting()
                 {
                     TileId = 7,
-                    Description = DisplayAdsTypes.TEADS,
-                    AdSize = AdSize.Block550X309,
+                    Description = DisplayAdPlacements.TEADS,
+                    DisplayAdsAdSize = DisplayAdsAdSize.Block550X309,
                     DataKruxRequired = false,
                     NotSupportedArticleTypes =
                         new List<string> {ArticleType.Sponsored.ToString(), ArticleType.Video.ToString()}
                 }
             },
             {
-                DisplayAdsTypes.Tracking,
+                DisplayAdPlacements.Tracking,
                 new MediaMotiveAdSetting()
                 {
                     TileId = 20,
-                    Description = DisplayAdsTypes.Tracking,
-                    AdSize = AdSize.Hidden,
+                    Description = DisplayAdPlacements.Tracking,
+                    DisplayAdsAdSize = DisplayAdsAdSize.Hidden,
                     DataKruxRequired = false,
                     NotSupportedArticleTypes = new List<string> {ArticleType.Sponsored.ToString()}
                 }
             },
             {
-                DisplayAdsTypes.Mrec,
+                DisplayAdPlacements.Carousel,
                 new MediaMotiveAdSetting()
                 {
                     TileId = 3,
-                    Description = DisplayAdsTypes.Mrec,
-                    AdSize = AdSize.MediumRectangle,
+                    Description = DisplayAdPlacements.Carousel,
+                    DisplayAdsAdSize = DisplayAdsAdSize.MediumRectangle,
                     DataKruxRequired = true,
                     NotSupportedArticleTypes = new List<string>()
                 }
             },
             {
-                DisplayAdsTypes.Banner,
+                DisplayAdPlacements.Banner,
                 new MediaMotiveAdSetting()
                 {
                     TileId = 1,
-                    Description = DisplayAdsTypes.Banner,
-                    AdSize = AdSize.Block1200X100,
+                    Description = DisplayAdPlacements.Banner,
+                    DisplayAdsAdSize = DisplayAdsAdSize.Block1200X100,
                     DataKruxRequired = false,
                     NotSupportedArticleTypes = new List<string>()
                 }

@@ -1,6 +1,7 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd.Models;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.SimpleCqrs;
@@ -20,13 +21,32 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         }
 
         [ChildActionOnly]
-        public ActionResult DisplayAds(DisplayAdsQuery query)
+        public ActionResult RenderDisplayAd(DisplayAdQuery query)
         {
-            var viewData = _queryDispatcher.Dispatch<DisplayAdsQuery, IDisplayAdsModel>(query);
+            if (_tenantProvider.Current().UseGoogleAds)
+            {
+                return RenderGoogleAd(query);
+            }
+
+            return RenderMediaMotiveAd(query);
+        }
+
+        private ActionResult RenderGoogleAd(DisplayAdQuery query)
+        {
+            var viewData = _queryDispatcher.Dispatch<DisplayAdQuery, GoogleAdViewModel>(query);
 
             if (viewData == null) return Content(string.Empty);
 
-            return PartialView($"~/Features/DisplayAds/{viewData.DisplayAdsSource}/Views/Index.cshtml", viewData);
+            return PartialView($"~/Features/DisplayAds/GoogleAd/Views/Index.cshtml", viewData);
+        }
+
+        private ActionResult RenderMediaMotiveAd(DisplayAdQuery query)
+        {
+            var viewData = _queryDispatcher.Dispatch<DisplayAdQuery, MediaMotiveAdViewModel>(query);
+
+            if (viewData == null) return Content(string.Empty);
+
+            return PartialView($"~/Features/DisplayAds/MediaMotive/Views/Index.cshtml", viewData);
         }
 
         [ChildActionOnly]
@@ -41,7 +61,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         [ChildActionOnly]
         public ActionResult RenderDisplayAdsFooter()
         {
-            if (_tenantProvider != null && _tenantProvider.Current().UseMediaMotive)
+            if (_tenantProvider.Current().UseMediaMotive)
                 return PartialView("Partials/Mediamotive/_Krux");
             else
                 return Content(string.Empty);

@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
-using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.DisplayAds;
-using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using NSubstitute;
 using NUnit.Framework;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
@@ -16,25 +13,17 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
         [Test]
         public void MultipleTagsWithDuplicates()
         {
-            var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
-            tenantProvider.Current().Returns(new TenantInfo()
-            {
-                Name = "carsales",
-                AdUnits = new List<string> { "Tile3" },
-                DisplayAdsSource = DisplayAdsSource.MediaMotive
-            });
-
             var tagBuilders = new List<IMediaMotiveTagBuilder>()
             {
                 new TestTagBuilder()
             };
 
-            var queryHandler = new DisplayAdsQueryHandler(tagBuilders, tenantProvider);
+            var queryHandler = new MediaMotiveAdQueryHandler(tagBuilders);
 
             //Act
-            var result = (MediaMotiveAdViewModel) queryHandler.Handle(new DisplayAdsQuery()
+            var result = queryHandler.Handle(new DisplayAdQuery()
             {
-                AdType = DisplayAdsTypes.Aside
+                AdPlacement = DisplayAdPlacements.Aside
             });
 
             Assert.AreEqual("//mm.carsales.com.au/carsales/jserver/make=honda/model=civic/make=bmw", result.ScriptUrl);

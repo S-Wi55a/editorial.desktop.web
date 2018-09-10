@@ -40,7 +40,7 @@
             @Html.React("global.Components.INavSorting", new { state = Model }, containerId: "iNavSorting")
             @Html.React("global.Components.INavBreadCrumbs", new { state = Model }, containerId: "iNavBreadcrumbs")
             @Html.React("global.Components.INavSearchResults", new { state = Model }, containerId: "iNavSearchResults")
-            @{ Html.RenderDisplayAd(new DisplayAdsQuery() { AdType = DisplayAdsTypes.TEADS }); }
+            @{ Html.RenderDisplayAd(DisplayAdPlacements.TEADS); }
             @Html.React("global.Components.INavPagination", new { state = Model }, containerId: "iNavPagination")
 
             @{ Html.RenderPartial("_Disclaimer"); }
@@ -50,7 +50,7 @@
     </div>
 </div>
 
-@{ Html.RenderDisplayAdsTracking(Model.MediaMotiveModel); }
+@{ Html.RenderDisplayAdTracking(Model.MediaMotiveModel); }
 
 @section BottomScripts
 {
