@@ -13,7 +13,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 {
                     TileId = 1,
                     Description = DisplayAdPlacements.Leaderboard,
-                    DisplayAdSizes = DisplayAdSizes.Leaderboard,
+                    DisplayAdSize = DisplayAdSizes.Leaderboard,
                     DataKruxRequired = true,
                     NotSupportedArticleTypes = new List<string>()
                 }
@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 {
                     TileId = 3,
                     Description = DisplayAdPlacements.Aside,
-                    DisplayAdSizes = DisplayAdSizes.MediumOrLargeRectangle,
+                    DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle,
                     DataKruxRequired = true,
                     NotSupportedArticleTypes = new List<string>()
                 }
@@ -35,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 {
                     TileId = 7,
                     Description = DisplayAdPlacements.TEADS,
-                    DisplayAdSizes = DisplayAdSizes.Block550X309,
+                    DisplayAdSize = DisplayAdSizes.Block550X309,
                     DataKruxRequired = false,
                     NotSupportedArticleTypes =
                         new List<string> {ArticleType.Sponsored.ToString(), ArticleType.Video.ToString()}
@@ -47,7 +47,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 {
                     TileId = 20,
                     Description = DisplayAdPlacements.Tracking,
-                    DisplayAdSizes = DisplayAdSizes.Hidden,
+                    DisplayAdSize = DisplayAdSizes.Hidden,
                     DataKruxRequired = false,
                     NotSupportedArticleTypes = new List<string> {ArticleType.Sponsored.ToString()}
                 }
@@ -58,7 +58,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 {
                     TileId = 3,
                     Description = DisplayAdPlacements.Carousel,
-                    DisplayAdSizes = DisplayAdSizes.MediumRectangle,
+                    DisplayAdSize = DisplayAdSizes.MediumRectangle,
                     DataKruxRequired = true,
                     NotSupportedArticleTypes = new List<string>()
                 }
@@ -69,7 +69,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 {
                     TileId = 1,
                     Description = DisplayAdPlacements.Banner,
-                    DisplayAdSizes = DisplayAdSizes.Block1200X100,
+                    DisplayAdSize = DisplayAdSizes.Block1200X100,
                     DataKruxRequired = false,
                     NotSupportedArticleTypes = new List<string>()
                 }

@@ -19,10 +19,10 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
         {
             _tagBuilders = tagBuilders;
         }
-        public MediaMotiveAdViewModel Handle(DisplayAdQuery displayAdsQuery)
+        public MediaMotiveAdViewModel Handle(DisplayAdQuery displayAdQuery)
         {
             // lookup the ad settings for this type
-            if (!MediaMotiveAdSettings.MediaMotiveAdTypes.TryGetValue(displayAdsQuery.AdPlacement, out var adSetting))
+            if (!MediaMotiveAdSettings.MediaMotiveAdTypes.TryGetValue(displayAdQuery.AdPlacement, out var adSetting))
             {
                 return null;
             }
@@ -30,8 +30,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
             var mediaMotiveTagBuildersParams = new MediaMotiveTagBuildersParams
             {
                 TileId = adSetting.TileId,
-                DisplayAdSizes = adSetting.DisplayAdSizes,
-                Make = displayAdsQuery.Make
+                DisplayAdSizes = adSetting.DisplayAdSize,
+                Make = displayAdQuery.Make
             };
 
             var tags = _tagBuilders
@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
 
             var urlargs = string.Join("/", tags);
 
-            var dimensions = adSetting.DisplayAdSizes.Dimensions().First();
+            var dimensions = adSetting.DisplayAdSize.Dimensions().First();
 
             return new MediaMotiveAdViewModel()
             {
@@ -54,7 +54,6 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 ScriptUrl = $"//mm.carsales.com.au/carsales/jserver/{urlargs}",
                 NoScriptUrl = $"//mm.carsales.com.au/carsales/adclick/{urlargs}",
                 NoScriptImageUrl = $"//mm.carsales.com.au/carsales/iserver/{urlargs}",
-                DisplayAdsSource = DisplayAdsSource.MediaMotive
             };
         }
     }

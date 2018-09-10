@@ -16,21 +16,20 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
         {
             _tenantProvider = tenantProvider;
         }
-        public GoogleAdViewModel Handle(DisplayAdQuery displayAdsQuery)
+        public GoogleAdViewModel Handle(DisplayAdQuery displayAdQuery)
         {
-            if (!GoogleAdSettings.GoogleAdTypes.TryGetValue(displayAdsQuery.AdPlacement, out var adSetting))
+            if (!GoogleAdSettings.GoogleAdTypes.TryGetValue(displayAdQuery.AdPlacement, out var adSetting))
             {
                 return null;
             }
 
             return new GoogleAdViewModel()
             {
-                Description = displayAdsQuery.AdPlacement.ToString(),
-                Dimensions = JsonConvert.SerializeObject(adSetting.DisplayAdSizes.Dimensions()),
+                Description = displayAdQuery.AdPlacement.ToString(),
+                Dimensions = JsonConvert.SerializeObject(adSetting.DisplayAdSize.Dimensions()),
                 AdNetworkCode = _tenantProvider.Current().GoogleAdsNetworkCode,
                 AdUnitId = adSetting.UnitId,
-                AdSlotId = adSetting.SlotId,
-                DisplayAdsSource = DisplayAdsSource.GoogleAd
+                AdSlotId = adSetting.SlotId
             };
         }
     }

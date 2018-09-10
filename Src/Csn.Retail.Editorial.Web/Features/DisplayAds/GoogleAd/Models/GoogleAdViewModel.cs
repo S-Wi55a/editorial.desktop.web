@@ -7,6 +7,5 @@
         public string AdNetworkCode;
         public string AdUnitId;
         public string AdSlotId;
-        public DisplayAdsSource DisplayAdsSource { get; set; }
     }
 }

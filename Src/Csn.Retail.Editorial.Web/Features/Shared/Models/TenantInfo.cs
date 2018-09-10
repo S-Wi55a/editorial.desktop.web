@@ -60,6 +60,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         #endregion
 
         public bool UseMediaMotive => DisplayAdsSource == DisplayAdsSource.MediaMotive;
-        public bool UseGoogleAds => DisplayAdsSource == DisplayAdsSource.GoogleAd;
+        public bool UseGoogleAd => DisplayAdsSource == DisplayAdsSource.GoogleAd;
     }
 }

@@ -23,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         [ChildActionOnly]
         public ActionResult RenderDisplayAd(DisplayAdQuery query)
         {
-            if (_tenantProvider.Current().UseGoogleAds)
+            if (_tenantProvider.Current().UseGoogleAd)
             {
                 return RenderGoogleAd(query);
             }
@@ -52,7 +52,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         [ChildActionOnly]
         public ActionResult RenderDisplayAdsHeader()
         {
-            if(_tenantProvider.Current().UseGoogleAds)
+            if(_tenantProvider.Current().UseGoogleAd)
                 return PartialView("Partials/GoogleAd/_GoogleAd");
             else
                 return Content(string.Empty);
