@@ -31,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
 
         private class TestTagBuilder : IMediaMotiveTagBuilder
         {
-            public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams query)
+            public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
             {
                 return new List<MediaMotiveTag>()
                 {
@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
                 };
             }
 
-            public bool IsApplicable(MediaMotiveTagBuildersParams query)
+            public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
             {
                 return true;
             }

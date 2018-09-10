@@ -17,15 +17,15 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             _tenantProvider = tenantProvider;
         }
-        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams query)
+        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
         {
-            var dimensions = query.DisplayAdsAdSize.Dimensions().ToList();
+            var dimensions = parameters.DisplayAdsAdSize.Dimensions().ToList();
 
             return new List<MediaMotiveTag>()
             {
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Site, _tenantProvider.Current().MediaMotiveAccountId),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Method, "get"),
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Tile, query.TileId.ToString()),
+                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Tile, parameters.TileId.ToString()),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Size, dimensions.Select(x => $"{x.Width}x{x.Height}")),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Random, RandomNumberGenerator.Generate().ToString()),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.ViewId, RandomNumberGenerator.Generate().ToString()),
@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             };
         }
 
-        public bool IsApplicable(MediaMotiveTagBuildersParams query)
+        public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
             // apply this every time
             return true;

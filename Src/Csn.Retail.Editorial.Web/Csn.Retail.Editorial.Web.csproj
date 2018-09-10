@@ -576,7 +576,6 @@
     <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdSettings.cs" />
     <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdQuery.cs" />
-    <Compile Include="Features\DisplayAds\IDisplayAdsModel.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdQueryHandler.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSetting.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSettings.cs" />
@@ -1119,7 +1118,7 @@
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <Content Include="Features\Details\Views\Boatsales\_Disclaimer.cshtml" />
-    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mrec.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_carousel.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_teads.scss" />
     <Content Include="Features\Shared\Views\Partials\Tracking\_CsnInsights.cshtml" />
@@ -1185,7 +1184,7 @@
     <Content Include="Features\Details\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Configurations\demotores.landingConfig.json" />
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_googlead.scss" />
-    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_mrec.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_carousel.scss" />
     <Content Include="Features\Shared\Views\Partials\GoogleAd\_GoogleAd.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_aside.scss" />
     <None Include="Web.Test.config">
