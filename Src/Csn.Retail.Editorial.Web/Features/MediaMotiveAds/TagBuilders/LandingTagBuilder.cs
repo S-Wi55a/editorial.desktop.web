@@ -17,22 +17,22 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             _requestContextWrapper = requestContextWrapper;
         }
 
-        public IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query)
+        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
         {
             var mediaMotiveTag = new List<MediaMotiveTag> { 
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, !string.IsNullOrEmpty(query.Make) ? MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage)
+                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, !string.IsNullOrEmpty(parameters.Make) ? MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage)
             };
 
-            if (query.Make == null) return mediaMotiveTag;
-            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Make, query.Make.Replace(" ", "")));
-            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Car, query.Make.Replace(" ", ""))); // TO DO when we have a model, we need to include model as part of car tag
+            if (parameters.Make == null) return mediaMotiveTag;
+            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Make, parameters.Make.Replace(" ", "")));
+            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Car, parameters.Make.Replace(" ", ""))); // TO DO when we have a model, we need to include model as part of car tag
 
             return mediaMotiveTag;
         }
 
-        public bool IsApplicable(MediaMotiveAdQuery query)
+        public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
-            var path = "/editorial/" + (query.Make != null ? query.Make.MakeUrlFriendly().ToLower() + "/" : "");
+            var path = "/editorial/" + (parameters.Make != null ? parameters.Make.MakeUrlFriendly().ToLower() + "/" : "");
 
             return _requestContextWrapper.Url.AbsolutePath.IsSame(path);
         }

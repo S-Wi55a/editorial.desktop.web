@@ -569,6 +569,18 @@
     <Compile Include="Features\Details\Loggers\LegacyDetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
     <Compile Include="Features\Details\Mappings\ArticleTypeLabelMapper.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsController.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsSetting.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdQueryHandler.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdSetting.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdSettings.cs" />
+    <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdQuery.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdQueryHandler.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSetting.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSettings.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\Models\MediaMotiveAdViewModel.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\Models\GoogleAdViewModel.cs" />
     <Compile Include="Features\Landing\CacheStores\GetLandingQueryCacheStore.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
@@ -658,15 +670,10 @@
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdController.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSetting.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSettings.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveTagBuildersParams.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\CommonTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
@@ -813,7 +820,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
+    <Content Include="Features\DisplayAds\GoogleAd\Views\Index.cshtml" />
+    <Content Include="Features\DisplayAds\MediaMotive\Views\Index.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_aside.scss" />
+    <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
+    <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\iNav.js" />
@@ -1086,7 +1098,6 @@
     <Content Include="Features\Details\Views\Farmmachinerysales\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleSummary.cshtml" />
-    <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleShare--Bottom.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Css\iNavArticleCount.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_WideVideo.cshtml" />
@@ -1103,16 +1114,14 @@
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Css\iNavSorting.scss" />
-    <Content Include="Features\MediaMotiveAds\Views\_Leaderboard.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\DetailsAd.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <Content Include="Features\Details\Views\Boatsales\_Disclaimer.cshtml" />
-    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mrec.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_carousel.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_teads.scss" />
     <Content Include="Features\Shared\Views\Partials\Tracking\_CsnInsights.cshtml" />
-    <Content Include="Features\MediaMotiveAds\Views\_Tracking.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Head\_Favicon.cshtml" />
     <Content Include="Features\Details\Views\Caravancampingsales\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Trucksales\_Disclaimer.cshtml" />
@@ -1174,6 +1183,10 @@
     <Content Include="Features\Listings\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Demotores\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Configurations\demotores.landingConfig.json" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_googlead.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_carousel.scss" />
+    <Content Include="Features\Shared\Views\Partials\GoogleAd\_GoogleAd.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_aside.scss" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1225,7 +1238,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Timer\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorialresults.js" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
-    <Content Include="Features\MediaMotiveAds\Views\_TeAds.cshtml" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />

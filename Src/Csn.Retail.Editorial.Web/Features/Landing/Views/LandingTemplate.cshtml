@@ -1,12 +1,8 @@
-﻿@using System.ComponentModel
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Landing.Configurations
 @using Csn.Retail.Editorial.Web.Features.Landing.Models
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
-@using Csn.Retail.Editorial.Web.Features.Shared.Models
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
-@using Newtonsoft.Json
 @using React.Web.Mvc
 @model LandingViewModel
 
@@ -26,7 +22,7 @@
 @section TopScripts {
     @Html.AssetJs("landing.vendor", LoadType.Defer)
     @Html.AssetJs("landing-page--" + tenantName, LoadType.Defer)
-    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.displayAds--" + tenantName, LoadType.Defer)
 }
 
 <div class="landing-page @(showHero ? "landing-page--hasHeroImage" : "")">
@@ -49,7 +45,7 @@
     </div>
 </div>
 
-@{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Tracking.cshtml", Model.MediaMotiveModel); }
+@{ Html.RenderDisplayAdTracking(Model.MediaMotiveModel); }
 
 @section BottomScripts
 {
@@ -64,8 +60,6 @@
     {
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
-    @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
-
     @{
         Html.RenderAction("HtmlTracking", "Tracking");
     }
