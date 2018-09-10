@@ -19,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         }
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
         {
-            var dimensions = parameters.DisplayAdsAdSize.Dimensions().ToList();
+            var dimensions = parameters.DisplayAdSizes.Dimensions().ToList();
 
             return new List<MediaMotiveTag>()
             {

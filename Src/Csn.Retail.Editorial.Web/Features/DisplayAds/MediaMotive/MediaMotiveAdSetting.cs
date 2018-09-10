@@ -7,7 +7,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
         public int TileId { get; set; }
         public DisplayAdPlacements Description { get; set; }
         public bool DataKruxRequired { get; set; }
-        public DisplayAdsAdSize DisplayAdsAdSize { get; set; }
+        public DisplayAdSizes DisplayAdSizes { get; set; }
         public List<string> NotSupportedArticleTypes { get; set; }
     }
 }

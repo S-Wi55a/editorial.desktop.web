@@ -30,7 +30,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
             var mediaMotiveTagBuildersParams = new MediaMotiveTagBuildersParams
             {
                 TileId = adSetting.TileId,
-                DisplayAdsAdSize = adSetting.DisplayAdsAdSize,
+                DisplayAdSizes = adSetting.DisplayAdSizes,
                 Make = displayAdsQuery.Make
             };
 
@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
 
             var urlargs = string.Join("/", tags);
 
-            var dimensions = adSetting.DisplayAdsAdSize.Dimensions().First();
+            var dimensions = adSetting.DisplayAdSizes.Dimensions().First();
 
             return new MediaMotiveAdViewModel()
             {

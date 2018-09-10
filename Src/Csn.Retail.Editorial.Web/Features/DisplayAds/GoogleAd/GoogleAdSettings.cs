@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                 {
                     SlotId = "div-gpt-ad-1468849624568-8",
                     UnitId = "SA_Results_300x250_300x600_R4",
-                    DisplayAdsAdSize = DisplayAdsAdSize.MediumOrLargeRectangle
+                    DisplayAdSizes = DisplayAdSizes.MediumOrLargeRectangle
                 }
             },
             {
@@ -22,7 +22,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                     // TODO:  Use leaderboard slot ad unit for now
                     SlotId = "div-gpt-ad-1468849624568-5",
                     UnitId = "SA_Homepage_728x90_M3_Top",
-                    DisplayAdsAdSize = DisplayAdsAdSize.Block1200X100
+                    DisplayAdSizes = DisplayAdSizes.Block1200X100
                 }
             },
             {
@@ -31,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                 {
                     SlotId = "div-gpt-ad-1468849624568-5",
                     UnitId = "SA_Homepage_728x90_M3_Top",
-                    DisplayAdsAdSize = DisplayAdsAdSize.Leaderboard
+                    DisplayAdSizes = DisplayAdSizes.Leaderboard
                 }
             },
             {
@@ -40,7 +40,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                 {
                     SlotId = "div-gpt-ad-1468849624568-2",
                     UnitId = "SA_Homepage_300x250_M4",
-                    DisplayAdsAdSize = DisplayAdsAdSize.MediumRectangle
+                    DisplayAdSizes = DisplayAdSizes.MediumRectangle
                 }
 
             }

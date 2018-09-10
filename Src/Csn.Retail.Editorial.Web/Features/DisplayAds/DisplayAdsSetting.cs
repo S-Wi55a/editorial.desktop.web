@@ -10,7 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         GoogleAd
     }
 
-    public enum DisplayAdsAdSize
+    public enum DisplayAdSizes
     {
         [Dimension(728, 90)]
         Leaderboard,

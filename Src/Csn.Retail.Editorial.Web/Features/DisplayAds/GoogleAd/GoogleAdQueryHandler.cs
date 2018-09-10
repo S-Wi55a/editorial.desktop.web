@@ -26,7 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
             return new GoogleAdViewModel()
             {
                 Description = displayAdsQuery.AdPlacement.ToString(),
-                Dimensions = JsonConvert.SerializeObject(adSetting.DisplayAdsAdSize.Dimensions()),
+                Dimensions = JsonConvert.SerializeObject(adSetting.DisplayAdSizes.Dimensions()),
                 AdNetworkCode = _tenantProvider.Current().GoogleAdsNetworkCode,
                 AdUnitId = adSetting.UnitId,
                 AdSlotId = adSetting.SlotId,
