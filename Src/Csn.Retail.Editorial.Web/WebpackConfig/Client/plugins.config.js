@@ -31,7 +31,7 @@ export const plugins = (tenant, pageEntries) => {
             filename: IS_PROD ? '[name]-[contenthash].css' : '[name].css',
             allChunks: false
         }),
-        //Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
+        // Per page -- pull chunks (from code splitting chunks) from each entry into parent(the entry)
         new webpack.optimize.CommonsChunkPlugin({
             names: pageEntries,
             children: true,

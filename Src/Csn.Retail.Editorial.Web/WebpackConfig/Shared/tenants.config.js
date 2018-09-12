@@ -2,7 +2,19 @@
 // List of Tenants
 // Make sure associated '_settings--tenant.scss' file is added to Features\Shared\Assets\Css\Settings\
 
-export const listofTenants = [
+const listofTenants = [
+    'carsales',
+    'constructionsales',
+    'bikesales',
+    'boatsales',
+    'trucksales',
+    'caravancampingsales',
+    'farmmachinerysales',
+    'redbook',
+    //'soloautos' // Comment out soloautos till its ready
+];
+
+const AUTenants = [
     'carsales',
     'constructionsales',
     'bikesales',
@@ -13,5 +25,27 @@ export const listofTenants = [
     'redbook'
 ];
 
+const LATAMTenants = [
+    'soloautos',
+    'demotores'
+];
 
-export const TENANTS = process.env.TENANT ? [process.env.TENANT.trim().toLowerCase()] : listofTenants;
+const isAuTenant = (tenant) => {
+    return AUTenants.indexOf(tenant) > -1;
+}
+
+const getTenants = (tenant) => {
+    switch (tenant) {
+        case "au":
+            return AUTenants;
+        case "latam":
+            return LATAMTenants;
+        default:
+            return [tenant];
+    }
+}
+
+export const TenantConfig = {
+    Tenants: process.env.TENANT ? getTenants(process.env.TENANT.trim().toLowerCase()) : listofTenants,
+    isAuTenant: isAuTenant
+ }

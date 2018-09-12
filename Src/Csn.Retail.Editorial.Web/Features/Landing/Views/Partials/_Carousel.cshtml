@@ -1,5 +1,5 @@
-﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 @using React.Web.Mvc
 @model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
 
@@ -21,11 +21,11 @@
         }
     </div>
     <div class="csn-carousel__container">
-    @Html.React("global.Components.Carousel", new {state = Model.Carousels, index}, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
+        @Html.React("global.Components.Carousel", new {state = Model.Carousels, index}, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
 
         @if (Model.Carousels[index].HasMrec)
         {
-            Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() {AdSize = AdSize.MediumRectangle, TileId = 3, Make = Model.MediaMotiveModel.Make});
+            Html.RenderDisplayAd(new DisplayAdQuery() { AdPlacement = DisplayAdPlacements.Carousel, Make = Model.MediaMotiveModel.Make } );
         }
     </div>
 </div>

@@ -90,41 +90,47 @@
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Cache, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.14.10.0\lib\net452\Ingress.Cache.dll</HintPath>
+    <Reference Include="Ingress.Cache, Version=14.12.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.14.12.2\lib\net452\Ingress.Cache.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.10.0\lib\net452\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.12.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.12.1\lib\net461\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Core, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Core.14.10.0\lib\net452\Ingress.Core.dll</HintPath>
+    <Reference Include="Ingress.CodeProfiler, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CodeProfiler.1.0.5\lib\net452\Ingress.CodeProfiler.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.14.10.1\lib\net452\Ingress.HttpClient.dll</HintPath>
+    <Reference Include="Ingress.Core, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core.14.10.2\lib\net452\Ingress.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Abstracts.14.10.0\lib\net452\Ingress.HttpClient.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.Core.IocAttributes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core.IocAttributes.1.0.0\lib\net452\Ingress.Core.IocAttributes.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix.Abstracts.14.10.0\lib\net452\Ingress.HttpClient.Hystrix.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.HttpClient, Version=14.20.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.14.20.3\lib\net461\Ingress.HttpClient.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Serializers, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Serializers.14.10.0\lib\net452\Ingress.Serializers.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Abstracts, Version=14.11.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Abstracts.14.11.2\lib\net452\Ingress.HttpClient.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient, Version=14.10.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient.14.10.3\lib\net452\Ingress.ServiceClient.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Hystrix.Abstracts, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.Abstracts.14.11.1\lib\net461\Ingress.HttpClient.Hystrix.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient.Abstracts.14.10.0\lib\net452\Ingress.ServiceClient.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.Serializers, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Serializers.14.10.1\lib\net452\Ingress.Serializers.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceRegistry.Abstracts, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceRegistry.Abstracts.14.10.0\lib\net452\Ingress.ServiceRegistry.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient, Version=14.20.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.14.20.3\lib\net461\Ingress.ServiceClient.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Web.Common, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Web.Common-Net452.14.10.1\lib\net452\Ingress.Web.Common.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient.Abstracts, Version=14.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.Abstracts.14.20.0\lib\net461\Ingress.ServiceClient.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Web.Common.Abstracts, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.10.2\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.ServiceRegistry.Abstracts, Version=14.11.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry.Abstracts.14.11.3\lib\net452\Ingress.ServiceRegistry.Abstracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.Web.Common, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common-Net452.14.11.1\lib\net452\Ingress.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.Web.Common.Abstracts, Version=14.10.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.10.5\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.2\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
@@ -140,6 +146,9 @@
     </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
@@ -180,6 +189,9 @@
     </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.1\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Sockets, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Sockets.4.1.0\lib\net46\System.Net.Sockets.dll</HintPath>
@@ -229,6 +241,7 @@
   <ItemGroup>
     <Compile Include="Features\Details\GetArticleQueryCacheStoreTests.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandlerTests.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAdQueryHandlerTests.cs" />
     <Compile Include="Features\Listings\ListingInsightsDataMapperTests.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapperTests.cs" />
     <Compile Include="Features\Tracking\Mapping\ItemsListingMapperTests.cs" />

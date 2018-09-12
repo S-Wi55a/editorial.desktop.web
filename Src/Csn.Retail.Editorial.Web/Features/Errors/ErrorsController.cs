@@ -22,7 +22,7 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
         /// </summary>
         /// <returns></returns>
         [ChildActionOnly]
-        public async Task<ActionResult> Error404Child()
+        public ActionResult Error404Child()
         {
             Response.StatusCode = (int)HttpStatusCode.NotFound;
             Response.TrySkipIisCustomErrors = true;
@@ -49,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
         }
 
         [ChildActionOnly]
-        public async Task<ActionResult> ErrorGenericChild()
+        public ActionResult ErrorGenericChild()
         {
             Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             Response.TrySkipIisCustomErrors = true;
@@ -64,7 +64,7 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
         {
             await _eventDispatcher.DispatchAsync(new ErrorPageRequestEvent());
 
-            return await ErrorGenericChild();
+            return ErrorGenericChild();
         }
     }
 

@@ -3,7 +3,6 @@ using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
@@ -20,14 +19,14 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             _breadCrumbTagBuilder = breadCrumbTagBuilder;
         }
 
-        public IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query)
+        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
         {
             var searchContext = _searchContextStore.Get();
 
             return BuildTags(searchContext);
         }
 
-        public bool IsApplicable(MediaMotiveAdQuery query)
+        public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
             return _searchContextStore.Exists();
         }

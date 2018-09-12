@@ -1,8 +1,8 @@
-﻿@model Csn.Retail.Editorial.Web.Features.MediaMotiveAds.MediaMotiveAdViewModel
+﻿@model Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models.MediaMotiveAdViewModel
 
-<div id="Tile@(Model.TileId)" 
-     class="mediamotive-block mediamotive-@Model.Description.ToLower() mediamotive-block--loading" 
-     data-krux-required="@Model.DataKruxRequired.ToString().ToLower()" 
+<div id="Tile@(Model.TileId)"
+     class="mediamotive-block mediamotive-@Model.Description.ToLower() mediamotive-block--loading"
+     data-krux-required="@Model.DataKruxRequired.ToString().ToLower()"
      data-media-motive-url="@Model.ScriptUrl">
     @if (!string.IsNullOrEmpty(Model.NoScriptImageUrl))
     {

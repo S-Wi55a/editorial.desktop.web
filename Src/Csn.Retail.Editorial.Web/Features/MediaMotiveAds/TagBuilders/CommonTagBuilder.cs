@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Utils;
@@ -16,20 +17,15 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         {
             _tenantProvider = tenantProvider;
         }
-        public IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query)
+        public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
         {
-            if (!MediaMotiveAdSettings.AdTypes.TryGetValue(query.AdSize, out MediaMotiveAdSetting adSetting))
-            {
-                return new List<MediaMotiveTag>();
-            }
-
-            var dimensions = adSetting.AdSize.Dimensions().ToList();
+            var dimensions = parameters.DisplayAdSizes.Dimensions().ToList();
 
             return new List<MediaMotiveTag>()
             {
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Site, _tenantProvider.Current().MediaMotiveAccountId),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Method, "get"),
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Tile, query.TileId.ToString()),
+                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Tile, parameters.TileId.ToString()),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Size, dimensions.Select(x => $"{x.Width}x{x.Height}")),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.Random, RandomNumberGenerator.Generate().ToString()),
                 new MediaMotiveTag(SasAdTags.SasAdTagKeys.ViewId, RandomNumberGenerator.Generate().ToString()),
@@ -37,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             };
         }
 
-        public bool IsApplicable(MediaMotiveAdQuery query)
+        public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
             // apply this every time
             return true;

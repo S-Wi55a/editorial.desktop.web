@@ -60,7 +60,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
             errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
 
-            return await (response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404Child() : errorsController.ErrorGenericChild());
+            return (response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404Child() : errorsController.ErrorGenericChild());
         }
 
         private ActionResult PermanentRedirect(string redirectUrl)

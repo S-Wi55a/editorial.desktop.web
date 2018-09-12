@@ -1,12 +1,11 @@
-﻿@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds
-@using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.HtmlHelpers
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 
 <div class="wrapper--aside">
     <div class="aside ">
         <!-- Aside Section -->
         @{
-            // MREC
-            Html.RenderMediaMotiveAd(new MediaMotiveAdQuery() { AdSize = AdSize.MediumOrLargeRectangle, TileId = 3 });
+            Html.RenderDisplayAd(DisplayAdPlacements.Aside);
         }
     </div>
 </div>

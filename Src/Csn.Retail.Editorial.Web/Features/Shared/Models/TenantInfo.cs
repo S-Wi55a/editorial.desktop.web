@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 {
     public class TenantInfo : ITenant
     {
         public string Name { get; set; }
-        public string SiteNavPath { get; set; }
         public string GoogleAnalyticsApp { get; set; }
         public string HotjarTracking { get; set; }
         public string RyvusNavName { get; set; }
@@ -30,13 +30,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string PolarSiteName { get; set; }
         #endregion
 
-        #region Mediamotive
+        #region Display Ads (Media Motive & Google Ads)
+        public DisplayAdsSource DisplayAdsSource { get; set; }
         public string MediaMotiveAccountId { get; set; }
         public string MediaMotiveUrl { get; set; }
         public string KruxId { get; set; }
         public List<string> AdUnits { get; set; }
         public string NativeAdPlacement { get; set; }
-
+        public string GoogleAdsNetworkCode { get; set; }
         #endregion
 
         #region Content
@@ -57,5 +58,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string Vertical { get; set; }
         public bool HasLandingPageConfiguration { get; set; }
         #endregion
+
+        public bool UseMediaMotive => DisplayAdsSource == DisplayAdsSource.MediaMotive;
+        public bool UseGoogleAd => DisplayAdsSource == DisplayAdsSource.GoogleAd;
     }
 }

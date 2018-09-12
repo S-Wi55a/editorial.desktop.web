@@ -27,4 +27,3 @@ export function getEntryFiles(tenant) {
     }
     return entries;
 }
-

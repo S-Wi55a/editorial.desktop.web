@@ -57,7 +57,17 @@ loaded.then(() => {
         if (typeof csn_editorial !== 'undefined' && typeof csn_editorial.nativeAds !== 'undefined') {
             (function nativeAds() {
                 import
-                (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
+                    (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {
+                        //Dispatch fetchNativeAds when nativeAds is ready
+                        window.addEventListener('csn_editorial.nativeAds.ready', function fetchNativeAds() {
+                            // Need to run once
+                            var events = require('NativeAds/Area/placements--' + csn_editorial.nativeAds.areaName).events;
+                            events.forEach((event) => {
+                                const e = new CustomEvent(event);
+                                window.dispatchEvent(e);
+                            })
+                        });
+                    })
                     .catch(function(err) {
                         console.log('Failed to load nativeAds', err);
                     });

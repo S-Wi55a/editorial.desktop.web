@@ -1,0 +1,123 @@
+﻿{
+  "configs": [
+    {
+      "type": "default",
+      "carouselConfigurations": [
+        {
+          "title": "Editor's Choice",
+          "displayMrec": true,
+          "displayNativeAd": false,
+          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": null,
+          "polarAds": null,
+          "carouselType": "featured",
+          "carouselItems": null
+        },
+        {
+          "title": "Reviews",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Type.Review._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/reviews/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        },
+        {
+          "title": "News",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Type.News._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/news/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        },
+        {
+          "title": "Videos",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Type.Video._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/videos/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        },
+        {
+          "title": "Advice",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/advice/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        },
+        {
+          "title": "Driver",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": null,
+          "sort": null,
+          "viewAll": null,
+          "polarAds": null,
+          "carouselType": "driver",
+          "carouselItems": [
+            {
+              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/newcarcalendar.png",
+              "itemUrl": "/editorial/details/new-car-calendar-11034/"
+            },
+            {
+              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/carpool.png",
+              "itemUrl": "https://www.carsales.com.au/editorial/carpool/"
+            },
+            {
+              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/caroftheyear.png",
+              "itemUrl": "/car-of-the-year-2017/"
+            },
+            {
+              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/ownerreviews.png",
+              "itemUrl": "http://owner-reviews.carsales.com.au/"
+            },
+            {
+              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/newcarshowroom.png",
+              "itemUrl": "/new-cars/"
+            }
+          ]
+        },
+        {
+          "title": "Comparisons",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.ArticleTypes.Comparison._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/results/?q=ArticleTypes.Comparison.",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        },
+        {
+          "title": "Features",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Type.Feature._.Service.CarSales.)",
+          "sort": "Latest",
+          "viewAll": "/features/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        }
+      ],
+      "heroAdSettings": {
+        "hasHeroAd": false,
+        "heroTitle": "Reviews, advice, news & more",
+        "heroMake": null
+      }
+    }
+  ]
+}

@@ -119,8 +119,8 @@
       <HintPath>..\packages\Csn.RestClient.6.1.0.0\lib\net45\Csn.RestClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Csn.Retail.AppShellClient, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.Retail.AppShellClient.1.1.0\lib\net452\Csn.Retail.AppShellClient.dll</HintPath>
+    <Reference Include="Csn.Retail.AppShellClient, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Retail.AppShellClient.2.3.0\lib\net452\Csn.Retail.AppShellClient.dll</HintPath>
     </Reference>
     <Reference Include="Csn.Serializers, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.Serializers.2.0.0.0\lib\net45\Csn.Serializers.dll</HintPath>
@@ -142,14 +142,14 @@
       <HintPath>..\packages\Csn.SimpleCqrs.Extended.4.1.0.0\lib\net451\Csn.SimpleCqrs.Extended.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Csn.Tracking.Scripts, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.Tracking.Scripts.5.1.0\lib\net452\Csn.Tracking.Scripts.dll</HintPath>
+    <Reference Include="Csn.Tracking.Scripts, Version=6.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Tracking.Scripts.6.2.0\lib\net452\Csn.Tracking.Scripts.dll</HintPath>
     </Reference>
-    <Reference Include="Csn.Tracking.Scripts.Ryvus42, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.Tracking.Scripts.Ryvus42.1.1.2\lib\net461\Csn.Tracking.Scripts.Ryvus42.dll</HintPath>
+    <Reference Include="Csn.Tracking.Scripts.Ryvus42, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.Tracking.Scripts.Ryvus42.1.2.0\lib\net461\Csn.Tracking.Scripts.Ryvus42.dll</HintPath>
     </Reference>
-    <Reference Include="Csn.TrackingServices.Dto, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.TrackingServices.Dto.1.0.3\lib\net452\Csn.TrackingServices.Dto.dll</HintPath>
+    <Reference Include="Csn.TrackingServices.Dto, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Csn.TrackingServices.Dto.1.0.6\lib\net452\Csn.TrackingServices.Dto.dll</HintPath>
     </Reference>
     <Reference Include="Csn.WebMetrics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.WebMetrics.1.0.480.0\lib\net40\Csn.WebMetrics.dll</HintPath>
@@ -185,98 +185,101 @@
     <Reference Include="Ingress.ApplicationStore, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ApplicationStore.1.0.3\lib\net452\Ingress.ApplicationStore.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Autofac, Version=14.8.41.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Autofac.14.8.41\lib\net461\Ingress.Autofac.dll</HintPath>
+    <Reference Include="Ingress.Autofac, Version=14.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Autofac.14.20.1\lib\net461\Ingress.Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Cache, Version=14.12.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.14.12.0\lib\net452\Ingress.Cache.dll</HintPath>
+    <Reference Include="Ingress.Cache, Version=14.12.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.14.12.2\lib\net452\Ingress.Cache.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Cache.InMemory, Version=14.10.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.InMemory.14.10.6\lib\net452\Ingress.Cache.InMemory.dll</HintPath>
+    <Reference Include="Ingress.Cache.InMemory, Version=14.10.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.InMemory.14.10.7\lib\net452\Ingress.Cache.InMemory.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Cache.Redis, Version=14.10.16.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Cache.Redis.14.10.16\lib\net452\Ingress.Cache.Redis.dll</HintPath>
+    <Reference Include="Ingress.Cache.Redis, Version=14.10.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Cache.Redis.14.10.17\lib\net452\Ingress.Cache.Redis.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.12.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.12.0\lib\net461\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.CircuitBreaker.Abstracts, Version=14.12.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CircuitBreaker.Abstracts.14.12.1\lib\net461\Ingress.CircuitBreaker.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.CircuitBreaker.Hystrix, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.CircuitBreaker.Hystrix.1.1.1\lib\net461\Ingress.CircuitBreaker.Hystrix.dll</HintPath>
+    <Reference Include="Ingress.CircuitBreaker.Hystrix, Version=14.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CircuitBreaker.Hystrix.14.13.0\lib\net461\Ingress.CircuitBreaker.Hystrix.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.CircuitBreaker.Hystrix.ConfigProviders, Version=0.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.CircuitBreaker.Hystrix.ConfigProviders.0.0.5\lib\net461\Ingress.CircuitBreaker.Hystrix.ConfigProviders.dll</HintPath>
+    <Reference Include="Ingress.CircuitBreaker.Hystrix.ConfigProviders, Version=0.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CircuitBreaker.Hystrix.ConfigProviders.0.2.6\lib\net461\Ingress.CircuitBreaker.Hystrix.ConfigProviders.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.CircuitBreaker.Polly, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.CircuitBreaker.Polly.1.1.2\lib\net461\Ingress.CircuitBreaker.Polly.dll</HintPath>
+    <Reference Include="Ingress.CircuitBreaker.Polly, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CircuitBreaker.Polly.1.1.4\lib\net461\Ingress.CircuitBreaker.Polly.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.CircuitBreaker.Polly.ConfigProviders, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.CircuitBreaker.Polly.ConfigProviders.1.1.5\lib\net461\Ingress.CircuitBreaker.Polly.ConfigProviders.dll</HintPath>
+    <Reference Include="Ingress.CircuitBreaker.Polly.ConfigProviders, Version=1.1.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CircuitBreaker.Polly.ConfigProviders.1.1.8\lib\net461\Ingress.CircuitBreaker.Polly.ConfigProviders.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.CodeProfiler, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.CodeProfiler.1.0.4\lib\net452\Ingress.CodeProfiler.dll</HintPath>
+    <Reference Include="Ingress.CodeProfiler, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.CodeProfiler.1.0.5\lib\net452\Ingress.CodeProfiler.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Core, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Core.14.10.0\lib\net452\Ingress.Core.dll</HintPath>
+    <Reference Include="Ingress.Core, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core.14.10.2\lib\net452\Ingress.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Core.Logger.Nlog, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Core.Logger.Nlog.14.10.0\lib\net452\Ingress.Core.Logger.Nlog.dll</HintPath>
+    <Reference Include="Ingress.Core.IocAttributes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core.IocAttributes.1.0.0\lib\net452\Ingress.Core.IocAttributes.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Core.Settings, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Core.Settings.14.10.0\lib\net452\Ingress.Core.Settings.dll</HintPath>
+    <Reference Include="Ingress.Core.Logger.Nlog, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core.Logger.Nlog.14.10.1\lib\net452\Ingress.Core.Logger.Nlog.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient, Version=14.12.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.14.12.10\lib\net461\Ingress.HttpClient.dll</HintPath>
+    <Reference Include="Ingress.Core.Settings, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Core.Settings.14.10.1\lib\net452\Ingress.Core.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Abstracts, Version=14.11.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Abstracts.14.11.0\lib\net452\Ingress.HttpClient.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.HttpClient, Version=14.20.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.14.20.3\lib\net461\Ingress.HttpClient.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix, Version=14.11.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix.14.11.0\lib\net461\Ingress.HttpClient.Hystrix.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Abstracts, Version=14.11.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Abstracts.14.11.2\lib\net452\Ingress.HttpClient.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix.Abstracts, Version=14.11.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix.Abstracts.14.11.0\lib\net461\Ingress.HttpClient.Hystrix.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Hystrix, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.14.11.1\lib\net461\Ingress.HttpClient.Hystrix.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.HttpClient.Hystrix.RedisReporter, Version=14.11.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.HttpClient.Hystrix.RedisReporter.14.11.4\lib\net461\Ingress.HttpClient.Hystrix.RedisReporter.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Hystrix.Abstracts, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.Abstracts.14.11.1\lib\net461\Ingress.HttpClient.Hystrix.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.PageComposers, Version=14.12.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.PageComposers.14.12.5\lib\net461\Ingress.PageComposers.dll</HintPath>
+    <Reference Include="Ingress.HttpClient.Hystrix.RedisReporter, Version=14.11.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.HttpClient.Hystrix.RedisReporter.14.11.5\lib\net461\Ingress.HttpClient.Hystrix.RedisReporter.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ProxyClient, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ProxyClient.1.0.4\lib\net461\Ingress.ProxyClient.dll</HintPath>
+    <Reference Include="Ingress.PageComposers, Version=14.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.PageComposers.14.20.1\lib\net461\Ingress.PageComposers.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.RedisHelpers, Version=14.10.20.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.RedisHelpers.14.10.20\lib\net452\Ingress.RedisHelpers.dll</HintPath>
+    <Reference Include="Ingress.ProxyClient, Version=1.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ProxyClient.1.20.1\lib\net461\Ingress.ProxyClient.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.RedisHelpers.Abstracts, Version=1.1.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.RedisHelpers.Abstracts.1.1.7\lib\net452\Ingress.RedisHelpers.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.RedisHelpers, Version=14.10.22.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.RedisHelpers.14.10.22\lib\net452\Ingress.RedisHelpers.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Serializers, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Serializers.14.10.0\lib\net452\Ingress.Serializers.dll</HintPath>
+    <Reference Include="Ingress.RedisHelpers.Abstracts, Version=1.1.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.RedisHelpers.Abstracts.1.1.8\lib\net452\Ingress.RedisHelpers.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Serializers.Json, Version=14.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Serializers.Json.14.10.0\lib\net452\Ingress.Serializers.Json.dll</HintPath>
+    <Reference Include="Ingress.Serializers, Version=14.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Serializers.14.10.1\lib\net452\Ingress.Serializers.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient, Version=14.12.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient.14.12.6\lib\net461\Ingress.ServiceClient.dll</HintPath>
+    <Reference Include="Ingress.Serializers.Json, Version=14.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Serializers.Json.14.10.3\lib\net461\Ingress.Serializers.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceClient.Abstracts, Version=14.12.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceClient.Abstracts.14.12.1\lib\net461\Ingress.ServiceClient.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient, Version=14.20.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.14.20.3\lib\net461\Ingress.ServiceClient.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceRegistry, Version=14.11.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceRegistry.14.11.11\lib\net461\Ingress.ServiceRegistry.dll</HintPath>
+    <Reference Include="Ingress.ServiceClient.Abstracts, Version=14.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceClient.Abstracts.14.20.0\lib\net461\Ingress.ServiceClient.Abstracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Ingress.ServiceRegistry, Version=14.11.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry.14.11.14\lib\net461\Ingress.ServiceRegistry.dll</HintPath>
     </Reference>
     <Reference Include="Ingress.ServiceRegistry.Abstracts, Version=14.11.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.ServiceRegistry.Abstracts.14.11.3\lib\net452\Ingress.ServiceRegistry.Abstracts.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.ServiceRegistry.LocalFilterSettings, Version=14.11.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.ServiceRegistry.LocalFilterSettings.14.11.9\lib\net452\Ingress.ServiceRegistry.LocalFilterSettings.dll</HintPath>
+    <Reference Include="Ingress.ServiceRegistry.LocalFilterSettings, Version=14.11.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.ServiceRegistry.LocalFilterSettings.14.11.12\lib\net452\Ingress.ServiceRegistry.LocalFilterSettings.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Web.Common, Version=14.10.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Web.Common-Net452.14.10.3\lib\net452\Ingress.Web.Common.dll</HintPath>
+    <Reference Include="Ingress.Web.Common, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common-Net452.14.11.1\lib\net452\Ingress.Web.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Web.Common.Abstracts, Version=14.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.10.2\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.Web.Common.Abstracts, Version=14.10.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.10.5\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
     </Reference>
     <Reference Include="JavaScriptEngineSwitcher.ChakraCore, Version=2.4.11.0, Culture=neutral, PublicKeyToken=c608b2a8cc9e4472, processorArchitecture=MSIL">
       <HintPath>..\packages\JavaScriptEngineSwitcher.ChakraCore.2.4.11\lib\net45\JavaScriptEngineSwitcher.ChakraCore.dll</HintPath>
@@ -324,8 +327,8 @@
     <Reference Include="NewRelic.Api.Agent, Version=7.0.2.0, Culture=neutral, PublicKeyToken=06552fced0b33d87, processorArchitecture=MSIL">
       <HintPath>..\packages\NewRelic.Agent.Api.7.0.2.0\lib\net45\NewRelic.Api.Agent.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=3.2.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.3.2.1\lib\net45\NLog.dll</HintPath>
@@ -334,8 +337,8 @@
       <HintPath>..\packages\NLog.Extended.3.2.1\lib\net45-full\NLog.Extended.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Polly, Version=6.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Polly.6.0.1\lib\netstandard1.1\Polly.dll</HintPath>
+    <Reference Include="Polly, Version=5.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly.5.9.0\lib\net45\Polly.dll</HintPath>
     </Reference>
     <Reference Include="React.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
       <HintPath>..\packages\React.Core.3.2.0\lib\net40\React.Core.dll</HintPath>
@@ -566,6 +569,18 @@
     <Compile Include="Features\Details\Loggers\LegacyDetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
     <Compile Include="Features\Details\Mappings\ArticleTypeLabelMapper.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsController.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdsSetting.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdQueryHandler.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdSetting.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdSettings.cs" />
+    <Compile Include="Features\DisplayAds\HtmlHelpers\DisplayAdsHtmlHelper.cs" />
+    <Compile Include="Features\DisplayAds\DisplayAdQuery.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdQueryHandler.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSetting.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSettings.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\Models\MediaMotiveAdViewModel.cs" />
+    <Compile Include="Features\DisplayAds\GoogleAd\Models\GoogleAdViewModel.cs" />
     <Compile Include="Features\Landing\CacheStores\GetLandingQueryCacheStore.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
@@ -655,15 +670,10 @@
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdController.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQuery.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdQueryHandler.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSetting.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdSettings.cs" />
+    <Compile Include="Features\MediaMotiveAds\MediaMotiveTagBuildersParams.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\CommonTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
@@ -727,6 +737,8 @@
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
     <Compile Include="Features\TestApis\TestDto.cs" />
+    <Compile Include="Features\TestApis\TestExpClientController.cs" />
+    <Compile Include="Features\TestApis\TestHttpClientController.cs" />
     <Compile Include="Features\TestApis\TestIngressController.cs" />
     <Compile Include="Features\Tracking\Mapping\ItemsListingMapper.cs" />
     <Compile Include="Features\Tracking\Mapping\MapperConfiguration.cs" />
@@ -808,7 +820,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
+    <Content Include="Features\DisplayAds\GoogleAd\Views\Index.cshtml" />
+    <Content Include="Features\DisplayAds\MediaMotive\Views\Index.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_aside.scss" />
+    <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
+    <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavMenuHeader.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\iNav.js" />
@@ -897,6 +914,8 @@
     <Folder Include="Features\Details\Assets\Images\" />
     <Folder Include="Features\MediaMotiveAds\Mappers\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
+    <Folder Include="Features\Shared\Assets\Images\Demotores\" />
+    <Folder Include="Features\Shared\Assets\Images\Soloautos\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
     <Folder Include="Views\DetailsRedirect\" />
@@ -1079,7 +1098,6 @@
     <Content Include="Features\Details\Views\Farmmachinerysales\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleSummary.cshtml" />
-    <Content Include="Features\MediaMotiveAds\Views\Index.cshtml" />
     <Content Include="Features\Details\Views\Partials\Content\_ArticleShare--Bottom.cshtml" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavArticleCount\Css\iNavArticleCount.scss" />
     <Content Include="Features\Details\Views\Partials\Hero\_WideVideo.cshtml" />
@@ -1096,16 +1114,14 @@
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Css\iNavSorting.scss" />
-    <Content Include="Features\MediaMotiveAds\Views\_Leaderboard.cshtml" />
     <Content Include="Features\MediaMotiveAds\Views\DetailsAd.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <Content Include="Features\Details\Views\Boatsales\_Disclaimer.cshtml" />
-    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mrec.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_carousel.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_teads.scss" />
     <Content Include="Features\Shared\Views\Partials\Tracking\_CsnInsights.cshtml" />
-    <Content Include="Features\MediaMotiveAds\Views\_Tracking.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Head\_Favicon.cshtml" />
     <Content Include="Features\Details\Views\Caravancampingsales\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Trucksales\_Disclaimer.cshtml" />
@@ -1157,12 +1173,26 @@
     <Content Include="Features\Details\Views\Partials\ContentSections\EmbeddedContent\_Vimeo.cshtml" />
     <Content Include="Features\Shared\Hero\Views\_HeroSection.cshtml" />
     <Content Include="Features\Details\Views\Partials\Head\_NarrowHeader.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Soloautos\soloautos.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Soloautos\Settings\_settings--soloautos.scss" />
+    <Content Include="Features\Landing\Configurations\soloautos.landingConfig.json" />
+    <Content Include="Features\Listings\Views\Soloautos\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Soloautos\_Disclaimer.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Demotores\demotores.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Demotores\Settings\_settings--demotores.scss" />
+    <Content Include="Features\Listings\Views\Demotores\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Demotores\_Disclaimer.cshtml" />
+    <Content Include="Features\Landing\Configurations\demotores.landingConfig.json" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_googlead.scss" />
+    <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_carousel.scss" />
+    <Content Include="Features\Shared\Views\Partials\GoogleAd\_GoogleAd.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_aside.scss" />
     <None Include="Web.LatamRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.LatamStaging.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
+    </None
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1214,7 +1244,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Timer\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorialresults.js" />
     <Content Include="Features\Details\Assets\Css\Details-page.scss" />
-    <Content Include="Features\MediaMotiveAds\Views\_TeAds.cshtml" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
