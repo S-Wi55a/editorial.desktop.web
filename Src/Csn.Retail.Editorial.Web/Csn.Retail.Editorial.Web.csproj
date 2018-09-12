@@ -938,6 +938,14 @@
       <DependentUpon>NLog.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+	<Content Include="NLog.LatamStaging.config">
+      <DependentUpon>NLog.config</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+	<Content Include="NLog.LatamRelease.config">
+      <DependentUpon>NLog.config</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="NLog.Test.config">
       <DependentUpon>NLog.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1187,6 +1195,12 @@
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_carousel.scss" />
     <Content Include="Features\Shared\Views\Partials\GoogleAd\_GoogleAd.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_aside.scss" />
+    <None Include="Web.LatamRelease.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.LatamStaging.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
