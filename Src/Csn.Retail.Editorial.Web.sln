@@ -14,8 +14,6 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		LatamRelease|Any CPU = LatamRelease|Any CPU
-		LatamStaging|Any CPU = LatamStaging|Any CPU
 		Release|Any CPU = Release|Any CPU
 		Staging|Any CPU = Staging|Any CPU
 		Test|Any CPU = Test|Any CPU
@@ -31,10 +29,6 @@ Global
 		{06B03CFD-DE4C-45FD-9EF8-C88B31B622CB}.Test|Any CPU.Build.0 = Test|Any CPU
 		{4EBB031D-0901-45CD-B4CB-E5D131213BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4EBB031D-0901-45CD-B4CB-E5D131213BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4EBB031D-0901-45CD-B4CB-E5D131213BF9}.LatamRelease|Any CPU.ActiveCfg = LatamRelease|Any CPU
-		{4EBB031D-0901-45CD-B4CB-E5D131213BF9}.LatamRelease|Any CPU.Build.0 = LatamRelease|Any CPU
-		{4EBB031D-0901-45CD-B4CB-E5D131213BF9}.LatamStaging|Any CPU.ActiveCfg = LatamStaging|Any CPU
-		{4EBB031D-0901-45CD-B4CB-E5D131213BF9}.LatamStaging|Any CPU.Build.0 = LatamStaging|Any CPU
 		{4EBB031D-0901-45CD-B4CB-E5D131213BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EBB031D-0901-45CD-B4CB-E5D131213BF9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4EBB031D-0901-45CD-B4CB-E5D131213BF9}.Staging|Any CPU.ActiveCfg = Release|Any CPU
