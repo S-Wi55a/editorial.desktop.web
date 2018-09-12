@@ -1192,7 +1192,7 @@
     </None>
     <None Include="Web.LatamStaging.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None
+    </None>
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
