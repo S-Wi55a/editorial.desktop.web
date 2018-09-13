@@ -16,7 +16,7 @@
     Html.RenderPartial("~/Features/Landing/Views/Partials/_HeaderTransparent.cshtml");
     <h2 class="page-title">@Model.HeroTitle</h2>
     Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroAdUnit.cshtml", Model.CampaignAd);
-    Html.RenderDisplayAd(new DisplayAdQuery() { AdPlacement = DisplayAdPlacements.Banner, Make = Model.MediaMotiveModel.Make });
+    Html.RenderDisplayAd(new DisplayAdQuery() { AdPlacement = DisplayAdPlacements.Banner });
 }
 else if (!string.IsNullOrEmpty(Model.HeroImage))
 {

@@ -15,23 +15,25 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
     {
         private readonly IEditorialListingTrackingContainerProvider _listingTrackingProvider;
         private readonly HttpContextBase _httpContext;
-        private readonly ISearchResultContextStore _searchResultContextStore;
+        private readonly IPageContextStore _pageContextStore;
         private readonly IMapper _mapper;
 
         public GetListingTrackingContainerQueryHandler(IEditorialListingTrackingContainerProvider listingTrackingProvider, 
                                                         HttpContextBase httpContext, 
-                                                        ISearchResultContextStore searchResultContextStore, 
+                                                        IPageContextStore pageContextStore, 
                                                         IMapper mapper)
         {
             _listingTrackingProvider = listingTrackingProvider;
             _httpContext = httpContext;
-            _searchResultContextStore = searchResultContextStore;
+            _pageContextStore = pageContextStore;
             _mapper = mapper;
         }
 
         public IAnalyticsTrackingContainer Handle(GetListingTrackingContainerQuery query)
         {
-            var search = _searchResultContextStore.Get();
+            var pageContext = _pageContextStore.Get();
+
+            var search = pageContext?.PageContextType == PageContextTypes.Listing ? pageContext as ListingPageContext : null;
 
             var editorialListItems = search?.RyvussNavResult?.SearchResults ?? Enumerable.Empty<SearchResultDto>();
 

@@ -16,6 +16,5 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Models
         public Dictionary<string, string> InsightsData { get; set; }
         public SeoData SeoData { get; set; }
         public EditorialPageTypes EditorialPageType { get; set; }
-        public MediaMotiveModel MediaMotiveModel { get; set; }
     }
 }

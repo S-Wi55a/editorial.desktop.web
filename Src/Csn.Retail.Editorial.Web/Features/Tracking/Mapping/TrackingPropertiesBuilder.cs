@@ -14,12 +14,12 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.Mapping
     [AutoBind]
     public class TrackingPropertiesBuilder : ITrackingPropertiesBuilder
     {
-        private readonly ISearchResultContextStore _searchResultContextStore;
+        private readonly IPageContextStore _pageContextStore;
         private readonly IExpressionParser _expressionParser;
 
-        public TrackingPropertiesBuilder(ISearchResultContextStore searchResultContextStore, IExpressionParser expressionParser)
+        public TrackingPropertiesBuilder(IPageContextStore pageContextStore, IExpressionParser expressionParser)
         {
-            _searchResultContextStore = searchResultContextStore;
+            _pageContextStore = pageContextStore;
             _expressionParser = expressionParser;
         }
 
@@ -27,7 +27,9 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.Mapping
         {
             var properties = new List<KeyValuePair<string, string>>();
 
-            var search = _searchResultContextStore.Get();
+            var pageContext = _pageContextStore.Get();
+
+            var search = pageContext?.PageContextType == PageContextTypes.Listing ? pageContext as ListingPageContext : null;
 
             if (search?.RyvussNavResult?.Metadata?.Query == null) return null;
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -10,37 +11,38 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
     [AutoBind]
     public class ListingsTagBuilder : IMediaMotiveTagBuilder
     {
-        private readonly ISearchResultContextStore _searchContextStore;
+        private readonly IPageContextStore _pageContextStore;
         private readonly IListingsBreadCrumbTagBuilder _breadCrumbTagBuilder;
 
-        public ListingsTagBuilder(ISearchResultContextStore searchContextStore, IListingsBreadCrumbTagBuilder breadCrumbTagBuilder)
+        public ListingsTagBuilder(IPageContextStore pageContextStore, IListingsBreadCrumbTagBuilder breadCrumbTagBuilder)
         {
-            _searchContextStore = searchContextStore;
+            _pageContextStore = pageContextStore;
             _breadCrumbTagBuilder = breadCrumbTagBuilder;
         }
 
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
         {
-            var searchContext = _searchContextStore.Get();
+            var pageContext = _pageContextStore.Get();
+            var listingPageContext = pageContext?.PageContextType == PageContextTypes.Listing ? (ListingPageContext)pageContext : null;
 
-            return BuildTags(searchContext);
+            return BuildTags(listingPageContext);
         }
 
         public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
-            return _searchContextStore.Exists();
+            return _pageContextStore.Exists();
         }
 
-        private IEnumerable<MediaMotiveTag> BuildTags(SearchContext searchContext)
+        private IEnumerable<MediaMotiveTag> BuildTags(ListingPageContext listingPageContext)
         {
             var tagList = new List<MediaMotiveTag>();
 
-            if (searchContext == null) return tagList;
+            if (listingPageContext == null) return tagList;
 
             tagList.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area,
-                searchContext.EditorialPageType == EditorialPageTypes.Homepage ? MediaMotiveAreaNames.EditorialHomePage : MediaMotiveAreaNames.EditorialResultsPage));
+                listingPageContext.EditorialPageType == EditorialPageTypes.Homepage ? MediaMotiveAreaNames.EditorialHomePage : MediaMotiveAreaNames.EditorialResultsPage));
 
-            var navResult = searchContext.RyvussNavResult;
+            var navResult = listingPageContext.RyvussNavResult;
 
             if (navResult == null) return tagList;
 

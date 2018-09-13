@@ -581,6 +581,7 @@
     <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSettings.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\Models\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\DisplayAds\GoogleAd\Models\GoogleAdViewModel.cs" />
+    <Compile Include="Features\DisplayAds\SasAdTags.cs" />
     <Compile Include="Features\Landing\CacheStores\GetLandingQueryCacheStore.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
@@ -598,9 +599,9 @@
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\HtmlHelpers\NativeAdHelper.cs" />
     <Compile Include="Features\MediaMotiveAds\Models\NativeAdResponse.cs" />
-    <Compile Include="Features\MediaMotiveAds\Models\MediaMotiveModel.cs" />
     <Compile Include="Features\MediaMotiveAds\NativeAdController.cs" />
     <Compile Include="Features\MediaMotiveAds\Services\NativeAdService.cs" />
+    <Compile Include="Features\MediaMotiveAds\TagBuilders\DetailsTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\LandingTagBuilder.cs" />
     <Compile Include="Features\Shared\Constants\MediaMotiveAreaNames.cs" />
     <Compile Include="Features\Shared\Hero\Models\HeroAdUnitModel.cs" />
@@ -662,7 +663,7 @@
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Shared\Extensions\SearchActionExtensions.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
-    <Compile Include="Features\Shared\ContextStores\SearchResultContextStore.cs" />
+    <Compile Include="Features\Shared\ContextStores\PageContextStore.cs" />
     <Compile Include="Features\Shared\Extensions\SearchResultDtoExtensions.cs" />
     <Compile Include="Features\Shared\Helpers\ListingUrlHelper.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
@@ -674,7 +675,6 @@
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
     <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />
-    <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\CommonTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
     <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsBreadCrumbTagBuilder.cs" />
@@ -938,11 +938,11 @@
       <DependentUpon>NLog.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-	<Content Include="NLog.LatamStaging.config">
+    <Content Include="NLog.LatamStaging.config">
       <DependentUpon>NLog.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-	<Content Include="NLog.LatamRelease.config">
+    <Content Include="NLog.LatamRelease.config">
       <DependentUpon>NLog.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

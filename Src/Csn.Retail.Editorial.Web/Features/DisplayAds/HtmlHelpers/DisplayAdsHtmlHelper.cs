@@ -17,13 +17,13 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
             html.RenderAction("RenderDisplayAd", "DisplayAds", query);
         }
 
-        public static void RenderDisplayAdTracking(this HtmlHelper html, MediaMotiveModel model)
+        public static void RenderDisplayAdTracking(this HtmlHelper html)
         {
             html.RenderDisplayAd(
                 new DisplayAdQuery()
                 {
                     AdPlacement = DisplayAdPlacements.Tracking,
-                    Make = model != null && !model.Make.IsNullOrEmpty() ? model.Make : string.Empty
+                    //Make = model != null && !model.Make.IsNullOrEmpty() ? model.Make : string.Empty
                 }
             );
         }

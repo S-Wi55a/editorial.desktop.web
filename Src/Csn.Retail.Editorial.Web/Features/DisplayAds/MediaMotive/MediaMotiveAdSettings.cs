@@ -38,7 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                     DisplayAdSize = DisplayAdSizes.Block550X309,
                     DataKruxRequired = false,
                     NotSupportedArticleTypes =
-                        new List<string> {ArticleType.Sponsored.ToString(), ArticleType.Video.ToString()}
+                        new List<string> {ArticleType.Sponsored.ToString(), ArticleType.Video.ToString(), ArticleType.Carpool.ToString()}
                 }
             },
             {
@@ -49,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                     Description = DisplayAdPlacements.Tracking,
                     DisplayAdSize = DisplayAdSizes.Hidden,
                     DataKruxRequired = false,
-                    NotSupportedArticleTypes = new List<string> {ArticleType.Sponsored.ToString()}
+                    NotSupportedArticleTypes = new List<string>()
                 }
             },
             {

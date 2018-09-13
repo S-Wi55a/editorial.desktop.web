@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.Mapping
                 .ForMember(dest => dest.PublishedDate, opt => opt.MapFrom(src => src.DateAvailable))
                 .ForMember(dest => dest.ItemProperties, opt => opt.Ignore()); // the logic for this is in TrackingPropertiesBuilder if we ever need it
 
-            cfg.CreateMap<SearchContext, AnalyticsSearchContext>()
+            cfg.CreateMap<ListingPageContext, AnalyticsSearchContext>()
                 .ForMember(c => c.ItemsPerPage, c => c.UseValue(PageItemsLimit.ListingPageItemsLimit))
                 .ForMember(c => c.PageNumber, c => c.MapFrom(src => (src.Offset / PageItemsLimit.ListingPageItemsLimit) + 1))
                 .ForMember(c => c.PageType, c => c.Ignore())

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -16,19 +17,21 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         private readonly IEditorialApiProxy _editorialApiProxy;
         private readonly IMapper _mapper;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
+        private readonly IPageContextStore _pageContextStore;
 
-        public GetArticleQueryHandler(IEditorialApiProxy editorialApiProxy, IMapper mapper, ITenantProvider<TenantInfo> tenantProvider)
+        public GetArticleQueryHandler(IEditorialApiProxy editorialApiProxy, IMapper mapper, ITenantProvider<TenantInfo> tenantProvider, IPageContextStore pageContextStore)
         {
             _editorialApiProxy = editorialApiProxy;
             _mapper = mapper;
             _tenantProvider = tenantProvider;
+            _pageContextStore = pageContextStore;
         }
 
         public async Task<GetArticleResponse> HandleAsync(GetArticleQuery query)
         {
             var result = await _editorialApiProxy.GetArticleAsync(new EditorialApiInput()
             {
-                ServiceName = _tenantProvider.Current().TenantName,
+                ServiceName = _tenantProvider.Current().RyvusServiceProjection,
                 ViewType = "desktop",
                 Id = query.Id,
                 IsPreview = query.IsPreview
@@ -52,6 +55,15 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             }
 
             var articleViewModel = _mapper.Map<ArticleViewModel>(result.Data);
+            
+            var detailsPageContext = new DetailsPageContext
+            {
+                Items = articleViewModel.Items,
+                Lifestyles = articleViewModel.Lifestyles,
+                Categories = articleViewModel.Categories
+            };
+
+            _pageContextStore.Set(detailsPageContext);
 
             // only the article to be SEO indexed if not in preview mode
             articleViewModel.SeoData.AllowSeoIndexing = articleViewModel.SeoData.AllowSeoIndexing && !query.IsPreview;

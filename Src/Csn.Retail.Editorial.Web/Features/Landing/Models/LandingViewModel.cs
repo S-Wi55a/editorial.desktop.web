@@ -18,7 +18,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public string HeroTitle { get; set; }
         public string HeroImage { get; set; }
         public SeoData SeoData { get; set; }
-        public MediaMotiveModel MediaMotiveModel { get; set; }
     }
 
     public class CarouselViewModel
