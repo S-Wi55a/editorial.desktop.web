@@ -907,6 +907,15 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Web.LatamRelease.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.LatamStaging.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Test.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
     <Content Include="gulpfile.js" />
   </ItemGroup>
   <ItemGroup>
@@ -1195,15 +1204,6 @@
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_carousel.scss" />
     <Content Include="Features\Shared\Views\Partials\GoogleAd\_GoogleAd.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_aside.scss" />
-    <None Include="Web.LatamRelease.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.LatamStaging.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Test.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
     <Content Include="WebpackConfig\Shared\devServer.config.js" />
     <Content Include="WebpackConfig\Shared\env.config.js" />
     <Content Include="WebpackConfig\Client\plugins.config.js" />
