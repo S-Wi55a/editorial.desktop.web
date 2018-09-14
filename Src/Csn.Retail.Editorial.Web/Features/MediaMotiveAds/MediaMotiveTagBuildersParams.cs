@@ -6,6 +6,5 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
     {
         public int TileId { get; set; }
         public DisplayAdSizes DisplayAdSizes { get; set; }
-        public string Make { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             expressionParser.Parse(Arg.Any<string>()).Returns(expression);
             var testSubject = new ListingInsightsDataMapper(expressionParser);
 
-            var searchContext = new SearchContext()
+            var listingPageContext= new ListingPageContext()
             {
                 Query = "(And.Service.CarSales._.Type.News.)",
                 Sort = "Latest",
@@ -31,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             };
 
             //Act
-            var result = testSubject.Map(searchContext);
+            var result = testSubject.Map(listingPageContext);
 
             //Assert
             Assert.IsNotNull(result);

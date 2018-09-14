@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Csn.Retail.Editorial.Web.Features.Details.Models;
+using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Ingress.Core.Attributes;
 
@@ -14,10 +14,12 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
     public class DetailsTagBuilder : IMediaMotiveTagBuilder
     {
         private readonly IPageContextStore _pageContextStore;
+        private readonly ITenantProvider<TenantInfo> _tenantProvider;
 
-        public DetailsTagBuilder(IPageContextStore pageContextStore)
+        public DetailsTagBuilder(IPageContextStore pageContextStore, ITenantProvider<TenantInfo> tenantProvider)
         {
             _pageContextStore = pageContextStore;
+            _tenantProvider = tenantProvider;
         }
 
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
@@ -42,13 +44,27 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             //adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.ArticleType, SasAdTagValues.GetArticleTypeValues(pageContext)));
             adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Category, SasAdTagValues.Clean(GetCategory(pageContext))));
             //adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Keyword, SasAdTagValues.Clean(GetKeyword(pageContext))));
+            adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, GetAdArea()));
 
             return adTags;
         }
 
         public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
-            return true;
+            return  _pageContextStore.Get().PageContextType == PageContextTypes.Details;
+        }
+
+        private string GetAdArea()
+        {
+            if (_tenantProvider.Current().Name == "bikesales"
+                || _tenantProvider.Current().Name == "farmmachinerysales"
+                || _tenantProvider.Current().Name == "constructionsales"
+                || _tenantProvider.Current().Name == "trucksales")
+            {
+                return SasAdTagValues.IndustryDetailsPage;
+            }
+
+            return SasAdTagValues.DetailsPage;
         }
 
         //private static string GetKeyword(DetailsPageContext pageContext)
@@ -102,7 +118,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
                 return Clean(make + model + marketingGroup);
             }
 
-            private static readonly Dictionary<string, string> articleTypeToSasATypeDictionary = new Dictionary<string, string>
+            private static readonly Dictionary<string, string> ArticleTypeToSasATypeDictionary = new Dictionary<string, string>
         {
             {"advice", "advice" },
             {"car advice", "advice" },
@@ -134,7 +150,7 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             //    if (articleType == null)
             //        return null;
             //    string aType;
-            //    return articleTypeToSasATypeDictionary.TryGetValue(articleType.ToLower(), out aType) && !string.IsNullOrEmpty(aType) ? aType : "news";
+            //    return ArticleTypeToSasATypeDictionary.TryGetValue(articleType.ToLower(), out aType) && !string.IsNullOrEmpty(aType) ? aType : "news";
             //}
         }
     }

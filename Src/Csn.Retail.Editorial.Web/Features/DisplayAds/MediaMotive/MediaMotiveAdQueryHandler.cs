@@ -30,8 +30,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
             var mediaMotiveTagBuildersParams = new MediaMotiveTagBuildersParams
             {
                 TileId = adSetting.TileId,
-                DisplayAdSizes = adSetting.DisplayAdSize,
-                Make = displayAdQuery.Make
+                DisplayAdSizes = adSetting.DisplayAdSize
             };
 
             var tags = _tagBuilders
