@@ -5,8 +5,8 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
-using Ingress.Core.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 {
