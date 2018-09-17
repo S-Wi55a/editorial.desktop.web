@@ -23,14 +23,14 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
         {
             var pageContext = _pageContextStore.Get();
-            var listingPageContext = pageContext?.PageContextType == PageContextTypes.Listing ? (ListingPageContext)pageContext : null;
+            var listingPageContext = pageContext?.PageContextType == PageContextTypes.Listing ? pageContext as ListingPageContext: null;
 
             return BuildTags(listingPageContext);
         }
 
         public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
-            return _pageContextStore.Exists();
+            return _pageContextStore.Get().PageContextType == PageContextTypes.Listing;
         }
 
         private IEnumerable<MediaMotiveTag> BuildTags(ListingPageContext listingPageContext)
