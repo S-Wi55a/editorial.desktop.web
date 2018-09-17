@@ -9,24 +9,13 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
     {
         public static void RenderDisplayAd(this HtmlHelper html, DisplayAdPlacements displayAdPlacement)
         {
-            html.RenderDisplayAd(new DisplayAdQuery() { AdPlacement = displayAdPlacement });
+            html.RenderAction("RenderDisplayAd", "DisplayAds", new DisplayAdQuery() { AdPlacement = displayAdPlacement });
         }
 
-        public static void RenderDisplayAd(this HtmlHelper html, DisplayAdQuery query)
-        {
-            html.RenderAction("RenderDisplayAd", "DisplayAds", query);
-        }
-
-        public static void RenderDisplayAdTracking(this HtmlHelper html)
-        {
-            html.RenderDisplayAd(
-                new DisplayAdQuery()
-                {
-                    AdPlacement = DisplayAdPlacements.Tracking,
-                    //Make = model != null && !model.Make.IsNullOrEmpty() ? model.Make : string.Empty
-                }
-            );
-        }
+        //public static void RenderDisplayAd(this HtmlHelper html, DisplayAdQuery query)
+        //{
+        //    html.RenderAction("RenderDisplayAd", "DisplayAds", query);
+        //}
         
         public static void RenderDisplayAdsHeader(this HtmlHelper html)
         {
