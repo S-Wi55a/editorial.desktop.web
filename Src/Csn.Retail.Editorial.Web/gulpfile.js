@@ -6,7 +6,7 @@ var aws = {
     "key": argv.awsKey,
     "secret": argv.awsSecret,
     "bucket": argv.awsBucket,
-    "region": argv.awsRegion
+    "region": 'ap-southeast-2'
 }
 
 var configs = {
