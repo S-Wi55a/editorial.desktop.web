@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Csn.MultiTenant;
-using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
 {
     [AutoBind]
     public class DetailsTagBuilder : IMediaMotiveTagBuilder

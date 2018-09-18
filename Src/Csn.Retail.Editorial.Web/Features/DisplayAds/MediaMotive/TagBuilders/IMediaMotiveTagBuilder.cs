@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
 {
     public interface IMediaMotiveTagBuilder
     {

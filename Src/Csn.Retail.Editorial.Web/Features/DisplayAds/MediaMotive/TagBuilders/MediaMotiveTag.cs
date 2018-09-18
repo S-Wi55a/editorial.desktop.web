@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
-{
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders {
     public class MediaMotiveTag
     {
         private readonly List<string> _values = new List<string>();

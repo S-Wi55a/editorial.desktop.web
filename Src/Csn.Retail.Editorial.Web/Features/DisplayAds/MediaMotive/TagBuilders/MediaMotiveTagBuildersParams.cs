@@ -1,7 +1,4 @@
-﻿using Csn.Retail.Editorial.Web.Features.DisplayAds;
-
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
-{
+﻿namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders {
     public class MediaMotiveTagBuildersParams
     {
         public int TileId { get; set; }

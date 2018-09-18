@@ -2,8 +2,7 @@
 using System.Linq;
 using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;

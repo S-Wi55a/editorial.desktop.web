@@ -597,10 +597,10 @@
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
     <Compile Include="Features\Listings\RedbookHomepageQueryHandler.cs" />
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
-    <Compile Include="Features\MediaMotiveAds\HtmlHelpers\NativeAdHelper.cs" />
-    <Compile Include="Features\MediaMotiveAds\Models\NativeAdResponse.cs" />
-    <Compile Include="Features\MediaMotiveAds\NativeAdController.cs" />
-    <Compile Include="Features\MediaMotiveAds\Services\NativeAdService.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\NativeAdHelper.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\Models\NativeAdResponse.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\NativeAdController.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\Services\NativeAdService.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\DetailsTagBuilder.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\LandingTagBuilder.cs" />
     <Compile Include="Features\Shared\Constants\MediaMotiveAreaNames.cs" />
@@ -908,7 +908,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
-    <Folder Include="Features\MediaMotiveAds\Mappers\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Images\Demotores\" />
     <Folder Include="Features\Shared\Assets\Images\Soloautos\" />
