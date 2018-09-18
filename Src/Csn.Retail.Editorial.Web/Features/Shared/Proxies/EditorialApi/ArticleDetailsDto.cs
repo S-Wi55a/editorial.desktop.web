@@ -10,6 +10,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string ArticleType { get; set; }
         public string ArticleTypeLabel { get; set; }
+        public List<string> ArticleTypes { get; set; }
+        public string Keywords { get; set; }
         public HeroSection HeroSection { get; set; }
         public string Headline { get; set; }
         public string Subheading { get; set; }

@@ -13,6 +13,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public string Slug { get; set; } // strictly this is not used in the view
         public string ArticleType { get; set; }
         public ArticleTypeLabel ArticleTypeLabel { get; set; }
+        public List<string> ArticleTypes { get; set; }
+        public string Keywords { get; set; }
         public string SubType { get; set; }
         public string ReviewLocation { get; set; }
         public string MakeModelHeading { get; set; }

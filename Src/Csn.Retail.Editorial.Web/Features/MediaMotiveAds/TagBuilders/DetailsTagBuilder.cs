@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Csn.MultiTenant;
@@ -41,9 +42,9 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
 
             // Move these sections outside the Items check, because if an article does not have any item, they won't get included in the commonttags
             adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Lifestyle, SasAdTagValues.Clean(GetLifestyle(pageContext))));
-            //adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.ArticleType, SasAdTagValues.GetArticleTypeValues(pageContext)));
+            adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.ArticleType, SasAdTagValues.GetArticleTypeValues(pageContext)));
             adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Category, SasAdTagValues.Clean(GetCategory(pageContext))));
-            //adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Keyword, SasAdTagValues.Clean(GetKeyword(pageContext))));
+            adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Keyword, SasAdTagValues.Clean(GetKeyword(pageContext))));
             adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, GetAdArea()));
 
             return adTags;
@@ -67,15 +68,15 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             return SasAdTagValues.DetailsPage;
         }
 
-        //private static string GetKeyword(DetailsPageContext pageContext)
-        //{
-        //    // APPS-1086: the "kw" we are looking for is the (first) word within the list of Keywords of the article that have {}
-        //    return pageContext.Keywords?.Split(',')
-        //        .Select(w => w.Trim())
-        //        .Where(w => w.StartsWith("{") && w.EndsWith("}"))
-        //        .Select(w => w.TrimStart('{').TrimEnd('}'))
-        //        .FirstOrDefault();
-        //}
+        private static string GetKeyword(DetailsPageContext pageContext)
+        {
+            // APPS-1086: the "kw" we are looking for is the (first) word within the list of Keywords of the article that have {}
+            return pageContext.Keywords?.Split(',')
+                .Select(w => w.Trim())
+                .Where(w => w.StartsWith("{") && w.EndsWith("}"))
+                .Select(w => w.TrimStart('{').TrimEnd('}'))
+                .FirstOrDefault();
+        }
 
         private static string GetLifestyle(DetailsPageContext pageContext)
         {
@@ -119,39 +120,41 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
             }
 
             private static readonly Dictionary<string, string> ArticleTypeToSasATypeDictionary = new Dictionary<string, string>
-        {
-            {"advice", "advice" },
-            {"car advice", "advice" },
-            {"engine review", "engine-reviews" },
-            {"feature", "features" },
-            {"finance", "news" },
-            {"industry news", "news" },
-            {"insurance", "news" },
-            {"motorsport", "news" },
-            {"motoracing", "motoracing" },
-            {"news", "news"},
-            {"product", "products" },
-            {"recipe", "news" },
-            {"review", "reviews" },
-            {"riding advice", "riding-advice" },
-            {"tips", "tips" },
-            {"tow test", "tow-tests" },
-            {"video", "videos" }
-        };
-            //public static string GetArticleTypeValues(DetailsPageContext pageContext)
-            //{
-            //    if (pageContext.ArticleTypes.Any(x => string.Equals("sponsored", x, StringComparison.OrdinalIgnoreCase)))
-            //    {
-            //        return "sponsored";
-            //    }
+            {
+                {"advice", "advice" },
+                {"car advice", "advice" },
+                {"engine review", "engine-reviews" },
+                {"feature", "features" },
+                {"finance", "news" },
+                {"industry news", "news" },
+                {"insurance", "news" },
+                {"motorsport", "news" },
+                {"motoracing", "motoracing" },
+                {"news", "news"},
+                {"product", "products" },
+                {"recipe", "news" },
+                {"review", "reviews" },
+                {"riding advice", "riding-advice" },
+                {"tips", "tips" },
+                {"tow test", "tow-tests" },
+                {"video", "videos" }
+            };
 
-            //    var articleType = pageContext.Type;
+            public static string GetArticleTypeValues(DetailsPageContext pageContext)
+            {
+                if (pageContext.ArticleTypes.Any(x => string.Equals("sponsored", x, StringComparison.OrdinalIgnoreCase)))
+                {
+                    return "sponsored";
+                }
 
-            //    if (articleType == null)
-            //        return null;
-            //    string aType;
-            //    return ArticleTypeToSasATypeDictionary.TryGetValue(articleType.ToLower(), out aType) && !string.IsNullOrEmpty(aType) ? aType : "news";
-            //}
+                var articleType = pageContext.ArticleType;
+
+                if (articleType == null)
+                    return null;
+
+                string aType;
+                return ArticleTypeToSasATypeDictionary.TryGetValue(articleType.ToLower(), out aType) && !string.IsNullOrEmpty(aType) ? aType : "news";
+            }
         }
     }
 }

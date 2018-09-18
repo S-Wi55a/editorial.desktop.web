@@ -28,6 +28,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
         public List<string> Lifestyles { get; set; }
         public List<string> Categories { get; set; }
         public string ArticleType { get; set; }
+        public List<string> ArticleTypes { get; set; }
+        public string Keywords { get; set; }
     }
 
     public class LandingPageContext : IPageContext

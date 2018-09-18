@@ -60,7 +60,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             {
                 Items = articleViewModel.Items,
                 Lifestyles = articleViewModel.Lifestyles,
-                Categories = articleViewModel.Categories
+                Categories = articleViewModel.Categories,
+                Keywords = articleViewModel.Keywords,
+                ArticleType = articleViewModel.ArticleType,
+                ArticleTypes = articleViewModel.ArticleTypes,
             };
 
             _pageContextStore.Set(detailsPageContext);
