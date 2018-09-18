@@ -34,7 +34,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
 
     public class LandingPageContext : IPageContext
     {
-        public PageContextTypes PageContextType =>  PageContextTypes.Listing;
+        public PageContextTypes PageContextType =>  PageContextTypes.Landing;
         public string Make { get; set; }
     }
 

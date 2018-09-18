@@ -2,6 +2,8 @@
 using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
@@ -16,8 +18,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
             {
                 new TestTagBuilder()
             };
+            var pageContextStore = Substitute.For<IPageContextStore>();
 
-            var queryHandler = new MediaMotiveAdQueryHandler(tagBuilders);
+            var queryHandler = new MediaMotiveAdQueryHandler(tagBuilders, pageContextStore);
 
             //Act
             var result = queryHandler.Handle(new DisplayAdQuery()
