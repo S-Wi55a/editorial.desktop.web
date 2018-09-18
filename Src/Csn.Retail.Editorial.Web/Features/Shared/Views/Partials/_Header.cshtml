@@ -1,6 +1,9 @@
-﻿<header id="page-header" class="page-header" data-webm-section="page-header">
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
+
+<header id="page-header" class="page-header" data-webm-section="page-header">
     <div class="container">
         @{ Html.RenderPartial("Partials/_SiteLogo"); }
-        @{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Leaderboard.cshtml"); }
+        @{ Html.RenderDisplayAd(DisplayAdPlacements.Leaderboard); }
     </div>
 </header>

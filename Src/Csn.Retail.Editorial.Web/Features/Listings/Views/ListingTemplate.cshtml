@@ -1,8 +1,9 @@
-﻿@using Csn.Retail.Editorial.Web.Features.Listings.Models
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Listings.Models
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Shared.Models
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
-@using Newtonsoft.Json
 @using React.Web.Mvc
 @model ListingsViewModel
 
@@ -21,7 +22,7 @@
 @section TopScripts {
     @Html.AssetJs("listings.vendor", LoadType.Defer)
     @Html.AssetJs("listings-page--" + tenantName, LoadType.Defer)
-    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.displayAds--" + tenantName, LoadType.Defer)
 }
 
 <div class="listing-page">
@@ -31,17 +32,16 @@
             Html.RenderPartial("Partials/_Header");
         }
     }
-    @Html.React("global.Components.INav", new {state = Model}, containerId: "iNav", containerClass: "iNav--v1")
+    @Html.React("global.Components.INav", new { state = Model }, containerId: "iNav", containerClass: "iNav--v1")
 
     <div class="container">
-
         <div class="main">
-            @Html.React("global.Components.INavArticleCount", new {state = Model}, containerId: "iNavArticleCount")
-            @Html.React("global.Components.INavSorting", new { state = Model}, containerId: "iNavSorting")
-            @Html.React("global.Components.INavBreadCrumbs", new {state = Model}, containerId: "iNavBreadcrumbs")
-            @Html.React("global.Components.INavSearchResults", new {state = Model}, containerId: "iNavSearchResults")
-            @{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_TeAds.cshtml"); }
-            @Html.React("global.Components.INavPagination", new {state = Model}, containerId: "iNavPagination")
+            @Html.React("global.Components.INavArticleCount", new { state = Model }, containerId: "iNavArticleCount")
+            @Html.React("global.Components.INavSorting", new { state = Model }, containerId: "iNavSorting")
+            @Html.React("global.Components.INavBreadCrumbs", new { state = Model }, containerId: "iNavBreadcrumbs")
+            @Html.React("global.Components.INavSearchResults", new { state = Model }, containerId: "iNavSearchResults")
+            @{ Html.RenderDisplayAd(DisplayAdPlacements.TEADS); }
+            @Html.React("global.Components.INavPagination", new { state = Model }, containerId: "iNavPagination")
 
             @{ Html.RenderPartial("_Disclaimer"); }
 
@@ -50,11 +50,11 @@
     </div>
 </div>
 
-@{ Html.RenderPartial("~/Features/MediaMotiveAds/Views/_Tracking.cshtml", Model.MediaMotiveModel); }
+@{ Html.RenderDisplayAdTracking(Model.MediaMotiveModel); }
 
 @section BottomScripts
 {
-    @Html.React("global.Components.INavPreloadedState", new {state = Model}, containerId: "INavPreloadedState")
+    @Html.React("global.Components.INavPreloadedState", new { state = Model }, containerId: "INavPreloadedState")
     @if (Model.PolarNativeAdsData != null)
     {
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
@@ -63,9 +63,5 @@
     {
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
-    @{Html.RenderPartial("Partials/MediaMotive/_Krux");}
-
-    @{
-        Html.RenderAction(Model.EditorialPageType == EditorialPageTypes.Landing ? "HtmlTracking" : "HtmlTrackingListing", "Tracking");
-    }
+    @{ Html.RenderAction(Model.EditorialPageType == EditorialPageTypes.Landing ? "HtmlTracking" : "HtmlTrackingListing", "Tracking"); }
 }

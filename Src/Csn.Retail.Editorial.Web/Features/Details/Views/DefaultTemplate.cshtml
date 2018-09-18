@@ -25,7 +25,7 @@
 @section TopScripts {
     @Html.AssetJs("details.vendor", LoadType.Defer)
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
-    @Html.AssetJs("csn.mediaMotive--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.displayAds--" + tenantName, LoadType.Defer)
 }
 
 <div class="page-container">
@@ -66,6 +66,4 @@
     {
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
     }
-    @{ Html.RenderPartial("Partials/MediaMotive/_Krux", Model.MediaMotiveData); }
-
 }

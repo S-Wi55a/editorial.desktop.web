@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
 using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using NSubstitute;
 using NUnit.Framework;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
@@ -14,23 +13,17 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
         [Test]
         public void MultipleTagsWithDuplicates()
         {
-            var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
-            tenantProvider.Current().Returns(new TenantInfo()
-            {
-                Name = "carsales",
-                AdUnits = new List<string> { "Tile3" }
-            });
             var tagBuilders = new List<IMediaMotiveTagBuilder>()
             {
                 new TestTagBuilder()
             };
 
-            var queryHandler = new MediaMotiveAdQueryHandler(tagBuilders, tenantProvider);
+            var queryHandler = new MediaMotiveAdQueryHandler(tagBuilders);
 
             //Act
-            var result = queryHandler.Handle(new MediaMotiveAdQuery()
+            var result = queryHandler.Handle(new DisplayAdQuery()
             {
-                TileId = 3
+                AdPlacement = DisplayAdPlacements.Aside
             });
 
             Assert.AreEqual("//mm.carsales.com.au/carsales/jserver/make=honda/model=civic/make=bmw", result.ScriptUrl);
@@ -38,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
 
         private class TestTagBuilder : IMediaMotiveTagBuilder
         {
-            public IEnumerable<MediaMotiveTag> Build(MediaMotiveAdQuery query)
+            public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
             {
                 return new List<MediaMotiveTag>()
                 {
@@ -49,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
                 };
             }
 
-            public bool IsApplicable(MediaMotiveAdQuery query)
+            public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
             {
                 return true;
             }

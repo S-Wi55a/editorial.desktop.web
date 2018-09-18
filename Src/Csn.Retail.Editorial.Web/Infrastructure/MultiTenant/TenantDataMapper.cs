@@ -43,6 +43,10 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.MultiTenant
                         {
                             property.SetValue(result, CultureInfo.CreateSpecificCulture(value), null);
                         }
+                        else if (property.PropertyType.IsEnum)
+                        {
+                            property.SetValue(result, (Enum)Enum.Parse(property.PropertyType, value), null);
+                        }
                         else
                         {
                             property.SetValue(result, Convert.ChangeType(value, property.PropertyType), null);

@@ -37,6 +37,10 @@ namespace Csn.Retail.Editorial.Web.Ioc
     {
         public string Get()
         {
+            var tenantName = HttpContext.Current.Request.QueryString["__tenant"];
+            if (!string.IsNullOrEmpty(tenantName))
+                return tenantName;
+
             var host = HttpContext.Current.Request.Url.Host.Replace("www.", string.Empty).Split('.').FirstOrDefault();
 
             if (!host.IsSame("redbook")) return host;

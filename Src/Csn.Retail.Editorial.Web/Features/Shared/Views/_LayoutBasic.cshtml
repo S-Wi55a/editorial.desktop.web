@@ -1,6 +1,6 @@
-﻿@using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
-@using Csn.Retail.Editorial.Web.Features.Shared.Settings
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 
@@ -14,13 +14,16 @@
 
 @section Head{
     @RenderSection("Head", false)
-    @{ Html.RenderPartial("Partials/Head/_Favicon"); }
-
+    @{
+        Html.RenderPartial("Partials/Head/_Favicon");
+        Html.RenderDisplayAdsHeader();
+    }
 }
 
 @section Styles{
     @globalSiteData.Style.ToMvcHtmlString()
     @Html.AssetCss("csn.common--" + tenantName)
+    @Html.AssetCss("csn.displayAds--" + tenantName)
     @RenderSection("Styles", false)
 
     <noscript id="deferred-styles">
@@ -68,5 +71,5 @@
     @globalSiteData.Script.ToMvcHtmlString()
     @googleAnalyticTracking.TrackingScript.ToMvcHtmlString()
     @{ Html.RenderPartial("Partials/Hotjar/_hotjarTracking"); }
-
+    @{ Html.RenderDisplayAdsFooter(); }
 }

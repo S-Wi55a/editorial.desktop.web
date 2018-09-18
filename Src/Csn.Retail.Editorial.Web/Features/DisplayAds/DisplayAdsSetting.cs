@@ -2,26 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
-    public class MediaMotiveAdSetting
+    public enum DisplayAdsSource
     {
-        public MediaMotiveAdType Description { get; set; }
-        public bool DataKruxRequired { get; set; }
-        public AdSize AdSize { get; set; }
-        public List<string> NotSupportedArticleTypes { get; set; }
+        MediaMotive,
+        GoogleAd
     }
 
-    public enum MediaMotiveAdType
-    {
-        Leaderboard,
-        MREC,
-        TEADS,
-        Tracking,
-        Banner
-    }
-
-    public enum AdSize
+    public enum DisplayAdSizes
     {
         [Dimension(728, 90)]
         Leaderboard,
@@ -58,12 +47,6 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
         Block1200X100
     }
 
-    public class Dimension
-    {
-        public int Width { get; set; }
-        public int Height { get; set; }
-    }
-
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Method | AttributeTargets.Property, AllowMultiple = true)]
     public class DimensionAttribute : Attribute
     {
@@ -98,5 +81,10 @@ namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
                     Height = dimensionAttr.Height
                 };
         }
+    }
+    public class Dimension
+    {
+        public int Width { get; set; }
+        public int Height { get; set; }
     }
 }
