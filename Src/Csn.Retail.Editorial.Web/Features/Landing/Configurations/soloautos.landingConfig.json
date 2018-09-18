@@ -4,10 +4,10 @@
       "type": "default",
       "carouselConfigurations": [
         {
-          "title": "Editor's Choice",
+          "title": "Selección del Editor",
           "displayMrec": true,
           "displayNativeAd": false,
-          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
+          "query": "(And.ArticleSet.Soloautos_home._.Service.Soloautos.)",
           "sort": "Latest",
           "viewAll": null,
           "polarAds": null,
@@ -15,99 +15,67 @@
           "carouselItems": null
         },
         {
-          "title": "Reviews",
+          "title": "Actualidad",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.Type.Review._.Service.CarSales.)",
+          "query": "(And.Type.Actualidad._.Service.Soloautos.)",
           "sort": "Latest",
-          "viewAll": "/reviews/",
+          "viewAll": "/actualidad/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
         },
         {
-          "title": "News",
+          "title": "Las Mejores Compras",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.Type.News._.Service.CarSales.)",
+          "query": "(And.Type.Las Mejores Compras._.Service.Soloautos.)",
           "sort": "Latest",
-          "viewAll": "/news/",
+          "viewAll": "/las-mejores-compras/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
         },
         {
-          "title": "Videos",
+          "title": "Compra de Auto",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.Type.Video._.Service.CarSales.)",
+          "query": "(And.Type.Compra de Auto._.Service.Soloautos.)",
           "sort": "Latest",
-          "viewAll": "/videos/",
+          "viewAll": "/compra-de-auto/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
         },
         {
-          "title": "Advice",
+          "title": "Comparativas",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales.)",
+          "query": "(And.Type.Comparativas._.Service.Soloautos.)",
           "sort": "Latest",
-          "viewAll": "/advice/",
+          "viewAll": "/comparativas/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
         },
         {
-          "title": "Driver",
+          "title": "Consejos",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": null,
-          "sort": null,
-          "viewAll": null,
-          "polarAds": null,
-          "carouselType": "driver",
-          "carouselItems": [
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/newcarcalendar.png",
-              "itemUrl": "/editorial/details/new-car-calendar-11034/"
-            },
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/carpool.png",
-              "itemUrl": "https://www.carsales.com.au/editorial/carpool/"
-            },
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/caroftheyear.png",
-              "itemUrl": "/car-of-the-year-2017/"
-            },
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/ownerreviews.png",
-              "itemUrl": "http://owner-reviews.carsales.com.au/"
-            },
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/newcarshowroom.png",
-              "itemUrl": "/new-cars/"
-            }
-          ]
-        },
-        {
-          "title": "Comparisons",
-          "displayMrec": false,
-          "displayNativeAd": false,
-          "query": "(And.ArticleTypes.Comparison._.Service.CarSales.)",
+          "query": "(And.ArticleTypes.Consejos._.Service.Soloautos.)",
           "sort": "Latest",
-          "viewAll": "/results/?q=ArticleTypes.Comparison.",
+          "viewAll": "/consejos/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
         },
         {
-          "title": "Features",
+          "title": "Pruebas",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.Type.Feature._.Service.CarSales.)",
+          "query": "(And.Type.Pruebas._.Service.Soloautos.)",
           "sort": "Latest",
-          "viewAll": "/features/",
+          "viewAll": "/pruebas/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
@@ -115,7 +83,7 @@
       ],
       "heroAdSettings": {
         "hasHeroAd": false,
-        "heroTitle": "Reviews, advice, news & more",
+        "heroTitle": "Actualidad, consejo, comparativas y mas",
         "heroMake": null
       }
     }
