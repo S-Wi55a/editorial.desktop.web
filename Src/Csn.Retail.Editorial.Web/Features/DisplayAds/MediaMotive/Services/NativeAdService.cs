@@ -1,13 +1,13 @@
 ﻿using System;
 using Bolt.Common.Extensions;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models;
 using Ingress.Cache;
 using Ingress.ServiceClient.Abstracts;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Services
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Services
 {
     public interface INativeAdService
     {

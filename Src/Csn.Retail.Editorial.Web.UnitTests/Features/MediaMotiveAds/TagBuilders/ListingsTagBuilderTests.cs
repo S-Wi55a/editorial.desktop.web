@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.DisplayAds;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;

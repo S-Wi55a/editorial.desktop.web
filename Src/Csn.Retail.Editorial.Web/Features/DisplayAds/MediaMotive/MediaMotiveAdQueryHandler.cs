@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
@@ -13,15 +15,23 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
     public class MediaMotiveAdQueryHandler : IQueryHandler<DisplayAdQuery, MediaMotiveAdViewModel>
     {
         private readonly IEnumerable<IMediaMotiveTagBuilder> _tagBuilders;
+        private readonly IPageContextStore _pageContextStore;
 
-        public MediaMotiveAdQueryHandler(IEnumerable<IMediaMotiveTagBuilder> tagBuilders)
+        public MediaMotiveAdQueryHandler(IEnumerable<IMediaMotiveTagBuilder> tagBuilders, IPageContextStore pageContextStore)
         {
             _tagBuilders = tagBuilders;
+            _pageContextStore = pageContextStore;
         }
         public MediaMotiveAdViewModel Handle(DisplayAdQuery displayAdQuery)
         {
             // lookup the ad settings for this type
             if (!MediaMotiveAdSettings.MediaMotiveAdTypes.TryGetValue(displayAdQuery.AdPlacement, out var adSetting))
+            {
+                return null;
+            }
+
+            if (_pageContextStore.Get().PageContextType == PageContextTypes.Details &&
+                _pageContextStore.Get() is DetailsPageContext detailsPageContext && adSetting.NotSupportedArticleTypes.Intersect(detailsPageContext.ArticleTypes, StringComparer.OrdinalIgnoreCase).Any())
             {
                 return null;
             }

@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Services;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Services;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
 {

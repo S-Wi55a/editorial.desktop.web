@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders;
 using NUnit.Framework;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
