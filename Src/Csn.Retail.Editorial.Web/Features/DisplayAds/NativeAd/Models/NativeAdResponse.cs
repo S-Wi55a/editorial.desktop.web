@@ -1,4 +1,4 @@
-﻿namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models
+﻿namespace Csn.Retail.Editorial.Web.Features.DisplayAds.NativeAd.Models
 {
     public class NativeAdResponse
     {

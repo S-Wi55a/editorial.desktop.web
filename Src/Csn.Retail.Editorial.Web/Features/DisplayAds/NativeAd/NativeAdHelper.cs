@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
-namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds.NativeAd
 {
     public static class NativeAdHelper
     {

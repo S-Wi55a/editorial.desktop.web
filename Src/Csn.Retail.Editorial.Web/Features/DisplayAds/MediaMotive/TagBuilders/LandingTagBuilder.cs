@@ -22,30 +22,22 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
 
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
         {
-            var pageContext = _pageContextStore.Get().PageContextType == PageContextTypes.Landing
-                ? _pageContextStore.Get() as LandingPageContext
-                : null;
+            var landingPageContext = _pageContextStore.Get() is LandingPageContext pageContext ? pageContext : null;
 
             var mediaMotiveTag = new List<MediaMotiveTag> { 
-                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, !string.IsNullOrEmpty(pageContext?.Make) ? MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage)
+                new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, !string.IsNullOrEmpty(landingPageContext?.Make) ? MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage)
             };
 
-            if (pageContext?.Make == null) return mediaMotiveTag;
-            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Make, pageContext.Make.Replace(" ", "")));
-            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Car, pageContext.Make.Replace(" ", ""))); // TO DO when we have a model, we need to include model as part of car tag
+            if (landingPageContext?.Make == null) return mediaMotiveTag;
+            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Make, landingPageContext.Make.Replace(" ", "")));
+            mediaMotiveTag.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Car, landingPageContext.Make.Replace(" ", ""))); // TO DO when we have a model, we need to include model as part of car tag
 
             return mediaMotiveTag;
         }
 
         public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
-            var pageContext = _pageContextStore.Get().PageContextType == PageContextTypes.Landing
-                ? _pageContextStore.Get() as LandingPageContext
-                : null;
-
-            var path = "/editorial/" + (pageContext?.Make != null ? pageContext.Make.MakeUrlFriendly().ToLower() + "/" : "");
-
-            return _requestContextWrapper.Url.AbsolutePath.IsSame(path);
+            return _pageContextStore.Get().PageContextType == PageContextTypes.Landing;
         }
     }
 }
