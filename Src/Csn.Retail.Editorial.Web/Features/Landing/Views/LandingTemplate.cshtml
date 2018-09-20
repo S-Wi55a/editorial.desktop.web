@@ -1,4 +1,5 @@
-﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Landing.Configurations
 @using Csn.Retail.Editorial.Web.Features.Landing.Models
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
@@ -45,7 +46,7 @@
     </div>
 </div>
 
-@{ Html.RenderDisplayAdTracking(Model.MediaMotiveModel); }
+@{ Html.RenderDisplayAd(DisplayAdPlacements.Tracking); }
 
 @section BottomScripts
 {

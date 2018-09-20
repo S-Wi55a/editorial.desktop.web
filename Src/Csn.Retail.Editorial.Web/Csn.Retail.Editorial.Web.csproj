@@ -581,6 +581,8 @@
     <Compile Include="Features\DisplayAds\MediaMotive\MediaMotiveAdSettings.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\Models\MediaMotiveAdViewModel.cs" />
     <Compile Include="Features\DisplayAds\GoogleAd\Models\GoogleAdViewModel.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\SasAdTagBuilderExtensions.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\SasAdTags.cs" />
     <Compile Include="Features\Landing\CacheStores\GetLandingQueryCacheStore.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselController.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQuery.cs" />
@@ -596,13 +598,14 @@
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
     <Compile Include="Features\Listings\RedbookHomepageQueryHandler.cs" />
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
-    <Compile Include="Features\MediaMotiveAds\HtmlHelpers\NativeAdHelper.cs" />
-    <Compile Include="Features\MediaMotiveAds\Models\NativeAdResponse.cs" />
-    <Compile Include="Features\MediaMotiveAds\Models\MediaMotiveModel.cs" />
-    <Compile Include="Features\MediaMotiveAds\NativeAdController.cs" />
-    <Compile Include="Features\MediaMotiveAds\Services\NativeAdService.cs" />
-    <Compile Include="Features\MediaMotiveAds\TagBuilders\LandingTagBuilder.cs" />
+    <Compile Include="Features\DisplayAds\NativeAd\NativeAdHelper.cs" />
+    <Compile Include="Features\DisplayAds\NativeAd\Models\NativeAdResponse.cs" />
+    <Compile Include="Features\DisplayAds\NativeAd\NativeAdController.cs" />
+    <Compile Include="Features\DisplayAds\NativeAd\Services\NativeAdService.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\DetailsTagBuilder.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\LandingTagBuilder.cs" />
     <Compile Include="Features\Shared\Constants\MediaMotiveAreaNames.cs" />
+    <Compile Include="Features\Shared\ContextStores\PageContexts.cs" />
     <Compile Include="Features\Shared\Hero\Models\HeroAdUnitModel.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
@@ -662,24 +665,19 @@
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Shared\Extensions\SearchActionExtensions.cs" />
     <Compile Include="Features\Listings\Models\SortingViewModel.cs" />
-    <Compile Include="Features\Shared\ContextStores\SearchResultContextStore.cs" />
+    <Compile Include="Features\Shared\ContextStores\PageContextStore.cs" />
     <Compile Include="Features\Shared\Extensions\SearchResultDtoExtensions.cs" />
     <Compile Include="Features\Shared\Helpers\ListingUrlHelper.cs" />
     <Compile Include="Features\Listings\ListingsController.cs" />
     <Compile Include="Features\Listings\GetListingsQuery.cs" />
     <Compile Include="Features\Listings\GetListingsQueryHandler.cs" />
     <Compile Include="Features\Listings\Models\ListingsViewModel.cs" />
-    <Compile Include="Features\MediaMotiveAds\HtmlHelpers\MediaMotiveHtmlHelpers.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveTagBuildersParams.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQuery.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdQueryHandler.cs" />
-    <Compile Include="Features\MediaMotiveAds\MediaMotiveDetailsAdController.cs" />
-    <Compile Include="Features\MediaMotiveAds\SasAdTags.cs" />
-    <Compile Include="Features\MediaMotiveAds\TagBuilders\CommonTagBuilder.cs" />
-    <Compile Include="Features\MediaMotiveAds\TagBuilders\IMediaMotiveTagBuilder.cs" />
-    <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsBreadCrumbTagBuilder.cs" />
-    <Compile Include="Features\MediaMotiveAds\TagBuilders\ListingsTagBuilder.cs" />
-    <Compile Include="Features\MediaMotiveAds\TagBuilders\MediaMotiveTag.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\MediaMotiveTagBuildersParams.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\CommonTagBuilder.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\IMediaMotiveTagBuilder.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\ListingsBreadCrumbTagBuilder.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\ListingsTagBuilder.cs" />
+    <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\MediaMotiveTag.cs" />
     <Compile Include="Features\Shared\Helpers\ImageUrlHelper.cs" />
     <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
     <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
@@ -921,7 +919,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
-    <Folder Include="Features\MediaMotiveAds\Mappers\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Images\Demotores\" />
     <Folder Include="Features\Shared\Assets\Images\Soloautos\" />
@@ -947,11 +944,11 @@
       <DependentUpon>NLog.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-	<Content Include="NLog.LatamStaging.config">
+    <Content Include="NLog.LatamStaging.config">
       <DependentUpon>NLog.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-	<Content Include="NLog.LatamRelease.config">
+    <Content Include="NLog.LatamRelease.config">
       <DependentUpon>NLog.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1027,11 +1024,6 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\EditorRatings\_procon.scss" />
     <Content Include="Features\Shared\Assets\Css\_globals.scss" />
     <Content Include="Features\Shared\Views\Partials\MediaMotive\_Krux.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Leaderboard.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Mrec.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Teads.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tile15.cshtml" />
-    <Content Include="Features\Details\Views\Partials\MediaMotive\_Tracking.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_mediamotive.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
@@ -1131,7 +1123,6 @@
     <Content Include="Features\Shared\Assets\Css\Variables\Content\_content.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavPagination\Css\iNavPagination.scss" />
     <Content Include="Features\Listings\Assets\Js\Modules\iNavSorting\Css\iNavSorting.scss" />
-    <Content Include="Features\MediaMotiveAds\Views\DetailsAd.cshtml" />
     <Content Include="Features\Details\Views\Partials\_Header.cshtml" />
     <Content Include="Features\Shared\Views\Partials\_SiteLogo.cshtml" />
     <Content Include="Features\Details\Views\Boatsales\_Disclaimer.cshtml" />

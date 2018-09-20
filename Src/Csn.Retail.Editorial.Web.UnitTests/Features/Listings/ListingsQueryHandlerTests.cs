@@ -29,7 +29,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             //Arrange
             var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
             var mapper = Substitute.For<IMapper>();
-            var contextStore = Substitute.For<ISearchResultContextStore>();
+            var contextStore = Substitute.For<IPageContextStore>();
             var paginationHelper = Substitute.For<IPaginationHelper>();
             var sortingHelper = Substitute.For<ISortingHelper>();
             var expressionParser = Substitute.For<IExpressionParser>();
@@ -69,7 +69,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             await queryHandler.HandleAsync(new GetListingsQuery {Keywords = "honda"});
 
             //Assert
-            contextStore.Received().Set(Arg.Any<SearchContext>());
+            contextStore.Received().Set(Arg.Any<IPageContext>());
         }
     }
 }

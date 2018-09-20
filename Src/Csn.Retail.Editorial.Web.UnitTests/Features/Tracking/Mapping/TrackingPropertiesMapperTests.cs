@@ -15,9 +15,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Tracking.Mapping
         [Test]
         public void TestGetTrackingProperties_Keyword()
         {
-            var contextStore = Substitute.For<ISearchResultContextStore>();
+            var contextStore = Substitute.For<IPageContextStore>();
 
-            contextStore.Get().Returns(new SearchContext()
+            contextStore.Get().Returns(new ListingPageContext()
             {
                 RyvussNavResult = new RyvussNavResultDto()
                 {

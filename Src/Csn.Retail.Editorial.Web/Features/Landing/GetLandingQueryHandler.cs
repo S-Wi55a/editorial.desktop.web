@@ -7,8 +7,8 @@ using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
 using Csn.Retail.Editorial.Web.Features.Landing.Mappings;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
 using Csn.Retail.Editorial.Web.Features.Landing.Services;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Hero.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Mappers;
@@ -35,10 +35,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly ISeoDataMapper _seoDataMapper;
+        private readonly IPageContextStore _pageContextStore;
 
         public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
             ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider,
-            ISeoDataMapper seoDataMapper)
+            ISeoDataMapper seoDataMapper, IPageContextStore pageContextStore)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
@@ -48,6 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _tenantProvider = tenantProvider;
             _seoDataMapper = seoDataMapper;
             _carouselDataService = carouselDataService;
+            _pageContextStore = pageContextStore;
         }
 
         [Transaction]
@@ -67,6 +69,13 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
             navResults.INav.CurrentUrl = ListingUrlHelper.GetPathAndQueryString(includeResultsSegment: true);
 
+            var landingPageContext = new LandingPageContext
+            {
+                Make = !string.IsNullOrEmpty(configResults.HeroAdSettings?.HeroMake) ? configResults.HeroAdSettings.HeroMake : string.Empty
+            };
+
+            _pageContextStore.Set(landingPageContext);
+
             return new GetLandingResponse
             {
                 LandingViewModel = new LandingViewModel
@@ -85,11 +94,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = configResults.HeroAdSettings.HeroTitle,
-                    HeroImage = !string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HeroImage : string.Empty,
-                    MediaMotiveModel = new MediaMotiveModel
-                    {
-                        Make = !string.IsNullOrEmpty(configResults.HeroAdSettings?.HeroMake) ? configResults.HeroAdSettings.HeroMake : string.Empty
-                    }
+                    HeroImage = !string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HeroImage : string.Empty 
                 },
                 CacheViewModel = !(searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };

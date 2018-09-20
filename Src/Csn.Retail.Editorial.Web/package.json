@@ -34,7 +34,6 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@types/immutability-helper": "^2.0.15",
         "@types/isomorphic-fetch": "0.0.34",
         "@types/react": "^16.0.9",
         "@types/react-dom": "^16.0.0",

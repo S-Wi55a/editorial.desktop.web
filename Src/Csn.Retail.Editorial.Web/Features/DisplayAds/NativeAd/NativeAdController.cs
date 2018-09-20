@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Services;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.NativeAd.Services;
 
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds.NativeAd
 {
     public class NativeAdController : Controller
     {

@@ -1,9 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Csn.MultiTenant;
-using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 using Csn.Retail.Editorial.Web.Features.Listings.Mappings;
 using Csn.Retail.Editorial.Web.Features.Listings.Models;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
@@ -28,7 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IMapper _mapper;
         private readonly IPaginationHelper _paginationHelper;
         private readonly ISortingHelper _sortingHelper;
-        private readonly ISearchResultContextStore _searchResultContextStore;
+        private readonly IPageContextStore _pageContextStore;
         private readonly IExpressionParser _parser;
         private readonly IExpressionFormatter _expressionFormatter;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
@@ -37,14 +35,14 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IRyvussDataService _ryvussDataService;
 
         public GetListingsQueryHandler(ITenantProvider<TenantInfo> tenantProvider, IMapper mapper, IPaginationHelper paginationHelper,
-            ISortingHelper sortingHelper, ISearchResultContextStore searchResultContextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
+            ISortingHelper sortingHelper, IPageContextStore pageContextStore, IExpressionParser parser, IExpressionFormatter expressionFormatter, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, 
             IListingInsightsDataMapper listingInsightsDataMapper, ISeoDataMapper seoDataMapper, IRyvussDataService ryvussDataService)
         {
             _tenantProvider = tenantProvider;
             _mapper = mapper;
             _paginationHelper = paginationHelper;
             _sortingHelper = sortingHelper;
-            _searchResultContextStore = searchResultContextStore;
+            _pageContextStore = pageContextStore;
             _parser = parser;
             _expressionFormatter = expressionFormatter;
             _polarNativeAdsDataMapper = polarNativeAdsDataMapper;
@@ -86,7 +84,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 };
             }
 
-            var searchContext = new SearchContext
+            var listingPageContext = new ListingPageContext
             {
                 RyvussNavResult = resultData,
                 Query = string.IsNullOrEmpty(query.Query) ? resultData.Metadata?.Query : query.Query,
@@ -97,7 +95,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                 EditorialPageType = query.EditorialPageType
             };
 
-            _searchResultContextStore.Set(searchContext);
+            _pageContextStore.Set(listingPageContext);
 
             var navResults = _mapper.Map<NavResult>(resultData, opt =>
             {
@@ -121,10 +119,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
                     Keyword = !string.IsNullOrEmpty(query.Keywords) ? query.Keywords : _parser.Parse(resultData.Metadata?.Query).GetKeywords(),
                     DisqusSource = _tenantProvider.Current().DisqusSource,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(resultData.INav.BreadCrumbs, MediaMotiveAreaNames.EditorialResultsPage),
-                    InsightsData = _listingInsightsDataMapper.Map(searchContext),
+                    InsightsData = _listingInsightsDataMapper.Map(listingPageContext),
                     SeoData = _seoDataMapper.Map(resultData),
-                    EditorialPageType = query.EditorialPageType,
-                    MediaMotiveModel = new MediaMotiveModel()
+                    EditorialPageType = query.EditorialPageType
                 }
             };
         }

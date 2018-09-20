@@ -4,7 +4,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
-namespace Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders
+namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
 {
     public interface IListingsBreadCrumbTagBuilder
     {

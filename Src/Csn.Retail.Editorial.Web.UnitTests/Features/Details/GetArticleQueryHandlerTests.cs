@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
@@ -18,12 +19,14 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         private IMapper _mapper;
         private IEditorialApiProxy _apiProxy;
         private ITenantProvider<TenantInfo> _tenantProvider;
+        private IPageContextStore _pageContextStore;
 
         [SetUp]
         public void SetUp()
         {
             _tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
             _mapper = Substitute.For<IMapper>();
+            _pageContextStore = Substitute.For<IPageContextStore>();
 
             _apiProxy = Substitute.For<IEditorialApiProxy>();
             _apiProxy.GetArticleAsync(Arg.Any<EditorialApiInput>()).ReturnsForAnyArgs(Task.FromResult(new SmartServiceResponse<ArticleDetailsDto>()
@@ -51,7 +54,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
 
             _mapper.Map<ArticleViewModel>(Arg.Any<ArticleDetailsDto>()).Returns(new ArticleViewModel() { SeoData = new Web.Features.Shared.Models.SeoData(){AllowSeoIndexing = true} });
 
-            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider);
+            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider, _pageContextStore);
 
             var result = await queryHandler.HandleAsync(new GetArticleQuery()
             {
@@ -76,7 +79,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
 
             _mapper.Map<ArticleViewModel>(Arg.Any<ArticleDetailsDto>()).Returns(new ArticleViewModel() { SeoData = new Web.Features.Shared.Models.SeoData() { AllowSeoIndexing = true } });
 
-            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider);
+            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider, _pageContextStore);
 
             var result = await queryHandler.HandleAsync(new GetArticleQuery()
             {
@@ -101,7 +104,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
 
             _mapper.Map<ArticleViewModel>(Arg.Any<ArticleDetailsDto>()).Returns(new ArticleViewModel() { SeoData = new Web.Features.Shared.Models.SeoData() { AllowSeoIndexing = false } });
 
-            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider);
+            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider, _pageContextStore);
 
             var result = await queryHandler.HandleAsync(new GetArticleQuery()
             {

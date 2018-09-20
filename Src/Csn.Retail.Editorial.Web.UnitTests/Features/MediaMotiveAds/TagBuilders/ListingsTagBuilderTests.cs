@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using NSubstitute;
 using NUnit.Framework;
-using ContextStore = Ingress.Web.Common.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
 {
@@ -16,9 +15,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void NoBreadCrumbs()
         {
-            var contextStore = Substitute.For<ISearchResultContextStore>();
+            var contextStore = Substitute.For<IPageContextStore>();
 
-            contextStore.Get().Returns(new SearchContext()
+            contextStore.Get().Returns(new ListingPageContext()
             {
                 RyvussNavResult = new RyvussNavResultDto()
             });
@@ -41,9 +40,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void MakeButNoModelBreadCrumbs()
         {
-            var contextStore = Substitute.For<ISearchResultContextStore>();
+            var contextStore = Substitute.For<IPageContextStore>();
 
-            contextStore.Get().Returns(new SearchContext()
+            contextStore.Get().Returns(new ListingPageContext()
             {
                 RyvussNavResult = new RyvussNavResultDto()
             });
@@ -71,9 +70,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void MakeAndModelBreadCrumbs()
         {
-            var contextStore = Substitute.For<ISearchResultContextStore>();
+            var contextStore = Substitute.For<IPageContextStore>();
 
-            contextStore.Get().Returns(new SearchContext()
+            contextStore.Get().Returns(new ListingPageContext()
             {
                 RyvussNavResult = new RyvussNavResultDto()
             });
@@ -104,9 +103,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds.TagBuilders
         [Test]
         public void MakeNoModelButlMarketingGroupBreadCrumbs()
         {
-            var contextStore = Substitute.For<ISearchResultContextStore>();
+            var contextStore = Substitute.For<IPageContextStore>();
 
-            contextStore.Get().Returns(new SearchContext()
+            contextStore.Get().Returns(new ListingPageContext()
             {
                 RyvussNavResult = new RyvussNavResultDto()
             });

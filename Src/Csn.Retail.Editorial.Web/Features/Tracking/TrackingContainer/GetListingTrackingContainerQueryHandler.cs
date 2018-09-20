@@ -15,29 +15,29 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
     {
         private readonly IEditorialListingTrackingContainerProvider _listingTrackingProvider;
         private readonly HttpContextBase _httpContext;
-        private readonly ISearchResultContextStore _searchResultContextStore;
+        private readonly IPageContextStore _pageContextStore;
         private readonly IMapper _mapper;
 
         public GetListingTrackingContainerQueryHandler(IEditorialListingTrackingContainerProvider listingTrackingProvider, 
                                                         HttpContextBase httpContext, 
-                                                        ISearchResultContextStore searchResultContextStore, 
+                                                        IPageContextStore pageContextStore, 
                                                         IMapper mapper)
         {
             _listingTrackingProvider = listingTrackingProvider;
             _httpContext = httpContext;
-            _searchResultContextStore = searchResultContextStore;
+            _pageContextStore = pageContextStore;
             _mapper = mapper;
         }
 
         public IAnalyticsTrackingContainer Handle(GetListingTrackingContainerQuery query)
         {
-            var search = _searchResultContextStore.Get();
+            var listingPageContext = _pageContextStore.Get() is ListingPageContext pageContext ? pageContext : null;
 
-            var editorialListItems = search?.RyvussNavResult?.SearchResults ?? Enumerable.Empty<SearchResultDto>();
+            var editorialListItems = listingPageContext?.RyvussNavResult?.SearchResults ?? Enumerable.Empty<SearchResultDto>();
 
             var results = editorialListItems.Select(_mapper.Map<AnalyticsEditorialTrackingItem>).ToList();
 
-            var searchContext = _mapper.Map<AnalyticsSearchContext>(search);
+            var searchContext = _mapper.Map<AnalyticsSearchContext>(listingPageContext);
 
             return _listingTrackingProvider.GetContainer(results, searchContext, _httpContext);
         }
