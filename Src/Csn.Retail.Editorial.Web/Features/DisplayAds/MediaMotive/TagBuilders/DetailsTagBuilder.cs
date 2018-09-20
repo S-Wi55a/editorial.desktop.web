@@ -39,7 +39,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
             adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.ArticleType, SasAdTagBuilderExtensions.GetArticleTypeValues(detailsPageContext)));
             adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Category, SasAdTagBuilderExtensions.Clean(GetCategory(detailsPageContext))));
             adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Keyword, SasAdTagBuilderExtensions.Clean(GetKeyword(detailsPageContext))));
-            adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, MediaMotiveAreaNames.DetailsPage));
+            adTags.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Area, MediaMotiveAreaNames.EditorialDetailsPage));
 
             return adTags;
         }

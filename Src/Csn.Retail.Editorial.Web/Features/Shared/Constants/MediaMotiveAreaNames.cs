@@ -5,6 +5,6 @@
         public static string EditorialHomePage => "editorialhomepage";
         public static string EditorialBrandHomePage => "editorialbrandhomepage";
         public static string EditorialResultsPage => "editorialresults";
-        public static string DetailsPage => "editorialdetails";
+        public static string EditorialDetailsPage => "editorialdetails";
     }
 }
