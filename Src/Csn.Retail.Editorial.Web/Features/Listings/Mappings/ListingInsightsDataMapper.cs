@@ -26,19 +26,19 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             _expressionParser = expressionParser;
         }
 
-        public Dictionary<string, string> Map(ListingPageContext pageContext)
+        public Dictionary<string, string> Map(ListingPageContext listingPageContext)
         {            
-            var expression = _expressionParser.Parse(pageContext.Query);
+            var expression = _expressionParser.Parse(listingPageContext.Query);
             var dimensions = GetTags(expression);
 
             dimensions.Add(TrackingScriptTags.ContentGroup1, TrackingScriptContentGroups.NewsAndReviews);
 
-            if (pageContext.EditorialPageType != EditorialPageTypes.Homepage)
+            if (listingPageContext.EditorialPageType != EditorialPageTypes.Homepage)
             {
                 dimensions.Add(TrackingScriptTags.ContentGroup2, TrackingScriptPageTypes.Listing);
-                dimensions.Add(TrackingScriptTags.Action, pageContext.SearchEventType.ToTrackingScriptPageType());
-                dimensions.Add(TrackingScriptTags.SortBy, string.IsNullOrEmpty(pageContext.Sort) ? EditorialSortKeyValues.ListingPageDefaultSort : pageContext.Sort);
-                dimensions.Add(TrackingScriptTags.ListingResultCount, pageContext.RyvussNavResult.Count.ToString());
+                dimensions.Add(TrackingScriptTags.Action, listingPageContext.SearchEventType.ToTrackingScriptPageType());
+                dimensions.Add(TrackingScriptTags.SortBy, string.IsNullOrEmpty(listingPageContext.Sort) ? EditorialSortKeyValues.ListingPageDefaultSort : listingPageContext.Sort);
+                dimensions.Add(TrackingScriptTags.ListingResultCount, listingPageContext.RyvussNavResult.Count.ToString());
             }
 
             return dimensions;
