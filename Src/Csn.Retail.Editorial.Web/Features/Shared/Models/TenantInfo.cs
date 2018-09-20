@@ -35,7 +35,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string MediaMotiveAccountId { get; set; }
         public string MediaMotiveUrl { get; set; }
         public string KruxId { get; set; }
-        public List<string> AdUnits { get; set; }
         public string NativeAdPlacement { get; set; }
         public string GoogleAdsNetworkCode { get; set; }
         #endregion
