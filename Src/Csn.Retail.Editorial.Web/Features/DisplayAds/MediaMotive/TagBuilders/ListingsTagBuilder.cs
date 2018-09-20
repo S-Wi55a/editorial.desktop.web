@@ -21,7 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
 
         public IEnumerable<MediaMotiveTag> Build(MediaMotiveTagBuildersParams parameters)
         {
-            var listingPageContext =_pageContextStore.Get() is ListingPageContext pageContext ? pageContext : null;
+            var listingPageContext = _pageContextStore.Get() is ListingPageContext pageContext ? pageContext : null;
 
             return BuildTags(listingPageContext);
         }

@@ -27,13 +27,11 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.Mapping
         {
             var properties = new List<KeyValuePair<string, string>>();
 
-            var pageContext = _pageContextStore.Get();
+            var listingPageContext = _pageContextStore.Get() is ListingPageContext pageContext ? pageContext : null;
 
-            var search = pageContext?.PageContextType == PageContextTypes.Listing ? pageContext as ListingPageContext : null;
+            if (listingPageContext?.RyvussNavResult?.Metadata?.Query == null) return null;
 
-            if (search?.RyvussNavResult?.Metadata?.Query == null) return null;
-
-            var expression = _expressionParser.Parse(search.RyvussNavResult.Metadata.Query);
+            var expression = _expressionParser.Parse(listingPageContext.RyvussNavResult.Metadata.Query);
 
             var keyword = expression.GetKeywords();
 

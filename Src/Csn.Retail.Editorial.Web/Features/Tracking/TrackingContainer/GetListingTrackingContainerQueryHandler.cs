@@ -31,15 +31,13 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
 
         public IAnalyticsTrackingContainer Handle(GetListingTrackingContainerQuery query)
         {
-            var pageContext = _pageContextStore.Get();
+            var listingPageContext = _pageContextStore.Get() is ListingPageContext pageContext ? pageContext : null;
 
-            var search = pageContext?.PageContextType == PageContextTypes.Listing ? pageContext as ListingPageContext : null;
-
-            var editorialListItems = search?.RyvussNavResult?.SearchResults ?? Enumerable.Empty<SearchResultDto>();
+            var editorialListItems = listingPageContext?.RyvussNavResult?.SearchResults ?? Enumerable.Empty<SearchResultDto>();
 
             var results = editorialListItems.Select(_mapper.Map<AnalyticsEditorialTrackingItem>).ToList();
 
-            var searchContext = _mapper.Map<AnalyticsSearchContext>(search);
+            var searchContext = _mapper.Map<AnalyticsSearchContext>(listingPageContext);
 
             return _listingTrackingProvider.GetContainer(results, searchContext, _httpContext);
         }
