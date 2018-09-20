@@ -1,4 +1,4 @@
-﻿namespace Csn.Retail.Editorial.Web.Features.DisplayAds
+﻿namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
 {
     public static class SasAdTags
     {

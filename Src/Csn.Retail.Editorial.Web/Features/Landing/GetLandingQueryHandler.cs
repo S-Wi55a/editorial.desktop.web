@@ -94,8 +94,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = configResults.HeroAdSettings.HeroTitle,
-                    HeroImage = !string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HeroImage : string.Empty,
-                    
+                    HeroImage = !string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HeroImage : string.Empty 
                 },
                 CacheViewModel = !(searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };

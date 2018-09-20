@@ -30,7 +30,6 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 return null;
             }
             
-
             if (_pageContextStore.Get() is DetailsPageContext detailsPageContext && adSetting.NotSupportedArticleTypes.Intersect(detailsPageContext.ArticleTypes, StringComparer.OrdinalIgnoreCase).Any())
             {
                 return null;

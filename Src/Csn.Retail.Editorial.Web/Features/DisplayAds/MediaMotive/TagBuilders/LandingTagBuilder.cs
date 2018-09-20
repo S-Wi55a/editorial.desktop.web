@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
