@@ -1,9 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Details.CacheStores;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Ingress.Cache;
 using NSubstitute;
 using NUnit.Framework;
@@ -19,10 +17,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         [Test]
         public void CacheIsBypassedForPreview()
         {
-            var cacheStore = Substitute.For<ICacheStore>();
-            var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
+            var cacheStore = Substitute.For<IArticleViewModelCacheStore>();
 
-            var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore, tenantProvider);
+            var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore);
 
             var result = articleQueryCacheStore.GetAsync(new GetArticleQuery()
             {
@@ -37,8 +34,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             });
 
             // now check that a call to the cache was not made
-            cacheStore.DidNotReceive().GetAsync<ArticleViewModel>(Arg.Any<string>());
-            cacheStore.DidNotReceive().SetAsync(Arg.Any<string>(), Arg.Any<ArticleViewModel>(), Arg.Any<CacheExpiredIn>());
+            cacheStore.DidNotReceive().GetAsync(Arg.Any<string>());
+            cacheStore.DidNotReceive().StoreAsync(Arg.Any<ArticleViewModel>());
 
             Assert.IsNotNull(result);
         }
@@ -49,18 +46,12 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         [Test]
         public async Task CacheIsUsedWhenNotPreview()
         {
-            var cacheStore = Substitute.For<ICacheStore>();
-            var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
+            var cacheStore = Substitute.For<IArticleViewModelCacheStore>();
 
-            tenantProvider.Current().ReturnsForAnyArgs(new TenantInfo()
-            {
-                Name = "carsales"
-            });
-
-            cacheStore.GetAsync<ArticleViewModel>(Arg.Any<string>())
+            cacheStore.GetAsync(Arg.Any<string>())
                 .Returns(Task.FromResult(new MayBe<ArticleViewModel>(new ArticleViewModel())));
 
-            var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore, tenantProvider);
+            var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore);
 
             var result = await articleQueryCacheStore.GetAsync(new GetArticleQuery()
             {
@@ -75,7 +66,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             });
 
             // now check that a call to the cache was not made
-            cacheStore.Received().GetAsync<ArticleViewModel>(Arg.Any<string>());
+            cacheStore.Received().GetAsync(Arg.Any<string>());
 
             Assert.IsNotNull(result);
         }
@@ -86,19 +77,13 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         [Test]
         public async Task ArticleIsCachedWhenNotPreview()
         {
-            var cacheStore = Substitute.For<ICacheStore>();
-            var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
-
-            tenantProvider.Current().ReturnsForAnyArgs(new TenantInfo()
-            {
-                Name = "carsales"
-            });
+            var cacheStore = Substitute.For<IArticleViewModelCacheStore>();
 
             // cache returns no result
-            cacheStore.GetAsync<ArticleViewModel>(Arg.Any<string>())
+            cacheStore.GetAsync(Arg.Any<string>())
                 .Returns(Task.FromResult(new MayBe<ArticleViewModel>(null, false)));
 
-            var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore, tenantProvider);
+            var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore);
 
             var result = await articleQueryCacheStore.GetAsync(new GetArticleQuery()
             {
@@ -113,10 +98,10 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             });
 
             // now check that a call to the cache was not made
-            cacheStore.Received().GetAsync<ArticleViewModel>(Arg.Any<string>());
+            cacheStore.Received().GetAsync(Arg.Any<string>());
 
             // data retrieved should get cached
-            cacheStore.Received().SetAsync(Arg.Any<string>(), Arg.Any<ArticleViewModel>(), Arg.Any<CacheExpiredIn>());
+            cacheStore.Received().StoreAsync(Arg.Any<ArticleViewModel>());
 
             Assert.IsNotNull(result);
         }

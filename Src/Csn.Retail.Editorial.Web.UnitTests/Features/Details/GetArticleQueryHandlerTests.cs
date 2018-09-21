@@ -54,7 +54,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
 
             _mapper.Map<ArticleViewModel>(Arg.Any<ArticleDetailsDto>()).Returns(new ArticleViewModel() { SeoData = new Web.Features.Shared.Models.SeoData(){AllowSeoIndexing = true} });
 
-            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider, _pageContextStore);
+            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider);
 
             var result = await queryHandler.HandleAsync(new GetArticleQuery()
             {
@@ -79,7 +79,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
 
             _mapper.Map<ArticleViewModel>(Arg.Any<ArticleDetailsDto>()).Returns(new ArticleViewModel() { SeoData = new Web.Features.Shared.Models.SeoData() { AllowSeoIndexing = true } });
 
-            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider, _pageContextStore);
+            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider);
 
             var result = await queryHandler.HandleAsync(new GetArticleQuery()
             {
@@ -104,7 +104,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
 
             _mapper.Map<ArticleViewModel>(Arg.Any<ArticleDetailsDto>()).Returns(new ArticleViewModel() { SeoData = new Web.Features.Shared.Models.SeoData() { AllowSeoIndexing = false } });
 
-            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider, _pageContextStore);
+            var queryHandler = new GetArticleQueryHandler(_apiProxy, _mapper, _tenantProvider);
 
             var result = await queryHandler.HandleAsync(new GetArticleQuery()
             {

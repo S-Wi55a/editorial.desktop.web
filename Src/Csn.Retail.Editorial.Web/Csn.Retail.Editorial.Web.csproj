@@ -566,9 +566,11 @@
     <Compile Include="Features\Details\ActionAttributes\RedirectToNewVersionAttribute.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
+    <Compile Include="Features\Details\CacheStores\ArticleViewModelCacheStore.cs" />
     <Compile Include="Features\Details\Loggers\LegacyDetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
     <Compile Include="Features\Details\Mappings\ArticleTypeLabelMapper.cs" />
+    <Compile Include="Features\Details\GetArticleQueryProcessFilter.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsController.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsSetting.cs" />
     <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdQueryHandler.cs" />
