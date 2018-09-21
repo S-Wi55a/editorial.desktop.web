@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
         bool Exists();
     }
 
-    [AutoBind]
+    [AutoBindAsPerRequest]
     public class PageContextStore : IPageContextStore
     {
         private readonly IContextStore _contextStore;
