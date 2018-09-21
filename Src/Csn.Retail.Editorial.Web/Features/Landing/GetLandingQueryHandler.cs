@@ -35,11 +35,10 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsDataMapper;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly ISeoDataMapper _seoDataMapper;
-        private readonly IPageContextStore _pageContextStore;
 
         public GetLandingQueryHandler(IRyvussDataService ryvussDataService, ICarouselDataService carouselDataService, IMapper mapper, ILandingConfigProvider landingConfigProvider, 
             ISmartServiceClient restClient, IPolarNativeAdsDataMapper polarNativeAdsDataMapper, ITenantProvider<TenantInfo> tenantProvider,
-            ISeoDataMapper seoDataMapper, IPageContextStore pageContextStore)
+            ISeoDataMapper seoDataMapper)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
@@ -49,7 +48,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             _tenantProvider = tenantProvider;
             _seoDataMapper = seoDataMapper;
             _carouselDataService = carouselDataService;
-            _pageContextStore = pageContextStore;
         }
 
         [Transaction]
@@ -68,13 +66,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
             var navResults = _mapper.Map<NavResult>(ryvussResults.Result);
 
             navResults.INav.CurrentUrl = ListingUrlHelper.GetPathAndQueryString(includeResultsSegment: true);
-
-            var landingPageContext = new LandingPageContext
-            {
-                Make = !string.IsNullOrEmpty(configResults.HeroAdSettings?.HeroMake) ? configResults.HeroAdSettings.HeroMake : string.Empty
-            };
-
-            _pageContextStore.Set(landingPageContext);
 
             return new GetLandingResponse
             {
