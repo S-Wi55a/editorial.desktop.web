@@ -46,7 +46,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
 
         public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
-            return  _pageContextStore.Get().PageContextType == PageContextTypes.Details;
+            return  _pageContextStore.Get()?.PageContextType == PageContextTypes.Details;
         }
 
         private static string GetKeyword(DetailsPageContext detailsPageContext)
