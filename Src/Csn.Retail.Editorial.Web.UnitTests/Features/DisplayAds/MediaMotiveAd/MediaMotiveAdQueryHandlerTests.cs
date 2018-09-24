@@ -3,8 +3,6 @@ using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using NSubstitute;
 using NUnit.Framework;
 
