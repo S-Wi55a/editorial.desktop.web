@@ -8,7 +8,6 @@ using Csn.Retail.Editorial.Web.Features.Landing.Mappings;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
 using Csn.Retail.Editorial.Web.Features.Landing.Services;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
-using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Hero.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Mappers;
