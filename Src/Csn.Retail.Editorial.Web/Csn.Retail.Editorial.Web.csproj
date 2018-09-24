@@ -592,6 +592,7 @@
     <Compile Include="Features\Landing\Carousel\CarouselQueryResponse.cs" />
     <Compile Include="Features\Landing\Configurations\LandingConfiguration.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\MakeConfigProvider.cs" />
+    <Compile Include="Features\Landing\GetLandingQueryProcessFilter.cs" />
     <Compile Include="Features\Landing\Mappings\LandingInsightsDataMapper.cs" />
     <Compile Include="Features\Landing\Mappings\MapperConfiguration.cs" />
     <Compile Include="Features\Landing\ModelBinder\ManufacturerLandingQueryModelBinder.cs" />

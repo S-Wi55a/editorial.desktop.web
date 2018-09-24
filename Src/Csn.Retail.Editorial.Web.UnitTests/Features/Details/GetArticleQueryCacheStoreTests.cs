@@ -66,7 +66,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             });
 
             // now check that a call to the cache was not made
-            cacheStore.Received().GetAsync(Arg.Any<string>());
+            await cacheStore.Received().GetAsync(Arg.Any<string>());
 
             Assert.IsNotNull(result);
         }
@@ -98,10 +98,10 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             });
 
             // now check that a call to the cache was not made
-            cacheStore.Received().GetAsync(Arg.Any<string>());
+            await cacheStore.Received().GetAsync(Arg.Any<string>());
 
             // data retrieved should get cached
-            cacheStore.Received().StoreAsync(Arg.Any<ArticleViewModel>());
+            await cacheStore.Received().StoreAsync(Arg.Any<ArticleViewModel>());
 
             Assert.IsNotNull(result);
         }
