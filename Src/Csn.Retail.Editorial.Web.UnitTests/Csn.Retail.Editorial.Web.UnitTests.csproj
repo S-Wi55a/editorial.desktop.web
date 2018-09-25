@@ -224,6 +224,8 @@
     <Compile Include="Features\Details\GetArticleQueryCacheStoreTests.cs" />
     <Compile Include="Features\Details\GetArticleQueryHandlerTests.cs" />
     <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdQueryHandlerTests.cs" />
+    <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidatorTests.cs" />
+    <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteValidatorTests.cs" />
     <Compile Include="Features\Listings\ListingInsightsDataMapperTests.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapperTests.cs" />
     <Compile Include="Features\Tracking\Mapping\ItemsListingMapperTests.cs" />

@@ -13,9 +13,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
     [AutoBind]
     public class ArticleUrlMapper : IArticleUrlMapper
     {
-        private readonly EditorialSettings _settings;
+        private readonly IEditorialSettings _settings;
 
-        public ArticleUrlMapper(EditorialSettings settings)
+        public ArticleUrlMapper(IEditorialSettings settings)
         {
             _settings = settings;
         }

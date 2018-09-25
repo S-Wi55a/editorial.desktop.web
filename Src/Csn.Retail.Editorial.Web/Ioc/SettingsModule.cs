@@ -8,7 +8,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(x => EditorialSettings.Instance).As<EditorialSettings>().SingleInstance();
+            builder.Register(x => EditorialSettings.Instance).As<IEditorialSettings>().SingleInstance();
             builder.Register(x => VideosApiSettings.Instance).As<VideosApiSettings>().SingleInstance();
             builder.Register(x => ReactNetSettings.Instance).As<ReactNetSettings>().SingleInstance();
         }
