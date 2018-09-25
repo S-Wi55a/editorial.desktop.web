@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bolt.Common.Extensions;
 using Csn.MultiTenant;
@@ -53,7 +52,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.GlobalSite
         {
             var trackingResult = await _trackingApiProxy.GetTracking(new TrackingApiInput
             {
-                ApplicationName = _tenantProvider.Current().GoogleAnalyticsApp
+                ApplicationName = _tenantProvider.Current().GoogleAnalyticsApp,
+                IncludeNielsen = _tenantProvider.Current().IncludeNielsen
             });
 
             return trackingResult.IsSucceed && trackingResult.Data.TrackingScript.IsNullOrWhiteSpace() ? null : trackingResult.Data;
