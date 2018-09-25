@@ -17,9 +17,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details.RouteConstraints
     [AutoBind]
     public class DetailsV1RouteValidator : IDetailsV1RouteValidator
     {
-        private readonly IEditorialSettings _editorialSettings;
+        private readonly IEditorialRouteSettings _editorialSettings;
 
-        public DetailsV1RouteValidator(IEditorialSettings editorialSettings)
+        public DetailsV1RouteValidator(IEditorialRouteSettings editorialSettings)
         {
             _editorialSettings = editorialSettings;
         }

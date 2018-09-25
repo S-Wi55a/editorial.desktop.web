@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details.RouteConstraints
         [Test]
         public void AustralianV1Route()
         {
-            var settings = Substitute.For<IEditorialSettings>();
+            var settings = Substitute.For<IEditorialRouteSettings>();
 
             settings.DetailsRouteSegment.Returns("details");
 
@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details.RouteConstraints
         [Test]
         public void NotApplicableRoute()
         {
-            var settings = Substitute.For<IEditorialSettings>();
+            var settings = Substitute.For<IEditorialRouteSettings>();
 
             settings.DetailsRouteSegment.Returns("details");
 

@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details.RouteConstraints
         [Test]
         public void AustralianV2Route()
         {
-            var settings = Substitute.For<IEditorialSettings>();
+            var settings = Substitute.For<IEditorialRouteSettings>();
 
             settings.DetailsRouteSegment.Returns("details");
             settings.NetworkIdFormat.Returns("ED-ITM-{0}");
@@ -26,7 +26,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details.RouteConstraints
         [Test]
         public void LatamV2Route()
         {
-            var settings = Substitute.For<IEditorialSettings>();
+            var settings = Substitute.For<IEditorialRouteSettings>();
 
             settings.DetailsRouteSegment.Returns("detalle");
             settings.NetworkIdFormat.Returns("ED-LATAM-{0}");
@@ -41,7 +41,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details.RouteConstraints
         [Test]
         public void NotApplicableRoute()
         {
-            var settings = Substitute.For<IEditorialSettings>();
+            var settings = Substitute.For<IEditorialRouteSettings>();
 
             settings.DetailsRouteSegment.Returns("detalle");
             settings.NetworkIdFormat.Returns("ED-LATAM-{0}");

@@ -14,10 +14,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
     [AutoBind]
     public class ImageUrlHelper : IImageUrlHelper
     {
-        private readonly IEditorialSettings _settings;
+        private readonly IImageServerSettings _settings;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
 
-        public ImageUrlHelper(IEditorialSettings settings, ITenantProvider<TenantInfo> tenantProvider)
+        public ImageUrlHelper(IImageServerSettings settings, ITenantProvider<TenantInfo> tenantProvider)
         {
             _settings = settings;
             _tenantProvider = tenantProvider;

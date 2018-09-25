@@ -23,7 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (!string.IsNullOrEmpty(id))
             {
-                var settings = DependencyResolver.Current.GetService<IEditorialSettings>();
+                var settings = DependencyResolver.Current.GetService<IEditorialRouteSettings>();
 
                 record.NetworkId = settings.NetworkIdFormat.FormatWith(id);
                 record.Slug = slug?.Split('/').LastOrDefault();

@@ -12,10 +12,10 @@ namespace Csn.Retail.Editorial.Web
     [AutoBind]
     public class SetupDefaultRouteTask : IStartUpTask
     {
-        private readonly IEditorialSettings _editorialSettings;
+        private readonly IEditorialRouteSettings _editorialSettings;
         private readonly string _basepath;
 
-        public SetupDefaultRouteTask(IEditorialSettings editorialSettings)
+        public SetupDefaultRouteTask(IEditorialRouteSettings editorialSettings)
         {
             _editorialSettings = editorialSettings;
 
