@@ -563,7 +563,6 @@
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
     <Compile Include="App_Start\SetupWebApiFormattersTask.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Features\Details\ActionAttributes\RedirectToNewVersionAttribute.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\ArticleViewModelCacheStore.cs" />

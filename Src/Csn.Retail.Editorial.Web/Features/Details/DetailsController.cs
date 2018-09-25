@@ -3,7 +3,6 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Csn.Retail.Editorial.Web.Features.Details.ActionAttributes;
 using Csn.Retail.Editorial.Web.Features.Details.Loggers;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
@@ -27,7 +26,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             _legacyDetailsRedirectLogger = legacyDetailsRedirectLogger;
         }
 
-        [RedirectToNewVersion]
         [RedirectAttributeFilter]
         // ReSharper disable once InconsistentNaming
         public async Task<ActionResult> IndexDetailsV1(ArticleIdentifierV1 articleIdentifier, bool __preview = false)
@@ -44,10 +42,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             var response = dispatchedQuery.Result;
 
-            //if (!string.IsNullOrEmpty(response.RedirectUrl))
-            //{
-            //    return PermanentRedirect($"{response.RedirectUrl}{Request.RequestContext.HttpContext.Request.Url?.Query}");
-            //}
+            if (!string.IsNullOrEmpty(response.RedirectUrl))
+            {
+                return PermanentRedirect($"{response.RedirectUrl}{Request.RequestContext.HttpContext.Request.Url?.Query}");
+            }
 
             if (response.ArticleViewModel != null)
             {
@@ -80,13 +78,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             var response = dispatchedQuery.Result;
 
-            //if (!string.IsNullOrEmpty(response.RedirectUrl))
-            //{
-            //    return PermanentRedirect($"{response.RedirectUrl}{Request.RequestContext.HttpContext.Request.Url?.Query}");
-            //}
+            if (!string.IsNullOrEmpty(response.RedirectUrl))
+            {
+                return PermanentRedirect($"{response.RedirectUrl}{Request.RequestContext.HttpContext.Request.Url?.Query}");
+            }
 
             if (response.ArticleViewModel != null)
             {
+                // TODO: reinstate this logic once we have the new DetailsPageUrl data in data service and ryvuss
                 // redirect any article request with slug which does not match the published slug
                 //if (!articleIdentifier.UrlPath.Equals(response.ArticleViewModel.Slug, StringComparison.InvariantCultureIgnoreCase))
                 //{
