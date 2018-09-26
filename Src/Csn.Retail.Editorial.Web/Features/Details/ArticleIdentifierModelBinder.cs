@@ -69,7 +69,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             if (!string.IsNullOrEmpty(networkId))
             {
                 record.NetworkId = networkId;
-                record.UrlPath = controllerContext.HttpContext.Request.Path;
             }
 
             UpdateEditorialIdInRoute(controllerContext, record.NetworkId);

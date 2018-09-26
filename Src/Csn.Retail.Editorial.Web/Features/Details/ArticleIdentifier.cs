@@ -13,6 +13,5 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     public class ArticleIdentifierV2
     {
         public string NetworkId { get; set; }
-        public string UrlPath { get; set; }
     }
 }
