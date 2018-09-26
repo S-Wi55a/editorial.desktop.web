@@ -737,7 +737,7 @@
     <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
     <Compile Include="Features\Shared\Services\RyvussDataService.cs" />
-    <Compile Include="Features\Shared\Settings\EditorialSettings.cs" />
+    <Compile Include="Features\Shared\Settings\EditorialRouteSettings.cs" />
     <Compile Include="Features\Shared\Settings\ImageServerSettings.cs" />
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
