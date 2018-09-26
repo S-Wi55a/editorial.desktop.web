@@ -35,7 +35,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
 
         public bool IsApplicable(MediaMotiveTagBuildersParams parameters)
         {
-            return _pageContextStore.Get().PageContextType == PageContextTypes.Landing;
+            return _pageContextStore.Get()?.PageContextType == PageContextTypes.Landing;
         }
     }
 }

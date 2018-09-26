@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
@@ -41,8 +40,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
 
             tenantProvider.Current().Returns(new TenantInfo()
             {
-                Name = "carsales",
-                AdUnits = new List<string> { "Title3" }
+                Name = "carsales"
             });
 
             // this bit is required because we have some static classes that use service locator pattern

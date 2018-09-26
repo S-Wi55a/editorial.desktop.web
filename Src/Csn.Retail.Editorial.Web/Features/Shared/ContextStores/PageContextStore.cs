@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
-using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
-using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+﻿using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
-using Csn.WebMetrics.Core.Model;
 using Ingress.Web.Common.Abstracts;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
@@ -16,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
         bool Exists();
     }
 
-    [AutoBind]
+    [AutoBindAsPerRequest]
     public class PageContextStore : IPageContextStore
     {
         private readonly IContextStore _contextStore;
@@ -33,9 +28,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
             return result as IPageContext;
         }
 
-        public void Set(IPageContext search)
+        public void Set(IPageContext context)
         {
-            _contextStore.Set(ContextStoreKeys.CurrentPageContext.ToString(), search);
+            _contextStore.Set(ContextStoreKeys.CurrentPageContext.ToString(), context);
         }
 
         public bool Exists()

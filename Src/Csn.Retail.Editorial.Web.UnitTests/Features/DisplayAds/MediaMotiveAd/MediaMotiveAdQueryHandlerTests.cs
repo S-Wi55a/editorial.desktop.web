@@ -49,5 +49,48 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
                 return true;
             }
         }
+
+        [Test]
+        public void TeadsNotShownOnSponsoredArticles()
+        {
+            var tagBuilders = Substitute.For<List<IMediaMotiveTagBuilder>>();
+            var pageContextStore = Substitute.For<IPageContextStore>();
+            pageContextStore.Get().Returns(new DetailsPageContext
+            {
+                ArticleTypes = new List<string> {"Sponsored"}
+            });
+
+            var queryHandler = new MediaMotiveAdQueryHandler(tagBuilders, pageContextStore);
+
+            //Act
+            var result = queryHandler.Handle(new DisplayAdQuery()
+            {
+                AdPlacement = DisplayAdPlacements.TEADS
+            });
+
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void SupportedAdUnitsShowingForSponsoredArticles()
+        {
+            var tagBuilders = Substitute.For<List<IMediaMotiveTagBuilder>>();
+            var pageContextStore = Substitute.For<IPageContextStore>();
+
+            pageContextStore.Set(new DetailsPageContext
+            {
+                ArticleTypes = new List<string> { "Sponsored" }
+            });
+
+            var queryHandler = new MediaMotiveAdQueryHandler(tagBuilders, pageContextStore);
+
+            //Act
+            var result = queryHandler.Handle(new DisplayAdQuery()
+            {
+                AdPlacement = DisplayAdPlacements.Leaderboard
+            });
+
+            Assert.AreEqual("1", result.TileId);
+        }
     }
 }
