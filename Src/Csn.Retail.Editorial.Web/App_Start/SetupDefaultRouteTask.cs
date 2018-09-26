@@ -1,7 +1,9 @@
 using System.Web.Mvc;
 using System.Web.Mvc.Routing;
 using System.Web.Routing;
+using Csn.Retail.Editorial.Web.Features.Details.RouteConstraints;
 using Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.StartUpTasks;
 
@@ -10,6 +12,16 @@ namespace Csn.Retail.Editorial.Web
     [AutoBind]
     public class SetupDefaultRouteTask : IStartUpTask
     {
+        private readonly IEditorialRouteSettings _editorialSettings;
+        private readonly string _basepath;
+
+        public SetupDefaultRouteTask(IEditorialRouteSettings editorialSettings)
+        {
+            _editorialSettings = editorialSettings;
+
+            _basepath = _editorialSettings.BasePath.Trim('/');
+        }
+
         public void Run()
         {
             var routes = RouteTable.Routes;
@@ -33,95 +45,117 @@ namespace Csn.Retail.Editorial.Web
             var constraintResolver = new DefaultInlineConstraintResolver();
             routes.MapMvcAttributeRoutes(constraintResolver);
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "TrackingRoute",
-                url: "editorial/Tracking",
+                url: "Tracking",
                 defaults: new { controller = "Tracking" }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "DisplayAdsRoute",
-                url: "editorial/DisplayAds",
+                url: "DisplayAds",
                 defaults: new { controller = "DisplayAds" }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "NativeAdRoute",
-                url: "editorial/NativeAd",
+                url: "NativeAd",
                 defaults: new { controller = "NativeAd" }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "MediaMotiveDetailsAdRoute",
-                url: "editorial/MediaMotiveDetailsAd",
+                url: "MediaMotiveDetailsAd",
                 defaults: new { controller = "MediaMotiveDetailsAd" }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "MediaMotiveAdRoute",
-                url: "editorial/MediaMotiveAd",
+                url: "MediaMotiveAd",
                 defaults: new { controller = "MediaMotiveAd" }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "LandingHome",
-                url: "editorial/",
+                url: "",
                 defaults: new { controller = "Landing", action = "Index" }
             );
 
-            routes.MapRoute(
-                name: "Details",
-                url: "editorial/details/{slug}",
-                defaults: new { controller = "Details", action = "Index" },
-                constraints: new { slug = "^.*-\\d+/?$" }
+            AddRouteWithBasePath(
+                routes,
+                name: "DetailsV2",
+                url: "{*detailsPath}",
+                defaults: new { controller = "Details", action = "IndexDetailsV2" },
+                constraints: new { detailsPath = new DetailsV2RouteConstraint() }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
+                name: "DetailsV1",
+                url: "{*detailsPath}",
+                defaults: new { controller = "Details", action = "IndexDetailsV1" },
+                constraints: new { detailsPath = new DetailsV1RouteConstraint() }
+            );
+
+            AddRouteWithBasePath(
+                routes,
                 name: "LandingManufacturer",
-                url: "editorial/{*manufacturer}",
+                url: "{*manufacturer}",
                 defaults: new { controller = "Landing", action = "Index" }, 
                 constraints: new { manufacturer = new ManufacturerRouteConstraint() }
             );
 
-//TODO: to be removed once legacy url structures are no longer needed
-            routes.MapRoute(
+            //TODO: to be removed once legacy url structures are no longer needed
+            AddRouteWithBasePath(
+                routes,
                 name: "DetailsLegacyUrls",
-                url: "editorial/{*detailsSegments}",
-                defaults: new { controller = "Details", action = "Index" },
+                url: "{*detailsSegments}",
+                defaults: new { controller = "Details", action = "RedirectLegacyUrl" },
                 constraints: new { detailsSegments = new LegacyDetailsPageRouteConstraint() }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "ArticleType",
-                url: "editorial/{*articleType}",
+                url: "{*articleType}",
                 defaults: new { controller = "Listings", action = "ArticleTypeListing" },
                 constraints: new { articleType = new ArticleTypeRouteConstraint() }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "RedbookHome",
-                url: "editorial/{*redbookVertical}",
+                url: "{*redbookVertical}",
                 defaults: new { controller = "Listings", action = "RedbookListing" },
                 constraints: new { redbookVertical = new VerticalRouteConstraint() }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "RedbookResults",
-                url: "editorial/{redbookVertical}/results",
+                url: "{redbookVertical}/results",
                 defaults: new { controller = "Listings", action = "RedbookListing" },
                 constraints: new { redbookVertical = new VerticalRouteConstraint() }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "ListingPage-pre-international",
-                url: "editorial/results/{*seoFragment}",
+                url: "results/{*seoFragment}",
                 defaults: new { controller = "Listings", action = "Listing" },
                 constraints: new { seoFragment = "(^[\\w-/]*)?" }
             );
 
-            routes.MapRoute(
+            AddRouteWithBasePath(
+                routes,
                 name: "ListingPage",
-                url: "editorial/{*seoFragment}",
+                url: "{*seoFragment}",
                 defaults: new { controller = "Listings", action = "Listing" },
                 constraints: new { seoFragment = "(^[\\w-/]*)?" }
             );
@@ -131,6 +165,16 @@ namespace Csn.Retail.Editorial.Web
                 "UnknownRoute",
                 "{*url}",
                 new { controller = "Errors", action = "Error404CatchAll" }
+            );
+        }
+
+        private void AddRouteWithBasePath(RouteCollection routes, string name, string url, object defaults, object constraints = null)
+        {
+            routes.MapRoute(
+                name: name,
+                url: $"{_basepath}/{url}",
+                defaults: defaults,
+                constraints: constraints
             );
         }
     }

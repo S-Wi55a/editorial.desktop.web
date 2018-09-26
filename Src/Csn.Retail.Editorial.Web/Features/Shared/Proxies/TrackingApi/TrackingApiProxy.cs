@@ -22,11 +22,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.TrackingApi
 
         public Task<SmartServiceResponse<TrackingApiDto>> GetTracking(TrackingApiInput input)
         {
-            return _smartClient.Service(ServiceName)
+            var client = _smartClient.Service(ServiceName)
                 .Path("v1/api/tracking/script")
-                .QueryString("Application", input.ApplicationName)
-                .QueryString("IncludeNielsen", "true")
-                .GetAsync<TrackingApiDto>();
+                .QueryString("Application", input.ApplicationName);
+
+            if (input.IncludeNielsen)
+            {
+                client.QueryString("IncludeNielsen", "true");
+            }
+                
+            return client.GetAsync<TrackingApiDto>();
         }
     }
 }

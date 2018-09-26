@@ -15,6 +15,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string SiteDomain { get; set; }
         public string UrlProtocol { get; set; }
         public string ListingsAlternateUrl { get; set; }
+        public string TenantName { get; set; }
+        public string RyvusServiceProjection { get; set; }
+        public bool HasLandingPageConfiguration { get; set; }
 
         #region Seo
         public bool AllowSeoIndexOfDetails { get; set; }
@@ -37,6 +40,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public string KruxId { get; set; }
         public string NativeAdPlacement { get; set; }
         public string GoogleAdsNetworkCode { get; set; }
+
+        public bool UseMediaMotive => DisplayAdsSource == DisplayAdsSource.MediaMotive;
+        public bool UseGoogleAd => DisplayAdsSource == DisplayAdsSource.GoogleAd;
         #endregion
 
         #region Content
@@ -52,13 +58,15 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         #endregion
 
         #region Redbook
-        public string TenantName { get; set; }
-        public string RyvusServiceProjection { get; set; }
+        
         public string Vertical { get; set; }
-        public bool HasLandingPageConfiguration { get; set; }
+
         #endregion
 
-        public bool UseMediaMotive => DisplayAdsSource == DisplayAdsSource.MediaMotive;
-        public bool UseGoogleAd => DisplayAdsSource == DisplayAdsSource.GoogleAd;
+        #region Tracking
+
+        public bool IncludeNielsen { get; set; }
+
+        #endregion
     }
 }
