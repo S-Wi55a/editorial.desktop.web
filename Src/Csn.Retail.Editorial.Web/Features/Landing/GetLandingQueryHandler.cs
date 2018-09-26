@@ -7,7 +7,6 @@ using Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers;
 using Csn.Retail.Editorial.Web.Features.Landing.Mappings;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
 using Csn.Retail.Editorial.Web.Features.Landing.Services;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Hero.Models;
@@ -85,11 +84,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     InsightsData = LandingInsightsDataMapper.Map(),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
                     HeroTitle = configResults.HeroAdSettings.HeroTitle,
-                    HeroImage = !string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HeroImage : string.Empty,
-                    MediaMotiveModel = new MediaMotiveModel
-                    {
-                        Make = !string.IsNullOrEmpty(configResults.HeroAdSettings?.HeroMake) ? configResults.HeroAdSettings.HeroMake : string.Empty
-                    }
+                    HeroImage = !string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HeroImage : string.Empty 
                 },
                 CacheViewModel = !(searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };

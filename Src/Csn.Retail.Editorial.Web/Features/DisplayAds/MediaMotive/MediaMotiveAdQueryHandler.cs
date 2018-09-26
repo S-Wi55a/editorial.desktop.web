@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.Models;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds;
-using Csn.Retail.Editorial.Web.Features.MediaMotiveAds.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders;
+using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.SimpleCqrs;
@@ -14,10 +15,12 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
     public class MediaMotiveAdQueryHandler : IQueryHandler<DisplayAdQuery, MediaMotiveAdViewModel>
     {
         private readonly IEnumerable<IMediaMotiveTagBuilder> _tagBuilders;
+        private readonly IPageContextStore _pageContextStore;
 
-        public MediaMotiveAdQueryHandler(IEnumerable<IMediaMotiveTagBuilder> tagBuilders)
+        public MediaMotiveAdQueryHandler(IEnumerable<IMediaMotiveTagBuilder> tagBuilders, IPageContextStore pageContextStore)
         {
             _tagBuilders = tagBuilders;
+            _pageContextStore = pageContextStore;
         }
         public MediaMotiveAdViewModel Handle(DisplayAdQuery displayAdQuery)
         {
@@ -26,12 +29,16 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
             {
                 return null;
             }
+            
+            if (_pageContextStore.Get() is DetailsPageContext detailsPageContext && adSetting.NotSupportedArticleTypes.Intersect(detailsPageContext.ArticleTypes, StringComparer.OrdinalIgnoreCase).Any())
+            {
+                return null;
+            }
 
             var mediaMotiveTagBuildersParams = new MediaMotiveTagBuildersParams
             {
                 TileId = adSetting.TileId,
-                DisplayAdSizes = adSetting.DisplayAdSize,
-                Make = displayAdQuery.Make
+                DisplayAdSizes = adSetting.DisplayAdSize
             };
 
             var tags = _tagBuilders

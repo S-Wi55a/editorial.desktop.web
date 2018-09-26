@@ -2,6 +2,6 @@
 {
     public enum ContextStoreKeys
     {
-        CurrentSearchResult
+        CurrentPageContext
     }
 }
