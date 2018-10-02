@@ -2,10 +2,16 @@
 
 namespace Csn.Retail.Editorial.Web.Features.Details
 {
-    [ModelBinder(typeof(ArticleIdentifierModelBinder))]
-    public class ArticleIdentifier
+    [ModelBinder(typeof(ArticleIdentifierV1ModelBinder))]
+    public class ArticleIdentifierV1
     {
-        public string Id { get; set; }
+        public string NetworkId { get; set; }
         public string Slug { get; set; }
+    }
+
+    [ModelBinder(typeof(ArticleIdentifierV2ModelBinder))]
+    public class ArticleIdentifierV2
+    {
+        public string NetworkId { get; set; }
     }
 }
