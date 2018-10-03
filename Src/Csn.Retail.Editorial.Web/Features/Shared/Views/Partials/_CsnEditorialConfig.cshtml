@@ -1,0 +1,9 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.ApiProxy
+
+<script>
+    window.CsnEditorialConfig = window.CsnEditorialConfig || {};
+    CsnEditorialConfig.proxyApiUrl = '@Url.HttpRouteUrl(RouteNames.WebApi.ApiProxy, new ApiProxyQuery{Uri = String.Empty})';
+    CsnEditorialConfig.navApiUrl = '@Url.HttpRouteUrl(RouteNames.WebApi.GetNav, new object())';
+    CsnEditorialConfig.navRefinementApiUrl = '@Url.HttpRouteUrl(RouteNames.WebApi.GetNavRefinements, new object())';
+    CsnEditorialConfig.searchResultsUrl = '@Url.RouteUrl(RouteNames.Mvc.ListingPagePreInternational, new object())';
+</script>
