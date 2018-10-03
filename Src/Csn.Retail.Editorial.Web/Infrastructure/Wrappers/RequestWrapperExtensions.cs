@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Csn.Retail.Editorial.Web.Infrastructure.RequestWrapper
+namespace Csn.Retail.Editorial.Web.Infrastructure.Wrappers
 {
     public static class RequestWrapperExtensions
     {

@@ -7,7 +7,6 @@ namespace Csn.Retail.Editorial.Web
     {
         protected void Application_Start()
         {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
         }
     }

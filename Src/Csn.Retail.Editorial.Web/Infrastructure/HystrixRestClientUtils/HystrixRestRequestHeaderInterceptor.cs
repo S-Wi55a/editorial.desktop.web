@@ -1,7 +1,7 @@
 ﻿using Csn.Hystrix.RestClient;
 using Csn.Hystrix.RestClient.Dtos;
 using Csn.RestClient.Dto;
-using Csn.Retail.Editorial.Web.Infrastructure.RequestWrapper;
+using Csn.Retail.Editorial.Web.Infrastructure.Wrappers;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.HystrixRestClientUtils
 {

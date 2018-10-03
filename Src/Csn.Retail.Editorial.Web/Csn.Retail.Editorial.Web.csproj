@@ -558,11 +558,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ReactConfig.cs" />
+    <Compile Include="App_Start\RouteNames.cs" />
     <Compile Include="App_Start\SetupGlobalFilterTask.cs" />
-    <Compile Include="App_Start\SetupDefaultRouteTask.cs" />
+    <Compile Include="App_Start\SetupRoutesTask.cs" />
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
     <Compile Include="App_Start\SetupWebApiFormattersTask.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\ArticleViewModelCacheStore.cs" />
@@ -808,8 +808,9 @@
     <Compile Include="Infrastructure\Redirects\IMobiDetailsUrlBuilder.cs" />
     <Compile Include="Infrastructure\Redirects\RedirectInstruction.cs" />
     <Compile Include="Infrastructure\Redirects\RedirectStrategy.cs" />
-    <Compile Include="Infrastructure\RequestWrapper\IRequestWrapper.cs" />
-    <Compile Include="Infrastructure\RequestWrapper\RequestWrapperExtensions.cs" />
+    <Compile Include="Infrastructure\Wrappers\IRequestWrapper.cs" />
+    <Compile Include="Infrastructure\Wrappers\RequestWrapperExtensions.cs" />
+    <Compile Include="Infrastructure\Wrappers\UrlRouteHelper.cs" />
     <Compile Include="Infrastructure\Settings\ReactNetSettings.cs" />
     <Compile Include="Infrastructure\StartUpTasks\IStartUpTask.cs" />
     <Compile Include="Infrastructure\UserContext\IUserContext.cs" />
