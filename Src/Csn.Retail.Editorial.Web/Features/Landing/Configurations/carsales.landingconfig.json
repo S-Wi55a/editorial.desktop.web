@@ -2594,7 +2594,7 @@
           "carouselItems": null
         },
         {
-          "title": "Asx",
+          "title": "ASX",
           "displayMrec": false,
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018.)_.(C.Make.Mitsubishi._.Model.Asx.))",
