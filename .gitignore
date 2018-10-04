@@ -89,3 +89,4 @@ dist--server
 *.map
 
 CompiledTypeScript
+Src/Csn.Retail.Editorial.Web/Culture/LanguageResources.es.Designer.cs
