@@ -2,7 +2,7 @@
 import Swiper from 'swiper'
 import * as Ajax from 'Ajax/ajax.js'
 import * as View from 'MoreArticles/moreArticles-view.js'
-import { proxy } from 'Endpoints/endpoints';
+import { proxyEndpoint } from 'Endpoints/endpoints';
 import ScrollMagic from 'ScrollMagic'
 
 let showText = csn_editorial.moreArticles.showText;
@@ -89,7 +89,7 @@ let updateContent = function (frame, el, container, cb) {
         Ajax.get(query, (json) => {
             json = JSON.parse(json)
             if (json.nextQuery) {
-                updateButton(el, 'data-more-articles-query', proxy + json.nextQuery)
+                updateButton(el, 'data-more-articles-query', proxyEndpoint + json.nextQuery)
             } else {
                 //disabled next
                 updateButton(el, 'data-more-articles-query', '')

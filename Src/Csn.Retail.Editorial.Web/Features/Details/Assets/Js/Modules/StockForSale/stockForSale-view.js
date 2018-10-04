@@ -1,8 +1,8 @@
-﻿import { proxy } from 'Endpoints/endpoints';
+﻿import { proxyEndpoint } from 'Endpoints/endpoints';
 
 const container = (data) => {
 
-    const stockForSalePath = proxy;
+    const stockForSalePath = proxyEndpoint;
     const limit = '%26limit=2';
  
     return `

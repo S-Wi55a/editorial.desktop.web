@@ -648,7 +648,7 @@
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
-    <Content Include="Features\Shared\Views\Partials\_EditorialConfig.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\_CsnEditorialEndpoints.cshtml" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponentArrows.tsx" />

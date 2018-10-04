@@ -1,8 +1,8 @@
-﻿import { proxy } from 'Endpoints/endpoints';
+﻿import { proxyEndpoint } from 'Endpoints/endpoints';
 
 const container = (data) => {
 
-    const alsoConsiderQueryPath = proxy;
+    const alsoConsiderQueryPath = proxyEndpoint;
 
     return `<div class="also-consider" data-also-consider-query="${alsoConsiderQueryPath}${data.uri}"></div>`
 }
