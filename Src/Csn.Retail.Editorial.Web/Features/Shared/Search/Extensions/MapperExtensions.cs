@@ -1,4 +1,6 @@
 using System.Linq;
+using System.Web.Mvc;
+using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
@@ -6,6 +8,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 {
     public static class MapperExtensions
     {
+        private static ITenantProvider<TenantInfo> _tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
+
         public static bool IsRefineable(this FacetNodeDto source)
         {
             if (source.MetaData?.IsRefineable == null || !source.MetaData.IsRefineable.Any())
@@ -68,6 +72,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 
         public static string GetDisqusArticleId(this SearchResultDto source)
         {
+            if (string.IsNullOrEmpty(_tenantProvider.Current().DisqusSource))
+                return string.Empty;
+
             return $"EDITORIAL-{source.Id?.Substring(7)}";
         }
 
