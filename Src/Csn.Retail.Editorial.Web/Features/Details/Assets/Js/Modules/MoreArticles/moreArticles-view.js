@@ -6,9 +6,10 @@ let hyphenateNonAlphaNumeric = (input) => {
 };
 
 const container = (data) => {
+    const proxyUrl = proxyEndpoint();
 
     const filterView = (str, filter, index) => {
-        return `<div class="more-articles__filter${index === 0 ? " more-articles__filter--active" : ""}" data-webm-clickvalue="view-${hyphenateNonAlphaNumeric(filter.title)}" data-more-articles-query="${proxyEndpoint}${filter.uri}">${filter.title}</div>`;
+        return `<div class="more-articles__filter${index === 0 ? " more-articles__filter--active" : ""}" data-webm-clickvalue="view-${hyphenateNonAlphaNumeric(filter.title)}" data-more-articles-query="${proxyUrl}${filter.uri}">${filter.title}</div>`;
     }
 
     const linkView = (str, link) => {
@@ -34,7 +35,7 @@ const container = (data) => {
                     <button class="more-articles__button more-articles__button--show-hide" data-webm-clickvalue="hide">${data.showText}</button>
                     <button class="more-articles__nav-button more-articles__nav-button--prev" data-webm-clickvalue="previous">Prev</button>
                     <button class="more-articles__nav-button more-articles__nav-button--next" data-webm-clickvalue="next"
-                        data-more-articles-query="${proxyEndpoint}${data.filters[0].uri || ''}">Next</button>
+                        data-more-articles-query="${proxyUrl}${data.filters[0].uri || ''}">Next</button>
                 </div>
             </div>
         </div>

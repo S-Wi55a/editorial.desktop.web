@@ -2,7 +2,7 @@
 
 const container = (data) => {
 
-    const stockForSalePath = proxyEndpoint;
+    const stockForSalePath = proxyEndpoint();
     const limit = '%26limit=2';
  
     return `
