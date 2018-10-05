@@ -1,4 +1,6 @@
 using System.Linq;
+using System.Web.Mvc;
+using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
@@ -68,6 +70,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
 
         public static string GetDisqusArticleId(this SearchResultDto source)
         {
+            var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
+
+            if (string.IsNullOrEmpty(tenantProvider.Current().DisqusSource))
+                return string.Empty;
+
             return $"EDITORIAL-{source.Id?.Substring(7)}";
         }
 
