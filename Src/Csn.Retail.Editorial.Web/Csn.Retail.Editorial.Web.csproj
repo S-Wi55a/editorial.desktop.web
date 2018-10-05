@@ -569,11 +569,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LanguageResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Culture\LanguageResources.es.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LanguageResources.es.resx</DependentUpon>
-    </Compile>
     <Compile Include="Culture\LanguageResourceValueProvider.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
@@ -1276,15 +1271,10 @@
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Types\index.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Culture\LanguageResources.es.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LanguageResources.es.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Culture\LanguageResources.es.resx" />
     <EmbeddedResource Include="Culture\LanguageResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LanguageResources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
