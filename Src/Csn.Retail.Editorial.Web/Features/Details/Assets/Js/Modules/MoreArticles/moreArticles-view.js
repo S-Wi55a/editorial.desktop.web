@@ -6,7 +6,7 @@ let hyphenateNonAlphaNumeric = (input) => {
 };
 
 const container = (data) => {
-    const proxyUrl = proxyEndpoint();
+    const proxyUrl = proxyEndpoint;
 
     const filterView = (str, filter, index) => {
         return `<div class="more-articles__filter${index === 0 ? " more-articles__filter--active" : ""}" data-webm-clickvalue="view-${hyphenateNonAlphaNumeric(filter.title)}" data-more-articles-query="${proxyUrl}${filter.uri}">${filter.title}</div>`;

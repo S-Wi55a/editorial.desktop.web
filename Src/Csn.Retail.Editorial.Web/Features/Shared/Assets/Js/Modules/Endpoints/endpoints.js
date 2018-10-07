@@ -1,19 +1,19 @@
-﻿export const proxyEndpoint = () => {
-    if (typeof csn_editorial !== 'undefined' || typeof csn_editorial.endpoints !== 'undefined') {
-        return `${csn_editorial.endpoints.proxyApiUrl}?uri=`;
-    }
+﻿var proxyApiUrl = '';
+var navApiUrl = '';
+var navRefinementApiUrl = '';
+var searchResultsUrl = '';
 
-    return '';
+if (typeof csn_editorial !== 'undefined' && typeof csn_editorial.endpoints !== 'undefined') {
+    proxyApiUrl = csn_editorial.endpoints.proxyApiUrl;
+    navApiUrl = csn_editorial.endpoints.navApiUrl;
+    navRefinementApiUrl = csn_editorial.endpoints.navRefinementApiUrl;
+    searchResultsUrl = csn_editorial.endpoints.searchResultsUrl;
 }
 
-export const iNavEndpoints = () => {
-    var endpoints = {};
+export const proxyEndpoint = `${proxyApiUrl}?uri=`;
 
-    if (typeof csn_editorial !== 'undefined' && typeof csn_editorial.endpoints !== 'undefined') {
-        endpoints.nav = csn_editorial.endpoints.navApiUrl;
-        endpoints.home = (query = '', offset = 0, sortOrder = 'Latest') => `${csn_editorial.endpoints.searchResultsUrl}?q=${query}&offset=${offset}&sortOrder=${sortOrder}`;
-        endpoints.refinement = (refinementAspect, parentExpression, query = '') => `${csn_editorial.endpoints.navRefinementApiUrl}${query.length ? query : '?'}&refinementAspect=${refinementAspect}&parentExpression=${parentExpression}`;
-    }
-
-    return endpoints;
+export const iNavEndpoints = {
+    nav: navApiUrl,
+    home: (query = '', offset = 0, sortOrder = 'Latest') => `${searchResultsUrl}?q=${query}&offset=${offset}&sortOrder=${sortOrder}`,
+    refinement: (refinementAspect, parentExpression, query = '') => `${navRefinementApiUrl}${query.length ? query : '?'}&refinementAspect=${refinementAspect}&parentExpression=${parentExpression}`
 }

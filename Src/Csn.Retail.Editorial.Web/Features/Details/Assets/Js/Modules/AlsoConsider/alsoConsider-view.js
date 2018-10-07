@@ -2,7 +2,7 @@
 
 const container = (data) => {
 
-    const alsoConsiderQueryPath = proxyEndpoint();
+    const alsoConsiderQueryPath = proxyEndpoint;
 
     return `<div class="also-consider" data-also-consider-query="${alsoConsiderQueryPath}${data.uri}"></div>`
 }

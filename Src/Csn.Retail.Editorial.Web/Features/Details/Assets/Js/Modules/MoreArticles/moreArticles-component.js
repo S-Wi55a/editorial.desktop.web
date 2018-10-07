@@ -89,7 +89,7 @@ let updateContent = function (frame, el, container, cb) {
         Ajax.get(query, (json) => {
             json = JSON.parse(json)
             if (json.nextQuery) {
-                updateButton(el, 'data-more-articles-query', proxyEndpoint() + json.nextQuery)
+                updateButton(el, 'data-more-articles-query', proxyEndpoint + json.nextQuery)
             } else {
                 //disabled next
                 updateButton(el, 'data-more-articles-query', '')
