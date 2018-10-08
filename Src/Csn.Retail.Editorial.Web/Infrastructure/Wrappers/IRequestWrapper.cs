@@ -4,7 +4,7 @@ using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
-namespace Csn.Retail.Editorial.Web.Infrastructure.RequestWrapper
+namespace Csn.Retail.Editorial.Web.Infrastructure.Wrappers
 {
     public interface IRequestWrapper
     {

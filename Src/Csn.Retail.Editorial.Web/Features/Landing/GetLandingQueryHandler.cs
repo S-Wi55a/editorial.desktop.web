@@ -17,6 +17,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+using Csn.Retail.Editorial.Web.Infrastructure.Wrappers;
 using Csn.SimpleCqrs;
 using Ingress.ServiceClient.Abstracts;
 using NewRelic.Api.Agent;
@@ -73,7 +74,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     Nav = new Models.Nav
                     {
                         NavResults = navResults,
-                        DisqusSource = _tenantProvider.Current().DisqusSource,
+                        DisqusSource = _tenantProvider.Current().DisqusSource
                     },
                     Title = _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,

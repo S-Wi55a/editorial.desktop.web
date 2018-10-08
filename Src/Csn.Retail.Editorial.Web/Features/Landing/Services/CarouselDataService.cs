@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Csn.Retail.Editorial.Web.Features.Landing.Carousel;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Landing.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+using Csn.Retail.Editorial.Web.Infrastructure.Wrappers;
 using NewRelic.Api.Agent;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing.Services
@@ -24,11 +24,13 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
     {
         private readonly IRyvussDataService _ryvussDataService;
         private readonly IMapper _mapper;
+        private readonly IUrlRouteHelper _urlRouteHelper;
 
-        public CarouselDataService(IRyvussDataService ryvussDataService, IMapper mapper)
+        public CarouselDataService(IRyvussDataService ryvussDataService, IMapper mapper, IUrlRouteHelper urlRouteHelper)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
+            _urlRouteHelper = urlRouteHelper;
         }
 
         public async Task<CarouselViewModel> GetCarouselData(CarouselQuery query)
@@ -61,11 +63,12 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             var result = await _ryvussDataService.GetResults(query, offset, sort);
             if (result == null) return null;
             var landingResults = _mapper.Map<NavResult>(result);
+
             return new CarouselViewModel
             {
                 CarouselItems = landingResults.SearchResults,
-                NextQuery = landingResults.Count - offset > 7 && offset < limit ? $"/editorial/api/v1/carousel/?q={query}&offset={offset + 7}&sort={sort}&limit={limit}"
-                    : string.Empty
+                NextQuery = landingResults.Count - offset > 7 && offset < limit ?
+                                _urlRouteHelper.HttpRouteUrl(RouteNames.WebApi.ApiCarousel, new CarouselQuery { Q = query, Offset = offset + 7, Sort = sort, Limit = limit }) : string.Empty
             };
         }
 

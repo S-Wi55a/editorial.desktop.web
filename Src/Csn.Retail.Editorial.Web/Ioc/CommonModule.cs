@@ -6,6 +6,7 @@ using Csn.Logging.NLog3;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Infrastructure.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
+using Csn.Retail.Editorial.Web.Infrastructure.Wrappers;
 using Csn.Serializers;
 using Csn.Serializers.Json;
 using Csn.SimpleCqrs;
@@ -24,6 +25,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterGeneric(typeof(ContextStore<>)).As(typeof(IContextStore<>)).InstancePerRequest();
+            builder.RegisterType<UrlRouteHelper>().As<IUrlRouteHelper>().SingleInstance();
             builder.RegisterType<AutoMappedMapper>().As<IMapper>().SingleInstance();
             builder.Register(x => GetLogger.For<MvcApplication>()).As<ILogger>().SingleInstance();
             builder.RegisterType<NLogLoggerFactory>().As<ILoggerFactory>().SingleInstance();

@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { Actions, ActionTypes } from './actions'
-import { iNav } from 'Endpoints/endpoints'
+import { iNavEndpoints } from 'Endpoints/endpoints'
 
 type fetchINav = (q?: string) => (d: Dispatch<any>) => Promise<any>
 
@@ -8,7 +8,7 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
 
     dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
 
-    return fetch(`${iNav.nav}${query}`)
+    return fetch(`$iNavEndpoints.nav}${query}`)
         .then(
             response => response.json(),
             error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
@@ -72,36 +72,36 @@ export const fetchINavAndResults: fetchINavAndResults = (query?: string) =>  (di
 type fetchINavRefinement = (r: string, p: string, q: string, u?: string, action?: Actions) => (d: any) => Promise<any>;
     
 export const fetchINavRefinement: fetchINavRefinement = (refinementAspect: string, parentExpression: string, query: string, url?: string, reduxAction?: Actions) => (dispatch: any ) => {
-        parentExpression = encodeURIComponent(parentExpression);
-        dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST })
+    parentExpression = encodeURIComponent(parentExpression);
+    dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST });
 
-        return fetch(iNav.refinement(refinementAspect, parentExpression, query ? `${query}` : ''))
-           // Try to parse the response
-            .then(response =>
-                response.json().then(json => ({
-                status: response.status,
-                json
-                })
-            ))
-            .then(
-                // Both fetching and parsing succeeded!
-                ({ status, json }) => {
-                  if (status >= 400) {
-                    // Status looks bad
-                    dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { error: `server status ${status}` } })
-                  } else {
-                    // Status looks good
-                    dispatch([
-                        { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data: json, parentExpression }},
-                        reduxAction
-                    ])
-                  }
-                },
-                // Either fetching or parsing failed!
-                err => {
-                    dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { err } })
-                }
-              )
-    }
+    return fetch(iNavEndpoints.refinement(refinementAspect, parentExpression, query ? `${query}` : ''))
+       // Try to parse the response
+        .then(response =>
+            response.json().then(json => ({
+            status: response.status,
+            json
+            })
+        ))
+        .then(
+            // Both fetching and parsing succeeded!
+            ({ status, json }) => {
+              if (status >= 400) {
+                // Status looks bad
+                dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { error: `server status ${status}` } })
+              } else {
+                // Status looks good
+                dispatch([
+                    { type: ActionTypes.API.REFINEMENT.FETCH_QUERY_SUCCESS, payload: { data: json, parentExpression }},
+                    reduxAction
+                ])
+              }
+            },
+            // Either fetching or parsing failed!
+            err => {
+                dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_FAILURE, payload: { err } })
+            }
+        )
+}
 
 export type Types = fetchINav & fetchINavAndResults & fetchINavRefinement;

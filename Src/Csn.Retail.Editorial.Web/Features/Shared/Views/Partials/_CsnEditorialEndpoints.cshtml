@@ -1,0 +1,11 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.ApiProxy
+
+<script>
+    var csn_editorial = csn_editorial || {};
+    csn_editorial.endpoints = {
+        'proxyApiUrl': '@Url.HttpRouteUrl(RouteNames.WebApi.ApiProxy, new ApiProxyQuery {Uri = String.Empty})',
+        'navApiUrl': '@Url.HttpRouteUrl(RouteNames.WebApi.GetNav, new object())',
+        'navRefinementApiUrl': '@Url.HttpRouteUrl(RouteNames.WebApi.GetNavRefinements, new object())',
+        'searchResultsUrl': '@Url.RouteUrl(RouteNames.Mvc.ListingPagePreInternational, new object())'
+    };
+</script>
