@@ -1,4 +1,6 @@
-﻿namespace Csn.Retail.Editorial.Web.Features.Shared.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 {
     public enum ArticleType
     {
@@ -9,6 +11,14 @@
         Advice,
         Features,
         Reviews,
-        Carpool
+        Carpool,
+        Actualidad,
+        [Display(Name = "Las Mejores Compras")]
+        LasMejoresCompras,
+        [Display(Name = "Compra de Auto")]
+        CompraDeAuto,
+        Comparativas,
+        Consejos,
+        Pruebas
     }
 }

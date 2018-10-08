@@ -20,7 +20,13 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
             { "videos", ArticleType.Video },
             { "advice", ArticleType.Advice},
             { "features", ArticleType.Features },
-            { "sponsored", ArticleType.Sponsored }
+            { "sponsored", ArticleType.Sponsored },
+            { "actualidad", ArticleType.Actualidad },
+            { "las-mejores-compras", ArticleType.LasMejoresCompras },
+            { "compra-de-auto", ArticleType.CompraDeAuto },
+            { "comparativas", ArticleType.Comparativas },
+            { "consejos", ArticleType.Consejos },
+            { "pruebas", ArticleType.Pruebas }
         };
 
         private static readonly Dictionary<ArticleType, string> _articleFacetNameLookup = new Dictionary<ArticleType, string>
@@ -30,7 +36,13 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
             { ArticleType.Video, "Video" },
             { ArticleType.Advice, "Advice"},
             { ArticleType.Features, "Feature" },
-            { ArticleType.Sponsored, "Sponsored" }
+            { ArticleType.Sponsored, "Sponsored" },
+            { ArticleType.Actualidad, "Actualidad" },
+            { ArticleType.LasMejoresCompras, "Las Mejores Compras" },
+            { ArticleType.CompraDeAuto, "Compra de Auto" },
+            { ArticleType.Comparativas, "Comparativas" },
+            { ArticleType.Consejos, "Consejos" },
+            { ArticleType.Pruebas, "Pruebas" },
         };
 
         public ArticleType? GetArticleTypeFromSlug(string articleTypeSlug)
