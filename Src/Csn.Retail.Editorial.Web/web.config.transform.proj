@@ -1,0 +1,30 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0" VisualStudioVersion="12.0">
+
+  <!-- To use just run the command below on a command line which has access to MSBuild e.g. Visual Studio command line -->
+  <!-- Works best if web.config is reset to default values each time -->
+  <!-- MsBuild web.config.transform.proj /t:TaskTransformConfig /p:Configuration=LatamStaging-->
+
+	<PropertyGroup>
+		<ToolsDir>..\..\Tools</ToolsDir>
+    <Configuration Condition="$(Configuration) != ''"></Configuration>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TransformConfigSrc>Web.$(Configuration).config</TransformConfigSrc>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<MSBuildCommunityTasksPath>$(ToolsDir)\MSBuild.Community.Tasks</MSBuildCommunityTasksPath>
+	</PropertyGroup>
+
+	<Import Project="$(ToolsDir)\MSBuild.Community.Tasks\MSBuild.Community.Tasks.Targets"/>
+
+	<UsingTask TaskName="TransformXml" AssemblyFile="$(ToolsDir)\Microsoft.Web.Publishing\Microsoft.Web.Publishing.Tasks.dll"/>
+  <!-- Only perform this step for Test...otherwise Octopus does the transform for us -->
+	<Target Name="TaskTransformConfig" Condition="$(Configuration) != ''">
+		<TransformXml Source="Web.config"
+								Transform="Web.$(Configuration).config"
+								Destination="Web.config"
+								StackTrace="true" />
+	</Target>
+</Project>
