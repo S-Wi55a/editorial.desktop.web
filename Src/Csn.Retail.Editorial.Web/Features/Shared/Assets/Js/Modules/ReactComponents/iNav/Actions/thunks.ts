@@ -8,7 +8,7 @@ export const fetchINav: fetchINav = (query?: string) => (dispatch: Dispatch<any>
 
     dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_REQUEST });
 
-    return fetch(`$iNavEndpoints.nav}${query}`)
+    return fetch(`${iNavEndpoints.nav}${query}`)
         .then(
             response => response.json(),
             error => dispatch({ type: ActionTypes.API.INAV.FETCH_QUERY_FAILURE, payload: { error } })
@@ -75,7 +75,7 @@ export const fetchINavRefinement: fetchINavRefinement = (refinementAspect: strin
     parentExpression = encodeURIComponent(parentExpression);
     dispatch({ type: ActionTypes.API.REFINEMENT.FETCH_QUERY_REQUEST });
 
-    return fetch(iNavEndpoints.refinement(refinementAspect, parentExpression, query ? `${query}` : ''))
+    return fetch(iNavEndpoints.refinement(refinementAspect, parentExpression, query ? query : ''))
        // Try to parse the response
         .then(response =>
             response.json().then(json => ({
