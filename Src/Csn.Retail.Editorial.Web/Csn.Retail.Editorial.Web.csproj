@@ -927,6 +927,9 @@
     <Content Include="Web.LatamStaging.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Web.LatamDev.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
     <Content Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
