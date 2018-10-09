@@ -4,13 +4,13 @@
 
 const listofTenants = [
     'carsales',
-    'constructionsales',
-    'bikesales',
-    'boatsales',
-    'trucksales',
-    'caravancampingsales',
-    'farmmachinerysales',
-    'redbook',
+    //'constructionsales',
+    //'bikesales',
+    //'boatsales',
+    //'trucksales',
+    //'caravancampingsales',
+    //'farmmachinerysales',
+    //'redbook',
     //'soloautos' // Comment out soloautos till its ready
 ];
 
