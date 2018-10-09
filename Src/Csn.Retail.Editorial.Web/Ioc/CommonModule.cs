@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterGeneric(typeof(ContextStore<>)).As(typeof(IContextStore<>)).InstancePerRequest();
-            builder.RegisterType<UrlRouteHelper>().As<IUrlRouteHelper>().SingleInstance();
+            builder.RegisterType<UrlRouteHelper>().As<IUrlRouteHelper>().InstancePerRequest();
             builder.RegisterType<AutoMappedMapper>().As<IMapper>().SingleInstance();
             builder.Register(x => GetLogger.For<MvcApplication>()).As<ILogger>().SingleInstance();
             builder.RegisterType<NLogLoggerFactory>().As<ILoggerFactory>().SingleInstance();
