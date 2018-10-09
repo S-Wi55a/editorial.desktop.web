@@ -10,7 +10,7 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Wrappers
 
     public class UrlRouteHelper : IUrlRouteHelper
     {
-        private static UrlHelper _urlHelper;
+        private readonly UrlHelper _urlHelper;
 
         public UrlRouteHelper()
         {
