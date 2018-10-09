@@ -563,13 +563,6 @@
     <Compile Include="App_Start\SetupRoutesTask.cs" />
     <Compile Include="App_Start\SetupViewEngineTask.cs" />
     <Compile Include="App_Start\SetupWebApiFormattersTask.cs" />
-    <Compile Include="Culture\LanguageConstants.cs" />
-    <Compile Include="Culture\LanguageResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LanguageResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Culture\LanguageResourceValueProvider.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\ArticleViewModelCacheStore.cs" />
@@ -1274,13 +1267,6 @@
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\thunks.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Reducers\index.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Types\index.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Culture\LanguageResources.es.resx" />
-    <EmbeddedResource Include="Culture\LanguageResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LanguageResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
