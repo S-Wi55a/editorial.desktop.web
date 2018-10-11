@@ -14,10 +14,12 @@ namespace Csn.Retail.Editorial.Web
     public class SetupRoutesTask : IStartUpTask
     {
         private readonly string _basepath;
+        private readonly string _resultsSegment;
 
         public SetupRoutesTask(IEditorialRouteSettings editorialSettings)
         {
             _basepath = editorialSettings.BasePath.Trim('/');
+            _resultsSegment = editorialSettings.ResultsSegment.Trim('/');
         }
 
         public void Run()
@@ -148,6 +150,12 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
+                RouteNames.Mvc.ListingPagePreInternational,
+                _resultsSegment,
+                new { controller = "Listings", action = "Listing" }
+            );
+
+            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.ArticleType,
                 "{*articleType}",
                 new { controller = "Listings", action = "ArticleTypeListing" },
@@ -166,13 +174,6 @@ namespace Csn.Retail.Editorial.Web
                 "{redbookVertical}/results",
                 new { controller = "Listings", action = "RedbookListing" },
                 new { redbookVertical = new VerticalRouteConstraint() }
-            );
-
-            AddMvcRouteWithBasePath(
-                RouteNames.Mvc.ListingPagePreInternational,
-                "results/{*seoFragment}",
-                new { controller = "Listings", action = "Listing" },
-                new { seoFragment = "(^[\\w-/]*)?" }
             );
 
             AddMvcRouteWithBasePath(

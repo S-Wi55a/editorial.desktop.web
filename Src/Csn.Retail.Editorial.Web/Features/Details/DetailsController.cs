@@ -3,9 +3,11 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Features.Details.Loggers;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
 
@@ -17,13 +19,15 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         private readonly IEventDispatcher _eventDispatcher;
         private readonly IDetailsRedirectLogger _redirectLogger;
         private readonly ILegacyDetailsRedirectLogger _legacyDetailsRedirectLogger;
+        private readonly IEditorialRouteSettings _routeSettings;
 
-        public DetailsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher, IDetailsRedirectLogger redirectLogger, ILegacyDetailsRedirectLogger legacyDetailsRedirectLogger)
+        public DetailsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher, IDetailsRedirectLogger redirectLogger, ILegacyDetailsRedirectLogger legacyDetailsRedirectLogger, IEditorialRouteSettings routeSettings)
         {
             _queryDispatcher = queryDispatcher;
             _eventDispatcher = eventDispatcher;
             _redirectLogger = redirectLogger;
             _legacyDetailsRedirectLogger = legacyDetailsRedirectLogger;
+            _routeSettings = routeSettings;
         }
 
         [RedirectAttributeFilter]
@@ -52,7 +56,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                 // redirect any article request with slug which does not match the published slug
                 if (!articleIdentifier.Slug.Trim('/').Equals(response.ArticleViewModel.Slug, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    return PermanentRedirect($"/editorial/details/{response.ArticleViewModel.Slug.Trim('/')}/{Request.RequestContext.HttpContext.Request.Url?.Query}");
+                    return PermanentRedirect($"{_routeSettings.DetailsUrlFormat.FormatWith(response.ArticleViewModel.Slug.Trim('/'))}/{Request.RequestContext.HttpContext.Request.Url?.Query}");
                 }
 
                 return View("DefaultTemplate", response.ArticleViewModel);
