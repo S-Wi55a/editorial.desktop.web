@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -15,13 +16,16 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
     public class PaginationHelperTest
     {
         private ITenantProvider<TenantInfo> _tenantProvider;
+        private IEditorialRouteSettings _routeSettings;
 
         [SetUp]
         public void SetUp()
         {
             _tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
-
-            _tenantProvider.Current().Returns(new TenantInfo()
+            _routeSettings = Substitute.For<IEditorialRouteSettings>();
+            _routeSettings.BasePath.Returns("/editorial/");
+            _routeSettings.ResultsSegment.Returns("results");
+            _tenantProvider.Current().Returns(new TenantInfo
             {
                 Name = "carsales",
                 Culture = new CultureInfo("en-us")
@@ -29,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Helpers
 
             var dependencyResolver = Substitute.For<IDependencyResolver>();
             dependencyResolver.GetService<ITenantProvider<TenantInfo>>().Returns(_tenantProvider);
-
+            dependencyResolver.GetService<IEditorialRouteSettings>().Returns(_routeSettings);
             DependencyResolver.SetResolver(dependencyResolver);
         }
 

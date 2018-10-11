@@ -12,6 +12,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Features.Shared.Services;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Expresso.Expressions;
 using Expresso.Syntax;
 using NSubstitute;
@@ -27,6 +28,9 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
         {
             //Arrange
             var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
+            var routeSettings = Substitute.For<IEditorialRouteSettings>();
+            routeSettings.BasePath.Returns("/editorial/");
+            routeSettings.ResultsSegment.Returns("results");
             var mapper = Substitute.For<IMapper>();
             var contextStore = Substitute.For<IPageContextStore>();
             var paginationHelper = Substitute.For<IPaginationHelper>();
@@ -46,6 +50,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
             // this bit is required because we have some static classes that use service locator pattern
             var dependencyResolver = Substitute.For<IDependencyResolver>();
             dependencyResolver.GetService<ITenantProvider<TenantInfo>>().Returns(tenantProvider);
+            dependencyResolver.GetService<IEditorialRouteSettings>().Returns(routeSettings);
 
             DependencyResolver.SetResolver(dependencyResolver);
 
