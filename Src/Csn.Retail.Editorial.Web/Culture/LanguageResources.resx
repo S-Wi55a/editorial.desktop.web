@@ -117,7 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="Keywords" xml:space="preserve">
+    <value>Keywords: </value>
+  </data>
+  <data name="KeywordSeachPlaceholderText" xml:space="preserve">
+    <value>Keyword search</value>
+  </data>
+  <data name="LatestArticles" xml:space="preserve">
+    <value>Latest Articles</value>
+  </data>
+  <data name="MakeModelNavLabel" xml:space="preserve">
+    <value>Make/Model</value>
+  </data>
+  <data name="NumberOfArticlesFoundFormat" xml:space="preserve">
+    <value>{0} Article(s) found</value>
+  </data>
+  <data name="OldestArticles" xml:space="preserve">
+    <value>Oldest Articles</value>
+  </data>
+  <data name="RefineSearchText" xml:space="preserve">
+    <value>Please refine your search by removing a selection.</value>
+  </data>
   <data name="ViewAll" xml:space="preserve">
     <value>View All</value>
+  </data>
+  <data name="ArticleText" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="NavCancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="NavShowText" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="MonthDateFormat" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="MonthYearFormat" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="ShowingPageItemsTextFormat" xml:space="preserve">
+    <value>{0} of {1} Articles</value>
   </data>
 </root>

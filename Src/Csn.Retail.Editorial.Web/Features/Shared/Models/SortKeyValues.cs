@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Culture;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Models
 {
     public static class EditorialSortKeyValues
     {
         private const string LatestKey = "Latest";
-        private const string LatestName = "Latest Articles";
         private const string OldestKey = "Oldest";
-        private const string OldestName = "Oldest Articles";
 
         public static IDictionary<string, ISortKeyItem> Items => new Dictionary<string, ISortKeyItem>
         {
-            { LatestKey, new SortKeyItem(LatestKey, LatestName) },
-            { OldestKey, new SortKeyItem(OldestKey, OldestName) }
+            { LatestKey, new SortKeyItem(LatestKey, LanguageResourceValueProvider.GetValue(LanguageConstants.LatestArticles)) },
+            { OldestKey, new SortKeyItem(OldestKey, LanguageResourceValueProvider.GetValue(LanguageConstants.LatestArticles)) }
         };
 
         public static string ListingPageDefaultSort => Items[LatestKey].Key;

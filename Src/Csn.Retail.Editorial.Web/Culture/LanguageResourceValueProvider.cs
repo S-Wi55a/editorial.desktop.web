@@ -11,5 +11,10 @@ namespace Csn.Retail.Editorial.Web.Culture
             var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
             return LanguageResources.ResourceManager.GetString(key, tenantProvider.Current().Culture);
         }
+
+        public static string GetUiCulture()
+        {
+            return DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>().Current().Culture.Name;
+        }
     }
 }
