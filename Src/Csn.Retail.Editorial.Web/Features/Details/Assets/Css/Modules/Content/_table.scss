@@ -1,0 +1,29 @@
+﻿table {
+    width: 100%;
+    margin-top: 1.25em;
+    background-color: #fff;
+    color: #000;
+    border-collapse: collapse;
+
+    thead {
+        font-weight: bold;
+    }
+
+    th,
+    td {
+        height: 50px;
+        padding: 6px;
+        vertical-align: middle;
+    }
+
+    tbody tr:nth-of-type(odd) {
+        background-color: rgba(241, 241, 241, 0.31);
+    }
+
+    th,
+    td,
+    thead th,
+    tbody + tbody {
+        border: 0;
+    }
+}
