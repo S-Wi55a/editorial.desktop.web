@@ -18,7 +18,7 @@ const INavBreadCrumb = ({ facetDisplay, removeAction, fetchINavAndResults, type}
         onClick={(e)=>{e.preventDefault(); fetchINavAndResults(removeAction);}}
         data-webm-clickvalue={facetDisplay}
         >
-            {type === FacetBreadCrumb.keyword ? 'Keywords: ':''}{facetDisplay}
+            {facetDisplay}
         </a>
 }
 

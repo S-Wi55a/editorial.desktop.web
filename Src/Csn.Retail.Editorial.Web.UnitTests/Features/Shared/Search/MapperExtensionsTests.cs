@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
@@ -122,13 +126,19 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.Search
         public void GetDisplayNameTest()
         {
             //Arrange
+            var tenantProvider = Substitute.For<ITenantProvider<TenantInfo>>();
+            tenantProvider.Current().ReturnsForAnyArgs(new TenantInfo()
+            {
+                Culture = new CultureInfo("es")
+            });
             var dtoWithoutMake = new RyvussNavNodeDto
             {
+                Name = "Article Type",
                 DisplayName = "Article Type"
             };
             var dtoWithMake = new RyvussNavNodeDto
             {
-                DisplayName = "Make"
+                Name = "Make"
             };
 
             //Act

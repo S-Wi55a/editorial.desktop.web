@@ -117,7 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Limpiar todo</value>
+  </data>
+  <data name="Keywords" xml:space="preserve">
+    <value>Palabras claves: </value>
+  </data>
+  <data name="KeywordSeachPlaceholderText" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="LatestArticles" xml:space="preserve">
+    <value>Artículos Nuevos</value>
+  </data>
+  <data name="MakeModelNavLabel" xml:space="preserve">
+    <value>Marca/Modelo</value>
+  </data>
+  <data name="NumberOfArticlesFoundFormat" xml:space="preserve">
+    <value>Encontrado {0} Artículo(s)</value>
+  </data>
+  <data name="OldestArticles" xml:space="preserve">
+    <value>Artículos Antiguos</value>
+  </data>
+  <data name="RefineSearchText" xml:space="preserve">
+    <value>Por favor redefina su búsqueda eliminando una selección.</value>
+  </data>
   <data name="ViewAll" xml:space="preserve">
     <value>Ver todo</value>
+  </data>
+  <data name="ArticleText" xml:space="preserve">
+    <value>Artículo</value>
+  </data>
+  <data name="NavCancelText" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="NavShowText" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
+  <data name="MonthDateFormat" xml:space="preserve">
+    <value>{0} de {1}</value>
+  </data>
+  <data name="MonthYearFormat" xml:space="preserve">
+    <value>{0}, {1}</value>
+  </data>
+  <data name="ShowingPageItemsTextFormat" xml:space="preserve">
+    <value>{0:N0} - {1:N0} de {2:N0} Artículos</value>
   </data>
 </root>

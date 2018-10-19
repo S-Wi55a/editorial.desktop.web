@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Csn.Retail.Editorial.Web.Culture;
 using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
@@ -32,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
                     RemoveAction = ListingUrlHelper.GetPathAndQueryString(keywordBreadCrumb.RemoveAction, sortOrder: context.Items.TryGetValue("sortOrder", out var sortOrder)
                         ? sortOrder?.ToString()
                         : string.Empty, includeResultsSegment: true),
-                    FacetDisplay = keywordBreadCrumb.Term.Trim('(', ')'),
+                    FacetDisplay = $"{LanguageResourceValueProvider.GetValue(LanguageConstants.Keywords)}{keywordBreadCrumb.Term.Trim('(', ')')}",
                     Type = "KeywordBreadCrumb"
                 });
             }
@@ -41,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
                 RemoveAction = ListingUrlHelper.GetPathAndQueryString(sortOrder: context.Items.TryGetValue("sortOrder", out var sort)
                     ? sort?.ToString()
                     : string.Empty, includeResultsSegment: true),
-                FacetDisplay = "Clear All",
+                FacetDisplay = LanguageResourceValueProvider.GetValue(LanguageConstants.ClearAll),
                 Type = "ClearAllBreadCrumb"
             });
 
