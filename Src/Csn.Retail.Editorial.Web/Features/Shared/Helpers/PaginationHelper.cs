@@ -64,11 +64,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 
             }
 
-            return string.Format(LanguageResourceValueProvider.GetValue(LanguageConstants.ShowingPageItemsTextFormat),
-                string.Format(_tenantProvider.Current().Culture, "{0:N0}", offset + 1) + " - " + 
-                string.Format(_tenantProvider.Current().Culture, "{0:N0}", currentPageNumber != totalPages ? offset + limit : count),
-                string.Format(_tenantProvider.Current().Culture, "{0:N0}", count));
-            //return  + " of " + string.Format(_tenantProvider.Current().Culture, "{0:N0}", count) + " Articles";
+            return string.Format(_tenantProvider.Current().Culture,
+                LanguageResourceValueProvider.GetValue(LanguageConstants.ShowingPageItemsTextFormat),
+                offset + 1, (currentPageNumber != totalPages ? offset + limit : count), count);
         }
 
         private IEnumerable<PagingItemViewModel> GeneratePageLinks(long currentPageNo, int totalPages, string query, string seoFragment, string sortOrder, string keyword)

@@ -178,7 +178,7 @@ namespace Csn.Retail.Editorial.Web.Culture {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} Articles.
+        ///   Looks up a localized string similar to {0:N0} - {1:N0} of {2:N0} Articles.
         /// </summary>
         public static string ShowingPageItemsTextFormat {
             get {
