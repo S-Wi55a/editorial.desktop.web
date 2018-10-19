@@ -15,10 +15,10 @@ interface IINavConfirmCancelBar {
     pendingAction?: string
     fetchINavAndResults?: (q?: string)=>void
     cancel?: () => void,
-    showText: string,
-    cancelText: string,
-    articleText: string,
-    uiCulture: string
+    showText?: string,
+    cancelText?: string,
+    articleText?: string,
+    uiCulture?: string
 }
 
 const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({ count, fetchINavAndResults, pendingAction, cancel, showText, cancelText, articleText, uiCulture}) => (
