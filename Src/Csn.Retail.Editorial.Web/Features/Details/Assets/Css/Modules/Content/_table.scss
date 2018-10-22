@@ -7,13 +7,20 @@
 
     thead {
         font-weight: bold;
+
+        th {
+            vertical-align: bottom;
+        }
     }
 
     th,
     td {
-        height: 50px;
-        padding: 6px;
-        vertical-align: middle;
+        padding: 10px;
+        vertical-align: top;
+
+        &:first-child {
+            padding-left: 25px;
+        }
     }
 
     tbody tr:nth-of-type(odd) {

@@ -837,6 +837,7 @@
     <Content Include="Features\DisplayAds\GoogleAd\Views\Index.cshtml" />
     <Content Include="Features\DisplayAds\MediaMotive\Views\Index.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_aside.scss" />
+    <Content Include="Features\Details\Assets\Css\Modules\Content\_table.scss" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
