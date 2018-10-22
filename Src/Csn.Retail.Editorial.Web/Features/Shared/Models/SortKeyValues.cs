@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public static IDictionary<string, ISortKeyItem> Items => new Dictionary<string, ISortKeyItem>
         {
             { LatestKey, new SortKeyItem(LatestKey, LanguageResourceValueProvider.GetValue(LanguageConstants.LatestArticles)) },
-            { OldestKey, new SortKeyItem(OldestKey, LanguageResourceValueProvider.GetValue(LanguageConstants.LatestArticles)) }
+            { OldestKey, new SortKeyItem(OldestKey, LanguageResourceValueProvider.GetValue(LanguageConstants.OldestArticles)) }
         };
 
         public static string ListingPageDefaultSort => Items[LatestKey].Key;
