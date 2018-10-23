@@ -7,21 +7,23 @@
                 <div class="slideshow__slides swiper-wrapper">
 
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="0">
+                        @{ var cropParam1 = Model.Images[0].NeedCropping ? "&pxc_method=crop" : ""; }
 
                         <img class="slideshow__image"
                                 sizes="(max-width: 1199px) 617px, 825px"
-                                src="@Model.Images[0].Url?width=825&height=550"
-                                srcset="@Model.Images[0].Url?width=617&height=411 617w, @Model.Images[0].Url?width=825&height=550 825w"
+                                src="@(Model.Images[0].Url + "?width=825&height=550" + cropParam1)"
+                                srcset="@(Model.Images[0].Url + "?width=617&height=411" + cropParam1 + " 617w, " + Model.Images[0].Url + "?width=825&height=550" + cropParam1 + " 825w")"
                                 alt="@Model.Images[0].AlternateText" />
                     </div>
 
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="1">
+                        @{ var cropParam2 = Model.Images[0].NeedCropping ? "&pxc_method=crop" : ""; }
 
                         <img class="slideshow__image"
-                                sizes="(max-width: 1199px) 617px, 825px"
-                                data-src="@Model.Images[1].Url?width=825&height=550"
-                                data-srcset="@Model.Images[1].Url?width=617&height=411 617w, @Model.Images[1].Url?width=825&height=550 825w"
-                                alt="@Model.Images[1].AlternateText" />
+                             sizes="(max-width: 1199px) 617px, 825px"
+                             data-src="@(Model.Images[1].Url + "?width=825&height=550" + cropParam2)"
+                             data-srcset="@(Model.Images[1].Url + "?width=617&height=411" + cropParam2 + " 617w, " + Model.Images[1].Url + "?width=825&height=550" + cropParam2 + " 825w")"
+                             alt="@Model.Images[1].AlternateText" />
                     </div>
 
                 </div>

@@ -2,9 +2,10 @@
 
 @{
     var firstImage = Model.Images.First();
+    var cropParam = Model.Images.First().NeedCropping ? "&pxc_method=crop" : "";
 }
 
 <img sizes="100vw"
-     src="@firstImage.Url?width=1024"
-     srcset="@firstImage.Url?width=780 1200w, @firstImage.Url?width=642 1024w, @firstImage.Url?width=492 768w"
+     src="@(firstImage.Url + "?width=1024" + cropParam)"
+     srcset="@(firstImage.Url + "?width=780" + cropParam + " 1200w, " + firstImage.Url + "?width=642" + cropParam + " 1024w, " + firstImage.Url + "?width=492" + cropParam + " 768w")"
      alt="@firstImage.AlternateText" />

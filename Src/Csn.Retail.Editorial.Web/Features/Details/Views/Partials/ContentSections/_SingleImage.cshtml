@@ -20,13 +20,15 @@
 }
 else
 {
+    var cropParam = Model.Image.NeedCropping ? "&pxc_method=crop" : "";
+
     // Single Image
     <div class="container">
         <div>
             <img class="article__img"
                  sizes="(max-width: 1199px) 825px, 1024px"
-                 src="@Model.Image.Url?width=1024&height=682"
-                 srcset="@Model.Image.Url?width=825&height=550 825w, @Model.Image.Url?width=1024&height=682 1024w"
+                 src="@(Model.Image.Url + "?width=1024&height=682" + cropParam)"
+                 srcset="@(Model.Image.Url + "?width=825&height=550" + cropParam + " 825w, " + Model.Image.Url + "?width=1024&height=682" + cropParam + " 1024w")"
                  alt="@Model.Image.AlternateText" />
 
             @if (Model.Image.Caption != null)

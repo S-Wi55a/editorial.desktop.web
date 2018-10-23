@@ -5,25 +5,31 @@
         <div class="slideshow__container  swiper-container">
             <div class="slideshow__slides swiper-wrapper">
                 @{ var index = 0; }
+
                 @foreach (var image in Model.Images.Take(4))
-            {
+                {
+                    var cropParam = image.NeedCropping ? "&pxc_method=crop" : "";
+
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"
                                  sizes="(max-width: 1199px) 50vw, (max-width: 1488px) 33vw, 33vw"
-                                 src="@image.Url?width=1024&height=683"
-                                 srcset="@image.Url?width=496&height=331 496w, @image.Url?width=1024&height=683 1024w"
+                                 src="@(image.Url + "?width=1024&height=683" + cropParam)"
+                                 srcset="@(image.Url + "?width=496&height=331" + cropParam + " 496w, " + image.Url + "?width=1024&height=683" + cropParam + " 1024w")"
                                  alt="@image.AlternateText" />
                     </div>
                     index++;
                 }
+
                 @foreach (var image in Model.Images.Skip(4))
-            {
+                {
+                    var cropParam = image.NeedCropping ? "&pxc_method=crop" : "";
+
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"
-                                 data-src="@image.Url?width=1024&height=683"
-                                 data-srcset="@image.Url?width=496&height=331 496w, @image.Url?width=1024&height=683 1024w"
+                                 data-src="@(image.Url + "?width=1024&height=683" + cropParam)"
+                                 data-srcset="@(image.Url + "?width=496&height=331" + cropParam + " 496w, " + image.Url + "?width=1024&height=683" + cropParam + " 1024w")"
                                  sizes="(max-width: 1199px) 50vw, (max-width: 1488px) 33vw, 33vw"
                                  alt="@image.AlternateText" />
 

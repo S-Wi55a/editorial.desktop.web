@@ -24,18 +24,22 @@
                 @{ var index = 0; }
                 @foreach (var image in Model.Images.Take(4))
                 {
+                    var cropParam = image.NeedCropping ? "&pxc_method=crop" : "";
+
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"
                                  sizes="(max-width: 1199px) 48vw, 31vw"
-                                 src="@image.Url?width=1024&height=683"
-                                 srcset="@image.Url?width=541&height=361 541w, @image.Url?width=1024&height=683 1024w"
+                                 src="@(image.Url + "?width=1024&height=683" + cropParam)"
+                                 srcset="@(image.Url + "?width=541&height=361" + cropParam + " 541w, " + image.Url + "?width=1024&height=683" + cropParam + " 1024w")"
                                  alt="@image.AlternateText"/>
                     </div>
                     index++;
                 }
                 @foreach (var image in Model.Images.Skip(4))
                 {
+                    var cropParam = image.NeedCropping ? "&pxc_method=crop" : "";
+
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"

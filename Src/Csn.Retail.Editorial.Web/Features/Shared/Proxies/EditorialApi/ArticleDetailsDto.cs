@@ -167,6 +167,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string AlternateText { get; set; }
         public string Caption { get; set; }
         public string Type { get; set; }
+        public bool NeedCropping { get; set; }
     }
 
     public class BrightcoveVideo
