@@ -42,6 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
 
         [RedirectAttributeFilter]
         [LegacyListingsUrlRedirectFilter]
+        [LatamInherentRedirectFilter]
         [SeoFriendlyRoutesRedirectFilter]
         public async Task<ActionResult> Listing(GetListingsQuery query)
         {
