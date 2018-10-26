@@ -1,13 +1,12 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
 <div class="clearfix hero hero--singleImage" data-webm-section="image-gallery">
     <div class="container" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="0">
-        @{ var cropParam = Model.Images[0].NeedCropping ? "&pxc_method=crop" : ""; }
-
         <img class="slideshow__image"
             sizes="(max-width: 1199px) 617px, 825px"
-            src="@(Model.Images[0].Url + "?width=825&height=550" + cropParam)"
-            srcset="@(Model.Images[0].Url + "?width=617&height=411" + cropParam + " 617w, " + Model.Images[0].Url + "?width=825&height=550" + cropParam + " 825w")"
+            src="@Model.Images[0].GetHeroImageUrl("825", "550")"
+            srcset="@Model.Images[0].GetHeroImageUrl("617", "411") 617w, @Model.Images[0].GetHeroImageUrl("825", "550") 825w"
             alt="@Model.Images[0].AlternateText" />
     </div>
 </div>

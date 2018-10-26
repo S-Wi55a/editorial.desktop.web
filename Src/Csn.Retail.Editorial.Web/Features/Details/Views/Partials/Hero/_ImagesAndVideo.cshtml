@@ -1,4 +1,5 @@
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
 <div class="clearfix hero hero--imageAndVideo" data-webm-section="image-gallery">
@@ -24,27 +25,23 @@
                 @{ var index = 0; }
                 @foreach (var image in Model.Images.Take(4))
                 {
-                    var cropParam = image.NeedCropping ? "&pxc_method=crop" : "";
-
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"
                                  sizes="(max-width: 1199px) 48vw, 31vw"
-                                 src="@(image.Url + "?width=1024&height=683" + cropParam)"
-                                 srcset="@(image.Url + "?width=541&height=361" + cropParam + " 541w, " + image.Url + "?width=1024&height=683" + cropParam + " 1024w")"
+                                 src="@image.GetHeroImageUrl("1024", "683")"
+                                 srcset="@image.GetHeroImageUrl("541", "361") 541w, @image.GetHeroImageUrl("1024", "683") 1024w"
                                  alt="@image.AlternateText"/>
                     </div>
                     index++;
                 }
                 @foreach (var image in Model.Images.Skip(4))
                 {
-                    var cropParam = image.NeedCropping ? "&pxc_method=crop" : "";
-
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"
-                                 data-src="@image.Url?width=1024&height=683"
-                                 data-srcset="@image.Url?width=541&height=361 541w, @image.Url?width=1024&height=683 1024w"
+                                 data-src="@image.GetHeroImageUrl("1024", "683")"
+                                 data-srcset="@image.GetHeroImageUrl("541", "361") 541w, @image.GetHeroImageUrl("1024", "683") 1024w"
                                  sizes="(max-width: 1199px) 48vw, 31vw"
                                  alt="@image.AlternateText"/>
                     </div>
