@@ -608,6 +608,7 @@
     <Compile Include="Features\Landing\ModelBinder\ManufacturerLandingQueryModelBinder.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Listings\Filters\RedbookDefaultVerticalAttributeFilter.cs" />
+    <Compile Include="Features\Listings\Loggers\LatamInherentRedirectLogger.cs" />
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
     <Compile Include="Features\Listings\RedbookHomepageQueryHandler.cs" />
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
@@ -780,7 +781,6 @@
     <Compile Include="Infrastructure\Extensions\ModelBinderExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />
     <Compile Include="Infrastructure\Extensions\UriExtensions.cs" />
-    <Compile Include="Infrastructure\Filters\LatamInherentRedirectFilter.cs" />
     <Compile Include="Infrastructure\Filters\UnknownTenantFilter.cs" />
     <Compile Include="Infrastructure\Filters\RedirectAttributeFilter.cs" />
     <Compile Include="Infrastructure\HealthChecks\HealthCheckResult.cs" />

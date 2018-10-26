@@ -8,7 +8,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Settings
         string DetailsUrlFormat { get; }
         string BasePath { get; }
         string ResultsSegment { get; }
-        string ListingsSegment { get; }
         string DetailsRouteSegment { get; }
         string NetworkIdFormat { get; }
     }
@@ -28,9 +27,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Settings
 
         [ConfigurationProperty("ResultsSegment", IsRequired = true)]
         public string ResultsSegment => this["ResultsSegment"] as string;
-
-        [ConfigurationProperty("ListingsSegment", IsRequired = true)]
-        public string ListingsSegment => this["ListingsSegment"] as string;
 
         [ConfigurationProperty("DetailsRouteSegment", IsRequired = true)]
         public string DetailsRouteSegment => this["DetailsRouteSegment"] as string;

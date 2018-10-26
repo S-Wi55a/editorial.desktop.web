@@ -23,6 +23,7 @@ namespace Csn.Retail.Editorial.Web
             public static string RedbookResults => "RedbookResults";
             public static string ListingPagePreInternational => "ListingPagePreInternational";
             public static string ListingPage => "ListingPage";
+            public static string LatamInherentListing => "LatamInherentListing";
             public static string UnknownRoute => "UnknownRoute";
 
         }

@@ -177,11 +177,19 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
+                RouteNames.Mvc.LatamInherentListing,
+                "listado/{*catchAll}",
+                new { controller = "Listings", action = "LatamInherentListing" },
+                new { seoFragment = "(^[\\w-/]*)?" }
+            );
+
+            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.ListingPage,
                 "{*seoFragment}",
                 new { controller = "Listings", action = "Listing" },
                 new { seoFragment = "(^[\\w-/]*)?" }
             );
+
 
             // catch all route....used to catch bad urls. Warning....this will literally capture everything
             routes.MapRoute(
