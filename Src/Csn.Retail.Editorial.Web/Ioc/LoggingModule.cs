@@ -36,11 +36,11 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 return loggerFactory.For<SeoListingUrlRedirectLogger>();
             }).As<ISeoListingUrlRedirectLogger>().SingleInstance();
 
-            builder.RegisterType<LatamInherentListingRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
+            builder.RegisterType<LatamLegacyListingRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
             {
                 var loggerFactory = c.Resolve<ILoggerFactory>();
-                return loggerFactory.For<LatamInherentListingRedirectLogger>();
-            }).As<ILatamInherentListingRedirectLogger>().SingleInstance();
+                return loggerFactory.For<LatamLegacyListingRedirectLogger>();
+            }).As<ILatamLegacyListingRedirectLogger>().SingleInstance();
 
             builder.RegisterType<LegacyListingUrlRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
             {

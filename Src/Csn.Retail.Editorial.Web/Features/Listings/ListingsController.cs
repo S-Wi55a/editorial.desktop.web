@@ -17,20 +17,20 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IEventDispatcher _eventDispatcher;
         private readonly ISeoListingUrlRedirectLogger _seoListingUrlRedirectLogger;
-        private readonly ILatamInherentListingRedirectLogger _latamInherentListingRedirectLogger;
+        private readonly ILatamLegacyListingRedirectLogger _laraLatamLegacyListingRedirectLogger;
         private readonly IArticleTypeLookup _articleTypeLookup;
         private readonly IUrlRouteHelper _urlRouteHelper;
 
 
         public ListingsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher,
             ISeoListingUrlRedirectLogger seoListingUrlRedirectLogger,
-            ILatamInherentListingRedirectLogger latamInherentListingRedirectLogger,
+            ILatamLegacyListingRedirectLogger laraLatamLegacyListingRedirectLogger,
             IArticleTypeLookup articleTypeLookup, IUrlRouteHelper urlRouteHelper)
         {
             _queryDispatcher = queryDispatcher;
             _eventDispatcher = eventDispatcher;
             _seoListingUrlRedirectLogger = seoListingUrlRedirectLogger;
-            _latamInherentListingRedirectLogger = latamInherentListingRedirectLogger;
+            _laraLatamLegacyListingRedirectLogger = laraLatamLegacyListingRedirectLogger;
             _articleTypeLookup = articleTypeLookup;
             _urlRouteHelper = urlRouteHelper;
         }
@@ -84,13 +84,12 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         }
 
         /// <summary>
-        /// An exceptional case that needs to be handled for just for redirects
+        /// An exceptional case that needs to be handled just for redirects
         /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
-        public ActionResult LatamInherentListing(GetListingsQuery query)
+        /// <returns>Always redirects to either homepage or article-type listing page</returns>
+        public ActionResult LatamLegacyListing()
         {
-            _latamInherentListingRedirectLogger.Log(HttpContext.Request.Url?.AbsolutePath);
+            _laraLatamLegacyListingRedirectLogger.Log(HttpContext.Request.Url?.AbsolutePath);
 
             var path = HttpContext.Request.Url?.AbsolutePath;
             var urlFragments = path?.Trim('/').Split('/').Where(a => !string.IsNullOrEmpty(a)).ToList();

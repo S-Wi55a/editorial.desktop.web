@@ -608,7 +608,7 @@
     <Compile Include="Features\Landing\ModelBinder\ManufacturerLandingQueryModelBinder.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Listings\Filters\RedbookDefaultVerticalAttributeFilter.cs" />
-    <Compile Include="Features\Listings\Loggers\LatamInherentRedirectLogger.cs" />
+    <Compile Include="Features\Listings\Loggers\LatamLegacyListingRedirectLogger.cs" />
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
     <Compile Include="Features\Listings\RedbookHomepageQueryHandler.cs" />
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />

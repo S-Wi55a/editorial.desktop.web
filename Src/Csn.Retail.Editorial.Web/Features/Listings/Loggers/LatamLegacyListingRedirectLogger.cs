@@ -2,16 +2,16 @@
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.Loggers
 {
-    public interface ILatamInherentListingRedirectLogger
+    public interface ILatamLegacyListingRedirectLogger
     {
         void Log(string requestUrl);
     }
 
-    public class LatamInherentListingRedirectLogger : ILatamInherentListingRedirectLogger
+    public class LatamLegacyListingRedirectLogger : ILatamLegacyListingRedirectLogger
     {
         private readonly ILogger _logger;
 
-        public LatamInherentListingRedirectLogger(ILogger logger)
+        public LatamLegacyListingRedirectLogger(ILogger logger)
         {
             _logger = logger;
         }
