@@ -20,7 +20,7 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Extensions
             if (image.NeedsCropping)
                 queryString.Add("pxc_method", "crop");
 
-            var imageUrl = string.Format(image.Url + "?{0}", string.Join("&", queryString.Select(kvp => $"{kvp.Key}={kvp.Value}")));
+            var imageUrl = string.Format(image.Url + "?{0}", string.Join("&", queryString.Select(q => $"{q.Key}={q.Value}")));
 
             return imageUrl;
         }
