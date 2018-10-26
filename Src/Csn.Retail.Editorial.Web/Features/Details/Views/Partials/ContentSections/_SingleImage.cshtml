@@ -26,8 +26,8 @@ else
         <div>
             <img class="article__img"
                  sizes="(max-width: 1199px) 825px, 1024px"
-                 src="@Model.Image.GetHeroImageUrl("1024", "682")"
-                 srcset="@Model.Image.GetHeroImageUrl("825", "550") 825w, @Model.Image.GetHeroImageUrl("1024", "682") 1024w"
+                 src="@Model.Image.GetHeroImageUrl(1024, 682)"
+                 srcset="@Model.Image.GetHeroImageUrl(825, 550) 825w, @Model.Image.GetHeroImageUrl(1024, 682) 1024w"
                  alt="@Model.Image.AlternateText" />
 
             @if (Model.Image.Caption != null)
