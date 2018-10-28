@@ -1,10 +1,7 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
-
-@{
-    var firstImage = Model.Images.First();
-}
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
 <img sizes="100vw"
-     src="@firstImage.Url?width=1024"
-     srcset="@firstImage.Url?width=780 1200w, @firstImage.Url?width=642 1024w, @firstImage.Url?width=492 768w"
-     alt="@firstImage.AlternateText" />
+     src="@Model.Images.First().GetHeroImageUrl(1024)"
+     srcset="@Model.Images.First().GetHeroImageUrl(780) 1200w, @Model.Images.First().GetHeroImageUrl(642) 1024w @Model.Images.First().GetHeroImageUrl(492) 768w"
+     alt="@Model.Images.First().AlternateText" />

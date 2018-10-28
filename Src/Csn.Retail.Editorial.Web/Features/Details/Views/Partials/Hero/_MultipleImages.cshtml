@@ -1,29 +1,32 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
 
 <div class="clearfix hero hero--multipleImages" data-webm-section="image-gallery">
     <div class="slideshow slideshow--hero slideshow--gallery-multiple-images">
         <div class="slideshow__container  swiper-container">
             <div class="slideshow__slides swiper-wrapper">
                 @{ var index = 0; }
+
                 @foreach (var image in Model.Images.Take(4))
-            {
+                {
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"
                                  sizes="(max-width: 1199px) 50vw, (max-width: 1488px) 33vw, 33vw"
-                                 src="@image.Url?width=1024&height=683"
-                                 srcset="@image.Url?width=496&height=331 496w, @image.Url?width=1024&height=683 1024w"
+                                 src="@image.GetHeroImageUrl(1024, 683)"
+                                 srcset="@image.GetHeroImageUrl(496, 331) 496w, @image.GetHeroImageUrl(1024, 683) 1024w"
                                  alt="@image.AlternateText" />
                     </div>
                     index++;
                 }
+
                 @foreach (var image in Model.Images.Skip(4))
-            {
+                {
                     <div class="slideshow__slide swiper-slide" data-webm-clickvalue="click-photo" data-modal-trigger data-modal-image-index="@index">
 
                             <img class="slideshow__image"
-                                 data-src="@image.Url?width=1024&height=683"
-                                 data-srcset="@image.Url?width=496&height=331 496w, @image.Url?width=1024&height=683 1024w"
+                                 data-src="@image.GetHeroImageUrl(1024, 683)"
+                                 data-srcset="@image.GetHeroImageUrl(496, 331) 496w, @image.GetHeroImageUrl(1024, 683) 1024w"
                                  sizes="(max-width: 1199px) 50vw, (max-width: 1488px) 33vw, 33vw"
                                  alt="@image.AlternateText" />
 

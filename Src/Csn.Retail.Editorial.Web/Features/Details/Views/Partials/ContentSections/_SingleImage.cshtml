@@ -1,4 +1,5 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ContentSectionViewModel
+﻿@using Csn.Retail.Editorial.Web.Infrastructure.Extensions
+@model Csn.Retail.Editorial.Web.Features.Details.Models.ContentSectionViewModel
 
 
 @if (Model.Image.Type == "Wide") //With Parallax
@@ -25,8 +26,8 @@ else
         <div>
             <img class="article__img"
                  sizes="(max-width: 1199px) 825px, 1024px"
-                 src="@Model.Image.Url?width=1024&height=682"
-                 srcset="@Model.Image.Url?width=825&height=550 825w, @Model.Image.Url?width=1024&height=682 1024w"
+                 src="@Model.Image.GetHeroImageUrl(1024, 682)"
+                 srcset="@Model.Image.GetHeroImageUrl(825, 550) 825w, @Model.Image.GetHeroImageUrl(1024, 682) 1024w"
                  alt="@Model.Image.AlternateText" />
 
             @if (Model.Image.Caption != null)
