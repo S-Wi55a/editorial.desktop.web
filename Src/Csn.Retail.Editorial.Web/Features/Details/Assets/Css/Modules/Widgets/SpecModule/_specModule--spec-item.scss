@@ -13,7 +13,7 @@
 
     &__column-container {
         position: relative;
-        min-height: 400px;
+        min-height: 460px;
     }
 
     &__column {
@@ -264,7 +264,7 @@
 
     &__third-party-offers {
         width: calc(100% - 60px);
-        margin: 15px auto 0;
+        margin: 20px auto 0;
         padding: 30px 0 0;
         border-top: 1px solid $cs-light-grey-2;
         min-height: 90px;

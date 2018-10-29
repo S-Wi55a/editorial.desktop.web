@@ -116,4 +116,21 @@
             }
         }
     }
+
+    &__stock-offers {
+        margin-top: 20px;
+        position: absolute;
+        bottom: 130px;
+
+        .stock-offer__for-sale {
+            @include button(( large: true, round: true, thin: true, primary-inverse: true ));
+            text-align: center;
+            font-weight: $font-weight-400;
+            display: block;
+            vertical-align: middle;
+            cursor: pointer;
+            padding: 10px 24px;
+            line-height: normal;
+        }
+    }
 }

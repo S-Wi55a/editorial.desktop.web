@@ -40,7 +40,7 @@ const ThirdPartyOffers = (props) => {
     var offers = [];
 
     props.data.map((item, index) => {
-        offers.push(<ThirdPartyOffer data={item} disclaimerHandler={props.disclaimerHandler} key={index} tabOrModal={tabOrModal}/>);
+        offers.push(<ThirdPartyOffer data={item} disclaimerHandler={props.disclaimerHandler} key={index} tabOrModal={tabOrModal} index={index}/>);
     });
 
     return (<div>{ offers }</div>);
@@ -123,7 +123,22 @@ const Price = (props) => {
     } else {
         return (<div className="spec-item__price-container"></div>)
     }
+}
 
+// StockOffers - Egull
+const StockOffers = (props) => {
+    const stock = {
+        url: "carsales.com.au",
+        number: "18"
+    }
+
+    if(stock) {
+        return (
+            <div className="spec-item__stock-offers">
+                <a href={stock.url} target="_blank" className="stock-offer__for-sale">{stock.number} Cars for sale</a>
+            </div>
+        )
+    }
 }
 
 //Content
@@ -142,11 +157,15 @@ const SpecModuleItem = (props) => {
                     <p className="spec-item__model">{props.data.title2}</p>
                     <p className="spec-item__variant">{props.data.title3}</p>
                     <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
-                    {props.sliderLength > 1 ? 
-                        <div className="spec-item__selector" data-webm-clickvalue="change-variant">
-                            <p className="spec-item__selector-label">Model Selector</p>
-                            <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />
-                        </div>
+                    {
+                        props.sliderLength > 1 ?
+                        [
+                            <StockOffers key={0} />,
+                            <div className="spec-item__selector" data-webm-clickvalue="change-variant" key={1}>
+                                <p className="spec-item__selector-label">Model Selector</p>
+                                <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />
+                            </div>
+                        ]
                         : ''}
                 </div>
                 <div className="spec-item__column spec-item__column--2">
