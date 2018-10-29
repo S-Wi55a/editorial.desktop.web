@@ -1,10 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Listings.Filters;
 using Csn.Retail.Editorial.Web.Features.Listings.Loggers;
+using Csn.Retail.Editorial.Web.Features.Listings.ModelBinders;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
+using Csn.Retail.Editorial.Web.Infrastructure.Wrappers;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
@@ -14,13 +17,22 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IEventDispatcher _eventDispatcher;
         private readonly ISeoListingUrlRedirectLogger _seoListingUrlRedirectLogger;
+        private readonly ILatamLegacyListingRedirectLogger _laraLatamLegacyListingRedirectLogger;
+        private readonly IArticleTypeLookup _articleTypeLookup;
+        private readonly IUrlRouteHelper _urlRouteHelper;
 
 
-        public ListingsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher, ISeoListingUrlRedirectLogger seoListingUrlRedirectLogger)
+        public ListingsController(IQueryDispatcher queryDispatcher, IEventDispatcher eventDispatcher,
+            ISeoListingUrlRedirectLogger seoListingUrlRedirectLogger,
+            ILatamLegacyListingRedirectLogger laraLatamLegacyListingRedirectLogger,
+            IArticleTypeLookup articleTypeLookup, IUrlRouteHelper urlRouteHelper)
         {
             _queryDispatcher = queryDispatcher;
             _eventDispatcher = eventDispatcher;
             _seoListingUrlRedirectLogger = seoListingUrlRedirectLogger;
+            _laraLatamLegacyListingRedirectLogger = laraLatamLegacyListingRedirectLogger;
+            _articleTypeLookup = articleTypeLookup;
+            _urlRouteHelper = urlRouteHelper;
         }
 
         [RedirectAttributeFilter]
@@ -69,6 +81,26 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             }
 
             return View("ListingTemplate", response.ListingsViewModel);
+        }
+
+        /// <summary>
+        /// An exceptional case that needs to be handled just for redirects
+        /// </summary>
+        /// <returns>Always redirects to either homepage or article-type listing page</returns>
+        public ActionResult LatamLegacyListing()
+        {
+            _laraLatamLegacyListingRedirectLogger.Log(HttpContext.Request.Url?.AbsolutePath);
+
+            var path = HttpContext.Request.Url?.AbsolutePath;
+            var urlFragments = path?.Trim('/').Split('/').Where(a => !string.IsNullOrEmpty(a)).ToList();
+
+            if (urlFragments?.Count() > 2) // redirect /noticias/listado/actualidad/ to /noticias/actualidad/
+            {
+                var articleType = _articleTypeLookup.GetArticleTypeFromSlug(urlFragments[2]);
+                if (articleType != null)
+                    return new RedirectResult($"{path.Replace("/listado", string.Empty)}", true);
+            }
+            return new RedirectResult(_urlRouteHelper.HttpRouteUrl(RouteNames.Mvc.LandingHome, null), true);
         }
     }
 

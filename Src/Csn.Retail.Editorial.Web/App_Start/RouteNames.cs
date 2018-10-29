@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Csn.Retail.Editorial.Web
+﻿namespace Csn.Retail.Editorial.Web
 {
     public static class RouteNames
     {
@@ -23,6 +18,7 @@ namespace Csn.Retail.Editorial.Web
             public static string RedbookResults => "RedbookResults";
             public static string ListingPagePreInternational => "ListingPagePreInternational";
             public static string ListingPage => "ListingPage";
+            public static string LatamLegacyListing => "LatamLegacyListing";
             public static string UnknownRoute => "UnknownRoute";
 
         }

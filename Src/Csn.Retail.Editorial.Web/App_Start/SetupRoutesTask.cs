@@ -177,6 +177,13 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
+                RouteNames.Mvc.LatamLegacyListing,
+                "listado/{*catchAll}",
+                new { controller = "Listings", action = "LatamLegacyListing" },
+                new { catchAll = "(^[\\w-/]*)?" }
+            );
+
+            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.ListingPage,
                 "{*seoFragment}",
                 new { controller = "Listings", action = "Listing" },

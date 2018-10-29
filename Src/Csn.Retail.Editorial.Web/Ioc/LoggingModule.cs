@@ -36,6 +36,12 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 return loggerFactory.For<SeoListingUrlRedirectLogger>();
             }).As<ISeoListingUrlRedirectLogger>().SingleInstance();
 
+            builder.RegisterType<LatamLegacyListingRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
+            {
+                var loggerFactory = c.Resolve<ILoggerFactory>();
+                return loggerFactory.For<LatamLegacyListingRedirectLogger>();
+            }).As<ILatamLegacyListingRedirectLogger>().SingleInstance();
+
             builder.RegisterType<LegacyListingUrlRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
             {
                 var loggerFactory = c.Resolve<ILoggerFactory>();
