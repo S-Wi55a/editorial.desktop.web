@@ -123,6 +123,9 @@
         bottom: 130px;
 
         &.loading .stock-offer__for-sale {
+            width: 120px;
+            height: 40px;
+            
             &::before {
                 content: '';
                 display: block;

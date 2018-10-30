@@ -135,7 +135,7 @@ const StockOffers = (props) => {
             </a>
         )
     }
-    else return <a className="stock-offer__for-sale stock-offer__for-sale--disabled"></a>
+    else return null;
 }
 
 //Content
@@ -267,6 +267,7 @@ class SpecModule extends React.Component {
             // Cache data
             const itemsCopy = this.state.items;
             itemsCopy[index].quotes = data.quotes;
+            itemsCopy[index].specStockCountData = data.specStockCountData;
 
             this.setState((prevState, props) => {
                 return {
