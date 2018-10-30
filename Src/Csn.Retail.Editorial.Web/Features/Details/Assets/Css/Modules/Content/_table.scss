@@ -1,12 +1,16 @@
 ﻿table {
+    $thead-font-color: #000000;
+    $tbody-font-color: #898989;
+
     width: 100%;
     margin-top: 1.25em;
     background-color: #fff;
-    color: #000;
     border-collapse: collapse;
+    color: $tbody-font-color;
 
     thead {
         font-weight: bold;
+        color: $thead-font-color;
 
         th {
             vertical-align: bottom;
