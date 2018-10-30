@@ -28,7 +28,7 @@ const Specifications = (props) => {
             <h3 className="spec-item__spec-item-list-heading">{props.data.title}</h3>
             <dl className="spec-item__spec-item-list">
                 {props.data.items.map((item) => {
-                        return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} />]
+                        return [<SpecificationsItem_DT item={item} key={item.title}/>, <SpecificationsItem_DD item={item} key={item.value}/>]
                     }
                 )}
             </dl>
@@ -127,18 +127,15 @@ const Price = (props) => {
 
 // StockOffers - Egull
 const StockOffers = (props) => {
-    const stock = {
-        url: "carsales.com.au",
-        number: "18"
-    }
-
-    if(stock) {
+    if(props.data.specStockCountData) {
+        let { stockUrl, stockCountLabel } = props.data.specStockCountData;
         return (
-            <div className="spec-item__stock-offers">
-                <a href={stock.url} target="_blank" className="stock-offer__for-sale">{stock.number} Cars for sale</a>
-            </div>
+            <a href={stockUrl} target="_blank" className={"stock-offer__for-sale" + (stockCountLabel.split(' ')[0] === "0" ? " stock-offer__for-sale--disabled" : "")}>
+                { props.data.specStockCountData ? stockCountLabel : ''}
+            </a>
         )
     }
+    else return <a className="stock-offer__for-sale stock-offer__for-sale--disabled"></a>
 }
 
 //Content
@@ -160,7 +157,9 @@ const SpecModuleItem = (props) => {
                     {
                         props.sliderLength > 1 ?
                         [
-                            <StockOffers key={0} />,
+                            <div className={props.isFetchingQuotes || !props.data.specStockCountData ? "spec-item__stock-offers loading" : "spec-item__stock-offers"} key={0}>
+                                <StockOffers data={props.data} />
+                            </div>,
                             <div className="spec-item__selector" data-webm-clickvalue="change-variant" key={1}>
                                 <p className="spec-item__selector-label">Model Selector</p>
                                 <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />

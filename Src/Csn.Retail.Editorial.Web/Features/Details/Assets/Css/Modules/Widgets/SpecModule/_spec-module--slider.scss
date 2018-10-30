@@ -122,8 +122,25 @@
         position: absolute;
         bottom: 130px;
 
+        &.loading .stock-offer__for-sale {
+            &::before {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 10%;
+                left: 0;
+                z-index: 2;
+                background-image: url($spinner--dark);
+                background-size: 200px 200px;
+                background-position: center;
+                background-repeat: no-repeat;
+                vertical-align: bottom;
+                position: absolute;
+            }
+        }
+
         .stock-offer__for-sale {
-            @include button(( large: true, round: true, thin: true, primary-inverse: true ));
+            @include button(( large: true, round: true, thin: true, primary: true ));
             text-align: center;
             font-weight: $font-weight-400;
             display: block;
@@ -131,6 +148,11 @@
             cursor: pointer;
             padding: 10px 24px;
             line-height: normal;
+
+            &--disabled {
+                opacity: 0.2;
+                pointer-events: none;
+            }
         }
     }
 }
