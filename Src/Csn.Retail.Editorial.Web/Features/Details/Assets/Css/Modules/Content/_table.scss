@@ -1,6 +1,7 @@
-﻿table {
+﻿.article__table table {
     $thead-font-color: #000000;
     $tbody-font-color: #898989;
+    $table-stripe-color: rgba(241, 241, 241, 0.31);
 
     width: 100%;
     margin-top: 1.25em;
@@ -28,7 +29,7 @@
     }
 
     tbody tr:nth-of-type(odd) {
-        background-color: rgba(241, 241, 241, 0.31);
+        background-color: $table-stripe-color;
     }
 
     th,
