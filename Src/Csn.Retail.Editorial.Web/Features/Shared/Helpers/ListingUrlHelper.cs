@@ -54,8 +54,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             var queryString = string.IsNullOrEmpty(seoFragment)
                 ? (string.IsNullOrEmpty(queryParams) ? "/" : "/?" + queryParams)
                 : $"{seoFragment}{(string.IsNullOrEmpty(queryParams) ? "/" : "?" + queryParams)}";
-            var includeResultsSegment =
-                string.IsNullOrEmpty(seoFragment) && string.IsNullOrEmpty(q) || !string.IsNullOrEmpty(q);
+            var includeResultsSegment = string.IsNullOrEmpty(seoFragment);
             return $"{ListingsBasePath(includeResultsSegment)}{queryString}";
         }
 

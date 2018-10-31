@@ -8,7 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
         {
             if (input.IncludeQueryStringInRedirect && !string.IsNullOrEmpty(url.Query))
             {
-
+                return $"{input.RedirectTo}{url.Query}";
             }
 
             return input.RedirectTo;
