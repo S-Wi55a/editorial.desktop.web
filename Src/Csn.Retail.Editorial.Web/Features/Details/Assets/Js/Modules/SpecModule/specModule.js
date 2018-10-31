@@ -127,10 +127,11 @@ const Price = (props) => {
 
 // StockOffer - Egull
 const StockOffer = (props) => {
-    const { stockUrl, stockCountLabel } = props.data.specStockCountData ? props.data.specStockCountData : {};
-    const className = "stock-offer__for-sale" + (stockCountLabel && stockCountLabel.split(' ')[0] === "0" ? " stock-offer__for-sale--disabled" : "");
+    let { stockUrl, stockCount, stockCountLabel } = props.data.specStockCountData ? props.data.specStockCountData : {};
+    let stockLabel = stockCount === 0 ? "0 Car for sale" : stockCountLabel;
+    let className = "stock-offer__for-sale" + (stockCount === 0 ? " stock-offer__for-sale--disabled" : "");
 
-    return <a href={stockUrl} target="_self" className={className}>{ stockCountLabel }</a>;
+    return <a href={stockUrl} target="_self" className={className}>{ stockLabel }</a>;
 }
 
 //Content
@@ -153,7 +154,7 @@ const SpecModuleItem = (props) => {
                         props.sliderLength > 1 ?
                         [
                             <div className="spec-item__stock-offers" key={0}>
-                                <StockOffer data={props.data}/>
+                                <StockOffer data={props.data} />
                             </div>,
                             <div className="spec-item__selector" data-webm-clickvalue="change-variant" key={1}>
                                 <p className="spec-item__selector-label">Model Selector</p>
