@@ -127,9 +127,9 @@ const Price = (props) => {
 
 // StockOffer - Egull
 const StockOffer = (props) => {
-    let { stockUrl, stockCount, stockCountLabel } = props.data.specStockCountData ? props.data.specStockCountData : {};
-    let stockLabel = stockCount === 0 ? "0 Car for sale" : stockCountLabel;
-    let className = "stock-offer__for-sale" + (stockCount === 0 ? " stock-offer__for-sale--disabled" : "");
+    const { stockUrl, stockCount, stockCountLabel } = props.data.specStockCountData ? props.data.specStockCountData : {};
+    const stockLabel = stockCount === 0 ? "0 Car for sale" : stockCountLabel;
+    const className = "stock-offer__for-sale" + (stockCount === 0 ? " stock-offer__for-sale--disabled" : "");
 
     return <a href={stockUrl} target="_self" className={className}>{ stockLabel }</a>;
 }
