@@ -118,29 +118,9 @@
     }
 
     &__stock-offers {
-        margin-top: 20px;
+        margin-top: 30px;
         position: absolute;
         bottom: 130px;
-
-        &.loading .stock-offer__for-sale {
-            width: 120px;
-            height: 40px;
-            
-            &::before {
-                content: '';
-                display: block;
-                width: 100%;
-                height: 10%;
-                left: 0;
-                z-index: 2;
-                background-image: url($spinner--dark);
-                background-size: 200px 200px;
-                background-position: center;
-                background-repeat: no-repeat;
-                vertical-align: bottom;
-                position: absolute;
-            }
-        }
 
         .stock-offer__for-sale {
             @include button(( large: true, round: true, thin: true, primary: true ));
@@ -149,12 +129,17 @@
             display: block;
             vertical-align: middle;
             cursor: pointer;
-            padding: 10px 24px;
+            padding: 10px;
             line-height: normal;
+            width: 145px;
+            min-width: 145px;
+            height: 40px;
+            transition: opacity .35s linear;
 
             &--disabled {
                 opacity: 0.2;
                 pointer-events: none;
+                transition: opacity .25s linear;
             }
         }
     }

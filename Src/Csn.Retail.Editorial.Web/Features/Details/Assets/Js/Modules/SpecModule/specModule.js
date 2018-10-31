@@ -125,17 +125,12 @@ const Price = (props) => {
     }
 }
 
-// StockOffers - Egull
-const StockOffers = (props) => {
-    if(props.data.specStockCountData) {
-        let { stockUrl, stockCountLabel } = props.data.specStockCountData;
-        return (
-            <a href={stockUrl} target="_blank" className={"stock-offer__for-sale" + (stockCountLabel.split(' ')[0] === "0" ? " stock-offer__for-sale--disabled" : "")}>
-                { props.data.specStockCountData ? stockCountLabel : ''}
-            </a>
-        )
-    }
-    else return null;
+// StockOffer - Egull
+const StockOffer = (props) => {
+    const { stockUrl, stockCountLabel } = props.data.specStockCountData ? props.data.specStockCountData : {};
+    const className = "stock-offer__for-sale" + (stockCountLabel && stockCountLabel.split(' ')[0] === "0" ? " stock-offer__for-sale--disabled" : "");
+
+    return <a href={stockUrl} target="_self" className={className}>{ stockCountLabel }</a>;
 }
 
 //Content
@@ -157,8 +152,8 @@ const SpecModuleItem = (props) => {
                     {
                         props.sliderLength > 1 ?
                         [
-                            <div className={props.isFetchingQuotes || !props.data.specStockCountData ? "spec-item__stock-offers loading" : "spec-item__stock-offers"} key={0}>
-                                <StockOffers data={props.data} />
+                            <div className="spec-item__stock-offers" key={0}>
+                                <StockOffer data={props.data}/>
                             </div>,
                             <div className="spec-item__selector" data-webm-clickvalue="change-variant" key={1}>
                                 <p className="spec-item__selector-label">Model Selector</p>
