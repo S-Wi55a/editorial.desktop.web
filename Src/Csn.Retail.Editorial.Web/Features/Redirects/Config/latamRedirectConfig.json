@@ -1,0 +1,16 @@
+﻿{
+  "redirects": {
+    "common": [
+      {
+        "matchUrl": "/listado/noticias/",
+        "redirectTo": "/noticias/",
+        "includeQueryStringInRedirect": false
+      },
+      {
+        "matchUrl": "listado/actualidad/",
+        "redirectTo": "/actualidad/",
+        "includeQueryStringInRedirect": false
+      }
+    ]
+  }
+}

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Routing;
 using System.Web.Routing;
 using Csn.Retail.Editorial.Web.Features.Details.RouteConstraints;
+using Csn.Retail.Editorial.Web.Features.Redirects;
 using Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -177,10 +178,10 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
-                RouteNames.Mvc.LatamLegacyListing,
-                "listado/{*catchAll}",
-                new { controller = "Listings", action = "LatamLegacyListing" },
-                new { catchAll = "(^[\\w-/]*)?" }
+                RouteNames.Mvc.ConfigBasedRedirect,
+                "{*url}",
+                new { controller = "Redirect", action = "Redirect" },
+                new { url = new ConfigBasedRedirectRouteConstraint() }
             );
 
             AddMvcRouteWithBasePath(
