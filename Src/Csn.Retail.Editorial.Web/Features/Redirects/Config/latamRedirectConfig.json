@@ -1,0 +1,41 @@
+﻿{
+  "redirects": {
+    "common": [
+      {
+        "matchUrl": "/listado/noticias/",
+        "redirectTo": "/noticias/",
+        "includeQueryStringInRedirect": false
+      },
+      {
+        "matchUrl": "/listado/actualidad/",
+        "redirectTo": "/actualidad/",
+        "includeQueryStringInRedirect": false
+      },
+      {
+        "matchUrl": "/listado/pruebas/",
+        "redirectTo": "/pruebas/",
+        "includeQueryStringInRedirect": false
+      },
+      {
+        "matchUrl": "/listado/las-mejores-compras/",
+        "redirectTo": "/las-mejores-compras/",
+        "includeQueryStringInRedirect": false
+      },
+      {
+        "matchUrl": "/listado/compra-de-auto/",
+        "redirectTo": "/compra-de-auto/",
+        "includeQueryStringInRedirect": false
+      },
+      {
+        "matchUrl": "/listado/consejos/",
+        "redirectTo": "/consejos/",
+        "includeQueryStringInRedirect": false
+      },
+      {
+        "matchUrl": "/listado/comparativas/",
+        "redirectTo": "/comparativas/",
+        "includeQueryStringInRedirect": false
+      }
+    ]
+  }
+}

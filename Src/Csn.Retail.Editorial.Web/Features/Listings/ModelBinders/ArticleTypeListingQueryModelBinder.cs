@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using Autofac.Integration.Mvc;
+using Csn.Retail.Editorial.Web.Features.Shared.Constants;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
 {
@@ -25,7 +27,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
 
             return new ArticleTypeListingQuery
             {
-                ArticleType = articleType.Value
+                ArticleType = articleType.Value,
+                Pg = bindingContext.ValueProvider.TryGetValueOrDefault(EditorialQueryStringParams.Offset, 0),
+                Sb = bindingContext.ValueProvider.TryGetValueOrDefault(EditorialQueryStringParams.Sort, string.Empty),
             };
         }
     }

@@ -1,0 +1,31 @@
+﻿{
+  "redirects": {
+    "common": [
+      {
+        "matchUrl": "/news-article-type/",
+        "redirectTo": "/news/",
+        "includeQueryStringInRedirect": true
+      },
+      {
+        "matchUrl": "/review-article-type/",
+        "redirectTo": "/reviews/",
+        "includeQueryStringInRedirect": true
+      },
+      {
+        "matchUrl": "/video-article-type/",
+        "redirectTo": "/videos/",
+        "includeQueryStringInRedirect": true
+      },
+      {
+        "matchUrl": "/advice-article-type/",
+        "redirectTo": "/advice/",
+        "includeQueryStringInRedirect": true
+      },
+      {
+        "matchUrl": "/feature-article-type/",
+        "redirectTo": "/features/",
+        "includeQueryStringInRedirect": true
+      }
+    ]
+  }
+}

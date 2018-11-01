@@ -1,17 +1,17 @@
 ﻿using Csn.Logging;
 
-namespace Csn.Retail.Editorial.Web.Features.Listings.Loggers
+namespace Csn.Retail.Editorial.Web.Features.Redirects
 {
-    public interface ILatamLegacyListingRedirectLogger
+    public interface IRedirectLogger
     {
         void Log(string requestUrl);
     }
 
-    public class LatamLegacyListingRedirectLogger : ILatamLegacyListingRedirectLogger
+    public class RedirectLogger : IRedirectLogger
     {
         private readonly ILogger _logger;
 
-        public LatamLegacyListingRedirectLogger(ILogger logger)
+        public RedirectLogger(ILogger logger)
         {
             _logger = logger;
         }
