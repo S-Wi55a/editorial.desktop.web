@@ -28,7 +28,7 @@ const Specifications = (props) => {
             <h3 className="spec-item__spec-item-list-heading">{props.data.title}</h3>
             <dl className="spec-item__spec-item-list">
                 {props.data.items.map((item) => {
-                        return [<SpecificationsItem_DT item={item} />, <SpecificationsItem_DD item={item} />]
+                        return [<SpecificationsItem_DT item={item} key={item.title}/>, <SpecificationsItem_DD item={item} key={item.value}/>]
                     }
                 )}
             </dl>
@@ -40,7 +40,7 @@ const ThirdPartyOffers = (props) => {
     var offers = [];
 
     props.data.map((item, index) => {
-        offers.push(<ThirdPartyOffer data={item} disclaimerHandler={props.disclaimerHandler} key={index} tabOrModal={tabOrModal}/>);
+        offers.push(<ThirdPartyOffer data={item} disclaimerHandler={props.disclaimerHandler} key={index} tabOrModal={tabOrModal} index={index}/>);
     });
 
     return (<div>{ offers }</div>);
@@ -123,7 +123,15 @@ const Price = (props) => {
     } else {
         return (<div className="spec-item__price-container"></div>)
     }
+}
 
+// StockOffer - Egull
+const StockOffer = (props) => {
+    const { stockUrl, stockCount, stockCountLabel } = props.data.specStockCountData ? props.data.specStockCountData : {};
+    const stockLabel = stockCount === 0 ? "0 Car for sale" : stockCountLabel;
+    const className = "stock-offer__for-sale" + (stockCount === 0 ? " stock-offer__for-sale--disabled" : "");
+
+    return <a href={stockUrl} target="_self" className={className}>{ stockLabel }</a>;
 }
 
 //Content
@@ -142,11 +150,17 @@ const SpecModuleItem = (props) => {
                     <p className="spec-item__model">{props.data.title2}</p>
                     <p className="spec-item__variant">{props.data.title3}</p>
                     <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
-                    {props.sliderLength > 1 ? 
-                        <div className="spec-item__selector" data-webm-clickvalue="change-variant">
-                            <p className="spec-item__selector-label">Model Selector</p>
-                            <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />
-                        </div>
+                    {
+                        props.sliderLength > 1 ?
+                        [
+                            <div className="spec-item__stock-offers" key={0}>
+                                <StockOffer data={props.data} />
+                            </div>,
+                            <div className="spec-item__selector" data-webm-clickvalue="change-variant" key={1}>
+                                <p className="spec-item__selector-label">Model Selector</p>
+                                <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />
+                            </div>
+                        ]
                         : ''}
                 </div>
                 <div className="spec-item__column spec-item__column--2">
@@ -249,6 +263,7 @@ class SpecModule extends React.Component {
             // Cache data
             const itemsCopy = this.state.items;
             itemsCopy[index].quotes = data.quotes;
+            itemsCopy[index].specStockCountData = data.specStockCountData;
 
             this.setState((prevState, props) => {
                 return {

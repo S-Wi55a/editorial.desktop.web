@@ -848,6 +848,7 @@
     <Content Include="Features\DisplayAds\MediaMotive\Views\Index.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_aside.scss" />
     <Content Include="Features\Redirects\Config\ausRedirectConfig.json" />
+    <Content Include="Features\Details\Assets\Css\Modules\Content\_table.scss" />
     <Content Include="Features\Redirects\Config\latamRedirectConfig.json" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
