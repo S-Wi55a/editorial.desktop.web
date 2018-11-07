@@ -13,7 +13,7 @@
 
     &__column-container {
         position: relative;
-        min-height: 490px;
+        min-height: 515px;
 
         @include breakpoint($screen-lg) {
             min-height: 460px;
