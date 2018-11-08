@@ -2,6 +2,7 @@
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 
 namespace Csn.Retail.Editorial.Web.Features.Redirects
@@ -48,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
 
         private RedirectRule GetRedirectRuleForRequest()
         {
-            if (!_redirectConfigProvider.Get(_tenantProvider.Current().Name.ToLower()).TryGetValue(_requestContextWrapper.Url.AbsolutePath, out var redirectRule))
+            if (!_redirectConfigProvider.Get(_tenantProvider.Current().Name.ToLower()).TryGetValue(_requestContextWrapper.Url.AbsolutePathUnescaped(), out var redirectRule))
             {
                 return null;
             }

@@ -100,6 +100,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
     {
         public string Id { get; set; }
         public string Slug { get; set; }
+        public string DetailsPageUrlPath { get; set; }
         public string Headline { get; set; }
         public string SubHeading {get; set;}
 
