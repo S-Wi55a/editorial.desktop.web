@@ -153,7 +153,7 @@ const SpecModuleItem = (props) => {
                     {
                         props.sliderLength > 1 ?
                         [
-                            <div className="spec-item__stock-offers" key={0}>
+                            <div className="spec-item__stock-offers" data-webm-clickvalue="stock-for-sale-btn" key={0}>
                                 <StockOffer data={props.data} />
                             </div>,
                             <div className="spec-item__selector" data-webm-clickvalue="change-variant" key={1}>
