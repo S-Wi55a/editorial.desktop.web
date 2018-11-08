@@ -10,6 +10,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
     {
         string MapDetailsUrl(SearchResultDto source);
     }
+
     [AutoBind]
     public class ArticleUrlMapper : IArticleUrlMapper
     {
@@ -19,8 +20,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         {
             _settings = settings;
         }
+
         public string MapDetailsUrl(SearchResultDto source)
         {
+            if (!string.IsNullOrEmpty(source.DetailsPageUrlPath)) return source.DetailsPageUrlPath;
+
             return $"{_settings.DetailsUrlFormat.FormatWith(source.GetSlug())}/";
         }
     }
