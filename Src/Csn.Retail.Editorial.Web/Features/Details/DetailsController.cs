@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.Loggers;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
 
@@ -65,7 +66,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             if (response.ArticleViewModel != null)
             {
                 // redirect any article request where the path does not match the path required by DetailsPageUrlPath
-                if (Request.Url != null && !Request.Url.AbsolutePath.Equals(response.DetailsPageUrlPath, StringComparison.InvariantCultureIgnoreCase))
+                if (Request.Url != null && !Request.Url.AbsolutePathUnescaped().Equals(response.DetailsPageUrlPath, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return PermanentRedirect($"{response.DetailsPageUrlPath}{Request.Url?.Query}");
                 }
