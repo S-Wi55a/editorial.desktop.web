@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Autofac.Integration.Mvc;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.WebMetrics.Core.Model;
 using Expresso.Syntax;
@@ -40,9 +41,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
         {
             var uri = HttpContext.Current.Request.Url;
             var uriReferrer = HttpContext.Current.Request.UrlReferrer;
+            var editorialSettings = DependencyResolver.Current.GetService<IEditorialRouteSettings>();
 
             // If it is a listing url...
-            if (uriReferrer == null || !uriReferrer.AbsolutePath.Contains("/results"))
+            if (uriReferrer == null || !uriReferrer.AbsolutePath.Contains($"/{editorialSettings.ResultsSegment}"))
                 return SearchEventType.Search;
 
             // Check if it's sorting

@@ -307,7 +307,8 @@
             margin-bottom: 30px;
         }
 
-        &--review {
+        &--review,
+        &--las-mejores-compras {
             background-color: $cs-light-blue;
         }
 
@@ -325,15 +326,18 @@
         }
 
         &--advice,
-        &--car-advice {
+        &--car-advice,
+        &--compra-de-auto {
             background-color: $cs-accent-green;
         }
 
-        &--video {
+        &--video,
+        &--comparativas {
             background-color: $cs-orange;
         }
 
-        &--news {
+        &--news,
+        &--actualidad {
             background-color: $cs-red;
         }
 
@@ -341,11 +345,13 @@
             background-color: $cs-purple;
         }
 
-        &--feature {
+        &--feature,
+        &--consejos {
             background-color: $cs-pink;
         }
 
-        &--carpool {
+        &--carpool,
+        &--pruebas {
             background-color: $cs-carpool-blue;
         }
     }

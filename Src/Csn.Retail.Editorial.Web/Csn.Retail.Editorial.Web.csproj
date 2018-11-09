@@ -608,6 +608,7 @@
     <Compile Include="Features\Landing\ModelBinder\ManufacturerLandingQueryModelBinder.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Listings\Filters\RedbookDefaultVerticalAttributeFilter.cs" />
+    <Compile Include="Features\Listings\Loggers\LatamLegacyListingRedirectLogger.cs" />
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
     <Compile Include="Features\Listings\RedbookHomepageQueryHandler.cs" />
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
@@ -728,6 +729,7 @@
     <Compile Include="Features\Shared\Search\Mapping\FacetNodeUrlResolver.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ImageMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\KeywordsPlaceholderResolver.cs" />
+    <Compile Include="Features\Shared\Search\Mapping\NavLabelsMapper.cs" />
     <Compile Include="Features\Shared\Search\Mapping\NavNodeResolver.cs" />
     <Compile Include="Features\Shared\Search\Refinements\Mapping\MapperConfiguration.cs" />
     <Compile Include="Features\Shared\Search\Refinements\Mapping\RefinementsNavNodeResolver.cs" />
@@ -776,6 +778,7 @@
     <Compile Include="Infrastructure\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\ExpressoExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\ImageExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\ModelBinderExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtentions.cs" />
     <Compile Include="Infrastructure\Extensions\UriExtensions.cs" />

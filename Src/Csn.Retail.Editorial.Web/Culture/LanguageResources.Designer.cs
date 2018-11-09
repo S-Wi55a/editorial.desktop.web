@@ -61,6 +61,132 @@ namespace Csn.Retail.Editorial.Web.Culture {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Article.
+        /// </summary>
+        public static string ArticleText {
+            get {
+                return ResourceManager.GetString("ArticleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear All.
+        /// </summary>
+        public static string ClearAll {
+            get {
+                return ResourceManager.GetString("ClearAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keywords: .
+        /// </summary>
+        public static string Keywords {
+            get {
+                return ResourceManager.GetString("Keywords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyword search.
+        /// </summary>
+        public static string KeywordSeachPlaceholderText {
+            get {
+                return ResourceManager.GetString("KeywordSeachPlaceholderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest Articles.
+        /// </summary>
+        public static string LatestArticles {
+            get {
+                return ResourceManager.GetString("LatestArticles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make/Model.
+        /// </summary>
+        public static string MakeModelNavLabel {
+            get {
+                return ResourceManager.GetString("MakeModelNavLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1}.
+        /// </summary>
+        public static string MonthDateFormat {
+            get {
+                return ResourceManager.GetString("MonthDateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1}.
+        /// </summary>
+        public static string MonthYearFormat {
+            get {
+                return ResourceManager.GetString("MonthYearFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string NavCancelText {
+            get {
+                return ResourceManager.GetString("NavCancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show.
+        /// </summary>
+        public static string NavShowText {
+            get {
+                return ResourceManager.GetString("NavShowText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Article(s) found.
+        /// </summary>
+        public static string NumberOfArticlesFoundFormat {
+            get {
+                return ResourceManager.GetString("NumberOfArticlesFoundFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oldest Articles.
+        /// </summary>
+        public static string OldestArticles {
+            get {
+                return ResourceManager.GetString("OldestArticles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please refine your search by removing a selection..
+        /// </summary>
+        public static string RefineSearchText {
+            get {
+                return ResourceManager.GetString("RefineSearchText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:N0} - {1:N0} of {2:N0} Articles.
+        /// </summary>
+        public static string ShowingPageItemsTextFormat {
+            get {
+                return ResourceManager.GetString("ShowingPageItemsTextFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View All.
         /// </summary>
         public static string ViewAll {

@@ -25,12 +25,14 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
         private readonly IRyvussDataService _ryvussDataService;
         private readonly IMapper _mapper;
         private readonly IUrlRouteHelper _urlRouteHelper;
+        private readonly IEditorialRouteSettings _routeSettings;
 
-        public CarouselDataService(IRyvussDataService ryvussDataService, IMapper mapper, IUrlRouteHelper urlRouteHelper)
+        public CarouselDataService(IRyvussDataService ryvussDataService, IMapper mapper, IUrlRouteHelper urlRouteHelper, IEditorialRouteSettings routeSettings)
         {
             _ryvussDataService = ryvussDataService;
             _mapper = mapper;
             _urlRouteHelper = urlRouteHelper;
+            _routeSettings = routeSettings;
         }
 
         public async Task<CarouselViewModel> GetCarouselData(CarouselQuery query)
@@ -51,7 +53,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
 
             carouselViewModel.HasMrec = carouselConfiguration.DisplayMrec;
             carouselViewModel.Title = carouselConfiguration.Title;
-            carouselViewModel.ViewAllLink = carouselConfiguration.ViewAll != null ? $"/editorial{carouselConfiguration.ViewAll}": null;
+            carouselViewModel.ViewAllLink = carouselConfiguration.ViewAll != null ? $"{_routeSettings.BasePath.TrimEnd('/')}{carouselConfiguration.ViewAll}": null;
             carouselViewModel.CarouselType = carouselConfiguration.CarouselType;
             carouselViewModel.PolarAds = carouselConfiguration.PolarAds;
             carouselViewModel.HasNativeAd = carouselConfiguration.DisplayNativeAd;

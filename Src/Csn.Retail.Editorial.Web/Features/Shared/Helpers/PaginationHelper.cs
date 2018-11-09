@@ -5,6 +5,7 @@ using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Culture;
 using Csn.Retail.Editorial.Web.Features.Listings.Constants;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
@@ -54,16 +55,18 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
         }
 
         #region Private Methods
-
         private string GetDisplayText(int count, int totalPages, int offset, int currentPageNumber, int limit)
         {
             if (count < 1) return string.Empty;
-            else if (count == 1)
+            if (count == 1)
             {
-                return count + " Article";
+                return count + $" {LanguageResourceValueProvider.GetValue(LanguageConstants.ArticleText)}";
 
             }
-            return offset + 1 + " - " + (currentPageNumber != totalPages ? offset + limit : count) + " of " + string.Format(_tenantProvider.Current().Culture, "{0:N0}", count) + " Articles";
+
+            return string.Format(_tenantProvider.Current().Culture,
+                LanguageResourceValueProvider.GetValue(LanguageConstants.ShowingPageItemsTextFormat),
+                offset + 1, (currentPageNumber != totalPages ? offset + limit : count), count);
         }
 
         private IEnumerable<PagingItemViewModel> GeneratePageLinks(long currentPageNo, int totalPages, string query, string seoFragment, string sortOrder, string keyword)
@@ -101,7 +104,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                     list.Add(GeneratePageLink(currentPageNo + 1, query, seoFragment, sortOrder, keyword));
                 }
             }
-            
             return list;
         }
 
@@ -122,7 +124,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                 Url = ListingUrlHelper.GetPageAndSortPathAndQuery(query, pageNo, sortOrder, keyword, seoFragment)
             };        
         }
-
         #endregion
     }
 }

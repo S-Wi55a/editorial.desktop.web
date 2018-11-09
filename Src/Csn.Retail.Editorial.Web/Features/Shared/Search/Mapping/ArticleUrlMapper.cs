@@ -21,10 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         }
         public string MapDetailsUrl(SearchResultDto source)
         {
-            
-            var urlFormat = !string.IsNullOrEmpty(_settings.DetailsUrlFormat) ? _settings.DetailsUrlFormat : "/editorial/details/{0}";
-
-            return $"{urlFormat.FormatWith(source.GetSlug())}/";
+            return $"{_settings.DetailsUrlFormat.FormatWith(source.GetSlug())}/";
         }
     }
 }

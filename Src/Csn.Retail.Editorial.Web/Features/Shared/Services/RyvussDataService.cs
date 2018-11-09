@@ -75,7 +75,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Services
                 ServiceProjectionName = _tenantProvider.Current().SupportsSeoFriendlyListings ? _tenantProvider.Current().RyvusServiceProjection : "",
                 NavigationName = _tenantProvider.Current().RyvusNavName,
                 PostProcessors = postProcessors,
-                IncludeMetaData = true
+                IncludeMetaData = _tenantProvider.Current().SupportsSeoFriendlyListings
             };
 
             if (includeResults)

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity.Migrations.Infrastructure;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
@@ -20,6 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public string KeywordsPlaceholder { get; set; }
         public string CurrentAction { get; set; }
         public string CurrentUrl { get; set; }
+        public NavLabels NavLabels { get; set; }
     }
 
     public class NavNode
@@ -67,5 +67,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public string ArticleDetailsUrl { get; set; }        
         public string Label { get; set; }
         public string Type {get; set;}
+    }
+
+    public class NavLabels
+    {
+        public string KeywordsPlaceholderText { get; set; }
+        public string NavShowText { get; set; }
+        public string NavCancelText { get; set; }
+        public string NavArticleText { get; set; }
+        public string UiCulture { get; set; }
     }
 }

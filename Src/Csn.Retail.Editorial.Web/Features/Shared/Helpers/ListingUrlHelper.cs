@@ -3,23 +3,25 @@ using System.Web.Mvc;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
 {
-    //TODO: Refactoring and cleanup required for this class
     public static class ListingUrlHelper
     {
-        private static string ListingsBasePath(string query = "", bool includeResultsSegment = false)
+        private static string ListingsBasePath(bool includeResultsSegment = false)
         {
-            // slap on the wrist! We are using service locator because of difficulty getting dependency injection on automapper resolvers
-            // to work without massive code refactor
             var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
+            var editorialRouteSetting = DependencyResolver.Current.GetService<IEditorialRouteSettings>();
 
-            if (!string.IsNullOrEmpty(query) || includeResultsSegment)
-                return $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}/results";
-
-            return $"/editorial{(string.IsNullOrEmpty(tenantProvider.Current().Vertical) ? "" : $"/{tenantProvider.Current().Vertical.ToLower()}")}";
+            return !string.IsNullOrEmpty(tenantProvider.Current().Vertical)
+                ? (includeResultsSegment
+                    ? $"{editorialRouteSetting.BasePath}{tenantProvider.Current().Vertical.ToLower()}/{editorialRouteSetting.ResultsSegment}"
+                    : $"{editorialRouteSetting.BasePath}{tenantProvider.Current().Vertical.ToLower()}")
+                : (includeResultsSegment
+                    ? $"{editorialRouteSetting.BasePath}{editorialRouteSetting.ResultsSegment}"
+                    : editorialRouteSetting.BasePath.TrimEnd('/'));
         }
 
         public static string GetPathAndQueryString(string q = null, long offset = 0, string sortOrder = null, string keyword = null, bool includeResultsSegment = false)
@@ -27,7 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
             var queryParams = GetQueryStringParameters(q, offset, sortOrder, keyword);
             var queryString = string.IsNullOrEmpty(queryParams) ? "/" : "/?" + queryParams;
 
-            return $"{ListingsBasePath(queryString, includeResultsSegment)}{queryString}";
+            return $"{ListingsBasePath(includeResultsSegment || !string.IsNullOrEmpty(queryString))}{queryString}";
         }
 
         public static string GetQueryString(string action, string sort)
@@ -54,7 +56,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Helpers
                 : $"{seoFragment}{(string.IsNullOrEmpty(queryParams) ? "/" : "?" + queryParams)}";
             var includeResultsSegment =
                 string.IsNullOrEmpty(seoFragment) && string.IsNullOrEmpty(q) || !string.IsNullOrEmpty(q);
-            return $"{ListingsBasePath(includeResultsSegment: includeResultsSegment)}{queryString}";
+            return $"{ListingsBasePath(includeResultsSegment)}{queryString}";
         }
 
 

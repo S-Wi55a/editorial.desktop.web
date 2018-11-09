@@ -14,18 +14,22 @@ interface IINavConfirmCancelBar {
     count?: number
     pendingAction?: string
     fetchINavAndResults?: (q?: string)=>void
-    cancel?: ()=>void
+    cancel?: () => void,
+    showText?: string,
+    cancelText?: string,
+    articleText?: string,
+    uiCulture?: string
 }
-//TODO: how to get hardcoded words data driven?
-const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({ count, fetchINavAndResults, pendingAction, cancel}) => (
+
+const INavConfirmCancelBar: React.StatelessComponent<IINavConfirmCancelBar> = ({ count, fetchINavAndResults, pendingAction, cancel, showText, cancelText, articleText, uiCulture}) => (
     <div className='iNav-category__confirmCancelBar confirmCancelBar'>
-        <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel} data-webm-clickvalue={`cancel`}>Cancel</div>
+        <div className='confirmCancelBar__button confirmCancelBar__button--cancel' onClick={cancel} data-webm-clickvalue={`cancel`}>{cancelText}</div>
         <a className='confirmCancelBar__button confirmCancelBar__button--show' href={pendingAction} data-webm-clickvalue={`show`}
             onClick={(e: any)=>{
                 e.preventDefault()
                 fetchINavAndResults()
             }
-        }>Show {count.toLocaleString()} Article{count > 1 ? 's' : ''}</a>      
+            }>{showText} {count.toLocaleString(uiCulture)} {articleText}{count > 1 ? 's' : ''}</a>      
     </div>
 )
 
@@ -33,6 +37,10 @@ const mapStateToProps = (state: any, ownProps: IINavConfirmCancelBar) => {
     return {
         count: typeof state.store.nav.navResults.iNav.pendingQueryCount !== 'undefined' ? state.store.nav.navResults.iNav.pendingQueryCount : state.store.nav.navResults.count,
         pendingAction: typeof state.store.nav.navResults.iNav.pendingUrl !== 'undefined' ? state.store.nav.navResults.iNav.pendingUrl : state.store.nav.navResults.iNav.currentUrl,
+        showText: state.store.nav.navResults.iNav.navLabels.navShowText,
+        cancelText: state.store.nav.navResults.iNav.navLabels.navCancelText,
+        articleText: state.store.nav.navResults.iNav.navLabels.navArticleText,
+        uiCulture: state.store.nav.navResults.iNav.navLabels.uiCulture
     }
 }
 

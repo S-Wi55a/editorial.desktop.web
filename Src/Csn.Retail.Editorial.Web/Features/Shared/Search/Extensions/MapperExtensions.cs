@@ -1,7 +1,9 @@
 using System.Linq;
 using System.Web.Mvc;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Culture;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Search.Nav;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
@@ -60,27 +62,19 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
                 return ArticleType.Sponsored.ToString();
             }
 
-            if (source.ArticleTypes.Any(x => x.Equals(ArticleType.Carpool.ToString())))
-            {
-                return ArticleType.Carpool.ToString();
-            }
-
-            return null;
+            return source.ArticleTypes.Any(x => x.Equals(ArticleType.Carpool.ToString())) ? ArticleType.Carpool.ToString() : null;
         }
 
         public static string GetDisqusArticleId(this SearchResultDto source)
         {
             var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
 
-            if (string.IsNullOrEmpty(tenantProvider.Current().DisqusSource))
-                return string.Empty;
-
-            return $"EDITORIAL-{source.Id?.Substring(7)}";
+            return string.IsNullOrEmpty(tenantProvider.Current().DisqusSource) ? string.Empty : $"EDITORIAL-{source.Id?.Substring(7)}";
         }
 
         public static string GetDisplayName(this RyvussNavNodeDto source)
         {
-            return source.DisplayName == "Make" ? "Make/Model" : source.DisplayName;
+            return source.Name == "Make" ? LanguageResourceValueProvider.GetValue(LanguageConstants.MakeModelNavLabel) : source.DisplayName;
         }
     }
 }

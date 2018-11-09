@@ -19,7 +19,7 @@ let KeywordSearchComponent = (props) => {
             component="input" 
             type="text"
             className={`iNav__keywordSearch-input`} 
-            placeholder={'Keyword search'}
+            placeholder={props.keywordPlaceholder}
             autoComplete="on"            
           />
         </form>
@@ -42,8 +42,9 @@ let KeywordSearchComponent = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    keywordQuery: state.store.nav.navResults.iNav.keywordsPlaceholder,
-    initialValues: {
+      keywordQuery: state.store.nav.navResults.iNav.keywordsPlaceholder,
+      keywordPlaceholder: state.store.nav.navResults.iNav.navLabels.keywordsPlaceholderText,
+      initialValues: {
       keyword: state.store.nav.keyword
     }
   }
