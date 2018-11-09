@@ -49,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
 
         private RedirectRule GetRedirectRuleForRequest()
         {
-            if (!_redirectConfigProvider.Get(_tenantProvider.Current().Name.ToLower()).TryGetValue(_requestContextWrapper.Url.AbsolutePathUnescaped(), out var redirectRule))
+            if (!_redirectConfigProvider.Get(_tenantProvider.Current().Name.ToLower()).TryGetValue(_requestContextWrapper.Url.AbsolutePathUnescaped().ToLower(), out var redirectRule))
             {
                 return null;
             }
