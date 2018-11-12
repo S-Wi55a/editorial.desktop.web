@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using Csn.Retail.Editorial.Web.Features.Details;
 using Csn.Retail.Editorial.Web.Features.Details.CacheStores;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
@@ -17,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         [Test]
         public void CacheIsBypassedForPreview()
         {
-            var cacheStore = Substitute.For<IArticleViewModelCacheStore>();
+            var cacheStore = Substitute.For<IArticleDetailsCacheStore>();
 
             var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore);
 
@@ -35,7 +36,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
 
             // now check that a call to the cache was not made
             cacheStore.DidNotReceive().GetAsync(Arg.Any<string>());
-            cacheStore.DidNotReceive().StoreAsync(Arg.Any<ArticleViewModel>());
+            cacheStore.DidNotReceive().StoreAsync(Arg.Any<GetArticleResponse>());
 
             Assert.IsNotNull(result);
         }
@@ -46,10 +47,10 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         [Test]
         public async Task CacheIsUsedWhenNotPreview()
         {
-            var cacheStore = Substitute.For<IArticleViewModelCacheStore>();
+            var cacheStore = Substitute.For<IArticleDetailsCacheStore>();
 
             cacheStore.GetAsync(Arg.Any<string>())
-                .Returns(Task.FromResult(new MayBe<ArticleViewModel>(new ArticleViewModel())));
+                .Returns(Task.FromResult(new MayBe<GetArticleResponse>(new GetArticleResponse())));
 
             var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore);
 
@@ -77,11 +78,11 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         [Test]
         public async Task ArticleIsCachedWhenNotPreview()
         {
-            var cacheStore = Substitute.For<IArticleViewModelCacheStore>();
+            var cacheStore = Substitute.For<IArticleDetailsCacheStore>();
 
             // cache returns no result
             cacheStore.GetAsync(Arg.Any<string>())
-                .Returns(Task.FromResult(new MayBe<ArticleViewModel>(null, false)));
+                .Returns(Task.FromResult(new MayBe<GetArticleResponse>(null, false)));
 
             var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore);
 
@@ -93,7 +94,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             {
                 return Task.FromResult(new GetArticleResponse()
                 {
-                    ArticleViewModel = new ArticleViewModel()
+                    ArticleViewModel = new ArticleViewModel(),
+                    HttpStatusCode = HttpStatusCode.OK
                 });
             });
 
@@ -101,7 +103,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             await cacheStore.Received().GetAsync(Arg.Any<string>());
 
             // data retrieved should get cached
-            await cacheStore.Received().StoreAsync(Arg.Any<ArticleViewModel>());
+            await cacheStore.Received().StoreAsync(Arg.Any<GetArticleResponse>());
 
             Assert.IsNotNull(result);
         }
