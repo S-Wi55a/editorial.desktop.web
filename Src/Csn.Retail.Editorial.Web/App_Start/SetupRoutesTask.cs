@@ -144,13 +144,6 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
-                RouteNames.Mvc.DetailsLegacyUrls,
-                "{*detailsSegments}",
-                new { controller = "Details", action = "RedirectLegacyUrl" },
-                new { detailsSegments = new LegacyDetailsPageRouteConstraint() }
-            );
-
-            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.ListingPagePreInternational,
                 _resultsSegment,
                 new { controller = "Listings", action = "Listing" }

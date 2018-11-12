@@ -18,13 +18,13 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
 
         public ActionResult Redirect()
         {
-            _redirectLogger.Log(HttpContext.Request.Url?.AbsolutePath);
-
             var redirect = _redirectService.GetRedirect();
 
-            if (redirect != null)
+            _redirectLogger.Log(redirect, HttpContext.Request.Url?.AbsolutePath);
+
+            if (redirect != null && redirect.RedirectResult != null)
             {
-                return redirect;
+                return redirect.RedirectResult;
             }
 
             return new RedirectResult(_urlRouteHelper.HttpRouteUrl(RouteNames.Mvc.LandingHome, null), true);

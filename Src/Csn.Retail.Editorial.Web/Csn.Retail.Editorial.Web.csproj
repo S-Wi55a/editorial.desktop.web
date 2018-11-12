@@ -621,6 +621,9 @@
     <Compile Include="Features\Redirects\RedirectController.cs" />
     <Compile Include="Features\Redirects\RedirectLogger.cs" />
     <Compile Include="Features\Redirects\ConfigBasedRedirectRouteConstraint.cs" />
+    <Compile Include="Features\Redirects\RedirectProviders\DetailsLegacyUrlPathRedirectProvider.cs" />
+    <Compile Include="Features\Redirects\RedirectProviders\IRedirectProvider.cs" />
+    <Compile Include="Features\Redirects\RedirectProviders\RegexRedirectProvider.cs" />
     <Compile Include="Features\Redirects\RedirectRule.cs" />
     <Compile Include="Features\Redirects\RedirectRuleExtensions.cs" />
     <Compile Include="Features\Redirects\RedirectService.cs" />
