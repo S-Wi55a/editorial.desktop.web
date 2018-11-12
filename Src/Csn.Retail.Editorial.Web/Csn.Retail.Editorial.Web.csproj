@@ -851,6 +851,7 @@
     <Content Include="Features\Redirects\Config\ausRedirectConfig.json" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_table.scss" />
     <Content Include="Features\Redirects\Config\latamRedirectConfig.json" />
+    <Content Include="Features\Errors\Views\es\Error404.cshtml" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
@@ -952,10 +953,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
+    <Folder Include="Features\Errors\Views\en-au\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Images\Demotores\" />
     <Folder Include="Features\Shared\Assets\Images\Soloautos\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
+    <Folder Include="Features\Shared\Views\Errors\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
     <Folder Include="Views\DetailsRedirect\" />
     <Folder Include="Views\Errors\" />
@@ -1116,9 +1119,6 @@
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
     <Content Include="Features\Shared\Views\Partials\PolarNativeAds\_PolarNativeAds.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module--slider.scss" />
-    <Content Include="Features\Shared\Views\Errors\Error404.cshtml" />
-    <Content Include="Features\Shared\Views\Errors\ErrorTemplate.cshtml" />
-    <Content Include="Features\Shared\Views\Errors\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Views\ErrorTemplate.cshtml" />
     <Content Include="Features\Errors\Views\Error404.cshtml" />
     <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
