@@ -960,7 +960,6 @@
     <Folder Include="Features\Shared\Assets\Images\Demotores\" />
     <Folder Include="Features\Shared\Assets\Images\Soloautos\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
-    <Folder Include="Features\Shared\Views\Errors\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />
     <Folder Include="Views\DetailsRedirect\" />
     <Folder Include="Views\Errors\" />
