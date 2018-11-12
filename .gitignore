@@ -83,7 +83,7 @@ TempWebpackConfig
 dist--server
 
 # Remove when eligant workflow has been made
-.package-lock.json
+*package-lock.json
 
 # Remove source maps 
 *.map
