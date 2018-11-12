@@ -4,6 +4,7 @@
       // The next two redirects can only be enabled once the ryvuss updates are made
       //{
       //  "ruleType": "regex",
+      //  "name": "ArticleType1",
       //  "matchRule": "(.*?)((news|advice)-article-type)(.*?)",
       //  "redirectInstruction": "$1$3$4",
       //  "includeQueryStringInRedirect": true,
@@ -11,6 +12,7 @@
       //},
       //{
       //  "ruleType": "regex",
+      //  "name": "ArticleType2",
       //  "matchRule": "(.*?)((review|video|feature)-article-type)(.*?)",
       //  "redirectInstruction": "$1$3s$4",
       //  "includeQueryStringInRedirect": true,
@@ -18,6 +20,7 @@
       //},
       {
         "ruleType": "regex",
+        "name": "ArticleType1",
         "matchRule": "\\/editorial\\/((news|advice)-article-type)\\/",
         "redirectInstruction": "/editorial/$2/",
         "includeQueryStringInRedirect": true,
@@ -25,6 +28,7 @@
       },
       {
         "ruleType": "regex",
+        "name": "ArticleType2",
         "matchRule": "\\/editorial\\/((review|video|feature)-article-type)\\/",
         "redirectInstruction": "/editorial/$2s/",
         "includeQueryStringInRedirect": true,
@@ -32,6 +36,7 @@
       },
       {
         "ruleType": "regex",
+        "name": "LegacyDetails",
         "matchRule": "\\/editorial\\/(news|reviews|advice|videos|features|riding-advice|tips|tow-tests|motoracing|engine-reviews|products)\\/(.*)?\\/(.*-\\d+/?)",
         "redirectInstruction": "/editorial/details/$3",
         "includeQueryStringInRedirect": true,

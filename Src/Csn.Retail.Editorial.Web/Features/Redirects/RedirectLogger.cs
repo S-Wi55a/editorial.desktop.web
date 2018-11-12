@@ -18,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
 
         public void Log(RedirectInstruction redirectInstruction, string requestUrl)
         {
-            _logger.Trace("RedirectType:{0} {1} -> {2}", redirectInstruction.RuleType, requestUrl, redirectInstruction.RedirectResult.Url);
+            _logger.Trace("RedirectName:{0} {1} -> {2}", redirectInstruction.Name, requestUrl, redirectInstruction.RedirectResult.Url);
         }
     }
 }

@@ -20,7 +20,21 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
                     break;
             }
 
-            return redirectProvider?.GetRedirect(input, uri);
+            var redirectUrl = redirectProvider?.GetRedirectUrl(input, uri);
+
+            if (string.IsNullOrEmpty(redirectUrl)) return null;
+
+            if (input.IncludeQueryStringInRedirect && !string.IsNullOrEmpty(uri.Query))
+            {
+                redirectUrl = $"{redirectUrl}{uri.Query}";
+            }
+
+            return new RedirectInstruction()
+            {
+                Name = input.Name,
+                RuleType = input.RuleType,
+                RedirectResult = new RedirectResult(redirectUrl, true)
+            };
         }
     }
 }

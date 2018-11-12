@@ -42,7 +42,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
 
         public bool CurrentRequestRequiresRedirect()
         {
-            return GetRedirect() != null;
+            return GetRedirect().RedirectResult != null;
         }
 
         private RedirectInstruction GetRedirectInstructionForRequest()
@@ -69,6 +69,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
     public class RedirectInstruction
     {
         public RedirectRuleType RuleType { get; set; }
+        public string Name { get; set; }
         public RedirectResult RedirectResult { get; set; }
     }
 }

@@ -25,12 +25,6 @@ namespace Csn.Retail.Editorial.Web.Ioc
                 return loggerFactory.For<DetailsRedirectLogger>();
             }).As<IDetailsRedirectLogger>().SingleInstance();
 
-            builder.RegisterType<LegacyDetailsRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
-            {
-                var loggerFactory = c.Resolve<ILoggerFactory>();
-                return loggerFactory.For<LegacyDetailsRedirectLogger>();
-            }).As<ILegacyDetailsRedirectLogger>().SingleInstance();
-
             builder.RegisterType<SeoListingUrlRedirectLogger>().WithParameter((p, c) => p.ParameterType == typeof(ILogger), (p, c) =>
             {
                 var loggerFactory = c.Resolve<ILoggerFactory>();

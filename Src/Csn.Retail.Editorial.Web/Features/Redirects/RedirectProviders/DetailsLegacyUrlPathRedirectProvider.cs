@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web.Mvc;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialRyvussApi;
@@ -20,14 +19,16 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects.RedirectProviders
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
         private readonly IExpressionFormatter _expressionFormatter;
 
-        public DetailsLegacyUrlPathRedirectProvider(IEditorialRyvussApiProxy editorialRyvussApiProxy, ITenantProvider<TenantInfo> tenantProvider, IExpressionFormatter expressionFormatter)
+        public DetailsLegacyUrlPathRedirectProvider(IEditorialRyvussApiProxy editorialRyvussApiProxy, 
+                                                ITenantProvider<TenantInfo> tenantProvider, 
+                                                IExpressionFormatter expressionFormatter)
         {
             _editorialRyvussApiProxy = editorialRyvussApiProxy;
             _tenantProvider = tenantProvider;
             _expressionFormatter = expressionFormatter;
         }
 
-        public RedirectInstruction GetRedirect(RedirectRule redirectRule, Uri uri)
+        public string GetRedirectUrl(RedirectRule redirectRule, Uri uri)
         {
             // need to make sure that the regex is a match
             var regex = new Regex(redirectRule.MatchRule, RegexOptions.IgnoreCase);
@@ -54,11 +55,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects.RedirectProviders
 
             if (hit == null || string.IsNullOrEmpty(hit.DetailsPageUrlPath)) return null;
 
-            return new RedirectInstruction()
-            {
-                RedirectResult = new RedirectResult(hit.DetailsPageUrlPath, true),
-                RuleType = RedirectRuleType.DetailsLegacyUrlPaths
-            };
+            return hit.DetailsPageUrlPath;
         }
 
         private class RyvussRedirectResponse

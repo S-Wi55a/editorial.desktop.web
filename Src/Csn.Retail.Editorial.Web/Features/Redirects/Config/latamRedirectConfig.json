@@ -3,6 +3,7 @@
     "common": [
       {
         "ruleType": "regex",
+        "name": "Listado",
         "matchRule": "\\/noticias\\/listado\\/(actualidad|pruebas|las-mejores-compras|compra-de-auto|consejos|comparativas)",
         "redirectInstruction": "/noticias/$1/",
         "includeQueryStringInRedirect": false,
@@ -10,6 +11,7 @@
       },
       {
         "ruleType": "detailsLegacyUrlPaths",
+        "name": "LegacyDetails",
         "matchRule": "\\/noticias\\/detalle\\/(.*)?",
         "redirectInstruction": "",
         "includeQueryStringInRedirect": true,
