@@ -31,7 +31,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
             {
                 Query = _expressionFormatter.Format(expression),
                 QueryExpression = expression,
-                EditorialPageType = EditorialPageTypes.Landing
+                EditorialPageType = EditorialPageTypes.Landing,
+                Sb = query.Sb,
+                Pg = query.Pg == 1 ? 0 : query.Pg
             };
         }
     }

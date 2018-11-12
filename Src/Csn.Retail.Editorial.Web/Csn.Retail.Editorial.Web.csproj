@@ -572,7 +572,7 @@
     <Compile Include="Culture\LanguageResourceValueProvider.cs" />
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
-    <Compile Include="Features\Details\CacheStores\ArticleViewModelCacheStore.cs" />
+    <Compile Include="Features\Details\CacheStores\ArticleDetailsCacheStore.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidator.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteConstraint.cs" />
     <Compile Include="Features\Details\Loggers\LegacyDetailsRedirectLogger.cs" />
@@ -608,7 +608,6 @@
     <Compile Include="Features\Landing\ModelBinder\ManufacturerLandingQueryModelBinder.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Listings\Filters\RedbookDefaultVerticalAttributeFilter.cs" />
-    <Compile Include="Features\Listings\Loggers\LatamLegacyListingRedirectLogger.cs" />
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
     <Compile Include="Features\Listings\RedbookHomepageQueryHandler.cs" />
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
@@ -618,6 +617,13 @@
     <Compile Include="Features\DisplayAds\NativeAd\Services\NativeAdService.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\DetailsTagBuilder.cs" />
     <Compile Include="Features\DisplayAds\MediaMotive\TagBuilders\LandingTagBuilder.cs" />
+    <Compile Include="Features\Redirects\RedirectConfigProvider.cs" />
+    <Compile Include="Features\Redirects\RedirectController.cs" />
+    <Compile Include="Features\Redirects\RedirectLogger.cs" />
+    <Compile Include="Features\Redirects\ConfigBasedRedirectRouteConstraint.cs" />
+    <Compile Include="Features\Redirects\RedirectRule.cs" />
+    <Compile Include="Features\Redirects\RedirectRuleExtensions.cs" />
+    <Compile Include="Features\Redirects\RedirectService.cs" />
     <Compile Include="Features\Shared\Constants\MediaMotiveAreaNames.cs" />
     <Compile Include="Features\Shared\ContextStores\PageContexts.cs" />
     <Compile Include="Features\Shared\Hero\Models\HeroAdUnitModel.cs" />
@@ -657,6 +663,7 @@
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <Content Include="Features\Shared\Views\Partials\_CsnEditorialEndpoints.cshtml" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Soloautos\Overrides\_overrides--footerNav.scss" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponentArrows.tsx" />
@@ -812,6 +819,7 @@
     <Compile Include="Infrastructure\Mappers\MappingSetupTask.cs" />
     <Compile Include="Infrastructure\MultiTenant\TenantDataMapper.cs" />
     <Compile Include="Infrastructure\Filters\SeoFriendlyRoutesRedirectFilter.cs" />
+    <Compile Include="Infrastructure\MultiTenant\TenantListProvider.cs" />
     <Compile Include="Infrastructure\Redirects\AppendSlashRedirectStrategy.cs" />
     <Compile Include="Infrastructure\Redirects\CookieStore.cs" />
     <Compile Include="Features\Shared\Models\EditorialMetadataDto.cs" />
@@ -840,7 +848,9 @@
     <Content Include="Features\DisplayAds\GoogleAd\Views\Index.cshtml" />
     <Content Include="Features\DisplayAds\MediaMotive\Views\Index.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\GoogleAd\_aside.scss" />
+    <Content Include="Features\Redirects\Config\ausRedirectConfig.json" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_table.scss" />
+    <Content Include="Features\Redirects\Config\latamRedirectConfig.json" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />

@@ -58,7 +58,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             return new GetArticleResponse()
             {
-                ArticleViewModel = articleViewModel
+                ArticleViewModel = articleViewModel,
+                DetailsPageUrlPath = result.Data.DetailsPageUrlPath
             };
         }
     }

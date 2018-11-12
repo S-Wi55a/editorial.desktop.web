@@ -18,7 +18,7 @@
             public static string RedbookResults => "RedbookResults";
             public static string ListingPagePreInternational => "ListingPagePreInternational";
             public static string ListingPage => "ListingPage";
-            public static string LatamLegacyListing => "LatamLegacyListing";
+            public static string ConfigBasedRedirect => "ConfigBasedRedirect";
             public static string UnknownRoute => "UnknownRoute";
 
         }
