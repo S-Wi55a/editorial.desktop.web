@@ -851,7 +851,10 @@
     <Content Include="Features\Redirects\Config\ausRedirectConfig.json" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_table.scss" />
     <Content Include="Features\Redirects\Config\latamRedirectConfig.json" />
-    <Content Include="Features\Errors\Views\es\Error404.cshtml" />
+    <Content Include="Features\Errors\Views\en-au\Error404.cshtml" />
+    <Content Include="Features\Errors\Views\en-au\ErrorGeneric.cshtml" />
+    <Content Include="Features\Errors\Views\es-es\Error404.cshtml" />
+    <Content Include="Features\Errors\Views\es-es\ErrorGeneric.cshtml" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
@@ -953,7 +956,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
-    <Folder Include="Features\Errors\Views\en-au\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Images\Demotores\" />
     <Folder Include="Features\Shared\Assets\Images\Soloautos\" />
@@ -1120,8 +1122,6 @@
     <Content Include="Features\Shared\Views\Partials\PolarNativeAds\_PolarNativeAds.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module--slider.scss" />
     <Content Include="Features\Errors\Views\ErrorTemplate.cshtml" />
-    <Content Include="Features\Errors\Views\Error404.cshtml" />
-    <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Assets\Css\error-page.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons-variables.scss" />
     <Content Include="Features\Details\Views\Partials\SearchBar\_searchBar.cshtml" />
