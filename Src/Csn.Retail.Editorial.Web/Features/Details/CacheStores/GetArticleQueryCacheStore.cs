@@ -9,11 +9,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details.CacheStores
     [AutoBind]
     public class GetArticleQueryCacheStore : IAsyncCacheStore<GetArticleQuery, GetArticleResponse>
     {
-        private readonly IArticleViewModelCacheStore _articleViewModelCacheStore;
+        private readonly IArticleDetailsCacheStore _articleDetailsCacheStore;
 
-        public GetArticleQueryCacheStore(IArticleViewModelCacheStore articleViewModelCacheStore)
+        public GetArticleQueryCacheStore(IArticleDetailsCacheStore articleDetailsCacheStore)
         {
-            _articleViewModelCacheStore = articleViewModelCacheStore;
+            _articleDetailsCacheStore = articleDetailsCacheStore;
         }
 
         public async Task<GetArticleResponse> GetAsync(GetArticleQuery query, Func<GetArticleQuery, Task<GetArticleResponse>> fetchAsync)
@@ -25,24 +25,20 @@ namespace Csn.Retail.Editorial.Web.Features.Details.CacheStores
             }
 
             // check the cache
-            var cachedArticle = await _articleViewModelCacheStore.GetAsync(query.Id);
+            var cachedArticle = await _articleDetailsCacheStore.GetAsync(query.Id);
 
             if (cachedArticle.HasValue)
             {
-                return new GetArticleResponse()
-                {
-                    ArticleViewModel = cachedArticle.Value,
-                    HttpStatusCode = HttpStatusCode.OK
-                };
+                return cachedArticle.Value;
             }
 
             // otherwise fetch the data
             var result = await fetchAsync.Invoke(query);
 
             // store the result in cache if required
-            if (result.ArticleViewModel != null)
+            if (result.ArticleViewModel != null && result.HttpStatusCode == HttpStatusCode.OK)
             {
-                await _articleViewModelCacheStore.StoreAsync(result.ArticleViewModel);
+                await _articleDetailsCacheStore.StoreAsync(result);
             }
 
             return result;

@@ -10,12 +10,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     public class GetArticleQueryProcessFilter : IAsyncQueryProcessFilter<GetArticleQuery, GetArticleResponse>
     {
         private readonly IPageContextStore _contextStore;
-        private readonly IArticleViewModelCacheStore _articleViewModelCacheStore;
+        private readonly IArticleDetailsCacheStore _articleDetailsCacheStore;
 
-        public GetArticleQueryProcessFilter(IPageContextStore contextStore, IArticleViewModelCacheStore articleViewModelCacheStore)
+        public GetArticleQueryProcessFilter(IPageContextStore contextStore, IArticleDetailsCacheStore articleDetailsCacheStore)
         {
             _contextStore = contextStore;
-            _articleViewModelCacheStore = articleViewModelCacheStore;
+            _articleDetailsCacheStore = articleDetailsCacheStore;
         }
 
         public Task OnExecutingAsync(GetArticleQuery query)
@@ -25,18 +25,18 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
         public async Task OnExecutedAsync(GetArticleQuery query, GetArticleResponse result)
         {
-            var cachedArticle = await _articleViewModelCacheStore.GetAsync(query.Id);
+            var cachedArticle = await _articleDetailsCacheStore.GetAsync(query.Id);
 
-            if (!cachedArticle.HasValue) return;
+            if (!cachedArticle.HasValue || cachedArticle.Value.ArticleViewModel == null) return;
 
             var detailsPageContext = new DetailsPageContext
             {
-                Items = cachedArticle.Value.Items,
-                Lifestyles = cachedArticle.Value.Lifestyles,
-                Categories = cachedArticle.Value.Categories,
-                Keywords = cachedArticle.Value.Keywords,
-                ArticleType = cachedArticle.Value.ArticleType,
-                ArticleTypes = cachedArticle.Value.ArticleTypes
+                Items = cachedArticle.Value.ArticleViewModel.Items,
+                Lifestyles = cachedArticle.Value.ArticleViewModel.Lifestyles,
+                Categories = cachedArticle.Value.ArticleViewModel.Categories,
+                Keywords = cachedArticle.Value.ArticleViewModel.Keywords,
+                ArticleType = cachedArticle.Value.ArticleViewModel.ArticleType,
+                ArticleTypes = cachedArticle.Value.ArticleViewModel.ArticleTypes
             };
 
             _contextStore.Set(detailsPageContext);
