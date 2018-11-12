@@ -33,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects.RedirectProviders
             // need to make sure that the regex is a match
             var regex = new Regex(redirectRule.MatchRule, RegexOptions.IgnoreCase);
 
-            var absolutePathUnescaped = uri.AbsolutePathUnescaped();
+            var absolutePathUnescaped = $"/{uri.AbsolutePathUnescaped().Trim('/')}/";
 
             var matches = regex.Matches(absolutePathUnescaped);
 

@@ -4,7 +4,7 @@
       {
         "ruleType": "regex",
         "name": "Listado",
-        "matchRule": "\\/noticias\\/listado\\/(actualidad|pruebas|las-mejores-compras|compra-de-auto|consejos|comparativas)",
+        "matchRule": "\\/noticias\\/listado\\/(actualidad|pruebas|las-mejores-compras|compra-de-auto|consejos|comparativas)\\/?",
         "redirectInstruction": "/noticias/$1/",
         "includeQueryStringInRedirect": false,
         "description": "Used for redirecting the old article type listing pages used on soloautos"

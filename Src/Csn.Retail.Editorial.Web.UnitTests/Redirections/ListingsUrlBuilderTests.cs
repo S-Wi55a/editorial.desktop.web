@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using Csn.MultiTenant;
-using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
-using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using NSubstitute;
+﻿using Csn.Retail.Editorial.Web.Features.Shared.Helpers;
 using NUnit.Framework;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Redirections

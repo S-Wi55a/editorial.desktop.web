@@ -227,6 +227,7 @@
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidatorTests.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteValidatorTests.cs" />
     <Compile Include="Features\Listings\ListingInsightsDataMapperTests.cs" />
+    <Compile Include="Features\Redirects\RedirectProviders\RegexRedirectProviderTests.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapperTests.cs" />
     <Compile Include="Features\Tracking\Mapping\ItemsListingMapperTests.cs" />
     <Compile Include="Features\Tracking\Mapping\SearchFilterMapperTests.cs" />
