@@ -59,7 +59,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             return new GetArticleResponse()
             {
                 ArticleViewModel = articleViewModel,
-                DetailsPageUrlPath = result.Data.DetailsPageUrlPath
+                DetailsPageUrlPath = result.Data.DetailsPageUrlPath,
+                HttpStatusCode = HttpStatusCode.OK
             };
         }
     }
