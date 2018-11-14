@@ -7,16 +7,16 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Redirects.RedirectProvider
 {
     class RegexRedirectProviderTests
     {
-        [TestCase("https://www.carsales.com.au/editorial/news-article-type/", "(.*?)((news|advice)-article-type)(.*?)", "$1$3$4", "/editorial/news/")]
-        [TestCase("https://www.carsales.com.au/editorial/review-article-type/", "(.*?)((review|video|feature)-article-type)(.*?)", "$1$3s$4", "/editorial/reviews/")]
-        public void TestArticleTypeRedirects(string requestUrl, string regexMatchRule, string redirectInstruction, string expectedResult)
+        [TestCase("https://www.carsales.com.au/editorial/news-article-type/", "/editorial/news/")]
+        [TestCase("https://www.carsales.com.au/editorial/audi/review-article-type/suv-bodytype/", "/editorial/audi/review/suv-bodytype/")]
+        public void TestArticleTypeRedirects(string requestUrl, string expectedResult)
         {
             var redirectProvider = new RegexRedirectProvider();
 
             var redirectRule = new RedirectRule()
             {
-                MatchRule = regexMatchRule,
-                RedirectInstruction = redirectInstruction,
+                MatchRule = "(.*?)\\/((.*?)-article-type)\\/(.*?)",
+                RedirectInstruction = "$1/$3/$4",
                 Name = "Test",
                 RuleType = RedirectRuleType.Regex
             };
