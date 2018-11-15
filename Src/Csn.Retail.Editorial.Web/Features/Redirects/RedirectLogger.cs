@@ -4,7 +4,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
 {
     public interface IRedirectLogger
     {
-        void Log(string requestUrl);
+        void Log(RedirectInstruction redirectInstruction, string requestUrl);
     }
 
     public class RedirectLogger : IRedirectLogger
@@ -15,9 +15,10 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
         {
             _logger = logger;
         }
-        public void Log(string requestUrl)
+
+        public void Log(RedirectInstruction redirectInstruction, string requestUrl)
         {
-            _logger.Trace(requestUrl);
+            _logger.Trace("RedirectName:{0} {1} -> {2}", redirectInstruction.Name, requestUrl, redirectInstruction.RedirectResult.Url);
         }
     }
 }

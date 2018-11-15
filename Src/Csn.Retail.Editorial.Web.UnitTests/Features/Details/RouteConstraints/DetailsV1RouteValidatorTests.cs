@@ -14,6 +14,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details.RouteConstraints
             var settings = Substitute.For<IEditorialRouteSettings>();
 
             settings.DetailsRouteSegment.Returns("details");
+            settings.DetailsUrlFormat.Returns("V1");
 
             var validator = new DetailsV1RouteValidator(settings);
 
@@ -28,6 +29,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details.RouteConstraints
             var settings = Substitute.For<IEditorialRouteSettings>();
 
             settings.DetailsRouteSegment.Returns("details");
+            settings.DetailsUrlFormat.Returns("V1");
 
             var validator = new DetailsV1RouteValidator(settings);
 
