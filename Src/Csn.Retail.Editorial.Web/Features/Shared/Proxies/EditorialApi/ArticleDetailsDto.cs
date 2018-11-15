@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
@@ -31,6 +32,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public EditorialExpertRating ExpertRatings { get; set; }
         public ProCon ProsCons { get; set; }
         public string DateAvailable { get; set; }
+        public DateTime DateAvailableRaw { get; set; }
+        public string DateAvailableFormatted { get; set; }
         public DisqusData DisqusData { get; set; }
         public MoreArticleData MoreArticleData { get; set; }
         public SeoData SeoData { get; set; }

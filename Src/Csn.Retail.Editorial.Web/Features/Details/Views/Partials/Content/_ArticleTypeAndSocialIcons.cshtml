@@ -4,7 +4,7 @@
     <div class="cf pos-r">
         <div class="article__dateAndTypeContainer">
             <div class="article__type article__type--@Model.ArticleTypeLabel.ArticleTypeText.ToLower().Replace(' ', '-')" data-description="@Html.Raw(Model.ArticleTypeLabel.InfoHtml)">@Model.ArticleTypeLabel.ArticleTypeText</div>
-            <div class="article__date">@Model.DateAvailable</div>
+            <div class="article__date">@Model.DateAvailableFormatted</div>
         </div>
         <div class="article__share article__share--top" data-webm-section="social-sharing-top">
             @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
