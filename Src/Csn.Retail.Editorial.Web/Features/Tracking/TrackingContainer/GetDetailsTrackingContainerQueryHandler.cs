@@ -55,11 +55,11 @@ namespace Csn.Retail.Editorial.Web.Features.Tracking.TrackingContainer
                 Model = article.Items.Any() ? string.Join(";", article.Items.Select(i => i.Model ?? string.Empty).Distinct()) : string.Empty,
                 MarketingGroup = article.Items.Any() ? string.Join(";", article.Items.Select(i => i.MarketingGroup ?? string.Empty).Distinct()) : string.Empty,
                 NetworkId = article.NetworkId,
-                PublishedDate = Convert.ToDateTime(article.DateAvailable).ToString("s"),
+                PublishedDate = article.DateAvailableRaw.ToString("s"),
                 Source = TrackingItemSource.Editorial,
                 Title = article.Headline,
                 Vertical = GetVertical(),
-                YearPublished = Convert.ToDateTime(article.DateAvailable).Year.ToString(),
+                YearPublished = article.DateAvailableRaw.Year.ToString(),
                 PageType = containerQuery.PageType == "gallery" ? EditorialPageType.PhotoGallery : EditorialPageType.Editorial,
                 CanonicalUrl = GetCanonicalUrl(article)
             };
