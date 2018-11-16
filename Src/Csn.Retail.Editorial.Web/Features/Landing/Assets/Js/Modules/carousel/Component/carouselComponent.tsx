@@ -58,7 +58,7 @@ class SimpleSlider extends React.Component<ISimpleSlider> {
     }
 
     _addDisqusScript () {
-        if (SERVER || document.getElementById(this.disqusId)) {
+        if (SERVER || document.getElementById(this.disqusId) || this.props.shortname === "") {
             return
         }
 
