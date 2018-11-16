@@ -20,7 +20,7 @@ class INavSearchResult extends React.Component<ISearchResults> {
                     </a>
                         <div className="iNavSearchResult__content-wrapper">
                             <a href={this.props.articleDetailsUrl}>
-                                <div className={`iNavSearchResult__type iNavSearchResult__type--${typeof this.props.type !== 'undefined' ? this.props.type.toLowerCase() : ''}`}>
+                                <div className={`iNavSearchResult__type iNavSearchResult__type--${typeof this.props.type !== 'undefined' ? this.props.type.toLowerCase().split(' ').join('-') : ''}`}>
                                     {typeof this.props.type !== 'undefined' ? this.props.type.toUpperCase() : ''}
                                 </div>
                                 <div className="iNavSearchResult__heading">
