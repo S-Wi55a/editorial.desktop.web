@@ -211,6 +211,11 @@
             color: $cs-dark-grey-2;
         }
 
+        a strong,
+        a b {
+            color: inherit;
+        }
+
         .teads-inread,
         .brightcove,
         .spec-module {
