@@ -63,7 +63,6 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
             return View($"~/Features/Errors/Views/{_tenantProvider.Current().Culture}/ErrorGeneric.cshtml");
         }
 
-        [Route("editorial/error")]
         public async Task<ActionResult> ErrorGeneric()
         {
             await _eventDispatcher.DispatchAsync(new ErrorPageRequestEvent());

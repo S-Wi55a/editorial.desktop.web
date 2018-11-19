@@ -93,6 +93,12 @@ namespace Csn.Retail.Editorial.Web
             routes.MapMvcAttributeRoutes(constraintResolver);
 
             AddMvcRouteWithBasePath(
+                RouteNames.Mvc.Error,
+                "Error",
+                new { controller = "Errors", action = "ErrorGeneric" }
+            );
+
+            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.TrackingRoute,
                 "Tracking",
                 new { controller = "Tracking" }
