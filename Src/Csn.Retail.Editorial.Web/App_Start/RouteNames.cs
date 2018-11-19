@@ -20,6 +20,7 @@
             public static string ListingPage => "ListingPage";
             public static string ConfigBasedRedirect => "ConfigBasedRedirect";
             public static string UnknownRoute => "UnknownRoute";
+            public static string Error => "Error";
 
         }
 
