@@ -69,7 +69,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 {
                     TileId = 1,
                     Description = DisplayAdPlacements.Banner,
-                    DisplayAdSize = DisplayAdSizes.Block1200X100,
+                    DisplayAdSize = DisplayAdSizes.BannerOrBillboard,
                     DataKruxRequired = false,
                     NotSupportedArticleTypes = new List<string>()
                 }

@@ -6,6 +6,14 @@
 
 @{ var index = (int)ViewData["index"]; }
 
+
+@{
+    if (index == 2)
+    {
+        Html.RenderDisplayAd(DisplayAdPlacements.Banner);
+    }
+}
+
 <div class="csn-carousel @(Model.Carousels[index].HasMrec ? "csn-carousel--mrec" : "")" data-webm-section="carousel-@(Model.Carousels[index].Title)">
     <div class="csn-carousel__info-bar">
         @if (Model.Carousels[index].ViewAllLink != null)
