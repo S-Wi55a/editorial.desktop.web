@@ -12,7 +12,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.RouteConstraints
     }
 
     /// <summary>
-    /// V2 routing looks like /editorial/details/this-is-a-test-article/ED-ITM-1234/
+    /// V1 routing looks like /editorial/details/this-is-a-test-article-1234/
     /// </summary>
     [AutoBind]
     public class DetailsV1RouteValidator : IDetailsV1RouteValidator
@@ -26,6 +26,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.RouteConstraints
 
         public bool IsValid(string relativePath)
         {
+            if (_editorialSettings.DetailsUrlFormat != "V1") return false;
+
             var urlSegments = relativePath.Trim('/').Split('/');
 
             return urlSegments.Length == 2 && SatisfyRouteConstraints(urlSegments.First(), urlSegments.Last());

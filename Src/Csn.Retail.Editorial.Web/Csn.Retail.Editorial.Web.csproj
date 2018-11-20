@@ -575,7 +575,6 @@
     <Compile Include="Features\Details\CacheStores\ArticleDetailsCacheStore.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidator.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteConstraint.cs" />
-    <Compile Include="Features\Details\Loggers\LegacyDetailsRedirectLogger.cs" />
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
     <Compile Include="Features\Details\Mappings\ArticleTypeLabelMapper.cs" />
     <Compile Include="Features\Details\GetArticleQueryProcessFilter.cs" />
@@ -621,6 +620,9 @@
     <Compile Include="Features\Redirects\RedirectController.cs" />
     <Compile Include="Features\Redirects\RedirectLogger.cs" />
     <Compile Include="Features\Redirects\ConfigBasedRedirectRouteConstraint.cs" />
+    <Compile Include="Features\Redirects\RedirectProviders\DetailsLegacyUrlPathRedirectProvider.cs" />
+    <Compile Include="Features\Redirects\RedirectProviders\IRedirectProvider.cs" />
+    <Compile Include="Features\Redirects\RedirectProviders\RegexRedirectProvider.cs" />
     <Compile Include="Features\Redirects\RedirectRule.cs" />
     <Compile Include="Features\Redirects\RedirectRuleExtensions.cs" />
     <Compile Include="Features\Redirects\RedirectService.cs" />
@@ -704,7 +706,6 @@
     <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
     <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
     <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
-    <Compile Include="Features\Shared\RouteConstraints\LegacyDetailsPageRouteConstraint.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ManufacturerRouteConstraint.cs" />
     <Compile Include="Features\Shared\RouteConstraints\VerticalRouteConstraint.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
@@ -851,6 +852,10 @@
     <Content Include="Features\Redirects\Config\ausRedirectConfig.json" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_table.scss" />
     <Content Include="Features\Redirects\Config\latamRedirectConfig.json" />
+    <Content Include="Features\Errors\Views\en-au\Error404.cshtml" />
+    <Content Include="Features\Errors\Views\en-au\ErrorGeneric.cshtml" />
+    <Content Include="Features\Errors\Views\es-es\Error404.cshtml" />
+    <Content Include="Features\Errors\Views\es-es\ErrorGeneric.cshtml" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
@@ -1116,12 +1121,7 @@
     <Content Include="Features\Details\Views\Partials\Hero\_DoubleImage.cshtml" />
     <Content Include="Features\Shared\Views\Partials\PolarNativeAds\_PolarNativeAds.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module--slider.scss" />
-    <Content Include="Features\Shared\Views\Errors\Error404.cshtml" />
-    <Content Include="Features\Shared\Views\Errors\ErrorTemplate.cshtml" />
-    <Content Include="Features\Shared\Views\Errors\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Views\ErrorTemplate.cshtml" />
-    <Content Include="Features\Errors\Views\Error404.cshtml" />
-    <Content Include="Features\Errors\Views\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Assets\Css\error-page.scss" />
     <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons-variables.scss" />
     <Content Include="Features\Details\Views\Partials\SearchBar\_searchBar.cshtml" />

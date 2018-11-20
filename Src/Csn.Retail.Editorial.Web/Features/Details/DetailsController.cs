@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -17,17 +16,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IEventDispatcher _eventDispatcher;
         private readonly IDetailsRedirectLogger _redirectLogger;
-        private readonly ILegacyDetailsRedirectLogger _legacyDetailsRedirectLogger;
 
         public DetailsController(IQueryDispatcher queryDispatcher, 
                                 IEventDispatcher eventDispatcher, 
-                                IDetailsRedirectLogger redirectLogger, 
-                                ILegacyDetailsRedirectLogger legacyDetailsRedirectLogger)
+                                IDetailsRedirectLogger redirectLogger)
         {
             _queryDispatcher = queryDispatcher;
             _eventDispatcher = eventDispatcher;
             _redirectLogger = redirectLogger;
-            _legacyDetailsRedirectLogger = legacyDetailsRedirectLogger;
         }
 
         [RedirectAttributeFilter]
@@ -78,20 +74,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
 
             return response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404Child() : errorsController.ErrorGenericChild();
-        }
-
-        /// <summary>
-        /// Used for redirecting the legacy Aus details urls e.g. /editorial/news/2016/honda/this-is-a-honda-1223/
-        /// </summary>
-        public ActionResult RedirectLegacyUrl()
-        {
-            var rawSlug = (string)Request.RequestContext.RouteData.Values["detailsSegments"];
-
-            var slug = rawSlug.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
-
-            _legacyDetailsRedirectLogger?.Log(Request.RequestContext.HttpContext.Request.Url?.ToString());
-
-            return new RedirectResult($"~/editorial/details/{slug}/", true);
         }
 
         private ActionResult PermanentRedirect(string redirectUrl)

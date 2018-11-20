@@ -1,7 +1,9 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.SimpleCqrs;
 
 namespace Csn.Retail.Editorial.Web.Features.Errors
@@ -10,11 +12,13 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
     {
         private readonly IUrlNotFoundLogger _urlNotFoundLogger;
         private readonly IEventDispatcher _eventDispatcher;
+        private readonly ITenantProvider<TenantInfo> _tenantProvider;
 
-        public ErrorsController(IUrlNotFoundLogger urlNotFoundLogger, IEventDispatcher eventDispatcher)
+        public ErrorsController(IUrlNotFoundLogger urlNotFoundLogger, IEventDispatcher eventDispatcher, ITenantProvider<TenantInfo> tenantProvider)
         {
             _urlNotFoundLogger = urlNotFoundLogger;
             _eventDispatcher = eventDispatcher;
+            _tenantProvider = tenantProvider;
         }
 
         /// <summary>
@@ -29,7 +33,7 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
 
             _urlNotFoundLogger.Log(HttpContext.Request.Url?.ToString());
 
-            return View("~/Features/Errors/Views/Error404.cshtml");
+            return View($"~/Features/Errors/Views/{_tenantProvider.Current().Culture}/Error404.cshtml");
         }
 
         /// <summary>
@@ -45,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
 
             _urlNotFoundLogger.Log(HttpContext.Request.Url?.ToString());
 
-            return View("~/Features/Errors/Views/Error404.cshtml");
+            return View($"~/Features/Errors/Views/{_tenantProvider.Current().Culture}/Error404.cshtml");
         }
 
         [ChildActionOnly]
@@ -56,10 +60,9 @@ namespace Csn.Retail.Editorial.Web.Features.Errors
 
             _urlNotFoundLogger.Log(HttpContext.Request.Url?.ToString());
 
-            return View("~/Features/Errors/Views/ErrorGeneric.cshtml");
+            return View($"~/Features/Errors/Views/{_tenantProvider.Current().Culture}/ErrorGeneric.cshtml");
         }
 
-        [Route("editorial/error")]
         public async Task<ActionResult> ErrorGeneric()
         {
             await _eventDispatcher.DispatchAsync(new ErrorPageRequestEvent());

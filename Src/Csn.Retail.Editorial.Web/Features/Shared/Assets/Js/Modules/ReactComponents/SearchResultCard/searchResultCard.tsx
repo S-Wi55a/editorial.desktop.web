@@ -10,7 +10,7 @@ const Preloader = () => <div className="iNavSearchResult__image-loader"></div>
 
 class INavSearchResult extends React.Component<ISearchResults> {
     render() {
-        const imageUrl = this.props.isNativeAd ? this.props.imageUrl : this.props.imageUrl + '?width=480&height=320&aspect=pad';
+        const imageUrl = this.props.isNativeAd ? this.props.imageUrl : this.props.imageUrl + '?width=480&height=320&pxc_method=crop';
         return <div className="iNavSearchResult" data-webm-clickvalue="search-result">
                     <a href={this.props.articleDetailsUrl}>
                         <div className="iNavSearchResult__image-frame">
@@ -20,7 +20,7 @@ class INavSearchResult extends React.Component<ISearchResults> {
                     </a>
                         <div className="iNavSearchResult__content-wrapper">
                             <a href={this.props.articleDetailsUrl}>
-                                <div className={`iNavSearchResult__type iNavSearchResult__type--${typeof this.props.type !== 'undefined' ? this.props.type.toLowerCase() : ''}`}>
+                                <div className={`iNavSearchResult__type iNavSearchResult__type--${typeof this.props.type !== 'undefined' ? this.props.type.toLowerCase().split(' ').join('-') : ''}`}>
                                     {typeof this.props.type !== 'undefined' ? this.props.type.toUpperCase() : ''}
                                 </div>
                                 <div className="iNavSearchResult__heading">

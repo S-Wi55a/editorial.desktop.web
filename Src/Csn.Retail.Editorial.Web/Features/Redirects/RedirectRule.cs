@@ -2,8 +2,16 @@
 {
     public class RedirectRule
     {
-        public string MatchUrl { get; set; }
-        public string RedirectTo { get; set; }
+        public RedirectRuleType RuleType { get; set; }
+        public string Name { get; set; }
+        public string MatchRule { get; set; }
+        public string RedirectInstruction { get; set; }
         public bool IncludeQueryStringInRedirect { get; set; }
+    }
+
+    public enum RedirectRuleType
+    {
+        Regex,
+        DetailsLegacyUrlPaths
     }
 }

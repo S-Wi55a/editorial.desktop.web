@@ -1,15 +1,15 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
 
 namespace Csn.Retail.Editorial.Web.Features.Redirects
 {
     public interface IRedirectService
     {
-        RedirectResult GetRedirect();
+        RedirectInstruction GetRedirect();
         bool CurrentRequestRequiresRedirect();
     }
 
@@ -20,6 +20,8 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
         private readonly IRequestContextWrapper _requestContextWrapper;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
 
+        private RedirectInstruction _redirectInstruction;
+
         public RedirectService(IRedirectConfigProvider redirectConfigProvider, 
                             IRequestContextWrapper requestContextWrapper, 
                             ITenantProvider<TenantInfo> tenantProvider)
@@ -29,32 +31,45 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
             _tenantProvider = tenantProvider;
         }
 
-        public RedirectResult GetRedirect()
+        public RedirectInstruction GetRedirect()
         {
-            var redirectRule = GetRedirectRuleForRequest();
+            if (_redirectInstruction != null) return _redirectInstruction;
 
-            if (redirectRule == null) return null;
+            _redirectInstruction = GetRedirectInstructionForRequest() ?? new RedirectInstruction();
 
-            return new RedirectResult(redirectRule.GetRedirectUrl(_requestContextWrapper.Url), true);
+            return _redirectInstruction;
         }
 
         public bool CurrentRequestRequiresRedirect()
         {
-            var redirectRule = GetRedirectRuleForRequest();
-
-            if (redirectRule == null) return false;
-
-            return true;
+            return GetRedirect().RedirectResult != null;
         }
 
-        private RedirectRule GetRedirectRuleForRequest()
+        private RedirectInstruction GetRedirectInstructionForRequest()
         {
-            if (!_redirectConfigProvider.Get(_tenantProvider.Current().Name.ToLower()).TryGetValue(_requestContextWrapper.Url.AbsolutePathUnescaped().ToLower(), out var redirectRule))
+            var redirectRules = _redirectConfigProvider.Get(_tenantProvider.Current().Name.ToLower());
+
+            if (redirectRules == null || !redirectRules.Any()) return null;
+
+            // loop through and try to find a match
+            foreach (var redirectRule in redirectRules)
             {
-                return null;
+                var redirectInstruction = redirectRule.GetRedirectInstruction(_requestContextWrapper.Url);
+
+                if (redirectInstruction != null)
+                {
+                    return redirectInstruction;
+                }
             }
 
-            return redirectRule;
+            return null;
         }
+    }
+
+    public class RedirectInstruction
+    {
+        public RedirectRuleType RuleType { get; set; }
+        public string Name { get; set; }
+        public RedirectResult RedirectResult { get; set; }
     }
 }

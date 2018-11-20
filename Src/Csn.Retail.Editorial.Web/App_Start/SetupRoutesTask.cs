@@ -93,6 +93,12 @@ namespace Csn.Retail.Editorial.Web
             routes.MapMvcAttributeRoutes(constraintResolver);
 
             AddMvcRouteWithBasePath(
+                RouteNames.Mvc.Error,
+                "Error",
+                new { controller = "Errors", action = "ErrorGeneric" }
+            );
+
+            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.TrackingRoute,
                 "Tracking",
                 new { controller = "Tracking" }
@@ -144,18 +150,12 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
-                RouteNames.Mvc.DetailsLegacyUrls,
-                "{*detailsSegments}",
-                new { controller = "Details", action = "RedirectLegacyUrl" },
-                new { detailsSegments = new LegacyDetailsPageRouteConstraint() }
-            );
-
-            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.ListingPagePreInternational,
                 _resultsSegment,
                 new { controller = "Listings", action = "Listing" }
             );
 
+            // TODO: remove this route once the ryvuss change for -article-type has been made
             AddMvcRouteWithBasePath(
                 RouteNames.Mvc.ArticleType,
                 "{*articleType}",

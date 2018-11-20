@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
         {
             if (!string.IsNullOrEmpty(source.DetailsPageUrlPath)) return source.DetailsPageUrlPath;
 
-            return $"{_settings.DetailsUrlFormat.FormatWith(source.GetSlug())}/";
+            return $"/editorial/details/{source.GetSlug()}/";
         }
     }
 }
