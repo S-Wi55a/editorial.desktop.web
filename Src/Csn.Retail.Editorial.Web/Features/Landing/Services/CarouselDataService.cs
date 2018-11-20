@@ -57,6 +57,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             carouselViewModel.CarouselType = carouselConfiguration.CarouselType;
             carouselViewModel.PolarAds = carouselConfiguration.PolarAds;
             carouselViewModel.HasNativeAd = carouselConfiguration.DisplayNativeAd;
+            carouselViewModel.HasBanner = carouselConfiguration.DisplayBanner;
             return carouselViewModel;
         }   
 

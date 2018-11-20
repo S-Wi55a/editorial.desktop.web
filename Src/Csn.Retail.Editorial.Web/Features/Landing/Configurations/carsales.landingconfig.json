@@ -26,7 +26,8 @@
             "placementId": 31
           },
           "carouselType": "article",
-          "carouselItems": null
+          "carouselItems": null,
+          "displayBanner": true
         },
         {
           "title": "News",

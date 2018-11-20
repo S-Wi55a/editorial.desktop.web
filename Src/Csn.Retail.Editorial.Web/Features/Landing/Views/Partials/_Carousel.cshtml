@@ -1,18 +1,10 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Culture
 @using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 @using React.Web.Mvc
-@using Csn.Retail.Editorial.Web.Culture
 @model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
 
 @{ var index = (int)ViewData["index"]; }
-
-
-@{
-    if (index == 2)
-    {
-        Html.RenderDisplayAd(DisplayAdPlacements.Banner);
-    }
-}
 
 <div class="csn-carousel @(Model.Carousels[index].HasMrec ? "csn-carousel--mrec" : "")" data-webm-section="carousel-@(Model.Carousels[index].Title)">
     <div class="csn-carousel__info-bar">
@@ -39,3 +31,10 @@
         }
     </div>
 </div>
+
+@{
+    if (Model.Carousels[index].HasBanner)
+    {
+        Html.RenderDisplayAd(DisplayAdPlacements.Banner);
+    }
+}

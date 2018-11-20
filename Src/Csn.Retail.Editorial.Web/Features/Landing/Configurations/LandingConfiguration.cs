@@ -20,6 +20,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public string Title { get; set; }
         public bool DisplayMrec { get; set; }
         public bool DisplayNativeAd { get; set; } // Different to PolarAds, this is COTW, BOTM
+        public bool DisplayBanner { get; set; }
         public string Query { get; set; }
         public string Sort { get; set; }
         public int? Offset { get; set; }

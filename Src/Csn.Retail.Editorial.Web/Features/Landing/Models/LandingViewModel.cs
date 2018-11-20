@@ -29,6 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public CarouselTypes CarouselType { get; set; }
         public PolarAds PolarAds { get; set; }
         public bool HasNativeAd { get; set; }
+        public bool HasBanner { get; set; }
     }
 
     public class Nav
