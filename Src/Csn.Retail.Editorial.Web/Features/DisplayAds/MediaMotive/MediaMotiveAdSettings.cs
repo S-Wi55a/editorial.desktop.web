@@ -69,6 +69,17 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 {
                     TileId = 1,
                     Description = DisplayAdPlacements.Banner,
+                    DisplayAdSize = DisplayAdSizes.Block1200X100,
+                    DataKruxRequired = false,
+                    NotSupportedArticleTypes = new List<string>()
+                }
+            },
+            {
+                DisplayAdPlacements.InlineBanner, // Used on landing page between carousel list
+                new MediaMotiveAdSetting()
+                {
+                    TileId = 1,
+                    Description = DisplayAdPlacements.Banner,
                     DisplayAdSize = DisplayAdSizes.BannerOrBillboard,
                     DataKruxRequired = false,
                     NotSupportedArticleTypes = new List<string>()

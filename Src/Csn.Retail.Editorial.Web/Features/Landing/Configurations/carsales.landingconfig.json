@@ -30,6 +30,10 @@
           "displayBanner": true
         },
         {
+          "carouselType": "ad",
+          "adPlacementType":  "inlineBanner" 
+        },
+        {
           "title": "News",
           "displayMrec": false,
           "displayNativeAd": false,

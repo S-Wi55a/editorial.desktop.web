@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
 {
@@ -20,7 +21,6 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public string Title { get; set; }
         public bool DisplayMrec { get; set; }
         public bool DisplayNativeAd { get; set; } // Different to PolarAds, this is COTW, BOTM
-        public bool DisplayBanner { get; set; }
         public string Query { get; set; }
         public string Sort { get; set; }
         public int? Offset { get; set; }
@@ -29,6 +29,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public PolarAds PolarAds { get; set; }
         public CarouselTypes CarouselType { get; set; }
         public List<CarouselItem> CarouselItems { get; set; }
+        public DisplayAdPlacements AdPlacementType { get; set; }
     }
 
     public class CarouselItem
@@ -41,7 +42,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
     {
         Article,
         Driver,
-        Featured
+        Featured,
+        Ad
     }
 
     public class PolarAds

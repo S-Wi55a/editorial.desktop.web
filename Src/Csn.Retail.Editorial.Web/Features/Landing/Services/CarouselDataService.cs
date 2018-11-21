@@ -43,22 +43,18 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
         [Trace]
         public async Task<CarouselViewModel> GetCarouselData(LandingCarouselConfiguration carouselConfiguration)
         {
-            if (carouselConfiguration.CarouselType == CarouselTypes.Driver)
+            switch (carouselConfiguration.CarouselType)
             {
-                return GetDriverCarouselData(carouselConfiguration);
+                case CarouselTypes.Article:
+                case CarouselTypes.Featured:
+                    return await GetArticleCarouselData(carouselConfiguration);
+                case CarouselTypes.Ad:
+                    return GetAdCarouselData(carouselConfiguration);
+                case CarouselTypes.Driver:
+                    return GetDriverCarouselData(carouselConfiguration);
             }
-            var carouselViewModel = await CarouselDataResult(carouselConfiguration.Query, carouselConfiguration.Sort, carouselConfiguration.Offset ?? 0, carouselConfiguration.Limit ?? 20);
 
-            if (carouselViewModel == null) return null;
-
-            carouselViewModel.HasMrec = carouselConfiguration.DisplayMrec;
-            carouselViewModel.Title = carouselConfiguration.Title;
-            carouselViewModel.ViewAllLink = carouselConfiguration.ViewAll != null ? $"{_routeSettings.BasePath.TrimEnd('/')}{carouselConfiguration.ViewAll}": null;
-            carouselViewModel.CarouselType = carouselConfiguration.CarouselType;
-            carouselViewModel.PolarAds = carouselConfiguration.PolarAds;
-            carouselViewModel.HasNativeAd = carouselConfiguration.DisplayNativeAd;
-            carouselViewModel.HasBanner = carouselConfiguration.DisplayBanner;
-            return carouselViewModel;
+            return null;
         }   
 
         private async Task<CarouselViewModel> CarouselDataResult(string query, string sort, int offset, int limit)
@@ -75,6 +71,21 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
             };
         }
 
+        private async Task<CarouselViewModel> GetArticleCarouselData(LandingCarouselConfiguration carouselConfiguration)
+        {
+            var carouselViewModel = await CarouselDataResult(carouselConfiguration.Query, carouselConfiguration.Sort, carouselConfiguration.Offset ?? 0, carouselConfiguration.Limit ?? 20);
+
+            if (carouselViewModel == null) return null;
+
+            carouselViewModel.HasMrec = carouselConfiguration.DisplayMrec;
+            carouselViewModel.Title = carouselConfiguration.Title;
+            carouselViewModel.ViewAllLink = carouselConfiguration.ViewAll != null ? $"{_routeSettings.BasePath.TrimEnd('/')}{carouselConfiguration.ViewAll}": null;
+            carouselViewModel.CarouselType = carouselConfiguration.CarouselType;
+            carouselViewModel.PolarAds = carouselConfiguration.PolarAds;
+            carouselViewModel.HasNativeAd = carouselConfiguration.DisplayNativeAd;
+            return carouselViewModel;
+        }   
+
         private CarouselViewModel GetDriverCarouselData(LandingCarouselConfiguration carouselConfiguration)
         {
             return new CarouselViewModel
@@ -85,7 +96,16 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Services
                 PolarAds = carouselConfiguration.PolarAds,
                 CarouselType = carouselConfiguration.CarouselType,
                 HasNativeAd = carouselConfiguration.DisplayNativeAd
-        };
+            };
+        }
+
+        private CarouselViewModel GetAdCarouselData(LandingCarouselConfiguration carouselConfiguration)
+        {
+            return new CarouselViewModel
+            {
+                CarouselType = carouselConfiguration.CarouselType,
+                AdPlacementType = carouselConfiguration.AdPlacementType
+            };
         }
     }
 }

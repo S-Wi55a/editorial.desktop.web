@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
 using Csn.Retail.Editorial.Web.Features.Landing.Configurations;
 using Csn.Retail.Editorial.Web.Features.Shared.Hero.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
@@ -29,7 +30,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Models
         public CarouselTypes CarouselType { get; set; }
         public PolarAds PolarAds { get; set; }
         public bool HasNativeAd { get; set; }
-        public bool HasBanner { get; set; }
+        public DisplayAdPlacements AdPlacementType { get; set; }
     }
 
     public class Nav
