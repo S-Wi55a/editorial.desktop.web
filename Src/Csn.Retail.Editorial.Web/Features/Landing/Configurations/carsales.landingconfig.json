@@ -30,10 +30,6 @@
           "displayBanner": true
         },
         {
-          "carouselType": "ad",
-          "adPlacementType":  "inlineBanner" 
-        },
-        {
           "title": "News",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -43,6 +39,10 @@
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Videos",
