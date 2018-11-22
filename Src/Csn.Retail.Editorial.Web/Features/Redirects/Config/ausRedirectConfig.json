@@ -3,6 +3,14 @@
     "common": [
       {
         "ruleType": "regex",
+        "name": "ArticleTypeToPlural",
+        "matchRule": "(.*?)\\/((review|video|feature)s)\\/(.*?)",
+        "redirectInstruction": "$1/$3/$4",
+        "includeQueryStringInRedirect": true,
+        "description": "Used for redirecting the old pluralised article type seo urls"
+      },
+      {
+        "ruleType": "regex",
         "name": "ArticleType",
         "matchRule": "(.*?)\\/((.*?)-article-type)\\/(.*?)",
         "redirectInstruction": "$1/$3/$4",
