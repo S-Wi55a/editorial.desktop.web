@@ -1105,8 +1105,6 @@
     <Content Include="Features\Shared\Assets\Css\Tenants\Bikesales\bikesales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Carsales\carsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Constructionsales\constructionsales.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tenants\Carpoint\carpoint.scss" />
-    <Content Include="Features\Shared\Assets\Css\Tenants\Carpoint\Settings\_settings--carpoint.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Boatsales\boatsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Boatsales\Settings\_settings--boatsales.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Trucksales\trucksales.scss" />
