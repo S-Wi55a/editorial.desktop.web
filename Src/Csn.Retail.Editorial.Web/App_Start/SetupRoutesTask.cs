@@ -155,14 +155,6 @@ namespace Csn.Retail.Editorial.Web
                 new { controller = "Listings", action = "Listing" }
             );
 
-            // TODO: remove this route once the ryvuss change for -article-type has been made
-            AddMvcRouteWithBasePath(
-                RouteNames.Mvc.ArticleType,
-                "{*articleType}",
-                new { controller = "Listings", action = "ArticleTypeListing" },
-                new { articleType = new ArticleTypeRouteConstraint() }
-            );
-
             AddMvcRouteWithBasePath(
                 RouteNames.Mvc.RedbookHome,
                 "{*redbookVertical}",
