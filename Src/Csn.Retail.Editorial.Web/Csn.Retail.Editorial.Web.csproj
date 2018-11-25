@@ -664,6 +664,10 @@
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
+    <Content Include="Features\Shared\Assets\Images\Demotores\logo-demotores-white.svg" />
+    <Content Include="Features\Shared\Assets\Images\Shared\arrow-down-shape.png" />
+    <Content Include="Features\Shared\Assets\Images\Shared\mouse-scroll.png" />
+    <Content Include="Features\Shared\Assets\Images\Soloautos\logo-soloautos-white.svg" />
     <Content Include="Features\Shared\Views\Partials\_CsnEditorialEndpoints.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Soloautos\Overrides\_overrides--footerNav.scss" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
