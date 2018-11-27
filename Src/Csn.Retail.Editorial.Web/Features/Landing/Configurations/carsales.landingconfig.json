@@ -173,6 +173,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -229,6 +233,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
       "displayBannerAd": true,
@@ -273,6 +281,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Stelvio",
@@ -328,6 +340,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Vanquish",
@@ -394,6 +410,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "A5",
@@ -594,6 +614,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Mulsanne",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -781,6 +805,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Silverado",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -834,6 +862,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
       "displayBannerAd": true,
@@ -878,6 +910,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "GTC4Lusso",
@@ -946,6 +982,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "500X",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -999,6 +1039,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Everest",
@@ -1188,6 +1232,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "H9",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -1241,6 +1289,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Colorado",
@@ -1362,6 +1414,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
       "displayBannerAd": true,
@@ -1406,6 +1462,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "CR-V",
@@ -1483,6 +1543,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "i30",
@@ -1604,6 +1668,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
       "displayBannerAd": true,
@@ -1648,6 +1716,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "F-Pace",
@@ -1749,6 +1821,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Grand Cherokee",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -1824,6 +1900,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Picanto",
@@ -1934,6 +2014,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
       "displayBannerAd": true,
@@ -1978,6 +2062,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Discovery Sport",
@@ -2079,6 +2167,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "LC",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -2165,6 +2257,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
       "displayBannerAd": true,
@@ -2209,6 +2305,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Quattroporte",
@@ -2264,6 +2364,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "6",
@@ -2376,6 +2480,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "675LT",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -2440,6 +2548,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "C Class",
@@ -2585,6 +2697,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Countryman",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -2649,6 +2765,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Lancer",
@@ -2748,6 +2868,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "GT-R",
@@ -2860,6 +2984,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "3008",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -2935,6 +3063,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Cayenne",
@@ -3025,6 +3157,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Kangoo",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -3113,6 +3249,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Octavia",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -3177,6 +3317,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Impreza",
@@ -3289,6 +3433,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Swift",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -3353,6 +3501,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
       "displayBannerAd": true,
@@ -3397,6 +3549,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "CH-R",
@@ -3575,6 +3731,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Golf",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -3672,6 +3832,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "V90",
