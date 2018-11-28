@@ -1,17 +1,15 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds.NativeAd
 @using Csn.Retail.Editorial.Web.Features.Landing.Configurations
 @using React.Web.Mvc
-@model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
-
-@{ var index = (int) ViewData["index"]; }
+@model Csn.Retail.Editorial.Web.Features.Landing.Models.CarouselViewModel
 
 <div class="csn-carousel
-     @(Model.Carousels[index].CarouselType == CarouselTypes.Driver ? "csn-carousel--driver" : "")
-     @(Model.Carousels[index].HasNativeAd ? "csn-carousel--nativeAd" : "")">
+     @(Model.CarouselType == CarouselTypes.Driver ? "csn-carousel--driver" : "")
+     @(Model.HasNativeAd ? "csn-carousel--nativeAd" : "")">
     <div class="csn-carousel__container">
-        @Html.React("global.Components.Carousel", new {state = Model.Carousels, index}, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
+        @Html.React("global.Components.Carousel", new {state = new [] { Model }, index = 0 }, containerId: Model.Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.CarouselType.ToString().ToLower()} csn-carousel--{Model.Title.ToLower()}")
     
-        @if (Model.Carousels[index].HasNativeAd)
+        @if (Model.HasNativeAd)
         {
             <div class="nativeAd">@{ Html.RenderNativeAd(); }</div>
 

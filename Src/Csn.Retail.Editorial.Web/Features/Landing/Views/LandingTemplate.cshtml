@@ -30,16 +30,19 @@
     @{ Html.RenderPartial("~/Features/Shared/Hero/Views/_HeroSection.cshtml", Model); }
 
     <div class="main container-fluid">
-        @for (var i = 0; i < Model.Carousels.Count; i++)
+        @foreach(var carousel in Model.Carousels)
         {
-            switch (Model.Carousels[i].CarouselType)
+            switch (carousel.CarouselType)
             {
                 case CarouselTypes.Featured:
                 case CarouselTypes.Article:
-                    Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", Model, new ViewDataDictionary(ViewData) { { "index", i } });
+                    Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel.cshtml", carousel);
                     break;
                 case CarouselTypes.Driver:
-                    Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel--Driver.cshtml", Model, new ViewDataDictionary(ViewData) { { "index", i } });
+                    Html.RenderPartial("~/Features/Landing/Views/Partials/_Carousel--Driver.cshtml", carousel);
+                    break;
+                case CarouselTypes.Ad:
+                    Html.RenderDisplayAd(carousel.AdPlacementType);
                     break;
             }
         }
@@ -51,7 +54,7 @@
 @section BottomScripts
 {
     @Html.React("global.Components.INavPreloadedState", new { state = Model.Nav }, containerId: "INavPreloadedState")
-    @Html.React("global.Components.CarouselPreloadedState", new { state = Model.Carousels }, containerId: "CarouselPreloadedState")
+    @Html.React("global.Components.CarouselPreloadedState", new { state = Model.Carousels.Where(a => a.CarouselType != CarouselTypes.Ad) }, containerId: "CarouselPreloadedState")
 
     @if (Model.PolarNativeAdsData != null)
     {

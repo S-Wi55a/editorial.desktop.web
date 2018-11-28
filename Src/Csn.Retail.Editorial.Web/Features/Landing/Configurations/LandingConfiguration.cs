@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.DisplayAds;
 
 namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
 {
@@ -13,6 +14,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public string Type { get; set; }
         public List<LandingCarouselConfiguration> CarouselConfigurations { get; set; }
         public HeroAdSettings HeroAdSettings { get; set; }
+        public bool DisplayBannerAd { get; set; }
     }
 
     public class LandingCarouselConfiguration
@@ -28,6 +30,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
         public PolarAds PolarAds { get; set; }
         public CarouselTypes CarouselType { get; set; }
         public List<CarouselItem> CarouselItems { get; set; }
+        public DisplayAdPlacements AdPlacementType { get; set; }
     }
 
     public class CarouselItem
@@ -40,7 +43,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
     {
         Article,
         Driver,
-        Featured
+        Featured,
+        Ad
     }
 
     public class PolarAds

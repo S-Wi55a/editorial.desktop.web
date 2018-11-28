@@ -9,7 +9,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         Leaderboard,
         Carousel,
         TEADS,
-        Tracking
+        Tracking,
+        InlineBanner
     }
 
     public class DisplayAdQuery : IQuery

@@ -2,6 +2,7 @@
   "configs": [
     {
       "type": "default",
+      "displayBannerAd": true,
       "heroAdSettings": {
         "hasHeroAd": false,
         "heroTitle": "Reviews, advice, news & more"
