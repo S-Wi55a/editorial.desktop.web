@@ -78,7 +78,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 DisplayAdPlacements.InlineBanner, // Used on landing page between carousel list
                 new MediaMotiveAdSetting()
                 {
-                    TileId = 1,
+                    TileId = 2,
                     Description = DisplayAdPlacements.InlineBanner,
                     DisplayAdSize = DisplayAdSizes.BannerOrBillboard,
                     DataKruxRequired = false,
