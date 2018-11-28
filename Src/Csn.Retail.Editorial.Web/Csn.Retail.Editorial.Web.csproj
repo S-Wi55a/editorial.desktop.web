@@ -687,7 +687,7 @@
     <Compile Include="Features\Listings\Loggers\LegacyListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\Loggers\SeoListingUrlRedirectLogger.cs" />
     <Compile Include="Features\Listings\ModelBinders\ArticleTypeListingQueryModelBinder.cs" />
-    <Compile Include="Features\Listings\ModelBinders\ArticleTypeLookup.cs" />
+    <Compile Include="Features\Listings\ModelBinders\ArticleTypeListingLookup.cs" />
     <Compile Include="Features\Listings\ModelBinders\GetListingsQueryModelBinder.cs" />
     <Compile Include="Features\Listings\Models\PagingViewModel.cs" />
     <Compile Include="Features\Shared\Extensions\SearchActionExtensions.cs" />

@@ -25,6 +25,14 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
         }
 
         [RedirectAttributeFilter]
+        public async Task<ActionResult> ArticleTypeListing(ArticleTypeListingQuery query)
+        {
+            var listingsQuery = _queryDispatcher.Dispatch<ArticleTypeListingQuery, GetListingsQuery>(query);
+
+            return await Listing(listingsQuery);
+        }
+
+        [RedirectAttributeFilter]
         public async Task<ActionResult> RedbookListing(RedbookListingQuery query)
         {
             var listingsQuery = _queryDispatcher.Dispatch<RedbookListingQuery, GetListingsQuery>(query);
