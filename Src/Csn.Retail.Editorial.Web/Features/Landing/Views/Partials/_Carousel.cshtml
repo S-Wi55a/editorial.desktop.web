@@ -1,31 +1,33 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Culture
 @using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
 @using React.Web.Mvc
-@using Csn.Retail.Editorial.Web.Culture
-@model Csn.Retail.Editorial.Web.Features.Landing.Models.LandingViewModel
+@model Csn.Retail.Editorial.Web.Features.Landing.Models.CarouselViewModel
 
-@{ var index = (int)ViewData["index"]; }
-
-<div class="csn-carousel @(Model.Carousels[index].HasMrec ? "csn-carousel--mrec" : "")" data-webm-section="carousel-@(Model.Carousels[index].Title)">
+<div class="csn-carousel @(Model.HasMrec ? "csn-carousel--mrec" : "")" data-webm-section="carousel-@(Model.Title)">
     <div class="csn-carousel__info-bar">
-        @if (Model.Carousels[index].ViewAllLink != null)
+        @if (Model.ViewAllLink != null)
         {
 
             <h2 class="csn-carousel__title">
-                <a href="@Model.Carousels[index].ViewAllLink" data-webm-clickvalue="carousel-@(Model.Carousels[index].Title)-title-link">@Model.Carousels[index].Title</a>
+                <a href="@Model.ViewAllLink" data-webm-clickvalue="carousel-@(Model.Title)-title-link">@Model.Title</a>
             </h2>
 
-            <a href="@Model.Carousels[index].ViewAllLink" class="csn-carousel__link" data-webm-clickvalue="carousel-@(Model.Carousels[index].Title)-view-all">@LanguageResourceValueProvider.GetValue(LanguageConstants.ViewAll) @Model.Carousels[index].Title</a>
+            <a href="@Model.ViewAllLink" class="csn-carousel__link" data-webm-clickvalue="carousel-@(Model.Title)-view-all">@LanguageResourceValueProvider.GetValue(LanguageConstants.ViewAll) @Model.Title</a>
         }
         else
         {
-            <h2 class="csn-carousel__title">@Model.Carousels[index].Title</h2>
+            <h2 class="csn-carousel__title">@Model.Title</h2>
         }
     </div>
     <div class="csn-carousel__container">
-        @Html.React("global.Components.Carousel", new { state = Model.Carousels, index }, containerId: Model.Carousels[index].Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.Carousels[index].CarouselType.ToString().ToLower()} csn-carousel--{Model.Carousels[index].Title.ToLower()}")
+        @* React.Net server side rendering requires a complete new store initialized for every component rendering, while on client side all components share one store.
+           In order to make it work on both ends, we have to pass carousels state in array format. But since it just renders one carousel here in this patial view, we could wrap the carousel model in an array and explicitly tell it to look for index 0.
+           This allows us to avoid passing in the whole list of carousels but only look for one item with the corresponding index.
+        *@
+        @Html.React("global.Components.Carousel", new { state = new [] { Model }, index = 0 }, containerId: Model.Title.ToLower(), containerClass: $"csn-carousel__placeholder csn-carousel__placeholder--{Model.CarouselType.ToString().ToLower()} csn-carousel--{Model.Title.ToLower()}")
 
-        @if (Model.Carousels[index].HasMrec)
+        @if (Model.HasMrec)
         {
             Html.RenderDisplayAd(DisplayAdPlacements.Carousel);
         }

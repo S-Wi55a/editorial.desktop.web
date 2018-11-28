@@ -44,7 +44,10 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
         [Dimension(628, 150)]
         BodyFullWidth150Height,
         [Dimension(1200, 100)]
-        Block1200X100
+        Block1200X100,
+        [Dimension(1200, 100)]
+        [Dimension(970, 250)]
+        BannerOrBillboard
     }
 
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Method | AttributeTargets.Property, AllowMultiple = true)]

@@ -40,6 +40,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Videos",
           "displayMrec": false,
           "query": "(And.Type.Video._.Service.CarSales.)",
@@ -121,7 +125,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Reviews, advice, news & more",
         "heroMake": null
@@ -168,6 +173,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -181,7 +190,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": false,
         "heroTitle": "Carpool features, advice, news & more",
         "heroMake": "",
@@ -223,9 +233,14 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Abarth reviews, advice, news & more",
         "heroMake": "Abarth"
@@ -268,6 +283,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Stelvio",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -279,7 +298,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Alfa Romeo reviews, advice, news & more",
         "heroMake": "Alfa Romeo"
@@ -322,6 +342,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Vanquish",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -344,7 +368,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Aston Martin reviews, advice, news & more",
         "heroMake": "Aston Martin"
@@ -385,6 +410,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "A5",
@@ -541,7 +570,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Audi reviews, advice, news & more",
         "heroMake": "Audi"
@@ -584,6 +614,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Mulsanne",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -595,7 +629,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Bentley reviews, advice, news & more",
         "heroMake": "Bentley"
@@ -726,7 +761,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "BMW reviews, advice, news & more",
         "heroMake": "BMW"
@@ -769,6 +805,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Silverado",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -780,7 +820,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Chevrolet reviews, advice, news & more",
         "heroMake": "Chevrolet"
@@ -821,9 +862,14 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Citroen reviews, advice, news & more",
         "heroMake": "Citroen"
@@ -866,6 +912,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "GTC4Lusso",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -888,7 +938,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Ferrari reviews, advice, news & more",
         "heroMake": "Ferrari"
@@ -931,6 +982,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "500X",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -942,7 +997,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Fiat reviews, advice, news & more",
         "heroMake": "Fiat"
@@ -983,6 +1039,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Everest",
@@ -1128,7 +1188,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Ford reviews, advice, news & more",
         "heroMake": "Ford"
@@ -1171,6 +1232,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "H9",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -1182,7 +1247,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Haval reviews, advice, news & more",
         "heroMake": "Haval"
@@ -1223,6 +1289,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Colorado",
@@ -1302,7 +1372,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Holden reviews, advice, news & more",
         "heroMake": "Holden"
@@ -1343,9 +1414,14 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Holden Special Vehicles reviews, advice, news & more",
         "heroMake": "Holden Special Vehicles"
@@ -1388,6 +1464,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "CR-V",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -1421,7 +1501,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Honda reviews, advice, news & more",
         "heroMake": "Honda"
@@ -1462,6 +1543,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "i30",
@@ -1541,7 +1626,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Hyundai reviews, advice, news & more",
         "heroMake": "Hyundai"
@@ -1582,9 +1668,14 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Isuzu reviews, advice, news & more",
         "heroMake": "Isuzu"
@@ -1625,6 +1716,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "F-Pace",
@@ -1682,7 +1777,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Jaguar reviews, advice, news & more",
         "heroMake": "Jaguar"
@@ -1725,6 +1821,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Grand Cherokee",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -1758,7 +1858,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Jeep reviews, advice, news & more",
         "heroMake": "Jeep"
@@ -1799,6 +1900,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Picanto",
@@ -1867,7 +1972,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Kia reviews, advice, news & more",
         "heroMake": "Kia"
@@ -1908,9 +2014,14 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Lamborghini reviews, advice, news & more",
         "heroMake": "Lamborghini"
@@ -1951,6 +2062,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Discovery Sport",
@@ -2008,7 +2123,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Land Rover reviews, advice, news & more",
         "heroMake": "Land Rover"
@@ -2049,6 +2165,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "LC",
@@ -2095,7 +2215,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Lexus reviews, advice, news & more",
         "heroMake": "Lexus"
@@ -2136,9 +2257,14 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Lotus reviews, advice, news & more",
         "heroMake": "Lotus"
@@ -2181,6 +2307,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Quattroporte",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -2192,7 +2322,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Maserati reviews, advice, news & more",
         "heroMake": "Maserati"
@@ -2233,6 +2364,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "6",
@@ -2301,7 +2436,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Mazda reviews, advice, news & more",
         "heroMake": "Mazda"
@@ -2344,6 +2480,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "675LT",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -2366,7 +2506,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "McLaren reviews, advice, news & more",
         "heroMake": "McLaren"
@@ -2407,6 +2548,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "C Class",
@@ -2508,7 +2653,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Mercedes-Benz reviews, advice, news & more",
         "heroMake": "Mercedes-Benz"
@@ -2551,6 +2697,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Countryman",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -2573,7 +2723,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "MINI reviews, advice, news & more",
         "heroMake": "MINI"
@@ -2614,6 +2765,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Lancer",
@@ -2671,7 +2826,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Mitsubishi reviews, advice, news & more",
         "heroMake": "Mitsubishi"
@@ -2712,6 +2868,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "GT-R",
@@ -2780,7 +2940,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Nissan reviews, advice, news & more",
         "heroMake": "Nissan"
@@ -2823,6 +2984,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "3008",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -2856,7 +3021,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Peugeot reviews, advice, news & more",
         "heroMake": "Peugeot"
@@ -2897,6 +3063,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Cayenne",
@@ -2943,7 +3113,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Porsche reviews, advice, news & more",
         "heroMake": "Porsche"
@@ -2984,6 +3155,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Kangoo",
@@ -3030,7 +3205,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Renault reviews, advice, news & more",
         "heroMake": "Renault"
@@ -3073,6 +3249,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Octavia",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -3095,7 +3275,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Skoda reviews, advice, news & more",
         "heroMake": "Skoda"
@@ -3136,6 +3317,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Impreza",
@@ -3204,7 +3389,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Subaru reviews, advice, news & more",
         "heroMake": "Subaru"
@@ -3247,6 +3433,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "Swift",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -3269,7 +3459,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Suzuki reviews, advice, news & more",
         "heroMake": "Suzuki"
@@ -3310,9 +3501,14 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Tesla reviews, advice, news & more",
         "heroMake": "Tesla"
@@ -3353,6 +3549,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "CH-R",
@@ -3487,7 +3687,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Toyota reviews, advice, news & more",
         "heroMake": "Toyota"
@@ -3528,6 +3729,10 @@
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
         },
         {
           "title": "Golf",
@@ -3585,7 +3790,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Volkswagen reviews, advice, news & more",
         "heroMake": "Volkswagen"
@@ -3628,6 +3834,10 @@
           "carouselItems": null
         },
         {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
           "title": "V90",
           "displayMrec": false,
           "displayNativeAd": false,
@@ -3661,7 +3871,8 @@
           "carouselItems": null
         }
       ],
-      "heroAdSettings": {
+      "displayBannerAd": true,
+      "heroAdSettings":  {
         "hasHeroAd": true,
         "heroTitle": "Volvo reviews, advice, news & more",
         "heroMake": "Volvo"
