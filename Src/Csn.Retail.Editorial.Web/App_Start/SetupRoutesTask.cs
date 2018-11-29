@@ -155,6 +155,14 @@ namespace Csn.Retail.Editorial.Web
                 new { controller = "Listings", action = "Listing" }
             );
 
+            // eventually we should replace this with something more configurable
+            AddMvcRouteWithBasePath(
+                RouteNames.Mvc.ArticleType,
+                "{*articleType}",
+                new { controller = "Listings", action = "ArticleTypeListing" },
+                new { articleType = new ArticleTypeRouteConstraint() }
+            );
+
             AddMvcRouteWithBasePath(
                 RouteNames.Mvc.RedbookHome,
                 "{*redbookVertical}",

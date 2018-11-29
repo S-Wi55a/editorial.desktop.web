@@ -7,13 +7,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
 {
     public class ArticleTypeRouteConstraint : IRouteConstraint
     {
-        private static IArticleTypeLookup _articleTypeLookup;
+        private static IArticleTypeListingLookup _articleTypeLookup;
 
         public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
         {
             if (_articleTypeLookup == null)
             {
-                _articleTypeLookup = DependencyResolver.Current.GetService<IArticleTypeLookup>();
+                _articleTypeLookup = DependencyResolver.Current.GetService<IArticleTypeListingLookup>();
             }
             
             if (values.TryGetValue(parameterName, out var parameterValue))
