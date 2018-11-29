@@ -8,9 +8,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders
     [ModelBinderType(typeof(ArticleTypeListingQuery))]
     public class ArticleTypeListingQueryModelBinder : DefaultModelBinder
     {
-        private readonly IArticleTypeLookup _articleTypeLookup;
+        private readonly IArticleTypeListingLookup _articleTypeLookup;
 
-        public ArticleTypeListingQueryModelBinder(IArticleTypeLookup articleTypeLookup)
+        public ArticleTypeListingQueryModelBinder(IArticleTypeListingLookup articleTypeLookup)
         {
             _articleTypeLookup = articleTypeLookup;
         }

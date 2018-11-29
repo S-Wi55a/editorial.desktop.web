@@ -2,6 +2,7 @@
   "configs": [
     {
       "type": "default",
+      "displayBannerAd": true,
       "carouselConfigurations": [
         {
           "title": "Selección del Editor",

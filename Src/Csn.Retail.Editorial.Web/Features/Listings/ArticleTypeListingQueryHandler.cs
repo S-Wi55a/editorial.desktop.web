@@ -11,9 +11,9 @@ namespace Csn.Retail.Editorial.Web.Features.Listings
     public class ArticleTypeListingQueryHandler : IQueryHandler<ArticleTypeListingQuery, GetListingsQuery>
     {
         private readonly IExpressionFormatter _expressionFormatter;
-        private readonly IArticleTypeLookup _articleTypeLookup;
+        private readonly IArticleTypeListingLookup _articleTypeLookup;
 
-        public ArticleTypeListingQueryHandler(IExpressionFormatter expressionFormatter, IArticleTypeLookup articleTypeLookup)
+        public ArticleTypeListingQueryHandler(IExpressionFormatter expressionFormatter, IArticleTypeListingLookup articleTypeLookup)
         {
             _expressionFormatter = expressionFormatter;
             _articleTypeLookup = articleTypeLookup;
