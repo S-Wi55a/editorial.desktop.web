@@ -194,5 +194,14 @@ namespace Csn.Retail.Editorial.Web.Culture {
                 return ResourceManager.GetString("ViewAll", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Photos.
+        /// </summary>
+        public static string ViewPhotos {
+            get {
+                return ResourceManager.GetString("ViewPhotos", resourceCulture);
+            }
+        }
     }
 }
