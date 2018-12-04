@@ -1,10 +1,10 @@
-﻿@import "csnicons-variables";
+﻿/*@import "csnicons-variables";*/
 
 @font-face {
   font-family: 'csnicons';
-  src:  url('https://editorial.csnstatic.com/desktop/fonts/csnicons/csnicons.ttf') format('truetype'),
-    url('https://editorial.csnstatic.com/desktop/fonts/csnicons/csnicons.woff') format('woff'),
-    url('https://editorial.csnstatic.com/desktop/fonts/csnicons/csnicons.svg') format('svg');
+  src:  url('#{$font-s3-path}csnicons/csnicons.ttf') format('truetype'),
+    url('#{$font-s3-path}csnicons/csnicons.woff') format('woff'),
+    url('#{$font-s3-path}csnicons/csnicons.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
