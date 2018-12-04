@@ -664,8 +664,6 @@
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
-    <Content Include="Features\Shared\Assets\Images\Shared\arrow-down-shape.png" />
-    <Content Include="Features\Shared\Assets\Images\Shared\mouse-scroll.png" />
     <Content Include="Features\Shared\Views\Partials\_CsnEditorialEndpoints.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Soloautos\Overrides\_overrides--footerNav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_inlinebanner.scss" />
@@ -860,7 +858,6 @@
     <Content Include="Features\Errors\Views\es-es\Error404.cshtml" />
     <Content Include="Features\Errors\Views\es-es\ErrorGeneric.cshtml" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
-    <Content Include="Features\Shared\Assets\Images\Redbook\logo-redbook.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavMenuHeader.js" />
@@ -907,10 +904,6 @@
     <Content Include="Features\Details\Assets\Js\Modules\StockForSale\stockForSale-view.js" />
     <Content Include="Features\Errors\Assets\error-page.js" />
     <Content Include="Features\Shared\Assets\csn.common.js" />
-    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.svg" />
-    <Content Include="Features\Shared\Assets\Images\Carsales\poweredByMotoring.png" />
-    <Content Include="Features\Shared\Assets\Images\Shared\spinner-dark.svg" />
-    <Content Include="Features\Shared\Assets\Images\Shared\spinner-light.svg" />
     <Content Include="Features\Shared\Assets\Js\Modules\Ajax\ajax.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\DetectIE\detect-ie.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\disqus.js" />
@@ -1006,7 +999,7 @@
     <Content Include="Features\Details\Views\Partials\Hero\_FirstImage.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Variables\Colors\_variables-colors.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Typography\_variables-typography.scss" />
-    <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons.scss" />
+    <Content Include="Features\Shared\Assets\Css\Fonts\csnicons\_csnicons.scss" />
     <Content Include="Features\Shared\Assets\Css\globalStyles.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_page-container.scss" />
     <Content Include="Features\Shared\Assets\Css\Layout\_footer.scss" />
@@ -1032,7 +1025,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Content\_author.scss" />
     <Content Include="Features\Shared\Assets\Css\Buttons\_buttons.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\_share-social.scss" />
-    <Content Include="Features\Shared\Assets\Fonts\fonts.scss" />
+    <Content Include="Features\Shared\Assets\Css\Fonts\fonts.scss" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Facebook.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Twitter.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Email.cshtml" />
@@ -1040,8 +1033,6 @@
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Pinterest.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Googleplus.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_SocialMediaLinks.cshtml" />
-    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.ttf" />
-    <Content Include="Features\Shared\Assets\Fonts\csnicons\fonts\csnicons.woff" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ExpertRatings.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ProCon.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_EditorsRating.cshtml" />
@@ -1114,7 +1105,7 @@
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\SpecModule\_spec-module--slider.scss" />
     <Content Include="Features\Errors\Views\ErrorTemplate.cshtml" />
     <Content Include="Features\Errors\Assets\Css\error-page.scss" />
-    <Content Include="Features\Shared\Assets\Fonts\csnicons\_csnicons-variables.scss" />
+    <Content Include="Features\Shared\Assets\Css\Fonts\csnicons\_csnicons-variables.scss" />
     <Content Include="Features\Details\Views\Partials\SearchBar\_searchBar.cshtml" />
     <Content Include="Features\Shared\Views\Partials\Redux\_ReduxStore.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\SponsoredArticles\_sponsoredArticles.scss" />
