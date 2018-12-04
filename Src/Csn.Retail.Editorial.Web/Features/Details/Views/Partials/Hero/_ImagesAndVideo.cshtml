@@ -1,3 +1,4 @@
+@using Csn.Retail.Editorial.Web.Culture
 @using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Infrastructure.Extensions
 @model Csn.Retail.Editorial.Web.Features.Details.Models.HeroSection
@@ -51,7 +52,7 @@
             <button class="slideshow__nav slideshow__nav--prev" type="button" data-direction="prev" data-webm-clickvalue="previous">prev</button>
             <button class="slideshow__nav slideshow__nav--next" type="button" data-direction="next" data-webm-clickvalue="next">next</button>
 
-            <button class="slideshow__view-photos" data-modal-trigger data-modal-image-index="0">View Photos</button>
+            <button class="slideshow__view-photos" data-modal-trigger data-modal-image-index="0">@LanguageResourceValueProvider.GetValue(LanguageConstants.ViewPhotos)</button>
         </div>
     </div>
 </div>

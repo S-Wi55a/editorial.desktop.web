@@ -162,4 +162,7 @@
   <data name="ShowingPageItemsTextFormat" xml:space="preserve">
     <value>{0:N0} - {1:N0} de {2:N0} Artículos</value>
   </data>
+  <data name="ViewPhotos" xml:space="preserve">
+    <value>Ver fotos</value>
+  </data>
 </root>
