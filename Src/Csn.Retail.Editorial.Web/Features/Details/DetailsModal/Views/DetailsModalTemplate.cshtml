@@ -1,0 +1,68 @@
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
+@using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
+@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+
+@{
+    var tenantName = Html.CurrentTenant().TenantName;
+    var isWide = Model.ArticleTemplateType == ArticleTemplateType.Wide;
+    var detailsParticals = "../../Views/Partials";
+}
+
+@section Head {
+    @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
+}
+
+@section Styles {
+    @if (Model.ArticleTemplateType == ArticleTemplateType.Narrow)
+    {
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+    }
+
+    @Html.AssetCss("details-modal-page--" + tenantName)
+}
+
+@section TopScripts {
+    @Html.AssetJs("details.modal.vendor", LoadType.Defer)
+    @Html.AssetJs("details-modal-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("csn.displayAds--" + tenantName, LoadType.Defer)
+}
+
+<div class="page-container">
+    @{
+        if (Html.CurrentTenant().TenantName != "redbook")
+        {
+            Html.RenderPartial($"{detailsParticals}/_Header");
+        }
+    }
+
+
+    <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
+        @{ Html.RenderPartial($"{detailsParticals}/Hero/_Hero", Model.HeroSection); }
+
+        @{ Html.RenderPartial($"{detailsParticals}/_Main"); }
+
+        @if (!isWide)
+        {
+            Html.RenderPartial("Partials/_Aside");
+        }
+    </article>
+
+    @{ Html.RenderPartial("Partials/Modal/_Modal"); }
+</div>
+
+
+@section BottomScripts
+{
+    @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
+    @{ Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData); }
+    @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
+    @if (Model.MoreArticleData != null)
+    {
+        Html.RenderPartial($"{detailsParticals}/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData);
+    }
+    @if (Model.PolarNativeAdsData != null)
+    {
+        Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
+    }
+}

@@ -67,7 +67,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                     return PermanentRedirect($"{response.DetailsPageUrlPath}{Request.Url?.Query}");
                 }
 
-                return View("DefaultTemplate", response.ArticleViewModel);
+                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", response.ArticleViewModel);
             }
 
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();

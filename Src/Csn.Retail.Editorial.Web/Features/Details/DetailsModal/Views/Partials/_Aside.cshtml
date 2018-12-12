@@ -1,0 +1,14 @@
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
+@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+
+<div class="wrapper--aside">
+    <div class="aside ">
+        <!-- Aside Section -->
+        @{ Html.RenderDisplayAd(DisplayAdPlacements.Aside); }
+        @if (Model?.ExpertRatings != null || Model?.ProsCons != null)
+        {
+            Html.RenderPartial("Partials/Widgets/EditorRatings/_EditorsRating", Model);
+        }
+    </div>
+</div>

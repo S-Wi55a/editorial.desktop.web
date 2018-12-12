@@ -1,0 +1,28 @@
+﻿// Page - Details
+
+// ---------------------------------------------------------------------------
+// Globals
+@import "css/_globals.scss";
+
+// ---------------------------------------------------------------------------
+// Details Modules
+@import "../../../Assets/Css/Modules/Hero/_hero.scss";
+@import "../../../Assets/Css/Modules/Hero/_heroSlider.scss";
+@import "../../../Assets/Css/Modules/Hero/_heroModalSlider.scss";
+@import "../../../Assets/Css/Modules/Content/_article.scss";
+@import "../../../Assets/Css/Modules/content/_aside.scss";
+@import "../../../Assets/Css/Modules/content/_author.scss";
+@import "../../../Assets/Css/Modules/content/ltm.scss";
+@import "../../../Assets/Css/Modules/content/table";
+
+// Module - Media Motive
+@import "css/modules/MediaMotive/_mediamotive.scss";
+
+// Module - Social Share
+@import "css/modules/_share-social.scss";
+
+// Module - Modal
+@import "Js/modules/modal/modal.scss";
+
+// Module - More Articles
+@import 'Css/Modules/Widgets/MoreArticles/_moreArticles.scss';
