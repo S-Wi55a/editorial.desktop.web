@@ -1,0 +1,17 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+
+<div class="container">
+    <div class="cf pos-r">
+        <div class="article__dateAndTypeContainer">
+            <div class="article__type article__type--@Model.ArticleTypeLabel.ArticleTypeText.ToLower().Replace(' ', '-')" data-description="@Html.Raw(Model.ArticleTypeLabel.InfoHtml)">@Model.ArticleTypeLabel.ArticleTypeText</div>
+            <div class="article__date">@Model.DateAvailableFormatted</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <header>
+        <h1 class="article__heading narrow">@Model.Headline</h1>
+        <h2 class="article__subheading narrow">@Model.SubHeading</h2>
+    </header>
+</div>

@@ -573,6 +573,7 @@
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\ArticleDetailsCacheStore.cs" />
+    <Compile Include="Features\Details\DetailsModal\DetailsModalController.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidator.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteConstraint.cs" />
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
@@ -862,6 +863,10 @@
     <Content Include="Features\Details\DetailsModal\Views\DetailsModalTemplate.cshtml" />
     <Content Include="Features\Details\DetailsModal\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Details\DetailsModal\Assets\Css\details-modal-page.scss" />
+    <Content Include="Features\Details\DetailsModal\Views\Partials\_Main.cshtml" />
+    <Content Include="Features\Details\DetailsModal\Views\Partials\_NarrowHeader.cshtml" />
+    <Content Include="Features\Details\DetailsModal\Views\Partials\_ArticleType.cshtml" />
+    <Content Include="Features\Details\DetailsModal\Views\Partials\_Contributors.cshtml" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
@@ -950,6 +955,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Features\Details\Assets\Images\" />
+    <Folder Include="Features\Details\Views\Shared\Content\" />
     <Folder Include="Features\Shared\Assets\Css\Forms\" />
     <Folder Include="Features\Shared\Assets\Js\Modules\Redux\Global\Components\" />
     <Folder Include="Infrastructure\HtmlHelpers\" />

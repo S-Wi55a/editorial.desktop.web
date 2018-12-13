@@ -6,11 +6,10 @@
 @{
     var tenantName = Html.CurrentTenant().TenantName;
     var isWide = Model.ArticleTemplateType == ArticleTemplateType.Wide;
-    var detailsParticals = "../../Views/Partials";
 }
 
 @section Head {
-    @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
+    <meta name="robots" content="noindex, nofollow" />
 }
 
 @section Styles {
@@ -32,19 +31,19 @@
     @{
         if (Html.CurrentTenant().TenantName != "redbook")
         {
-            Html.RenderPartial($"{detailsParticals}/_Header");
+            Html.RenderPartial("Partials/_Header");
         }
     }
 
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
-        @{ Html.RenderPartial($"{detailsParticals}/Hero/_Hero", Model.HeroSection); }
+        @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
 
-        @{ Html.RenderPartial($"{detailsParticals}/_Main"); }
+        @{ Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_Main.cshtml"); }
 
         @if (!isWide)
         {
-            Html.RenderPartial("Partials/_Aside");
+            Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_Aside.cshtml");
         }
     </article>
 
@@ -59,7 +58,7 @@
     @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @if (Model.MoreArticleData != null)
     {
-        Html.RenderPartial($"{detailsParticals}/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData);
+        Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData);
     }
     @if (Model.PolarNativeAdsData != null)
     {

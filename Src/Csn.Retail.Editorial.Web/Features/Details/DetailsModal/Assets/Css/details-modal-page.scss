@@ -26,3 +26,12 @@
 
 // Module - More Articles
 @import 'Css/Modules/Widgets/MoreArticles/_moreArticles.scss';
+
+// Overwrites just for modal
+.more-articles .more-articles__link {
+    display: none;
+}
+
+.article-disclaimer {
+    padding-bottom: 160px;
+}

@@ -1,0 +1,32 @@
+﻿@using Csn.Retail.Editorial.Web.Features.DisplayAds
+@using Csn.Retail.Editorial.Web.Features.DisplayAds.HtmlHelpers
+@using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
+@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+
+@{
+    var isNarrow = Model.ArticleTemplateType == ArticleTemplateType.Narrow;
+}
+
+<div class="article @Model.ArticleType.ToLower() @Model.ArticleTemplateType.ToString().ToLower()">
+    @if (isNarrow)
+    {
+        Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_NarrowHeader.cshtml", Model);
+    }
+    else
+    {
+        Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_ArticleType.cshtml", Model);
+        Html.RenderPartial("Partials/Content/_ArticleHeader", Model);
+    }
+
+    @{ Html.RenderPartial("Partials/Content/_ArticleSummary", Model); }
+
+    @{ Html.RenderPartial("Partials/Content/_ArticleBody", Model); }
+
+    @{ Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_Contributors.cshtml", Model); }
+
+    @{ Html.RenderPartial("_Disclaimer"); }
+
+    @{ Html.RenderDisplayAd(DisplayAdPlacements.Tracking); }
+
+    @{ Html.RenderDisplayAd(DisplayAdPlacements.TEADS); }
+</div>

@@ -67,7 +67,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                     return PermanentRedirect($"{response.DetailsPageUrlPath}{Request.Url?.Query}");
                 }
 
-                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", response.ArticleViewModel);
+                return View("DefaultTemplate", response.ArticleViewModel);
             }
 
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
@@ -83,9 +83,38 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             return new RedirectResult(redirectUrl, true);
         }
+
+        public async Task<ActionResult> Modal(string networkId, bool __preview = false)
+        {
+            var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsModalRequestEvent());
+
+            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
+            {
+                Id = networkId,
+                IsPreview = __preview
+            });
+
+            await Task.WhenAll(dispatchedEvent, dispatchedQuery);
+
+            var response = dispatchedQuery.Result;
+
+            if (response.ArticleViewModel != null)
+            {
+                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", response.ArticleViewModel);
+            }
+
+            var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
+            errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
+
+            return response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404Child() : errorsController.ErrorGenericChild();
+        }
     }
 
     public class DetailsPageRequestEvent : IEvent, IRequireGlobalSiteNav, IRequiredGoogleAnalyticsTrackingScript
+    {
+    }
+
+    public class DetailsModalRequestEvent : IEvent, IRequiredGoogleAnalyticsTrackingScript
     {
     }
 }
