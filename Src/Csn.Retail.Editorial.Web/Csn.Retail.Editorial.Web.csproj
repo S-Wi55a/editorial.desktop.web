@@ -573,7 +573,6 @@
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\ArticleDetailsCacheStore.cs" />
-    <Compile Include="Features\Details\DetailsModal\DetailsModalController.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidator.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteConstraint.cs" />
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />

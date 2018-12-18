@@ -1,4 +1,4 @@
-﻿// Details Page css files
+// Details Page css files
 require('./Css/details-modal-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ loaded.then(() => {
 
         if (d.querySelector('.more-articles-placeholder')) {
             (function moreArticles() {
-                import ( /* webpackChunkName: "More-Articles" */ 'MoreArticles/moreArticles-component.js').then(function(moreArticles) {}).catch(function(err) {
+                import ( /* webpackChunkName: "More-Articles" */ 'MoreArticles/moreArticles-component.js').then(function(moreArticles) {disableExternalLinks('.more-articles-placeholder')}).catch(function(err) {
                     console.log('Failed to load More-Articles', err);
                 });
             })()
@@ -54,7 +54,7 @@ loaded.then(() => {
 
         if (d.querySelector('.also-consider-placeholder')) {
             (function alsoConsider() {
-                import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
+                import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {disableExternalLinks('.also-consider-placeholder')}).catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
                 });
             })()
@@ -63,40 +63,13 @@ loaded.then(() => {
     })(document)
 });
 
-//Lazy load Disqus
-let disqus = function(d, w, selector) {
-    const disqusSelector = d.querySelector(selector);
-    if (disqusSelector) {
-
-        // Set scene
-        const triggerElement = selector
-        const triggerHook = 1
-        const offset = (-1 * w.innerHeight) * 2;
-        w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
-
-        let scene = new ScrollMagic.Scene({
-            triggerElement: triggerElement,
-            triggerHook: triggerHook,
-            offset: offset,
-            reverse: false
-        })
-            .on("enter", () => {
-                require('Disqus/disqus.js').default();
-                scene.destroy(true)
-                scene = null
-            })
-            .addTo(w.scrollMogicController);
-    }
-}
-disqus(document, window, '#disqus_thread');
-
 //Lazy Native Ads
 loaded.then(() => {
     (function nativeAds() {
         if (!!csn_editorial && !!csn_editorial.nativeAds) {
             (function nativeAds() {
                 import
-                (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
+                (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {disableExternalLinks('.more-articles-placeholder')})
                     .catch(function(err) {
                         console.log('Failed to load nativeAds', err);
                     });
@@ -112,7 +85,7 @@ loaded.then(() => {
             (function nativeAds() {
                 import
                 (/* webpackChunkName: "Sponsored Articles" */ 'SponsoredArticles/sponsoredArticles.js')
-                    .then(function(sponsoredArticles) {}).catch(function(err) {
+                    .then(function(sponsoredArticles) {disableExternalLinks('.article__type--sponsored')}).catch(function(err) {
                         console.log('Failed to load sponsoredArticles', err);
                     });
             })();
@@ -154,3 +127,14 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
         }
     })
 }
+
+//Disable external links
+loaded.then(() => {
+    disableExternalLinks(document);
+});
+
+let disableExternalLinks = (scope) => {
+    console.log("scope: ", scope);
+    const links = document.querySelector(scope).getElementsByTagName('a');
+    console.log(links, links.length);
+} 
