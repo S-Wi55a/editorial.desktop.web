@@ -39,8 +39,9 @@ loaded.then(() => {
     (function moreArticles(d) {
 
         if (d.querySelector('.more-articles-placeholder')) {
+            csn_editorial.moreArticles.hooks = () => disableExternalLinks('.more-articles-placeholder');
             (function moreArticles() {
-                import ( /* webpackChunkName: "More-Articles" */ 'MoreArticles/moreArticles-component.js').then(function(moreArticles) {disableExternalLinks('.more-articles-placeholder')}).catch(function(err) {
+                import ( /* webpackChunkName: "More-Articles" */ 'MoreArticles/moreArticles-component.js').then(moreArticles => {}).catch(function(err) {
                     console.log('Failed to load More-Articles', err);
                 });
             })()
@@ -54,7 +55,11 @@ loaded.then(() => {
 
         if (d.querySelector('.also-consider-placeholder')) {
             (function alsoConsider() {
-                import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {disableExternalLinks('.also-consider-placeholder')}).catch(function(err) {
+                import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js')
+                .then(alsoConsider => {
+                    alsoConsider.init().then(() => disableExternalLinks('.also-consider-placeholder'))
+                })
+                .catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
                 });
             })()
@@ -64,19 +69,19 @@ loaded.then(() => {
 });
 
 //Lazy Native Ads
-loaded.then(() => {
-    (function nativeAds() {
-        if (!!csn_editorial && !!csn_editorial.nativeAds) {
-            (function nativeAds() {
-                import
-                (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {disableExternalLinks('.more-articles-placeholder')})
-                    .catch(function(err) {
-                        console.log('Failed to load nativeAds', err);
-                    });
-            })();
-        }
-    })();
-});
+// loaded.then(() => {
+//     (function nativeAds() {
+//         if (!!csn_editorial && !!csn_editorial.nativeAds) {
+//             (function nativeAds() {
+//                 import
+//                 (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
+//                     .catch(function(err) {
+//                         console.log('Failed to load nativeAds', err);
+//                     });
+//             })();
+//         }
+//     })();
+// });
 
 //Lazy load Sponsored articles JS
 loaded.then(() => {
@@ -85,7 +90,7 @@ loaded.then(() => {
             (function nativeAds() {
                 import
                 (/* webpackChunkName: "Sponsored Articles" */ 'SponsoredArticles/sponsoredArticles.js')
-                    .then(function(sponsoredArticles) {disableExternalLinks('.article__type--sponsored')}).catch(function(err) {
+                    .then(function(sponsoredArticles) {}).catch(function(err) {
                         console.log('Failed to load sponsoredArticles', err);
                     });
             })();
@@ -130,11 +135,18 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
 
 //Disable external links
 loaded.then(() => {
-    disableExternalLinks(document);
+    disableExternalLinks('.page-container');
 });
 
 let disableExternalLinks = (scope) => {
     console.log("scope: ", scope);
     const links = document.querySelector(scope).getElementsByTagName('a');
     console.log(links, links.length);
+
+    [...document.querySelector(scope).getElementsByTagName('a')].forEach(
+        (element, index, array) => {
+            // do stuff
+            console.log(element, index);
+        }
+    );
 } 

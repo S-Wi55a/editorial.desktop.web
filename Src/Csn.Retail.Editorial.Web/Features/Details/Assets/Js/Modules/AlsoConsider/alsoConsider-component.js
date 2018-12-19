@@ -10,20 +10,29 @@ const scope = document.querySelector('.also-consider-placeholder');
 const makeQuery = (url, el, view, cb = () => { }, onError = () => { }) => {
 
     //Make Query
-    Ajax.get(url,
-        (resp) => {
-            //update list
-            el.innerHTML = view(JSON.parse(resp))
-            cb()
-        },
-        () => {
-            onError()
-        }
-    )
+    // Ajax.get(url,
+    //     (resp) => {
+    //         //update list
+    //         el.innerHTML = view(JSON.parse(resp))
+    //         cb()
+    //     },
+    //     () => {
+    //         onError()
+    //     }
+    // )
+    return Ajax.promisedGet(url)
+    .then(resp => {
+        //update list
+        el.innerHTML = view(JSON.parse(resp))
+        cb()
+    },
+    () => {
+        onError()
+    })
 }
 
 // Init
-const init = (scope, data) => {
+export const init = (data = csn_editorial.alsoConsider) => {
     //Render container
     scope.innerHTML = View.container(data)
 
@@ -32,7 +41,7 @@ const init = (scope, data) => {
 
     // Load data
     alsoConsider.classList.toggle('loading');
-    makeQuery(
+    return makeQuery(
         alsoConsider.getAttribute('data-also-consider-query'),
         alsoConsider,
         View.inner,
@@ -42,4 +51,4 @@ const init = (scope, data) => {
     )
 }
 
-init(scope, csn_editorial.alsoConsider)
+//init(scope, csn_editorial.alsoConsider)

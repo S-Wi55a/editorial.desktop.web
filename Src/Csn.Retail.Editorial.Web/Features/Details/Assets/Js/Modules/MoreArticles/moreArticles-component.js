@@ -86,6 +86,7 @@ let updateContent = function (frame, el, container, cb) {
     if (!lock && query) {
         updateButton(el, 'data-disabled', 1) //Prevent multiple requests
         frame.classList.add('loading')
+
         Ajax.get(query, (json) => {
             json = JSON.parse(json)
             if (json.nextQuery) {
@@ -98,9 +99,11 @@ let updateContent = function (frame, el, container, cb) {
             frame.classList.remove('loading')
             updateList(container, json)
             cb()
+            if(typeof csn_editorial.moreArticles.hooks === 'function') {
+                csn_editorial.moreArticles.hooks();
+            }
         })
     }
-
 }
 
 // handle filter active class
@@ -233,11 +236,11 @@ let main = (scope = {}) => {
     )
 
     // Init next Button
-    addEventListenerToButton
-        (scope.moreArticlesNextCtrl,
-            'click',
-            nextButtonHandler.bind(null, slider, offset, content)
-        )
+    addEventListenerToButton(
+        scope.moreArticlesNextCtrl,
+        'click',
+        nextButtonHandler.bind(null, slider, offset, content)
+    )
 
     //Init Filters
     filters(scope.moreArticlesFilter, filterHandler, [slider, scope, 'more-articles__filter--active', 'more-articles__filter--last'])
