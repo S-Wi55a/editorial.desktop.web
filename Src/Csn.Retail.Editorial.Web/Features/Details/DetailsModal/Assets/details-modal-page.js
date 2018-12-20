@@ -39,7 +39,7 @@ loaded.then(() => {
     (function moreArticles(d) {
 
         if (d.querySelector('.more-articles-placeholder')) {
-            csn_editorial.moreArticles.hooks = () => disableExternalLinks('.more-articles-placeholder');
+            csn_editorial.moreArticles.hooks = () => disableExternalLinks(moreArticlesScope);
             (function moreArticles() {
                 import ( /* webpackChunkName: "More-Articles" */ 'MoreArticles/moreArticles-component.js').then(moreArticles => {}).catch(function(err) {
                     console.log('Failed to load More-Articles', err);
@@ -57,7 +57,7 @@ loaded.then(() => {
             (function alsoConsider() {
                 import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js')
                 .then(alsoConsider => {
-                    alsoConsider.init().then(() => disableExternalLinks('.also-consider-placeholder'))
+                    alsoConsider.init().then(() => disableExternalLinks(alsoConsiderScope))
                 })
                 .catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
@@ -128,21 +128,22 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
     const aside = document.querySelector('.aside');
     loaded.then(function() {     
         if (aside) {
-            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside, 'article .article', 137);
+            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside, 'article .article', 137, -45);
         }
     })
 }
 
 //Disable external links
+let contentScope = document;
+let moreArticlesScope = document.querySelector('.more-articles-placeholder');
+let alsoConsiderScope = document.querySelector('.also-consider-placeholder');
+
 contentLoaded.then(() => {
-    console.log("content loaded");
-    disableExternalLinks('.page-container');
+    disableExternalLinks(contentScope);
 });
 
 let disableExternalLinks = (scope) => {
-    const links = document.querySelector(scope).getElementsByTagName('a');
-
-    [...document.querySelector(scope).getElementsByTagName('a')].forEach(
+    [...scope.getElementsByTagName('a')].forEach(
         (element, index, array) => {
             let articleId = element.getAttribute('data-article-id')
             let articleUrl = element.getAttribute('href');
