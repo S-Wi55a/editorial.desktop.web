@@ -35,3 +35,8 @@
 .article-disclaimer {
     padding-bottom: 160px;
 }
+
+.article-type--multipleimages .wrapper--aside .aside,
+.article-type--imagesandvideo .wrapper--aside .aside {
+	//top: -30px !important;
+}

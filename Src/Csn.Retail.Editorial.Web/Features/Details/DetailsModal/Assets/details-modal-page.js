@@ -3,7 +3,7 @@ require('./Css/details-modal-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
-import { loaded } from 'document-promises/document-promises.js'
+import { loaded, contentLoaded } from 'document-promises/document-promises.js'
 import ScrollMagic from 'ScrollMagic'
 import * as isMobile from 'ismobilejs'
 if (process.env.DEBUG) { require('debug.addIndicators'); }
@@ -134,19 +134,39 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
 }
 
 //Disable external links
-loaded.then(() => {
+contentLoaded.then(() => {
+    console.log("content loaded");
     disableExternalLinks('.page-container');
 });
 
 let disableExternalLinks = (scope) => {
-    console.log("scope: ", scope);
     const links = document.querySelector(scope).getElementsByTagName('a');
-    console.log(links, links.length);
 
     [...document.querySelector(scope).getElementsByTagName('a')].forEach(
         (element, index, array) => {
-            // do stuff
-            console.log(element, index);
+            let articleId = element.getAttribute('data-article-id')
+            let articleUrl = element.getAttribute('href');
+
+            if(articleId) {
+                element.style.cursor = 'pointer';
+                element.onclick = () => navigateToArticle('/editorial/details-modal/' + articleId);
+                element.removeAttribute('href');
+            }
+            else if(articleUrl) {
+                if(articleUrl.split('/')[1] === 'editorial') {
+                    element.style.cursor = 'pointer';
+                    let articleModalUrl = '/editorial/details-modal/ED-ITM-' + articleUrl.replace('/', '').split('-').pop();
+                    element.onclick = () => navigateToArticle(articleModalUrl);
+                }
+                else {
+                    element.style.pointerEvents = 'none';
+                }
+                element.removeAttribute('href');
+            }            
         }
     );
-} 
+}
+
+let navigateToArticle = (url) => {
+    window.open(url, '_self');
+}
