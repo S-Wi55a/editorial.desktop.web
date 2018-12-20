@@ -1,5 +1,6 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Shared.Helpers
 @using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
 @model Csn.Retail.Editorial.Web.Features.Shared.Models.CsnInsightsData
     
 @{ var trackingId = @UserContextHelper.GetMemberTrackingId(); }
@@ -24,6 +25,6 @@
 
     @if (Model.SearchResultsData?.Results != null && Model.SearchResultsData.Results.Any())
     {
-        <text>CsnInsights.searchResultsv2 = @Html.Raw(JsonConvert.SerializeObject(Model.SearchResultsData)); </text>
+        <text>CsnInsights.searchResultsv2 = @Html.Raw(JsonConvert.SerializeObject(Model.SearchResultsData, new JsonSerializerSettings{ ContractResolver = new DefaultContractResolver()})); </text>
     }
 </script>
