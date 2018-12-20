@@ -1,11 +1,11 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using Autofac.Integration.Mvc;
+using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
-using Csn.WebMetrics.Core.Model;
 using Expresso.Syntax;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.ModelBinders

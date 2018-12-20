@@ -35,13 +35,13 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.Count, 7);
-            Assert.AreEqual(result["type"], "news");
-            Assert.AreEqual(result["service"], "carsales");
-            Assert.AreEqual(result["contentgroup1"], "news and reviews");
-            Assert.AreEqual(result["contentgroup2"], "listing");
-            Assert.AreEqual(result["action"], "search");
-            Assert.AreEqual(result["sortby"], "Latest");
+            Assert.AreEqual(result.MetaData.Count, 7);
+            Assert.AreEqual(result.MetaData["type"], "news");
+            Assert.AreEqual(result.MetaData["service"], "carsales");
+            Assert.AreEqual(result.MetaData["contentgroup1"], "news and reviews");
+            Assert.AreEqual(result.MetaData["contentgroup2"], "listing");
+            Assert.AreEqual(result.MetaData["action"], "search");
+            Assert.AreEqual(result.MetaData["sortby"], "Latest");
         }
     }
 }

@@ -17,7 +17,6 @@ using Csn.Retail.Editorial.Web.Features.Shared.Services;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
-using Csn.Retail.Editorial.Web.Infrastructure.Wrappers;
 using Csn.SimpleCqrs;
 using Ingress.ServiceClient.Abstracts;
 using NewRelic.Api.Agent;
