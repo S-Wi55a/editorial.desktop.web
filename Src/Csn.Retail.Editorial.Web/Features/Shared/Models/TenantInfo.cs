@@ -23,6 +23,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool AllowSeoIndexOfDetails { get; set; }
         public bool AllowSeoIndexOfListing { get; set; }
         public bool SupportsSeoFriendlyListings { get; set; }
+        public bool SupportsAmpUrl { get; set; }
         public string DefaultPageTitle { get; set; }
         public bool AllowSeoIndexOfLanding { get; set; }
         #endregion

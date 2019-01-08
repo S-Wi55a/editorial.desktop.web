@@ -142,6 +142,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string Title { get; set; }
         public string Description { get; set; }
         public string CanonicalUrl { get; set; }
+        public string CanonicalAmpUrl { get; set; }
         public string AlternateUrl { get; set; }
         public string Keywords { get; set; }
     }

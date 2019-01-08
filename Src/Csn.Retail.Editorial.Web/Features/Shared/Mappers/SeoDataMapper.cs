@@ -32,6 +32,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Mappers
                 AllowSeoIndexing = _tenantProvider.Current().AllowSeoIndexOfListing,
                 Title = ryvussNavResult.Metadata == null || _tenantProvider.Current().TenantName == "redbook" ? _tenantProvider.Current().DefaultPageTitle : ryvussNavResult.Metadata.Title,
                 CanonicalUrl = $"{protocolAndDomain}{_requestContext.Url.AbsolutePath}",
+                CanonicalAmpUrl = _tenantProvider.Current().SupportsAmpUrl ? $"{protocolAndDomain}/amp{_requestContext.Url.AbsolutePath}" : string.Empty,
                 AlternateUrl = !string.IsNullOrEmpty(_tenantProvider.Current().ListingsAlternateUrl) ? $"{protocolAndDomain}{_tenantProvider.Current().ListingsAlternateUrl}" : string.Empty,
                 Description = ryvussNavResult.Metadata == null ? string.Empty : ryvussNavResult.Metadata.Description
             };

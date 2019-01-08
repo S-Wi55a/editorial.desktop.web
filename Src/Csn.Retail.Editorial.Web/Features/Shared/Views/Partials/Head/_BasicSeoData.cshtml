@@ -2,27 +2,32 @@
 @model Csn.Retail.Editorial.Web.Features.Shared.Models.SeoData
 
 <title>@Model.Title</title>
-@if(!Model.Description.IsNullOrEmpty())
+@if (!Model.Description.IsNullOrEmpty())
 {
     <meta name="description" content="@Model.Description" />
 }
 
 @if (!Model.Keywords.IsNullOrEmpty())
 {
-    <meta name="keywords" content="@Model.Keywords"/>    
+    <meta name="keywords" content="@Model.Keywords" />
 }
 
-@if(!Model.AllowSeoIndexing)
+@if (!Model.AllowSeoIndexing)
 {
     <meta name="robots" content="noindex, nofollow" />
 }
 
 @if (!Model.CanonicalUrl.IsNullOrEmpty())
 {
-    <link rel="canonical" href="@Model.CanonicalUrl"/>    
+    <link rel="canonical" href="@Model.CanonicalUrl" />
 }
 
-@if(!Model.AlternateUrl.IsNullOrEmpty())
+@if (!Model.CanonicalAmpUrl.IsNullOrEmpty())
+{
+    <link rel="amphtml" href="@Model.CanonicalAmpUrl" />
+}
+
+@if (!Model.AlternateUrl.IsNullOrEmpty())
 {
     <link rel="alternate" media="only screen and (max-width: 640px)" href="@Model.AlternateUrl" />
 }

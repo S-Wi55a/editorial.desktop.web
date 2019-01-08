@@ -34,6 +34,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 Title = seoData.Title,
                 AlternateUrl = seoData.AlternateUrl,
                 CanonicalUrl = seoData.CanonicalUrl,
+                CanonicalAmpUrl = seoData.CanonicalAmpUrl,
                 Description = seoData.Description,
                 Keywords = seoData.Keywords,
                 AllowSeoIndexing = _tenantInfo.Current().AllowSeoIndexOfDetails
