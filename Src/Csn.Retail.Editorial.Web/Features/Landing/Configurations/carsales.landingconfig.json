@@ -2131,6 +2131,54 @@
       }
     },
     {
+      "type": "ldv",
+      "carouselConfigurations": [
+        {
+          "title": "Latest",
+          "displayMrec": true,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.Make.Ldv.)",
+          "sort": "Latest",
+          "viewAll": "/ldv/?pg=1",
+          "polarAds": null,
+          "carouselType": "Featured",
+          "carouselItems": null
+        },
+        {
+          "title": "LDV News",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.Type.News._.Make.Ldv.)",
+          "sort": "Latest",
+          "viewAll": "/ldv/news/",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
+          "title": "LDV T60",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Ldv._.Model.T60.))",
+          "sort": "Latest",
+          "viewAll": "/ldv/t60/",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        }
+      ],
+      "displayBannerAd": true,
+      "heroAdSettings": {
+        "hasHeroAd": true,
+        "heroTitle": "LDV reviews, advice, news & more",
+        "heroMake": "LDV"
+      }
+    },
+    {
       "type": "lexus",
       "carouselConfigurations": [
         {
@@ -3177,6 +3225,65 @@
         "hasHeroAd": true,
         "heroTitle": "Porsche reviews, advice, news & more",
         "heroMake": "Porsche"
+      }
+    },
+    {
+      "type": "ram",
+      "carouselConfigurations": [
+        {
+          "title": "Latest",
+          "displayMrec": true,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.Make.Ram.)",
+          "sort": "Latest",
+          "viewAll": "/ram/?pg=1",
+          "polarAds": null,
+          "carouselType": "Featured",
+          "carouselItems": null
+        },
+        {
+          "title": "RAM News",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.Type.News._.Make.Ram.)",
+          "sort": "Latest",
+          "viewAll": "/ram/news/",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        },
+        {
+          "title": "RAM 1500",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Ram._.Model.1500.))",
+          "sort": "Latest",
+          "viewAll": "/ram/1500/",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        },
+        {
+          "carouselType": "ad",
+          "adPlacementType": "inlineBanner"
+        },
+        {
+          "title": "RAM 2500",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Service.CarSales._.Sentiment.Positive._.(C.Make.Ram._.Model.2500.))",
+          "sort": "Latest",
+          "viewAll": "/ram/2500/",
+          "polarAds": null,
+          "carouselType": "Article",
+          "carouselItems": null
+        }
+      ],
+      "displayBannerAd": true,
+      "heroAdSettings": {
+        "hasHeroAd": true,
+        "heroTitle": "RAM reviews, advice, news & more",
+        "heroMake": "RAM"
       }
     },
     {
