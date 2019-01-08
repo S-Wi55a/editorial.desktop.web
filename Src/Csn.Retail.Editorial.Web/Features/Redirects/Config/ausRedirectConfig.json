@@ -4,7 +4,7 @@
       {
         "ruleType": "regex",
         "name": "LegacyDetails",
-        "matchRule": "\\/editorial\\/(news|reviews|advice|videos|features|riding-advice|tips|tow-tests|motoracing|engine-reviews|products)\\/(.*)?\\/(.*-\\d+)\\/?$",
+        "matchRule": "\\/editorial\\/(news|reviews|advice|videos|features|riding-advice|tips|tow-tests|motoracing|engine-reviews|products)(\\/.*)?\\/(.*-\\d+)\\/?$",
         "redirectInstruction": "/editorial/details/$3/",
         "includeQueryStringInRedirect": true,
         "description": "Used for redirecting the legacy article details urls"
