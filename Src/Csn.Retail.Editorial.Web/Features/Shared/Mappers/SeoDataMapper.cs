@@ -46,6 +46,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Mappers
                 AllowSeoIndexing = _tenantProvider.Current().AllowSeoIndexOfLanding,
                 Title = ryvussNavResult.Metadata == null ? _tenantProvider.Current().DefaultPageTitle : ryvussNavResult.Metadata.Title,
                 CanonicalUrl = $"{protocolAndDomain}{_requestContext.Url.AbsolutePath}",
+
+                //TODO: REMOVE AMP CANONICAL FROM LANDING PAGE
+                CanonicalAmpUrl = _tenantProvider.Current().SupportsAmpUrl ? $"{protocolAndDomain}/amp{_requestContext.Url.AbsolutePath}" : string.Empty,
+                //********************************************
+
                 AlternateUrl = string.Empty,
                 Description = ryvussNavResult.Metadata == null ? string.Empty : ryvussNavResult.Metadata.Description
             };
