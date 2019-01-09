@@ -1,5 +1,5 @@
-﻿using Csn.Tracking.Scripts.Core;
-using Csn.WebMetrics.Core.Model;
+﻿using Csn.Retail.Editorial.Web.Features.Listings.Models;
+using Csn.Tracking.Scripts.Core;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.Extensions
 {

@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Csn.Retail.Editorial.Web.Features.Redirects;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Settings;
 

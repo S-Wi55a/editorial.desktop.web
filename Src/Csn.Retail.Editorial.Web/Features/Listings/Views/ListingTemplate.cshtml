@@ -59,9 +59,8 @@
     {
         Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
     }
-    @if (Model.InsightsData.Any())
+    @if (Model.InsightsData != null)
     {
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
-    @{ Html.RenderAction(Model.EditorialPageType == EditorialPageTypes.Landing ? "HtmlTracking" : "HtmlTrackingListing", "Tracking"); }
 }

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
-using Csn.WebMetrics.Core.Model;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
 {

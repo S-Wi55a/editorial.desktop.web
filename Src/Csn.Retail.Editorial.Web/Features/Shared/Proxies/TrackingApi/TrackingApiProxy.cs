@@ -24,7 +24,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.TrackingApi
         {
             var client = _smartClient.Service(ServiceName)
                 .Path("v1/api/tracking/script")
-                .QueryString("Application", input.ApplicationName);
+                .QueryString("Application", input.ApplicationName)
+                .QueryString("includebitracking", "true");
 
             if (input.IncludeNielsen)
             {

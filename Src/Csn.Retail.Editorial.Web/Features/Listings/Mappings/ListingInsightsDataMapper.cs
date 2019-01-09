@@ -13,7 +13,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
 {
     public interface IListingInsightsDataMapper
     {
-        Dictionary<string, string> Map(ListingPageContext pageContext);
+        CsnInsightsData Map(ListingPageContext pageContext);
     }
 
     [AutoBind]
@@ -26,7 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             _expressionParser = expressionParser;
         }
 
-        public Dictionary<string, string> Map(ListingPageContext listingPageContext)
+        public CsnInsightsData Map(ListingPageContext listingPageContext)
         {            
             var expression = _expressionParser.Parse(listingPageContext.Query);
             var dimensions = GetTags(expression);
@@ -41,12 +41,26 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
                 dimensions.Add(TrackingScriptTags.ListingResultCount, listingPageContext.RyvussNavResult.Count.ToString());
             }
 
-            return dimensions;
+            return new CsnInsightsData()
+            {
+                MetaData = dimensions,
+                SearchResultsData = GetSearchResultsData(listingPageContext)
+            };
         }
 
         private Dictionary<string, string> GetTags(Expression expression)
         {
             return expression.Accept(new TrackingScriptTagVisitor(), new List<TrackingScriptTag>()).ToDictionary(tag => tag.Name, tag => tag.Value);
+        }
+
+        private CsnInsightsSearchResultsData GetSearchResultsData(ListingPageContext listingPageContext)
+        {
+            if (listingPageContext.RyvussNavResult?.SearchResults == null) return new CsnInsightsSearchResultsData();
+
+            return new CsnInsightsSearchResultsData()
+            {
+                Results = listingPageContext.RyvussNavResult.SearchResults.Select(r => new CsnInsightsSearchResultItem{Id = r.Id, Name = r.Id}).ToList()
+            };
         }
     }
 }
