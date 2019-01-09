@@ -26,3 +26,14 @@
 
 // Module - More Articles
 @import 'Css/Modules/Widgets/MoreArticles/_moreArticles.scss';
+
+// Footer overwrites
+footer {
+    padding-bottom: 50px;
+
+    // Overwrite Brightcove row style
+    .container .row {
+        padding: 0;
+        float: none;
+    }
+}
