@@ -1,20 +1,30 @@
 ﻿@using Csn.Retail.Editorial.Web.Features.Shared.Helpers
 @using Newtonsoft.Json
-@model Dictionary<string, string>
+@using Newtonsoft.Json.Serialization
+@model Csn.Retail.Editorial.Web.Features.Shared.Models.CsnInsightsData
     
 @{ var trackingId = @UserContextHelper.GetMemberTrackingId(); }
 
 <script>
     window.CsnInsights = window.CsnInsights || {};
-    CsnInsights.metaData = @Html.Raw(JsonConvert.SerializeObject(Model));
 
-    @if (Model.ContainsKey("contentGroup2") && Model["contentGroup2"] == "details")
+    @if (Model.MetaData != null && Model.MetaData.Any())
     {
+        <text>CsnInsights.metaData = @Html.Raw(JsonConvert.SerializeObject(Model.MetaData));</text>
+
+        if (Model.MetaData.ContainsKey("contentGroup2") && Model.MetaData["contentGroup2"] == "details")
+        {
         <text>CsnInsights.EnableScrollTracker = true;</text>
+        }
     }
 
     @if (!string.IsNullOrEmpty(trackingId))
     {
     <text>CsnInsights.memberTrackingId = "@trackingId";</text>
+    }
+
+    @if (Model.SearchResultsData?.Results != null && Model.SearchResultsData.Results.Any())
+    {
+        <text>CsnInsights.searchResultsv2 = @Html.Raw(JsonConvert.SerializeObject(Model.SearchResultsData, new JsonSerializerSettings{ ContractResolver = new DefaultContractResolver()})); </text>
     }
 </script>

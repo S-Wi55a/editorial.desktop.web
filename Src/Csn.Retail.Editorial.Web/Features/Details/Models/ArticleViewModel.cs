@@ -36,7 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public DisqusData DisqusData { get; set; }
         public MoreArticleData MoreArticleData { get; set; }
         public Shared.Models.SeoData SeoData { get; set; }
-        public Dictionary<string, string> InsightsData { get; set; }
+        public CsnInsightsData InsightsData { get; set; }
         public StockListingData StockListingData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
         public bool UseDropCase { get; set; }
@@ -44,7 +44,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string SpecDataGetVariantsUrl { get; set; }
         public IEditorialRouteSettings EditorialRouteSettings { get; set;  }
-
     }
 
     public class ContentSectionViewModel

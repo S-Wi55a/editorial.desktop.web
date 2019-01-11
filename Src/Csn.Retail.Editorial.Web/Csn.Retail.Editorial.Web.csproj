@@ -151,18 +151,6 @@
     <Reference Include="Csn.TrackingServices.Dto, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Csn.TrackingServices.Dto.1.0.6\lib\net452\Csn.TrackingServices.Dto.dll</HintPath>
     </Reference>
-    <Reference Include="Csn.WebMetrics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.WebMetrics.1.0.480.0\lib\net40\Csn.WebMetrics.dll</HintPath>
-    </Reference>
-    <Reference Include="Csn.WebMetrics.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.WebMetrics.Editorial.1.0.478.0\lib\net40\Csn.WebMetrics.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Csn.WebMetrics.Editorial, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.WebMetrics.Editorial.1.0.478.0\lib\net40\Csn.WebMetrics.Editorial.dll</HintPath>
-    </Reference>
-    <Reference Include="Csn.WebMetrics.Ext, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Csn.WebMetrics.Editorial.1.0.478.0\lib\net40\Csn.WebMetrics.Ext.dll</HintPath>
-    </Reference>
     <Reference Include="Expresso, Version=42.0.330.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Expresso.42.0.330\lib\net46\Expresso.dll</HintPath>
     </Reference>
@@ -608,6 +596,7 @@
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Listings\Filters\RedbookDefaultVerticalAttributeFilter.cs" />
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
+    <Compile Include="Features\Listings\Models\SearchEventType.cs" />
     <Compile Include="Features\Listings\RedbookHomepageQueryHandler.cs" />
     <Compile Include="Features\Listings\RedbookListingQueryHandler.cs" />
     <Compile Include="Features\DisplayAds\NativeAd\NativeAdHelper.cs" />
@@ -631,6 +620,7 @@
     <Compile Include="Features\Shared\Hero\Models\HeroAdUnitModel.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapper.cs" />
     <Compile Include="Features\Shared\Mappers\SeoDataMapper.cs" />
+    <Compile Include="Features\Shared\Models\CsnInsightsData.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
     <Compile Include="Features\Shared\Models\Vertical.cs" />
@@ -762,25 +752,6 @@
     <Compile Include="Features\Shared\Settings\ImageServerSettings.cs" />
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
-    <Compile Include="Features\TestApis\TestDto.cs" />
-    <Compile Include="Features\TestApis\TestExpClientController.cs" />
-    <Compile Include="Features\TestApis\TestHttpClientController.cs" />
-    <Compile Include="Features\TestApis\TestIngressController.cs" />
-    <Compile Include="Features\Tracking\Mapping\ItemsListingMapper.cs" />
-    <Compile Include="Features\Tracking\Mapping\MapperConfiguration.cs" />
-    <Compile Include="Features\Tracking\Mapping\SearchFilterMapper.cs" />
-    <Compile Include="Features\Tracking\Mapping\TrackingPropertiesBuilder.cs" />
-    <Compile Include="Features\Tracking\Providers\TrackingTagsProvider.cs" />
-    <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQuery.cs" />
-    <Compile Include="Features\Tracking\TrackingContainer\GetDetailsTrackingContainerQueryHandler.cs" />
-    <Compile Include="Features\Tracking\TrackingContainer\GetListingTrackingContainerQuery.cs" />
-    <Compile Include="Features\Tracking\TrackingContainer\GetListingTrackingContainerQueryHandler.cs" />
-    <Compile Include="Features\Tracking\TrackingContainer\GetPageTrackingContainerQuery.cs" />
-    <Compile Include="Features\Tracking\TrackingContainer\GetPageTrackingContainerQueryHandler.cs" />
-    <Compile Include="Features\Tracking\TrackingController.cs" />
-    <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsQuery.cs" />
-    <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsQueryHandler.cs" />
-    <Compile Include="Features\Tracking\WebMetricsScripts\WebMetricsScriptsViewModel.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
     <Compile Include="Infrastructure\Configs\SettingsHelper.cs" />
     <Compile Include="Features\Listings\Constants\PageItemsLimit.cs" />
@@ -845,7 +816,6 @@
     <Compile Include="Ioc\ConventionsModule.cs" />
     <Compile Include="Ioc\MultiTenantModule.cs" />
     <Compile Include="Ioc\SettingsModule.cs" />
-    <Compile Include="Ioc\TrackingModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Features\Listings\Assets\Js\listings-page.js" />
@@ -1060,7 +1030,6 @@
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_footernav.scss" />
     <Content Include="Features\Shared\Assets\Css\Modules\SiteNav\_topnav.scss" />
     <Content Include="Features\Shared\Views\Partials\Head\_BasicSeoData.cshtml" />
-    <Content Include="Features\Tracking\Views\WebMetricsScripts.cshtml" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticle.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Widgets\MoreArticles\_moreArticles.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\Disqus\_disqus.scss" />
@@ -1068,7 +1037,6 @@
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroModalSlider.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_hero.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Hero\_heroSlider.scss" />
-    <Content Include="Features\Tracking\Views\HtmlTracking.cshtml" />
     <Content Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

@@ -1,6 +1,6 @@
-﻿using Csn.Retail.Editorial.Web.Features.Shared.Models;
+﻿using Csn.Retail.Editorial.Web.Features.Listings.Models;
+using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.SimpleCqrs;
-using Csn.WebMetrics.Core.Model;
 using Expresso.Expressions;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings
