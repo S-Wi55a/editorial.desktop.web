@@ -3,8 +3,10 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.Loggers;
+using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
@@ -100,7 +102,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (response.ArticleViewModel != null)
             {
-                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", response.ArticleViewModel);
+                ArticleViewModel articleViewModel = response.ArticleViewModel;
+                articleViewModel.EditorialRouteSettings = DependencyResolver.Current.GetService<IEditorialRouteSettings>();
+
+                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", articleViewModel);
             }
 
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();

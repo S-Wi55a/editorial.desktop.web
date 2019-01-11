@@ -866,6 +866,7 @@
     <Content Include="Features\Details\DetailsModal\Views\Partials\_NarrowHeader.cshtml" />
     <Content Include="Features\Details\DetailsModal\Views\Partials\_ArticleType.cshtml" />
     <Content Include="Features\Details\DetailsModal\Views\Partials\_Contributors.cshtml" />
+    <Content Include="Features\Details\DetailsModal\Views\Partials\_DetailsModal.cshtml" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />

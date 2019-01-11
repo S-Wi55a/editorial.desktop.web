@@ -2,6 +2,7 @@
 using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using SocialMetaData = Csn.Retail.Editorial.Web.Features.Details.Models.SocialMetaData;
@@ -38,7 +39,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 .ForMember(dest => dest.PolarNativeAdsData, opt => opt.MapFrom(src => _polarNativeAdsMapper.Map(src)))
                 .ForMember(dest => dest.MoreArticleData, opt => opt.MapFrom(src => src.MoreArticleData))
                 .ForMember(dest => dest.ArticleTypeLabel, opt => opt.MapFrom(src => _articleTypeLabelMapper.Map(src)))
-                .ForMember(dest => dest.ContentSections, opt => opt.MapFrom(src => src.ContentSections.Select(c => new ContentSectionViewModel(c, src.NetworkId))));
+                .ForMember(dest => dest.ContentSections, opt => opt.MapFrom(src => src.ContentSections.Select(c => new ContentSectionViewModel(c, src.NetworkId))))
+                .ForMember(dest => dest.EditorialRouteSettings, opt => opt.Ignore());
 
             // Social Meta Data
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();

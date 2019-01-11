@@ -54,12 +54,9 @@ loaded.then(() => {
     (function alsoConsider(d) {
 
         if (d.querySelector('.also-consider-placeholder')) {
+            csn_editorial.moreArticles.hooks = () => disableExternalLinks(alsoConsiderScope);
             (function alsoConsider() {
-                import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js')
-                .then(alsoConsider => {
-                    alsoConsider.init().then(() => disableExternalLinks(alsoConsiderScope))
-                })
-                .catch(function(err) {
+                import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
                 });
             })()
@@ -67,21 +64,6 @@ loaded.then(() => {
 
     })(document)
 });
-
-//Lazy Native Ads
-// loaded.then(() => {
-//     (function nativeAds() {
-//         if (!!csn_editorial && !!csn_editorial.nativeAds) {
-//             (function nativeAds() {
-//                 import
-//                 (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
-//                     .catch(function(err) {
-//                         console.log('Failed to load nativeAds', err);
-//                     });
-//             })();
-//         }
-//     })();
-// });
 
 //Lazy load Sponsored articles JS
 loaded.then(() => {
@@ -143,31 +125,17 @@ contentLoaded.then(() => {
 });
 
 let disableExternalLinks = (scope) => {
-    [...scope.getElementsByTagName('a')].forEach(
-        (element, index, array) => {
-            let articleId = element.getAttribute('data-article-id')
-            let articleUrl = element.getAttribute('href');
-
-            if(articleId) {
+    [...scope.getElementsByTagName('a')].forEach((element, index, array) => {
+        let articleUrl = element.getAttribute('href');
+        if(articleUrl) {
+            if(csn_editorial.detailsModal && csn_editorial.detailsModal.pathRegex.test(articleUrl)) {
                 element.style.cursor = 'pointer';
-                element.onclick = () => navigateToArticle('/editorial/details-modal/' + articleId);
-                element.removeAttribute('href');
+                element.onclick = () => window.open(csn_editorial.detailsModal.pathRedirect + articleUrl.split('-').pop(), '_self');
             }
-            else if(articleUrl) {
-                if(articleUrl.split('/')[1] === 'editorial') {
-                    element.style.cursor = 'pointer';
-                    let articleModalUrl = '/editorial/details-modal/ED-ITM-' + articleUrl.replace('/', '').split('-').pop();
-                    element.onclick = () => navigateToArticle(articleModalUrl);
-                }
-                else {
-                    element.style.pointerEvents = 'none';
-                }
-                element.removeAttribute('href');
-            }            
+            else {
+                element.style.pointerEvents = 'none';
+            }
+            element.removeAttribute('href');
         }
-    );
-}
-
-let navigateToArticle = (url) => {
-    window.open(url, '_self');
+    });
 }

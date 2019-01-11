@@ -85,11 +85,7 @@ loaded.then(() => {
 
         if (d.querySelector('.also-consider-placeholder')) {
             (function alsoConsider() {
-                import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js')
-                .then(function(alsoConsider) {
-                    alsoConsider.init()
-                })
-                .catch(function(err) {
+                import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
                 });
             })()

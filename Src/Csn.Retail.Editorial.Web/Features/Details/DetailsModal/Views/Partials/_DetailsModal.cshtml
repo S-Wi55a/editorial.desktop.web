@@ -1,0 +1,11 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Shared.Settings.IEditorialRouteSettings
+
+<script>
+    var csn_editorial = csn_editorial || {};
+    var networkIdPrefix = "@Model.NetworkIdFormat".split('{')[0];
+    csn_editorial.detailsModal = {
+        pathRegex: "@Model.DetailsUrlFormat" === "V1" ? new RegExp("^@Model.BasePath@Model.DetailsRouteSegment/.*-\\d+/?$") : new RegExp(`^@Model.BasePath@Model.DetailsRouteSegment/.*/${networkIdPrefix}\\d+/?$`),
+        pathRedirect: `@(Model.BasePath)details-modal/${networkIdPrefix}`
+    };
+
+</script>
