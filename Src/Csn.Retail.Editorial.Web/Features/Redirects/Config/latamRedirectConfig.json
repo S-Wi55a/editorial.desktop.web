@@ -10,6 +10,22 @@
         "description": "Used for redirecting the old article type listing pages used on soloautos"
       },
       {
+        "ruleType": "regex",
+        "name": "compra-de-auto",
+        "matchRule": "\\/noticias\\/listado\\/(compra de auto)\\/?",
+        "redirectInstruction": "/noticias/compra-de-auto/",
+        "includeQueryStringInRedirect": true,
+        "description": "Used for redirecting the compra-de-auto listing pages used on soloautos"
+      },
+      {
+        "ruleType": "regex",
+        "name": "las-mejores-compras",
+        "matchRule": "\\/noticias\\/listado\\/(las mejores compras)\\/",
+        "redirectInstruction": "/noticias/las-mejores-compras/",
+        "includeQueryStringInRedirect": true,
+        "description": "Used for redirecting the las-mejores-compras listing pages used on soloautos"
+      },
+      {
         "ruleType": "detailsLegacyUrlPaths",
         "name": "LegacyDetails",
         "matchRule": "\\/noticias\\/detalle\\/(.*)?",
