@@ -20,7 +20,7 @@
       {
         "ruleType": "regex",
         "name": "las-mejores-compras",
-        "matchRule": "\\/noticias\\/listado\\/(las mejores compras)\\/",
+        "matchRule": "\\/noticias\\/listado\\/(las mejores compras)\\/?",
         "redirectInstruction": "/noticias/las-mejores-compras/",
         "includeQueryStringInRedirect": true,
         "description": "Used for redirecting the las-mejores-compras listing pages used on soloautos"
