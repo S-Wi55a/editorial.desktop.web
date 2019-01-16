@@ -12,16 +12,16 @@
       {
         "ruleType": "regex",
         "name": "compra-de-auto",
-        "matchRule": "\\/noticias\\/listado\\/(compra de auto)\\/?",
-        "redirectInstruction": "/noticias/compra-de-auto/",
+        "matchRule": "\\/noticias\\/listado\\/(Compra de auto)\\/?(.*)?",
+        "redirectInstruction": "/noticias/compra-de-auto/$2",
         "includeQueryStringInRedirect": true,
         "description": "Used for redirecting the compra-de-auto listing pages used on soloautos"
       },
       {
         "ruleType": "regex",
         "name": "las-mejores-compras",
-        "matchRule": "\\/noticias\\/listado\\/(las mejores compras)\\/?",
-        "redirectInstruction": "/noticias/las-mejores-compras/",
+        "matchRule": "\\/noticias\\/listado\\/(Las Mejores Compras)\\/?(.*)?",
+        "redirectInstruction": "/noticias/las-mejores-compras/$2",
         "includeQueryStringInRedirect": true,
         "description": "Used for redirecting the las-mejores-compras listing pages used on soloautos"
       },
