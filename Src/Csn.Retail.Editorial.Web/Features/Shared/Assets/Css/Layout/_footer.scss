@@ -4,37 +4,9 @@
     overflow: hidden;
     padding-top: 40px;
 
-    .footer-area__wrapper {
-        width: $screen-sm;
-        padding-left: $grid-gutter-width/2;
-        padding-right: $grid-gutter-width/2;
-
-        @include breakpoint($screen-lg) {
-            width: $screen-lg;
-        }
-    }
-
-    .footer-area--lower {
-        padding-bottom: 200px;
-
-        a {
-            color: inherit;
-
-            &:hover {
-                color: inherit;
-            }
-
-            &:visited {
-                color: inherit;
-            }
-
-            &:active {
-                color: inherit;
-            }
-
-            &:focus {
-                color: inherit;
-            }
+    @if($soloautos-footer != "") {
+        .post-footer {
+            padding-bottom: 150px;
         }
     }
 }

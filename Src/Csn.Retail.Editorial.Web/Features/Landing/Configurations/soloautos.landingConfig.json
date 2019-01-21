@@ -5,25 +5,14 @@
       "displayBannerAd": true,
       "carouselConfigurations": [
         {
-          "title": "Selección del Editor",
-          "displayMrec": true,
-          "displayNativeAd": false,
-          "query": "(And.ArticleSet.Soloautos_home._.Service.Soloautos.)",
-          "sort": "Latest",
-          "viewAll": null,
-          "polarAds": null,
-          "carouselType": "featured",
-          "carouselItems": null
-        },
-        {
           "title": "Actualidad",
-          "displayMrec": false,
+          "displayMrec": true,
           "displayNativeAd": false,
           "query": "(And.Type.Actualidad._.Service.Soloautos.)",
           "sort": "Latest",
           "viewAll": "/actualidad/",
           "polarAds": null,
-          "carouselType": "article",
+          "carouselType": "featured",
           "carouselItems": null
         },
         {
