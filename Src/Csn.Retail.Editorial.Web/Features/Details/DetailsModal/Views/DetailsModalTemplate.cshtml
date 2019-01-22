@@ -48,15 +48,13 @@
     </article>
 
     @{ Html.RenderPartial("Partials/Modal/_Modal"); }
-    @{ Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_DetailsModal.cshtml", Model.EditorialRouteSettings); }
+    @{ Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_DetailsModalSettings.cshtml"); }
 </div>
 
 
 @section BottomScripts
 {
-    @{ Html.RenderAction("WebMetricsScripts", "Tracking"); }
     @{ Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData); }
-    @{ Html.RenderAction("HtmlTrackingDetails", "Tracking", new { Article = Model, PageType = "details" }); }
     @if (Model.MoreArticleData != null)
     {
         Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData);

@@ -102,10 +102,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (response.ArticleViewModel != null)
             {
-                ArticleViewModel articleViewModel = response.ArticleViewModel;
-                articleViewModel.EditorialRouteSettings = DependencyResolver.Current.GetService<IEditorialRouteSettings>();
-
-                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", articleViewModel);
+                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", response.ArticleViewModel);
             }
 
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();

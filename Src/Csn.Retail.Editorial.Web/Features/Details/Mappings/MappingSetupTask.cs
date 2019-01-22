@@ -41,8 +41,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 .ForMember(dest => dest.MoreArticleData, opt => opt.MapFrom(src => src.MoreArticleData))
                 .ForMember(dest => dest.ArticleTypeLabel, opt => opt.MapFrom(src => _articleTypeLabelMapper.Map(src)))
                 .ForMember(dest => dest.InsightsData, opt => opt.MapFrom(src => new CsnInsightsData{MetaData = src.InsightsData}))
-                .ForMember(dest => dest.ContentSections, opt => opt.MapFrom(src => src.ContentSections.Select(c => new ContentSectionViewModel(c, src.NetworkId))))
-                .ForMember(dest => dest.EditorialRouteSettings, opt => opt.Ignore());
+                .ForMember(dest => dest.ContentSections, opt => opt.MapFrom(src => src.ContentSections.Select(c => new ContentSectionViewModel(c, src.NetworkId))));
 
             // Social Meta Data
             cfg.CreateMap<Shared.Proxies.EditorialApi.SocialMetaData, SocialMetaData>();

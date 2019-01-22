@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
-using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 
 namespace Csn.Retail.Editorial.Web.Features.Details.Models
 {
@@ -43,7 +42,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public PolarNativeAdsData PolarNativeAdsData { get; set; }
         public ArticleTemplateType ArticleTemplateType { get; set; }
         public string SpecDataGetVariantsUrl { get; set; }
-        public IEditorialRouteSettings EditorialRouteSettings { get; set;  }
     }
 
     public class ContentSectionViewModel
