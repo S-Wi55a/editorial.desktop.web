@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.MediaMotiveAds
             //Act
             var result = queryHandler.Handle(new DisplayAdQuery()
             {
-                AdPlacement = DisplayAdPlacements.Aside
+                AdPlacement = DisplayAdPlacements.DetailsAside
             });
 
             Assert.AreEqual("//mm.carsales.com.au/carsales/jserver/make=honda/model=civic/make=bmw", result.ScriptUrl);

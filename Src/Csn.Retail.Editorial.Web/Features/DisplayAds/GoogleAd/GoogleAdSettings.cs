@@ -7,11 +7,20 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
         public static Dictionary<DisplayAdPlacements, GoogleAdSetting> GoogleAdTypes = new Dictionary<DisplayAdPlacements, GoogleAdSetting>
         {
             {
-                DisplayAdPlacements.Aside,
+                DisplayAdPlacements.ListingsAside,
                 new GoogleAdSetting
                 {
-                    SlotId = "div-gpt-ad-1468849624568-8",
-                    UnitId = "SA_Results_300x250_300x600_R4",
+                    SlotId = "div-gpt-ad-1548199795543-0",
+                    UnitId = "SA_editorial_300x250_300x600_E3",
+                    DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle
+                }
+            },
+            {
+                DisplayAdPlacements.DetailsAside,
+                new GoogleAdSetting
+                {
+                    SlotId = "div-gpt-ad-1548093016580-0'",
+                    UnitId = "SA_editorial_300x250_300x600_E2",
                     DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle
                 }
             },

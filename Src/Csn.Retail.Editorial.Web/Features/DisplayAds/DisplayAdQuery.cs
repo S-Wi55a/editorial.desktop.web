@@ -4,7 +4,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds
 {
     public enum DisplayAdPlacements
     {
-        Aside,
+        ListingsAside,
+        DetailsAside,
         Banner,
         Leaderboard,
         Carousel,

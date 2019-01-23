@@ -5,7 +5,7 @@
 <div class="wrapper--aside">
     <div class="aside ">
         <!-- Aside Section -->
-        @{ Html.RenderDisplayAd(DisplayAdPlacements.Aside); }
+        @{ Html.RenderDisplayAd(DisplayAdPlacements.DetailsAside); }
         @if (Model?.ExpertRatings != null || Model?.ProsCons != null)
         {
             Html.RenderPartial("Partials/Widgets/EditorRatings/_EditorsRating", Model);
