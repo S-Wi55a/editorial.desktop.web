@@ -19,11 +19,22 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive
                 }
             },
             {
-                DisplayAdPlacements.Aside,
+                DisplayAdPlacements.ListingsAside,
                 new MediaMotiveAdSetting()
                 {
                     TileId = 3,
-                    Description = DisplayAdPlacements.Aside,
+                    Description = DisplayAdPlacements.ListingsAside,
+                    DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle,
+                    DataKruxRequired = true,
+                    NotSupportedArticleTypes = new List<string>()
+                }
+            },
+            {
+                DisplayAdPlacements.DetailsAside,
+                new MediaMotiveAdSetting()
+                {
+                    TileId = 3,
+                    Description = DisplayAdPlacements.DetailsAside,
                     DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle,
                     DataKruxRequired = true,
                     NotSupportedArticleTypes = new List<string>()

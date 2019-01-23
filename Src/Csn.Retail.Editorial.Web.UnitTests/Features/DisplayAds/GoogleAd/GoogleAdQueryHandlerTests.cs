@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.DisplayAds
             //Act
             var result = queryHandler.Handle(new DisplayAdQuery()
             {
-                AdPlacement = DisplayAdPlacements.Aside
+                AdPlacement = DisplayAdPlacements.DetailsAside
             });
 
             Assert.AreEqual("[{\"Width\":300,\"Height\":250},{\"Width\":300,\"Height\":600}]", result.Dimensions);
