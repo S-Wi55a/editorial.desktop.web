@@ -86,14 +86,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             return new RedirectResult(redirectUrl, true);
         }
 
-        public async Task<ActionResult> Modal(string networkId, bool __preview = false)
+        public async Task<ActionResult> Modal(string networkId, string __source = "")
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsModalRequestEvent());
 
             var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
             {
                 Id = networkId,
-                IsPreview = __preview
+                IsPreview = false
             });
 
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);
@@ -102,7 +102,11 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (response.ArticleViewModel != null)
             {
-                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", response.ArticleViewModel);
+                var articleViewModel = response.ArticleViewModel;
+                articleViewModel.InsightsData.MetaData.Add("displayType", "modal");
+                articleViewModel.InsightsData.MetaData.Add("source", __source);
+
+                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", articleViewModel);
             }
 
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
