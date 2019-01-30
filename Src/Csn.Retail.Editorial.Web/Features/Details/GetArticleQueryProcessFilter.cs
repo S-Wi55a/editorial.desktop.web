@@ -27,7 +27,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         {
             var cachedArticle = await _articleDetailsCacheStore.GetAsync(query.Id);
 
-            if (!cachedArticle.HasValue || cachedArticle.Value.ArticleViewModel == null) return;
+            if (!cachedArticle.HasValue || cachedArticle.Value?.ArticleViewModel == null) return;
 
             var detailsPageContext = new DetailsPageContext
             {
@@ -40,6 +40,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             };
 
             _contextStore.Set(detailsPageContext);
+
+            if (query.DisplayType == DisplayType.DetailsModal)
+            {
+                result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
+                result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
+            }
         }
     }
 }

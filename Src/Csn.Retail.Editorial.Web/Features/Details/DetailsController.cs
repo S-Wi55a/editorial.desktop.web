@@ -49,7 +49,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
             {
                 Id = networkId,
-                IsPreview = isPreview
+                IsPreview = isPreview,
+                DisplayType = DisplayType.DetailsPage
             });
 
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);
@@ -93,7 +94,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
             {
                 Id = networkId,
-                IsPreview = false
+                IsPreview = false,
+                DisplayType = DisplayType.DetailsModal,
+                Source = __source
             });
 
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);
@@ -102,11 +105,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (response.ArticleViewModel != null)
             {
-                var articleViewModel = response.ArticleViewModel;
-                articleViewModel.InsightsData.MetaData.Add("displayType", "modal");
-                articleViewModel.InsightsData.MetaData.Add("source", __source);
-
-                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", articleViewModel);
+                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", response.ArticleViewModel);
             }
 
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
