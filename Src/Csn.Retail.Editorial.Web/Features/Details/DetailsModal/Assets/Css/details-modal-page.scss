@@ -28,6 +28,10 @@
 @import 'Css/Modules/Widgets/MoreArticles/_moreArticles.scss';
 
 // Overwrites just for modal
+body {
+    padding-top: 0;
+}
+
 .more-articles .more-articles__link {
     display: none;
 }
