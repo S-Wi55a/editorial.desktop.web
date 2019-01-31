@@ -41,7 +41,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             _contextStore.Set(detailsPageContext);
 
-            if (query.DisplayType == DisplayType.DetailsModal)
+            if (query.DisplayType == DisplayType.DetailsModal && !result.ArticleViewModel.InsightsData.MetaData.ContainsKey("displayType"))
             {
                 result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
                 result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);

@@ -4,14 +4,13 @@ require('./Css/details-modal-page.scss');
 //------------------------------------------------------------------------------------------------------------------
 
 import { loaded, contentLoaded } from 'document-promises/document-promises.js'
-import ScrollMagic from 'ScrollMagic'
 import * as isMobile from 'ismobilejs'
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
 //------------------------------------------------------------------------------------------------------------------
 // Hero
 let aboveTheFold = require('Hero/hero.js').default;
-aboveTheFold();
+aboveTheFold(false);
 
 //Editors Rating
 (function editorRatings() {

@@ -3,7 +3,7 @@ import Swiper from 'swiper'
 import Modal from 'Modal/modal.js'
 import { template as modalView } from 'Hero/hero-modal--view.js'
 
-export default function () {
+export default function (modalEnabled = true) {
 
     const multipleImageLayout = document.querySelector('.hero--multipleImages') ? 'MULTIPLE_IMAGE_LAYOUT' : null
     const imageAndVideoLayout = document.querySelector('.hero--imageAndVideo') ? 'IMAGE_VIDEO_LAYOUT' : null
@@ -17,17 +17,25 @@ export default function () {
     initSliderByLayoutType(layoutType)
 
     if (modalContainer) {
-
         const scope = document.querySelector('.hero');
 
         if (!scope) return;
 
-        window.csn_modal = window.csn_modal || new Modal()
+        if (modalEnabled) {
+            window.csn_modal = window.csn_modal || new Modal()
 
-        //Add event listeners to hero content
-        const modalTrigger = scope.querySelectorAll('[data-modal-trigger]');
-        for (let item of modalTrigger) {
-            item.addEventListener('click', modalTriggerHandler.bind(null, item));
+            //Add event listeners to hero content
+            const modalTrigger = scope.querySelectorAll('[data-modal-trigger]');
+            for (let item of modalTrigger) {
+                item.addEventListener('click', modalTriggerHandler.bind(null, item));
+            }
+        } else {
+            const images = scope.querySelectorAll('.slideshow__image');
+            for (let item of images) {
+                item.style.cursor = 'default';
+            }
+            const viewPhotosButton = document.querySelector('.slideshow__view-photos');
+            if(viewPhotosButton) viewPhotosButton.style.display = 'none';
         }
     }
 }
