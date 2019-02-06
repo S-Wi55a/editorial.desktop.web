@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
+using Expresso.Helpers;
 
 namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
 {
@@ -47,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
                 }
                 else if(breadcrumb.IsKeywordBreadCrumb)
                 {
-                    results.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Keyword, breadcrumb.Term.Trim('(', ')')));
+                    results.Add(new MediaMotiveTag(SasAdTags.SasAdTagKeys.Keyword, breadcrumb.Term.Replace(" ", String.Empty).Trim('(', ')')));
                 }
             }
             return results;
