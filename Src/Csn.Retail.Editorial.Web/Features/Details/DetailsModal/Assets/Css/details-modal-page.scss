@@ -32,9 +32,9 @@ body {
     padding-top: 0;
 }
 
-
 .article-type--video,
-.article-type--singleimage {
+.article-type--singleimage,
+.article-type--doubleimage {
     padding-top: 40px;
 }
 
@@ -45,4 +45,82 @@ body {
 .article-disclaimer {
     padding-top: 40px;
     padding-bottom: 160px;
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        min-width: 918px;
+    }
+
+    .hero--singleImage,
+    .hero--doubleImage,
+    .hero--singleVideo {
+        left: 50%;
+        margin-left: -301px;
+
+        > .container {
+            width: 603px;
+            left: calc(-1*(320px)/2);
+        }
+    }
+
+    .article-type:not(.article-type--wideimage):not(.article-type--widevideo) .article {
+        margin-left: -301px;
+
+        .container {
+            width: 603px;
+            left: calc(-1*(320px)/2);
+        }
+    }
+
+    .wrapper--aside {
+        margin-left: -160px;
+    }
+
+    .more-articles .container {
+        width: 100%;
+        min-width: 918px;
+    }
+}
+
+@media screen and (max-width: 935px) {
+    .hero--singleImage,
+    .hero--doubleImage,
+    .hero--singleVideo {
+        left: 459px;
+    }
+}
+
+@include breakpoint($screen-lg) {
+    .hero.hero--imageAndVideo {
+        padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
+        // Move to there own blocks
+        .slideshow {
+            width: percentage(matchingAspectRatioHeight(3/2, (3/2, 16/9))); //The intersection where 3:2 and 16:9 have the same height
+        }
+
+        .brightcove {
+            width: percentage(matchingAspectRatioHeight(16/9, (3/2, 16/9))); //The intersection where 3:2 and 16:9 have the same height
+        }
+    }
+
+    .hero .slideshow {
+        &--image-video {
+            padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
+            .slideshow {
+                &__slide {
+                    width: percentage(1);
+                }
+            }
+        }
+
+        &--gallery-multiple-images {
+            padding-top: calc(#{percentage((2/3)/2)} - 1px); //Aspect ratio / number of images
+            .slideshow {
+                &__slide {
+                    width: percentage(1/2);
+                }
+            }
+        }
+    }
 }

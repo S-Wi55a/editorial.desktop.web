@@ -14,7 +14,7 @@ export default function (modalEnabled = true) {
     const layoutType = multipleImageLayout || imageAndVideoLayout || singleImageLayout || doubleImageLayout
 
     // Set up slider and init slider
-    initSliderByLayoutType(layoutType)
+    initSliderByLayoutType(layoutType, modalEnabled)
 
     if (modalContainer) {
         const scope = document.querySelector('.hero');
@@ -40,7 +40,7 @@ export default function (modalEnabled = true) {
     }
 }
 
-function initSliderByLayoutType(layoutType) {
+function initSliderByLayoutType(layoutType, modalEnabled) {
 
     let swiperOptions = {
         // Optional parameters
@@ -76,7 +76,7 @@ function initSliderByLayoutType(layoutType) {
     if (layoutType === 'MULTIPLE_IMAGE_LAYOUT') {
 
         swiperOptions = Object.assign({}, swiperOptions, {
-            slidesPerView: 3,
+            slidesPerView: modalEnabled ? 3 : 2,
             //Breakpoints
             breakpoints: {
                 1199: {
@@ -92,7 +92,7 @@ function initSliderByLayoutType(layoutType) {
     } else if (layoutType === 'IMAGE_VIDEO_LAYOUT') {
 
         swiperOptions = Object.assign({}, swiperOptions, {
-            slidesPerView: 2,
+            slidesPerView: modalEnabled ? 2 : 1,
             //Breakpoints
             breakpoints: {
                 1199: {
