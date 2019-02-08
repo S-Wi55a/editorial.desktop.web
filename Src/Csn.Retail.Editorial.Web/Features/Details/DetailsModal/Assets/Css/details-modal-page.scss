@@ -32,6 +32,12 @@ body {
     padding-top: 0;
 }
 
+
+.article-type--video,
+.article-type--singleimage {
+    padding-top: 40px;
+}
+
 .more-articles .more-articles__link {
     display: none;
 }
