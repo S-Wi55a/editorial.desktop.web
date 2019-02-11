@@ -1,31 +1,4 @@
-﻿// Page - Details
-
-// ---------------------------------------------------------------------------
-// Globals
-@import "css/_globals.scss";
-
-// ---------------------------------------------------------------------------
-// Details Modules
-@import "../../../Assets/Css/Modules/Hero/_hero.scss";
-@import "../../../Assets/Css/Modules/Hero/_heroSlider.scss";
-@import "../../../Assets/Css/Modules/Hero/_heroModalSlider.scss";
-@import "../../../Assets/Css/Modules/Content/_article.scss";
-@import "../../../Assets/Css/Modules/content/_aside.scss";
-@import "../../../Assets/Css/Modules/content/_author.scss";
-@import "../../../Assets/Css/Modules/content/ltm.scss";
-@import "../../../Assets/Css/Modules/content/table";
-
-// Module - Media Motive
-@import "css/modules/MediaMotive/_mediamotive.scss";
-
-// Module - Social Share
-@import "css/modules/_share-social.scss";
-
-// Module - Modal
-@import "Js/modules/modal/modal.scss";
-
-// Module - More Articles
-@import 'Css/Modules/Widgets/MoreArticles/_moreArticles.scss';
+﻿// Page - Details modal
 
 // Overwrites just for modal
 body {
@@ -36,10 +9,6 @@ body {
 .article-type--singleimage,
 .article-type--doubleimage {
     padding-top: 40px;
-}
-
-.more-articles .more-articles__link {
-    display: none;
 }
 
 .article-disclaimer {
@@ -88,39 +57,5 @@ body {
     .hero--doubleImage,
     .hero--singleVideo {
         left: 459px;
-    }
-}
-
-@include breakpoint($screen-lg) {
-    .hero.hero--imageAndVideo {
-        padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
-        // Move to there own blocks
-        .slideshow {
-            width: percentage(matchingAspectRatioHeight(3/2, (3/2, 16/9))); //The intersection where 3:2 and 16:9 have the same height
-        }
-
-        .brightcove {
-            width: percentage(matchingAspectRatioHeight(16/9, (3/2, 16/9))); //The intersection where 3:2 and 16:9 have the same height
-        }
-    }
-
-    .hero .slideshow {
-        &--image-video {
-            padding-top: percentage((2/3)*matchingAspectRatioHeight(3/2, (3/2, 16/9))); //Aspect ratio / number of images
-            .slideshow {
-                &__slide {
-                    width: percentage(1);
-                }
-            }
-        }
-
-        &--gallery-multiple-images {
-            padding-top: calc(#{percentage((2/3)/2)} - 1px); //Aspect ratio / number of images
-            .slideshow {
-                &__slide {
-                    width: percentage(1/2);
-                }
-            }
-        }
     }
 }

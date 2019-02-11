@@ -1,10 +1,10 @@
 ﻿// Details Page css files
 require('./Css/Details-page.scss');
+if(!!csn_editorial.detailsModal) require('../DetailsModal/Assets/Css/details-modal-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
-import { loaded } from 'document-promises/document-promises.js'
-import ScrollMagic from 'ScrollMagic'
+import { loaded, contentLoaded } from 'document-promises/document-promises.js'
 import * as isMobile from 'ismobilejs'
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
@@ -38,7 +38,7 @@ loaded.then(() => {
 loaded.then(() => {
     (function moreArticles(d) {
 
-        if (d.querySelector('.more-articles-placeholder')) {
+        if (d.querySelector('.more-articles-placeholder') && !csn_editorial.detailsModal) {
             (function moreArticles() {
                 import ( /* webpackChunkName: "More-Articles" */ 'MoreArticles/moreArticles-component.js').then(function(moreArticles) {}).catch(function(err) {
                     console.log('Failed to load More-Articles', err);
@@ -51,7 +51,7 @@ loaded.then(() => {
 //Lazy load Stock For Sale JS
 loaded.then(() => {
     (function stockForSale(d) {
-        if (d.querySelector('.stock-for-sale-placeholder')) {
+        if (d.querySelector('.stock-for-sale-placeholder') && !csn_editorial.detailsModal) {
             (function stockForSale() {
                 import ( /* webpackChunkName: "Stock-For-Sale" */ 'StockForSale/stockForSale-component.js').then(function(stockForSale) {}).catch(function(err) {
                     console.log('Failed to load Stock-For-Sale', err);
@@ -64,7 +64,7 @@ loaded.then(() => {
 //Lazy load Spec Module
 loaded.then(() => {
     (function specModule(d) {
-    if (csn_editorial.specVariantsQuery) {
+    if (csn_editorial.specVariantsQuery && !csn_editorial.detailsModal) {
         // Add placeholder 
         let el = d.querySelectorAll('.article__copy p');
         el = (el.length >= 2) ? el[1] : (el.length ? el[0] : undefined);
@@ -95,36 +95,38 @@ loaded.then(() => {
 });
 
 //Lazy load Disqus
-let disqus = function(d, w, selector) {
-    const disqusSelector = d.querySelector(selector);
-    if (disqusSelector) {
+if(!csn_editorial.detailsModal) {
+    let disqus = function(d, w, selector) {
+        const disqusSelector = d.querySelector(selector);
+        if (disqusSelector) {
 
-        // Set scene
-        const triggerElement = selector
-        const triggerHook = 1
-        const offset = (-1 * w.innerHeight) * 2;
-        w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
+            // Set scene
+            const triggerElement = selector
+            const triggerHook = 1
+            const offset = (-1 * w.innerHeight) * 2;
+            w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
 
-        let scene = new ScrollMagic.Scene({
-            triggerElement: triggerElement,
-            triggerHook: triggerHook,
-            offset: offset,
-            reverse: false
-        })
-            .on("enter", () => {
-                require('Disqus/disqus.js').default();
-                scene.destroy(true)
-                scene = null
+            let scene = new ScrollMagic.Scene({
+                triggerElement: triggerElement,
+                triggerHook: triggerHook,
+                offset: offset,
+                reverse: false
             })
-            .addTo(w.scrollMogicController);
+                .on("enter", () => {
+                    require('Disqus/disqus.js').default();
+                    scene.destroy(true)
+                    scene = null
+                })
+                .addTo(w.scrollMogicController);
+        }
     }
+    disqus(document, window, '#disqus_thread');
 }
-disqus(document, window, '#disqus_thread');
 
 //Lazy Native Ads
 loaded.then(() => {
     (function nativeAds() {
-        if (!!csn_editorial && !!csn_editorial.nativeAds) {
+        if (!!csn_editorial && !!csn_editorial.nativeAds && !csn_editorial.detailsModal) {
             (function nativeAds() {
                 import
                 (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
@@ -185,3 +187,10 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
         }
     })
 }
+
+//Disable external links
+contentLoaded.then(() => {
+    if (!!csn_editorial.detailsModal && typeof csn_editorial.detailsModal.disableNonArticleLinks === 'function') {
+        csn_editorial.detailsModal.disableNonArticleLinks(document);
+    }
+});

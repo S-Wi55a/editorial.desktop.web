@@ -3,7 +3,7 @@ import Swiper from 'swiper'
 import Modal from 'Modal/modal.js'
 import { template as modalView } from 'Hero/hero-modal--view.js'
 
-export default function (modalEnabled = true) {
+export default function () {
 
     const multipleImageLayout = document.querySelector('.hero--multipleImages') ? 'MULTIPLE_IMAGE_LAYOUT' : null
     const imageAndVideoLayout = document.querySelector('.hero--imageAndVideo') ? 'IMAGE_VIDEO_LAYOUT' : null
@@ -12,6 +12,9 @@ export default function (modalEnabled = true) {
     const modalContainer = document.querySelector('._c-modal');
 
     const layoutType = multipleImageLayout || imageAndVideoLayout || singleImageLayout || doubleImageLayout
+
+    // Check if enable gallery modal
+    const modalEnabled = !csn_editorial.detailsModal ? true : false;
 
     // Set up slider and init slider
     initSliderByLayoutType(layoutType, modalEnabled)
@@ -76,7 +79,7 @@ function initSliderByLayoutType(layoutType, modalEnabled) {
     if (layoutType === 'MULTIPLE_IMAGE_LAYOUT') {
 
         swiperOptions = Object.assign({}, swiperOptions, {
-            slidesPerView: modalEnabled ? 3 : 2,
+            slidesPerView: 3,
             //Breakpoints
             breakpoints: {
                 1199: {
@@ -92,7 +95,7 @@ function initSliderByLayoutType(layoutType, modalEnabled) {
     } else if (layoutType === 'IMAGE_VIDEO_LAYOUT') {
 
         swiperOptions = Object.assign({}, swiperOptions, {
-            slidesPerView: modalEnabled ? 2 : 1,
+            slidesPerView: 2,
             //Breakpoints
             breakpoints: {
                 1199: {

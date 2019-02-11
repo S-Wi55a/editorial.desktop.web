@@ -3,6 +3,8 @@
 
 <div class="container" >
     <div class="article__share article__share--bottom cf" data-webm-section="social-sharing-btm">
-        @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
+        @if (Model.SocialMetaData != null) {
+           Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);
+        }
     </div>
 </div>
