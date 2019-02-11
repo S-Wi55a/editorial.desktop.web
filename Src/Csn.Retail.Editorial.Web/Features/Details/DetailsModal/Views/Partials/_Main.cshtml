@@ -10,11 +10,11 @@
 <div class="article @Model.ArticleType.ToLower() @Model.ArticleTemplateType.ToString().ToLower()">
     @if (isNarrow)
     {
-        Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_NarrowHeader.cshtml", Model);
+        Html.RenderPartial("Partials/Head/_NarrowHeader", Model);
     }
     else
     {
-        Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_ArticleType.cshtml", Model);
+        Html.RenderPartial("Partials/Content/_ArticleTypeAndSocialIcons", Model);
         Html.RenderPartial("Partials/Content/_ArticleHeader", Model);
     }
 
@@ -22,7 +22,7 @@
 
     @{ Html.RenderPartial("Partials/Content/_ArticleBody", Model); }
 
-    @{ Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_Contributors.cshtml", Model); }
+    @{ Html.RenderPartial("Partials/Content/_Contributors", Model); }
 
     @{ Html.RenderPartial("_Disclaimer"); }
 

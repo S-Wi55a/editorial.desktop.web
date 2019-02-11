@@ -38,7 +38,7 @@ loaded.then(() => {
     (function moreArticles(d) {
 
         if (d.querySelector('.more-articles-placeholder')) {
-            csn_editorial.moreArticles.hooks = () => disableExternalLinks(moreArticlesScope);
+            csn_editorial.moreArticles.hooks = () => disableNonArticleLinks(moreArticlesScope);
             (function moreArticles() {
                 import ( /* webpackChunkName: "More-Articles" */ 'MoreArticles/moreArticles-component.js').then(moreArticles => {}).catch(function(err) {
                     console.log('Failed to load More-Articles', err);
@@ -53,7 +53,7 @@ loaded.then(() => {
     (function alsoConsider(d) {
 
         if (d.querySelector('.also-consider-placeholder')) {
-            csn_editorial.moreArticles.hooks = () => disableExternalLinks(alsoConsiderScope);
+            csn_editorial.moreArticles.hooks = () => disableNonArticleLinks(alsoConsiderScope);
             (function alsoConsider() {
                 import ( /* webpackChunkName: "Also-Consider" */ 'AlsoConsider/alsoConsider-component.js').then(function(alsoConsider) {}).catch(function(err) {
                     console.log('Failed to load alsoConsider', err);
@@ -120,10 +120,10 @@ let moreArticlesScope = document.querySelector('.more-articles-placeholder');
 let alsoConsiderScope = document.querySelector('.also-consider-placeholder');
 
 contentLoaded.then(() => {
-    disableExternalLinks(contentScope);
+    disableNonArticleLinks(contentScope);
 });
 
-let disableExternalLinks = (scope) => {
+let disableNonArticleLinks = (scope) => {
     [...scope.getElementsByTagName('a')].forEach((element, index, array) => {
         let articleUrl = element.getAttribute('href');
         if(articleUrl) {

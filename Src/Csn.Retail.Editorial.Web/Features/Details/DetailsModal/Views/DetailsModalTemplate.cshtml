@@ -22,7 +22,7 @@
 }
 
 @section TopScripts {
-    @Html.AssetJs("details.modal.vendor", LoadType.Defer)
+    @Html.AssetJs("details.vendor", LoadType.Defer)
     @Html.AssetJs("details-modal-page--" + tenantName, LoadType.Defer)
     @Html.AssetJs("csn.displayAds--" + tenantName, LoadType.Defer)
 }
@@ -35,7 +35,7 @@
 
         @if (!isWide)
         {
-            Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_Aside.cshtml");
+            Html.RenderPartial("Partials/_Aside");
         }
     </article>
 

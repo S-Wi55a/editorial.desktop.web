@@ -45,6 +45,12 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             {
                 result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
                 result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
+                result.ArticleViewModel.SocialMetaData = null;
+                result.ArticleViewModel.StockListingData = null;
+                foreach (var contributor in result.ArticleViewModel.Contributors)
+                {
+                    contributor.LinkUrl = null;
+                }
             }
         }
     }
