@@ -86,7 +86,6 @@ let updateContent = function (frame, el, container, cb) {
     if (!lock && query) {
         updateButton(el, 'data-disabled', 1) //Prevent multiple requests
         frame.classList.add('loading')
-
         Ajax.get(query, (json) => {
             json = JSON.parse(json)
             if (json.nextQuery) {
@@ -99,9 +98,6 @@ let updateContent = function (frame, el, container, cb) {
             frame.classList.remove('loading')
             updateList(container, json)
             cb()
-            if(typeof csn_editorial.moreArticles.hooks === 'function') {
-                csn_editorial.moreArticles.hooks();
-            }
         })
     }
 }
