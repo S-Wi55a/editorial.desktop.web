@@ -649,6 +649,7 @@
     <Compile Include="Features\Shared\Constants\EditorialQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
+    <Content Include="Features\Details\Assets\details-modal-page.js" />
     <Content Include="Features\Details\Assets\Js\details.vendor.js" />
     <Content Include="Features\Details\Assets\Js\Modules\DisableNonArticleLinks\disableNonArticleLinks.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />

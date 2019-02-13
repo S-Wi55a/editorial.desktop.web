@@ -19,13 +19,13 @@
     }
 
     @Html.AssetCss("details-page--" + tenantName)
-    @Html.AssetCss("details-modal--" + tenantName)
+    @Html.AssetCss("details-modal-page--" + tenantName)
 }
 
 @section TopScripts {
     @Html.AssetJs("details.vendor", LoadType.Defer)
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
-    @Html.AssetJs("details-modal--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("details-modal-page--" + tenantName, LoadType.Defer)
     @Html.AssetJs("csn.displayAds--" + tenantName, LoadType.Defer)
 }
 
