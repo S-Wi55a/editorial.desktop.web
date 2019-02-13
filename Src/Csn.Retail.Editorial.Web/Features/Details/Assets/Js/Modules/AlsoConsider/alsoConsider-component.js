@@ -15,8 +15,9 @@ const makeQuery = (url, el, view, cb = () => { }, onError = () => { }) => {
             //update list
             el.innerHTML = view(JSON.parse(resp))
             cb()
-            if(typeof csn_editorial.alsoConsider.hooks === 'function') {
-                csn_editorial.alsoConsider.hooks();
+            if(csn_editorial.detailsModal) {
+                const disableNonArticleLinks = require('DisableNonArticleLinks/disableNonArticleLinks.js').default;
+                disableNonArticleLinks(scope);
             }
         },
         () => {

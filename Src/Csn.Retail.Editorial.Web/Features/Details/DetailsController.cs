@@ -93,7 +93,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
             {
-                Id = networkId,
+                Id = networkId.ToUpper(),
                 IsPreview = false,
                 DisplayType = DisplayType.DetailsModal,
                 Source = __source
@@ -105,7 +105,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (response.ArticleViewModel != null)
             {
-                return View("~/Features/Details/DetailsModal/Views/DetailsModalTemplate.cshtml", response.ArticleViewModel);
+                return View("DetailsModal/DetailsModalTemplate", response.ArticleViewModel);
             }
 
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();

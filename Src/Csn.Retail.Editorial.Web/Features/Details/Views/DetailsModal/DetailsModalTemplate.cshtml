@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
     }
 
-    @Html.AssetCss("details-modal-page--" + tenantName)
+    @Html.AssetCss("details-page--" + tenantName)
 }
 
 @section TopScripts {
@@ -31,7 +31,7 @@
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
 
-        @{ Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_Main.cshtml"); }
+        @{ Html.RenderPartial("~/Features/Details/Views/DetailsModal/Partials/_Main.cshtml"); }
 
         @if (!isWide)
         {
@@ -40,7 +40,7 @@
     </article>
 
     @{ Html.RenderPartial("Partials/Modal/_Modal"); }
-    @{ Html.RenderPartial("~/Features/Details/DetailsModal/Views/Partials/_DetailsModalSettings.cshtml"); }
+    @{ Html.RenderPartial("~/Features/Details/Views/DetailsModal/Partials/_DetailsModalSettings.cshtml"); }
 </div>
 
 @section BottomScripts

@@ -17,7 +17,7 @@ export default function () {
     const modalEnabled = !csn_editorial.detailsModal ? true : false;
 
     // Set up slider and init slider
-    initSliderByLayoutType(layoutType, modalEnabled)
+    initSliderByLayoutType(layoutType);
 
     if (modalContainer) {
         const scope = document.querySelector('.hero');
@@ -43,7 +43,7 @@ export default function () {
     }
 }
 
-function initSliderByLayoutType(layoutType, modalEnabled) {
+function initSliderByLayoutType(layoutType) {
 
     let swiperOptions = {
         // Optional parameters

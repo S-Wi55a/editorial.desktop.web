@@ -1,6 +1,6 @@
 ﻿// Details Page css files
-require('./Css/Details-page.scss');
-if(!!csn_editorial.detailsModal) require('../DetailsModal/Assets/Css/details-modal-page.scss');
+require('./Css/details-page.scss');
+if(csn_editorial.detailsModal) require('./Css/details-modal-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
@@ -189,9 +189,10 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
     })
 }
 
-//Disable external links
-contentLoaded.then(() => {
-    if (!!csn_editorial.detailsModal && typeof csn_editorial.detailsModal.disableNonArticleLinks === 'function') {
-        csn_editorial.detailsModal.disableNonArticleLinks(document);
-    }
-});
+//Disable Non Article Links
+if (csn_editorial.detailsModal) {
+    contentLoaded.then(() => {
+        const disableNonArticleLinks = require('DisableNonArticleLinks/disableNonArticleLinks.js').default;
+        disableNonArticleLinks(document);
+    });
+}

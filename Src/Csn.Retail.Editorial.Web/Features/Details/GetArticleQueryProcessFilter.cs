@@ -41,10 +41,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             _contextStore.Set(detailsPageContext);
 
-            if (query.DisplayType == DisplayType.DetailsModal && !result.ArticleViewModel.InsightsData.MetaData.ContainsKey("displayType"))
+            if (query.DisplayType == DisplayType.DetailsModal)
             {
-                result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
-                result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
+                if(!result.ArticleViewModel.InsightsData.MetaData.ContainsKey("displayType")) result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
+                if(!result.ArticleViewModel.InsightsData.MetaData.ContainsKey("source")) result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
                 result.ArticleViewModel.SocialMetaData = null;
                 result.ArticleViewModel.StockListingData = null;
                 foreach (var contributor in result.ArticleViewModel.Contributors)
