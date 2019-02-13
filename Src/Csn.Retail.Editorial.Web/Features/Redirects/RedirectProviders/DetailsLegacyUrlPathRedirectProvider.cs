@@ -58,6 +58,11 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects.RedirectProviders
             return hit.DetailsPageUrlPath;
         }
 
+        public bool Matches(RedirectRule redirectRule, Uri uri)
+        {
+            return new Regex(redirectRule.MatchRule, RegexOptions.IgnoreCase).IsMatch($"/{uri.AbsolutePathUnescaped().Trim('/')}/");
+        }
+
         private class RyvussRedirectResponse
         {
             public int  Count { get; set; }
