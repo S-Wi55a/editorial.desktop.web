@@ -1,0 +1,1 @@
+﻿require('./Css/details-modal-page.scss');

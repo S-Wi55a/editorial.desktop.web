@@ -1,6 +1,5 @@
 ﻿// Details Page css files
 require('./Css/details-page.scss');
-if(csn_editorial.detailsModal) require('./Css/details-modal-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
