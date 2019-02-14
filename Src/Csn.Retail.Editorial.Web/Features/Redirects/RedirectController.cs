@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Errors;
 
 namespace Csn.Retail.Editorial.Web.Features.Redirects
@@ -25,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
             }
             var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
             errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
-            return errorsController.Error404Child();
+            return errorsController.Error404CatchAll().Result;
         }
     }
 }

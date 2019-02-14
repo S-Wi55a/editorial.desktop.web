@@ -46,7 +46,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
             var redirectRules = _redirectConfigProvider.Get(_tenantProvider.Current().Name.ToLower());
             IRedirectProvider redirectRuleProvider;
             
-            return redirectRules != null && redirectRules.Any() && redirectRules.Any(rule =>
+            return redirectRules != null && redirectRules.Any(rule =>
             {
                 redirectRuleProvider = rule.GetRegiRedirectProvider();
                 return redirectRuleProvider.Matches(rule, _requestContextWrapper.Url);

@@ -8,7 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
     {
         public static RedirectInstruction GetRedirectInstruction(this RedirectRule input, Uri uri)
         {
-            var redirectProvider = input.GetRegiRedirectProvider();
+            var redirectProvider = input.GetRedirectProvider();
             var redirectUrl = redirectProvider?.GetRedirectUrl(input, uri);
 
             if (string.IsNullOrEmpty(redirectUrl)) return null;
@@ -26,7 +26,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
             };
         }
 
-        public static IRedirectProvider GetRegiRedirectProvider(this RedirectRule redirectRule)
+        public static IRedirectProvider GetRedirectProvider(this RedirectRule redirectRule)
         {
             switch (redirectRule.RuleType)
             {
