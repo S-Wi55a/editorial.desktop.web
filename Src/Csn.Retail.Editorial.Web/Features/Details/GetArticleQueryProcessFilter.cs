@@ -47,6 +47,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                 if(!result.ArticleViewModel.InsightsData.MetaData.ContainsKey("source")) result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
                 result.ArticleViewModel.SocialMetaData = null;
                 result.ArticleViewModel.StockListingData = null;
+                result.ArticleViewModel.MoreArticleData = null;
+                result.ArticleViewModel.SpecDataGetVariantsUrl = null;
+                result.ArticleViewModel.DisqusData = null;
+                result.ArticleViewModel.PolarNativeAdsData = null;
                 foreach (var contributor in result.ArticleViewModel.Contributors)
                 {
                     contributor.LinkUrl = null;

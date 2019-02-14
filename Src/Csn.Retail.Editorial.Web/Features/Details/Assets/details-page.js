@@ -37,7 +37,7 @@ loaded.then(() => {
 loaded.then(() => {
     (function moreArticles(d) {
 
-        if (d.querySelector('.more-articles-placeholder') && !csn_editorial.detailsModal) {
+        if (d.querySelector('.more-articles-placeholder')) {
             (function moreArticles() {
                 import ( /* webpackChunkName: "More-Articles" */ 'MoreArticles/moreArticles-component.js').then(function(moreArticles) {}).catch(function(err) {
                     console.log('Failed to load More-Articles', err);
@@ -50,7 +50,7 @@ loaded.then(() => {
 //Lazy load Stock For Sale JS
 loaded.then(() => {
     (function stockForSale(d) {
-        if (d.querySelector('.stock-for-sale-placeholder') && !csn_editorial.detailsModal) {
+        if (d.querySelector('.stock-for-sale-placeholder')) {
             (function stockForSale() {
                 import ( /* webpackChunkName: "Stock-For-Sale" */ 'StockForSale/stockForSale-component.js').then(function(stockForSale) {}).catch(function(err) {
                     console.log('Failed to load Stock-For-Sale', err);
@@ -63,7 +63,7 @@ loaded.then(() => {
 //Lazy load Spec Module
 loaded.then(() => {
     (function specModule(d) {
-    if (csn_editorial.specVariantsQuery && !csn_editorial.detailsModal) {
+    if (csn_editorial.specVariantsQuery) {
         // Add placeholder 
         let el = d.querySelectorAll('.article__copy p');
         el = (el.length >= 2) ? el[1] : (el.length ? el[0] : undefined);
@@ -94,38 +94,36 @@ loaded.then(() => {
 });
 
 //Lazy load Disqus
-if(!csn_editorial.detailsModal) {
-    let disqus = function(d, w, selector) {
-        const disqusSelector = d.querySelector(selector);
-        if (disqusSelector) {
+let disqus = function(d, w, selector) {
+    const disqusSelector = d.querySelector(selector);
+    if (disqusSelector) {
 
-            // Set scene
-            const triggerElement = selector
-            const triggerHook = 1
-            const offset = (-1 * w.innerHeight) * 2;
-            w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
+        // Set scene
+        const triggerElement = selector
+        const triggerHook = 1
+        const offset = (-1 * w.innerHeight) * 2;
+        w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
 
-            let scene = new ScrollMagic.Scene({
-                triggerElement: triggerElement,
-                triggerHook: triggerHook,
-                offset: offset,
-                reverse: false
+        let scene = new ScrollMagic.Scene({
+            triggerElement: triggerElement,
+            triggerHook: triggerHook,
+            offset: offset,
+            reverse: false
+        })
+            .on("enter", () => {
+                require('Disqus/disqus.js').default();
+                scene.destroy(true)
+                scene = null
             })
-                .on("enter", () => {
-                    require('Disqus/disqus.js').default();
-                    scene.destroy(true)
-                    scene = null
-                })
-                .addTo(w.scrollMogicController);
-        }
+            .addTo(w.scrollMogicController);
     }
-    disqus(document, window, '#disqus_thread');
 }
+disqus(document, window, '#disqus_thread');
 
 //Lazy Native Ads
 loaded.then(() => {
     (function nativeAds() {
-        if (!!csn_editorial && !!csn_editorial.nativeAds && !csn_editorial.detailsModal) {
+        if (!!csn_editorial && !!csn_editorial.nativeAds) {
             (function nativeAds() {
                 import
                 (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})

@@ -35,7 +35,6 @@
             Html.RenderPartial("Partials/_Header");
         }
     }
-    
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
@@ -56,12 +55,6 @@
 {
     @{ Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData); }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
-    @if (Model.MoreArticleData != null)
-    {
-        Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData);
-    }
-    @if (Model.PolarNativeAdsData != null)
-    {
-        Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData);
-    }
+    @{ Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData); }
+    @{ Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData); }
 }

@@ -33,7 +33,7 @@
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
 
-        @{ Html.RenderPartial("~/Features/Details/Views/DetailsModal/Partials/_Main.cshtml"); }
+        @{ Html.RenderPartial("Partials/_Main"); }
 
         @if (!isWide)
         {

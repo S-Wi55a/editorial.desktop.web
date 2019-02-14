@@ -830,7 +830,6 @@
     <Content Include="Features\Errors\Views\es-es\ErrorGeneric.cshtml" />
     <Content Include="Features\Details\Views\DetailsModal\DetailsModalTemplate.cshtml" />
     <Content Include="Features\Details\Assets\Css\details-modal-page.scss" />
-    <Content Include="Features\Details\Views\DetailsModal\Partials\_Main.cshtml" />
     <Content Include="Features\Details\Views\DetailsModal\Partials\_DetailsModalSettings.cshtml" />
     <Content Include="Features\Details\Assets\Css\details-page.scss" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
