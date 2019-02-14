@@ -8,6 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects.RedirectProviders
     [AutoBindSelf]
     public class RegexRedirectProvider : IRedirectProvider
     {
+
         public string GetRedirectUrl(RedirectRule redirectRule, Uri uri)
         {
             var regex = new Regex(redirectRule.MatchRule, RegexOptions.IgnoreCase);
@@ -19,6 +20,11 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects.RedirectProviders
             if (matches.Count != 1) return null;
 
             return Regex.Replace(absolutePathUnescaped, redirectRule.MatchRule, redirectRule.RedirectInstruction);
+        }
+
+        public bool Matches(RedirectRule redirectRule, Uri uri)
+        {
+            return new Regex(redirectRule.MatchRule, RegexOptions.IgnoreCase).IsMatch($"/{uri.AbsolutePathUnescaped().Trim('/')}/");
         }
     }
 }

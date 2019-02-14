@@ -8,18 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
     {
         public static RedirectInstruction GetRedirectInstruction(this RedirectRule input, Uri uri)
         {
-            IRedirectProvider redirectProvider = null;
-
-            switch (input.RuleType)
-            {
-                case RedirectRuleType.Regex:
-                    redirectProvider = DependencyResolver.Current.GetService<RegexRedirectProvider>();
-                    break;
-                case RedirectRuleType.DetailsLegacyUrlPaths:
-                    redirectProvider = DependencyResolver.Current.GetService<DetailsLegacyUrlPathRedirectProvider>();
-                    break;
-            }
-
+            var redirectProvider = input.GetRedirectProvider();
             var redirectUrl = redirectProvider?.GetRedirectUrl(input, uri);
 
             if (string.IsNullOrEmpty(redirectUrl)) return null;
@@ -35,6 +24,18 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
                 RuleType = input.RuleType,
                 RedirectResult = new RedirectResult(redirectUrl, true)
             };
+        }
+
+        public static IRedirectProvider GetRedirectProvider(this RedirectRule redirectRule)
+        {
+            switch (redirectRule.RuleType)
+            {
+                case RedirectRuleType.Regex:
+                    return DependencyResolver.Current.GetService<RegexRedirectProvider>();
+                case RedirectRuleType.DetailsLegacyUrlPaths:
+                    return DependencyResolver.Current.GetService<DetailsLegacyUrlPathRedirectProvider>();
+                default: return null;
+            }
         }
     }
 }

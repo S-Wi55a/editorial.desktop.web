@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Csn.MultiTenant;
+using Csn.Retail.Editorial.Web.Features.Redirects.RedirectProviders;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Redirects;
@@ -22,8 +23,8 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
 
         private RedirectInstruction _redirectInstruction;
 
-        public RedirectService(IRedirectConfigProvider redirectConfigProvider, 
-                            IRequestContextWrapper requestContextWrapper, 
+        public RedirectService(IRedirectConfigProvider redirectConfigProvider,
+                            IRequestContextWrapper requestContextWrapper,
                             ITenantProvider<TenantInfo> tenantProvider)
         {
             _redirectConfigProvider = redirectConfigProvider;
@@ -42,7 +43,14 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
 
         public bool CurrentRequestRequiresRedirect()
         {
-            return GetRedirect().RedirectResult != null;
+            var redirectRules = _redirectConfigProvider.Get(_tenantProvider.Current().Name.ToLower());
+            IRedirectProvider redirectRuleProvider;
+            
+            return redirectRules != null && redirectRules.Any(rule =>
+            {
+                redirectRuleProvider = rule.GetRegiRedirectProvider();
+                return redirectRuleProvider.Matches(rule, _requestContextWrapper.Url);
+            });
         }
 
         private RedirectInstruction GetRedirectInstructionForRequest()
