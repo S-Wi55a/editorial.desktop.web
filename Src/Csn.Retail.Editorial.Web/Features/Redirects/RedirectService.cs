@@ -48,7 +48,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
             
             return redirectRules != null && redirectRules.Any(rule =>
             {
-                redirectRuleProvider = rule.GetRegiRedirectProvider();
+                redirectRuleProvider = rule.GetRedirectProvider();
                 return redirectRuleProvider.Matches(rule, _requestContextWrapper.Url);
             });
         }
