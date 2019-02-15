@@ -1,6 +1,23 @@
 ﻿// Overwrites just for modal
 body {
     padding-top: 0;
+    height: 100%;
+    overflow-y: scroll;
+    /* Internal sidebar */
+    /* width */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+        box-shadow: none;
+        border-radius: 10px;
+    }
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #bfbfbf;
+        border-radius: 10px;
+    }
 }
 
 .article-type--video,
