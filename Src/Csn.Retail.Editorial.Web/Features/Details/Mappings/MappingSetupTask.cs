@@ -14,18 +14,21 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     {
         private readonly IHeroSectionMapper _heroSectionMapper;
         private readonly ISeoDataMapper _seoDataMapper;
+        private readonly ISeoSchemaDataMapper _seoSchemaDataMapper;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsMapper;
         private readonly IUseDropCaseMapper _useDropCaseMapper;
         private readonly IArticleTypeLabelMapper _articleTypeLabelMapper;
 
         public MappingSetupTask(IHeroSectionMapper heroSectionMapper,
                                 ISeoDataMapper seoDataMapper,
+                                ISeoSchemaDataMapper seoSchemaDataMapper,
                                 IPolarNativeAdsDataMapper polarNativeAdsMapper,
                                 IUseDropCaseMapper useDropCaseMapper,
                                 IArticleTypeLabelMapper articleTypeLabelMapper)
         {
             _heroSectionMapper = heroSectionMapper;
             _seoDataMapper = seoDataMapper;
+            _seoSchemaDataMapper = seoSchemaDataMapper;
             _polarNativeAdsMapper = polarNativeAdsMapper;
             _useDropCaseMapper = useDropCaseMapper;
             _articleTypeLabelMapper = articleTypeLabelMapper;
@@ -36,6 +39,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)))
                 .ForMember(dest => dest.UseDropCase, opt => opt.MapFrom(src => _useDropCaseMapper.Map(src)))
                 .ForMember(dest => dest.SeoData, opt => opt.MapFrom(src => _seoDataMapper.Map(src.SeoData)))
+                .ForMember(dest => dest.SeoSchemaMarkup, opt => opt.MapFrom(src => _seoSchemaDataMapper.Map(src)))
                 .ForMember(dest => dest.PolarNativeAdsData, opt => opt.MapFrom(src => _polarNativeAdsMapper.Map(src)))
                 .ForMember(dest => dest.MoreArticleData, opt => opt.MapFrom(src => src.MoreArticleData))
                 .ForMember(dest => dest.ArticleTypeLabel, opt => opt.MapFrom(src => _articleTypeLabelMapper.Map(src)))

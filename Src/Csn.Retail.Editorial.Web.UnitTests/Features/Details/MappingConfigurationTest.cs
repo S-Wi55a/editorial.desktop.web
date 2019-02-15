@@ -13,11 +13,12 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         {
             var heroMapper = Substitute.For<IHeroSectionMapper>();
             var seoDataMapper = Substitute.For<ISeoDataMapper>();
+            var seoSchemaDataMapper = Substitute.For<ISeoSchemaDataMapper>();
             var polarNativeAdsMapper = Substitute.For<IPolarNativeAdsDataMapper>();
             var useDropCaseMapper = Substitute.For<IUseDropCaseMapper>();
             var articleTypeLabelMapper = Substitute.For<IArticleTypeLabelMapper>();
 
-            Mapper.Initialize(cfg => new MappingSetupTask(heroMapper, seoDataMapper, polarNativeAdsMapper, useDropCaseMapper, articleTypeLabelMapper).Run(cfg));
+            Mapper.Initialize(cfg => new MappingSetupTask(heroMapper, seoDataMapper, seoSchemaDataMapper, polarNativeAdsMapper, useDropCaseMapper, articleTypeLabelMapper).Run(cfg));
             Mapper.AssertConfigurationIsValid();
         }
     }
