@@ -181,7 +181,8 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
     loaded.then(function() {     
         if (aside) {
             const topReference = !csn_editorial.detailsModal ? 0 : -20;
-            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside, 'article .article', 137, topReference);
+            const baseReference = !csn_editorial.detailsModal ? 137 : 0;
+            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside, 'article .article', baseReference, topReference);
         }
     })
 }
