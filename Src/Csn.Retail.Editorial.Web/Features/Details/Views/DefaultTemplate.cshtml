@@ -35,7 +35,7 @@
             Html.RenderPartial("Partials/_Header");
         }
     }
-    
+
 
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
@@ -56,6 +56,8 @@
 {
     @{ Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData); }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
+    @{ Html.RenderPartial("Partials/SeoSchema/_SeoSchemaMarkup", Model.SeoSchemaMarkup);}
+
     @if (Model.MoreArticleData != null)
     {
         Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData);

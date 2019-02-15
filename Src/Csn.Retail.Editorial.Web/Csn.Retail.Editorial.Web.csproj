@@ -561,6 +561,7 @@
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\ArticleDetailsCacheStore.cs" />
+    <Compile Include="Features\Details\Mappings\SeoSchemaDataMapper.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidator.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteConstraint.cs" />
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
@@ -623,6 +624,7 @@
     <Compile Include="Features\Shared\Models\CsnInsightsData.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
+    <Compile Include="Features\Shared\Models\SeoSchemaMarkup.cs" />
     <Compile Include="Features\Shared\Models\Vertical.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
@@ -656,6 +658,7 @@
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <Content Include="Features\Shared\Views\Partials\_CsnEditorialEndpoints.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_inlinebanner.scss" />
+    <Content Include="Features\Shared\Views\Partials\SeoSchema\_SeoSchemaMarkup.cshtml" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponentArrows.tsx" />
@@ -744,9 +747,16 @@
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Helpers\MarkupHelper.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Helpers\SchemaAttributeHelper.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\ArticleSchemaMarkupAttributes.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\NewsArticleSchemaMarkup.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\ReviewArticleSchemaMarkup.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Shared\Constants.cs" />
     <Compile Include="Features\Shared\Services\RyvussDataService.cs" />
     <Compile Include="Features\Shared\Settings\EditorialRouteSettings.cs" />
     <Compile Include="Features\Shared\Settings\ImageServerSettings.cs" />
+    <Compile Include="Features\Shared\Settings\SeoSchemaSettings.cs" />
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />

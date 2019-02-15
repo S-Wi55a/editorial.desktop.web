@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
+//using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models;
 
 namespace Csn.Retail.Editorial.Web.Features.Details.Models
 {
@@ -35,6 +36,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Models
         public DisqusData DisqusData { get; set; }
         public MoreArticleData MoreArticleData { get; set; }
         public Shared.Models.SeoData SeoData { get; set; }
+        public SeoSchemaMarkup SeoSchemaMarkup { get; set; }
         public CsnInsightsData InsightsData { get; set; }
         public StockListingData StockListingData { get; set; }
         public AlsoConsiderData AlsoConsiderData { get; set; }
