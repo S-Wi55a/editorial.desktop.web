@@ -18,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         public string DatePublished { get; set; }
         public string DateModified { get; set; }
         public string ArticleBody { get; set; }
-        public string MainEntityOfPage { get; set; }
+        public MainEntityOnPage MainEntityOfPage { get; set; }
         public IContentContributor Author { get; set; }
         public IContentContributor Publisher { get; set; }
         public IEnumerable<Image> Image { get; set; }

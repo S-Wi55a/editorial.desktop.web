@@ -747,7 +747,6 @@
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
-    <Compile Include="Features\Shared\SeoSchema\Helpers\MarkupHelper.cs" />
     <Compile Include="Features\Shared\SeoSchema\Helpers\SchemaAttributeHelper.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\ArticleSchemaMarkupAttributes.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\NewsArticleSchemaMarkup.cs" />

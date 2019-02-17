@@ -6,7 +6,7 @@ using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using Image = Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models.Image;
-
+using System.Text.RegularExpressions;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
 {
@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
                 return new Author()
                 {
                     Name = contributors.FirstOrDefault().Name,
-                    Url = MarkupHelper.GenerateFullUrlPath(tenant.SiteDomain, contributors.FirstOrDefault().LinkUrl),
+                    Url = $"https://{tenant.SiteDomain}{contributors.FirstOrDefault().LinkUrl}",
                     Image = new Image()
                     {
                         Url = contributors.FirstOrDefault().ImageUrl
@@ -59,15 +59,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
             };
         }
 
-        public static MainEntityOnPage MainEntityOnPageMarkup(string tenantSiteDomain, string detailsPageUrlPath)
+        public static MainEntityOnPage MainEntityOnPageMarkup(string fullUrlPath)
         {
             return new MainEntityOnPage()
             {
-                Id = MarkupHelper.GenerateFullUrlPath(tenantSiteDomain, detailsPageUrlPath),
+                Id = fullUrlPath
             };
         }
 
-        
         public static string BodyCopyMarkup(List<ContentSection> contentSections)
         {
             var bodyContent = contentSections.Where(section => section.Content.ToLower().Contains("<p>"));
@@ -77,7 +76,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
                 return contentSections.FirstOrDefault().Content;
             }
 
-            return MarkupHelper.RemoveHTMLTags(bodyContent.FirstOrDefault().Content);
+            return Regex.Replace(bodyContent.FirstOrDefault().Content, "<[^>]*>", "");
         }
 
         
