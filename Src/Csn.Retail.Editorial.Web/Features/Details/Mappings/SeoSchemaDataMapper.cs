@@ -6,6 +6,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models;
 using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers;
+using System.Web;
 
 namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 {
@@ -17,10 +18,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     [AutoBind]
     public class SeoSchemaDataMapper : ISeoSchemaDataMapper
     {
-        private readonly SeoSchemaSettings _schemaSettings;
+        private readonly ISeoSchemaSettings _schemaSettings;
         private readonly ITenantProvider<TenantInfo> _tenantInfo;
 
-        public SeoSchemaDataMapper(SeoSchemaSettings schemaSettings, ITenantProvider<TenantInfo> tenantInfo)
+        public SeoSchemaDataMapper(ISeoSchemaSettings schemaSettings, ITenantProvider<TenantInfo> tenantInfo)
         {
             _schemaSettings = schemaSettings;
             _tenantInfo = tenantInfo;
@@ -62,7 +63,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
                 ArticleBody = SchemaAttributeHelper.BodyCopyMarkup(article.ContentSections),
-                MainEntityOfPage = MarkupHelper.GenerateFullUrlPath(_tenantInfo.Current().SiteDomain, article.DetailsPageUrlPath),
+                MainEntityOfPage = SchemaAttributeHelper.MainEntityOnPageMarkup(HttpContext.Current.Request.Url.AbsoluteUri),
                 Author = SchemaAttributeHelper.AuthorMarkup(article.Contributors, _tenantInfo.Current(), _schemaSettings.LogoImageUrlPath),
                 Publisher = SchemaAttributeHelper.PublisherMarkup(_tenantInfo.Current(), _schemaSettings.LogoImageUrlPath),
                 Image = SchemaAttributeHelper.ImageMarkup(article.HeroSection.Images)
@@ -84,15 +85,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
                 ReviewBody = SchemaAttributeHelper.BodyCopyMarkup(article.ContentSections),
-                MainEntityOfPage = SchemaAttributeHelper.MainEntityOnPageMarkup(_tenantInfo.Current().SiteDomain, article.DetailsPageUrlPath),
+                MainEntityOfPage = SchemaAttributeHelper.MainEntityOnPageMarkup(HttpContext.Current.Request.Url.AbsoluteUri),
                 About = SchemaAttributeHelper.AboutMarkup(article.Headline),
                 Author = SchemaAttributeHelper.AuthorMarkup(article.Contributors, _tenantInfo.Current(), _schemaSettings.LogoImageUrlPath),
                 Publisher = SchemaAttributeHelper.PublisherMarkup(_tenantInfo.Current(), _schemaSettings.LogoImageUrlPath),
                 ItemReviewed = SchemaAttributeHelper.ItemsReviewedSchemaMarkup(_tenantInfo.Current(), article.Items),
                 ReviewRating = SchemaAttributeHelper.ExpertCategoryRatingsMarkup(article),
                 Image = SchemaAttributeHelper.ImageMarkup(article.HeroSection.Images)
-            };
-            
+            };   
         }
-    }
+    }   
 }
