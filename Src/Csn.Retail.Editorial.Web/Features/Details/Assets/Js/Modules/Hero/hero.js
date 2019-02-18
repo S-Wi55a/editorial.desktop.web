@@ -13,8 +13,8 @@ export default function () {
 
     const layoutType = multipleImageLayout || imageAndVideoLayout || singleImageLayout || doubleImageLayout
 
-    // Check if enable gallery modal
-    const modalEnabled = !csn_editorial.detailsModal ? true : false;
+    // Check if gallery modal is enabled
+    const galleryModalEnabled = !csn_editorial.detailsModal; // Disable gallery modal if its details modal page
 
     // Set up slider and init slider
     initSliderByLayoutType(layoutType);
@@ -24,7 +24,7 @@ export default function () {
 
         if (!scope) return;
 
-        if (modalEnabled) {
+        if (galleryModalEnabled) {
             window.csn_modal = window.csn_modal || new Modal()
 
             //Add event listeners to hero content
