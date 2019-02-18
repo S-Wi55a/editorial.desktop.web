@@ -14,6 +14,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         [JsonProperty(PropertyName = "@type")]
         public string Type { get; } = SchemaType.ReviewArticle;
 
+        public string inLanguage { get; set; }
         public string Headline { get; set; }
         public string DatePublished { get; set; }
         public string DateModified { get; set; }
