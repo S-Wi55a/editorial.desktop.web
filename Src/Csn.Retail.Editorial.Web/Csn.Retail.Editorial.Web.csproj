@@ -624,7 +624,7 @@
     <Compile Include="Features\Shared\Models\CsnInsightsData.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
-    <Compile Include="Features\Shared\Models\SeoSchemaMarkup.cs" />
+    <Compile Include="Features\Shared\Models\SeoSchemaMarkupBase.cs" />
     <Compile Include="Features\Shared\Models\Vertical.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
@@ -747,7 +747,7 @@
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
-    <Compile Include="Features\Shared\SeoSchema\Helpers\SchemaAttributeHelper.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Helpers\SchemaMarkupBuilder.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\ArticleSchemaMarkupAttributes.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\NewsArticleSchemaMarkup.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\ReviewArticleSchemaMarkup.cs" />

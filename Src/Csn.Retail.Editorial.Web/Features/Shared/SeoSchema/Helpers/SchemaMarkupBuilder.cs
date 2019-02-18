@@ -10,91 +10,98 @@ using System.Text.RegularExpressions;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
 {
-    public class SchemaAttributeHelper
+    public class SchemaMarkupBuilder
     {
 
-        public static About AboutMarkup(string descriptor)
+        TenantInfo _tenant { get; set; }
+        ArticleDetailsDto _article { get; set; }
+
+        public SchemaMarkupBuilder(TenantInfo tenant, ArticleDetailsDto article)
+        {
+            _tenant = tenant;
+            _article = article;
+        }
+
+        public About AboutMarkup()
         {
             return new About()
             {
-                Name = descriptor
+                Name = _article.Headline
             };
         }
 
-        public static IContentContributor AuthorMarkup(List<Contributor> contributors, TenantInfo tenant, string LogoPathUrl)
+        public IContentContributor AuthorMarkup(string LogoPathUrl)
         {
-            if (contributors.Any())
+            if (_article.Contributors.Any())
             {
                 return new Author()
                 {
-                    Name = contributors.FirstOrDefault().Name,
-                    Url = $"https://{tenant.SiteDomain}{contributors.FirstOrDefault().LinkUrl}",
+                    Name = _article.Contributors.FirstOrDefault().Name,
+                    Url = $"https://{_tenant.SiteDomain}{_article.Contributors.FirstOrDefault().LinkUrl}",
                     Image = new Image()
                     {
-                        Url = contributors.FirstOrDefault().ImageUrl
+                        Url = _article.Contributors.FirstOrDefault().ImageUrl
                     }
                 };
 
             }
             return new Publisher()
             {
-                Name = tenant.TenantName,
+                Name = _tenant.TenantName,
                 Logo = new Logo()
                 {
-                    Url = string.Format(LogoPathUrl, tenant.TenantName)
+                    Url = string.Format(LogoPathUrl, _tenant.TenantName)
                 },
             };
         }
 
-
-        public static Publisher PublisherMarkup(TenantInfo tenant, string LogoPathUrl)
+        public Publisher PublisherMarkup(string LogoPathUrl)
         {
             return new Publisher()
             {
-                Name = tenant.TenantName,
+                Name = _tenant.TenantName,
                 Logo = new Logo()
                 {
-                    Url = string.Format(LogoPathUrl, tenant.TenantName)
+                    Url = string.Format(LogoPathUrl, _tenant.TenantName)
                 }
             };
         }
 
-        public static MainEntityOnPage MainEntityOnPageMarkup(string fullUrlPath)
+        public MainEntityOnPage MainEntityOnPageMarkup(string fullUriPath)
         {
             return new MainEntityOnPage()
             {
-                Id = fullUrlPath
+                Id = fullUriPath
             };
         }
 
-        public static string BodyCopyMarkup(List<ContentSection> contentSections)
+        public string BodyCopyMarkup()
         {
-            var bodyContent = contentSections.Where(section => section.Content.ToLower().Contains("<p>"));
+            var bodyContent = _article.ContentSections.Where(section => section.Content.ToLower().Contains("<p>"));
 
             if (!bodyContent.Any())
             {
-                return contentSections.FirstOrDefault().Content;
+                return _article.ContentSections.FirstOrDefault().Content;
             }
 
             return Regex.Replace(bodyContent.FirstOrDefault().Content, "<[^>]*>", "");
         }
 
-        
-        public static IEnumerable<Image> ImageMarkup(List<Features.Shared.Proxies.EditorialApi.Image> imageCatalogue)
+        public IEnumerable<Image> ImageMarkup()
         {
-            return !imageCatalogue.IsNullOrEmpty() ? imageCatalogue.Select(image => new Image() { Url = image.Url}) : null;
+            var imageCatalogue = _article.HeroSection.Images;
+            return !imageCatalogue.IsNullOrEmpty() ? imageCatalogue.Select(image => new Image() { Url = image.Url }) : null;
         }
 
-
-        public static List<ItemReviewed> ItemsReviewedSchemaMarkup(TenantInfo tenant, List<EditorialItem> editorialItems)
+        public List<ItemReviewed> ItemsReviewedSchemaMarkup()
         {
             List<ItemReviewed> itemsReviews = new List<ItemReviewed>();
 
-            editorialItems.ForEach(item =>
+            _article.Items.ForEach(item =>
             {
                 itemsReviews.Add(new ItemReviewed()
                 {
-                    Type = tenant.SeoSchemaVehilceType,
+                    Type = _tenant.SeoSchemaVehicleType,
                     Name = item.Make,
                     Model = item.Model,
                     ModelDate = item.Year,
@@ -108,7 +115,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
             return itemsReviews;
         }
 
-        public static List<ReviewRating> ExpertCategoryRatingsMarkup(ArticleDetailsDto article)
+        public List<ReviewRating> ExpertCategoryRatingsMarkup()
         {
             var expertRatings = new List<ReviewRating> { };
 
@@ -116,13 +123,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
             {
                 expertRatings.Add(new ReviewRating()
                 {
-                    ReviewAspect = article.ExpertRatings.Heading,
-                    RatingValue = article.ExpertRatings.OverallRating,
+                    ReviewAspect = _article.ExpertRatings.Heading,
+                    RatingValue = _article.ExpertRatings.OverallRating,
                     BestRating = ReviewRatingValues.OverallBestRating,
                     WorstRating = ReviewRatingValues.OverallWorstRating
                 });
 
-                article.ExpertRatings.Items.ForEach(rating =>
+                _article.ExpertRatings.Items.ForEach(rating =>
                 {
                     expertRatings.Add(new ReviewRating()
                     {
