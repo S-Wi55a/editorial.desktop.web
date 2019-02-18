@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
 {
 
-    public class NewsArticleSchema : SeoSchemaMarkup
+    public class NewsArticleSchema : SeoSchemaMarkupBase
     {
         [JsonProperty(PropertyName = "@context")]
         public string Context { get; } = SchemaContext.ForSchemaOrg;
@@ -22,6 +22,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         public IContentContributor Author { get; set; }
         public IContentContributor Publisher { get; set; }
         public IEnumerable<Image> Image { get; set; }
-        
     }
 }

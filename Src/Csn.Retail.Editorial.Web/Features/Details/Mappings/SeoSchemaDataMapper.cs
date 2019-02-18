@@ -7,12 +7,13 @@ using System.Linq;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers;
 using System.Web;
+using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 {
     public interface ISeoSchemaDataMapper
     {
-        SeoSchemaMarkup Map(ArticleDetailsDto source);
+        SeoSchemaMarkupBase Map(ArticleDetailsDto source);
     }
 
     [AutoBind]
@@ -20,24 +21,21 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     {
         private readonly ISeoSchemaSettings _schemaSettings;
         private readonly ITenantProvider<TenantInfo> _tenantInfo;
-
+        
         public SeoSchemaDataMapper(ISeoSchemaSettings schemaSettings, ITenantProvider<TenantInfo> tenantInfo)
         {
             _schemaSettings = schemaSettings;
             _tenantInfo = tenantInfo;
         }
 
-        public SeoSchemaMarkup Map(ArticleDetailsDto source)
+        public SeoSchemaMarkupBase Map(ArticleDetailsDto source)
         {
-
-            if (!_tenantInfo.Current().SeoSchemaSupport) return new SeoSchemaMarkup() { };
-
+            if (!_tenantInfo.Current().SeoSchemaSupport) return new SeoSchemaMarkupBase() { };
             return SelectSchemaType(source);
         }
 
-        private SeoSchemaMarkup SelectSchemaType(ArticleDetailsDto source)
+        private SeoSchemaMarkupBase SelectSchemaType(ArticleDetailsDto source)
         {
-            
             //Review Schema
             if (_schemaSettings.ArticleTypesForReviewSchema.Contains(source.ArticleType))
             {
@@ -49,30 +47,29 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
             {
                 return MapNewsArticleMarkup(source);
             }
-
-            return new SeoSchemaMarkup() { };
+            return new SeoSchemaMarkupBase() { };
         }
 
-
-        private SeoSchemaMarkup MapNewsArticleMarkup(ArticleDetailsDto article)
+        private SeoSchemaMarkupBase MapNewsArticleMarkup(ArticleDetailsDto article)
         {
+            var builder = new SchemaMarkupBuilder(_tenantInfo.Current(), article);
 
             return new NewsArticleSchema()
             {
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
-                ArticleBody = SchemaAttributeHelper.BodyCopyMarkup(article.ContentSections),
-                MainEntityOfPage = SchemaAttributeHelper.MainEntityOnPageMarkup(HttpContext.Current.Request.Url.AbsoluteUri),
-                Author = SchemaAttributeHelper.AuthorMarkup(article.Contributors, _tenantInfo.Current(), _schemaSettings.LogoImageUrlPath),
-                Publisher = SchemaAttributeHelper.PublisherMarkup(_tenantInfo.Current(), _schemaSettings.LogoImageUrlPath),
-                Image = SchemaAttributeHelper.ImageMarkup(article.HeroSection.Images)
+                ArticleBody = builder.BodyCopyMarkup(),
+                MainEntityOfPage = builder.MainEntityOnPageMarkup(HttpContext.Current.Request.Url.AbsoluteUri),
+                Author = builder.AuthorMarkup(_schemaSettings.LogoImageUrlPath),
+                Publisher = builder.PublisherMarkup(_schemaSettings.LogoImageUrlPath),
+                Image = builder.ImageMarkup()
             };
         }
 
-
-        private SeoSchemaMarkup MapReviewArticleMarkup(ArticleDetailsDto article)
+        private SeoSchemaMarkupBase MapReviewArticleMarkup(ArticleDetailsDto article)
         {
+            var builder = new SchemaMarkupBuilder(_tenantInfo.Current(), article);
 
             if (!article.Items.Any())
             {
@@ -84,14 +81,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
-                ReviewBody = SchemaAttributeHelper.BodyCopyMarkup(article.ContentSections),
-                MainEntityOfPage = SchemaAttributeHelper.MainEntityOnPageMarkup(HttpContext.Current.Request.Url.AbsoluteUri),
-                About = SchemaAttributeHelper.AboutMarkup(article.Headline),
-                Author = SchemaAttributeHelper.AuthorMarkup(article.Contributors, _tenantInfo.Current(), _schemaSettings.LogoImageUrlPath),
-                Publisher = SchemaAttributeHelper.PublisherMarkup(_tenantInfo.Current(), _schemaSettings.LogoImageUrlPath),
-                ItemReviewed = SchemaAttributeHelper.ItemsReviewedSchemaMarkup(_tenantInfo.Current(), article.Items),
-                ReviewRating = SchemaAttributeHelper.ExpertCategoryRatingsMarkup(article),
-                Image = SchemaAttributeHelper.ImageMarkup(article.HeroSection.Images)
+                ReviewBody = builder.BodyCopyMarkup(),
+                MainEntityOfPage = builder.MainEntityOnPageMarkup(HttpContext.Current.Request.Url.AbsoluteUri),
+                About = builder.AboutMarkup(),
+                Author = builder.AuthorMarkup(_schemaSettings.LogoImageUrlPath),
+                Publisher = builder.PublisherMarkup(_schemaSettings.LogoImageUrlPath),
+                ItemReviewed = builder.ItemsReviewedSchemaMarkup(),
+                ReviewRating = builder.ExpertCategoryRatingsMarkup(),
+                Image = builder.ImageMarkup()
             };   
         }
     }   

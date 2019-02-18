@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
 {
-    public class ReviewArticleSchema : SeoSchemaMarkup
+    public class ReviewArticleSchema : SeoSchemaMarkupBase
     {
         [JsonProperty(PropertyName = "@context")]
         public string Context { get; } = SchemaContext.ForSchemaOrg;
@@ -25,6 +25,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         public IEnumerable<Image> Image { get; set; }
         public List<ItemReviewed> ItemReviewed { get; set; }
         public List<ReviewRating> ReviewRating { get; set; }
-
     }
 }
