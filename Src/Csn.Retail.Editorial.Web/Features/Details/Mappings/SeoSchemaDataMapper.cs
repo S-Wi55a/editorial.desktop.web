@@ -56,6 +56,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 
             return new NewsArticleSchema()
             {
+                inLanguage = _tenantInfo.Current().LanguageCode,
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
@@ -78,6 +79,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 
             return new ReviewArticleSchema()
             {
+                inLanguage = _tenantInfo.Current().LanguageCode,
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
