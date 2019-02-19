@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Mapping
                 return source.Metadata.H1;
             }
 
-            return string.Format(LanguageResourceValueProvider.GetValue(LanguageConstants.NumberOfArticlesFoundFormat), _tenantProvider.Current().Culture, source.Count);
+            return string.Format(_tenantProvider.Current().Culture, LanguageResourceValueProvider.GetValue(LanguageConstants.NumberOfArticlesFoundFormat), source.Count);
         }
 
         public string MapNoResultInstructionMessage(int count)
