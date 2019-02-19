@@ -151,17 +151,24 @@ const SpecModuleItem = (props) => {
                     <p className="spec-item__variant">{props.data.title3}</p>
                     <Price data={props.data} disclaimerHandler={props.disclaimerHandler} />
                     {
-                        props.sliderLength > 1 ?
+                        props.sliderLength >= 1 ?
                         [
                             <div className="spec-item__stock-offers" data-webm-clickvalue="stock-for-sale-btn" key={0}>
                                 <StockOffer data={props.data} />
-                            </div>,
+                            </div>
+                        ]
+                        : ''
+                    }
+                    {
+                        props.sliderLength > 1 ?
+                        [
                             <div className="spec-item__selector" data-webm-clickvalue="change-variant" key={1}>
                                 <p className="spec-item__selector-label">Model Selector</p>
                                 <Slider dots min={0} max={props.sliderLength - 1} marks={marks} onAfterChange={props.sliderOnAfterChangeHandler} onChange={props.sliderOnChangeHandler} />
                             </div>
                         ]
-                        : ''}
+                        : ''
+                    }
                 </div>
                 <div className="spec-item__column spec-item__column--2">
                     <Specifications data={props.data.specItems} /> 
