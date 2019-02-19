@@ -1,4 +1,5 @@
 ﻿using Csn.Retail.Editorial.Web.Features.Shared.Models;
+using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 
 namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
 {
@@ -7,6 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
         SeoData Map(Shared.Proxies.EditorialApi.SeoData seoData);
     }
 
+    [AutoBind]
     public class SeoDataMapper: ISeoDataMapper
     {
         public SeoData Map(Shared.Proxies.EditorialApi.SeoData seoData)
