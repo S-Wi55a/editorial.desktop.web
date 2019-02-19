@@ -12,11 +12,6 @@
     <meta name="keywords" content="@Model.Keywords" />
 }
 
-@if (!Model.AllowSeoIndexing)
-{
-    <meta name="robots" content="noindex, nofollow" />
-}
-
 @if (!Model.CanonicalUrl.IsNullOrEmpty())
 {
     <link rel="canonical" href="@Model.CanonicalUrl" />
