@@ -3,6 +3,7 @@ using AutoMapper;
 using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
+using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Infrastructure.Mappers;
 using SocialMetaData = Csn.Retail.Editorial.Web.Features.Details.Models.SocialMetaData;
@@ -14,21 +15,21 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
     {
         private readonly IHeroSectionMapper _heroSectionMapper;
         private readonly ISeoDataMapper _seoDataMapper;
-        private readonly ISeoSchemaDataMapper _seoSchemaDataMapper;
+        private readonly ISchemaMarkupBuilder _seoSchemaMarkupBuilder;
         private readonly IPolarNativeAdsDataMapper _polarNativeAdsMapper;
         private readonly IUseDropCaseMapper _useDropCaseMapper;
         private readonly IArticleTypeLabelMapper _articleTypeLabelMapper;
 
         public MappingSetupTask(IHeroSectionMapper heroSectionMapper,
                                 ISeoDataMapper seoDataMapper,
-                                ISeoSchemaDataMapper seoSchemaDataMapper,
+                                ISchemaMarkupBuilder seoSchemaMarkupBuilder,
                                 IPolarNativeAdsDataMapper polarNativeAdsMapper,
                                 IUseDropCaseMapper useDropCaseMapper,
                                 IArticleTypeLabelMapper articleTypeLabelMapper)
         {
             _heroSectionMapper = heroSectionMapper;
             _seoDataMapper = seoDataMapper;
-            _seoSchemaDataMapper = seoSchemaDataMapper;
+            _seoSchemaMarkupBuilder = seoSchemaMarkupBuilder;
             _polarNativeAdsMapper = polarNativeAdsMapper;
             _useDropCaseMapper = useDropCaseMapper;
             _articleTypeLabelMapper = articleTypeLabelMapper;
@@ -39,7 +40,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.Mappings
                 .ForMember(dest => dest.HeroSection, opt => opt.MapFrom(src => _heroSectionMapper.Map(src)))
                 .ForMember(dest => dest.UseDropCase, opt => opt.MapFrom(src => _useDropCaseMapper.Map(src)))
                 .ForMember(dest => dest.SeoData, opt => opt.MapFrom(src => _seoDataMapper.Map(src.SeoData)))
-                .ForMember(dest => dest.SeoSchemaMarkup, opt => opt.MapFrom(src => _seoSchemaDataMapper.Map(src)))
+                .ForMember(dest => dest.SeoSchemaMarkup, opt => opt.MapFrom(src => _seoSchemaMarkupBuilder.Build(src)))
                 .ForMember(dest => dest.PolarNativeAdsData, opt => opt.MapFrom(src => _polarNativeAdsMapper.Map(src)))
                 .ForMember(dest => dest.MoreArticleData, opt => opt.MapFrom(src => src.MoreArticleData))
                 .ForMember(dest => dest.ArticleTypeLabel, opt => opt.MapFrom(src => _articleTypeLabelMapper.Map(src)))
