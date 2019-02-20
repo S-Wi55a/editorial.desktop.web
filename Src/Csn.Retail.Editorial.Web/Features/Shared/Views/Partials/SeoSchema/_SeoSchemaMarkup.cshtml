@@ -1,7 +1,7 @@
 ﻿@using Newtonsoft.Json
 @using Newtonsoft.Json.Serialization
 
-@model Csn.Retail.Editorial.Web.Features.Shared.Models.SeoSchemaMarkupBase
+@model Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models.SeoSchemaBase
 
 <script type="application/ld+json">
     @Html.Raw(JsonConvert.SerializeObject(Model, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }));

@@ -11,7 +11,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         public string Type { get; } = SchemaType.Person;
         public string Name { get; set; }
         public string Url { get; set; }
-        public Image Image { get; set; }
+        public ImageEntity Image { get; set; }
     }
 
     public class Publisher : IContentContributor
@@ -51,7 +51,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         public string Id { get; set; }
     }
 
-    public class Image
+    public class ImageEntity
     {
         [JsonProperty(PropertyName = "@type")]
         public string Type { get; set; } = SchemaType.Image;

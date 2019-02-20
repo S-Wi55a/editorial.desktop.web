@@ -561,7 +561,6 @@
     <Compile Include="Features\Details\ArticleIdentifier.cs" />
     <Compile Include="Features\Details\ArticleIdentifierModelBinder.cs" />
     <Compile Include="Features\Details\CacheStores\ArticleDetailsCacheStore.cs" />
-    <Compile Include="Features\Details\Mappings\SeoSchemaDataMapper.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidator.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteConstraint.cs" />
     <Compile Include="Features\Details\Mappings\ArticleLabelHelper.cs" />
@@ -624,7 +623,6 @@
     <Compile Include="Features\Shared\Models\CsnInsightsData.cs" />
     <Compile Include="Features\Shared\Models\EditorialPageTypes.cs" />
     <Compile Include="Features\Landing\Configurations\Providers\LandingConfigProvider.cs" />
-    <Compile Include="Features\Shared\Models\SeoSchemaMarkupBase.cs" />
     <Compile Include="Features\Shared\Models\Vertical.cs" />
     <Compile Include="Features\Shared\RouteConstraints\ArticleTypeRouteConstraint.cs" />
     <Compile Include="Features\Details\CacheStores\GetArticleQueryCacheStore.cs" />
@@ -748,9 +746,10 @@
     <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
     <Compile Include="Features\Shared\SeoSchema\Helpers\SchemaMarkupBuilder.cs" />
-    <Compile Include="Features\Shared\SeoSchema\Models\ArticleSchemaMarkupAttributes.cs" />
-    <Compile Include="Features\Shared\SeoSchema\Models\NewsArticleSchemaMarkup.cs" />
-    <Compile Include="Features\Shared\SeoSchema\Models\ReviewArticleSchemaMarkup.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\ArticleSchemaAttributes.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\NewsArticleSchema.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\ReviewArticleSchema.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\SeoSchemaBase.cs" />
     <Compile Include="Features\Shared\SeoSchema\Shared\Constants.cs" />
     <Compile Include="Features\Shared\Services\RyvussDataService.cs" />
     <Compile Include="Features\Shared\Settings\EditorialRouteSettings.cs" />
