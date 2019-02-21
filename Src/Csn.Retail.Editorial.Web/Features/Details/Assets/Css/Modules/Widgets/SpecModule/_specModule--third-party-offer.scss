@@ -17,7 +17,7 @@
     }
 
     &__content {
-        width: calc((100% - #{$img-width})*1);
+        width: calc(100% - #{$img-width});
         display: inline-block;
         vertical-align: middle;
     }
