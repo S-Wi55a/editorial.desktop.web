@@ -18,5 +18,6 @@
         public static string MonthDateFormat => "MonthDateFormat";
         public static string MonthYearFormat => "MonthYearFormat";
         public static string ViewPhotos => "ViewPhotos";
+        public static string LanguageCode => "LanguageCode";
     }
 }

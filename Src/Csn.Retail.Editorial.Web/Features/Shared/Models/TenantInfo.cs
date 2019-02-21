@@ -25,7 +25,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool AllowSeoIndexOfLanding { get; set; }
         public bool SeoSchemaSupport { get; set; }
         public string SeoSchemaVehicleType { get; set; }
-        public string LanguageCode { get; set; }
         #endregion
 
         #region Polar Native Ads

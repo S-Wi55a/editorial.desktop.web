@@ -10,6 +10,7 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using System.Web;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
+using Csn.Retail.Editorial.Web.Culture;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
 {
@@ -47,12 +48,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
             return new SeoSchemaBase(){ };
         }
 
-
         public NewsArticleSchema BuildNews(ArticleDetailsDto article)
         {
             return new NewsArticleSchema()
             {
-                inLanguage = _tenantProvider.Current().LanguageCode,
+                inLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
@@ -68,7 +68,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
         {
             return new ReviewArticleSchema()
             {
-                inLanguage = _tenantProvider.Current().LanguageCode,
+                inLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
@@ -136,7 +136,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
                 Id = fullUriPath
             };
         }
-
 
         private string GetBodyCopyMarkup(ArticleDetailsDto article)
         {
@@ -210,7 +209,5 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
 
             return expertRatings;
         }
-
-        
     }
 }
