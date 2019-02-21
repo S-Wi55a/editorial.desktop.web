@@ -6,9 +6,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
 {
     public class ReviewArticleSchema : SeoSchemaBase
     {
-        [JsonProperty(PropertyName = "@context")]
-        public string Context { get; } = SchemaContext.ForSchemaOrg;
-
         [JsonProperty(PropertyName = "@type")]
         public string Type { get; } = SchemaType.ReviewArticle;
 
@@ -22,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         public IContentContributor Author { get; set; }
         public IContentContributor Publisher { get; set; }
         public IEnumerable<ImageEntity> Image { get; set; }
-        public List<ItemReviewed> ItemReviewed { get; set; }
-        public List<ReviewRating> ReviewRating { get; set; }
+        public IEnumerable<ItemReviewed> ItemReviewed { get; set; }
+        public IEnumerable<ReviewRating> ReviewRating { get; set; }
     }
 }

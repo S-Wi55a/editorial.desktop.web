@@ -656,7 +656,7 @@
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <Content Include="Features\Shared\Views\Partials\_CsnEditorialEndpoints.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_inlinebanner.scss" />
-    <Content Include="Features\Shared\Views\Partials\SeoSchema\_SeoSchemaMarkup.cshtml" />
+    <Content Include="Features\Shared\Views\Partials\SeoSchema\_SeoSchemaData.cshtml" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponentArrows.tsx" />
@@ -745,7 +745,7 @@
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
-    <Compile Include="Features\Shared\SeoSchema\Helpers\SchemaMarkupBuilder.cs" />
+    <Compile Include="Features\Shared\SeoSchema\SchemaDataBuilder.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\ArticleSchemaAttributes.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\NewsArticleSchema.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\ReviewArticleSchema.cs" />
@@ -907,6 +907,7 @@
     </Content>
     <Content Include="Web.LatamRelease.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.LatamStaging.config">
       <DependentUpon>Web.config</DependentUpon>

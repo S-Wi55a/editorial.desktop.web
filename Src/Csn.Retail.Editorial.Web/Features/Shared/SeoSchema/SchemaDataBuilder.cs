@@ -12,20 +12,20 @@ using System.Web;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Culture;
 
-namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
+namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 {
-    public interface ISchemaMarkupBuilder
+    public interface ISchemaDataBuilder
     {
         SeoSchemaBase Build(ArticleDetailsDto article);
     }
 
     [AutoBind]
-    public class SchemaMarkupBuilder : ISchemaMarkupBuilder
+    public class SchemaDataBuilder : ISchemaDataBuilder
     {
         private readonly ISeoSchemaSettings _schemaSettings;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
 
-        public SchemaMarkupBuilder(ISeoSchemaSettings schemaSettings, ITenantProvider<TenantInfo> tenantProvider)
+        public SchemaDataBuilder(ISeoSchemaSettings schemaSettings, ITenantProvider<TenantInfo> tenantProvider)
         {
             _schemaSettings = schemaSettings;
             _tenantProvider = tenantProvider;
@@ -77,7 +77,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
                 About = GetAboutMarkup(article),
                 Author = GetAuthorMarkup(article),
                 Publisher = GetPublisherMarkup(),
-                ItemReviewed = GetItemsReviewedSchemaMarkup(article),
+                ItemReviewed = GetItemsReviewedMarkup(article),
                 ReviewRating = GetExpertCategoryRatingsMarkup(article),
                 Image = GetImageMarkup(article)
             };
@@ -155,59 +155,44 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Helpers
             return !imageCatalogue.IsNullOrEmpty() ? imageCatalogue.Select(image => new ImageEntity() { Url = image.Url }) : null;
         }
 
-        private List<ItemReviewed> GetItemsReviewedSchemaMarkup(ArticleDetailsDto article)
+        private IEnumerable<ItemReviewed> GetItemsReviewedMarkup(ArticleDetailsDto article)
         {
-            List<ItemReviewed> itemsReviews = new List<ItemReviewed>();
-
-            article.Items.ForEach(item =>
-            {
-                itemsReviews.Add(new ItemReviewed()
+           return article.Items.Select((item) => 
+                new ItemReviewed()
                 {
                     Type = _tenantProvider.Current().SeoSchemaVehicleType,
                     Name = item.Make,
-                    Model = item.Model,
-                    ModelDate = item.Year,
+                    Model = !item.Model.IsNullOrEmpty()? item.Model : null,
+                    ModelDate = (item.Year != 0) ? item.Year.ToString() : null,
                     Brand = new Brand()
                     {
                         Name = item.Make
                     }
-                });
-            });
-
-            return itemsReviews;
+                }
+            );
         }
 
-        private List<ReviewRating> GetExpertCategoryRatingsMarkup(ArticleDetailsDto article)
+        private IEnumerable<ReviewRating> GetExpertCategoryRatingsMarkup(ArticleDetailsDto article)
         {
             var expertRatings = new List<ReviewRating> { };
 
             try
             {
-                expertRatings.Add(new ReviewRating()
-                {
-                    ReviewAspect = article.ExpertRatings.Heading,
-                    RatingValue = article.ExpertRatings.OverallRating,
-                    BestRating = ReviewRatingValues.OverallBestRating,
-                    WorstRating = ReviewRatingValues.OverallWorstRating
-                });
+                if (!article.ExpertRatings.Items.Any()) return null;
 
-                article.ExpertRatings.Items.ForEach(rating =>
-                {
-                    expertRatings.Add(new ReviewRating()
+                return article.ExpertRatings.Items.Select((rating) =>
+                    new ReviewRating()
                     {
-                        ReviewAspect = rating.Category,
-                        RatingValue = rating.Rating,
-                        BestRating = ReviewRatingValues.AttributeBestRating,
-                        WorstRating = ReviewRatingValues.AttributelWorstRating
+                        ReviewAspect = article.ExpertRatings.Heading,
+                        RatingValue = article.ExpertRatings.OverallRating,
+                        BestRating = ReviewRatingValues.OverallBestRating,
+                        WorstRating = ReviewRatingValues.OverallWorstRating
                     });
-                });
             }
             catch
             {
                 return null;
             }
-
-            return expertRatings;
         }
     }
 }

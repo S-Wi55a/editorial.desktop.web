@@ -6,9 +6,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
 {
     public class NewsArticleSchema : SeoSchemaBase
     {
-        [JsonProperty(PropertyName = "@context")]
-        public string Context { get; } = SchemaContext.ForSchemaOrg;
-
         [JsonProperty(PropertyName = "@type")]
         public string Type { get; } = SchemaType.NewsArticle;
 

@@ -38,7 +38,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         public string Type { get; set; }
         public string Name { get; set; }
         public string Model { get; set; }
-        public int ModelDate { get; set; }
+        public string ModelDate { get; set; }
         public Brand Brand { get; set; }
     }
 
@@ -56,8 +56,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         [JsonProperty(PropertyName = "@type")]
         public string Type { get; set; } = SchemaType.Image;
         public string Url { get; set; }
-        public long? Height { get; set; } = ImageDimensions.Height;
-        public long? Width { get; set; } = ImageDimensions.Width;
     }
 
     public class Logo

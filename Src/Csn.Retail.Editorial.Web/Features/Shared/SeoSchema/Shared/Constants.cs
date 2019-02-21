@@ -14,12 +14,6 @@
         public static int AttributelWorstRating = 0;
     }
 
-    public static class ImageDimensions
-    {
-        public static int Width = 435;
-        public static int Height = 600;
-    }
-
     public static class SchemaType
     {
         public static string Webpage = "Webpage";
