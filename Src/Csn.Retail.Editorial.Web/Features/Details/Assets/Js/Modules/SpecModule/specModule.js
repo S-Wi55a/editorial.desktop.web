@@ -55,14 +55,14 @@ const ThirdPartyOffer = (props) => {
 
     if (props.tabOrModal) {
         if (props.tabOrModal[titleNoSpace] === 'iframe') {
-            tabOrModal = <span 
+            tabOrModal = <div 
                 onClick={() => {
                     props.disclaimerHandler(`<iframe src=${props.data.formUrl}></iframe>`, titleNoSpace)
                 }} 
-                className="third-party-offer__link" 
-                data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</span>
+                className="third-party-offer__link-quote" 
+                data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</div>
         } else {
-            tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</a>
+            tabOrModal = <a href={props.data.formUrl} target="_blank" className="third-party-offer__link-quote" data-webm-clickvalue={'get-quote-'+titleNoSpace}>{props.data.getQuoteText}</a>
         }
     }
 
@@ -72,17 +72,33 @@ const ThirdPartyOffer = (props) => {
             <div className="third-party-offer__content">
                 <h3 className="third-party-offer__heading">{props.data.title}</h3>
                 <div className="third-party-offer__price-container">
-                    <span className="third-party-offer__price">
-                        {props.data.amount}
-                    </span>
-                    <span data-webm-clickvalue={'disclaimer-'+titleNoSpace} className="third-party-offer__price-term" onClick={()=>props.disclaimerHandler(props.data.disclaimer)}>
-                        {props.data.paymentFrequency}
-                    </span>
+                    <div className="third-party-offer__quote-pricing">
+                        <div className="third-party-offer__price-term">
+                            {props.data.weeklyPaymentFrequencyText ? props.data.weeklyPaymentFrequencyText : props.data.paymentFrequency}
+                        </div>
+                        <div className="third-party-offer__price">
+                            {props.data.amount}
+                        </div>
+                    </div>
+                    { props.data.interestRate ?
+                        <div className="third-party-offer__interest-rate-container">
+                            <div className="third-party-offer__interest-rate-info">
+                                <div className="third-party-offer__interest-rate-title">
+                                    {props.data.comparisonRateText}
+                                </div>
+                                <div className="third-party-offer__interest-rate-value">
+                                    {props.data.interestRate}
+                                </div>
+                            </div>
+                        </div>
+                      :
+                      ''
+                    }
                 </div>
+                {tabOrModal}
+                <div data-webm-clickvalue={'disclaimer-' + titleNoSpace} className="third-party-offer__link-disclaimer" onClick={() => props.disclaimerHandler(props.data.disclaimer)}>{props.data.disclaimerTitleText}</div>
             </div>
-            {tabOrModal}
-            <div className="third-party-offer__terms-and-conditions">{props.data.termsAndConditions}</div>
-                { props.data.impressionUrl ? <img src={props.data.impressionUrl} className="third-party-offer__impression-url"/> : ''}
+            { props.data.impressionUrl ? <img src={props.data.impressionUrl} className="third-party-offer__impression-url"/> : ''}
         </div>
         )
 }
