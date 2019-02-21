@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using System.Web;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Culture;
 
@@ -57,7 +56,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
                 ArticleBody = GetBodyCopyMarkup(article),
-                MainEntityOfPage = GetMainEntityOnPageMarkup(HttpContext.Current.Request.Url.AbsoluteUri),
+                MainEntityOfPage = GetMainEntityOnPageMarkup(article),
                 Author = GetAuthorMarkup(article),
                 Publisher = GetPublisherMarkup(),
                 Image = GetImageMarkup(article)
@@ -73,7 +72,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
                 ReviewBody = GetBodyCopyMarkup(article),
-                MainEntityOfPage = GetMainEntityOnPageMarkup(HttpContext.Current.Request.Url.AbsoluteUri),
+                MainEntityOfPage = GetMainEntityOnPageMarkup(article),
                 About = GetAboutMarkup(article),
                 Author = GetAuthorMarkup(article),
                 Publisher = GetPublisherMarkup(),
@@ -93,12 +92,14 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 
         private IContentContributor GetAuthorMarkup(ArticleDetailsDto article)
         {
+            var protocolAndDomain = $"{_tenantProvider.Current().UrlProtocol}://{_tenantProvider.Current().SiteDomain}";
+
             if (article.Contributors.Any())
             {
                 return new Author()
                 {
                     Name = article.Contributors.FirstOrDefault().Name,
-                    Url = $"https://{_tenantProvider.Current().SiteDomain}{article.Contributors.FirstOrDefault().LinkUrl}",
+                    Url = $"{protocolAndDomain}{article.Contributors.FirstOrDefault().LinkUrl}",
                     Image = new ImageEntity()
                     {
                         Url = article.Contributors.FirstOrDefault().ImageUrl
@@ -129,24 +130,26 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             };
         }
 
-        private MainEntityOnPage GetMainEntityOnPageMarkup(string fullUriPath)
+        private MainEntityOnPage GetMainEntityOnPageMarkup(ArticleDetailsDto article)
         {
+            var protocolAndDomain = $"{_tenantProvider.Current().UrlProtocol}://{_tenantProvider.Current().SiteDomain}";
+
             return new MainEntityOnPage()
             {
-                Id = fullUriPath
+                Id = $"{protocolAndDomain}{article.DetailsPageUrlPath}"
             };
         }
 
         private string GetBodyCopyMarkup(ArticleDetailsDto article)
         {
-            var bodyContent = article.ContentSections.Where(section => section.Content.ToLower().Contains("<p>"));
+            var bodyContent = article.ContentSections.FirstOrDefault(section => section.Content.Contains("<p>"));
 
-            if (!bodyContent.Any())
+            if (bodyContent == null)
             {
                 return article.ContentSections.FirstOrDefault().Content;
             }
 
-            return Regex.Replace(bodyContent.FirstOrDefault().Content, "<[^>]*>", "");
+            return Regex.Replace(bodyContent.Content, "<[^>]*>", "");
         }
 
         private IEnumerable<ImageEntity> GetImageMarkup(ArticleDetailsDto article)
