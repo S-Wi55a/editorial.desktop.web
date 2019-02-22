@@ -17,7 +17,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
     public class Publisher : IContentContributor
     {
         [JsonProperty(PropertyName = "@type")]
-        public string Type { get; } = SchemaType.Organisation;
+        public string Type { get; } = SchemaType.Organization;
         public string Name { get; set; }
         public Logo Logo { get; set; }
     }

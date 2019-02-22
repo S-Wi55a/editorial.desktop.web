@@ -11,7 +11,7 @@
         public static int OverallWorstRating = 0;
 
         public static int AttributeBestRating = 20;
-        public static int AttributelWorstRating = 0;
+        public static int AttributeWorstRating = 0;
     }
 
     public static class SchemaType
@@ -22,7 +22,7 @@
         public static string Brand = "Brand";
         public static string Person = "Person";
         public static string Image = "ImageObject";
-        public static string Organisation = "Organization";
+        public static string Organization = "Organization";
         public static string Rating = "Rating";
         public static string Thing = "Thing";
     }

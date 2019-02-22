@@ -1,4 +1,5 @@
-﻿using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models;
+﻿using System;
+using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Shared;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
@@ -51,7 +52,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
         {
             return new NewsArticleSchema()
             {
-                inLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
+                InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
@@ -67,7 +68,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
         {
             return new ReviewArticleSchema()
             {
-                inLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
+                InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
@@ -98,14 +99,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             {
                 return new Author()
                 {
-                    Name = article.Contributors.FirstOrDefault().Name,
-                    Url = $"{protocolAndDomain}{article.Contributors.FirstOrDefault().LinkUrl}",
+                    Name = article.Contributors.First().Name,
+                    Url = $"{protocolAndDomain}{article.Contributors.First().LinkUrl}",
                     Image = new ImageEntity()
                     {
-                        Url = article.Contributors.FirstOrDefault().ImageUrl
+                        Url = article.Contributors.First().ImageUrl
                     }
                 };
-
             }
 
             return new Publisher()
@@ -142,11 +142,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 
         private string GetBodyCopyMarkup(ArticleDetailsDto article)
         {
-            var bodyContent = article.ContentSections.FirstOrDefault(section => section.Content.Contains("<p>"));
+            var bodyContent = article.ContentSections.First((section) => section.Content.StartsWith("<p>", StringComparison.CurrentCultureIgnoreCase));
 
-            if (bodyContent == null)
+            if (bodyContent == null || !article.ContentSections.Any())
             {
-                return article.ContentSections.FirstOrDefault().Content;
+                return article.Headline;
             }
 
             return Regex.Replace(bodyContent.Content, "<[^>]*>", "");
@@ -160,12 +160,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 
         private IEnumerable<ItemReviewed> GetItemsReviewedMarkup(ArticleDetailsDto article)
         {
-           return article.Items.Select((item) => 
+           return article.Items.Select(item => 
                 new ItemReviewed()
                 {
                     Type = _tenantProvider.Current().SeoSchemaVehicleType,
                     Name = item.Make,
-                    Model = !item.Model.IsNullOrEmpty()? item.Model : null,
+                    Model = !item.Model.IsNullOrEmpty() ? item.Model : null,
                     ModelDate = (item.Year != 0) ? item.Year.ToString() : null,
                     Brand = new Brand()
                     {
@@ -177,25 +177,30 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 
         private IEnumerable<ReviewRating> GetExpertCategoryRatingsMarkup(ArticleDetailsDto article)
         {
-            var expertRatings = new List<ReviewRating> { };
+            var expertRatings = new List<ReviewRating>(){};
 
-            try
-            {
-                if (!article.ExpertRatings.Items.Any()) return null;
+            if (article?.ExpertRatings == null) return null;
 
-                return article.ExpertRatings.Items.Select((rating) =>
-                    new ReviewRating()
-                    {
-                        ReviewAspect = article.ExpertRatings.Heading,
-                        RatingValue = article.ExpertRatings.OverallRating,
-                        BestRating = ReviewRatingValues.OverallBestRating,
-                        WorstRating = ReviewRatingValues.OverallWorstRating
-                    });
-            }
-            catch
+            expertRatings.Add(new ReviewRating()
             {
-                return null;
-            }
+                ReviewAspect = article.ExpertRatings.Heading,
+                RatingValue = article.ExpertRatings.OverallRating,
+                BestRating = ReviewRatingValues.OverallBestRating,
+                WorstRating = ReviewRatingValues.OverallWorstRating
+            });
+
+            article.ExpertRatings.Items.ForEach(item =>
+            {
+                expertRatings.Add(new ReviewRating()
+                {
+                    ReviewAspect = item.Category,
+                    RatingValue = item.Rating,
+                    BestRating = ReviewRatingValues.AttributeBestRating,
+                    WorstRating = ReviewRatingValues.AttributeWorstRating
+                });
+            });
+
+            return expertRatings;
         }
     }
 }
