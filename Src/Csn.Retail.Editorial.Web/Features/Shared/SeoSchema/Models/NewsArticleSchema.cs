@@ -4,8 +4,11 @@ using System.Collections.Generic;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
 {
-    public class NewsArticleSchema : SeoSchemaBase
+    public class NewsArticleSchema : ISeoSchema
     {
+        [JsonProperty(PropertyName = "@context")]
+        public string Context { get; } = SchemaContext.ForSchemaOrg;
+
         [JsonProperty(PropertyName = "@type")]
         public string Type { get; } = SchemaType.NewsArticle;
 

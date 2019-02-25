@@ -749,7 +749,7 @@
     <Compile Include="Features\Shared\SeoSchema\Models\ArticleSchemaAttributes.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\NewsArticleSchema.cs" />
     <Compile Include="Features\Shared\SeoSchema\Models\ReviewArticleSchema.cs" />
-    <Compile Include="Features\Shared\SeoSchema\Models\SeoSchemaBase.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\ISeoSchema.cs" />
     <Compile Include="Features\Shared\SeoSchema\Shared\Constants.cs" />
     <Compile Include="Features\Shared\Services\RyvussDataService.cs" />
     <Compile Include="Features\Shared\Settings\EditorialRouteSettings.cs" />

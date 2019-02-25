@@ -16,7 +16,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 {
     public interface ISchemaDataBuilder
     {
-        SeoSchemaBase Build(ArticleDetailsDto article);
+        ISeoSchema Build(ArticleDetailsDto article);
     }
 
     [AutoBind]
@@ -31,7 +31,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             _tenantProvider = tenantProvider;
         }
         
-        public SeoSchemaBase Build(ArticleDetailsDto article)
+        public ISeoSchema Build(ArticleDetailsDto article)
         {
             // REVIEW SCHEMA
             if (_schemaSettings.ArticleTypesForReviewSchema.Contains(article.ArticleType) && article.Items.Any())
@@ -45,7 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
                 return BuildNews(article);
             }
 
-            return new SeoSchemaBase(){ };
+            return null;
         }
 
         public NewsArticleSchema BuildNews(ArticleDetailsDto article)
