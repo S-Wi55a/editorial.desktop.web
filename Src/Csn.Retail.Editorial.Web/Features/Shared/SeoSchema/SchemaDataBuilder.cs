@@ -33,6 +33,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
         
         public ISeoSchema Build(ArticleDetailsDto article)
         {
+            if (!_tenantProvider.Current().SeoSchemaSupport) return null;
+
             // REVIEW SCHEMA
             if (_schemaSettings.ArticleTypesForReviewSchema.Contains(article.ArticleType) && article.Items.Any())
             {
