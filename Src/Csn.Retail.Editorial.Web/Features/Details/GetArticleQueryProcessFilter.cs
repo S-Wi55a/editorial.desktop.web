@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Csn.Retail.Editorial.Web.Features.Details.CacheStores;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -23,28 +24,26 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             return Task.CompletedTask;
         }
 
-        public async Task OnExecutedAsync(GetArticleQuery query, GetArticleResponse result)
+        public Task OnExecutedAsync(GetArticleQuery query, GetArticleResponse result)
         {
-            var cachedArticle = await _articleDetailsCacheStore.GetAsync(query.Id);
-
-            if (!cachedArticle.HasValue || cachedArticle.Value?.ArticleViewModel == null) return;
+            if (result?.ArticleViewModel == null) return null;
 
             var detailsPageContext = new DetailsPageContext
             {
-                Items = cachedArticle.Value.ArticleViewModel.Items,
-                Lifestyles = cachedArticle.Value.ArticleViewModel.Lifestyles,
-                Categories = cachedArticle.Value.ArticleViewModel.Categories,
-                Keywords = cachedArticle.Value.ArticleViewModel.Keywords,
-                ArticleType = cachedArticle.Value.ArticleViewModel.ArticleType,
-                ArticleTypes = cachedArticle.Value.ArticleViewModel.ArticleTypes
+                Items = result.ArticleViewModel.Items,
+                Lifestyles = result.ArticleViewModel.Lifestyles,
+                Categories = result.ArticleViewModel.Categories,
+                Keywords = result.ArticleViewModel.Keywords,
+                ArticleType = result.ArticleViewModel.ArticleType,
+                ArticleTypes = result.ArticleViewModel.ArticleTypes
             };
 
             _contextStore.Set(detailsPageContext);
 
             if (query.DisplayType == DisplayType.DetailsModal)
             {
-                if(!result.ArticleViewModel.InsightsData.MetaData.ContainsKey("displayType")) result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
-                if(!result.ArticleViewModel.InsightsData.MetaData.ContainsKey("source")) result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
+                if(!result.ArticleViewModel.InsightsData.MetaData.Any(a => (a.Key == "displayType" && string.IsNullOrEmpty(a.Value)))) result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
+                if(!result.ArticleViewModel.InsightsData.MetaData.Any(a => (a.Key == "source" && string.IsNullOrEmpty(a.Value)))) result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
                 result.ArticleViewModel.SocialMetaData = null;
                 result.ArticleViewModel.StockListingData = null;
                 result.ArticleViewModel.MoreArticleData = null;
@@ -56,6 +55,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                     contributor.LinkUrl = null;
                 }
             }
+
+            return Task.CompletedTask;
         }
     }
 }
