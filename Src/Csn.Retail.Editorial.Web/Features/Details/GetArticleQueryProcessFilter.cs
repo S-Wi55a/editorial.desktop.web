@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Csn.Retail.Editorial.Web.Features.Details.CacheStores;
 using Csn.Retail.Editorial.Web.Features.Shared.ContextStores;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -42,8 +41,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (query.DisplayType == DisplayType.DetailsModal)
             {
-                if(!result.ArticleViewModel.InsightsData.MetaData.Any(a => (a.Key == "displayType" && string.IsNullOrEmpty(a.Value)))) result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
-                if(!result.ArticleViewModel.InsightsData.MetaData.Any(a => (a.Key == "source" && string.IsNullOrEmpty(a.Value)))) result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
+                if(!result.ArticleViewModel.InsightsData.MetaData.ContainsKey("displayType")) result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
+                if(!result.ArticleViewModel.InsightsData.MetaData.ContainsKey("source")) result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
                 result.ArticleViewModel.SocialMetaData = null;
                 result.ArticleViewModel.StockListingData = null;
                 result.ArticleViewModel.MoreArticleData = null;
