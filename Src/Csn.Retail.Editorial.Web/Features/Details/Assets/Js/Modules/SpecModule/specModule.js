@@ -77,7 +77,7 @@ const ThirdPartyOffer = (props) => {
                             {props.data.weeklyPaymentFrequencyText ? props.data.weeklyPaymentFrequencyText : props.data.paymentFrequency}
                         </div>
                         <div className="third-party-offer__price">
-                            {props.data.amount}
+                            {props.data.weeklyRepaymentsAmount ? props.data.weeklyRepaymentsAmount : props.data.amount}
                         </div>
                     </div>
                     { props.data.interestRate ?
