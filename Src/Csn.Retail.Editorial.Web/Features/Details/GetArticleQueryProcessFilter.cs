@@ -39,8 +39,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (query.DisplayType == DisplayType.DetailsModal)
             {
-                if(!result.ArticleViewModel.InsightsData.MetaData.ContainsKey("displayType")) result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
-                if(!result.ArticleViewModel.InsightsData.MetaData.ContainsKey("source")) result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
                 result.ArticleViewModel.SocialMetaData = null;
                 result.ArticleViewModel.StockListingData = null;
                 result.ArticleViewModel.MoreArticleData = null;
@@ -50,6 +48,23 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                 foreach (var contributor in result.ArticleViewModel.Contributors)
                 {
                     contributor.LinkUrl = null;
+                }
+                if (result.ArticleViewModel.InsightsData.MetaData.ContainsKey("displayType"))
+                {
+                    result.ArticleViewModel.InsightsData.MetaData["displayType"] = "modal";
+                }
+                else
+                {
+                    result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
+                }
+
+                if (result.ArticleViewModel.InsightsData.MetaData.ContainsKey("source"))
+                {
+                    result.ArticleViewModel.InsightsData.MetaData["source"] = query.Source;
+                }
+                else
+                {
+                    result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
                 }
             }
         }
