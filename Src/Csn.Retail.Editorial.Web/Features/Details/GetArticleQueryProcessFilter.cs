@@ -10,12 +10,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     public class GetArticleQueryProcessFilter : IAsyncQueryProcessFilter<GetArticleQuery, GetArticleResponse>
     {
         private readonly IPageContextStore _contextStore;
-        private readonly IArticleDetailsCacheStore _articleDetailsCacheStore;
 
-        public GetArticleQueryProcessFilter(IPageContextStore contextStore, IArticleDetailsCacheStore articleDetailsCacheStore)
+        public GetArticleQueryProcessFilter(IPageContextStore contextStore)
         {
             _contextStore = contextStore;
-            _articleDetailsCacheStore = articleDetailsCacheStore;
         }
 
         public Task OnExecutingAsync(GetArticleQuery query)
@@ -23,9 +21,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             return Task.CompletedTask;
         }
 
-        public Task OnExecutedAsync(GetArticleQuery query, GetArticleResponse result)
+        public async Task OnExecutedAsync(GetArticleQuery query, GetArticleResponse result)
         {
-            if (result?.ArticleViewModel == null) return null;
+            if(result?.ArticleViewModel == null) return;
 
             var detailsPageContext = new DetailsPageContext
             {
@@ -54,8 +52,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
                     contributor.LinkUrl = null;
                 }
             }
-
-            return Task.CompletedTask;
         }
     }
 }
