@@ -36,10 +36,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             if (!_tenantProvider.Current().SeoSchemaSupport) return null;
 
             // REVIEW SCHEMA
-            if (_schemaSettings.ArticleTypesForReviewSchema.Contains(article.ArticleType) && article.Items.Any())
+            if (_schemaSettings.ArticleTypesForReviewSchema.Contains(article.ArticleType))
             {
+                if (!article.Items.Any()) return BuildNews(article);
+
                 return BuildReview(article);
-            }
+            } 
 
             // NEWS SCHEMA
             if (_schemaSettings.ArticleTypesForNewsSchema.Contains(article.ArticleType))
@@ -50,11 +52,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             return null;
         }
 
+        //TODO: Public or Private?
         public NewsArticleSchema BuildNews(ArticleDetailsDto article)
         {
             return new NewsArticleSchema()
             {
-                InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
+                //InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
@@ -68,9 +71,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 
         public ReviewArticleSchema BuildReview(ArticleDetailsDto article)
         {
+
             return new ReviewArticleSchema()
             {
-                InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
+                //TODO: InLanguage for testing
+                //InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
@@ -87,6 +92,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 
         private About GetAboutMarkup(ArticleDetailsDto article)
         {
+            if (article?.Headline == null) return null;
+
             return new About()
             {
                 Name = article.Headline
@@ -96,6 +103,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
         private IContentContributor GetAuthorMarkup(ArticleDetailsDto article)
         {
             var protocolAndDomain = $"{_tenantProvider.Current().UrlProtocol}://{_tenantProvider.Current().SiteDomain}";
+
+            if (article?.Contributors == null) return null;
 
             if (article.Contributors.Any())
             {
@@ -136,6 +145,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
         {
             var protocolAndDomain = $"{_tenantProvider.Current().UrlProtocol}://{_tenantProvider.Current().SiteDomain}";
 
+            if (article?.DetailsPageUrlPath == null) return null;
+
             return new MainEntityOnPage()
             {
                 Id = $"{protocolAndDomain}{article.DetailsPageUrlPath}"
@@ -144,7 +155,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 
         private string GetBodyCopyMarkup(ArticleDetailsDto article)
         {
-            var bodyContent = article.ContentSections.First((section) => section.Content.StartsWith("<p>", StringComparison.CurrentCultureIgnoreCase));
+            if (article?.ContentSections == null) return null;
+
+            //TODO: Confirm First() OR FirstOrDefault()
+            var bodyContent = article.ContentSections.FirstOrDefault((section) => section.Content.StartsWith("<p>", StringComparison.CurrentCultureIgnoreCase));
 
             if (bodyContent == null || !article.ContentSections.Any())
             {
@@ -156,13 +170,17 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 
         private IEnumerable<ImageEntity> GetImageMarkup(ArticleDetailsDto article)
         {
+            if (article?.HeroSection == null) return null;
+
             var imageCatalogue = article.HeroSection.Images;
             return !imageCatalogue.IsNullOrEmpty() ? imageCatalogue.Select(image => new ImageEntity() { Url = image.Url }) : null;
         }
 
         private IEnumerable<ItemReviewed> GetItemsReviewedMarkup(ArticleDetailsDto article)
         {
-           return article.Items.Select(item => 
+            if (article?.Items == null) return null;
+
+            return article.Items.Select(item => 
                 new ItemReviewed()
                 {
                     Type = _tenantProvider.Current().SeoSchemaVehicleType,

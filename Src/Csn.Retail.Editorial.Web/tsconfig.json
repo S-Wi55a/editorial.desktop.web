@@ -25,7 +25,7 @@
   },
   "include": [
     "Features/",
-    "Infrastructure/"
+    "Infrastructure/", "../Csn.Retail.Editorial.Web.UnitTests/Features/Shared/SeoSchema/SchemaDataBuilderTest.cs"
   ],
   "exclude": [
       "node_modules",
