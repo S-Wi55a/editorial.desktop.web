@@ -1,10 +1,9 @@
 ﻿// Details Page css files
-require('./Css/Details-page.scss');
+require('./Css/details-page.scss');
 
 //------------------------------------------------------------------------------------------------------------------
 
-import { loaded } from 'document-promises/document-promises.js'
-import ScrollMagic from 'ScrollMagic'
+import { loaded, contentLoaded } from 'document-promises/document-promises.js'
 import * as isMobile from 'ismobilejs'
 if (process.env.DEBUG) { require('debug.addIndicators'); }
 
@@ -181,7 +180,17 @@ if(!document.querySelector('body').classList.contains('ie') && !isMobile.tablet 
     const aside = document.querySelector('.aside');
     loaded.then(function() {     
         if (aside) {
-            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside, 'article .article', 137);
+            const topReference = !csn_editorial.detailsModal ? 0 : -20;
+            const baseReference = !csn_editorial.detailsModal ? 137 : 10;
+            require('Js/Modules/StickySidebar/stickySidebar.js').init(document, window, aside, 'article .article', baseReference, topReference);
         }
     })
+}
+
+//Disable Non Article Links
+if (csn_editorial.detailsModal) {
+    contentLoaded.then(() => {
+        const disableNonArticleLinks = require('DisableNonArticleLinks/disableNonArticleLinks.js').default;
+        disableNonArticleLinks(document);
+    });
 }

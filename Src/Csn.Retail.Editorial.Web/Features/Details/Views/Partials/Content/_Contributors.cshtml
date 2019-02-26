@@ -14,7 +14,10 @@
                         <div class="author__description">@contributor.Description</div>
                         <div class="author__name">@contributor.Name</div>
                         @*<div class="author__title">Author Title</div>*@
-                        <a class="author__links" href="@contributor.LinkUrl" data-webm-clickvalue="see-all-editor-articles">@contributor.ButtonHeading</a>
+                        @if (!string.IsNullOrEmpty(contributor.LinkUrl))
+                        {
+                            <a class="author__links" href="@contributor.LinkUrl" data-webm-clickvalue="see-all-editor-articles">@contributor.ButtonHeading</a>
+                        }
                     </div>
 
                 </div>

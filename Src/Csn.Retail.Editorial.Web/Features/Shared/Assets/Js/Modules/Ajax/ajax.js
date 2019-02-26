@@ -1,5 +1,4 @@
-﻿function get(url, success = (resp) => { }, error = ()=>{})
-    {
+﻿function get(url, success = (resp) => { }, error = ()=>{}){
 
         if (url === null || !url.length) {throw new Error('Invalid URL')}
 
@@ -34,7 +33,6 @@
         //        error()
         //    });
 }
-
 
 export { get }
 

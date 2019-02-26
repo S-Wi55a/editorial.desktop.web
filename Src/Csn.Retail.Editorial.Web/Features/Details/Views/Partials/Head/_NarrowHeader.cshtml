@@ -12,10 +12,15 @@
 <div class="container">
     <header>
         <h1 class="article__heading narrow">@Model.Headline</h1>
-
-        <div class="article__share article__share--top narrow" data-webm-section="social-sharing-top">
-            @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
-        </div>
+        
+        @{
+            if (Model.SocialMetaData != null)
+            {
+                <div class="article__share article__share--top narrow" data-webm-section="social-sharing-top">
+                    @{Html.RenderPartial("Partials/SocialNetworks/_SocialMediaLinks", Model.SocialMetaData);}
+                </div>
+            }
+        }
 
         <h2 class="article__subheading narrow">@Model.SubHeading</h2>
     </header>
