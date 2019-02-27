@@ -220,6 +220,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Culture\LanguageResources.Designer.cs">
+      <DependentUpon>LanguageResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\Details\GetArticleQueryCacheStoreTests.cs" />
     <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdQueryHandlerTests.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidatorTests.cs" />
@@ -263,6 +268,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\Shared\Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Culture\LanguageResources.es.resx" />
+    <EmbeddedResource Include="Culture\LanguageResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LanguageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -52,12 +52,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             return null;
         }
 
-        //TODO: Public or Private?
-        public NewsArticleSchema BuildNews(ArticleDetailsDto article)
+        
+        private NewsArticleSchema BuildNews(ArticleDetailsDto article)
         {
             return new NewsArticleSchema()
             {
-                //InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
+                InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,
@@ -69,13 +69,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             };
         }
 
-        public ReviewArticleSchema BuildReview(ArticleDetailsDto article)
+        private ReviewArticleSchema BuildReview(ArticleDetailsDto article)
         {
 
             return new ReviewArticleSchema()
             {
-                //TODO: InLanguage for testing
-                //InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
+                InLanguage = LanguageResourceValueProvider.GetValue(LanguageConstants.LanguageCode),
                 Headline = article.Headline,
                 DatePublished = article.DateAvailable,
                 DateModified = article.DateAvailable,

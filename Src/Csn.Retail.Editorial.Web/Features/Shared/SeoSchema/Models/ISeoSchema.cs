@@ -2,6 +2,6 @@
 {
     public interface ISeoSchema
     {
-        
+        string Type { get; }
     }
 }
