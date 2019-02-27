@@ -52,7 +52,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             return null;
         }
 
-        
         private NewsArticleSchema BuildNews(ArticleDetailsDto article)
         {
             return new NewsArticleSchema()
@@ -156,7 +155,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
         {
             if (article?.ContentSections == null) return null;
 
-            //TODO: Confirm First() OR FirstOrDefault()
             var bodyContent = article.ContentSections.FirstOrDefault((section) => section.Content.StartsWith("<p>", StringComparison.CurrentCultureIgnoreCase));
 
             if (bodyContent == null || !article.ContentSections.Any())
