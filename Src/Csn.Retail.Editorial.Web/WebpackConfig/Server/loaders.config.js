@@ -23,7 +23,6 @@ export const modules = () => {
                     {
                         loader: 'ts-loader',
                         options: {
-                            visualStudioErrorFormat: true,
                             logLevel: 'warn'
                         }
                     }

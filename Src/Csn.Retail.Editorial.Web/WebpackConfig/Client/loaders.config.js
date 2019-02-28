@@ -1,12 +1,14 @@
 ﻿import path from 'path'
 import { IS_PROD } from '../Shared/env.config.js'
 import { listOfPaths } from '../Shared/paths.config.js'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 // Error with sourcemaps b/c of css-loader. So inline URL to resolve issue (for development only)
 const URL_LIMIT = IS_PROD ? 1 : null;
 
-const loaders = (tenant) => ([{
+const loaders = (tenant) => ([
+    'style-loader',
+    {
         loader: 'cache-loader',
         options: {
             cacheDirectory: path.resolve('.cache')
@@ -16,7 +18,6 @@ const loaders = (tenant) => ([{
         loader: 'css-loader',
         options: {
             sourceMap: IS_PROD ? false : true,
-            minimize: IS_PROD ? true : false,
             //modules: true
         }
     },
@@ -38,10 +39,7 @@ const loaders = (tenant) => ([{
     }
 ])
 
-export const prodLoaderCSSExtract = (tenant) => (ExtractTextPlugin.extract({
-    fallback: 'style-loader',
-    use: loaders(tenant)
-}))
+export const prodLoaderCSSExtract = (tenant) => ([MiniCssExtractPlugin.loader].concat(loaders(tenant)))
 
 export const devLoaderCSSExtract = (tenant) => (['style-loader'].concat(loaders(tenant)))
 
@@ -71,7 +69,6 @@ export const modules = (tenant) => {
                         loader: 'ts-loader',
                         options: {
                             transpileOnly: IS_PROD ? false : true, // Performance reasons - https://github.com/TypeStrong/ts-loader
-                            visualStudioErrorFormat: true,
                             logLevel: 'warn'
                         }
                     }
@@ -81,6 +78,10 @@ export const modules = (tenant) => {
             {
                 test: /\.css$/,
                 exclude: /(node_modules|bower_components|unitTest)/,
+                // include: [
+                //     path.resolve(__dirname, 'node_modules'),
+                //     path.resolve__dirname(, 'path/to/imported/file/dir')
+                // ],
                 use: [...CSSLoader]
             },
             {

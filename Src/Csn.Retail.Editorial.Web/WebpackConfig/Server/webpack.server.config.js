@@ -29,6 +29,7 @@ module.exports = () => {
             publicPath: config.publicPath,
             filename: '[name].js'
         },
+        mode: IS_PROD ? 'production' : 'development',
         module: modules(),
         resolve: resolve,
         plugins: plugins(),
