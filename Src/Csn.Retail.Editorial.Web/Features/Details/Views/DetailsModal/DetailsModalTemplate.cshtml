@@ -1,4 +1,4 @@
-@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
+﻿@using Csn.Retail.Editorial.Web.Features.Shared.HtmlHelpers
 @using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
 @using Csn.Retail.Editorial.Web.Infrastructure.AssetMappers
 @model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
@@ -9,8 +9,7 @@
 }
 
 @section Head {
-    @{ Html.RenderPartial("Partials/Head/_BasicSeoData", Model.SeoData); }
-    @{ Html.RenderPartial("Partials/Head/_SocialMetaData", Model.SocialMetaData); }
+    <meta name="robots" content="noindex, nofollow" />
 }
 
 @section Styles {
@@ -20,22 +19,17 @@
     }
 
     @Html.AssetCss("details-page--" + tenantName)
+    @Html.AssetCss("details-modal-page--" + tenantName)
 }
 
 @section TopScripts {
     @Html.AssetJs("details.vendor", LoadType.Defer)
     @Html.AssetJs("details-page--" + tenantName, LoadType.Defer)
+    @Html.AssetJs("details-modal-page--" + tenantName, LoadType.Defer)
     @Html.AssetJs("csn.displayAds--" + tenantName, LoadType.Defer)
 }
 
 <div class="page-container">
-    @{
-        if (Html.CurrentTenant().TenantName != "redbook")
-        {
-            Html.RenderPartial("Partials/_Header");
-        }
-    }
-
     <article class="article-type article-type--@Model.HeroSection.Type.ToString().ToLower()">
         @{ Html.RenderPartial("Partials/Hero/_Hero", Model.HeroSection); }
 
@@ -48,13 +42,10 @@
     </article>
 
     @{ Html.RenderPartial("Partials/Modal/_Modal"); }
+    @{ Html.RenderPartial("~/Features/Details/Views/DetailsModal/Partials/_DetailsModalSettings.cshtml"); }
 </div>
-
 
 @section BottomScripts
 {
     @{ Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData); }
-    @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
-    @{ Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData); }
-    @{ Html.RenderPartial("Partials/PolarNativeAds/_PolarNativeAds", Model.PolarNativeAdsData); }
 }

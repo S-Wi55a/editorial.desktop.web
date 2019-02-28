@@ -52,10 +52,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             }
 
             var articleViewModel = _mapper.Map<ArticleViewModel>(result.Data);
-
-            // only the article to be SEO indexed if not in preview mode
-            articleViewModel.SeoData.AllowSeoIndexing = articleViewModel.SeoData.AllowSeoIndexing && !query.IsPreview;
-
             return new GetArticleResponse()
             {
                 ArticleViewModel = articleViewModel,

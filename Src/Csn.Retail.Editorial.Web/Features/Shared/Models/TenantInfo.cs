@@ -20,11 +20,8 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool HasLandingPageConfiguration { get; set; }
 
         #region Seo
-        public bool AllowSeoIndexOfDetails { get; set; }
-        public bool AllowSeoIndexOfListing { get; set; }
         public bool SupportsSeoFriendlyListings { get; set; }
         public string DefaultPageTitle { get; set; }
-        public bool AllowSeoIndexOfLanding { get; set; }
         #endregion
 
         #region Polar Native Ads

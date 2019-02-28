@@ -29,7 +29,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Mappers
             var protocolAndDomain = $"{_tenantProvider.Current().UrlProtocol}://{_tenantProvider.Current().SiteDomain}";
             return new SeoData
             {
-                AllowSeoIndexing = _tenantProvider.Current().AllowSeoIndexOfListing,
                 Title = ryvussNavResult.Metadata == null || _tenantProvider.Current().TenantName == "redbook" ? _tenantProvider.Current().DefaultPageTitle : ryvussNavResult.Metadata.Title,
                 CanonicalUrl = $"{protocolAndDomain}{_requestContext.Url.AbsolutePath}",
                 AlternateUrl = !string.IsNullOrEmpty(_tenantProvider.Current().ListingsAlternateUrl) ? $"{protocolAndDomain}{_tenantProvider.Current().ListingsAlternateUrl}" : string.Empty,
@@ -42,7 +41,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Mappers
             var protocolAndDomain = $"{_tenantProvider.Current().UrlProtocol}://{_tenantProvider.Current().SiteDomain}";
             return new SeoData
             {
-                AllowSeoIndexing = _tenantProvider.Current().AllowSeoIndexOfLanding,
                 Title = ryvussNavResult.Metadata == null ? _tenantProvider.Current().DefaultPageTitle : ryvussNavResult.Metadata.Title,
                 CanonicalUrl = $"{protocolAndDomain}{_requestContext.Url.AbsolutePath}",
                 AlternateUrl = string.Empty,
