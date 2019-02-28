@@ -833,7 +833,7 @@
     <Content Include="Features\Details\Views\DetailsModal\DetailsModalTemplate.cshtml" />
     <Content Include="Features\Details\Assets\Css\details-modal-page.scss" />
     <Content Include="Features\Details\Views\DetailsModal\Partials\_DetailsModalSettings.cshtml" />
-        <Content Include="Features\Listings\Views\Chileautos\_Disclaimer.cshtml" />
+    <Content Include="Features\Listings\Views\Chileautos\_Disclaimer.cshtml" />
     <Content Include="Features\Details\Views\Chileautos\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Configurations\chileautos.landingConfig.json" />
     <Content Include="Features\Details\Assets\Css\details-page.scss" />

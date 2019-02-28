@@ -28,7 +28,6 @@ const AUTenants = [
 const LATAMTenants = [
     'soloautos',
     'chileautos'
-    //'demotores'
 ];
 
 const isAuTenant = (tenant) => {
