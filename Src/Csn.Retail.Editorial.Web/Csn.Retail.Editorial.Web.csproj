@@ -658,6 +658,8 @@
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <Content Include="Features\Shared\Views\Partials\_CsnEditorialEndpoints.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_inlinebanner.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Chileautos\chileautos.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Chileautos\Settings\_settings--chileautos.scss" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponentArrows.tsx" />
@@ -831,6 +833,9 @@
     <Content Include="Features\Details\Views\DetailsModal\DetailsModalTemplate.cshtml" />
     <Content Include="Features\Details\Assets\Css\details-modal-page.scss" />
     <Content Include="Features\Details\Views\DetailsModal\Partials\_DetailsModalSettings.cshtml" />
+    <Content Include="Features\Listings\Views\Chileautos\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Chileautos\_Disclaimer.cshtml" />
+    <Content Include="Features\Landing\Configurations\chileautos.landingConfig.json" />
     <Content Include="Features\Details\Assets\Css\details-page.scss" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />

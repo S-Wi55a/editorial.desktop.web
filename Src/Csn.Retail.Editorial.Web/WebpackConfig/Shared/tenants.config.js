@@ -11,7 +11,7 @@ const listofTenants = [
     'caravancampingsales',
     'farmmachinerysales',
     'redbook',
-    //'soloautos' // Comment out soloautos till its ready
+    'soloautos'
 ];
 
 const AUTenants = [
@@ -27,7 +27,7 @@ const AUTenants = [
 
 const LATAMTenants = [
     'soloautos',
-    'demotores'
+    'chileautos'
 ];
 
 const isAuTenant = (tenant) => {
