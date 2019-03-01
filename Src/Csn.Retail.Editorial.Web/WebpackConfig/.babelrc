@@ -2,7 +2,10 @@
 
 {
     "presets": [
-        ["es2015"],
+        ["@babel/preset-env"],
         // webpack understands the native import syntax, and uses it for tree shaking
+    ],
+    "plugins": [
+    	"@babel/syntax-dynamic-import",
     ]
 }

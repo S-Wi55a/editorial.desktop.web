@@ -21,7 +21,18 @@ const loaders = (tenant) => ([
             //modules: true
         }
     },
-    'postcss-loader?sourceMap',
+    //'postcss-loader?sourceMap',
+    {
+        loader: "postcss-loader",
+        options: {
+            plugins: [
+                require('autoprefixer')({
+                    browsers: ['last 2 versions', 'ie > 8']
+                })
+            ],
+            sourceMap: true
+        }
+    },
     {
         loader: 'resolve-url-loader',
         options: {

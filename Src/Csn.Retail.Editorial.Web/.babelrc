@@ -1,27 +1,26 @@
 {
     "presets": [
         [
-            "env", 
+            "@babel/preset-env", 
             {
                 "targets": {
                     "browsers": ["> 1%", "last 1 versions"]
                 },
                 "modules": false, // for tree shaking
-                "useBuiltIns": true
+                "useBuiltIns": "entry"
                 //"debug": true,
                 //"include": []
             }
         ],
 
-        "react"
+        "@babel/react"
         //Transpile React components to JavaScript
     ],
     "plugins": [
-        "transform-decorators-legacy",
-        "syntax-dynamic-import",
-        "transform-object-rest-spread",
+        "@babel/syntax-dynamic-import",
+        "@babel/plugin-proposal-object-rest-spread",
         //"transform-optional-chaining",
-        ["transform-class-properties", { "spec": true }]
+        ["@babel/plugin-proposal-class-properties", { "spec": true }]
 
     ],
     "env": {
