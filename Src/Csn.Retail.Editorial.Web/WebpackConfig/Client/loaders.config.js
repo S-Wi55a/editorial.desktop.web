@@ -18,21 +18,11 @@ const loaders = (tenant) => ([
         loader: 'css-loader',
         options: {
             sourceMap: IS_PROD ? false : true,
+            importLoaders: 1
             //modules: true
         }
     },
-    //'postcss-loader?sourceMap',
-    {
-        loader: "postcss-loader",
-        options: {
-            plugins: [
-                require('autoprefixer')({
-                    browsers: ['last 2 versions', 'ie > 8']
-                })
-            ],
-            sourceMap: true
-        }
-    },
+    'postcss-loader?sourceMap',
     {
         loader: 'resolve-url-loader',
         options: {
@@ -89,10 +79,6 @@ export const modules = (tenant) => {
             {
                 test: /\.css$/,
                 exclude: /(node_modules|bower_components|unitTest)/,
-                // include: [
-                //     path.resolve(__dirname, 'node_modules'),
-                //     path.resolve__dirname(, 'path/to/imported/file/dir')
-                // ],
                 use: [...CSSLoader]
             },
             {

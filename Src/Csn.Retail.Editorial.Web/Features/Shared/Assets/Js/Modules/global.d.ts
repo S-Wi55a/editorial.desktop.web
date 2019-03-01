@@ -20,5 +20,3 @@ declare module 'iNavPagination/Containers/iNavPaginationContainer'
 declare module 'iNavSorting/Containers/iNavSortingContainer'
 declare module 'ReactComponents/iNav/Components/iNavKeywordSearch'
 declare module 'ReactComponents/iNav/Components/iNavMenuHeader'
-
-

@@ -3,11 +3,13 @@ import { TenantConfig } from '../Shared/tenants.config'
 import { stats } from '../Shared/stats.config'
 import { devServer } from '../Shared/devServer.config'
 import { resolve } from '../Shared/resolve.config'
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 
 // From Client/
 import { config, getEntryFiles } from './entries.config';
 import { plugins } from './plugins.config';
 import { modules } from './loaders.config'
+
 
 module.exports = () => {
 
@@ -42,6 +44,38 @@ module.exports = () => {
             mode: IS_PROD ? 'production' : 'development',
             module: modules(tenant),
             resolve,
+            optimization: {
+                minimizer: IS_PROD ? [
+                    // we specify a custom UglifyJsPlugin here to get source maps in production
+                    new UglifyJsPlugin({
+                        cache: true,
+                        parallel: true,
+                        uglifyOptions: {
+                            compress: {
+                                ecma: 6
+                            },
+                            ecma: 6,
+                            mangle: true
+                        },
+                        sourceMap: false
+                    })
+                ] : [],
+                splitChunks: {
+                    chunks: 'all',
+                    minSize: 3000,
+                    minChunks: 1,
+                    maxAsyncRequests: 5,
+                    maxInitialRequests: 3,
+                    automaticNameDelimiter: '~',
+                    name: true,
+                    cacheGroups: {
+                        vendors: {
+                            test: /[\\/]node_modules[\\/]/,
+                            priority: -10
+                        }
+                    }
+                }
+            },
             plugins: plugins(tenant, pageEntries),
             stats,
             devtool: IS_PROD ? 'none' : 'eval',
