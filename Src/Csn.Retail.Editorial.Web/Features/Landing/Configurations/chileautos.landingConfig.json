@@ -16,12 +16,23 @@
           "carouselItems": null
         },
         {
-          "title": "Las Mejores Compras",
+          "title": "Consejos",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.Type.Las Mejores Compras._.Service.Chileautos.)",
+          "query": "(And.Type.Consejos._.Service.Chileautos.)",
           "sort": "Latest",
-          "viewAll": "/las-mejores-compras/",
+          "viewAll": "/consejos/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        },
+        {
+          "title": "Test Drive",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Type.Test Drive._.Service.Chileautos.)",
+          "sort": "Latest",
+          "viewAll": "/test-drive/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
@@ -44,28 +55,6 @@
           "query": "(And.Type.Comparativas._.Service.Chileautos.)",
           "sort": "Latest",
           "viewAll": "/comparativas/",
-          "polarAds": null,
-          "carouselType": "article",
-          "carouselItems": null
-        },
-        {
-          "title": "Consejos",
-          "displayMrec": false,
-          "displayNativeAd": false,
-          "query": "(And.ArticleTypes.Consejos._.Service.Chileautos.)",
-          "sort": "Latest",
-          "viewAll": "/consejos/",
-          "polarAds": null,
-          "carouselType": "article",
-          "carouselItems": null
-        },
-        {
-          "title": "Pruebas",
-          "displayMrec": false,
-          "displayNativeAd": false,
-          "query": "(And.Type.Pruebas._.Service.Chileautos.)",
-          "sort": "Latest",
-          "viewAll": "/pruebas/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
