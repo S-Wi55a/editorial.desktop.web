@@ -300,8 +300,6 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
                     Assert.AreEqual(ReviewRatingValues.AttributeWorstRating, item.WorstRating);
                 }
             }
-
-
         }
     }
 }
