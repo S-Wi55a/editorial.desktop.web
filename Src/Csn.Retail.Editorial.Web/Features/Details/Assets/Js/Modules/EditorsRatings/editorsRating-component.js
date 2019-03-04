@@ -1,7 +1,8 @@
 ﻿// Details Page css files
 require('Css/Modules/Widgets/EditorRatings/_editorsRatings.scss');
 
-import Modernizr from 'modernizr';
+//import Modernizr from 'modernizr';
+const Modernizr = require("modernizr");
 import Circles from 'circles';
 import TinyAnimate from 'TinyAnimate';
 import ScrollMagic from 'ScrollMagic';
