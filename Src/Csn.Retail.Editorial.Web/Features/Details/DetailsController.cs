@@ -3,8 +3,10 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.Loggers;
+using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
+using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
@@ -47,7 +49,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
             {
                 Id = networkId,
-                IsPreview = isPreview
+                IsPreview = isPreview,
+                DisplayType = DisplayType.DetailsPage
             });
 
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);
@@ -83,9 +86,40 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             return new RedirectResult(redirectUrl, true);
         }
+
+        public async Task<ActionResult> Modal(string networkId, string __source = "")
+        {
+            var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsModalRequestEvent());
+
+            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
+            {
+                Id = networkId.ToUpper(),
+                IsPreview = false,
+                DisplayType = DisplayType.DetailsModal,
+                Source = __source
+            });
+
+            await Task.WhenAll(dispatchedEvent, dispatchedQuery);
+
+            var response = dispatchedQuery.Result;
+
+            if (response.ArticleViewModel != null)
+            {
+                return View("DetailsModal/DetailsModalTemplate", response.ArticleViewModel);
+            }
+
+            var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
+            errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
+
+            return response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404Child() : errorsController.ErrorGenericChild();
+        }
     }
 
     public class DetailsPageRequestEvent : IEvent, IRequireGlobalSiteNav, IRequiredGoogleAnalyticsTrackingScript
+    {
+    }
+
+    public class DetailsModalRequestEvent : IEvent, IRequiredGoogleAnalyticsTrackingScript
     {
     }
 }

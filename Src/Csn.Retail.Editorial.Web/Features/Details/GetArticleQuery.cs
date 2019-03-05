@@ -6,5 +6,13 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     {
         public string Id { get; set; }
         public bool IsPreview { get; set; }
+        public DisplayType DisplayType { get; set; }
+        public string Source { get; set; }
+    }
+
+    public enum DisplayType
+    {
+        DetailsPage,
+        DetailsModal
     }
 }

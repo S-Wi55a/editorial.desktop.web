@@ -1,0 +1,75 @@
+﻿// Overwrites just for modal
+body {
+    padding-top: 0;
+    height: 100%;
+    overflow-y: scroll;
+    /* Internal sidebar */
+    /* width */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+        box-shadow: none;
+        border-radius: 10px;
+    }
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #bfbfbf;
+        border-radius: 10px;
+    }
+}
+
+.article-type--video,
+.article-type--singleimage,
+.article-type--doubleimage {
+    padding-top: 40px;
+}
+
+.article-disclaimer {
+    padding-top: 40px;
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        min-width: 918px;
+    }
+
+    .hero--singleImage,
+    .hero--doubleImage,
+    .hero--singleVideo {
+        left: 50%;
+        margin-left: -301px;
+
+        > .container {
+            width: 603px;
+            left: calc(-1*(320px)/2);
+        }
+    }
+
+    .article-type:not(.article-type--wideimage):not(.article-type--widevideo) .article {
+        margin-left: -301px;
+
+        .container {
+            width: 603px;
+            left: calc(-1*(320px)/2);
+        }
+    }
+
+    .wrapper--aside {
+        margin-left: -160px;
+    }
+
+    .more-articles .container {
+        width: 100%;
+        min-width: 918px;
+    }
+}
+
+@media screen and (max-width: 935px) {
+    .hero--singleImage,
+    .hero--doubleImage,
+    .hero--singleVideo {
+        left: 459px;
+    }
+}

@@ -100,7 +100,6 @@ let updateContent = function (frame, el, container, cb) {
             cb()
         })
     }
-
 }
 
 // handle filter active class
@@ -233,11 +232,11 @@ let main = (scope = {}) => {
     )
 
     // Init next Button
-    addEventListenerToButton
-        (scope.moreArticlesNextCtrl,
-            'click',
-            nextButtonHandler.bind(null, slider, offset, content)
-        )
+    addEventListenerToButton(
+        scope.moreArticlesNextCtrl,
+        'click',
+        nextButtonHandler.bind(null, slider, offset, content)
+    )
 
     //Init Filters
     filters(scope.moreArticlesFilter, filterHandler, [slider, scope, 'more-articles__filter--active', 'more-articles__filter--last'])

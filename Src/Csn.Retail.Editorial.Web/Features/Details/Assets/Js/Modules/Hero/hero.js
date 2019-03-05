@@ -13,21 +13,32 @@ export default function () {
 
     const layoutType = multipleImageLayout || imageAndVideoLayout || singleImageLayout || doubleImageLayout
 
+    // Check if gallery modal is enabled
+    const galleryModalEnabled = !csn_editorial.detailsModal; // Disable gallery modal if its details modal page
+
     // Set up slider and init slider
-    initSliderByLayoutType(layoutType)
+    initSliderByLayoutType(layoutType);
 
     if (modalContainer) {
-
         const scope = document.querySelector('.hero');
 
         if (!scope) return;
 
-        window.csn_modal = window.csn_modal || new Modal()
+        if (galleryModalEnabled) {
+            window.csn_modal = window.csn_modal || new Modal()
 
-        //Add event listeners to hero content
-        const modalTrigger = scope.querySelectorAll('[data-modal-trigger]');
-        for (let item of modalTrigger) {
-            item.addEventListener('click', modalTriggerHandler.bind(null, item));
+            //Add event listeners to hero content
+            const modalTrigger = scope.querySelectorAll('[data-modal-trigger]');
+            for (let item of modalTrigger) {
+                item.addEventListener('click', modalTriggerHandler.bind(null, item));
+            }
+        } else {
+            const images = scope.querySelectorAll('.slideshow__image');
+            for (let item of images) {
+                item.style.cursor = 'default';
+            }
+            const viewPhotosButton = document.querySelector('.slideshow__view-photos');
+            if(viewPhotosButton) viewPhotosButton.style.display = 'none';
         }
     }
 }
