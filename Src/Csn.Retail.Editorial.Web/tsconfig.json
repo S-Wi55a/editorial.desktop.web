@@ -25,12 +25,13 @@
   },
   "include": [
     "Features/",
+    "Infrastructure/"
   ],
   "exclude": [
-      "node_modules",
-      "bower_components", 
-      "jspm_packages",
-      "**/*.scss",
-      "./CompiledTypeScript"
+    "node_modules",
+    "bower_components",
+    "jspm_packages",
+    "**/*.scss",
+    "./CompiledTypeScript"
   ]
 }
