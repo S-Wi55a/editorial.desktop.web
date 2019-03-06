@@ -22,7 +22,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         #region Seo
         public bool SupportsSeoFriendlyListings { get; set; }
         public string DefaultPageTitle { get; set; }
-        public bool AllowSeoIndexOfLanding { get; set; }
         public bool SeoSchemaSupport { get; set; }
         public string SeoSchemaVehicleType { get; set; }
         #endregion
