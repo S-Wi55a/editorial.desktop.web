@@ -1,7 +1,7 @@
 ﻿import path from 'path'
 import webpack from 'webpack'
 import { IS_PROD, IS_DEV, VIEW_BUNDLE } from '../Shared/env.config.js'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import AssetsPlugin from 'assets-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
@@ -23,9 +23,15 @@ export const plugins = (tenant, pageEntries) => {
 
     let pluginsArr = [
         assetsPluginInstance,
-        new ExtractTextPlugin({
-            filename: IS_PROD ? '[name]-[contenthash].css' : '[name].css',
-            allChunks: false
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+            },
+            SERVER: JSON.stringify(true)
+        }),
+        new MiniCssExtractPlugin({
+            filename: IS_PROD ? '[name]-[chunkhash].css' : '[name].css',
+            chunkFilename: IS_PROD ?  '[id].[chunkhash].css' : '[id].css',
         }),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ];

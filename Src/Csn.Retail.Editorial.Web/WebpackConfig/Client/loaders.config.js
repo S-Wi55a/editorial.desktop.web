@@ -7,7 +7,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 const URL_LIMIT = IS_PROD ? 1 : null;
 
 const loaders = (tenant) => ([
-    'style-loader',
+    IS_PROD ? MiniCssExtractPlugin.loader : 'style-loader',
     {
         loader: 'cache-loader',
         options: {
@@ -40,14 +40,7 @@ const loaders = (tenant) => ([
     }
 ])
 
-export const prodLoaderCSSExtract = (tenant) => ([MiniCssExtractPlugin.loader].concat(loaders(tenant)))
-
-export const devLoaderCSSExtract = (tenant) => (['style-loader'].concat(loaders(tenant)))
-
 export const modules = (tenant) => {
-
-    let CSSLoader = IS_PROD ? prodLoaderCSSExtract(tenant) : devLoaderCSSExtract(tenant)
-
     return {
         rules: [{
                 test: [/\.jsx?$/, /\.es6$/],
@@ -79,12 +72,12 @@ export const modules = (tenant) => {
             {
                 test: /\.css$/,
                 exclude: /(node_modules|bower_components|unitTest)/,
-                use: [...CSSLoader]
+                use: [...loaders(tenant)]
             },
             {
                 test: /\.scss$/,
                 exclude: [/(node_modules|bower_components|unitTest)/],
-                use: [...CSSLoader]
+                use: [...loaders(tenant)]
             },
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,

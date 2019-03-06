@@ -35,15 +35,15 @@ module.exports = () => {
         moduleExportArr.push({
             target: 'web',
             name: tenant,
+            mode: IS_PROD ? 'production' : 'development',
             entry: entries,
             output: {
                 path: config.outputPath,
                 publicPath: config.publicPath,
                 filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
             },
-            mode: IS_PROD ? 'production' : 'development',
             module: modules(tenant),
-            resolve,
+            plugins: plugins(tenant, pageEntries),
             optimization: {
                 minimizer: IS_PROD ? [
                     // we specify a custom UglifyJsPlugin here to get source maps in production
@@ -57,7 +57,7 @@ module.exports = () => {
                             ecma: 6,
                             mangle: true
                         },
-                        sourceMap: false
+                        sourceMap: true
                     })
                 ] : [],
                 splitChunks: {
@@ -76,7 +76,7 @@ module.exports = () => {
                     }
                 }
             },
-            plugins: plugins(tenant, pageEntries),
+            resolve,
             stats,
             devtool: IS_PROD ? 'none' : 'eval',
             devServer: devServer(tenant),

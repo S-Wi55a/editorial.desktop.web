@@ -1,7 +1,7 @@
 ﻿import path from 'path'
 import webpack from 'webpack'
 import {IS_PROD, IS_DEV} from '../Shared/env.config.js'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
 import WebpackNotifierPlugin from 'webpack-notifier'
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin'
@@ -9,7 +9,13 @@ import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModul
 export const plugins = (tenant = 'sever') => {
 
     let pluginsArr = [
-        new ExtractTextPlugin({
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+            },
+            SERVER: JSON.stringify(true)
+        }),
+        new MiniCssExtractPlugin({
             filename: IS_PROD ? '[name]-[contenthash].css' : '[name].css',
             allChunks: false
         }),
