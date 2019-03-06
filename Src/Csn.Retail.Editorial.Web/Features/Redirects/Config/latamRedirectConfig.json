@@ -33,6 +33,24 @@
         "includeQueryStringInRedirect": true,
         "description": "Used for redirecting the legacy article details urls which did not include networkid in the url"
       }
-    ]
+    ],
+    "chileautos": [
+      {
+        "ruleType": "regex",
+        "name": "las-mejores-compras",
+        "matchRule": "\\/noticias\\/listados\\/las-mejores-compras/?(.*)",
+        "redirectInstruction": "/noticias/compra-de-auto/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "Used for redirecting the legacy las mejores comras"
+      },
+      {
+        "ruleType": "regex",
+        "name": "pruebas",
+        "matchRule": "\\/noticias\\/listados/pruebas\\/?(.*)",
+        "redirectInstruction": "/noticias/test-drive/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "Used for redirecting the legacy pruebas"
+      }
+    ] 
   }
 }
