@@ -19,7 +19,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects.RedirectProviders
 
             if (matches.Count != 1) return null;
 
-            return Regex.Replace(absolutePathUnescaped, redirectRule.MatchRule, redirectRule.RedirectInstruction);
+            return Regex.Replace(absolutePathUnescaped, redirectRule.MatchRule, redirectRule.RedirectInstruction, RegexOptions.IgnoreCase);
         }
 
         public bool Matches(RedirectRule redirectRule, Uri uri)
