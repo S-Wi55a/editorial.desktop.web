@@ -58,6 +58,12 @@
         Html.RenderPartial("Partials/Tracking/_CsnInsights", Model.InsightsData);
     }
     @{ Html.RenderPartial("Partials/Widgets/SpecModule/_SpecModuleData", Model); }
+
+    @if (Model.SeoSchemaData != null)
+    {
+       Html.RenderPartial("Partials/SeoSchema/_SeoSchemaData", Model.SeoSchemaData);
+    }
+
     @if (Model.MoreArticleData != null)
     {
         Html.RenderPartial("Partials/Widgets/MoreArticles/_MoreArticleData", Model.MoreArticleData);
