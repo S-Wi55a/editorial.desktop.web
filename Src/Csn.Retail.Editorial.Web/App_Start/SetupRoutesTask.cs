@@ -143,6 +143,12 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
+                RouteNames.Mvc.DetailsModal,
+                "details-modal/{networkId}",
+                new { controller = "Details", action = "Modal" }
+            );
+
+            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.LandingManufacturer,
                 "{*manufacturer}",
                 new { controller = "Landing", action = "Index" }, 

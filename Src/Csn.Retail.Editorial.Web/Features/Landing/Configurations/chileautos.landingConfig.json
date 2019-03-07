@@ -1,0 +1,70 @@
+{
+  "configs": [
+    {
+      "type": "default",
+      "displayBannerAd": true,
+      "carouselConfigurations": [
+        {
+          "title": "Actualidad",
+          "displayMrec": true,
+          "displayNativeAd": false,
+          "query": "(And.Type.Actualidad._.Service.Chileautos.)",
+          "sort": "Latest",
+          "viewAll": "/actualidad/",
+          "polarAds": null,
+          "carouselType": "featured",
+          "carouselItems": null
+        },
+        {
+          "title": "Consejos",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Type.Consejos._.Service.Chileautos.)",
+          "sort": "Latest",
+          "viewAll": "/consejos/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        },
+        {
+          "title": "Test Drive",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Type.Test Drive._.Service.Chileautos.)",
+          "sort": "Latest",
+          "viewAll": "/test-drive/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        },
+        {
+          "title": "Compra de Auto",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Type.Compra de Auto._.Service.Chileautos.)",
+          "sort": "Latest",
+          "viewAll": "/compra-de-auto/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        },
+        {
+          "title": "Comparativas",
+          "displayMrec": false,
+          "displayNativeAd": false,
+          "query": "(And.Type.Comparativas._.Service.Chileautos.)",
+          "sort": "Latest",
+          "viewAll": "/comparativas/",
+          "polarAds": null,
+          "carouselType": "article",
+          "carouselItems": null
+        }
+      ],
+      "heroAdSettings": {
+        "hasHeroAd": false,
+        "heroTitle": "Actualidad, consejo, comparativas y mas",
+        "heroMake": null
+      }
+    }
+  ]
+}

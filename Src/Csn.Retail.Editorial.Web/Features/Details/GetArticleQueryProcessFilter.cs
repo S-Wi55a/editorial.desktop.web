@@ -10,12 +10,10 @@ namespace Csn.Retail.Editorial.Web.Features.Details
     public class GetArticleQueryProcessFilter : IAsyncQueryProcessFilter<GetArticleQuery, GetArticleResponse>
     {
         private readonly IPageContextStore _contextStore;
-        private readonly IArticleDetailsCacheStore _articleDetailsCacheStore;
 
-        public GetArticleQueryProcessFilter(IPageContextStore contextStore, IArticleDetailsCacheStore articleDetailsCacheStore)
+        public GetArticleQueryProcessFilter(IPageContextStore contextStore)
         {
             _contextStore = contextStore;
-            _articleDetailsCacheStore = articleDetailsCacheStore;
         }
 
         public Task OnExecutingAsync(GetArticleQuery query)
@@ -25,21 +23,50 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
         public async Task OnExecutedAsync(GetArticleQuery query, GetArticleResponse result)
         {
-            var cachedArticle = await _articleDetailsCacheStore.GetAsync(query.Id);
-
-            if (!cachedArticle.HasValue || cachedArticle.Value.ArticleViewModel == null) return;
+            if(result?.ArticleViewModel == null) return;
 
             var detailsPageContext = new DetailsPageContext
             {
-                Items = cachedArticle.Value.ArticleViewModel.Items,
-                Lifestyles = cachedArticle.Value.ArticleViewModel.Lifestyles,
-                Categories = cachedArticle.Value.ArticleViewModel.Categories,
-                Keywords = cachedArticle.Value.ArticleViewModel.Keywords,
-                ArticleType = cachedArticle.Value.ArticleViewModel.ArticleType,
-                ArticleTypes = cachedArticle.Value.ArticleViewModel.ArticleTypes
+                Items = result.ArticleViewModel.Items,
+                Lifestyles = result.ArticleViewModel.Lifestyles,
+                Categories = result.ArticleViewModel.Categories,
+                Keywords = result.ArticleViewModel.Keywords,
+                ArticleType = result.ArticleViewModel.ArticleType,
+                ArticleTypes = result.ArticleViewModel.ArticleTypes
             };
 
             _contextStore.Set(detailsPageContext);
+
+            if (query.DisplayType == DisplayType.DetailsModal)
+            {
+                result.ArticleViewModel.SocialMetaData = null;
+                result.ArticleViewModel.StockListingData = null;
+                result.ArticleViewModel.MoreArticleData = null;
+                result.ArticleViewModel.SpecDataGetVariantsUrl = null;
+                result.ArticleViewModel.DisqusData = null;
+                result.ArticleViewModel.PolarNativeAdsData = null;
+                foreach (var contributor in result.ArticleViewModel.Contributors)
+                {
+                    contributor.LinkUrl = null;
+                }
+                if (result.ArticleViewModel.InsightsData.MetaData.ContainsKey("displayType"))
+                {
+                    result.ArticleViewModel.InsightsData.MetaData["displayType"] = "modal";
+                }
+                else
+                {
+                    result.ArticleViewModel.InsightsData.MetaData.Add("displayType", "modal");
+                }
+
+                if (result.ArticleViewModel.InsightsData.MetaData.ContainsKey("source"))
+                {
+                    result.ArticleViewModel.InsightsData.MetaData["source"] = query.Source;
+                }
+                else
+                {
+                    result.ArticleViewModel.InsightsData.MetaData.Add("source", query.Source);
+                }
+            }
         }
     }
 }

@@ -9,12 +9,16 @@ const scope = document.querySelector('.also-consider-placeholder');
 // Make Query - Ajax
 const makeQuery = (url, el, view, cb = () => { }, onError = () => { }) => {
 
-    //Make Query
+    // Make Query
     Ajax.get(url,
         (resp) => {
             //update list
             el.innerHTML = view(JSON.parse(resp))
             cb()
+            if(csn_editorial.detailsModal) {
+                const disableNonArticleLinks = require('DisableNonArticleLinks/disableNonArticleLinks.js').default;
+                disableNonArticleLinks(scope);
+            }
         },
         () => {
             onError()

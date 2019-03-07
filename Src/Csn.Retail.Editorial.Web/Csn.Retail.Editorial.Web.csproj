@@ -649,13 +649,17 @@
     <Compile Include="Features\Shared\Constants\EditorialQueryStringParams.cs" />
     <Compile Include="Features\Listings\Filters\LegacyListingsUrlRedirectFilter.cs" />
     <Compile Include="Features\Listings\Helpers\LegacyListingsRedirectHelper.cs" />
+    <Content Include="Features\Details\Assets\details-modal-page.js" />
     <Content Include="Features\Details\Assets\Js\details.vendor.js" />
+    <Content Include="Features\Details\Assets\Js\Modules\DisableNonArticleLinks\disableNonArticleLinks.js" />
     <Content Include="Features\Details\Assets\Js\Modules\Hero\hero-wide-video.js" />
     <Content Include="Features\Landing\Assets\Js\landing-page.js" />
     <Content Include="Features\Landing\Assets\Js\landing.vendor.js" />
     <Content Include="Features\Landing\Assets\Js\Modules\carousel\carousel.js" />
     <Content Include="Features\Shared\Views\Partials\_CsnEditorialEndpoints.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_inlinebanner.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Chileautos\chileautos.scss" />
+    <Content Include="Features\Shared\Assets\Css\Tenants\Chileautos\Settings\_settings--chileautos.scss" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponentArrows.tsx" />
@@ -826,6 +830,13 @@
     <Content Include="Features\Errors\Views\en-au\ErrorGeneric.cshtml" />
     <Content Include="Features\Errors\Views\es-es\Error404.cshtml" />
     <Content Include="Features\Errors\Views\es-es\ErrorGeneric.cshtml" />
+    <Content Include="Features\Details\Views\DetailsModal\DetailsModalTemplate.cshtml" />
+    <Content Include="Features\Details\Assets\Css\details-modal-page.scss" />
+    <Content Include="Features\Details\Views\DetailsModal\Partials\_DetailsModalSettings.cshtml" />
+    <Content Include="Features\Listings\Views\Chileautos\_Disclaimer.cshtml" />
+    <Content Include="Features\Details\Views\Chileautos\_Disclaimer.cshtml" />
+    <Content Include="Features\Landing\Configurations\chileautos.landingConfig.json" />
+    <Content Include="Features\Details\Assets\Css\details-page.scss" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
@@ -976,7 +987,6 @@
     <Content Include="Features\Details\Views\Partials\_Aside.cshtml" />
     <Content Include="Features\Shared\Assets\Css\Modules\Brightcove\_brightcove-video-player.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_article.scss" />
-    <Content Include="Features\Details\Assets\Css\details-page.scss" />
     <Content Include="Features\Details\Assets\Css\Modules\Content\_aside.scss" />
     <Content Include="Features\Shared\Assets\Css\Mixins\_mixins.scss" />
     <Content Include="Features\Shared\Assets\Css\Variables\Screen\_variables-screen.scss" />
@@ -1000,7 +1010,6 @@
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Email.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Reddit.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_Pinterest.cshtml" />
-    <Content Include="Features\Details\Views\Partials\SocialNetworks\_Googleplus.cshtml" />
     <Content Include="Features\Details\Views\Partials\SocialNetworks\_SocialMediaLinks.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ExpertRatings.cshtml" />
     <Content Include="Features\Details\Views\Partials\Widgets\EditorRatings\_ProCon.cshtml" />
@@ -1224,7 +1233,6 @@
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Fade\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactAnimations\Timer\index.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\NativeAds\Area\placements--editorialresults.js" />
-    <Content Include="Features\Details\Assets\Css\Details-page.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\StickySidebar.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.utils.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\StickySidebar\stickySidebar.Actions.js" />
