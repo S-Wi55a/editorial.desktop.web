@@ -165,4 +165,7 @@
   <data name="ViewPhotos" xml:space="preserve">
     <value>Ver fotos</value>
   </data>
+  <data name="LanguageCode" xml:space="preserve">
+    <value>es</value>
+  </data>
 </root>

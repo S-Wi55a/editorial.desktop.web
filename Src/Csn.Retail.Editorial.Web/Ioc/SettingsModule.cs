@@ -12,6 +12,7 @@ namespace Csn.Retail.Editorial.Web.Ioc
             builder.Register(x => ImageServerSettings.Instance).As<IImageServerSettings>().SingleInstance();
             builder.Register(x => VideosApiSettings.Instance).As<VideosApiSettings>().SingleInstance();
             builder.Register(x => ReactNetSettings.Instance).As<ReactNetSettings>().SingleInstance();
+            builder.Register(x => SeoSchemaSettings.Instance).As<ISeoSchemaSettings>().SingleInstance();
         }
     }
 }

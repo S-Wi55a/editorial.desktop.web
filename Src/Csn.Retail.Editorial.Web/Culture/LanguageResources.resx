@@ -165,4 +165,7 @@
   <data name="ViewPhotos" xml:space="preserve">
     <value>View Photos</value>
   </data>
+  <data name="LanguageCode" xml:space="preserve">
+    <value>en-au</value>
+  </data>
 </root>
