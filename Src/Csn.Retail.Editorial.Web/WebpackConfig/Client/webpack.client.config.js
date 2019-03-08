@@ -40,7 +40,7 @@ module.exports = () => {
             output: {
                 path: config.outputPath,
                 publicPath: config.publicPath,
-                filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
+                filename: IS_PROD ? '[name]-[contenthash].js' : '[name].js'
             },
             module: modules(tenant),
             plugins: plugins(tenant, pageEntries),
@@ -51,10 +51,10 @@ module.exports = () => {
                         cache: true,
                         parallel: true,
                         uglifyOptions: {
-                            compress: {
-                                ecma: 6
-                            },
-                            ecma: 6,
+                            //compress: {
+                            //    ecma: 6
+                            //},
+                            //ecma: 6,
                             mangle: true
                         },
                         sourceMap: true

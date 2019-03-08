@@ -30,8 +30,8 @@ export const plugins = (tenant, pageEntries) => {
             SERVER: JSON.stringify(true)
         }),
         new MiniCssExtractPlugin({
-            filename: IS_PROD ? '[name]-[chunkhash].css' : '[name].css',
-            chunkFilename: IS_PROD ?  '[id].[chunkhash].css' : '[id].css',
+            filename: IS_PROD ? '[name]-[contenthash].css' : '[name].css',
+            chunkFilename: IS_PROD ?  '[id].[contenthash].css' : '[id].css',
         }),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ];
