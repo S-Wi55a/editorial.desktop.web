@@ -74,7 +74,10 @@ module.exports = () => {
                             priority: -10
                         }
                     }
-                }
+                },
+                runtimeChunk: {
+                    name: 'csn.manifest' + '--' + tenant,
+                },
             },
             resolve,
             stats,

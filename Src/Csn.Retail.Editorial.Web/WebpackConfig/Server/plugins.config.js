@@ -10,9 +10,6 @@ export const plugins = (tenant = 'sever') => {
 
     let pluginsArr = [
         new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-            },
             SERVER: JSON.stringify(true)
         }),
         new MiniCssExtractPlugin({
