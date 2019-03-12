@@ -15,14 +15,18 @@
         "@babel/react"
         //Transpile React components to JavaScript
     ],
-    "plugins": [
-        "@babel/syntax-dynamic-import",
-        "@babel/plugin-transform-runtime",
-        "@babel/plugin-proposal-object-rest-spread",
-        //"transform-optional-chaining",
-        ["@babel/plugin-proposal-class-properties", { "spec": true }]
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-export-namespace-from",
+    //"transform-optional-chaining",
+    [
+      "@babel/plugin-proposal-class-properties",
+      { "spec": true }
+    ]
 
-    ],
+  ],
     "env": {
         "development": {
             "plugins": [

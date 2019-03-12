@@ -61,8 +61,9 @@ module.exports = () => {
                     })
                 ] : [],
                 splitChunks: {
-                    chunks: 'all',
-                    minSize: 3000,
+                    chunks: 'async',
+                    minSize: 30000,
+                    maxSize: 0,
                     minChunks: 1,
                     maxAsyncRequests: 5,
                     maxInitialRequests: 3,
@@ -72,6 +73,11 @@ module.exports = () => {
                         vendors: {
                             test: /[\\/]node_modules[\\/]/,
                             priority: -10
+                        },
+                        default: {
+                            minChunks: 2,
+                            priority: -20,
+                            reuseExistingChunk: true
                         }
                     }
                 },
