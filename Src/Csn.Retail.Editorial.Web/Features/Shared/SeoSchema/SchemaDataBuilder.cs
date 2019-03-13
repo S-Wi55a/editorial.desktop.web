@@ -11,6 +11,7 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Culture;
+using SeoData = Csn.Retail.Editorial.Web.Features.Shared.Models.SeoData;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 {
@@ -165,12 +166,11 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             return Regex.Replace(bodyContent.Content, "<[^>]*>", "");
         }
 
-        private IEnumerable<ImageEntity> GetImageMarkup(ArticleDetailsDto article)
+        private ImageEntity GetImageMarkup(ArticleDetailsDto article)
         {
-            if (article?.HeroSection == null) return null;
-
-            var imageCatalogue = article.HeroSection.Images;
-            return !imageCatalogue.IsNullOrEmpty() ? imageCatalogue.Select(image => new ImageEntity() { Url = image.Url }) : null;
+            if (article?.SeoData.FeatureImagePath == null) return null;
+        
+            return new ImageEntity(){Url = article.SeoData.FeatureImagePath};
         }
 
         private IEnumerable<ItemReviewed> GetItemsReviewedMarkup(ArticleDetailsDto article)
