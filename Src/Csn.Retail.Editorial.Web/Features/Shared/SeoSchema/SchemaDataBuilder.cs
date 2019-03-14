@@ -42,15 +42,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
                 if (!article.Items.Any()) return BuildNews(article);
 
                 return BuildReview(article);
-            } 
-
-            // NEWS SCHEMA
-            if (_schemaSettings.ArticleTypesForNewsSchema.Contains(article.ArticleType))
-            {
-                return BuildNews(article);
             }
 
-            return null;
+            //Default Schema
+            return BuildNews(article);
         }
 
         private NewsArticleSchema BuildNews(ArticleDetailsDto article)
@@ -65,7 +60,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
                 MainEntityOfPage = GetMainEntityOnPageMarkup(article),
                 Author = GetAuthorMarkup(article),
                 Publisher = GetPublisherMarkup(),
-                Image = GetImageMarkup(article)
+                Images = GetImageMarkup(article)
             };
         }
 
@@ -85,7 +80,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
                 Publisher = GetPublisherMarkup(),
                 ItemReviewed = GetItemsReviewedMarkup(article),
                 ReviewRating = GetExpertCategoryRatingsMarkup(article),
-                Image = GetImageMarkup(article)
+                Images = GetImageMarkup(article)
             };
         }
 
@@ -166,11 +161,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             return Regex.Replace(bodyContent.Content, "<[^>]*>", "");
         }
 
-        private ImageEntity GetImageMarkup(ArticleDetailsDto article)
+        private IEnumerable<ImageEntity> GetImageMarkup(ArticleDetailsDto article)
         {
-            if (article?.SeoData.FeatureImagePath == null) return null;
-        
-            return new ImageEntity(){Url = article.SeoData.FeatureImagePath};
+            if (article.SeoData.ImageUrls.IsNullOrEmpty()) return null;
+
+
+            return article.SeoData.ImageUrls.Select(image => new ImageEntity() {Url = image});
         }
 
         private IEnumerable<ItemReviewed> GetItemsReviewedMarkup(ArticleDetailsDto article)

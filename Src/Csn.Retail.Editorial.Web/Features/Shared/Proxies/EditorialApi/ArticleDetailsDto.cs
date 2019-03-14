@@ -145,7 +145,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public string CanonicalAmpUrl { get; set; }
         public string AlternateUrl { get; set; }
         public string Keywords { get; set; }
-        public string FeatureImagePath { get; set; }
+        public List<string> ImageUrls { get; set; }
     }
 
     public enum ArticleTemplateType
