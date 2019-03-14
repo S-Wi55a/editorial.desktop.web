@@ -60,7 +60,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
                 MainEntityOfPage = GetMainEntityOnPageMarkup(article),
                 Author = GetAuthorMarkup(article),
                 Publisher = GetPublisherMarkup(),
-                Images = GetImageMarkup(article)
+                Image = GetImageMarkup(article)
             };
         }
 
@@ -80,7 +80,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
                 Publisher = GetPublisherMarkup(),
                 ItemReviewed = GetItemsReviewedMarkup(article),
                 ReviewRating = GetExpertCategoryRatingsMarkup(article),
-                Images = GetImageMarkup(article)
+                Image = GetImageMarkup(article)
             };
         }
 

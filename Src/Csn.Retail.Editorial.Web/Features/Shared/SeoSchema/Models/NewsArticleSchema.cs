@@ -20,6 +20,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         public MainEntityOnPage MainEntityOfPage { get; set; }
         public IContentContributor Author { get; set; }
         public IContentContributor Publisher { get; set; }
-        public IEnumerable<ImageEntity> Images { get; set; }
+        public IEnumerable<ImageEntity> Image { get; set; }
     }
 }

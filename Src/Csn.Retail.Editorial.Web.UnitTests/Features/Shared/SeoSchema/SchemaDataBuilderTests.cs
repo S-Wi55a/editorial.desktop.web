@@ -97,7 +97,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             Assert.IsNull(newsArticleSchema.DateModified);
             Assert.IsNull(newsArticleSchema.ArticleBody);
             Assert.IsNull(newsArticleSchema.MainEntityOfPage);
-            Assert.IsNull(newsArticleSchema.Images);
+            Assert.IsNull(newsArticleSchema.Image);
         }
 
         [Test]
@@ -130,7 +130,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             Assert.IsNull(reviewArticleSchema.MainEntityOfPage);
             Assert.IsNull(reviewArticleSchema.About);
             Assert.IsNull(reviewArticleSchema.ReviewRating);
-            Assert.IsNull(reviewArticleSchema.Images);
+            Assert.IsNull(reviewArticleSchema.Image);
         }
 
         [Test]
