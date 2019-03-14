@@ -72,12 +72,12 @@ export const modules = (tenant) => {
             {
                 test: /\.css$/,
                 exclude: /(node_modules|bower_components|unitTest)/,
-                use: [...loaders(tenant)]
+                use: loaders(tenant)
             },
             {
                 test: /\.scss$/,
                 exclude: [/(node_modules|bower_components|unitTest)/],
-                use: [...loaders(tenant)]
+                use: loaders(tenant)
             },
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,

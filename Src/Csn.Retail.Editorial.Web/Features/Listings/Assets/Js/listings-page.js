@@ -57,7 +57,7 @@ loaded.then(() => {
         if (typeof csn_editorial !== 'undefined' && typeof csn_editorial.nativeAds !== 'undefined') {
             (function nativeAds() {
                 import
-                    (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {
+                    (/* webpackChunkName: "Native-Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {
                         //Dispatch fetchNativeAds when nativeAds is ready
                         window.addEventListener('csn_editorial.nativeAds.ready', function fetchNativeAds() {
                             // Need to run once

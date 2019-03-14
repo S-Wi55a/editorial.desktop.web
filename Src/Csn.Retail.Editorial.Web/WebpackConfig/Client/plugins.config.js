@@ -24,7 +24,7 @@ export const plugins = (tenant, pageEntries) => {
     let pluginsArr = [
         assetsPluginInstance,
         new webpack.DefinePlugin({
-            SERVER: JSON.stringify(true)
+            SERVER: JSON.stringify(false)
         }),
         new MiniCssExtractPlugin({
             filename: IS_PROD ? '[name]-[contenthash].css' : '[name].css',
