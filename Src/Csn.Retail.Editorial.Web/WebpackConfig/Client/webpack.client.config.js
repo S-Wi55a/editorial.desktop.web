@@ -44,6 +44,21 @@ module.exports = () => {
             module: modules(tenant),
             plugins: plugins(tenant, pageEntries),
             optimization: {
+                splitChunks: {
+                    chunks: IS_PROD ? 'all' : 'async',
+                    minSize: 3000,
+                    minChunks: 1,
+                    maxAsyncRequests: 5,
+                    maxInitialRequests: 3,
+                    automaticNameDelimiter: '~',
+                    name: true,
+                    cacheGroups: {
+                        vendors: {
+                            test: /[\\/]node_modules[\\/]/,
+                            priority: -10
+                        }
+                    }
+                },
                 runtimeChunk: {
                     name: 'csn.manifest' + '--' + tenant,
                 },
