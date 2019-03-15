@@ -31,7 +31,6 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             {
                 Name = "carsales",
                 SiteDomain = "carsales.com.au",
-                SeoSchemaSupport = true,
                 Culture = new CultureInfo("en-au")
             });
 
