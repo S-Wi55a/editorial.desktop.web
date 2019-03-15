@@ -219,6 +219,7 @@
     <Compile Include="Features\Listings\ListingInsightsDataMapperTests.cs" />
     <Compile Include="Features\Redirects\RedirectProviders\RegexRedirectProviderTests.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapperTests.cs" />
+    <Compile Include="Features\Shared\SeoSchema\SchemaDataBuilderTests.cs" />
     <Compile Include="Infrastructure\Extensions\ExpressoExtensionsTests.cs" />
     <Compile Include="Features\Shared\Helpers\PaginationHelperTest.cs" />
     <Compile Include="Features\Listings\ListingsQueryHandlerTests.cs" />

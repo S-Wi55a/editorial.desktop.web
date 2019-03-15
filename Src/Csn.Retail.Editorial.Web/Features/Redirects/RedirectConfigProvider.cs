@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web;
 using Csn.Logging;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
@@ -68,13 +69,13 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects
         {
             var redirects = new List<RedirectRule>();
 
-            redirects.AddRange(commonRedirectRules);
-
             // look for tenant specific redirects
-            if (!config.Redirects.TryGetValue(tenantName.ToLower(), out var tenantRedirectRules)) return redirects;
+            if (config.Redirects.TryGetValue(tenantName.ToLower(), out var tenantRedirectRules))
+            {
+                redirects.AddRange(tenantRedirectRules);
+            }
 
-            redirects.AddRange(tenantRedirectRules);
-
+            redirects.AddRange(commonRedirectRules);
             return redirects;
         }
 

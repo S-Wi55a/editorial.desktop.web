@@ -97,6 +97,15 @@ namespace Csn.Retail.Editorial.Web.Culture {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to en-au.
+        /// </summary>
+        public static string LanguageCode {
+            get {
+                return ResourceManager.GetString("LanguageCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Latest Articles.
         /// </summary>
         public static string LatestArticles {
@@ -202,6 +211,6 @@ namespace Csn.Retail.Editorial.Web.Culture {
             get {
                 return ResourceManager.GetString("ViewPhotos", resourceCulture);
             }
-        }
+        }     
     }
 }

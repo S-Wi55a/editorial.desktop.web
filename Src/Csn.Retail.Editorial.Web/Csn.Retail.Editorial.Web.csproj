@@ -660,6 +660,7 @@
     <Content Include="Features\Shared\Assets\Css\Modules\MediaMotive\_inlinebanner.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Chileautos\chileautos.scss" />
     <Content Include="Features\Shared\Assets\Css\Tenants\Chileautos\Settings\_settings--chileautos.scss" />
+    <Content Include="Features\Shared\Views\Partials\SeoSchema\_SeoSchemaData.cshtml" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Actions\ActionTypes\carousels.ts" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponent.tsx" />
     <TypeScriptCompile Include="Features\Landing\Assets\Js\Modules\carousel\Component\carouselComponentArrows.tsx" />
@@ -748,9 +749,16 @@
     <Compile Include="Features\Shared\Search\Shared\Refinement.cs" />
     <Compile Include="Features\Shared\Search\Shared\RefinementNodeMapper.cs" />
     <Compile Include="Features\Shared\Search\Shared\RyvussDto.cs" />
+    <Compile Include="Features\Shared\SeoSchema\SchemaDataBuilder.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\ArticleSchemaAttributes.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\NewsArticleSchema.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\ReviewArticleSchema.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Models\ISeoSchema.cs" />
+    <Compile Include="Features\Shared\SeoSchema\Shared\Constants.cs" />
     <Compile Include="Features\Shared\Services\RyvussDataService.cs" />
     <Compile Include="Features\Shared\Settings\EditorialRouteSettings.cs" />
     <Compile Include="Features\Shared\Settings\ImageServerSettings.cs" />
+    <Compile Include="Features\Shared\Settings\SeoSchemaSettings.cs" />
     <Compile Include="Features\Shared\Settings\VideosApiSettings.cs" />
     <Compile Include="Features\Listings\Mappings\ListingInsightsDataMapper.cs" />
     <Compile Include="Infrastructure\Configs\Settings.cs" />
@@ -910,6 +918,7 @@
     </Content>
     <Content Include="Web.LatamRelease.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.LatamStaging.config">
       <DependentUpon>Web.config</DependentUpon>
