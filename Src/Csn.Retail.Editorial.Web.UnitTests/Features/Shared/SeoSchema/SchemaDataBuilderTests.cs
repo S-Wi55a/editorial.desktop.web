@@ -11,6 +11,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Shared;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using NSubstitute;
 using NUnit.Framework;
+using SeoData = Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi.SeoData;
 
 namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
 {
@@ -38,7 +39,6 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             dependencyResolver.GetService<ITenantProvider<TenantInfo>>().Returns(_tenantProvider);
             DependencyResolver.SetResolver(dependencyResolver);
 
-            _schemaSettings.ArticleTypesForNewsSchema.Returns("News,Video,Advice,Features,Video,Sponsored,Carpool");
             _schemaSettings.ArticleTypesForReviewSchema.Returns("Review,Reviews");
         }
 
@@ -50,7 +50,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             var article = new ArticleDetailsDto
             {
                 ArticleType = ArticleType.Review.ToString(),
-                Items = listItems
+                Items = listItems,
+                SeoData = new SeoData() { ImageUrls = new List<string>(){ }}
             };
 
             var schemaBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
@@ -61,11 +62,29 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
         }
 
         [Test]
+        public void TestSchemaBuildWithUnknownArticleType()
+        {
+            var article = new ArticleDetailsDto
+            {
+                ArticleType = "unknown-article-type",
+                SeoData = new SeoData() { }
+            };
+
+            var schemaBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
+            var result = schemaBuilder.Build(article);
+
+            Assert.IsNotNull(result);
+            Assert.That(result, Is.TypeOf<NewsArticleSchema>());
+        }
+
+
+        [Test]
         public void TestNewsArticleSchemaMarkupWithNullArticleValues()
         {
             var article = new ArticleDetailsDto
             {
-                ArticleType = ArticleType.News.ToString()
+                ArticleType = ArticleType.News.ToString(),
+                SeoData = new SeoData() { }
             };
 
             var schemaBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
@@ -94,7 +113,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             var article = new ArticleDetailsDto
             {
                 ArticleType = ArticleType.Review.ToString(),
-                Items = listItems
+                Items = listItems,
+                SeoData = new SeoData() { }
             };
 
             var schemaBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
@@ -121,7 +141,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             var article = new ArticleDetailsDto
             {
                 ArticleType = ArticleType.News.ToString(),
-                Contributors = contributors
+                Contributors = contributors,
+                SeoData = new SeoData() { }
             };
 
             var schemaDataBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
@@ -140,6 +161,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             {
                 ArticleType = ArticleType.News.ToString(),
                 Headline = "Facelifted Volvo XC90 gets new mild hybrid tech",
+                SeoData = new SeoData() { },
                 ContentSections = new List<ContentSection>
                 {
                     new ContentSection
@@ -163,28 +185,6 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             Assert.AreSame(article.Headline, newsArticleSchema.ArticleBody);
         }
 
-
-        [Test]
-        public void TestImageMarkupWithNoImagesInHeroSection()
-        {
-            List<Image> imageCatalogue = new List<Image>() { };
-
-            var article = new ArticleDetailsDto
-            {
-                ArticleType = ArticleType.News.ToString(),
-                HeroSection = new HeroSection()
-                {
-                    Images = imageCatalogue
-                }
-            };
-
-            var schemaDataBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
-            var result = schemaDataBuilder.Build(article);
-            var newsArticleSchema = (NewsArticleSchema)result;
-
-            Assert.IsNull(newsArticleSchema.Image);
-        }
-
         [Test]
         public void TestExpertCategoryRatingWithNoValues()
         {
@@ -198,7 +198,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             var article = new ArticleDetailsDto
             {
                 ArticleType = ArticleType.Review.ToString(),
-                Items = listItems
+                Items = listItems,
+                SeoData = new SeoData() { }
             };
 
             var schemaDataBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
@@ -230,7 +231,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             {
                 ArticleType = ArticleType.Review.ToString(),
                 Items = listItems,
-                ExpertRatings = expertRating
+                ExpertRatings = expertRating,
+                SeoData = new SeoData() { }
             };
 
             var schemaDataBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
@@ -278,7 +280,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             {
                 ArticleType = ArticleType.Review.ToString(),
                 Items = listItems,
-                ExpertRatings = expertRating
+                ExpertRatings = expertRating,
+                SeoData = new SeoData() { }
             };
 
             var schemaDataBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);

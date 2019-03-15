@@ -9,7 +9,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Settings
     public interface ISeoSchemaSettings
     {
         string ArticleTypesForReviewSchema { get; }
-        string ArticleTypesForNewsSchema { get; }
         string LogoImageUrlPath { get; }
     }
 
@@ -21,9 +20,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Settings
         [ConfigurationProperty("ArticleTypesForReviewSchema", IsRequired = true)]
         public string ArticleTypesForReviewSchema => this["ArticleTypesForReviewSchema"] as string;
         
-        [ConfigurationProperty("ArticleTypesForNewsSchema", IsRequired = true)]
-        public string ArticleTypesForNewsSchema => this["ArticleTypesForNewsSchema"] as string;
-
         [ConfigurationProperty("LogoImageUrlPath", IsRequired = true)]
         public string LogoImageUrlPath => this["LogoImageUrlPath"] as string;
     }

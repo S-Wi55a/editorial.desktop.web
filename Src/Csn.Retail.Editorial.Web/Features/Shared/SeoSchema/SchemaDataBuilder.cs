@@ -11,6 +11,7 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Culture;
+using SeoData = Csn.Retail.Editorial.Web.Features.Shared.Models.SeoData;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 {
@@ -41,15 +42,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
                 if (!article.Items.Any()) return BuildNews(article);
 
                 return BuildReview(article);
-            } 
-
-            // NEWS SCHEMA
-            if (_schemaSettings.ArticleTypesForNewsSchema.Contains(article.ArticleType))
-            {
-                return BuildNews(article);
             }
 
-            return null;
+            //Default Schema
+            return BuildNews(article);
         }
 
         private NewsArticleSchema BuildNews(ArticleDetailsDto article)
@@ -167,10 +163,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 
         private IEnumerable<ImageEntity> GetImageMarkup(ArticleDetailsDto article)
         {
-            if (article?.HeroSection == null) return null;
+            if (article.SeoData.ImageUrls.IsNullOrEmpty()) return null;
 
-            var imageCatalogue = article.HeroSection.Images;
-            return !imageCatalogue.IsNullOrEmpty() ? imageCatalogue.Select(image => new ImageEntity() { Url = image.Url }) : null;
+
+            return article.SeoData.ImageUrls.Select(image => new ImageEntity() {Url = image});
         }
 
         private IEnumerable<ItemReviewed> GetItemsReviewedMarkup(ArticleDetailsDto article)
