@@ -56,7 +56,7 @@ module.exports = () => {
                         vendors: {
                             test: /[\\/]node_modules[\\/]/,
                             name: 'vendor',
-                            chunks: 'all',
+                            chunks: 'async',
                             reuseExistingChunk: true
                         }
                     }
