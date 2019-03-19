@@ -8,12 +8,12 @@ const URL_LIMIT = IS_PROD ? 1 : null;
 
 const loaders = (tenant) => ([
     IS_PROD ? MiniCssExtractPlugin.loader : 'style-loader',
-    {
-        loader: 'cache-loader',
-        options: {
-            cacheDirectory: path.resolve('.cache')
-        }
-    },
+    //{
+    //    loader: 'cache-loader',
+    //    options: {
+    //        cacheDirectory: path.resolve('.cache')
+    //    }
+    //},
     {
         loader: 'css-loader',
         options: {

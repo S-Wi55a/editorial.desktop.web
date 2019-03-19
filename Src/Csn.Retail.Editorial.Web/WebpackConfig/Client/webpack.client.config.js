@@ -22,13 +22,13 @@ module.exports = () => {
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
         // That is why these entries are added after
-        entries[`csn.common--${tenant}`] = ['./Features/Shared/Assets/csn.common.js'];
+        entries[`csn.common--${tenant}`] = './Features/Shared/Assets/csn.common.js';
 
         // Use a config to switch ad source when needed
         if (TenantConfig.isAuTenant(tenant)) {
-            entries[`csn.displayAds--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
+            entries[`csn.displayAds--${tenant}`] = './Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js';
         } else {
-            entries[`csn.displayAds--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/GoogleAd/googleAd.js'];
+            entries[`csn.displayAds--${tenant}`] = './Features/Shared/Assets/Js/Modules/GoogleAd/googleAd.js';
         }
 
         moduleExportArr.push({
@@ -45,7 +45,7 @@ module.exports = () => {
             plugins: plugins(tenant, pageEntries),
             optimization: {
                 splitChunks: {
-                    chunks: IS_PROD ? 'all' : 'async',
+                    chunks: 'async',
                     minSize: 3000,
                     minChunks: 1,
                     maxAsyncRequests: 5,
@@ -55,7 +55,9 @@ module.exports = () => {
                     cacheGroups: {
                         vendors: {
                             test: /[\\/]node_modules[\\/]/,
-                            priority: -10
+                            name: 'vendor',
+                            chunks: 'all',
+                            reuseExistingChunk: true
                         }
                     }
                 },
