@@ -18,7 +18,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
         }
         public GoogleAdViewModel Handle(DisplayAdQuery displayAdQuery)
         {
-            if (!GoogleAdSettings.GoogleAdTypes.TryGetValue(displayAdQuery.AdPlacement, out var adSetting))
+            if (!GoogleAdSettings.GoogleAdTypes[_tenantProvider.Current().Name.ToLower()].TryGetValue(displayAdQuery.AdPlacement, out var adSetting))
             {
                 return null;
             }
