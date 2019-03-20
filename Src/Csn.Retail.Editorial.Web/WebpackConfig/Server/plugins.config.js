@@ -14,7 +14,6 @@ export const plugins = (tenant = 'sever') => {
         }),
         new MiniCssExtractPlugin({
             filename: IS_PROD ? '[name]-[contenthash].css' : '[name].css',
-            allChunks: false
         }),
         new webpack.EnvironmentPlugin({
             NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
