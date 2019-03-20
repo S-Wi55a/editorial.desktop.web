@@ -1,10 +1,10 @@
 ﻿// Details Page css files
 require('Css/Modules/Widgets/EditorRatings/_editorsRatings.scss');
 
+import Modernizr from 'modernizr';
 import Circles from 'circles';
 import TinyAnimate from 'TinyAnimate';
 import ScrollMagic from 'ScrollMagic';
-const modernizr = require("modernizr");
 
 const editorsRatings = '.editors-ratings';
 const expertRatingMeters = document.querySelectorAll('.expert-ratings__meter');
@@ -68,7 +68,7 @@ let init = (d, w, scope) => {
     w.scrollMogicController = w.scrollMogicController || new ScrollMagic.Controller();
 
 
-    if (!modernizr.meter) {
+    if (!Modernizr.meter) {
         // Meter polyfill
         require.ensure(['Meter/meter.js'],
             function() {

@@ -52,7 +52,11 @@ export const modules = (tenant) => {
             {
                 test: /\.modernizrrc.js$/,
                 exclude: /(node_modules|bower_components|unitTest)/,
-                use: 'modernizr-loader'
+                use: [ 'modernizr-loader' ]
+            },
+            {
+                test: /\.modernizrrc(\.json)?$/,
+                use: [ 'modernizr-loader', 'json-loader' ]
             },
             {
                 test: /\.tsx?$/,
