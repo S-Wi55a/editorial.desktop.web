@@ -3,10 +3,8 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Csn.Retail.Editorial.Web.Features.Details.Loggers;
-using Csn.Retail.Editorial.Web.Features.Details.Models;
 using Csn.Retail.Editorial.Web.Features.Errors;
 using Csn.Retail.Editorial.Web.Features.Shared.GlobalSite;
-using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Filters;
 using Csn.SimpleCqrs;
@@ -49,8 +47,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
             {
                 Id = networkId,
-                IsPreview = isPreview,
-                DisplayType = DisplayType.DetailsPage
+                IsPreview = isPreview
             });
 
             await Task.WhenAll(dispatchedEvent, dispatchedQuery);
@@ -91,11 +88,9 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         {
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsModalRequestEvent());
 
-            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
+            var dispatchedQuery = _queryDispatcher.DispatchAsync<GetModalQuery, GetArticleResponse>(new GetModalQuery
             {
                 Id = networkId.ToUpper(),
-                IsPreview = false,
-                DisplayType = DisplayType.DetailsModal,
                 Source = __source
             });
 

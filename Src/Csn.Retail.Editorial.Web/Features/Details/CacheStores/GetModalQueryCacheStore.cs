@@ -7,25 +7,19 @@ using Csn.SimpleCqrs.Extended;
 namespace Csn.Retail.Editorial.Web.Features.Details.CacheStores
 {
     [AutoBind]
-    public class GetArticleQueryCacheStore : IAsyncCacheStore<GetArticleQuery, GetArticleResponse>
+    public class GetModalQueryCacheStore : IAsyncCacheStore<GetModalQuery, GetArticleResponse>
     {
         private readonly IArticleDetailsCacheStore _articleDetailsCacheStore;
 
-        public GetArticleQueryCacheStore(IArticleDetailsCacheStore articleDetailsCacheStore)
+        public GetModalQueryCacheStore(IArticleDetailsCacheStore articleDetailsCacheStore)
         {
             _articleDetailsCacheStore = articleDetailsCacheStore;
         }
 
-        public async Task<GetArticleResponse> GetAsync(GetArticleQuery query, Func<GetArticleQuery, Task<GetArticleResponse>> fetchAsync)
+        public async Task<GetArticleResponse> GetAsync(GetModalQuery query, Func<GetModalQuery, Task<GetArticleResponse>> fetchAsync)
         {
-            if (query.IsPreview)
-            {
-                // bypass cache for articles which are being previewed
-                return await fetchAsync.Invoke(query);
-            }
-
             // check the cache
-            var cachedArticle = await _articleDetailsCacheStore.GetAsync(query.Id, CachePageType.Details);
+            var cachedArticle = await _articleDetailsCacheStore.GetAsync(query.Id, CachePageType.Modal);
 
             if (cachedArticle.HasValue)
             {
@@ -38,7 +32,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details.CacheStores
             // store the result in cache if required
             if (result.ArticleViewModel != null && result.HttpStatusCode == HttpStatusCode.OK)
             {
-                await _articleDetailsCacheStore.StoreAsync(result, CachePageType.Details);
+                await _articleDetailsCacheStore.StoreAsync(result, CachePageType.Modal);
             }
 
             return result;

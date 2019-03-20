@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
         public Task<SmartServiceResponse<ArticleDetailsDto>> GetArticleAsync(EditorialApiInput input)
         {
             return _smartClient.Service(ServiceName)
-                        .Path("v1/details/{0}/{1}/{2}/?isPreview={3}".FormatWith(input.ServiceName, input.ViewType, input.Id, input.IsPreview))
+                        .Path("v1/details/{0}/desktop/{1}/?isPreview={2}".FormatWith(input.ServiceName, input.Id, input.IsPreview))
                         .GetAsync<ArticleDetailsDto>();
         }
 

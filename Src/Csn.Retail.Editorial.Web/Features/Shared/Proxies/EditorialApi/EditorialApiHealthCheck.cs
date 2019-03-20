@@ -20,7 +20,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
             var result = await _proxy.GetArticleAsync(new EditorialApiInput
             {
                 ServiceName = "carsales",
-                ViewType = "desktop",
                 Id = "ed-itm-51707"
             });
 
