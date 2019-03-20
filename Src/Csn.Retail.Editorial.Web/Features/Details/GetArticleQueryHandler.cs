@@ -29,7 +29,6 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             var result = await _editorialApiProxy.GetArticleAsync(new EditorialApiInput()
             {
                 ServiceName = _tenantProvider.Current().TenantName,
-                ViewType = "desktop",
                 Id = query.Id,
                 IsPreview = query.IsPreview
             });

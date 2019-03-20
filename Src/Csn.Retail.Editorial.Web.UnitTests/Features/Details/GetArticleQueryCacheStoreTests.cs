@@ -35,8 +35,8 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             });
 
             // now check that a call to the cache was not made
-            cacheStore.DidNotReceive().GetAsync(Arg.Any<string>());
-            cacheStore.DidNotReceive().StoreAsync(Arg.Any<GetArticleResponse>());
+            cacheStore.DidNotReceive().GetAsync(Arg.Any<string>(), Arg.Is(CachePageType.Details));
+            cacheStore.DidNotReceive().StoreAsync(Arg.Any<GetArticleResponse>(), Arg.Is(CachePageType.Details));
 
             Assert.IsNotNull(result);
         }
@@ -49,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
         {
             var cacheStore = Substitute.For<IArticleDetailsCacheStore>();
 
-            cacheStore.GetAsync(Arg.Any<string>())
+            cacheStore.GetAsync(Arg.Any<string>(), Arg.Is(CachePageType.Details))
                 .Returns(Task.FromResult(new MayBe<GetArticleResponse>(new GetArticleResponse())));
 
             var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore);
@@ -67,7 +67,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             });
 
             // now check that a call to the cache was not made
-            await cacheStore.Received().GetAsync(Arg.Any<string>());
+            await cacheStore.Received().GetAsync(Arg.Any<string>(), Arg.Is(CachePageType.Details));
 
             Assert.IsNotNull(result);
         }
@@ -81,7 +81,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             var cacheStore = Substitute.For<IArticleDetailsCacheStore>();
 
             // cache returns no result
-            cacheStore.GetAsync(Arg.Any<string>())
+            cacheStore.GetAsync(Arg.Any<string>(), Arg.Is(CachePageType.Details))
                 .Returns(Task.FromResult(new MayBe<GetArticleResponse>(null, false)));
 
             var articleQueryCacheStore = new GetArticleQueryCacheStore(cacheStore);
@@ -100,10 +100,10 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Details
             });
 
             // now check that a call to the cache was not made
-            await cacheStore.Received().GetAsync(Arg.Any<string>());
+            await cacheStore.Received().GetAsync(Arg.Any<string>(), Arg.Is(CachePageType.Details));
 
             // data retrieved should get cached
-            await cacheStore.Received().StoreAsync(Arg.Any<GetArticleResponse>());
+            await cacheStore.Received().StoreAsync(Arg.Any<GetArticleResponse>(), Arg.Is(CachePageType.Details));
 
             Assert.IsNotNull(result);
         }

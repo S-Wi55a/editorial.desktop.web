@@ -10,14 +10,14 @@ namespace Csn.Retail.Editorial.Web.Features.Details.CacheStores
 {
     public interface IArticleDetailsCacheStore
     {
-        Task<MayBe<GetArticleResponse>> GetAsync(string networkId);
-        Task StoreAsync(GetArticleResponse article);
+        Task<MayBe<GetArticleResponse>> GetAsync(string networkId, CachePageType cachePageType);
+        Task StoreAsync(GetArticleResponse article, CachePageType cachePageType);
     }
 
     [AutoBind]
     public class ArticleDetailsCacheStore : IArticleDetailsCacheStore
     {
-        private readonly string _cacheKey = "editorial:desk:{0}:{1}:details:{2}";
+        private readonly string _cacheKey = "editorial:desk:{0}:{1}:{2}:{3}";
         private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 5, 0);
         private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 30, 0);
         private readonly string _buildVersion = System.Configuration.ConfigurationManager.AppSettings["BuildVersion"];
@@ -31,24 +31,30 @@ namespace Csn.Retail.Editorial.Web.Features.Details.CacheStores
             _tenantProvider = tenantProvider;
         }
 
-        public Task<MayBe<GetArticleResponse>> GetAsync(string networkId)
+        public Task<MayBe<GetArticleResponse>> GetAsync(string networkId, CachePageType cachePageType)
         {
-            var cacheKey = _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name, networkId);
-
-            // check the cache
-            return _cacheStore.GetAsync<GetArticleResponse>(cacheKey);
+            return _cacheStore.GetAsync<GetArticleResponse>(GetCacheKey(networkId, cachePageType));
         }
 
-        public Task StoreAsync(GetArticleResponse article)
+        public Task StoreAsync(GetArticleResponse article, CachePageType cachePageType)
         {
-            if (article != null)
+            if (article != null && !string.IsNullOrEmpty(article.ArticleViewModel?.NetworkId))
             {
-                var cacheKey = _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name, article.ArticleViewModel.NetworkId);
-
-                return _cacheStore.SetAsync(cacheKey, article, new CacheExpiredIn(_localCacheDuration, _distributedCacheDuration));
+                return _cacheStore.SetAsync(GetCacheKey(article.ArticleViewModel.NetworkId, cachePageType), article, new CacheExpiredIn(_localCacheDuration, _distributedCacheDuration));
             }
 
             return Task.CompletedTask;
         }
+
+        private string GetCacheKey(string networkId, CachePageType cachePageType)
+        {
+            return _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name, cachePageType.ToString(), networkId);
+        }
+    }
+
+    public enum CachePageType
+    {
+        Details,
+        Modal
     }
 }
