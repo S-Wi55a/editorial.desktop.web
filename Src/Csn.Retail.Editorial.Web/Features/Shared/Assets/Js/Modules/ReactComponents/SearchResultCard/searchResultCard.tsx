@@ -3,7 +3,7 @@ import { ISearchResults } from 'ReactComponents/iNav/Types'
 import Img from 'react-image'
 
 if (!SERVER) {
-    require('./searchResultCard.scss')
+    require('./searchResultCard.scss');
 }
 
 const Preloader = () => <div className="iNavSearchResult__image-loader"></div>

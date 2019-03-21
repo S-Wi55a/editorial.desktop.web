@@ -9,6 +9,7 @@ import { config, getEntryFiles } from './entries.config';
 import { plugins } from './plugins.config';
 import { modules } from './loaders.config'
 
+
 module.exports = () => {
 
     const moduleExportArr = [];
@@ -21,18 +22,19 @@ module.exports = () => {
         const pageEntries = Object.keys(getEntryFiles(tenant));
 
         // That is why these entries are added after
-        entries[`csn.common--${tenant}`] = ['./Features/Shared/Assets/csn.common.js'];
+        entries[`csn.common--${tenant}`] = './Features/Shared/Assets/csn.common.js';
 
         // Use a config to switch ad source when needed
         if (TenantConfig.isAuTenant(tenant)) {
-            entries[`csn.displayAds--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js'];
+            entries[`csn.displayAds--${tenant}`] = './Features/Shared/Assets/Js/Modules/MediaMotive/mediaMotive.js';
         } else {
-            entries[`csn.displayAds--${tenant}`] = ['./Features/Shared/Assets/Js/Modules/GoogleAd/googleAd.js'];
+            entries[`csn.displayAds--${tenant}`] = './Features/Shared/Assets/Js/Modules/GoogleAd/googleAd.js';
         }
 
         moduleExportArr.push({
             target: 'web',
             name: tenant,
+            mode: IS_PROD ? 'production' : 'development',
             entry: entries,
             output: {
                 path: config.outputPath,
@@ -40,8 +42,23 @@ module.exports = () => {
                 filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
             },
             module: modules(tenant),
-            resolve,
             plugins: plugins(tenant, pageEntries),
+            optimization: {
+                splitChunks: {
+                    cacheGroups: {
+                        vendors: {
+                            test: /[\\/]node_modules[\\/]/,
+                            name: 'vendor',
+                            chunks: 'async',
+                            reuseExistingChunk: true
+                        }
+                    }
+                },
+                runtimeChunk: {
+                    name: 'csn.manifest' + '--' + tenant,
+                },
+            },
+            resolve,
             stats,
             devtool: IS_PROD ? 'none' : 'eval',
             devServer: devServer(tenant),

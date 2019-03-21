@@ -126,7 +126,7 @@ loaded.then(() => {
         if (!!csn_editorial && !!csn_editorial.nativeAds) {
             (function nativeAds() {
                 import
-                (/* webpackChunkName: "Native Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
+                (/* webpackChunkName: "Native-Ads" */ 'NativeAds/nativeAds.js').then(function(nativeAds) {})
                     .catch(function(err) {
                         console.log('Failed to load nativeAds', err);
                     });
@@ -141,7 +141,7 @@ loaded.then(() => {
         if (d.querySelector('.article__type--sponsored')) {
             (function nativeAds() {
                 import
-                (/* webpackChunkName: "Sponsored Articles" */ 'SponsoredArticles/sponsoredArticles.js')
+                (/* webpackChunkName: "Sponsored-Articles" */ 'SponsoredArticles/sponsoredArticles.js')
                     .then(function(sponsoredArticles) {}).catch(function(err) {
                         console.log('Failed to load sponsoredArticles', err);
                     });

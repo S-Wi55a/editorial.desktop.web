@@ -19,6 +19,7 @@ module.exports = [{
             publicPath: config.publicPath,
             filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
         },
+        mode: IS_PROD ? 'production' : 'development',
         module: modules,
         resolve,
         plugins: plugins(),
