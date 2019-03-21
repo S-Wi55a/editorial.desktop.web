@@ -11,7 +11,6 @@ using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using Csn.Retail.Editorial.Web.Culture;
-using SeoData = Csn.Retail.Editorial.Web.Features.Shared.Models.SeoData;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
 {

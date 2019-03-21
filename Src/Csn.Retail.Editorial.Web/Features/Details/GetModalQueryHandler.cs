@@ -36,6 +36,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
             viewModel.SpecDataGetVariantsUrl = null;
             viewModel.DisqusData = null;
             viewModel.PolarNativeAdsData = null;
+            viewModel.SeoSchemaData = null;
+            viewModel.SeoData = null;
 
             foreach (var contributor in viewModel.Contributors)
             {
