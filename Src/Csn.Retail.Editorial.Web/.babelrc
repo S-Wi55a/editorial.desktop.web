@@ -12,7 +12,7 @@
                 //"include": []
             }
         ],
-        "@babel/react"
+        "@babel/preset-react"
         //Transpile React components to JavaScript
     ],
     "plugins": [
