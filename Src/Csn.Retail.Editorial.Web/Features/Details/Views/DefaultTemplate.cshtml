@@ -29,6 +29,8 @@
 }
 
 <div class="page-container">
+    @{ Html.RenderPartial("Partials/SocialNetworks/_FacebookEmbeddedScript", Model); }
+
     @{
         if (Html.CurrentTenant().TenantName != "redbook")
         {
