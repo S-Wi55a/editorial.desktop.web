@@ -1,0 +1,6 @@
+﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
+
+@if (Model.ContentSections != null && Model.ContentSections.Any(q => q.Type == "Facebook"))
+{
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2"></script>
+}
