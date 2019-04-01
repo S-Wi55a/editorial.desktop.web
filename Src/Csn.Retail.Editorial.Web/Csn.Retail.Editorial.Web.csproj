@@ -847,6 +847,7 @@
     <Content Include="Features\Details\Views\Chileautos\_Disclaimer.cshtml" />
     <Content Include="Features\Landing\Configurations\chileautos.landingConfig.json" />
     <Content Include="Features\Details\Assets\Css\details-page.scss" />
+    <Content Include="Features\Details\Views\Partials\SocialNetworks\_FacebookEmbeddedScript.cshtml" />
     <None Include="Features\Shared\Assets\Css\Modules\GoogleAd\_leaderboard.scss" />
     <Content Include="Features\Shared\Assets\Js\Modules\GoogleAd\googleAd.js" />
     <Content Include="Features\Shared\Assets\Js\Modules\ReactComponents\iNav\Components\iNavKeywordSearch.js" />
