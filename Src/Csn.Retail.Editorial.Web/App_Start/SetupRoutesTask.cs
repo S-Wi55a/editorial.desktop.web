@@ -129,6 +129,13 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
+                RouteNames.Mvc.DetailsV3,
+                "{*detailsPath}",
+                new { controller = "Details", action = "IndexDetailsV1V3" },
+                new { detailsPath = new DetailsV3RouteConstraint() }
+            );
+
+            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.DetailsV2,
                 "{*detailsPath}",
                 new { controller = "Details", action = "IndexDetailsV2" },
@@ -138,7 +145,7 @@ namespace Csn.Retail.Editorial.Web
             AddMvcRouteWithBasePath(
                 RouteNames.Mvc.DetailsV1,
                 "{*detailsPath}",
-                new { controller = "Details", action = "IndexDetailsV1" },
+                new { controller = "Details", action = "IndexDetailsV1V3" },
                 new { detailsPath = new DetailsV1RouteConstraint() }
             );
 

@@ -9,6 +9,7 @@
             public static string NativeAdRoute => "NativeAdRoute";
             public static string MediaMotiveAdRoute => "MediaMotiveAdRoute";
             public static string LandingHome => "LandingHome";
+            public static string DetailsV3 => "DetailsV3";
             public static string DetailsV2 => "DetailsV2";
             public static string DetailsV1 => "DetailsV1";
             public static string DetailsModal => "DetailsModal";

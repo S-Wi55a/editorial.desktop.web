@@ -28,7 +28,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
         [RedirectAttributeFilter]
         // ReSharper disable once InconsistentNaming
-        public Task<ActionResult> IndexDetailsV1(ArticleIdentifierV1 articleIdentifier, bool __preview = false)
+        // Details V1 and V3 can use the same articleIdentifier model and model binder
+        public Task<ActionResult> IndexDetailsV1V3(ArticleIdentifierV1V3 articleIdentifier, bool __preview = false)
         {
             return Details(articleIdentifier.NetworkId, __preview);
         }

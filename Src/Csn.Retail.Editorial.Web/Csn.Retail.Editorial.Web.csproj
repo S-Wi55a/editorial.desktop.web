@@ -570,6 +570,8 @@
     <Compile Include="Features\Details\QueryProcessFilters.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteConstraint.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteValidator.cs" />
+    <Compile Include="Features\Details\RouteConstraints\DetailsV3RouteConstraint.cs" />
+    <Compile Include="Features\Details\RouteConstraints\DetailsV3RouteValidator.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsController.cs" />
     <Compile Include="Features\DisplayAds\DisplayAdsSetting.cs" />
     <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdQueryHandler.cs" />
