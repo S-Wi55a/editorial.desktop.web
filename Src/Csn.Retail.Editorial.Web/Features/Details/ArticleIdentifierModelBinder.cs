@@ -7,8 +7,8 @@ using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 
 namespace Csn.Retail.Editorial.Web.Features.Details
 {
-    [ModelBinderType(typeof(ArticleIdentifierV1))]
-    public class ArticleIdentifierV1ModelBinder : DefaultModelBinder
+    [ModelBinderType(typeof(ArticleIdentifierV1V3))]
+    public class ArticleIdentifierV1V3ModelBinder : DefaultModelBinder
     {
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
@@ -16,7 +16,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             if (detailsPath == null) return base.BindModel(controllerContext, bindingContext);
 
-            if (!(base.BindModel(controllerContext, bindingContext) is ArticleIdentifierV1 record)) return null;
+            if (!(base.BindModel(controllerContext, bindingContext) is ArticleIdentifierV1V3 record)) return null;
 
             var slug = detailsPath.RawValue?.ToString().Trim('/');
             var id = slug?.Split('-').Last() ?? string.Empty;
@@ -49,7 +49,7 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
         public bool CanBind(Type modelType)
         {
-            return typeof(ArticleIdentifierV1).IsAssignableFrom(modelType);
+            return typeof(ArticleIdentifierV1V3).IsAssignableFrom(modelType);
         }
     }
 
