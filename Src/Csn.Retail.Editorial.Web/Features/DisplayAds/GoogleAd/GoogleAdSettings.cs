@@ -24,7 +24,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             DisplayAdPlacements.DetailsAside,
                             new GoogleAdSetting
                             {
-                                SlotId = "div-gpt-ad-1548093016580-0'",
+                                SlotId = "div-gpt-ad-1548093016580-0",
                                 UnitId = "SA_editorial_300x250_300x600_E2",
                                 DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle
                             }
@@ -68,8 +68,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             DisplayAdPlacements.ListingsAside,
                             new GoogleAdSetting
                             {
-                                SlotId = "div-gpt-ad-1548199795543-0",
-                                UnitId = "SA_editorial_300x250_300x600_E3",
+                                SlotId = "div-gpt-ad-1553688924791-0",
+                                UnitId = "Editorial_Listings_Aside(300x250_300x600)",
                                 DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle
                             }
                         },
@@ -77,8 +77,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             DisplayAdPlacements.DetailsAside,
                             new GoogleAdSetting
                             {
-                                SlotId = "div-gpt-ad-1548093016580-0'",
-                                UnitId = "SA_editorial_300x250_300x600_E2",
+                                SlotId = "div-gpt-ad-1553689007338-0",
+                                UnitId = "Editorial_Details_Aside(300x250_300x600)",
                                 DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle
                             }
                         },
@@ -87,8 +87,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             new GoogleAdSetting
                             {
                                 // TODO:  Use leaderboard slot ad unit for now
-                                SlotId = "div-gpt-ad-1468849624568-5",
-                                UnitId = "SA_Homepage_728x90_M3_Top",
+                                SlotId = "div-gpt-ad-1553524316965-0",
+                                UnitId = "Editorial_HomePage_728x90",
                                 DisplayAdSize = DisplayAdSizes.Block1200X100
                             }
                         },
@@ -96,8 +96,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             DisplayAdPlacements.Leaderboard,
                             new GoogleAdSetting
                             {
-                                SlotId = "div-gpt-ad-1496703639902-0",
-                                UnitId = "SA_editorial_728x90_E1",
+                                SlotId = "div-gpt-ad-1553524424201-0",
+                                UnitId = "DetailsPage_728x90",
                                 DisplayAdSize = DisplayAdSizes.Leaderboard
                             }
                         },
@@ -105,8 +105,8 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             DisplayAdPlacements.Carousel,
                             new GoogleAdSetting
                             {
-                                SlotId = "div-gpt-ad-1496704783581-0",
-                                UnitId = "SA_editorial_300x250_E2",
+                                SlotId = "div-gpt-ad-1553524510647-0",
+                                UnitId = "Editorial_HomePage_300x250",
                                 DisplayAdSize = DisplayAdSizes.MediumRectangle
                             }
 
