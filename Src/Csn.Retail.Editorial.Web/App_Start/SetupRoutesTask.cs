@@ -150,6 +150,12 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
+                RouteNames.Mvc.Preview,
+                "preview/{previewId}",
+                new { controller = "Details", action = "Preview" }
+            );
+
+            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.DetailsModal,
                 "details-modal/{networkId}",
                 new { controller = "Details", action = "Modal" }

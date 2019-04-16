@@ -109,6 +109,30 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
             return response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404Child() : errorsController.ErrorGenericChild();
         }
+
+        public async Task<ActionResult> Preview(string previewId)
+        {
+            var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsPageRequestEvent());
+
+            var dispatchedQuery = _queryDispatcher.DispatchAsync<PreviewQuery, GetArticleResponse>(new PreviewQuery()
+            {
+                Id = previewId
+            });
+
+            await Task.WhenAll(dispatchedEvent, dispatchedQuery);
+
+            var response = dispatchedQuery.Result;
+
+            if (response.ArticleViewModel != null)
+            {
+                return View("Preview/PreviewTemplate", response.ArticleViewModel);
+            }
+
+            var errorsController = DependencyResolver.Current.GetService<ErrorsController>();
+            errorsController.ControllerContext = new ControllerContext(Request.RequestContext, errorsController);
+
+            return response.HttpStatusCode == HttpStatusCode.NotFound ? errorsController.Error404Child() : errorsController.ErrorGenericChild();
+        }
     }
 
     public class DetailsPageRequestEvent : IEvent, IRequireGlobalSiteNav, IRequiredGoogleAnalyticsTrackingScript
