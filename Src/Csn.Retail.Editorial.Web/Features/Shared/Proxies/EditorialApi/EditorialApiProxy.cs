@@ -8,6 +8,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
     public interface IEditorialApiProxy
     {
         Task<SmartServiceResponse<ArticleDetailsDto>> GetArticleAsync(EditorialApiInput input);
+        Task<SmartServiceResponse<ArticleDetailsDto>> GetPreviewAsync(EditorialApiInput input);
         Task<SmartServiceResponse<object>> GetAsync(string uri);
     }
 
@@ -27,6 +28,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi
             return _smartClient.Service(ServiceName)
                         .Path("v1/details/{0}/desktop/{1}/?isPreview={2}".FormatWith(input.ServiceName, input.Id, input.IsPreview))
                         .GetAsync<ArticleDetailsDto>();
+        }
+
+        public Task<SmartServiceResponse<ArticleDetailsDto>> GetPreviewAsync(EditorialApiInput input)
+        {
+            return _smartClient.Service(ServiceName)
+                .Path("v1/preview/{0}/desktop/{1}".FormatWith(input.ServiceName, input.Id))
+                .GetAsync<ArticleDetailsDto>();
         }
 
         public Task<SmartServiceResponse<object>> GetAsync(string uri)
