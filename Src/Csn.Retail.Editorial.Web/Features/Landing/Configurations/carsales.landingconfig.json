@@ -1,7 +1,8 @@
 ﻿{
   "configs": [
     {
-      "type": "default",
+      "slug": "",
+      "contentGroup": "editorial",
       "carouselConfigurations": [
         {
           "title": "Editor's Choice",
@@ -133,7 +134,8 @@
       }
     },
     {
-      "type": "carpool",
+      "slug": "carpool",
+      "contentGroup": "category",
       "carouselConfigurations": [
         {
           "title": "Editor's Choice",
@@ -199,7 +201,8 @@
       }
     },
     {
-      "type": "abarth",
+      "slug": "abarth",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -247,7 +250,8 @@
       }
     },
     {
-      "type": "alfa-romeo",
+      "slug": "alfa-romeo",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -306,7 +310,8 @@
       }
     },
     {
-      "type": "aston-martin",
+      "slug": "aston-martin",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -376,7 +381,8 @@
       }
     },
     {
-      "type": "audi",
+      "slug": "audi",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -578,7 +584,8 @@
       }
     },
     {
-      "type": "bentley",
+      "slug": "bentley",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -637,7 +644,8 @@
       }
     },
     {
-      "type": "bmw",
+      "slug": "bmw",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -769,7 +777,8 @@
       }
     },
     {
-      "type": "chevrolet",
+      "slug": "chevrolet",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -828,7 +837,8 @@
       }
     },
     {
-      "type": "citroen",
+      "slug": "citroen",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -876,7 +886,8 @@
       }
     },
     {
-      "type": "ferrari",
+      "slug": "ferrari",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -946,7 +957,8 @@
       }
     },
     {
-      "type": "fiat",
+      "slug": "fiat",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1005,7 +1017,8 @@
       }
     },
     {
-      "type": "ford",
+      "slug": "ford",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1196,7 +1209,8 @@
       }
     },
     {
-      "type": "haval",
+      "slug": "haval",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1255,7 +1269,8 @@
       }
     },
     {
-      "type": "holden",
+      "slug": "holden",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1380,7 +1395,8 @@
       }
     },
     {
-      "type": "holden-special-vehicles",
+      "slug": "holden-special-vehicles",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1428,7 +1444,8 @@
       }
     },
     {
-      "type": "honda",
+      "slug": "honda",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1509,7 +1526,8 @@
       }
     },
     {
-      "type": "hyundai",
+      "slug": "hyundai",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1634,7 +1652,8 @@
       }
     },
     {
-      "type": "isuzu",
+      "slug": "isuzu",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1682,7 +1701,8 @@
       }
     },
     {
-      "type": "jaguar",
+      "slug": "jaguar",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1785,7 +1805,8 @@
       }
     },
     {
-      "type": "jeep",
+      "slug": "jeep",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1866,7 +1887,8 @@
       }
     },
     {
-      "type": "kia",
+      "slug": "kia",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -1980,7 +2002,8 @@
       }
     },
     {
-      "type": "lamborghini",
+      "slug": "lamborghini",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2028,7 +2051,8 @@
       }
     },
     {
-      "type": "land-rover",
+      "slug": "land-rover",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2131,7 +2155,8 @@
       }
     },
     {
-      "type": "ldv",
+      "slug": "ldv",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2179,7 +2204,8 @@
       }
     },
     {
-      "type": "lexus",
+      "slug": "lexus",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2271,7 +2297,8 @@
       }
     },
     {
-      "type": "lotus",
+      "slug": "lotus",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2319,7 +2346,8 @@
       }
     },
     {
-      "type": "maserati",
+      "slug": "maserati",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2378,7 +2406,8 @@
       }
     },
     {
-      "type": "mazda",
+      "slug": "mazda",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2492,7 +2521,8 @@
       }
     },
     {
-      "type": "mclaren",
+      "slug": "mclaren",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2562,7 +2592,8 @@
       }
     },
     {
-      "type": "mercedes-benz",
+      "slug": "mercedes-benz",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2709,7 +2740,8 @@
       }
     },
     {
-      "type": "mg",
+      "slug": "mg",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2768,7 +2800,8 @@
       }
     },
     {
-      "type": "mini",
+      "slug": "mini",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2838,7 +2871,8 @@
       }
     },
     {
-      "type": "mitsubishi",
+      "slug": "mitsubishi",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -2941,7 +2975,8 @@
       }
     },
     {
-      "type": "nissan",
+      "slug": "nissan",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3055,7 +3090,8 @@
       }
     },
     {
-      "type": "peugeot",
+      "slug": "peugeot",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3136,7 +3172,8 @@
       }
     },
     {
-      "type": "porsche",
+      "slug": "porsche",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3228,7 +3265,8 @@
       }
     },
     {
-      "type": "ram",
+      "slug": "ram",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3287,7 +3325,8 @@
       }
     },
     {
-      "type": "renault",
+      "slug": "renault",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3379,7 +3418,8 @@
       }
     },
     {
-      "type": "skoda",
+      "slug": "skoda",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3449,7 +3489,8 @@
       }
     },
     {
-      "type": "subaru",
+      "slug": "subaru",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3563,7 +3604,8 @@
       }
     },
     {
-      "type": "suzuki",
+      "slug": "suzuki",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3633,7 +3675,8 @@
       }
     },
     {
-      "type": "tesla",
+      "slug": "tesla",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3681,7 +3724,8 @@
       }
     },
     {
-      "type": "toyota",
+      "slug": "toyota",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3861,7 +3905,8 @@
       }
     },
     {
-      "type": "volkswagen",
+      "slug": "volkswagen",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",
@@ -3964,7 +4009,8 @@
       }
     },
     {
-      "type": "volvo",
+      "slug": "volvo",
+      "contentGroup": "brand",
       "carouselConfigurations": [
         {
           "title": "Latest",

@@ -11,7 +11,8 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations
 
     public class LandingConfigurationSet
     {
-        public string Type { get; set; }
+        public string Slug { get; set; }
+        public string ContentGroup { get; set; }
         public List<LandingCarouselConfiguration> CarouselConfigurations { get; set; }
         public HeroAdSettings HeroAdSettings { get; set; }
         public bool DisplayBannerAd { get; set; }

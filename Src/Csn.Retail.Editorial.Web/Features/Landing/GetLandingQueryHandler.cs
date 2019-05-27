@@ -52,11 +52,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         [Transaction]
         public async Task<GetLandingResponse> HandleAsync(GetLandingQuery query)
         {
-            var configResults = query.Configuration ?? await _landingConfigProvider.LoadConfig("default");
+            var landingConfiguration = query.Configuration;
 
             var ryvussResults = _ryvussDataService.GetNavAndResults(string.Empty, false);
-            var searchResults = GetCarousels(configResults);
-            var campaignAd = string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HasHeroAd ? GetAdUnit(query) : Task.FromResult<CampaignAdResult>(null) : Task.FromResult<CampaignAdResult>(null);
+            var searchResults = GetCarousels(landingConfiguration);
+            var campaignAd = string.IsNullOrEmpty(landingConfiguration.HeroAdSettings.HeroImage) ? landingConfiguration.HeroAdSettings.HasHeroAd ? GetAdUnit(query) : Task.FromResult<CampaignAdResult>(null) : Task.FromResult<CampaignAdResult>(null);
      
             await Task.WhenAll(campaignAd, ryvussResults, searchResults);
 
@@ -79,15 +79,15 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs,
-                            !string.IsNullOrEmpty(configResults.HeroAdSettings?.HeroMake) ?
+                            !string.IsNullOrEmpty(landingConfiguration.HeroAdSettings?.HeroMake) ?
                                 MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage),
-                    InsightsData = LandingInsightsDataMapper.Map(),
+                    InsightsData = LandingInsightsDataMapper.Map(landingConfiguration),
                     SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
-                    HeroTitle = configResults.HeroAdSettings.HeroTitle,
-                    HeroImage = !string.IsNullOrEmpty(configResults.HeroAdSettings.HeroImage) ? configResults.HeroAdSettings.HeroImage : string.Empty,
-                    DisplayBannerAd = configResults.DisplayBannerAd
+                    HeroTitle = landingConfiguration.HeroAdSettings.HeroTitle,
+                    HeroImage = !string.IsNullOrEmpty(landingConfiguration.HeroAdSettings.HeroImage) ? landingConfiguration.HeroAdSettings.HeroImage : string.Empty,
+                    DisplayBannerAd = landingConfiguration.DisplayBannerAd
                 },
-                CacheViewModel = !(searchResults.Result.Count < configResults.CarouselConfigurations.Count || (configResults.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
+                CacheViewModel = !(searchResults.Result.Count < landingConfiguration.CarouselConfigurations.Count || (landingConfiguration.HeroAdSettings.HasHeroAd && campaignAd.Result == null) || ryvussResults.Result == null)// if any ryvuss call results in a failure, don't cache the viewmodel
             };
         }
 

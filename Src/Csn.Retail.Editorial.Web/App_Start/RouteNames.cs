@@ -8,14 +8,12 @@
             public static string DisplayAdsRoute => "DisplayAdsRoute";
             public static string NativeAdRoute => "NativeAdRoute";
             public static string MediaMotiveAdRoute => "MediaMotiveAdRoute";
-            public static string LandingHome => "LandingHome";
             public static string DetailsV3 => "DetailsV3";
             public static string DetailsV2 => "DetailsV2";
             public static string DetailsV1 => "DetailsV1";
             public static string Preview => "Preview";
             public static string DetailsModal => "DetailsModal";
-            public static string LandingManufacturer => "LandingManufacturer";
-            public static string DetailsLegacyUrls => "DetailsLegacyUrls";
+            public static string Landing => "Landing";
             public static string ArticleType => "ArticleType";
             public static string RedbookHome => "RedbookHome";
             public static string RedbookResults => "RedbookResults";

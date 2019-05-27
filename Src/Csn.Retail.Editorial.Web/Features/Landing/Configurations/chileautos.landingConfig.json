@@ -1,7 +1,8 @@
 {
   "configs": [
     {
-      "type": "default",
+      "slug": "",
+      "contentGroup": "editorial",
       "displayBannerAd": true,
       "carouselConfigurations": [
         {

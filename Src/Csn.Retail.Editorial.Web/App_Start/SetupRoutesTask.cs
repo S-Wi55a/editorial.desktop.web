@@ -123,12 +123,6 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
-                RouteNames.Mvc.LandingHome,
-                "",
-                new { controller = "Landing", action = "Index" }
-            );
-
-            AddMvcRouteWithBasePath(
                 RouteNames.Mvc.DetailsV3,
                 "{*detailsPath}",
                 new { controller = "Details", action = "IndexDetailsV1V3" },
@@ -162,10 +156,10 @@ namespace Csn.Retail.Editorial.Web
             );
 
             AddMvcRouteWithBasePath(
-                RouteNames.Mvc.LandingManufacturer,
-                "{*manufacturer}",
+                RouteNames.Mvc.Landing,
+                "{*slug}",
                 new { controller = "Landing", action = "Index" }, 
-                new { manufacturer = new ManufacturerRouteConstraint() }
+                new { slug = new LandingRouteConstraint() }
             );
 
             AddMvcRouteWithBasePath(

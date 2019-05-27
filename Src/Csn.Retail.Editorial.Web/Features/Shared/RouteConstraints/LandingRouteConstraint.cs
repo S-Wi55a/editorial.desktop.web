@@ -6,7 +6,7 @@ using Csn.Retail.Editorial.Web.Features.Shared.Constants;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
 {
-    public class ManufacturerRouteConstraint : IRouteConstraint
+    public class LandingRouteConstraint : IRouteConstraint
     {
         private static ILandingConfigProvider _landingConfigProvider;
 
@@ -19,11 +19,13 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
 
             if (values.TryGetValue(parameterName, out var parameterValue))
             {
-                if (parameterValue == null || string.IsNullOrEmpty(parameterValue.ToString()) || 
-                    httpContext.Request.Params[EditorialQueryStringParams.Offset] != null || httpContext.Request.Params[EditorialQueryStringParams.Sort] != null) return false; // 'LandingHome' to Handle /editorial/ route
-                var manufacturer = parameterValue.ToString().Trim('/');
-                var landingConfigSet = _landingConfigProvider.LoadConfig(manufacturer);
-                return !string.IsNullOrEmpty(landingConfigSet.Result?.Type);
+                if (httpContext.Request.Params[EditorialQueryStringParams.Offset] != null 
+                    || httpContext.Request.Params[EditorialQueryStringParams.Sort] != null) return false; // sorting or pagination results
+
+                var slug = parameterValue == null || string.IsNullOrEmpty(parameterValue.ToString()) ? "" : parameterValue.ToString().Trim('/');
+
+                var landingConfigSet = _landingConfigProvider.GetConfig(slug);
+                return landingConfigSet.Result != null;
             }
 
             return false;
