@@ -25,7 +25,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
 
         public async Task OnExecutedAsync(GetLandingQuery query, GetLandingResponse result)
         {
-            var configResults = query.Configuration ?? await _landingConfigProvider.LoadConfig("default");
+            var configResults = query.Configuration ?? await _landingConfigProvider.GetConfig("");
 
             if (configResults == null) return;
 

@@ -14,11 +14,11 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
 {
     public interface ILandingConfigProvider
     {
-        Task<LandingConfigurationSet> LoadConfig(string configSet);
+        Task<LandingConfigurationSet> GetConfig(string slug);
     }
 
     [AutoBind]
-    public class LandingLandingConfigProvider : ILandingConfigProvider
+    public class LandingConfigProvider : ILandingConfigProvider
     {
         private readonly ISerializer _serializer;
         private readonly ITenantProvider<TenantInfo> _tenantProvider;
@@ -29,15 +29,14 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
         private readonly TimeSpan _localCacheDuration = new TimeSpan(0, 60, 0);
         private readonly TimeSpan _distributedCacheDuration = new TimeSpan(0, 0, 0);
 
-
-        public LandingLandingConfigProvider(ISerializer serializer, ITenantProvider<TenantInfo> tenantProvider, ICacheStore cacheStore)
+        public LandingConfigProvider(ISerializer serializer, ITenantProvider<TenantInfo> tenantProvider, ICacheStore cacheStore)
         {
             _serializer = serializer;
             _tenantProvider = tenantProvider;
             _cacheStore = cacheStore;
         }
 
-        public async Task<LandingConfigurationSet> LoadConfig(string configSet)
+        public async Task<LandingConfigurationSet> GetConfig(string slug)
         {
             if (!_tenantProvider.Current().HasLandingPageConfiguration) return null;
 
@@ -46,7 +45,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
             var cachedConfig = await _cacheStore.GetAsync<LandingConfig>(cacheKey);
             if (cachedConfig.HasValue)
             {
-                return cachedConfig.Value.Configs.FirstOrDefault(a => a.Type == configSet);
+                return cachedConfig.Value.Configs.FirstOrDefault(a => a.Slug == slug);
             }
 
             var fullpath = Path.Combine($"{HttpRuntime.AppDomainAppPath}{_landingConfigPath}{_tenantProvider.Current().Name}.landingconfig.json");
@@ -59,11 +58,9 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Configurations.Providers
             var content = File.ReadAllText(fullpath);
             var landingConfig = _serializer.Deserialize<LandingConfig>(content);
 
-            MakeConfigProvider.SetConfiguredMakes(_tenantProvider.Current().Name, landingConfig.Configs.Where(a =>a.Type != "default" && a.CarouselConfigurations != null && a.CarouselConfigurations.Any()).Select(a => a.Type).ToList());
-
             await _cacheStore.SetAsync(cacheKey, landingConfig, new CacheExpiredIn(_localCacheDuration, _distributedCacheDuration));
 
-            return landingConfig.Configs.FirstOrDefault(a => a.Type == configSet);
+            return landingConfig.Configs.FirstOrDefault(a => a.Slug == slug);
         }
     }
 }

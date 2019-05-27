@@ -8,39 +8,34 @@ using Csn.Retail.Editorial.Web.Infrastructure.Extensions;
 namespace Csn.Retail.Editorial.Web.Features.Landing.ModelBinder
 {
     [ModelBinderType(typeof(GetLandingQuery))]
-    public class ManufacturerLandingQueryModelBinder : DefaultModelBinder
+    public class GetLandingQueryModelBinder : DefaultModelBinder
     {
         private readonly ILandingConfigProvider _landingConfigProvider;
 
-        public ManufacturerLandingQueryModelBinder(ILandingConfigProvider landingConfigProvider)
+        public GetLandingQueryModelBinder(ILandingConfigProvider landingConfigProvider)
         {
             _landingConfigProvider = landingConfigProvider;
         }
 
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            var manufacturerRouteKey = bindingContext.ValueProvider.GetValue("manufacturer");
+            var slugRouteKey = bindingContext.ValueProvider.GetValue("slug");
 
-            if (manufacturerRouteKey == null) return new GetLandingQuery
+            var landingConfig = _landingConfigProvider.GetConfig(slugRouteKey == null ? "" : slugRouteKey.AttemptedValue.Trim('/'));
+
+            if (landingConfig.Result == null) return new GetLandingQuery
             {
                 PromotionId = GetPromotionId(bindingContext)
             };
 
-            var manufacturer = _landingConfigProvider.LoadConfig(manufacturerRouteKey.AttemptedValue.Trim('/'));
-
-            if (manufacturer.Result == null) return new GetLandingQuery
+            if (landingConfig.Result.CarouselConfigurations == null || !landingConfig.Result.CarouselConfigurations.Any())
             {
-                PromotionId = GetPromotionId(bindingContext)
-            };
-
-            if (manufacturer.Result.CarouselConfigurations == null || !manufacturer.Result.CarouselConfigurations.Any())
-            {
-                controllerContext.HttpContext.Response.Redirect(ListingUrlHelper.GetSeoUrl("/" + manufacturer.Result.Type));
+                controllerContext.HttpContext.Response.Redirect(ListingUrlHelper.GetSeoUrl("/" + landingConfig.Result.Slug));
             }
 
             return new GetLandingQuery
             {
-                Configuration = manufacturer.Result,
+                Configuration = landingConfig.Result,
                 PromotionId = GetPromotionId(bindingContext)
             };
         }

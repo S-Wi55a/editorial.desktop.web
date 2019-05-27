@@ -594,11 +594,10 @@
     <Compile Include="Features\Landing\Carousel\CarouselQueryHandler.cs" />
     <Compile Include="Features\Landing\Carousel\CarouselQueryResponse.cs" />
     <Compile Include="Features\Landing\Configurations\LandingConfiguration.cs" />
-    <Compile Include="Features\Landing\Configurations\Providers\MakeConfigProvider.cs" />
     <Compile Include="Features\Landing\GetLandingQueryProcessFilter.cs" />
     <Compile Include="Features\Landing\Mappings\LandingInsightsDataMapper.cs" />
     <Compile Include="Features\Landing\Mappings\MapperConfiguration.cs" />
-    <Compile Include="Features\Landing\ModelBinder\ManufacturerLandingQueryModelBinder.cs" />
+    <Compile Include="Features\Landing\ModelBinder\GetLandingQueryModelBinder.cs" />
     <Compile Include="Features\Landing\Services\CarouselDataService.cs" />
     <Compile Include="Features\Listings\Filters\RedbookDefaultVerticalAttributeFilter.cs" />
     <Compile Include="Features\Listings\ModelBinders\RedbookListingQueryModelBinder.cs" />
@@ -707,7 +706,7 @@
     <Compile Include="Features\Shared\Helpers\PaginationHelper.cs" />
     <Compile Include="Features\Shared\Helpers\SortingHelper.cs" />
     <Compile Include="Features\Shared\Models\SortKeyValues.cs" />
-    <Compile Include="Features\Shared\RouteConstraints\ManufacturerRouteConstraint.cs" />
+    <Compile Include="Features\Shared\RouteConstraints\LandingRouteConstraint.cs" />
     <Compile Include="Features\Shared\RouteConstraints\VerticalRouteConstraint.cs" />
     <Compile Include="Features\Shared\Search\Mapping\ArticleUrlMapper.cs" />
     <Compile Include="Features\Shared\Models\ArticleTypes.cs" />

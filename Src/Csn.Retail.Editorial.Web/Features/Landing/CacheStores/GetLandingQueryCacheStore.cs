@@ -28,7 +28,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.CacheStores
         
         public async Task<GetLandingResponse> GetAsync(GetLandingQuery query, Func<GetLandingQuery, Task<GetLandingResponse>> fetchAsync)
         {
-            var cacheKey = _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name, query.Configuration != null? query.Configuration.Type : "default");
+            var cacheKey = _cacheKey.FormatWith(_buildVersion, _tenantProvider.Current().Name, query.Configuration != null ? query.Configuration.Slug : "default");
 
             if (!query.PromotionId.HasValue)
             {
