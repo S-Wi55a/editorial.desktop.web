@@ -313,7 +313,8 @@
         }
 
         &--review,
-        &--las-mejores-compras {
+        &--las-mejores-compras,
+        &--tendencias {
             background-color: $cs-light-blue;
         }
 
@@ -356,7 +357,8 @@
         }
 
         &--carpool,
-        &--pruebas {
+        &--pruebas,
+        &--test-drive {
             background-color: $cs-carpool-blue;
         }
     }
