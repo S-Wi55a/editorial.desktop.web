@@ -52,7 +52,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             DisplayAdPlacements.Carousel,
                             new GoogleAdSetting
                             {
-                                SlotId = "div-gpt-ad-1557777456028-0",
+                                SlotId = "div-gpt-ad-1557777319543-0",
                                 UnitId = "SA_editorial_300x250_E2",
                                 DisplayAdSize = DisplayAdSizes.MediumRectangle
                             }
