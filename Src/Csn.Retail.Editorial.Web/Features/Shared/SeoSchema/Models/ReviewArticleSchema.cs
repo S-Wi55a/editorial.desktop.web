@@ -23,6 +23,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
         public IContentContributor Publisher { get; set; }
         public IEnumerable<ImageEntity> Image { get; set; }
         public IEnumerable<ItemReviewed> ItemReviewed { get; set; }
-        public IEnumerable<ReviewRating> ReviewRating { get; set; }
+        public ReviewRating ReviewRating { get; set; }
     }
 }

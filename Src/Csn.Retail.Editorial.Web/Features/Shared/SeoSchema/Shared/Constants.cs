@@ -8,10 +8,7 @@
     public static class ReviewRatingValues
     {
         public static int OverallBestRating = 100;
-        public static int OverallWorstRating = 0;
-
-        public static int AttributeBestRating = 20;
-        public static int AttributeWorstRating = 0;
+        public static int OverallWorstRating = 1;
     }
 
     public static class SchemaType

@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Web.Mvc;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema;
 using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Shared;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
 using NSubstitute;
 using NUnit.Framework;
@@ -206,102 +204,6 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Shared.SeoSchema
             var reviewArticleSchema = (ReviewArticleSchema)result;
 
             Assert.IsNull(reviewArticleSchema.ReviewRating);
-        }
-
-        [Test]
-        public void TestExpertCategoryRatingWithOnlyOverallValues()
-        {
-            List<EditorialItem> listItems = new List<EditorialItem> { new EditorialItem()
-            {
-                Make = "Mazda",
-                Model = "CX-5",
-                Year = 2019
-            }};
-
-            EditorialExpertRating expertRating = new EditorialExpertRating()
-            {
-                Heading = "Overall Rating",
-                SubHeading = "",
-                OverallRating = 80,
-                Items = new List<EditorialExpertRating.ExpertItem>() { }
-            };
-
-            var article = new ArticleDetailsDto
-            {
-                ArticleType = ArticleType.Review.ToString(),
-                Items = listItems,
-                ExpertRatings = expertRating,
-                SeoData = new SeoData() { }
-            };
-
-            var schemaDataBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
-            var result = schemaDataBuilder.Build(article);
-            var reviewArticleSchema = (ReviewArticleSchema)result;
-
-            Assert.IsNotNull(reviewArticleSchema.ReviewRating);
-            Assert.AreEqual(1, reviewArticleSchema.ReviewRating.Count());
-            Assert.AreEqual(ReviewRatingValues.OverallBestRating, reviewArticleSchema.ReviewRating.First().BestRating);
-            Assert.AreEqual(ReviewRatingValues.OverallWorstRating, reviewArticleSchema.ReviewRating.First().WorstRating);
-            Assert.AreEqual(article.ExpertRatings.OverallRating, reviewArticleSchema.ReviewRating.First().RatingValue);
-        }
-
-        [Test]
-        public void TestExpertCategoryRatingWithOverallAndCategoryValues()
-        {
-            List<EditorialItem> listItems = new List<EditorialItem> { new EditorialItem()
-            {
-                Make = "Mazda",
-                Model = "CX-5",
-                Year = 2019
-            }};
-
-            EditorialExpertRating expertRating = new EditorialExpertRating()
-            {
-                Heading = "Overall Rating",
-                SubHeading = "",
-                OverallRating = 80,
-                Items = new List<EditorialExpertRating.ExpertItem>()
-                {
-                    new EditorialExpertRating.ExpertItem()
-                    {
-                        Category = "X-Factor",
-                        Rating = 12
-                    },
-                    new EditorialExpertRating.ExpertItem()
-                    {
-                        Category = "Behind The Wheel",
-                        Rating = 18
-                    }
-                }
-            };
-
-            var article = new ArticleDetailsDto
-            {
-                ArticleType = ArticleType.Review.ToString(),
-                Items = listItems,
-                ExpertRatings = expertRating,
-                SeoData = new SeoData() { }
-            };
-
-            var schemaDataBuilder = new SchemaDataBuilder(_schemaSettings, _tenantProvider);
-            var result = schemaDataBuilder.Build(article);
-            var reviewArticleSchema = (ReviewArticleSchema)result;
-
-            Assert.IsNotNull(reviewArticleSchema.ReviewRating);
-
-            foreach (var item in reviewArticleSchema.ReviewRating)
-            {
-                if (item.ReviewAspect == article.ExpertRatings.Heading)
-                {
-                    Assert.AreEqual(ReviewRatingValues.OverallBestRating, item.BestRating);
-                    Assert.AreEqual(ReviewRatingValues.OverallWorstRating, item.WorstRating);
-                }
-                else
-                {
-                    Assert.AreEqual(ReviewRatingValues.AttributeBestRating, item.BestRating);
-                    Assert.AreEqual(ReviewRatingValues.AttributeWorstRating, item.WorstRating);
-                }
-            }
         }
     }
 }
