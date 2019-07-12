@@ -26,7 +26,6 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema.Models
     {
         [JsonProperty(PropertyName = "@type")]
         public string ItemReviewed { get; set; } = SchemaType.Rating;
-        public string ReviewAspect { get; set; }
         public int RatingValue { get; set; }
         public int BestRating { get; set; }
         public int WorstRating { get; set; }

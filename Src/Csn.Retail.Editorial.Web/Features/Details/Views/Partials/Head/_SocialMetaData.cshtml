@@ -1,11 +1,13 @@
 ﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.SocialMetaData
 
-<meta property="twitter:title" content="@Model.Title" />
-<meta property="twitter:description" content="@Model.Description" />
-<meta property="twitter:image:src" content="@Model.Image?size=thumb" />
 <meta property="og:type" content="@Model.Type" />
 <meta property="og:title" content="@Model.Title" />
 <meta property="og:url" content="@Model.Url" />
 <meta property="og:description" content="@Model.Description" />
-<meta property="og:image" content="@Model.Image?height=700&amp;width=1050" />
-<meta property="og:site_name" content="@Model.SiteName"/>
+<meta property="og:site_name" content="@Model.SiteName" />
+<meta property="og:image" content="@Model.Image" name="twitter:image:src" />
+@if (Model.ImageHeight.HasValue && Model.ImageWidth.HasValue)
+{
+    <meta property="og:image:height" content="@Model.ImageHeight.Value" name="twitter:image:height" />
+    <meta property="og:image:width" content="@Model.ImageWidth.Value" name="twitter:image:width" />
+}

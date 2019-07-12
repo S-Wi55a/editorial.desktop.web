@@ -185,32 +185,16 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.SeoSchema
             );
         }
 
-        private IEnumerable<ReviewRating> GetExpertCategoryRatingsMarkup(ArticleDetailsDto article)
+        private static ReviewRating GetExpertCategoryRatingsMarkup(ArticleDetailsDto article)
         {
-            var expertRatings = new List<ReviewRating>(){};
-
             if (article?.ExpertRatings == null) return null;
 
-            expertRatings.Add(new ReviewRating()
+            return new ReviewRating()
             {
-                ReviewAspect = article.ExpertRatings.Heading,
                 RatingValue = article.ExpertRatings.OverallRating,
                 BestRating = ReviewRatingValues.OverallBestRating,
                 WorstRating = ReviewRatingValues.OverallWorstRating
-            });
-
-            article.ExpertRatings.Items.ForEach(item =>
-            {
-                expertRatings.Add(new ReviewRating()
-                {
-                    ReviewAspect = item.Category,
-                    RatingValue = item.Rating,
-                    BestRating = ReviewRatingValues.AttributeBestRating,
-                    WorstRating = ReviewRatingValues.AttributeWorstRating
-                });
-            });
-
-            return expertRatings;
+            };
         }
     }
 }
