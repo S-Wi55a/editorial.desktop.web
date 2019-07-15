@@ -5,7 +5,7 @@
       "contentGroup": "editorial",
       "displayBannerAd": true,
       "heroAdSettings": {
-        "hasHeroAd": true,
+        "hasHeroAd": false,
         "heroTitle": "Reviews, advice, news & more",
         "heroMake": null
       },
