@@ -6,7 +6,8 @@
       "displayBannerAd": true,
       "heroAdSettings": {
         "hasHeroAd": false,
-        "heroTitle": "Reviews, advice, news & more"
+        "heroTitle": "Reviews, advice, news & more",
+        "heroMake": null
       },
       "carouselConfigurations": [
         {
