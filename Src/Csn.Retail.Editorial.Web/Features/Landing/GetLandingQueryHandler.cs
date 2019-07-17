@@ -75,7 +75,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                         NavResults = navResults,
                         DisqusSource = _tenantProvider.Current().DisqusSource
                     },
-                    Title = _tenantProvider.Current().DefaultPageTitle,
+                    Title = landingConfiguration.PageTitle ?? _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs,

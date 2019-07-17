@@ -6,8 +6,7 @@
       "displayBannerAd": true,
       "heroAdSettings": {
         "hasHeroAd": false,
-        "heroTitle": "Reviews, advice, news & more",
-        "heroMake": null
+        "heroTitle": "Reviews, advice, news & more"
       },
       "carouselConfigurations": [
         {
@@ -61,7 +60,8 @@
             "placementId": 33
           }
         }
-      ]
+      ],
+      "pageTitle": "Reviews, advice, news & more | boatsales.com.au"
     }
   ]
 }

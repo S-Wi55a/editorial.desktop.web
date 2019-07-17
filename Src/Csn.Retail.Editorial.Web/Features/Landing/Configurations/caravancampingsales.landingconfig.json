@@ -5,9 +5,8 @@
       "contentGroup": "editorial",
       "displayBannerAd": true,
       "heroAdSettings": {
-        "hasHeroAd": true,
-        "heroTitle": "Reviews, advice, news & more",
-        "heroMake": null
+        "hasHeroAd": false,
+        "heroTitle": "Reviews, advice, news & more"
       },
       "carouselConfigurations": [
         {
@@ -65,7 +64,8 @@
           "viewAll": "/videos/",
           "carouselType": "article"
         }
-      ]
+      ],
+      "pageTitle": "Reviews, advice, news & more | caravancampingsales.com.au"
     }
   ]
 }

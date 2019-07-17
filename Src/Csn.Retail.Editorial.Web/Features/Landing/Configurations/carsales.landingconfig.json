@@ -131,7 +131,8 @@
         "hasHeroAd": true,
         "heroTitle": "Reviews, advice, news & more",
         "heroMake": null
-      }
+      },
+      "pageTitle": "Reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "carpool",
@@ -198,7 +199,8 @@
         "heroTitle": "Carpool features, advice, news & more",
         "heroMake": "",
         "heroImage": "https://editorial.csnstatic.com/carpool/hero/carpool-header-01.jpg"
-      }
+      },
+      "pageTitle": "Carpool features, advice, news & more | carsales.com.au"
     },
     {
       "slug": "abarth",
@@ -247,7 +249,8 @@
         "hasHeroAd": true,
         "heroTitle": "Abarth reviews, advice, news & more",
         "heroMake": "Abarth"
-      }
+      },
+      "pageTitle": "Abarth reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "alfa-romeo",
@@ -307,7 +310,8 @@
         "hasHeroAd": true,
         "heroTitle": "Alfa Romeo reviews, advice, news & more",
         "heroMake": "Alfa Romeo"
-      }
+      },
+      "pageTitle": "Alfa Romeo reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "aston-martin",
@@ -378,7 +382,8 @@
         "hasHeroAd": true,
         "heroTitle": "Aston Martin reviews, advice, news & more",
         "heroMake": "Aston Martin"
-      }
+      },
+      "pageTitle": "Aston Martin reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "audi",
@@ -581,7 +586,8 @@
         "hasHeroAd": true,
         "heroTitle": "Audi reviews, advice, news & more",
         "heroMake": "Audi"
-      }
+      },
+      "pageTitle": "Audi reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "bentley",
@@ -641,7 +647,8 @@
         "hasHeroAd": true,
         "heroTitle": "Bentley reviews, advice, news & more",
         "heroMake": "Bentley"
-      }
+      },
+      "pageTitle": "Bentley reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "bmw",
@@ -774,7 +781,8 @@
         "hasHeroAd": true,
         "heroTitle": "BMW reviews, advice, news & more",
         "heroMake": "BMW"
-      }
+      },
+      "pageTitle": "BMW reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "chevrolet",
@@ -834,7 +842,8 @@
         "hasHeroAd": true,
         "heroTitle": "Chevrolet reviews, advice, news & more",
         "heroMake": "Chevrolet"
-      }
+      },
+      "pageTitle": "Chevrolet reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "citroen",
@@ -883,7 +892,8 @@
         "hasHeroAd": true,
         "heroTitle": "Citroen reviews, advice, news & more",
         "heroMake": "Citroen"
-      }
+      },
+      "pageTitle": "Citroen reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "ferrari",
@@ -954,7 +964,8 @@
         "hasHeroAd": true,
         "heroTitle": "Ferrari reviews, advice, news & more",
         "heroMake": "Ferrari"
-      }
+      },
+      "pageTitle": "Ferrari reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "fiat",
@@ -1014,7 +1025,8 @@
         "hasHeroAd": true,
         "heroTitle": "Fiat reviews, advice, news & more",
         "heroMake": "Fiat"
-      }
+      },
+      "pageTitle": "Fiat reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "ford",
@@ -1206,7 +1218,8 @@
         "hasHeroAd": true,
         "heroTitle": "Ford reviews, advice, news & more",
         "heroMake": "Ford"
-      }
+      },
+      "pageTitle": "Ford reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "haval",
@@ -1266,7 +1279,8 @@
         "hasHeroAd": true,
         "heroTitle": "Haval reviews, advice, news & more",
         "heroMake": "Haval"
-      }
+      },
+      "pageTitle": "Haval reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "holden",
@@ -1392,7 +1406,8 @@
         "hasHeroAd": true,
         "heroTitle": "Holden reviews, advice, news & more",
         "heroMake": "Holden"
-      }
+      },
+      "pageTitle": "Holden reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "holden-special-vehicles",
@@ -1441,7 +1456,8 @@
         "hasHeroAd": true,
         "heroTitle": "Holden Special Vehicles reviews, advice, news & more",
         "heroMake": "Holden Special Vehicles"
-      }
+      },
+      "pageTitle": "Holden Special Vehicles reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "honda",
@@ -1523,7 +1539,8 @@
         "hasHeroAd": true,
         "heroTitle": "Honda reviews, advice, news & more",
         "heroMake": "Honda"
-      }
+      },
+      "pageTitle": "Honda reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "hyundai",
@@ -1649,7 +1666,8 @@
         "hasHeroAd": true,
         "heroTitle": "Hyundai reviews, advice, news & more",
         "heroMake": "Hyundai"
-      }
+      },
+      "pageTitle": "Hyundai reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "isuzu",
@@ -1698,7 +1716,8 @@
         "hasHeroAd": true,
         "heroTitle": "Isuzu reviews, advice, news & more",
         "heroMake": "Isuzu"
-      }
+      },
+      "pageTitle": "Isuzu reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "jaguar",
@@ -1802,7 +1821,8 @@
         "hasHeroAd": true,
         "heroTitle": "Jaguar reviews, advice, news & more",
         "heroMake": "Jaguar"
-      }
+      },
+      "pageTitle": "Jaguar reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "jeep",
@@ -1884,7 +1904,8 @@
         "hasHeroAd": true,
         "heroTitle": "Jeep reviews, advice, news & more",
         "heroMake": "Jeep"
-      }
+      },
+      "pageTitle": "Jeep reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "kia",
@@ -1999,7 +2020,8 @@
         "hasHeroAd": true,
         "heroTitle": "Kia reviews, advice, news & more",
         "heroMake": "Kia"
-      }
+      },
+      "pageTitle": "Kia reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "lamborghini",
@@ -2048,7 +2070,8 @@
         "hasHeroAd": true,
         "heroTitle": "Lamborghini reviews, advice, news & more",
         "heroMake": "Lamborghini"
-      }
+      },
+      "pageTitle": "Lamborghini reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "land-rover",
@@ -2152,7 +2175,8 @@
         "hasHeroAd": true,
         "heroTitle": "Land Rover reviews, advice, news & more",
         "heroMake": "Land Rover"
-      }
+      },
+      "pageTitle": "Land Rover reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "ldv",
@@ -2201,7 +2225,8 @@
         "hasHeroAd": true,
         "heroTitle": "LDV reviews, advice, news & more",
         "heroMake": "LDV"
-      }
+      },
+      "pageTitle": "LDV reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "lexus",
@@ -2294,7 +2319,8 @@
         "hasHeroAd": true,
         "heroTitle": "Lexus reviews, advice, news & more",
         "heroMake": "Lexus"
-      }
+      },
+      "pageTitle": "Lexus reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "lotus",
@@ -2343,7 +2369,8 @@
         "hasHeroAd": true,
         "heroTitle": "Lotus reviews, advice, news & more",
         "heroMake": "Lotus"
-      }
+      },
+      "pageTitle": "Lotus reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "maserati",
@@ -2403,7 +2430,8 @@
         "hasHeroAd": true,
         "heroTitle": "Maserati reviews, advice, news & more",
         "heroMake": "Maserati"
-      }
+      },
+      "pageTitle": "Maserati reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "mazda",
@@ -2518,7 +2546,8 @@
         "hasHeroAd": true,
         "heroTitle": "Mazda reviews, advice, news & more",
         "heroMake": "Mazda"
-      }
+      },
+      "pageTitle": "Mazda reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "mclaren",
@@ -2589,7 +2618,8 @@
         "hasHeroAd": true,
         "heroTitle": "McLaren reviews, advice, news & more",
         "heroMake": "McLaren"
-      }
+      },
+      "pageTitle": "McLaren reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "mercedes-benz",
@@ -2737,7 +2767,8 @@
         "hasHeroAd": true,
         "heroTitle": "Mercedes-Benz reviews, advice, news & more",
         "heroMake": "Mercedes-Benz"
-      }
+      },
+      "pageTitle": "Mercedes-Benz reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "mg",
@@ -2797,7 +2828,8 @@
         "hasHeroAd": true,
         "heroTitle": "MG reviews, advice, news & more",
         "heroMake": "MG"
-      }
+      },
+      "pageTitle": "MG reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "mini",
@@ -2868,7 +2900,8 @@
         "hasHeroAd": true,
         "heroTitle": "MINI reviews, advice, news & more",
         "heroMake": "MINI"
-      }
+      },
+      "pageTitle": "MINI reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "mitsubishi",
@@ -2972,7 +3005,8 @@
         "hasHeroAd": true,
         "heroTitle": "Mitsubishi reviews, advice, news & more",
         "heroMake": "Mitsubishi"
-      }
+      },
+      "pageTitle": "Mitsubishi reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "nissan",
@@ -3087,7 +3121,8 @@
         "hasHeroAd": true,
         "heroTitle": "Nissan reviews, advice, news & more",
         "heroMake": "Nissan"
-      }
+      },
+      "pageTitle": "Nissan reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "peugeot",
@@ -3169,7 +3204,8 @@
         "hasHeroAd": true,
         "heroTitle": "Peugeot reviews, advice, news & more",
         "heroMake": "Peugeot"
-      }
+      },
+      "pageTitle": "Peugeot reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "porsche",
@@ -3262,7 +3298,8 @@
         "hasHeroAd": true,
         "heroTitle": "Porsche reviews, advice, news & more",
         "heroMake": "Porsche"
-      }
+      },
+      "pageTitle": "Porsche reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "ram",
@@ -3322,7 +3359,8 @@
         "hasHeroAd": true,
         "heroTitle": "RAM reviews, advice, news & more",
         "heroMake": "RAM"
-      }
+      },
+      "pageTitle": "RAM reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "renault",
@@ -3415,7 +3453,8 @@
         "hasHeroAd": true,
         "heroTitle": "Renault reviews, advice, news & more",
         "heroMake": "Renault"
-      }
+      },
+      "pageTitle": "Renault reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "skoda",
@@ -3486,7 +3525,8 @@
         "hasHeroAd": true,
         "heroTitle": "Skoda reviews, advice, news & more",
         "heroMake": "Skoda"
-      }
+      },
+      "pageTitle": "Skoda reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "subaru",
@@ -3601,7 +3641,8 @@
         "hasHeroAd": true,
         "heroTitle": "Subaru reviews, advice, news & more",
         "heroMake": "Subaru"
-      }
+      },
+      "pageTitle": "Subaru reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "suzuki",
@@ -3672,7 +3713,8 @@
         "hasHeroAd": true,
         "heroTitle": "Suzuki reviews, advice, news & more",
         "heroMake": "Suzuki"
-      }
+      },
+      "pageTitle": "Suzuki reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "tesla",
@@ -3721,7 +3763,8 @@
         "hasHeroAd": true,
         "heroTitle": "Tesla reviews, advice, news & more",
         "heroMake": "Tesla"
-      }
+      },
+      "pageTitle": "Tesla reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "toyota",
@@ -3902,7 +3945,8 @@
         "hasHeroAd": true,
         "heroTitle": "Toyota reviews, advice, news & more",
         "heroMake": "Toyota"
-      }
+      },
+      "pageTitle": "Toyota reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "volkswagen",
@@ -4006,7 +4050,8 @@
         "hasHeroAd": true,
         "heroTitle": "Volkswagen reviews, advice, news & more",
         "heroMake": "Volkswagen"
-      }
+      },
+      "pageTitle": "Volkswagen reviews, advice, news & more | carsales.com.au"
     },
     {
       "slug": "volvo",
@@ -4088,7 +4133,8 @@
         "hasHeroAd": true,
         "heroTitle": "Volvo reviews, advice, news & more",
         "heroMake": "Volvo"
-      }
+      },
+      "pageTitle": "Volvo reviews, advice, news & more | carsales.com.au"
     }
   ]
 }
