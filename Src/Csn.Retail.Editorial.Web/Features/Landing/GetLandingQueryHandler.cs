@@ -75,14 +75,14 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                         NavResults = navResults,
                         DisqusSource = _tenantProvider.Current().DisqusSource
                     },
-                    Title = _tenantProvider.Current().DefaultPageTitle,
+                    Title = landingConfiguration.PageTitle ?? _tenantProvider.Current().DefaultPageTitle,
                     Carousels = searchResults.Result,
                     CampaignAd = campaignAd.Result,
                     PolarNativeAdsData = _polarNativeAdsDataMapper.Map(ryvussResults.Result.INav.BreadCrumbs,
                             !string.IsNullOrEmpty(landingConfiguration.HeroAdSettings?.HeroMake) ?
                                 MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(landingConfiguration),
-                    SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
+                    SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result, landingConfiguration.PageTitle),
                     HeroTitle = landingConfiguration.HeroAdSettings.HeroTitle,
                     HeroImage = !string.IsNullOrEmpty(landingConfiguration.HeroAdSettings.HeroImage) ? landingConfiguration.HeroAdSettings.HeroImage : string.Empty,
                     DisplayBannerAd = landingConfiguration.DisplayBannerAd
