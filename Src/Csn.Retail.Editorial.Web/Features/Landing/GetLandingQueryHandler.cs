@@ -82,7 +82,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
                             !string.IsNullOrEmpty(landingConfiguration.HeroAdSettings?.HeroMake) ?
                                 MediaMotiveAreaNames.EditorialBrandHomePage : MediaMotiveAreaNames.EditorialHomePage),
                     InsightsData = LandingInsightsDataMapper.Map(landingConfiguration),
-                    SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result),
+                    SeoData = _seoDataMapper.MapLandingSeoData(ryvussResults.Result, landingConfiguration.PageTitle),
                     HeroTitle = landingConfiguration.HeroAdSettings.HeroTitle,
                     HeroImage = !string.IsNullOrEmpty(landingConfiguration.HeroAdSettings.HeroImage) ? landingConfiguration.HeroAdSettings.HeroImage : string.Empty,
                     DisplayBannerAd = landingConfiguration.DisplayBannerAd

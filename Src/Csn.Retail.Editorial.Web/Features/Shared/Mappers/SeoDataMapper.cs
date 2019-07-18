@@ -9,7 +9,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Mappers
     public interface ISeoDataMapper
     {
         SeoData Map(RyvussNavResultDto ryvussNavResult);
-        SeoData MapLandingSeoData(RyvussNavResultDto ryvussNavResult);
+        SeoData MapLandingSeoData(RyvussNavResultDto ryvussNavResult, string customLandingPageTitle);
     }
 
     [AutoBind]
@@ -36,12 +36,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Mappers
             };
         }
 
-        public SeoData MapLandingSeoData(RyvussNavResultDto ryvussNavResult)
+        public SeoData MapLandingSeoData(RyvussNavResultDto ryvussNavResult, string customLandingPageTitle)
         {
             var protocolAndDomain = $"{_tenantProvider.Current().UrlProtocol}://{_tenantProvider.Current().SiteDomain}";
             return new SeoData
             {
-                Title = ryvussNavResult.Metadata == null ? _tenantProvider.Current().DefaultPageTitle : ryvussNavResult.Metadata.Title,
+                Title = string.IsNullOrEmpty(customLandingPageTitle) ? _tenantProvider.Current().DefaultPageTitle : customLandingPageTitle,
                 CanonicalUrl = $"{protocolAndDomain}{_requestContext.Url.AbsolutePath}",
                 AlternateUrl = string.Empty,
                 Description = ryvussNavResult.Metadata == null ? string.Empty : ryvussNavResult.Metadata.Description
