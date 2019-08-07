@@ -17,7 +17,7 @@ class INavMenuHeader extends React.Component {
   render({nodes}=this.props) {
     return (<div className={['iNav__menu-header'].join(' ')}>
       {nodes.map((node, index) => {
-        return <INavMenuHeaderItem key={index} node={node} index={index} toggleVisibleItem={this.toggleVisibleItem} />
+        return <INavMenuHeaderItem key={index} node={node} index={index} totalNodes={nodes.length} toggleVisibleItem={this.toggleVisibleItem} />
       })}
     </div>)
     }   

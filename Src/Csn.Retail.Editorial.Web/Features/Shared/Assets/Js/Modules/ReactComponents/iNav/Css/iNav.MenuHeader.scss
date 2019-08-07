@@ -22,6 +22,20 @@
             min-width: $iNav-header-item-width + 60px;
         }
 
+        @function header-width($total, $large: false){
+            @return ($iNav-header-item-width + if($large, 60px, 0px)) * 3 / if($total > 3, $total, 3);
+        }
+ 
+        @for $i from 1 through 5 {
+            &-total#{$i} {
+                min-width: header-width($i);
+
+                @include breakpoint($screen-lg) {
+                    min-width: header-width($i, true);
+                }
+            }
+        }
+
         &:first-of-type {
             border-top-left-radius: $iNav-border-radius;
             border-bottom-left-radius: $iNav-border-radius;

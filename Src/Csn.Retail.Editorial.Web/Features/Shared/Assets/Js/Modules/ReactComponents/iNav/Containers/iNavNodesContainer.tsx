@@ -22,6 +22,7 @@ const INavNodesContainer: React.StatelessComponent<IINavNodesContainer> = ({ nod
         activePage={1}
         refinementId={null}
         isLoading={false}
+        totalNodes={nodes.length}
         />
     })}
   </div>

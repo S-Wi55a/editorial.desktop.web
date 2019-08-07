@@ -13,9 +13,10 @@ interface IINavMenuHeaderItemComponent {
   index: number
   isActive: boolean
   count: number
+  totalNodes: number
 }
 
-const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ isActive, node, toggleIsSelected, index, count }) => {
+const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemComponent> = ({ isActive, node, toggleIsSelected, index, count, totalNodes }) => {
   const handleItemClick = () => {
     scrollNavToTop(isActive);
     toggleIsSelected(index, isActive);
@@ -23,7 +24,7 @@ const INavMenuHeaderItemComponent: React.StatelessComponent<IINavMenuHeaderItemC
 
   return (
     <div 
-      className={['iNav__menu-header-item', isActive ? 'iNav__menu-header-item--isActive' : ''].join(' ')} 
+      className={['iNav__menu-header-item', isActive ? 'iNav__menu-header-item--isActive' : '', `iNav__menu-header-item-total${totalNodes}`].join(' ')} 
       onClick={handleItemClick}
       data-webm-section={node.displayName}
       data-webm-clickvalue={node.displayName}
