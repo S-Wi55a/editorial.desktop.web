@@ -32,39 +32,20 @@
             display: inline-block;
         }
 
-        &--1 {
-            left: $iNav-header-item-width;
-
-            @include breakpoint($screen-lg) {
-                left: $iNav-header-item-width + 60px;
-                min-width: ($iNav-header-item-width);
-            }
+        @function header-width($total, $large: false){
+            @return ($iNav-header-item-width + if($large, 60px, 0px)) * 3 / if($total > 3, $total, 3);
         }
 
-        &--2 {
-            left: $iNav-header-item-width * 2;
+        @for $totalNodes from 1 through 5 {
+            @for $node from 1 through 4 {
+                &-total#{$totalNodes}#{&}--#{$node} {
+                    left: header-width($totalNodes) * $node;
 
-            @include breakpoint($screen-lg) {
-                left: ($iNav-header-item-width + 60px) * 2;
-                min-width: ($iNav-header-item-width);
-            }
-        }
-
-        &--3 {
-            left: $iNav-header-item-width * 3;
-
-            @include breakpoint($screen-lg) {
-                left: ($iNav-header-item-width + 60px) * 3;
-                min-width: ($iNav-header-item-width);
-            }
-        }
-
-        &--4 {
-            left: $iNav-header-item-width * 4;
-
-            @include breakpoint($screen-lg) {
-                left: ($iNav-header-item-width + 60px) * 4;
-                min-width: ($iNav-header-item-width);
+                    @include breakpoint($screen-lg) {
+                        left: header-width($totalNodes, true) * $node;
+                        min-width: header-width($totalNodes);
+                    }
+                }
             }
         }
 
