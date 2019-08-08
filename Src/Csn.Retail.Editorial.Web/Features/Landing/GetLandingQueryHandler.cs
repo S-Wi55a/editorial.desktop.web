@@ -54,7 +54,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing
         {
             var landingConfiguration = query.Configuration;
 
-            var ryvussResults = _ryvussDataService.GetNavAndResults("/" + landingConfiguration.Slug, false);
+            var ryvussResults = _ryvussDataService.GetNavAndResults(landingConfiguration.ContentGroup == "brand" ? "/" + landingConfiguration.Slug : string.Empty, false);
             var searchResults = GetCarousels(landingConfiguration);
             var campaignAd = string.IsNullOrEmpty(landingConfiguration.HeroAdSettings.HeroImage) ? landingConfiguration.HeroAdSettings.HasHeroAd ? GetAdUnit(query) : Task.FromResult<CampaignAdResult>(null) : Task.FromResult<CampaignAdResult>(null);
      
