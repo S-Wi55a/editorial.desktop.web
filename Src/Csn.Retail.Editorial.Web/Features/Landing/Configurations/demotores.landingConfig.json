@@ -1,115 +1,61 @@
 ﻿{
   "configs": [
     {
-      "type": "",
+      "slug": "",
       "contentGroup": "editorial",
       "displayBannerAd": true,
       "carouselConfigurations": [
         {
-          "title": "Editor's Choice",
+          "title": "Noticias de Auto",
           "displayMrec": true,
           "displayNativeAd": false,
-          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
+          "query": "(And.Type.Noticias de Auto._.Service.Demotores.)",
           "sort": "Latest",
-          "viewAll": null,
+          "viewAll": "/noticias-de-auto/",
           "polarAds": null,
           "carouselType": "featured",
           "carouselItems": null
         },
         {
-          "title": "Reviews",
+          "title": "Test Drives",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.Type.Review._.Service.CarSales.)",
+          "query": "(And.Type.Test Drive._.Service.Demotores.)",
           "sort": "Latest",
-          "viewAll": "/reviews/",
+          "viewAll": "/test-drive/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
         },
         {
-          "title": "News",
+          "title": "Lanzamientos",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.Type.News._.Service.CarSales.)",
+          "query": "(And.Type.Lanzamientos._.Service.Demotores.)",
           "sort": "Latest",
-          "viewAll": "/news/",
+          "viewAll": "/lanzamientos/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
         },
         {
-          "title": "Videos",
+          "title": "Trámites",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.Type.Video._.Service.CarSales.)",
+          "query": "(And.Type.Trámites._.Service.Demotores.)",
           "sort": "Latest",
-          "viewAll": "/videos/",
+          "viewAll": "/trámites/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
         },
         {
-          "title": "Advice",
+          "title": "Educación Vial",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales.)",
+          "query": "(And.Type.educación vial._.Service.Demotores.)",
           "sort": "Latest",
-          "viewAll": "/advice/",
-          "polarAds": null,
-          "carouselType": "article",
-          "carouselItems": null
-        },
-        {
-          "title": "Driver",
-          "displayMrec": false,
-          "displayNativeAd": false,
-          "query": null,
-          "sort": null,
-          "viewAll": null,
-          "polarAds": null,
-          "carouselType": "driver",
-          "carouselItems": [
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/newcarcalendar.png",
-              "itemUrl": "/editorial/details/new-car-calendar-11034/"
-            },
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/carpool.png",
-              "itemUrl": "https://www.carsales.com.au/editorial/carpool/"
-            },
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/caroftheyear.png",
-              "itemUrl": "/car-of-the-year-2017/"
-            },
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/ownerreviews.png",
-              "itemUrl": "http://owner-reviews.carsales.com.au/"
-            },
-            {
-              "imageUrl": "https://editorial.csnstatic.com/carsales/drivers/newcarshowroom.png",
-              "itemUrl": "/new-cars/"
-            }
-          ]
-        },
-        {
-          "title": "Comparisons",
-          "displayMrec": false,
-          "displayNativeAd": false,
-          "query": "(And.ArticleTypes.Comparison._.Service.CarSales.)",
-          "sort": "Latest",
-          "viewAll": "/results/?q=ArticleTypes.Comparison.",
-          "polarAds": null,
-          "carouselType": "article",
-          "carouselItems": null
-        },
-        {
-          "title": "Features",
-          "displayMrec": false,
-          "displayNativeAd": false,
-          "query": "(And.Type.Feature._.Service.CarSales.)",
-          "sort": "Latest",
-          "viewAll": "/features/",
+          "viewAll": "/educación-vial/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
@@ -117,7 +63,7 @@
       ],
       "heroAdSettings": {
         "hasHeroAd": false,
-        "heroTitle": "Reviews, advice, news & more",
+        "heroTitle": "Noticias, test drives y mas",
         "heroMake": null
       }
     }
