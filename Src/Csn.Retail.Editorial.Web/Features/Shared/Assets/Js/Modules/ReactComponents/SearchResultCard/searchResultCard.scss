@@ -228,7 +228,8 @@
         margin-bottom: 10px;
 
         &--review,
-        &--las-mejores-compras {
+        &--las-mejores-compras,
+        &--lanzamientos {
             color: $cs-light-blue;
         }
 
@@ -238,12 +239,14 @@
 
         &--advice,
         &--car-advice,
-        &--compra-de-auto {
+        &--compra-de-auto,
+        &--educación-vial {
             color: $cs-accent-green;
         }
 
         &--video,
-        &--comparativas {
+        &--comparativas,
+        &--trámites {
             color: $cs-orange;
         }
 
@@ -261,7 +264,9 @@
             color: $cs-pink;
         }
 
-        &--pruebas {
+        &--pruebas, 
+        &--test-drive,
+        &--test-drives {
             color: $cs-carpool-blue;
         }
     }
