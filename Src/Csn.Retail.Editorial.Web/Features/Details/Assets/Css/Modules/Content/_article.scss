@@ -314,7 +314,8 @@
 
         &--review,
         &--las-mejores-compras,
-        &--tendencias {
+        &--tendencias,
+        &--lanzamientos {
             background-color: $cs-light-blue;
         }
 
@@ -333,12 +334,14 @@
 
         &--advice,
         &--car-advice,
-        &--compra-de-auto {
+        &--compra-de-auto,
+        &--educación-vial {
             background-color: $cs-accent-green;
         }
 
         &--video,
-        &--comparativas {
+        &--comparativas,
+        &--trámites {
             background-color: $cs-orange;
         }
 
@@ -358,7 +361,8 @@
 
         &--carpool,
         &--pruebas,
-        &--test-drive {
+        &--test-drive,
+        &--test-drives {
             background-color: $cs-carpool-blue;
         }
     }
