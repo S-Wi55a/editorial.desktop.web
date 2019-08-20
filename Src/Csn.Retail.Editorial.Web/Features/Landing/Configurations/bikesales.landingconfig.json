@@ -87,6 +87,18 @@
             "display": true,
             "placementId": 33
           }
+        },
+        {
+          "title": "Features",
+          "displayMrec": false,
+          "query": "(And.Type.Feature._.Service.BikeSales.)",
+          "sort": "Latest",
+          "viewAll": "/feature/",
+          "carouselType": "article",
+          "polarAds": {
+            "display": true,
+            "placementId": 34
+          }
         }
       ],
       "pageTitle": "Bike reviews, news, advice & more | bikesales.com.au"
