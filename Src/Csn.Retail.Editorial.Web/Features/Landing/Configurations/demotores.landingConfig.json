@@ -6,12 +6,12 @@
       "displayBannerAd": true,
       "carouselConfigurations": [
         {
-          "title": "Noticias de Auto",
+          "title": "Actualidad",
           "displayMrec": true,
           "displayNativeAd": false,
-          "query": "(And.Type.Noticias de Auto._.Service.Demotores.)",
+          "query": "(And.Type.Actualidad._.Service.Demotores.)",
           "sort": "Latest",
-          "viewAll": "/noticias-de-auto/",
+          "viewAll": "/actualidad/",
           "polarAds": null,
           "carouselType": "featured",
           "carouselItems": null
@@ -20,9 +20,9 @@
           "title": "Test Drives",
           "displayMrec": false,
           "displayNativeAd": false,
-          "query": "(And.Type.Test Drive._.Service.Demotores.)",
+          "query": "(And.Type.Test Drives._.Service.Demotores.)",
           "sort": "Latest",
-          "viewAll": "/test-drive/",
+          "viewAll": "/test-drives/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
