@@ -21,7 +21,7 @@
           "displayNativeAd": false,
           "query": "(And.Type.Review._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/reviews/",
+          "viewAll": "/review/",
           "polarAds": {
             "display": true,
             "placementId": 31
@@ -49,7 +49,7 @@
           "displayMrec": false,
           "query": "(And.Type.Video._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/videos/",
+          "viewAll": "/video/",
           "polarAds": {
             "display": true,
             "placementId": 32
@@ -120,7 +120,7 @@
           "displayNativeAd": false,
           "query": "(And.Type.Feature._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/features/",
+          "viewAll": "/feature/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
