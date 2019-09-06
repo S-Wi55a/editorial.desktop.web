@@ -13,7 +13,7 @@ namespace Csn.Retail.Editorial.Web.Features.Redirects.RedirectProviders
         {
             var regex = new Regex(redirectRule.MatchRule, RegexOptions.IgnoreCase);
 
-            var absolutePathUnescaped = uri.AbsolutePathUnescaped();
+            var absolutePathUnescaped = $"/{uri.AbsolutePathUnescaped().Trim('/')}/";
 
             var matches = regex.Matches(absolutePathUnescaped);
 
