@@ -562,6 +562,7 @@
     <Compile Include="Features\Details\CacheStores\ArticleDetailsCacheStore.cs" />
     <Compile Include="Features\Details\CacheStores\GetModalQueryCacheStore.cs" />
     <Compile Include="Features\Details\GetModalQueryHandler.cs" />
+    <Compile Include="Features\Details\Loggers\DetailsRequestLogger.cs" />
     <Compile Include="Features\Details\PreviewQuery.cs" />
     <Compile Include="Features\Details\PreviewQueryHandler.cs" />
     <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidator.cs" />
