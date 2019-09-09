@@ -16,14 +16,17 @@ namespace Csn.Retail.Editorial.Web.Features.Details
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IEventDispatcher _eventDispatcher;
         private readonly IDetailsRedirectLogger _redirectLogger;
+        private readonly IDetailsRequestLogger _detailsRequestLogger;
 
         public DetailsController(IQueryDispatcher queryDispatcher, 
                                 IEventDispatcher eventDispatcher, 
-                                IDetailsRedirectLogger redirectLogger)
+                                IDetailsRedirectLogger redirectLogger,
+                                IDetailsRequestLogger detailsRequestLogger)
         {
             _queryDispatcher = queryDispatcher;
             _eventDispatcher = eventDispatcher;
             _redirectLogger = redirectLogger;
+            _detailsRequestLogger = detailsRequestLogger;
         }
 
         [RedirectAttributeFilter]
@@ -43,6 +46,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
         private async Task<ActionResult> Details(string networkId, bool isPreview)
         {
+            _detailsRequestLogger.Log(HttpContext.Request.Url?.ToString());
+
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsPageRequestEvent());
 
             var dispatchedQuery = _queryDispatcher.DispatchAsync<GetArticleQuery, GetArticleResponse>(new GetArticleQuery()
@@ -87,6 +92,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
         public async Task<ActionResult> Modal(string networkId, string __source = "")
         {
+            _detailsRequestLogger.Log(HttpContext.Request.Url?.ToString());
+
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsModalRequestEvent());
 
             var dispatchedQuery = _queryDispatcher.DispatchAsync<GetModalQuery, GetArticleResponse>(new GetModalQuery
@@ -112,6 +119,8 @@ namespace Csn.Retail.Editorial.Web.Features.Details
 
         public async Task<ActionResult> Preview(string previewId)
         {
+            _detailsRequestLogger.Log(HttpContext.Request.Url?.ToString());
+
             var dispatchedEvent = _eventDispatcher.DispatchAsync(new DetailsPageRequestEvent());
 
             var dispatchedQuery = _queryDispatcher.DispatchAsync<PreviewQuery, GetArticleResponse>(new PreviewQuery()
