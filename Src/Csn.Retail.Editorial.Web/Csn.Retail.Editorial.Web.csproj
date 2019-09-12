@@ -725,7 +725,6 @@
     <Compile Include="Features\Shared\Helpers\UserContextHelper.cs" />
     <Compile Include="Features\Shared\Models\SeoData.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\ArticleDetailsDto.cs" />
-    <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiHealthCheck.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiInput.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialApi\EditorialApiProxy.cs" />
     <Compile Include="Features\Shared\Proxies\EditorialRyvussApi\EditorialRyvussApi.cs" />
