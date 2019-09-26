@@ -20,16 +20,24 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
     public class ListingInsightsDataMapper : IListingInsightsDataMapper
     {
         private readonly IExpressionParser _expressionParser;
+        private Dictionary<string, string> _postTypes;
 
         public ListingInsightsDataMapper(IExpressionParser expressionParser)
         {
             _expressionParser = expressionParser;
+            _postTypes = new Dictionary<string, string>()
+            {
+                { "car news", "news" },
+                { "car advice", "advice" },
+                { "car features", "feature" },
+                { "car reviews", "review" },
+                { "car videos", "video" }
+            };
         }
 
         public CsnInsightsData Map(ListingPageContext listingPageContext)
         {            
-            var expression = _expressionParser.Parse(listingPageContext.Query);
-            var dimensions = GetTags(expression);
+            var dimensions = GetDimensions(_expressionParser.Parse(listingPageContext.Query));
 
             dimensions.Add(TrackingScriptTags.ContentGroup1, TrackingScriptContentGroups.NewsAndReviews);
 
@@ -46,6 +54,18 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
                 MetaData = dimensions,
                 SearchResultsData = GetSearchResultsData(listingPageContext)
             };
+        }
+
+        private Dictionary<string, string> GetDimensions(Expression expression)
+        {
+            var tags = GetTags(expression);
+            if (tags.Any(a => a.Key.ToLower().Equals("service") && a.Value.ToLower().Equals("carsales")) && tags.Any(a => a.Key.ToLower().Equals("posttype")))
+            {
+                tags.Add("type", _postTypes[tags["posttype"]]);
+                tags.Remove("posttype");
+            }
+
+            return tags;
         }
 
         private Dictionary<string, string> GetTags(Expression expression)
