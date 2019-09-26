@@ -6,8 +6,9 @@ using Csn.Retail.Editorial.Web.Features.Shared.Models;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
 using Csn.Tracking.Scripts.Core;
 using Csn.Tracking.Scripts.Ryvus42;
-using Expresso.Expressions;
 using Expresso.Syntax;
+using Microsoft.Ajax.Utilities;
+using Expression = Expresso.Expressions.Expression;
 
 namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
 {
@@ -61,7 +62,10 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
             var tags = GetTags(expression);
             if (tags.Any(a => a.Key.ToLower().Equals("service") && a.Value.ToLower().Equals("carsales")) && tags.Any(a => a.Key.ToLower().Equals("posttype")))
             {
-                tags.Add("type", _postTypes[tags["posttype"]]);
+                if (_postTypes.TryGetValue(tags["posttype"], out string value))
+                {
+                    tags.Add("type", value);
+                }
                 tags.Remove("posttype");
             }
 
