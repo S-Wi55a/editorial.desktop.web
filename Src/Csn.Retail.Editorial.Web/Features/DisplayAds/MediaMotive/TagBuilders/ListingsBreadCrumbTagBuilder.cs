@@ -21,6 +21,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.MediaMotive.TagBuilders
             { "Make", SasAdTags.SasAdTagKeys.Make },
             { "Model", SasAdTags.SasAdTagKeys.Model },
             { "Type", SasAdTags.SasAdTagKeys.ArticleType },
+            { "PostType", SasAdTags.SasAdTagKeys.ArticleType },
             { "Lifestyle", SasAdTags.SasAdTagKeys.Lifestyle },
             { "Category", SasAdTags.SasAdTagKeys.Category },
             { "ItemCategory", SasAdTags.SasAdTagKeys.Category },
