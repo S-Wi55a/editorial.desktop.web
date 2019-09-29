@@ -83,6 +83,7 @@ namespace Csn.Retail.Editorial.Web.UnitTests.Features.Listings
                 yield return new object[] { new FacetExpression("Service", "CarSales"), new FacetExpression("PostType", "Car Videos"), "(And.Service.CarSales._.PostType.Car Videos.)", "video" };
                 yield return new object[] { new FacetExpression("Service", "CarSales"), new FacetExpression("PostType", "Car Reviews"), "(And.Service.CarSales._.PostType.Car Reviews.)", "review" };
                 yield return new object[] { new FacetExpression("Service", "CarSales"), new FacetExpression("PostType", "Car Features"), "(And.Service.CarSales._.PostType.Car Features.)", "feature" };
+                yield return new object[] { new FacetExpression("Service", "CarSales"), new FacetExpression("PostType", "Car Comparisons"), "(And.Service.CarSales._.PostType.Car Comparisons.)", "comparison" };
 
                 yield return new object[] { new FacetExpression("Service", "BoatSales"), new FacetExpression("Type", "News"), "(And.Service.BoatSales._.Type.News.)", "news" };
                 yield return new object[] { new FacetExpression("Service", "BoatSales"), new FacetExpression("Type", "Review"), "(And.Service.BikeSales._.Type.Review.)", "review" };

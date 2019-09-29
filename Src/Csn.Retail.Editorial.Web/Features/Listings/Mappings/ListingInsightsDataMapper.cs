@@ -32,7 +32,8 @@ namespace Csn.Retail.Editorial.Web.Features.Listings.Mappings
                 { "car advice", "advice" },
                 { "car features", "feature" },
                 { "car reviews", "review" },
-                { "car videos", "video" }
+                { "car videos", "video" },
+                { "car comparisons", "comparison" }
             };
         }
 
