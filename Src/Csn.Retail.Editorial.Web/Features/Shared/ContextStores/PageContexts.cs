@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Csn.Retail.Editorial.Web.Features.Listings.Models;
+﻿using Csn.Retail.Editorial.Web.Features.Listings.Models;
 using Csn.Retail.Editorial.Web.Features.Shared.Models;
-using Csn.Retail.Editorial.Web.Features.Shared.Proxies.EditorialApi;
 using Csn.Retail.Editorial.Web.Features.Shared.Search.Shared;
 
 namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
@@ -9,24 +7,12 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.ContextStores
     public enum PageContextTypes
     {
         Listing,
-        Landing,
-        Details
+        Landing
     }
 
     public interface IPageContext
     {
         PageContextTypes PageContextType { get; }
-    }
-
-    public class DetailsPageContext : IPageContext
-    {
-        public PageContextTypes PageContextType =>  PageContextTypes.Details;
-        public List<EditorialItem> Items { get; set; }
-        public List<string> Lifestyles { get; set; }
-        public List<string> Categories { get; set; }
-        public string ArticleType { get; set; }
-        public List<string> ArticleTypes { get; set; }
-        public string Keywords { get; set; }
     }
 
     public class LandingPageContext : IPageContext

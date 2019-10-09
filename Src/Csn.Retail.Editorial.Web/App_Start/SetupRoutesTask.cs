@@ -2,7 +2,6 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Mvc.Routing;
 using System.Web.Routing;
-using Csn.Retail.Editorial.Web.Features.Details.RouteConstraints;
 using Csn.Retail.Editorial.Web.Features.Redirects;
 using Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints;
 using Csn.Retail.Editorial.Web.Features.Shared.Settings;
@@ -120,39 +119,6 @@ namespace Csn.Retail.Editorial.Web
                 RouteNames.Mvc.MediaMotiveAdRoute,
                 "MediaMotiveAd",
                 new { controller = "MediaMotiveAd" }
-            );
-
-            AddMvcRouteWithBasePath(
-                RouteNames.Mvc.DetailsV3,
-                "{*detailsPath}",
-                new { controller = "Details", action = "IndexDetailsV1V3" },
-                new { detailsPath = new DetailsV3RouteConstraint() }
-            );
-
-            AddMvcRouteWithBasePath(
-                RouteNames.Mvc.DetailsV2,
-                "{*detailsPath}",
-                new { controller = "Details", action = "IndexDetailsV2" },
-                new { detailsPath = new DetailsV2RouteConstraint() }
-            );
-
-            AddMvcRouteWithBasePath(
-                RouteNames.Mvc.DetailsV1,
-                "{*detailsPath}",
-                new { controller = "Details", action = "IndexDetailsV1V3" },
-                new { detailsPath = new DetailsV1RouteConstraint() }
-            );
-
-            AddMvcRouteWithBasePath(
-                RouteNames.Mvc.Preview,
-                "preview/{previewId}",
-                new { controller = "Details", action = "Preview" }
-            );
-
-            AddMvcRouteWithBasePath(
-                RouteNames.Mvc.DetailsModal,
-                "details-modal/{networkId}",
-                new { controller = "Details", action = "Modal" }
             );
 
             AddMvcRouteWithBasePath(

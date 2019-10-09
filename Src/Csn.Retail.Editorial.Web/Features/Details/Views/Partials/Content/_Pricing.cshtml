@@ -1,9 +1,0 @@
-﻿@model Csn.Retail.Editorial.Web.Features.Details.Models.ArticleViewModel
-
-@if (Model?.Price != null)
-{
-    <div class="article__pricing">
-        <div class="article__pricing-label" data-webm-clickvalue="click-price-disclaimer" data-disclaimer="@HttpUtility.HtmlEncode(Model.Price.PriceDisclaimer)">@Model.Price.PriceLabel</div>
-        <div class="article__pricing-price">@Model.Price.PriceText</div>
-    </div>
-}

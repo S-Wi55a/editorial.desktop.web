@@ -212,10 +212,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\Details\GetArticleQueryCacheStoreTests.cs" />
     <Compile Include="Features\DisplayAds\GoogleAd\GoogleAdQueryHandlerTests.cs" />
-    <Compile Include="Features\Details\RouteConstraints\DetailsV1RouteValidatorTests.cs" />
-    <Compile Include="Features\Details\RouteConstraints\DetailsV2RouteValidatorTests.cs" />
     <Compile Include="Features\Listings\ListingInsightsDataMapperTests.cs" />
     <Compile Include="Features\Redirects\RedirectProviders\RegexRedirectProviderTests.cs" />
     <Compile Include="Features\Shared\Mappers\PolarNativeAdsDataMapperTests.cs" />
@@ -228,8 +225,6 @@
     <Compile Include="Features\DisplayAds\MediaMotiveAd\TagBuilders\ListingsTagBuilderTests.cs" />
     <Compile Include="Features\Shared\Search\BreadCrumbsMapperTests.cs" />
     <Compile Include="Features\Shared\Search\MapperExtensionsTests.cs" />
-    <Compile Include="Features\Details\MappingConfigurationTest.cs" />
-    <Compile Include="Features\Details\UseDropCaseMapperTests.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlNodeExtensionsTests.cs" />
     <Compile Include="Infrastructure\Extensions\EnumberableExtensionsTests.cs" />
     <Compile Include="Infrastructure\Extensions\SlugExtensionTests.cs" />

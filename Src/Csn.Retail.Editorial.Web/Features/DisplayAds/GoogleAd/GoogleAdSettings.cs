@@ -21,15 +21,6 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             }
                         },
                         {
-                            DisplayAdPlacements.DetailsAside,
-                            new GoogleAdSetting
-                            {
-                                SlotId = "div-gpt-ad-1557777826935-0",
-                                UnitId = "SA_editorial_300x250_300x600_E2",
-                                DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle
-                            }
-                        },
-                        {
                             DisplayAdPlacements.Banner,
                             new GoogleAdSetting
                             {
@@ -74,15 +65,6 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             }
                         },
                         {
-                            DisplayAdPlacements.DetailsAside,
-                            new GoogleAdSetting
-                            {
-                                SlotId = "div-gpt-ad-1553689007338-0",
-                                UnitId = "Editorial_Details_Aside(300x250_300x600)",
-                                DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle
-                            }
-                        },
-                        {
                             DisplayAdPlacements.Banner,
                             new GoogleAdSetting
                             {
@@ -123,15 +105,6 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             {
                                 SlotId = "div-gpt-ad-1568779716647-0",
                                 UnitId = "Editorial_Listados300x250_side",
-                                DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle
-                            }
-                        },
-                        {
-                            DisplayAdPlacements.DetailsAside,
-                            new GoogleAdSetting
-                            {
-                                SlotId = "div-gpt-ad-1568779853455-0",
-                                UnitId = "Editorial_Nota300x250_side",
                                 DisplayAdSize = DisplayAdSizes.MediumOrLargeRectangle
                             }
                         },
