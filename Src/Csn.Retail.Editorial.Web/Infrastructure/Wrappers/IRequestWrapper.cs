@@ -11,6 +11,8 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Wrappers
         Uri Url { get; }
         string CorrelationId { get; }
         string Origin { get; }
+        string AkamaiEdgescape { get; }
+        string GdprRegion { get; }
     }
 
     [AutoBindAsSingleton]
@@ -48,6 +50,11 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Wrappers
                 return cid;
             }
         }
+
+        public string GdprRegion => HttpContext.Current?.Request.QueryString["gdprRegion"];
+
+        private const string AkamaiEdgescapeHeader = "X-Akamai-Edgescape";
+        public string AkamaiEdgescape => HttpContext.Current?.Request.Headers[AkamaiEdgescapeHeader];
 
         private const string OriginHeader = "x-appid";
         public string Origin => HttpContext.Current?.Request.Headers[OriginHeader];
