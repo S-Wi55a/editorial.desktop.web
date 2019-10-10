@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
+using System.Linq;
 using Csn.MultiTenant;
 using Csn.Retail.Editorial.Web.Features.DisplayAds;
 
@@ -66,5 +67,22 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Models
         public bool IncludeNielsen { get; set; }
 
         #endregion
+
+        public bool IsAuTenant()
+        {
+            return AuTenants.Any(a => a.Equals(Name, StringComparison.CurrentCultureIgnoreCase));
+        }
+
+        private static readonly string[] AuTenants =
+        {
+            "carsales",
+            "bikesales",
+            "constructionsales",
+            "boatsales",
+            "trucksales",
+            "caravancampingsales",
+            "farmmachinerysales",
+            "redbook"
+        };
     }
 }

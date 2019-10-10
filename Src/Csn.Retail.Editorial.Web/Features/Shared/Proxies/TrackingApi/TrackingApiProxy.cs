@@ -25,7 +25,9 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.TrackingApi
             var client = _smartClient.Service(ServiceName)
                 .Path("v1/api/tracking/script")
                 .QueryString("Application", input.ApplicationName)
-                .QueryString("includebitracking", "true");
+                .QueryString("includebitracking", "true")
+                .QueryString("includegooglesem", input.IncludeGoogleSem.ToString())
+                .QueryString("ClientGeoCountryCode", input.ClientGeoCountryCode);
 
             if (input.IncludeNielsen)
             {
