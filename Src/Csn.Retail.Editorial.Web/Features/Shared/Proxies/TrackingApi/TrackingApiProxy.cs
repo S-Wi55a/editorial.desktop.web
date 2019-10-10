@@ -27,7 +27,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Proxies.TrackingApi
                 .QueryString("Application", input.ApplicationName)
                 .QueryString("includebitracking", "true")
                 .QueryString("includegooglesem", input.IncludeGoogleSem.ToString())
-                .QueryString("ClientGeoCountryCode", input.ClientGeoCountryCode);
+                .QueryString("ClientGeoCountryCode", string.IsNullOrEmpty(input.ClientGeoCountryCode)? null: input.ClientGeoCountryCode);
 
             if (input.IncludeNielsen)
             {
