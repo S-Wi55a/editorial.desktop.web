@@ -266,8 +266,8 @@
     <Reference Include="Ingress.Web.Common, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Web.Common-Net452.14.11.1\lib\net452\Ingress.Web.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Web.Common.Abstracts, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.11.1\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.Web.Common.Abstracts, Version=14.10.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.10.5\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
     </Reference>
     <Reference Include="JavaScriptEngineSwitcher.ChakraCore, Version=2.4.11.0, Culture=neutral, PublicKeyToken=c608b2a8cc9e4472, processorArchitecture=MSIL">
       <HintPath>..\packages\JavaScriptEngineSwitcher.ChakraCore.2.4.11\lib\net45\JavaScriptEngineSwitcher.ChakraCore.dll</HintPath>

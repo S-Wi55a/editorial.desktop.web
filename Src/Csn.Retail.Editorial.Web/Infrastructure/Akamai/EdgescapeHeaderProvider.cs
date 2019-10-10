@@ -1,7 +1,7 @@
 ﻿using System;
 using Bolt.Common.Extensions;
 using Csn.Retail.Editorial.Web.Infrastructure.Attributes;
-using Ingress.Web.Common.Abstracts;
+using Csn.Retail.Editorial.Web.Infrastructure.Wrappers;
 
 namespace Csn.Retail.Editorial.Web.Infrastructure.Akamai
 {
@@ -13,14 +13,13 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Akamai
     [AutoBind]
     public class AkamaiEdgescapeHeaderProvider : IAkamaiEdgescapeHeaderProvider
     {
-        private readonly IHttpRequestWrapper _requestWrapper;
+        private readonly IRequestWrapper _requestWrapper;
 
         private static readonly char[] SplitChars = new[] { ',' };
 
-        private const string AkamaiEdgescapeHeader = "X-Akamai-Edgescape";
         private const string CountryCodeEdgeKey = "country_code";
 
-        public AkamaiEdgescapeHeaderProvider(IHttpRequestWrapper requestWrapper)
+        public AkamaiEdgescapeHeaderProvider(IRequestWrapper requestWrapper)
         {
             _requestWrapper = requestWrapper;
         }
@@ -32,13 +31,11 @@ namespace Csn.Retail.Editorial.Web.Infrastructure.Akamai
 
         private string GetIsoCode(string key)
         {
-            if (_requestWrapper.QueryParams.TryGetValue("gdprRegion", out var region)) return region;
+            if (!string.IsNullOrEmpty(_requestWrapper.GdprRegion)) return _requestWrapper.GdprRegion;
 
-            if (_requestWrapper.Headers == null) return string.Empty;
-
-            if (_requestWrapper.Headers.TryGetValue(AkamaiEdgescapeHeader, out var edgeLocation))
+            if (!string.IsNullOrEmpty(_requestWrapper.AkamaiEdgescape))
             {
-                var data = edgeLocation.Split(SplitChars, StringSplitOptions.RemoveEmptyEntries);
+                var data = _requestWrapper.AkamaiEdgescape.Split(SplitChars, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach (var item in data)
                 {

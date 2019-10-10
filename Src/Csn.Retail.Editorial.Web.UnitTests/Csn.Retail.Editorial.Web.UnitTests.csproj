@@ -102,8 +102,8 @@
     <Reference Include="Ingress.Web.Common, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ingress.Web.Common-Net452.14.11.1\lib\net452\Ingress.Web.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Ingress.Web.Common.Abstracts, Version=14.11.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.11.1\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
+    <Reference Include="Ingress.Web.Common.Abstracts, Version=14.10.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ingress.Web.Common.Abstracts.14.10.5\lib\net452\Ingress.Web.Common.Abstracts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.2\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
