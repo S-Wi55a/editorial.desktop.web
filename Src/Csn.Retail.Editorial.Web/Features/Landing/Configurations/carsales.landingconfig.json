@@ -16,12 +16,12 @@
           "carouselItems": null
         },
         {
-          "title": "Reviews",
+          "title": "Car Reviews",
           "displayMrec": false,
           "displayNativeAd": false,
           "query": "(And.Type.Review._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/review/",
+          "viewAll": "/car-reviews/",
           "polarAds": {
             "display": true,
             "placementId": 31
@@ -30,12 +30,12 @@
           "carouselItems": null
         },
         {
-          "title": "News",
+          "title": "Car News",
           "displayMrec": false,
           "displayNativeAd": false,
           "query": "(And.Type.News._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/news/",
+          "viewAll": "/car-news/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
@@ -45,11 +45,11 @@
           "adPlacementType": "inlineBanner"
         },
         {
-          "title": "Videos",
+          "title": "Car Videos",
           "displayMrec": false,
           "query": "(And.Type.Video._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/video/",
+          "viewAll": "/car-videos/",
           "polarAds": {
             "display": true,
             "placementId": 32
@@ -58,12 +58,12 @@
           "carouselItems": null
         },
         {
-          "title": "Advice",
+          "title": "Car Advice",
           "displayMrec": false,
           "displayNativeAd": false,
           "query": "(And.(Or.Type.Car Advice._.Type.Advice.)_.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/advice/",
+          "viewAll": "/car-advice/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
@@ -101,12 +101,12 @@
           ]
         },
         {
-          "title": "Comparisons",
+          "title": "Car Comparisons",
           "displayMrec": false,
           "displayNativeAd": false,
           "query": "(And.ArticleTypes.Comparison._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/results/?q=ArticleTypes.Comparison.",
+          "viewAll": "/car-comparisons/",
           "polarAds": {
             "display": true,
             "placementId": 33
@@ -115,12 +115,12 @@
           "carouselItems": null
         },
         {
-          "title": "Features",
+          "title": "Car Features",
           "displayMrec": false,
           "displayNativeAd": false,
           "query": "(And.Type.Feature._.Service.CarSales.)",
           "sort": "Latest",
-          "viewAll": "/feature/",
+          "viewAll": "/car-features/",
           "polarAds": null,
           "carouselType": "article",
           "carouselItems": null
