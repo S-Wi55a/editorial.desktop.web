@@ -69,7 +69,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Extensions
         {
             var tenantProvider = DependencyResolver.Current.GetService<ITenantProvider<TenantInfo>>();
 
-            return string.IsNullOrEmpty(tenantProvider.Current().DisqusSource) ? string.Empty : $"EDITORIAL-{source.Id?.Substring(7)}";
+            return string.IsNullOrEmpty(tenantProvider.Current().DisqusSource) || (source.ArticleTypes?.Contains("Sponsored") ?? false) ? string.Empty : $"EDITORIAL-{source.Id?.Substring(7)}";
         }
 
         public static string GetDisplayName(this RyvussNavNodeDto source)
