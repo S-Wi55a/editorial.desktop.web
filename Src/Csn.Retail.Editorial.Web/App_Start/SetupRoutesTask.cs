@@ -141,6 +141,13 @@ namespace Csn.Retail.Editorial.Web
                 new { controller = "Listings", action = "ArticleTypeListing" },
                 new { articleType = new ArticleTypeRouteConstraint() }
             );
+            
+            AddMvcRouteWithBasePath(
+                RouteNames.Mvc.ConfigBasedRedirect,
+                "{*url}",
+                new { controller = "Redirect", action = "Redirect" },
+                new { url = new ConfigBasedRedirectRouteConstraint() }
+            );
 
             AddMvcRouteWithBasePath(
                 RouteNames.Mvc.RedbookHome,
@@ -154,13 +161,6 @@ namespace Csn.Retail.Editorial.Web
                 "{redbookVertical}/results",
                 new { controller = "Listings", action = "RedbookListing" },
                 new { redbookVertical = new VerticalRouteConstraint() }
-            );
-
-            AddMvcRouteWithBasePath(
-                RouteNames.Mvc.ConfigBasedRedirect,
-                "{*url}",
-                new { controller = "Redirect", action = "Redirect" },
-                new { url = new ConfigBasedRedirectRouteConstraint() }
             );
 
             AddMvcRouteWithBasePath(
