@@ -67,6 +67,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Nav
         public string ArticleDetailsUrl { get; set; }        
         public string Label { get; set; }
         public string Type {get; set;}
+
+        public int DisplayImageCount { get; set; }
+        public int DisplayVideoCount { get; set; }
+        public bool DisplayVideoPlayIcon { get; set; }
     }
 
     public class NavLabels
