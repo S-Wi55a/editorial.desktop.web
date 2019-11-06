@@ -39,6 +39,14 @@
     "carsales": [
       {
         "ruleType": "regex",
+        "name": "LegacyDetailsCarsales",
+        "matchRule": "\\/editorial\\/(news|reviews|advice|videos|features|riding-advice|tips|tow-tests|motoracing|engine-reviews|products)(\\/.*)?\\/(.*-\\d+)\\/?$",
+        "redirectInstruction": "/editorial/details/$3/",
+        "includeQueryStringInRedirect": true,
+        "description": "Used for redirecting the legacy article details urls. We need to duplicate this year to prevent the next 2 redirects from hijacking the legacy details redirect"
+      },
+      {
+        "ruleType": "regex",
         "name": "ArticleTypeIa1",
         "matchRule": "(.*?)\\/(news|advice)\\/([^\\?]*)",
         "redirectInstruction": "$1/car-$2/$3",
