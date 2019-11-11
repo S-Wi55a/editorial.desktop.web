@@ -24,11 +24,11 @@ class INavSearchResult extends React.Component<ISearchResults> {
                         <div className={`iNavSearchResult__type iNavSearchResult__type--${typeof this.props.type !== 'undefined' ? this.props.type.toLowerCase().split(' ').join('-') : ''}`}>
                             {typeof this.props.type !== 'undefined' ? this.props.type.toUpperCase() : ''}
                         </div>
-                        {this.props.displayImageCount &&
-                            <div className="iNavSearchResult__meta-image-count">{this.props.displayImageCount}</div>
+                        {this.props.displayImageCount ?
+                            <div className="iNavSearchResult__meta-image-count">{this.props.displayImageCount}</div> : ""
                         }
-                        {this.props.displayVideoCount &&
-                            <div className="iNavSearchResult__meta-video-count">{this.props.displayVideoCount}</div>
+                        {this.props.displayVideoCount ?
+                            <div className="iNavSearchResult__meta-video-count">{this.props.displayVideoCount}</div> : ""
                         }
                     </div>
                     <div className="iNavSearchResult__heading">
