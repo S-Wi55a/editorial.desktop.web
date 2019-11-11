@@ -16,7 +16,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.RouteConstraints
                 _articleTypeLookup = DependencyResolver.Current.GetService<IArticleTypeListingLookup>();
             }
             
-            if (values.TryGetValue(parameterName, out var parameterValue))
+            if (values.TryGetValue(parameterName, out var parameterValue) && parameterValue != null)
             {
                 var articleType = parameterValue.ToString().Trim('/');
                 var type = _articleTypeLookup.GetArticleTypeFromSlug(articleType);
