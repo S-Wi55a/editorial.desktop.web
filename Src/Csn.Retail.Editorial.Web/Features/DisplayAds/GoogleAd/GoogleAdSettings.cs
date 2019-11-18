@@ -78,7 +78,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             DisplayAdPlacements.Leaderboard,
                             new GoogleAdSetting
                             {
-                                SlotId = "div-gpt-ad-1553524424201-0",
+                                SlotId = "div-gpt-ad-1573908191758-0",
                                 UnitId = "DetailsPage_728x90",
                                 DisplayAdSize = DisplayAdSizes.Leaderboard
                             }
@@ -87,7 +87,7 @@ namespace Csn.Retail.Editorial.Web.Features.DisplayAds.GoogleAd
                             DisplayAdPlacements.Carousel,
                             new GoogleAdSetting
                             {
-                                SlotId = "div-gpt-ad-1553524510647-0",
+                                SlotId = "div-gpt-ad-1573908472400-0",
                                 UnitId = "Editorial_HomePage_300x250",
                                 DisplayAdSize = DisplayAdSizes.MediumRectangle
                             }
