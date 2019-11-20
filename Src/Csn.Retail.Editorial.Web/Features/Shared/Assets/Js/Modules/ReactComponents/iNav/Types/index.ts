@@ -80,4 +80,7 @@ export interface ISearchResults {
     type: string
     disqusArticleId: string | number,
     isNativeAd?: boolean
+    displayImageCount: number
+    displayVideoCount: number
+    displayVideoPlayIcon: boolean
 }

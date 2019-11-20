@@ -30,6 +30,9 @@ export interface ICarouselItems {
     type: string
     disqusArticleId: string | number
     itemUrl?: string
+    displayImageCount: number
+    displayVideoCount: number
+    displayVideoPlayIcon: boolean
 }
 
 export interface ISimpleSlider {

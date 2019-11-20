@@ -60,7 +60,7 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
             cfg.CreateMap<SearchResultDto, SearchResult>()
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => _imageMapper.MapImageUrl(src)))
                 .ForMember(dest => dest.DateAvailable, opt => opt.MapFrom(src => src.MapDateAvailable()))
-                .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => _articleUrlMapper.MapDetailsUrl(src)))     
+                .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => _articleUrlMapper.MapDetailsUrl(src)))
                 .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.GetLabel()))
                 .ForMember(dest => dest.DisqusArticleId, opt => opt.MapFrom(src => src.GetDisqusArticleId()));
         }

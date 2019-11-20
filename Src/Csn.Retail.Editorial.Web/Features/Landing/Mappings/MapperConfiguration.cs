@@ -14,12 +14,7 @@ namespace Csn.Retail.Editorial.Web.Features.Landing.Mappings
             cfg.CreateMap<CarouselItem, SearchResult>()
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl))
                 .ForMember(dest => dest.ArticleDetailsUrl, opt => opt.MapFrom(src => src.ItemUrl))
-                .ForMember(dest => dest.DateAvailable, opt => opt.Ignore())
-                .ForMember(dest => dest.DisqusArticleId, opt => opt.Ignore())
-                .ForMember(dest => dest.Label, opt => opt.Ignore())
-                .ForMember(dest => dest.SubHeading, opt => opt.Ignore())
-                .ForMember(dest => dest.Headline, opt => opt.Ignore())
-                .ForMember(dest => dest.Type, opt => opt.Ignore());
+                .ForAllOtherMembers(opt => opt.Ignore());
         }
     }
 }
