@@ -111,6 +111,10 @@ namespace Csn.Retail.Editorial.Web.Features.Shared.Search.Shared
         public List<string> Categories { get; set; }
         public List<string> Lifestyles { get; set; }
         public List<EditorialListingItemDto> Items { get; set; }
+
+        public int DisplayImageCount { get; set; }
+        public int DisplayVideoCount { get; set; }
+        public bool DisplayVideoPlayIcon { get; set; }
     }
 
     public class EditorialListingItemDto
