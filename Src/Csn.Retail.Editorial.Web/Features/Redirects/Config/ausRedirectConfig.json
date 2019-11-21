@@ -40,7 +40,7 @@
       {
         "ruleType": "regex",
         "name": "Lexus-marketing-group",
-        "matchRule": "\\/editorial\\/lexus\\/(.*\\/)?(ct|es|gs|is|ls|lfa|ls|lx|rx|sc)-marketing-group\\/([^\\?]*\\/?)?$",
+        "matchRule": "\\/editorial\\/lexus\\/(.*\\/)?(ct|es|gs|is|ls|lfa|lc|lx|rx|sc|ux|rc|nx)-marketing-group\\/([^\\?]*\\/?)?$",
         "redirectInstruction": "/editorial/lexus/$2/$3",
         "includeQueryStringInRedirect": true,
         "description":  "LexusMarketingGroupRedirect1"
@@ -48,7 +48,7 @@
       {
         "ruleType": "regex",
         "name": "Lexus-model",
-        "matchRule": "\\/editorial\\/lexus\\/(ct|gs|is|ls|lx|rx|sc|rc|lf)-?(20|25|27|30|33|35|43|45|46|47|50|57|60)0-?(h|t|hl|d|c|f|nx|a)?\\/([^\\?]*\\/?)?$",
+        "matchRule": "\\/editorial\\/lexus\\/(ct|gs|is|ls|lx|rx|sc|rc|lf|es|lc)-?(20|25|27|30|33|35|43|45|46|47|50|57|60)0-?(h|t|hl|d|c|f|nx|a)?\\/([^\\?]*\\/?)?$",
         "redirectInstruction": "/editorial/lexus/$1/$4",
         "includeQueryStringInRedirect": true,
         "description": "LexusMarketingGroupRedirect2"
