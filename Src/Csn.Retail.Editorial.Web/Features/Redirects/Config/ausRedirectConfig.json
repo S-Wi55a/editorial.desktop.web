@@ -39,7 +39,7 @@
     "carsales": [
       {
         "ruleType": "regex",
-        "name": "Lexus-marketing-group",
+        "name": "LexusMktgGroup1",
         "matchRule": "\\/editorial\\/lexus\\/(.*\\/)?(ct|es|gs|is|ls|lfa|lc|lx|rx|sc|ux|rc|nx)-marketing-group\\/([^\\?]*\\/?)?$",
         "redirectInstruction": "/editorial/lexus/$2/$3",
         "includeQueryStringInRedirect": true,
@@ -47,7 +47,7 @@
       },
       {
         "ruleType": "regex",
-        "name": "Lexus-model",
+        "name": "LexusMktgGroup2",
         "matchRule": "\\/editorial\\/lexus\\/(ct|gs|is|ls|lx|rx|sc|rc|lf|es|lc)-?(20|25|27|30|33|35|43|45|46|47|50|57|60)0-?(h|t|hl|d|c|f|nx|a)?\\/([^\\?]*\\/?)?$",
         "redirectInstruction": "/editorial/lexus/$1/$4",
         "includeQueryStringInRedirect": true,
@@ -55,7 +55,7 @@
       },
       {
         "ruleType": "regex",
-        "name": "Lexus-m-marketing-group",
+        "name": "LexusMktgGroup3",
         "matchRule": "\\/editorial\\/lexus\\/m-marketing-group\\/([^\\?]*\\/?)?$",
         "redirectInstruction": "/editorial/lexus/ct/$1",
         "includeQueryStringInRedirect": true,
@@ -63,7 +63,7 @@
       },
       {
         "ruleType": "regex",
-        "name": "Lexus-model2",
+        "name": "LexusMktgGroup4",
         "matchRule": "\\/editorial\\/lexus\\/(is|rc)-(f|350-prestige)\\/([^\\?]*\\/?)?$",
         "redirectInstruction": "/editorial/lexus/$1/$3",
         "includeQueryStringInRedirect": true,
@@ -71,7 +71,7 @@
       },
       {
         "ruleType": "regex",
-        "name": "Lexus-model3",
+        "name": "LexusMktgGroup5",
         "matchRule": "\\/editorial\\/lexus\\/lf-nx\\/([^\\?]*\\/?)?$",
         "redirectInstruction": "/editorial/lexus/nx/$1",
         "includeQueryStringInRedirect": true,
@@ -79,7 +79,7 @@
       },
       {
         "ruleType": "regex",
-        "name": "Lexus-model4",
+        "name": "LexusMktgGroup6",
         "matchRule": "\\/editorial\\/lexus\\/lf-a\\/([^\\?]*\\/?)?$",
         "redirectInstruction": "/editorial/lexus/lfa/$1",
         "includeQueryStringInRedirect": true,
