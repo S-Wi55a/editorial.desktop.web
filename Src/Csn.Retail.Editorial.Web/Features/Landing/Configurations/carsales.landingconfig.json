@@ -2249,7 +2249,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018._.YearPublished.2019.)_.(C.Make.Lexus._.Model.GS.))",
           "sort": "Latest",
-          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.Model.GS.))",
+          "viewAll": "/lexus/gs/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2260,7 +2260,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018._.YearPublished.2019.)_.(C.Make.Lexus._.Model.IS.))",
           "sort": "Latest",
-          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.Model.IS.))",
+          "viewAll": "/lexus/is/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2275,7 +2275,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018._.YearPublished.2019.)_.(C.Make.Lexus._.Model.LC.))",
           "sort": "Latest",
-          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.Model.LC.))",
+          "viewAll": "/lexus/lc/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2286,7 +2286,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018._.YearPublished.2019.)_.(C.Make.Lexus._.Model.LS.))",
           "sort": "Latest",
-          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.Model.LS.))",
+          "viewAll": "/lexus/ls/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2297,7 +2297,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018._.YearPublished.2019.)_.(C.Make.Lexus._.Model.LX.))",
           "sort": "Latest",
-          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.Model.LX.))",
+          "viewAll": "/lexus/lx/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
@@ -2308,7 +2308,7 @@
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018._.YearPublished.2019.)_.(C.Make.Lexus._.Model.RX.))",
           "sort": "Latest",
-          "viewAll": "/results/?q=(And.Service.CarSales._.(C.Make.Lexus._.Model.RX.))",
+          "viewAll": "/lexus/rx/",
           "polarAds": null,
           "carouselType": "Article",
           "carouselItems": null
