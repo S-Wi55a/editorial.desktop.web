@@ -39,6 +39,110 @@
     "carsales": [
       {
         "ruleType": "regex",
+        "name": "BMWMktgGroup1",
+        "matchRule": "\\/editorial\\/bmw\\/(.*\\/)?(1|2|3|4|5|6|7|8)-series-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/bmw/$2-series/$3",
+        "includeQueryStringInRedirect": true,
+        "description": "BMWMarketingGroupRedirect1"
+      },
+      {
+        "ruleType": "regex",
+        "name": "BMWMktgGroup2",
+        "matchRule": "\\/editorial\\/bmw\\/(.*\\/)(i-series|x-models|m-models|z-models)-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/bmw/$1/$3",
+        "includeQueryStringInRedirect": true,
+        "description": "BMWMarketingGroupRedirect2"
+      },
+      {
+        "ruleType": "regex",
+        "name": "BMWMktgGroup3",
+        "matchRule": "\\/editorial\\/bmw\\/x-models-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/bmw/x5/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "BMWMarketingGroupRedirect3"
+      },
+      {
+        "ruleType": "regex",
+        "name": "BMWMktgGroup4",
+        "matchRule": "\\/editorial\\/bmw\\/m-models-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/bmw/m3/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "BMWMarketingGroupRedirect4"
+      },
+      {
+        "ruleType": "regex",
+        "name": "BMWMktgGroup5",
+        "matchRule": "\\/editorial\\/bmw\\/i-series-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/bmw/i3/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "BMWMarketingGroupRedirect5"
+      },
+      {
+        "ruleType": "regex",
+        "name": "BMWMktgGroup6",
+        "matchRule": "\\/editorial\\/bmw\\/z-models-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/bmw/z4/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "BMWMarketingGroupRedirect6"
+      },
+      {
+        "ruleType": "regex",
+        "name": "BMWMktgGroup7",
+        "matchRule": "\\/editorial\\/bmw\\/(1|2|3|5|6|7|8)(16|18|18|20|23|25|28|30|35|40|45|50|60)(i|d|e|ci|ti|csi|li)\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/bmw/$1-series/$4",
+        "includeQueryStringInRedirect": true,
+        "description": "BMWMarketingGroupRedirect7"
+      },
+      {
+        "ruleType": "regex",
+        "name": "LexusMktgGroup1",
+        "matchRule": "\\/editorial\\/lexus\\/(.*\\/)?(ct|es|gs|is|ls|lfa|lc|lx|rx|sc|ux|rc|nx)-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/lexus/$2/$3",
+        "includeQueryStringInRedirect": true,
+        "description": "LexusMarketingGroupRedirect1"
+      },
+      {
+        "ruleType": "regex",
+        "name": "LexusMktgGroup2",
+        "matchRule": "\\/editorial\\/lexus\\/(ct|gs|is|ls|lx|rx|sc|rc|lf|es|lc)-?(20|25|27|30|33|35|43|45|46|47|50|57|60)0-?(h|t|hl|d|c|f|nx|a)?\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/lexus/$1/$4",
+        "includeQueryStringInRedirect": true,
+        "description": "LexusMarketingGroupRedirect2"
+      },
+      {
+        "ruleType": "regex",
+        "name": "LexusMktgGroup3",
+        "matchRule": "\\/editorial\\/lexus\\/m-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/lexus/ct/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "LexusMarketingGroupRedirect3"
+      },
+      {
+        "ruleType": "regex",
+        "name": "LexusMktgGroup4",
+        "matchRule": "\\/editorial\\/lexus\\/(is|rc)-(f|350-prestige)\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/lexus/$1/$3",
+        "includeQueryStringInRedirect": true,
+        "description": "LexusMarketingGroupRedirect4"
+      },
+      {
+        "ruleType": "regex",
+        "name": "LexusMktgGroup5",
+        "matchRule": "\\/editorial\\/lexus\\/lf-nx\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/lexus/nx/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "LexusMarketingGroupRedirect5"
+      },
+      {
+        "ruleType": "regex",
+        "name": "LexusMktgGroup6",
+        "matchRule": "\\/editorial\\/lexus\\/lf-a\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/lexus/lfa/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "LexusMarketingGroupRedirect6"
+      },
+      {
+        "ruleType": "regex",
         "name": "LegacyDetailsCarsales",
         "matchRule": "\\/editorial\\/(news|reviews|advice|videos|features|riding-advice|tips|tow-tests|motoracing|engine-reviews|products)(\\/.*)?\\/(.*-\\d+)\\/?$",
         "redirectInstruction": "/editorial/details/$3/",
