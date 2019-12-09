@@ -2707,7 +2707,7 @@
           "carouselItems": null
         },
         {
-          "title": "G Class",
+          "title": "G-Class",
           "displayMrec": false,
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018._.YearPublished.2019.)_.(C.Make.Mercedes-Benz._.Model.G-Class.))",
@@ -2718,7 +2718,7 @@
           "carouselItems": null
         },
         {
-          "title": "GLC Class",
+          "title": "GLC-Class",
           "displayMrec": false,
           "displayNativeAd": false,
           "query": "(And.Service.CarSales._.Sentiment.Positive._.(Or.YearPublished.2016._.YearPublished.2017._.YearPublished.2018._.YearPublished.2019.)_.(C.Make.Mercedes-Benz._.Model.GLC-Class.))",
