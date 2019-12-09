@@ -39,6 +39,30 @@
     "carsales": [
       {
         "ruleType": "regex",
+        "name": "MercMktgGroup1",
+        "matchRule": "\\/editorial\\/mercedes-benz\\/(.*\\/)?(.*)-class-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/mercedes-benz/$2-class/$3",
+        "includeQueryStringInRedirect": true,
+        "description": "MercMarketingGroupRedirect1"
+      },
+      {
+        "ruleType": "regex",
+        "name": "MercMktgGroup2",
+        "matchRule": "\\/editorial\\/mercedes-benz\\/(.*)\\/vans-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/mercedes-benz/$1/$2",
+        "includeQueryStringInRedirect": true,
+        "description": "MercMarketingGroupRedirect2"
+      },
+      {
+        "ruleType": "regex",
+        "name": "MercMktgGroup3",
+        "matchRule": "\\/editorial\\/mercedes-benz\\/vans-marketing-group\\/([^\\?]*\\/?)?$",
+        "redirectInstruction": "/editorial/mercedes-benz/sprinter/$1",
+        "includeQueryStringInRedirect": true,
+        "description": "MercMarketingGroupRedirect3"
+      },
+      {
+        "ruleType": "regex",
         "name": "BMWMktgGroup1",
         "matchRule": "\\/editorial\\/bmw\\/(.*\\/)?(1|2|3|4|5|6|7|8)-series-marketing-group\\/([^\\?]*\\/?)?$",
         "redirectInstruction": "/editorial/bmw/$2-series/$3",
