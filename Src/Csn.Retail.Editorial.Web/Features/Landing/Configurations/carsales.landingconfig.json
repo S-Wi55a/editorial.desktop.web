@@ -8,7 +8,7 @@
           "title": "Editor's Choice",
           "displayMrec": true,
           "displayNativeAd": false,
-          "query": "(And.ArticleSet.Carsales_home._.Service.CarSales.)",
+          "query": "(And.ArticleSet.EditorsChoiceCarsales._.Service.CarSales.)",
           "sort": "Latest",
           "viewAll": null,
           "polarAds": null,

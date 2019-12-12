@@ -12,7 +12,7 @@
         {
           "title": "Editor's Choice",
           "displayMrec": true,
-          "query": "(And.ArticleSet.Farm_home._.Service.FarmMachinerySales.)",
+          "query": "(And.ArticleSet.EditorsChoiceFarmmachinerysales._.Service.FarmMachinerySales.)",
           "sort": "Latest",
           "carouselType": "featured"
         },

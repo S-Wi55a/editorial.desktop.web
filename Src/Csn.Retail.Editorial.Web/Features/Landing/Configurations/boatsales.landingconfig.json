@@ -13,7 +13,7 @@
         {
           "title": "Editor's Choice",
           "displayMrec": true,
-          "query": "(And.ArticleSet.Redbook_Boats._.Service.BoatSales.)",
+          "query": "(And.ArticleSet.EditorsChoiceBoatsales._.Service.BoatSales.)",
           "sort": "Latest",
           "carouselType": "featured"
         },

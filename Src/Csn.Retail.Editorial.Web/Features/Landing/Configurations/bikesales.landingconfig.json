@@ -12,7 +12,7 @@
         {
           "title": "Editor's Choice",
           "displayMrec": true,
-          "query": "(And.ArticleSet.Redbook_Bikes._.Service.BikeSales.)",
+          "query": "(And.ArticleSet.EditorsChoiceBikesales._.Service.BikeSales.)",
           "sort": "Latest",
           "carouselType": "featured"
         },
