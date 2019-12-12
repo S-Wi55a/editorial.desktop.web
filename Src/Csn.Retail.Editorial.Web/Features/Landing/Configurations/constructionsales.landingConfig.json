@@ -12,7 +12,7 @@
         {
           "title": "Editor's Choice",
           "displayMrec": true,
-          "query": "(And.ArticleSet.Construction_home._.Service.ConstructionSales.)",
+          "query": "(And.ArticleSet.EditorsChoiceConstructionsales._.Service.ConstructionSales.)",
           "sort": "Latest",
           "carouselType": "featured"
         },

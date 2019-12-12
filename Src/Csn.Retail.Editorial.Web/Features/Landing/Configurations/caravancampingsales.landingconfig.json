@@ -13,7 +13,7 @@
         {
           "title": "Editor's Choice",
           "displayMrec": true,
-          "query": "(And.ArticleSet.Caravan_Camping._.Service.CaravanCampingSales.)",
+          "query": "(And.ArticleSet.EditorsChoiceCaravancampingsales._.Service.CaravanCampingSales.)",
           "sort": "Latest",
           "carouselType": "featured"
         },

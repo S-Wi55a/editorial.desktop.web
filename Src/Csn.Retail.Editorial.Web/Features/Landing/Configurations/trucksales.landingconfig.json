@@ -12,7 +12,7 @@
         {
           "title": "Editor's Choice",
           "displayMrec": true,
-          "query": "(And.ArticleSet.TruckSales_home._.Service.TruckSales.)",
+          "query": "(And.ArticleSet.EditorsChoiceTrucksales._.Service.TruckSales.)",
           "sort": "Latest",
           "carouselType": "featured"
         },
