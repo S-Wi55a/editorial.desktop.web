@@ -89,7 +89,7 @@
         "mini-css-extract-plugin": "^0.5.0",
         "modernizr": "^3.5.0",
         "modernizr-loader": "^1.0.1",
-        "node-sass": "4.11.0",
+        "node-sass": "4.14.1",
         "parallel-webpack": "^2.1.0",
         "path": "^0.12.7",
         "postcss-load-config": "2.0.0",
